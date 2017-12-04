@@ -1,13 +1,8 @@
-demos
+demo - connector
 connectorMethod
-	| connector |
-
 	World closeAllWindowsDiscardingChanges.
 	BlUniverse reset.
-	
-	connector := GtConnector new.
-	connector addMethod: (BlBezierExamples>>#quadraticCurveWithPerpendicularAnchor).
-	
-	(Smalltalk tools inspector openOn: connector)
+
+	(Smalltalk tools inspector openOn: (BlBezierExamples>>#quadraticCurveWithPerpendicularAnchor) gtExample)
 		extent: self largeExtent;
 		position: self largePosition

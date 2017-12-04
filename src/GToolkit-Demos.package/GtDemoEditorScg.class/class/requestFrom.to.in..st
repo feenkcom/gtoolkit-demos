@@ -1,4 +1,4 @@
-demo - model and ui
+private - model and ui
 requestFrom: aUiElement to: aModelElement in: aContainer
 	| uiModel requestChange |
 

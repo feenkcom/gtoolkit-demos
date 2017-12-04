@@ -1,4 +1,4 @@
-demos
+demo - transcript
 transcriptObjectShower
 	World closeAllWindowsDiscardingChanges.
 	BlUniverse reset.

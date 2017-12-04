@@ -1,3 +1,3 @@
 windows
 largeExtent
-	^ 1000@850
+	^ 1250@750

@@ -7,33 +7,68 @@ menuCommandOn: aBuilder
 		target: self;
 		iconName: #glamorousGo.
 
-	"(aBuilder item: #'1. Rope')
+	(aBuilder item: #'1. Transcript - api')
 		order: 0.1;
 		iconName: #catalogIcon;
 		parent: #'SCG - Moldable Editor';
-		action: [ self ropeTree ].
+		action: [ self transcriptApi ].
 		
-	(aBuilder item: #'3. Model and UI')
+	(aBuilder item: #'2. Transcript - intro')
+		order: 0.2;
+		iconName: #catalogIcon;
+		parent: #'SCG - Moldable Editor';
+		action: [ self transcriptIntro ].
+
+	(aBuilder item: #'3. Transcript - animation')
 		order: 0.3;
 		iconName: #catalogIcon;
 		parent: #'SCG - Moldable Editor';
-		action: [ self uiModel ].
-	(aBuilder item: #'4. Two windows - one editor')
+		action: [ self transcriptAnimation ].
+
+	(aBuilder item: #'4. Transcript - object shower')
 		order: 0.4;
 		iconName: #catalogIcon;
 		parent: #'SCG - Moldable Editor';
-		action: [ BlUniverse reset. World closeAllWindowsDiscardingChanges. BrTextEditorExamples exampleOneEditorTwoElements ].
+		action: [ self transcriptObjectShower ].
+
+	(aBuilder item: #'5. Connector - examples')
+		order: 0.5;
+		iconName: #catalogIcon;
+		parent: #'SCG - Moldable Editor';
+		action: [ self connectorMethod ].
 	
-	(aBuilder item: #'9. Documenter - Editor')
+	(aBuilder item: #'6. Rope tree')
+		order: 0.6;
+		iconName: #catalogIcon;
+		parent: #'SCG - Moldable Editor';
+		action: [ self ropeTree ].
+	
+	(aBuilder item: #'7. Mapping of elements')
+		order: 0.7;
+		iconName: #catalogIcon;
+		parent: #'SCG - Moldable Editor';
+		action: [ self editorElements ].
+	
+	(aBuilder item: #'8. Model and UI')
+		order: 0.8;
+		iconName: #catalogIcon;
+		parent: #'SCG - Moldable Editor';
+		action: [ self uiModel ].
+
+	(aBuilder item: #'9. Two windows - one editor')
 		order: 0.9;
 		iconName: #catalogIcon;
 		parent: #'SCG - Moldable Editor';
-		action: [ World closeAllWindowsDiscardingChanges. BlUniverse reset.
-			(GTPlayground openContents: '''./pharo-local/iceberg/feenkcom/gtoolkit-visualizer/doc/mondrian/index.pillar'' asFileReference' label: 'Pillar')
-				extent: 900@600 ]."
+		action: [ self oneModelTwoEditors ].
+	
+	(aBuilder item: #'10. Documenter - editor')
+		order: 1.0;
+		iconName: #catalogIcon;
+		parent: #'SCG - Moldable Editor';
+		action: [ self documenterEditor ].
 	
 	(aBuilder item: #'Reset')
 		order: 3.0;
 		iconName: #catalogIcon; 
 		parent: #'SCG - Moldable Editor';
-		action: [ World closeAllWindowsDiscardingChanges. BlUniverse reset. BrTextEditorAttributedLineSegmentHolder cleanUp. BrTextEditor cleanUp ].
+		action: [ self reset ].

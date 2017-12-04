@@ -1,4 +1,4 @@
-demo - model and ui
+private - model and ui
 link: uiElement to: modelElement
 	modelElement constraintsDo: [ :c |
 		c graph addConnectedEdge: (GtGraphEdge new

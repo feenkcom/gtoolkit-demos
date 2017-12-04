@@ -1,4 +1,8 @@
-demos
+demos - editor details
 editorElements
+	World closeAllWindowsDiscardingChanges.
 	BlUniverse reset.
-	(Smalltalk tools inspector openOn: (GtMondrianDomainExamples new editorElements)) extent: 1000@600
+
+	(Smalltalk tools inspector openOn: (GtMondrianDomainExamples new editorElements))
+		extent: self largeExtent;
+		position: self largePosition

@@ -1,7 +1,8 @@
-demos
+demos - editor details
 uiModel
 	World closeAllWindowsDiscardingChanges.
 	BlUniverse reset.
+
 	(GTPlayground new openOn: GtDemoPlayPage uiModel)
-		extent: 1000@600;
-		position: 50@50
+		extent: self largeExtent;
+		position: self largePosition

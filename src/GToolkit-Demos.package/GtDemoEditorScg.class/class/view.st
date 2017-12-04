@@ -1,4 +1,4 @@
-demo - model and ui
+private - model and ui
 view
 	^ BlScalableElement new
 		clipChildren: false;

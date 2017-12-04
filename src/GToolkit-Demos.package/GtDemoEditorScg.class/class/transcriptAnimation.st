@@ -1,4 +1,4 @@
-demos
+demo - transcript
 transcriptAnimation
 	World closeAllWindowsDiscardingChanges.
 	BlUniverse reset.

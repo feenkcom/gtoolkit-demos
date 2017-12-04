@@ -1,3 +1,3 @@
 windows
 largePosition
-	^ 50@50
+	^ 25@25

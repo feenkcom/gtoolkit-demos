@@ -1,4 +1,4 @@
-demo - model and ui
+private - model and ui
 cointainer
 	| container |
 	container := BlElement new.

@@ -1,4 +1,4 @@
-demo - model and ui
+private - model and ui
 announceFrom: aModelElement to: aUiElement in: aContainer
 	| uiModel announceUpdate |
 	
