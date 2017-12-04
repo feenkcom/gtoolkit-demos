@@ -1,7 +1,8 @@
 demos
-transcriptApi
+transcriptAnimation
 	World closeAllWindowsDiscardingChanges.
 	BlUniverse reset.
-	(GTPlayground new openOn: BrTextEditorDemoPlayPage transcriptApi)
+
+	(GTPlayground new openOn: GtDemoPlayPage transcriptAnimation)
 		extent: self largeExtent;
 		position: self largePosition

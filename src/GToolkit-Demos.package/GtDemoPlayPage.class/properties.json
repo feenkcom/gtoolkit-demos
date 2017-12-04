@@ -1,11 +1,14 @@
 {
 	"commentStamp" : "",
-	"super" : "Object",
+	"super" : "GTPlayPage",
 	"category" : "GToolkit-Demos",
 	"classinstvars" : [ ],
 	"pools" : [ ],
 	"classvars" : [ ],
-	"instvars" : [ ],
-	"name" : "BrTextEditorScgDemo",
+	"instvars" : [
+		"steps",
+		"currentIndex"
+	],
+	"name" : "GtDemoPlayPage",
 	"type" : "normal"
 }
