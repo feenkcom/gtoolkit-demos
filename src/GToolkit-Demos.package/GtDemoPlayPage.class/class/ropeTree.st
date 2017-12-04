@@ -17,7 +17,7 @@ ropeTree
 'text
 	attributes: { BrFontGenericFamilyAttribute monospace } 
 	from: 43
-	to: 49'.
+	to: 49.'.
 'text
 		attributes: { BrTextExpandButtonAttribute new 
 			attributesCreatingBlock: [
