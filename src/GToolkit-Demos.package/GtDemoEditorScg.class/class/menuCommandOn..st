@@ -3,7 +3,7 @@ menuCommandOn: aBuilder
 	<worldMenu>
 
 	(aBuilder item: #'SCG - Moldable Editor')
-		order: 1.0;
+		order: 0.0;
 		target: self;
 		iconName: #glamorousGo.
 
@@ -49,17 +49,17 @@ menuCommandOn: aBuilder
 		parent: #'SCG - Moldable Editor';
 		action: [ self editorElements ].
 	
-	(aBuilder item: #'8. Model and UI')
+	(aBuilder item: #'8. Text - rotated')
 		order: 0.8;
 		iconName: #catalogIcon;
 		parent: #'SCG - Moldable Editor';
-		action: [ self uiModel ].
-
-	(aBuilder item: #'9. Two windows - one editor')
+		action: [ self rotatedText ].
+		
+	(aBuilder item: #'9. Text - 10`000`000')
 		order: 0.9;
-		iconName: #catalogIcon;
-		parent: #'SCG - Moldable Editor';
-		action: [ self oneModelTwoEditors ].
+		iconName: #catalogIcon; 
+		parent: 'SCG - Moldable Editor';
+		action: [ self text10k ].
 	
 	(aBuilder item: #'10. Documenter - editor')
 		order: 1.0;

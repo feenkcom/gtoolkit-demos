@@ -3,9 +3,10 @@ menuCommandOn: aBuilder
 	<worldMenu>
 	
 	(aBuilder item: #'Moldable Editor')
-		order: 1.0;
+		order: 3.9;
 		target: self;
-		iconName: #glamorousGo.
+		label: 'ESUG - Moldable editor';
+		iconName: #catalogIcon.
 
 	(aBuilder item: #'1. Pharo method')
 		order: 0.1;

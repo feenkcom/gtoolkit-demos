@@ -3,6 +3,6 @@ documenterEditor
 	World closeAllWindowsDiscardingChanges.
 	BlUniverse reset.
 	
-	(GTPlayground openContents: '''./pharo-local/iceberg/pharo-graphics/Brick/doc/editor/index.pillar'' asFileReference' label: 'Pillar')
-		extent: self largeExtent;
+	(Smalltalk tools inspector openOn:'./pharo-local/iceberg/pharo-graphics/Brick/doc/editor/index.pillar' asFileReference)
+		extent: self largeExtent * ((2.0/3.0) @ 1);
 		position: self largePosition
