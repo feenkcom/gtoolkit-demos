@@ -1,4 +1,4 @@
-demos - editor details
+demo - editor details
 editorElements
 	World closeAllWindowsDiscardingChanges.
 	BlUniverse reset.

@@ -1,4 +1,4 @@
-demos - editor details
+demo - editor details
 oneModelTwoEditors
 	BlUniverse reset.
 	World closeAllWindowsDiscardingChanges.

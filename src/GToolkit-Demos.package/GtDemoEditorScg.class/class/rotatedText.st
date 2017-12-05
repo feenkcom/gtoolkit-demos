@@ -1,4 +1,4 @@
-demos - editor details
+demo - editor details
 rotatedText
 	| editor |
 	

@@ -6,7 +6,13 @@ menuCommandOn: aBuilder
 		order: 0.0;
 		target: self;
 		iconName: #glamorousGo.
-
+	
+	(aBuilder item: #'0. Title')
+		order: 0.1;
+		iconName: #catalogIcon;
+		parent: #'SCG - Moldable Editor';
+		action: [ self title ].
+	
 	(aBuilder item: #'1. Transcript - api')
 		order: 0.1;
 		iconName: #catalogIcon;

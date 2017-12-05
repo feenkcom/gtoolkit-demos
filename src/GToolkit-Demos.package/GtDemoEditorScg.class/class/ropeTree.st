@@ -1,4 +1,4 @@
-demos - editor details
+demo - editor details
 ropeTree
 	World closeAllWindowsDiscardingChanges.
 	BlUniverse reset.
