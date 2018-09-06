@@ -1,0 +1,15 @@
+{
+	"commentStamp" : "AndreiChis 3/11/2018 15:49",
+	"super" : "Object",
+	"category" : "GToolkit-Demo-CognitiveServices-FaceAPI",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"faces",
+		"url",
+		"pictureForm"
+	],
+	"name" : "GtCSPicture",
+	"type" : "normal"
+}

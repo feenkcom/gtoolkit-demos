@@ -1,0 +1,11 @@
+{
+	"commentStamp" : "<historical>",
+	"super" : "PackageManifest",
+	"category" : "GToolkit-Demo-CognitiveServices-FaceAPI-UI",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [ ],
+	"name" : "ManifestGToolkitDemoCognitiveServicesFaceAPIUI",
+	"type" : "normal"
+}

@@ -1,0 +1,1 @@
+I store properties related to a face object. Subclasses can extend me to add different types of properties or provide dedicated APIs for working with properties.

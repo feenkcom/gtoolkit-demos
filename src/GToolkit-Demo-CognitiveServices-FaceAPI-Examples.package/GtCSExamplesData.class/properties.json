@@ -1,0 +1,11 @@
+{
+	"commentStamp" : "AndreiChis 3/11/2018 16:01",
+	"super" : "Object",
+	"category" : "GToolkit-Demo-CognitiveServices-FaceAPI-Examples",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [ ],
+	"name" : "GtCSExamplesData",
+	"type" : "normal"
+}

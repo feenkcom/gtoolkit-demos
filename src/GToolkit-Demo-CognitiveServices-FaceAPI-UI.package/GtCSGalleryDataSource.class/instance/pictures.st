@@ -1,0 +1,3 @@
+accessing
+pictures
+	^ pictures ifNil: [ #() ]

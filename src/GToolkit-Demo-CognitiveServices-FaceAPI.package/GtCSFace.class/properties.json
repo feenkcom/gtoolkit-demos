@@ -1,0 +1,16 @@
+{
+	"commentStamp" : "AndreiChis 3/11/2018 15:53",
+	"super" : "Object",
+	"category" : "GToolkit-Demo-CognitiveServices-FaceAPI",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"rectangle",
+		"attributes",
+		"landmarks",
+		"containerPicture"
+	],
+	"name" : "GtCSFace",
+	"type" : "normal"
+}

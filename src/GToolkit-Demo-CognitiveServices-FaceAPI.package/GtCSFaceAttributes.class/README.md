@@ -1,0 +1,1 @@
+I store properties related to various attributes of a face, like age and gender.

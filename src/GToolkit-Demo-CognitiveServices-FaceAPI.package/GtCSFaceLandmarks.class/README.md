@@ -1,0 +1,1 @@
+I store properties that identify various face landmarks from a face like, the position of the eyes and the nose. 

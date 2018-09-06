@@ -1,0 +1,19 @@
+{
+	"commentStamp" : "AndreiChis 3/11/2018 16:04",
+	"super" : "Object",
+	"category" : "GToolkit-Demo-CognitiveServices-FaceAPI-UI",
+	"classinstvars" : [
+		"defaultPictureForm"
+	],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"index",
+		"picture",
+		"extent",
+		"dataSource",
+		"loaderProcess"
+	],
+	"name" : "GtCSGalleryPictureWrapper",
+	"type" : "normal"
+}

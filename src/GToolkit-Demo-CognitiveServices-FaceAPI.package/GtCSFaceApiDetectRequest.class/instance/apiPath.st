@@ -1,0 +1,3 @@
+accessing
+apiPath
+	^ 'detect'

@@ -1,0 +1,14 @@
+{
+	"commentStamp" : "",
+	"super" : "BlElement",
+	"category" : "GToolkit-Demo-CognitiveServices-FaceAPI-Experiments",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"picture",
+		"bitmap"
+	],
+	"name" : "GtCSGalleryImageMorphOld",
+	"type" : "normal"
+}

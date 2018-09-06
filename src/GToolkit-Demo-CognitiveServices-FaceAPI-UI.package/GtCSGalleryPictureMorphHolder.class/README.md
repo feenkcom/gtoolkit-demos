@@ -1,0 +1,1 @@
+I am an element of an infinite list that can hold a picture wrapper.

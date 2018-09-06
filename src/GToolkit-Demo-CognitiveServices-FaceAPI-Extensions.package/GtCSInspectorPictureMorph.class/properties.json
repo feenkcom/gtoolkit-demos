@@ -1,0 +1,14 @@
+{
+	"commentStamp" : "AndreiChis 3/11/2018 16:02",
+	"super" : "AlphaImageMorph",
+	"category" : "GToolkit-Demo-CognitiveServices-FaceAPI-Extensions",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"picture",
+		"facesColor"
+	],
+	"name" : "GtCSInspectorPictureMorph",
+	"type" : "normal"
+}

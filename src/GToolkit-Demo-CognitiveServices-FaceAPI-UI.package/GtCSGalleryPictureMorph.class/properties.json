@@ -1,0 +1,14 @@
+{
+	"commentStamp" : "AndreiChis 3/11/2018 16:06",
+	"super" : "BlElement",
+	"category" : "GToolkit-Demo-CognitiveServices-FaceAPI-UI",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"pictureWrapper",
+		"containerMorph"
+	],
+	"name" : "GtCSGalleryPictureMorph",
+	"type" : "normal"
+}

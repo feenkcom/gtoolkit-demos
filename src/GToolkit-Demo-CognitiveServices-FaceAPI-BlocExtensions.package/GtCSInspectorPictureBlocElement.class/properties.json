@@ -1,0 +1,14 @@
+{
+	"commentStamp" : "",
+	"super" : "BlElement",
+	"category" : "GToolkit-Demo-CognitiveServices-FaceAPI-BlocExtensions",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"picture",
+		"container"
+	],
+	"name" : "GtCSInspectorPictureBlocElement",
+	"type" : "normal"
+}
