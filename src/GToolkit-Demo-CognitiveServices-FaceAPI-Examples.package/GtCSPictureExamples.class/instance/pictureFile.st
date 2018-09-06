@@ -1,8 +1,8 @@
 accessing
 pictureFile
 	^ IceRepository repositoriesLocation 
-		/ 'chisandrei'
-		/ 'cognitive-service-demo' 
+		/ 'feenkcom'
+		/ 'gtoolkit-demos' 
 		/ 'data' 
-		/ 'examples' 
-		/ '1280px-Einstein-with-habicht-and-solovine.jpg'.
+		/ 'faceapi' 
+		/ '1280px-Einstein-with-habicht-and-solovine.jpg'
