@@ -4,9 +4,9 @@ dataSourceUnsplashOffline
 	^ GtCSGalleryDataSource new
 		picturesProvider: [ 
 			| urls facesJson |
-			urls := CSExamplesData unsplashPicturesCroppedUrls.
-			facesJson := CSExamplesData unsplashJsonPicturesCropped.
+			urls := GtCSExamplesData unsplashPicturesCroppedUrls.
+			facesJson := GtCSExamplesData unsplashJsonPicturesCropped.
 			urls withIndexCollect: [ :anUrl :anIndex |
-				CSPicture new 
+				GtCSPicture new 
 					url: anUrl;
 					addFacesFromJsonData: (facesJson at: anIndex) ] ].
