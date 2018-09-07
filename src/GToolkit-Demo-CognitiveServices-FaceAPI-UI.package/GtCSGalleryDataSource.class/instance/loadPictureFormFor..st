@@ -2,6 +2,6 @@ actions
 loadPictureFormFor: aPictureWrapper
 	| pictureForm |
 	pictureForm := self picturesCache 
-		at: aPictureWrapper 
+		at: aPictureWrapper picture
 		ifAbsentPut: [ self downloadPictureFormFor: aPictureWrapper picture ].
 	aPictureWrapper pictureForm: pictureForm

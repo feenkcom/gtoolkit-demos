@@ -1,6 +1,6 @@
 accessing
 picturesCache
 	^ picturesCache ifNil: [ 
-		picturesCache := LRUCache new 
+		self picturesCache: LRUCache new 
 			beThreadSafe;
 			maximumWeight: 8 ]
