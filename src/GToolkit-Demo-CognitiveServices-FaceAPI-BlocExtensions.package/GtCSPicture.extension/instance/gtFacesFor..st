@@ -1,8 +1,23 @@
 *GToolkit-Demo-CognitiveServices-FaceAPI-BlocExtensions
 gtFacesFor: aView
-	<gtView: 0>
-	^ aView explicit
+	<gtView>
+	
+	^ aView explicit 
 		title: 'Faces';
-		stencil: [ 
-			GtCSInspectorPictureBlocElement new 
-				initializeForPicture: self ]
+		priority: 20;
+		stencil: [
+			| list |
+			list := BrColumnedList new 
+				display: [ self faces ].
+			list addEventHandler: GtInspectorListToSelectHandler new.
+			list column 
+				title: 'Gender';
+				stencil: [ :aFace | 
+					aFace hasFaceForm 
+						ifFalse: [ (Form extent: 16@16) asElement  ]
+						ifTrue: [ (aFace faceForm scaledIntoFormOfSize: 32@32) asElement ] ].
+			list column 
+				title: 'Location';
+				stencil: [ :aFace | (BrListLabelStencil matchParent: aFace rectangle) asElement ].
+			list ].
+		
