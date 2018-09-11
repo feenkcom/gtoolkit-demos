@@ -1,1 +1,0 @@
-I provide example data for creating pictures and faces. I can be used when a subscription key for the Azures Face API is not available.

@@ -1,3 +1,0 @@
-wikipedia - json object
-jsonEinsteinHabichtSolovine1280px
-	^ STONJSON fromString: self jsonTextFacesEinsteinHabichtSolovine1280px

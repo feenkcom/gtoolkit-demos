@@ -1,3 +1,0 @@
-accessing
-faces
-	^ picture faces

@@ -1,1 +1,0 @@
-I provide examples of galeries.

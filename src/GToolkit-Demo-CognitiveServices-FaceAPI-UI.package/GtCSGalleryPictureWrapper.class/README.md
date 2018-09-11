@@ -1,1 +1,0 @@
-I wrap a picture object and add support for loading the picture form and the face data.

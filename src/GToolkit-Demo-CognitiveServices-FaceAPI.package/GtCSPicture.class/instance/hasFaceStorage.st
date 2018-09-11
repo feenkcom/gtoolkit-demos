@@ -1,3 +1,0 @@
-testing
-hasFaceStorage
-	^ faces ~= nil

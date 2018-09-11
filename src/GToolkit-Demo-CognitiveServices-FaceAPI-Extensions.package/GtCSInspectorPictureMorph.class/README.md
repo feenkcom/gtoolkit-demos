@@ -1,1 +1,0 @@
-I am a morph that can highlight on a picture the list of faces from that picture.
