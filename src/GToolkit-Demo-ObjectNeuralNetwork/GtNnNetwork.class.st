@@ -34,7 +34,7 @@ GtNnNetwork >> connectAll [
 
 { #category : #'gt-inspector-extension' }
 GtNnNetwork >> gtInspectorLayersIn: aComposite [
-	<gtInspectorPresentationOrder: 10>
+	<gtInspectorPresentationOrder: 2>
 
 	^ aComposite list
 		title: 'Layers';
@@ -43,7 +43,7 @@ GtNnNetwork >> gtInspectorLayersIn: aComposite [
 
 { #category : #'gt-inspector-extension' }
 GtNnNetwork >> gtInspectorNetworkGraphIn: aComposite [
-	<gtInspectorPresentationOrder: 30>
+	<gtInspectorPresentationOrder: 1>
 	
 	^ aComposite blocMondrian
 		title: 'Graph';
@@ -80,7 +80,7 @@ GtNnNetwork >> gtInspectorPaintNetworkIn: aMondrianView [
 		toLeftCenter;
 		connectToAll: #connectedNeurons.
 	
-	aMondrianView layout horizontalTree nodesAlignment: GtGradTreeNodesBottomAlignment new.
+	aMondrianView layout horizontalTree nodesAlignment: GtGradTreeNodesCenterAlignment new.
 ]
 
 { #category : #accessing }

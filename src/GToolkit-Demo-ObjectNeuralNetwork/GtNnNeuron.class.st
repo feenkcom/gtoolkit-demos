@@ -1,17 +1,18 @@
 "
 [[[
-x0 := NnNeuron new constant: 1.
-x1 := NnNeuron new constant: 0.
-x2 := NnNeuron new constant: 1.
+x0 := GtNnNeuron new constant: 1.
+x1 := GtNnNeuron new constant: 0.
+x2 := GtNnNeuron new constant: 1.
 
-y := NnNeuron new.
+y := GtNnNeuron new.
 
 (x0 ==> y) weight: 10.
 (x1 ==> y) weight: -15.
 (x2 ==> y) weight: 10.
 
-y value
+y
 ]]]
+
 "
 Class {
 	#name : #GtNnNeuron,
@@ -50,7 +51,7 @@ GtNnNeuron >> activator: anObject [
 GtNnNeuron >> connectedNeurons [
 	"Neurons along outgoing synapses"
 
-	^ self outgoingSynapses collect: #to
+	^ self neuronsAlongOutgoingSynapses
 ]
 
 { #category : #accessing }
@@ -61,6 +62,23 @@ GtNnNeuron >> constant: aNumber [
 { #category : #initialization }
 GtNnNeuron >> defaultActivator [
 	^ GtNnSigmoidActivator new
+]
+
+{ #category : #'gt-inspector-extension' }
+GtNnNeuron >> gtInspectorNeuronIn: aComposite [
+	<gtInspectorPresentationOrder: 1>
+	^ aComposite bloc
+		title: 'Neuron';
+		display: [ (GtNnNeuronStencil new neuron: self) asElement ]
+]
+
+{ #category : #'gt-inspector-extension' }
+GtNnNeuron >> gtViewNeuronFor: aView [
+	<gtView>
+	^ aView explicit
+		title: 'Neuron';
+		priority: 50;
+		stencil: [ GtNnNeuronStencil new neuron: self ]
 ]
 
 { #category : #synapses }
@@ -84,6 +102,22 @@ GtNnNeuron >> isBias [
 { #category : #printing }
 GtNnNeuron >> name [
 	^ 'Neuron'
+]
+
+{ #category : #synapses }
+GtNnNeuron >> neuronsAlongIncomingSynapses [
+	"Return neurons along incoming synapses"
+	<return: #Collection of: #GtNnNeuron>
+
+	^ self incomingSynapses collect: #from
+]
+
+{ #category : #synapses }
+GtNnNeuron >> neuronsAlongOutgoingSynapses [
+	"Return neurons along outgoing synapses"
+	<return: #Collection of: #GtNnNeuron>
+
+	^ self outgoingSynapses collect: #to
 ]
 
 { #category : #synapses }
