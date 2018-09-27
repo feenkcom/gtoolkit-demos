@@ -96,7 +96,7 @@ GtCSPictureTest >> faceSolovine [
 
 { #category : #accessing }
 GtCSPictureTest >> pictureFile [
-	^ IceRepository repositoriesLocation 
+	^ GtIcebergUtility repositoriesLocation 
 		/ 'feenkcom'
 		/ 'gtoolkit-demos' 
 		/ 'data' 

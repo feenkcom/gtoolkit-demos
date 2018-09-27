@@ -56,7 +56,7 @@ GtCSGalleryExamples >> localStorageCacheUnsplashCrop60ForDatasource: aDataSource
 
 { #category : #accessing }
 GtCSGalleryExamples >> unsplashCrop60Folder [
-	^ (IceRepository repositoriesLocation 
+	^ (GtIcebergUtility repositoriesLocation 
 		/ 'feenkcom'
 		/ 'gtoolkit-demos' 
 		/ 'data' 

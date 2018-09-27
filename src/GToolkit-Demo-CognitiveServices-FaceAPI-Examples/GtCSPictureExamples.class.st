@@ -514,7 +514,7 @@ GtCSPictureExamples >> jsonFaceLandmarksSolovine [
 
 { #category : #accessing }
 GtCSPictureExamples >> pictureFile [
-	^ IceRepository repositoriesLocation 
+	^ GtIcebergUtility repositoriesLocation 
 		/ 'feenkcom'
 		/ 'gtoolkit-demos' 
 		/ 'data' 
