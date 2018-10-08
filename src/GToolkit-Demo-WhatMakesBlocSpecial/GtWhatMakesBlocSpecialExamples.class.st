@@ -3,7 +3,7 @@
 
 The Glamorous Toolkit is based on the ${class:BaselineOfSparta}$ / ${class:BaselineOfBloc}$ /${class:BaselineOfBrick}$ graphical stack. This stack has a few properties that make it distinct:
 - it relies on one rendering tree at all times.
-- it features moldable and scalable text editor is made out of regular elements. 
+- it features a moldable and scalable text editor, made out of regular Bloc elements. 
 - graph layouts are regular layouts. The implication here is that any element can be part of a graph-based visualization.
 - debuggable. There are a significant amount of tools and mechanisms that are built for this.
 
@@ -18,7 +18,7 @@ Let us take them one by one by means of examples.
 
 The editor is made out of regular elements. This means that we can mix text with graphics in live editors. 
 
-To get an idea of what this means, take a look at the example below. On top we have an editor. At the bottom we have a visualization of the tree of elements out of which the editor element is formed. You can observe how the leafs are word elements and th red square sits right next to them.
+To get an idea of what this means, take a look at the example below. On top we have an editor. At the bottom we have a visualization of the tree of elements out of which the editor element is formed. You can observe how the leafs are word elements and the red square sits right next to them.
 
 ${example:GtWhatMakesBlocSpecialExamples>>#editorWithPreview|expandedPreview|noCode=|previewHeight=500|show=#gtLiveFor:}$
 
@@ -30,12 +30,12 @@ The graph layouts in Bloc are expressed in the same way as any other layout. Thi
 
 Every layout encapsulates an algorithm whose execution logic depends on the constraints specified for each individual element. And, to support graph layouts, each element defines the relevant edges as constraints.
 
-Let's consider a concrete scenario. The example below shows all subclasses of ${class:GtGraphLayout}$ as label elements organized in a grid layout with two columns, where each of the elements is aligned to the center of the grid cell.s
+Let's consider a concrete scenario. The example below shows all subclasses of ${class:GtGraphLayout}$ as label elements organized in a grid layout with two columns, where each of the elements is aligned to the center of the grid cell.
 
 ${example:GtWhatMakesBlocSpecialExamples>>#layoutHierarchyWithFlowLayout|show=#gtLiveFor:}$
 Note how the ==alignCenter== is specified as a constraint for each element.
 
-Now, we take the same elements only this time we add edge constraints between each pair of labels corresponding to subperclass and subclass and specify a graph layout.
+Now, we take the same elements only this time we add edge constraints between each pair of labels corresponding to a superclass and a subclass and specify a graph layout.
 
 ${example:GtWhatMakesBlocSpecialExamples>>#layoutHierarchyWithEdges|show=#gtLiveFor:}$
 The scene is laid out as a horizontal tree. To see the concrete connections we can also add line elements:
