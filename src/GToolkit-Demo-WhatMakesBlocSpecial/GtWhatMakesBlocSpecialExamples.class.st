@@ -68,9 +68,7 @@ Similarly, the resizers view shows how the current and parent elements specify t
 ${example:GtWhatMakesBlocSpecialExamples>>#firstChildOfLayoutHierarchyElementsWithEdges|show=#gtResizersFor:|noCode=}$
 
 
-
-
-These are but a few interesting tools that are built in.s
+These are but a few interesting tools that are built in.
 
 "
 Class {
