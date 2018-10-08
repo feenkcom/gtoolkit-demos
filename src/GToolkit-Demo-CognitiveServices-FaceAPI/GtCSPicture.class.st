@@ -66,8 +66,8 @@ GtCSPicture >> hasFaceStorage [
 
 { #category : #actions }
 GtCSPicture >> loadPictureFormFile: aFileReference [
-	aFileReference readStreamDo: [ :aStream |
-		self pictureForm: (ImageReadWriter formFromStream: aStream binary) ]
+	aFileReference binaryReadStreamDo: [ :aStream |
+		self pictureForm: (ImageReadWriter formFromStream: aStream) ]
 ]
 
 { #category : #accessing }
