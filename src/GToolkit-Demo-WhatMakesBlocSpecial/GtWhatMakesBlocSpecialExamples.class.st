@@ -49,7 +49,7 @@ All in all, the graph layouts are treated in the same way as the other layouts. 
 
 Bloc was developed following the moldable development philosophy: every time we had a problem, we built a tool to expose the probem first. As a result, Bloc has built in tools that explain many details of its inner working. Most of these are found as inspector extensions. Let's look at some.
 
-We take as a base example the first element from the above scene. Inspecting the element produces an inspector with multiple views, each capturing an interesting aspect.
+We take as a base example the first element from the above scene. Inspecting the element produces an inspector with multiple views, each capturing an interesting aspect. Please take a moment to explore the different views.
 
 ${example:GtWhatMakesBlocSpecialExamples>>#firstChildOfLayoutHierarchyElementsWithEdges|}$
 
@@ -59,12 +59,16 @@ ${example:GtWhatMakesBlocSpecialExamples>>#firstChildOfLayoutHierarchyElementsWi
 
 This is a view that is common in webbrowser inspectors. But, let's investigate a few more. 
 
-Complicated scenes with deep nesting can pose problems when it comes to understanding how layouts work. Every layout needs two things: to measure and to resize.
+Complicated scenes with deep nesting can pose problems when it comes to understanding how layouts work. For example, every layout needs to measure. The measurement view shows the order of which layouts associated with which elements have measured the current element. In our case, we have 4 such measurements, the last one being from our text element, while the other ones come from the parent elements.
+
+${example:GtWhatMakesBlocSpecialExamples>>#firstChildOfLayoutHierarchyElementsWithEdges|show=#gtMeasurementChainFor:|noCode=}$
+
+Similarly, the resizers view shows how the current and parent elements specify the resizing strategies. In our case, the text element has ==fitContent== while all parents have ==matchParent==. This is highly useful when reasoning about why an element might not appear properly in a scene.
 
 ${example:GtWhatMakesBlocSpecialExamples>>#firstChildOfLayoutHierarchyElementsWithEdges|show=#gtResizersFor:|noCode=}$
 
 
-${example:GtWhatMakesBlocSpecialExamples>>#firstChildOfLayoutHierarchyElementsWithEdges|show=#gtMeasurementChainFor:|noCode=}$
+
 
 These are but a few interesting tools that are built in.s
 
