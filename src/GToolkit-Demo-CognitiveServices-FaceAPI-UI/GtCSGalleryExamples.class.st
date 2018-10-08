@@ -48,7 +48,7 @@ GtCSGalleryExamples >> localStorageCacheUnsplashCrop60ForDatasource: aDataSource
 			url := pictureWrapper picture url. 
 			imageName := url copyFrom: (url lastIndexOf: $/)+1 to: (url indexOf: $?)-1.
 			unsplashCrop60Folder/(imageName, '.jpeg') 
-				readStreamDo: [ :stream ||imageForm|
+				binaryReadStreamDo: [ :stream ||imageForm|
 					imageForm := ImageReadWriter formFromStream: stream.
 					cache at: pictureWrapper picture put: imageForm ] ].
 	^ cache
