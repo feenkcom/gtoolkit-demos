@@ -85,7 +85,7 @@ GtWhatMakesBlocSpecialExamples >> editorOnSampleText [
 	text := self sampleText.
 	editor := BrTextEditor new.
 	editor text: text readonly.
-	element := BrEditorElement new.
+	element := GtEditorElementWithLayoutDoneEvent new.
 	element editor: editor.
 	element size: 300@100.
 	^ element
@@ -109,9 +109,7 @@ GtWhatMakesBlocSpecialExamples >> editorWithPreview [
 		c vertical matchParent.
 		c horizontal matchParent ].
 	root layout: (BlGridLayout new cellSpacing: 20; columnCount: 1).
-	element editor when: BrTextEditorCursorMovedEvent do: block.
-	element editor when: BrTextEditorCursorAddedEvent do: block.
-	element editor when: BrTextEditorCursorRemovedEvent do: block.
+	element when: GtLayoutDoneEvent do: block.
 	element 
 		background: Color white;
 		effect: (BlDropShadowEffect color: Color lightGray width: 5 offset: 0@0);
@@ -127,7 +125,6 @@ GtWhatMakesBlocSpecialExamples >> editorWithPreview [
 			c horizontal matchParent.
 			c vertical matchParent.].
 	root addChild: elementsMondrian.
-	element forceLayout.
 	block value.
 	^ root
 ]
