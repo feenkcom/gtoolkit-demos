@@ -52,21 +52,21 @@ Bloc was developed following the moldable development philosophy: every time we 
 
 We take as a base example the first element from the above scene. Inspecting the element produces an inspector with multiple views, each capturing an interesting aspect. Please take a moment to explore the different views.
 
-${example:GtWhatMakesBlocSpecialExamples>>#firstChildOfLayoutHierarchyElementsWithEdges|}$
+${example:GtWhatMakesBlocSpecialExamples>>#firstChildOfLayoutHierarchyElementsWithEdges|expandedPreview|previewHeight=150}$
 
 A simple view is the one that previews the metrics of the element:
 
-${example:GtWhatMakesBlocSpecialExamples>>#firstChildOfLayoutHierarchyElementsWithEdges|show=#gtMetricsFor:|noCode|previewHeight=200}$
+${example:GtWhatMakesBlocSpecialExamples>>#firstChildOfLayoutHierarchyElementsWithEdges|show=#gtMetricsFor:|noCode|previewHeight=180}$
 
 This is a view that is common in webbrowser inspectors. But, let's investigate a few more. 
 
 Complicated scenes with deep nesting can pose problems when it comes to understanding how layouts work. For example, every layout needs to measure. The measurement view shows the order of which layouts associated with which elements have measured the current element. In our case, we have 4 such measurements, the last one being from our text element, while the other ones come from the parent elements.
 
-${example:GtWhatMakesBlocSpecialExamples>>#firstChildOfLayoutHierarchyElementsWithEdges|show=#gtMeasurementChainFor:|noCode=}$
+${example:GtWhatMakesBlocSpecialExamples>>#firstChildOfLayoutHierarchyElementsWithEdges|show=#gtMeasurementChainFor:|noCode|previewHeight=150}$
 
 Similarly, the resizers view shows how the current and parent elements specify the resizing strategies. In our case, the text element has ==fitContent== while all parents have ==matchParent==. This is highly useful when reasoning about why an element might not appear properly in a scene.
 
-${example:GtWhatMakesBlocSpecialExamples>>#firstChildOfLayoutHierarchyElementsWithEdges|show=#gtResizersFor:|noCode=}$
+${example:GtWhatMakesBlocSpecialExamples>>#firstChildOfLayoutHierarchyElementsWithEdges|show=#gtResizersFor:|noCode|previewHeight=150}$
 
 
 These are but a few interesting tools that are built in.
