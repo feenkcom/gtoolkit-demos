@@ -1,3 +1,8 @@
+"
+!What makes Bloc special
+
+Learn more about it in ${class:GtWhatMakesBlocSpecialExamples}$
+"
 Class {
 	#name : #BaselineOfGToolkitWhatMakesBlocSpecialDemo,
 	#superclass : #BaselineOf,
