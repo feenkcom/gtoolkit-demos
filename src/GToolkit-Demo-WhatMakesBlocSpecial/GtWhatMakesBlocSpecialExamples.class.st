@@ -9,9 +9,10 @@ The Glamorous Toolkit is based on the ${class:BaselineOfSparta}$ / ${class:Basel
 
 Let us take them one by one by means of examples.
 
+
 !!One rendering tree
 
-@@todo
+Everything you see in this window is rendered using one single rendering tree, all the way from the buttons, to the words in the text and to the visualization seen below. One single rendering tree. This offers the possibility to build flexible user interfaces and debug them using the same tools.
 
 
 !!Moldable editor made of regular elements
@@ -109,7 +110,12 @@ GtWhatMakesBlocSpecialExamples >> editorWithPreview [
 		c vertical matchParent.
 		c horizontal matchParent ].
 	root layout: (BlGridLayout new cellSpacing: 20; columnCount: 1).
-	element when: GtLayoutDoneEvent do: block.
+"	element when: GtLayoutDoneEvent do: block."
+	element editor when: BrTextEditorInsertedEvent do: block.
+	element editor when: BrTextEditorDeletedEvent do: block.
+	element editor when: BrTextEditorCursorMovedEvent do: block.
+	element editor when: BrTextEditorCursorAddedEvent do: block.
+	element editor when: BrTextEditorCursorRemovedEvent do: block.
 	element 
 		background: Color white;
 		effect: (BlDropShadowEffect color: Color lightGray width: 5 offset: 0@0);
