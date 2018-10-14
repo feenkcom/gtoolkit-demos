@@ -25,6 +25,8 @@ ${example:GtWhatMakesBlocSpecialExamples>>#editorWithPreview|expandedPreview|noC
 
 This ability is what allows the current document to display results live in the same editor, such as the example above. In this case, the preview is actually added by the syntax highlighter that interprets the ==${example:...}$== command.
 
+Learn more details about the editor at ${class:GtWhatIsTheMoldableEditorMadeOfExamples}$
+
 !!Graph layouts
 
 The graph layouts in Bloc are expressed in the same way as any other layout. This was a challenge in that graph layouts rely on a structure that includes nodes and edges. Specifically, the challenge was to build this logic without having ${class:BlElement}$ know about edges explicitly.
