@@ -10,18 +10,21 @@ There are three layers that make the editor:
 
 Let's take them one by one.
 
+
 !!Sparta text support
 
-
+The Sparta text support is concerned with drawing actual text on a canvas.
 
 ${example:MozTextExamples class>>#exampleTextHaiku|noCode|previewHeight=330}$
+
+A specific concern is placed on pixel perfect text measurements that can be controlled from the image.
 
 ${example:MozTextExamples class>>#exampleTextMeasure|noCode=|previewHeight=400}$
 
 
 !!Bloc text model
 
-@@todo
+Bloc introduces ${class:BlTextElement}$, the basic piece in a text editor.
 
 !!Brick editor
 
