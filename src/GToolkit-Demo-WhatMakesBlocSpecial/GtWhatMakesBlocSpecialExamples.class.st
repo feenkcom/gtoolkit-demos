@@ -220,13 +220,12 @@ GtWhatMakesBlocSpecialExamples >> sampleText [
 	text := 'The moldable editor' asRopedText.
 	text insertString: String cr at: text size.
 	text insertString: 'can embed graphical elements.' at: text size.
-	text attributes: { BrFontSizeAttribute size: 14 }.
-	text 
-		attributes: { 
-			BrFontGenericFamilyAttribute monospace. 
-			BrTextForegroundAttribute paint: Color blue } 
-		from: 5
-		to: 12.
+	text fontSize: 14.
+
+	(text from: 5 to: 12)
+		monospace;
+		foreground: Color blue.
+
 	text 
 		attributes: { 
 			BrTextAdornmentDynamicAttribute new 
