@@ -87,7 +87,7 @@ GtWhatMakesBlocSpecialExamples >> editorOnSampleText [
 	| text editor element |
 	text := self sampleText.
 	editor := BrTextEditor new.
-	editor text: text readonly.
+	editor text: text.
 	element := GtEditorElementWithLayoutDoneEvent new.
 	element editor: editor.
 	element size: 300@100.
@@ -97,27 +97,9 @@ GtWhatMakesBlocSpecialExamples >> editorOnSampleText [
 { #category : #'as yet unclassified' }
 GtWhatMakesBlocSpecialExamples >> editorWithPreview [
 	<gtExample>
-	"self new editorWithPreview"
-	| root element elementsMondrian block |
-	elementsMondrian := BlElement new.
+	| element block elementsMondrian root |
+	
 	element := self editorOnSampleText.
-	block := [
-		| view |
-		view := GtMondrian new.
-		element paintEditorElementsWith: view.
-		elementsMondrian removeChildren.
-		elementsMondrian addChild: view asPannableElement ].
-	root := BlElement new.
-	root constraintsDo: [ :c | 
-		c vertical matchParent.
-		c horizontal matchParent ].
-	root layout: (BlGridLayout new cellSpacing: 20; columnCount: 1).
-"	element when: GtLayoutDoneEvent do: block."
-	element editor when: BrTextEditorInsertedEvent do: block.
-	element editor when: BrTextEditorDeletedEvent do: block.
-	element editor when: BrTextEditorCursorMovedEvent do: block.
-	element editor when: BrTextEditorCursorAddedEvent do: block.
-	element editor when: BrTextEditorCursorRemovedEvent do: block.
 	element 
 		background: Color white;
 		effect: (BlDropShadowEffect color: Color lightGray width: 5 offset: 0@0);
@@ -125,15 +107,30 @@ GtWhatMakesBlocSpecialExamples >> editorWithPreview [
 			c horizontal matchParent.
 			c vertical matchParent.
 			c grid vertical weight: 0.5 ].
-	root addChild: element.
+
+	elementsMondrian := BlElement new.
 	elementsMondrian 
 		background: Color white;
 		effect: (BlDropShadowEffect color: Color lightGray width: 5 offset: 0@0);
 		constraintsDo: [ :c | 
 			c horizontal matchParent.
 			c vertical matchParent.].
+	
+	block := [
+		| view |
+		view := GtMondrian new.
+		element paintEditorElementsWith: view.
+		elementsMondrian removeChildren.
+		elementsMondrian addChild: view asPannableElement ].
+	
+	element when: GtLayoutDoneEvent do: [ element enqueueTask: (BlTaskAction new action: block) ].
+	
+	root := BlElement new.
+	root size: 500@500.
+	root layout: (BlGridLayout new cellSpacing: 20; columnCount: 1).	
+	root addChild: element.
 	root addChild: elementsMondrian.
-	block value.
+	
 	^ root
 ]
 
