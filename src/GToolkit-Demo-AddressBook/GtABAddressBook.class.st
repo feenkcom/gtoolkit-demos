@@ -223,17 +223,6 @@ GtABAddressBook >> contactsWithTelephone: aNumber [
 	^self contacts select: [ :each | each address telephone number = aNumber ] 
 ]
 
-{ #category : #printing }
-GtABAddressBook >> gtContactsOn: aComposite [
-	<gtInspectorPresentationOrder: 5>
-	aComposite table
-		title: 'Contacts';
-		display: [ self contacts ];
-		column: 'Name' evaluated: [ :aContact | aContact fullName ];
-		column: 'Telephone' evaluated: [ :aContact | 
-			aContact address telephone fullNumber ]
-]
-
 { #category : #accessing }
 GtABAddressBook >> label [
 	^ label
@@ -259,17 +248,6 @@ GtABAddressBook >> spotterForAddressesFor: aStep [
 		candidatesLimit: 7;
 		itemName: [:each | each city, ', ', each country];
 		matchSubstrings
-]
-
-{ #category : #searching }
-GtABAddressBook >> spotterForPeopleFor: aStep [
-	<spotterOrder: 5>
-	^ aStep listProcessor 
-		title: 'People';
-		allCandidates: [ self contacts ];
-		filter: GTFilterSubstrings;
-		candidatesLimit: 7;
-		itemName: [ :aContact | aContact lastName asUppercase, ', ' , aContact firstName ]
 ]
 
 { #category : #searching }
