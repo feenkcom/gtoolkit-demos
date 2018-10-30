@@ -205,7 +205,7 @@ GtABAddressBook >> addFirst: first last: last [
 
 { #category : #accessing }
 GtABAddressBook >> contacts [
-	^ contacts ifNil: [ contacts := OrderedCollection new ]
+	^ contacts ifNil: [ contacts := LinkedList new ]
 ]
 
 { #category : #accessing }
