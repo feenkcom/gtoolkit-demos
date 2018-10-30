@@ -48,8 +48,9 @@ GtABAddressBook class >> contactsSearch [
 GtABAddressBook class >> default [
 	^ default ifNil: [ 
 		default := self new
-			label: 'Default'.
-		self loadData ]
+			label: 'My contacts'.
+		self loadDefaultDataIn: default.
+		default ]
 ]
 
 { #category : #examples }
@@ -105,31 +106,35 @@ GtABAddressBook class >> initialize [
 ]
 
 { #category : #private }
-GtABAddressBook class >> loadData [
-	GtABAddressBook default contacts add: (
+GtABAddressBook class >> loadDefaultDataIn: anAddressBook [
+
+	anAddressBook contacts add: (
 	GtABContact new
 		firstName: 'Andrei';
 		lastName: 'Chis';
+		description: self loremIpsum;
 		address: (
 			GtABAddress new
 				city: 'Bern';
 				country: 'Switzerland';
 				telephone: (GtABTelephone  new prefix: '41-7'; number: '12345678'))).
 				
-	GtABAddressBook default contacts add: (
+	anAddressBook contacts add: (
 	GtABContact new
 		firstName: 'Aliaksei';
 		lastName: 'Syrel';
+		description: self loremIpsum;
 		address: (
 			GtABAddress new
 				city: 'Bern';
 				country: 'Switzerland';
 				telephone: (GtABTelephone  new  prefix: '41-7'; number: '11223344'))).
 				
-	GtABAddressBook default contacts add: (
+	anAddressBook contacts add: (
 	GtABContact new
 		firstName: 'Tudor';
 		lastName: 'Girba';
+		description: self loremIpsum;
 		address: (
 			GtABAddress new
 				city: 'Bern';
@@ -137,30 +142,33 @@ GtABAddressBook class >> loadData [
 				telephone: (GtABTelephone  new prefix: '41-7'; number: '11224455'))).
 				
 				
-	GtABAddressBook default contacts add: (
+	anAddressBook contacts add: (
 	GtABContact new
 		firstName: 'Juraj';
 		lastName: 'Kubelka';
+		description: self loremIpsum;
 		address: (
 			GtABAddress new
 				city: 'Santiago';
 				country: 'Chile';
 				telephone: (GtABTelephone  new prefix: '56-5'; number: '54321345'))).
 				
-	GtABAddressBook default contacts add: (
+	anAddressBook contacts add: (
 	GtABContact new
 		firstName: 'Stefan';
 		lastName: 'Reichhart';
+		description: self loremIpsum;
 		address: (
 			GtABAddress new
 				city: 'Bern';
 				country: 'Switzerland';
 				telephone: (GtABTelephone  new prefix: '33-5'; number: '55326449'))).
 				
-	GtABAddressBook default contacts add: (
+	anAddressBook contacts add: (
 	GtABContact new
 		firstName: 'John';
 		lastName: 'Doe';
+		description: self loremIpsum;
 		address: (
 			GtABAddress new
 				city: 'Lille';
@@ -168,6 +176,14 @@ GtABAddressBook class >> loadData [
 				telephone: (GtABTelephone  new prefix: '33-5'; number: '32455555'))).
 			
 		
+]
+
+{ #category : #private }
+GtABAddressBook class >> loremIpsum [
+	"Return a constant string with one paragraph of text, the famous Lorem ipsum filler text.
+	The result is pure ASCII (Latin words) and contains no newlines."
+	
+	^ 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
 ]
 
 { #category : #accessing }
@@ -228,15 +244,6 @@ GtABAddressBook >> label: anObject [
 	label := anObject
 ]
 
-{ #category : #adding }
-GtABAddressBook >> loadFromFile: aPath [
-	|newContacts|
-	
-	newContacts := ((XMLDOMParser parse: aPath asFileReference) // 'contact') 
-		collect: [ :each | GtABContact fromXML: each ].
-	self addContacts: newContacts.
-]
-
 { #category : #printing }
 GtABAddressBook >> printOn: aStream [
 
@@ -248,7 +255,7 @@ GtABAddressBook >> spotterForAddressesFor: aStep [
 	<spotterOrder: 10>
 	^ aStep listProcessor 
 		title: 'Addresses';
-		allCandidates: [ (self contacts collectAsSet: #address) asOrderedCollection ];
+		allCandidates: [ (self contacts collect: #address as: Set) asOrderedCollection ];
 		candidatesLimit: 7;
 		itemName: [:each | each city, ', ', each country];
 		matchSubstrings

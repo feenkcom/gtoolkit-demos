@@ -65,7 +65,7 @@ GtABAddress >> spotterForPeopleFor: aStep [
 		title: 'People';
 		itemName: [ :contact | contact fullName ];
 		allCandidates: [ 
-			aStep previousOrigin contactsWithAddress: self ];
+			aStep previousStep origin contactsWithAddress: self ];
 		candidatesLimit: 10;
 		matchSubstrings
 ]
