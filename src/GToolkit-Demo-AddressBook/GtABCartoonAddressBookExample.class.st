@@ -1,7 +1,7 @@
 Class {
 	#name : #GtABCartoonAddressBookExample,
 	#superclass : #GtExampleProvider,
-	#category : #'GToolkit-Demo-AddressBook-Models'
+	#category : #'GToolkit-Demo-AddressBook-Examples'
 }
 
 { #category : #'examples - contacts' }
