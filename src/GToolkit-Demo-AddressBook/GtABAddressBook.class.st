@@ -22,8 +22,8 @@ GtABAddressBook class >> contactsAddressesSearch [
 		spotterModel: (GTSpotter 
 			on: GtABAddressBook default
 			withProcessors: {
-				GtABAddressBook>>#spotterForAddressesFor:.
-				GtABAddress>>#spotterForPeopleFor: });
+				GtABAddressBook>>#gtSpotterForAddressesFor:.
+				GtABAddress>>#gtSpotterForPeopleFor: });
 		openCenteredInWorld
 ]
 
@@ -31,7 +31,7 @@ GtABAddressBook class >> contactsAddressesSearch [
 GtABAddressBook class >> contactsBrowser [
 
 	GTInspector new
-  		filterByMethods: {GtABAddressBook>>#gtContactsOn: . GtABContact>>#gtContactOn:};
+  		filterByMethods: {GtABAddressBook>>#gtInspectorContactsOn: . GtABContact>>#gtInspectorContactOn:};
   		openOn: GtABAddressBook default
 ]
 
@@ -57,7 +57,7 @@ GtABAddressBook class >> default [
 GtABAddressBook class >> exampleCustomInspector [
 
 	GTInspector new
-  		filterByMethods: {GtABAddressBook>>#gtContactsOn: . GtABContact>>#gtContactOn:};
+  		filterByMethods: {GtABAddressBook>>#gtInspectorContactsOn: . GtABContact>>#gtInspectorContactOn:};
   		openOn: GtABAddressBook default
 ]
 
@@ -69,10 +69,10 @@ GtABAddressBook class >> exampleCustomSpotter [
 		spotterModel: (GTSpotter
 			withProcessors: {
 				GTSpotter>>#spotterAddressBookFor:.
-				GtABAddressBook>>#spotterForAddressesFor:.
-				GtABAddressBook>>#spotterForPeopleFor:.
-				GtABAddressBook>>#spotterForTelephonesFor:.
-				GtABAddress>>#spotterForPeopleFor:.
+				GtABAddressBook>>#gtSpotterForAddressesFor:.
+				GtABAddressBook>>#gtSpotterForPeopleFor:.
+				GtABAddressBook>>#gtSpotterForTelephonesFor:.
+				GtABAddress>>#gtSpotterForPeopleFor:.
 				GtABTelephone>>#spotterForContactsFor: });
 		openCenteredInWorld
 ]
@@ -94,7 +94,7 @@ GtABAddressBook class >> exampleCustomSpotterOnAddressBookContactsOnly [
 		spotterModel: (GTSpotter 
 			on: GtABAddressBook default
 			withProcessors: {
-				GtABAddressBook>>#spotterForPeopleFor: });
+				GtABAddressBook>>#gtSpotterForPeopleFor: });
 		openCenteredInWorld
 ]
 
@@ -197,12 +197,6 @@ GtABAddressBook >> addContacts: aList [
 	self contacts addAll: aList
 ]
 
-{ #category : #adding }
-GtABAddressBook >> addFirst: first last: last [
-	^self contacts add: (GtABContact first: first last: last)
-	
-]
-
 { #category : #accessing }
 GtABAddressBook >> contacts [
 	^ contacts ifNil: [ contacts := LinkedList new ]
@@ -223,6 +217,59 @@ GtABAddressBook >> contactsWithTelephone: aNumber [
 	^self contacts select: [ :each | each address telephone number = aNumber ] 
 ]
 
+{ #category : #ui }
+GtABAddressBook >> gtInspectorContactsOn: aComposite [
+	<gtInspectorPresentationOrder: 5>
+	aComposite table
+		title: 'Contacts' translated;
+		display: [ self contacts ];
+		column: 'Name' evaluated: [ :aContact | aContact fullName ];
+		column: 'Telephone' evaluated: [ :aContact | 
+			aContact address telephone fullNumber ]
+]
+
+{ #category : #searching }
+GtABAddressBook >> gtSpotterForAddressesFor: aStep [
+	<spotterOrder: 10>
+	^ aStep listProcessor 
+		title: 'Addresses' translated;
+		allCandidates: [ (self contacts collect: #address as: Set) asOrderedCollection ];
+		candidatesLimit: 7;
+		itemName: [:each | each city, ', ', each country];
+		matchSubstrings
+]
+
+{ #category : #searching }
+GtABAddressBook >> gtSpotterForPeopleFor: aStep [
+	<spotterOrder: 5>
+	^ aStep listProcessor 
+		title: 'People';
+		allCandidates: [ self contacts ];
+		filter: GTFilterSubstrings;
+		candidatesLimit: 7;
+		itemName: [ :aContact | aContact lastName asUppercase, ', ' , aContact firstName ]
+]
+
+{ #category : #searching }
+GtABAddressBook >> gtSpotterForTelephonesFor: aStep [
+	<spotterOrder: 15>
+	^ aStep listProcessor 
+		title: 'Telephones' translated;
+		allCandidates: [ self contacts collect: [ :aContact | aContact address telephone ] ];
+		matchSubstrings
+]
+
+{ #category : #ui }
+GtABAddressBook >> gtSpotterPreviewIn: aComposite [
+	<spotterPreview: 10>
+	
+	aComposite list
+		title: 'People';
+		display: #yourself;
+		format: [ :contact | GTSpotterItemBrick new text: contact fullName; disable ];
+		entity: self contacts
+]
+
 { #category : #accessing }
 GtABAddressBook >> label [
 	^ label
@@ -237,35 +284,4 @@ GtABAddressBook >> label: anObject [
 GtABAddressBook >> printOn: aStream [
 
 	aStream nextPutAll: self label
-]
-
-{ #category : #searching }
-GtABAddressBook >> spotterForAddressesFor: aStep [
-	<spotterOrder: 10>
-	^ aStep listProcessor 
-		title: 'Addresses';
-		allCandidates: [ (self contacts collect: #address as: Set) asOrderedCollection ];
-		candidatesLimit: 7;
-		itemName: [:each | each city, ', ', each country];
-		matchSubstrings
-]
-
-{ #category : #searching }
-GtABAddressBook >> spotterForTelephonesFor: aStep [
-	<spotterOrder: 15>
-	^ aStep listProcessor 
-		title: 'Telephones';
-		allCandidates: [ self contacts collect: [ :aContact | aContact address telephone ] ];
-		matchSubstrings
-]
-
-{ #category : #printing }
-GtABAddressBook >> spotterPreviewIn: aComposite [
-	<spotterPreview: 10>
-	
-	aComposite list
-		title: 'People';
-		display: #yourself;
-		format: [ :contact | GTSpotterItemBrick new text: contact fullName; disable ];
-		entity: self contacts
 ]

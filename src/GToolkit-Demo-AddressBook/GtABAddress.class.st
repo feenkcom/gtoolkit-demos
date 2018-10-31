@@ -40,23 +40,8 @@ GtABAddress >> country: anObject [
 	country := anObject
 ]
 
-{ #category : #comparing }
-GtABAddress >> hash [
-
-	^ city hash bitXor: country hash
-	
-]
-
-{ #category : #printing }
-GtABAddress >> printOn: aStream [
-
-	aStream nextPutAll: self city.
-	aStream nextPutAll: ', '.
-	aStream nextPutAll: self country
-]
-
 { #category : #searching }
-GtABAddress >> spotterForPeopleFor: aStep [
+GtABAddress >> gtSpotterForPeopleFor: aStep [
 	<spotterOrder: 10>
 	
 	(aStep hasPreviousNavigationFromClass: GtABAddressBook ) ifFalse: [ ^ self  ].
@@ -70,8 +55,8 @@ GtABAddress >> spotterForPeopleFor: aStep [
 		matchSubstrings
 ]
 
-{ #category : #printing }
-GtABAddress >> spotterPreviewIn: aComposite [
+{ #category : #ui }
+GtABAddress >> gtSpotterPreviewIn: aComposite [
 	<spotterPreview: 10>
 	
 	aComposite table
@@ -88,6 +73,21 @@ GtABAddress >> spotterPreviewIn: aComposite [
 			evaluated: #value
 			styled: [ :aBrick | aBrick margin: #(0 0 0 15); height: 30 ];
 		entity: self.
+]
+
+{ #category : #comparing }
+GtABAddress >> hash [
+
+	^ city hash bitXor: country hash
+	
+]
+
+{ #category : #printing }
+GtABAddress >> printOn: aStream [
+
+	aStream nextPutAll: self city.
+	aStream nextPutAll: ', '.
+	aStream nextPutAll: self country
 ]
 
 { #category : #accessing }
