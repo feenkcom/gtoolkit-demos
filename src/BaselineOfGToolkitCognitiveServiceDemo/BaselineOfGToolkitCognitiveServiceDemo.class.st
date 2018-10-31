@@ -35,7 +35,7 @@ BaselineOfGToolkitCognitiveServiceDemo >> baseline: spec [
 			
 		spec 
 			group: 'part1' with: #('GToolkit-Demo-CognitiveServices-FaceAPI' 'GToolkit-Demo-CognitiveServices-FaceAPI-Examples' 'GToolkit-Demo-CognitiveServices-FaceAPI-Extensions');
-			group: 'part2' with: #('part1' 'GToolkit-Demo-CognitiveServices-FaceAPI-UI' 'GToolkit-Demo-CognitiveServices-FaceAPI-Experiments');
+			group: 'part2' with: #('part1' 'GToolkit-Demo-CognitiveServices-FaceAPI-UI' 'GToolkit-Demo-CognitiveServices-FaceAPI-Experiments' 'GToolkit-Demo-CognitiveServices-FaceAPI-BlocExtensions');
 			group: 'default' with: #('part1' 'part2' 'GToolkit-Demo-AddressBook-Models') ]
 
 ]
