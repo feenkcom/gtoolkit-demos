@@ -192,8 +192,12 @@ GtABAddressBook class >> reset [
 ]
 
 { #category : #adding }
-GtABAddressBook >> addContacts: aList [
+GtABAddressBook >> addContact: aContact [
+	self contacts addLast: aContact
+]
 
+{ #category : #adding }
+GtABAddressBook >> addContacts: aList [
 	self contacts addAll: aList
 ]
 
@@ -272,7 +276,7 @@ GtABAddressBook >> gtSpotterPreviewIn: aComposite [
 
 { #category : #accessing }
 GtABAddressBook >> label [
-	^ label
+	^ label ifNil: [ '' ]
 ]
 
 { #category : #accessing }
