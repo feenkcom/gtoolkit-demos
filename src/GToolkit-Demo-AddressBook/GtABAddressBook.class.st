@@ -274,6 +274,41 @@ GtABAddressBook >> gtSpotterPreviewIn: aComposite [
 ]
 
 { #category : #ui }
+GtABAddressBook >> gtViewContactsCardsOn: aView [
+	<gtView>
+	^ aView list 
+		title: 'Cards' translated;
+		priority: 9;
+		items: [ self contacts ];
+		itemElement: [ :aContact |
+			|container iconElement aText textElement|
+			container := BlElement new
+				layout: BlFlowLayout horizontal;
+				constraintsDo: [ :c | 
+					c horizontal matchParent.
+					c vertical fitContent.
+					c margin: (BlInsets all: 10)].
+
+			iconElement := BlElement new
+				size: aContact avatar extent;
+				background: aContact avatar.
+	
+			aText := aContact fullName asRopedText
+				fontSize: 40.
+			textElement := BlTextElement new
+					constraintsDo: [ :c |
+						c flow vertical alignCenter.
+						c padding: (BlInsets all: 10) ];
+				text: aText.
+	
+			container
+				addChild: iconElement;
+				addChild: textElement.
+	
+			container ]
+]
+
+{ #category : #ui }
 GtABAddressBook >> gtViewContactsOn: aView [
 	<gtView>
 	^ aView explicit 

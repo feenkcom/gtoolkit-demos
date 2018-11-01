@@ -171,7 +171,7 @@ GtABContact >> gtViewPreviewOn: aView [
 		priority: 6;
 		stencil: [
 			"Use the old morph for now"
-			((GtABPreviewMorph new contact: self) extent: 500@800)
+			((GtABPreviewMorph new contact: self) extent: 500@300)
 				imageForm asElement asPannableElement ]
 ]
 
