@@ -30,9 +30,10 @@ GtABTelephone class >> fromXML: aPPXmlElement [
 ]
 
 { #category : #comparing }
-GtABTelephone >> = anOther [
-	anOther class = GtABTelephone ifFalse: [ ^false].
-	^anOther number = number and: [ anOther prefix = prefix ]
+GtABTelephone >> = anObject [
+	self == anObject ifTrue: [ ^ true ].
+	anObject class = self class ifFalse: [ ^false].
+	^anObject number = number and: [ anObject prefix = prefix ]
 ]
 
 { #category : #accessing }

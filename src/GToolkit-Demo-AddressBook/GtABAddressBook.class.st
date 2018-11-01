@@ -292,6 +292,12 @@ GtABAddressBook >> gtViewContactsOn: aView [
 			list ]
 ]
 
+{ #category : #testing }
+GtABAddressBook >> includesContactWithName: aPattern [
+	^ self contacts anySatisfy: [ :aContact | 
+		aPattern match: aContact fullName ]
+]
+
 { #category : #accessing }
 GtABAddressBook >> label [
 	^ label ifNil: [ '' ]
