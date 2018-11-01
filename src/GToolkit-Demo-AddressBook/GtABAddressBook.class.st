@@ -229,7 +229,7 @@ GtABAddressBook >> gtInspectorContactsOn: aComposite [
 		display: [ self contacts ];
 		column: 'Name' evaluated: [ :aContact | aContact fullName ];
 		column: 'Telephone' evaluated: [ :aContact | 
-			aContact address telephone fullNumber ]
+			aContact address telephone ]
 ]
 
 { #category : #searching }
@@ -266,12 +266,30 @@ GtABAddressBook >> gtSpotterForTelephonesFor: aStep [
 { #category : #ui }
 GtABAddressBook >> gtSpotterPreviewIn: aComposite [
 	<spotterPreview: 10>
-	
 	aComposite list
-		title: 'People';
+		title: 'People' translated;
 		display: #yourself;
 		format: [ :contact | GTSpotterItemBrick new text: contact fullName; disable ];
 		entity: self contacts
+]
+
+{ #category : #ui }
+GtABAddressBook >> gtViewContactsOn: aView [
+	<gtView>
+	^ aView explicit 
+		title: 'Contacts' translated;
+		priority: 5;
+		stencil: [
+			| list |
+			list := BrColumnedList new display: self contacts.
+			list addEventHandler: (GtInspectorListToSelectHandler new).
+			list column 
+				title: 'Name';
+				stencil: [ :aContact | BrListLabelStencil matchParent: aContact fullName ].
+			list column 
+				title: 'Telephone';
+				stencil: [ :aContact | BrListLabelStencil matchParent: aContact address telephone ].
+			list ]
 ]
 
 { #category : #accessing }

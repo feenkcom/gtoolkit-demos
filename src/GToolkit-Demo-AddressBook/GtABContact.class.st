@@ -107,11 +107,11 @@ GtABContact >> gtInspectorContactOn: aComposite [
 	
 	^ aComposite table
 		title: 'Details' translated;
-		display: [ 
-					{'name' -> self fullName.
-					'city' -> self address city.
-					'country' -> self address country.
-					'telephone' -> self address telephone fullNumber } ];
+		display: [ {
+			'Name' -> self fullName.
+			'City' -> self address city.
+			'Country' -> self address country.
+			'Telephone' -> self address telephone fullNumber } ];
 		column: 'Detail' evaluated: #key;
 		column: 'Value' evaluated: #value;
 		send: #value
@@ -138,6 +138,41 @@ GtABContact >> gtSpotterPreviewIn: aComposite [
 	aComposite custom: previewMorph asBrick
 		vSpaceFill;
 		hSpaceFill
+]
+
+{ #category : #ui }
+GtABContact >> gtViewContactDetailsOn: aView [
+	<gtView>
+	^ aView explicit 
+		title: 'Details' translated;
+		priority: 5;
+		stencil: [
+			| list |
+			list := BrColumnedList new display: {
+				'Name' -> self fullName.
+				'City' -> self address city.
+				'Country' -> self address country.
+				'Telephone' -> self address telephone fullNumber }.
+			list addEventHandler: (GtInspectorListToSelectHandler new).
+			list column 
+				title: 'Detail';
+				stencil: [ :assoc | BrListLabelStencil matchParent: assoc key ].
+			list column 
+				title: 'Value';
+				stencil: [ :assoc | BrListLabelStencil matchParent: assoc value ].
+			list ]
+]
+
+{ #category : #ui }
+GtABContact >> gtViewPreviewOn: aView [
+	<gtView>
+	^ aView explicit
+		title: 'Preview' translated;
+		priority: 4;
+		stencil: [
+			"Use the old morph for now"
+			((GtABPreviewMorph new contact: self) extent: 500@500)
+				imageForm asElement asPannableElement ]
 ]
 
 { #category : #accessing }
