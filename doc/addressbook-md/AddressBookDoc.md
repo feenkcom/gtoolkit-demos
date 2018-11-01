@@ -17,6 +17,8 @@ GtABContact new
             prefix: '41'; 
             number: '074574363')).
 ```
+
+This contact will be dispayed then in the user interface as follows:
 ![John Doe](JohnDoeContact.png)
 
 
