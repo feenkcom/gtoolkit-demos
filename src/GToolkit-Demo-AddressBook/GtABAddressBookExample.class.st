@@ -6,11 +6,18 @@ Address books are instances of the class ${class:GtABAddressBook}$.
 
 Contacts are then instances of ${class:GtABContact}$. They can have several properties, like name, address, description.
 ${example:GtABAddressBookExample>>#janeDoeContact}$
+
 This contact will be dispayed then in the user interface as follows:
 ${example:GtABAddressBookExample>>#johnDoeContact|show=#gtViewPreviewOn:|noCode}$
 
 Contacts can be added using the ${method:GtABAddressBook>>#addContact:}$
 ${example:GtABAddressBookExample>>#myContactsAddressBook}$
+
+The class ${class:GtABCartoonAddressBookExample}$ contains an example of a larger address book.
+${example:GtABCartoonAddressBookExample>>#cartoonAddressBook}$
+
+
+
 
 
 "
