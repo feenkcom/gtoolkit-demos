@@ -24,8 +24,8 @@ GtABAddressBookTest >> createJaneDoeContact [
 	^ GtABContact new
 		firstName: 'Jane';
 		lastName: 'Doe';
-		description: GtABAddressBookExample loremIpsum;
-		avatar: GtABAddressBookExample janeDoeAvatar;
+		description: GtABContact loremIpsum;
+		avatar: GtABContact janeDoeAvatar;
 		address: self createContactAddress
 ]
 
@@ -34,8 +34,8 @@ GtABAddressBookTest >> createJohnDoeContact [
 	^ GtABContact new
 		firstName: 'John';
 		lastName: 'Doe';
-		description: GtABAddressBookExample loremIpsum;
-		avatar: GtABAddressBookExample johnDoeAvatar;
+		description: GtABContact loremIpsum;
+		avatar: GtABContact johnDoeAvatar;
 		address: self createContactAddress
 ]
 
@@ -65,7 +65,7 @@ GtABAddressBookTest >> testJaneDoeContact [
 	self assert: contact lastName equals: 'Doe'.
 	self
 		assert: contact description
-		equals: GtABAddressBookExample loremIpsum.
+		equals: GtABContact loremIpsum.
 	self assert: contact address notNil
 ]
 
@@ -77,7 +77,7 @@ GtABAddressBookTest >> testJohnDoeContact [
 	self assert: contact lastName equals: 'Doe'.
 	self
 		assert: contact description
-		equals: GtABAddressBookExample loremIpsum.
+		equals: GtABContact loremIpsum.
 	self assert: contact address notNil
 ]
 
