@@ -1,0 +1,82 @@
+<?xml version="1.0"?>
+<catalog>
+   <contact id="spider-man">
+      <firstname>Spider</firstname>
+      <lastname>Man</lastname>
+      <country>USA</country>
+      <city>Burbank</city>
+	  <telephone>
+		  <prefix>1202</prefix>
+		  <number>5550112</number>
+	  </telephone>
+      <talk>Knitting from cobweb</talk>
+      <description>Spider-Man is a fictional superhero appearing in American comic books published by Marvel Comics existing in its shared universe. The character was created by writer-editor Stan Lee and writer-artist Steve Ditko, and first appeared in the anthology comic book Amazing Fantasy #15 (Aug. 1962) in the Silver Age of Comic Books. Lee and Ditko conceived the character as an orphan being raised by his Aunt May and Uncle Ben, and as a teenager, having to deal with the normal struggles of adolescence in addition to those of a costumed crime-fighter. Spider-Man's creators gave him super strength and agility, the ability to cling to most surfaces, shoot spider-webs using wrist-mounted devices of his own invention, which he calls "web-shooters", and react to danger quickly with his "spider-sense", enabling him to combat his foes.</description>
+	  <avatar>spider-man.png</avatar>
+   </contact>
+   <contact id="batman">
+      <firstname>Bat</firstname>
+      <lastname>Man</lastname>
+      <country>USA</country>
+      <city>Burbank</city>
+	  <telephone>
+		  <prefix>1202</prefix>
+		  <number>5550146</number>
+	  </telephone>
+      <talk>Bat in the wild</talk>
+      <description>Batman is a fictional superhero appearing in American comic books published by DC Comics. The character was created by artist Bob Kane and writer Bill Finger,[5][6] and first appeared in Detective Comics #27 (May 1939). Originally named "the Bat-Man", the character is also referred to by such epithets as the "Caped Crusader",[7] the "Dark Knight",[7] and the "World's Greatest Detective".[7]</description>
+	  <avatar>batman.png</avatar>
+   </contact>
+   <contact id="joker">
+      <firstname>The</firstname>
+      <lastname>Joker</lastname>
+      <country>USA</country>
+      <city>Burbank</city>
+	  <telephone>
+		  <prefix>1202</prefix>
+		  <number>5550151</number>
+	  </telephone>
+      <talk>Efficient destroying</talk>
+      <description>The Joker is a fictional supervillain created by Bill Finger, Bob Kane, and Jerry Robinson that first appeared in the debut issue of the comic book Batman (April 25, 1940) published by DC Comics. Credit for the Joker's creation is disputed; Kane and Robinson claimed responsibility for the Joker's design, while acknowledging Finger's writing contribution. Although the Joker was planned to be killed off during his initial appearance, he was spared by editorial intervention, allowing the character to endure as the archenemy of the superhero Batman.
+</description>
+	  <avatar>joker.png</avatar>
+   </contact>
+   <contact id="superman">
+      <firstname>Super</firstname>
+      <lastname>Man</lastname>
+      <country>USA</country>
+      <city>Burbank</city>
+	  <telephone>
+		  <prefix>1202</prefix>
+		  <number>5550138</number>
+	  </telephone>
+      <talk>How to save the world</talk>
+      <description>Superman is a fictional superhero appearing in American comic books published by DC Comics. The character is considered an American cultural icon.[2][3][4][5] The Superman character was created by writer Jerry Siegel and artist Joe Shuster in 1933; the character was sold to Detective Comics, Inc. (later DC Comics) in 1938.[6][7] Superman first appeared in Action Comics #1 (June 1938) and subsequently appeared in various radio serials, newspaper strips, television programs, films, and video games. With the character's success, Superman helped to create the superhero genre and establish its primacy within the American comic book.[2]</description>
+	  <avatar>superman.png</avatar>
+   </contact>
+   <contact id="ironman">
+      <firstname>Iron</firstname>
+      <lastname>Man</lastname>
+      <country>USA</country>
+      <city>Burbank</city>
+	  <telephone>
+		  <prefix>1202</prefix>
+		  <number>5550110</number>
+	  </telephone>
+      <talk>Portable nuclear reactor: HOWTO</talk>
+      <description>Iron Man (Tony Stark) is a fictional superhero appearing in American comic books published by Marvel Comics, as well as its associated media. The character was created by writer and editor Stan Lee, developed by scripter Larry Lieber, and designed by artists Don Heck and Jack Kirby. He made his first appearance in Tales of Suspense #39 (cover dated March 1963).</description>
+	  <avatar>ironman.png</avatar>
+   </contact>
+   <contact id="hulk">
+      <firstname>Incredible</firstname>
+      <lastname>Hulk</lastname>
+      <country>USA</country>
+      <city>Burbank</city>
+	  <telephone>
+		  <prefix>1202</prefix>
+		  <number>5550171</number>
+	  </telephone>
+      <talk>Being a mutant</talk>
+      <description>The Hulk is a fictional superhero appearing in American comic books published by Marvel Comics. The character was created by Stan Lee and Jack Kirby, and first appeared in The Incredible Hulk #1 (May 1962). Throughout his comic book appearances, the Hulk is portrayed as a large green humanoid that possesses immense superhuman strength and great invulnerability, attributes that grow more potent the angrier he becomes. Hulk is the alter ego of Bruce Banner, a socially withdrawn and emotionally reserved physicist who physically transforms into the Hulk under emotional stress and other specific circumstances at will or against it; these involuntary transformations lead to many complications in Banner's life. </description>
+	  <avatar>hulk.png</avatar>
+   </contact>
+</catalog>
