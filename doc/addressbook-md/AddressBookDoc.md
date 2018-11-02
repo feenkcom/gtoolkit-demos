@@ -1,6 +1,7 @@
 Address books are instances of the class `GtABAddressBook`.
 ```
 GtABAddressBook new
+    label: 'My contacts'. 
 ```
 
 Contacts are then instances of `GtABContact`. They can have several properties, like name, address, description:
