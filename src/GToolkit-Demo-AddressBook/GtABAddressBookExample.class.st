@@ -2,6 +2,7 @@
 Address books are instances of the class ${class:GtABAddressBook}$.
 [[[ 
 	GtABAddressBook new
+		label: 'My contacts'.
 ]]]
 
 Contacts are then instances of ${class:GtABContact}$. They can have several properties, like name, address, description.
