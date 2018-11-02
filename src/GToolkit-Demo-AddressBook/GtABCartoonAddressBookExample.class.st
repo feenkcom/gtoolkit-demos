@@ -12,6 +12,7 @@ GtABCartoonAddressBookExample >> bugsBunnyContact [
 		firstName: 'Bugs';
 		lastName: 'Bunny';
 		description: self bugsBunnyDescription;
+		avatar: (self readAvatarWithId: 'bugs-bunny');
 		address: (GtABAddress new
 			city: 'Universal City';
 			country: 'USA';
@@ -27,9 +28,27 @@ GtABCartoonAddressBookExample >> bugsBunnyContact [
 	^ contact
 ]
 
-{ #category : #'examples - contacts' }
+{ #category : #accessing }
 GtABCartoonAddressBookExample >> bugsBunnyDescription [
 	^ 'Bugs Bunny is an animated cartoon character, created by the staff of Leon Schlesinger Productions (later Warner Bros. Cartoons) and voiced originally by the "Man of a Thousand Voices," Mel Blanc. Bugs is best known for his starring roles in the Looney Tunes and Merrie Melodies series of animated short films, produced by Warner Bros. during the golden age of American animation. His popularity during this era led to his becoming an American cultural icon, as well as a corporate mascot of Warner Bros. Entertainment.'
+]
+
+{ #category : #'examples - addressbook' }
+GtABCartoonAddressBookExample >> cartoonAddressBook [
+	<gtExample>
+	| addressBook |
+	addressBook := GtABAddressBook new
+		label: 'Cartoons'.
+	addressBook addContact: self bugsBunnyContact.
+	addressBook addContact: self daffyDuckContact.
+	addressBook addContact: self porkyPigContact.
+	addressBook addContact: self roadRunnerContact.
+	addressBook addContact: self wileECoyoteContact.
+	addressBook addContact: self woodyWoodpeckerContact.
+	
+	self assert: addressBook contacts size equals:6.
+	
+	^ addressBook
 ]
 
 { #category : #'examples - contacts' }
@@ -40,6 +59,7 @@ GtABCartoonAddressBookExample >> daffyDuckContact [
 		firstName: 'Daffy';
 		lastName: 'Duck';
 		description: self daffyDuckDescription;
+		avatar: (self readAvatarWithId: 'daffy-duck');
 		address: (GtABAddress new
 			city: 'Universal City';
 			country: 'USA';
@@ -55,7 +75,7 @@ GtABCartoonAddressBookExample >> daffyDuckContact [
 	^ contact
 ]
 
-{ #category : #'examples - contacts' }
+{ #category : #accessing }
 GtABCartoonAddressBookExample >> daffyDuckDescription [
 	^ 'Daffy Duck is an animated cartoon character produced by Warner Bros. Styled as an anthropomorphic black duck, the character has appeared in cartoon series such as Looney Tunes and Merrie Melodies, where he usually has been depicted as the best friend and occasional arch-rival of Bugs Bunny. Daffy was one of the first of the new "screwball" characters that emerged in the late 1930s to replace traditional everyman characters who were more popular earlier in the decade,[citation needed] such as Mickey Mouse and Popeye. Daffy starred in 133 shorts in the golden age, making him the third-most frequent character in the Looney Tunes/Merrie Melodies cartoons, behind Bugs Bunny''s 166 appearances and Porky Pig''s 159 appearances.'
 ]
@@ -76,6 +96,7 @@ GtABCartoonAddressBookExample >> porkyPigContact [
 		firstName: 'Porky';
 		lastName: 'Pig';
 		description: self porkyPigDescription;
+		avatar: (self readAvatarWithId: 'porky-pig');
 		address: (GtABAddress new
 			city: 'Universal City';
 			country: 'USA';
@@ -91,9 +112,79 @@ GtABCartoonAddressBookExample >> porkyPigContact [
 	^ contact
 ]
 
-{ #category : #'examples - contacts' }
+{ #category : #accessing }
 GtABCartoonAddressBookExample >> porkyPigDescription [
 	^ 'Porky Pig is an animated cartoon character in the Warner Bros. Looney Tunes and Merrie Melodies series of cartoons. He was the first character created by the studio to draw audiences based on his star power, and the animators created many critically acclaimed shorts using the fat little pig. Even after he was supplanted by later characters, Porky continued to be popular with moviegoers and, more importantly, the Warners directors, who recast him in numerous everyman and sidekick roles.'
+]
+
+{ #category : #'private - utilities' }
+GtABCartoonAddressBookExample >> readAvatarWithId: anId [
+	anId ifNil: [ ^GtABContact unknowsJoeAvatar ].
+	^ (PNGReadWriter formFromFileNamed: GtIcebergUtility repositoriesLocation / 
+		'feenkcom' / 
+		'gtoolkit-demos' /
+		'data' / 
+		'addressbook' /
+		'icons' / 
+		(anId,'.png'))
+]
+
+{ #category : #'examples - contacts' }
+GtABCartoonAddressBookExample >> roadRunnerContact [
+	<gtExample>
+	| contact |
+	contact := GtABContact new
+		firstName: 'Road';
+		lastName: 'Runner';
+		description: self roadRunnerDescription;
+		avatar: (self readAvatarWithId: 'road-runner');
+		address: (GtABAddress new
+			city: 'Burbank';
+			country: 'USA';
+			telephone: (GtABTelephone new 
+				prefix: '1202'; 
+				number: '5550110')).
+
+	self assert: contact firstName equals: 'Road'.
+	self assert: contact lastName equals: 'Runner'.
+	self assert: contact description equals: self roadRunnerDescription.
+	self assert: contact address notNil.
+
+	^ contact
+]
+
+{ #category : #accessing }
+GtABCartoonAddressBookExample >> roadRunnerDescription [
+	^ 'Road Runner was created by animation director Chuck Jones in 1948 for Warner Bros., while the template for their adventures was the work of writer Michael Maltese. The characters star in a long-running series of theatrical cartoon shorts (the first 16 of which were written by Maltese) and occasional made-for-television cartoons. It was originally meant to parody chase cartoons like Tom and Jerry, but became popular in its own right.'
+]
+
+{ #category : #'examples - contacts' }
+GtABCartoonAddressBookExample >> wileECoyoteContact [
+	<gtExample>
+	| contact |
+	contact := GtABContact new
+		firstName: 'Wile';
+		lastName: 'E. Coyote';
+		description: self wileECoyoteDescription;
+		avatar: (self readAvatarWithId: 'wile-e-coyote');
+		address: (GtABAddress new
+			city: 'Burbank';
+			country: 'USA';
+			telephone: (GtABTelephone new 
+				prefix: '1202'; 
+				number: '5550171')).
+
+	self assert: contact firstName equals: 'Wile'.
+	self assert: contact lastName equals: 'E. Coyote'.
+	self assert: contact description equals: self wileECoyoteDescription.
+	self assert: contact address notNil.
+
+	^ contact
+]
+
+{ #category : #accessing }
+GtABCartoonAddressBookExample >> wileECoyoteDescription [
+	^ 'Wile E. Coyote (also known simply as "The Coyote") and The Road Runner are a duo of characters from the Looney Tunes and Merrie Melodies series of cartoons. In the cartoons, Coyote repeatedly attempts to catch and subsequently eat the Road Runner, a fast-running ground bird, but is never successful. Coyote, instead of his species'' animal instincts, uses absurdly complex contraptions (sometimes in the manner of Rube Goldberg) and elaborate plans to pursue his prey, which always comically backfire with Wile normally getting injured by the slapstick humor.'
 ]
 
 { #category : #'examples - contacts' }
@@ -104,6 +195,7 @@ GtABCartoonAddressBookExample >> woodyWoodpeckerContact [
 		firstName: 'Woody';
 		lastName: 'Woodpecker';
 		description: self woodyWoodpeckerDescription;
+		avatar: (self readAvatarWithId: 'woody-woodpecker');
 		address: (GtABAddress new
 			city: 'Universal City';
 			country: 'USA';

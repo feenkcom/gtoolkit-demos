@@ -178,14 +178,6 @@ GtABAddressBook class >> loadDefaultDataIn: anAddressBook [
 		
 ]
 
-{ #category : #private }
-GtABAddressBook class >> loremIpsum [
-	"Return a constant string with one paragraph of text, the famous Lorem ipsum filler text.
-	The result is pure ASCII (Latin words) and contains no newlines."
-	
-	^ 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
-]
-
 { #category : #accessing }
 GtABAddressBook class >> reset [
 	default := nil
@@ -274,11 +266,11 @@ GtABAddressBook >> gtSpotterPreviewIn: aComposite [
 ]
 
 { #category : #ui }
-GtABAddressBook >> gtViewContactsCardsOn: aView [
+GtABAddressBook >> gtViewContactsCardsListOn: aView [
 	<gtView>
 	^ aView list 
 		title: 'Cards' translated;
-		priority: 9;
+		priority: 8;
 		items: [ self contacts ];
 		itemElement: [ :aContact |
 			|container iconElement aText textElement|
@@ -289,9 +281,12 @@ GtABAddressBook >> gtViewContactsCardsOn: aView [
 					c vertical fitContent.
 					c margin: (BlInsets all: 10)].
 
-			iconElement := BlElement new
-				size: aContact avatar extent;
-				background: aContact avatar.
+			aContact avatar ifNotNil: [ 
+				iconElement := BlElement new
+					size: (124@124);
+					background: (aContact avatar scaledToSize: 124@124).
+				container
+					addChild: iconElement ].
 	
 			aText := aContact fullName asRopedText
 				fontSize: 40.
@@ -301,11 +296,25 @@ GtABAddressBook >> gtViewContactsCardsOn: aView [
 						c padding: (BlInsets all: 10) ];
 				text: aText.
 	
-			container
-				addChild: iconElement;
+			container 
 				addChild: textElement.
-	
 			container ]
+]
+
+{ #category : #ui }
+GtABAddressBook >> gtViewContactsIconsCircularOn: aView [
+	<gtView>
+	self contacts size > 2 ifFalse: [ ^ aView ].
+	^ aView mondrian
+		title: 'Circular' translated;
+		priority: 50;
+		painting: [ :view |
+			view nodes
+				shape: [ :aContact | 
+					(aContact avatar scaledToSize: 124@124) asElement ];
+				with: self contacts.
+			view layout circle
+				radius: 200 ]
 ]
 
 { #category : #ui }
