@@ -1,0 +1,38 @@
+Address books are instances of the class ${class:DmAbAddressBook}$.
+
+[[[
+DmAbAddressBook new
+    label: 'My contacts'. 
+]]]
+
+Contacts are then instances of ${class:DmAbContact}$. They can have several properties, like name, address, description:
+
+[[[
+DmAbContact new
+    firstName: 'Jane';
+    lastName: 'Doe';
+    description: 'Lorem Ipsum';
+    avatar: DmAbContact johnDoeAvatar;
+    address: (DmAbAddress new
+        city: 'Bern';
+        country: 'Switzerland';
+        telephone: (DmAbTelephone new 
+            prefix: '41'; 
+            number: '074574363')).
+]]]
+
+
+Contacts can be added using the ${method:DmAbAddressBook>>#addContact:}$:
+
+[[[
+anAddressBook := DmAbAddressBook new
+    label: 'My contacts'.
+anAddressBook addContact: (DmAbContact new
+    firstName: 'Jane';
+    lastName: 'Doe').
+anAddressBook addContact: (DmAbContact new
+    firstName: 'John';
+    lastName: 'Doe')
+]]]
+
+
