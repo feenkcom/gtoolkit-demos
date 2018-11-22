@@ -21,11 +21,12 @@ The editor is made out of regular elements. This means that we can mix text with
 
 To get an idea of what this means, take a look at the example below. On top we have an editor. At the bottom we have a visualization of the tree of elements out of which the editor element is formed. You can observe how the leafs are word elements and the red square sits right next to them.
 
-${example:GtWhatMakesBlocSpecialExamples>>#editorWithPreview|expandedPreview|noCode=|previewHeight=500|show=#gtLiveFor:}$
+${example:GtWhatMakesBlocSpecialExamples>>#editorWithPreview|noCode=|previewHeight=500|previewShow=#gtLiveFor:}$
 
 This ability is what allows the current document to display results live in the same editor, such as the example above. In this case, the preview is actually added by the syntax highlighter that interprets the ==${example:...}$== command.
 
 Learn more details about the editor at ${class:GtWhatIsTheMoldableEditorMadeOfExamples}$
+
 
 !!Graph layouts
 
@@ -35,15 +36,16 @@ Every layout encapsulates an algorithm whose execution logic depends on the cons
 
 Let's consider a concrete scenario. The example below shows all subclasses of ${class:GtGraphLayout}$ as label elements organized in a grid layout with two columns, where each of the elements is aligned to the center of the grid cell.
 
-${example:GtWhatMakesBlocSpecialExamples>>#layoutHierarchyWithFlowLayout|show=#gtLiveFor:}$
+${example:GtWhatMakesBlocSpecialExamples>>#layoutHierarchyWithFlowLayout|codeExpanded=false|previewExpanded=|previewShow=#gtLiveFor:}$
 Note how the ==alignCenter== is specified as a constraint for each element.
 
 Now, we take the same elements only this time we add edge constraints between each pair of labels corresponding to a superclass and a subclass and specify a graph layout.
 
-${example:GtWhatMakesBlocSpecialExamples>>#layoutHierarchyWithEdges|show=#gtLiveFor:}$
+${example:GtWhatMakesBlocSpecialExamples>>#layoutHierarchyWithEdges|codeExpanded=false|previewExpanded=|previewShow=#gtLiveFor:}$
+
 The scene is laid out as a horizontal tree. To see the concrete connections we can also add line elements:
 
-${example:GtWhatMakesBlocSpecialExamples>>#layoutHierarchyWithEdgesAndLines|show=#gtLiveFor:}$
+${example:GtWhatMakesBlocSpecialExamples>>#layoutHierarchyWithEdgesAndLines|codeExpanded=false|previewExpanded=|previewShow=#gtLiveFor:}$
 
 All in all, the graph layouts are treated in the same way as the other layouts. This allows us to use any elements in a graph visualization.
 
@@ -54,22 +56,21 @@ Bloc was developed following the moldable development philosophy: every time we 
 
 We take as a base example the first element from the above scene. Inspecting the element produces an inspector with multiple views, each capturing an interesting aspect. Please take a moment to explore the different views.
 
-${example:GtWhatMakesBlocSpecialExamples>>#firstChildOfLayoutHierarchyElementsWithEdges|expandedPreview|previewHeight=150}$
+${example:GtWhatMakesBlocSpecialExamples>>#firstChildOfLayoutHierarchyElementsWithEdges|codeExpanded=false|previewExpanded|previewHeight=150}$
 
 A simple view is the one that previews the metrics of the element:
 
-${example:GtWhatMakesBlocSpecialExamples>>#firstChildOfLayoutHierarchyElementsWithEdges|show=#gtMetricsFor:|noCode|previewHeight=180}$
+${example:GtWhatMakesBlocSpecialExamples>>#firstChildOfLayoutHierarchyElementsWithEdges|previewShow=#gtMetricsFor:|noCode|previewHeight=180}$
 
 This is a view that is common in webbrowser inspectors. But, let's investigate a few more. 
 
 Complicated scenes with deep nesting can pose problems when it comes to understanding how layouts work. For example, every layout needs to measure. The measurement view shows the order of which layouts associated with which elements have measured the current element. In our case, we have 4 such measurements, the last one being from our text element, while the other ones come from the parent elements.
 
-${example:GtWhatMakesBlocSpecialExamples>>#firstChildOfLayoutHierarchyElementsWithEdges|show=#gtMeasurementChainFor:|noCode|previewHeight=150}$
+${example:GtWhatMakesBlocSpecialExamples>>#firstChildOfLayoutHierarchyElementsWithEdges|previewShow=#gtMeasurementChainFor:|noCode|previewHeight=150}$
 
 Similarly, the resizers view shows how the current and parent elements specify the resizing strategies. In our case, the text element has ==fitContent== while all parents have ==matchParent==. This is highly useful when reasoning about why an element might not appear properly in a scene.
 
-${example:GtWhatMakesBlocSpecialExamples>>#firstChildOfLayoutHierarchyElementsWithEdges|show=#gtResizersFor:|noCode|previewHeight=150}$
-
+${example:GtWhatMakesBlocSpecialExamples>>#firstChildOfLayoutHierarchyElementsWithEdges|previewShow=#gtResizersFor:|noCode|previewHeight=150}$
 
 These are but a few interesting tools that are built in.
 
@@ -123,7 +124,7 @@ GtWhatMakesBlocSpecialExamples >> editorWithPreview [
 		elementsMondrian removeChildren.
 		elementsMondrian addChild: view asPannableElement ].
 	
-	element when: GtLayoutDoneEvent do: [ element enqueueTask: (BlTaskAction new action: block) ].
+"	element when: GtLayoutDoneEvent do: [ element enqueueTask: (BlTaskAction new action: block) ]."
 	
 	root := BlElement new.
 	root size: 500@500.
