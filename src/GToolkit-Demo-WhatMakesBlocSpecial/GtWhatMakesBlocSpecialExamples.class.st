@@ -144,12 +144,12 @@ GtWhatMakesBlocSpecialExamples >> firstChildOfLayoutHierarchyElementsWithEdges [
 	^ root contentElement children first
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #accessing }
 GtWhatMakesBlocSpecialExamples >> layoutHierarchyWithEdges [
 	<gtExample>
 	| root |
 	root := self rootWithLayoutHierarchyElements.
-	GtGraphLayout withAllSubclassesDo: [ :class | 
+	GtGradLayout withAllSubclassesDo: [ :class | 
 		root children 
 			detect: [ :label | label text asString = class name ]
 			ifFound: [ :subclassLabel | 
@@ -193,7 +193,7 @@ GtWhatMakesBlocSpecialExamples >> layoutHierarchyWithFlowLayout [
 	^ root asPannableElement
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #accessing }
 GtWhatMakesBlocSpecialExamples >> rootWithLayoutHierarchyElements [
 	<gtExample>
 	"self new rootWithLayoutHierarchyElements"
@@ -201,7 +201,7 @@ GtWhatMakesBlocSpecialExamples >> rootWithLayoutHierarchyElements [
 	root := BlElement new constraintsDo: [:c | 
 		c horizontal matchParent. 
 		c vertical matchParent].
-	GtGraphLayout withAllSubclassesDo: [ :class | 
+		GtGradLayout withAllSubclassesDo: [ :class | 
 		| label |
 		label := BlTextElement new 
 			text: class name asRopedText;
