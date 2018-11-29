@@ -11,6 +11,5 @@ BaselineOfGToolkitObjectNeuralNetworkDemo >> baseline: spec [
 		spec baseline: 'Bloc' with: [ spec 
 				repository: 'github://pharo-graphics/Bloc/src' ].
 
-		spec package: 'GToolkit-Demo-ObjectNeuralNetwork'.
-		spec group: 'default' with: #('GToolkit-Demo-ObjectNeuralNetwork') ]
+		spec package: 'GToolkit-Demo-ObjectNeuralNetwork']
 ]
