@@ -81,6 +81,55 @@ Class {
 	#category : #'GToolkit-Demo-WhatMakesBlocSpecial'
 }
 
+{ #category : #accessing }
+GtWhatMakesBlocSpecialExamples >> classHierarchyWithEdges [
+	<gtExample>
+	| root |
+	root := self rootWithHierarchyElements.
+	BlGeometry withAllSubclassesDo: [ :class | 
+		root children 
+			detect: [ :label | label text asString = class name ]
+			ifFound: [ :subclassLabel | 
+				root children 
+					detect: [ :label | label text asString = class superclass name ]
+					ifFound: [ :superclassLabel |
+						| edge |
+						edge := GtGraphEdge new from: superclassLabel to: subclassLabel.
+						superclassLabel constraints graph addConnectedEdge: edge.
+						subclassLabel constraints graph addConnectedEdge: edge ] ] ].
+	root layout: (GtGraphHorizontalTreeLayout new layered; verticalGap: 20).
+	^ root asPannableElement
+]
+
+{ #category : #'as yet unclassified' }
+GtWhatMakesBlocSpecialExamples >> classHierarchyWithEdgesAndLines [
+	<gtExample>
+	| root |
+	root := self classHierarchyWithEdges.
+	root allChildrenBreadthFirstDo: [ :element | 
+		element graph nodesAlongOutgoingEdges do: [ :child | 
+			| line |
+			line := BlLineElement new.
+			line constraints ignoreByLayout.
+			line
+				border: (BlBorder paint: (Color gray alpha: 0.2) width: 5);
+				fromAnchor: (BlElementCenterRightAnchor element: element);
+				toAnchor: (BlElementCenterLeftAnchor element: child).
+			root addChild: line ] ].
+	^ root
+]
+
+{ #category : #'as yet unclassified' }
+GtWhatMakesBlocSpecialExamples >> classHierarchyWithFlowLayout [
+	<gtExample>
+	| root |
+	root := self rootWithHierarchyElements.
+	root layout: (BlGridLayout horizontal cellSpacing: 20; columnCount: 2).
+	root children do: [ :child |
+		child constraintsDo: [ :c | c grid horizontal alignCenter ] ].
+	^ root asPannableElement
+]
+
 { #category : #'as yet unclassified' }
 GtWhatMakesBlocSpecialExamples >> editorOnSampleText [
 	<gtExample>
@@ -136,72 +185,23 @@ GtWhatMakesBlocSpecialExamples >> editorWithPreview [
 ]
 
 { #category : #'as yet unclassified' }
-GtWhatMakesBlocSpecialExamples >> firstChildOfLayoutHierarchyElementsWithEdges [
+GtWhatMakesBlocSpecialExamples >> firstChildOfHierarchyElementsWithEdges [
 	<gtExample>
 	"self new firstChildOfLayoutHierarchyElementsWithEdges"
 	| root |
-	root := self layoutHierarchyWithEdgesAndLines.
+	root := self classHierarchyWithEdgesAndLines.
 	^ root contentElement children first
 ]
 
-{ #category : #'as yet unclassified' }
-GtWhatMakesBlocSpecialExamples >> layoutHierarchyWithEdges [
-	<gtExample>
-	| root |
-	root := self rootWithLayoutHierarchyElements.
-	GtGraphLayout withAllSubclassesDo: [ :class | 
-		root children 
-			detect: [ :label | label text asString = class name ]
-			ifFound: [ :subclassLabel | 
-				root children 
-					detect: [ :label | label text asString = class superclass name ]
-					ifFound: [ :superclassLabel |
-						| edge |
-						edge := GtGraphEdge new from: superclassLabel to: subclassLabel.
-						superclassLabel constraints graph addConnectedEdge: edge.
-						subclassLabel constraints graph addConnectedEdge: edge ] ] ].
-	root layout: (GtGraphHorizontalTreeLayout new layered; verticalGap: 20).
-	^ root asPannableElement
-]
-
-{ #category : #'as yet unclassified' }
-GtWhatMakesBlocSpecialExamples >> layoutHierarchyWithEdgesAndLines [
-	<gtExample>
-	| root |
-	root := self layoutHierarchyWithEdges.
-	root allChildrenBreadthFirstDo: [ :element | 
-		element graph nodesAlongOutgoingEdges do: [ :child | 
-			| line |
-			line := BlLineElement new.
-			line constraints ignoreByLayout.
-			line
-				border: (BlBorder paint: (Color gray alpha: 0.2) width: 5);
-				fromAnchor: (BlElementCenterRightAnchor element: element);
-				toAnchor: (BlElementCenterLeftAnchor element: child).
-			root addChild: line ] ].
-	^ root
-]
-
-{ #category : #'as yet unclassified' }
-GtWhatMakesBlocSpecialExamples >> layoutHierarchyWithFlowLayout [
-	<gtExample>
-	| root |
-	root := self rootWithLayoutHierarchyElements.
-	root layout: (BlGridLayout horizontal cellSpacing: 20; columnCount: 2).
-	root children do: [ :child |
-		child constraintsDo: [ :c | c grid horizontal alignCenter ] ].
-	^ root asPannableElement
-]
-
-{ #category : #'as yet unclassified' }
-GtWhatMakesBlocSpecialExamples >> rootWithLayoutHierarchyElements [
+{ #category : #accessing }
+GtWhatMakesBlocSpecialExamples >> rootWithHierarchyElements [
 	<gtExample>
 	"self new rootWithLayoutHierarchyElements"
 	| root |
 	root := BlElement new constraintsDo: [:c | 
 		c horizontal matchParent. 
 		c vertical matchParent].
-	GtGraphLayout withAllSubclassesDo: [ :class | 
+		BlGeometry withAllSubclassesDo: [ :class | 
 		| label |
 		label := BlTextElement new 
 			text: class name asRopedText;
