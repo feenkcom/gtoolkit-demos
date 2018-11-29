@@ -1,7 +1,7 @@
 Class {
 	#name : #GtCSPictureTest,
 	#superclass : #TestCase,
-	#category : 'GToolkit-Demo-CognitiveServices-FaceAPI-Examples'
+	#category : #'GToolkit-Demo-CognitiveServices-FaceAPI-Examples'
 }
 
 { #category : #asserting }

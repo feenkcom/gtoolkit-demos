@@ -4,7 +4,7 @@ I provide example data for creating pictures and faces. I can be used when a sub
 Class {
 	#name : #GtCSExamplesData,
 	#superclass : #Object,
-	#category : 'GToolkit-Demo-CognitiveServices-FaceAPI-Examples'
+	#category : #'GToolkit-Demo-CognitiveServices-FaceAPI-Examples'
 }
 
 { #category : #'wikipedia - json object' }

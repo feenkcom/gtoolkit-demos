@@ -4,7 +4,7 @@ I store metadata for this package. These meta data are used by other tools such 
 Class {
 	#name : #ManifestGToolkitDemoCognitiveServicesFaceAPIExamples,
 	#superclass : #PackageManifest,
-	#category : 'GToolkit-Demo-CognitiveServices-FaceAPI-Examples'
+	#category : #'GToolkit-Demo-CognitiveServices-FaceAPI-Examples'
 }
 
 { #category : #'meta-data' }

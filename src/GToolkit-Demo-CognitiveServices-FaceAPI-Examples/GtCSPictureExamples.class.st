@@ -20,7 +20,7 @@ ${example:name=CSPictureExamples>>#pictureWithFacesWithLandmarksAndForm|expanded
 Class {
 	#name : #GtCSPictureExamples,
 	#superclass : #GtExampleProvider,
-	#category : 'GToolkit-Demo-CognitiveServices-FaceAPI-Examples'
+	#category : #'GToolkit-Demo-CognitiveServices-FaceAPI-Examples'
 }
 
 { #category : #asserting }
