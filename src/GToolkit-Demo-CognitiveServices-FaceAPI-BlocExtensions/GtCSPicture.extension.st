@@ -27,7 +27,7 @@ GtCSPicture >> gtFacesFor: aView [
 
 { #category : #'*GToolkit-Demo-CognitiveServices-FaceAPI-BlocExtensions' }
 GtCSPicture >> gtPictureFor: aView [
-	<gtView: 0>
+	<gtView>
 	^ aView explicit
 		title: 'Picture';
 		priority: 15;

@@ -2,7 +2,7 @@ Extension { #name : #GtCSFace }
 
 { #category : #'*GToolkit-Demo-CognitiveServices-FaceAPI-BlocExtensions' }
 GtCSFace >> gtFaceLandmarksViewFor: aView [
-	<gtView: 0>
+	<gtView>
 	^ aView explicit
 		title: 'Face (landmarks)';
 		stencil: [ 
