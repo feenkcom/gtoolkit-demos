@@ -17,9 +17,9 @@ BaselineOfGToolkitCognitiveServiceDemo >> baseline: spec [
 	spec for: #'common' do: [
 		spec 
 			baseline: 'GToolkitUtility' with: [
-				spec repository: 'github://feenkcom/gtoolkit-utility/src' ];
+				spec repository: 'github://feenkcom/gtoolkit-utility:v0.4.0/src' ];
 			baseline: 'Bloc' with: [
-				spec repository: 'github://pharo-graphics/Bloc/src' ].
+				spec repository: 'github://pharo-graphics/Bloc:v0.4.0/src' ].
 		spec 
 			package: 'GToolkit-Demo-CognitiveServices-FaceAPI';
 			package: 'GToolkit-Demo-CognitiveServices-FaceAPI-Examples' with: [
@@ -32,10 +32,6 @@ BaselineOfGToolkitCognitiveServiceDemo >> baseline: spec [
 				spec requires: #('GToolkitUtility' 'GToolkit-Demo-CognitiveServices-FaceAPI' 'Bloc' ). ];
 			package: 'GToolkit-Demo-CognitiveServices-FaceAPI-Experiments' with: [
 				spec requires: #('GToolkit-Demo-CognitiveServices-FaceAPI' ). ];
-			package: 'GToolkit-Demo-AddressBook'. 
+			package: 'GToolkit-Demo-AddressBook'. ].
 
-		spec 
-			group: 'part1' with: #('GToolkit-Demo-CognitiveServices-FaceAPI' 'GToolkit-Demo-CognitiveServices-FaceAPI-Examples' 'GToolkit-Demo-CognitiveServices-FaceAPI-Extensions');
-			group: 'part2' with: #('part1' 'GToolkit-Demo-CognitiveServices-FaceAPI-UI' 'GToolkit-Demo-CognitiveServices-FaceAPI-Experiments' 'GToolkit-Demo-CognitiveServices-FaceAPI-BlocExtensions');
-			group: 'default' with: #('part1' 'part2' 'GToolkit-Demo-AddressBook') ]
 ]
