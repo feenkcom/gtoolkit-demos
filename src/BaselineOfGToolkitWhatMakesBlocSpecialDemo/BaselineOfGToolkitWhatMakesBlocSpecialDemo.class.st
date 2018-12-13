@@ -9,11 +9,11 @@ Class {
 	#category : #BaselineOfGToolkitWhatMakesBlocSpecialDemo
 }
 
-{ #category : #baselines }
+{ #category : #baseline }
 BaselineOfGToolkitWhatMakesBlocSpecialDemo >> baseline: spec [
 	<baseline>
-	spec for: #common do: [
-		spec baseline: 'Bloc' with: [ spec 
-				repository: 'github://pharo-graphics/Bloc/src' ].
-		spec package: 'GToolkit-Demo-WhatMakesBlocSpecial' ]
+	spec for: #'common' do: [
+		spec baseline: 'Bloc' with: [
+				spec repository: 'github://pharo-graphics/Bloc/src' ].
+		spec package: 'GToolkit-Demo-WhatMakesBlocSpecial'. ].
 ]

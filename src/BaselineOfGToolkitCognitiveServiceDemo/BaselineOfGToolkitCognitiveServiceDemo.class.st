@@ -11,28 +11,29 @@ Class {
 	#category : #BaselineOfGToolkitCognitiveServiceDemo
 }
 
-{ #category : #baselines }
+{ #category : #baseline }
 BaselineOfGToolkitCognitiveServiceDemo >> baseline: spec [
 	<baseline>
-	spec for: #common do: [ 
-		spec baseline: 'GToolkitUtility' with: [ spec 
-				repository: 'github://feenkcom/gtoolkit-utility/src' ].
-		spec baseline: 'Bloc' with: [ spec 
-				repository: 'github://pharo-graphics/Bloc/src' ].
-		spec
+	spec for: #'common' do: [
+		spec 
+			baseline: 'GToolkitUtility' with: [
+				spec repository: 'github://feenkcom/gtoolkit-utility/src' ];
+			baseline: 'Bloc' with: [
+				spec repository: 'github://pharo-graphics/Bloc/src' ].
+		spec 
 			package: 'GToolkit-Demo-CognitiveServices-FaceAPI';
-			package: 'GToolkit-Demo-CognitiveServices-FaceAPI-Examples' with: [ 
-				spec requires: #( 'GToolkitUtility' 'GToolkit-Demo-CognitiveServices-FaceAPI') ];
-			package: 'GToolkit-Demo-CognitiveServices-FaceAPI-BlocExtensions' with: [ 
-				spec requires: #('GToolkit-Demo-CognitiveServices-FaceAPI') ];
-			package: 'GToolkit-Demo-CognitiveServices-FaceAPI-Extensions' with: [ 
-				spec requires: #('GToolkit-Demo-CognitiveServices-FaceAPI') ];
-			package: 'GToolkit-Demo-CognitiveServices-FaceAPI-UI' with: [ 
-				spec requires: #( 'GToolkitUtility' 'GToolkit-Demo-CognitiveServices-FaceAPI' 'Bloc') ];
-			package: 'GToolkit-Demo-CognitiveServices-FaceAPI-Experiments' with: [ 
-				spec requires: #('GToolkit-Demo-CognitiveServices-FaceAPI') ];
-			package: 'GToolkit-Demo-AddressBook'.
-			
+			package: 'GToolkit-Demo-CognitiveServices-FaceAPI-Examples' with: [
+				spec requires: #('GToolkitUtility' 'GToolkit-Demo-CognitiveServices-FaceAPI' ). ];
+			package: 'GToolkit-Demo-CognitiveServices-FaceAPI-BlocExtensions' with: [
+				spec requires: #('GToolkit-Demo-CognitiveServices-FaceAPI' ). ];
+			package: 'GToolkit-Demo-CognitiveServices-FaceAPI-Extensions' with: [
+				spec requires: #('GToolkit-Demo-CognitiveServices-FaceAPI' ). ];
+			package: 'GToolkit-Demo-CognitiveServices-FaceAPI-UI' with: [
+				spec requires: #('GToolkitUtility' 'GToolkit-Demo-CognitiveServices-FaceAPI' 'Bloc' ). ];
+			package: 'GToolkit-Demo-CognitiveServices-FaceAPI-Experiments' with: [
+				spec requires: #('GToolkit-Demo-CognitiveServices-FaceAPI' ). ];
+			package: 'GToolkit-Demo-AddressBook'. 
+
 		spec 
 			group: 'part1' with: #('GToolkit-Demo-CognitiveServices-FaceAPI' 'GToolkit-Demo-CognitiveServices-FaceAPI-Examples' 'GToolkit-Demo-CognitiveServices-FaceAPI-Extensions');
 			group: 'part2' with: #('part1' 'GToolkit-Demo-CognitiveServices-FaceAPI-UI' 'GToolkit-Demo-CognitiveServices-FaceAPI-Experiments' 'GToolkit-Demo-CognitiveServices-FaceAPI-BlocExtensions');
