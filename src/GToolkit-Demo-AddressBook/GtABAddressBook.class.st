@@ -272,7 +272,7 @@ GtABAddressBook >> gtViewContactsCardsListOn: aView [
 		title: 'Cards' translated;
 		priority: 8;
 		items: [ self contacts ];
-		itemElement: [ :aContact |
+		itemStencil: [ :aContact |
 			|container iconElement aText textElement|
 			container := BlElement new
 				layout: BlFlowLayout horizontal;
