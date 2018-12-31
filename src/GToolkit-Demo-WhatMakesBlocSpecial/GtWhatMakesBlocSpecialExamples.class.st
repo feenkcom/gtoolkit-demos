@@ -36,16 +36,16 @@ Every layout encapsulates an algorithm whose execution logic depends on the cons
 
 Let's consider a concrete scenario. The example below shows all subclasses of ${class:GtGraphLayout}$ as label elements organized in a grid layout with two columns, where each of the elements is aligned to the center of the grid cell.
 
-${example:GtWhatMakesBlocSpecialExamples>>#layoutHierarchyWithFlowLayout|codeExpanded=false|previewExpanded=|previewShow=#gtLiveFor:}$
+${example:GtWhatMakesBlocSpecialExamples>>#classHierarchyWithFlowLayout|codeExpanded=false|previewExpanded=|previewShow=#gtLiveFor:}$
 Note how the ==alignCenter== is specified as a constraint for each element.
 
 Now, we take the same elements only this time we add edge constraints between each pair of labels corresponding to a superclass and a subclass and specify a graph layout.
 
-${example:GtWhatMakesBlocSpecialExamples>>#layoutHierarchyWithEdges|codeExpanded=false|previewExpanded=|previewShow=#gtLiveFor:}$
+${example:GtWhatMakesBlocSpecialExamples>>#classHierarchyWithEdges|codeExpanded=false|previewExpanded=|previewShow=#gtLiveFor:}$
 
 The scene is laid out as a horizontal tree. To see the concrete connections we can also add line elements:
 
-${example:GtWhatMakesBlocSpecialExamples>>#layoutHierarchyWithEdgesAndLines|codeExpanded=false|previewExpanded=|previewShow=#gtLiveFor:}$
+${example:GtWhatMakesBlocSpecialExamples>>#classHierarchyWithEdgesAndLines|codeExpanded=false|previewExpanded=|previewShow=#gtLiveFor:}$
 
 All in all, the graph layouts are treated in the same way as the other layouts. This allows us to use any elements in a graph visualization.
 
@@ -56,21 +56,21 @@ Bloc was developed following the moldable development philosophy: every time we 
 
 We take as a base example the first element from the above scene. Inspecting the element produces an inspector with multiple views, each capturing an interesting aspect. Please take a moment to explore the different views.
 
-${example:GtWhatMakesBlocSpecialExamples>>#firstChildOfLayoutHierarchyElementsWithEdges|codeExpanded=false|previewExpanded|previewHeight=150}$
+${example:GtWhatMakesBlocSpecialExamples>>#firstChildOfHierarchyElementsWithEdges|codeExpanded=false|previewExpanded|previewHeight=150}$
 
 A simple view is the one that previews the metrics of the element:
 
-${example:GtWhatMakesBlocSpecialExamples>>#firstChildOfLayoutHierarchyElementsWithEdges|previewShow=#gtMetricsFor:|noCode|previewHeight=180}$
+${example:GtWhatMakesBlocSpecialExamples>>#firstChildOfHierarchyElementsWithEdges|previewShow=#gtMetricsFor:|noCode|previewHeight=180}$
 
 This is a view that is common in webbrowser inspectors. But, let's investigate a few more. 
 
 Complicated scenes with deep nesting can pose problems when it comes to understanding how layouts work. For example, every layout needs to measure. The measurement view shows the order of which layouts associated with which elements have measured the current element. In our case, we have 4 such measurements, the last one being from our text element, while the other ones come from the parent elements.
 
-${example:GtWhatMakesBlocSpecialExamples>>#firstChildOfLayoutHierarchyElementsWithEdges|previewShow=#gtMeasurementChainFor:|noCode|previewHeight=150}$
+${example:GtWhatMakesBlocSpecialExamples>>#firstChildOfHierarchyElementsWithEdges|previewShow=#gtMeasurementChainFor:|noCode|previewHeight=150}$
 
 Similarly, the resizers view shows how the current and parent elements specify the resizing strategies. In our case, the text element has ==fitContent== while all parents have ==matchParent==. This is highly useful when reasoning about why an element might not appear properly in a scene.
 
-${example:GtWhatMakesBlocSpecialExamples>>#firstChildOfLayoutHierarchyElementsWithEdges|previewShow=#gtResizersFor:|noCode|previewHeight=150}$
+${example:GtWhatMakesBlocSpecialExamples>>#firstChildOfHierarchyElementsWithEdges|previewShow=#gtResizersFor:|noCode|previewHeight=150}$
 
 These are but a few interesting tools that are built in.
 

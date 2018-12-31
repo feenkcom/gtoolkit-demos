@@ -10,6 +10,7 @@ Class {
 { #category : #examples }
 GtCSGalleryExamples >> dataSourceUnsplashOffline [
 	<gtExample>
+	<noTest>
 	| dataSource cache |
 	dataSource := GtCSGalleryDataSource new
 		picturesProvider: [ 
@@ -29,6 +30,7 @@ GtCSGalleryExamples >> dataSourceUnsplashOffline [
 { #category : #examples }
 GtCSGalleryExamples >> galeryElementUnsplashOffline [
 	<gtExample>
+	<noTest>
 	| galleryDataSource |
 	galleryDataSource := self dataSourceUnsplashOffline.
 	^ GtCSGalleryMorph new
