@@ -23,7 +23,7 @@ To get an idea of what this means, take a look at the example below. On top we h
 
 ${example:GtWhatMakesBlocSpecialExamples>>#editorWithPreview|noCode=|previewHeight=500|previewShow=#gtLiveFor:}$
 
-This ability is what allows the current document to display results live in the same editor, such as the example above. In this case, the preview is actually added by the syntax highlighter that interprets the ==${example:...}$== command.
+This ability is what allows the current document to display results live in the same editor, such as the example above. In this case, the preview is actually added by the syntax highlighter that interprets the ==$ { example: ... } $== command.
 
 Learn more details about the editor at ${class:GtWhatIsTheMoldableEditorMadeOfExamples}$
 
