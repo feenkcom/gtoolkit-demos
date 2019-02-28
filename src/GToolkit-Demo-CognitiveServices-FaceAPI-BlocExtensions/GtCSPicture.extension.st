@@ -4,24 +4,18 @@ Extension { #name : #GtCSPicture }
 GtCSPicture >> gtFacesFor: aView [
 	<gtView>
 	
-	^ aView explicit 
+	^ aView columnedList 
 		title: 'Faces';
 		priority: 20;
-		stencil: [
-			| list |
-			list := BrColumnedList new 
-				display: [ self faces ].
-			list addEventHandler: GtInspectorListToSelectHandler new.
-			list column 
-				title: 'Gender';
-				stencil: [ :aFace | 
-					aFace hasFaceForm 
-						ifFalse: [ (Form extent: 16@16) asElement  ]
-						ifTrue: [ (aFace faceForm scaledIntoFormOfSize: 32@32) asElement ] ].
-			list column 
-				title: 'Location';
-				stencil: [ :aFace | (BrListLabelStencil matchParent: aFace rectangle) asElement ].
-			list ].
+		items: [ self faces ];
+		column: 'Gender' do: [:aColumn | 
+			aColumn item: [ :aFace | 
+				aFace hasFaceForm 
+					ifFalse: [ (Form extent: 32@32)  ]
+					ifTrue: [ (aFace faceForm scaledIntoFormOfSize: 32@32) ] ];
+			rowStencil: [ :eachIcon | eachIcon asElement margin: (BlInsets left: 5 right: 5) ] ];
+		column: 'Location' do: [:aColumn | 
+			aColumn item: [ :aFace | aFace rectangle ] ].
 		
 ]
 
