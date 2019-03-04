@@ -19,9 +19,12 @@ Everything you see in this window is rendered using one single rendering tree, a
 
 The editor is made out of regular elements. This means that we can mix text with graphics in live editors. 
 
-To get an idea of what this means, take a look at the example below. On top we have an editor. At the bottom we have a visualization of the tree of elements out of which the editor element is formed. You can observe how the leafs are word elements and the red square sits right next to them.
+To get an idea of what this means, take a look at the editor example below.
 
-${example:GtWhatMakesBlocSpecialExamples>>#editorWithPreview|noCode=|previewHeight=500|previewShow=#gtLiveFor:}$
+${example:GtWhatMakesBlocSpecialExplanation>>#editorOnSampleText|noCode=|previewHeight=100|previewShow=#gtLiveFor:}$
+Below we have a visualization of the tree of elements out of which the editor element is formed. You can observe how the leafs are word elements and the red square sits right next to them.
+
+${example:GtWhatMakesBlocSpecialExplanation>>#editorOnSampleText|noCode=|previewHeight=300|previewShow=#gtEditorElementsFor:}$
 
 This ability is what allows the current document to display results live in the same editor, such as the example above. In this case, the preview is actually added by the syntax highlighter that interprets the ==$ { example: ... } $== command.
 
@@ -36,16 +39,16 @@ Every layout encapsulates an algorithm whose execution logic depends on the cons
 
 Let's consider a concrete scenario. The example below shows all subclasses of ${class:GtGraphLayout}$ as label elements organized in a grid layout with two columns, where each of the elements is aligned to the center of the grid cell.
 
-${example:GtWhatMakesBlocSpecialExamples>>#classHierarchyWithFlowLayout|codeExpanded=false|previewExpanded=|previewShow=#gtLiveFor:}$
+${example:GtWhatMakesBlocSpecialExplanation>>#classHierarchyWithFlowLayout|codeExpanded=false|previewExpanded=|previewShow=#gtLiveFor:}$
 Note how the ==alignCenter== is specified as a constraint for each element.
 
 Now, we take the same elements only this time we add edge constraints between each pair of labels corresponding to a superclass and a subclass and specify a graph layout.
 
-${example:GtWhatMakesBlocSpecialExamples>>#classHierarchyWithEdges|codeExpanded=false|previewExpanded=|previewShow=#gtLiveFor:}$
+${example:GtWhatMakesBlocSpecialExplanation>>#classHierarchyWithEdges|codeExpanded=false|previewExpanded=|previewShow=#gtLiveFor:}$
 
 The scene is laid out as a horizontal tree. To see the concrete connections we can also add line elements:
 
-${example:GtWhatMakesBlocSpecialExamples>>#classHierarchyWithEdgesAndLines|codeExpanded=false|previewExpanded=|previewShow=#gtLiveFor:}$
+${example:GtWhatMakesBlocSpecialExplanation>>#classHierarchyWithEdgesAndLines|codeExpanded=false|previewExpanded=|previewShow=#gtLiveFor:}$
 
 All in all, the graph layouts are treated in the same way as the other layouts. This allows us to use any elements in a graph visualization.
 
@@ -56,33 +59,33 @@ Bloc was developed following the moldable development philosophy: every time we 
 
 We take as a base example the first element from the above scene. Inspecting the element produces an inspector with multiple views, each capturing an interesting aspect. Please take a moment to explore the different views.
 
-${example:GtWhatMakesBlocSpecialExamples>>#firstChildOfHierarchyElementsWithEdges|codeExpanded=false|previewExpanded|previewHeight=150}$
+${example:GtWhatMakesBlocSpecialExplanation>>#firstChildOfHierarchyElementsWithEdges|codeExpanded=false|previewExpanded|previewHeight=300}$
 
 A simple view is the one that previews the metrics of the element:
 
-${example:GtWhatMakesBlocSpecialExamples>>#firstChildOfHierarchyElementsWithEdges|previewShow=#gtMetricsFor:|noCode|previewHeight=180}$
+${example:GtWhatMakesBlocSpecialExplanation>>#firstChildOfHierarchyElementsWithEdges|previewShow=#gtMetricsFor:|noCode|previewHeight=180}$
 
 This is a view that is common in webbrowser inspectors. But, let's investigate a few more. 
 
 Complicated scenes with deep nesting can pose problems when it comes to understanding how layouts work. For example, every layout needs to measure. The measurement view shows the order of which layouts associated with which elements have measured the current element. In our case, we have 4 such measurements, the last one being from our text element, while the other ones come from the parent elements.
 
-${example:GtWhatMakesBlocSpecialExamples>>#firstChildOfHierarchyElementsWithEdges|previewShow=#gtMeasurementChainFor:|noCode|previewHeight=150}$
+${example:GtWhatMakesBlocSpecialExplanation>>#firstChildOfHierarchyElementsWithEdges|previewShow=#gtMeasurementChainFor:|noCode|previewHeight=150}$
 
 Similarly, the resizers view shows how the current and parent elements specify the resizing strategies. In our case, the text element has ==fitContent== while all parents have ==matchParent==. This is highly useful when reasoning about why an element might not appear properly in a scene.
 
-${example:GtWhatMakesBlocSpecialExamples>>#firstChildOfHierarchyElementsWithEdges|previewShow=#gtResizersFor:|noCode|previewHeight=150}$
+${example:GtWhatMakesBlocSpecialExplanation>>#firstChildOfHierarchyElementsWithEdges|previewShow=#gtResizersFor:|noCode|previewHeight=150}$
 
 These are but a few interesting tools that are built in.
 
 "
 Class {
-	#name : #GtWhatMakesBlocSpecialExamples,
+	#name : #GtWhatMakesBlocSpecialExplanation,
 	#superclass : #Object,
 	#category : #'GToolkit-Demo-WhatMakesBlocSpecial'
 }
 
 { #category : #accessing }
-GtWhatMakesBlocSpecialExamples >> classHierarchyWithEdges [
+GtWhatMakesBlocSpecialExplanation >> classHierarchyWithEdges [
 	<gtExample>
 	| root |
 	root := self rootWithHierarchyElements.
@@ -101,8 +104,8 @@ GtWhatMakesBlocSpecialExamples >> classHierarchyWithEdges [
 	^ root asPannableElement
 ]
 
-{ #category : #'as yet unclassified' }
-GtWhatMakesBlocSpecialExamples >> classHierarchyWithEdgesAndLines [
+{ #category : #accessing }
+GtWhatMakesBlocSpecialExplanation >> classHierarchyWithEdgesAndLines [
 	<gtExample>
 	| root |
 	root := self classHierarchyWithEdges.
@@ -112,6 +115,7 @@ GtWhatMakesBlocSpecialExamples >> classHierarchyWithEdgesAndLines [
 			line := BlLineElement new.
 			line constraints ignoreByLayout.
 			line
+				zIndex: -1;
 				border: (BlBorder paint: (Color gray alpha: 0.2) width: 5);
 				fromAnchor: (BlElementCenterRightAnchor element: element);
 				toAnchor: (BlElementCenterLeftAnchor element: child).
@@ -120,7 +124,7 @@ GtWhatMakesBlocSpecialExamples >> classHierarchyWithEdgesAndLines [
 ]
 
 { #category : #'as yet unclassified' }
-GtWhatMakesBlocSpecialExamples >> classHierarchyWithFlowLayout [
+GtWhatMakesBlocSpecialExplanation >> classHierarchyWithFlowLayout [
 	<gtExample>
 	| root |
 	root := self rootWithHierarchyElements.
@@ -131,21 +135,21 @@ GtWhatMakesBlocSpecialExamples >> classHierarchyWithFlowLayout [
 ]
 
 { #category : #'as yet unclassified' }
-GtWhatMakesBlocSpecialExamples >> editorOnSampleText [
+GtWhatMakesBlocSpecialExplanation >> editorOnSampleText [
 	<gtExample>
 	"self new editorOnSampleText"
 	| text editor element |
 	text := self sampleText.
 	editor := BrTextEditor new.
 	editor text: text.
-	element := GtEditorElementWithLayoutDoneEvent new.
+	element := BrEditorElement new.
 	element editor: editor.
 	element size: 300@100.
 	^ element
 ]
 
 { #category : #'as yet unclassified' }
-GtWhatMakesBlocSpecialExamples >> editorWithPreview [
+GtWhatMakesBlocSpecialExplanation >> editorWithPreview [
 	<gtExample>
 	| element block elementsMondrian root |
 	
@@ -185,7 +189,7 @@ GtWhatMakesBlocSpecialExamples >> editorWithPreview [
 ]
 
 { #category : #'as yet unclassified' }
-GtWhatMakesBlocSpecialExamples >> firstChildOfHierarchyElementsWithEdges [
+GtWhatMakesBlocSpecialExplanation >> firstChildOfHierarchyElementsWithEdges [
 	<gtExample>
 	"self new firstChildOfLayoutHierarchyElementsWithEdges"
 	| root |
@@ -194,7 +198,7 @@ GtWhatMakesBlocSpecialExamples >> firstChildOfHierarchyElementsWithEdges [
 ]
 
 { #category : #accessing }
-GtWhatMakesBlocSpecialExamples >> rootWithHierarchyElements [
+GtWhatMakesBlocSpecialExplanation >> rootWithHierarchyElements [
 	<gtExample>
 	"self new rootWithLayoutHierarchyElements"
 	| root |
@@ -214,16 +218,15 @@ GtWhatMakesBlocSpecialExamples >> rootWithHierarchyElements [
 ]
 
 { #category : #'as yet unclassified' }
-GtWhatMakesBlocSpecialExamples >> sampleText [
+GtWhatMakesBlocSpecialExplanation >> sampleText [
 	<gtExample>
 	| text |
 	text := 'The moldable editor' asRopedText.
 	text insertString: String cr at: text size.
 	text insertString: 'can embed graphical elements.' at: text size.
-	text fontSize: 14.
-
+	text glamorousRegularFont. 
 	(text from: 5 to: 12)
-		monospace;
+		glamorousCodeFont;
 		foreground: Color blue.
 
 	text 
