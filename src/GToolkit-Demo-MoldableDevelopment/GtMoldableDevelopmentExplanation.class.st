@@ -23,9 +23,18 @@ Software is data. Data does not have a shape. Yet, we need shape to reason about
 
 Consider this string.
 
-
 ${class:BaselineOfGToolkitInspector}$
 
+@@todo
+
+!!Example-driven
+
+@@todo
+
+
+!!Demo-driven
+
+@@todo
 
 
 
