@@ -31,7 +31,7 @@ Bloc introduces ${class:BlTextElement}$, the basic piece in a text editor.
 @@todo
 "
 Class {
-	#name : #GtWhatIsTheMoldableEditorMadeOfExamples,
+	#name : #GtWhatIsTheMoldableEditorMadeOfExplanation,
 	#superclass : #Object,
 	#category : #'GToolkit-Demo-WhatMakesBlocSpecial'
 }

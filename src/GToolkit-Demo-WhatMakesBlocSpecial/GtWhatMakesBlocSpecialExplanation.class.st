@@ -29,7 +29,7 @@ ${example:GtWhatMakesBlocSpecialExplanation>>#editorOnSampleText|noCode=|preview
 
 This ability is what allows the current document to display results live in the same editor, such as the example above. In this case, the preview is actually added by the syntax highlighter that interprets the ==$ { example: ... } $== command.
 
-Learn more details about the editor at ${class:GtWhatIsTheMoldableEditorMadeOfExamples}$
+Learn more details about the editor at ${class:GtWhatIsTheMoldableEditorMadeOfExplanation}$
 
 
 !!Graph layouts
@@ -86,7 +86,7 @@ Class {
 	#category : #'GToolkit-Demo-WhatMakesBlocSpecial'
 }
 
-{ #category : #accessing }
+{ #category : #examples }
 GtWhatMakesBlocSpecialExplanation >> classHierarchyWithEdges [
 	<gtExample>
 	| root |
@@ -106,7 +106,7 @@ GtWhatMakesBlocSpecialExplanation >> classHierarchyWithEdges [
 	^ root asPannableElement
 ]
 
-{ #category : #accessing }
+{ #category : #examples }
 GtWhatMakesBlocSpecialExplanation >> classHierarchyWithEdgesAndLines [
 	<gtExample>
 	| root |
@@ -125,7 +125,7 @@ GtWhatMakesBlocSpecialExplanation >> classHierarchyWithEdgesAndLines [
 	^ root
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #examples }
 GtWhatMakesBlocSpecialExplanation >> classHierarchyWithFlowLayout [
 	<gtExample>
 	| root |
@@ -136,7 +136,7 @@ GtWhatMakesBlocSpecialExplanation >> classHierarchyWithFlowLayout [
 	^ root asPannableElement
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #examples }
 GtWhatMakesBlocSpecialExplanation >> editorOnSampleText [
 	<gtExample>
 	"self new editorOnSampleText"
@@ -150,7 +150,7 @@ GtWhatMakesBlocSpecialExplanation >> editorOnSampleText [
 	^ element
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #examples }
 GtWhatMakesBlocSpecialExplanation >> editorWithPreview [
 	<gtExample>
 	| element block elementsMondrian root |
@@ -190,7 +190,7 @@ GtWhatMakesBlocSpecialExplanation >> editorWithPreview [
 	^ root
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #examples }
 GtWhatMakesBlocSpecialExplanation >> firstChildOfHierarchyElementsWithEdges [
 	<gtExample>
 	"self new firstChildOfLayoutHierarchyElementsWithEdges"
@@ -199,7 +199,7 @@ GtWhatMakesBlocSpecialExplanation >> firstChildOfHierarchyElementsWithEdges [
 	^ root contentElement children first
 ]
 
-{ #category : #accessing }
+{ #category : #examples }
 GtWhatMakesBlocSpecialExplanation >> rootWithHierarchyElements [
 	<gtExample>
 	"self new rootWithLayoutHierarchyElements"
@@ -219,7 +219,7 @@ GtWhatMakesBlocSpecialExplanation >> rootWithHierarchyElements [
 	^ root
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #examples }
 GtWhatMakesBlocSpecialExplanation >> sampleText [
 	<gtExample>
 	| text |
