@@ -14,18 +14,20 @@ For tools to be effective, they need to take that context into account.
 
 In a brilliant summary of Marshall McLuhan's work, John Culkin warned us that ''We shape our tools, and thereafter our tools shape us''. This is a remarkable statement that deserves closer scrutiny. If it is correct, we should explicitly choose the tools we use because they will determine the way we are going to think.
 
-If you are like most people, you have checked your smartphone within 10 minutes of waking up this morning. This need did not exist before the introduction of the smartphone. The correlation is remarkable, and it indicates that tool manufactured the need.
+If you are like most people, you have checked your smartphone within 10 minutes of waking up this morning. This need did not exist before the introduction of the smartphone. The correlation indicates that is not unreasonable to view the tool as having manufactured the need.
 
 Software is data. Data does not have a shape. Yet, we need shape to reason about it. The shape of software is provided by the tool. That makes the tool essential. So, what characteristics should the tool have?
 
 
-!!Moldability
+!!Moldability and humane assessment
 
 Consider this string.
 
 ${class:BaselineOfGToolkitInspector}$
 
 @@todo
+
+
 
 !!Example-driven
 
