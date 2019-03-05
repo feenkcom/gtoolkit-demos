@@ -22,6 +22,7 @@ The editor is made out of regular elements. This means that we can mix text with
 To get an idea of what this means, take a look at the editor example below.
 
 ${example:GtWhatMakesBlocSpecialExplanation>>#editorOnSampleText|noCode=|previewHeight=100|previewShow=#gtLiveFor:}$
+
 Below we have a visualization of the tree of elements out of which the editor element is formed. You can observe how the leafs are word elements and the red square sits right next to them.
 
 ${example:GtWhatMakesBlocSpecialExplanation>>#editorOnSampleText|noCode=|previewHeight=300|previewShow=#gtEditorElementsFor:}$
@@ -40,6 +41,7 @@ Every layout encapsulates an algorithm whose execution logic depends on the cons
 Let's consider a concrete scenario. The example below shows all subclasses of ${class:GtGraphLayout}$ as label elements organized in a grid layout with two columns, where each of the elements is aligned to the center of the grid cell.
 
 ${example:GtWhatMakesBlocSpecialExplanation>>#classHierarchyWithFlowLayout|codeExpanded=false|previewExpanded=|previewShow=#gtLiveFor:}$
+
 Note how the ==alignCenter== is specified as a constraint for each element.
 
 Now, we take the same elements only this time we add edge constraints between each pair of labels corresponding to a superclass and a subclass and specify a graph layout.
