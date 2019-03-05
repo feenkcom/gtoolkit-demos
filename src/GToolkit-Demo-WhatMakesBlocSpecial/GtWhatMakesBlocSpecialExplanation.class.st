@@ -22,13 +22,14 @@ The editor is made out of regular elements. This means that we can mix text with
 To get an idea of what this means, take a look at the editor example below.
 
 ${example:GtWhatMakesBlocSpecialExplanation>>#editorOnSampleText|noCode=|previewHeight=100|previewShow=#gtLiveFor:}$
+
 Below we have a visualization of the tree of elements out of which the editor element is formed. You can observe how the leafs are word elements and the red square sits right next to them.
 
 ${example:GtWhatMakesBlocSpecialExplanation>>#editorOnSampleText|noCode=|previewHeight=300|previewShow=#gtEditorElementsFor:}$
 
 This ability is what allows the current document to display results live in the same editor, such as the example above. In this case, the preview is actually added by the syntax highlighter that interprets the ==$ { example: ... } $== command.
 
-Learn more details about the editor at ${class:GtWhatIsTheMoldableEditorMadeOfExamples}$
+Learn more details about the editor at ${class:GtWhatIsTheMoldableEditorMadeOfExplanation}$
 
 
 !!Graph layouts
@@ -40,6 +41,7 @@ Every layout encapsulates an algorithm whose execution logic depends on the cons
 Let's consider a concrete scenario. The example below shows all subclasses of ${class:GtGraphLayout}$ as label elements organized in a grid layout with two columns, where each of the elements is aligned to the center of the grid cell.
 
 ${example:GtWhatMakesBlocSpecialExplanation>>#classHierarchyWithFlowLayout|codeExpanded=false|previewExpanded=|previewShow=#gtLiveFor:}$
+
 Note how the ==alignCenter== is specified as a constraint for each element.
 
 Now, we take the same elements only this time we add edge constraints between each pair of labels corresponding to a superclass and a subclass and specify a graph layout.
@@ -84,7 +86,7 @@ Class {
 	#category : #'GToolkit-Demo-WhatMakesBlocSpecial'
 }
 
-{ #category : #accessing }
+{ #category : #examples }
 GtWhatMakesBlocSpecialExplanation >> classHierarchyWithEdges [
 	<gtExample>
 	| root |
@@ -104,7 +106,7 @@ GtWhatMakesBlocSpecialExplanation >> classHierarchyWithEdges [
 	^ root asPannableElement
 ]
 
-{ #category : #accessing }
+{ #category : #examples }
 GtWhatMakesBlocSpecialExplanation >> classHierarchyWithEdgesAndLines [
 	<gtExample>
 	| root |
@@ -123,7 +125,7 @@ GtWhatMakesBlocSpecialExplanation >> classHierarchyWithEdgesAndLines [
 	^ root
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #examples }
 GtWhatMakesBlocSpecialExplanation >> classHierarchyWithFlowLayout [
 	<gtExample>
 	| root |
@@ -134,7 +136,7 @@ GtWhatMakesBlocSpecialExplanation >> classHierarchyWithFlowLayout [
 	^ root asPannableElement
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #examples }
 GtWhatMakesBlocSpecialExplanation >> editorOnSampleText [
 	<gtExample>
 	"self new editorOnSampleText"
@@ -148,7 +150,7 @@ GtWhatMakesBlocSpecialExplanation >> editorOnSampleText [
 	^ element
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #examples }
 GtWhatMakesBlocSpecialExplanation >> editorWithPreview [
 	<gtExample>
 	| element block elementsMondrian root |
@@ -188,7 +190,7 @@ GtWhatMakesBlocSpecialExplanation >> editorWithPreview [
 	^ root
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #examples }
 GtWhatMakesBlocSpecialExplanation >> firstChildOfHierarchyElementsWithEdges [
 	<gtExample>
 	"self new firstChildOfLayoutHierarchyElementsWithEdges"
@@ -197,7 +199,7 @@ GtWhatMakesBlocSpecialExplanation >> firstChildOfHierarchyElementsWithEdges [
 	^ root contentElement children first
 ]
 
-{ #category : #accessing }
+{ #category : #examples }
 GtWhatMakesBlocSpecialExplanation >> rootWithHierarchyElements [
 	<gtExample>
 	"self new rootWithLayoutHierarchyElements"
@@ -217,7 +219,7 @@ GtWhatMakesBlocSpecialExplanation >> rootWithHierarchyElements [
 	^ root
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #examples }
 GtWhatMakesBlocSpecialExplanation >> sampleText [
 	<gtExample>
 	| text |
