@@ -138,15 +138,16 @@ GtWhatMakesBlocSpecialExplanation >> classHierarchyWithFlowLayout [
 
 { #category : #examples }
 GtWhatMakesBlocSpecialExplanation >> editorOnSampleText [
+	"GtInspector openOn: self new editorOnSampleText"
+
 	<gtExample>
-	"self new editorOnSampleText"
 	| text editor element |
 	text := self sampleText.
 	editor := BrTextEditor new.
 	editor text: text.
 	element := BrEditorElement new.
 	element editor: editor.
-	element size: 300@100.
+	element constraintsDo: [:c | c horizontal fitContent. c vertical fitContent].
 	^ element
 ]
 
