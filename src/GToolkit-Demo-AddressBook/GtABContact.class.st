@@ -195,10 +195,10 @@ GtABContact >> gtViewContactDetailsOn: aView [
 			list addEventHandler: (GtInspectorListToSelectHandler new).
 			list column 
 				title: 'Detail';
-				stencil: [ :assoc | BrListLabelStencil matchParent: assoc key ].
+				stencil: [ :assoc | BrColumnCellLabelStencil matchParent: assoc key ].
 			list column 
 				title: 'Value';
-				stencil: [ :assoc | BrListLabelStencil matchParent: assoc value ].
+				stencil: [ :assoc | BrColumnCellLabelStencil matchParent: assoc value ].
 			list ]
 ]
 

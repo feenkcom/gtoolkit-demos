@@ -329,10 +329,10 @@ GtABAddressBook >> gtViewContactsOn: aView [
 			list addEventHandler: (GtInspectorListToSelectHandler new).
 			list column 
 				title: 'Name';
-				stencil: [ :aContact | BrListLabelStencil matchParent: aContact fullName ].
+				stencil: [ :aContact | BrColumnCellLabelStencil matchParent: aContact fullName ].
 			list column 
 				title: 'Telephone';
-				stencil: [ :aContact | BrListLabelStencil matchParent: aContact address telephone ].
+				stencil: [ :aContact | BrColumnCellLabelStencil matchParent: aContact address telephone ].
 			list ]
 ]
 
