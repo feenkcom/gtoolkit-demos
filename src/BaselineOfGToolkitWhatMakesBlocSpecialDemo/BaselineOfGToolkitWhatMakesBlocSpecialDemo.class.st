@@ -1,7 +1,7 @@
 "
 !What makes Bloc special
 
-Learn more about it in ${class:GtWhatMakesBlocSpecialExamples}$
+Learn more about it in ${class:GtWhatMakesBlocSpecialExplanation}$
 "
 Class {
 	#name : #BaselineOfGToolkitWhatMakesBlocSpecialDemo,
