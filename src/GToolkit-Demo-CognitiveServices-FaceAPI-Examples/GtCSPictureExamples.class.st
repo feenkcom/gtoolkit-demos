@@ -513,6 +513,18 @@ GtCSPictureExamples >> jsonFaceLandmarksSolovine [
 
 ]
 
+{ #category : #'example - picture' }
+GtCSPictureExamples >> newPictureInstance [
+	<gtExample>
+	| picture |
+	picture := GtCSPicture new.
+	self assert: picture url equals: nil.
+	self assert: picture pictureForm equals: nil.
+	self assert: picture faces isEmpty.
+	self assert: picture hasFaceStorage equals: false.
+	^ picture
+]
+
 { #category : #accessing }
 GtCSPictureExamples >> pictureFile [
 	^ GtIcebergUtility repositoriesLocation 
