@@ -536,6 +536,13 @@ GtCSPictureExamples >> pictureFile [
 ]
 
 { #category : #accessing }
+GtCSPictureExamples >> pictureForm [
+	self pictureFile binaryReadStreamDo: [ :aStream |
+		^ ImageReadWriter formFromStream: aStream ].
+	Error signal.
+]
+
+{ #category : #accessing }
 GtCSPictureExamples >> pictureUrl [
 	^ 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d7/Einstein-with-habicht-and-solovine.jpg/1280px-Einstein-with-habicht-and-solovine.jpg'
 ]
@@ -594,6 +601,20 @@ GtCSPictureExamples >> pictureWithFacesWithLandmarksAndNoForm [
 	self assertFacesWithNoFormFor: picture.
 	^ picture
 
+]
+
+{ #category : #'example - picture' }
+GtCSPictureExamples >> pictureWithManuallySetForm [
+	<gtExample>
+	|form  picture |
+	form := self pictureForm. 
+	picture := self emptyPicture.
+	
+	picture pictureForm: form.
+	self assert: picture pictureForm equals: form.
+	self assert: picture faces size equals: 0.
+	
+	^ picture
 ]
 
 { #category : #'example - picture' }

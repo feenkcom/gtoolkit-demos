@@ -1,13 +1,15 @@
 "
 I model a face present in a picture object.
 
-I maintain properties for the face object, including the rectangle delimiting the face within the picture. I also point to the picture object that contains the face.
+I store properties for the face object, including the rectangle delimiting the face within a ${class:GtCSPicture}$ object, face attributes (see ${class:GtCSFaceAttributes}$), and face landmarks ${class:GtCSFaceLandmarks}$. I also point to the picture object that contains the face.
 
-Public API and Key Messages
+The reactangle delimiting a face and its properties and landmarks can be added to a face, even if the face has not yet a graphical representation.
+${example:GtCSPictureExamples>>#pictureWithManuallySetForm}$
 
-- hasFaceForm - indicates if a graphical representation of the face can be computed   
-- faceForm - returns the graphical representation of the face
-- initializeFromJson: initializes the properties if the face based on the given data. The given data should be a dictionary following the structure returned by the Azures Face API
+If the face is added to a picture, then its graphical representation is given by cropying the portion give by the rectangle attribute the from the picture.
+${example:GtCSPictureExamples>>#pictureWithManuallySetForm}$
+
+The recommended way to initialize a face object is using JSON data. See <Adding faces from JSON files> for more details.
 "
 Class {
 	#name : #GtCSFace,
@@ -18,7 +20,7 @@ Class {
 		'landmarks',
 		'containerPicture'
 	],
-	#category : 'GToolkit-Demo-CognitiveServices-FaceAPI'
+	#category : #'GToolkit-Demo-CognitiveServices-FaceAPI'
 }
 
 { #category : #accessing }
