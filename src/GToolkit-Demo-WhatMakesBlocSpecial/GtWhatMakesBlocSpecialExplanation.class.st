@@ -40,7 +40,7 @@ Every layout encapsulates an algorithm whose execution logic depends on the cons
 
 Let's consider a concrete scenario. The example below shows all subclasses of ${class:GtGraphLayout}$ as label elements organized in a grid layout with two columns, where each of the elements is aligned to the center of the grid cell.
 
-${example:GtWhatMakesBlocSpecialExplanation>>#classHierarchyWithFlowLayout|codeExpanded=false|previewExpanded=|previewShow=#gtLiveFor:}$
+${example:GtWhatMakesBlocSpecialExplanation>>#classHierarchyWithGridLayout|codeExpanded=false|previewExpanded=|previewShow=#gtLiveFor:}$
 
 Note how the ==alignCenter== is specified as a constraint for each element.
 
@@ -126,7 +126,7 @@ GtWhatMakesBlocSpecialExplanation >> classHierarchyWithEdgesAndLines [
 ]
 
 { #category : #examples }
-GtWhatMakesBlocSpecialExplanation >> classHierarchyWithFlowLayout [
+GtWhatMakesBlocSpecialExplanation >> classHierarchyWithGridLayout [
 	<gtExample>
 	| root |
 	root := self rootWithHierarchyElements.
