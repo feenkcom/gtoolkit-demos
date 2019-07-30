@@ -18,10 +18,27 @@ If you are like most people, you have checked your smartphone within 10 minutes 
 
 Software is data. Data does not have a shape. Yet, we need shape to reason about it. The shape of software is provided by the tool. That makes the tool essential. So, what characteristics should the tool have?
 
-
 !!Moldability and humane assessment
 
-Consider this string.
+As an example, let us consider inspecting the object corresponding to the current working directory. A default inspector would show this. It's an accurate description of the variables of the ${class:FileReference}$ instance.
+
+${example:FileReference class>>#gtExampleDirectory|noCode|previewShow=#gtRawFor:|previewHeight=150}$
+
+Now consider this view of the same object.
+
+${example:FileReference class>>#gtExampleDirectory|noCode|previewShow=#gtItemsFor:|previewHeight=150}$
+
+Which one is more recognizable? Which one makes you feel more comfortable relating to. Likely the second one. We do not have to think whether the instance represents a file or a directory. The view clearly shows a the contents of the directory through a view that is common in file browsers. 
+
+While the first view is generic in that it is applicable to any object, the second one is useful exactly because it is specific. In fact, each point of view can benefit from a specific view. It is for this reason that the inspector offers multiple views and enables you to craft your own for every single object.
+
+
+${example:FileReference class>>#gtExampleDirectory|noCode|previewHeight=200}$
+
+To exploit the full potential of the Glamorous Toolkit you need to contextualize it by programming it. To this end, the Glamorous Toolkit offers multiple ways to extend the tools and to express views and other interactions. Throughout the environment the goal of the engines is to make the cost of custom tools to be as inexpensive as possible.
+
+This apparently small change in perspective has a dramatic influence on how you can approach software systems. We call this moldable development.
+
 
 ${class:BaselineOfGToolkitInspector}$
 
