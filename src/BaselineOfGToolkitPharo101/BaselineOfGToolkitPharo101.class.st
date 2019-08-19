@@ -1,6 +1,6 @@
 Class {
 	#name : #BaselineOfGToolkitPharo101,
-	#superclass : #Object,
+	#superclass : #BaselineOf,
 	#category : #BaselineOfGToolkitPharo101
 }
 
