@@ -18,7 +18,7 @@ GtTextAndElementSlide >> create [
 		constraintsDo: [:c |
 			c horizontal matchParent.
 			c vertical matchParent ];
-		padding: (BlInsets top: 2000; bottom: 20);
+		padding: (BlInsets top: 20 bottom: 20);
 		layout: BlLinearLayout vertical;
 		addChild: (BlTextElement new
 				constraintsDo: [ :c |
