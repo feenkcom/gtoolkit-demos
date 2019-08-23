@@ -16,28 +16,26 @@ GtTextAndElementSlide >> create [
 	| container |
 	container := BlElement new
 		constraintsDo: [:c |
-			c horizontal fitContent.
-			c vertical fitContent ];
-		layout: (BlLinearLayout vertical);
+			c horizontal matchParent.
+			c vertical matchParent ];
+		padding: (BlInsets top: 2000; bottom: 20);
+		layout: BlLinearLayout vertical;
 		addChild: (BlTextElement new
 				constraintsDo: [ :c |
-					c linear horizontal alignCenter.
-					c linear vertical alignCenter];
-				padding: (BlInsets top: 60; bottom: 40);
-				margin: (BlInsets top: 20; left: 10);
+					c vertical fitContent.
+					c horizontal fitContent.
+					c linear horizontal alignCenter];
 				text: text);
 		addChild: (BlElement new
 			constraintsDo: [:ct |
-				ct linear horizontal alignCenter.
-				ct linear vertical alignCenter ];
-			layout: (BlGridLayout new vertical));
-			addChild: ((BlElement new 
-								look: BrShadowLook;
-								background: Color white;
-								margin: (BlInsets all: 20);
-								addChild: element)
-							size: 800@500).
-	^ container asPannableElement
+				ct vertical matchParent.
+				ct horizontal matchParent ];
+			layout: BlLinearLayout vertical;
+			look: BrShadowLook;
+			background: Color white;
+			margin: (BlInsets all: 20);
+			addChild: (element constraintsDo: [:c | c horizontal matchParent. c vertical matchParent ])).
+	^ container
 ]
 
 { #category : #accessing }

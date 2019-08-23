@@ -33,7 +33,7 @@ GtPharo101 >> addArraysSlidesIn: aSlider [
 { #category : #adding }
 GtPharo101 >> addBasicTypesSlidesIn: aSlider [
 	aSlider addSlide: (GtTitleSlide new
-				titleText: ('Pharo101' asRopedText fontSize: 70);
+				titleText: ('Pharo 101' asRopedText fontSize: 70);
 				subtitleText: ('Basic types' asRopedText fontSize:50; foreground: Color gray)).
 	self addNumbersSlidesIn: aSlider.
 	self addCharactersSlidesIn: aSlider.
@@ -101,7 +101,7 @@ GtPharo101 >> addBlockExecutionSlidesIn: aSlider [
 { #category : #adding }
 GtPharo101 >> addBlocksSlidesIn: aSlider [
 	aSlider addSlide: (GtTitleSlide new
-				titleText: ('Pharo101' asRopedText fontSize: 70);
+				titleText: ('Pharo 101' asRopedText fontSize: 70);
 				subtitleText: ('Blocks' asRopedText fontSize:50; foreground: Color gray)).
 	aSlider addSlide: (GtTextSlide new
 				firstText: 
@@ -157,7 +157,7 @@ Character cr charCode.'
 { #category : #adding }
 GtPharo101 >> addConditionalsAndLoopsSlidesIn: aSlider [
 	aSlider addSlide: (GtTitleSlide new
-				titleText: ('Pharo101' asRopedText fontSize: 70);
+				titleText: ('Pharo 101' asRopedText fontSize: 70);
 				subtitleText: ('Conditionals and Loops' asRopedText fontSize:50; foreground: Color gray)).
 	self addConditionalsSlidesIn: aSlider.
 	self addLoopsSlidesIn: aSlider.
@@ -330,7 +330,7 @@ GtPharo101 >> addMessagesExecutionOrderSlidesIn: aSlider [
 { #category : #adding }
 GtPharo101 >> addMessagesSlidesIn: aSlider [
 	aSlider addSlide: (GtTitleSlide new
-				titleText: ('Pharo101' asRopedText fontSize: 70);
+				titleText: ('Pharo 101' asRopedText fontSize: 70);
 				subtitleText: ('Messages' asRopedText fontSize:50; foreground: Color gray)).
 	aSlider addSlide: (GtTextSlide new
 				firstText: 'Messages are sent to objects.';
@@ -454,7 +454,28 @@ GtPharo101 >> addUnaryMessagesSlidesIn: aSlider [
 		element: (GtInspector createOnPlayBook: aBook)).
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #accessing }
+GtPharo101 >> create [
+	| show |
+	
+	show := GtSlideShow new.
+	show addSlide: (GtTitleSlide new
+				titleText: ('Pharo 101' asRopedText fontSize: 70)).
+	
+	self addBasicTypesSlidesIn: show.
+	self addMessagesSlidesIn: show.
+	self addBlocksSlidesIn: show.
+	self addConditionalsAndLoopsSlidesIn: show.
+	self addInstantiationSlidesIn: show.
+	self addReflectionSlidesIn: show.
+	
+	show addSlide: (GtTitleSlide new
+				titleText: ('Enjoy programming in Pharo' asRopedText fontSize: 70)).
+	
+	^ show.
+]
+
+{ #category : #adding }
 GtPharo101 >> createBookFrom: aCollection [
 	| aBook |
 	aBook := GtPlayBook newDefault.
@@ -464,27 +485,4 @@ GtPharo101 >> createBookFrom: aCollection [
 				aBook pages first addSnippet: GtCoderSnippet new.
 				aBook pages last snippets last sourceCode: el] ].
 	^ aBook.
-]
-
-{ #category : #accessing }
-GtPharo101 >> start [
-	| slider |
-	
-	slider := GtSlideShow new.
-	slider addSlide: (GtTitleSlide new
-				titleText: ('Pharo101' asRopedText fontSize: 70);
-				subtitleText: 
-					('Tutorial for beginners' asRopedText fontSize: 50; foreground: Color gray)).
-	
-	self addBasicTypesSlidesIn: slider.
-	self addMessagesSlidesIn: slider.
-	self addBlocksSlidesIn: slider.
-	self addConditionalsAndLoopsSlidesIn: slider.
-	self addInstantiationSlidesIn: slider.
-	self addReflectionSlidesIn: slider.
-	
-	slider addSlide: (GtTitleSlide new
-				titleText: ('Enjoy programming in Pharo' asRopedText fontSize: 70)).
-	
-	^ slider.
 ]
