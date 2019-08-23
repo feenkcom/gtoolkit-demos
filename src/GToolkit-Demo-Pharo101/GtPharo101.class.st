@@ -3,7 +3,7 @@ I am a tutorial presentation for beginners.
 "
 Class {
 	#name : #GtPharo101,
-	#superclass : #Object,
+	#superclass : #BrStencil,
 	#category : #'GToolkit-Demo-Pharo101'
 }
 
