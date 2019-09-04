@@ -82,7 +82,6 @@ GtCSPictureExamples >> faceEinsteinWithLandmarks [
 { #category : #'example - face' }
 GtCSPictureExamples >> faceEinsteinWithLandmarksInPicture [
 	<gtExample>
-	<noTest>
 	| face picture|
 	face := self faceEinsteinWithLandmarks.
 	picture := self emptyPicture.
@@ -550,7 +549,6 @@ GtCSPictureExamples >> pictureUrl [
 { #category : #'example - picture' }
 GtCSPictureExamples >> pictureWithFacesAndForm [
 	<gtExample>
-	<noTest>
 	| picture |
 	picture := self pictureWithFacesAndNoForm.
 	picture loadPictureFormFile: self pictureFile.
@@ -578,7 +576,6 @@ GtCSPictureExamples >> pictureWithFacesAndNoForm [
 { #category : #'example - picture' }
 GtCSPictureExamples >> pictureWithFacesWithLandmarksAndForm [
 	<gtExample>
-	<noTest>
 	| picture |
 	picture := self pictureWithFacesWithLandmarksAndNoForm.
 	picture loadPictureFormFile: self pictureFile.
@@ -620,7 +617,6 @@ GtCSPictureExamples >> pictureWithManuallySetForm [
 { #category : #'example - picture' }
 GtCSPictureExamples >> pictureWithNoFacesAndForm [
 	<gtExample>
-	<noTest>
 	| picture |
 	picture := self emptyPicture.
 	self assert: picture pictureForm equals: nil.
