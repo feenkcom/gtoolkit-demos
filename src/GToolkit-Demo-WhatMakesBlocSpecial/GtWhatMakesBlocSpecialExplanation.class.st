@@ -159,7 +159,7 @@ GtWhatMakesBlocSpecialExplanation >> editorWithPreview [
 	element := self editorOnSampleText.
 	element 
 		background: Color white;
-		effect: (BlDropShadowEffect color: Color lightGray width: 3 offset: 0@0);
+		effect: (BlGaussianShadowEffect color: Color lightGray width: 3 offset: 0@0);
 		constraintsDo: [ :c |
 			c horizontal matchParent.
 			c vertical matchParent.
@@ -168,7 +168,7 @@ GtWhatMakesBlocSpecialExplanation >> editorWithPreview [
 	elementsMondrian := BlElement new.
 	elementsMondrian 
 		background: Color white;
-		effect: (BlDropShadowEffect color: Color lightGray width: 3 offset: 0@0);
+		effect: (BlGaussianShadowEffect color: Color lightGray width: 3 offset: 0@0);
 		constraintsDo: [ :c | 
 			c horizontal matchParent.
 			c vertical matchParent.].
@@ -215,7 +215,7 @@ GtWhatMakesBlocSpecialExplanation >> rootWithHierarchyElements [
 			background: Color white;
 			margin: (BlInsets all: 5);
 			padding: (BlInsets all: 10);
-			effect: (BlDropShadowEffect color: (Color gray alpha: 0.5) width: 5 offset: 0@0).
+			effect: (BlGaussianShadowEffect color: (Color gray alpha: 0.5) width: 5 offset: 0@0).
 		root addChild: label ].
 	^ root
 ]
