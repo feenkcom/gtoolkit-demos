@@ -420,38 +420,34 @@ GtPharo101 >> addStringsSlidesIn: aSlider [
 ]
 
 { #category : #adding }
-GtPharo101 >> addSymbolsSlidesIn: aSlider [
-	| aBook |
-	aBook := self createBookFrom: {
-		'"Turns the String into a Symbol"
-''MySymbol'' asSymbol.'. 
-		'"Turns the Symbol into a String"
-#MySymbol asString.'.
-		'"Message == return true is the two objects are the SAME"
-(2 asString) == (2 asString).'. 
-		'(2 asString) asSymbol == (2 asString) asSymbol.'
-	}.
-	
+GtPharo101 >> addSymbolsSlidesIn: aSlider [	
 	aSlider addSlide: (GtTextSlide new
 		subtitle: 'Symbols';
 		firstText: 'A Symbol is a String which is guaranteed to be globally unique.';
 		secondText: 'There is one and only one Symbol #MySymbol, but there can be several ''MySymbol'' String objects').
 	aSlider addSlide: (GtTextAndElementSlide new
 		text: 'Symbol Examples';
-		element: (GtInspector createOnPlayBook: aBook)).
+		element: [ 
+			GtPlaygroundSlide new 
+				snippets: {
+					'"Turns the String into a Symbol"
+''MySymbol'' asSymbol.'. 
+							'"Turns the Symbol into a String"
+#MySymbol asString.'.
+							'"Message == return true is the two objects are the SAME"
+(2 asString) == (2 asString).'. 
+							'(2 asString) asSymbol == (2 asString) asSymbol.'};
+				asElement ]).
 ]
 
 { #category : #adding }
-GtPharo101 >> addUnaryMessagesSlidesIn: aSlider [
-	| aBook |
-	aBook := self createBookFrom: {'1 class.'. 'false not.'. 'Date today.'. 'Float pi.'}.
-	
+GtPharo101 >> addUnaryMessagesSlidesIn: aSlider [	
 	aSlider addSlide: (GtTextSlide new
 		subtitle: 'Unary Messages';
 		firstText: 'They have the following form: anObject aMessage').
 	aSlider addSlide: (GtTextAndElementSlide new
 		text: 'Unary Messages Examples';
-		element: (GtInspector createOnPlayBook: aBook)).
+		element: [GtPlaygroundSlide new snippets: {'1 class.'. 'false not.'. 'Date today.'. 'Float pi.'}; asElement ]).
 ]
 
 { #category : #accessing }
@@ -480,9 +476,8 @@ GtPharo101 >> createBookFrom: aCollection [
 	| aBook |
 	aBook := GtPlayBook newDefault.
 	aBook pages first snippets first sourceCode: (aCollection at: 1).
-	(aCollection size > 1)
-		ifTrue: [ aCollection allButFirst do: [:el |
-				aBook pages first addSnippet: GtCoderSnippet new.
-				aBook pages last snippets last sourceCode: el] ].
+	aCollection allButFirst do: [:el |
+		aBook pages first addSnippet: GtCoderSnippet new.
+		aBook pages last snippets last sourceCode: el].
 	^ aBook.
 ]

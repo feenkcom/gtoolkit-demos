@@ -19,18 +19,17 @@ GtTour >> create [
 			titleText: ('moldable development environment' asRopedText 
 				fontSize: 50; fontName: 'Helvetica Neue'; bold;
 				yourself).
-		GtElementSlide new element: (GtInspector createOnPlayBook: (GtClassCoder forClass: GtClassCoder)).
+		GtElementSlide new element: [GtInspector createOnPlayBook: (GtClassCoder forClass: GtClassCoder)].
 		
 		GtRawViewsSlide new.
 		GtCustomViewsSlide new.
 		GtAllViewsSlide new.
-		
-		
-	GtTitleSlide new
+			
+		GtTitleSlide new
 			titleText: ('components' asRopedText 
 				fontSize: 50; fontName: 'Helvetica Neue'; bold;
 				yourself).
-		GtElementSlide new element: (GtInspector createOnPlayBook: (GtClassCoder forClass: GtClassCoder)).	
+		GtElementSlide new element: [GtInspector createOnPlayBook: (GtClassCoder forClass: GtClassCoder)].	
 			
 		GtComponentsSlide new.
 	
@@ -38,13 +37,13 @@ GtTour >> create [
 			titleText: ('coder' asRopedText 
 				fontSize: 50; fontName: 'Helvetica Neue'; bold;
 				yourself).
-		GtElementSlide new element: (GtInspector createOnPlayBook: (GtClassCoder forClass: GtClassCoder)).
+		GtElementSlide new element: [GtInspector createOnPlayBook: (GtClassCoder forClass: GtClassCoder)].
 		
 		GtTitleSlide new
 			titleText: ('querying' asRopedText 
 				fontSize: 50; fontName: 'Helvetica Neue'; bold;
 				yourself).
-		GtElementSlide new element: (GtInspector createOnPlayBook: (GtPlayBook newDefault)).
+		GtElementSlide new element: [GtInspector createOnPlayBook: (GtPlayBook newDefault)].
 		
 		GtTitleSlide new
 			titleText: ('spotter' asRopedText 
@@ -57,6 +56,7 @@ GtTour >> create [
 				fontSize: 50; fontName: 'Helvetica Neue'; bold;
 				yourself).
 		GtEditorElementWithTreeSlide new.
+		
 		GtTitleSlide new
 			titleText: ('combining widgets with visualization' asRopedText 
 				fontSize: 50; fontName: 'Helvetica Neue'; bold;
@@ -72,7 +72,7 @@ GtTour >> create [
 			titleText: ('platform' asRopedText 
 				fontSize: 50; fontName: 'Helvetica Neue'; bold;
 				yourself).
-		GtElementSlide new element: (GtInspector createOnPlayBook: (GtClassCoder forClass: JSParser)).
+		GtElementSlide new element: [GtInspector createOnPlayBook: (GtClassCoder forClass: JSParser)].
 	}.
 	^ show
 ]
