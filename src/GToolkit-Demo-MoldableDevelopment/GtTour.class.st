@@ -19,8 +19,6 @@ GtTour >> create [
 			titleText: ('moldable development environment' asRopedText 
 				fontSize: 50; fontName: 'Helvetica Neue'; bold;
 				yourself).
-		GtElementSlide new element: [GtInspector createOnPlayBook: (GtClassCoder forClass: GtClassCoder)].
-		
 		GtRawViewsSlide new.
 		GtCustomViewsSlide new.
 		GtAllViewsSlide new.
@@ -29,8 +27,6 @@ GtTour >> create [
 			titleText: ('components' asRopedText 
 				fontSize: 50; fontName: 'Helvetica Neue'; bold;
 				yourself).
-		GtElementSlide new element: [GtInspector createOnPlayBook: (GtClassCoder forClass: GtClassCoder)].	
-			
 		GtComponentsSlide new.
 	
 		GtTitleSlide new
