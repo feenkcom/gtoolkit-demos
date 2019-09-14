@@ -9,55 +9,52 @@ GtTour >> create [
 	| show |
 	show := GtSlideShow new.
 	show slides: { 
-		GtTitleSlide new
-			titleText: ('glamoroustoolkit' asRopedText 
-				fontSize: 70; fontName: 'Helvetica Neue'; bold;
-				in: [:title | (title from: 1 to: 'glamorous' size) thin];
-				yourself).
+		GtFilePictureSlide new fileReference: (GtIcebergUtility documentAtPath: (Path * 'feenkcom' / 'gtoolkit' / 'doc' / 'gtoolkit.png')).
 
 		GtTitleSlide new
-			titleText: ('moldable development environment' asRopedText 
-				fontSize: 50; fontName: 'Helvetica Neue'; bold;
-				yourself).
-		GtRawViewsSlide new.
-		GtCustomViewsSlide new.
-		GtAllViewsSlide new.
-			
-		GtTitleSlide new
-			titleText: ('components' asRopedText 
-				fontSize: 50; fontName: 'Helvetica Neue'; bold;
-				yourself).
-		GtComponentsSlide new.
+			titleText: ('moldable development environment' asRopedText fontSize: 50; glamorousRegularFont).
+		GtTextAndElementSlide new 
+			element: [ GtRawViewsSlide new asElement ];
+			textWithFormat: ('Consider how these different objects look quite similar in the inspector' asRopedText glamorousRegularFont; foreground: Color gray).
+		GtTextAndElementSlide new 
+			element: [ GtCustomViewsSlide new asElement ];
+			textWithFormat: ('Yet, when we change the view, the differences are obvious' asRopedText glamorousRegularFont; foreground: Color gray).
+		GtTextAndElementSlide new 
+			element: [ GtAllViewsSlide new asElement ];
+			textWithFormat: ('Every object is different, and the environment should show it, too' asRopedText glamorousRegularFont; foreground: Color gray).
 	
+"		GtTitleSlide new
+			titleText: ('components' asRopedText fontSize: 50; glamorousRegularFont).
+		GtTextAndElementSlide new 
+			element: [ GtAllViewsSlide new asElement ];
+			textWithFormat: ('Glamorous Toolkit is made of multiple programmable components' asRopedText glamorousRegularFont; foreground: Color gray).
+		GtComponentsSlide new.
+"	
 		GtTitleSlide new
-			titleText: ('coder' asRopedText 
-				fontSize: 50; fontName: 'Helvetica Neue'; bold;
-				yourself).
+			titleText: ('live programming and inspection' asRopedText fontSize: 50; glamorousRegularFont).
+
+		GtTitleSlide new
+			titleText: ('moldable inspection' asRopedText fontSize: 50; glamorousRegularFont).
+		
+		GtTitleSlide new
+			titleText: ('coding' asRopedText fontSize: 50; glamorousRegularFont).
 		GtElementSlide new element: [GtInspector createOnPlayBook: (GtClassCoder forClass: GtClassCoder)].
+
+		GtTitleSlide new
+			titleText: ('moldable coding' asRopedText fontSize: 50; glamorousRegularFont).
 		
 		GtTitleSlide new
-			titleText: ('querying' asRopedText 
-				fontSize: 50; fontName: 'Helvetica Neue'; bold;
-				yourself).
-		GtElementSlide new element: [GtInspector createOnPlayBook: (GtPlayBook newDefault)].
+			titleText: ('querying' asRopedText fontSize: 50; glamorousRegularFont).
+		GtPlaygroundSlide new snippets: {'#gtView gtPragmas' . '#gtView gtPragmas & #list gtReferences'}.
 		
 		GtTitleSlide new
-			titleText: ('spotter' asRopedText 
-				fontSize: 50; fontName: 'Helvetica Neue'; bold;
-				yourself).
+			titleText: ('moldable search' asRopedText fontSize: 50; glamorousRegularFont).
 		GtSpotterSlide new.
-		
+
 		GtTitleSlide new
-			titleText: ('one rendering tree' asRopedText 
-				fontSize: 50; fontName: 'Helvetica Neue'; bold;
-				yourself).
-		GtEditorElementWithTreeSlide new.
+			titleText: ('live documents' asRopedText fontSize: 50; glamorousRegularFont).
+		GtElementSlide new element: [GtInspector createOnPlayBook: (GtDocument forClass: BaselineOfGToolkit)].
 		
-		GtTitleSlide new
-			titleText: ('combining widgets with visualization' asRopedText 
-				fontSize: 50; fontName: 'Helvetica Neue'; bold;
-				yourself).
-		GtSearchFilterHierarchySlide new.
 		GtTitleSlide new
 			titleText: ('tracing variables' asRopedText 
 				fontSize: 50; fontName: 'Helvetica Neue'; bold;
