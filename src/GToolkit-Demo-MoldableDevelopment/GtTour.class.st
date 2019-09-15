@@ -45,11 +45,24 @@ GtTour >> create [
 		
 		GtTitleSlide new
 			titleText: ('querying' asRopedText fontSize: 50; glamorousRegularFont).
-		GtPlaygroundSlide new snippets: {'#gtView gtPragmas' . '#gtView gtPragmas & #list gtReferences'}.
+		GtTextAndElementSlide new 
+			element: [ GtAllViewsSlide new asElement ];
+			textWithFormat: ('Inspect the result of this query. Expand the methods' asRopedText glamorousRegularFont; foreground: Color gray).
+		GtPlaygroundSlide new snippets: {'#gtView gtPragmas'}.
+		GtTextAndElementSlide new 
+			element: [ GtAllViewsSlide new asElement ];
+			textWithFormat: ('Now, try with this composed query. Notice the highlighting' asRopedText glamorousRegularFont; foreground: Color gray).
+		GtPlaygroundSlide new snippets: {'#gtView gtPragmas & #list gtReferences'}.
 		
 		GtTitleSlide new
 			titleText: ('moldable search' asRopedText fontSize: 50; glamorousRegularFont).
-		GtSpotterSlide new.
+		GtTextAndElementSlide new 
+			element: [ GtSpotterSlide new asElement ];
+			textWithFormat: ('Search is pervasive. Try searching for Object' asRopedText glamorousRegularFont; foreground: Color gray).
+		GtTextAndElementSlide new 
+			element: [ GtSpotterSlide new asElement ];
+			textWithFormat: (('Or search for .', FileSystem disk delimiter asString) asRopedText glamorousRegularFont; foreground: Color gray).
+		
 
 		GtTitleSlide new
 			titleText: ('live documents' asRopedText fontSize: 50; glamorousRegularFont).

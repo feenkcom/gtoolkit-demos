@@ -47,40 +47,39 @@ GtPharo101 >> addBinaryMessagesSlidesIn: aSlider [
 	aSlider
 		addSlide:
 			(GtTextSlide new
-				subtitle: 'Binary Messages';
-				firstText: 'They have the following form: anObject aMessage anotherObject';
-				secondText: 'And they are always operands like: +, *, &, |').
+				subtitle: 'Binary messages';
+				firstText: 'They look like anObject aMessage anotherObject';
+				secondText: 'And they are operands containing characters like +, *, &, |, <, =, >').
 	aSlider
 		addSlide:
 			(GtTextAndElementSlide new
-				text: 'Binary Messages Examples';
+				text: 'Binary messages examples';
 				element: [ GtPlaygroundSlide new
 						snippets:
-							{'"The message * applys to object 3 with the object 2"
-3*2.' . 'Date today + 3 weeks.' . '"The operand & is also a binary message. Here sent to true with object false"
+							{'"In this case, the message * is sent to 21 with 2 as argument"
+21 * 2.' . 'Date today + 42 weeks.' .
+'"The operand & is also a binary message. Here it is sent to true with false as argument"
 true & false.'.
-							'"The message here is <="
-10 <= 12.' . '"The message comma applys to the object ''ab'' with the object ''cd'' concatenating the both"
+							'"Here, the message is <="
+41 <= 42.' . 
+'"The message comma applies to ''ab'' with the argument being ''cd''"
 ''ab'',''cd''.'};
 						asElement ])
 ]
 
 { #category : #adding }
 GtPharo101 >> addBlockAssignationSlidesIn: aSlider [
-	| codeExample |
-	codeExample := 'x := [:a | a + 2].' , Character cr asString
-		, 'x value:12.'.
 	aSlider
 		addSlide:
 			(GtTextSlide new
-				subtitle: 'Blocks Assignation';
-				firstText: 'Blocks can be assgined to a variable then executed later').
+				subtitle: 'Blocks assignment';
+				firstText: 'Blocks can be assgined to a variable and can be executed later').
 	aSlider
 		addSlide:
 			(GtTextAndElementSlide new
-				text: 'Block Assignation Examples';
+				text: 'Block assignation examples';
 				element: [ GtPlaygroundSlide new
-						snippets: {codeExample};
+						snippets: {'x := [:a | a + 2]' . 'x value: 40'};
 						asElement ])
 ]
 
@@ -89,16 +88,15 @@ GtPharo101 >> addBlockExecutionSlidesIn: aSlider [
 	aSlider
 		addSlide:
 			(GtTextSlide new
-				subtitle: 'Blocks Execution';
-				firstText: 'We can execute a block by sending it value messages').
+				subtitle: 'Blocks execution';
+				firstText: 'We can execute a block by sending value messages to it').
 	aSlider
 		addSlide:
 			(GtTextAndElementSlide new
-				text: 'Blocks Examples';
+				text: 'Blocks examples';
 				element: [ GtPlaygroundSlide new
 						snippets:
-							{'[:x | x+2] value: 5.' . '[:x :y| x + y] value:3 value:5.'.
-							'[GTPlayground open] value.'};
+							{'[ 40 + 2 ] value'. '[ :x | x + 2 ] value: 40.' . '[ :x :y | x + y ] value: 40 value: 2.'};
 						asElement ])
 ]
 
@@ -109,8 +107,8 @@ GtPharo101 >> addBlocksSlidesIn: aSlider [
 				subtitleText: ('Blocks' asRopedText fontSize:50; foreground: Color gray)).
 	aSlider addSlide: (GtTextSlide new
 				firstText: 
-					'They are anonymous methods that can be stored into variables and executed on demand';
-				secondText: 'And are delimited by square brackets []').
+					'Blocks are anonymous methods that can be stored into variables and executed on demand.';
+				secondText: 'Blocks are delimited by square brackets [].').
 	self addBlockExecutionSlidesIn: aSlider.
 	self addBlockAssignationSlidesIn: aSlider.
 ]
@@ -120,18 +118,18 @@ GtPharo101 >> addCascadeOperatorSlidesIn: aSlider [
 	aSlider
 		addSlide:
 			(GtTextSlide new
-				subtitle: 'Cascade Operator';
-				firstText: 'It is noted with ;';
-				secondText: 'And it is useful to send messages to the same receiver').
+				subtitle: 'Cascade operator';
+				firstText: 'The cascade operator is useful to send messages to the same receiver.';
+				secondText: 'It is denoted with ;.').
 	aSlider
 		addSlide:
 			(GtTextAndElementSlide new
-				text: 'Cascade Operator Examples';
+				text: 'Cascade operator examples';
 				element: [ GtPlaygroundSlide new
 						snippets:
 							{'"Both + messages are sent to 2"
-2+3;+5.' . '"The one above is equivalent to: "
-2+3. 2+5.'};
+40 + 3; + 2.' . '"The one above is equivalent to: "
+40 + 3. 40 + 2.'};
 						asElement ])
 ]
 
@@ -141,11 +139,11 @@ GtPharo101 >> addCharactersSlidesIn: aSlider [
 		addSlide:
 			(GtTextSlide new
 				subtitle: 'Characters';
-				firstText: 'They can be instantiated using $ operator').
+				firstText: 'A character can be instantiated using $ operator').
 	aSlider
 		addSlide:
 			(GtTextAndElementSlide new
-				text: 'Character Examples';
+				text: 'Character examples';
 				element: [ GtPlaygroundSlide new
 						snippets:
 							{'$A.' . '$A class.' . '$A charCode.' . '"You can print all 256 characters of the ASCII extended set"
@@ -172,19 +170,18 @@ GtPharo101 >> addConditionalsSlidesIn: aSlider [
 	aSlider
 		addSlide:
 			(GtTextSlide new
-				subtitle: 'Conditionals';
-				firstText: 'Are just messages sent to Boolean objects';
-				secondText: 'The messages are: ifTrue: , ifFalse: , ifTrue:ifFalse:').
+				firstText: 'Conditionals just messages sent to Boolean objects';
+				secondText: 'The main messages are ifTrue: , ifFalse: , ifTrue:ifFalse:').
 	aSlider
 		addSlide:
 			(GtTextAndElementSlide new
-				text: 'Conditionals Examples';
+				text: 'Conditionals examples';
 				element: [ GtPlaygroundSlide new
 						snippets:
-							{('1 < 2 ' , Character cr asString , '	ifTrue:[100]'
-								, Character cr asString , '	ifFalse:[42].').
-							('$a > $b' , Character cr asString , '	ifTrue:[100]'
-								, Character cr asString , '	ifFalse:[42].')};
+							{('1 < 2 ' , Character cr asString , '	ifTrue:[ 42 ]'
+								, Character cr asString , '	ifFalse: [ 100 ].').
+							('$a > $b' , Character cr asString , '	ifTrue:[ 100 ]'
+								, Character cr asString , '	ifFalse:[ 42 ].')};
 						asElement ])
 ]
 
@@ -193,14 +190,14 @@ GtPharo101 >> addDynamicArraysSlidesIn: aSlider [
 	aSlider
 		addSlide:
 			(GtTextSlide new
-				subtitle: 'Dynamic Arrays';
-				firstText: 'Dynamic Arrays are created at execution time').
+				subtitle: 'Dynamic arrays';
+				firstText: 'Dynamic arrays are created at execution time').
 	aSlider
 		addSlide:
 			(GtTextAndElementSlide new
-				text: 'Dynamic Array Examples';
+				text: 'Dynamic arrays examples';
 				element: [ GtPlaygroundSlide new
-						snippets: {'{ (2+3). (6*6) }.' . '{(2+3) . (6*6) . ''Hello'', ''world''} size.'};
+						snippets: {'{ (40 + 2). (6 * 6 + 6) }.' . '{(2+3) . (6*6) . ''Hello'', ''world''} size.'};
 						asElement ])
 ]
 
@@ -223,13 +220,14 @@ GtPharo101 >> addInstantiationSlidesIn: aSlider [
 	aSlider
 		addSlide:
 			(GtTextAndElementSlide new
-				text: 'Instantiation Examples';
+				text: 'Instantiation examples';
 				element: [ GtPlaygroundSlide new
 						snippets:
-							{'"The message #allInstances answers an array with all the instances of the class it is sent to"
-SimpleButtonMorph allInstances size.'.
-							'"Below, the message #new will create an instance of the class it is sent to, thus resulting in an OrderedCollection with 0 elements."
-collection := OrderedCollection new.'};
+							{
+							'"The message #new creates an instance of the class it is sent to. In this case, it results in an OrderedCollection with 0 elements."
+collection := OrderedCollection new.' .
+							'"The message #allInstances answers an array with all the instances of the class it is sent to"
+BrButton allInstances size.'.};
 						asElement ])
 ]
 
@@ -237,24 +235,24 @@ collection := OrderedCollection new.'};
 GtPharo101 >> addIteratorsSlidesIn: aSlider [
 	| doExample enterChar |
 	enterChar := Character cr asString.
-	doExample := 'y:=0.' , enterChar
-		, '#(11 38 3 -2 10) do: [:each | y:=y+each].' , enterChar , '^y.'.
+	doExample := 'y := 0.' , enterChar
+		, '#(11 38 3 -2 10) do: [ :each | y := y + each ].' , enterChar , 'y.'.
 	aSlider
 		addSlide:
 			(GtTextSlide new
 				subtitle: 'Iterators';
 				firstText:
-					'They are messages sent to a collection of objects evaluating the block for each element').
+					'Iterators are collection messages that evaluate the argument block for each element').
 	aSlider
 		addSlide:
 			(GtTextAndElementSlide new
-				text: 'Iterators Examples';
+				text: 'Iterators examples';
 				element: [ GtPlaygroundSlide new
 						snippets:
 							{doExample.
-							'#(11 38 3 -2 10) collect: [:each | each abs].'.
-							'#(11 38 3 -2 10) select: [:each | each odd].'.
-							'#(11 38 3 -2 10) reject: [:each | each > 10].'};
+							'#(11 38 3 -2 10) collect: [ :each | each abs ].'.
+							'#(11 38 3 -2 10) select: [ :each | each odd ].'.
+							'#(11 38 3 -2 10) reject: [ :each | each > 10 ].'};
 						asElement ])
 ]
 
@@ -263,19 +261,17 @@ GtPharo101 >> addKeywordMessagesSlidesIn: aSlider [
 	aSlider
 		addSlide:
 			(GtTextSlide new
-				subtitle: 'Keyword Messages';
-				firstText: 'They are messages with arguments';
-				secondText:
-					'And have the following form: anObject aKey: anotherObject aKey2: anotherObject2').
+				subtitle: 'Keyword messages';
+				firstText: 'They look like anObject aKey: anotherObject aKey2: anotherObject2').
 	aSlider
 		addSlide:
 			(GtTextAndElementSlide new
-				text: 'Keyword Messages Examples';
+				text: 'Keyword messages examples';
 				element: [ GtPlaygroundSlide new
 						snippets:
-							{'"The message is between:and: sent to object 4"
-4 between: 0 and: 10.' . '"The message is r:g:b: implemented on class Color"
-Color r:1 g:0 b:0.'};
+							{'"The message between:and: is sent to object 42 with 41 and 43 as arguments"
+42 between: 41 and: 43' . '"The message is r:g:b: sent to Color (i.e., the object representing the class Color)"
+Color r: 0 g: 0.42 b: 0'};
 						asElement ])
 ]
 
@@ -283,22 +279,20 @@ Color r:1 g:0 b:0.'};
 GtPharo101 >> addLoopsSlidesIn: aSlider [
 	| firstExample secondExample thirdExample enterChar |
 	enterChar := Character cr asString.
-	firstExample := '"From 1 to 10, i gets every value and we add that to x"
-x := 0.' , enterChar , '1 to: 10 do: [:i | x := x+i].' , enterChar
-		, '^ x.'.
-	secondExample := '"Same as before, but i gets every other value ( 1, 3, .. )"
-x := 0.' , enterChar , '1 to: 10 by: 2 do: [:i | x := x+i].'
-		, enterChar , '^ x.'.
-	thirdExample := '"Here i goes from 10 to 0, getting every other value"
-x := 0.' , enterChar , '10 to: 0 by: -2 do: [:i | x := x+i].'
-		, enterChar , '^ x.'.
+	firstExample := '"In this case, i gets every value from 1 to 10, and gets added to x"
+x := 0.' , enterChar , '1 to: 10 do: [:i | x := x+i ].' , enterChar
+		, 'x.'.
+	secondExample := '"Similarly, but i gets only every other value ( 1, 3, .. )"
+x := 0.' , enterChar , '1 to: 10 by: 2 do: [:i | x := x+i ].'
+		, enterChar , 'x.'.
+	thirdExample := '"In this case, i goes from 10 to 0, getting every other value"
+x := 0.' , enterChar , '10 to: 0 by: -2 do: [:i | x := x+i ].'
+		, enterChar , 'x.'.
 	aSlider
 		addSlide:
 			(GtTextSlide new
-				subtitle: 'Loops';
-				firstText:
-					'They are high-level collection iterators, implemented as regular methods';
-				secondText: 'Basic loops: to:do: , to:by:do:').
+				firstText: 'Loops are high-level collection iterators, implemented as regular methods';
+				secondText: 'Two basic loops are to:do: and to:by:do:').
 	aSlider
 		addSlide:
 			(GtTextAndElementSlide new
@@ -316,23 +310,24 @@ GtPharo101 >> addMathematicalPrecedenceSlidesIn: aSlider [
 	aSlider
 		addSlide:
 			(GtTextSlide new
-				subtitle: 'Mathematical Precedence';
+				subtitle: 'Mathematical precedence';
 				firstText: 'Traditional precedence rules from mathematics do not apply in Pharo';
 				secondText:
 					'Messages are executed from left to right. Only parentheses can change this').
 	aSlider
 		addSlide:
 			(GtTextAndElementSlide new
-				text: 'Mathematical Precedence Examples';
+				text: 'Mathematical precedence examples';
 				element: [ GtPlaygroundSlide new
 						snippets:
-							{'"First we do (2*10) and then we add 2 to the result"
-2*10+2.' . '"But here, we do (2+2) first and then multiply the result with 10"
-2+2*10.'.
-							'"Using the parentheses we change the order, this being equivalent to the first example, not the second"
-2+(2*10).'.
-							'"First we do (8-5) and then divide the result by 2"
-8-5/2.'};
+							{'"First we do (2 * 20) and then we add 2 to the result"
+2 * 20 + 2.' .
+'"But here, we do (3 + 18) first and then multiply the result with 2"
+3 + 18 * 2.'.
+							'"Here, we first we do (87 - 3) and then divide the result by 2"
+87 - 3 / 2.'.
+'"Using the parentheses changes the order"
+2 + (2 * 20).' };
 						asElement ])
 ]
 
@@ -341,21 +336,21 @@ GtPharo101 >> addMessagesExecutionOrderSlidesIn: aSlider [
 	aSlider
 		addSlide:
 			(GtTextSlide new
-				subtitle: 'Messages Execution Order';
-				firstText: 'The order of execution is: Unary -> Binary -> Keywords';
+				subtitle: 'Messages execution order';
+				firstText: 'Unary messages take precedence over Binary which take precendence over Keywords.';
 				secondText:
 					'Between messages of similar precedence, they are executed from left to right').
 	aSlider
 		addSlide:
 			(GtTextAndElementSlide new
-				text: 'Messages Execution Order Examples';
+				text: 'Messages execution order examples';
 				element: [ GtPlaygroundSlide new
 						snippets:
-							{'"This is equivalent to: (2 + (3 squared)), squared being an Unaru message and + being a Binary
-"2 + 3 squared.'.
-							'"This is equivalent to: (2 raisedTo: (3+2)), + being a Binary message and raisedTo: a Keyword
-"2 raisedTo: 3 + 2.'.
-							'"This is equivalent to: (((-3 abs)negated)reciprocal): all being Unary messages, so they are executed in order"
+							{'"This is equivalent to: (6 + (6 squared)), where squared is an Unaru message and + is a Binary"
+6 + 6 squared.'.
+							'"This is equivalent to: (2 raisedTo: (3+2)), where + is a Binary message and raisedTo: is a Keyword"
+2 raisedTo: 3 + 2.'.
+							'"These are all Unary messages, so they are executed in order. This is equivalent to: (((-3 abs) negated) reciprocal)."
 -3 abs negated reciprocal.'};
 						asElement ])
 ]
@@ -383,15 +378,15 @@ GtPharo101 >> addNumbersSlidesIn: aSlider [
 		addSlide:
 			(GtTextSlide new
 				subtitle: 'Numbers';
-				firstText: '1, 2, 100, 2/3 ... are all Numbers';
+				firstText: '2, 42, 2/84 ... are all Numbers';
 				secondText:
 					'They all respond to many messages evaluating mathematical expressions').
 	aSlider
 		addSlide:
 			(GtTextAndElementSlide new
-				text: 'Number Examples';
+				text: 'Number examples';
 				element: [ GtPlaygroundSlide new
-						snippets: {'2+3.' . '20 factorial.' . '1/3.' . '1 class maxVal.'};
+						snippets: {'40 + 2.' . '42 factorial.' . '2/84.' . '42 class maxVal.'};
 						asElement ])
 ]
 
@@ -405,7 +400,7 @@ GtPharo101 >> addParenthesesSlidesIn: aSlider [
 	aSlider
 		addSlide:
 			(GtTextAndElementSlide new
-				text: 'Parentheses Examples';
+				text: 'Parentheses examples';
 				element: [ GtPlaygroundSlide new
 						snippets:
 							{'"Instead of executing (3 squared) first being an Unary message, using the parentheses we do th (2+3) first even though it is a Binary message"
@@ -432,11 +427,11 @@ GtPharo101 >> addReflectionSlidesIn: aSlider [
 	aSlider
 		addSlide:
 			(GtTextAndElementSlide new
-				text: 'Reflection Examples';
+				text: 'Reflection examples';
 				element: [ GtPlaygroundSlide new
 						snippets:
 							{'"For example, we can see all the methods implemented in a class"
-PharoTutorial selectors.'};
+GtPharo101 selectors.'};
 						asElement ])
 ]
 
@@ -456,7 +451,7 @@ GtPharo101 >> addStringsSlidesIn: aSlider [
 	aSlider
 		addSlide:
 			(GtTextAndElementSlide new
-				text: 'String Examples';
+				text: 'String examples';
 				element: [ GtPlaygroundSlide new
 						snippets:
 							{'''This is a string''.' . '''This is a string'' size.'.
@@ -481,7 +476,7 @@ GtPharo101 >> addSymbolsSlidesIn: aSlider [
 		firstText: 'A Symbol is a String which is guaranteed to be globally unique.';
 		secondText: 'There is one and only one Symbol #MySymbol, but there can be several ''MySymbol'' String objects').
 	aSlider addSlide: (GtTextAndElementSlide new
-		text: 'Symbol Examples';
+		text: 'Symbol examples';
 		element: [ 
 			GtPlaygroundSlide new 
 				snippets: {
@@ -498,11 +493,11 @@ GtPharo101 >> addSymbolsSlidesIn: aSlider [
 { #category : #adding }
 GtPharo101 >> addUnaryMessagesSlidesIn: aSlider [	
 	aSlider addSlide: (GtTextSlide new
-		subtitle: 'Unary Messages';
-		firstText: 'They have the following form: anObject aMessage').
+		subtitle: 'Unary messages';
+		firstText: 'They appear simply as anObject aMessage').
 	aSlider addSlide: (GtTextAndElementSlide new
-		text: 'Unary Messages Examples';
-		element: [GtPlaygroundSlide new snippets: {'1 class.'. 'false not.'. 'Date today.'. 'Float pi.'}; asElement ]).
+		text: 'Unary messages examples';
+		element: [GtPlaygroundSlide new snippets: {'42 class.'. 'false not.'. 'Date today.'. 'Float pi.'}; asElement ]).
 ]
 
 { #category : #accessing }
@@ -521,7 +516,7 @@ GtPharo101 >> create [
 	self addReflectionSlidesIn: show.
 	
 	show addSlide: (GtTitleSlide new
-				titleText: ('Enjoy programming in Pharo' asRopedText fontSize: 70)).
+				titleText: ('Enjoy programming with Pharo' asRopedText fontSize: 70)).
 	
 	^ show.
 ]
