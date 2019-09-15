@@ -24,22 +24,19 @@ GtTextSlide >> create [
 				constraintsDo: [ :c |
 					c linear horizontal alignCenter.
 					c linear vertical alignCenter];
-				padding: (BlInsets top: 80; bottom: 20);
-				margin: (BlInsets top: 40; left: 20);
+				padding: (BlInsets top: 0 left: 40 bottom: 20 right: 40);
 				text: subtitle);
 		addChild: (BlTextElement new
 				constraintsDo: [ :c |
 					c linear horizontal alignCenter.
 					c linear vertical alignCenter];
-				padding: (BlInsets top: 20; bottom: 20);
-				margin: (BlInsets left: 20);
+				padding: (BlInsets top: 20 left: 40 bottom: 10 right: 40);
 				text: firstText);
 		addChild: (BlTextElement new
 				constraintsDo: [ :c |
 					c linear horizontal alignCenter.
 					c linear vertical alignCenter];
-				padding: (BlInsets top: 20; bottom: 20);
-				margin: (BlInsets left: 20);
+				padding: (BlInsets top: 10 left: 40 bottom: 10 right: 40);
 				text: secondText).
 	^ container asPannableElement
 ]
