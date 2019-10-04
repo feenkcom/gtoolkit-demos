@@ -33,6 +33,8 @@ GtTour >> create [
 		GtTitleSlide new
 			titleText: ('live programming and inspection' asRopedText fontSize: 50; glamorousRegularFont).
 
+		GtElementSlide new element: [GtExplainerExamples new example].
+
 		GtTitleSlide new
 			titleText: ('moldable inspection' asRopedText fontSize: 50; glamorousRegularFont).
 		
