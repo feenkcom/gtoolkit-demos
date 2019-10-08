@@ -9,7 +9,7 @@ BaselineOfGToolkitPharo101 >> baseline: spec [
 	<baseline>
 	spec for: #'common' do: [
 		spec baseline: 'Brick' with: [
-				spec repository: 'github://feenkcom/Brick:v0.7.106/src' ].
+				spec repository: 'github://feenkcom/Brick:v0.7.107/src' ].
 		spec package: 'GToolkit-Demo-Pharo101' with: [
 				spec requires: #(#Brick ). ]. ].
 
