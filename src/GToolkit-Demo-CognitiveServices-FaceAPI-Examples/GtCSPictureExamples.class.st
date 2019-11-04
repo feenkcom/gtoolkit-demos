@@ -164,6 +164,20 @@ GtCSPictureExamples >> faceSolovineWithLandmarks [
 	^ face
 ]
 
+{ #category : #'example - face' }
+GtCSPictureExamples >> faceSolovineWithLandmarksInPicture [
+	<gtExample>
+	| face picture|
+	face := self faceSolovineWithLandmarks.
+	picture := self emptyPicture.
+	picture ensureFacesStorage.
+	picture
+		addFace: face.
+	picture loadPictureFormFile: self pictureFile.
+	self assert: face landmarks notNil.
+	^ face
+]
+
 { #category : #accessing }
 GtCSPictureExamples >> jsonFaceLandmarksEinstein [
 	^ STONJSON fromString: '{

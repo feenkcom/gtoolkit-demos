@@ -1,14 +1,14 @@
 "
-I model a face present in a picture object.
+I model a face detected in a picture object.
 
-I store properties for the face object, including the rectangle delimiting the face within a ${class:GtCSPicture}$ object, face attributes (see ${class:GtCSFaceAttributes}$), and face landmarks ${class:GtCSFaceLandmarks}$. I also point to the picture object that contains the face.
+I store properties for the face object, including the rectangle delimiting the face within a ${class:GtCSPicture}$ object, face attributes (see ${class:GtCSFaceAttributes}$), and face landmarks (see  ${class:GtCSFaceLandmarks}$). I also point to the picture object that contains the face.
 
+${example:GtCSPictureExamples>>#faceSolovineWithLandmarksInPicture|noCode|previewShow=gtFaceLandmarksViewFor:}$
 The reactangle delimiting a face and its properties and landmarks can be added to a face, even if the face has not yet a graphical representation.
-${example:GtCSPictureExamples>>#pictureWithManuallySetForm}$
+${example:GtCSPictureExamples>>#faceSolovineWithLandmarks}$
 
 If the face is added to a picture, then its graphical representation is given by cropying the portion give by the rectangle attribute the from the picture.
-${example:GtCSPictureExamples>>#pictureWithManuallySetForm}$
-
+${example:GtCSPictureExamples>>#faceSolovineWithLandmarksInPicture}$
 The recommended way to initialize a face object is using JSON data. See <Adding faces from JSON files> for more details.
 "
 Class {
