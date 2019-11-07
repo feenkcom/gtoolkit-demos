@@ -15,7 +15,6 @@ Let's take them one by one.
 
 The Sparta text support is concerned with drawing actual text on a canvas.
 
-${example:MozTextExamples class>>#exampleTextHaiku|noCode|previewHeight=330}$
 
 A specific concern is placed on pixel perfect text measurements that can be controlled from the image.
 
