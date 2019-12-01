@@ -438,35 +438,29 @@ GtPharo101 selectors.'};
 { #category : #adding }
 GtPharo101 >> addStringsSlidesIn: aSlider [
 	| accessingBook concatenationBook |
-	accessingBook := self
-		createBookFrom: {'''Hello world'' at: 1.' . '''Hello world'' at: 11.'}.
-	concatenationBook := self
-		createBookFrom: {'''Hello'','' world''.' . '''Strings are'','' cool''.'}.
-	aSlider
-		addSlide:
-			(GtTextSlide new
-				subtitle: 'Strings';
-				firstText: 'A String is a collection of characters';
-				secondText: 'To create them, you can use single quotes').
-	aSlider
-		addSlide:
-			(GtTextAndElementSlide new
-				text: 'String examples';
-				element: [ GtPlaygroundSlide new
-						snippets:
-							{'''This is a string''.' . '''This is a string'' size.'.
-							'''abc'' asUppercase.' . '''Hello world'' reverse.'};
-						asElement ]).
-	aSlider
-		addSlide:
-			(GtTextAndElementSlide new
-				text: 'You can access each character using at: message';
-				element: (GtInspector createOnPlayBook: accessingBook)).
-	aSlider
-		addSlide:
-			(GtTextAndElementSlide new
-				text: 'And you can concatenate strings using the comma operator';
-				element: (GtInspector createOnPlayBook: concatenationBook))
+	accessingBook := self createBookFrom:
+		                 { '''Hello world'' at: 1.'. '''Hello world'' at: 11.' }.
+	concatenationBook := self createBookFrom:
+		                     { '''Hello'','' world''.'.
+		                     '''Strings are'','' cool''.' }.
+	aSlider addSlide: (GtTextSlide new
+			 subtitle: 'Strings';
+			 firstText: 'A String is a collection of characters';
+			 secondText: 'To create them, you can use single quotes').
+	aSlider addSlide: (GtTextAndElementSlide new
+			 text: 'String examples';
+			 element: [ 
+				 GtPlaygroundSlide new
+					 snippets:
+						 { '''This is a string''.'. '''This is a string'' size.'.
+						 '''abc'' asUppercase.'. '''Hello world'' reverse.' };
+					 asElement ]).
+	aSlider addSlide: (GtTextAndElementSlide new
+			 text: 'You can access each character using at: message';
+			 element: (GtInspector withToolOn: accessingBook)).
+	aSlider addSlide: (GtTextAndElementSlide new
+			 text: 'And you can concatenate strings using the comma operator';
+			 element: (GtInspector withToolOn: concatenationBook))
 ]
 
 { #category : #adding }
