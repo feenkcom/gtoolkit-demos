@@ -9,7 +9,7 @@ GtTour >> create [
 	| show |
 	show := GtSlideShow new.
 	show slides: { 
-		GtFilePictureSlide new fileReference: (GtIcebergUtility documentAtPath: (Path * 'feenkcom' / 'gtoolkit' / 'doc' / 'gtoolkit.png')).
+		GtFilePictureSlide new fileReference: (GtIcebergUtility resourceAtPath: (Path * 'feenkcom' / 'gtoolkit' / 'doc' / 'gtoolkit.png')).
 
 		GtTitleSlide new
 			titleText: ('moldable development environment' asRopedText fontSize: 50; glamorousRegularFont).

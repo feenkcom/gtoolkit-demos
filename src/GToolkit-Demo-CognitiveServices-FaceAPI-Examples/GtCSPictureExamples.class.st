@@ -540,8 +540,8 @@ GtCSPictureExamples >> newPictureInstance [
 
 { #category : #accessing }
 GtCSPictureExamples >> pictureFile [
-	^ GtIcebergUtility repositoriesLocation 
-		/ 'feenkcom'
+	^ GtIcebergUtility resourceAtPath: Path 
+		* 'feenkcom'
 		/ 'gtoolkit-demos' 
 		/ 'data' 
 		/ 'faceapi' 
