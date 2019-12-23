@@ -96,7 +96,7 @@ GtCSPictureTest >> faceSolovine [
 
 { #category : #accessing }
 GtCSPictureTest >> pictureFile [
-	^ GtIcebergUtility resourceAtPath: Path 
+	^ GtResourcesUtility resourceAtPath: Path 
 		* 'feenkcom'
 		/ 'gtoolkit-demos' 
 		/ 'data' 

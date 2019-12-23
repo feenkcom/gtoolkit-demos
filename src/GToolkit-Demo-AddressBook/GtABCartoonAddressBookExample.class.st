@@ -120,7 +120,7 @@ GtABCartoonAddressBookExample >> porkyPigDescription [
 { #category : #'private - utilities' }
 GtABCartoonAddressBookExample >> readAvatarWithId: anId [
 	anId ifNil: [ ^GtABContact unknowsJoeAvatar ].
-	^ (PNGReadWriter formFromFileNamed: (GtIcebergUtility resourceAtPath: Path *
+	^ (PNGReadWriter formFromFileNamed: (GtResourcesUtility resourceAtPath: Path *
 		'feenkcom' / 
 		'gtoolkit-demos' /
 		'data' / 
