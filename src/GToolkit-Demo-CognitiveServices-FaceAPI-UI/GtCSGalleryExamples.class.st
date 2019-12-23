@@ -4,7 +4,7 @@ I provide examples of galeries.
 Class {
 	#name : #GtCSGalleryExamples,
 	#superclass : #GtExampleProvider,
-	#category : 'GToolkit-Demo-CognitiveServices-FaceAPI-UI'
+	#category : #'GToolkit-Demo-CognitiveServices-FaceAPI-UI'
 }
 
 { #category : #examples }
@@ -58,10 +58,10 @@ GtCSGalleryExamples >> localStorageCacheUnsplashCrop60ForDatasource: aDataSource
 
 { #category : #accessing }
 GtCSGalleryExamples >> unsplashCrop60Folder [
-	^ (GtIcebergUtility repositoriesLocation 
-		/ 'feenkcom'
+	^ GtResourcesUtility resourceAtPath: Path
+		* 'feenkcom'
 		/ 'gtoolkit-demos' 
 		/ 'data' 
 		/ 'faceapi' 
-		/ 'unsplash-crop60') asFileReference
+		/ 'unsplash-crop60'
 ]
