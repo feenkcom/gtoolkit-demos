@@ -127,7 +127,7 @@ GtPharo101 >> addCascadeOperatorSlidesIn: aSlider [
 				text: 'Cascade operator examples';
 				element: [ GtPlaygroundSlide new
 						snippets:
-							{'"Both + messages are sent to 2"
+							{'"Both + messages are sent to 40"
 40 + 3; + 2.' . '"The one above is equivalent to: "
 40 + 3. 40 + 2.'};
 						asElement ])
