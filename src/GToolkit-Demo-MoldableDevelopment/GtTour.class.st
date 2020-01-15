@@ -12,8 +12,8 @@ GtTour >> create [
 		slides:
 			{(GtFilePictureSlide new
 				fileReference:
-					(GtResourcesUtility
-						resourceAtPath: Path * 'feenkcom' / 'gtoolkit' / 'doc' / 'gtoolkit.png')).
+					(GtResourceReference
+						path: Path * 'feenkcom' / 'gtoolkit' / 'doc' / 'gtoolkit.png')).
 			(GtTitleSlide new
 				titleText:
 					('moldable development environment' asRopedText
