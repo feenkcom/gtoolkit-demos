@@ -22,8 +22,6 @@ GtOneRenderingTree >> create [
 			titleText: ('visualizations can be combined with regular elements' asRopedText fontSize: 30; glamorousRegularFont).
 		GtSearchFilterHierarchySlide new.
 		
-		GtLiveElementTreeSlide new targetElement: ((GtMethodCoder forMethod: Object>>#printString) ensureBuilt; expanded: true; asElement) forceLayout.
-
 		GtTitleSlide new
 			titleText: ('graph layouts are regular layouts' asRopedText fontSize: 30; glamorousRegularFont).
 		GtBlocSpecialClassHierarchyWithGridSlide new.
