@@ -12,8 +12,8 @@ GtTour >> create [
 		slides:
 			{(GtFilePictureSlide new
 				fileReference:
-					(GtResourcesUtility
-						resourceAtPath: Path * 'feenkcom' / 'gtoolkit' / 'doc' / 'gtoolkit.png')).
+					(GtResourceReference
+						path: Path * 'feenkcom' / 'gtoolkit' / 'doc' / 'gtoolkit.png')).
 			(GtTitleSlide new
 				titleText:
 					('moldable development environment' asRopedText
@@ -125,4 +125,47 @@ GtTour >> create [
 			(GtElementSlide new
 				element: [ GtInspector withToolOn: (GtClassCoder forClass: JSParser) ])}.
 	^ show
+]
+
+{ #category : #'api - instantiation' }
+GtTour >> treemapWithViewsAndExamples [
+	<gtExample>
+	| tree |
+	tree := GtNestedTreeBuilder new
+			data: (Smalltalk allClassesAndTraits select: [:c | 
+			{'Gt'.'Bl'.'Br'} anySatisfy: [:p |c name beginsWith: p]]);
+		groupBy: [ :aClass | aClass package ];
+		groupBy: [ :aClass | aClass package classTags detect: [ :e | e hasClass: aClass ] ];
+		weight: [ :aClass | aClass methods size max: 1];
+		build.
+	^ GtNestedRectangleTreeMap new
+		roots: { tree };
+		leaves: [ :aNode | aNode leaves ];
+		deep: [ :aNode | aNode nodes ];
+		leavesSize: [ :aNode | aNode weight ];
+		containerElement: [ :anElement :aNodeContext | 
+			aNodeContext level = 2 ifTrue: [ 
+				anElement addChild: (BrLabel new 
+					text: (aNodeContext  model name name removePrefix: 'GToolkit-'); 
+					look: (BrGlamorousLabelLook new fontSize: 8; foreground: Color gray); 
+					constraintsDo: [ :c | c ignoreByLayout. ])].
+			anElement border: (BlBorder 
+				paint: (Color gray alpha: 0.7 / aNodeContext level) 
+				width: 1).
+			anElement padding: (BlInsets all: 1) ];
+		leafElement: [ :anElement :aLeafContext | 
+			| isGtView isGtExample |
+			isGtView := aLeafContext model item itOrItsSuperclassesDefineGTViews.
+			isGtExample := aLeafContext model item methods anySatisfy: [ :aMethod | 
+				aMethod isGTExampleMethod ].
+			anElement border: (BlBorder 
+				paint: (Color gray alpha: 0.5 / aLeafContext level) 
+				width: 1).
+			anElement background: (isGtView 
+				ifTrue: [(Color blue alpha: 0.6)] 
+				ifFalse: [ 
+					isGtExample 
+						ifTrue: [ Color green muchDarker alpha: 0.6] 
+						ifFalse: [ Color transparent ]]) ];
+		create.
 ]
