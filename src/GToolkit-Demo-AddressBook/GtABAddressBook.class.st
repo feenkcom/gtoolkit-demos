@@ -359,8 +359,10 @@ GtABAddressBook >> gtViewContactsOn: aView [
 		title: 'Contacts' translated;
 		priority: 5;
 		items: [ self contacts ];
-		column: 'Name' format: [ :aContact | aContact fullName ];
-		column: 'Telephone' format: [ :aContact | aContact address telephone ]
+		column: 'Name' 
+			format: [ :aContact | aContact fullName ];
+		column: 'Telephone' 
+			format: [ :aContact | aContact address telephone ]
 ]
 
 { #category : #testing }
