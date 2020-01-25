@@ -55,6 +55,9 @@ GtTour >> create [
 						glamorousRegularFont)).
 			(GtElementSlide new
 				element: [ GtExplainerExamples new inspectorOnOneObjectExample ]).
+			(GtElementSlide new
+				element: [ self viewsExplanationWithLinks ]).
+		
 			(GtTitleSlide new
 				titleText:
 					('moldable coding' asRopedText
@@ -168,4 +171,86 @@ GtTour >> treemapWithViewsAndExamples [
 						ifTrue: [ Color green muchDarker alpha: 0.6] 
 						ifFalse: [ Color transparent ]]) ];
 		create.
+]
+
+{ #category : #'api - instantiation' }
+GtTour >> viewsExplanationWithLinks [
+	<gtExample>
+	| container inspectorContainer editor coder coderElement selectors variables |
+	inspectorContainer := BlElement new
+		constraintsDo: [ :c | 
+			c horizontal matchParent.
+			c vertical matchParent ];
+		layout: BlLinearLayout horizontal;
+		margin: (BlInsets all: 30).
+	container := BlElement new
+		constraintsDo: [ :c | 
+			c horizontal matchParent.
+			c vertical matchParent];
+		layout: BlLinearLayout horizontal.
+	container explainer isExplanationHolder: true.
+	
+	selectors := GtSelectorExplanationLinkStyler new.
+	selectors addSelectors: {#gtView . #columnedList . #title: . #items: . #column:format: .#contacts . #fullName . #telephone }.
+	
+	variables := GtVariableExplanationLinkStyler new.
+	variables addVariables: {'aView' . 'aContact' . 'contacts'}.
+	
+	coder := GtMethodCoder forMethod: (GtABAddressBook>>#gtViewContactsOn:).
+	coder explanationLink: (GtCompositeExplanationLinkStyler forLinks: { selectors. variables }).
+	coderElement := (coder expanded: true) asElement margin: (BlInsets all: 10).
+	coderElement forceLayout.
+	
+	inspectorContainer addChild: coderElement.
+	
+	editor := BrEditor new
+		look: (BrGlamorousRegularEditorLook new fontSize: 16);
+		text: self viewsExplanationWithLinksText;
+		margin: (BlInsets all: 10);
+		constraintsDo: [ :c | 
+			c vertical fitContent.
+			c horizontal matchParent.
+			c linear weight: 0.5 ].
+	container addChild: editor.
+	container addChild: inspectorContainer.
+	^ container
+]
+
+{ #category : #'api - instantiation' }
+GtTour >> viewsExplanationWithLinksText [
+	| text |
+	
+	text := 'A custom view is defined by a method in the class of the object we want to view. You can think of it as a print string method only that instead of returning a string, it returns an element.
+
+As we can have many such representations for every single object, we have to identify the method. To this end, use the ' asRopedText,
+('gtView' asRopedText glamorousExplanationFor: #gtView),
+' pragma.
+Then, make it so that it gets an empty ' asRopedText,
+('view' asRopedText glamorousExplanationFor: #aView),
+' parameter that you can customize.
+
+In our case the view has a ' asRopedText,
+('title' asRopedText glamorousExplanationFor: #title:),
+'. The view consists of a ' asRopedText,
+('columned list' asRopedText glamorousExplanationFor: #columnedList),
+' with ' asRopedText,
+('two columns' asRopedText glamorousExplanationFor: #column:format:),
+'
+
+The columned list has as many rows as the collection returned by the ' asRopedText,
+('items: block' asRopedText glamorousExplanationFor: #items:),
+'. In this case, this means it shows all the ' asRopedText,
+('contacts list' asRopedText glamorousExplanationFor: #contacts),
+
+'For each ' asRopedText, 
+('contact' asRopedText glamorousExplanationFor: #aContact),
+' we show the ' asRopedText,
+('full name' asRopedText glamorousExplanationFor: #fullName),
+' in the first column, and the ' asRopedText,
+('telephone' asRopedText glamorousExplanationFor: #telephone),
+' in the second column' asRopedText.
+	^ text
+		glamorousRegularFont;
+		fontSize: 20;
+		foreground: Color black.
 ]
