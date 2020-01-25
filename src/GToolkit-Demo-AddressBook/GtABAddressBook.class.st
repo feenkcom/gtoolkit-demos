@@ -355,20 +355,12 @@ GtABAddressBook >> gtViewContactsIconsCircularOn: aView [
 { #category : #ui }
 GtABAddressBook >> gtViewContactsOn: aView [
 	<gtView>
-	^ aView explicit 
+	^ aView columnedList 
 		title: 'Contacts' translated;
 		priority: 5;
-		stencil: [
-			| list |
-			list := BrColumnedList new display: self contacts.
-			list addEventHandler: (GtInspectorListToSelectHandler new).
-			list column 
-				title: 'Name';
-				stencil: [ :aContact | BrColumnCellLabelStencil matchParent: aContact fullName ].
-			list column 
-				title: 'Telephone';
-				stencil: [ :aContact | BrColumnCellLabelStencil matchParent: aContact address telephone ].
-			list ]
+		items: [ self contacts ];
+		column: 'Name' format: [ :aContact | aContact fullName ];
+		column: 'Telephone' format: [ :aContact | aContact address telephone ]
 ]
 
 { #category : #testing }
