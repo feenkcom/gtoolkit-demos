@@ -21,21 +21,21 @@ GtTour >> create [
 						glamorousRegularFont)).
 			(GtLabelAndElementSlide new
 				element: [ GtRawViewsSlide new asElement ];
-				textWithFormat:
+				newTextWithFormat:
 					('Consider how these different objects look quite similar in the inspector'
 						asRopedText
 						glamorousRegularFont;
 						foreground: Color gray)).
 			(GtLabelAndElementSlide new
 				element: [ GtCustomViewsSlide new asElement ];
-				textWithFormat:
+				newTextWithFormat:
 					('Yet, when we change the view, the differences are obvious'
 						asRopedText
 						glamorousRegularFont;
 						foreground: Color gray)).
 			(GtLabelAndElementSlide new
 				element: [ GtAllViewsSlide new asElement ];
-				textWithFormat:
+				newTextWithFormat:
 					('Every object is different, and the environment should show it, too'
 						asRopedText
 						glamorousRegularFont;
@@ -72,7 +72,7 @@ GtTour >> create [
 						glamorousRegularFont)).
 			(GtLabelAndElementSlide new
 				element: [ (GtPlaygroundSlide new snippets: {'#gtView gtPragmas'}) create ];
-				textWithFormat:
+				newTextWithFormat:
 					('Inspect the result of this query. Expand the methods' asRopedText
 						glamorousRegularFont;
 						foreground: Color gray)).
@@ -80,7 +80,7 @@ GtTour >> create [
 				element: [ (GtPlaygroundSlide new
 					snippets: {'#gtView gtPragmas & #list gtReferences'})
 					create ];
-				textWithFormat:
+				newTextWithFormat:
 					('Now, try with this composed query. Notice the highlighting'
 						asRopedText
 						glamorousRegularFont;
@@ -92,13 +92,13 @@ GtTour >> create [
 						glamorousRegularFont)).
 			(GtLabelAndElementSlide new
 				element: [ GtSpotterSlide new asElement ];
-				textWithFormat:
+				newTextWithFormat:
 					('Search is pervasive. Try searching for Object' asRopedText
 						glamorousRegularFont;
 						foreground: Color gray)).
 			(GtLabelAndElementSlide new
 				element: [ GtSpotterSlide new asElement ];
-				textWithFormat:
+				newTextWithFormat:
 					(('Or search for .' , FileSystem disk delimiter asString) asRopedText
 						glamorousRegularFont;
 						foreground: Color gray)).
@@ -129,13 +129,13 @@ GtTour >> create [
 				element: [ GtInspector withToolOn: (GtClassCoder forClass: JSParser) ]).
 			(GtLabelAndElementSlide new
 				element: [self treemapWithViewsAndExamples ];
-				textWithFormat: ('The need for moldability is pervasive.' asRopedText
+				newTextWithFormat: ('The need for moldability is pervasive.' asRopedText
 						glamorousRegularFont;
 						foreground: Color gray);
-				textWithFormat: ('The visualization below shows a treemap of the classes and packages from the current image.' asRopedText
+				newTextWithFormat: ('The visualization below shows a treemap of the classes and packages from the current image.' asRopedText
 						glamorousRegularFont;
 						foreground: Color gray);
-				textWithFormat: ('Blue denotes classes that contain at least one custom view; green shows those that have an example.' asRopedText
+				newTextWithFormat: ('Blue denotes classes that contain at least one custom view; green shows those that have an example.' asRopedText
 						glamorousRegularFont;
 						foreground: Color gray))
 		}.
