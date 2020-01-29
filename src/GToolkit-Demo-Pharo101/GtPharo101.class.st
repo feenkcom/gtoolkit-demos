@@ -11,12 +11,12 @@ Class {
 GtPharo101 >> addArraysSlidesIn: aSlider [
 	aSlider
 		addSlide:
-			(GtTextSlide new
+			(GtTitleAndTextLinesSlide new
 				subtitle: 'Arrays';
 				firstText: 'Literal Arrays are created at parse time').
 	aSlider
 		addSlide:
-			(GtTextAndElementSlide new
+			(GtLabelAndElementSlide new
 				text: 'Array Examples';
 				element: [ GtPlaygroundSlide new
 						snippets:
@@ -46,13 +46,13 @@ GtPharo101 >> addBasicTypesSlidesIn: aSlider [
 GtPharo101 >> addBinaryMessagesSlidesIn: aSlider [
 	aSlider
 		addSlide:
-			(GtTextSlide new
+			(GtTitleAndTextLinesSlide new
 				subtitle: 'Binary messages';
 				firstText: 'They look like anObject aMessage anotherObject';
 				secondText: 'And they are operands containing characters like +, *, &, |, <, =, >').
 	aSlider
 		addSlide:
-			(GtTextAndElementSlide new
+			(GtLabelAndElementSlide new
 				text: 'Binary messages examples';
 				element: [ GtPlaygroundSlide new
 						snippets:
@@ -71,12 +71,12 @@ true & false.'.
 GtPharo101 >> addBlockAssignationSlidesIn: aSlider [
 	aSlider
 		addSlide:
-			(GtTextSlide new
+			(GtTitleAndTextLinesSlide new
 				subtitle: 'Blocks assignment';
 				firstText: 'Blocks can be assgined to a variable and can be executed later').
 	aSlider
 		addSlide:
-			(GtTextAndElementSlide new
+			(GtLabelAndElementSlide new
 				text: 'Block assignation examples';
 				element: [ GtPlaygroundSlide new
 						snippets: {'x := [:a | a + 2]' . 'x value: 40'};
@@ -87,12 +87,12 @@ GtPharo101 >> addBlockAssignationSlidesIn: aSlider [
 GtPharo101 >> addBlockExecutionSlidesIn: aSlider [
 	aSlider
 		addSlide:
-			(GtTextSlide new
+			(GtTitleAndTextLinesSlide new
 				subtitle: 'Blocks execution';
 				firstText: 'We can execute a block by sending value messages to it').
 	aSlider
 		addSlide:
-			(GtTextAndElementSlide new
+			(GtLabelAndElementSlide new
 				text: 'Blocks examples';
 				element: [ GtPlaygroundSlide new
 						snippets:
@@ -105,7 +105,7 @@ GtPharo101 >> addBlocksSlidesIn: aSlider [
 	aSlider addSlide: (GtTitleSlide new
 				titleText: ('Pharo 101' asRopedText fontSize: 70);
 				subtitleText: ('Blocks' asRopedText fontSize:50; foreground: Color gray)).
-	aSlider addSlide: (GtTextSlide new
+	aSlider addSlide: (GtTitleAndTextLinesSlide new
 				firstText: 
 					'Blocks are anonymous methods that can be stored into variables and executed on demand.';
 				secondText: 'Blocks are delimited by square brackets [].').
@@ -117,13 +117,13 @@ GtPharo101 >> addBlocksSlidesIn: aSlider [
 GtPharo101 >> addCascadeOperatorSlidesIn: aSlider [
 	aSlider
 		addSlide:
-			(GtTextSlide new
+			(GtTitleAndTextLinesSlide new
 				subtitle: 'Cascade operator';
 				firstText: 'The cascade operator is useful to send messages to the same receiver.';
 				secondText: 'It is denoted with ;.').
 	aSlider
 		addSlide:
-			(GtTextAndElementSlide new
+			(GtLabelAndElementSlide new
 				text: 'Cascade operator examples';
 				element: [ GtPlaygroundSlide new
 						snippets:
@@ -137,12 +137,12 @@ GtPharo101 >> addCascadeOperatorSlidesIn: aSlider [
 GtPharo101 >> addCharactersSlidesIn: aSlider [
 	aSlider
 		addSlide:
-			(GtTextSlide new
+			(GtTitleAndTextLinesSlide new
 				subtitle: 'Characters';
 				firstText: 'A character can be instantiated using $ operator').
 	aSlider
 		addSlide:
-			(GtTextAndElementSlide new
+			(GtLabelAndElementSlide new
 				text: 'Character examples';
 				element: [ GtPlaygroundSlide new
 						snippets:
@@ -169,12 +169,12 @@ GtPharo101 >> addConditionalsAndLoopsSlidesIn: aSlider [
 GtPharo101 >> addConditionalsSlidesIn: aSlider [
 	aSlider
 		addSlide:
-			(GtTextSlide new
+			(GtTitleAndTextLinesSlide new
 				firstText: 'Conditionals just messages sent to Boolean objects';
 				secondText: 'The main messages are ifTrue: , ifFalse: , ifTrue:ifFalse:').
 	aSlider
 		addSlide:
-			(GtTextAndElementSlide new
+			(GtLabelAndElementSlide new
 				text: 'Conditionals examples';
 				element: [ GtPlaygroundSlide new
 						snippets:
@@ -189,12 +189,12 @@ GtPharo101 >> addConditionalsSlidesIn: aSlider [
 GtPharo101 >> addDynamicArraysSlidesIn: aSlider [
 	aSlider
 		addSlide:
-			(GtTextSlide new
+			(GtTitleAndTextLinesSlide new
 				subtitle: 'Dynamic arrays';
 				firstText: 'Dynamic arrays are created at execution time').
 	aSlider
 		addSlide:
-			(GtTextAndElementSlide new
+			(GtLabelAndElementSlide new
 				text: 'Dynamic arrays examples';
 				element: [ GtPlaygroundSlide new
 						snippets: {'{ (40 + 2). (6 * 6 + 6) }.' . '{(2+3) . (6*6) . ''Hello'', ''world''} size.'};
@@ -213,13 +213,13 @@ GtPharo101 >> addInstantiationSlidesIn: aSlider [
 						foreground: Color gray)).
 	aSlider
 		addSlide:
-			(GtTextSlide new
+			(GtTitleAndTextLinesSlide new
 				firstText: 'Objects are instances of their class';
 				secondText:
 					'Usually, we send the message #new to a class to create an instance of that class').
 	aSlider
 		addSlide:
-			(GtTextAndElementSlide new
+			(GtLabelAndElementSlide new
 				text: 'Instantiation examples';
 				element: [ GtPlaygroundSlide new
 						snippets:
@@ -239,13 +239,13 @@ GtPharo101 >> addIteratorsSlidesIn: aSlider [
 		, '#(11 38 3 -2 10) do: [ :each | y := y + each ].' , enterChar , 'y.'.
 	aSlider
 		addSlide:
-			(GtTextSlide new
+			(GtTitleAndTextLinesSlide new
 				subtitle: 'Iterators';
 				firstText:
 					'Iterators are collection messages that evaluate the argument block for each element').
 	aSlider
 		addSlide:
-			(GtTextAndElementSlide new
+			(GtLabelAndElementSlide new
 				text: 'Iterators examples';
 				element: [ GtPlaygroundSlide new
 						snippets:
@@ -260,12 +260,12 @@ GtPharo101 >> addIteratorsSlidesIn: aSlider [
 GtPharo101 >> addKeywordMessagesSlidesIn: aSlider [
 	aSlider
 		addSlide:
-			(GtTextSlide new
+			(GtTitleAndTextLinesSlide new
 				subtitle: 'Keyword messages';
 				firstText: 'They look like anObject aKey: anotherObject aKey2: anotherObject2').
 	aSlider
 		addSlide:
-			(GtTextAndElementSlide new
+			(GtLabelAndElementSlide new
 				text: 'Keyword messages examples';
 				element: [ GtPlaygroundSlide new
 						snippets:
@@ -290,12 +290,12 @@ x := 0.' , enterChar , '10 to: 0 by: -2 do: [:i | x := x+i ].'
 		, enterChar , 'x.'.
 	aSlider
 		addSlide:
-			(GtTextSlide new
+			(GtTitleAndTextLinesSlide new
 				firstText: 'Loops are high-level collection iterators, implemented as regular methods';
 				secondText: 'Two basic loops are to:do: and to:by:do:').
 	aSlider
 		addSlide:
-			(GtTextAndElementSlide new
+			(GtLabelAndElementSlide new
 				text: 'Loops Examples';
 				element: [ GtPlaygroundSlide new
 						snippets:
@@ -309,14 +309,14 @@ x := 0.' , enterChar , '10 to: 0 by: -2 do: [:i | x := x+i ].'
 GtPharo101 >> addMathematicalPrecedenceSlidesIn: aSlider [
 	aSlider
 		addSlide:
-			(GtTextSlide new
+			(GtTitleAndTextLinesSlide new
 				subtitle: 'Mathematical precedence';
 				firstText: 'Traditional precedence rules from mathematics do not apply in Pharo';
 				secondText:
 					'Messages are executed from left to right. Only parentheses can change this').
 	aSlider
 		addSlide:
-			(GtTextAndElementSlide new
+			(GtLabelAndElementSlide new
 				text: 'Mathematical precedence examples';
 				element: [ GtPlaygroundSlide new
 						snippets:
@@ -335,14 +335,14 @@ GtPharo101 >> addMathematicalPrecedenceSlidesIn: aSlider [
 GtPharo101 >> addMessagesExecutionOrderSlidesIn: aSlider [
 	aSlider
 		addSlide:
-			(GtTextSlide new
+			(GtTitleAndTextLinesSlide new
 				subtitle: 'Messages execution order';
 				firstText: 'Unary messages take precedence over Binary which take precendence over Keywords.';
 				secondText:
 					'Between messages of similar precedence, they are executed from left to right').
 	aSlider
 		addSlide:
-			(GtTextAndElementSlide new
+			(GtLabelAndElementSlide new
 				text: 'Messages execution order examples';
 				element: [ GtPlaygroundSlide new
 						snippets:
@@ -360,7 +360,7 @@ GtPharo101 >> addMessagesSlidesIn: aSlider [
 	aSlider addSlide: (GtTitleSlide new
 				titleText: ('Pharo 101' asRopedText fontSize: 70);
 				subtitleText: ('Messages' asRopedText fontSize:50; foreground: Color gray)).
-	aSlider addSlide: (GtTextSlide new
+	aSlider addSlide: (GtTitleAndTextLinesSlide new
 				firstText: 'Messages are sent to objects.';
 				secondText: 'There are three types of messages: Unary, Binary and Keyword').
 	self addUnaryMessagesSlidesIn: aSlider.
@@ -376,14 +376,14 @@ GtPharo101 >> addMessagesSlidesIn: aSlider [
 GtPharo101 >> addNumbersSlidesIn: aSlider [
 	aSlider
 		addSlide:
-			(GtTextSlide new
+			(GtTitleAndTextLinesSlide new
 				subtitle: 'Numbers';
 				firstText: '2, 42, 2/84 ... are all Numbers';
 				secondText:
 					'They all respond to many messages evaluating mathematical expressions').
 	aSlider
 		addSlide:
-			(GtTextAndElementSlide new
+			(GtLabelAndElementSlide new
 				text: 'Number examples';
 				element: [ GtPlaygroundSlide new
 						snippets: {'40 + 2.' . '42 factorial.' . '2/84.' . '42 class maxVal.'};
@@ -394,12 +394,12 @@ GtPharo101 >> addNumbersSlidesIn: aSlider [
 GtPharo101 >> addParenthesesSlidesIn: aSlider [
 	aSlider
 		addSlide:
-			(GtTextSlide new
+			(GtTitleAndTextLinesSlide new
 				subtitle: 'Parentheses';
 				firstText: 'They can change the order of execution').
 	aSlider
 		addSlide:
-			(GtTextAndElementSlide new
+			(GtLabelAndElementSlide new
 				text: 'Parentheses examples';
 				element: [ GtPlaygroundSlide new
 						snippets:
@@ -422,11 +422,11 @@ GtPharo101 >> addReflectionSlidesIn: aSlider [
 						foreground: Color gray)).
 	aSlider
 		addSlide:
-			(GtTextSlide new
+			(GtTitleAndTextLinesSlide new
 				firstText: 'It allows us to inspect and change the system at runtime').
 	aSlider
 		addSlide:
-			(GtTextAndElementSlide new
+			(GtLabelAndElementSlide new
 				text: 'Reflection examples';
 				element: [ GtPlaygroundSlide new
 						snippets:
@@ -443,11 +443,11 @@ GtPharo101 >> addStringsSlidesIn: aSlider [
 	concatenationBook := self createBookFrom:
 		                     { '''Hello'','' world''.'.
 		                     '''Strings are'','' cool''.' }.
-	aSlider addSlide: (GtTextSlide new
+	aSlider addSlide: (GtTitleAndTextLinesSlide new
 			 subtitle: 'Strings';
 			 firstText: 'A String is a collection of characters';
 			 secondText: 'To create them, you can use single quotes').
-	aSlider addSlide: (GtTextAndElementSlide new
+	aSlider addSlide: (GtLabelAndElementSlide new
 			 text: 'String examples';
 			 element: [ 
 				 GtPlaygroundSlide new
@@ -455,21 +455,21 @@ GtPharo101 >> addStringsSlidesIn: aSlider [
 						 { '''This is a string''.'. '''This is a string'' size.'.
 						 '''abc'' asUppercase.'. '''Hello world'' reverse.' };
 					 asElement ]).
-	aSlider addSlide: (GtTextAndElementSlide new
+	aSlider addSlide: (GtLabelAndElementSlide new
 			 text: 'You can access each character using at: message';
 			 element: (GtInspector withToolOn: accessingBook)).
-	aSlider addSlide: (GtTextAndElementSlide new
+	aSlider addSlide: (GtLabelAndElementSlide new
 			 text: 'And you can concatenate strings using the comma operator';
 			 element: (GtInspector withToolOn: concatenationBook))
 ]
 
 { #category : #adding }
 GtPharo101 >> addSymbolsSlidesIn: aSlider [	
-	aSlider addSlide: (GtTextSlide new
+	aSlider addSlide: (GtTitleAndTextLinesSlide new
 		subtitle: 'Symbols';
 		firstText: 'A Symbol is a String which is guaranteed to be globally unique.';
 		secondText: 'There is one and only one Symbol #MySymbol, but there can be several ''MySymbol'' String objects').
-	aSlider addSlide: (GtTextAndElementSlide new
+	aSlider addSlide: (GtLabelAndElementSlide new
 		text: 'Symbol examples';
 		element: [ 
 			GtPlaygroundSlide new 
@@ -486,10 +486,10 @@ GtPharo101 >> addSymbolsSlidesIn: aSlider [
 
 { #category : #adding }
 GtPharo101 >> addUnaryMessagesSlidesIn: aSlider [	
-	aSlider addSlide: (GtTextSlide new
+	aSlider addSlide: (GtTitleAndTextLinesSlide new
 		subtitle: 'Unary messages';
 		firstText: 'They appear simply as anObject aMessage').
-	aSlider addSlide: (GtTextAndElementSlide new
+	aSlider addSlide: (GtLabelAndElementSlide new
 		text: 'Unary messages examples';
 		element: [GtPlaygroundSlide new snippets: {'42 class.'. 'false not.'. 'Date today.'. 'Float pi.'}; asElement ]).
 ]

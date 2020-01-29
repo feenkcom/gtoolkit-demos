@@ -2,7 +2,7 @@
 I am a Slide desgine that gets a Text and displays it. I can be included in presentations.
 "
 Class {
-	#name : #GtTextSlide,
+	#name : #GtTitleAndTextLinesSlide,
 	#superclass : #GtSlide,
 	#instVars : [
 		'subtitle',
@@ -13,7 +13,7 @@ Class {
 }
 
 { #category : #'api - instantiation' }
-GtTextSlide >> create [
+GtTitleAndTextLinesSlide >> create [
 	| container |
 	container := BlElement new
 		constraintsDo: [:c |
@@ -42,17 +42,17 @@ GtTextSlide >> create [
 ]
 
 { #category : #accessing }
-GtTextSlide >> firstText: aText [
+GtTitleAndTextLinesSlide >> firstText: aText [
 	firstText := aText asRopedText fontSize: 20; glamorousRegularFont.
 ]
 
 { #category : #accessing }
-GtTextSlide >> firstTextWithFormat: aText [
+GtTitleAndTextLinesSlide >> firstTextWithFormat: aText [
 	firstText := aText.
 ]
 
 { #category : #initialization }
-GtTextSlide >> initialize [
+GtTitleAndTextLinesSlide >> initialize [
 	super initialize.
 	self subtitle: ''.
 	self firstText: ''.
@@ -60,21 +60,21 @@ GtTextSlide >> initialize [
 ]
 
 { #category : #accessing }
-GtTextSlide >> secondText: aText [
+GtTitleAndTextLinesSlide >> secondText: aText [
 	secondText := aText asRopedText fontSize: 20; glamorousRegularFont.
 ]
 
 { #category : #'as yet unclassified' }
-GtTextSlide >> secondTextWithFormat: aText [
+GtTitleAndTextLinesSlide >> secondTextWithFormat: aText [
 	secondText := aText.
 ]
 
 { #category : #accessing }
-GtTextSlide >> subtitle: aSubtitle [
+GtTitleAndTextLinesSlide >> subtitle: aSubtitle [
 	subtitle := aSubtitle asRopedText fontSize: 40; glamorousRegularFont.
 ]
 
 { #category : #'as yet unclassified' }
-GtTextSlide >> subtitleWithFormat: aSubtitle [
+GtTitleAndTextLinesSlide >> subtitleWithFormat: aSubtitle [
 	subtitle := aSubtitle.
 ]

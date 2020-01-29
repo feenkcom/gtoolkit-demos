@@ -19,21 +19,21 @@ GtTour >> create [
 					('moldable development environment' asRopedText
 						fontSize: 50;
 						glamorousRegularFont)).
-			(GtTextAndElementSlide new
+			(GtLabelAndElementSlide new
 				element: [ GtRawViewsSlide new asElement ];
 				textWithFormat:
 					('Consider how these different objects look quite similar in the inspector'
 						asRopedText
 						glamorousRegularFont;
 						foreground: Color gray)).
-			(GtTextAndElementSlide new
+			(GtLabelAndElementSlide new
 				element: [ GtCustomViewsSlide new asElement ];
 				textWithFormat:
 					('Yet, when we change the view, the differences are obvious'
 						asRopedText
 						glamorousRegularFont;
 						foreground: Color gray)).
-			(GtTextAndElementSlide new
+			(GtLabelAndElementSlide new
 				element: [ GtAllViewsSlide new asElement ];
 				textWithFormat:
 					('Every object is different, and the environment should show it, too'
@@ -70,13 +70,13 @@ GtTour >> create [
 					('querying' asRopedText
 						fontSize: 50;
 						glamorousRegularFont)).
-			(GtTextAndElementSlide new
+			(GtLabelAndElementSlide new
 				element: [ (GtPlaygroundSlide new snippets: {'#gtView gtPragmas'}) create ];
 				textWithFormat:
 					('Inspect the result of this query. Expand the methods' asRopedText
 						glamorousRegularFont;
 						foreground: Color gray)).
-			(GtTextAndElementSlide new
+			(GtLabelAndElementSlide new
 				element: [ (GtPlaygroundSlide new
 					snippets: {'#gtView gtPragmas & #list gtReferences'})
 					create ];
@@ -90,13 +90,13 @@ GtTour >> create [
 					('moldable search' asRopedText
 						fontSize: 50;
 						glamorousRegularFont)).
-			(GtTextAndElementSlide new
+			(GtLabelAndElementSlide new
 				element: [ GtSpotterSlide new asElement ];
 				textWithFormat:
 					('Search is pervasive. Try searching for Object' asRopedText
 						glamorousRegularFont;
 						foreground: Color gray)).
-			(GtTextAndElementSlide new
+			(GtLabelAndElementSlide new
 				element: [ GtSpotterSlide new asElement ];
 				textWithFormat:
 					(('Or search for .' , FileSystem disk delimiter asString) asRopedText
@@ -126,7 +126,19 @@ GtTour >> create [
 						bold;
 						yourself)).
 			(GtElementSlide new
-				element: [ GtInspector withToolOn: (GtClassCoder forClass: JSParser) ])}.
+				element: [ GtInspector withToolOn: (GtClassCoder forClass: JSParser) ]).
+			(GtLabelAndElementSlide new
+				element: [self treemapWithViewsAndExamples ];
+				textWithFormat: ('The need for moldability is pervasive.' asRopedText
+						glamorousRegularFont;
+						foreground: Color gray);
+				textWithFormat: ('The visualization below shows a treemap of the classes and packages from the current image.' asRopedText
+						glamorousRegularFont;
+						foreground: Color gray);
+				textWithFormat: ('Blue denotes classes that contain at least one custom view; green shows those that have an example.' asRopedText
+						glamorousRegularFont;
+						foreground: Color gray))
+		}.
 	^ show
 ]
 
