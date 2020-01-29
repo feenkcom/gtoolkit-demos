@@ -14,32 +14,24 @@ GtTour >> create [
 				fileReference:
 					(GtResourceReference
 						path: Path * 'feenkcom' / 'gtoolkit' / 'doc' / 'gtoolkit.png')).
-			(GtTitleSlide new
-				titleText:
-					('moldable development environment' asRopedText
-						fontSize: 50;
-						glamorousRegularFont)).
+			(GtTextSlide new
+				newText: 'Glamorous Toolkit is the moldable development environment.';
+				newText: 'It is a live notebook. It is a flexible search interface. It is a fancy code editor. It is a software analysis platform. It is a data visualization engine. All in one. It is built in Pharo and it is free and open-source under an MIT license.';
+				newText: 'What is moldable development? A new paradigm that promotes the idea that developers should explain their systems through the lens of custom tools that they create while developing the system.';
+				newText: 'But, let''s take it step by step.').
 			(GtLabelAndElementSlide new
 				element: [ GtRawViewsSlide new asElement ];
-				newTextWithFormat:
-					('Consider how these different objects look quite similar in the inspector'
-						asRopedText
-						glamorousRegularFont;
-						foreground: Color gray)).
+				newFadedText: 'Consider how these different objects look quite similar in the inspector.').
 			(GtLabelAndElementSlide new
 				element: [ GtCustomViewsSlide new asElement ];
-				newTextWithFormat:
-					('Yet, when we change the view, the differences are obvious'
-						asRopedText
-						glamorousRegularFont;
-						foreground: Color gray)).
+				newFadedText: 'Yet, when we change the view, the differences are obvious.').
 			(GtLabelAndElementSlide new
 				element: [ GtAllViewsSlide new asElement ];
-				newTextWithFormat:
-					('Every object is different, and the environment should show it, too'
-						asRopedText
-						glamorousRegularFont;
-						foreground: Color gray)).
+				newFadedText: 'Every object is different, and the environment should show it, too.').
+			(GtLabelAndElementSlide new
+				element: [ GtMultipleViewsForOneObjectSlide new asElement ];
+				newFadedText: 'Every object can be seen in multiple ways and the environment must accommodate all of them.';
+				newFadedText: 'Take a look below at a few views on an object holding a piece of text.').
 
 			"		GtTitleSlide new
 			titleText: ('components' asRopedText fontSize: 50; glamorousRegularFont).
@@ -118,26 +110,17 @@ GtTour >> create [
 						bold;
 						yourself)).
 			GtDebuggerOnRopeSlide new."
-			(GtTitleSlide new
-				titleText:
-					('platform' asRopedText
-						fontSize: 50;
-						fontName: 'Helvetica Neue';
-						bold;
-						yourself)).
-			(GtElementSlide new
-				element: [ GtInspector withToolOn: (GtClassCoder forClass: JSParser) ]).
+			(GtTextSlide new
+				newText: 'Glamorous Toolkit is a platform. While it is implemented in Pharo, it can already tackle multiple other languages.').
 			(GtLabelAndElementSlide new
-				element: [self treemapWithViewsAndExamples ];
-				newTextWithFormat: ('The need for moldability is pervasive.' asRopedText
-						glamorousRegularFont;
-						foreground: Color gray);
-				newTextWithFormat: ('The visualization below shows a treemap of the classes and packages from the current image.' asRopedText
-						glamorousRegularFont;
-						foreground: Color gray);
-				newTextWithFormat: ('Blue denotes classes that contain at least one custom view; green shows those that have an example.' asRopedText
-						glamorousRegularFont;
-						foreground: Color gray))
+				element: [ GtInspector withToolOn: (GtClassCoder forClass: JSParser) ];
+				newFadedText: 'The first non-Pharo language we accommodated is the language with which we write parsers.';
+				newFadedText: 'Here you see a concrete instance of the language used for defining the parser for JavaScript.').
+			(GtLabelAndElementSlide new
+				element: [ self treemapWithViewsAndExamples ];
+				newFadedText: 'The need for moldability is pervasive.';
+				newFadedText: 'The visualization below shows a treemap of the classes and packages from the current image.';
+				newFadedText: 'Blue denotes classes that contain at least one custom view; green shows those that have an example.')
 		}.
 	^ show
 ]
