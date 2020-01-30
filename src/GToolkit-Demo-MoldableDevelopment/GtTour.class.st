@@ -33,6 +33,13 @@ GtTour >> create [
 				newFadedText: 'Every object can be seen in multiple ways and the environment must accommodate all of them.';
 				newFadedText: 'Take a look below at a few views on an object holding a piece of text.').
 
+"			(GtTextAndElementSlide new 
+				element: [ GtMultipleViewsForOneObjectSlide new grid asElement ];
+				newText: 'Every object can be seen in multiple ways.';
+				newText: 'Take a look to the right at a few views on an the same object holding a piece of text.';
+				newText: 'Every view is relevant from a certain perspective and the environment must accommodate all of them.';
+				elementWeight: 0.7).
+"
 			"		GtTitleSlide new
 			titleText: ('components' asRopedText fontSize: 50; glamorousRegularFont).
 		GtTextAndElementSlide new 
@@ -40,21 +47,19 @@ GtTour >> create [
 			textWithFormat: ('Glamorous Toolkit is made of multiple programmable components' asRopedText glamorousRegularFont; foreground: Color gray).
 		GtComponentsSlide new.
 "
-			(GtTitleSlide new
-				titleText:
-					('live programming and inspection' asRopedText
-						fontSize: 50;
-						glamorousRegularFont)).
-			(GtElementSlide new
-				element: [ GtExplainerExamples new inspectorOnOneObjectExample ]).
-			(GtElementSlide new
-				element: [ self viewsExplanationWithLinks ]).
+			GtTextSlide new
+				newText: 'Let''s start with live programming and inspection.'.
+			
+			GtElementSlide new
+				element: [ GtExplainerExamples new inspectorOnOneObjectExample ].
+			GtElementSlide new
+				element: [ self viewsExplanationWithLinks ].
 		
-			(GtTitleSlide new
+			GtTitleSlide new
 				titleText:
 					('moldable coding' asRopedText
 						fontSize: 50;
-						glamorousRegularFont)).
+						glamorousRegularFont).
 			(GtElementSlide new
 				element: [ GtInspector withToolOn: (GtClassCoder forClass: GtClassCoder) ]).
 			(GtTitleSlide new
@@ -64,19 +69,12 @@ GtTour >> create [
 						glamorousRegularFont)).
 			(GtLabelAndElementSlide new
 				element: [ (GtPlaygroundSlide new snippets: {'#gtView gtPragmas'}) create ];
-				newTextWithFormat:
-					('Inspect the result of this query. Expand the methods' asRopedText
-						glamorousRegularFont;
-						foreground: Color gray)).
+				newFadedText: 'Inspect the result of this query. Expand the methods').
 			(GtLabelAndElementSlide new
 				element: [ (GtPlaygroundSlide new
 					snippets: {'#gtView gtPragmas & #list gtReferences'})
 					create ];
-				newTextWithFormat:
-					('Now, try with this composed query. Notice the highlighting'
-						asRopedText
-						glamorousRegularFont;
-						foreground: Color gray)).
+				newFadedText: 'Now, try with this composed query. Notice the highlighting').
 			(GtTitleSlide new
 				titleText:
 					('moldable search' asRopedText
@@ -84,24 +82,17 @@ GtTour >> create [
 						glamorousRegularFont)).
 			(GtLabelAndElementSlide new
 				element: [ GtSpotterSlide new asElement ];
-				newTextWithFormat:
-					('Search is pervasive. Try searching for Object' asRopedText
-						glamorousRegularFont;
-						foreground: Color gray)).
+				newFadedText: 'Search is pervasive. Try searching for Object').
 			(GtLabelAndElementSlide new
 				element: [ GtSpotterSlide new asElement ];
-				newTextWithFormat:
-					(('Or search for .' , FileSystem disk delimiter asString) asRopedText
-						glamorousRegularFont;
-						foreground: Color gray)).
+				newFadedText: ('Or search for .' , FileSystem disk delimiter asString)).
 			(GtTitleSlide new
 				titleText:
 					('live documents' asRopedText
 						fontSize: 50;
 						glamorousRegularFont)).
 			(GtElementSlide new
-				element:
-					[ GtInspector withToolOn: (GtDocument forClass: BaselineOfGToolkit) ]).
+				element: [ GtInspector withToolOn: (GtDocument forClass: BaselineOfGToolkit) ]).
 "			(GtTitleSlide new
 				titleText:
 					('tracing variables' asRopedText
