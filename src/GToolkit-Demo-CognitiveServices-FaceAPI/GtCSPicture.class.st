@@ -1,7 +1,7 @@
 "
 I model a picture that can contain a list of detected faces. 
 
-I maintain a list of ${class:GtCSFace}$ objects representing the faces detected within this picture and a ${class:Form}$ object holding the graphical representation of the picture.  I provide support for adding and removing faces, and setting a graphical representation directly, or by either reading it from a file or downloading it from a URL.
+I maintain a list of ${class:GtCSFace}$ objects representing the faces detected within this picture and a ${class:Form}$ object holding the graphical representation of the picture. I provide support for adding and removing faces, and setting a graphical representation directly, or by either reading it from a file or downloading it from a URL.
 
 ${example:GtCSPictureExamples>>#pictureWithFacesAndForm|noCode|previewShow=gtPictureFor:}$
 
@@ -14,24 +14,22 @@ ${example:GtCSPictureExamples>>#emptyPicture}$
 
 !!Adding a graphical representation
 To explicitly add a graphical representation there are several alternative:
-- set an URL to the picture and load the graphical representation from that URL; 
-${example:GtCSPictureExamples>>#pictureWithManuallySetForm}$
-- load the graphical representation from a file on disk;
-${example:GtCSPictureExamples>>#pictureWithManuallySetForm}$
+- set an URL to the picture and load the graphical representation from that URL using ${method:GtCSPicture>>#ensurePictureForm}$; 
 - directly set a ${class:Form}$ as the graphical representation using ${method:GtCSPicture>>#pictureForm:}$.
+
 ${example:GtCSPictureExamples>>#pictureWithManuallySetForm}$
 
 !!Adding face information.
-The main way to load face information is by calling ${method:GtCSPicture>>#addFace:}$. Before adding faces ${method:GtCSPicture>>#ensureFacesStorage}$ needs to be called to initialize the storage for faces. Faces can be added to a picture even if the picture does not have a graphical representation.
+The main way to load face information is by calling ${method:GtCSPicture>>#addFace:}$. Before adding faces ${method:GtCSPicture>>#ensureFacesStorage}$ needs to be called to initialize the storage for faces. 
+${example:GtCSPictureExamples>>#pictureWithFacesWithLandmarksAndForm}$
+
+Faces can be added to a picture even if the picture does not have a graphical representation.
 ${example:GtCSPictureExamples>>#pictureWithFacesAndNoForm}$
 
 Face information can also be loaded from a JSON file. See <Adding faces from JSON files> for more details.
 
 !!Implementation details
-The fact that the attribute ==faces== is not null indicates that a client of this object already added face data to the picture. An empty list indicates that the picture has no face objects. See <Understanding face storage> for more details.
-
-
-
+The fact that the attribute ==faces== is not null indicates that a client of this object already added face data to the picture. An empty list indicates that the picture has no face objects.
 "
 Class {
 	#name : #GtCSPicture,
