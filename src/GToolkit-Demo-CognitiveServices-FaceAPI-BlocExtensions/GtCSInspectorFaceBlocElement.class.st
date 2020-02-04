@@ -5,17 +5,8 @@ Class {
 		'face',
 		'scalableElement'
 	],
-	#category : 'GToolkit-Demo-CognitiveServices-FaceAPI-BlocExtensions'
+	#category : #'GToolkit-Demo-CognitiveServices-FaceAPI-BlocExtensions'
 }
-
-{ #category : #drawing }
-GtCSInspectorFaceBlocElement >> drawBackgroundOnSpartaCanvas: aCanvas [
-	super drawBackgroundOnSpartaCanvas: aCanvas.
-	
-	self drawEyesDetailsOn: aCanvas.
-	self drawNoseDetailsOn: aCanvas.
-	self drawMouthDetailsOn: aCanvas.
-]
 
 { #category : #drawing }
 GtCSInspectorFaceBlocElement >> drawConnectedLandmarks: points on: aCanvas [
@@ -53,6 +44,13 @@ GtCSInspectorFaceBlocElement >> drawNoseDetailsOn: aCanvas [
 	self drawConnectedLandmarks: self noseRoot on: aCanvas.
 	self drawConnectedLandmarks: self noseRightAlar on: aCanvas.
 	self drawConnectedLandmarks: self noseLeftAlar on: aCanvas.
+]
+
+{ #category : #drawing }
+GtCSInspectorFaceBlocElement >> drawOnSpartaCanvas: aSpartaCanvas [
+	self drawEyesDetailsOn: aSpartaCanvas.
+	self drawNoseDetailsOn: aSpartaCanvas.
+	self drawMouthDetailsOn: aSpartaCanvas.
 ]
 
 { #category : #landmarks }
