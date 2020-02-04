@@ -42,14 +42,15 @@ GtOneRenderingTree >> create [
 GtOneRenderingTree >> liveElementTree [ 
 	| m |
 	m := GtMondrian new.
-	m nodes 
-		stencil: [BlElement new geometry: BlEllipse new; border: (BlBorder paint: Color blue width: 1)];
+	m nodes
+		stencil: [BlElement new geometry: BlEllipse new; border: (BlBorder paint: Color black width: 2)];
 		with: (1 to: 5).
-	m edges 
+	m edges
 		fromCenterBottom;
 		toCenterTop;
+		stencil: [ BlSigmoidElement new beVertical border: (BlBorder paint: (Color black alpha: 0.2) width: 2)];
 		connectFrom: [:x | x // 2].
-	m layout tree.
+	m layout tree levelDistance: 30; nodeDistance: 10.
 	^ GtLiveElementTreeSlide new 
 		targetElement: (BlUseAsyncFeatures disableDuring: [
 			(m gtViewsFor: GtPhlowView empty) asElementDo: [:e | e ]]) forceLayout.
