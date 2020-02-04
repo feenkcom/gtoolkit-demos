@@ -206,8 +206,8 @@ GtWhatMakesBlocSpecialExplanation >> rootWithHierarchyElements [
 	"self new rootWithLayoutHierarchyElements"
 	| root |
 	root := BlElement new constraintsDo: [:c | 
-		c horizontal matchParent. 
-		c vertical matchParent].
+		c horizontal fitContent. 
+		c vertical fitContent].
 		BlGeometry withAllSubclassesDo: [ :class | 
 		| label |
 		label := BlTextElement new 
