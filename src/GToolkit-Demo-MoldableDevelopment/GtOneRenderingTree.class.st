@@ -14,8 +14,9 @@ GtOneRenderingTree >> create [
 
 		GtTextAndElementSlide new
 				element: [ self overviewElement ];
-				newText: 'The graphical stack supporting Glamorous Toolkit offers a core property: any scene is rendered through exactly a single rendering tree.';
-				newText: 'This very window contains multiple pieces that all reside in one single rendering tree. This includes the words in the document on the right, the dots in the graph or the labels from the visual keyboard.'. 
+				elementWeight: 0.7;
+				newText: 'The graphical stack supporting Glamorous Toolkit offers a core property: any graphical scene is rendered through exactly one single rendering tree.';
+				newText: 'This very window contains multiple elements that all reside in one single rendering tree. This includes the words in the document, the lines in the graph, the dots in the chart or the labels from the visual keyboard on the right.'.
 
 		GtTitleSlide new
 			titleText: ('the text editor is made of plain elements' asRopedText fontSize: 30; glamorousRegularFont).
@@ -25,13 +26,26 @@ GtOneRenderingTree >> create [
 
 		GtTitleSlide new
 			titleText: ('visualizations can be combined with regular elements' asRopedText fontSize: 30; glamorousRegularFont).
-		GtSearchFilterHierarchySlide new.
+		GtLabelAndElementSlide new
+				element: [ GtSearchFilterHierarchySlide new asElement ];
+				newFadedText: 'The visualization below shows an inheritance tree of classes. Now, unfold them, and you get method editors.';
+				newFadedText: 'For this to work, we have to be able to apply graph layouts on arbitrary elements.'.		
 		
 		GtTitleSlide new
 			titleText: ('graph layouts are regular layouts' asRopedText fontSize: 30; glamorousRegularFont).
-		GtBlocSpecialClassHierarchyWithGridSlide new.
-		GtBlocSpecialClassHierarchyWithEdgesSlide new.
-		GtBlocSpecialClassHierarchyWithEdgesAndLinesSlide new.
+		GtLabelAndElementSlide new
+			element: [ GtBlocSpecialClassHierarchyWithGridSlide new asElement ];
+			newFadedText: 'Let''s take a concrete example. Below we see a set of elements arranged in a grid.';
+			newFadedText: 'Interestingly, the elements are centrally aligned in each column';
+			newFadedText: 'This is achived by specifying a grid layout specific constraint for each of the children.'.
+		GtLabelAndElementSlide new
+			element: [ GtBlocSpecialClassHierarchyWithEdgesSlide new asElement ];
+			newFadedText: 'And now we see the same elements, but laid out as a tree.';
+			newFadedText: 'A tree layout requires the notion of an edge.';
+			newFadedText: 'The edge is modelled as a regular constraint, like in the case of the grid layout.'.
+		GtLabelAndElementSlide new
+			element: [ GtBlocSpecialClassHierarchyWithEdgesAndLinesSlide new asElement ];
+			newFadedText: 'Lines can also be added to the scene, but they are purely decorative graphical elements.'.
 
 		GtTitleSlide new
 			titleText: ('new kind of interfaces' asRopedText fontSize: 30; glamorousRegularFont).
@@ -43,7 +57,7 @@ GtOneRenderingTree >> create [
 		GtLabelAndElementSlide new
 				element: [ self sampleExplanationWithLinks ];
 				newFadedText: 'Here we see a textual explanation that links with various constructs in the code that it explains.';
-				newFadedText: 'For the scene to work, the arrows must be in the same space as the text elements and the code elements.'.				.
+				newFadedText: 'For the scene to work, the arrows must be in the same space as the text elements and the code elements.'.
 		
 		GtLabelAndElementSlide new
 				element: [ GtArrowHeadWithEmbeddedWorldSlide new asElement ];
