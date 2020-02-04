@@ -31,9 +31,26 @@ GtOneRenderingTree >> create [
 		GtTitleSlide new
 			titleText: ('new kind of interfaces' asRopedText fontSize: 30; glamorousRegularFont).
 		GtConnectorForExampleSlide new.
-
+		self liveElementTree.
 		GtArrowHeadWithEmbeddedWorldSlide new.
 				
 	}.
 	^ show
+]
+
+{ #category : #'api - instantiation' }
+GtOneRenderingTree >> liveElementTree [ 
+	| m |
+	m := GtMondrian new.
+	m nodes 
+		stencil: [BlElement new geometry: BlEllipse new; border: (BlBorder paint: Color blue width: 1)];
+		with: (1 to: 5).
+	m edges 
+		fromCenterBottom;
+		toCenterTop;
+		connectFrom: [:x | x // 2].
+	m layout tree.
+	^ GtLiveElementTreeSlide new 
+		targetElement: (BlUseAsyncFeatures disableDuring: [
+			(m gtViewsFor: GtPhlowView empty) asElementDo: [:e | e ]]) forceLayout.
 ]
