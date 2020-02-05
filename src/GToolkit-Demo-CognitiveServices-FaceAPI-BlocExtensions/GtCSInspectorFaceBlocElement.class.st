@@ -9,15 +9,6 @@ Class {
 }
 
 { #category : #drawing }
-GtCSInspectorFaceBlocElement >> drawBackgroundOnSpartaCanvas: aCanvas [
-	super drawBackgroundOnSpartaCanvas: aCanvas.
-	
-	self drawEyesDetailsOn: aCanvas.
-	self drawNoseDetailsOn: aCanvas.
-	self drawMouthDetailsOn: aCanvas.
-]
-
-{ #category : #drawing }
 GtCSInspectorFaceBlocElement >> drawConnectedLandmarks: points on: aCanvas [
 	| translatedPoints path |
 	translatedPoints := self translateLandmarks: points.
@@ -60,6 +51,13 @@ GtCSInspectorFaceBlocElement >> drawNoseDetailsOn: aCanvas [
 	self drawConnectedLandmarks: self faceLandmarks noseRoot on: aCanvas.
 	self drawConnectedLandmarks: self faceLandmarks noseRightAlar on: aCanvas.
 	self drawConnectedLandmarks: self faceLandmarks noseLeftAlar on: aCanvas.
+]
+
+{ #category : #drawing }
+GtCSInspectorFaceBlocElement >> drawOnSpartaCanvas: aSpartaCanvas [
+	self drawEyesDetailsOn: aSpartaCanvas.
+	self drawNoseDetailsOn: aSpartaCanvas.
+	self drawMouthDetailsOn: aSpartaCanvas.
 ]
 
 { #category : #accessing }
