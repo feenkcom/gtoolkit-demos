@@ -5,17 +5,8 @@ Class {
 		'face',
 		'scalableElement'
 	],
-	#category : 'GToolkit-Demo-CognitiveServices-FaceAPI-BlocExtensions'
+	#category : #'GToolkit-Demo-CognitiveServices-FaceAPI-BlocExtensions'
 }
-
-{ #category : #drawing }
-GtCSInspectorFaceBlocElement >> drawBackgroundOnSpartaCanvas: aCanvas [
-	super drawBackgroundOnSpartaCanvas: aCanvas.
-	
-	self drawEyesDetailsOn: aCanvas.
-	self drawNoseDetailsOn: aCanvas.
-	self drawMouthDetailsOn: aCanvas.
-]
 
 { #category : #drawing }
 GtCSInspectorFaceBlocElement >> drawConnectedLandmarks: points on: aCanvas [
@@ -36,39 +27,48 @@ GtCSInspectorFaceBlocElement >> drawConnectedLandmarks: points on: aCanvas [
 
 { #category : #drawing }
 GtCSInspectorFaceBlocElement >> drawEyesDetailsOn: aCanvas [
-	self drawConnectedLandmarks: self eyeRight on: aCanvas.
-	self drawConnectedLandmarks: self eyeLeft on: aCanvas.
+	self drawConnectedLandmarks: self faceLandmarks eyeRight on: aCanvas.
+	self drawConnectedLandmarks: self faceLandmarks eyeLeft on: aCanvas.
+	
+]
+
+{ #category : #drawing }
+GtCSInspectorFaceBlocElement >> drawEyesbrowseDetailsOn: aCanvas [
+	self drawConnectedLandmarks: self faceLandmarks eyebrowRight on: aCanvas.
+	self drawConnectedLandmarks: self faceLandmarks eyebrowLeft on: aCanvas.
+	
 ]
 
 { #category : #drawing }
 GtCSInspectorFaceBlocElement >> drawMouthDetailsOn: aCanvas [
-	self drawConnectedLandmarks: self upperLip on: aCanvas.
-	self drawConnectedLandmarks: self underLip on: aCanvas.
-	self drawConnectedLandmarks: self mouth on: aCanvas.
+	self drawConnectedLandmarks: self faceLandmarks upperLip on: aCanvas.
+	self drawConnectedLandmarks: self faceLandmarks underLip on: aCanvas.
+	self drawConnectedLandmarks: self faceLandmarks mouth on: aCanvas.
 ]
 
 { #category : #drawing }
 GtCSInspectorFaceBlocElement >> drawNoseDetailsOn: aCanvas [
-	self drawConnectedLandmarks: self noseTip on: aCanvas.  
-	self drawConnectedLandmarks: self noseRoot on: aCanvas.
-	self drawConnectedLandmarks: self noseRightAlar on: aCanvas.
-	self drawConnectedLandmarks: self noseLeftAlar on: aCanvas.
+	self drawConnectedLandmarks: self faceLandmarks noseTip on: aCanvas.  
+	self drawConnectedLandmarks: self faceLandmarks noseRoot on: aCanvas.
+	self drawConnectedLandmarks: self faceLandmarks noseRightAlar on: aCanvas.
+	self drawConnectedLandmarks: self faceLandmarks noseLeftAlar on: aCanvas.
 ]
 
-{ #category : #landmarks }
-GtCSInspectorFaceBlocElement >> eyeLeft [
-	^ {(self propertyAt: 'eyeLeftTop').
-	(self propertyAt: 'eyeLeftInner').
-	(self propertyAt: 'eyeLeftBottom').
-	(self propertyAt: 'eyeLeftOuter')}
+{ #category : #drawing }
+GtCSInspectorFaceBlocElement >> drawOnSpartaCanvas: aSpartaCanvas [
+	self  faceLandmarks hasEyes ifTrue: [
+		self drawEyesDetailsOn: aSpartaCanvas ].
+	self  faceLandmarks hasEyesbrowse ifTrue: [
+		self drawEyesbrowseDetailsOn: aSpartaCanvas ].
+	self faceLandmarks hasNose ifTrue: [
+		self drawNoseDetailsOn: aSpartaCanvas ].
+	self faceLandmarks hasCompleteMouth ifTrue: [
+		self drawMouthDetailsOn: aSpartaCanvas ].
 ]
 
-{ #category : #landmarks }
-GtCSInspectorFaceBlocElement >> eyeRight [
-	^ {(self propertyAt: 'eyeRightTop').
-	(self propertyAt: 'eyeRightInner').
-	(self propertyAt: 'eyeRightBottom').
-	(self propertyAt: 'eyeRightOuter')}
+{ #category : #accessing }
+GtCSInspectorFaceBlocElement >> faceLandmarks [
+	^ face landmarks 
 ]
 
 { #category : #initialization }
@@ -81,54 +81,8 @@ GtCSInspectorFaceBlocElement >> initializeForFace: aFace [
 	face := aFace.
 ]
 
-{ #category : #landmarks }
-GtCSInspectorFaceBlocElement >> mouth [
-	^ {(self propertyAt: 'mouthLeft').
-	(self propertyAt: 'mouthRight')}
-]
-
-{ #category : #landmarks }
-GtCSInspectorFaceBlocElement >> noseLeftAlar [
-	^ {(self propertyAt: 'noseLeftAlarOutTip').
-	(self propertyAt: 'noseLeftAlarTop')}
-]
-
-{ #category : #landmarks }
-GtCSInspectorFaceBlocElement >> noseRightAlar [
-	^ {(self propertyAt: 'noseRightAlarOutTip').
-	(self propertyAt: 'noseRightAlarTop')}
-]
-
-{ #category : #landmarks }
-GtCSInspectorFaceBlocElement >> noseRoot [
-	^ {(self propertyAt: 'noseRootLeft').
-	(self propertyAt: 'noseRootRight')}
-]
-
-{ #category : #landmarks }
-GtCSInspectorFaceBlocElement >> noseTip [
-	^ {(self propertyAt: 'noseTip')}
-]
-
-{ #category : #accessing }
-GtCSInspectorFaceBlocElement >> propertyAt: aName [
- 	^ face landmarks propertyAt: aName ifAbsent: [ 0@0 ]
-]
-
 { #category : #transformation }
 GtCSInspectorFaceBlocElement >> translateLandmarks: landmarkPoints [
 	^ landmarkPoints collect: [ :aPoint | 
 		(aPoint - face rectangle topLeft) ]
-]
-
-{ #category : #landmarks }
-GtCSInspectorFaceBlocElement >> underLip [
-	^ {(self propertyAt: 'underLipBottom').
-	(self propertyAt: 'underLipTop')}
-]
-
-{ #category : #landmarks }
-GtCSInspectorFaceBlocElement >> upperLip [
-	^ {(self propertyAt: 'upperLipBottom').
-	(self propertyAt: 'upperLipTop')}
 ]

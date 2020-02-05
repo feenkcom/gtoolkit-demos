@@ -7,8 +7,18 @@ Class {
 	#instVars : [
 		'properties'
 	],
-	#category : 'GToolkit-Demo-CognitiveServices-FaceAPI'
+	#category : #'GToolkit-Demo-CognitiveServices-FaceAPI'
 }
+
+{ #category : #accessing }
+GtCSFaceProperties >> addProperties: aDictionary [
+	^ self properties addAll: aDictionary
+]
+
+{ #category : #testing }
+GtCSFaceProperties >> hasProperty: aName [
+	^ self properties includesKey: aName
+]
 
 { #category : #accessing }
 GtCSFaceProperties >> properties [
@@ -28,4 +38,9 @@ GtCSFaceProperties >> propertyAt: aName [
 { #category : #accessing }
 GtCSFaceProperties >> propertyAt: aName ifAbsent: aBlock [
 	^ self properties at: aName ifAbsent: aBlock
+]
+
+{ #category : #accessing }
+GtCSFaceProperties >> propertyAt: aName put: aBlock [
+	^ self properties at: aName put: aBlock
 ]
