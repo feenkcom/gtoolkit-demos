@@ -78,21 +78,23 @@ GtOneRenderingTree >> liveElementTree [
 		stencil: [
 			BlElement new 
 				geometry: BlEllipse new; 
-				border: (BlBorder paint: Color black width: 2);
-				look: (BrInteractiveCommonLook new
-					default: [:aWidget | aWidget background: Color white ];
-					hovered: [:aWidget | aWidget background: BrGlamorousColors textHighlightColor]);
-				viewModel: (BrInteractiveModel withAll: { BrHoverModel new })];
+				border: (BlBorder paint: Color black width: 2) ];
 		with: (1 to: 5).
 	m edges
 		fromCenterBottom;
 		toCenterTop;
 		stencil: [ BlSigmoidElement new beVertical border: (BlBorder paint: (Color black alpha: 0.2) width: 2)];
 		connectFrom: [:x | x // 2].
-	m layout tree levelDistance: 30; nodeDistance: 10.
+	m layout tree levelDistance: 30; nodeDistance: 2.
 	^ GtLiveElementTreeSlide new 
 		targetElement: (BlUseAsyncFeatures disableDuring: [
-			(m gtViewsFor: GtPhlowView empty) asElementDo: [:e | e ]]) forceLayout.
+			(m gtViewsFor: GtPhlowView empty) asElementDo: [:e | 
+				e 
+					addEventFilterOn: BlMouseOverEvent 
+					do: [ :anEvent | 
+						anEvent target effect: (BlOverlayAboveEffect new paint: (BrGlamorousColors textHighlightColor alpha: 0.4)) ];
+					addEventFilterOn: BlMouseOutEvent 
+					do: [ :anEvent | anEvent target effect: (BlNullEffect new) ] ]]) forceLayout.
 ]
 
 { #category : #'api - instantiation' }
