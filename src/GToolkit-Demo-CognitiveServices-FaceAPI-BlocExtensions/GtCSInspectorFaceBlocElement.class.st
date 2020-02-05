@@ -27,14 +27,15 @@ GtCSInspectorFaceBlocElement >> drawConnectedLandmarks: points on: aCanvas [
 
 { #category : #drawing }
 GtCSInspectorFaceBlocElement >> drawEyesDetailsOn: aCanvas [
-	self faceLandmarks hasRightEye ifTrue: [ 
-		self drawConnectedLandmarks: self faceLandmarks eyeRight on: aCanvas ].
-	self faceLandmarks hasRightEyebrow ifTrue: [ 
-		self drawConnectedLandmarks: self faceLandmarks eyebrowRight on: aCanvas ].
-	self faceLandmarks hasLeftEye ifTrue: [ 
-		self drawConnectedLandmarks: self faceLandmarks eyeLeft on: aCanvas ].
-	self faceLandmarks hasLeftEyebrow ifTrue: [ 
-		self drawConnectedLandmarks: self faceLandmarks eyebrowLeft on: aCanvas ].
+	self drawConnectedLandmarks: self faceLandmarks eyeRight on: aCanvas.
+	self drawConnectedLandmarks: self faceLandmarks eyeLeft on: aCanvas.
+	
+]
+
+{ #category : #drawing }
+GtCSInspectorFaceBlocElement >> drawEyesbrowseDetailsOn: aCanvas [
+	self drawConnectedLandmarks: self faceLandmarks eyebrowRight on: aCanvas.
+	self drawConnectedLandmarks: self faceLandmarks eyebrowLeft on: aCanvas.
 	
 ]
 
@@ -55,9 +56,14 @@ GtCSInspectorFaceBlocElement >> drawNoseDetailsOn: aCanvas [
 
 { #category : #drawing }
 GtCSInspectorFaceBlocElement >> drawOnSpartaCanvas: aSpartaCanvas [
-	self drawEyesDetailsOn: aSpartaCanvas.
-	self drawNoseDetailsOn: aSpartaCanvas.
-	self drawMouthDetailsOn: aSpartaCanvas.
+	self  faceLandmarks hasEyes ifTrue: [
+		self drawEyesDetailsOn: aSpartaCanvas ].
+	self  faceLandmarks hasEyesbrowse ifTrue: [
+		self drawEyesbrowseDetailsOn: aSpartaCanvas ].
+	self faceLandmarks hasNose ifTrue: [
+		self drawNoseDetailsOn: aSpartaCanvas ].
+	self faceLandmarks hasCompleteMouth ifTrue: [
+		self drawMouthDetailsOn: aSpartaCanvas ].
 ]
 
 { #category : #accessing }

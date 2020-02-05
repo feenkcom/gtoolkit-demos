@@ -33,102 +33,177 @@ GtCSFaceLandmarks class >> fromDictionary: aDictionary [
 
 { #category : #landmarks }
 GtCSFaceLandmarks >> eyeLeft [
-	^ {(self propertyAt: 'eyeLeftTop').
-	(self propertyAt: 'eyeLeftInner').
-	(self propertyAt: 'eyeLeftBottom').
-	(self propertyAt: 'eyeLeftOuter')}
+	^ self propertiesValuesFor: self eyeLeftProperties
+]
+
+{ #category : #'landmarks - properties' }
+GtCSFaceLandmarks >> eyeLeftProperties [
+	^ #(
+		'eyeLeftTop'
+		'eyeLeftInner'
+		'eyeLeftBottom'
+		'eyeLeftOuter' 
+	)
 ]
 
 { #category : #landmarks }
 GtCSFaceLandmarks >> eyeRight [
-	^ {(self propertyAt: 'eyeRightTop').
-	(self propertyAt: 'eyeRightInner').
-	(self propertyAt: 'eyeRightBottom').
-	(self propertyAt: 'eyeRightOuter')}
+	^ self propertiesValuesFor: self eyeRightProperties
+]
+
+{ #category : #'landmarks - properties' }
+GtCSFaceLandmarks >> eyeRightProperties [
+	^ #( 
+		'eyeRightTop'
+		'eyeRightInner'
+		'eyeRightBottom'
+		'eyeRightOuter'
+	)
 ]
 
 { #category : #landmarks }
 GtCSFaceLandmarks >> eyebrowLeft [
-	^ {(self propertyAt: 'eyebrowLeftOuter').
-	(self propertyAt: 'eyebrowLeftInner')}
+	^ self propertiesValuesFor: self eyebrowLeftProperties
+]
+
+{ #category : #'landmarks - properties' }
+GtCSFaceLandmarks >> eyebrowLeftProperties [
+	^ #('eyebrowLeftOuter' 'eyebrowLeftInner')
 ]
 
 { #category : #landmarks }
 GtCSFaceLandmarks >> eyebrowRight [
-	^ {(self propertyAt: 'eyebrowRightOuter').
-	(self propertyAt: 'eyebrowRightInner')}
+	^ self propertiesValuesFor: self eyebrowRightProperties
+]
+
+{ #category : #'landmarks - properties' }
+GtCSFaceLandmarks >> eyebrowRightProperties [
+	^ #('eyebrowRightOuter' 'eyebrowRightInner')
+]
+
+{ #category : #private }
+GtCSFaceLandmarks >> hasAllProperties: aCollectionOfProperties [
+	^ aCollectionOfProperties allSatisfy: [ :aProperty |
+		self hasProperty: aProperty ]
+]
+
+{ #category : #'landmarks - testing' }
+GtCSFaceLandmarks >> hasCompleteMouth [
+	^ (self hasAllProperties: self mouthProperties) and: [ 
+		(self hasAllProperties: self underLipProperties) and: [ 
+			self hasAllProperties: self upperLipProperties ] ]
+]
+
+{ #category : #'landmarks - testing' }
+GtCSFaceLandmarks >> hasEyes [
+	^ self hasLeftEye and: [ self hasRightEye ]
+]
+
+{ #category : #'landmarks - testing' }
+GtCSFaceLandmarks >> hasEyesbrowse [
+	^ self hasLeftEyebrow and: [ self hasRightEyebrow ]
 ]
 
 { #category : #'landmarks - testing' }
 GtCSFaceLandmarks >> hasLeftEye [
-	^ (self hasProperty: 'eyeLeftTop') and: [ 
-			(self hasProperty: 'eyeLeftInner') and: [ 
-				(self hasProperty: 'eyeLeftBottom') and: [
-					(self hasProperty: 'eyeLeftOuter') ] ] ]
+	^ self hasAllProperties: self eyeLeftProperties
 ]
 
 { #category : #'landmarks - testing' }
 GtCSFaceLandmarks >> hasLeftEyebrow [
-	^ (self hasProperty: 'eyebrowLeftOuter') and: [ 
-		(self hasProperty: 'eyebrowLeftInner') ]
+	^ self hasAllProperties: self eyebrowLeftProperties
+]
+
+{ #category : #'landmarks - testing' }
+GtCSFaceLandmarks >> hasNose [
+	^ (self hasAllProperties: self noseRootProperties) and: [ 
+		(self hasAllProperties: self noseTipProperties) and: [  
+			(self hasAllProperties: self noseLeftAlarProperties) and: [ 
+				self hasAllProperties: self noseRightAlarProperties ] ] ]
 ]
 
 { #category : #'landmarks - testing' }
 GtCSFaceLandmarks >> hasRightEye [
-	^ (self hasProperty: 'eyeRightTop') and: [ 
-			(self hasProperty: 'eyeRightInner') and: [ 
-				(self hasProperty: 'eyeRightBottom') and: [
-					(self hasProperty: 'eyeRightOuter') ] ] ]
+	^ self hasAllProperties: self eyeRightProperties
 ]
 
 { #category : #'landmarks - testing' }
 GtCSFaceLandmarks >> hasRightEyebrow [
-	^ (self hasProperty: 'eyebrowRightOuter') and: [ 
-		(self hasProperty: 'eyebrowRightInner') ]
+	^ self hasAllProperties: self eyebrowRightProperties
 ]
 
 { #category : #landmarks }
 GtCSFaceLandmarks >> mouth [
-	^ {(self propertyAt: 'mouthLeft').
-	(self propertyAt: 'mouthRight')}
+	^ self propertiesValuesFor: self mouthProperties
+]
+
+{ #category : #'landmarks - properties' }
+GtCSFaceLandmarks >> mouthProperties [
+	^ #('mouthLeft' 'mouthRight')
 ]
 
 { #category : #landmarks }
 GtCSFaceLandmarks >> noseLeftAlar [
-	^ {(self propertyAt: 'noseLeftAlarOutTip').
-	(self propertyAt: 'noseLeftAlarTop')}
+	^ self propertiesValuesFor: self noseLeftAlarProperties
+]
+
+{ #category : #'landmarks - properties' }
+GtCSFaceLandmarks >> noseLeftAlarProperties [
+	^ #('noseLeftAlarOutTip' 'noseLeftAlarTop')
 ]
 
 { #category : #landmarks }
 GtCSFaceLandmarks >> noseRightAlar [
-	^ {(self propertyAt: 'noseRightAlarOutTip').
-	(self propertyAt: 'noseRightAlarTop')}
+	^ self propertiesValuesFor: self noseRightAlarProperties
+]
+
+{ #category : #'landmarks - properties' }
+GtCSFaceLandmarks >> noseRightAlarProperties [
+	^ #('noseRightAlarOutTip' 'noseRightAlarTop')
 ]
 
 { #category : #landmarks }
 GtCSFaceLandmarks >> noseRoot [
-	^ {(self propertyAt: 'noseRootLeft').
-	(self propertyAt: 'noseRootRight')}
+	^ self propertiesValuesFor: self noseRootProperties
+]
+
+{ #category : #'landmarks - properties' }
+GtCSFaceLandmarks >> noseRootProperties [
+	^ #('noseRootLeft' 'noseRootRight')
 ]
 
 { #category : #landmarks }
 GtCSFaceLandmarks >> noseTip [
-	^ {(self propertyAt: 'noseTip')}
+	^ self propertiesValuesFor: self noseTipProperties
 ]
 
-{ #category : #accessing }
-GtCSFaceLandmarks >> propertyAt: aName [
- 	^ super propertyAt: aName ifAbsent: [ 0@0 ]
+{ #category : #'landmarks - properties' }
+GtCSFaceLandmarks >> noseTipProperties [
+	^ #('noseTip')
+]
+
+{ #category : #private }
+GtCSFaceLandmarks >> propertiesValuesFor: aCollectionOfProperties [
+	^ aCollectionOfProperties collect: [ :aProperty |
+		self propertyAt: aProperty ifAbsent: [ 0@0 ] ]
 ]
 
 { #category : #landmarks }
 GtCSFaceLandmarks >> underLip [
-	^ {(self propertyAt: 'underLipBottom').
-	(self propertyAt: 'underLipTop')}
+	^ self propertiesValuesFor: self underLipProperties
+]
+
+{ #category : #'landmarks - properties' }
+GtCSFaceLandmarks >> underLipProperties [
+	^ #('underLipBottom' 'underLipTop')
 ]
 
 { #category : #landmarks }
 GtCSFaceLandmarks >> upperLip [
-	^ {(self propertyAt: 'upperLipBottom').
-	(self propertyAt: 'upperLipTop')}
+	^ self propertiesValuesFor: self upperLipProperties
+]
+
+{ #category : #'landmarks - properties' }
+GtCSFaceLandmarks >> upperLipProperties [
+	^ #('upperLipBottom'  'upperLipTop')
 ]
