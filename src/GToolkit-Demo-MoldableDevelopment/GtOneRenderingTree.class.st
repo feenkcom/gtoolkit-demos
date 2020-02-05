@@ -63,7 +63,8 @@ GtOneRenderingTree >> create [
 				element: [ GtArrowHeadWithEmbeddedWorldSlide new asElement ];
 				newFadedText: 'Double click to zoom. Drag.';
 				newFadedText: 'Yes, there is a whole world embedded in the tip of the line.'.
-
+		GtTitleSlide new
+			titleText: ('a quick look behind the scene' asRopedText fontSize: 30; glamorousRegularFont).
 		self liveElementTree
 	}.
 	^ show
@@ -74,7 +75,14 @@ GtOneRenderingTree >> liveElementTree [
 	| m |
 	m := GtMondrian new.
 	m nodes
-		stencil: [BlElement new geometry: BlEllipse new; border: (BlBorder paint: Color black width: 2)];
+		stencil: [
+			BlElement new 
+				geometry: BlEllipse new; 
+				border: (BlBorder paint: Color black width: 2);
+				look: (BrInteractiveCommonLook new
+					default: [:aWidget | aWidget background: Color white ];
+					hovered: [:aWidget | aWidget background: BrGlamorousColors textHighlightColor]);
+				viewModel: (BrInteractiveModel withAll: { BrHoverModel new })];
 		with: (1 to: 5).
 	m edges
 		fromCenterBottom;
