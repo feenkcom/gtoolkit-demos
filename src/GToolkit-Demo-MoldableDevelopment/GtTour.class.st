@@ -116,6 +116,150 @@ GtTour >> create [
 	^ show
 ]
 
+{ #category : #accessing }
+GtTour >> explainerOnReactJSComponents [
+	| js inspectorContainer container explanationStyler look sourceElement compositeStyler editor |
+	js := '  function Welcome(props) {
+    return <h1>Hello, {props.name}</h1>;
+  }
+  function App() {
+    return (
+      <div>
+        <Welcome name="Tudor" />
+        <Welcome name="Andrei" />
+        <Welcome name="John" />
+      </div>
+    );
+  }
+  ReactDOM.render(
+    <App />,
+    document.getElementById(''root'')
+  );'.
+inspectorContainer := BlElement new
+    constraintsDo: [ :c | 
+        c horizontal matchParent.
+        c vertical matchParent ];
+    layout: BlLinearLayout horizontal;
+    margin: (BlInsets all: 30);
+    background: Color white;
+    look: BrShadowLook.
+container := BlElement new
+    constraintsDo: [ :c | 
+        c horizontal matchParent.
+        c vertical matchParent ];
+    layout: BlLinearLayout horizontal.
+container explainer isExplanationHolder: true.
+explanationStyler := (GtSmaCCParserStyler forParser: JSXParser)
+    stylerRules:
+        {(GtSmaCCNodeStylerRule
+            nodeClassName: #JSFunctionNode
+            styleBlock: [ :styler :node :text | 
+                (text from: node startPosition - 1 to: node startPosition - 1)
+                    attributes: {(GtYellowCircleExplanationTextAdornment forIdentifier: #function)}.
+                node name source = 'Welcome'
+                    ifTrue: [ (text from: node startPosition - 1 to: node startPosition - 1)
+                            attributes:
+                                {(GtYellowCircleExplanationTextAdornment
+                                    forIdentifier: #welcomeFunction)} ].
+                node name source = 'App'
+                    ifTrue: [ (text from: node startPosition - 1 to: node startPosition - 1)
+                            attributes: {(GtYellowCircleExplanationTextAdornment forIdentifier: #appFunction)} ] ]).
+        (GtSmaCCNodeStylerRule
+            nodeClassName: #JSVariableDeclarationNode
+            styleBlock: [ :styler :node :text | 
+                node source = 'props'
+                    ifTrue: [ (text from: node startPosition - 1 to: node startPosition - 1)
+                            attributes: {(GtYellowCircleExplanationTextAdornment forIdentifier: #props)} ] ]).
+        (GtSmaCCNodeStylerRule
+            nodeClassName: #JSXElementNameNode
+            styleBlock: [ :styler :node :text | 
+                (node parent isKindOf: JSXClosingElementNode)
+                    ifFalse:
+                        [ #(#('Welcome' #welcome) #('div' #div) #('h1' #h1) #('App' #screen) #('Welcome' #screen) #('App' #appRender))
+                            do: [ :each | 
+                                each first = node source
+                                    ifTrue: [ (text from: node startPosition - 1 to: node startPosition - 1)
+                                            attributes: {(GtYellowCircleExplanationTextAdornment forIdentifier: each last)} ] ] ] ]).
+        (GtSmaCCPatternStylerRule
+            pattern:
+                (JSParser
+                    parse: 'ReactDOM.render'
+                    startingAt: JSParser startingStateForExpression)
+            styleBlock: [ :styler :node :text | 
+                (text from: node startPosition - 1 to: node startPosition - 1)
+                    attributes: {(GtYellowCircleExplanationTextAdornment forIdentifier: #ReactDOM)} ])}.
+look := BrGlamorousCodeEditorLook new.
+sourceElement := BrEditor new.
+compositeStyler := GtCompositeSmaCCASTStyler forParser: JSXParser.
+compositeStyler
+    stylers:
+        {JSXParser gtStyler.
+        explanationStyler}.
+look styler: compositeStyler.
+sourceElement
+    look: look;
+    styler: compositeStyler;
+    text: js asRopedText.
+inspectorContainer addChild: sourceElement.
+editor := BrEditor new
+    look: (BrGlamorousRegularEditorLook new fontSize: 16);
+    text:
+        'Conceptually, components are like JavaScript functions. They accept arbitrary inputs (called “props”) and return React elements describing what should appear on the screen.
+The simplest way to define a component is to write a JavaScript '
+            asRopedText
+            , ('function:' asRopedText glamorousExplanationFor: #function)
+            ,
+                '
+This function is a valid React component because it accepts a single '
+                    asRopedText
+            , ('"props"' asRopedText glamorousExplanationFor: #props)
+            ,
+                ' (which stands for properties) object argument with data and returns a React element. We call such components “function components” because they are literally JavaScript functions.
+Components can refer to other components in their '
+                    asRopedText
+            , ('output' asRopedText glamorousExplanationFor: #welcome)
+            ,
+                'This lets us use the same component abstraction for any level of detail. A button, a form, a '
+                    asRopedText , ('div' asRopedText glamorousExplanationFor: #div)
+            , ', any ' asRopedText
+            , ('HTML tag' asRopedText glamorousExplanationFor: #h1)
+            , ', a ' asRopedText
+            , ('screen' asRopedText glamorousExplanationFor: #screen)
+            ,
+                ': in React apps, all those are commonly expressed as components.
+For example, we can create an '
+                    asRopedText
+            , ('app' asRopedText glamorousExplanationFor: #appFunction)
+            ,
+                ' component that renders Welcome many times.
+How this example works:
+1. We call '
+                    asRopedText
+            , ('ReactDOM.render()' asRopedText glamorousExplanationFor: #ReactDOM)
+            , ' with the ' asRopedText
+            , ('<App/>' asRopedText glamorousExplanationFor: #appRender)
+            , ' element
+2. React calls the App component. This in turn ' asRopedText
+            , ('calls' asRopedText glamorousExplanationFor: #welcome)
+            ,
+                ' the Welcome component with {name: ''Tudor''}, {name: ''Andrei''},  {name: ''John''}  as the props 
+3. Our '
+                    asRopedText
+            , ('Welcome' asRopedText glamorousExplanationFor: #welcomeFunction)
+            ,
+                ' component returns first an <h1>Hello, Tudor</h1> element as the result, then <h1>Hello, Andrei</h1> and finally <h1>Hello,  John</h1>
+4. React DOM efficiently updates the DOM to match  <h1>Hello, Tudor</h1><h1>Hello, Andrei</h1><h1>Hello, John</h1>.'
+                    asRopedText;
+    margin: (BlInsets all: 10);
+    constraintsDo: [ :c | 
+        c vertical fitContent.
+        c horizontal matchParent.
+        c linear weight: 0.5 ].
+container addChild: editor.
+container addChild: inspectorContainer.
+^ container
+]
+
 { #category : #'api - instantiation' }
 GtTour >> treemapWithViewsAndExamples [
 	<gtExample>
