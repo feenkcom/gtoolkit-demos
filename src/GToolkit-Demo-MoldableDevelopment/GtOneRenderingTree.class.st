@@ -64,8 +64,16 @@ GtOneRenderingTree >> create [
 				newFadedText: 'Double click to zoom. Drag.';
 				newFadedText: 'Yes, there is a whole world embedded in the tip of the line.'.
 		GtTitleSlide new
-			titleText: ('a quick look behind the scene' asRopedText fontSize: 30; glamorousRegularFont).
-		self liveElementTree
+			titleText: ('a look behind the scene: the annotated tree' asRopedText fontSize: 30; glamorousRegularFont).
+		GtLabelAndElementSlide new
+				element: [ self liveElementTreeSlideForText  asElement];
+				newFadedText: 'On the left we have an inspector showing an editor. On the right we see the corresponding single rendering tree.';
+				newFadedText: 'Move with the mouse over the elements in the scene to see where in the tree they fit.'.
+
+		GtLabelAndElementSlide new
+				element: [ self liveElementTree asElement ];
+				newFadedText: 'In this case, on the left we have an inspector showing a visualization.';
+				newFadedText: 'The tree on the right reveals some nodes as labelled. In our case, the labels are phlow and graph. These are annotations that provide higher level extensions to navigate the tree. For example, given an element, we can ask it for element graph connectedEdges.'.
 	}.
 	^ show
 ]
@@ -89,6 +97,23 @@ GtOneRenderingTree >> liveElementTree [
 	^ GtLiveElementTreeSlide new 
 		targetElement: (BlUseAsyncFeatures disableDuring: [
 			(m gtViewsFor: GtPhlowView empty) asElementDo: [:e | 
+				e 
+					addEventFilterOn: BlMouseOverEvent 
+					do: [ :anEvent | 
+						anEvent target effect: (BlOverlayAboveEffect new paint: (BrGlamorousColors textHighlightColor alpha: 0.4)) ];
+					addEventFilterOn: BlMouseOutEvent 
+					do: [ :anEvent | anEvent target effect: (BlNullEffect new) ] ]]) forceLayout.
+]
+
+{ #category : #'api - instantiation' }
+GtOneRenderingTree >> liveElementTreeSlideForText [
+	| editor |
+	editor := BrEditor new 
+		look: BrGlamorousEditorLook;
+		text: GtWhatMakesBlocSpecialExplanation new sampleText.
+	^ GtLiveElementTreeSlide new 
+		targetElement: (BlUseAsyncFeatures disableDuring: [
+			(editor gtViewsFor: GtPhlowView empty) asElementDo: [:e | 
 				e 
 					addEventFilterOn: BlMouseOverEvent 
 					do: [ :anEvent | 
