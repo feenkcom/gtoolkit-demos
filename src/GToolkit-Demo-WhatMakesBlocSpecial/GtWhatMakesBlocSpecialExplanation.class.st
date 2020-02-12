@@ -91,7 +91,7 @@ GtWhatMakesBlocSpecialExplanation >> classHierarchyWithEdges [
 	<gtExample>
 	| root |
 	root := self rootWithHierarchyElements.
-	BlGeometry withAllSubclassesDo: [ :class | 
+	GtPhlowAction withAllSubclassesDo: [ :class | 
 		root children 
 			detect: [ :label | label text asString = class name ]
 			ifFound: [ :subclassLabel | 
@@ -102,7 +102,7 @@ GtWhatMakesBlocSpecialExplanation >> classHierarchyWithEdges [
 						edge := GtGraphEdge new from: superclassLabel to: subclassLabel.
 						superclassLabel constraints graph addConnectedEdge: edge.
 						subclassLabel constraints graph addConnectedEdge: edge ] ] ].
-	root layout: (GtGraphHorizontalTreeLayout new layered; verticalGap: 20).
+	root layout: (GtGraphTreeLayout new verticalGap: 50).
 	^ root asPannableElement
 ]
 
@@ -119,8 +119,8 @@ GtWhatMakesBlocSpecialExplanation >> classHierarchyWithEdgesAndLines [
 			line
 				zIndex: -1;
 				border: (BlBorder paint: (Color gray alpha: 0.2) width: 5);
-				fromAnchor: (BlElementCenterRightAnchor element: element);
-				toAnchor: (BlElementCenterLeftAnchor element: child).
+				fromAnchor: (BlElementBottomCenterAnchor element: element);
+				toAnchor: (BlElementTopCenterAnchor element: child).
 			root addChild: line ] ].
 	^ root
 ]
@@ -207,14 +207,15 @@ GtWhatMakesBlocSpecialExplanation >> rootWithHierarchyElements [
 	| root |
 	root := BlElement new constraintsDo: [:c | 
 		c horizontal fitContent. 
-		c vertical fitContent].
-		BlGeometry withAllSubclassesDo: [ :class | 
+		c vertical fitContent];
+		padding: (BlInsets all: 20).
+		GtPhlowAction withAllSubclassesDo: [ :class | 
 		| label |
 		label := BlTextElement new 
 			text: class name asRopedText;
 			background: Color white;
-			margin: (BlInsets all: 5);
-			padding: (BlInsets all: 10);
+			margin: (BlInsets all: 10);
+			padding: (BlInsets all: 5);
 			effect: (BlGaussianShadowEffect color: (Color gray alpha: 0.5) width: 5 offset: 0@0).
 		root addChild: label ].
 	^ root
