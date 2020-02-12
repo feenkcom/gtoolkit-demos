@@ -59,6 +59,61 @@ GtABAddressBookExample >> contactAddress [
 	^ address
 ]
 
+{ #category : #'as yet unclassified' }
+GtABAddressBookExample >> contactNote [
+	<gtExample>
+	| note |
+	note := GtABContactNote new
+		title: 'Reminder';
+		content: 'Answers phone Monday-Friday from 8:00 to 16:00' asRopedText.
+	
+	self assert: note title equals: 'Reminder'.
+	self assert: note content size equals: 46.
+	
+	^ note.
+]
+
+{ #category : #'as yet unclassified' }
+GtABAddressBookExample >> contactsAddressBookWithCategories [
+	<gtExample>
+	| addressBook familyCategory acquaintancesCategory friendsCategory coworkersCategory |
+	
+	friendsCategory := GtABCategory new
+		label: 'Friends';
+		addContact: (GtABContact new
+			firstName: 'James';
+			lastName: 'Poe';
+			address: self contactAddress).
+	coworkersCategory := GtABCategory new
+		label: 'Coworkers';
+		addContact: (GtABContact new
+			firstName: 'David';
+			lastName: 'Smith';
+			address: self contactAddress).
+	acquaintancesCategory := GtABCategory new
+		label: 'Acquaintances';
+		addContact: (GtABContact new
+			firstName: 'Brian';
+			lastName: 'Kent';
+			address: self contactAddress);
+		addSubcategories: { friendsCategory. coworkersCategory }.
+	familyCategory := GtABCategory new
+		label: 'Family';
+		addContacts: { self janeDoeContact. self johnDoeContact }.
+		
+	addressBook := GtABAddressBook new
+		label: 'My contacts'.
+	addressBook addCategories: { familyCategory. acquaintancesCategory }.
+	
+	self assert: familyCategory label equals: 'Family'.
+	self assert: friendsCategory contacts size equals: 1.
+	self assert: coworkersCategory label equals: 'Coworkers'.
+	self assert: acquaintancesCategory label size equals: 13.
+	self assert: addressBook categories size equals: 2.
+	
+	^ addressBook. 
+]
+
 { #category : #'examples ' }
 GtABAddressBookExample >> janeDoeContact [
 	<gtExample>
@@ -68,7 +123,8 @@ GtABAddressBookExample >> janeDoeContact [
 		lastName: 'Doe';
 		description: GtABContact loremIpsum;
 		avatar: GtABContact janeDoeAvatar;
-		address: self contactAddress.
+		address: self contactAddress;
+		addNotes: { self contactNote }.
 
 	self assert: contact firstName equals: 'Jane'.
 	self assert: contact lastName equals: 'Doe'.
@@ -87,7 +143,8 @@ GtABAddressBookExample >> johnDoeContact [
 		lastName: 'Doe';
 		description: GtABContact loremIpsum;
 		avatar: GtABContact johnDoeAvatar;
-		address: self contactAddress.
+		address: self contactAddress;
+		addNotes: { self contactNote }.
 	
 	self assert: contact firstName equals: 'John'.
 	self assert: contact lastName equals: 'Doe'.
