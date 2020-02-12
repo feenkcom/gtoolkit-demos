@@ -1,5 +1,5 @@
 "
-I am the root of all domain object for the address book application
+I am the root of all domain objects for the address book application
 "
 Class {
 	#name : #GtABDomainObject,

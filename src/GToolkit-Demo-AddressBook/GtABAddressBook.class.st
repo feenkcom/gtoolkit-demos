@@ -6,7 +6,8 @@ Class {
 	#superclass : #Object,
 	#instVars : [
 		'label',
-		'contacts'
+		'contacts',
+		'categories'
 	],
 	#classInstVars : [
 		'default'
@@ -184,6 +185,16 @@ GtABAddressBook class >> reset [
 ]
 
 { #category : #adding }
+GtABAddressBook >> addCategories: aCollection [
+	self categories addAll: aCollection.
+]
+
+{ #category : #adding }
+GtABAddressBook >> addCategory: aCategory [
+	self categories addLast: aCategory.
+]
+
+{ #category : #adding }
 GtABAddressBook >> addContact: aContact [
 	self contacts addLast: aContact
 ]
@@ -191,6 +202,11 @@ GtABAddressBook >> addContact: aContact [
 { #category : #adding }
 GtABAddressBook >> addContacts: aList [
 	self contacts addAll: aList
+]
+
+{ #category : #accessing }
+GtABAddressBook >> categories [
+	^ categories.
 ]
 
 { #category : #accessing }
@@ -300,6 +316,24 @@ GtABAddressBook >> gtSpotterPreviewIn: aComposite [
 		entity: self contacts
 ]
 
+{ #category : #'as yet unclassified' }
+GtABAddressBook >> gtViewCategoriesTreeWithContactsOn: aView [
+	<gtView>
+
+	^ aView tree
+		title: 'Contacts Tree' translated;
+		items: [ self categories ];
+		children: [ :each |
+			(each isCategory)
+				ifTrue: [ 
+					| childrenCollection |
+					childrenCollection := OrderedCollection new.
+					childrenCollection addAll: each subcategories.
+					childrenCollection addAll: each contacts.
+					childrenCollection]
+				ifFalse: [ #() ] ].
+]
+
 { #category : #ui }
 GtABAddressBook >> gtViewContactsCardsListOn: aView [
 	<gtView>
@@ -369,6 +403,12 @@ GtABAddressBook >> gtViewContactsOn: aView [
 GtABAddressBook >> includesContactWithName: aPattern [
 	^ self contacts anySatisfy: [ :aContact | 
 		aPattern match: aContact fullName ]
+]
+
+{ #category : #initialization }
+GtABAddressBook >> initialize [
+	contacts := OrderedCollection new.
+	categories := OrderedCollection new.
 ]
 
 { #category : #accessing }

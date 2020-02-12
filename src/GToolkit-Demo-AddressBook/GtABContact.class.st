@@ -3,13 +3,14 @@ I model an entry in an address book
 "
 Class {
 	#name : #GtABContact,
-	#superclass : #GtABDomainObject,
+	#superclass : #GtABHierarchyObject,
 	#instVars : [
 		'address',
 		'firstName',
 		'lastName',
 		'avatar',
-		'description'
+		'description',
+		'notes'
 	],
 	#category : #'GToolkit-Demo-AddressBook-Models'
 }
@@ -92,6 +93,16 @@ GtABContact class >> unknownDoeAvatarBase64Encoded [
 { #category : #'accessing - defaults' }
 GtABContact class >> unknowsJoeAvatar [
 	^ Form fromBinaryStream: self unknownDoeAvatarBase64Encoded base64Decoded readStream binary
+]
+
+{ #category : #adding }
+GtABContact >> addNote: aNote [
+	self notes addLast: aNote.
+]
+
+{ #category : #adding }
+GtABContact >> addNotes: aCollection [
+	self notes addAll: aCollection.
 ]
 
 { #category : #accessing }
@@ -202,6 +213,16 @@ GtABContact >> gtViewContactDetailsOn: aView [
 			list ]
 ]
 
+{ #category : #'as yet unclassified' }
+GtABContact >> gtViewContactNotesOn: aView [
+	<gtView>
+	
+	^ aView list
+		title: 'Notes' translated;
+		items: [ self notes ];
+		itemFormat: [ :each | each title ].
+]
+
 { #category : #ui }
 GtABContact >> gtViewPreviewOn: aView [
 	<gtView>
@@ -219,6 +240,13 @@ GtABContact >> icon [
 	^ self avatar scaledToSize: 24@24
 ]
 
+{ #category : #initialization }
+GtABContact >> initialize [
+	super initialize.
+	notes := OrderedCollection new.
+	isCategory := false.
+]
+
 { #category : #accessing }
 GtABContact >> lastName [
 	^ lastName
@@ -227,6 +255,11 @@ GtABContact >> lastName [
 { #category : #accessing }
 GtABContact >> lastName: aString [
 	lastName := aString
+]
+
+{ #category : #accessing }
+GtABContact >> notes [
+	^ notes.
 ]
 
 { #category : #accessing }
