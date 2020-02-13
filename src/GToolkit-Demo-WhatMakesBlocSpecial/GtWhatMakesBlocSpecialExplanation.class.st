@@ -102,7 +102,7 @@ GtWhatMakesBlocSpecialExplanation >> classHierarchyWithEdges [
 						edge := GtGraphEdge new from: superclassLabel to: subclassLabel.
 						superclassLabel constraints graph addConnectedEdge: edge.
 						subclassLabel constraints graph addConnectedEdge: edge ] ] ].
-	root layout: (GtGraphTreeLayout new verticalGap: 50).
+	root layout: (GtGraphTreeLayout new verticalGap: 50; horizontalGap: 20).
 	^ root asPannableElement
 ]
 
@@ -212,9 +212,9 @@ GtWhatMakesBlocSpecialExplanation >> rootWithHierarchyElements [
 		GtPhlowAction withAllSubclassesDo: [ :class | 
 		| label |
 		label := BlTextElement new 
-			text: class name asRopedText;
+			text: class name asRopedText glamorousRegularFont;
 			background: Color white;
-			margin: (BlInsets all: 10);
+			margin: (BlInsets all: 20);
 			padding: (BlInsets all: 5);
 			effect: (BlGaussianShadowEffect color: (Color gray alpha: 0.5) width: 5 offset: 0@0).
 		root addChild: label ].
