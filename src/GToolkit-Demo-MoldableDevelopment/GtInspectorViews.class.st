@@ -6,7 +6,6 @@ Class {
 
 { #category : #tests }
 GtInspectorViews >> columnedListViewExplanationWithLinks [
-	<gtExample>
 	| container resultInspectorContainer verticalContainer editor coder coderElement selectors variables resultElement resultInspectorHeader resultInspectorView |
 	
 	resultInspectorContainer := self resultInspectorContainerElement.
