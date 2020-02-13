@@ -204,6 +204,18 @@ GtABAddressBook >> addContacts: aList [
 	self contacts addAll: aList
 ]
 
+{ #category : #'as yet unclassified' }
+GtABAddressBook >> allContacts [
+	" Returns the contacts from all categories and the ones that have no category"
+	| allContacts |
+	allContacts := OrderedCollection new.
+	self categories do: [ :each |
+		allContacts addAll: each allContacts ].
+	allContacts addAll: self contacts.
+	
+	^ allContacts.
+]
+
 { #category : #accessing }
 GtABAddressBook >> categories [
 	^ categories.
@@ -211,7 +223,8 @@ GtABAddressBook >> categories [
 
 { #category : #accessing }
 GtABAddressBook >> contacts [
-	^ contacts ifNil: [ contacts := LinkedList new ]
+	"Returns the contacts that are not in any category"
+	^ contacts
 ]
 
 { #category : #accessing }
@@ -340,7 +353,7 @@ GtABAddressBook >> gtViewContactsIconsCircularOn: aView [
 			view nodes
 				shape: [ :aContact | 
 					(aContact avatar scaledToSize: 124@124) asElement ];
-				with: self contacts.
+				with: self allContacts.
 			view layout circle
 				radius: 200 ]
 ]
@@ -351,7 +364,7 @@ GtABAddressBook >> gtViewContactsListOn: aView [
 	^ aView list 
 		title: 'Contacts' translated;
 		priority: 8;
-		items: [ self contacts ];
+		items: [ self allContacts ];
 		itemFormat: [ :aContact |
 			aContact fullName asRopedText ].
 ]
@@ -360,24 +373,18 @@ GtABAddressBook >> gtViewContactsListOn: aView [
 GtABAddressBook >> gtViewContactsOn: aView [
 	<gtView>
 	^ aView columnedList 
-		title: 'Contacts' translated;
+		title: 'Contacts Avatars' translated;
 		priority: 5;
-		items: [ self contacts ];
+		items: [ self allContacts ];
 		column: 'Name' 
 			format: [ :aContact | aContact fullName ];
 		column: 'Avatar'
-			do: [ :aContact | 
-				|container|
-				container := BlElement new
-					layout: BlFlowLayout horizontal;
-					constraintsDo: [ :c | 
-						c horizontal matchParent.
-						c vertical fitContent.
-						c margin: (BlInsets all: 10)].
-				container addChild: (BlElement new
-					size: (124@124);
-					background: (aContact avatar scaledToSize: 124@124)).
-				container ]
+			do: [ :aColumn | 
+				aColumn
+					item: [ :each |
+						each avatar ];
+					rowStencil: [ :eachAvatar | (eachAvatar scaledToSize: 124@124) asElement ];
+					noResize ].
 ]
 
 { #category : #testing }

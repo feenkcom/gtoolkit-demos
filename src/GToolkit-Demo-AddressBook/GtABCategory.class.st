@@ -32,8 +32,21 @@ GtABCategory >> addSubcategory: aCategory [
 	self subcategories addLast: aCategory.
 ]
 
+{ #category : #'as yet unclassified' }
+GtABCategory >> allContacts [
+	"Return the contacts from this category and from all subcategories"
+	| allSubcontacts |
+	allSubcontacts := OrderedCollection new.
+	self subcategories do: [ :each |
+		allSubcontacts addAll: each allContacts ].
+	allSubcontacts addAll: self contacts.
+	
+	^ allSubcontacts.
+]
+
 { #category : #accessing }
 GtABCategory >> contacts [
+	"Return the contacts from this category only"
 	^ contacts.
 ]
 
