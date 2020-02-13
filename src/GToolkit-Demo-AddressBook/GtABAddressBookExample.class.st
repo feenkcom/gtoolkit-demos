@@ -83,18 +83,21 @@ GtABAddressBookExample >> contactsAddressBookWithCategories [
 		addContact: (GtABContact new
 			firstName: 'James';
 			lastName: 'Poe';
+			avatar: GtABContact johnDoeAvatar;
 			address: self contactAddress).
 	coworkersCategory := GtABCategory new
 		label: 'Coworkers';
 		addContact: (GtABContact new
 			firstName: 'David';
 			lastName: 'Smith';
+			avatar: GtABContact johnDoeAvatar;
 			address: self contactAddress).
 	acquaintancesCategory := GtABCategory new
 		label: 'Acquaintances';
 		addContact: (GtABContact new
 			firstName: 'Brian';
 			lastName: 'Kent';
+			avatar: GtABContact johnDoeAvatar;
 			address: self contactAddress);
 		addSubcategories: { friendsCategory. coworkersCategory }.
 	familyCategory := GtABCategory new
