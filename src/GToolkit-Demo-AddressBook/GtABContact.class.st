@@ -197,20 +197,54 @@ GtABContact >> gtViewContactDetailsOn: aView [
 		title: 'Details' translated;
 		priority: 5;
 		stencil: [
-			| list |
-			list := BrColumnedList new display: {
-				'Name' -> self fullName.
-				'City' -> self address city.
-				'Country' -> self address country.
-				'Telephone' -> self address telephone fullNumber }.
-			list addEventHandler: (GtInspectorListToSelectHandler new).
-			list column 
-				title: 'Detail';
-				stencil: [ :assoc | BrColumnCellLabelStencil matchParent: assoc key ].
-			list column 
-				title: 'Value';
-				stencil: [ :assoc | BrColumnCellLabelStencil matchParent: assoc value ].
-			list ]
+			|container verticalContainer detailsTextContainer avatarContainer nameTextContainer details|
+			
+			details := ('Telephone: ' asRopedText, self address telephone fullNumber asRopedText, '
+City: ' asRopedText, self address city asRopedText, '
+Country: ' asRopedText , self address country asRopedText).
+
+			container := BlElement new
+				layout: BlLinearLayout horizontal;
+				background: Color white;
+				look: BrShadowLook;
+				height: 150;
+				constraintsDo: [ :c | 
+					c horizontal matchParent.
+					c margin: (BlInsets all: 10)].
+				
+			avatarContainer := BlElement new
+				size: 124@124;
+				background: (self avatar scaledToSize: 124@124);
+				margin: (BlInsets all: 10).
+				
+			nameTextContainer := BlTextElement new
+				constraintsDo: [ :c | 
+					c horizontal matchParent ];
+				margin: (BlInsets top: 5 right: 0 bottom: 0 left: 5);
+				height: 50;
+				text: (self fullName asRopedText
+					fontSize: 30;
+					foreground: Color black).
+			detailsTextContainer := BrEditor new
+				look: (BrGlamorousRegularEditorLook new fontSize: 16);
+				text: details;
+				margin: (BlInsets top: 0 right: 0 bottom: 0 left: 5);
+				constraintsDo: [ :c | 
+					c horizontal matchParent.
+					c vertical matchParent ].
+			verticalContainer := BlElement new
+				layout: BlLinearLayout vertical;
+				constraintsDo: [ :c | 
+					c horizontal matchParent.
+					c vertical matchParent.
+					c margin: (BlInsets all: 10)].
+				
+			verticalContainer addChild: nameTextContainer.
+			verticalContainer addChild: detailsTextContainer.
+			
+			container addChild: avatarContainer.
+			container addChild: verticalContainer.
+			container ].
 ]
 
 { #category : #'as yet unclassified' }
@@ -272,11 +306,7 @@ GtABContact >> previewMorph [
 
 { #category : #printing }
 GtABContact >> printOn: aStream [
-	super printOn: aStream.
-	aStream 
-		nextPut: $(;
-		nextPutAll: self fullName;
-		nextPut: $)
+	aStream nextPutAll: self fullName.
 ]
 
 { #category : #accessing }

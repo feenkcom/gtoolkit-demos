@@ -6,7 +6,6 @@ Class {
 
 { #category : #tests }
 GtInspectorViews >> columnedListViewExplanationWithLinks [
-	<gtExample>
 	| container resultInspectorContainer verticalContainer editor coder coderElement selectors variables resultElement resultInspectorHeader resultInspectorView |
 	
 	resultInspectorContainer := self resultInspectorContainerElement.
@@ -198,11 +197,7 @@ GtInspectorViews >> create [
 	show := GtSlideShow new.
 	show
 		slides:
-			{(GtFilePictureSlide new
-				fileReference:
-					(GtResourceReference
-						path: Path * 'feenkcom' / 'gtoolkit' / 'doc' / 'gtoolkit.png')).
-			(GtTitleSlide new
+			{(GtTitleSlide new
 				titleText: ('inspector views' asRopedText
 						fontSize: 50;
 						glamorousRegularFont)).
@@ -316,14 +311,14 @@ GtInspectorViews >> listViewExplanationWithLinks [
 	variables := GtVariableExplanationLinkStyler new.
 	variables addVariables: {'aContact' . 'contacts'}.
 	
-	coder := GtMethodCoder forMethod: (GtABAddressBook>>#gtViewContactsCardsListOn:).
+	coder := GtMethodCoder forMethod: (GtABAddressBook>>#gtViewContactsListOn:).
 	coder explanationLink: (GtCompositeExplanationLinkStyler forLinks: { selectors. variables }).
 	coderElement := (coder expanded: true) asElement margin: (BlInsets all: 10).
 	coderElement forceLayout.
 	coderElement vMatchParent.
 	
 	resultElement := (GtPhlowView empty composite
-		views: {GtABCartoonAddressBookExample new cartoonAddressBook gtViewContactsCardsListOn: GtPhlowView empty};
+		views: {GtABCartoonAddressBookExample new cartoonAddressBook gtViewContactsListOn: GtPhlowView empty};
 		labelled: 'a GtABAddressBook (Cartoons)' asRopedText) asElementDo: [ :e | e ].
 	resultElement forceLayout.
 	

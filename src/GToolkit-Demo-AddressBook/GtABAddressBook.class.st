@@ -325,49 +325,8 @@ GtABAddressBook >> gtViewCategoriesTreeWithContactsOn: aView [
 		items: [ self categories ];
 		children: [ :each |
 			(each isCategory)
-				ifTrue: [ 
-					| childrenCollection |
-					childrenCollection := OrderedCollection new.
-					childrenCollection addAll: each subcategories.
-					childrenCollection addAll: each contacts.
-					childrenCollection]
+				ifTrue: [ each subcategories, each contacts ]
 				ifFalse: [ #() ] ].
-]
-
-{ #category : #ui }
-GtABAddressBook >> gtViewContactsCardsListOn: aView [
-	<gtView>
-	^ aView list 
-		title: 'Cards' translated;
-		priority: 8;
-		items: [ self contacts ];
-		itemStencil: [ :aContact |
-			|container iconElement aText textElement|
-			container := BlElement new
-				layout: BlFlowLayout horizontal;
-				constraintsDo: [ :c | 
-					c horizontal matchParent.
-					c vertical fitContent.
-					c margin: (BlInsets all: 10)].
-
-			aContact avatar ifNotNil: [ 
-				iconElement := BlElement new
-					size: (124@124);
-					background: (aContact avatar scaledToSize: 124@124).
-				container
-					addChild: iconElement ].
-	
-			aText := aContact fullName asRopedText
-				fontSize: 40.
-			textElement := BlTextElement new
-					constraintsDo: [ :c |
-						c flow vertical alignCenter.
-						c padding: (BlInsets all: 10) ];
-				text: aText.
-	
-			container 
-				addChild: textElement.
-			container ]
 ]
 
 { #category : #ui }
@@ -387,6 +346,17 @@ GtABAddressBook >> gtViewContactsIconsCircularOn: aView [
 ]
 
 { #category : #ui }
+GtABAddressBook >> gtViewContactsListOn: aView [
+	<gtView>
+	^ aView list 
+		title: 'Contacts' translated;
+		priority: 8;
+		items: [ self contacts ];
+		itemFormat: [ :aContact |
+			aContact fullName asRopedText ].
+]
+
+{ #category : #ui }
 GtABAddressBook >> gtViewContactsOn: aView [
 	<gtView>
 	^ aView columnedList 
@@ -395,8 +365,19 @@ GtABAddressBook >> gtViewContactsOn: aView [
 		items: [ self contacts ];
 		column: 'Name' 
 			format: [ :aContact | aContact fullName ];
-		column: 'Telephone' 
-			format: [ :aContact | aContact address telephone ]
+		column: 'Avatar'
+			do: [ :aContact | 
+				|container|
+				container := BlElement new
+					layout: BlFlowLayout horizontal;
+					constraintsDo: [ :c | 
+						c horizontal matchParent.
+						c vertical fitContent.
+						c margin: (BlInsets all: 10)].
+				container addChild: (BlElement new
+					size: (124@124);
+					background: (aContact avatar scaledToSize: 124@124)).
+				container ]
 ]
 
 { #category : #testing }
