@@ -6,6 +6,7 @@ Class {
 
 { #category : #tests }
 GtInspectorViews >> columnedListViewExplanationWithLinks [
+	<gtExample>
 	| container resultInspectorContainer verticalContainer editor coder coderElement selectors variables resultElement resultInspectorHeader resultInspectorView |
 	
 	resultInspectorContainer := self resultInspectorContainerElement.
@@ -14,10 +15,12 @@ GtInspectorViews >> columnedListViewExplanationWithLinks [
 	container explainer isExplanationHolder: true.
 	
 	selectors := GtSelectorExplanationLinkStyler new.
-	selectors addSelectors: {#columnedList . #title: . #items: . #column:format: .#contacts . #fullName . #telephone }.
+	selectors addSelectors: {#columnedList. #title:. #items:. #allContacts. #fullName. #avatar }.
+	selectors addSelector: #column:do: withIdentifier: #columns.
+	selectors addSelector: #column:format: withIdentifier: #columns.
 	
 	variables := GtVariableExplanationLinkStyler new.
-	variables addVariables: {'aContact' . 'contacts'}.
+	variables addVariables: {'aContact'}.
 	
 	coder := GtMethodCoder forMethod: (GtABAddressBook>>#gtViewContactsOn:).
 	coder explanationLink: (GtCompositeExplanationLinkStyler forLinks: { selectors. variables }).
@@ -48,7 +51,7 @@ GtInspectorViews >> columnedListViewExplanationWithLinks [
 						globalPointToLocal: (resultInspectorView localPointToGlobal: 90 @ 55))).
 	resultInspectorContainer
 		addChild:
-			((self yellowTargetCircleWithExplanationModel: #telephone)
+			((self yellowTargetCircleWithExplanationModel: #avatar)
 				relocate:
 					(resultInspectorContainer
 						globalPointToLocal: (resultInspectorView localPointToGlobal: 295 @ 55))).
@@ -66,55 +69,26 @@ GtInspectorViews >> columnedListViewExplanationWithLinks [
 GtInspectorViews >> columnedListViewExplanationWithLinksText [
 	| text |
 	
-	text := 'In this case we have a ' asRopedText,
+	text := 'Next we have a ' asRopedText,
 ('columned list' asRopedText glamorousExplanationFor: #columnedList),
 ' view that consists of a ' asRopedText,
 ('title' asRopedText glamorousExplanationFor: #title:),
 ' and ' asRopedText,
-('two columns' asRopedText glamorousExplanationFor: #column:format:),
-'
+('the columns' asRopedText glamorousExplanationFor: #columns),
+' in which the information is displayed.
 
 The columned list has as many rows as the collection returned by the ' asRopedText,
 ('items: block' asRopedText glamorousExplanationFor: #items:),
 '. In this case, this means it shows all the ' asRopedText,
-('contacts list' asRopedText glamorousExplanationFor: #contacts),
+('contacts' asRopedText glamorousExplanationFor: #allContacts),
+' in the address book.
 
-'For each ' asRopedText, 
+For each ' asRopedText, 
 ('contact' asRopedText glamorousExplanationFor: #aContact),
 ' we show the ' asRopedText,
 ('full name' asRopedText glamorousExplanationFor: #fullName),
 ' in the first column, and the ' asRopedText,
-('telephone' asRopedText glamorousExplanationFor: #telephone),
-' in the second column' asRopedText.
-	^ text
-		glamorousRegularFont;
-		fontSize: 20;
-		foreground: Color black.
-]
-
-{ #category : #tests }
-GtInspectorViews >> columnedListViewsExplanationWithLinksText [
-	| text |
-	
-	text := 'In this case we have a ' asRopedText,
-('columned list' asRopedText glamorousExplanationFor: #columnedList),
-' view that consists of a ' asRopedText,
-('title' asRopedText glamorousExplanationFor: #title:),
-' and ' asRopedText,
-('two columns' asRopedText glamorousExplanationFor: #column:format:),
-'
-
-The columned list has as many rows as the collection returned by the ' asRopedText,
-('items: block' asRopedText glamorousExplanationFor: #items:),
-'. In this case, this means it shows all the ' asRopedText,
-('contacts list' asRopedText glamorousExplanationFor: #contacts),
-
-'For each ' asRopedText, 
-('contact' asRopedText glamorousExplanationFor: #aContact),
-' we show the ' asRopedText,
-('full name' asRopedText glamorousExplanationFor: #fullName),
-' in the first column, and the ' asRopedText,
-('telephone' asRopedText glamorousExplanationFor: #telephone),
+('avatar' asRopedText glamorousExplanationFor: #avatar),
 ' in the second column' asRopedText.
 	^ text
 		glamorousRegularFont;
@@ -202,6 +176,8 @@ GtInspectorViews >> create [
 						fontSize: 50;
 						glamorousRegularFont)).
 			(GtElementSlide new
+				element: [self emptyViewExplanationWithLinks]).
+			(GtElementSlide new
 				element: [self listViewExplanationWithLinks]).
 			(GtElementSlide new
 				element: [self columnedListViewExplanationWithLinks]).
@@ -219,7 +195,65 @@ GtInspectorViews >> create [
 	^ show.
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #accessing }
+GtInspectorViews >> emptyViewExplanationWithLinks [
+	<gtExample>
+	| container resultInspectorContainer verticalContainer editor coder coderElement selectors variables resultElement resultInspectorHeader resultInspectorView |
+	
+	resultInspectorContainer := self resultInspectorContainerElement.
+	verticalContainer := self verticalContainerElement.
+	container := self mainContainerElement.
+	container explainer isExplanationHolder: true.
+	
+	selectors := GtSelectorExplanationLinkStyler new.
+	selectors addSelectors: {}.
+	
+	variables := GtVariableExplanationLinkStyler new.
+	variables addVariables: {}.
+	
+	coder := GtMethodCoder new. "forMethod: (GtABAddressBook>>#gtViewContactsOn:)".
+	coder explanationLink: (GtCompositeExplanationLinkStyler forLinks: { selectors. variables }).
+	coderElement := (coder expanded: true) asElement margin: (BlInsets all: 10).
+	coderElement forceLayout.
+	coderElement vMatchParent.
+	
+	resultElement := (GtPhlowView empty composite
+		views: {GtPhlowView empty};
+		labelled: 'an EmptyView' asRopedText) asElementDo: [ :e | e ].
+	resultElement forceLayout.
+	"resultInspectorHeader := resultElement phlow firstChildWithView.
+	resultInspectorView := resultInspectorHeader viewContentElement phlow firstChildWithView.
+	
+	resultInspectorContainer addChild: resultElement.
+	
+	resultInspectorContainer
+		addChild:
+			((self yellowTargetCircleWithExplanationModel: #title:)
+				relocate:
+					(resultInspectorContainer
+						globalPointToLocal: (resultInspectorView localPointToGlobal: 7 @ 17)))."
+	
+	verticalContainer addChild: coderElement.
+	verticalContainer addChild: resultInspectorContainer.
+	
+	editor := self textEditorElementWithText: (self emptyViewExplanationWithLinksText).
+	container addChild: editor.
+	container addChild: verticalContainer.
+	^ container
+]
+
+{ #category : #accessing }
+GtInspectorViews >> emptyViewExplanationWithLinksText [
+	| text |
+	text := 'Empty view -> not yet implemented' asRopedText.
+	
+	^ text
+		glamorousRegularFont;
+		fontSize: 20;
+		foreground: Color black.
+]
+
+{ #category : #accessing }
 GtInspectorViews >> explicitViewExplanationWithLinks [
 	<gtExample>
 	| container resultInspectorContainer verticalContainer editor coder coderElement selectors variables resultElement resultInspectorHeader resultInspectorView |
@@ -230,10 +264,10 @@ GtInspectorViews >> explicitViewExplanationWithLinks [
 	container explainer isExplanationHolder: true.
 	
 	selectors := GtSelectorExplanationLinkStyler new.
-	selectors addSelectors: {#explicit. #stencil:. #fullName. #city. #country. #telephone. #column}.
+	selectors addSelectors: {#explicit. #stencil:. #fullName. #city. #country. #telephone. #avatar}.
 	
 	variables := GtVariableExplanationLinkStyler new.
-	variables addVariables: {#BrColumnedList}.
+	variables addVariables: {#self}.
 	
 	coder := GtMethodCoder new forMethod: (GtABContact>>#gtViewContactDetailsOn:).
 	coder explanationLink: (GtCompositeExplanationLinkStyler forLinks: { selectors. variables }).
@@ -252,10 +286,34 @@ GtInspectorViews >> explicitViewExplanationWithLinks [
 	
 	resultInspectorContainer
 		addChild:
-			((self yellowTargetCircleWithExplanationModel: #title:)
+			((self yellowTargetCircleWithExplanationModel: #fullName)
 				relocate:
 					(resultInspectorContainer
-						globalPointToLocal: (resultInspectorView localPointToGlobal: 7 @ 17))).
+						globalPointToLocal: (resultInspectorView localPointToGlobal: 160 @ 70))).
+	resultInspectorContainer
+		addChild:
+			((self yellowTargetCircleWithExplanationModel: #telephone)
+				relocate:
+					(resultInspectorContainer
+						globalPointToLocal: (resultInspectorView localPointToGlobal: 160 @ 127))).
+	resultInspectorContainer
+		addChild:
+			((self yellowTargetCircleWithExplanationModel: #city)
+				relocate:
+					(resultInspectorContainer
+						globalPointToLocal: (resultInspectorView localPointToGlobal: 160 @ 148))).
+	resultInspectorContainer
+		addChild:
+			((self yellowTargetCircleWithExplanationModel: #country)
+				relocate:
+					(resultInspectorContainer
+						globalPointToLocal: (resultInspectorView localPointToGlobal: 160 @ 169))).
+	resultInspectorContainer
+		addChild:
+			((self yellowTargetCircleWithExplanationModel: #avatar)
+				relocate:
+					(resultInspectorContainer
+						globalPointToLocal: (resultInspectorView localPointToGlobal: 15 @ 70))).
 	
 	verticalContainer addChild: coderElement.
 	verticalContainer addChild: resultInspectorContainer.
@@ -266,28 +324,29 @@ GtInspectorViews >> explicitViewExplanationWithLinks [
 	^ container
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #accessing }
 GtInspectorViews >> explicitViewExplanationWithLinksText [
 	| text |
 	
 	text := 'The ' asRopedText,
 ('explicit' asRopedText glamorousExplanationFor: #explicit),
-' view describes an object. In the ' asRopedText,
+' view lets you visualize an object in any way you want. Using the ' asRopedText,
 ('stencil: ' asRopedText glamorousExplanationFor: #stencil:),
-' block it gets a visualization of the object. 
+' block you can give that visualization any shape or form. 
 
-In this example, we create a ' asRopedText,
-('columned list' asRopedText glamorousExplanationFor: #BrColumnedList),
-' showing the information about the contact, ' asRopedText,
+In this example, we show a ' asRopedText,
+('contact' asRopedText glamorousExplanationFor: #self),
+' as a business card. We displays its ' asRopedText,
 ('name' asRopedText glamorousExplanationFor: #fullName),
-' , ' asRopedText,
+', ' asRopedText,
+('telephone' asRopedText glamorousExplanationFor: #telephone),
+', ' asRopedText,
 ('city' asRopedText glamorousExplanationFor: #city),
-' , ' asRopedText,
+', ' asRopedText,
 ('country' asRopedText glamorousExplanationFor: #country),
 ' and ' asRopedText,
-('phone number' asRopedText glamorousExplanationFor: #telephone),
-'. The information is displayed using multiple ' asRopedText,
-('columns' asRopedText glamorousExplanationFor: #column).
+('avatar' asRopedText glamorousExplanationFor: #avatar),
+', all within a nice simple layout.' asRopedText.
 	
 	^ text
 		glamorousRegularFont;
@@ -295,7 +354,7 @@ In this example, we create a ' asRopedText,
 		foreground: Color black.
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #accessing }
 GtInspectorViews >> listViewExplanationWithLinks [
 	<gtExample>
 	| container resultInspectorContainer verticalContainer editor coder coderElement selectors variables resultElement resultInspectorHeader resultInspectorView |
@@ -306,10 +365,10 @@ GtInspectorViews >> listViewExplanationWithLinks [
 	container explainer isExplanationHolder: true.
 	
 	selectors := GtSelectorExplanationLinkStyler new.
-	selectors addSelectors: {#list. #title:. #items:. #itemStencil:. #contacts. #fullName. #avatar }.
+	selectors addSelectors: {#list. #title:. #items:. #itemFormat:. #allContacts. #fullName }.
 	
 	variables := GtVariableExplanationLinkStyler new.
-	variables addVariables: {'aContact' . 'contacts'}.
+	variables addVariables: {'aContact'}.
 	
 	coder := GtMethodCoder forMethod: (GtABAddressBook>>#gtViewContactsListOn:).
 	coder explanationLink: (GtCompositeExplanationLinkStyler forLinks: { selectors. variables }).
@@ -338,13 +397,7 @@ GtInspectorViews >> listViewExplanationWithLinks [
 			((self yellowTargetCircleWithExplanationModel: #fullName)
 				relocate:
 					(resultInspectorContainer
-						globalPointToLocal: (resultInspectorView localPointToGlobal: 295 @ 55))).
-	resultInspectorContainer
-		addChild:
-			((self yellowTargetCircleWithExplanationModel: #avatar)
-				relocate:
-					(resultInspectorContainer
-						globalPointToLocal: (resultInspectorView localPointToGlobal: 90 @ 55))).
+						globalPointToLocal: (resultInspectorView localPointToGlobal: 35 @ 50))).
 	
 	verticalContainer addChild: coderElement.
 	verticalContainer addChild: resultInspectorContainer.
@@ -355,31 +408,30 @@ GtInspectorViews >> listViewExplanationWithLinks [
 	^ container
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #accessing }
 GtInspectorViews >> listViewExplanationWithLinksText [
 	| text |
 	
-	text := 'Lets take a look at a ' asRopedText,
+	text := 'Now lets take a look at a ' asRopedText,
 ('list' asRopedText glamorousExplanationFor: #list),
 ' view. It has a ' asRopedText,
 ('title' asRopedText glamorousExplanationFor: #title:),
 ' and a ' asRopedText,
-('stencil' asRopedText glamorousExplanationFor: #itemStencil:),
+('format' asRopedText glamorousExplanationFor: #itemFormat:),
 ' for the rows.
 
 The number of rows it has it is exactly the number of elements in the collection returned by the ' asRopedText,
 ('items: block' asRopedText glamorousExplanationFor: #items:),
 '. In this case, this means it shows all the ' asRopedText,
-('contacts' asRopedText glamorousExplanationFor: #contacts),
+('contacts' asRopedText glamorousExplanationFor: #allContacts),
 ' in the address book.
 
 For each ' asRopedText, 
 ('contact' asRopedText glamorousExplanationFor: #aContact),
 ' we show the ' asRopedText,
 ('full name' asRopedText glamorousExplanationFor: #fullName),
-' and an ' asRopedText,
-('avatar' asRopedText glamorousExplanationFor: #avatar),
 '.' asRopedText.
+
 	^ text
 		glamorousRegularFont;
 		fontSize: 20;
@@ -507,7 +559,7 @@ GtInspectorViews >> textEditorElementWithText: aText [
 			c linear weight: 0.5 ].
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #accessing }
 GtInspectorViews >> textEditorViewExplanationWithLinks [
 	<gtExample>
 	| container resultInspectorContainer verticalContainer editor coder coderElement selectors variables resultElement resultInspectorHeader resultInspectorView |
@@ -518,7 +570,7 @@ GtInspectorViews >> textEditorViewExplanationWithLinks [
 	container explainer isExplanationHolder: true.
 	
 	selectors := GtSelectorExplanationLinkStyler new.
-	selectors addSelectors: {#textEditor. #title:. #look:. #contect. #text:}.
+	selectors addSelectors: {#textEditor. #title:. #look:. #content. #text:}.
 	
 	variables := GtVariableExplanationLinkStyler new.
 	variables addVariables: {#BrGlamorousCodeEditorLook}.
@@ -554,7 +606,7 @@ GtInspectorViews >> textEditorViewExplanationWithLinks [
 	^ container
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #accessing }
 GtInspectorViews >> textEditorViewExplanationWithLinksText [
 	| text |
 	
@@ -563,11 +615,11 @@ GtInspectorViews >> textEditorViewExplanationWithLinksText [
 ' view we can print plain text on the screen.
 
 The view gets a ' asRopedText,
-('title' asRopedText glamorousExplanationFor: #title),
+('title' asRopedText glamorousExplanationFor: #title:),
 ', a ' asRopedText,
 ('look' asRopedText glamorousExplanationFor: #look:),
-', in this case the ' asRopedText,
-('BrGlamorousCodeEditorLook' asRopedText glamorousExplanationFor: #BrGlamorousCodeEditorLook),
+', in this case the default' asRopedText,
+('code editor look' asRopedText glamorousExplanationFor: #BrGlamorousCodeEditorLook),
 ' and the ' asRopedText,
 ('text' asRopedText glamorousExplanationFor: #text:),
 ', in this case the ' asRopedText,
@@ -580,7 +632,7 @@ The view gets a ' asRopedText,
 		foreground: Color black.
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #accessing }
 GtInspectorViews >> treeViewExplanationWithLinks [
 	<gtExample>
 	| container resultInspectorContainer verticalContainer editor coder coderElement selectors variables resultElement resultInspectorHeader resultInspectorView |
@@ -591,10 +643,10 @@ GtInspectorViews >> treeViewExplanationWithLinks [
 	container explainer isExplanationHolder: true.
 	
 	selectors := GtSelectorExplanationLinkStyler new.
-	selectors addSelectors: {}.
+	selectors addSelectors: {#tree. #title:. #items:. #children:. #categories. #subcategories. #contacts}.
 	
 	variables := GtVariableExplanationLinkStyler new.
-	variables addVariables: {}.
+	variables addVariables: {#each}.
 	
 	coder := GtMethodCoder new forMethod: (GtABAddressBook>>#gtViewCategoriesTreeWithContactsOn:).
 	coder explanationLink: (GtCompositeExplanationLinkStyler forLinks: { selectors. variables }).
@@ -618,7 +670,14 @@ GtInspectorViews >> treeViewExplanationWithLinks [
 				relocate:
 					(resultInspectorContainer
 						globalPointToLocal: (resultInspectorView localPointToGlobal: 7 @ 17))).
-	
+						
+	resultInspectorContainer
+		addChild:
+			((self yellowTargetCircleWithExplanationModel: #categories)
+				relocate:
+					(resultInspectorContainer
+						globalPointToLocal: (resultInspectorView localPointToGlobal: 35 @ 50))).
+							
 	verticalContainer addChild: coderElement.
 	verticalContainer addChild: resultInspectorContainer.
 	
@@ -628,12 +687,32 @@ GtInspectorViews >> treeViewExplanationWithLinks [
 	^ container
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #accessing }
 GtInspectorViews >> treeViewExplanationWithLinksText [
 	| text |
 	
-	text := 'TreeView - Not Yet Implemented' asRopedText.
-	
+	text := 'The ' asRopedText,
+('tree' asRopedText glamorousExplanationFor: #tree),
+' view displays the information as a tree structure, having parents and children.
+
+As always, the first thing we mention is the ' asRopedText,
+('title' asRopedText glamorousExplanationFor: #title:),
+'. Then, in the ' asRopedText,
+('items: block' asRopedText glamorousExplanationFor: #items:),
+' we specify the first items in the tree, the parents where it starts from, in this case, the' asRopedText,
+('categories' asRopedText glamorousExplanationFor: #categories),
+' in the address book.
+
+After that, in the ' asRopedText,
+('children: block' asRopedText glamorousExplanationFor: #children:),
+' we tell ' asRopedText,
+('each parent' asRopedText glamorousExplanationFor: #each),
+' the children it has, in this case the ' asRopedText,
+('subcategories' asRopedText glamorousExplanationFor: #subcategories),
+' and the ' asRopedText,
+('contacts' asRopedText glamorousExplanationFor: #contacts),
+'from that category.' asRopedText.
+
 	^ text
 		glamorousRegularFont;
 		fontSize: 20;
