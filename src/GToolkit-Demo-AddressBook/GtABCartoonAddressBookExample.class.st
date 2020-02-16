@@ -13,12 +13,12 @@ GtABCartoonAddressBookExample >> bugsBunnyContact [
 		lastName: 'Bunny';
 		description: self bugsBunnyDescription;
 		avatar: (self readAvatarWithId: 'bugs-bunny');
+		telephone: (GtABTelephone new 
+				prefix: '1202'; 
+				number: '5550146');
 		address: (GtABAddress new
 			city: 'Universal City';
-			country: 'USA';
-			telephone: (GtABTelephone new 
-				prefix: '1202'; 
-				number: '5550146')).
+			country: 'USA').
 
 	self assert: contact firstName equals: 'Bugs'.
 	self assert: contact lastName equals: 'Bunny'.
@@ -60,12 +60,12 @@ GtABCartoonAddressBookExample >> daffyDuckContact [
 		lastName: 'Duck';
 		description: self daffyDuckDescription;
 		avatar: (self readAvatarWithId: 'daffy-duck');
+		telephone: (GtABTelephone new 
+				prefix: '1202'; 
+				number: '5550151');
 		address: (GtABAddress new
 			city: 'Universal City';
-			country: 'USA';
-			telephone: (GtABTelephone new 
-				prefix: '1202'; 
-				number: '5550151')).
+			country: 'USA').
 
 	self assert: contact firstName equals: 'Daffy'.
 	self assert: contact lastName equals: 'Duck'.
@@ -97,12 +97,12 @@ GtABCartoonAddressBookExample >> porkyPigContact [
 		lastName: 'Pig';
 		description: self porkyPigDescription;
 		avatar: (self readAvatarWithId: 'porky-pig');
+		telephone: (GtABTelephone new 
+			prefix: '1202'; 
+			number: '5550138');
 		address: (GtABAddress new
 			city: 'Universal City';
-			country: 'USA';
-			telephone: (GtABTelephone new 
-				prefix: '1202'; 
-				number: '5550138')).
+			country: 'USA').
 
 	self assert: contact firstName equals: 'Porky'.
 	self assert: contact lastName equals: 'Pig'.
@@ -138,12 +138,12 @@ GtABCartoonAddressBookExample >> roadRunnerContact [
 		lastName: 'Runner';
 		description: self roadRunnerDescription;
 		avatar: (self readAvatarWithId: 'road-runner');
+		telephone: (GtABTelephone new 
+			prefix: '1202'; 
+			number: '5550110');
 		address: (GtABAddress new
 			city: 'Burbank';
-			country: 'USA';
-			telephone: (GtABTelephone new 
-				prefix: '1202'; 
-				number: '5550110')).
+			country: 'USA').
 
 	self assert: contact firstName equals: 'Road'.
 	self assert: contact lastName equals: 'Runner'.
@@ -167,12 +167,12 @@ GtABCartoonAddressBookExample >> wileECoyoteContact [
 		lastName: 'E. Coyote';
 		description: self wileECoyoteDescription;
 		avatar: (self readAvatarWithId: 'wile-e-coyote');
+		telephone: (GtABTelephone new 
+			prefix: '1202'; 
+			number: '5550171');
 		address: (GtABAddress new
 			city: 'Burbank';
-			country: 'USA';
-			telephone: (GtABTelephone new 
-				prefix: '1202'; 
-				number: '5550171')).
+			country: 'USA').
 
 	self assert: contact firstName equals: 'Wile'.
 	self assert: contact lastName equals: 'E. Coyote'.
@@ -196,12 +196,12 @@ GtABCartoonAddressBookExample >> woodyWoodpeckerContact [
 		lastName: 'Woodpecker';
 		description: self woodyWoodpeckerDescription;
 		avatar: (self readAvatarWithId: 'woody-woodpecker');
+		telephone: (GtABTelephone new 
+			prefix: '1202'; 
+			number: '5550112');
 		address: (GtABAddress new
 			city: 'Universal City';
-			country: 'USA';
-			telephone: (GtABTelephone new 
-				prefix: '1202'; 
-				number: '5550112')).
+			country: 'USA').
 
 	self assert: contact firstName equals: 'Woody'.
 	self assert: contact lastName equals: 'Woodpecker'.

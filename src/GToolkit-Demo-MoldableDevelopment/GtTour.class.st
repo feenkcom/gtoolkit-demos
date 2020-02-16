@@ -14,7 +14,9 @@ GtTour >> create [
 				fileReference:
 					(GtResourceReference
 						path: Path * 'feenkcom' / 'gtoolkit' / 'doc' / 'gtoolkit.png')).
-			(GtTextSlide new
+			(GtTextAndElementSlide new
+				element: [ self overviewElement ];
+				elementWeight: 0.7;
 				newText: 'Glamorous Toolkit is the moldable development environment.';
 				newText: 'It is a live notebook. It is a flexible search interface. It is a fancy code editor. It is a software analysis platform. It is a data visualization engine. All in one. It is built in Pharo and it is free and open-source under an MIT license.';
 				newText: 'What is moldable development? A new paradigm that promotes the idea that developers should explain their systems through the lens of custom tools that they create while developing the system.';
@@ -258,6 +260,40 @@ How this example works:
 container addChild: editor.
 container addChild: inspectorContainer.
 ^ container
+]
+
+{ #category : #'api - instantiation' }
+GtTour >> overviewElement [
+	| container |
+	container := BlElement new
+		constraintsDo: [ :c | c horizontal exact: 1200. c vertical exact: 800. ];
+		layout: BlFrameLayout new.
+	container addChild: (((GtDocument forClass: BaselineOfGToolkit) gtTextFor: GtPhlowView empty)
+		asElementDo: [ :e | e 
+			constraintsDo: [ :c | 
+				c frame horizontal alignLeft. 
+				c frame vertical alignCenter.
+				c horizontal exact: 600.
+				c vertical exact: 700 ];
+			margin: (BlInsets all: 10); background: Color white; look: BrShadowLook ]).
+
+	container addChild: ((GtPlotterScaleBasedElementExamples new plot) asScalableElement
+			constraintsDo: [ :c | 
+				c frame horizontal alignRight. 
+				c frame vertical alignBottom.
+				c horizontal exact: 600.
+				c vertical exact: 400 ];
+			margin: (BlInsets top: 10 left: 10 bottom: 20 right: 200); background: (Color white); look: BrShadowLook).
+
+	container addChild: ((GtClassCoder forClass: BaselineOfGToolkit) asElement
+			constraintsDo: [ :c | 
+				c frame horizontal alignRight. 
+				c frame vertical alignTop.
+				c vertical exact: 500.
+				c horizontal exact: 500 ];
+			margin: (BlInsets top: 100 left: 10 bottom: 10 right: 10); background: (Color white); look: BrShadowLook).
+	
+	^ container asScalableElement 
 ]
 
 { #category : #'api - instantiation' }

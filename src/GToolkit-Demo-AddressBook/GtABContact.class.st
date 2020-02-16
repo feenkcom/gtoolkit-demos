@@ -10,7 +10,8 @@ Class {
 		'lastName',
 		'avatar',
 		'description',
-		'notes'
+		'notes',
+		'telephone'
 	],
 	#category : #'GToolkit-Demo-AddressBook-Models'
 }
@@ -198,50 +199,40 @@ GtABContact >> gtViewContactDetailsOn: aView [
 		priority: 5;
 		stencil: [
 			|container verticalContainer detailsTextContainer avatarContainer nameTextContainer details|
-			
-			details := ('Telephone: ' asRopedText, self address telephone fullNumber asRopedText, '
-City: ' asRopedText, self address city asRopedText, '
-Country: ' asRopedText , self address country asRopedText).
-
+			details := (self telephone fullNumber, String cr, self address gtDisplayString).
 			container := BlElement new
 				layout: BlLinearLayout horizontal;
 				background: Color white;
 				look: BrShadowLook;
-				height: 150;
+				margin: (BlInsets all: 20);
 				constraintsDo: [ :c | 
-					c horizontal matchParent.
-					c margin: (BlInsets all: 10)].
-				
+					c horizontal fitContent.
+					c vertical fitContent].
 			avatarContainer := BlElement new
 				size: 124@124;
 				background: (self avatar scaledToSize: 124@124);
 				margin: (BlInsets all: 10).
-				
 			nameTextContainer := BlTextElement new
 				constraintsDo: [ :c | 
 					c horizontal matchParent ];
-				margin: (BlInsets top: 5 right: 0 bottom: 0 left: 5);
-				height: 50;
-				text: (self fullName asRopedText
+				margin: (BlInsets top: 5 right: 0 bottom: 20 left: 5);
+				text: (self fullName asRopedText glamorousRegularFont
 					fontSize: 30;
 					foreground: Color black).
 			detailsTextContainer := BrEditor new
 				look: (BrGlamorousRegularEditorLook new fontSize: 16);
 				text: details;
-				margin: (BlInsets top: 0 right: 0 bottom: 0 left: 5);
 				constraintsDo: [ :c | 
 					c horizontal matchParent.
 					c vertical matchParent ].
 			verticalContainer := BlElement new
 				layout: BlLinearLayout vertical;
+				margin: (BlInsets all: 10);
 				constraintsDo: [ :c | 
 					c horizontal matchParent.
-					c vertical matchParent.
-					c margin: (BlInsets all: 10)].
-				
+					c vertical matchParent].
 			verticalContainer addChild: nameTextContainer.
 			verticalContainer addChild: detailsTextContainer.
-			
 			container addChild: avatarContainer.
 			container addChild: verticalContainer.
 			container ].
@@ -310,7 +301,11 @@ GtABContact >> printOn: aStream [
 ]
 
 { #category : #accessing }
-GtABContact >> telephone: aTelephoneNumber [
+GtABContact >> telephone [
+	^ telephone
+]
 
-	self address telephone: aTelephoneNumber
+{ #category : #accessing }
+GtABContact >> telephone: aTelephoneNumber [
+	telephone := aTelephoneNumber
 ]
