@@ -54,51 +54,6 @@ GtABAddressBook class >> default [
 		default ]
 ]
 
-{ #category : #examples }
-GtABAddressBook class >> exampleCustomInspector [
-
-	GTInspector new
-  		filterByMethods: {GtABAddressBook>>#gtInspectorContactsOn: . GtABContact>>#gtInspectorContactOn:};
-  		openOn: GtABAddressBook default
-]
-
-{ #category : #examples }
-GtABAddressBook class >> exampleCustomSpotter [
-
-	GTSpotterMorph new
-		extent: 400@500;
-		spotterModel: (GTSpotter
-			withProcessors: {
-				GTSpotter>>#spotterAddressBookFor:.
-				GtABAddressBook>>#gtSpotterForAddressesFor:.
-				GtABAddressBook>>#gtSpotterForPeopleFor:.
-				GtABAddressBook>>#gtSpotterForTelephonesFor:.
-				GtABAddress>>#gtSpotterForPeopleFor:.
-				GtABTelephone>>#spotterForContactsFor: });
-		openCenteredInWorld
-]
-
-{ #category : #examples }
-GtABAddressBook class >> exampleCustomSpotterOnAddressBook [
-
-	GTSpotterMorph new
-		extent: 400@500;
-		spotterModel: (GTSpotter on: GtABAddressBook default);
-		openCenteredInWorld
-]
-
-{ #category : #examples }
-GtABAddressBook class >> exampleCustomSpotterOnAddressBookContactsOnly [
-
-	GTSpotterMorph new
-		extent: 400@500;
-		spotterModel: (GTSpotter 
-			on: GtABAddressBook default
-			withProcessors: {
-				GtABAddressBook>>#gtSpotterForPeopleFor: });
-		openCenteredInWorld
-]
-
 { #category : #'class initialization' }
 GtABAddressBook class >> initialize [
 
@@ -113,70 +68,42 @@ GtABAddressBook class >> loadDefaultDataIn: anAddressBook [
 	GtABContact new
 		firstName: 'Andrei';
 		lastName: 'Chis';
-		description: self loremIpsum;
+		telephone: (GtABTelephone  new prefix: '41-7'; number: '12345678');
 		address: (
 			GtABAddress new
 				city: 'Bern';
-				country: 'Switzerland';
-				telephone: (GtABTelephone  new prefix: '41-7'; number: '12345678'))).
-				
+				country: 'Switzerland')).
+
 	anAddressBook contacts add: (
 	GtABContact new
 		firstName: 'Aliaksei';
 		lastName: 'Syrel';
-		description: self loremIpsum;
 		address: (
 			GtABAddress new
 				city: 'Bern';
 				country: 'Switzerland';
 				telephone: (GtABTelephone  new  prefix: '41-7'; number: '11223344'))).
-				
+
 	anAddressBook contacts add: (
 	GtABContact new
 		firstName: 'Tudor';
 		lastName: 'Girba';
-		description: self loremIpsum;
+		telephone: (GtABTelephone  new prefix: '41-7'; number: '11224455');
 		address: (
 			GtABAddress new
 				city: 'Bern';
-				country: 'Switzerland';
-				telephone: (GtABTelephone  new prefix: '41-7'; number: '11224455'))).
+				country: 'Switzerland')).
 				
 				
 	anAddressBook contacts add: (
 	GtABContact new
 		firstName: 'Juraj';
 		lastName: 'Kubelka';
-		description: self loremIpsum;
+		telephone: (GtABTelephone  new prefix: '56-5'; number: '54321345');
 		address: (
 			GtABAddress new
 				city: 'Santiago';
-				country: 'Chile';
-				telephone: (GtABTelephone  new prefix: '56-5'; number: '54321345'))).
-				
-	anAddressBook contacts add: (
-	GtABContact new
-		firstName: 'Stefan';
-		lastName: 'Reichhart';
-		description: self loremIpsum;
-		address: (
-			GtABAddress new
-				city: 'Bern';
-				country: 'Switzerland';
-				telephone: (GtABTelephone  new prefix: '33-5'; number: '55326449'))).
-				
-	anAddressBook contacts add: (
-	GtABContact new
-		firstName: 'John';
-		lastName: 'Doe';
-		description: self loremIpsum;
-		address: (
-			GtABAddress new
-				city: 'Lille';
-				country: 'France';
-				telephone: (GtABTelephone  new prefix: '33-5'; number: '32455555'))).
-			
-		
+				country: 'Chile')).
 ]
 
 { #category : #accessing }
@@ -376,15 +303,14 @@ GtABAddressBook >> gtViewContactsOn: aView [
 		title: 'Contacts Avatars' translated;
 		priority: 5;
 		items: [ self allContacts ];
+		column: 'Avatar' do: [ :aColumn | 
+			aColumn 
+				rowStencil: [ :aContact | aContact avatar asElement asScalableElement size: 32@32];
+				noResize ];
 		column: 'Name' 
 			format: [ :aContact | aContact fullName ];
-		column: 'Avatar'
-			do: [ :aColumn | 
-				aColumn
-					item: [ :each |
-						each avatar ];
-					rowStencil: [ :eachAvatar | (eachAvatar scaledToSize: 124@124) asElement ];
-					noResize ].
+		column: 'Phone'
+			format: [ :aContact | aContact telephone ].
 ]
 
 { #category : #testing }

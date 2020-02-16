@@ -49,12 +49,10 @@ GtABAddressBookExample >> contactAddress [
 	| address |
 	address := GtABAddress new
 		city: 'Bern';
-		country: 'Switzerland';
-		telephone: self addressTelephone.
+		country: 'Switzerland'.
 
 	self assert: address city equals: 'Bern'.
 	self assert: address country equals: 'Switzerland'.
-	self assert: address telephone notNil.
 	
 	^ address
 ]
@@ -84,6 +82,7 @@ GtABAddressBookExample >> contactsAddressBookWithCategories [
 			firstName: 'James';
 			lastName: 'Poe';
 			avatar: GtABContact johnDoeAvatar;
+			telephone: self addressTelephone;
 			address: self contactAddress).
 	coworkersCategory := GtABCategory new
 		label: 'Coworkers';
@@ -104,8 +103,7 @@ GtABAddressBookExample >> contactsAddressBookWithCategories [
 		label: 'Family';
 		addContacts: { self janeDoeContact. self johnDoeContact }.
 		
-	addressBook := GtABAddressBook new
-		label: 'My contacts'.
+	addressBook := GtABAddressBook new label: 'My contacts'.
 	addressBook addCategories: { familyCategory. acquaintancesCategory }.
 	
 	self assert: familyCategory label equals: 'Family'.
