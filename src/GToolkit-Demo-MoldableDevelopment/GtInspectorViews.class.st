@@ -15,7 +15,7 @@ GtInspectorViews >> columnedListViewExplanationWithLinks [
 	container explainer isExplanationHolder: true.
 	
 	selectors := GtSelectorExplanationLinkStyler new.
-	selectors addSelectors: {#columnedList. #title:. #items:. #allContacts. #fullName. #avatar }.
+	selectors addSelectors: {#columnedList. #title:. #items:. #allContacts. #fullName. #avatar. #telephone}.
 	selectors addSelector: #column:do: withIdentifier: #columns.
 	selectors addSelector: #column:format: withIdentifier: #columns.
 	
@@ -45,16 +45,22 @@ GtInspectorViews >> columnedListViewExplanationWithLinks [
 						globalPointToLocal: (resultInspectorView localPointToGlobal: 7 @ 17))).
 	resultInspectorContainer
 		addChild:
-			((self yellowTargetCircleWithExplanationModel: #fullName)
-				relocate:
-					(resultInspectorContainer
-						globalPointToLocal: (resultInspectorView localPointToGlobal: 90 @ 55))).
-	resultInspectorContainer
-		addChild:
 			((self yellowTargetCircleWithExplanationModel: #avatar)
 				relocate:
 					(resultInspectorContainer
-						globalPointToLocal: (resultInspectorView localPointToGlobal: 295 @ 55))).
+						globalPointToLocal: (resultInspectorView localPointToGlobal: 5 @ 60))).
+	resultInspectorContainer
+		addChild:
+			((self yellowTargetCircleWithExplanationModel: #fullName)
+				relocate:
+					(resultInspectorContainer
+						globalPointToLocal: (resultInspectorView localPointToGlobal: 130 @ 60))).
+	resultInspectorContainer
+		addChild:
+			((self yellowTargetCircleWithExplanationModel: #telephone)
+				relocate:
+					(resultInspectorContainer
+						globalPointToLocal: (resultInspectorView localPointToGlobal: 335 @ 60))).
 	
 	verticalContainer addChild: coderElement.
 	verticalContainer addChild: resultInspectorContainer.
@@ -86,10 +92,11 @@ The columned list has as many rows as the collection returned by the ' asRopedTe
 For each ' asRopedText, 
 ('contact' asRopedText glamorousExplanationFor: #aContact),
 ' we show the ' asRopedText,
-('full name' asRopedText glamorousExplanationFor: #fullName),
-' in the first column, and the ' asRopedText,
 ('avatar' asRopedText glamorousExplanationFor: #avatar),
-' in the second column' asRopedText.
+', the ' asRopedText,
+('full name' asRopedText glamorousExplanationFor: #fullName),
+' and the ' asRopedText,
+('telephone' asRopedText glamorousExplanationFor: #telephone).
 	^ text
 		glamorousRegularFont;
 		fontSize: 20;
@@ -264,7 +271,7 @@ GtInspectorViews >> explicitViewExplanationWithLinks [
 	container explainer isExplanationHolder: true.
 	
 	selectors := GtSelectorExplanationLinkStyler new.
-	selectors addSelectors: {#explicit. #stencil:. #fullName. #city. #country. #telephone. #avatar}.
+	selectors addSelectors: {#explicit. #stencil:. #fullName. #address. #telephone. #avatar}.
 	
 	variables := GtVariableExplanationLinkStyler new.
 	variables addVariables: {#self}.
@@ -289,7 +296,7 @@ GtInspectorViews >> explicitViewExplanationWithLinks [
 			((self yellowTargetCircleWithExplanationModel: #fullName)
 				relocate:
 					(resultInspectorContainer
-						globalPointToLocal: (resultInspectorView localPointToGlobal: 160 @ 70))).
+						globalPointToLocal: (resultInspectorView localPointToGlobal: 160 @ 80))).
 	resultInspectorContainer
 		addChild:
 			((self yellowTargetCircleWithExplanationModel: #telephone)
@@ -298,22 +305,16 @@ GtInspectorViews >> explicitViewExplanationWithLinks [
 						globalPointToLocal: (resultInspectorView localPointToGlobal: 160 @ 127))).
 	resultInspectorContainer
 		addChild:
-			((self yellowTargetCircleWithExplanationModel: #city)
+			((self yellowTargetCircleWithExplanationModel: #address)
 				relocate:
 					(resultInspectorContainer
 						globalPointToLocal: (resultInspectorView localPointToGlobal: 160 @ 148))).
 	resultInspectorContainer
 		addChild:
-			((self yellowTargetCircleWithExplanationModel: #country)
-				relocate:
-					(resultInspectorContainer
-						globalPointToLocal: (resultInspectorView localPointToGlobal: 160 @ 169))).
-	resultInspectorContainer
-		addChild:
 			((self yellowTargetCircleWithExplanationModel: #avatar)
 				relocate:
 					(resultInspectorContainer
-						globalPointToLocal: (resultInspectorView localPointToGlobal: 15 @ 70))).
+						globalPointToLocal: (resultInspectorView localPointToGlobal: 25 @ 70))).
 	
 	verticalContainer addChild: coderElement.
 	verticalContainer addChild: resultInspectorContainer.
@@ -341,9 +342,7 @@ In this example, we show a ' asRopedText,
 ', ' asRopedText,
 ('telephone' asRopedText glamorousExplanationFor: #telephone),
 ', ' asRopedText,
-('city' asRopedText glamorousExplanationFor: #city),
-', ' asRopedText,
-('country' asRopedText glamorousExplanationFor: #country),
+('address' asRopedText glamorousExplanationFor: #address),
 ' and ' asRopedText,
 ('avatar' asRopedText glamorousExplanationFor: #avatar),
 ', all within a nice simple layout.' asRopedText.
@@ -596,6 +595,12 @@ GtInspectorViews >> textEditorViewExplanationWithLinks [
 				relocate:
 					(resultInspectorContainer
 						globalPointToLocal: (resultInspectorView localPointToGlobal: 7 @ 17))).
+	resultInspectorContainer
+		addChild:
+			((self yellowTargetCircleWithExplanationModel: #content)
+				relocate:
+					(resultInspectorContainer
+						globalPointToLocal: (resultInspectorView localPointToGlobal: 5 @ 55))).
 	
 	verticalContainer addChild: coderElement.
 	verticalContainer addChild: resultInspectorContainer.
