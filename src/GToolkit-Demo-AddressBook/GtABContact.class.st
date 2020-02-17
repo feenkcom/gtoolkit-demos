@@ -162,7 +162,7 @@ GtABContact >> gtInspectorContactOn: aComposite [
 			'Name' -> self fullName.
 			'City' -> self address city.
 			'Country' -> self address country.
-			'Telephone' -> self address telephone fullNumber } ];
+			'Telephone' -> self telephone fullNumber } ];
 		column: 'Detail' evaluated: #key;
 		column: 'Value' evaluated: #value;
 		send: #value

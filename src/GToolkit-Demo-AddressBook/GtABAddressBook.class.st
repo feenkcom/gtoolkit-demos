@@ -307,10 +307,14 @@ GtABAddressBook >> gtViewContactsOn: aView [
 			aColumn 
 				rowStencil: [ :aContact | aContact avatar asElement asScalableElement size: 32@32];
 				noResize ];
-		column: 'Name' 
-			format: [ :aContact | aContact fullName ];
-		column: 'Phone'
-			format: [ :aContact | aContact telephone ].
+		column: 'Name' do: [ :aColumn |
+			aColumn
+				item: [ :aContact | aContact fullName ];
+				width: 200 ];
+		column: 'Phone' do: [ :aColumn |
+			aColumn
+				item: [ :aContact | aContact telephone ];
+				width: 200 ].
 ]
 
 { #category : #testing }
