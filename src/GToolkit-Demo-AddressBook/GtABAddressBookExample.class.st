@@ -29,21 +29,6 @@ Class {
 }
 
 { #category : #'examples ' }
-GtABAddressBookExample >> addressTelephone [
-	<gtExample>
-	| telephone |
-	telephone := GtABTelephone new 
-		prefix: '41'; 
-		number: '074574363'.
-	
-	self assert: telephone prefix equals: '41'.
-	self assert: telephone number equals: '074574363'.
-	self assert: telephone fullNumber equals: '+41-074574363'.
-	
-	^ telephone
-]
-
-{ #category : #'examples ' }
 GtABAddressBookExample >> contactAddress [
 	<gtExample>
 	| address |
@@ -71,6 +56,21 @@ GtABAddressBookExample >> contactNote [
 	^ note.
 ]
 
+{ #category : #'examples ' }
+GtABAddressBookExample >> contactTelephone [
+	<gtExample>
+	| telephone |
+	telephone := GtABTelephone new 
+		prefix: '41'; 
+		number: '074574363'.
+	
+	self assert: telephone prefix equals: '41'.
+	self assert: telephone number equals: '074574363'.
+	self assert: telephone fullNumber equals: '+41-074574363'.
+	
+	^ telephone
+]
+
 { #category : #'as yet unclassified' }
 GtABAddressBookExample >> contactsAddressBookWithCategories [
 	<gtExample>
@@ -82,7 +82,7 @@ GtABAddressBookExample >> contactsAddressBookWithCategories [
 			firstName: 'James';
 			lastName: 'Poe';
 			avatar: GtABContact johnDoeAvatar;
-			telephone: self addressTelephone;
+			telephone: self contactTelephone;
 			address: self contactAddress).
 	coworkersCategory := GtABCategory new
 		label: 'Coworkers';
@@ -125,6 +125,7 @@ GtABAddressBookExample >> janeDoeContact [
 		description: GtABContact loremIpsum;
 		avatar: GtABContact janeDoeAvatar;
 		address: self contactAddress;
+		telephone: self contactTelephone;
 		addNotes: { self contactNote }.
 
 	self assert: contact firstName equals: 'Jane'.
@@ -145,6 +146,7 @@ GtABAddressBookExample >> johnDoeContact [
 		description: GtABContact loremIpsum;
 		avatar: GtABContact johnDoeAvatar;
 		address: self contactAddress;
+		telephone: self contactTelephone;
 		addNotes: { self contactNote }.
 	
 	self assert: contact firstName equals: 'John'.
