@@ -15,7 +15,7 @@ GtTour >> create [
 					(GtResourceReference
 						path: Path * 'feenkcom' / 'gtoolkit' / 'doc' / 'gtoolkit.png').
 			GtTextAndElementSlide new
-				element: [ self timelineElement margin: (BlInsets all: 50) ];
+				element: [ self timelineElement margin: (BlInsets left: 50 right: 50) ];
 				elementWeight: 0.7;
 				newText: 'Glamorous Toolkit is the moldable development environment.';
 				newText: 'It is a live notebook. It is a flexible search interface. It is a fancy code editor. It is a software analysis platform. It is a data visualization engine. All in one. It is built in Pharo and it is free and open-source under an MIT license.';
