@@ -269,6 +269,28 @@ GtABAddressBook >> gtViewCategoriesTreeWithContactsOn: aView [
 				ifFalse: [ #() ] ].
 ]
 
+{ #category : #accessing }
+GtABAddressBook >> gtViewContactsAddressOn: aView [
+	<gtView>
+	
+	^ aView columnedTree
+		title: 'Contacts Address' translated;
+		items: [self categories];
+		column: 'Contact' item: [:each | each];
+		column: 'City' item: [:each | 
+			(each isCategory)
+				ifTrue: ['' asRopedText]
+				ifFalse: [each address city]];
+		column: 'Country' item: [:each |
+			(each isCategory)
+				ifTrue: ['' asRopedText]
+				ifFalse: [each address country]];
+		children: [ :each |
+			(each isCategory)
+				ifTrue: [ each subcategories, each contacts ]
+				ifFalse: [ #() ] ].
+]
+
 { #category : #ui }
 GtABAddressBook >> gtViewContactsIconsCircularOn: aView [
 	<gtView>
@@ -289,7 +311,7 @@ GtABAddressBook >> gtViewContactsIconsCircularOn: aView [
 GtABAddressBook >> gtViewContactsListOn: aView [
 	<gtView>
 	^ aView list 
-		title: 'Contacts' translated;
+		title: 'Contacts List' translated;
 		priority: 8;
 		items: [ self allContacts ];
 		itemFormat: [ :aContact |
@@ -300,7 +322,7 @@ GtABAddressBook >> gtViewContactsListOn: aView [
 GtABAddressBook >> gtViewContactsOn: aView [
 	<gtView>
 	^ aView columnedList 
-		title: 'Contacts Avatars' translated;
+		title: 'Contacts Details' translated;
 		priority: 5;
 		items: [ self allContacts ];
 		column: 'Avatar' do: [ :aColumn | 

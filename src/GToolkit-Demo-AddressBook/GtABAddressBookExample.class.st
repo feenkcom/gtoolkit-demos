@@ -71,7 +71,7 @@ GtABAddressBookExample >> contactTelephone [
 	^ telephone
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #accessing }
 GtABAddressBookExample >> contactsAddressBookWithCategories [
 	<gtExample>
 	| addressBook familyCategory acquaintancesCategory friendsCategory coworkersCategory |
@@ -90,6 +90,7 @@ GtABAddressBookExample >> contactsAddressBookWithCategories [
 			firstName: 'David';
 			lastName: 'Smith';
 			avatar: GtABContact johnDoeAvatar;
+			telephone: self contactTelephone;
 			address: self contactAddress).
 	acquaintancesCategory := GtABCategory new
 		label: 'Acquaintances';
@@ -97,6 +98,7 @@ GtABAddressBookExample >> contactsAddressBookWithCategories [
 			firstName: 'Brian';
 			lastName: 'Kent';
 			avatar: GtABContact johnDoeAvatar;
+			telephone: self contactTelephone;
 			address: self contactAddress);
 		addSubcategories: { friendsCategory. coworkersCategory }.
 	familyCategory := GtABCategory new
