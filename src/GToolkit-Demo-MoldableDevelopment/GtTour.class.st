@@ -10,38 +10,37 @@ GtTour >> create [
 	show := GtSlideShow new.
 	show
 		slides:
-			{(GtFilePictureSlide new
+			{GtFilePictureSlide new
 				fileReference:
 					(GtResourceReference
-						path: Path * 'feenkcom' / 'gtoolkit' / 'doc' / 'gtoolkit.png')).
-			(GtTextAndElementSlide new
-				element: [ self overviewElement ];
+						path: Path * 'feenkcom' / 'gtoolkit' / 'doc' / 'gtoolkit.png').
+			GtTextAndElementSlide new
+				element: [ self timelineElement margin: (BlInsets all: 50) ];
 				elementWeight: 0.7;
 				newText: 'Glamorous Toolkit is the moldable development environment.';
 				newText: 'It is a live notebook. It is a flexible search interface. It is a fancy code editor. It is a software analysis platform. It is a data visualization engine. All in one. It is built in Pharo and it is free and open-source under an MIT license.';
 				newText: 'What is moldable development? A new paradigm that promotes the idea that developers should explain their systems through the lens of custom tools that they create while developing the system.';
-				newText: 'But, let''s take it step by step.').
-			(GtLabelAndElementSlide new
+				newText: 'But, let''s take it step by step.'.
+			GtLabelAndElementSlide new
 				element: [ GtRawViewsSlide new asElement ];
-				newFadedText: 'Consider how these different objects look quite similar in the inspector.').
-			(GtLabelAndElementSlide new
+				newFadedText: 'Consider how these different objects look quite similar in the inspector.'.
+			GtLabelAndElementSlide new
 				element: [ GtCustomViewsSlide new asElement ];
-				newFadedText: 'Yet, when we change the view, the differences are obvious.').
-			(GtLabelAndElementSlide new
+				newFadedText: 'Yet, when we change the view, the differences are obvious.'.
+			GtLabelAndElementSlide new
 				element: [ GtAllViewsSlide new asElement ];
-				newFadedText: 'Every object is different, and the environment should show it, too.').
-			(GtLabelAndElementSlide new
+				newFadedText: 'Every object is different, and the environment should show it, too.'.
+			"GtLabelAndElementSlide new
 				element: [ GtMultipleViewsForOneObjectSlide new asElement ];
 				newFadedText: 'Every object can be seen in multiple ways and the environment must accommodate all of them.';
-				newFadedText: 'Take a look below at a few views on an object holding a piece of text.').
-
-"			(GtTextAndElementSlide new 
+				newFadedText: 'Take a look below at a few views on an object holding a piece of text.'."
+			GtTextAndElementSlide new 
 				element: [ GtMultipleViewsForOneObjectSlide new grid asElement ];
-				newText: 'Every object can be seen in multiple ways.';
-				newText: 'Take a look to the right at a few views on an the same object holding a piece of text.';
-				newText: 'Every view is relevant from a certain perspective and the environment must accommodate all of them.';
-				elementWeight: 0.7).
-"
+				newText: 'Moldable development starts from the idea that everything about software, including code, is data. And data is shapeless, yet we, humans, need a concrete shape to reason about it. The environment provides this shape, and this is why the environment is essential.';
+				newText: 'To reason about data, we need to view it through a lens that is specific to the question we have. And when we do not have an appropriate view, we should be able to create it inexpensively. This applies for everything in sofware starting from  the tiniest objects.';
+				newText: 'For example, take a look to the right at a few views on an the same object holding a piece of text. Every view is relevant from a certain perspective and the environment must accommodate all of them.';
+				elementWeight: 0.7.
+
 			"		GtTitleSlide new
 			titleText: ('components' asRopedText fontSize: 50; glamorousRegularFont).
 		GtTextAndElementSlide new 
@@ -294,6 +293,32 @@ GtTour >> overviewElement [
 			margin: (BlInsets top: 100 left: 10 bottom: 10 right: 10); background: (Color white); look: BrShadowLook).
 	
 	^ container asScalableElement 
+]
+
+{ #category : #'api - instantiation' }
+GtTour >> timelineElement [
+	| plotter |
+	plotter := GtPlotter new.
+	plotter verticalTimeline
+		withProjectionAxis;
+		timelineData: #key;
+		projectionData: #value;
+		timelineFrom: 2011 asYear 
+		to: (Date today + 1 year) asYear;
+		with: { 
+			(Date year: 2011 month: 08 day: 22) -> 'first gt inspector'.
+			(Date year: 2013 month: 12 day: 28) -> 'first gt debugger'.
+			(Date year: 2014 month: 02 day: 14) -> 'first gt playground'.
+			(Date year: 2014 month: 12 day: 07) -> 'first gt spotter'.
+			(Date year: 2015 month: 10 day: 02) -> 'feenk founding'.
+			(Date year: 2016 month: 09 day: 19) -> 'moldable tools thesis'.
+			(Date year: 2017 month: 08 day: 15) -> 'new generation gt starts'.
+			(Date year: 2018 month: 09 day: 10) -> 'first public demo'.
+			(Date year: 2019 month: 04 day: 19) -> 'gt 0.6.42'.
+			(Date year: 2019 month: 07 day: 16) -> 'first public moldable development talk'.
+			(Date year: 2020 month: 02 day: 20) -> 'gt 0.7.x to be released'
+		}.
+		^ plotter root
 ]
 
 { #category : #'api - instantiation' }
