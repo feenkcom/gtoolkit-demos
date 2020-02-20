@@ -103,10 +103,10 @@ For each ' asRopedText,
 		foreground: Color black.
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #accessing }
 GtInspectorViews >> columnedTreeViewExplanationWithLinks [
 	<gtExample>
-	| container resultInspectorContainer verticalContainer editor coder coderElement selectors variables resultElement resultInspectorHeader resultInspectorView |
+	| container resultInspectorContainer verticalContainer editor coder coderElement selectors resultElement resultInspectorHeader resultInspectorView |
 	
 	resultInspectorContainer := self resultInspectorContainerElement.
 	verticalContainer := self verticalContainerElement.
@@ -114,25 +114,27 @@ GtInspectorViews >> columnedTreeViewExplanationWithLinks [
 	container explainer isExplanationHolder: true.
 	
 	selectors := GtSelectorExplanationLinkStyler new.
-	selectors addSelectors: {}.
+	selectors addSelectors: {#columnedTree. #title:. #items:. #children:}.
+	selectors addSelector: #City withIdentifier: #name.
+	selectors addSelector: #Country withIdentifier: #name.
+	selectors addSelector: #column:item: withIdentifier: #column.
 	
-	variables := GtVariableExplanationLinkStyler new.
-	variables addVariables: {}.
-	
-	coder := GtMethodCoder new. "forMethod: ()."
-	coder explanationLink: (GtCompositeExplanationLinkStyler forLinks: { selectors. variables }).
+	coder := GtMethodCoder new forMethod: (GtABAddressBook>>#gtViewContactsAddressOn:).
+	coder explanationLink: (GtCompositeExplanationLinkStyler forLinks: { selectors }).
 	coderElement := (coder expanded: true) asElement margin: (BlInsets all: 10).
 	coderElement forceLayout.
 	coderElement vMatchParent.
 	
-	resultElement := (" gtViewsFor:" GtPhlowView empty) asElementDo: [ :e | e ].
+	resultElement := (GtPhlowView empty composite
+		views: {GtABAddressBookExample new contactsAddressBookWithCategories gtViewContactsAddressOn: GtPhlowView empty};
+		labelled: 'a GtABAddressBook (My contacts)' asRopedText) asElementDo: [ :e | e ].
 	resultElement forceLayout.
-	"resultInspectorHeader := resultElement phlow firstChildWithView.
-	resultInspectorView := resultInspectorHeader viewContentElement phlow firstChildWithView."
+	resultInspectorHeader := resultElement phlow firstChildWithView.
+	resultInspectorView := resultInspectorHeader viewContentElement phlow firstChildWithView.
 	
 	resultInspectorContainer addChild: resultElement.
 	
-	"resultInspectorContainer
+	resultInspectorContainer
 		addChild:
 			((self yellowTargetCircleWithExplanationModel: #title:)
 				relocate:
@@ -140,16 +142,22 @@ GtInspectorViews >> columnedTreeViewExplanationWithLinks [
 						globalPointToLocal: (resultInspectorView localPointToGlobal: 7 @ 17))).
 	resultInspectorContainer
 		addChild:
-			((self yellowTargetCircleWithExplanationModel: #fullName)
+			((self yellowTargetCircleWithExplanationModel: #column)
 				relocate:
 					(resultInspectorContainer
-						globalPointToLocal: (resultInspectorView localPointToGlobal: 90 @ 55))).
+						globalPointToLocal: (resultInspectorView localPointToGlobal: 65 @ 55))).
 	resultInspectorContainer
 		addChild:
-			((self yellowTargetCircleWithExplanationModel: #telephone)
+			((self yellowTargetCircleWithExplanationModel: #column)
 				relocate:
 					(resultInspectorContainer
-						globalPointToLocal: (resultInspectorView localPointToGlobal: 295 @ 55)))."
+						globalPointToLocal: (resultInspectorView localPointToGlobal: 255 @ 55))).
+	resultInspectorContainer
+		addChild:
+			((self yellowTargetCircleWithExplanationModel: #column)
+				relocate:
+					(resultInspectorContainer
+						globalPointToLocal: (resultInspectorView localPointToGlobal: 420 @ 55))).
 	
 	verticalContainer addChild: coderElement.
 	verticalContainer addChild: resultInspectorContainer.
@@ -160,11 +168,27 @@ GtInspectorViews >> columnedTreeViewExplanationWithLinks [
 	^ container
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #accessing }
 GtInspectorViews >> columnedTreeViewExplanationWithLinksText [
 	| text |
 	
-	text := 'ColumnedTree View - Not Yet Implemented' asRopedText.
+	text := 'The ' asRopedText,
+('columned tree' asRopedText glamorousExplanationFor: #columnedTree),
+' view shows a tree, and for every item in the tree the information is displayed in multiple columns.
+
+After we give it a ' asRopedText,
+('title' asRopedText glamorousExplanationFor: #title:),
+', in the ' asRopedText,
+('items: block' asRopedText glamorousExplanationFor: #items:),
+' we specify the roots of the tree. Then, to each ' asRopedText,
+('column' asRopedText glamorousExplanationFor:#column),
+' we give a ' asRopedText,
+('name' asRopedText glamorousExplanationFor: #name),
+' and the items it contains.
+
+Lastly, in the ' asRopedText,
+('children: block' asRopedText glamorousExplanationFor: #children:),
+' we tell each parent the children it has.' asRopedText.
 	
 	^ text
 		glamorousRegularFont;
@@ -183,8 +207,6 @@ GtInspectorViews >> create [
 						fontSize: 50;
 						glamorousRegularFont)).
 			(GtElementSlide new
-				element: [self emptyViewExplanationWithLinks]).
-			(GtElementSlide new
 				element: [self listViewExplanationWithLinks]).
 			(GtElementSlide new
 				element: [self columnedListViewExplanationWithLinks]).
@@ -197,7 +219,9 @@ GtInspectorViews >> create [
 			(GtElementSlide new
 				element: [self explicitViewExplanationWithLinks]).
 			(GtElementSlide new
-				element: [self textEditorViewExplanationWithLinks]).}.
+				element: [self textEditorViewExplanationWithLinks]).
+			(GtElementSlide new
+				element: [self emptyViewExplanationWithLinks]).}.
 	
 	^ show.
 ]
