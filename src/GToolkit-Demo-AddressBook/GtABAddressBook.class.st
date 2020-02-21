@@ -256,10 +256,11 @@ GtABAddressBook >> gtSpotterPreviewIn: aComposite [
 		entity: self contacts
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #accessing }
 GtABAddressBook >> gtViewCategoriesTreeWithContactsOn: aView [
 	<gtView>
 
+	(self categories isEmpty) ifTrue: [^ aView empty].
 	^ aView tree
 		title: 'Contacts Tree' translated;
 		items: [ self categories ];
@@ -273,6 +274,7 @@ GtABAddressBook >> gtViewCategoriesTreeWithContactsOn: aView [
 GtABAddressBook >> gtViewContactsAddressOn: aView [
 	<gtView>
 	
+	(self categories isEmpty) ifTrue: [^ aView empty].
 	^ aView columnedTree
 		title: 'Contacts Address' translated;
 		items: [self categories];
