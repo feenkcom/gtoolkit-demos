@@ -276,7 +276,9 @@ GtInspectorViews >> emptyViewExplanationWithLinks [
 { #category : #accessing }
 GtInspectorViews >> emptyViewExplanationWithLinksText [
 	| text |
-	text := 'Empty view -> not yet implemented' asRopedText.
+	text := 'There are times, when because of certain conditions, we do not want to offer a view for an object. This is where the empty view is useful.
+
+By simply sending empty to the incoming view, we tell the inspector we do not want the view to be visible at all.' asRopedText.
 	
 	^ text
 		glamorousRegularFont;
