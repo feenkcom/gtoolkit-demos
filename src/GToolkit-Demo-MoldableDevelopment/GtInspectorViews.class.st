@@ -206,8 +206,8 @@ GtInspectorViews >> create [
 	show
 		slides:
 			{(GtTitleSlide new
-				titleText: ('inspector views' asRopedText
-						fontSize: 50;
+				titleText: ('Inspector views' asRopedText
+						fontSize: 70;
 						glamorousRegularFont)).
 			(GtElementSlide new
 				element: [self listViewExplanationWithLinks]).
