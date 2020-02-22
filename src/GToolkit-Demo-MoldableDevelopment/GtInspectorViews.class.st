@@ -106,7 +106,7 @@ For each ' asRopedText,
 { #category : #accessing }
 GtInspectorViews >> columnedTreeViewExplanationWithLinks [
 	<gtExample>
-	| container resultInspectorContainer verticalContainer editor coder coderElement selectors resultElement resultInspectorHeader resultInspectorView |
+	| container resultInspectorContainer verticalContainer editor coder coderElement selectors literals resultElement resultInspectorHeader resultInspectorView |
 	
 	resultInspectorContainer := self resultInspectorContainerElement.
 	verticalContainer := self verticalContainerElement.
@@ -115,12 +115,15 @@ GtInspectorViews >> columnedTreeViewExplanationWithLinks [
 	
 	selectors := GtSelectorExplanationLinkStyler new.
 	selectors addSelectors: {#columnedTree. #title:. #items:. #children:}.
-	selectors addSelector: #City withIdentifier: #name.
-	selectors addSelector: #Country withIdentifier: #name.
 	selectors addSelector: #column:item: withIdentifier: #column.
 	
+	literals := GtLiteralExplanationLinkStyler new.
+	literals addLiteral: #City withIdentifier: #name.
+	literals addLiteral: #Country withIdentifier: #name.
+	literals addLiteral: #Contact withIdentifier: #name.
+		
 	coder := GtMethodCoder new forMethod: (GtABAddressBook>>#gtViewContactsAddressOn:).
-	coder explanationLink: (GtCompositeExplanationLinkStyler forLinks: { selectors }).
+	coder explanationLink: (GtCompositeExplanationLinkStyler forLinks: { selectors. literals }).
 	coderElement := (coder expanded: true) asElement margin: (BlInsets all: 10).
 	coderElement forceLayout.
 	coderElement vMatchParent.
@@ -203,8 +206,8 @@ GtInspectorViews >> create [
 	show
 		slides:
 			{(GtTitleSlide new
-				titleText: ('inspector views' asRopedText
-						fontSize: 50;
+				titleText: ('Inspector views' asRopedText
+						fontSize: 70;
 						glamorousRegularFont)).
 			(GtElementSlide new
 				element: [self listViewExplanationWithLinks]).
@@ -229,47 +232,48 @@ GtInspectorViews >> create [
 { #category : #accessing }
 GtInspectorViews >> emptyViewExplanationWithLinks [
 	<gtExample>
-	| container resultInspectorContainer verticalContainer editor coder coderElement selectors variables resultElement resultInspectorHeader resultInspectorView |
+	| container resultInspectorContainer allViewsInspectorContainer leftVerticalContainer rightVerticalContainer editor coder coderElement selectors variables resultElement allViewsElement resultInspectorHeader resultInspectorView |
 	
 	resultInspectorContainer := self resultInspectorContainerElement.
-	verticalContainer := self verticalContainerElement.
+	allViewsInspectorContainer := self resultInspectorContainerElement.
+	leftVerticalContainer := self verticalContainerElement.
+	rightVerticalContainer := self verticalContainerElement.
 	container := self mainContainerElement.
 	container explainer isExplanationHolder: true.
 	
 	selectors := GtSelectorExplanationLinkStyler new.
-	selectors addSelectors: {}.
+	selectors addSelectors: {#empty}.
 	
 	variables := GtVariableExplanationLinkStyler new.
-	variables addVariables: {}.
+	variables addVariables: {#aView}.
 	
-	coder := GtMethodCoder new. "forMethod: (GtABAddressBook>>#gtViewContactsOn:)".
+	coder := GtMethodCoder new forMethod: (GtABAddressBook>>#gtViewCategoriesTreeWithContactsOn:).
 	coder explanationLink: (GtCompositeExplanationLinkStyler forLinks: { selectors. variables }).
 	coderElement := (coder expanded: true) asElement margin: (BlInsets all: 10).
 	coderElement forceLayout.
 	coderElement vMatchParent.
 	
 	resultElement := (GtPhlowView empty composite
-		views: {GtPhlowView empty};
-		labelled: 'an EmptyView' asRopedText) asElementDo: [ :e | e ].
+		views: {GtABAddressBookExample new myContactsAddressBook gtViewCategoriesTreeWithContactsOn: GtPhlowView empty};
+		labelled: 'a GtABAddressBook (My contacts)' asRopedText) asElementDo: [ :e | e ].
 	resultElement forceLayout.
-	"resultInspectorHeader := resultElement phlow firstChildWithView.
-	resultInspectorView := resultInspectorHeader viewContentElement phlow firstChildWithView.
+	
+	allViewsElement := (GtABAddressBookExample new myContactsAddressBook gtViewsFor: GtPhlowView empty) asElementDo: [ :e | e ].
+	allViewsElement forceLayout.
 	
 	resultInspectorContainer addChild: resultElement.
+	allViewsInspectorContainer addChild: allViewsElement.
 	
-	resultInspectorContainer
-		addChild:
-			((self yellowTargetCircleWithExplanationModel: #title:)
-				relocate:
-					(resultInspectorContainer
-						globalPointToLocal: (resultInspectorView localPointToGlobal: 7 @ 17)))."
-	
-	verticalContainer addChild: coderElement.
-	verticalContainer addChild: resultInspectorContainer.
+	rightVerticalContainer addChild: coderElement.
+	rightVerticalContainer addChild: resultInspectorContainer.
 	
 	editor := self textEditorElementWithText: (self emptyViewExplanationWithLinksText).
-	container addChild: editor.
-	container addChild: verticalContainer.
+	editor vFitContent.
+	
+	leftVerticalContainer addChild: editor.
+	leftVerticalContainer addChild: allViewsInspectorContainer.
+	container addChild: leftVerticalContainer.
+	container addChild: rightVerticalContainer.
 	^ container
 ]
 
@@ -278,7 +282,13 @@ GtInspectorViews >> emptyViewExplanationWithLinksText [
 	| text |
 	text := 'There are times, when because of certain conditions, we do not want to offer a view for an object. This is where the empty view is useful.
 
-By simply sending empty to the incoming view, we tell the inspector we do not want the view to be visible at all.' asRopedText.
+By simply sending ' asRopedText,
+('empty' asRopedText glamorousExplanationFor: #empty),
+'to the incoming ' asRopedText,
+('view' asRopedText glamorousExplanationFor: #aView),
+', we tell the inspector we do not want the view to be visible at all.
+
+As you can see in the example below, if the address book does not have any categories, the Contacts Tree view is empty so the tab does not appear on the tabs list.' asRopedText.
 	
 	^ text
 		glamorousRegularFont;
@@ -437,7 +447,7 @@ GtInspectorViews >> listViewExplanationWithLinks [
 GtInspectorViews >> listViewExplanationWithLinksText [
 	| text |
 	
-	text := 'Now lets take a look at a ' asRopedText,
+	text := 'Lets take a look at a ' asRopedText,
 ('list' asRopedText glamorousExplanationFor: #list),
 ' view. It has a ' asRopedText,
 ('title' asRopedText glamorousExplanationFor: #title:),

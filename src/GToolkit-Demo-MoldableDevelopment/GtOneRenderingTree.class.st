@@ -10,7 +10,7 @@ GtOneRenderingTree >> create [
 	show := GtSlideShow new.
 	show slides: { 
 		GtTitleSlide new
-			titleText: ('one rendering tree' asRopedText fontSize: 70; glamorousRegularFont).
+			titleText: ('One rendering tree' asRopedText fontSize: 70; glamorousRegularFont).
 
 		GtTextAndElementSlide new
 				element: [ self overviewElement ];
