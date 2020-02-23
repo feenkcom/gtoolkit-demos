@@ -324,15 +324,15 @@ GtABAddressBook >> gtViewContactsListOn: aView [
 GtABAddressBook >> gtViewContactsOn: aView [
 	<gtView>
 	^ aView columnedList 
-		title: 'Contacts Details' translated;
+		title: 'Contacts with details' translated;
 		priority: 5;
 		items: [ self allContacts ];
 		column: 'Avatar' do: [ :aColumn | 
 			aColumn 
 				rowStencil: [ :aContact | aContact avatar asElement asScalableElement size: 32@32];
 				noResize ];
-		column: 'Name' item: [ :aContact | aContact fullName ];
-		column: 'Phone' item: [ :aContact | aContact telephone ].
+		column: 'Name' format: [ :aContact | aContact fullName ] width: 200;
+		column: 'Phone' format: [ :aContact | aContact telephone ] width: 200.
 ]
 
 { #category : #testing }
