@@ -331,14 +331,8 @@ GtABAddressBook >> gtViewContactsOn: aView [
 			aColumn 
 				rowStencil: [ :aContact | aContact avatar asElement asScalableElement size: 32@32];
 				noResize ];
-		column: 'Name' do: [ :aColumn |
-			aColumn
-				item: [ :aContact | aContact fullName ];
-				width: 200 ];
-		column: 'Phone' do: [ :aColumn |
-			aColumn
-				item: [ :aContact | aContact telephone ];
-				width: 200 ].
+		column: 'Name' item: [ :aContact | aContact fullName ];
+		column: 'Phone' item: [ :aContact | aContact telephone ].
 ]
 
 { #category : #testing }
