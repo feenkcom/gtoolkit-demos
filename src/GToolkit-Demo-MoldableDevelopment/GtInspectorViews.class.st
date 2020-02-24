@@ -37,7 +37,7 @@ GtInspectorViews >> columnedListViewExplanationWithLinks [
 	
 	titleTab := resultInspectorTree
 		allChildrenBreadthFirstDetect: [:aChild | 
-			(aChild isKindOf: BrTab) and: [aChild label asString = 'Contacts Details']]
+			(aChild isKindOf: BrTab) and: [aChild label asString = 'Contacts with details']]
 		ifFound: [:aChild | aChild].
 	avatarLabel := resultInspectorTree
 		allChildrenBreadthFirstDetect: [:aChild | 
