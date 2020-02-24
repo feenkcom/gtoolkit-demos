@@ -325,7 +325,7 @@ As you can see in the example below, if the address book does not have any categ
 { #category : #accessing }
 GtInspectorViews >> explicitViewExplanationWithLinks [
 	<gtExample>
-	| container resultInspectorContainer verticalContainer editor coder coderElement selectors variables resultElement resultInspectorHeader resultInspectorView |
+	| container resultInspectorContainer verticalContainer editor coder coderElement selectors variables resultElement resultInspectorTree nameTextElement addressTextElement phoneTextElement avatarElement |
 	
 	resultInspectorContainer := self resultInspectorContainerElement.
 	verticalContainer := self verticalContainerElement.
@@ -344,46 +344,60 @@ GtInspectorViews >> explicitViewExplanationWithLinks [
 	coderElement forceLayout.
 	coderElement vMatchParent.
 	
-	resultElement := (GtPhlowView empty composite
+	resultElement := BlUseAsyncFeatures disableDuring: [
+	(GtPhlowView empty composite
 		views: {GtABAddressBookExample new janeDoeContact gtViewContactDetailsOn: GtPhlowView empty};
-		labelled: 'a GtABContact (Jane Doe)' asRopedText) asElementDo: [ :e | e ].
+		labelled: 'a GtABContact (Jane Doe)' asRopedText) asElementDo: [ :e | e ]].
 	resultElement forceLayout.
-	resultInspectorHeader := resultElement phlow firstChildWithView.
-	resultInspectorView := resultInspectorHeader viewContentElement phlow firstChildWithView.
+	resultInspectorTree := resultElement phlow firstChildWithView viewContentElement.
 	
+	nameTextElement := resultInspectorTree
+	allChildrenBreadthFirstDetect: [:aChild | 
+		(aChild isKindOf: BlTextElement) and: [aChild text asString = 'Jane Doe']]
+	ifFound: [:aChild | aChild].
+	phoneTextElement := resultInspectorTree
+	allChildrenBreadthFirstDetect: [:aChild | 
+		(aChild isKindOf: BrTextElementWithCursors) and: [aChild text asString = '+41-074574363']]
+	ifFound: [:aChild | aChild].
+	addressTextElement := resultInspectorTree
+	allChildrenBreadthFirstDetect: [:aChild | 
+		(aChild isKindOf: BrTextElementWithCursors) and: [aChild text asString = 'Bern,']]
+	ifFound: [:aChild | aChild].
+	avatarElement := resultInspectorTree
+	allChildrenBreadthFirstDetect: [:aChild | 
+		(aChild children isEmpty) and: [aChild parent parent isKindOf: BlSceneInformingElement]]
+	ifFound: [:aChild | aChild].
+		
 	resultInspectorContainer addChild: resultElement.
 	
-	resultInspectorContainer
+	nameTextElement
 		addChild:
 			((self yellowTargetCircleWithExplanationModel: #fullName)
 				relocate:
-					(resultInspectorContainer
-						globalPointToLocal: (resultInspectorView localPointToGlobal: 160 @ 80))).
-	resultInspectorContainer
+					(-5 @ nameTextElement extent y / 2)).
+	phoneTextElement
 		addChild:
 			((self yellowTargetCircleWithExplanationModel: #telephone)
 				relocate:
-					(resultInspectorContainer
-						globalPointToLocal: (resultInspectorView localPointToGlobal: 160 @ 127))).
-	resultInspectorContainer
+					(-5 @ phoneTextElement extent y / 2)).
+	addressTextElement
 		addChild:
 			((self yellowTargetCircleWithExplanationModel: #address)
 				relocate:
-					(resultInspectorContainer
-						globalPointToLocal: (resultInspectorView localPointToGlobal: 160 @ 148))).
-	resultInspectorContainer
+					(-5 @ addressTextElement extent y / 2)).
+	avatarElement
 		addChild:
 			((self yellowTargetCircleWithExplanationModel: #avatar)
 				relocate:
-					(resultInspectorContainer
-						globalPointToLocal: (resultInspectorView localPointToGlobal: 25 @ 70))).
-	
-	verticalContainer addChild: coderElement.
+					(avatarElement position)).
+						
+	editor := self textEditorElementWithText: (self explicitViewExplanationWithLinksText).
+		
+	verticalContainer addChild: editor.
 	verticalContainer addChild: resultInspectorContainer.
 	
-	editor := self textEditorElementWithText: (self explicitViewExplanationWithLinksText).
-	container addChild: editor.
 	container addChild: verticalContainer.
+	container addChild: coderElement.
 	^ container
 ]
 
