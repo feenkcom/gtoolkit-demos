@@ -56,9 +56,11 @@ GtCSInspectorFaceBlocElement >> drawNoseDetailsOn: aCanvas [
 
 { #category : #drawing }
 GtCSInspectorFaceBlocElement >> drawOnSpartaCanvas: aSpartaCanvas [
-	self  faceLandmarks hasEyes ifTrue: [
+	super drawOnSpartaCanvas: aSpartaCanvas.
+	
+	self faceLandmarks hasEyes ifTrue: [
 		self drawEyesDetailsOn: aSpartaCanvas ].
-	self  faceLandmarks hasEyesbrowse ifTrue: [
+	self faceLandmarks hasEyesbrowse ifTrue: [
 		self drawEyesbrowseDetailsOn: aSpartaCanvas ].
 	self faceLandmarks hasNose ifTrue: [
 		self drawNoseDetailsOn: aSpartaCanvas ].
