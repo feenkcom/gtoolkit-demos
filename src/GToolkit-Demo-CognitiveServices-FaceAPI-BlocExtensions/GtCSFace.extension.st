@@ -1,13 +1,6 @@
 Extension { #name : #GtCSFace }
 
 { #category : #'*GToolkit-Demo-CognitiveServices-FaceAPI-BlocExtensions' }
-GtCSFace >> gtFaceAttributesViewFor: aView [
-	<gtView>
-	^ (self attributes gtFaceAttributesViewFor: aView)
-		priority: 20
-]
-
-{ #category : #'*GToolkit-Demo-CognitiveServices-FaceAPI-BlocExtensions' }
 GtCSFace >> gtFaceLandmarksViewFor: aView [
 	<gtView>
 	^ aView explicit
@@ -43,4 +36,18 @@ GtCSFace >> gtFaceViewFor: aView [
 			extentElement 
 				contentElement: faceElement.
 			extentElement ]
+]
+
+{ #category : #'*GToolkit-Demo-CognitiveServices-FaceAPI-BlocExtensions' }
+GtCSFace >> gtViewAttributesListFor: aView [
+	<gtView>
+	^ (self attributes gtFaceAttributesViewFor: aView)
+		priority: 20
+]
+
+{ #category : #'*GToolkit-Demo-CognitiveServices-FaceAPI-BlocExtensions' }
+GtCSFace >> gtViewLandmarksListFor: aView [
+	<gtView>
+	^ (self landmarks gtFaceLandmarksListFor: aView)
+		priority: 19
 ]
