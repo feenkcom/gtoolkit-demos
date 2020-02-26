@@ -1,10 +1,12 @@
 "
-I store properties related to various attributes of a face, like age and gender.
+I store properties related to various attributes of a face, like age and gender. 
+
+
 "
 Class {
 	#name : #GtCSFaceAttributes,
 	#superclass : #GtCSFaceProperties,
-	#category : 'GToolkit-Demo-CognitiveServices-FaceAPI'
+	#category : #'GToolkit-Demo-CognitiveServices-FaceAPI'
 }
 
 { #category : #'instance creation' }

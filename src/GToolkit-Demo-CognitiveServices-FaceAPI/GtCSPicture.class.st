@@ -26,8 +26,6 @@ ${example:GtCSPictureExamples>>#pictureWithFacesWithLandmarksAndForm}$
 Faces can be added to a picture even if the picture does not have a graphical representation.
 ${example:GtCSPictureExamples>>#pictureWithFacesAndNoForm}$
 
-Face information can also be loaded from a JSON file. See <Adding faces from JSON files> for more details.
-
 !!Implementation details
 The fact that the attribute ==faces== is not null indicates that a client of this object already added face data to the picture. An empty list indicates that the picture has no face objects.
 "
