@@ -13,6 +13,252 @@ GtCSExamplesData class >> jsonEinsteinHabichtSolovine1280px [
 ]
 
 { #category : #'wikipedia - json object landmarks' }
+GtCSExamplesData class >> jsonFaceAttributesEinstein [
+	^ STONJSON fromString: '{
+			"facialHair" : {
+				"beard" : 0.2,
+				"moustache" : 0.8,
+				"sideburns" : 0.1
+			},
+			"age" : 40.1,
+			"smile" : 0.0,
+			"gender" : "male",
+			"accessories" : [ ],
+			"headPose" : {
+				"yaw" : -9.2,
+				"pitch" : 0.0,
+				"roll" : -5.3
+			},
+			"occlusion" : {
+				"foreheadOccluded" : false,
+				"eyeOccluded" : false,
+				"mouthOccluded" : false
+			},
+			"blur" : {
+				"blurLevel" : "medium",
+				"value" : 0.28
+			},
+			"emotion" : {
+				"neutral" : 1.0,
+				"surprise" : 0.0,
+				"contempt" : 0.0,
+				"happiness" : 0.0,
+				"anger" : 0.0,
+				"sadness" : 0.0,
+				"disgust" : 0.0,
+				"fear" : 0.0
+			},
+			"noise" : {
+				"noiseLevel" : "medium",
+				"value" : 0.58
+			},
+			"glasses" : "NoGlasses",
+			"exposure" : {
+				"value" : 0.63,
+				"exposureLevel" : "goodExposure"
+			},
+			"hair" : {
+				"invisible" : false,
+				"bald" : 0.0,
+				"hairColor" : [
+					{
+						"color" : "brown",
+						"confidence" : 0.98
+					},
+					{
+						"color" : "black",
+						"confidence" : 0.96
+					},
+					{
+						"color" : "gray",
+						"confidence" : 0.3
+					},
+					{
+						"color" : "other",
+						"confidence" : 0.26
+					},
+					{
+						"color" : "red",
+						"confidence" : 0.13
+					},
+					{
+						"color" : "blond",
+						"confidence" : 0.04
+					}
+				]
+			},
+			"makeup" : {
+				"eyeMakeup" : false,
+				"lipMakeup" : false
+			}
+		}'
+]
+
+{ #category : #'wikipedia - json object landmarks' }
+GtCSExamplesData class >> jsonFaceAttributesHabicht [
+	^ STONJSON fromString: '{
+			"facialHair" : {
+				"beard" : 0.2,
+				"moustache" : 0.8,
+				"sideburns" : 0.2
+			},
+			"age" : 48.9,
+			"smile" : 0.0,
+			"gender" : "male",
+			"accessories" : [ ],
+			"headPose" : {
+				"yaw" : 15.4,
+				"pitch" : 0.0,
+				"roll" : -2.1
+			},
+			"occlusion" : {
+				"foreheadOccluded" : false,
+				"eyeOccluded" : false,
+				"mouthOccluded" : false
+			},
+			"blur" : {
+				"blurLevel" : "low",
+				"value" : 0.06
+			},
+			"emotion" : {
+				"neutral" : 0.996,
+				"surprise" : 0.0,
+				"contempt" : 0.001,
+				"happiness" : 0.0,
+				"anger" : 0.001,
+				"sadness" : 0.002,
+				"disgust" : 0.0,
+				"fear" : 0.0
+			},
+			"noise" : {
+				"noiseLevel" : "high",
+				"value" : 0.72
+			},
+			"glasses" : "NoGlasses",
+			"exposure" : {
+				"value" : 0.6,
+				"exposureLevel" : "goodExposure"
+			},
+			"hair" : {
+				"invisible" : false,
+				"bald" : 0.01,
+				"hairColor" : [
+					{
+						"color" : "black",
+						"confidence" : 0.87
+					},
+					{
+						"color" : "brown",
+						"confidence" : 0.81
+					},
+					{
+						"color" : "gray",
+						"confidence" : 0.56
+					},
+					{
+						"color" : "other",
+						"confidence" : 0.46
+					},
+					{
+						"color" : "red",
+						"confidence" : 0.21
+					},
+					{
+						"color" : "blond",
+						"confidence" : 0.11
+					}
+				]
+			},
+			"makeup" : {
+				"eyeMakeup" : false,
+				"lipMakeup" : false
+			}
+		}'
+]
+
+{ #category : #'wikipedia - json object landmarks' }
+GtCSExamplesData class >> jsonFaceAttributesSolovine [
+	^ STONJSON fromString: '{
+			"facialHair" : {
+				"beard" : 0.6,
+				"moustache" : 0.6,
+				"sideburns" : 0.1
+			},
+			"age" : 41.1,
+			"smile" : 0.001,
+			"gender" : "male",
+			"accessories" : [ ],
+			"headPose" : {
+				"yaw" : 5.8,
+				"pitch" : 0.0,
+				"roll" : -7.8
+			},
+			"occlusion" : {
+				"foreheadOccluded" : false,
+				"eyeOccluded" : false,
+				"mouthOccluded" : false
+			},
+			"blur" : {
+				"blurLevel" : "medium",
+				"value" : 0.44
+			},
+			"emotion" : {
+				"neutral" : 0.996,
+				"surprise" : 0.0,
+				"contempt" : 0.002,
+				"happiness" : 0.001,
+				"anger" : 0.0,
+				"sadness" : 0.0,
+				"disgust" : 0.0,
+				"fear" : 0.0
+			},
+			"noise" : {
+				"noiseLevel" : "high",
+				"value" : 1.0
+			},
+			"glasses" : "NoGlasses",
+			"exposure" : {
+				"value" : 0.61,
+				"exposureLevel" : "goodExposure"
+			},
+			"hair" : {
+				"invisible" : false,
+				"bald" : 0.01,
+				"hairColor" : [
+					{
+						"color" : "brown",
+						"confidence" : 0.98
+					},
+					{
+						"color" : "black",
+						"confidence" : 0.92
+					},
+					{
+						"color" : "gray",
+						"confidence" : 0.46
+					},
+					{
+						"color" : "other",
+						"confidence" : 0.25
+					},
+					{
+						"color" : "red",
+						"confidence" : 0.14
+					},
+					{
+						"color" : "blond",
+						"confidence" : 0.03
+					}
+				]
+			},
+			"makeup" : {
+				"eyeMakeup" : false,
+				"lipMakeup" : false
+			}
+		}'
+]
+
+{ #category : #'wikipedia - json object landmarks' }
 GtCSExamplesData class >> jsonFaceLandmarksEinstein [
 	^ STONJSON fromString: '{
 			"noseRootRight" : {
