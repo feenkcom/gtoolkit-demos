@@ -5,6 +5,7 @@ GtCSFace >> gtFaceLandmarksViewFor: aView [
 	<gtView>
 	^ aView explicit
 		title: 'Face (landmarks)';
+		priority: 10;
 		stencil: [ 
 			| faceElement extentElement |
 			faceElement := GtCSInspectorFaceBlocElement new
@@ -14,4 +15,39 @@ GtCSFace >> gtFaceLandmarksViewFor: aView [
 			extentElement 
 				contentElement: faceElement.
 			extentElement ]
+]
+
+{ #category : #'*GToolkit-Demo-CognitiveServices-FaceAPI-BlocExtensions' }
+GtCSFace >> gtFaceViewFor: aView [
+	<gtView>
+	^ aView explicit
+		title: 'Face';
+		priority: 25;
+		stencil: [ 
+			| faceElement extentElement |
+			faceElement := BlElement new
+				size: self rectangle extent;
+				background: (self hasFaceForm 
+					ifTrue: [ self faceForm ]
+					ifFalse: [ (Form extent: self rectangle extent) 
+						fillColor: Color white ]).
+			extentElement := BlScalableElement new.
+			extentElement size: 256@256.
+			extentElement 
+				contentElement: faceElement.
+			extentElement ]
+]
+
+{ #category : #'*GToolkit-Demo-CognitiveServices-FaceAPI-BlocExtensions' }
+GtCSFace >> gtViewAttributesListFor: aView [
+	<gtView>
+	^ (self attributes gtFaceAttributesViewFor: aView)
+		priority: 20
+]
+
+{ #category : #'*GToolkit-Demo-CognitiveServices-FaceAPI-BlocExtensions' }
+GtCSFace >> gtViewLandmarksListFor: aView [
+	<gtView>
+	^ (self landmarks gtFaceLandmarksListFor: aView)
+		priority: 19
 ]

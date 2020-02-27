@@ -256,10 +256,11 @@ GtABAddressBook >> gtSpotterPreviewIn: aComposite [
 		entity: self contacts
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #accessing }
 GtABAddressBook >> gtViewCategoriesTreeWithContactsOn: aView [
 	<gtView>
 
+	(self categories isEmpty) ifTrue: [^ aView empty].
 	^ aView tree
 		title: 'Contacts Tree' translated;
 		items: [ self categories ];
@@ -273,6 +274,7 @@ GtABAddressBook >> gtViewCategoriesTreeWithContactsOn: aView [
 GtABAddressBook >> gtViewContactsAddressOn: aView [
 	<gtView>
 	
+	(self categories isEmpty) ifTrue: [^ aView empty].
 	^ aView columnedTree
 		title: 'Contacts Address' translated;
 		items: [self categories];
@@ -322,21 +324,15 @@ GtABAddressBook >> gtViewContactsListOn: aView [
 GtABAddressBook >> gtViewContactsOn: aView [
 	<gtView>
 	^ aView columnedList 
-		title: 'Contacts Details' translated;
+		title: 'Contacts with details' translated;
 		priority: 5;
 		items: [ self allContacts ];
 		column: 'Avatar' do: [ :aColumn | 
 			aColumn 
 				rowStencil: [ :aContact | aContact avatar asElement asScalableElement size: 32@32];
 				noResize ];
-		column: 'Name' do: [ :aColumn |
-			aColumn
-				item: [ :aContact | aContact fullName ];
-				width: 200 ];
-		column: 'Phone' do: [ :aColumn |
-			aColumn
-				item: [ :aContact | aContact telephone ];
-				width: 200 ].
+		column: 'Name' format: [ :aContact | aContact fullName ];
+		column: 'Phone' format: [ :aContact | aContact telephone ].
 ]
 
 { #category : #testing }

@@ -60,6 +60,17 @@ GtCSPictureExamples >> emptyPicture [
 ]
 
 { #category : #'example - face' }
+GtCSPictureExamples >> faceAttributesHabicht [
+	<gtExample>
+	| landmarks |
+	landmarks := (GtCSFaceAttributes fromDictionary: 
+		GtCSExamplesData jsonFaceAttributesHabicht).
+	^ landmarks
+
+
+]
+
+{ #category : #'example - face' }
 GtCSPictureExamples >> faceEinstein [
 	<gtExample>
 	| face |
@@ -104,11 +115,35 @@ GtCSPictureExamples >> faceHabicht [
 ]
 
 { #category : #'example - face' }
+GtCSPictureExamples >> faceHabichtWithAttributes [
+	<gtExample>
+	| face |
+	face := self faceHabicht.
+	face attributes: self faceAttributesHabicht.
+	self assert: face attributes notNil.
+	^ face
+]
+
+{ #category : #'example - face' }
 GtCSPictureExamples >> faceHabichtWithLandmarks [
 	<gtExample>
 	| face |
 	face := self faceHabicht.
 	face landmarks: self faceLandmarksHabicht.
+	self assert: face landmarks notNil.
+	^ face
+]
+
+{ #category : #'example - face' }
+GtCSPictureExamples >> faceHabichtWithLandmarksInPicture [
+	<gtExample>
+	| face picture|
+	face := self faceHabichtWithLandmarks.
+	picture := self emptyPicture.
+	picture ensureFacesStorage.
+	picture
+		addFace: face.
+	picture loadPictureFormFile: self pictureFile.
 	self assert: face landmarks notNil.
 	^ face
 ]

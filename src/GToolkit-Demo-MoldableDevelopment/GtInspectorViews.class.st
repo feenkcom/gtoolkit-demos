@@ -7,7 +7,7 @@ Class {
 { #category : #tests }
 GtInspectorViews >> columnedListViewExplanationWithLinks [
 	<gtExample>
-	| container resultInspectorContainer verticalContainer editor coder coderElement selectors variables resultElement resultInspectorHeader resultInspectorView |
+	| container resultInspectorContainer verticalContainer editor coder coderElement selectors variables resultElement resultInspectorTree titleTab avatarLabel nameLabel phoneLabel |
 	
 	resultInspectorContainer := self resultInspectorContainerElement.
 	verticalContainer := self verticalContainerElement.
@@ -28,39 +28,52 @@ GtInspectorViews >> columnedListViewExplanationWithLinks [
 	coderElement forceLayout.
 	coderElement vMatchParent.
 	
-	resultElement := (GtPhlowView empty composite
-		views: {GtABCartoonAddressBookExample new cartoonAddressBook gtViewContactsOn: GtPhlowView empty};
-		labelled: 'a GtABAddressBook (Cartoons)' asRopedText) asElementDo: [ :e | e ].
+	resultElement := BlUseAsyncFeatures disableDuring: [
+		(GtPhlowView empty composite
+			views: {GtABCartoonAddressBookExample new cartoonAddressBook gtViewContactsOn: GtPhlowView empty};
+			labelled: 'a GtABAddressBook (Cartoons)' asRopedText) asElementDo: [ :e | e ]].
 	resultElement forceLayout.
-	resultInspectorHeader := resultElement phlow firstChildWithView.
-	resultInspectorView := resultInspectorHeader viewContentElement phlow firstChildWithView.
+	resultInspectorTree := resultElement phlow firstChildWithView viewContentElement.
+	
+	titleTab := resultInspectorTree
+		allChildrenBreadthFirstDetect: [:aChild | 
+			(aChild isKindOf: BrTab) and: [aChild label asString = 'Contacts with details']]
+		ifFound: [:aChild | aChild].
+	avatarLabel := resultInspectorTree
+		allChildrenBreadthFirstDetect: [:aChild | 
+			(aChild isKindOf: BrLabel) and: [aChild text asString = 'Avatar']]
+		ifFound: [:aChild | aChild].
+	nameLabel := resultInspectorTree
+		allChildrenBreadthFirstDetect: [:aChild | 
+			(aChild isKindOf: BrLabel) and: [aChild text asString = 'Name']]
+		ifFound: [:aChild | aChild].
+	phoneLabel := resultInspectorTree
+		allChildrenBreadthFirstDetect: [:aChild | 
+			(aChild isKindOf: BrLabel) and: [aChild text asString = 'Phone']]
+		ifFound: [:aChild | aChild].
 	
 	resultInspectorContainer addChild: resultElement.
 	
-	resultInspectorContainer
+	titleTab
 		addChild:
 			((self yellowTargetCircleWithExplanationModel: #title:)
 				relocate:
-					(resultInspectorContainer
-						globalPointToLocal: (resultInspectorView localPointToGlobal: 7 @ 17))).
-	resultInspectorContainer
+					(10 @ titleTab extent y / 2)).
+	avatarLabel
 		addChild:
 			((self yellowTargetCircleWithExplanationModel: #avatar)
 				relocate:
-					(resultInspectorContainer
-						globalPointToLocal: (resultInspectorView localPointToGlobal: 5 @ 60))).
-	resultInspectorContainer
+					(-5 @ avatarLabel extent y /2)).
+	nameLabel
 		addChild:
 			((self yellowTargetCircleWithExplanationModel: #fullName)
 				relocate:
-					(resultInspectorContainer
-						globalPointToLocal: (resultInspectorView localPointToGlobal: 130 @ 60))).
-	resultInspectorContainer
+					(-5 @ nameLabel extent y / 2)).
+	phoneLabel
 		addChild:
 			((self yellowTargetCircleWithExplanationModel: #telephone)
 				relocate:
-					(resultInspectorContainer
-						globalPointToLocal: (resultInspectorView localPointToGlobal: 335 @ 60))).
+					(-5 @ phoneLabel extent y / 2)).
 	
 	verticalContainer addChild: coderElement.
 	verticalContainer addChild: resultInspectorContainer.
@@ -106,7 +119,7 @@ For each ' asRopedText,
 { #category : #accessing }
 GtInspectorViews >> columnedTreeViewExplanationWithLinks [
 	<gtExample>
-	| container resultInspectorContainer verticalContainer editor coder coderElement selectors resultElement resultInspectorHeader resultInspectorView |
+	| container resultInspectorContainer verticalContainer editor coder coderElement selectors literals resultElement resultInspectorTree contactLabel cityLabel countryLabel titleTab |
 	
 	resultInspectorContainer := self resultInspectorContainerElement.
 	verticalContainer := self verticalContainerElement.
@@ -115,49 +128,65 @@ GtInspectorViews >> columnedTreeViewExplanationWithLinks [
 	
 	selectors := GtSelectorExplanationLinkStyler new.
 	selectors addSelectors: {#columnedTree. #title:. #items:. #children:}.
-	selectors addSelector: #City withIdentifier: #name.
-	selectors addSelector: #Country withIdentifier: #name.
 	selectors addSelector: #column:item: withIdentifier: #column.
 	
+	literals := GtLiteralExplanationLinkStyler new.
+	literals addLiteral: #City withIdentifier: #name.
+	literals addLiteral: #Country withIdentifier: #name.
+	literals addLiteral: #Contact withIdentifier: #name.
+		
 	coder := GtMethodCoder new forMethod: (GtABAddressBook>>#gtViewContactsAddressOn:).
-	coder explanationLink: (GtCompositeExplanationLinkStyler forLinks: { selectors }).
+	coder explanationLink: (GtCompositeExplanationLinkStyler forLinks: { selectors. literals }).
 	coderElement := (coder expanded: true) asElement margin: (BlInsets all: 10).
 	coderElement forceLayout.
 	coderElement vMatchParent.
 	
-	resultElement := (GtPhlowView empty composite
+	resultElement := BlUseAsyncFeatures disableDuring: [
+	(GtPhlowView empty composite
 		views: {GtABAddressBookExample new contactsAddressBookWithCategories gtViewContactsAddressOn: GtPhlowView empty};
-		labelled: 'a GtABAddressBook (My contacts)' asRopedText) asElementDo: [ :e | e ].
+		labelled: 'a GtABAddressBook (My contacts)' asRopedText) asElementDo: [ :e | e ]].
 	resultElement forceLayout.
-	resultInspectorHeader := resultElement phlow firstChildWithView.
-	resultInspectorView := resultInspectorHeader viewContentElement phlow firstChildWithView.
+	resultInspectorTree := resultElement phlow firstChildWithView viewContentElement.
+	
+	titleTab := resultInspectorTree
+	allChildrenBreadthFirstDetect: [:aChild | 
+		(aChild isKindOf: BrTab) and: [aChild label asString = 'Contacts Address']]
+	ifFound: [:aChild | aChild].
+	contactLabel := resultInspectorTree
+	allChildrenBreadthFirstDetect: [:aChild | 
+		(aChild isKindOf: BrLabel) and: [aChild text asString = 'Contact']]
+	ifFound: [:aChild | aChild].
+	cityLabel := resultInspectorTree
+	allChildrenBreadthFirstDetect: [:aChild | 
+		(aChild isKindOf: BrLabel) and: [aChild text asString = 'City']]
+	ifFound: [:aChild | aChild].
+	countryLabel := resultInspectorTree
+	allChildrenBreadthFirstDetect: [:aChild | 
+		(aChild isKindOf: BrLabel) and: [aChild text asString = 'Country']]
+	ifFound: [:aChild | aChild].	
 	
 	resultInspectorContainer addChild: resultElement.
 	
-	resultInspectorContainer
+	titleTab
 		addChild:
 			((self yellowTargetCircleWithExplanationModel: #title:)
 				relocate:
-					(resultInspectorContainer
-						globalPointToLocal: (resultInspectorView localPointToGlobal: 7 @ 17))).
-	resultInspectorContainer
+					(10 @ titleTab extent y / 2)).
+	contactLabel
 		addChild:
 			((self yellowTargetCircleWithExplanationModel: #column)
 				relocate:
-					(resultInspectorContainer
-						globalPointToLocal: (resultInspectorView localPointToGlobal: 65 @ 55))).
-	resultInspectorContainer
+					(-5 @ contactLabel extent y / 2)).
+	cityLabel
 		addChild:
 			((self yellowTargetCircleWithExplanationModel: #column)
 				relocate:
-					(resultInspectorContainer
-						globalPointToLocal: (resultInspectorView localPointToGlobal: 255 @ 55))).
-	resultInspectorContainer
+					(-5 @ cityLabel extent y / 2)).
+	countryLabel
 		addChild:
 			((self yellowTargetCircleWithExplanationModel: #column)
 				relocate:
-					(resultInspectorContainer
-						globalPointToLocal: (resultInspectorView localPointToGlobal: 420 @ 55))).
+					(-5 @ countryLabel extent y / 2)).
 	
 	verticalContainer addChild: coderElement.
 	verticalContainer addChild: resultInspectorContainer.
@@ -203,8 +232,8 @@ GtInspectorViews >> create [
 	show
 		slides:
 			{(GtTitleSlide new
-				titleText: ('inspector views' asRopedText
-						fontSize: 50;
+				titleText: ('Inspector views' asRopedText
+						fontSize: 70;
 						glamorousRegularFont)).
 			(GtElementSlide new
 				element: [self listViewExplanationWithLinks]).
@@ -229,54 +258,63 @@ GtInspectorViews >> create [
 { #category : #accessing }
 GtInspectorViews >> emptyViewExplanationWithLinks [
 	<gtExample>
-	| container resultInspectorContainer verticalContainer editor coder coderElement selectors variables resultElement resultInspectorHeader resultInspectorView |
+	| container resultInspectorContainer allViewsInspectorContainer leftVerticalContainer rightVerticalContainer editor coder coderElement selectors variables resultElement allViewsElement resultInspectorHeader resultInspectorView |
 	
 	resultInspectorContainer := self resultInspectorContainerElement.
-	verticalContainer := self verticalContainerElement.
+	allViewsInspectorContainer := self resultInspectorContainerElement.
+	leftVerticalContainer := self verticalContainerElement.
+	rightVerticalContainer := self verticalContainerElement.
 	container := self mainContainerElement.
 	container explainer isExplanationHolder: true.
 	
 	selectors := GtSelectorExplanationLinkStyler new.
-	selectors addSelectors: {}.
+	selectors addSelectors: {#empty}.
 	
 	variables := GtVariableExplanationLinkStyler new.
-	variables addVariables: {}.
+	variables addVariables: {#aView}.
 	
-	coder := GtMethodCoder new. "forMethod: (GtABAddressBook>>#gtViewContactsOn:)".
+	coder := GtMethodCoder new forMethod: (GtABAddressBook>>#gtViewCategoriesTreeWithContactsOn:).
 	coder explanationLink: (GtCompositeExplanationLinkStyler forLinks: { selectors. variables }).
 	coderElement := (coder expanded: true) asElement margin: (BlInsets all: 10).
 	coderElement forceLayout.
 	coderElement vMatchParent.
 	
 	resultElement := (GtPhlowView empty composite
-		views: {GtPhlowView empty};
-		labelled: 'an EmptyView' asRopedText) asElementDo: [ :e | e ].
+		views: {GtABAddressBookExample new myContactsAddressBook gtViewCategoriesTreeWithContactsOn: GtPhlowView empty};
+		labelled: 'a GtABAddressBook (My contacts)' asRopedText) asElementDo: [ :e | e ].
 	resultElement forceLayout.
-	"resultInspectorHeader := resultElement phlow firstChildWithView.
-	resultInspectorView := resultInspectorHeader viewContentElement phlow firstChildWithView.
+	
+	allViewsElement := (GtABAddressBookExample new myContactsAddressBook gtViewsFor: GtPhlowView empty) asElementDo: [ :e | e ].
+	allViewsElement forceLayout.
 	
 	resultInspectorContainer addChild: resultElement.
+	allViewsInspectorContainer addChild: allViewsElement.
 	
-	resultInspectorContainer
-		addChild:
-			((self yellowTargetCircleWithExplanationModel: #title:)
-				relocate:
-					(resultInspectorContainer
-						globalPointToLocal: (resultInspectorView localPointToGlobal: 7 @ 17)))."
-	
-	verticalContainer addChild: coderElement.
-	verticalContainer addChild: resultInspectorContainer.
+	rightVerticalContainer addChild: coderElement.
+	rightVerticalContainer addChild: resultInspectorContainer.
 	
 	editor := self textEditorElementWithText: (self emptyViewExplanationWithLinksText).
-	container addChild: editor.
-	container addChild: verticalContainer.
+	editor vFitContent.
+	
+	leftVerticalContainer addChild: editor.
+	leftVerticalContainer addChild: allViewsInspectorContainer.
+	container addChild: leftVerticalContainer.
+	container addChild: rightVerticalContainer.
 	^ container
 ]
 
 { #category : #accessing }
 GtInspectorViews >> emptyViewExplanationWithLinksText [
 	| text |
-	text := 'Empty view -> not yet implemented' asRopedText.
+	text := 'There are times, when because of certain conditions, we do not want to offer a view for an object. This is where the empty view is useful.
+
+By simply sending ' asRopedText,
+('empty' asRopedText glamorousExplanationFor: #empty),
+'to the incoming ' asRopedText,
+('view' asRopedText glamorousExplanationFor: #aView),
+', we tell the inspector we do not want the view to be visible at all.
+
+As you can see in the example below, if the address book does not have any categories, the Contacts Tree view is empty so the tab does not appear on the tabs list.' asRopedText.
 	
 	^ text
 		glamorousRegularFont;
@@ -287,7 +325,7 @@ GtInspectorViews >> emptyViewExplanationWithLinksText [
 { #category : #accessing }
 GtInspectorViews >> explicitViewExplanationWithLinks [
 	<gtExample>
-	| container resultInspectorContainer verticalContainer editor coder coderElement selectors variables resultElement resultInspectorHeader resultInspectorView |
+	| container resultInspectorContainer verticalContainer editor coder coderElement selectors variables resultElement resultInspectorTree nameTextElement addressTextElement phoneTextElement avatarElement |
 	
 	resultInspectorContainer := self resultInspectorContainerElement.
 	verticalContainer := self verticalContainerElement.
@@ -306,46 +344,60 @@ GtInspectorViews >> explicitViewExplanationWithLinks [
 	coderElement forceLayout.
 	coderElement vMatchParent.
 	
-	resultElement := (GtPhlowView empty composite
+	resultElement := BlUseAsyncFeatures disableDuring: [
+	(GtPhlowView empty composite
 		views: {GtABAddressBookExample new janeDoeContact gtViewContactDetailsOn: GtPhlowView empty};
-		labelled: 'a GtABContact (Jane Doe)' asRopedText) asElementDo: [ :e | e ].
+		labelled: 'a GtABContact (Jane Doe)' asRopedText) asElementDo: [ :e | e ]].
 	resultElement forceLayout.
-	resultInspectorHeader := resultElement phlow firstChildWithView.
-	resultInspectorView := resultInspectorHeader viewContentElement phlow firstChildWithView.
+	resultInspectorTree := resultElement phlow firstChildWithView viewContentElement.
 	
+	nameTextElement := resultInspectorTree
+	allChildrenBreadthFirstDetect: [:aChild | 
+		(aChild isKindOf: BlTextElement) and: [aChild text asString = 'Jane Doe']]
+	ifFound: [:aChild | aChild].
+	phoneTextElement := resultInspectorTree
+	allChildrenBreadthFirstDetect: [:aChild | 
+		(aChild isKindOf: BrTextElementWithCursors) and: [aChild text asString = '+41-074574363']]
+	ifFound: [:aChild | aChild].
+	addressTextElement := resultInspectorTree
+	allChildrenBreadthFirstDetect: [:aChild | 
+		(aChild isKindOf: BrTextElementWithCursors) and: [aChild text asString = 'Bern,']]
+	ifFound: [:aChild | aChild].
+	avatarElement := resultInspectorTree
+	allChildrenBreadthFirstDetect: [:aChild | 
+		(aChild children isEmpty) and: [aChild parent parent isKindOf: BlSceneInformingElement]]
+	ifFound: [:aChild | aChild].
+		
 	resultInspectorContainer addChild: resultElement.
 	
-	resultInspectorContainer
+	nameTextElement
 		addChild:
 			((self yellowTargetCircleWithExplanationModel: #fullName)
 				relocate:
-					(resultInspectorContainer
-						globalPointToLocal: (resultInspectorView localPointToGlobal: 160 @ 80))).
-	resultInspectorContainer
+					(-5 @ nameTextElement extent y / 2)).
+	phoneTextElement
 		addChild:
 			((self yellowTargetCircleWithExplanationModel: #telephone)
 				relocate:
-					(resultInspectorContainer
-						globalPointToLocal: (resultInspectorView localPointToGlobal: 160 @ 127))).
-	resultInspectorContainer
+					(-5 @ phoneTextElement extent y / 2)).
+	addressTextElement
 		addChild:
 			((self yellowTargetCircleWithExplanationModel: #address)
 				relocate:
-					(resultInspectorContainer
-						globalPointToLocal: (resultInspectorView localPointToGlobal: 160 @ 148))).
-	resultInspectorContainer
+					(-5 @ addressTextElement extent y / 2)).
+	avatarElement
 		addChild:
 			((self yellowTargetCircleWithExplanationModel: #avatar)
 				relocate:
-					(resultInspectorContainer
-						globalPointToLocal: (resultInspectorView localPointToGlobal: 25 @ 70))).
-	
-	verticalContainer addChild: coderElement.
+					(avatarElement position)).
+						
+	editor := self textEditorElementWithText: (self explicitViewExplanationWithLinksText).
+		
+	verticalContainer addChild: editor.
 	verticalContainer addChild: resultInspectorContainer.
 	
-	editor := self textEditorElementWithText: (self explicitViewExplanationWithLinksText).
-	container addChild: editor.
 	container addChild: verticalContainer.
+	container addChild: coderElement.
 	^ container
 ]
 
@@ -380,7 +432,7 @@ In this example, we show a ' asRopedText,
 { #category : #accessing }
 GtInspectorViews >> listViewExplanationWithLinks [
 	<gtExample>
-	| container resultInspectorContainer verticalContainer editor coder coderElement selectors variables resultElement resultInspectorHeader resultInspectorView |
+	| container resultInspectorContainer verticalContainer editor coder coderElement selectors variables resultElement resultInspectorTree titleTab nameLabel |
 	
 	resultInspectorContainer := self resultInspectorContainerElement.
 	verticalContainer := self verticalContainerElement.
@@ -399,28 +451,34 @@ GtInspectorViews >> listViewExplanationWithLinks [
 	coderElement forceLayout.
 	coderElement vMatchParent.
 	
-	resultElement := (GtPhlowView empty composite
+	resultElement := BlUseAsyncFeatures disableDuring: [
+	(GtPhlowView empty composite
 		views: {GtABCartoonAddressBookExample new cartoonAddressBook gtViewContactsListOn: GtPhlowView empty};
-		labelled: 'a GtABAddressBook (Cartoons)' asRopedText) asElementDo: [ :e | e ].
+		labelled: 'a GtABAddressBook (Cartoons)' asRopedText) asElementDo: [ :e | e ]].
 	resultElement forceLayout.
+	resultInspectorTree := resultElement phlow firstChildWithView viewContentElement.
 	
-	resultInspectorHeader := resultElement phlow firstChildWithView.
-	resultInspectorView := resultInspectorHeader viewContentElement phlow firstChildWithView.
+	titleTab := resultInspectorTree
+	allChildrenBreadthFirstDetect: [:aChild | 
+		(aChild isKindOf: BrTab) and: [aChild label asString = 'Contacts List']]
+	ifFound: [:aChild | aChild].
+	nameLabel := resultInspectorTree
+	allChildrenBreadthFirstDetect: [:aChild | 
+		(aChild isKindOf: BrLabel) and: [aChild text asString = 'Bugs Bunny']]
+	ifFound: [:aChild | aChild].
 	
 	resultInspectorContainer addChild: resultElement.
 	
-	resultInspectorContainer
+	titleTab
 		addChild:
 			((self yellowTargetCircleWithExplanationModel: #title:)
 				relocate:
-					(resultInspectorContainer
-						globalPointToLocal: (resultInspectorView localPointToGlobal: 7 @ 17))).
-	resultInspectorContainer
+					(10 @ titleTab extent y / 2)).
+	nameLabel
 		addChild:
 			((self yellowTargetCircleWithExplanationModel: #fullName)
 				relocate:
-					(resultInspectorContainer
-						globalPointToLocal: (resultInspectorView localPointToGlobal: 35 @ 50))).
+					(0 @ nameLabel extent y / 2)).
 	
 	verticalContainer addChild: coderElement.
 	verticalContainer addChild: resultInspectorContainer.
@@ -435,7 +493,7 @@ GtInspectorViews >> listViewExplanationWithLinks [
 GtInspectorViews >> listViewExplanationWithLinksText [
 	| text |
 	
-	text := 'Now lets take a look at a ' asRopedText,
+	text := 'Lets take a look at a ' asRopedText,
 ('list' asRopedText glamorousExplanationFor: #list),
 ' view. It has a ' asRopedText,
 ('title' asRopedText glamorousExplanationFor: #title:),
@@ -470,10 +528,10 @@ GtInspectorViews >> mainContainerElement [
 		layout: BlLinearLayout horizontal.
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #accessing }
 GtInspectorViews >> mondrianViewExplanationWithLinks [
 	<gtExample>
-	| container resultInspectorContainer verticalContainer editor coder coderElement selectors resultElement resultInspectorHeader resultInspectorView |
+	| container resultInspectorContainer verticalContainer editor coder coderElement selectors resultElement resultInspectorTree titleTab |
 	
 	resultInspectorContainer := self resultInspectorContainerElement.
 	verticalContainer := self verticalContainerElement.
@@ -481,7 +539,7 @@ GtInspectorViews >> mondrianViewExplanationWithLinks [
 	container explainer isExplanationHolder: true.
 	
 	selectors := GtSelectorExplanationLinkStyler new.
-	selectors addSelectors: {#mondrian. #painting:. #nodes. #layout. #circle. #contacts. #avatar. #shape:}.
+	selectors addSelectors: {#mondrian. #painting:. #nodes. #layout. #circle. #contacts. #avatar. #shape:. #title:}.
 	
 	coder := GtMethodCoder new forMethod: (GtABAddressBook>>#gtViewContactsIconsCircularOn:).
 	coder explanationLink: (GtCompositeExplanationLinkStyler forLinks: { selectors }).
@@ -493,17 +551,20 @@ GtInspectorViews >> mondrianViewExplanationWithLinks [
 		views: {GtABCartoonAddressBookExample new cartoonAddressBook gtViewContactsIconsCircularOn: GtPhlowView empty};
 		labelled: 'a GtABAddressBook (Cartoons)') asElementDo: [ :e | e ].
 	resultElement forceLayout.
-	resultInspectorHeader := resultElement phlow firstChildWithView.
-	resultInspectorView := resultInspectorHeader viewContentElement phlow firstChildWithView.
+	resultInspectorTree := resultElement phlow firstChildWithView viewContentElement.
 	
+	titleTab := resultInspectorTree
+	allChildrenBreadthFirstDetect: [:aChild | 
+		(aChild isKindOf: BrTab) and: [aChild label asString = 'Circular']]
+	ifFound: [:aChild | aChild].
+		
 	resultInspectorContainer addChild: resultElement.
 	
-	resultInspectorContainer
+	titleTab
 		addChild:
 			((self yellowTargetCircleWithExplanationModel: #title:)
 				relocate:
-					(resultInspectorContainer
-						globalPointToLocal: (resultInspectorView localPointToGlobal: 7 @ 17))).
+					(10 @ titleTab extent y / 2)).
 	
 	verticalContainer addChild: coderElement.
 	verticalContainer addChild: resultInspectorContainer.
@@ -514,7 +575,7 @@ GtInspectorViews >> mondrianViewExplanationWithLinks [
 	^ container
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #accessing }
 GtInspectorViews >> mondrianViewExplanationWithLinksText [
 	| text |
 	
@@ -522,7 +583,9 @@ GtInspectorViews >> mondrianViewExplanationWithLinksText [
 ('mondrian' asRopedText glamorousExplanationFor: #mondrian),
 ' view allows us to see an object in different layouts using graph like representations.
 
-In the ' asRopedText,
+After the ' asRopedText,
+('title' asRopedText glamorousExplanationFor: #title:),
+', in the ' asRopedText,
 ('painting: block' asRopedText glamorousExplanationFor: #painting:),
 ', we define nodes, edges and a layout for the view.
 
@@ -544,18 +607,6 @@ Then we set the ' asRopedText,
 		glamorousRegularFont;
 		fontSize: 20;
 		foreground: Color black.
-]
-
-{ #category : #removing }
-GtInspectorViews >> removeAllViewsButTheOneOnPosition: aPosition from: aComposite [
-	| numberOfViews |
-	
-	numberOfViews := aComposite views size.
-	
-	(aPosition + 1) to: numberOfViews do: [:b | 
-		aComposite views remove: (aComposite views at: (aPosition + 1))].
-	1 to: (aPosition - 1) do: [:a | 
-		aComposite views remove: (aComposite views at: (aPosition - 1))].
 ]
 
 { #category : #utility }
@@ -585,7 +636,7 @@ GtInspectorViews >> textEditorElementWithText: aText [
 { #category : #accessing }
 GtInspectorViews >> textEditorViewExplanationWithLinks [
 	<gtExample>
-	| container resultInspectorContainer verticalContainer editor coder coderElement selectors variables resultElement resultInspectorHeader resultInspectorView |
+	| container resultInspectorContainer verticalContainer editor coder coderElement selectors variables resultElement resultInspectorTree titleTab contentEditorSegment |
 	
 	resultInspectorContainer := self resultInspectorContainerElement.
 	verticalContainer := self verticalContainerElement.
@@ -604,27 +655,34 @@ GtInspectorViews >> textEditorViewExplanationWithLinks [
 	coderElement forceLayout.
 	coderElement vMatchParent.
 	
-	resultElement := (GtPhlowView empty composite
+	resultElement := BlUseAsyncFeatures disableDuring: [
+	(GtPhlowView empty composite
 		views: {GtABAddressBookExample new contactNote gtViewNoteContentOn: GtPhlowView empty};
-		labelled: 'a GtABContactNote' asRopedText) asElementDo: [ :e | e ].
+		labelled: 'a GtABContactNote' asRopedText) asElementDo: [ :e | e ]].
 	resultElement forceLayout.
-	resultInspectorHeader := resultElement phlow firstChildWithView.
-	resultInspectorView := resultInspectorHeader viewContentElement phlow firstChildWithView.
+	resultInspectorTree := resultElement phlow firstChildWithView viewContentElement.
+	
+	titleTab := resultInspectorTree
+	allChildrenBreadthFirstDetect: [:aChild |
+		(aChild isKindOf: BrTab) and: [aChild label asString = 'Content']]
+	ifFound: [:aChild | aChild].
+	contentEditorSegment := resultInspectorTree
+	allChildrenBreadthFirstDetect: [:aChild |
+		(aChild isKindOf: BrTextEditorSegmentElement)]
+	ifFound: [:aChild | aChild].
 	
 	resultInspectorContainer addChild: resultElement.
 	
-	resultInspectorContainer
+	titleTab
 		addChild:
 			((self yellowTargetCircleWithExplanationModel: #title:)
 				relocate:
-					(resultInspectorContainer
-						globalPointToLocal: (resultInspectorView localPointToGlobal: 7 @ 17))).
-	resultInspectorContainer
+					(10 @ titleTab extent y / 2)).
+	contentEditorSegment
 		addChild:
 			((self yellowTargetCircleWithExplanationModel: #content)
 				relocate:
-					(resultInspectorContainer
-						globalPointToLocal: (resultInspectorView localPointToGlobal: 5 @ 55))).
+					(-5 @ contentEditorSegment extent y /2)).
 	
 	verticalContainer addChild: coderElement.
 	verticalContainer addChild: resultInspectorContainer.
@@ -664,7 +722,7 @@ The view gets a ' asRopedText,
 { #category : #accessing }
 GtInspectorViews >> treeViewExplanationWithLinks [
 	<gtExample>
-	| container resultInspectorContainer verticalContainer editor coder coderElement selectors variables resultElement resultInspectorHeader resultInspectorView |
+	| container resultInspectorContainer verticalContainer editor coder coderElement selectors variables resultElement resultInspectorTree titleTab treeLabel |
 	
 	resultInspectorContainer := self resultInspectorContainerElement.
 	verticalContainer := self verticalContainerElement.
@@ -683,29 +741,36 @@ GtInspectorViews >> treeViewExplanationWithLinks [
 	coderElement forceLayout.
 	coderElement vMatchParent.
 	
-	resultElement := (GtPhlowView empty composite
-		views: {GtABAddressBookExample new contactsAddressBookWithCategories gtViewCategoriesTreeWithContactsOn: GtPhlowView empty};
-		labelled: 'a GtABAddressBook (My Contacts)' asRopedText) asElementDo: [ :e | e ].
+	resultElement := BlUseAsyncFeatures disableDuring: [
+		(GtPhlowView empty composite
+			views: {GtABAddressBookExample new contactsAddressBookWithCategories gtViewCategoriesTreeWithContactsOn: GtPhlowView empty};
+			labelled: 'a GtABAddressBook (My Contacts)' asRopedText) asElementDo: [ :e | e ]].
 	resultElement forceLayout.
 	
-	resultInspectorHeader := resultElement phlow firstChildWithView.
-	resultInspectorView := resultInspectorHeader viewContentElement phlow firstChildWithView.
+	resultInspectorTree := resultElement phlow firstChildWithView viewContentElement.
+	
+	titleTab := resultInspectorTree
+	allChildrenBreadthFirstDetect: [:aChild | 
+		(aChild isKindOf: BrTab) and: [aChild label asString = 'Contacts Tree']]
+	ifFound: [:aChild | aChild].
+	treeLabel := resultInspectorTree
+	allChildrenBreadthFirstDetect: [:aChild | 
+		(aChild isKindOf: BrLabel) and: [aChild text asString = 'Family']]
+	ifFound: [:aChild | aChild].
 	
 	resultInspectorContainer addChild: resultElement.
 	
-	resultInspectorContainer
+	titleTab
 		addChild:
 			((self yellowTargetCircleWithExplanationModel: #title:)
 				relocate:
-					(resultInspectorContainer
-						globalPointToLocal: (resultInspectorView localPointToGlobal: 7 @ 17))).
+					(10 @ titleTab extent y / 2)).
 						
-	resultInspectorContainer
+	treeLabel
 		addChild:
 			((self yellowTargetCircleWithExplanationModel: #categories)
 				relocate:
-					(resultInspectorContainer
-						globalPointToLocal: (resultInspectorView localPointToGlobal: 35 @ 50))).
+					(-5 @ treeLabel extent y / 2)).
 							
 	verticalContainer addChild: coderElement.
 	verticalContainer addChild: resultInspectorContainer.

@@ -1,14 +1,21 @@
 "
-I store properties that identify various face landmarks from a face like.
+I store properties that identify various visual face landmarks from a ${class:GtCSFace}$. For other properties attaches to a face see ${class:GtCSFaceAttributes}$.
 
 The main details landmarks related to a face that I support are:
+- nose
 - eyes
 - eyebrows 
-- nose
 - mouth
 
+!!Nose
+The nose is specified using seven points. They identify the right and left alar, the tip and the top of the nose.
+
+${example:GtCSFaceLandmarksExamples>>#landmarNose}$
+
 !!Eyes
-An indivudual is specified by providing five points. Four form a rectangle defining the outline of the eye and the fifth identifies the pupil. These details need to be provided for both eyes.
+An indivudual is specified by providing five points. Four points form a rectangle defining the outline of the eye and the fifth identifies the pupil. These details need to be provided for both eyes.
+
+${example:GtCSFaceLandmarksExamples>>#landmarkEyes}$
 
 "
 Class {
