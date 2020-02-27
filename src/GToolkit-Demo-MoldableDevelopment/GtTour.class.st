@@ -318,7 +318,7 @@ GtTour >> timelineElement [
 			(Date year: 2019 month: 07 day: 16) -> 'first public moldable development talk'.
 			(Date year: 2020 month: 02 day: 20) -> 'gt 0.7.x to be released'
 		}.
-		^ plotter root
+		^ plotter asElement
 ]
 
 { #category : #'api - instantiation' }
