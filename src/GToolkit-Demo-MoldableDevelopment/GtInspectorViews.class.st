@@ -258,7 +258,7 @@ GtInspectorViews >> create [
 { #category : #accessing }
 GtInspectorViews >> emptyViewExplanationWithLinks [
 	<gtExample>
-	| container resultInspectorContainer allViewsInspectorContainer leftVerticalContainer rightVerticalContainer editor coder coderElement selectors variables resultElement allViewsElement resultInspectorHeader resultInspectorView |
+	| container resultInspectorContainer allViewsInspectorContainer leftVerticalContainer rightVerticalContainer editor coder coderElement selectors variables resultElement allViewsElement |
 	
 	resultInspectorContainer := self resultInspectorContainerElement.
 	allViewsInspectorContainer := self resultInspectorContainerElement.
@@ -294,7 +294,6 @@ GtInspectorViews >> emptyViewExplanationWithLinks [
 	rightVerticalContainer addChild: resultInspectorContainer.
 	
 	editor := self textEditorElementWithText: (self emptyViewExplanationWithLinksText).
-	editor vFitContent.
 	
 	leftVerticalContainer addChild: editor.
 	leftVerticalContainer addChild: allViewsInspectorContainer.
@@ -623,14 +622,14 @@ GtInspectorViews >> resultInspectorContainerElement [
 
 { #category : #'as yet unclassified' }
 GtInspectorViews >> textEditorElementWithText: aText [
-	^ BrEditor new
+	^ (BrEditor new
 		look: (BrGlamorousRegularEditorLook new fontSize: 16);
 		text: aText;
-		margin: (BlInsets all: 10);
-		constraintsDo: [ :c | 
-			c vertical fitContent.
-			c horizontal matchParent.
-			c linear weight: 0.5 ].
+		vFitContent; 
+		hMatchParent) asScalableElement 
+			maxScale: 1;
+			margin: (BlInsets all: 50);
+			constraintsDo: [ :c | c linear weight: 0.3]
 ]
 
 { #category : #accessing }
