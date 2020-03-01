@@ -623,7 +623,7 @@ GtInspectorViews >> resultInspectorContainerElement [
 { #category : #'as yet unclassified' }
 GtInspectorViews >> textEditorElementWithText: aText [
 	^ (BrEditor new
-		look: (BrGlamorousRegularEditorLook new fontSize: 16);
+		look: (BrGlamorousRegularEditorLook new fontSize: 16; lineSpacing: 2);
 		text: aText;
 		vFitContent; 
 		hMatchParent) asScalableElement 
