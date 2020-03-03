@@ -247,7 +247,9 @@ GtInspectorViews >> create [
 				element: [self textEditorViewExplanationWithLinks]).
 			(GtTextAndElementSlide new
 				newTextWithFormat: self emptyViewExplanationWithLinksText;
-				element: [self emptyViewExplanationWithLinks]).}.
+				element: [self emptyViewExplanationWithLinks]).
+			(GtElementSlide new
+				element: [self queriesSnippetsSlide]).}.
 	
 	^ show.
 ]
@@ -577,6 +579,37 @@ Then we set the ' asRopedText,
 		glamorousRegularFont;
 		fontSize: 20;
 		foreground: Color black.
+]
+
+{ #category : #'as yet unclassified' }
+GtInspectorViews >> queriesSnippetsSlide [
+	<gtExample>
+	| container |
+	
+	container := GtPlaygroundSlide new
+						snippets:
+							{
+								'"Show all the methods that use the gtView pragma"
+#gtView gtPragmas'.
+								'"Select only the methods that implement a list view"
+#gtView gtPragmas & #list gtReferences'.
+								'"Select only the methods that implement a columned list view"
+#gtView gtPragmas & #columnedList gtReferences'.
+								'"Now the mondrian view"
+#gtView gtPragmas & #mondrian gtReferences'.
+								'"The tree view"
+#gtView gtPragmas & #tree gtReferences'.
+								'"The columned tree view"
+#gtView gtPragmas & #columnedTree gtReferences'.
+								'"explicit view"
+#gtView gtPragmas & #explicit gtReferences'.
+								'"text editor view"
+#gtView gtPragmas & #textEditor gtReferences'.
+								'"empty view"
+#gtView gtPragmas & #empty gtReferences'};
+						asElement.
+	
+	^ container.
 ]
 
 { #category : #utility }
