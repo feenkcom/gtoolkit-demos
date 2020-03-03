@@ -7,12 +7,10 @@ Class {
 { #category : #tests }
 GtInspectorViews >> columnedListViewExplanationWithLinks [
 	<gtExample>
-	| container resultInspectorContainer verticalContainer editor coder coderElement selectors variables resultElement resultInspectorTree titleTab avatarLabel nameLabel phoneLabel |
+	| resultInspectorContainer verticalContainer coder coderElement selectors variables resultElement resultInspectorTree titleTab avatarLabel nameLabel phoneLabel |
 	
 	resultInspectorContainer := self resultInspectorContainerElement.
 	verticalContainer := self verticalContainerElement.
-	container := self mainContainerElement.
-	container explainer isExplanationHolder: true.
 	
 	selectors := GtSelectorExplanationLinkStyler new.
 	selectors addSelectors: {#columnedList. #title:. #items:. #allContacts. #fullName. #avatar. #telephone}.
@@ -78,10 +76,7 @@ GtInspectorViews >> columnedListViewExplanationWithLinks [
 	verticalContainer addChild: coderElement.
 	verticalContainer addChild: resultInspectorContainer.
 	
-	editor := self textEditorElementWithText: (self columnedListViewExplanationWithLinksText).
-	container addChild: editor.
-	container addChild: verticalContainer.
-	^ container
+	^ verticalContainer.
 ]
 
 { #category : #tests }
@@ -119,12 +114,10 @@ For each ' asRopedText,
 { #category : #accessing }
 GtInspectorViews >> columnedTreeViewExplanationWithLinks [
 	<gtExample>
-	| container resultInspectorContainer verticalContainer editor coder coderElement selectors literals resultElement resultInspectorTree contactLabel cityLabel countryLabel titleTab |
+	| resultInspectorContainer verticalContainer coder coderElement selectors literals resultElement resultInspectorTree contactLabel cityLabel countryLabel titleTab |
 	
 	resultInspectorContainer := self resultInspectorContainerElement.
 	verticalContainer := self verticalContainerElement.
-	container := self mainContainerElement.
-	container explainer isExplanationHolder: true.
 	
 	selectors := GtSelectorExplanationLinkStyler new.
 	selectors addSelectors: {#columnedTree. #title:. #items:. #children:}.
@@ -191,10 +184,7 @@ GtInspectorViews >> columnedTreeViewExplanationWithLinks [
 	verticalContainer addChild: coderElement.
 	verticalContainer addChild: resultInspectorContainer.
 	
-	editor := self textEditorElementWithText: (self columnedTreeViewExplanationWithLinksText).
-	container addChild: editor.
-	container addChild: verticalContainer.
-	^ container
+	^ verticalContainer.
 ]
 
 { #category : #accessing }
@@ -235,21 +225,28 @@ GtInspectorViews >> create [
 				titleText: ('Inspector views' asRopedText
 						fontSize: 70;
 						glamorousRegularFont)).
-			(GtElementSlide new
+			(GtTextAndElementSlide new
+				newTextWithFormat: self listViewExplanationWithLinksText;
 				element: [self listViewExplanationWithLinks]).
-			(GtElementSlide new
+			(GtTextAndElementSlide new
+				newTextWithFormat: self columnedListViewExplanationWithLinksText;
 				element: [self columnedListViewExplanationWithLinks]).
-			(GtElementSlide new
+			(GtTextAndElementSlide new
+				newTextWithFormat: self mondrianViewExplanationWithLinksText;
 				element: [self mondrianViewExplanationWithLinks]).
-			(GtElementSlide new
+			(GtTextAndElementSlide new
+				newTextWithFormat: self treeViewExplanationWithLinksText;
 				element: [self treeViewExplanationWithLinks]).
-			(GtElementSlide new
+			(GtTextAndElementSlide new
+				newTextWithFormat: self columnedTreeViewExplanationWithLinksText;
 				element: [self columnedTreeViewExplanationWithLinks]).
 			(GtElementSlide new
 				element: [self explicitViewExplanationWithLinks]).
-			(GtElementSlide new
+			(GtTextAndElementSlide new
+				newTextWithFormat: self textEditorViewExplanationWithLinksText;
 				element: [self textEditorViewExplanationWithLinks]).
-			(GtElementSlide new
+			(GtTextAndElementSlide new
+				newTextWithFormat: self emptyViewExplanationWithLinksText;
 				element: [self emptyViewExplanationWithLinks]).}.
 	
 	^ show.
@@ -258,14 +255,10 @@ GtInspectorViews >> create [
 { #category : #accessing }
 GtInspectorViews >> emptyViewExplanationWithLinks [
 	<gtExample>
-	| container resultInspectorContainer allViewsInspectorContainer leftVerticalContainer rightVerticalContainer editor coder coderElement selectors variables resultElement allViewsElement |
+	| resultInspectorContainer verticalContainer coder coderElement selectors variables resultElement |
 	
 	resultInspectorContainer := self resultInspectorContainerElement.
-	allViewsInspectorContainer := self resultInspectorContainerElement.
-	leftVerticalContainer := self verticalContainerElement.
-	rightVerticalContainer := self verticalContainerElement.
-	container := self mainContainerElement.
-	container explainer isExplanationHolder: true.
+	verticalContainer := self verticalContainerElement.
 	
 	selectors := GtSelectorExplanationLinkStyler new.
 	selectors addSelectors: {#empty}.
@@ -279,27 +272,15 @@ GtInspectorViews >> emptyViewExplanationWithLinks [
 	coderElement forceLayout.
 	coderElement vMatchParent.
 	
-	resultElement := (GtPhlowView empty composite
-		views: {GtABAddressBookExample new myContactsAddressBook gtViewCategoriesTreeWithContactsOn: GtPhlowView empty};
-		labelled: 'a GtABAddressBook (My contacts)' asRopedText) asElementDo: [ :e | e ].
+	resultElement := (GtABAddressBookExample new myContactsAddressBook gtViewsFor: GtPhlowView empty) asElementDo: [ :e | e ].
 	resultElement forceLayout.
 	
-	allViewsElement := (GtABAddressBookExample new myContactsAddressBook gtViewsFor: GtPhlowView empty) asElementDo: [ :e | e ].
-	allViewsElement forceLayout.
-	
 	resultInspectorContainer addChild: resultElement.
-	allViewsInspectorContainer addChild: allViewsElement.
 	
-	rightVerticalContainer addChild: coderElement.
-	rightVerticalContainer addChild: resultInspectorContainer.
+	verticalContainer addChild: coderElement.
+	verticalContainer addChild: resultInspectorContainer.
 	
-	editor := self textEditorElementWithText: (self emptyViewExplanationWithLinksText).
-	
-	leftVerticalContainer addChild: editor.
-	leftVerticalContainer addChild: allViewsInspectorContainer.
-	container addChild: leftVerticalContainer.
-	container addChild: rightVerticalContainer.
-	^ container
+	^ verticalContainer.
 ]
 
 { #category : #accessing }
@@ -431,12 +412,10 @@ In this example, we show a ' asRopedText,
 { #category : #accessing }
 GtInspectorViews >> listViewExplanationWithLinks [
 	<gtExample>
-	| container resultInspectorContainer verticalContainer editor coder coderElement selectors variables resultElement resultInspectorTree titleTab nameLabel |
+	| resultInspectorContainer verticalContainer coder coderElement selectors variables resultElement resultInspectorTree titleTab nameLabel |
 	
 	resultInspectorContainer := self resultInspectorContainerElement.
 	verticalContainer := self verticalContainerElement.
-	container := self mainContainerElement.
-	container explainer isExplanationHolder: true.
 	
 	selectors := GtSelectorExplanationLinkStyler new.
 	selectors addSelectors: {#list. #title:. #items:. #itemFormat:. #allContacts. #fullName }.
@@ -482,10 +461,7 @@ GtInspectorViews >> listViewExplanationWithLinks [
 	verticalContainer addChild: coderElement.
 	verticalContainer addChild: resultInspectorContainer.
 	
-	editor := self textEditorElementWithText: (self listViewExplanationWithLinksText).
-	container addChild: editor.
-	container addChild: verticalContainer.
-	^ container
+	^ verticalContainer.
 ]
 
 { #category : #accessing }
@@ -530,12 +506,10 @@ GtInspectorViews >> mainContainerElement [
 { #category : #accessing }
 GtInspectorViews >> mondrianViewExplanationWithLinks [
 	<gtExample>
-	| container resultInspectorContainer verticalContainer editor coder coderElement selectors resultElement resultInspectorTree titleTab |
+	| resultInspectorContainer verticalContainer coder coderElement selectors resultElement resultInspectorTree titleTab |
 	
 	resultInspectorContainer := self resultInspectorContainerElement.
 	verticalContainer := self verticalContainerElement.
-	container := self mainContainerElement.
-	container explainer isExplanationHolder: true.
 	
 	selectors := GtSelectorExplanationLinkStyler new.
 	selectors addSelectors: {#mondrian. #painting:. #nodes. #layout. #circle. #contacts. #avatar. #shape:. #title:}.
@@ -568,10 +542,7 @@ GtInspectorViews >> mondrianViewExplanationWithLinks [
 	verticalContainer addChild: coderElement.
 	verticalContainer addChild: resultInspectorContainer.
 	
-	editor := self textEditorElementWithText: (self mondrianViewExplanationWithLinksText).
-	container addChild: editor.
-	container addChild: verticalContainer.
-	^ container
+	^ verticalContainer.
 ]
 
 { #category : #accessing }
@@ -635,12 +606,10 @@ GtInspectorViews >> textEditorElementWithText: aText [
 { #category : #accessing }
 GtInspectorViews >> textEditorViewExplanationWithLinks [
 	<gtExample>
-	| container resultInspectorContainer verticalContainer editor coder coderElement selectors variables resultElement resultInspectorTree titleTab contentEditorSegment |
+	| resultInspectorContainer verticalContainer coder coderElement selectors variables resultElement resultInspectorTree titleTab contentEditorSegment |
 	
 	resultInspectorContainer := self resultInspectorContainerElement.
 	verticalContainer := self verticalContainerElement.
-	container := self mainContainerElement.
-	container explainer isExplanationHolder: true.
 	
 	selectors := GtSelectorExplanationLinkStyler new.
 	selectors addSelectors: {#textEditor. #title:. #look:. #content. #text:}.
@@ -686,10 +655,7 @@ GtInspectorViews >> textEditorViewExplanationWithLinks [
 	verticalContainer addChild: coderElement.
 	verticalContainer addChild: resultInspectorContainer.
 	
-	editor := self textEditorElementWithText: (self textEditorViewExplanationWithLinksText).
-	container addChild: editor.
-	container addChild: verticalContainer.
-	^ container
+	^ verticalContainer.
 ]
 
 { #category : #accessing }
@@ -721,12 +687,10 @@ The view gets a ' asRopedText,
 { #category : #accessing }
 GtInspectorViews >> treeViewExplanationWithLinks [
 	<gtExample>
-	| container resultInspectorContainer verticalContainer editor coder coderElement selectors variables resultElement resultInspectorTree titleTab treeLabel |
+	| resultInspectorContainer verticalContainer coder coderElement selectors variables resultElement resultInspectorTree titleTab treeLabel |
 	
 	resultInspectorContainer := self resultInspectorContainerElement.
 	verticalContainer := self verticalContainerElement.
-	container := self mainContainerElement.
-	container explainer isExplanationHolder: true.
 	
 	selectors := GtSelectorExplanationLinkStyler new.
 	selectors addSelectors: {#tree. #title:. #items:. #children:. #categories. #subcategories. #contacts}.
@@ -774,10 +738,7 @@ GtInspectorViews >> treeViewExplanationWithLinks [
 	verticalContainer addChild: coderElement.
 	verticalContainer addChild: resultInspectorContainer.
 	
-	editor := self textEditorElementWithText: (self treeViewExplanationWithLinksText).
-	container addChild: editor.
-	container addChild: verticalContainer.
-	^ container
+	^ verticalContainer.
 ]
 
 { #category : #accessing }
