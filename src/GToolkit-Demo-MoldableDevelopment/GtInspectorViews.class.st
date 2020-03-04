@@ -7,81 +7,109 @@ Class {
 { #category : #tests }
 GtInspectorViews >> columnedListViewExplanationWithLinks [
 	<gtExample>
-	| resultInspectorContainer verticalContainer coder coderElement selectors variables resultElement resultInspectorTree titleTab avatarLabel nameLabel phoneLabel codeExplanationLabel resultExplanationLabel |
-	
+	| resultInspectorContainer verticalContainer coder coderElement selectors variables resultElement resultInspectorTree titleTab avatarLabel nameLabel phoneLabel codeExplanationLabel resultExplanationLabel avatarElementsCollection listLabelsCollection |
 	resultInspectorContainer := self resultInspectorContainerElement.
 	verticalContainer := self verticalContainerElement.
-	
-	codeExplanationLabel := self explanationLabelWithText: 'Contacts with details view method'.
-	resultExplanationLabel := self explanationLabelWithText: 'Contacts with details view result'.
-	
+	codeExplanationLabel := self
+		explanationLabelWithText: 'Contacts with details view method'.
+	resultExplanationLabel := self
+		explanationLabelWithText: 'Contacts with details view result'.
 	selectors := GtSelectorExplanationLinkStyler new.
-	selectors addSelectors: {#columnedList. #title:. #items:. #allContacts. #fullName. #avatar. #telephone}.
+	selectors
+		addSelectors:
+			{#columnedList . #title: . #items: . #allContacts . #fullName . #avatar.
+			#telephone}.
 	selectors addSelector: #column:do: withIdentifier: #columns.
 	selectors addSelector: #column:format: withIdentifier: #columns.
-	
 	variables := GtVariableExplanationLinkStyler new.
 	variables addVariables: {'aContact'}.
-	
-	coder := GtMethodCoder forMethod: (GtABAddressBook>>#gtViewContactsOn:).
-	coder explanationLink: (GtCompositeExplanationLinkStyler forLinks: { selectors. variables }).
-	coderElement := (coder expanded: true) asElement margin: (BlInsets all: 10).
+	coder := GtMethodCoder
+		forMethod: GtABAddressBook >> #gtViewContactsOn:.
+	coder
+		explanationLink:
+			(GtCompositeExplanationLinkStyler
+				forLinks:
+					{selectors.
+					variables}).
+	coderElement := (coder expanded: true) asElement
+		margin: (BlInsets all: 10).
 	coderElement forceLayout.
 	coderElement vMatchParent.
-	
-	resultElement := BlUseAsyncFeatures disableDuring: [
-		(GtPhlowView empty composite
-			views: {GtABCartoonAddressBookExample new cartoonAddressBook gtViewContactsOn: GtPhlowView empty};
-			labelled: 'a GtABAddressBook (Cartoons)' asRopedText) asElementDo: [ :e | e ]].
+	resultElement := BlUseAsyncFeatures
+		disableDuring: [ (GtPhlowView empty composite
+				views:
+					{(GtABCartoonAddressBookExample new cartoonAddressBook
+						gtViewContactsOn: GtPhlowView empty)};
+				labelled: 'a GtABAddressBook (Cartoons)' asRopedText)
+				asElementDo: [ :e | e ] ].
 	resultElement forceLayout.
 	resultInspectorTree := resultElement phlow firstChildWithView viewContentElement.
 	
 	titleTab := resultInspectorTree
-		allChildrenBreadthFirstDetect: [:aChild | 
-			(aChild isKindOf: BrTab) and: [aChild label asString = 'Contacts with details']]
-		ifFound: [:aChild | aChild].
+		allChildrenBreadthFirstDetect: [ :aChild | 
+			(aChild isKindOf: BrTab)
+				and: [ aChild label asString = 'Contacts with details' ] ]
+		ifFound: [ :aChild | aChild ].
 	avatarLabel := resultInspectorTree
-		allChildrenBreadthFirstDetect: [:aChild | 
-			(aChild isKindOf: BrLabel) and: [aChild text asString = 'Avatar']]
-		ifFound: [:aChild | aChild].
+		allChildrenBreadthFirstDetect:
+			[ :aChild | (aChild isKindOf: BrLabel) and: [ aChild text asString = 'Avatar' ] ]
+		ifFound: [ :aChild | aChild ].
 	nameLabel := resultInspectorTree
-		allChildrenBreadthFirstDetect: [:aChild | 
-			(aChild isKindOf: BrLabel) and: [aChild text asString = 'Name']]
-		ifFound: [:aChild | aChild].
+		allChildrenBreadthFirstDetect:
+			[ :aChild | (aChild isKindOf: BrLabel) and: [ aChild text asString = 'Name' ] ]
+		ifFound: [ :aChild | aChild ].
 	phoneLabel := resultInspectorTree
-		allChildrenBreadthFirstDetect: [:aChild | 
-			(aChild isKindOf: BrLabel) and: [aChild text asString = 'Phone']]
-		ifFound: [:aChild | aChild].
-	
+		allChildrenBreadthFirstDetect:
+			[ :aChild | (aChild isKindOf: BrLabel) and: [ aChild text asString = 'Phone' ] ]
+		ifFound: [ :aChild | aChild ].
+	avatarElementsCollection := resultInspectorTree
+		allChildrenBreadthFirstSelect: [ :aChild | 
+			(aChild isKindOf: BlScalableElement)
+				and: [ aChild parent parent isKindOf: BrInfiniteListElement ] ].
+	listLabelsCollection := resultInspectorTree
+		allChildrenBreadthFirstSelect: [ :aChild | 
+			(aChild isKindOf: BrLabel)
+				and: [ aChild parent parent isKindOf: BrInfiniteListElement ] ].
 	resultInspectorContainer addChild: resultElement.
-	
 	titleTab
 		addChild:
 			((self yellowTargetCircleWithExplanationModel: #title:)
-				relocate:
-					(10 @ titleTab extent y / 2)).
+				relocate: 10 @ titleTab extent y / 2).
 	avatarLabel
 		addChild:
-			((self yellowTargetCircleWithExplanationModel: #avatar)
-				relocate:
-					(-5 @ avatarLabel extent y /2)).
+			((self yellowTargetCircleWithExplanationModel: #columns)
+				relocate: -5 @ avatarLabel extent y / 2).
 	nameLabel
 		addChild:
-			((self yellowTargetCircleWithExplanationModel: #fullName)
-				relocate:
-					(-5 @ nameLabel extent y / 2)).
+			((self yellowTargetCircleWithExplanationModel: #columns)
+				relocate: -5 @ nameLabel extent y / 2).
 	phoneLabel
 		addChild:
-			((self yellowTargetCircleWithExplanationModel: #telephone)
-				relocate:
-					(-5 @ phoneLabel extent y / 2)).
-	
+			((self yellowTargetCircleWithExplanationModel: #columns)
+				relocate: -5 @ phoneLabel extent y / 2).
+	avatarElementsCollection
+		do: [ :eachAvatar | 
+			eachAvatar parent
+				addChild:
+					((self yellowTargetCircleWithExplanationModel: #avatar)
+						relocate: 0 @ eachAvatar extent y / 2) ].
+					
+	listLabelsCollection
+		do: [ :eachLabel | 
+			| modelName |
+			modelName := (eachLabel text asString beginsWith: '+' asString)
+				ifTrue: [ #telephone ]
+				ifFalse: [ #fullName ].
+			eachLabel
+				addChild:
+					((self yellowTargetCircleWithExplanationModel: modelName)
+						relocate: -5 @ eachLabel extent y / 2) ].
+					
 	verticalContainer addChild: codeExplanationLabel.
 	verticalContainer addChild: coderElement.
 	verticalContainer addChild: resultExplanationLabel.
 	verticalContainer addChild: resultInspectorContainer.
-	
-	^ verticalContainer.
+	^ verticalContainer
 ]
 
 { #category : #tests }
