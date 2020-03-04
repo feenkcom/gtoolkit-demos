@@ -369,7 +369,7 @@ GtInspectorViews >> explicitViewExplanationWithLinks [
 	ifFound: [:aChild | aChild].
 	avatarElement := resultInspectorTree
 	allChildrenBreadthFirstDetect: [:aChild | 
-		(aChild children isEmpty) and: [aChild parent parent isKindOf: BlSceneInformingElement]]
+		(aChild children isEmpty) and: [aChild parent parent phlow isView ]]
 	ifFound: [:aChild | aChild].
 		
 	resultInspectorContainer addChild: resultElement.
