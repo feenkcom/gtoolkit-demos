@@ -807,7 +807,7 @@ The view gets a ' asRopedText,
 { #category : #accessing }
 GtInspectorViews >> treeViewExplanationWithLinks [
 	<gtExample>
-	| resultInspectorContainer verticalContainer coder coderElement selectors variables resultElement resultInspectorTree titleTab treeLabel codeExplanationLabel resultExplanationLabel |
+	| resultInspectorContainer verticalContainer coder coderElement selectors variables resultElement resultInspectorTree titleTab treeLabel codeExplanationLabel resultExplanationLabel categoryLabelsCollection |
 	
 	resultInspectorContainer := self resultInspectorContainerElement.
 	verticalContainer := self verticalContainerElement.
@@ -843,6 +843,9 @@ GtInspectorViews >> treeViewExplanationWithLinks [
 	allChildrenBreadthFirstDetect: [:aChild | 
 		(aChild isKindOf: BrLabel) and: [aChild text asString = 'Family']]
 	ifFound: [:aChild | aChild].
+	categoryLabelsCollection := resultInspectorTree
+	allChildrenBreadthFirstSelect: [:aChild | 
+		(aChild isKindOf: BrLabel) and: [aChild parent parent parent isKindOf: BrInfiniteTreeElement ]].
 	
 	resultInspectorContainer addChild: resultElement.
 	
@@ -852,11 +855,17 @@ GtInspectorViews >> treeViewExplanationWithLinks [
 				relocate:
 					(10 @ titleTab extent y / 2)).
 						
-	treeLabel
+	"treeLabel
 		addChild:
 			((self yellowTargetCircleWithExplanationModel: #categories)
 				relocate:
-					(-5 @ treeLabel extent y / 2)).
+					(-5 @ treeLabel extent y / 2))."
+	categoryLabelsCollection do: [ :eachLabel |
+		eachLabel
+			addChild:
+				((self yellowTargetCircleWithExplanationModel: #categories)
+					relocate:
+						(-5 @ eachLabel extent y / 2)) ].
 	
 	verticalContainer addChild: codeExplanationLabel.						
 	verticalContainer addChild: coderElement.
