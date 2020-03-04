@@ -436,7 +436,7 @@ In this example, we show a ' asRopedText,
 { #category : #accessing }
 GtInspectorViews >> listViewExplanationWithLinks [
 	<gtExample>
-	| resultInspectorContainer verticalContainer coder coderElement selectors variables resultElement resultInspectorTree titleTab nameLabel codeExplanationLabel resultExplanationLabel |
+	| resultInspectorContainer verticalContainer coder coderElement selectors variables resultElement resultInspectorTree titleTab codeExplanationLabel resultExplanationLabel nameLabelsCollection |
 	
 	resultInspectorContainer := self resultInspectorContainerElement.
 	verticalContainer := self verticalContainerElement.
@@ -467,10 +467,9 @@ GtInspectorViews >> listViewExplanationWithLinks [
 	allChildrenBreadthFirstDetect: [:aChild | 
 		(aChild isKindOf: BrTab) and: [aChild label asString = 'Contacts List']]
 	ifFound: [:aChild | aChild].
-	nameLabel := resultInspectorTree
-	allChildrenBreadthFirstDetect: [:aChild | 
-		(aChild isKindOf: BrLabel) and: [aChild text asString = 'Bugs Bunny']]
-	ifFound: [:aChild | aChild].
+	nameLabelsCollection := resultInspectorTree
+	allChildrenBreadthFirstSelect: [:aChild | 
+		(aChild isKindOf: BrLabel) and: [aChild parent parent isKindOf: BrInfiniteListElement]].
 	
 	resultInspectorContainer addChild: resultElement.
 	
@@ -479,11 +478,12 @@ GtInspectorViews >> listViewExplanationWithLinks [
 			((self yellowTargetCircleWithExplanationModel: #title:)
 				relocate:
 					(10 @ titleTab extent y / 2)).
-	nameLabel
-		addChild:
-			((self yellowTargetCircleWithExplanationModel: #fullName)
-				relocate:
-					(0 @ nameLabel extent y / 2)).
+	nameLabelsCollection do: [ :eachLabel |
+		eachLabel
+			addChild:
+				((self yellowTargetCircleWithExplanationModel: #fullName)
+					relocate:
+						(0 @ eachLabel extent y / 2)). ].
 	
 	verticalContainer addChild: codeExplanationLabel.
 	verticalContainer addChild: coderElement.
