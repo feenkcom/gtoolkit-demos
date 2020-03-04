@@ -267,7 +267,7 @@ GtInspectorViews >> create [
 { #category : #accessing }
 GtInspectorViews >> emptyViewExplanationWithLinks [
 	<gtExample>
-	| resultInspectorContainer verticalContainer coder coderElement selectors variables resultElement codeExplanationLabel resultExplanationLabel |
+	| resultInspectorContainer verticalContainer coder coderElement selectors variables literals resultElement codeExplanationLabel resultExplanationLabel inspectorHeader inspectorView |
 	
 	resultInspectorContainer := self resultInspectorContainerElement.
 	verticalContainer := self verticalContainerElement.
@@ -278,19 +278,35 @@ GtInspectorViews >> emptyViewExplanationWithLinks [
 	selectors := GtSelectorExplanationLinkStyler new.
 	selectors addSelectors: {#empty}.
 	
+	literals := GtLiteralExplanationLinkStyler new.
+	literals addLiteral: 'Contacts Tree' withIdentifier: #viewName.
+	
 	variables := GtVariableExplanationLinkStyler new.
 	variables addVariables: {#aView}.
 	
 	coder := GtMethodCoder new forMethod: (GtABAddressBook>>#gtViewCategoriesTreeWithContactsOn:).
-	coder explanationLink: (GtCompositeExplanationLinkStyler forLinks: { selectors. variables }).
+	coder explanationLink: (GtCompositeExplanationLinkStyler forLinks: { selectors. variables. literals }).
 	coderElement := (coder expanded: true) asElement margin: (BlInsets all: 10).
 	coderElement forceLayout.
 	coderElement vMatchParent.
 	
 	resultElement := (GtABAddressBookExample new myContactsAddressBook gtViewsFor: GtPhlowView empty) asElementDo: [ :e | e ].
 	resultElement forceLayout.
+	inspectorHeader := resultElement phlow firstChildWithView.
 	
 	resultInspectorContainer addChild: resultElement.
+	inspectorView := inspectorHeader viewContentElement phlow firstChildWithView.
+	
+	inspectorHeader
+		addChild:
+			((self yellowTargetCircleWithExplanationModel: #inspector)
+				relocate:
+					(inspectorHeader position)).
+	inspectorView
+		addChild:
+			((self yellowTargetCircleWithExplanationModel: #viewTabs)
+				relocate:
+					(inspectorView position)).
 	
 	verticalContainer addChild: codeExplanationLabel.
 	verticalContainer addChild: coderElement.
@@ -309,9 +325,15 @@ By simply sending ' asRopedText,
 ('empty' asRopedText glamorousExplanationFor: #empty),
 'to the incoming ' asRopedText,
 ('view' asRopedText glamorousExplanationFor: #aView),
-', we tell the inspector we do not want the view to be visible at all.
+', we tell the ' asRopedText,
+('inspector' asRopedText glamorousExplanationFor: #inspector),
+' we do not want the view to be visible at all.
 
-As you can see in the example below, if the address book does not have any categories, the Contacts Tree view is empty so the tab does not appear on the tabs list.' asRopedText.
+As you can see in the example below, if the address book does not have any categories, the ' asRopedText,
+('Contacts Tree' asRopedText glamorousExplanationFor: #viewName),
+' view is empty so the tab does not appear on the ' asRopedText,
+('tabs list' asRopedText glamorousExplanationFor: #viewTabs),
+'.' asRopedText.
 	
 	^ text
 		glamorousRegularFont;
