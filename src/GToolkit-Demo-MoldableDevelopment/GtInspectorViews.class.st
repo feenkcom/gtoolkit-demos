@@ -278,7 +278,8 @@ GtInspectorViews >> create [
 			(GtTextAndElementSlide new
 				newTextWithFormat: self columnedTreeViewExplanationWithLinksText;
 				element: [self columnedTreeViewExplanationWithLinks]).
-			(GtElementSlide new
+			(GtTextAndElementSlide new
+				newTextWithFormat: self explicitViewExplanationWithLinksText;
 				element: [self explicitViewExplanationWithLinks]).
 			(GtTextAndElementSlide new
 				newTextWithFormat: self textEditorViewExplanationWithLinksText;
@@ -380,12 +381,14 @@ GtInspectorViews >> explanationLabelWithText: aText [
 { #category : #accessing }
 GtInspectorViews >> explicitViewExplanationWithLinks [
 	<gtExample>
-	| container resultInspectorContainer verticalContainer editor coder coderElement selectors variables resultElement resultInspectorTree nameTextElement addressTextElement phoneTextElement avatarElement |
+	| resultInspectorContainer verticalContainer coder coderElement selectors variables resultElement resultInspectorTree nameTextElement addressTextElement phoneTextElement avatarElement codeExplanationLabel resultExplanationLabel |
 	
 	resultInspectorContainer := self resultInspectorContainerElement.
+	resultInspectorContainer height: 250.
 	verticalContainer := self verticalContainerElement.
-	container := self mainContainerElement.
-	container explainer isExplanationHolder: true.
+	
+	codeExplanationLabel := self explanationLabelWithText: 'Details view method'.
+	resultExplanationLabel := self explanationLabelWithText: 'Details view result'.
 	
 	selectors := GtSelectorExplanationLinkStyler new.
 	selectors addSelectors: {#explicit. #stencil:. #fullName. #address. #telephone. #avatar}.
@@ -445,15 +448,13 @@ GtInspectorViews >> explicitViewExplanationWithLinks [
 			((self yellowTargetCircleWithExplanationModel: #avatar)
 				relocate:
 					(avatarElement position)).
-						
-	editor := self textEditorElementWithText: (self explicitViewExplanationWithLinksText).
-		
-	verticalContainer addChild: editor.
+	
+	verticalContainer addChild: codeExplanationLabel.
+	verticalContainer addChild: coderElement.
+	verticalContainer addChild: resultExplanationLabel.
 	verticalContainer addChild: resultInspectorContainer.
 	
-	container addChild: verticalContainer.
-	container addChild: coderElement.
-	^ container
+	^ verticalContainer.
 ]
 
 { #category : #accessing }
