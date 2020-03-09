@@ -287,8 +287,9 @@ GtInspectorViews >> create [
 			(GtTextAndElementSlide new
 				newTextWithFormat: self emptyViewExplanationWithLinksText;
 				element: [self emptyViewExplanationWithLinks]).
-			(GtElementSlide new
-				element: [self queriesSnippetsSlide]).}.
+			(GtLabelAndElementSlide new
+				element: [self queriesSnippetsSlide];
+				newFadedText: 'You can learn more from the many examples already in the image. Use the queries below to find them.').}.
 	
 	^ show.
 ]
