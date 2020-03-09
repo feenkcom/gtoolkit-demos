@@ -278,7 +278,8 @@ GtInspectorViews >> create [
 			(GtTextAndElementSlide new
 				newTextWithFormat: self columnedTreeViewExplanationWithLinksText;
 				element: [self columnedTreeViewExplanationWithLinks]).
-			(GtElementSlide new
+			(GtTextAndElementSlide new
+				newTextWithFormat: self explicitViewExplanationWithLinksText;
 				element: [self explicitViewExplanationWithLinks]).
 			(GtTextAndElementSlide new
 				newTextWithFormat: self textEditorViewExplanationWithLinksText;
@@ -286,8 +287,9 @@ GtInspectorViews >> create [
 			(GtTextAndElementSlide new
 				newTextWithFormat: self emptyViewExplanationWithLinksText;
 				element: [self emptyViewExplanationWithLinks]).
-			(GtElementSlide new
-				element: [self queriesSnippetsSlide]).}.
+			(GtLabelAndElementSlide new
+				element: [self queriesSnippetsSlide];
+				newFadedText: 'You can learn more from the many examples already in the image. Use the queries below to find them.').}.
 	
 	^ show.
 ]
@@ -372,19 +374,22 @@ As you can see in the example below, if the address book does not have any categ
 { #category : #'as yet unclassified' }
 GtInspectorViews >> explanationLabelWithText: aText [
 	^ BrLabel new
-		text: (aText asRopedText glamorousRegularFont; fontSize: 15; foreground: Color black);
+		text: (aText asRopedText glamorousRegularFont; fontSize: 15; foreground: Color gray);
+		margin: (BlInsets top: 20 right: 0 bottom: 0 left: 10);
 		look: BrGlamorousLabelLook new.
 ]
 
 { #category : #accessing }
 GtInspectorViews >> explicitViewExplanationWithLinks [
 	<gtExample>
-	| container resultInspectorContainer verticalContainer editor coder coderElement selectors variables resultElement resultInspectorTree nameTextElement addressTextElement phoneTextElement avatarElement |
+	| resultInspectorContainer verticalContainer coder coderElement selectors variables resultElement resultInspectorTree nameTextElement addressTextElement phoneTextElement avatarElement codeExplanationLabel resultExplanationLabel |
 	
 	resultInspectorContainer := self resultInspectorContainerElement.
+	resultInspectorContainer height: 250.
 	verticalContainer := self verticalContainerElement.
-	container := self mainContainerElement.
-	container explainer isExplanationHolder: true.
+	
+	codeExplanationLabel := self explanationLabelWithText: 'Details view method'.
+	resultExplanationLabel := self explanationLabelWithText: 'Details view result'.
 	
 	selectors := GtSelectorExplanationLinkStyler new.
 	selectors addSelectors: {#explicit. #stencil:. #fullName. #address. #telephone. #avatar}.
@@ -444,15 +449,13 @@ GtInspectorViews >> explicitViewExplanationWithLinks [
 			((self yellowTargetCircleWithExplanationModel: #avatar)
 				relocate:
 					(avatarElement position)).
-						
-	editor := self textEditorElementWithText: (self explicitViewExplanationWithLinksText).
-		
-	verticalContainer addChild: editor.
+	
+	verticalContainer addChild: codeExplanationLabel.
+	verticalContainer addChild: coderElement.
+	verticalContainer addChild: resultExplanationLabel.
 	verticalContainer addChild: resultInspectorContainer.
 	
-	container addChild: verticalContainer.
-	container addChild: coderElement.
-	^ container
+	^ verticalContainer.
 ]
 
 { #category : #accessing }
