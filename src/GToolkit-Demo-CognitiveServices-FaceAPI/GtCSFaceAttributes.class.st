@@ -10,7 +10,7 @@ The main attributes related to a face are shown below. Faces may contain also ot
 
 Each of these attributes can be represented in a custom way. The following is an example of a list of attributes (for the face ${method:GtCSPictureExamples>>#faceHabichtWithLandmarksInPicture}$)
 
-${example:GtCSPictureExamples>>#faceHabichtWithAttributes|noCode|previewShow=#gtFaceAttributesViewFor:}$
+${example:GtCSPictureExamples>>#faceHabichtWithAttributes|noCode|previewShow=#gtViewAttributesListFor:}$
 "
 Class {
 	#name : #GtCSFaceAttributes,

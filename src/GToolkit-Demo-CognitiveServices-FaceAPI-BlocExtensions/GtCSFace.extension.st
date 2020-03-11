@@ -41,7 +41,7 @@ GtCSFace >> gtFaceViewFor: aView [
 { #category : #'*GToolkit-Demo-CognitiveServices-FaceAPI-BlocExtensions' }
 GtCSFace >> gtViewAttributesListFor: aView [
 	<gtView>
-	^ (self attributes gtFaceAttributesViewFor: aView)
+	^ (self attributes gtFaceAttributesListFor: aView)
 		priority: 20
 ]
 
