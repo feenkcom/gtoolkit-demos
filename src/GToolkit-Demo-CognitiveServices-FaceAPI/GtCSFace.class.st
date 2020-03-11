@@ -5,7 +5,7 @@ I store the rectangle delimiting the face within a ${class:GtCSPicture}$ object,
 ${example:GtCSPictureExamples>>#faceSolovineWithLandmarksInPicture|noCode|previewShow=gtFaceLandmarksViewFor:|previewHeight=260}$
 
 The rectangle delimiting a face and landmarks can be added to a face, even if the face does not have a graphical representation.
-${example:GtCSPictureExamples>>#faceSolovineWithLandmarks}$
+${example:GtCSPictureExamples>>#faceSolovineWithLandmarks|previewShow=#gtFaceLandmarksViewFor:}$
 
 If the face is added to a picture, its graphical representation is obtained by cropping the portion given by the rectangle attribute from the picture.
 ${example:GtCSPictureExamples>>#faceSolovineWithLandmarksInPicture}$
