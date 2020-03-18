@@ -260,27 +260,35 @@ GtInspectorViews >> create [
 						fontSize: 70;
 						glamorousRegularFont)).
 			(GtTextAndElementSlide new
+				newTextWithFormat: ('List' asRopedText glamorousRegularFont; fontSize: 30);
 				newTextWithFormat: self listViewExplanationWithLinksText;
 				element: [self listViewExplanationWithLinks]).
 			(GtTextAndElementSlide new
+				newTextWithFormat: ('Columned List' asRopedText glamorousRegularFont; fontSize: 30);
 				newTextWithFormat: self columnedListViewExplanationWithLinksText;
 				element: [self columnedListViewExplanationWithLinks]).
 			(GtTextAndElementSlide new
+				newTextWithFormat: ('Mondrian' asRopedText glamorousRegularFont; fontSize: 30);
 				newTextWithFormat: self mondrianViewExplanationWithLinksText;
 				element: [self mondrianViewExplanationWithLinks]).
 			(GtTextAndElementSlide new
+				newTextWithFormat: ('Tree' asRopedText glamorousRegularFont; fontSize: 30);
 				newTextWithFormat: self treeViewExplanationWithLinksText;
 				element: [self treeViewExplanationWithLinks]).
 			(GtTextAndElementSlide new
+				newTextWithFormat: ('Columned Tree' asRopedText glamorousRegularFont; fontSize: 30);
 				newTextWithFormat: self columnedTreeViewExplanationWithLinksText;
 				element: [self columnedTreeViewExplanationWithLinks]).
 			(GtTextAndElementSlide new
+				newTextWithFormat: ('Explicit' asRopedText glamorousRegularFont; fontSize: 30);
 				newTextWithFormat: self explicitViewExplanationWithLinksText;
 				element: [self explicitViewExplanationWithLinks]).
 			(GtTextAndElementSlide new
+				newTextWithFormat: ('Text Editor' asRopedText glamorousRegularFont; fontSize: 30);
 				newTextWithFormat: self textEditorViewExplanationWithLinksText;
 				element: [self textEditorViewExplanationWithLinks]).
 			(GtTextAndElementSlide new
+				newTextWithFormat: ('Empty' asRopedText glamorousRegularFont; fontSize: 30);
 				newTextWithFormat: self emptyViewExplanationWithLinksText;
 				element: [self emptyViewExplanationWithLinks]).
 			(GtLabelAndElementSlide new
