@@ -123,13 +123,11 @@ GtInspectorViews >> columnedListViewExplanationWithLinksText [
 ' and ' asRopedText,
 ('the columns' asRopedText glamorousExplanationFor: #columns),
 ' in which the information is displayed.
-
 The columned list has as many rows as the collection returned by the ' asRopedText,
 ('items: block' asRopedText glamorousExplanationFor: #items:),
 '. In this case, this means it shows all the ' asRopedText,
 ('contacts' asRopedText glamorousExplanationFor: #allContacts),
 ' in the address book.
-
 For each ' asRopedText, 
 ('contact' asRopedText glamorousExplanationFor: #aContact),
 ' we show the ' asRopedText,
@@ -232,7 +230,6 @@ GtInspectorViews >> columnedTreeViewExplanationWithLinksText [
 	text := 'The ' asRopedText,
 ('columned tree' asRopedText glamorousExplanationFor: #columnedTree),
 ' view shows a tree, and for every item in the tree the information is displayed in multiple columns.
-
 After we give it a ' asRopedText,
 ('title' asRopedText glamorousExplanationFor: #title:),
 ', in the ' asRopedText,
@@ -242,7 +239,6 @@ After we give it a ' asRopedText,
 ' we give a ' asRopedText,
 ('name' asRopedText glamorousExplanationFor: #name),
 ' and the items it contains.
-
 Lastly, in the ' asRopedText,
 ('children: block' asRopedText glamorousExplanationFor: #children:),
 ' we tell each parent the children it has.' asRopedText.
@@ -350,7 +346,6 @@ GtInspectorViews >> emptyViewExplanationWithLinks [
 GtInspectorViews >> emptyViewExplanationWithLinksText [
 	| text |
 	text := 'There are times, when because of certain conditions, we do not want to offer a view for an object. This is where the empty view is useful.
-
 By simply sending ' asRopedText,
 ('empty' asRopedText glamorousExplanationFor: #empty),
 'to the incoming ' asRopedText,
@@ -358,7 +353,6 @@ By simply sending ' asRopedText,
 ', we tell the ' asRopedText,
 ('inspector' asRopedText glamorousExplanationFor: #inspector),
 ' we do not want the view to be visible at all.
-
 As you can see in the example below, if the address book does not have any categories, the ' asRopedText,
 ('Contacts Tree' asRopedText glamorousExplanationFor: #viewName),
 ' view is empty so the tab does not appear on the ' asRopedText,
@@ -467,7 +461,6 @@ GtInspectorViews >> explicitViewExplanationWithLinksText [
 ' view lets you visualize an object in any way you want. Using the ' asRopedText,
 ('stencil: ' asRopedText glamorousExplanationFor: #stencil:),
 ' block you can give that visualization any shape or form. 
-
 In this example, we show a ' asRopedText,
 ('contact' asRopedText glamorousExplanationFor: #self),
 ' as a business card. We displays its ' asRopedText,
@@ -557,13 +550,11 @@ GtInspectorViews >> listViewExplanationWithLinksText [
 ' and a ' asRopedText,
 ('format' asRopedText glamorousExplanationFor: #itemFormat:),
 ' for the rows.
-
 The number of rows it has it is exactly the number of elements in the collection returned by the ' asRopedText,
 ('items: block' asRopedText glamorousExplanationFor: #items:),
 '. In this case, this means it shows all the ' asRopedText,
 ('contacts' asRopedText glamorousExplanationFor: #allContacts),
 ' in the address book.
-
 For each ' asRopedText, 
 ('contact' asRopedText glamorousExplanationFor: #aContact),
 ' we show the ' asRopedText,
@@ -639,14 +630,11 @@ GtInspectorViews >> mondrianViewExplanationWithLinksText [
 	text := 'The ' asRopedText,
 ('mondrian' asRopedText glamorousExplanationFor: #mondrian),
 ' view allows us to see an object in different layouts using graph like representations.
-
 After the ' asRopedText,
 ('title' asRopedText glamorousExplanationFor: #title:),
 ', in the ' asRopedText,
 ('painting: block' asRopedText glamorousExplanationFor: #painting:),
-', we define nodes, edges and a layout for the view.
-
-In this context, the ' asRopedText,
+', we define nodes, edges and a layout for the view. In this context, the ' asRopedText,
 ('nodes' asRopedText glamorousExplanationFor: #nodes),
 ' are the ' asRopedText,
 ('contacts' asRopedText glamorousExplanationFor: #contacts),
@@ -655,7 +643,6 @@ In this context, the ' asRopedText,
 ' represented by the their ' asRopedText,
 ('avatar' asRopedText glamorousExplanationFor: #avatar),
 '
-
 Then we set the ' asRopedText,
 ('layout' asRopedText glamorousExplanationFor: #layout),
 ' to be a ' asRopedText,
@@ -788,7 +775,6 @@ GtInspectorViews >> textEditorViewExplanationWithLinksText [
 	text := 'With the ' asRopedText,
 ('text editor' asRopedText glamorousExplanationFor: #textEditor),
 ' view we can print plain text on the screen.
-
 The view gets a ' asRopedText,
 ('title' asRopedText glamorousExplanationFor: #title:),
 ', a ' asRopedText,
@@ -885,7 +871,6 @@ GtInspectorViews >> treeViewExplanationWithLinksText [
 	text := 'The ' asRopedText,
 ('tree' asRopedText glamorousExplanationFor: #tree),
 ' view displays the information as a tree structure, having parents and children.
-
 As always, the first thing we mention is the ' asRopedText,
 ('title' asRopedText glamorousExplanationFor: #title:),
 '. Then, in the ' asRopedText,
@@ -893,7 +878,6 @@ As always, the first thing we mention is the ' asRopedText,
 ' we specify the first items in the tree, the parents where it starts from, in this case, the' asRopedText,
 ('categories' asRopedText glamorousExplanationFor: #categories),
 ' in the address book.
-
 After that, in the ' asRopedText,
 ('children: block' asRopedText glamorousExplanationFor: #children:),
 ' we tell ' asRopedText,
