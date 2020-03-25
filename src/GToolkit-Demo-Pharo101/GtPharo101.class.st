@@ -509,8 +509,9 @@ GtPharo101 >> create [
 	self addInstantiationSlidesIn: show.
 	self addReflectionSlidesIn: show.
 	
-	show addSlide: (GtTitleSlide new
-				titleText: ('Enjoy programming with Pharo' asRopedText fontSize: 70)).
+	show addSlide: (GtLabelAndElementSlide new
+			element: [((GtPharoMethodExample>>#exampleWithNumber:) gtViewNodesExplanationWithLinksFor: GtPhlowEmptyView new) asElementDo: [:e | e ]];
+			newFadedText: ('Let''s put it all together. Take a look at the method below. Hover over the syntactical parts on the left to understand how they map on the different parts of the method.' asRopedText fontSize: 70)).
 	
 	^ show.
 ]
