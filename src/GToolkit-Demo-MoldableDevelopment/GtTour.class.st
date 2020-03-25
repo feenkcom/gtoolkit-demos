@@ -4,6 +4,47 @@ Class {
 	#category : #'GToolkit-Demo-MoldableDevelopment'
 }
 
+{ #category : #'as yet unclassified' }
+GtTour >> buttonToInspectorViewsSlides [
+	<gtExample>
+	| button buttonLook labelLook exteriorLook |
+	
+	labelLook := BrTextLabelLook new.
+	labelLook
+		bold;
+		fontName: 'Source Sans Pro'.
+
+	labelLook add: (BrInteractiveCommonLook new
+		default: [ labelLook foreground: Color gray ];
+		hovered: [ labelLook foreground: Color white ];
+		pressed: [ labelLook foreground: Color paleBlue ];
+		disabled: [ labelLook foreground: Color veryLightGray ]).
+		
+	exteriorLook := BrInteractiveCommonLook new.
+	exteriorLook
+		default: [ :aWidget |
+			aWidget padding: (BlInsets top: 5 left: 10 bottom: 5 right: 10).
+			aWidget background: Color veryVeryLightGray ];
+		hovered: [ :aWidget | aWidget background: (Color r: 0.27 g: 0.67 b: 0.99) ];
+		pressed: [ :aWidget | aWidget background: (Color r: 0.04 g: 0.43 b: 0.85) ];
+		disabled: [ :aWidget | aWidget background: Color veryVeryLightGray ].
+		
+	exteriorLook add: (BrLayoutResizerLook inherit).
+	exteriorLook add: (BrLayoutAlignmentLook forHorizontalLinearLayout).
+	exteriorLook add: (BrFlatShadowLook new offset: 3@3).
+		
+	buttonLook := BrLook new.
+	buttonLook addAll: { labelLook . exteriorLook }.
+	
+	button := BrButton new
+		label: 'Inspector Views';
+		look: buttonLook;
+		action: [ :aButton |
+			GtHomeSection new showSpaceWithTitle: 'GtInspector Views' with: GtInspectorViews new from: aButton ].
+	
+	^ button.
+]
+
 { #category : #'api - instantiation' }
 GtTour >> create [
 	| show |
@@ -51,10 +92,15 @@ GtTour >> create [
 			GtTextSlide new
 				newText: 'Let''s start with live programming and inspection.'.
 			
-			GtElementSlide new
-				element: [ GtExplainerExamples new inspectorOnOneObjectExample ].
-			GtElementSlide new
+			GtTextAndElementSlide new
+				newTextWithFormat: GtExplainerExamples new inspectorExplanationText;
+				element: [ GtExplainerExamples new inspectorContainerElement ].
+			GtTextAndElementSlide new
+				newTextWithFormat: self viewsExplanationWithLinksText;
 				element: [ self viewsExplanationWithLinks ].
+			GtLabelAndElementSlide new
+				newText: 'Interested to see more views? Click the button below.';
+				element: [ self buttonToInspectorViewsSlides ].
 		
 			GtTitleSlide new
 				titleText:
