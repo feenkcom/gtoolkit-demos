@@ -74,6 +74,7 @@ GtABAddressBookExample >> contactTelephone [
 { #category : #accessing }
 GtABAddressBookExample >> contactsAddressBookWithCategories [
 	<gtExample>
+	<label: 'Friends address book'>
 	| addressBook familyCategory acquaintancesCategory friendsCategory coworkersCategory |
 	
 	friendsCategory := GtABCategory new
