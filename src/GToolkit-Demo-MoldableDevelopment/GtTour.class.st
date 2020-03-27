@@ -57,12 +57,9 @@ GtTour >> create [
 			GtTextAndElementSlide new
 				newTextWithFormat: self viewsExplanationWithLinksText;
 				element: [ self viewsExplanationWithLinks ].
-			"GtLabelAndElementSlide new
-				newText: 'Interested to see more views? Click the button below.';
-				element: [ self buttonToInspectorViewsSlides ]."
 			GtSlideshowSlide new
 				textWithFormat: ('Interested to see more views? Click below.' asRopedText glamorousRegularFont; fontSize: 20);
-				slideshow: [ GtInspectorViews new create ].
+				slideshow: [ GtInspectorViews new create ] withTitle: 'Inspector views'.
 		
 			GtTitleSlide new
 				titleText:
