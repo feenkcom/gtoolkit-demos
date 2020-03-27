@@ -7,6 +7,7 @@ Class {
 { #category : #'examples - contacts' }
 GtABCartoonAddressBookExample >> bugsBunnyContact [
 	<gtExample>
+	<label: 'Bugs Bunny contact'>
 	| contact |
 	contact := GtABContact new
 		firstName: 'Bugs';
@@ -36,6 +37,7 @@ GtABCartoonAddressBookExample >> bugsBunnyDescription [
 { #category : #'examples - addressbook' }
 GtABCartoonAddressBookExample >> cartoonAddressBook [
 	<gtExample>
+	<label: 'Cartoon characters address book'>
 	| addressBook |
 	addressBook := GtABAddressBook new
 		label: 'Cartoons'.
@@ -54,6 +56,7 @@ GtABCartoonAddressBookExample >> cartoonAddressBook [
 { #category : #'examples - contacts' }
 GtABCartoonAddressBookExample >> daffyDuckContact [
 	<gtExample>
+	<label: 'Daffy Duck contact'>
 	| contact |
 	contact := GtABContact new
 		firstName: 'Daffy';
@@ -91,6 +94,7 @@ GtABCartoonAddressBookExample >> loremIpsum [
 { #category : #'examples - contacts' }
 GtABCartoonAddressBookExample >> porkyPigContact [
 	<gtExample>
+	<label: 'Porky Pig contact'>
 	| contact |
 	contact := GtABContact new
 		firstName: 'Porky';
@@ -132,6 +136,7 @@ GtABCartoonAddressBookExample >> readAvatarWithId: anId [
 { #category : #'examples - contacts' }
 GtABCartoonAddressBookExample >> roadRunnerContact [
 	<gtExample>
+	<label: 'Road Runner contact'>
 	| contact |
 	contact := GtABContact new
 		firstName: 'Road';
@@ -161,6 +166,7 @@ GtABCartoonAddressBookExample >> roadRunnerDescription [
 { #category : #'examples - contacts' }
 GtABCartoonAddressBookExample >> wileECoyoteContact [
 	<gtExample>
+	<label: 'Wile E. Coyote contact'>
 	| contact |
 	contact := GtABContact new
 		firstName: 'Wile';
@@ -190,6 +196,7 @@ GtABCartoonAddressBookExample >> wileECoyoteDescription [
 { #category : #'examples - contacts' }
 GtABCartoonAddressBookExample >> woodyWoodpeckerContact [
 	<gtExample>
+	<label: 'Woody Woodpecker contact'>
 	| contact |
 	contact := GtABContact new
 		firstName: 'Woody';
