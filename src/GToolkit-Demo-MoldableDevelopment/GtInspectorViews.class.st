@@ -8,23 +8,27 @@ Class {
 GtInspectorViews >> columnedListViewExplanationWithLinks [
 	<gtExample>
 	| resultInspectorContainer verticalContainer coder coderElement selectors variables resultElement resultInspectorTree titleTab avatarLabel nameLabel phoneLabel codeExplanationLabel resultExplanationLabel avatarElementsCollection listLabelsCollection |
+	
 	resultInspectorContainer := self resultInspectorContainerElement.
 	verticalContainer := self verticalContainerElement.
 	codeExplanationLabel := self
 		explanationLabelWithText: 'Contacts with details view method'.
 	resultExplanationLabel := self
 		explanationLabelWithText: 'Contacts with details view result'.
-	selectors := GtSelectorExplanationLinkStyler new.
+	
+	coder := GtMethodCoder
+		forMethod: GtABAddressBook >> #gtViewContactsOn:.
+		
+	selectors := GtSelectorExplanationLinkStyler new coder: coder.
 	selectors
 		addSelectors:
 			{#columnedList . #title: . #items: . #allContacts . #fullName . #avatar.
 			#telephone}.
 	selectors addSelector: #column:do: withIdentifier: #columns.
 	selectors addSelector: #column:format: withIdentifier: #columns.
-	variables := GtVariableExplanationLinkStyler new.
+	variables := GtVariableExplanationLinkStyler new coder: coder.
 	variables addVariables: {'aContact'}.
-	coder := GtMethodCoder
-		forMethod: GtABAddressBook >> #gtViewContactsOn:.
+	
 	coder
 		explanationLink:
 			(GtCompositeExplanationLinkStyler
@@ -153,16 +157,17 @@ GtInspectorViews >> columnedTreeViewExplanationWithLinks [
 	codeExplanationLabel := self explanationLabelWithText: 'Contacts Address view method'.
 	resultExplanationLabel := self explanationLabelWithText: 'Contacts Address view result'.
 	
-	selectors := GtSelectorExplanationLinkStyler new.
+	coder := GtMethodCoder new forMethod: (GtABAddressBook>>#gtViewContactsAddressOn:).
+	
+	selectors := GtSelectorExplanationLinkStyler new coder: coder.
 	selectors addSelectors: {#columnedTree. #title:. #items:. #children:}.
 	selectors addSelector: #column:item: withIdentifier: #column.
 	
-	literals := GtLiteralExplanationLinkStyler new.
+	literals := GtLiteralExplanationLinkStyler new coder: coder.
 	literals addLiteral: #City withIdentifier: #name.
 	literals addLiteral: #Country withIdentifier: #name.
 	literals addLiteral: #Contact withIdentifier: #name.
 		
-	coder := GtMethodCoder new forMethod: (GtABAddressBook>>#gtViewContactsAddressOn:).
 	coder explanationLink: (GtCompositeExplanationLinkStyler forLinks: { selectors. literals }).
 	coderElement := (coder expanded: true) asElement margin: (BlInsets all: 10).
 	coderElement forceLayout.
@@ -309,16 +314,17 @@ GtInspectorViews >> emptyViewExplanationWithLinks [
 	codeExplanationLabel := self explanationLabelWithText: 'Empty view method'.
 	resultExplanationLabel := self explanationLabelWithText: 'Emtpy view result'.
 	
-	selectors := GtSelectorExplanationLinkStyler new.
+	coder := GtMethodCoder new forMethod: (GtABAddressBook>>#gtViewCategoriesTreeWithContactsOn:).
+	
+	selectors := GtSelectorExplanationLinkStyler new coder: coder.
 	selectors addSelectors: {#empty}.
 	
-	literals := GtLiteralExplanationLinkStyler new.
+	literals := GtLiteralExplanationLinkStyler new coder: coder.
 	literals addLiteral: 'Contacts Tree' withIdentifier: #viewName.
 	
-	variables := GtVariableExplanationLinkStyler new.
+	variables := GtVariableExplanationLinkStyler new coder: coder.
 	variables addVariables: {#aView}.
 	
-	coder := GtMethodCoder new forMethod: (GtABAddressBook>>#gtViewCategoriesTreeWithContactsOn:).
 	coder explanationLink: (GtCompositeExplanationLinkStyler forLinks: { selectors. variables. literals }).
 	coderElement := (coder expanded: true) asElement margin: (BlInsets all: 10).
 	coderElement forceLayout.
@@ -393,13 +399,14 @@ GtInspectorViews >> explicitViewExplanationWithLinks [
 	codeExplanationLabel := self explanationLabelWithText: 'Details view method'.
 	resultExplanationLabel := self explanationLabelWithText: 'Details view result'.
 	
-	selectors := GtSelectorExplanationLinkStyler new.
+	coder := GtMethodCoder new forMethod: (GtABContact>>#gtViewContactDetailsOn:).
+	
+	selectors := GtSelectorExplanationLinkStyler new coder: coder.
 	selectors addSelectors: {#explicit. #stencil:. #fullName. #address. #telephone. #avatar}.
 	
-	variables := GtVariableExplanationLinkStyler new.
+	variables := GtVariableExplanationLinkStyler new coder: coder.
 	variables addVariables: {#self}.
 	
-	coder := GtMethodCoder new forMethod: (GtABContact>>#gtViewContactDetailsOn:).
 	coder explanationLink: (GtCompositeExplanationLinkStyler forLinks: { selectors. variables }).
 	coderElement := (coder expanded: true) asElement margin: (BlInsets all: 10).
 	coderElement forceLayout.
@@ -498,13 +505,14 @@ GtInspectorViews >> listViewExplanationWithLinks [
 	codeExplanationLabel := self explanationLabelWithText: 'Contacts List view method'.
 	resultExplanationLabel := self explanationLabelWithText: 'Contacts List view result'.
 	
-	selectors := GtSelectorExplanationLinkStyler new.
+	coder := GtMethodCoder forMethod: (GtABAddressBook>>#gtViewContactsListOn:).
+	
+	selectors := GtSelectorExplanationLinkStyler new coder: coder.
 	selectors addSelectors: {#list. #title:. #items:. #itemFormat:. #allContacts. #fullName }.
 	
-	variables := GtVariableExplanationLinkStyler new.
+	variables := GtVariableExplanationLinkStyler new coder: coder.
 	variables addVariables: {'aContact'}.
 	
-	coder := GtMethodCoder forMethod: (GtABAddressBook>>#gtViewContactsListOn:).
 	coder explanationLink: (GtCompositeExplanationLinkStyler forLinks: { selectors. variables }).
 	coderElement := (coder expanded: true) asElement margin: (BlInsets all: 10).
 	coderElement forceLayout.
@@ -595,10 +603,11 @@ GtInspectorViews >> mondrianViewExplanationWithLinks [
 	codeExplanationLabel := self explanationLabelWithText: 'Circular view method'.
 	resultExplanationLabel := self explanationLabelWithText: 'Circular view result'.
 	
-	selectors := GtSelectorExplanationLinkStyler new.
+	coder := GtMethodCoder new forMethod: (GtABAddressBook>>#gtViewContactsIconsCircularOn:).
+	
+	selectors := GtSelectorExplanationLinkStyler new coder: coder.
 	selectors addSelectors: {#mondrian. #painting:. #nodes. #layout. #circle. #contacts. #avatar. #shape:. #title:}.
 	
-	coder := GtMethodCoder new forMethod: (GtABAddressBook>>#gtViewContactsIconsCircularOn:).
 	coder explanationLink: (GtCompositeExplanationLinkStyler forLinks: { selectors }).
 	coderElement := (coder expanded: true) asElement.
 	coderElement forceLayout.
@@ -727,13 +736,14 @@ GtInspectorViews >> textEditorViewExplanationWithLinks [
 	codeExplanationLabel := self explanationLabelWithText: 'Content view method'.
 	resultExplanationLabel := self explanationLabelWithText: 'Content view result'.
 	
-	selectors := GtSelectorExplanationLinkStyler new.
+	coder := GtMethodCoder new forMethod: GtABContactNote>>#gtViewNoteContentOn:.
+	
+	selectors := GtSelectorExplanationLinkStyler new coder: coder.
 	selectors addSelectors: {#textEditor. #title:. #look:. #content. #text:}.
 	
-	variables := GtVariableExplanationLinkStyler new.
+	variables := GtVariableExplanationLinkStyler new coder: coder.
 	variables addVariables: {#BrGlamorousCodeEditorLook}.
 	
-	coder := GtMethodCoder new forMethod: GtABContactNote>>#gtViewNoteContentOn:.
 	coder explanationLink: (GtCompositeExplanationLinkStyler forLinks: { selectors. variables }).
 	coderElement := (coder expanded: true) asElement margin: (BlInsets all: 10).
 	coderElement forceLayout.
@@ -812,13 +822,14 @@ GtInspectorViews >> treeViewExplanationWithLinks [
 	codeExplanationLabel := self explanationLabelWithText: 'Contents Tree view method'.
 	resultExplanationLabel := self explanationLabelWithText: 'Contents Tree view result'.
 	
-	selectors := GtSelectorExplanationLinkStyler new.
+	coder := GtMethodCoder new forMethod: (GtABAddressBook>>#gtViewCategoriesTreeWithContactsOn:).
+	
+	selectors := GtSelectorExplanationLinkStyler new coder: coder.
 	selectors addSelectors: {#tree. #title:. #items:. #children:. #categories. #subcategories. #contacts}.
 	
-	variables := GtVariableExplanationLinkStyler new.
+	variables := GtVariableExplanationLinkStyler new coder: coder.
 	variables addVariables: {#each}.
 	
-	coder := GtMethodCoder new forMethod: (GtABAddressBook>>#gtViewCategoriesTreeWithContactsOn:).
 	coder explanationLink: (GtCompositeExplanationLinkStyler forLinks: { selectors. variables }).
 	coderElement := (coder expanded: true) asElement margin: (BlInsets all: 10).
 	coderElement forceLayout.
