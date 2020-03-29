@@ -9,7 +9,7 @@ Moldable development puts forward the hypothesis that the shape of software is e
 
 The new GT takes moldable development much further. More visible is that we have new kinds of tools, like ${class:BaselineOfGToolkitDocumenter|label=Documenter}$ with its live notebooks, slide shows with interactive explanations, a ${class:BaselineOfGToolkitPlayground|label=Playground}$with snippets, or a ${class:BaselineOfGToolkitCoder|label=Coder}$ with expandable editors.
 
-Still, there are less visible parts. Underneath there is a generic infrastructure for handling other languages. It comes with FAMIX, and it also ships with an environment for SmaCC, the parsing engine, that allows us to tackle new languages. For example, more recently we added a full parser and importer for C\+\+. Yes, C\+\+.
+Still, there are less visible parts. Underneath there is a generic infrastructure for handling other languages. It comes with FAMIX, and it also ships with an environment for SmaCC, the parsing engine, that allows us to tackle new languages. For example, more recently we added a full parser and importer for C\+\+ . Yes, C\+\+.
 
 Then there are even more technical engines like ${class:BaselineOfGToolkitReleaser|label=Releaser}$ that make it possible to version deeply nested projects and repositories completely automatically.
 
@@ -22,6 +22,22 @@ So, if we define a Smalltalk-like system as being the language \+ the environmen
 That said, GT loads cleanly in Pharo. In practice, this means people working on projects built with the Pharo language have the option of two distinct environments.
 
 
+!!Compability with Pharo
+
+Is GT compatible with Pharo? As long as the code does not rely on Morphic, it certainly is compatible.
+
+How does it work? You load the code exactly in the same way as you would in plain Pharo. For example, here is a command that loads the code of Faker, a project from GitHub.
+
+[[[
+Metacello new
+	baseline: 'Faker';
+	repository: 'github://feenkcom/faker/src';
+	load.
+]]] 
+
+Once you have code you want to publish, you use the Git integration.
+
+And, for all other compatibility, you can still rely on the access to the old Morphic World.
 
 "
 Class {
