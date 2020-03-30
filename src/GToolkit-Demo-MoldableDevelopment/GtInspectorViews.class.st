@@ -264,6 +264,9 @@ GtInspectorViews >> create [
 				titleText: ('Inspector views' asRopedText
 						fontSize: 70;
 						glamorousRegularFont)).
+			(GtSlideshowSlide new
+				textWithFormat: 'Want to learn more about the Pharo syntax? Follow the show below' asRopedText glamorousRegularFont;
+				slideshow: [ GtPharo101 new create ] withTitle: 'Pharo101').
 			(GtTextAndElementSlide new
 				newTextWithFormat: ('List' asRopedText glamorousRegularFont; fontSize: 30);
 				newTextWithFormat: self listViewExplanationWithLinksText;
