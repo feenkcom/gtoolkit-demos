@@ -55,10 +55,10 @@ GtTour >> create [
 				newTextWithFormat: GtExplainerExamples new inspectorExplanationText;
 				element: [ GtExplainerExamples new inspectorContainerElement ].
 			GtTextAndElementSlide new
-				newTextWithFormat: self viewsExplanationWithLinksText;
-				element: [ self viewsExplanationWithLinks ].
+				newTextWithFormat: GtMethodCoderStylerExamples new viewsExplanationWithLinksText;
+				element: [ self viewMethodWithResultExplanationWithLinksExample ].
 			GtSlideshowSlide new
-				textWithFormat: ('Want to learn more about inspector views? Follow the show below.' asRopedText glamorousRegularFont"; fontSize: 20");
+				textWithFormat: ('Interested to see more views? Click below.' asRopedText glamorousRegularFont; fontSize: 20);
 				slideshow: [ GtInspectorViews new create ] withTitle: 'Inspector views'.
 		
 			GtTitleSlide new
@@ -369,10 +369,10 @@ GtTour >> treemapWithViewsAndExamples [
 		create.
 ]
 
-{ #category : #'api - instantiation' }
-GtTour >> viewsExplanationWithLinks [
+{ #category : #'as yet unclassified' }
+GtTour >> viewMethodWithResultExplanationWithLinksExample [
 	<gtExample>
-	| resultInspectorContainer verticalContainer coder coderElement selectors variables resultElement resultInspectorTree titleTab avatarLabel nameLabel phoneLabel avatarElementsCollection listLabelsCollection coderExplanationLabel inspectorExplanationLabel |
+	| resultInspectorContainer verticalContainer coderElement resultElement coderExplanationLabel inspectorExplanationLabel |
 	
 	verticalContainer := BlElement new
 		constraintsDo: [ :c | 
@@ -399,120 +399,11 @@ GtTour >> viewsExplanationWithLinks [
 		margin: (BlInsets top: 20 right: 0 bottom: 0 left: 10);
 		look: BrGlamorousLabelLook new.
 	
-	selectors := GtSelectorExplanationLinkStyler new.
-	selectors addSelectors: {#gtView . #columnedList . #title: . #items: .#contacts . #fullName . #avatar. #telephone. #allContacts }.
-	selectors addSelector: #column:format: withIdentifier: #columns.
-	selectors addSelector: #column:do: withIdentifier: #columns.
-	
-	variables := GtVariableExplanationLinkStyler new.
-	variables addVariables: {'aView' . 'aContact'}.
-	
-	coder := GtMethodCoder forMethod: (GtABAddressBook>>#gtViewContactsOn:).
-	coder explanationLink: (GtCompositeExplanationLinkStyler forLinks: { selectors. variables }).
-	coderElement := (coder expanded: true) asElement margin: (BlInsets all: 10).
-	coderElement forceLayout.
-	coderElement vMatchParent.
-	
-	resultElement := BlUseAsyncFeatures
-		disableDuring: [ (GtPhlowView empty composite
-				views:
-					{(GtABCartoonAddressBookExample new cartoonAddressBook
-						gtViewContactsOn: GtPhlowView empty)};
-				labelled: 'a GtABAddressBook (Cartoons)' asRopedText)
-				asElementDo: [ :e | e ] ].
-	resultElement forceLayout.
-	resultInspectorTree := resultElement phlow firstChildWithView viewContentElement.
-	
+	coderElement := GtMethodCoderStylerExamples new coderOnViewMethod.
+		
+	resultElement := GtMethodCoderStylerExamples new inspectorOnViewMethod.	
 	resultInspectorContainer addChild: resultElement.
 	
-	titleTab := resultInspectorTree
-		allChildrenBreadthFirstDetect: [ :aChild | 
-			(aChild isKindOf: BrTab)
-				and: [ aChild label asString = 'Contacts with details' ] ]
-		ifFound: [ :aChild | aChild ].
-	avatarLabel := resultInspectorTree
-		allChildrenBreadthFirstDetect:
-			[ :aChild | (aChild isKindOf: BrLabel) and: [ aChild text asString = 'Avatar' ] ]
-		ifFound: [ :aChild | aChild ].
-	nameLabel := resultInspectorTree
-		allChildrenBreadthFirstDetect:
-			[ :aChild | (aChild isKindOf: BrLabel) and: [ aChild text asString = 'Name' ] ]
-		ifFound: [ :aChild | aChild ].
-	phoneLabel := resultInspectorTree
-		allChildrenBreadthFirstDetect:
-			[ :aChild | (aChild isKindOf: BrLabel) and: [ aChild text asString = 'Phone' ] ]
-		ifFound: [ :aChild | aChild ].
-	avatarElementsCollection := resultInspectorTree
-		allChildrenBreadthFirstSelect: [ :aChild | 
-			(aChild isKindOf: BlScalableElement)
-				and: [ aChild parent parent isKindOf: BrInfiniteListElement ] ].
-	listLabelsCollection := resultInspectorTree
-		allChildrenBreadthFirstSelect: [ :aChild | 
-			(aChild isKindOf: BrLabel)
-				and: [ aChild parent parent isKindOf: BrInfiniteListElement ] ].
-
-	titleTab
-		addChild:
-			(BrButton new
-				constraintsDo: [ :c | c ignoreByLayout ];
-				size: 5 @ 5;
-				elevation: (BlRelativeElevation elevation: 10);
-				geometry: BlCircle new;
-				look: (GtExplainerTargetLook new explanationModel: #title:);
-				relocate: 10 @ titleTab extent y / 2).
-	avatarLabel
-		addChild:
-			(BrButton new
-				constraintsDo: [ :c | c ignoreByLayout ];
-				size: 5 @ 5;
-				elevation: (BlRelativeElevation elevation: 10);
-				geometry: BlCircle new;
-				look: (GtExplainerTargetLook new explanationModel: #columns);
-				relocate: -5 @ avatarLabel extent y / 2).
-	nameLabel
-		addChild:
-			(BrButton new
-				constraintsDo: [ :c | c ignoreByLayout ];
-				size: 5 @ 5;
-				elevation: (BlRelativeElevation elevation: 10);
-				geometry: BlCircle new;
-				look: (GtExplainerTargetLook new explanationModel: #columns);
-				relocate: -5 @ nameLabel extent y / 2).
-	phoneLabel
-		addChild:
-			(BrButton new
-				constraintsDo: [ :c | c ignoreByLayout ];
-				size: 5 @ 5;
-				elevation: (BlRelativeElevation elevation: 10);
-				geometry: BlCircle new;
-				look: (GtExplainerTargetLook new explanationModel: #columns);
-				relocate: -5 @ phoneLabel extent y / 2).
-	avatarElementsCollection
-		do: [ :eachAvatar | 
-			eachAvatar parent
-				addChild:
-					(BrButton new
-						constraintsDo: [ :c | c ignoreByLayout ];
-						size: 5 @ 5;
-						elevation: (BlRelativeElevation elevation: 10);
-						geometry: BlCircle new;
-						look: (GtExplainerTargetLook new explanationModel: #avatar);
-						relocate: 0 @ eachAvatar extent y / 2) ].			
-	listLabelsCollection
-		do: [ :eachLabel | 
-			| modelName |
-			modelName := (eachLabel text asString beginsWith: '+' asString)
-				ifTrue: [ #telephone ]
-				ifFalse: [ #fullName ].
-			eachLabel
-				addChild:
-					(BrButton new
-						constraintsDo: [ :c | c ignoreByLayout ];
-						size: 5 @ 5;
-						elevation: (BlRelativeElevation elevation: 10);
-						geometry: BlCircle new;
-						look: (GtExplainerTargetLook new explanationModel: modelName);
-						relocate: -5 @ eachLabel extent y / 2) ].
 	
 	verticalContainer addChild: coderExplanationLabel.
 	verticalContainer addChild: coderElement.
@@ -520,44 +411,4 @@ GtTour >> viewsExplanationWithLinks [
 	verticalContainer addChild: resultInspectorContainer.
 	
 	^ verticalContainer.
-]
-
-{ #category : #'api - instantiation' }
-GtTour >> viewsExplanationWithLinksText [
-	| text |
-	
-	text := 'A custom view is defined by a method in the class of the object we want to view. You can think of it as a print string method only that instead of returning a string, it returns an element.
-	
-As we can have many such representations for every single object, we have to identify the method. To this end, use the ' asRopedText,
-('gtView' asRopedText glamorousExplanationFor: #gtView),
-' pragma.
-Then, make it so that it gets an empty ' asRopedText,
-('view' asRopedText glamorousExplanationFor: #aView),
-' parameter that you can customize.
-In our case the view has a ' asRopedText,
-('title' asRopedText glamorousExplanationFor: #title:),
-'. The view consists of a ' asRopedText,
-('columned list' asRopedText glamorousExplanationFor: #columnedList),
-' with ' asRopedText,
-('three columns' asRopedText glamorousExplanationFor: #columns),
-'
-
-The columned list has as many rows as the collection returned by the ' asRopedText,
-('items: block' asRopedText glamorousExplanationFor: #items:),
-'. In this case, this means it shows all the ' asRopedText,
-('contacts list' asRopedText glamorousExplanationFor: #allContacts),
-
-'For each ' asRopedText, 
-('contact' asRopedText glamorousExplanationFor: #aContact),
-' we show the ' asRopedText,
-('avatar' asRopedText glamorousExplanationFor: #avatar),
-' in the first column, the ' asRopedText,
-('full name' asRopedText glamorousExplanationFor: #fullName),
-' in the second column, and the ' asRopedText,
-('telephone' asRopedText glamorousExplanationFor: #telephone),
-' in the third column.' asRopedText.
-	^ text
-		glamorousRegularFont;
-		fontSize: 20;
-		foreground: Color black.
 ]
