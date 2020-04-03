@@ -1,41 +1,48 @@
 "
 !Queries
 
+One of the design principles behind Glamorous Toolkit is that search must be universal. This is achieved using queries.
+
 !!What are queries?
 
-Using queries we can interogate the code about itself. They are a small piece of code we can use to get information about a package, a class, a method or an object that satisfies one or more conditions.
+They are small pieces of code, written in plain Pharo, that we can use to get information about a package, a class, a method or an object that satisfies one or more conditions.
 
-For example, we can search for all the methods that use the #gtView pragma.
+Let's see an example: a search for all the methods annotated with the #gtView pragma.
 
-${example:GtWorkWithQueriesHowToGuide>>#searchForGtViewPragmaMethods|previewExpanded}$
+${example:GtWorkWithQueriesHowToGuide>>#searchForGtViewPragmaMethods}$
 
-Or we can search for all the methods that have a reference to #gtExample
+Executing the query, opens up an inspector on the result which, in this case, is an instance of GtSearchPragmasFilter. The filter instance knows how to present itself through a view that shows method widgets. The method widgets know how to match the input query to the abstract syntax tree nodes to produce the orange highlighting.
 
-${example:GtWorkWithQueriesHowToGuide>>#searchForGtExampleReferences|previewExpanded}$
+But what if we want to search for multiple conditions at the same time? Well, queries can be composed using & and | messages, making this easily extensible.
 
-But what happens when we want to search for multiple conditions? Well, queries can be composed using & and | messages.
+Let's see an example: a search for all the methods that are annotated with the #gtView pragma and implement a tree view.
 
-Let's search for all the methods that use the #gtView pragma and implement a tree view.
+${example:GtWorkWithQueriesHowToGuide>>#searchForGtViewTreeMethods}$
 
-${example:GtWorkWithQueriesHowToGuide>>#searchForGtViewTreeMethods|previewExpanded}$
+Now let's search for those methods above, plus the ones that implement a columnedTree view.
 
-Now let's search for those methods that implement a tree and a columnedTree view.
+${example:GtWorkWithQueriesHowToGuide>>#searchForGtViewTreeAndColumnedTreeMethods}$
 
-${example:GtWorkWithQueriesHowToGuide>>#searchForGtViewTreeAndColumnedTreeMethods|previewExpanded}$
+Since queries are just plain Pharo code, we can combine them with Pharo methods like select: , collect: and others.
 
-Many times, these queries will contain filters.
+For example, this code snippet returns all example methods from packages starting with 'GToolkit'.
+
+${example:GtWorkWithQueriesHowToGuide>>#exampleMethodsFromGToolkitPackages}$
+
+Earlier we mentioned filters helping us to work with queries.
 
 !!What are filters? 
 
-They are small methods that represent the conditions that need to be satisfied. They return the items that matched the respective condition.
+They are predicates that work as conditions in the query.
 
-For example, #gtPackageMatches is a filter. So we can check all the methods that reference #todo in a certain package 
+For example, let's search certain methods in a certain package. The result will be an instance of GtSearchIntersectionFilter, being the intersetion of two filters: GtSearchReferencesFilter and GtSearchMethodsWithPackagePatternFilter.
 
-${example:GtWorkWithQueriesHowToGuide>>#searchInCertainPackage|previewExpanded}$
+${example:GtWorkWithQueriesHowToGuide>>#searchInCertainPackage}$
 
-The following piece of code, represents a more complex query that lets you see all the predefined filters in Gt.
+There already exists a number of such predicates readily available. You can see them by using a query.
 
-${example:GtWorkWithQueriesHowToGuide>>#searchAllFilters|previewExpanded}$
+${example:GtWorkWithQueriesHowToGuide>>#searchAllFilters}$
+
 "
 Class {
 	#name : #GtWorkWithQueriesHowToGuide,
@@ -44,18 +51,18 @@ Class {
 }
 
 { #category : #'as yet unclassified' }
+GtWorkWithQueriesHowToGuide >> exampleMethodsFromGToolkitPackages [
+	<gtExample>
+	
+	^ #gtExample gtPragmas select: [ :method | 
+		method package name beginsWith: 'GToolkit'].
+]
+
+{ #category : #accessing }
 GtWorkWithQueriesHowToGuide >> searchAllFilters [
 	<gtExample>
-	| filters |
-	filters := OrderedCollection new.
-	
-	GtSearchFilter allSubclassesDo: [:subclass |
-		subclass gtReferences do: [:referenceMethod |
-			(('Filter' gtSubstringMatch includesMethod: referenceMethod) &
-				(referenceMethod sourceNode selector asString beginsWithEmpty: 'gt' caseSensitive: true))
-					ifTrue: [filters add: referenceMethod]]].
-		
-	^ filters.
+	^ GtSearchFilter allSubclasses
+		reject: [ :each | each gtReferences size = 0 ].
 ]
 
 { #category : #'as yet unclassified' }
