@@ -49,9 +49,74 @@ GtQueries >> create [
 			(GtTextSlide new
 				newTextWithFormat: ('So let''s take a closer look at them' asRopedText glamorousRegularFont; fontSize: 20)).
 			(GtTitleSlide new
-				titleText: ('Binary' asRopedText
+				titleText: ('Binary Filters' asRopedText
 						fontSize: 40;
 						glamorousRegularFont)).
+			(GtLabelAndElementSlide new
+				text: 'Here we have the intersection filter, obtained using the & message';
+				element: [GtPlaygroundSlide new
+					snippets: {'filter1 := #gtExample gtPragmas.
+filter2 := #filter gtReferences.
+intersection := filter1 & filter2.'};
+					asElement]).
+			(GtLabelAndElementSlide new
+				text: 'And the union filter, obtained using the | message';
+				element: [GtPlaygroundSlide new
+					snippets: {'filter1 := #unionDifferentMethods gtImplementors.
+filter2 := #foo gtImplementors.
+union := filter1 | filter2.'};
+					asElement]).
+			(GtTitleSlide new
+				titleText: ('Negation Filter' asRopedText
+						fontSize: 40;
+						glamorousRegularFont)).
+			(GtLabelAndElementSlide new
+				text: 'This one gets a filter and searches for the opposite of that filter';
+				element: [GtPlaygroundSlide new
+					snippets: {'basicFilter := GtSearchDeprecatedPackagesFilter new.
+negationFilter := GtSearchNegationFilter new
+	originalFilter: basicFilter.'.
+'basicFilter := GtSearchDeprecatedPackagesFilter new.
+negationFilter := basicFilter not.'};
+					asElement]).
+			(GtTitleSlide new
+				titleText: ('Null Filter' asRopedText
+						fontSize: 40;
+						glamorousRegularFont)).
+			(GtLabelAndElementSlide new
+				text: 'A filter that doesn''t match anything. It returns false for everything';
+				element: [GtPlaygroundSlide new
+					snippets: {'filter := GtSearchNullFilter new.
+filter size'};
+					asElement]).
+			(GtTitleSlide new
+				titleText: ('Package Filters' asRopedText
+						fontSize: 40;
+						glamorousRegularFont)).
+			(GtLabelAndElementSlide new
+				text: 'They allow us to search for package related informations. For example:';
+				element: [GtPlaygroundSlide new
+					snippets: {'"Packages in the current image"
+filter := GtSearchImagePackagesFilter new.'.
+'"Deprecated packages"
+filter := GtSearchDeprecatedPackagesFilter new.'};
+					asElement]).
+			(GtTitleSlide new
+				titleText: ('Class Filters' asRopedText
+						fontSize: 40;
+						glamorousRegularFont)).
+			(GtLabelAndElementSlide new
+				text: 'Used to search for class related informations. For example:';
+				element: [GtPlaygroundSlide new
+					snippets: {'"Classes in the current image"
+filter := GtSearchImageClassesFilter new.'.
+'"Classes in a package"
+filter := GtSearchClassesInPackageFilter forPackageNamed: ''GToolkit-Coder-Examples-SystemS1''.'.
+'"Deprecated classes"
+filter := GtSearchDeprecatedClassesFilter new.'.
+'"Test classes"
+filter := GtSearchTestClassesFilter new.'};
+					asElement]).
 			}.
 	
 	^ show.
