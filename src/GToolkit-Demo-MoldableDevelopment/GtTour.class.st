@@ -174,7 +174,7 @@ GtTour >> create [
 				slideshow: [ GtInspectorViews new create ] withTitle: 'Inspector views'.
 			GtTextAndElementSlide new
 				newTextWithFormat: self playgroundExplanationWithLinksText;
-				elementWeight: 0.7;
+				elementWeight: 0.6;
 				element: [ self playgroundExplanationWithLinks ].
 			GtTitleSlide new
 				titleText:
@@ -423,16 +423,112 @@ GtTour >> overviewElement [
 { #category : #'as yet unclassified' }
 GtTour >> playgroundExplanationWithLinks [
 	<gtExample>
+	| container snippetsCollection playbook playgroundElement snippetElementsCollection inspectAllButton frameToolbarButtons evaluateButtons inspectButtons debugButtons newSnippetButtons |
 	
-	^ BlElement new.
+	container := BlElement new
+		constraintsDo: [ :c |
+			c vertical matchParent.
+			c horizontal matchParent ];
+		layout: BlLinearLayout horizontal;
+		margin: (BlInsets all: 5);
+		background: Color white;
+		look: BrShadowLook.
+		
+	newSnippetButtons := OrderedCollection new.
+	evaluateButtons := OrderedCollection new.
+	inspectButtons := OrderedCollection new.
+	debugButtons := OrderedCollection new.
+	
+	snippetsCollection := { 'a := 5'.
+'a + 2' } asOrderedCollection.
+
+	playbook := GtPlayBook newDefault.
+	playbook pages first snippets first sourceCode: snippetsCollection first.
+	snippetsCollection allButFirst do: [:el |
+		playbook pages first addSnippet: GtCoderSnippet new.
+		playbook pages last snippets last sourceCode: el].
+	playgroundElement := playbook asElement.
+	
+	snippetElementsCollection := playgroundElement
+		allChildrenBreadthFirstSelect: [ :aChild | 
+			aChild isKindOf: BrFrame ].
+	snippetElementsCollection do: [ :each |
+		newSnippetButtons add: (each children at: 2) ].
+	inspectAllButton := (playgroundElement
+		allChildrenBreadthFirstSelect: [:aChild | 
+			(aChild isKindOf: BrButton) and: [aChild parent isKindOf: BrToolbar]]) at: 2.
+	frameToolbarButtons := playgroundElement
+		allChildrenBreadthFirstSelect: [:aChild | 
+			(aChild isKindOf: BrToolbar) 
+				and: [(aChild parent isKindOf: GtCoderActionsElement)
+					and: [aChild hasChildren]]].
+	frameToolbarButtons do: [ :each |
+		evaluateButtons add: (each children at: 1).
+		inspectButtons add: (each children at: 2).
+		debugButtons add: (each children at: 3) ].
+	
+	inspectAllButton
+		addChild:
+			((self yellowTargetCircleWithExplanationModel: #inspectAllButton)
+				relocate:
+					(5 @ inspectAllButton extent y / 2)).
+	snippetElementsCollection do: [ :eachSnippet |
+		eachSnippet
+			addChild:
+				((self yellowTargetCircleWithExplanationModel: #snippets)
+					relocate:
+						(5 @ eachSnippet extent y / 2))].
+	newSnippetButtons do: [ :each |
+		each
+			addChild:
+				((self yellowTargetCircleWithExplanationModel: #plusButton)
+					relocate:
+						(5 @ inspectAllButton extent y / 2))].
+	evaluateButtons do: [ :eachEvaluateButton |
+		eachEvaluateButton
+			addChild:
+				((self yellowTargetCircleWithExplanationModel: #evaluateButton)
+					relocate:
+						(5 @ eachEvaluateButton extent y / 2))].
+	inspectButtons do: [ :eachInspectButton |
+		eachInspectButton
+			addChild:
+				((self yellowTargetCircleWithExplanationModel: #inspectButton)
+					relocate:
+						(5 @ eachInspectButton extent y / 2))].
+	debugButtons do: [ :eachDebugButton |
+		eachDebugButton
+			addChild:
+				((self yellowTargetCircleWithExplanationModel: #debugButton)
+					relocate:
+						(5 @ eachDebugButton extent y / 2))].
+				
+	^ container
+		addChild: playgroundElement.
 ]
 
 { #category : #'as yet unclassified' }
 GtTour >> playgroundExplanationWithLinksText [
 	| text |
 	
-	text := 'playground slide will go here' asRopedText.
-	
+	text := 'The playground is where you can play around with the code. You can run queries or create scripts without the need for classes, methods or variable declarations. The last line in the script is the one that returns an object that is then opened in the inspector.
+
+You can have multiple code ' asRopedText,
+('snippets' asRopedText glamorousExplanationFor: #snippets),
+' opened at the same time, allowing you to easily run different scripts or to have a bigger script split into smaller ones for better readability. To open a new snippet you click the ' asRopedText,
+('+' asRopedText glamorousExplanationFor: #plusButton),
+' button and then select pharo.
+
+The playground lets you ' asRopedText,
+('evaluate' asRopedText glamorousExplanationFor: #evaluateButton),
+', ' asRopedText,
+('inspect' asRopedText glamorousExplanationFor: #inspectButton),
+' and ' asRopedText,
+('debug' asRopedText glamorousExplanationFor: #debugButton),
+' each snippet individually. Or you can evaluate and inspect all the snippets at once using the playground ' asRopedText,
+('inspect button' asRopedText glamorousExplanationFor: #inspectAllButton),
+'. The result of the last script will be the one opened in the inspector.' asRopedText.
+
 	^ text
 		glamorousRegularFont;
 		fontSize: 20;
