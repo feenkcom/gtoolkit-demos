@@ -14,6 +14,7 @@ GtTour >> coderExplanationWithLinks [
 			c vertical matchParent.
 			c horizontal matchParent ];
 		layout: BlLinearLayout horizontal;
+		margin: (BlInsets all: 5);
 		background: Color white;
 		look: BrShadowLook.
 	
