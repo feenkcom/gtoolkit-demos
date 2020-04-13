@@ -4,6 +4,117 @@ Class {
 	#category : #'GToolkit-Demo-MoldableDevelopment'
 }
 
+{ #category : #'as yet unclassified' }
+GtTour >> coderExplanationWithLinks [
+	<gtExample>
+	| container coderElement classNameTarget methodTabTarget commentTabTarget buttonTargets searchButtonTarget addButtonTarget expandClassTarget expandMethodTarget |
+	
+	container := BlElement new
+		constraintsDo: [ :c |
+			c vertical matchParent.
+			c horizontal matchParent ];
+		layout: BlLinearLayout horizontal;
+		background: Color white;
+		look: BrShadowLook.
+	
+	coderElement := (GtClassCoder forClass: GtClassCoder) asElement.
+	
+	classNameTarget := coderElement 
+		allChildrenBreadthFirstDetect: [:aChild | 
+			((aChild isKindOf: BrEditableLabel) and: [aChild parent isKindOf: BrHorizontalPane])]
+		ifFound: [:aChild | aChild parent].
+	methodTabTarget := coderElement 
+		allChildrenBreadthFirstDetect: [:aChild | 
+			((aChild isKindOf: BlTextElement) and: [aChild text asString = 'Methods'])]
+		ifFound: [:aChild | aChild parent].
+	commentTabTarget := coderElement 
+		allChildrenBreadthFirstDetect: [:aChild | 
+			((aChild isKindOf: BlTextElement) and: [aChild text asString = 'Comment'])]
+		ifFound: [:aChild | aChild parent].
+	expandClassTarget := coderElement 
+		allChildrenBreadthFirstDetect: [:aChild | 
+			((aChild isKindOf: BlElement) and: [aChild parent isKindOf: GtBehaviorCoderHeaderElement])]
+		ifFound: [:aChild | aChild].
+	expandMethodTarget := coderElement 
+		allChildrenBreadthFirstDetect: [:aChild | 
+			(aChild isKindOf: GtCodersElement)]
+		ifFound: [:aChild | aChild].
+	buttonTargets := coderElement
+		allChildrenBreadthFirstSelect: [:aChild | 
+			(aChild isKindOf: BrButton) and: [aChild parent isKindOf: BrToolbar]].
+	searchButtonTarget := buttonTargets first.
+	addButtonTarget := buttonTargets last.
+	
+	classNameTarget
+		addChild:
+			((self yellowTargetCircleWithExplanationModel: #className)
+				relocate:
+					(0 @ 18)).
+	methodTabTarget
+		addChild:
+			((self yellowTargetCircleWithExplanationModel: #methodTab)
+				relocate:
+					(8 @ 18)).
+	commentTabTarget
+		addChild:
+			((self yellowTargetCircleWithExplanationModel: #commentTab)
+				relocate:
+					(8 @ 18)).
+	searchButtonTarget
+		addChild:
+			((self yellowTargetCircleWithExplanationModel: #searchButton)
+				relocate:
+					(5 @ searchButtonTarget extent y / 2)).
+	addButtonTarget
+		addChild:
+			((self yellowTargetCircleWithExplanationModel: #addButton)
+				relocate:
+					(5 @ addButtonTarget extent y / 2)).
+	expandClassTarget
+		addChild:
+			((self yellowTargetCircleWithExplanationModel: #expandClassButton)
+				relocate:
+					(10 @ expandClassTarget extent y / 2)).
+	expandMethodTarget
+		addChild:
+			((self yellowTargetCircleWithExplanationModel: #expandMethodButton)
+				relocate:
+					(12 @ 5)).
+	
+	^ container
+		addChild: coderElement.
+]
+
+{ #category : #'as yet unclassified' }
+GtTour >> coderExplanationWithLinksText [
+	| text |
+	
+	text := 'The coder is where you work with your code. It allows you to browse, create and remove classes and methods.
+
+Opening the coder on a class dispalys the ' asRopedText,
+('class name' asRopedText glamorousExplanationFor: #className),
+', the ' asRopedText,
+('class comment' asRopedText glamorousExplanationFor: #commentTab),
+' and a list of all the ' asRopedText,
+('methods' asRopedText glamorousExplanationFor: #methodTab),
+' in the class. On top of that, you can click on the ' asRopedText,
+('expand button' asRopedText glamorousExplanationFor: #expandClassButton),
+' to see more details about the class, for example: the superclass, package, tag, traits, instance and class side variables.
+
+You can expand a method as well, by clicking the ' asRopedText,
+('expand button' asRopedText glamorousExplanationFor: #expandMethodButton),
+' from that method. This way, you can see the source code, edit it or remove the method. There is also an option to ' asRopedText,
+('search' asRopedText glamorousExplanationFor: #searchButton),
+' for a method in the class or to ' asRopedText,
+('add' asRopedText glamorousExplanationFor: #addButton),
+' one.' asRopedText.
+	
+	^ text
+		glamorousRegularFont;
+		fontSize: 20;
+		foreground: Color black.
+]
+
 { #category : #'api - instantiation' }
 GtTour >> create [
 	| show |
@@ -60,14 +171,19 @@ GtTour >> create [
 			GtSlideshowSlide new
 				textWithFormat: ('Want to learn more about inspector views? Follow the show below.' asRopedText glamorousRegularFont);
 				slideshow: [ GtInspectorViews new create ] withTitle: 'Inspector views'.
-		
+			GtTextAndElementSlide new
+				newTextWithFormat: self playgroundExplanationWithLinksText;
+				elementWeight: 0.7;
+				element: [ self playgroundExplanationWithLinks ].
 			GtTitleSlide new
 				titleText:
 					('moldable coding' asRopedText
 						fontSize: 50;
 						glamorousRegularFont).
-			(GtElementSlide new
-				element: [ GtInspector withToolOn: (GtClassCoder forClass: GtClassCoder) ]).
+			GtTextAndElementSlide new
+				newTextWithFormat: self coderExplanationWithLinksText;
+				elementWeight: 0.6;
+				element: [ self coderExplanationWithLinks ].
 			(GtTitleSlide new
 				titleText:
 					('querying' asRopedText
@@ -81,6 +197,9 @@ GtTour >> create [
 					snippets: {'#gtView gtPragmas & #list gtReferences'})
 					create ];
 				newFadedText: 'Now, try with this composed query. Notice the highlighting').
+			GtSlideshowSlide new
+				textWithFormat: ('To learn more about queries follow the show below.' asRopedText glamorousRegularFont);
+				slideshow: [ GtQueries new create ] withTitle: 'Querying Code'.
 			(GtTitleSlide new
 				titleText:
 					('moldable search' asRopedText
@@ -300,6 +419,25 @@ GtTour >> overviewElement [
 	^ container asScalableElement 
 ]
 
+{ #category : #'as yet unclassified' }
+GtTour >> playgroundExplanationWithLinks [
+	<gtExample>
+	
+	^ BlElement new.
+]
+
+{ #category : #'as yet unclassified' }
+GtTour >> playgroundExplanationWithLinksText [
+	| text |
+	
+	text := 'playground slide will go here' asRopedText.
+	
+	^ text
+		glamorousRegularFont;
+		fontSize: 20;
+		foreground: Color black.
+]
+
 { #category : #'api - instantiation' }
 GtTour >> timelineElement [
 	| plotter |
@@ -411,4 +549,14 @@ GtTour >> viewMethodWithResultExplanationWithLinksExample [
 	verticalContainer addChild: resultInspectorContainer.
 	
 	^ verticalContainer.
+]
+
+{ #category : #utility }
+GtTour >> yellowTargetCircleWithExplanationModel: aModel [
+	^ BrButton new
+				constraintsDo: [ :c | c ignoreByLayout ];
+				size: 5 @ 5;
+				elevation: (BlRelativeElevation elevation: 10);
+				geometry: BlCircle new;
+				look: (GtExplainerTargetLook new explanationModel: aModel).
 ]
