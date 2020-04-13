@@ -449,6 +449,8 @@ GtTour >> playgroundExplanationWithLinks [
 		playbook pages last snippets last sourceCode: el].
 	playgroundElement := playbook asElement.
 	
+	playgroundElement forceLayout.
+	
 	snippetElementsCollection := playgroundElement
 		allChildrenBreadthFirstSelect: [ :aChild | 
 			aChild isKindOf: BrFrame ].
@@ -471,7 +473,7 @@ GtTour >> playgroundExplanationWithLinks [
 		addChild:
 			((self yellowTargetCircleWithExplanationModel: #inspectAllButton)
 				relocate:
-					(5 @ inspectAllButton extent y / 2)).
+					(2 @ 2)).
 	snippetElementsCollection do: [ :eachSnippet |
 		eachSnippet
 			addChild:
@@ -483,7 +485,7 @@ GtTour >> playgroundExplanationWithLinks [
 			addChild:
 				((self yellowTargetCircleWithExplanationModel: #plusButton)
 					relocate:
-						(5 @ inspectAllButton extent y / 2))].
+						(10 @ inspectAllButton extent y / 2))].
 	evaluateButtons do: [ :eachEvaluateButton |
 		eachEvaluateButton
 			addChild:
