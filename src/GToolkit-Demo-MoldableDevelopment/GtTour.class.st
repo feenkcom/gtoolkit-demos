@@ -4,6 +4,118 @@ Class {
 	#category : #'GToolkit-Demo-MoldableDevelopment'
 }
 
+{ #category : #'as yet unclassified' }
+GtTour >> coderExplanationWithLinks [
+	<gtExample>
+	| container coderElement classNameTarget methodTabTarget commentTabTarget buttonTargets searchButtonTarget addButtonTarget expandClassTarget expandMethodTarget |
+	
+	container := BlElement new
+		constraintsDo: [ :c |
+			c vertical matchParent.
+			c horizontal matchParent ];
+		layout: BlLinearLayout horizontal;
+		margin: (BlInsets all: 5);
+		background: Color white;
+		look: BrShadowLook.
+	
+	coderElement := (GtClassCoder forClass: GtClassCoder) asElement.
+	
+	classNameTarget := coderElement 
+		allChildrenBreadthFirstDetect: [:aChild | 
+			((aChild isKindOf: BrEditableLabel) and: [aChild parent isKindOf: BrHorizontalPane])]
+		ifFound: [:aChild | aChild parent].
+	methodTabTarget := coderElement 
+		allChildrenBreadthFirstDetect: [:aChild | 
+			((aChild isKindOf: BlTextElement) and: [aChild text asString = 'Methods'])]
+		ifFound: [:aChild | aChild parent].
+	commentTabTarget := coderElement 
+		allChildrenBreadthFirstDetect: [:aChild | 
+			((aChild isKindOf: BlTextElement) and: [aChild text asString = 'Comment'])]
+		ifFound: [:aChild | aChild parent].
+	expandClassTarget := coderElement 
+		allChildrenBreadthFirstDetect: [:aChild | 
+			((aChild isKindOf: BlElement) and: [aChild parent isKindOf: GtBehaviorCoderHeaderElement])]
+		ifFound: [:aChild | aChild].
+	expandMethodTarget := coderElement 
+		allChildrenBreadthFirstDetect: [:aChild | 
+			(aChild isKindOf: GtCodersElement)]
+		ifFound: [:aChild | aChild].
+	buttonTargets := coderElement
+		allChildrenBreadthFirstSelect: [:aChild | 
+			(aChild isKindOf: BrButton) and: [aChild parent isKindOf: BrToolbar]].
+	searchButtonTarget := buttonTargets first.
+	addButtonTarget := buttonTargets last.
+	
+	classNameTarget
+		addChild:
+			((self yellowTargetCircleWithExplanationModel: #className)
+				relocate:
+					(0 @ 18)).
+	methodTabTarget
+		addChild:
+			((self yellowTargetCircleWithExplanationModel: #methodTab)
+				relocate:
+					(8 @ 18)).
+	commentTabTarget
+		addChild:
+			((self yellowTargetCircleWithExplanationModel: #commentTab)
+				relocate:
+					(8 @ 18)).
+	searchButtonTarget
+		addChild:
+			((self yellowTargetCircleWithExplanationModel: #searchButton)
+				relocate:
+					(5 @ searchButtonTarget extent y / 2)).
+	addButtonTarget
+		addChild:
+			((self yellowTargetCircleWithExplanationModel: #addButton)
+				relocate:
+					(5 @ addButtonTarget extent y / 2)).
+	expandClassTarget
+		addChild:
+			((self yellowTargetCircleWithExplanationModel: #expandClassButton)
+				relocate:
+					(10 @ expandClassTarget extent y / 2)).
+	expandMethodTarget
+		addChild:
+			((self yellowTargetCircleWithExplanationModel: #expandMethodButton)
+				relocate:
+					(12 @ 5)).
+	
+	^ container
+		addChild: coderElement.
+]
+
+{ #category : #'as yet unclassified' }
+GtTour >> coderExplanationWithLinksText [
+	| text |
+	
+	text := 'The coder is where you work with your code. It allows you to browse, create and remove classes and methods.
+
+Opening the coder on a class dispalys the ' asRopedText,
+('class name' asRopedText glamorousExplanationFor: #className),
+', the ' asRopedText,
+('class comment' asRopedText glamorousExplanationFor: #commentTab),
+' and a list of all the ' asRopedText,
+('methods' asRopedText glamorousExplanationFor: #methodTab),
+' in the class. On top of that, you can click on the ' asRopedText,
+('expand button' asRopedText glamorousExplanationFor: #expandClassButton),
+' to see more details about the class, for example: the superclass, package, tag, traits, instance and class side variables.
+
+You can expand a method as well, by clicking the ' asRopedText,
+('expand button' asRopedText glamorousExplanationFor: #expandMethodButton),
+' from that method. This way, you can see the source code, edit it or remove the method. There is also an option to ' asRopedText,
+('search' asRopedText glamorousExplanationFor: #searchButton),
+' for a method in the class or to ' asRopedText,
+('add' asRopedText glamorousExplanationFor: #addButton),
+' one.' asRopedText.
+	
+	^ text
+		glamorousRegularFont;
+		fontSize: 20;
+		foreground: Color black.
+]
+
 { #category : #'api - instantiation' }
 GtTour >> create [
 	| show |
@@ -60,14 +172,19 @@ GtTour >> create [
 			GtSlideshowSlide new
 				textWithFormat: ('Want to learn more about inspector views? Follow the show below.' asRopedText glamorousRegularFont);
 				slideshow: [ GtInspectorViews new create ] withTitle: 'Inspector views'.
-		
+			GtTextAndElementSlide new
+				newTextWithFormat: self playgroundExplanationWithLinksText;
+				elementWeight: 0.6;
+				element: [ self playgroundExplanationWithLinks ].
 			GtTitleSlide new
 				titleText:
 					('moldable coding' asRopedText
 						fontSize: 50;
 						glamorousRegularFont).
-			(GtElementSlide new
-				element: [ GtInspector withToolOn: (GtClassCoder forClass: GtClassCoder) ]).
+			GtTextAndElementSlide new
+				newTextWithFormat: self coderExplanationWithLinksText;
+				elementWeight: 0.6;
+				element: [ self coderExplanationWithLinks ].
 			(GtTitleSlide new
 				titleText:
 					('querying' asRopedText
@@ -81,6 +198,9 @@ GtTour >> create [
 					snippets: {'#gtView gtPragmas & #list gtReferences'})
 					create ];
 				newFadedText: 'Now, try with this composed query. Notice the highlighting').
+			GtSlideshowSlide new
+				textWithFormat: ('To learn more about queries follow the show below.' asRopedText glamorousRegularFont);
+				slideshow: [ GtQueries new create ] withTitle: 'Querying Code'.
 			(GtTitleSlide new
 				titleText:
 					('moldable search' asRopedText
@@ -300,6 +420,123 @@ GtTour >> overviewElement [
 	^ container asScalableElement 
 ]
 
+{ #category : #'as yet unclassified' }
+GtTour >> playgroundExplanationWithLinks [
+	<gtExample>
+	| container snippetsCollection playbook playgroundElement snippetElementsCollection inspectAllButton frameToolbarButtons evaluateButtons inspectButtons debugButtons newSnippetButtons |
+	
+	container := BlElement new
+		constraintsDo: [ :c |
+			c vertical matchParent.
+			c horizontal matchParent ];
+		layout: BlLinearLayout horizontal;
+		margin: (BlInsets all: 5);
+		background: Color white;
+		look: BrShadowLook.
+		
+	newSnippetButtons := OrderedCollection new.
+	evaluateButtons := OrderedCollection new.
+	inspectButtons := OrderedCollection new.
+	debugButtons := OrderedCollection new.
+	
+	snippetsCollection := { 'a := 5'.
+'a + 2' } asOrderedCollection.
+
+	playbook := GtPlayBook newDefault.
+	playbook pages first snippets first sourceCode: snippetsCollection first.
+	snippetsCollection allButFirst do: [:el |
+		playbook pages first addSnippet: GtCoderSnippet new.
+		playbook pages last snippets last sourceCode: el].
+	playgroundElement := playbook asElement.
+	
+	playgroundElement forceLayout.
+	
+	snippetElementsCollection := playgroundElement
+		allChildrenBreadthFirstSelect: [ :aChild | 
+			aChild isKindOf: BrFrame ].
+	snippetElementsCollection do: [ :each |
+		newSnippetButtons add: (each children at: 2) ].
+	inspectAllButton := (playgroundElement
+		allChildrenBreadthFirstSelect: [:aChild | 
+			(aChild isKindOf: BrButton) and: [aChild parent isKindOf: BrToolbar]]) at: 2.
+	frameToolbarButtons := playgroundElement
+		allChildrenBreadthFirstSelect: [:aChild | 
+			(aChild isKindOf: BrToolbar) 
+				and: [(aChild parent isKindOf: GtCoderActionsElement)
+					and: [aChild hasChildren]]].
+	frameToolbarButtons do: [ :each |
+		evaluateButtons add: (each children at: 1).
+		inspectButtons add: (each children at: 2).
+		debugButtons add: (each children at: 3) ].
+	
+	inspectAllButton
+		addChild:
+			((self yellowTargetCircleWithExplanationModel: #inspectAllButton)
+				relocate:
+					(2 @ 2)).
+	snippetElementsCollection do: [ :eachSnippet |
+		eachSnippet
+			addChild:
+				((self yellowTargetCircleWithExplanationModel: #snippets)
+					relocate:
+						(5 @ eachSnippet extent y / 2))].
+	newSnippetButtons do: [ :each |
+		each
+			addChild:
+				((self yellowTargetCircleWithExplanationModel: #plusButton)
+					relocate:
+						(10 @ inspectAllButton extent y / 2))].
+	evaluateButtons do: [ :eachEvaluateButton |
+		eachEvaluateButton
+			addChild:
+				((self yellowTargetCircleWithExplanationModel: #evaluateButton)
+					relocate:
+						(5 @ eachEvaluateButton extent y / 2))].
+	inspectButtons do: [ :eachInspectButton |
+		eachInspectButton
+			addChild:
+				((self yellowTargetCircleWithExplanationModel: #inspectButton)
+					relocate:
+						(5 @ eachInspectButton extent y / 2))].
+	debugButtons do: [ :eachDebugButton |
+		eachDebugButton
+			addChild:
+				((self yellowTargetCircleWithExplanationModel: #debugButton)
+					relocate:
+						(5 @ eachDebugButton extent y / 2))].
+				
+	^ container
+		addChild: playgroundElement.
+]
+
+{ #category : #'as yet unclassified' }
+GtTour >> playgroundExplanationWithLinksText [
+	| text |
+	
+	text := 'The playground is where you can play around with the code. You can run queries or create scripts without the need for classes, methods or variable declarations. The last line in the script is the one that returns an object that is then opened in the inspector.
+
+You can have multiple code ' asRopedText,
+('snippets' asRopedText glamorousExplanationFor: #snippets),
+' opened at the same time, allowing you to easily run different scripts or to have a bigger script split into smaller ones for better readability. To open a new snippet you click the ' asRopedText,
+('+' asRopedText glamorousExplanationFor: #plusButton),
+' button and then select pharo.
+
+The playground lets you ' asRopedText,
+('evaluate' asRopedText glamorousExplanationFor: #evaluateButton),
+', ' asRopedText,
+('inspect' asRopedText glamorousExplanationFor: #inspectButton),
+' and ' asRopedText,
+('debug' asRopedText glamorousExplanationFor: #debugButton),
+' each snippet individually. Or you can evaluate and inspect all the snippets at once using the playground ' asRopedText,
+('inspect button' asRopedText glamorousExplanationFor: #inspectAllButton),
+'. The result of the last script will be the one opened in the inspector.' asRopedText.
+
+	^ text
+		glamorousRegularFont;
+		fontSize: 20;
+		foreground: Color black.
+]
+
 { #category : #'api - instantiation' }
 GtTour >> timelineElement [
 	| plotter |
@@ -411,4 +648,14 @@ GtTour >> viewMethodWithResultExplanationWithLinksExample [
 	verticalContainer addChild: resultInspectorContainer.
 	
 	^ verticalContainer.
+]
+
+{ #category : #utility }
+GtTour >> yellowTargetCircleWithExplanationModel: aModel [
+	^ BrButton new
+				constraintsDo: [ :c | c ignoreByLayout ];
+				size: 5 @ 5;
+				elevation: (BlRelativeElevation elevation: 10);
+				geometry: BlCircle new;
+				look: (GtExplainerTargetLook new explanationModel: aModel).
 ]

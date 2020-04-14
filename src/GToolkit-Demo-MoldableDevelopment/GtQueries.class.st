@@ -11,11 +11,11 @@ GtQueries >> create [
 	show
 		slides:
 			{(GtTitleSlide new
-				titleText: ('Queries' asRopedText
+				titleText: ('Querying Code' asRopedText
 						fontSize: 70;
 						glamorousRegularFont)).
 			(GtSlideshowSlide new
-				textWithFormat: 'Want to learn more about the Pharo syntax? Follow the show below' asRopedText glamorousRegularFont;
+				textWithFormat: 'This slideshow relies on pharo syntax. Follow the tutorial below if you want to learn more about that first' asRopedText glamorousRegularFont;
 				slideshow: [ GtPharo101 new create ] withTitle: 'Pharo101').
 			(GtTextSlide new
 				newTextWithFormat: ('One of the design principles behind Glamorous Toolkit is that search must be universal. This is achieved using queries' asRopedText
@@ -49,6 +49,46 @@ GtQueries >> create [
 			(GtTextSlide new
 				newTextWithFormat: ('So let''s take a closer look at them' asRopedText glamorousRegularFont; fontSize: 20)).
 			(GtTitleSlide new
+				titleText: ('Method Filters' asRopedText
+						fontSize: 40;
+						glamorousRegularFont)).
+			(GtTextSlide new
+				newTextWithFormat: ('They are called method filters because they always return a list of methods' asRopedText glamorousRegularFont; fontSize: 20)).
+			(GtLabelAndElementSlide new
+				text: 'They can be applied to match methods, for example:';
+				element: [GtPlaygroundSlide new
+					snippets: {'"Methods with a certain name"
+#printString gtImplementors'.
+'"Methods with a certain expression in the source code"
+''filter matches: ``@a'' gtASTMatches'.
+'"Methods with a certain subsrting in the source code"
+''children: #children'' gtSubstringMatch'.
+'"Methods with a certain annotation"
+#gtView gtPragmas'.
+'"Or methods that reference another method"
+#printString gtReferences'};
+					asElement]).
+			(GtLabelAndElementSlide new
+				text: 'Reference filters can match not only methods but classes, global variables and literal values';
+				element: [GtPlaygroundSlide new
+					snippets: {'"Class"
+GtSearchReferencesFilter gtReferences'.
+'"Array"
+#(4 2) gtReferences'.
+'"Literal value: number"
+42 gtReferences'.
+'"Literal value: symbol"
+#list gtReferences'.};
+					asElement]).
+			(GtLabelAndElementSlide new
+				text: 'Method filters can also be applied to match classes and packages, for example:';
+				element: [GtPlaygroundSlide new
+					snippets: {'"All methods in a certain class"
+''GtSearchMethodFilterExamples'' gtClassMatches'.
+'"All methods in a certain package"
+''GToolkit-Docs'' gtPackageMatches'};
+					asElement]).
+			(GtTitleSlide new
 				titleText: ('Binary Filters' asRopedText
 						fontSize: 40;
 						glamorousRegularFont)).
@@ -73,11 +113,12 @@ union := filter1 | filter2.'};
 			(GtLabelAndElementSlide new
 				text: 'This one gets a filter and searches for the opposite of that filter';
 				element: [GtPlaygroundSlide new
-					snippets: {'basicFilter := GtSearchDeprecatedPackagesFilter new.
+					snippets: {'"All packages that are not deprecated"
+basicFilter := GtSearchDeprecatedPackagesFilter new.
 negationFilter := GtSearchNegationFilter new
 	originalFilter: basicFilter.'.
-'basicFilter := GtSearchDeprecatedPackagesFilter new.
-negationFilter := basicFilter not.'};
+'"All methods that define a view and do not specify the priority"
+#gtView gtPragmas & #priority: gtReferences not'};
 					asElement]).
 			(GtTitleSlide new
 				titleText: ('Null Filter' asRopedText
@@ -87,8 +128,13 @@ negationFilter := basicFilter not.'};
 				text: 'A filter that doesn''t match anything. It returns false for everything';
 				element: [GtPlaygroundSlide new
 					snippets: {'filter := GtSearchNullFilter new.
-filter size'};
+filter size'.
+'BrList allSubclasses 
+	inject: GtSearchNullFilter new
+	into: [:union :each | union | each gtReferences ]'};
 					asElement]).
+			(GtTextSlide new
+				newTextWithFormat: ('Filters can also be extended to return a list of classes or packages' asRopedText glamorousRegularFont; fontSize: 20)).
 			(GtTitleSlide new
 				titleText: ('Package Filters' asRopedText
 						fontSize: 40;
