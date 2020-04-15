@@ -487,23 +487,23 @@ GtTour >> playgroundExplanationWithLinks [
 					relocate:
 						(10 @ inspectAllButton extent y / 2))].
 	evaluateButtons do: [ :eachEvaluateButton |
-		eachEvaluateButton
+		eachEvaluateButton parent
 			addChild:
 				((self yellowTargetCircleWithExplanationModel: #evaluateButton)
 					relocate:
-						(5 @ eachEvaluateButton extent y / 2))].
+						(eachEvaluateButton position x @ eachEvaluateButton position y))].
 	inspectButtons do: [ :eachInspectButton |
-		eachInspectButton
+		eachInspectButton parent
 			addChild:
 				((self yellowTargetCircleWithExplanationModel: #inspectButton)
 					relocate:
-						(5 @ eachInspectButton extent y / 2))].
+						(eachInspectButton position x @ eachInspectButton position y))].
 	debugButtons do: [ :eachDebugButton |
-		eachDebugButton
+		eachDebugButton parent
 			addChild:
 				((self yellowTargetCircleWithExplanationModel: #debugButton)
 					relocate:
-						(5 @ eachDebugButton extent y / 2))].
+						(eachDebugButton position x @ eachDebugButton position y))].
 				
 	^ container
 		addChild: playgroundElement.
