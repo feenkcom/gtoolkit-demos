@@ -613,15 +613,17 @@ a - b' } asOrderedCollection.
 GtPharo101 >> shortPlaygroundExplanationText [
 	| text |
 	
-	text := 'First, this is the playground. Here you can play and experiment with your code without the need for methods or classes. This environment allows you to ' asRopedText,
+	text := 'First, this is the playground. Here you can play and experiment with your code without the need for methods or classes. Pressing the ' asRopedText,
 ('inspect' asRopedText glamorousExplanationFor: #inspectButton),
-' or ' asRopedText,
-('debug' asRopedText glamorousExplanationFor: #debugButton),
-' the code you have written. You can also divide the code in ' asRopedText,
-('multiple' asRopedText glamorousExplanationFor: #newSnippet),
-' snippets that can either be inspected individually or together.
+' button opens up an inspector on the result of that snippet, which is the object returned by the last line in that snippet. In our case, the ' asRopedText,
+('first' asRopedText glamorousExplanationFor: #firstSnippet),
+' snippet will return the sum of a and 5 and the ' asRopedText,
+('second' asRopedText glamorousExplanationFor: #secondSnippet),
+' will return the difference between a and b.
 
-Inspecting a snippet opens up an inspector on the result which is given by the last line in that snippet. In this case, it is the sum of a and b.' asRopedText.
+You can also ' asRopedText,
+('add' asRopedText glamorousExplanationFor: #newSnippet),
+' multiple snippets that can either be inspected all together or individually.' asRopedText.
 	
 	^ text 
 		glamorousRegularFont;
