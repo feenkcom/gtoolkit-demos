@@ -538,7 +538,7 @@ GtPharo101 >> createBookFrom: aCollection [
 { #category : #'as yet unclassified' }
 GtPharo101 >> shortPlaygroundExplanation [
 	<gtExample>
-	| container playbook playgroundElement snippetsCollection newSnippetButton frameToolbarButtons inspectButton debugButton |
+	| container playbook playgroundElement snippetsCollection snippetElementsCollection newSnippetButtons frameToolbarButtons inspectButtons firstSnippet secondSnippet |
 	
 	container := BlElement new
 		constraintsDo: [ :c |
@@ -548,10 +548,14 @@ GtPharo101 >> shortPlaygroundExplanation [
 		margin: (BlInsets all: 5);
 		background: Color white;
 		look: BrShadowLook.
+		
+	newSnippetButtons := OrderedCollection new.
+	inspectButtons := OrderedCollection new.
 	
 	snippetsCollection := { 'a := 2.
-b := 3.
-a + b' } asOrderedCollection.
+a + 5'.
+'b := 1.
+a - b' } asOrderedCollection.
 	
 	playbook := GtPlayBook newDefault.
 	playbook pages first snippets first sourceCode: snippetsCollection first.
@@ -562,35 +566,47 @@ a + b' } asOrderedCollection.
 	
 	playgroundElement forceLayout.
 	
-	newSnippetButton := (playgroundElement
-		allChildrenBreadthFirstSelect: [ :aChild |
-			aChild isKindOf: BrFrame ]) first children at: 2.
+	snippetElementsCollection := playgroundElement
+		allChildrenBreadthFirstSelect: [ :aChild | 
+			aChild isKindOf: BrFrame ].
+	snippetElementsCollection do: [ :each |
+		newSnippetButtons add: (each children at: 2) ].
 	frameToolbarButtons := playgroundElement
 		allChildrenBreadthFirstSelect: [ :aChild |
 			(aChild isKindOf: BrToolbar)
 				and: [ (aChild parent isKindOf: GtCoderActionsElement)
 					and: [ aChild hasChildren ]]].
-	inspectButton := frameToolbarButtons first children at: 2.
-	debugButton := frameToolbarButtons first children at: 3.
+	frameToolbarButtons do: [ :each |
+		inspectButtons add: (each children at: 2)].
 	
-	newSnippetButton
-		addChild:
-			((self yellowTargetCircleWithExplanationModel: #newSnippet)
-				relocate:
-					(10 @ newSnippetButton extent y / 2)).
-	inspectButton parent
-		addChild:
-			((self yellowTargetCircleWithExplanationModel: #inspectButton)
-				relocate:
-					(inspectButton position x @ inspectButton position y + 5)).
-	debugButton parent
-		addChild:
-			((self yellowTargetCircleWithExplanationModel: #debugButton)
-				relocate:
-					(debugButton position x @ debugButton position y + 5)).
+	firstSnippet := snippetElementsCollection at: 1.
+	secondSnippet := snippetElementsCollection at: 2.
+	
+	newSnippetButtons do: [ :each |
+		each
+			addChild:
+				((self yellowTargetCircleWithExplanationModel: #newSnippet)
+					relocate:
+						(10 @ each extent y / 2))].
+	inspectButtons do: [ :eachInspectButton |
+		eachInspectButton parent
+			addChild:
+				((self yellowTargetCircleWithExplanationModel: #inspectButton)
+					relocate:
+						(eachInspectButton position x @ eachInspectButton position y + 5))].
+	firstSnippet
+			addChild:
+				((self yellowTargetCircleWithExplanationModel: #firstSnippet)
+					relocate:
+						(5 @ firstSnippet extent y / 2)).
+	secondSnippet
+			addChild:
+				((self yellowTargetCircleWithExplanationModel: #secondSnippet)
+					relocate:
+						(5 @ secondSnippet extent y / 2)).
 	
 	^ container
-		addChild: playgroundElement.
+		addChild: (GtInspector withToolOn: playgroundElement).
 ]
 
 { #category : #'as yet unclassified' }
