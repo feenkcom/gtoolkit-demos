@@ -501,6 +501,14 @@ GtPharo101 >> create [
 	show := GtSlideShow new.
 	show addSlide: (GtTitleSlide new
 				titleText: ('Pharo 101' asRopedText fontSize: 70)).
+	show addSlide: (GtTextAndElementSlide new
+				newTextWithFormat: self shortPlaygroundExplanationText;
+				elementWeight: 0.6;
+				element: [ self shortPlaygroundExplanation ]).
+	show addSlide: ((GtTextSlide new
+				newTextWithFormat: ('Now let''s take a look at the pharo syntax using the playground.' asRopedText
+					glamorousRegularFont;
+					fontSize: 20))).
 	
 	self addBasicTypesSlidesIn: show.
 	self addMessagesSlidesIn: show.
@@ -525,4 +533,92 @@ GtPharo101 >> createBookFrom: aCollection [
 		aBook pages first addSnippet: GtCoderSnippet new.
 		aBook pages last snippets last sourceCode: el].
 	^ aBook.
+]
+
+{ #category : #'as yet unclassified' }
+GtPharo101 >> shortPlaygroundExplanation [
+	<gtExample>
+	| container playbook playgroundElement snippetsCollection newSnippetButton frameToolbarButtons inspectButton debugButton |
+	
+	container := BlElement new
+		constraintsDo: [ :c |
+			c vertical matchParent.
+			c horizontal matchParent ];
+		layout: BlLinearLayout horizontal;
+		margin: (BlInsets all: 5);
+		background: Color white;
+		look: BrShadowLook.
+	
+	snippetsCollection := { 'a := 2.
+b := 3.
+a + b' } asOrderedCollection.
+	
+	playbook := GtPlayBook newDefault.
+	playbook pages first snippets first sourceCode: snippetsCollection first.
+	snippetsCollection allButFirst do: [:el |
+		playbook pages first addSnippet: GtCoderSnippet new.
+		playbook pages last snippets last sourceCode: el].
+	playgroundElement := playbook asElement.
+	
+	playgroundElement forceLayout.
+	
+	newSnippetButton := (playgroundElement
+		allChildrenBreadthFirstSelect: [ :aChild |
+			aChild isKindOf: BrFrame ]) first children at: 2.
+	frameToolbarButtons := playgroundElement
+		allChildrenBreadthFirstSelect: [ :aChild |
+			(aChild isKindOf: BrToolbar)
+				and: [ (aChild parent isKindOf: GtCoderActionsElement)
+					and: [ aChild hasChildren ]]].
+	inspectButton := frameToolbarButtons first children at: 2.
+	debugButton := frameToolbarButtons first children at: 3.
+	
+	newSnippetButton
+		addChild:
+			((self yellowTargetCircleWithExplanationModel: #newSnippet)
+				relocate:
+					(10 @ newSnippetButton extent y / 2)).
+	inspectButton parent
+		addChild:
+			((self yellowTargetCircleWithExplanationModel: #inspectButton)
+				relocate:
+					(inspectButton position x @ inspectButton position y + 5)).
+	debugButton parent
+		addChild:
+			((self yellowTargetCircleWithExplanationModel: #debugButton)
+				relocate:
+					(debugButton position x @ debugButton position y + 5)).
+	
+	^ container
+		addChild: playgroundElement.
+]
+
+{ #category : #'as yet unclassified' }
+GtPharo101 >> shortPlaygroundExplanationText [
+	| text |
+	
+	text := 'First, this is the playground. Here you can play and experiment with your code without the need for methods or classes. This environment allows you to ' asRopedText,
+('inspect' asRopedText glamorousExplanationFor: #inspectButton),
+' or ' asRopedText,
+('debug' asRopedText glamorousExplanationFor: #debugButton),
+' the code you have written. You can also divide the code in ' asRopedText,
+('multiple' asRopedText glamorousExplanationFor: #newSnippet),
+' snippets that can either be inspected individually or together.
+
+Inspecting a snippet opens up an inspector on the result which is given by the last line in that snippet. In this case, it is the sum of a and b.' asRopedText.
+	
+	^ text 
+		glamorousRegularFont;
+		fontSize: 20;
+		foreground: Color black.
+]
+
+{ #category : #utility }
+GtPharo101 >> yellowTargetCircleWithExplanationModel: aModel [
+	^ BrButton new
+				constraintsDo: [ :c | c ignoreByLayout ];
+				size: 0 @ 0;
+				elevation: (BlRelativeElevation elevation: 10);
+				geometry: BlCircle new;
+				look: (GtExplainerTargetLook new explanationModel: aModel).
 ]
