@@ -654,7 +654,7 @@ GtTour >> viewMethodWithResultExplanationWithLinksExample [
 GtTour >> yellowTargetCircleWithExplanationModel: aModel [
 	^ BrButton new
 				constraintsDo: [ :c | c ignoreByLayout ];
-				size: 5 @ 5;
+				size: 0 @ 0;
 				elevation: (BlRelativeElevation elevation: 10);
 				geometry: BlCircle new;
 				look: (GtExplainerTargetLook new explanationModel: aModel).
