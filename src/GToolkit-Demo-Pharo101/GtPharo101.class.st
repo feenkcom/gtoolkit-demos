@@ -505,10 +505,6 @@ GtPharo101 >> create [
 				newTextWithFormat: self shortPlaygroundExplanationText;
 				elementWeight: 0.6;
 				element: [ self shortPlaygroundExplanation ]).
-	show addSlide: ((GtTextSlide new
-				newTextWithFormat: ('Now let''s take a look at the pharo syntax using the playground.' asRopedText
-					glamorousRegularFont;
-					fontSize: 20))).
 	
 	self addBasicTypesSlidesIn: show.
 	self addMessagesSlidesIn: show.
@@ -613,17 +609,15 @@ a - b' } asOrderedCollection.
 GtPharo101 >> shortPlaygroundExplanationText [
 	| text |
 	
-	text := 'First, this is the playground. Here you can play and experiment with your code without the need for methods or classes. Pressing the ' asRopedText,
+	text := 'This is the playground. Here you can play around with the code, having one or more snippets that you can inspect. You do that with the ' asRopedText,
 ('inspect' asRopedText glamorousExplanationFor: #inspectButton),
-' button opens up an inspector on the result of that snippet, which is the object returned by the last line in that snippet. In our case, the ' asRopedText,
+' button. Pressing it, opens up an inspector on the result of that snippet, which is the result of the last line executed in that snippet. In our case, it will be the sum for the ' asRopedText,
 ('first' asRopedText glamorousExplanationFor: #firstSnippet),
-' snippet will return the sum of a and 5 and the ' asRopedText,
+' snippet and the difference for the ' asRopedText,
 ('second' asRopedText glamorousExplanationFor: #secondSnippet),
-' will return the difference between a and b.
+' one.
 
-You can also ' asRopedText,
-('add' asRopedText glamorousExplanationFor: #newSnippet),
-' multiple snippets that can either be inspected all together or individually.' asRopedText.
+Using the playground, this tutorial will guide you through the pharo syntax, giving you multiple snippets of code to inspect and see how the code behaves.' asRopedText.
 	
 	^ text 
 		glamorousRegularFont;

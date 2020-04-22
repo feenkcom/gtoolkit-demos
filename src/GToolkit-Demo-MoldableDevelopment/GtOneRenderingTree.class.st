@@ -159,18 +159,6 @@ GtOneRenderingTree >> overviewElement [
 { #category : #'api - instantiation' }
 GtOneRenderingTree >> sampleExplanationWithLinks [
 	<gtExample>
-	| container |
 	
-	container := BlElement new
-		constraintsDo: [ :c | 
-			c horizontal matchParent.
-			c vertical fitContent ];
-		margin: (BlInsets all: 30);
-		background: Color white;
-		look: BrShadowLook;
-		layout: BlLinearLayout horizontal.
-	
-	^ container
-		addChild: (GtMethodCoderStylerExamples new viewsExplanationWithLinks);
-		asScrollableElement.
+	^ GtMethodCoderStylerExamples new viewsExplanationWithLinks
 ]
