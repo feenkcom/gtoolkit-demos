@@ -34,17 +34,23 @@ GtOneRenderingTree >> create [
 		GtTitleSlide new
 			titleText: ('graph layouts are regular layouts' asRopedText fontSize: 30; glamorousRegularFont).
 		GtLabelAndElementSlide new
-			element: [ GtBlocSpecialClassHierarchyWithGridSlide new asElement ];
+			element: [ GtExampleSlide new
+				method: (GtWhatMakesBlocSpecialExplanation >> #classHierarchyWithGridLayout);
+				asElement ];
 			newFadedText: 'Let''s take a concrete example. Below we see a set of elements arranged in a grid.';
 			newFadedText: 'Interestingly, the elements are centrally aligned in each column';
 			newFadedText: 'This is achived by specifying a grid layout specific constraint for each of the children.'.
 		GtLabelAndElementSlide new
-			element: [ GtBlocSpecialClassHierarchyWithEdgesSlide new asElement ];
+			element: [ GtExampleSlide new
+				method: (GtWhatMakesBlocSpecialExplanation >> #classHierarchyWithEdges);
+				asElement ];
 			newFadedText: 'And now we see the same elements, but laid out as a tree.';
 			newFadedText: 'A tree layout requires the notion of an edge.';
 			newFadedText: 'The edge is modelled as a regular constraint, like in the case of the grid layout.'.
 		GtLabelAndElementSlide new
-			element: [ GtBlocSpecialClassHierarchyWithEdgesAndLinesSlide new asElement ];
+			element: [ GtExampleSlide new 
+				method: (GtWhatMakesBlocSpecialExplanation >> #classHierarchyWithEdgesAndLines);
+				asElement ];
 			newFadedText: 'Lines can also be added to the scene, but they are purely decorative graphical elements.'.
 
 		GtTitleSlide new
