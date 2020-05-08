@@ -112,20 +112,39 @@ GtPharo101 >> addConditionalsAndLoopsSlidesIn: aSlider [
 	aSlider 
 		addSlide: (GtTitleSlide new
 			titleText: ('Pharo 101' asRopedText fontSize: 70);
-			subtitleText: ('Conditionals and Loops' asRopedText fontSize:50; foreground: Color gray)).
+			subtitleText: ('Boolean and Conditionals' asRopedText fontSize:50; foreground: Color gray)).
+	
+	aSlider addSlide: (GtTextAndElementSlide new
+		newTextWithFormat: (self subtitleString: 'Booleans');
+		newTextWithFormat: (self descriptionString: 'Booleans are objects that can be either true or false.');
+		element: [
+			GtPlaygroundSlide new 
+				snippets: {('1 > 2 ').
+							'''hello world''=''hello world'''.
+							'true'.
+							'false'.
+							'true not'.
+							'(1>2) not'
+						};
+				asElement ];
+		elementWeight: 0.6).
 	
 	aSlider
 		addSlide: (GtTextAndElementSlide new
 			newTextWithFormat: (self subtitleString: 'Conditionals');
 			newTextWithFormat: (self descriptionString: 'Conditionals are messages sent to Boolean objects. The main messages are #ifTrue:, #ifFalse: and #ifTrue:ifFalse:.');
 			element: [ GtPlaygroundSlide new
-				snippets: { ('1 < 2 ' , Character cr asString , '	ifTrue:[ 42 ]'
-								, Character cr asString , '	ifFalse: [ 100 ].').
-							('$a > $b' , Character cr asString , '	ifTrue:[ 100 ]'
-								, Character cr asString , '	ifFalse:[ 42 ].') };
+				snippets: { ('1 < 2' , String cr , String tab, 'ifTrue:[ 42 ]'
+								, String cr , String tab, 'ifFalse: [ 100 ].').
+							('$a > $b' , String cr , String tab, 'ifTrue:[ 100 ]'
+								, String cr , String tab, 'ifFalse:[ 42 ].') };
 				asElement ];
 			elementWeight: 0.6).
-	
+	aSlider 
+		addSlide: (GtTitleSlide new
+			titleText: ('Pharo 101' asRopedText fontSize: 70);
+			subtitleText: ('Loops and Iterators' asRopedText fontSize:50; foreground: Color gray)).
+
 	aSlider
 		addSlide: (GtTextAndElementSlide new
 			newTextWithFormat: (self subtitleString: 'Loops');
@@ -186,7 +205,7 @@ GtPharo101 >> addMessagesSlidesIn: aSlider [
 	
 	aSlider
 		addSlide: (GtTextAndElementSlide new
-			newTextWithFormat: (self subtitleString: 'Unay messages');
+			newTextWithFormat: (self subtitleString: 'Unary messages');
 			newTextWithFormat: (self descriptionString: 'They have the following form: anObject aMessage.');
 			element: [ GtPlaygroundSlide new
 				snippets: { '42 class.'. 'false not.'. 'Date today.'. 'Float pi.' };
