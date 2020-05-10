@@ -64,11 +64,10 @@ GtOneRenderingTree >> create [
 				element: [ self sampleExplanationWithLinks ];
 				newFadedText: 'Here we see a textual explanation that links with various constructs in the code that it explains.';
 				newFadedText: 'For the scene to work, the arrows must be in the same space as the text elements and the code elements.'.
-		
-		GtLabelAndElementSlide new
+		"GtLabelAndElementSlide new
 				element: [ GtArrowHeadWithEmbeddedWorldSlide new asElement ];
 				newFadedText: 'Double click to zoom. Drag.';
-				newFadedText: 'Yes, there is a whole world embedded in the tip of the line.'.
+				newFadedText: 'Yes, there is a whole world embedded in the tip of the line.'."
 		GtTitleSlide new
 			titleText: ('a look behind the scene: the annotated tree' asRopedText fontSize: 30; glamorousRegularFont).
 		GtLabelAndElementSlide new
