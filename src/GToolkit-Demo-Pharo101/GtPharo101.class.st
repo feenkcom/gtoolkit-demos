@@ -343,8 +343,7 @@ GtPharo101 >> create [
 { #category : #adding }
 GtPharo101 >> createBookFrom: aCollection [
 	| aBook |
-	aBook := GtPlayBook newDefault.
-	aBook pages first snippets first sourceCode: (aCollection at: 1).
+	aBook := GtPlayBook newWithCodeSnippetContent: (aCollection at: 1).
 	aCollection allButFirst do: [:el |
 		aBook pages first addSnippet: GtCoderSnippet new.
 		aBook pages last snippets last sourceCode: el].
@@ -378,8 +377,7 @@ a + 5'.
 'b := 1.
 a - b' } asOrderedCollection.
 	
-	playbook := GtPlayBook newDefault.
-	playbook pages first snippets first sourceCode: snippetsCollection first.
+	playbook := GtPlayBook newWithCodeSnippetContent: snippetsCollection first.
 	snippetsCollection allButFirst do: [:el |
 		playbook pages first addSnippet: GtCoderSnippet new.
 		playbook pages last snippets last sourceCode: el].
@@ -427,7 +425,7 @@ a - b' } asOrderedCollection.
 						(5 @ secondSnippet extent y / 2)).
 	
 	^ container
-		addChild: (GtInspector withToolOn: playgroundElement).
+		addChild: (GtPager createWrappedOn: playgroundElement).
 ]
 
 { #category : #'as yet unclassified' }
