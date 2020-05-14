@@ -218,7 +218,7 @@ GtTour >> create [
 						fontSize: 50;
 						glamorousRegularFont)).
 			(GtElementSlide new
-				element: [ GtInspector withToolOn: (GtDocument forClass: BaselineOfGToolkit) ]).
+				element: [ GtPager createWrappedOn: (GtDocument forClass: BaselineOfGToolkit) ]).
 "			(GtTitleSlide new
 				titleText:
 					('tracing variables' asRopedText
@@ -230,7 +230,7 @@ GtTour >> create [
 			(GtTextSlide new
 				newText: 'Glamorous Toolkit is a platform. While it is implemented in Pharo, it can already tackle multiple other languages.').
 			(GtLabelAndElementSlide new
-				element: [ GtInspector withToolOn: (GtClassCoder forClass: JSParser) ];
+				element: [ GtPager createWrappedOn: (GtClassCoder forClass: JSParser) ];
 				newFadedText: 'The first non-Pharo language we accommodated is the language with which we write parsers.';
 				newFadedText: 'Here you see a concrete instance of the language used for defining the parser for JavaScript.').
 			(GtLabelAndElementSlide new
@@ -442,8 +442,7 @@ GtTour >> playgroundExplanationWithLinks [
 	snippetsCollection := { 'a := 5'.
 'a + 2' } asOrderedCollection.
 
-	playbook := GtPlayBook newDefault.
-	playbook pages first snippets first sourceCode: snippetsCollection first.
+	playbook := GtPlayBook newWithCodeSnippetContent: snippetsCollection first.
 	snippetsCollection allButFirst do: [:el |
 		playbook pages first addSnippet: GtCoderSnippet new.
 		playbook pages last snippets last sourceCode: el].
@@ -506,7 +505,7 @@ GtTour >> playgroundExplanationWithLinks [
 						(eachDebugButton position x @ eachDebugButton position y + 5))].
 				
 	^ container
-		addChild: (GtInspector withToolOn: playgroundElement).
+		addChild: (GtPager createWrappedOn: playgroundElement).
 ]
 
 { #category : #'as yet unclassified' }
