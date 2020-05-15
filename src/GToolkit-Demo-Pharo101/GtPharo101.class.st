@@ -143,7 +143,7 @@ GtPharo101 >> addConditionalsAndLoopsSlidesIn: aSlider [
 	aSlider 
 		addSlide: (GtTitleSlide new
 			titleText: ('Pharo 101' asRopedText fontSize: 70);
-			subtitleText: ('Loops and Iterators' asRopedText fontSize:50; foreground: Color gray)).
+			subtitleText: ('Loops, Iterators and Collections' asRopedText fontSize:50; foreground: Color gray)).
 
 	aSlider
 		addSlide: (GtTextAndElementSlide new
@@ -165,6 +165,85 @@ x := 0.' , enterCharacter , '10 to: 0 by: -2 do: [:i | x := x+i ].' , enterChara
 			newTextWithFormat: (self descriptionString: 'They are collection messages that evaluate the argument block for each element.');
 			element: [ GtPlaygroundSlide new
 				snippets: { 'y := 0.' , enterCharacter , '#(11 38 3 -2 10) do: [ :each | y := y + each ].' , enterCharacter , 'y.'. '#(11 38 3 -2 10) collect: [ :each | each abs ].'. '#(11 38 3 -2 10) select: [ :each | each odd ].'. '#(11 38 3 -2 10) reject: [ :each | each > 10 ].' };
+				asElement ];
+			elementWeight: 0.6).
+	
+	aSlider
+		addSlide: (GtTextSlide new
+			newTextWithFormat: (self subtitleString: 'Collections');
+			newTextWithFormat: (self descriptionString: 'A collection is a group of objects.')).
+	
+	aSlider
+		addSlide: (GtTextAndElementSlide new
+			newTextWithFormat: (self subtitleString: 'Array');
+			newTextWithFormat: (self descriptionString: 'An array is a fixed-sized collection of elements accessed by integer indices. The first element is found at position 1. To access the elements we use the #at: and #at:put: messages.');
+			element: [GtPlaygroundSlide new
+				snippets: {'array1 := Array new: 5.
+array1 at: 1 put: 11.
+array1 at: 2 put: 12.
+array1 at: 4 put: 14.
+array1'.
+'array1 size'.
+'array2 := Array braceWith: 5 with: 7 with: 9 with: 11.'.
+'array3 := #( 42 42.0 ''thirdElement'' #lastElement).
+array3 at: 3'};
+				asElement ];
+			elementWeight: 0.6).
+	
+	aSlider
+		addSlide: (GtTextAndElementSlide new
+			newTextWithFormat: (self subtitleString: 'Ordered Collection');
+			newTextWithFormat: (self descriptionString: 'An ordered collection is a more general array that has a variable number of elements. The data is stored in an array with the first and last indexes remembered. When the size of the collection won''t change, we can use #asArray for better performance.');
+			element: [GtPlaygroundSlide new
+				snippets: {'oc1 := OrderedCollection new.
+oc1 add: 2.
+oc1 add: ''secondElement''.
+oc1 add: #thirdElement.
+oc1 add: 8.
+oc1'.
+'oc2 := OrderedCollection new.
+oc2 addAll: oc1.
+oc2 first.'.
+'oc2 remove: 8.
+oc2 last.'.
+'oc2 size'.
+'oc2 asArray'};
+				asElement ];
+			elementWeight: 0.6).
+	
+	aSlider
+		addSlide: (GtTextAndElementSlide new
+			newTextWithFormat: (self subtitleString: 'Set');
+			newTextWithFormat: (self descriptionString: 'A set is a collection of objects without duplicates. It can hold any object that responds to the messages #hash and #=.');
+			element: [GtPlaygroundSlide new
+				snippets: {'set1 := Set new.
+set1 add: 1.
+set1 add: 7.
+set1 add: 3.
+set1 add: 7.
+set1'.
+'set1 occurrencesOf: 7'.
+'set2 := #( 1 2 3 4 2 3) asSet.'.
+'set2 size'.
+'set1 intersection: set2'.
+'set1 difference: set2'};
+				asElement ];
+			elementWeight: 0.6).
+	
+	aSlider
+		addSlide: (GtTextAndElementSlide new
+			newTextWithFormat: (self subtitleString: 'Dictionary');
+			newTextWithFormat: (self descriptionString: 'A dictionary is a collection of elements that associate a key object with a value object. The pair key->value is an association object so the dictionary can be viewed as a collection of associations. The key can be any object that responds to the #= message.');
+			element: [GtPlaygroundSlide new
+				snippets: {'dictionary := Dictionary new.
+dictionary add: 5 -> 10.
+dictionary add: 10 -> 20.
+dictionary at: 30 put: 60.
+dictionary'.
+'dictionary size'.
+'dictionary at: 10 ifAbsent: [''Key Not Found'']'.
+'dictionary at: 11 ifAbsent: [''Key Not Found'']'.
+'dictionary keyAtValue: 20'};
 				asElement ];
 			elementWeight: 0.6).
 ]
@@ -343,8 +422,7 @@ GtPharo101 >> create [
 { #category : #adding }
 GtPharo101 >> createBookFrom: aCollection [
 	| aBook |
-	aBook := GtPlayBook newDefault.
-	aBook pages first snippets first sourceCode: (aCollection at: 1).
+	aBook := GtPlayBook newWithCodeSnippetContent: (aCollection at: 1).
 	aCollection allButFirst do: [:el |
 		aBook pages first addSnippet: GtCoderSnippet new.
 		aBook pages last snippets last sourceCode: el].
@@ -378,8 +456,7 @@ a + 5'.
 'b := 1.
 a - b' } asOrderedCollection.
 	
-	playbook := GtPlayBook newDefault.
-	playbook pages first snippets first sourceCode: snippetsCollection first.
+	playbook := GtPlayBook newWithCodeSnippetContent: snippetsCollection first.
 	snippetsCollection allButFirst do: [:el |
 		playbook pages first addSnippet: GtCoderSnippet new.
 		playbook pages last snippets last sourceCode: el].
@@ -427,7 +504,7 @@ a - b' } asOrderedCollection.
 						(5 @ secondSnippet extent y / 2)).
 	
 	^ container
-		addChild: (GtInspector withToolOn: playgroundElement).
+		addChild: (GtPager createWrappedOn: playgroundElement).
 ]
 
 { #category : #'as yet unclassified' }
