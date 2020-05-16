@@ -49,6 +49,21 @@ GtAndPharoExplanation >> gtMethods [
 	^ self methodsInProjects: self gtProjects
 ]
 
+{ #category : #accessing }
+GtAndPharoExplanation >> gtMetricsFor: aView [
+	<gtView>
+	^ aView columnedList
+		title: 'Metrics';
+		items: [ 
+			{
+				'GT lines of code' -> self gtLinesOfCode.
+				'Pharo lines of code' -> self basePharoLinesOfCode.
+				'Pharo lines not used in GT' -> self pharoToReplaceLinesOfCode.
+			} ];
+		column: 'Metric' format: #key;
+		column: 'Value' format: #value
+]
+
 { #category : #'as yet unclassified' }
 GtAndPharoExplanation >> gtProjects [
 	| projects |
@@ -58,6 +73,22 @@ GtAndPharoExplanation >> gtProjects [
 	self assert: projects notEmpty.
 	self assert: (projects noneSatisfy: #isNil).
 	^ projects
+]
+
+{ #category : #accessing }
+GtAndPharoExplanation >> gtProjectsFor: aView [
+	<gtView>
+	^ aView columnedList
+		title: 'Projects';
+		priority: 1;
+		items: [ 
+			{
+				'GT projects' -> self gtProjects.
+				'Pharo projects not used in GT' -> self pharoToReplaceProjects.
+			} ];
+		column: 'Metric' format: #key;
+		column: 'Value' format: [ :each | each value size ];
+		send: #value
 ]
 
 { #category : #'as yet unclassified' }
@@ -86,7 +117,7 @@ GtAndPharoExplanation >> pharoToReplaceMethods [
 	^ self methodsInProjects: self pharoToReplaceProjects
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #accessing }
 GtAndPharoExplanation >> pharoToReplaceProjects [
 	| projects |
 	projects := {BaselineOfBasicTools . 
@@ -102,7 +133,7 @@ GtAndPharoExplanation >> pharoToReplaceProjects [
 				each projects collect: #version ] as: Set ].
 	self assert: projects notEmpty.
 	self assert: (projects noneSatisfy: #isNil).
-	^ projects
+	^ projects \ {BaselineOfTraits version . BaselineOfUnifiedFFI version . BaselineOfReflectivity version}
 ]
 
 { #category : #'as yet unclassified' }
