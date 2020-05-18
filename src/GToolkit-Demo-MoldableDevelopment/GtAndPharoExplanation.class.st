@@ -4,6 +4,7 @@
 Glamorous Toolkit (GT) is built in *Pharo>https://pharo.org*, and it enables people to work with Pharo systems. Nevertheless, the goal of GT is distinct from that of Pharo and so is the realization of it.
 
 !!Our goal: moldable development
+
 Glamorous Toolkit is build by *feenk>https://feenk.com*. Our goal is to provide a complete and novel development experience to allow people to make the interior of systems explainable. All our work is free and open-source under MIT. We contribute two things towards our goal. First, we provide the actual environment. Second, and perhaps more importantly, we authored moldable development, the approach GT enables.
 
 Moldable development puts forward the hypothesis that the shape of software is essential and that it has to be customized to match the context of the developer. By now, we have a decade worth of experience and experiments in various scenarios. Moldable development was embodied in the first generation of GT which was integrated in Pharo in 2014, and it showed how we can indeed provide an experience that is distinct from any other, including the classic Smalltalk one.
@@ -44,7 +45,7 @@ ${example:BaselineOfGToolkit class>>#itself|previewShow=#gtGtMapFor:|noCode=|pre
 
 If we define a Smalltalk-like system as being the language plus the environment, GT is a new such system. The tools and the experience is different, but more importantly, the workflow that it enables is distinct. The traditional Smalltalk environment was a revolution when it was created. It enabled humans to interact with the inside of software systems in novel ways that then led to a new way of perceiving programming.
 
-We see moldable development is yet another leap.
+We see moldable development as yet another leap.
 
 That said, GT loads cleanly in Pharo. In practice, this means people working on projects built on top of the Pharo runtime have the option of two distinct environments. 
 
