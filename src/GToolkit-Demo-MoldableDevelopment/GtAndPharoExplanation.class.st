@@ -24,16 +24,16 @@ GT it relies on the vm, language, and basic libraries of Pharo, but it comes wit
 
 Currently, GT code is loaded on top of a full Pharo distribution. Pharo ships with ${example:GtAndPharoExplanation>>#basePharoLinesOfCode|label=#asString}$ lines of code. GT adds ${example:GtAndPharoExplanation>>#gtLinesOfCode|label=#asString}$. This is a significant amount of code. Let's look closer at it.
 
-GT comes with a whole new graphical stack and tools that completely replace the ones from the default Pharo. Specifically, there are ${example:GtAndPharoExplanation>>#pharoToReplaceProjects|label=#size}$ projects from Pharo totalling ${example:GtAndPharoExplanation>>#pharoToReplaceLinesOfCode|label=#asString}$ lines of code that are not needed in GT. Still, we ship the complete Pharo code because we are in a transition perion, and for the time being we want people to be able to easily have access to the default Pharo tools.
+GT comes with a whole new graphical stack and tools that completely replace the ones from the default Pharo. Specifically, there are ${example:GtAndPharoExplanation>>#pharoToReplaceProjects|label=#size}$ projects from Pharo totalling ${example:GtAndPharoExplanation>>#pharoToReplaceLinesOfCode|label=#asString}$ lines of code that are not needed in GT. Still, we ship the complete Pharo code because we are in a transition period, and for the time being we want people to be able to easily have access to the default Pharo tools.
 
 Now, if we take a closer look at the code from GT, there are a number of abilities that are not present in the default Pharo. For example, GT includes ${example:GtAndPharoExplanation>>#smaccParsersPackages|label=#size}$ parsers for other languages. These alone total ${example:GtAndPharoExplanation>>#smaccParsersLinesOfCode|label=#asString}$ lines of code. It also includes  ${example:GtAndPharoExplanation>>#famix3LinesOfCode|label=#asString}$ lines of code for supporting code analysis written in other languages. We also believe that a development environment should offer convenient support for various data formats. Pharo already includes support for JSON. We also include the support for XML which totals ${example:GtAndPharoExplanation>>#xmlSupportLinesOfCode|label=#asString}$ lines of code.
 
 
-${example:GtMetrics class>>#default|previewShow=#gtMetricsFor:|noCode=}$
+${example:GtMetrics class>>#default|previewShow=#gtMapFor:|noCode=}$
 
 
-The extra libraries allow us to tackle new classes of use cases that appear in practical development settings that go well beyond the typical Smalltalk realm. This supports the core GT proposition of being a moldable development environment for systems written in many langauges.
-
+The extra libraries allow us to tackle new classes of use cases that appear in practical development settings that go well beyond the typical Smalltalk realm. This supports the core GT proposition of being a moldable development environment for systems written in many languages.
+	
 !!A modular system
 
 While we bundle multiple things together, we still keep GT highly modular. It is currently made out of ${example:BaselineOfGToolkit class>>#withAllContainedProjects|label=#size}$ distinct, yet combinable, components. The picture below provides an overview of these components and their interdependencies.
