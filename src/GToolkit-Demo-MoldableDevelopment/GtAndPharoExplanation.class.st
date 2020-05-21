@@ -9,15 +9,15 @@ Glamorous Toolkit is build by *feenk>https://feenk.com*. Our goal is to provide 
 
 Moldable development puts forward the hypothesis that the shape of software is essential and that it has to be customized to match the context of the developer. By now, we have a decade worth of experience and experiments in various scenarios. Moldable development was embodied in the first generation of GT which was integrated in Pharo in 2014, and it showed how we can indeed provide an experience that is distinct from any other, including the classic Smalltalk one.
 
-The new GT takes moldable development much further. More visible is that we have new kinds of tools, like ${class:BaselineOfGToolkitDocumenter|label=Documenter}$ with its live notebooks, slide shows with interactive explanations, a ${class:BaselineOfGToolkitPlayground|label=Playground}$with snippets, or a ${class:BaselineOfGToolkitCoder|label=Coder}$ with expandable editors.
+The new GT takes moldable development much further. More visible is that we have new kinds of tools, like ${class:BaselineOfGToolkitDocumenter|label=Documenter}$ with its live notebooks, slide shows with interactive explanations, a ${class:BaselineOfGToolkitPlayground|label=Playground}$with snippets, ${class:BaselineOfGToolkitInspector|label=Inspector}$ combined with  ${class:BaselineOfGToolkitSpotter|label=Spotter}$ , or a ${class:BaselineOfGToolkitCoder|label=Coder}$ with expandable editors.
 
-Still, there are less visible parts. Underneath, we have a generic infrastructure for handling other languages. It comes with FAMIX, and it also ships with an environment for SmaCC, the parsing engine, that allows us to tackle new languages. For example, more recently we added a  parsers and importers for several languages including ${class:CPPParser|label=CPP}$ and ${class:JSParser|label=JavaScript}$.
+Still, there are less visible parts. Underneath, we have a generic infrastructure for handling other languages. It comes with an integration of ${class:BaselineOfGToolkit4Famix3|label=Famix}$,  the meta-model through which we can represent various systems, and it also ships with an ${class:BaselineOfGToolkit4SmaCC|label=environment for SmaCC}$, the parsing engine, that allows us to create parsers for new languages. For example, more recently we added a  parsers and importers for several languages including ${class:CPPParser|label=CPP}$ and ${class:JSParser|label=JavaScript}$.
 
-Then there are even more technical engines like ${class:BaselineOfGToolkitReleaser|label=Releaser}$ that makes it possible to version deeply nested projects and repositories completely automatically, or like ${class:BaselineOfGToolkitVisualizer|label=Visualizer}$  which adds significant visualization abilities to the overall environment.
+Then there are even more technical engines. ${class:BaselineOfGToolkitReleaser|label=Releaser}$ makes it possible to version deeply nested projects and repositories completely automatically. ${class:BaselineOfGToolkitVisualizer|label=Visualizer}$  adds significant visualization abilities to the overall environment. 
 
-You can look at GT as a set of tools, but that would likely miss the point. GT is a whole environment that enables a new way of thinking about programming. We see the environment as a language, one that extends the base language with visual and interactive operators. Through this language the various components can be combined in many ways. For instance, examples offer a different technical way to capture tests, but when combined with Documenter it can change how we can document our systems and even how technical people communicate with non-technical people.
+You can look at GT as a set of tools, but that would likely miss the point. GT is a whole environment that enables a new way of thinking about programming. We see the environment as a language, one that extends the base language with visual and interactive operators. Through this language the various components can be combined in many ways. For instance, ${class:BaselineOfGToolkitExamples|label=examples}$ offer a different technical way to capture tests, but when combined with Documenter it can change how we can document our systems and even how technical people communicate with non-technical people.
 
-GT it relies on the vm, language, and basic libraries of Pharo, but it comes with a complete separate graphical stack (Bloc) and engines for tools, such as syntax highlighting and completion. This stack is particularly relevant because it relies on ${class:GtWhatMakesBlocSpecialExplanation|label=a single rendering tree}$. On the one hand, this allows us to create new kind of interfaces. On the other hand, visualizations become first class citizens at very low costs.
+GT relies on the vm, language, and basic libraries of Pharo, but it comes with a complete separate graphical stack (Bloc) and engines for tools, such as syntax highlighting and completion. This stack is particularly relevant because it relies on ${class:GtWhatMakesBlocSpecialExplanation|label=a single rendering tree}$. On the one hand, this allows us to create new kind of interfaces. On the other hand, visualizations become first class citizens at very low costs.
 
 
 !!A code size analysis
@@ -33,19 +33,18 @@ ${example:GtMetrics class>>#default|previewShow=#gtMapFor:|noCode=}$
 
 
 The extra libraries allow us to tackle new classes of use cases that appear in practical development settings that go well beyond the typical Smalltalk realm. This supports the core GT proposition of being a moldable development environment for systems written in many languages.
-	
+
 !!A modular system
 
 While we bundle multiple things together, we still keep GT highly modular. It is currently made out of ${example:BaselineOfGToolkit class>>#withAllContainedProjects|label=#size}$ distinct, yet combinable, components. The picture below provides an overview of these components and their interdependencies.
 
 ${example:BaselineOfGToolkit class>>#itself|previewShow=#gtGtMapFor:|noCode=|previewHeight=420}$
 
-
 !!A distinct environment
 
-If we define a Smalltalk-like system as being the language plus the environment, GT is a new such system. The tools and the experience is different, but more importantly, the workflow that it enables is distinct. The traditional Smalltalk environment was a revolution when it was created. It enabled humans to interact with the inside of software systems in novel ways that then led to a new way of perceiving programming.
+If we define a Smalltalk-like system as being the language plus the environment, GT is a new such system. The tools and the experience is different, but more importantly, the workflow that it enables is distinct.
 
-We see moldable development as yet another leap.
+The traditional Smalltalk environment was a revolution when it was created. It enabled humans to interact with the inside of software systems in novel ways that then led to a new way of perceiving programming. We see moldable development as yet another leap.
 
 That said, GT loads cleanly in Pharo. In practice, this means people working on projects built on top of the Pharo runtime have the option of two distinct environments. 
 
