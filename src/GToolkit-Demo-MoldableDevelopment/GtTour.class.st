@@ -4,7 +4,7 @@ Class {
 	#category : #'GToolkit-Demo-MoldableDevelopment'
 }
 
-{ #category : #'as yet unclassified' }
+{ #category : #accessing }
 GtTour >> coderExplanationWithLinks [
 	<gtExample>
 	| container coderElement classNameTarget methodTabTarget commentTabTarget buttonTargets searchButtonTarget addButtonTarget expandClassTarget expandMethodTarget |
@@ -18,7 +18,9 @@ GtTour >> coderExplanationWithLinks [
 		background: Color white;
 		look: BrShadowLook.
 	
-	coderElement := (GtClassCoder forClass: GtClassCoder) asElement.
+	coderElement := BlUseAsyncFeatures disableDuring: [ 
+		(GtClassCoder forClass: GtClassCoder) asElement ].
+	coderElement forceLayout.
 	
 	classNameTarget := coderElement 
 		allChildrenBreadthFirstDetect: [:aChild | 
