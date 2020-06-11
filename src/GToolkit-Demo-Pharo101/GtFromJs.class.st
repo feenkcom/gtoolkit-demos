@@ -64,10 +64,10 @@ Teapot on
 
 ' }).
 
-		show addSlide: 
+		show addSlide:( 
 			GtSlideshowSlide new
 				textWithFormat: ('Want to learn more? Follow the interactive tour below.' asRopedText glamorousRegularFont);
-				slideshow: [ GtPharo101 new create ] withTitle: 'Pharo 101'.
+				slideshow: [ GtPharo101 new create ] withTitle: 'Pharo 101').
 				
 	^ show
 ]
