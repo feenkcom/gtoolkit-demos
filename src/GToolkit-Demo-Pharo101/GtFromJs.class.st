@@ -19,11 +19,94 @@ GtFromJs >> create [
 			element: [((GtPharoMethodExample>>#exampleWithNumber:) gtViewNodesExplanationWithLinksFor: GtPhlowEmptyView new) asElementDo: [:e | e ]];
 			newFadedText: ('The syntax is easy to learn, the method below contains all possible constructs. Hover over the syntactical parts on the left to understand how they map on the different parts of the method.' asRopedText fontSize: 70)).
 	show addSlide: (GtElementAndElementSlide new
-				newText: 'Creating a class is similar to Js. It''s just that instance variables are called slots, the assignment operator is := and you create an object by invoking a method called "new" on the class. Which makes more sense if you think about it.' ;
-				leftElement: [ BlElement  new];
-				rightElement: [ BlElement  new ]).
+				newText: 'Creating a class is similar to Js.' ;
+				newText: 'It''s just that instance variables are called slots, the assignment operator is := and you create an object by invoking a method called "new" on the class.' ;
+				newText: 'Which makes more sense if you think about it.' ;
+				leftElement: [ GtTextSlide new newText: self jsClassText; asElement];
+				rightElement: [ GtClassCoderSlide new class: Animal; asElement ]).
+				
+	show addSlide: 		
+				(GtPlaygroundSlide new 
+				snippets: {'
+				
+"Save the HTML code of a web page to a file"
+''https://gtoolkit.com/'' asUrl saveContentsToFile: ''page.html''
+				
+				' . '
+
+"Compute the number of days between to dates"
+(''2020-06-10'' asDate - ''2000/6/1'' asDate) days
+
+
+' }).
+
+	show addSlide: 		
+				(GtPlaygroundSlide new 
+				snippets: {'
+				
+Metacello new
+	baseline: ''Teapot'';
+	repository: ''github://zeroflag/teapot/source'';
+	load.
+				
+				' . '
+
+Teapot on
+	GET: ''/welcome'' -> ''Hello World!'';
+	start.
+
+
+'	. '
+
+(ZnEasy get: ''http://localhost:1701/welcome'') 
+	entity string.
+
+
+' }).
+
+		show addSlide: 
+			GtSlideshowSlide new
+				textWithFormat: ('Want to learn more? Follow the interactive tour below.' asRopedText glamorousRegularFont);
+				slideshow: [ GtPharo101 new create ] withTitle: 'Pharo 101'.
 				
 	^ show
+]
+
+{ #category : #accessing }
+GtFromJs >> jsClassText [
+	^ 'class Animal {
+  constructor() {
+    this._name = "animal";
+    this._weight = 20;
+  }
+
+  set name(aName) {
+    this._name = aName;
+  }
+
+  get name() {
+    return this._name;
+  }
+
+  set weight(aWeight) {
+    this._weight = aWeight;
+  }
+
+  get weight() {
+    return this._weight;
+  }
+
+  speak() {
+    console.log(`This ${this._name} makes a noise.`);
+  }
+
+  eat() {
+    this._weight = this._weight + 1;
+  }
+}
+
+let animal = new Animal();
+animal.speak();'
 ]
 
 { #category : #accessing }
