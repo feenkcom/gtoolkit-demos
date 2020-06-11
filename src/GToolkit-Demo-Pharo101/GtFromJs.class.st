@@ -40,29 +40,14 @@ GtFromJs >> create [
 
 ' }).
 
-	show addSlide: 		
-				(GtPlaygroundSlide new 
-				snippets: {'
-				
-Metacello new
-	baseline: ''Teapot'';
-	repository: ''github://zeroflag/teapot/source'';
-	load.
-				
-				' . '
 
-Teapot on
-	GET: ''/welcome'' -> ''Hello World!'';
-	start.
+	show addSlide: (GtElementAndElementSlide new
+				newText: 'Running a simple http server is a bit more elegant in Pharo' ;
+				newText: 'Which makes more sense if you think about it.' ;
+				leftElement: [ GtTextSlide new newText: self jsServerText; asElement];
+				rightElement: [ self teapotSlide ]).
 
 
-'	. '
-
-(ZnEasy get: ''http://localhost:1701/welcome'') 
-	entity string.
-
-
-' }).
 
 		show addSlide:( 
 			GtSlideshowSlide new
@@ -107,6 +92,53 @@ GtFromJs >> jsClassText [
 
 let animal = new Animal();
 animal.speak();'
+]
+
+{ #category : #accessing }
+GtFromJs >> jsServerText [
+	^ '
+var http = require("http");
+var url = require("url");
+//create a server object:
+http
+  .createServer(function (req, res) {
+    var pathname = url.parse(req.url, true).pathname;
+    if (pathname == "/welcome") {
+      res.write("Hello World!");
+      res.end();
+    } else {
+      res.write("Not found " + pathname);
+      res.end();
+    }
+  })
+  .listen(8080);'
+
+]
+
+{ #category : #accessing }
+GtFromJs >> teapotSlide [
+	^(GtPlaygroundSlide new 
+				snippets: {'
+				
+Metacello new
+	baseline: ''Teapot'';
+	repository: ''github://zeroflag/teapot/source'';
+	load.
+				
+				' . '
+
+Teapot on
+	GET: ''/welcome'' -> ''Hello World!'';
+	start.
+
+
+'	. '
+
+(ZnEasy get: ''http://localhost:1701/welcome'') 
+	entity string.
+
+
+' }) asElement
 ]
 
 { #category : #accessing }
