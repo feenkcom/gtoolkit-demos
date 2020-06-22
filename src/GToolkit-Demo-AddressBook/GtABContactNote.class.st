@@ -21,13 +21,13 @@ GtABContactNote >> content: someContent [
 	content := someContent.
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #'gt-extensions' }
 GtABContactNote >> gtViewNoteContentOn: aView [
 	<gtView>
 	
 	^ aView textEditor
 		title: 'Content' translated;
-		look: BrGlamorousCodeEditorLook new;
+		look: BrGlamorousCodeEditorLook;
 		text: self content.
 ]
 
