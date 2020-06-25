@@ -1,6 +1,5 @@
 "
 !What makes Bloc special 
-
 The Glamorous Toolkit is based on the ${class:BaselineOfSparta}$ / ${class:BaselineOfBloc}$ /${class:BaselineOfBrick}$ graphical stack. This stack has a few properties that make it distinct:
 - it relies on one rendering tree at all times.
 - it features a moldable and scalable text editor, made out of regular Bloc elements. 
@@ -8,15 +7,9 @@ The Glamorous Toolkit is based on the ${class:BaselineOfSparta}$ / ${class:Basel
 - debuggable. There are a significant amount of tools and mechanisms that are built for this.
 
 Let us take them one by one by means of examples.
-
-
 !!One rendering tree
-
 Everything you see in this window is rendered using one single rendering tree, all the way from the buttons, to the words in the text and to the visualization seen below. One single rendering tree. This offers the possibility to build flexible user interfaces and debug them using the same tools.
-
-
 !!Moldable editor made of regular elements
-
 The editor is made out of regular elements. This means that we can mix text with graphics in live editors. 
 
 To get an idea of what this means, take a look at the editor example below.
@@ -30,10 +23,7 @@ ${example:GtWhatMakesBlocSpecialExplanation>>#editorOnSampleText|noCode=|preview
 This ability is what allows the current document to display results live in the same editor, such as the example above. In this case, the preview is actually added by the syntax highlighter that interprets the ==$ { example: ... } $== command.
 
 Learn more details about the editor at ${class:GtWhatIsTheMoldableEditorMadeOfExplanation}$
-
-
 !!Graph layouts
-
 The graph layouts in Bloc are expressed in the same way as any other layout. This was a challenge in that graph layouts rely on a structure that includes nodes and edges. Specifically, the challenge was to build this logic without having ${class:BlElement}$ know about edges explicitly.
 
 Every layout encapsulates an algorithm whose execution logic depends on the constraints specified for each individual element. And, to support graph layouts, each element defines the relevant edges as constraints.
@@ -53,10 +43,7 @@ The scene is laid out as a horizontal tree. To see the concrete connections we c
 ${example:GtWhatMakesBlocSpecialExplanation>>#classHierarchyWithEdgesAndLines|codeExpanded=false|previewExpanded=|previewShow=#gtLiveFor:}$
 
 All in all, the graph layouts are treated in the same way as the other layouts. This allows us to use any elements in a graph visualization.
-
-
 !!Debuggable and explainable
-
 Bloc was developed following the moldable development philosophy: every time we had a problem, we built a tool to expose the probem first. As a result, Bloc has built in tools that explain many details of its inner working. Most of these are found as inspector extensions. Let's look at some.
 
 We take as a base example the first element from the above scene. Inspecting the element produces an inspector with multiple views, each capturing an interesting aspect. Please take a moment to explore the different views.
