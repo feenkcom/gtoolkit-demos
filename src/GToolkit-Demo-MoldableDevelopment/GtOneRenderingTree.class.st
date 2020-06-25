@@ -133,14 +133,15 @@ GtOneRenderingTree >> overviewElement [
 	container := BlElement new
 		constraintsDo: [ :c | c horizontal exact: 1200. c vertical exact: 800. ];
 		layout: BlFrameLayout new.
-	container addChild: (((GtDocument forClass: BaselineOfGToolkit) gtTextFor: GtPhlowView empty)
-		asElementDo: [ :e | e 
+	container addChild: ((GtDocumenter forClass: BaselineOfGToolkit)
 			constraintsDo: [ :c | 
 				c frame horizontal alignLeft. 
 				c frame vertical alignCenter.
 				c horizontal exact: 600.
 				c vertical exact: 700 ];
-			margin: (BlInsets all: 10); background: Color white; look: BrShadowLook ]).
+			margin: (BlInsets all: 10); 
+			background: Color white; 
+			look: BrShadowLook).
 
 	container addChild: ((GtPlotterScaleBasedElementExamples new plot) asScalableElement
 			constraintsDo: [ :c | 
