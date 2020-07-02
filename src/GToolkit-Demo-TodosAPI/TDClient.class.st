@@ -142,6 +142,51 @@ TDClient >> gtPostsListFor: aView [
 ]
 
 { #category : #accessing }
+TDClient >> gtTodoTilesFor: aView [
+	<gtView>
+	self todos ifEmpty: [^ aView empty].
+	^ aView explicit
+		title: 'Todo Tiles' translated;
+		priority: 5;
+		stencil: [
+			| mainContainer scrollableContainer editorElement container text |
+			mainContainer := BlScrollableElement new
+				constraintsDo: [ :c |
+					c horizontal matchParent.
+					c vertical matchParent ].
+			scrollableContainer := BlElement new
+				layout: BlLinearLayout vertical;
+				padding: (BlInsets all: 5);
+				constraintsDo: [ :c |
+					c horizontal matchParent.
+					c vertical fitContent ].
+			self todos do: [ :each |			
+				container := BlElement new
+					layout: BlLinearLayout horizontal;
+					background: Color white;
+					look: BrShadowLook;
+					padding: (BlInsets all: 5);
+					margin: (BlInsets all: 5);
+					constraintsDo: [:c |
+						c vertical fitContent.
+						c horizontal matchParent].
+			
+	text := 'Id: ' asRopedText, each id asRopedText, String cr asRopedText, 'User Id: ' asRopedText, each userId asRopedText, String cr asRopedText, 'Title: ' asRopedText, each title asRopedText, String cr asRopedText, 'Completed: ' asRopedText, each completed asRopedText.
+				"text := 'Id: ' asRopedText, each id asRopedText, String cr asRopedText, 'Title: ' asRopedText, each title asRopedText."
+	
+				editorElement := BrEditor new
+					look: (BrGlamorousRegularEditorLook new fontSize: 14);
+					vFitContent;
+					hMatchParent;
+					text: text.		
+		
+				container addChild: editorElement.
+				scrollableContainer addChild: container ].
+			mainContainer addChild: scrollableContainer.
+			mainContainer ].
+]
+
+{ #category : #accessing }
 TDClient >> gtTodosListFor: aView [
 	<gtView>
 	self todos ifEmpty: [^ aView empty].
