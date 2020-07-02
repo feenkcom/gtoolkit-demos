@@ -8,12 +8,14 @@ GtCSPicture >> gtFacesFor: aView [
 		title: 'Faces';
 		priority: 20;
 		items: [ self faces ];
-		column: 'Gender' do: [:aColumn | 
+		column: 'Preview' do: [:aColumn | 
 			aColumn item: [ :aFace | 
 				aFace hasFaceForm 
 					ifFalse: [ (Form extent: 32@32)  ]
 					ifTrue: [ (aFace faceForm scaledIntoFormOfSize: 32@32) ] ];
 			rowStencil: [ :eachIcon | eachIcon asElement margin: (BlInsets left: 5 right: 5) ] ];
+		column: 'Gender' do: [:aColumn | 
+			aColumn item: [ :aFace | aFace attributes gender ] ];
 		column: 'Location' do: [:aColumn | 
 			aColumn item: [ :aFace | aFace rectangle ] ].
 		
