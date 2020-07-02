@@ -5,7 +5,7 @@ Class {
 		'body',
 		'title',
 		'id',
-		'userId'
+		'user'
 	],
 	#category : #'GToolkit-Demo-TodosAPI-Core'
 }
@@ -62,7 +62,7 @@ TDSimplePost >> id: anInteger [
 { #category : #accessing }
 TDSimplePost >> initialize [
 	super initialize.
-	userId := TDUserId empty.
+	user := TDUser empty.
 	id := 0.
 	title := ''.
 	body := ''.
@@ -79,13 +79,23 @@ TDSimplePost >> title: aString [
 ]
 
 { #category : #accessing }
+TDSimplePost >> user [
+	^ user.
+]
+
+{ #category : #accessing }
+TDSimplePost >> user: anObject [
+	user := anObject.
+]
+
+{ #category : #accessing }
 TDSimplePost >> userId [
-	^ userId idValue.
+	^ user idValue.
 ]
 
 { #category : #accessing }
 TDSimplePost >> userId: anInteger [
-	userId := TDUserId new 
+	self user: (TDUser new 
 		idValue: anInteger;
-		searchType: #Post.
+		searchType: #Post).
 ]

@@ -4,8 +4,8 @@ Class {
 	#instVars : [
 		'completed',
 		'title',
-		'userId',
-		'id'
+		'id',
+		'user'
 	],
 	#category : #'GToolkit-Demo-TodosAPI-Core'
 }
@@ -54,7 +54,7 @@ TDTodoPost >> id: anInteger [
 TDTodoPost >> initialize [
 	super initialize.
 	id := 0.
-	userId := TDUserId empty.
+	user := TDUser empty.
 	title := ''.
 	completed := nil.
 ]
@@ -70,13 +70,23 @@ TDTodoPost >> title: aString [
 ]
 
 { #category : #accessing }
+TDTodoPost >> user [
+	^ user.
+]
+
+{ #category : #accessing }
+TDTodoPost >> user: anObject [
+	user := anObject.
+]
+
+{ #category : #accessing }
 TDTodoPost >> userId [
-	^ userId idValue.
+	^ user idValue.
 ]
 
 { #category : #accessing }
 TDTodoPost >> userId: anInteger [
-	userId := TDUserId new 
+	self user: (TDUser new 
 		idValue: anInteger;
-		searchType: #Todo.
+		searchType: #Todo).
 ]

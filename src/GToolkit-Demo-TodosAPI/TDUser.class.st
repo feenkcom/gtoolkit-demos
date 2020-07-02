@@ -1,5 +1,5 @@
 Class {
-	#name : #TDUserId,
+	#name : #TDUser,
 	#superclass : #TDModel,
 	#instVars : [
 		'searchType',
@@ -9,12 +9,12 @@ Class {
 }
 
 { #category : #requirements }
-TDUserId class >> empty [
+TDUser class >> empty [
 	^ TDNullUserId uniqueInstance.
 ]
 
 { #category : #accessing }
-TDUserId >> allSearchResultsFromThisUser [
+TDUser >> allSearchResultsFromThisUser [
 	| client |
 	(self searchType == #Todo)
 		ifTrue: [ 
@@ -28,7 +28,7 @@ TDUserId >> allSearchResultsFromThisUser [
 ]
 
 { #category : #accessing }
-TDUserId >> gtResultsListFor: aView [
+TDUser >> gtResultsListFor: aView [
 	<gtView>
 	| viewName |
 	
@@ -47,28 +47,28 @@ TDUserId >> gtResultsListFor: aView [
 ]
 
 { #category : #accessing }
-TDUserId >> idValue [
+TDUser >> idValue [
 	^ userId.
 ]
 
 { #category : #accessing }
-TDUserId >> idValue: anInteger [
+TDUser >> idValue: anInteger [
 	userId := anInteger.
 ]
 
 { #category : #accessing }
-TDUserId >> initialize [
+TDUser >> initialize [
 	super initialize.
 	userId := 0.
 	searchType := nil.
 ]
 
 { #category : #accessing }
-TDUserId >> searchType [
+TDUser >> searchType [
 	^ searchType.
 ]
 
 { #category : #accessing }
-TDUserId >> searchType: aByteSymbol [
+TDUser >> searchType: aByteSymbol [
 	searchType := aByteSymbol.
 ]
