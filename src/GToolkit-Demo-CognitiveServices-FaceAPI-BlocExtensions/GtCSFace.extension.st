@@ -18,11 +18,30 @@ GtCSFace >> gtFaceLandmarksViewFor: aView [
 ]
 
 { #category : #'*GToolkit-Demo-CognitiveServices-FaceAPI-BlocExtensions' }
+GtCSFace >> gtFaceLandmarksVisualFor: aView [
+	<gtView>
+	^ aView explicit
+		title: 'Landmarks (visual)';
+		priority: 19;
+		stencil: [ 
+			| faceElement extentElement |
+			faceElement := GtCSInspectorFaceBlocElement new
+				initializeForFace: (GtCSFace new
+					rectangle: self rectangle;
+					landmarks: self landmarks).
+			extentElement := BlScalableElement new.
+			extentElement size: 256@256.
+			extentElement 
+				contentElement: faceElement.
+			extentElement ]
+]
+
+{ #category : #'*GToolkit-Demo-CognitiveServices-FaceAPI-BlocExtensions' }
 GtCSFace >> gtFaceViewFor: aView [
 	<gtView>
 	^ aView explicit
 		title: 'Face';
-		priority: 25;
+		priority: 11;
 		stencil: [ 
 			| faceElement extentElement |
 			faceElement := BlElement new
@@ -49,5 +68,6 @@ GtCSFace >> gtViewAttributesListFor: aView [
 GtCSFace >> gtViewLandmarksListFor: aView [
 	<gtView>
 	^ (self landmarks gtFaceLandmarksListFor: aView)
+		title: 'Landmarks (list)';
 		priority: 19
 ]

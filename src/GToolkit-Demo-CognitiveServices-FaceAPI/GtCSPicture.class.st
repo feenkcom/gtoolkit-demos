@@ -76,6 +76,19 @@ GtCSPicture >> faces [
 	^ faces ifNil: [ #() ]
 ]
 
+{ #category : #printing }
+GtCSPicture >> gtDisplayOn: aStream [
+	super gtDisplayOn: aStream.
+	aStream nextPutAll: '('.
+	faces 
+		ifNil: [ aStream nextPutAll: 'no face data loaded'. ]
+		ifNotNil: [ faces size = 1
+			ifTrue: [ aStream nextPutAll: '1 face' ]
+			ifFalse: [ aStream nextPutAll: faces size asString, ' faces' ]  ].
+	aStream nextPutAll: ')'.
+	
+]
+
 { #category : #testing }
 GtCSPicture >> hasFaceStorage [
 	^ faces ~= nil

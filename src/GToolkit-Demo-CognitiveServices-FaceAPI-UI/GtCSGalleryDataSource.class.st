@@ -12,7 +12,7 @@ Class {
 		'pictures',
 		'picturesCache'
 	],
-	#category : 'GToolkit-Demo-CognitiveServices-FaceAPI-UI'
+	#category : #'GToolkit-Demo-CognitiveServices-FaceAPI-UI'
 }
 
 { #category : #'as yet unclassified' }
@@ -80,6 +80,14 @@ GtCSGalleryDataSource >> gtInspectorPicturesIn: aComposite [
 			(aPictureWrapper extent ifNil: [ ' - ' ]) asString  ]
 ]
 
+{ #category : #'as yet unclassified' }
+GtCSGalleryDataSource >> gtViewPicturesFor: aView [
+	<gtView>
+	^ aView list 
+		title: 'Pictures';
+		items: [ self pictures collect: #picture ]
+]
+
 { #category : #accessing }
 GtCSGalleryDataSource >> itemCount [
 	^ self pictures size
@@ -142,9 +150,10 @@ GtCSGalleryDataSource >> pictures: aList [
 { #category : #accessing }
 GtCSGalleryDataSource >> picturesCache [
 	^ picturesCache ifNil: [ 
-		self picturesCache: LRUCache new 
+		self picturesCache: (LRUCache new 
 			beThreadSafe;
-			maximumWeight: 8 ]
+			maximumWeight: 8).
+		picturesCache ]
 ]
 
 { #category : #accessing }

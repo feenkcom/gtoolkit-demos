@@ -6,7 +6,7 @@ I use a CSGalleryDataSource for accessing the pictures that I should display.
 Class {
 	#name : #GtCSGalleryMorph,
 	#superclass : #BlInfiniteElement,
-	#category : 'GToolkit-Demo-CognitiveServices-FaceAPI-UI'
+	#category : #'GToolkit-Demo-CognitiveServices-FaceAPI-UI'
 }
 
 { #category : #opening }
@@ -67,5 +67,5 @@ GtCSGalleryMorph >> defaultLayout [
 { #category : #'children hooks' }
 GtCSGalleryMorph >> onAddedToSceneGraph [
 	super onAddedToSceneGraph.
-	dataSource requestPictures
+	"dataSource requestPictures"
 ]
