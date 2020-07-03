@@ -94,7 +94,7 @@ GtTour >> coderExplanationWithLinksText [
 	
 	text := 'The coder is where you work with your code. It allows you to browse, create and remove classes and methods.
 
-Opening the coder on a class dispalys the ' asRopedText,
+Opening the coder on a class displays the ' asRopedText,
 ('class name' asRopedText glamorousExplanationFor: #className),
 ', the ' asRopedText,
 ('class comment' asRopedText glamorousExplanationFor: #commentTab),
