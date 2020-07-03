@@ -18,11 +18,11 @@ TDUser >> allSearchResultsFromThisUser [
 	| client |
 	(self searchType == #Todo)
 		ifTrue: [ 
-			client := TDClient new getAllTodosFromUserWithId: self idValue.
+			client := TDClient new getAllTodosForUserId: self idValue.
 			^ client todos ].
 	(self searchType == #Post)
 		ifTrue: [ 
-			client := TDClient new getAllPostsFromUserWithId: self idValue.
+			client := TDClient new getAllPostsForUserId: self idValue.
 			^ client posts ].
 	^ OrderedCollection new.
 ]

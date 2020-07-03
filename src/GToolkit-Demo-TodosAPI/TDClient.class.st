@@ -2,7 +2,6 @@ Class {
 	#name : #TDClient,
 	#superclass : #Object,
 	#instVars : [
-		'serverUrl',
 		'posts',
 		'signalProgress',
 		'rawJSON',
@@ -13,63 +12,44 @@ Class {
 
 { #category : #accessing }
 TDClient >> getAllPosts [
-	<return: #Array of: #TDSimplePost>
-	serverUrl := 'https://jsonplaceholder.typicode.com/posts'.
-	posts := TDDownloadPostsListCommand new
-		client: self;
-		signalProgress: self signalProgress;
-		execute;
-		list.
+	posts := self request
+		requestAllPosts;
+		execute.
 ]
 
 { #category : #accessing }
-TDClient >> getAllPostsFromUserWithId: anInteger [
-	serverUrl := 'https://jsonplaceholder.typicode.com/posts?userId=', anInteger asString.
-	posts := TDDownloadPostsListCommand new
-		client: self;
-		signalProgress: self signalProgress;
-		execute;
-		list.
+TDClient >> getAllPostsForUserId: anInteger [
+	posts := self request
+		requestPostsForUserId: anInteger;
+		execute.
 ]
 
 { #category : #accessing }
 TDClient >> getAllTodos [
-	serverUrl := 'https://jsonplaceholder.typicode.com/todos'.
-	todos := TDDownloadTodosListCommand new
-		client: self;
-		signalProgress: self signalProgress;
-		execute;
-		list.
+	todos := self request
+		requestAllTodos;
+		execute.
 ]
 
 { #category : #accessing }
-TDClient >> getAllTodosFromUserWithId: anInteger [
-	serverUrl := 'https://jsonplaceholder.typicode.com/todos?userId=', anInteger asString.
-	todos := TDDownloadTodosListCommand new
-		client: self;
-		signalProgress: self signalProgress;
-		execute;
-		list.
+TDClient >> getAllTodosForUserId: anInteger [
+	todos := self request
+		requestTodosForUserId: anInteger;
+		execute.
 ]
 
 { #category : #accessing }
 TDClient >> getPostWithId: anInteger [
-	serverUrl := 'https://jsonplaceholder.typicode.com/posts/', anInteger asString.
-	posts add: (TDDownloadPostCommand new
-		client: self;
-		signalProgress: self signalProgress;
-		execute;
-		post).
+	posts add: (self request
+		requestPostWithId: anInteger;
+		execute).
 ]
 
 { #category : #accessing }
 TDClient >> getTodoWithId: anInteger [
-	serverUrl := 'https://jsonplaceholder.typicode.com/todos/', anInteger asString.
-	todos add: (TDDownloadTodoCommand new
-		client: self;
-		signalProgress: self signalProgress;
-		execute;
-		toDo).
+	todos add: (self request
+		requestTodoWithId: anInteger;
+		execute).
 ]
 
 { #category : #accessing }
@@ -203,7 +183,6 @@ TDClient >> gtTodosListFor: aView [
 { #category : #accessing }
 TDClient >> initialize [
 	super initialize.
-	serverUrl := ''.
 	posts := OrderedCollection new.
 	todos := OrderedCollection new.
 	signalProgress := false.
@@ -225,8 +204,10 @@ TDClient >> rawJSON: aString [
 ]
 
 { #category : #accessing }
-TDClient >> serverUrl [
-	^ serverUrl.
+TDClient >> request [
+	^ TDDownloadCommand new
+		client: self;
+		signalProgress: self signalProgress.
 ]
 
 { #category : #accessing }
