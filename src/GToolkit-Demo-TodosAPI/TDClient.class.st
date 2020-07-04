@@ -170,7 +170,7 @@ TDClient >> gtTodoTilesFor: aView [
 		title: 'Todo Tiles' translated;
 		priority: 5;
 		stencil: [
-			| mainContainer scrollableContainer topEditorElement iconContainer tileContainer topTile bottomTile topText bottomText labelLook userButton |
+			| mainContainer scrollableContainer topEditorElement iconContainer tileContainer topTile bottomTile labelLook userButton |
 			mainContainer := BlScrollableElement new
 				constraintsDo: [ :c |
 					c horizontal matchParent.
@@ -202,20 +202,14 @@ TDClient >> gtTodoTilesFor: aView [
 					constraintsDo: [:c |
 						c horizontal matchParent.
 						c vertical fitContent ].
-				
 				iconContainer := BrButton new
 					border: (BlBorder paint: Color black width: 1);
 					margin: (BlInsets top: 10 right: 10 bottom: 0 left: 10);
-					height: 16;
-					width: 16.
+					size: 16@16.
 				(each completed) 
 					ifTrue: [ 
 						iconContainer icon: BrGlamorousVectorIcons accept.
-						iconContainer look: BrGlamorousButtonIconLook ].
-							
-				topText := each title asRopedText.
-				bottomText := 'User ', each userId asRopedText.
-	
+						iconContainer look: BrGlamorousButtonIconLook ].	
 				topEditorElement := BrEditor new
 					look: (BrGlamorousRegularEditorLook new fontSize: 18);
 					constraintsDo: [:c |
@@ -223,20 +217,18 @@ TDClient >> gtTodoTilesFor: aView [
 					margin: (BlInsets top: 0 right: 5 bottom: 0 left: 5);
 					vFitContent;
 					hMatchParent;
-					text: topText.
+					text: each title.
 				labelLook := BrTextLabelLook new
 					glamorousRegularFont;
 					fontSize: 14;
 					foreground: Color gray.
 				userButton := BrButton new
 					margin: (BlInsets top: 0 right: 5 bottom: 5 left: 47);
-					vFitContent;
-					hFitContent;
-					label: bottomText;
-					look: labelLook;
+					label: 'User ', each userId asString;
+					look: (BrGlamorousLinkSquaredButtonWithLabelLook new fontSize: 12);
 					action: [ :aButton |
 						aButton phlow spawnObject: (each user)].
-		
+
 				topTile
 					addChild: iconContainer;
 					addChild: topEditorElement.
