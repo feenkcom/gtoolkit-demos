@@ -5,10 +5,30 @@ Class {
 		'posts',
 		'signalProgress',
 		'rawJSON',
-		'todos'
+		'todos',
+		'comments'
 	],
 	#category : #'GToolkit-Demo-TodosAPI-Client'
 }
+
+{ #category : #accessing }
+TDClient >> comments [
+	^ comments.
+]
+
+{ #category : #accessing }
+TDClient >> getAllComments [
+	comments := self request
+		requestAllComments
+		execute.
+]
+
+{ #category : #accessing }
+TDClient >> getAllCommentsForPostId: anInteger [
+	comments := self request
+		requestCommentsForPostId: anInteger;
+		execute.
+]
 
 { #category : #accessing }
 TDClient >> getAllPosts [
@@ -39,6 +59,13 @@ TDClient >> getAllTodosForUserId: anInteger [
 ]
 
 { #category : #accessing }
+TDClient >> getCommentWithId: anInteger [
+	comments add: (self request
+		requestCommentWithId: anInteger;
+		execute).
+]
+
+{ #category : #accessing }
 TDClient >> getPostWithId: anInteger [
 	posts add: (self request
 		requestPostWithId: anInteger;
@@ -50,6 +77,20 @@ TDClient >> getTodoWithId: anInteger [
 	todos add: (self request
 		requestTodoWithId: anInteger;
 		execute).
+]
+
+{ #category : #accessing }
+TDClient >> gtCommentsListFor: aView [
+	<gtView>
+	self comments ifEmpty: [^ aView empty].
+	^ aView columnedList
+		title: 'Comments' translated;
+		priority: 5;
+		items: [ self comments ];
+		column: 'Id' translated do: [ :aColumn | 
+			aColumn item: [ :aComment | aComment id ] ];
+		column: 'Name' translated do: [ :aColumn | 
+			aColumn item: [ :aComment | aComment name ] ].
 ]
 
 { #category : #accessing }
@@ -221,6 +262,7 @@ TDClient >> initialize [
 	super initialize.
 	posts := OrderedCollection new.
 	todos := OrderedCollection new.
+	comments := OrderedCollection new.
 	signalProgress := false.
 ]
 

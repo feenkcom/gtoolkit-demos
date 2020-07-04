@@ -16,6 +16,13 @@ TDSimplePost class >> empty [
 ]
 
 { #category : #accessing }
+TDSimplePost >> allCommentsForThisPost [
+	| client |
+	client := TDClient new getAllCommentsForPostId: self id.
+	^ client comments.
+]
+
+{ #category : #accessing }
 TDSimplePost >> body [
 	^ body.
 ]
@@ -23,6 +30,19 @@ TDSimplePost >> body [
 { #category : #accessing }
 TDSimplePost >> body: aString [
 	body := aString.
+]
+
+{ #category : #accessing }
+TDSimplePost >> gtCommentsListFor: aView [
+	<gtView>
+	^ aView columnedList
+		title: 'Comments' translated;
+		priority: 5;
+		items: [ self allCommentsForThisPost ];
+		column: 'Id' translated do: [ :aColumn | 
+			aColumn item: [ :aComment | aComment id ] ];
+		column: 'Name' translated do: [ :aColumn | 
+			aColumn item: [ :aComment | aComment name ] ].
 ]
 
 { #category : #accessing }

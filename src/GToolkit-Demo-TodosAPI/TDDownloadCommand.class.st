@@ -50,6 +50,16 @@ TDDownloadCommand >> readResponse: aResponse [
 		ifTrue: [ ^ TDJsonMapping readPostsInfo: aResponse].
 	(self requestType == #PostSingle)
 		ifTrue: [ ^ TDJsonMapping readPostInfo: aResponse].
+	(self requestType == #CommentSingle)
+		ifTrue: [ ^ TDJsonMapping readCommentInfo: aResponse].
+	(self requestType == #CommentsCollection)
+		ifTrue: [ ^ TDJsonMapping readCommentsInfo: aResponse].
+]
+
+{ #category : #accessing }
+TDDownloadCommand >> requestAllComments [
+	url := self url, 'comments'.
+	requestType := #CommentsCollection.
 ]
 
 { #category : #accessing }
@@ -62,6 +72,18 @@ TDDownloadCommand >> requestAllPosts [
 TDDownloadCommand >> requestAllTodos [
 	url := self url, 'todos'.
 	requestType := #TodosCollection.
+]
+
+{ #category : #accessing }
+TDDownloadCommand >> requestCommentWithId: anInteger [
+	url := self url, 'comments/', anInteger asString.
+	requestType := #CommentSingle.
+]
+
+{ #category : #accessing }
+TDDownloadCommand >> requestCommentsForPostId: anInteger [
+	url := self url, 'comments?postId=', anInteger asString.
+	requestType := #CommentsCollection.
 ]
 
 { #category : #accessing }
