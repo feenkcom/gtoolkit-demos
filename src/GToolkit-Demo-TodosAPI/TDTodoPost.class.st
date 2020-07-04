@@ -32,9 +32,9 @@ TDTodoPost >> gtTodoInforFor: aView [
 		title: 'Details' translated;
 		priority: 5;
 		items: [ { 
-			'Title: ' -> self title asString.
-			'Id: ' -> self id asString.
-			'User ID: ' -> self userId asString.
+			'Title: ' -> self title.
+			'Id: ' -> self id.
+			'User ID: ' -> self userId.
 			'Completed: ' -> self completed} ];
 		column: 'Property' translated format: [ :assoc | assoc key ];
 		column: 'Value' translated format: [ :assoc | assoc value ].
