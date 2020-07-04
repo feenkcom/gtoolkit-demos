@@ -7,6 +7,14 @@ Class {
 }
 
 { #category : #'as yet unclassified' }
+TDJsonMapping class >> collectionOfCommentsInfoMappingFor: aNeoJsonMapper [
+	aNeoJsonMapper
+		for: #CollectionOfCommentsInfo customDo: [ :mapping |
+			mapping listOfElementSchema: TDComment ].
+	self commentInfoMappingFor: aNeoJsonMapper.
+]
+
+{ #category : #'as yet unclassified' }
 TDJsonMapping class >> collectionOfPostsInfoMappingFor: aNeoJsonMapper [
 	aNeoJsonMapper
 		for: #CollectionOfPostsInfo customDo: [ :mapping |
@@ -20,6 +28,17 @@ TDJsonMapping class >> collectionOfTodosInfoMappingFor: aNeoJsonMapper [
 		for: #CollectionOfTodosInfo customDo: [ :mapping |
 			mapping listOfElementSchema: TDTodoPost ].
 	self todoInfoMappingFor: aNeoJsonMapper.
+]
+
+{ #category : #'as yet unclassified' }
+TDJsonMapping class >> commentInfoMappingFor: aNeoJsonMapper [
+	aNeoJsonMapper
+		for: TDComment do: [ :mapping |
+			mapping mapAccessor: #postId.
+			mapping mapAccessor: #id.
+			mapping mapAccessor: #name.
+			mapping mapAccessor: #email.
+			mapping mapAccessor: #body ].
 ]
 
 { #category : #'as yet unclassified' }
@@ -38,6 +57,22 @@ TDJsonMapping class >> read: aJsonSchema withMapping: aMessageSymbol on: aReadSt
 	reader := (NeoJSONReader on: aReadStream).
 	self perform: aMessageSymbol with: reader.
 	^ reader nextAs: aJsonSchema
+]
+
+{ #category : #'as yet unclassified' }
+TDJsonMapping class >> readCommentInfo: aJsonPostInfo [
+	^ self
+		read: TDComment
+		withMapping: #commentInfoMappingFor:
+		on: aJsonPostInfo readStream.
+]
+
+{ #category : #'as yet unclassified' }
+TDJsonMapping class >> readCommentsInfo: aJsonCollectionOfPostsInfo [
+	^ self
+		read: #CollectionOfCommentsInfo
+		withMapping: #collectionOfCommentsInfoMappingFor:
+		on: aJsonCollectionOfPostsInfo readStream.
 ]
 
 { #category : #'as yet unclassified' }

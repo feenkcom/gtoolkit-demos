@@ -2,74 +2,95 @@ Class {
 	#name : #TDClient,
 	#superclass : #Object,
 	#instVars : [
-		'serverUrl',
 		'posts',
 		'signalProgress',
 		'rawJSON',
-		'todos'
+		'todos',
+		'comments'
 	],
 	#category : #'GToolkit-Demo-TodosAPI-Client'
 }
 
 { #category : #accessing }
-TDClient >> getAllPosts [
-	<return: #Array of: #TDSimplePost>
-	serverUrl := 'https://jsonplaceholder.typicode.com/posts'.
-	posts := TDDownloadPostsListCommand new
-		client: self;
-		signalProgress: self signalProgress;
-		execute;
-		list.
+TDClient >> comments [
+	^ comments.
 ]
 
 { #category : #accessing }
-TDClient >> getAllPostsFromUserWithId: anInteger [
-	serverUrl := 'https://jsonplaceholder.typicode.com/posts?userId=', anInteger asString.
-	posts := TDDownloadPostsListCommand new
-		client: self;
-		signalProgress: self signalProgress;
-		execute;
-		list.
+TDClient >> getAllComments [
+	comments := self request
+		requestAllComments
+		execute.
+]
+
+{ #category : #accessing }
+TDClient >> getAllCommentsForPostId: anInteger [
+	comments := self request
+		requestCommentsForPostId: anInteger;
+		execute.
+]
+
+{ #category : #accessing }
+TDClient >> getAllPosts [
+	posts := self request
+		requestAllPosts;
+		execute.
+]
+
+{ #category : #accessing }
+TDClient >> getAllPostsForUserId: anInteger [
+	posts := self request
+		requestPostsForUserId: anInteger;
+		execute.
 ]
 
 { #category : #accessing }
 TDClient >> getAllTodos [
-	serverUrl := 'https://jsonplaceholder.typicode.com/todos'.
-	todos := TDDownloadTodosListCommand new
-		client: self;
-		signalProgress: self signalProgress;
-		execute;
-		list.
+	todos := self request
+		requestAllTodos;
+		execute.
 ]
 
 { #category : #accessing }
-TDClient >> getAllTodosFromUserWithId: anInteger [
-	serverUrl := 'https://jsonplaceholder.typicode.com/todos?userId=', anInteger asString.
-	todos := TDDownloadTodosListCommand new
-		client: self;
-		signalProgress: self signalProgress;
-		execute;
-		list.
+TDClient >> getAllTodosForUserId: anInteger [
+	todos := self request
+		requestTodosForUserId: anInteger;
+		execute.
+]
+
+{ #category : #accessing }
+TDClient >> getCommentWithId: anInteger [
+	comments add: (self request
+		requestCommentWithId: anInteger;
+		execute).
 ]
 
 { #category : #accessing }
 TDClient >> getPostWithId: anInteger [
-	serverUrl := 'https://jsonplaceholder.typicode.com/posts/', anInteger asString.
-	posts add: (TDDownloadPostCommand new
-		client: self;
-		signalProgress: self signalProgress;
-		execute;
-		post).
+	posts add: (self request
+		requestPostWithId: anInteger;
+		execute).
 ]
 
 { #category : #accessing }
 TDClient >> getTodoWithId: anInteger [
-	serverUrl := 'https://jsonplaceholder.typicode.com/todos/', anInteger asString.
-	todos add: (TDDownloadTodoCommand new
-		client: self;
-		signalProgress: self signalProgress;
-		execute;
-		toDo).
+	todos add: (self request
+		requestTodoWithId: anInteger;
+		execute).
+]
+
+{ #category : #accessing }
+TDClient >> gtCommentsListFor: aView [
+	<gtView>
+	self comments ifEmpty: [^ aView empty].
+	^ aView columnedList
+		title: 'Comments' translated;
+		priority: 5;
+		items: [ self comments ];
+		column: 'Id' translated do: [ :aColumn | 
+			aColumn item: [ :aComment | aComment id ] ];
+		column: 'Name' translated do: [ :aColumn | 
+			aColumn item: [ :aComment | aComment name ] ].
 ]
 
 { #category : #accessing }
@@ -149,7 +170,7 @@ TDClient >> gtTodoTilesFor: aView [
 		title: 'Todo Tiles' translated;
 		priority: 5;
 		stencil: [
-			| mainContainer scrollableContainer editorElement container text |
+			| mainContainer scrollableContainer topEditorElement bottomEditorElement iconContainer tileContainer topTile bottomTile topText bottomText |
 			mainContainer := BlScrollableElement new
 				constraintsDo: [ :c |
 					c horizontal matchParent.
@@ -161,27 +182,63 @@ TDClient >> gtTodoTilesFor: aView [
 					c horizontal matchParent.
 					c vertical fitContent ].
 			self todos do: [ :each |			
-				container := BlElement new
-					layout: BlLinearLayout horizontal;
+				tileContainer := BlElement new
+					layout: BlLinearLayout vertical;
+					constraintsDo: [:c |
+						c linear horizontal alignCenter.
+						c vertical fitContent ];
 					background: Color white;
 					look: BrShadowLook;
 					padding: (BlInsets all: 5);
 					margin: (BlInsets all: 5);
+					width: 300.
+				topTile := BlElement new
+					layout: BlLinearLayout horizontal;
 					constraintsDo: [:c |
-						c vertical fitContent.
-						c horizontal matchParent].
-			
-	text := 'Id: ' asRopedText, each id asRopedText, String cr asRopedText, 'User Id: ' asRopedText, each userId asRopedText, String cr asRopedText, 'Title: ' asRopedText, each title asRopedText, String cr asRopedText, 'Completed: ' asRopedText, each completed asRopedText.
-				"text := 'Id: ' asRopedText, each id asRopedText, String cr asRopedText, 'Title: ' asRopedText, each title asRopedText."
+						c horizontal matchParent.
+						c vertical fitContent ].
+				bottomTile := BlElement new
+					layout: BlLinearLayout vertical;
+					constraintsDo: [:c |
+						c horizontal matchParent.
+						c vertical fitContent ].
+				
+				iconContainer := BrButton new
+					border: (BlBorder paint: Color black width: 1);
+					margin: (BlInsets top: 10 right: 10 bottom: 0 left: 10);
+					height: 16;
+					width: 16.
+				(each completed) 
+					ifTrue: [ 
+						iconContainer icon: BrGlamorousVectorIcons accept.
+						iconContainer look: BrGlamorousButtonIconLook ].
+							
+				topText := each title asRopedText.
+				bottomText := 'User ', each userId asRopedText.
 	
-				editorElement := BrEditor new
-					look: (BrGlamorousRegularEditorLook new fontSize: 14);
+				topEditorElement := BrEditor new
+					look: (BrGlamorousRegularEditorLook new fontSize: 18);
+					constraintsDo: [:c |
+						c linear horizontal alignCenter ];
+					margin: (BlInsets top: 0 right: 5 bottom: 0 left: 5);
 					vFitContent;
 					hMatchParent;
-					text: text.		
+					text: topText.
+				bottomEditorElement := BrEditor new
+					look: (BrGlamorousRegularEditorLook new fontSize: 14; foreground: Color gray);
+					margin: (BlInsets top: 0 right: 5 bottom: 5 left: 41);
+					vFitContent;
+					hFitContent;
+					text: bottomText.
 		
-				container addChild: editorElement.
-				scrollableContainer addChild: container ].
+				topTile
+					addChild: iconContainer;
+					addChild: topEditorElement.
+				bottomTile addChild: bottomEditorElement.
+				tileContainer 
+					addChild: topTile;
+					addChild: bottomTile.
+				scrollableContainer addChild: tileContainer ].
 			mainContainer addChild: scrollableContainer.
 			mainContainer ].
 ]
@@ -203,9 +260,9 @@ TDClient >> gtTodosListFor: aView [
 { #category : #accessing }
 TDClient >> initialize [
 	super initialize.
-	serverUrl := ''.
 	posts := OrderedCollection new.
 	todos := OrderedCollection new.
+	comments := OrderedCollection new.
 	signalProgress := false.
 ]
 
@@ -225,8 +282,10 @@ TDClient >> rawJSON: aString [
 ]
 
 { #category : #accessing }
-TDClient >> serverUrl [
-	^ serverUrl.
+TDClient >> request [
+	^ TDDownloadCommand new
+		client: self;
+		signalProgress: self signalProgress.
 ]
 
 { #category : #accessing }
