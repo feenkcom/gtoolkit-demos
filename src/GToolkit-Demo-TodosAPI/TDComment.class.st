@@ -53,10 +53,10 @@ TDComment >> gtCommentInfoFor: aView [
 		title: 'Details' translated;
 		priority: 10;
 		items: [ { 
-			'Post Id: ' -> self postId asString.
-			'Comment Id: ' -> self id asString.
-			'Name: ' -> self name asString.
-			'Email: ' -> self email asString } ];
+			'Post Id: ' -> self postId.
+			'Comment Id: ' -> self id.
+			'Name: ' -> self name.
+			'Email: ' -> self email } ];
 		column: 'Property' translated format: [ :assoc | assoc key ];
 		column: 'Value' translated format: [ :assoc | assoc value ].
 ]

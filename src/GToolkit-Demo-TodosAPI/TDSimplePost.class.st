@@ -62,9 +62,9 @@ TDSimplePost >> gtPostInfoFor: aView [
 		title: 'Details' translated;
 		priority: 10;
 		items: [ { 
-			'Title: ' -> self title asString.
-			'Id: ' -> self id asString.
-			'User ID: ' -> self userId asString } ];
+			'Title: ' -> self title.
+			'Id: ' -> self id.
+			'User ID: ' -> self userId } ];
 		column: 'Property' translated format: [ :assoc | assoc key ];
 		column: 'Value' translated format: [ :assoc | assoc value ].
 ]
