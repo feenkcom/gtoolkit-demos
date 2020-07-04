@@ -170,7 +170,7 @@ TDClient >> gtTodoTilesFor: aView [
 		title: 'Todo Tiles' translated;
 		priority: 5;
 		stencil: [
-			| mainContainer scrollableContainer topEditorElement bottomEditorElement iconContainer tileContainer topTile bottomTile topText bottomText |
+			| mainContainer scrollableContainer topEditorElement iconContainer tileContainer topTile bottomTile topText bottomText labelLook userButton |
 			mainContainer := BlScrollableElement new
 				constraintsDo: [ :c |
 					c horizontal matchParent.
@@ -224,17 +224,23 @@ TDClient >> gtTodoTilesFor: aView [
 					vFitContent;
 					hMatchParent;
 					text: topText.
-				bottomEditorElement := BrEditor new
-					look: (BrGlamorousRegularEditorLook new fontSize: 14; foreground: Color gray);
-					margin: (BlInsets top: 0 right: 5 bottom: 5 left: 41);
+				labelLook := BrTextLabelLook new
+					glamorousRegularFont;
+					fontSize: 14;
+					foreground: Color gray.
+				userButton := BrButton new
+					margin: (BlInsets top: 0 right: 5 bottom: 5 left: 47);
 					vFitContent;
 					hFitContent;
-					text: bottomText.
+					label: bottomText;
+					look: labelLook;
+					action: [ :aButton |
+						aButton phlow spawnObject: (each user)].
 		
 				topTile
 					addChild: iconContainer;
 					addChild: topEditorElement.
-				bottomTile addChild: bottomEditorElement.
+				bottomTile addChild: userButton.
 				tileContainer 
 					addChild: topTile;
 					addChild: bottomTile.
