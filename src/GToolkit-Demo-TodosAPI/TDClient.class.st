@@ -217,7 +217,11 @@ TDClient >> gtTodoTilesFor: aView [
 					margin: (BlInsets top: 0 right: 5 bottom: 0 left: 5);
 					vFitContent;
 					hMatchParent;
+					beReadOnlyWithoutSelection;
 					text: each title.
+				topEditorElement
+					when: BlClickEvent
+					do: [:e | topEditorElement phlow spawnObject: each].
 				labelLook := BrTextLabelLook new
 					glamorousRegularFont;
 					fontSize: 14;
