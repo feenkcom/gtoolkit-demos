@@ -323,7 +323,7 @@ Color r: 0 g: 0.42 b: 0' };
 			newTextWithFormat: (self subtitleString: 'Messages execution order');
 			newTextWithFormat: (self descriptionString: 'The messages are executed as follows: first unary, then binary and finally keyword messages. If there are one or more messages of similar precedence, they are executed from left to right.');
 			element: [ GtPlaygroundSlide new
-				snippets: { '"This is equivalent to: (6 + (6 squared)), where squared is an Unaru message and + is a Binary"
+				snippets: { '"This is equivalent to: (6 + (6 squared)), where squared is an Unary message and + is a Binary"
 6 + 6 squared.'.
 							'"This is equivalent to: (2 raisedTo: (3+2)), where + is a Binary message and raisedTo: is a Keyword"
 2 raisedTo: 3 + 2.'.
