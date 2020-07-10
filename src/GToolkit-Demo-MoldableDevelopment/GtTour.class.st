@@ -266,12 +266,13 @@ GtTour >> create [
 				newText: 'Glamorous Toolkit is a platform. While it is implemented in Pharo, it can already tackle multiple other languages.').
 			(GtLabelAndElementSlide new
 				element: [ GtPager createWrappedOn: (GtClassCoder forClass: JSParser) ];
-				newFadedText: 'The first non-Pharo language we accommodated is the language with which we write parsers.';
+				newFadedText: 'The first non-Pharo language we accommodated is the language with which we write parsers for other languages.';
 				newFadedText: 'Here you see a concrete instance of the language used for defining the parser for JavaScript.').
-			
+			(GtTextSlide new
+				newText: 'The graphical stack is worth taking a look at as well. It features the property of rendering everything in a single rendering tree.').
 			GtSlideshowSlide new
 				text: ('Want to dive deeper into the rendering stack? Follow the show below.');
-				slideshow: [ GtInspectorViews new create ] withTitle: 'Inspector views'.
+				slideshow: [ GtOneRenderingTree new create ] withTitle: 'One rendering tree'.
 			(GtLabelAndElementSlide new
 				element: [ self treemapWithViewsAndExamples ];
 				newFadedText: 'The need for moldability is pervasive.';
