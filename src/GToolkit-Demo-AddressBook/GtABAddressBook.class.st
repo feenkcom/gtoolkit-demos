@@ -312,12 +312,11 @@ GtABAddressBook >> gtViewContactsIconsCircularOn: aView [
 { #category : #ui }
 GtABAddressBook >> gtViewContactsListOn: aView [
 	<gtView>
-	^ aView list 
+	^ aView list
 		title: 'Contacts List' translated;
 		priority: 8;
 		items: [ self allContacts ];
-		itemFormat: [ :aContact |
-			aContact fullName asRopedText ].
+		itemText: [ :aContact | aContact fullName asRopedText ]
 ]
 
 { #category : #ui }
