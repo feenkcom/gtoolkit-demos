@@ -119,6 +119,32 @@ You can expand a method as well, by clicking the ' asRopedText,
 ]
 
 { #category : #'api - instantiation' }
+GtTour >> coderWithComment [
+	| aScripter |
+	aScripter := BlDevScripter new.
+	aScripter
+		substep: 'Initial Coder'
+		do: [ :aStep | 
+			aStep set
+				label: 'Coder';
+				element: [ (GtCoder forClass: GtCSPicture) createInPager maximized ] ].
+	aScripter
+		substep: 'Evaluate first snippet and inspect'
+		do: [ :aStep | 
+			aStep click
+				label: 'Click on evaluate and inspect button';
+				onBreadthFirstChildOfClass: GtBehaviorCoderElement;
+				onBreadthFirstChildOfClass: BrTabGroup;
+				onChildNamed: #header;
+				onChildAt: 1;
+				onChildAt: 1;
+				onChildAt: 2.
+			aStep wait forEmptySpaceTaskQueue ].
+	aScripter syncContinue.
+	^ aScripter elementWithoutParent
+]
+
+{ #category : #'api - instantiation' }
 GtTour >> create [
 	| show |
 	show := GtSlideShow new.
