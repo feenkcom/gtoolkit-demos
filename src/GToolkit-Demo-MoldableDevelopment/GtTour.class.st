@@ -88,25 +88,25 @@ GtTour >> coderExplanationWithLinks [
 		addChild: coderElement.
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #accessing }
 GtTour >> coderExplanationWithLinksText [
 	| text |
 	
-	text := 'The coder is where you work with your code. It allows you to browse, create and remove classes and methods.
+	text := 'Coder is where you work with your code. It allows you to browse, create and remove packages, classes and methods.
 
-Opening the coder on a class dispalys the ' asRopedText,
+Opening the coder on a class displays the ' asRopedText,
 ('class name' asRopedText glamorousExplanationFor: #className),
 ', the ' asRopedText,
 ('class comment' asRopedText glamorousExplanationFor: #commentTab),
-' and a list of all the ' asRopedText,
+' and the list of ' asRopedText,
 ('methods' asRopedText glamorousExplanationFor: #methodTab),
-' in the class. On top of that, you can click on the ' asRopedText,
-('expand button' asRopedText glamorousExplanationFor: #expandClassButton),
-' to see more details about the class, for example: the superclass, package, tag, traits, instance and class side variables.
+'. The class header can be ' asRopedText,
+('expanded' asRopedText glamorousExplanationFor: #expandClassButton),
+' in place to get access to and edit details about the class: the superclass, package, tag, traits, instance and class side variables.
 
-You can expand a method as well, by clicking the ' asRopedText,
-('expand button' asRopedText glamorousExplanationFor: #expandMethodButton),
-' from that method. This way, you can see the source code, edit it or remove the method. There is also an option to ' asRopedText,
+You can also ' asRopedText,
+('expand' asRopedText glamorousExplanationFor: #expandMethodButton),
+' methods. This way, you can work with methods right in place. There is also an option to ' asRopedText,
 ('search' asRopedText glamorousExplanationFor: #searchButton),
 ' for a method in the class or to ' asRopedText,
 ('add' asRopedText glamorousExplanationFor: #addButton),
@@ -198,7 +198,7 @@ GtTour >> create [
 				newTextWithFormat: GtMethodCoderStylerExamples new viewsExplanationWithLinksText;
 				element: [ self viewMethodWithResultExplanationWithLinksExample ].
 			GtSlideshowSlide new
-				textWithFormat: ('Want to learn more about inspector views? Follow the show below.' asRopedText glamorousRegularFont);
+				text: ('Want to learn more about inspector views? Follow the show below.');
 				slideshow: [ GtInspectorViews new create ] withTitle: 'Inspector views'.
 			GtTextAndElementSlide new
 				newTextWithFormat: self playgroundExplanationWithLinksText;
@@ -245,8 +245,9 @@ GtTour >> create [
 					('live documents' asRopedText
 						fontSize: 50;
 						glamorousRegularFont)).
-			(GtElementSlide new
-				element: [ GtPager createWrappedOn: (GtDocumenter forClass: BaselineOfGToolkit) ]).
+			GtLabelAndElementSlide new
+				element: [ GtPager createWrappedOn: (GtDocumenter forClass: BaselineOfGToolkit) ];
+				newFadedText: ('This is a live document intertwining text and graphics. Click on the links to spawn other documents and navigate the image as a wiki.').
 "			(GtTitleSlide new
 				titleText:
 					('tracing variables' asRopedText
@@ -261,6 +262,10 @@ GtTour >> create [
 				element: [ GtPager createWrappedOn: (GtClassCoder forClass: JSParser) ];
 				newFadedText: 'The first non-Pharo language we accommodated is the language with which we write parsers.';
 				newFadedText: 'Here you see a concrete instance of the language used for defining the parser for JavaScript.').
+			
+			GtSlideshowSlide new
+				text: ('Want to dive deeper into the rendering stack? Follow the show below.');
+				slideshow: [ GtInspectorViews new create ] withTitle: 'Inspector views'.
 			(GtLabelAndElementSlide new
 				element: [ self treemapWithViewsAndExamples ];
 				newFadedText: 'The need for moldability is pervasive.';
@@ -537,11 +542,11 @@ GtTour >> playgroundExplanationWithLinks [
 		addChild: (GtPager createWrappedOn: playgroundElement).
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #accessing }
 GtTour >> playgroundExplanationWithLinksText [
 	| text |
 	
-	text := 'The playground is where you can play around with the code. You can run queries or create scripts without the need for classes, methods or variable declarations. The last line in the script is the one that returns an object that is then opened in the inspector.
+	text := 'Playground is where you can play around with the code. You can run queries or create scripts without the need for classes, methods or variable declarations. The last line in the script is the one that returns an object that is then opened in the inspector.
 
 You can have multiple code ' asRopedText,
 ('snippets' asRopedText glamorousExplanationFor: #snippets),
