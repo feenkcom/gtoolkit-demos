@@ -93,7 +93,6 @@ GtTour >> coderExplanationWithLinksText [
 	| text |
 	
 	text := 'Coder is where you work with your code. It allows you to browse, create and remove packages, classes and methods.
-
 Opening the coder on a class displays the ' asRopedText,
 ('class name' asRopedText glamorousExplanationFor: #className),
 ', the ' asRopedText,
@@ -103,7 +102,6 @@ Opening the coder on a class displays the ' asRopedText,
 '. The class header can be ' asRopedText,
 ('expanded' asRopedText glamorousExplanationFor: #expandClassButton),
 ' in place to get access to and edit details about the class: the superclass, package, tag, traits, instance and class side variables.
-
 You can also ' asRopedText,
 ('expand' asRopedText glamorousExplanationFor: #expandMethodButton),
 ' methods. This way, you can work with methods right in place. There is also an option to ' asRopedText,
@@ -179,7 +177,7 @@ GtTour >> create [
 				newText: 'Moldable development starts from the idea that everything about software, including code, is data. And data is shapeless, yet we, humans, need a concrete shape to reason about it. The environment provides this shape, and this is why the environment is essential.';
 				newText: 'To reason about data, we need to view it through a lens that is specific to the question we have. And when we do not have an appropriate view, we should be able to create it inexpensively. This applies for everything in sofware starting from  the tiniest objects.';
 				newText: 'For example, take a look to the right at a few views on an the same object holding a piece of text. Every view is relevant from a certain perspective and the environment must accommodate all of them.';
-				elementWeight: 0.7.
+				elementWeight: 0.5.
 
 			"		GtTitleSlide new
 			titleText: ('components' asRopedText fontSize: 50; glamorousRegularFont).
@@ -246,8 +244,16 @@ GtTour >> create [
 						fontSize: 50;
 						glamorousRegularFont)).
 			GtLabelAndElementSlide new
-				element: [ GtPager createWrappedOn: (GtDocumenter forClass: BaselineOfGToolkit) ];
-				newFadedText: ('This is a live document intertwining text and graphics. Click on the links to spawn other documents and navigate the image as a wiki.').
+				element: [ (GtDocumenter forClass: GtCSPicture) 
+					margin: (BlInsets all: 10);
+					background: Color white;
+					look: BrShadowLook];
+				newFadedText: 'This is a live document intertwining text, code and graphics.';
+				newFadedText: 'Browse it. Execute the code. Try editing the text, too. It''s live'.
+			GtLabelAndElementSlide new
+				element: [ self coderWithComment ];
+				newFadedText: 'Interestingly, the document is actually the comment of a class.';
+				newFadedText: 'Click on the links to spawn other documents and navigate the image as a wiki.'.
 "			(GtTitleSlide new
 				titleText:
 					('tracing variables' asRopedText
