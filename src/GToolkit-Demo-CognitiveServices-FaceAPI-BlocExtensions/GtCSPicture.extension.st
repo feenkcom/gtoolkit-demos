@@ -3,22 +3,18 @@ Extension { #name : #GtCSPicture }
 { #category : #'*GToolkit-Demo-CognitiveServices-FaceAPI-BlocExtensions' }
 GtCSPicture >> gtFacesFor: aView [
 	<gtView>
-	
-	^ aView columnedList 
+	^ aView columnedList
 		title: 'Faces';
 		priority: 20;
 		items: [ self faces ];
-		column: 'Preview' do: [:aColumn | 
-			aColumn item: [ :aFace | 
-				aFace hasFaceForm 
-					ifFalse: [ (Form extent: 32@32)  ]
-					ifTrue: [ (aFace faceForm scaledIntoFormOfSize: 32@32) ] ];
-			rowStencil: [ :eachIcon | eachIcon asElement margin: (BlInsets left: 5 right: 5) ] ];
-		column: 'Gender' do: [:aColumn | 
-			aColumn item: [ :aFace | aFace attributes gender ] ];
-		column: 'Location' do: [:aColumn | 
-			aColumn item: [ :aFace | aFace rectangle ] ].
-		
+		column: 'Preview' icon: [ :aFace | 
+			aFace hasFaceForm
+				ifFalse: [ Form extent: 32 @ 32 ]
+				ifTrue: [ aFace faceForm scaledIntoFormOfSize: 32 @ 32 ] ];
+		column: 'Gender'
+			do: [ :aColumn | aColumn item: [ :aFace | aFace attributes gender ] ];
+		column: 'Location'
+			do: [ :aColumn | aColumn item: [ :aFace | aFace rectangle ] ]
 ]
 
 { #category : #'*GToolkit-Demo-CognitiveServices-FaceAPI-BlocExtensions' }
