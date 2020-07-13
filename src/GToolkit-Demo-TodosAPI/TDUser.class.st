@@ -2,15 +2,16 @@ Class {
 	#name : #TDUser,
 	#superclass : #TDModel,
 	#instVars : [
-		'searchType',
-		'userId'
+		'id',
+		'posts',
+		'todos'
 	],
 	#category : #'GToolkit-Demo-TodosAPI-Core'
 }
 
 { #category : #requirements }
 TDUser class >> empty [
-	^ TDNullUserId uniqueInstance.
+	^ TDNullUser uniqueInstance.
 ]
 
 { #category : #accessing }
