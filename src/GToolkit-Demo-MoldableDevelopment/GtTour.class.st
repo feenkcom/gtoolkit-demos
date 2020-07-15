@@ -88,25 +88,23 @@ GtTour >> coderExplanationWithLinks [
 		addChild: coderElement.
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #accessing }
 GtTour >> coderExplanationWithLinksText [
 	| text |
 	
-	text := 'The coder is where you work with your code. It allows you to browse, create and remove classes and methods.
-
+	text := 'Coder is where you work with your code. It allows you to browse, create and remove packages, classes and methods.
 Opening the coder on a class displays the ' asRopedText,
 ('class name' asRopedText glamorousExplanationFor: #className),
 ', the ' asRopedText,
 ('class comment' asRopedText glamorousExplanationFor: #commentTab),
-' and a list of all the ' asRopedText,
+' and the list of ' asRopedText,
 ('methods' asRopedText glamorousExplanationFor: #methodTab),
-' in the class. On top of that, you can click on the ' asRopedText,
-('expand button' asRopedText glamorousExplanationFor: #expandClassButton),
-' to see more details about the class, for example: the superclass, package, tag, traits, instance and class side variables.
-
-You can expand a method as well, by clicking the ' asRopedText,
-('expand button' asRopedText glamorousExplanationFor: #expandMethodButton),
-' from that method. This way, you can see the source code, edit it or remove the method. There is also an option to ' asRopedText,
+'. The class header can be ' asRopedText,
+('expanded' asRopedText glamorousExplanationFor: #expandClassButton),
+' in place to get access to and edit details about the class: the superclass, package, tag, traits, instance and class side variables.
+You can also ' asRopedText,
+('expand' asRopedText glamorousExplanationFor: #expandMethodButton),
+' methods. This way, you can work with methods right in place. There is also an option to ' asRopedText,
 ('search' asRopedText glamorousExplanationFor: #searchButton),
 ' for a method in the class or to ' asRopedText,
 ('add' asRopedText glamorousExplanationFor: #addButton),
@@ -116,6 +114,32 @@ You can expand a method as well, by clicking the ' asRopedText,
 		glamorousRegularFont;
 		fontSize: 20;
 		foreground: Color black.
+]
+
+{ #category : #'api - instantiation' }
+GtTour >> coderWithComment [
+	| aScripter |
+	aScripter := BlDevScripter new.
+	aScripter
+		substep: 'Initial Coder'
+		do: [ :aStep | 
+			aStep set
+				label: 'Coder';
+				element: [ (GtCoder forClass: GtCSPicture) createInPager maximized ] ].
+	aScripter
+		substep: 'Evaluate first snippet and inspect'
+		do: [ :aStep | 
+			aStep click
+				label: 'Click on evaluate and inspect button';
+				onBreadthFirstChildOfClass: GtBehaviorCoderElement;
+				onBreadthFirstChildOfClass: BrTabGroup;
+				onChildNamed: #header;
+				onChildAt: 1;
+				onChildAt: 1;
+				onChildAt: 2.
+			aStep wait forEmptySpaceTaskQueue ].
+	aScripter syncContinue.
+	^ aScripter elementWithoutParent
 ]
 
 { #category : #'api - instantiation' }
@@ -153,7 +177,7 @@ GtTour >> create [
 				newText: 'Moldable development starts from the idea that everything about software, including code, is data. And data is shapeless, yet we, humans, need a concrete shape to reason about it. The environment provides this shape, and this is why the environment is essential.';
 				newText: 'To reason about data, we need to view it through a lens that is specific to the question we have. And when we do not have an appropriate view, we should be able to create it inexpensively. This applies for everything in sofware starting from  the tiniest objects.';
 				newText: 'For example, take a look to the right at a few views on an the same object holding a piece of text. Every view is relevant from a certain perspective and the environment must accommodate all of them.';
-				elementWeight: 0.7.
+				elementWeight: 0.5.
 
 			"		GtTitleSlide new
 			titleText: ('components' asRopedText fontSize: 50; glamorousRegularFont).
@@ -172,7 +196,7 @@ GtTour >> create [
 				newTextWithFormat: GtMethodCoderStylerExamples new viewsExplanationWithLinksText;
 				element: [ self viewMethodWithResultExplanationWithLinksExample ].
 			GtSlideshowSlide new
-				textWithFormat: ('Want to learn more about inspector views? Follow the show below.' asRopedText glamorousRegularFont);
+				text: ('Want to learn more about inspector views? Follow the show below.');
 				slideshow: [ GtInspectorViews new create ] withTitle: 'Inspector views'.
 			GtTextAndElementSlide new
 				newTextWithFormat: self playgroundExplanationWithLinksText;
@@ -219,8 +243,17 @@ GtTour >> create [
 					('live documents' asRopedText
 						fontSize: 50;
 						glamorousRegularFont)).
-			(GtElementSlide new
-				element: [ GtPager createWrappedOn: (GtDocumenter forClass: BaselineOfGToolkit) ]).
+			GtLabelAndElementSlide new
+				element: [ (GtDocumenter forClass: GtCSPicture) 
+					margin: (BlInsets all: 10);
+					background: Color white;
+					look: BrShadowLook];
+				newFadedText: 'This is a live document intertwining text, code and graphics.';
+				newFadedText: 'Browse it. Execute the code. Try editing the text, too. It''s live'.
+			GtLabelAndElementSlide new
+				element: [ self coderWithComment ];
+				newFadedText: 'Interestingly, the document is actually the comment of a class.';
+				newFadedText: 'Click on the links to spawn other documents and navigate the image as a wiki.'.
 "			(GtTitleSlide new
 				titleText:
 					('tracing variables' asRopedText
@@ -233,8 +266,13 @@ GtTour >> create [
 				newText: 'Glamorous Toolkit is a platform. While it is implemented in Pharo, it can already tackle multiple other languages.').
 			(GtLabelAndElementSlide new
 				element: [ GtPager createWrappedOn: (GtClassCoder forClass: JSParser) ];
-				newFadedText: 'The first non-Pharo language we accommodated is the language with which we write parsers.';
+				newFadedText: 'The first non-Pharo language we accommodated is the language with which we write parsers for other languages.';
 				newFadedText: 'Here you see a concrete instance of the language used for defining the parser for JavaScript.').
+			(GtTextSlide new
+				newText: 'The graphical stack is worth taking a look at as well. It features the property of rendering everything in a single rendering tree.').
+			GtSlideshowSlide new
+				text: ('Want to dive deeper into the rendering stack? Follow the show below.');
+				slideshow: [ GtOneRenderingTree new create ] withTitle: 'One rendering tree'.
 			(GtLabelAndElementSlide new
 				element: [ self treemapWithViewsAndExamples ];
 				newFadedText: 'The need for moldability is pervasive.';
@@ -511,11 +549,11 @@ GtTour >> playgroundExplanationWithLinks [
 		addChild: (GtPager createWrappedOn: playgroundElement).
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #accessing }
 GtTour >> playgroundExplanationWithLinksText [
 	| text |
 	
-	text := 'The playground is where you can play around with the code. You can run queries or create scripts without the need for classes, methods or variable declarations. The last line in the script is the one that returns an object that is then opened in the inspector.
+	text := 'Playground is where you can play around with the code. You can run queries or create scripts without the need for classes, methods or variable declarations. The last line in the script is the one that returns an object that is then opened in the inspector.
 
 You can have multiple code ' asRopedText,
 ('snippets' asRopedText glamorousExplanationFor: #snippets),

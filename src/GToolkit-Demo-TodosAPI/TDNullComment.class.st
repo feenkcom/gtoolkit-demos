@@ -1,5 +1,5 @@
 Class {
-	#name : #TDNullSimplePost,
+	#name : #TDNullComment,
 	#superclass : #TDNullModel,
 	#traits : 'TGtUniqueInstance',
 	#classTraits : 'TGtUniqueInstance classTrait',
@@ -7,26 +7,26 @@ Class {
 }
 
 { #category : #accessing }
-TDNullSimplePost >> body [
+TDNullComment >> body [
 	^ ''.
 ]
 
 { #category : #accessing }
-TDNullSimplePost >> comments [
-	^ OrderedCollection new.
+TDNullComment >> email [
+	^ ''.
 ]
 
 { #category : #accessing }
-TDNullSimplePost >> id [
+TDNullComment >> id [
 	^ 0.
 ]
 
 { #category : #accessing }
-TDNullSimplePost >> title [
+TDNullComment >> name [
 	^ ''.
 ]
 
 { #category : #accessing }
-TDNullSimplePost >> userId [
+TDNullComment >> postId [
 	^ 0.
 ]

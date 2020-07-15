@@ -1,28 +1,24 @@
 Class {
-	#name : #TDUser,
-	#superclass : #TDModel,
+	#name : #TDNullUser,
+	#superclass : #TDNullModel,
+	#traits : 'TGtUniqueInstance',
+	#classTraits : 'TGtUniqueInstance classTrait',
 	#instVars : [
-		'id',
-		'posts',
-		'todos'
+		'todos',
+		'posts'
 	],
 	#category : #'GToolkit-Demo-TodosAPI-Core'
 }
 
-{ #category : #requirements }
-TDUser class >> empty [
-	^ TDNullUser uniqueInstance.
-]
-
 { #category : #accessing }
-TDUser >> gtPostsListFor: aView [
+TDNullUser >> gtPostsListFor: aView [
 	<gtView>
-	(posts := self requestPostsFromThisUser) ifEmpty: [^ aView empty].
+	self posts ifEmpty: [^ aView empty].
 	^ aView explicit
 		title: 'Posts' translated;
 		priority: 5;
 		stencil: [
-			| mainContainer scrollableContainer topEditorElement tileContainer topTile bottomTile userButton |
+			| mainContainer scrollableContainer topEditorElement tileContainer topTile bottomTile labelLook userButton |
 			mainContainer := BlScrollableElement new
 				constraintsDo: [ :c |
 					c horizontal matchParent.
@@ -66,15 +62,16 @@ TDUser >> gtPostsListFor: aView [
 				topEditorElement
 					when: BlClickEvent
 					do: [:e | topEditorElement phlow spawnObject: each].
-				userButton := BrEditor new
-					"constraintsDo: [:c |
-						c linear horizontal alignCenter ];"
-					margin: (BlInsets top: 0 right: 5 bottom: 5 left: 9);
-					text: 'Id ', each id asString;
-					look: (BrGlamorousRegularEditorLook new fontSize: 14; foreground: Color gray);
-					vFitContent;
-					hFitContent;
-					beReadOnlyWithoutSelection.
+				labelLook := BrTextLabelLook new
+					glamorousRegularFont;
+					fontSize: 14;
+					foreground: Color gray.
+				userButton := BrButton new
+					margin: (BlInsets top: 0 right: 5 bottom: 5 left: 12);
+					label: 'User ', each userId asString;
+					look: (BrGlamorousLinkSquaredButtonWithLabelLook new fontSize: 12);
+					action: [ :aButton |
+						aButton phlow spawnObject: (each user)].
 
 				topTile
 					addChild: topEditorElement.
@@ -88,14 +85,14 @@ TDUser >> gtPostsListFor: aView [
 ]
 
 { #category : #accessing }
-TDUser >> gtTodosListFor: aView [
+TDNullUser >> gtTodosListFor: aView [
 	<gtView>
-	(todos := self requestTodosFromThisUser) ifEmpty: [^ aView empty].
+	self todos ifEmpty: [^ aView empty].
 	^ aView explicit
 		title: 'Todos' translated;
 		priority: 5;
 		stencil: [
-			| mainContainer scrollableContainer topEditorElement iconContainer tileContainer topTile bottomTile userButton |
+			| mainContainer scrollableContainer topEditorElement iconContainer tileContainer topTile bottomTile labelLook userButton |
 			mainContainer := BlScrollableElement new
 				constraintsDo: [ :c |
 					c horizontal matchParent.
@@ -147,15 +144,16 @@ TDUser >> gtTodosListFor: aView [
 				topEditorElement
 					when: BlClickEvent
 					do: [:e | topEditorElement phlow spawnObject: each].
-				userButton := BrEditor new
-					"constraintsDo: [:c |
-						c linear horizontal alignCenter ];"
-					margin: (BlInsets top: 0 right: 5 bottom: 5 left: 42);
-					text: 'Id ', each id asString;
-					look: (BrGlamorousRegularEditorLook new fontSize: 14; foreground: Color gray);
-					vFitContent;
-					hFitContent;
-					beReadOnlyWithoutSelection.
+				labelLook := BrTextLabelLook new
+					glamorousRegularFont;
+					fontSize: 14;
+					foreground: Color gray.
+				userButton := BrButton new
+					margin: (BlInsets top: 0 right: 5 bottom: 5 left: 47);
+					label: 'User ', each userId asString;
+					look: (BrGlamorousLinkSquaredButtonWithLabelLook new fontSize: 12);
+					action: [ :aButton |
+						aButton phlow spawnObject: (each user)].
 
 				topTile
 					addChild: iconContainer;
@@ -170,37 +168,26 @@ TDUser >> gtTodosListFor: aView [
 ]
 
 { #category : #accessing }
-TDUser >> id [
-	^ id.
+TDNullUser >> id [
+	^ 0.
 ]
 
 { #category : #accessing }
-TDUser >> id: anInteger [
-	id := anInteger.
+TDNullUser >> posts [
+	^ posts ifNil: [OrderedCollection new].
 ]
 
 { #category : #accessing }
-TDUser >> initialize [
-	super initialize.
-	id := 0.
+TDNullUser >> posts: aList [
+	posts := aList.
 ]
 
 { #category : #accessing }
-TDUser >> posts [
-	^ posts.
+TDNullUser >> todos [
+	^ todos ifNil: [OrderedCollection new].
 ]
 
 { #category : #accessing }
-TDUser >> requestPostsFromThisUser [
-	^ TDClient new request requestPostsForUserId: self id.
-]
-
-{ #category : #accessing }
-TDUser >> requestTodosFromThisUser [
-	^ TDClient new request requestTodosForUserId: self id.
-]
-
-{ #category : #accessing }
-TDUser >> todos [
-	^ todos.
+TDNullUser >> todos: aList [
+	todos := aList.
 ]

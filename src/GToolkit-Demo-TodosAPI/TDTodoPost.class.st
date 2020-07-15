@@ -31,13 +31,12 @@ TDTodoPost >> gtTodoInforFor: aView [
 	^ aView columnedList
 		title: 'Details' translated;
 		priority: 5;
-		items: [ { 
-			'Title: ' -> self title asString.
-			'Id: ' -> self id asString.
-			'User ID: ' -> self userId asString.
-			'Completed: ' -> self completed} ];
-		column: 'Property' translated format: [ :assoc | assoc key ];
-		column: 'Value' translated format: [ :assoc | assoc value ].
+		items: [ {('Title: ' -> self title).
+			('Id: ' -> self id).
+			('User ID: ' -> self userId).
+			('Completed: ' -> self completed)} ];
+		column: 'Property' translated text: [ :assoc | assoc key ];
+		column: 'Value' translated text: [ :assoc | assoc value ]
 ]
 
 { #category : #accessing }
@@ -81,12 +80,10 @@ TDTodoPost >> user: anObject [
 
 { #category : #accessing }
 TDTodoPost >> userId [
-	^ user idValue.
+	^ self user id.
 ]
 
 { #category : #accessing }
 TDTodoPost >> userId: anInteger [
-	self user: (TDUser new 
-		idValue: anInteger;
-		searchType: #Todo).
+	self user: (TDUser new id: anInteger).
 ]

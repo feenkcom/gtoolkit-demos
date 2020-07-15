@@ -312,27 +312,28 @@ GtABAddressBook >> gtViewContactsIconsCircularOn: aView [
 { #category : #ui }
 GtABAddressBook >> gtViewContactsListOn: aView [
 	<gtView>
-	^ aView list 
+	^ aView list
 		title: 'Contacts List' translated;
 		priority: 8;
 		items: [ self allContacts ];
-		itemFormat: [ :aContact |
-			aContact fullName asRopedText ].
+		itemText: [ :aContact | aContact fullName asRopedText ]
 ]
 
 { #category : #ui }
 GtABAddressBook >> gtViewContactsOn: aView [
 	<gtView>
-	^ aView columnedList 
+	^ aView columnedList
 		title: 'Contacts with details' translated;
 		priority: 5;
 		items: [ self allContacts ];
-		column: 'Avatar' do: [ :aColumn | 
-			aColumn 
-				rowStencil: [ :aContact | aContact avatar asElement asScalableElement size: 32@32];
-				noResize ];
-		column: 'Name' format: [ :aContact | aContact fullName ];
-		column: 'Phone' format: [ :aContact | aContact telephone ].
+		column: 'Avatar'
+			do: [ :aColumn | 
+			aColumn
+				stencil:
+						[ :aContact | aContact avatar asElement asScalableElement size: 32 @ 32 ];
+				noWidth ];
+		column: 'Name' text: [ :aContact | aContact fullName ];
+		column: 'Phone' text: [ :aContact | aContact telephone ]
 ]
 
 { #category : #testing }

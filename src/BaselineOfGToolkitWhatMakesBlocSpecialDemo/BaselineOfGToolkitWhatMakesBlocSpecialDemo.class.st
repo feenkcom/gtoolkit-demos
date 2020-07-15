@@ -1,6 +1,5 @@
 "
 !What makes Bloc special
-
 Learn more about it in ${class:GtWhatMakesBlocSpecialExplanation}$
 "
 Class {
