@@ -329,8 +329,9 @@ GtABAddressBook >> gtViewContactsOn: aView [
 		column: 'Avatar'
 			do: [ :aColumn | 
 			aColumn
-				stencil: [ :aContact | aContact avatar asElement asScalableElement size: 32 @ 32 ];
-				noResize ];
+				stencil:
+						[ :aContact | aContact avatar asElement asScalableElement size: 32 @ 32 ];
+				noWidth ];
 		column: 'Name' text: [ :aContact | aContact fullName ];
 		column: 'Phone' text: [ :aContact | aContact telephone ]
 ]
