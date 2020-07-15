@@ -5,40 +5,81 @@ Class {
 }
 
 { #category : #accessing }
-TDExamples >> requestAllTodos [
+TDExamples >> requestAllPosts [
 	<gtExample>
-	| client |
-	client := TDClient new
-		getAllTodos.
+	| postsList |
+	postsList := TDClient new
+		getAllPosts.
 	
-	self assert: client todos isNil not.
+	self assert: postsList isNotNil.
+	self assert: postsList posts size equals: 100.
 	
-	^ client.
+	^ postsList.
 ]
 
 { #category : #accessing }
-TDExamples >> requestAllTodosFromUserWithIdFive [
+TDExamples >> requestAllTodos [
 	<gtExample>
-	| client |
-	client := TDClient new
-		getAllTodosForUserId: 5.
+	| todosList |
+	todosList := TDClient new
+		getAllTodos.
 	
-	self assert:client todos isNil not.
-	self assert: (client todos first user idValue) equals: 5.
-	self assert: (client todos last user idValue) equals: 5.
+	self assert: todosList isNotNil.
+	self assert: todosList todos size equals: 200.
 	
-	^ client.
+	^ todosList.
+]
+
+{ #category : #accessing }
+TDExamples >> requestCommentWithIdFive [
+	<gtExample>
+	| comment |
+	comment := TDClient new
+		getCommentWithId: 5.
+	
+	self assert: comment isNotNil.
+	self assert: comment id equals: 5.
+	self assert: comment postId equals: 1.
+	
+	^ comment.
+]
+
+{ #category : #accessing }
+TDExamples >> requestPostWithIdThree [
+	<gtExample>
+	| post |
+	post := TDClient new
+		getPostWithId: 3.
+	
+	self assert: post isNotNil.
+	self assert: post id equals: 3.
+	self assert: post userId equals: 1.
+	
+	^ post.
 ]
 
 { #category : #accessing }
 TDExamples >> requestTodoWithIdEight [
 	<gtExample>
-	| client |
-	client := TDClient new
+	| todo |
+	todo := TDClient new
 		getTodoWithId: 8.
 	
-	self assert: client todos size equals: 1.
-	self assert: client todos first id equals: 8.
+	self assert: todo user isNotNil.
+	self assert: todo id equals: 8.
 	
-	^ client.
+	^ todo.
+]
+
+{ #category : #accessing }
+TDExamples >> requestUserWithIdFour [
+	<gtExample>
+	| user |
+	user := TDClient new
+		getUserWithId: 4.
+	
+	self assert: user isNotNil.
+	self assert: user id equals: 4.
+	
+	^ user.
 ]

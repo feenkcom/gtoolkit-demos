@@ -52,13 +52,12 @@ TDComment >> gtCommentInfoFor: aView [
 	^ aView columnedList
 		title: 'Details' translated;
 		priority: 10;
-		items: [ { 
-			'Post Id: ' -> self postId.
-			'Comment Id: ' -> self id.
-			'Name: ' -> self name.
-			'Email: ' -> self email } ];
-		column: 'Property' translated format: [ :assoc | assoc key ];
-		column: 'Value' translated format: [ :assoc | assoc value ].
+		items: [ {('Post Id: ' -> self postId).
+			('Comment Id: ' -> self id).
+			('Name: ' -> self name).
+			('Email: ' -> self email)} ];
+		column: 'Property' translated text: [ :assoc | assoc key ];
+		column: 'Value' translated text: [ :assoc | assoc value ]
 ]
 
 { #category : #accessing }

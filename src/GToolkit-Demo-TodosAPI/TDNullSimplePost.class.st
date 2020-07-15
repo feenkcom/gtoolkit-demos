@@ -12,6 +12,11 @@ TDNullSimplePost >> body [
 ]
 
 { #category : #accessing }
+TDNullSimplePost >> comments [
+	^ OrderedCollection new.
+]
+
+{ #category : #accessing }
 TDNullSimplePost >> id [
 	^ 0.
 ]
