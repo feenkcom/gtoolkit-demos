@@ -31,6 +31,21 @@ TDExamples >> requestAllTodos [
 ]
 
 { #category : #accessing }
+TDExamples >> requestAllTodosRawExample [
+	<gtExample>
+	| response |
+	response := ZnClient new
+		url: 'https://jsonplaceholder.typicode.com/todos';
+		get;
+		response.
+	
+	self assert: response isNotNil.
+	self assert: response status equals: 200.
+	
+	^ response.
+]
+
+{ #category : #accessing }
 TDExamples >> requestCommentWithIdFive [
 	<gtExample>
 	| comment |
@@ -59,6 +74,21 @@ TDExamples >> requestPostWithIdThree [
 ]
 
 { #category : #accessing }
+TDExamples >> requestPostsForUserWithIdFourRawExample [
+	<gtExample>
+	| response |
+	response := ZnClient new
+		url: 'https://jsonplaceholder.typicode.com/posts?userId=4';
+		get;
+		response.
+	
+	self assert: response isNotNil.
+	self assert: response status equals: 200.
+	
+	^ response.
+]
+
+{ #category : #accessing }
 TDExamples >> requestTodoWithIdEight [
 	<gtExample>
 	| todo |
@@ -69,6 +99,21 @@ TDExamples >> requestTodoWithIdEight [
 	self assert: todo id equals: 8.
 	
 	^ todo.
+]
+
+{ #category : #accessing }
+TDExamples >> requestTodoWithIdEightRawExample [
+	<gtExample>
+	| response |
+	response := ZnClient new
+		url: 'https://jsonplaceholder.typicode.com/todos/8';
+		get;
+		response.
+	
+	self assert: response isNotNil.
+	self assert: response status equals: 200.
+	
+	^ response.
 ]
 
 { #category : #accessing }
