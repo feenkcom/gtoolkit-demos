@@ -11,10 +11,8 @@ GtCSPicture >> gtFacesFor: aView [
 			aFace hasFaceForm
 				ifFalse: [ Form extent: 32 @ 32 ]
 				ifTrue: [ aFace faceForm scaledIntoFormOfSize: 32 @ 32 ] ];
-		column: 'Gender'
-			do: [ :aColumn | aColumn item: [ :aFace | aFace attributes gender ] ];
-		column: 'Location'
-			do: [ :aColumn | aColumn item: [ :aFace | aFace rectangle ] ]
+		column: 'Gender' item: [ :aFace | aFace attributes gender ];
+		column: 'Location' item: [ :aFace | aFace rectangle ]
 ]
 
 { #category : #'*GToolkit-Demo-CognitiveServices-FaceAPI-BlocExtensions' }
