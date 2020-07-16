@@ -6,7 +6,7 @@ Class {
 
 { #category : #accessing }
 GtRestAPI >> clientSlideText [
-	^ 'The first step is to create the client. This acts as the interface for the model. Through the client you can make different requests to the API.' asRopedText
+	^ 'The first step is to create the client. This is the component you interact with. Through it you can make different requests to the API.' asRopedText
 	glamorousRegularFont;
 	fontSize: 18;
 	foreground: Color black.
@@ -39,25 +39,24 @@ GtRestAPI >> create [
 						fontSize: 70;
 						glamorousRegularFont)).
 			(GtTextSlide new
-				newTextWithFormat: ('Rest API is a set of constraints used for creating web services. It helps for a better communication between systems.' asRopedText glamorousRegularFont; fontSize: 18; foreground: Color black);
-				newTextWithFormat: ('In the following slides, we will present a model that uses the Rest API to access a web service that contains posts, todos and comments, made by different users.' asRopedText glamorousRegularFont; fontSize: 18; foreground: Color black)).
+				newTextWithFormat: ('In the following slides, we will showcase a model that uses the Rest API to access a web service containing posts, todos and comments, made by different users.' asRopedText glamorousRegularFont; fontSize: 18; foreground: Color black)).
 			(GtLabelAndElementSlide new
-				newFadedText: 'Using it, we can request a specific post or todo';
+				newFadedText: 'Using the api, you can request a specific post or todo, by its id';
 				element: [GtExampleSlide new
-					method: (TDExamples >> #requestTodoWithIdEight);
+					method: (TDExamples >> #requestTodoWithIdEightRawExample);
 					asElement ]).
 			(GtLabelAndElementSlide new
-				newFadedText: 'We can request a user and all the posts and todos associated with it';
+				newFadedText: 'You can also request the posts made by a certain user';
 				element: [GtExampleSlide new
-					method: (TDExamples >> #requestUserWithIdFour);
+					method: (TDExamples >> #requestPostsForUserWithIdFourRawExample);
 					asElement ]).
 			(GtLabelAndElementSlide new
-				newFadedText: 'Or we can just request all the todos or all the posts in the system.';
+				newFadedText: 'Or you can just request all the todos, or all the posts, in the system.';
 				element: [GtExampleSlide new
-					method: (TDExamples >> #requestAllTodos);
+					method: (TDExamples >> #requestAllTodosRawExample);
 					asElement ]).
 			(GtTextSlide new
-				newTextWithFormat: ('Now let''s see how to implement a model like this.' asRopedText glamorousRegularFont; fontSize: 18; foreground: Color black)).
+				newTextWithFormat: ('Now let''s see how we can implement a user interface for this model and also how to display the information resulted in a more easy way to understand.' asRopedText glamorousRegularFont; fontSize: 18; foreground: Color black)).
 			(GtTextAndElementSlide new
 				newTextWithFormat: ('The Client' asRopedText bold; fontSize: 18; foreground: Color black);
 				newTextWithFormat: self clientSlideText;
@@ -66,6 +65,11 @@ GtRestAPI >> create [
 					look: BrShadowLook;
 					margin: (BlInsets right: 5);
 					addChild: (GtClassCoder forClass: TDClient) asElement ]).
+			(GtLabelAndElementSlide new
+				newFadedText: 'For example, you can make a request for all the posts in the system, as it is presented below.';
+				element: [GtExampleSlide new
+					method: (TDExamples >> #requestAllPosts);
+					asElement ]).
 			(GtTextAndElementSlide new
 				newTextWithFormat: ('The Requests' asRopedText bold; fontSize: 18; foreground: Color black);
 				newTextWithFormat: self requestsSlideText;
@@ -98,6 +102,11 @@ GtRestAPI >> create [
 					look: BrShadowLook;
 					margin: (BlInsets right: 5);
 					addChild: (GtClassCoder forClass: TDUser) asElement ]).
+			(GtLabelAndElementSlide new
+				newFadedText: 'Requesting a user will return that user with its information and the lists of posts and todos made by him.';
+				element: [GtExampleSlide new
+					method: (TDExamples >> #requestUserWithIdFour);
+					asElement ]).
 			(GtTextAndElementSlide new
 				newTextWithFormat: ('Todos' asRopedText bold; fontSize: 18; foreground: Color black);
 				newTextWithFormat: self todosSlideText;
@@ -106,6 +115,11 @@ GtRestAPI >> create [
 					look: BrShadowLook;
 					margin: (BlInsets right: 5);
 					addChild: (GtClassCoder forClass: TDTodoPost) asElement ]).
+			(GtLabelAndElementSlide new
+				newFadedText: 'A request for a todo will return you that todo with all the informations stored about it.';
+				element: [GtExampleSlide new
+					method: (TDExamples >> #requestTodoWithIdEight);
+					asElement ]).
 			(GtTextAndElementSlide new
 				newTextWithFormat: ('Simple Posts' asRopedText bold; fontSize: 18; foreground: Color black);
 				newTextWithFormat: self postsSlideText;
@@ -114,6 +128,11 @@ GtRestAPI >> create [
 					look: BrShadowLook;
 					margin: (BlInsets right: 5);
 					addChild: (GtClassCoder forClass: TDSimplePost) asElement ]).
+			(GtLabelAndElementSlide new
+				newFadedText: 'Similar with todos, a request for a post will return you that post.';
+				element: [GtExampleSlide new
+					method: (TDExamples >> #requestPostWithIdThree);
+					asElement ]).
 			(GtTextAndElementSlide new
 				newTextWithFormat: ('Comments' asRopedText bold; fontSize: 18; foreground: Color black);
 				newTextWithFormat: self commentsSlideText;
@@ -122,6 +141,11 @@ GtRestAPI >> create [
 					look: BrShadowLook;
 					margin: (BlInsets right: 5);
 					addChild: (GtClassCoder forClass: TDComment) asElement ]).
+			(GtLabelAndElementSlide new
+				newFadedText: 'And a request for a comment will return you that comment with everything you need to know about it.';
+				element: [GtExampleSlide new
+					method: (TDExamples >> #requestCommentWithIdFive);
+					asElement ]).
 			(GtLabelAndElementSlide new
 				newFadedText: 'You can play around with the snippets below to better see the model at work';
 				element: [ GtPlaygroundSlide new
@@ -155,7 +179,7 @@ GtRestAPI >> postsSlideText [
 
 { #category : #accessing }
 GtRestAPI >> requestsSlideText [
-	^ 'After that, we work on the actual requests. Based on the information from the client, the specific URLs are created and the information is received from the API in the form of a JSON file. This file will then be sent to a parser to read and save the data we need from it.' asRopedText
+	^ 'After that, we work on the actual requests. Based on the information from the client, the specific URLs are created and the information is received from the API in the form of a JSON file. This file will then be sent to a parser to read and save the data we need from it, so we can display it in a more pleasent form.' asRopedText
 	glamorousRegularFont;
 	fontSize: 18;
 	foreground: Color black.
