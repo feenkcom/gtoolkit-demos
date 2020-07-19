@@ -270,6 +270,9 @@ GtTour >> create [
 				newFadedText: 'Here you see a concrete instance of the language used for defining the parser for JavaScript.').
 			(GtTextSlide new
 				newText: 'The graphical stack is worth taking a look at as well. It features the property of rendering everything in a single rendering tree.').
+			GtLabelAndElementSlide new
+				element: [self visualizationElement];
+				newFadedText: 'Visualization is supported directly by the graphical stack.'.
 			GtSlideshowSlide new
 				text: ('Want to dive deeper into the rendering stack? Follow the show below.');
 				slideshow: [ GtOneRenderingTree new create ] withTitle: 'One rendering tree'.
@@ -688,6 +691,30 @@ GtTour >> viewMethodWithResultExplanationWithLinksExample [
 	verticalContainer addChild: resultInspectorContainer.
 	
 	^ verticalContainer.
+]
+
+{ #category : #accessing }
+GtTour >> visualizationElement [
+	^ BlElement new
+			layout: (BlGridLayout new columnCount: 2);
+			constraintsDo: [:c | 
+				c vertical matchParent.
+				c horizontal matchParent];
+			addChild: (GtBuildingTreeMapsExplanation new treemapWithCustomContainerElement asElement
+				look: BrShadowLook;
+				background: Color white;
+				margin: (BlInsets all: 10));
+			addChild: (GtMondrianDomainExamples new structureOfAnElement asElement
+				look: BrShadowLook;
+				background: Color white;
+				margin: (BlInsets all: 10));
+			addChild: (GtPlotterHorizontalBarChartExamples new brickDependenciesSizesBarChart asElement
+				look: BrShadowLook;
+				background: Color white;
+				margin: (BlInsets all: 10);
+				constraintsDo: [:c |
+					c grid horizontal span: 2
+				])
 ]
 
 { #category : #utility }
