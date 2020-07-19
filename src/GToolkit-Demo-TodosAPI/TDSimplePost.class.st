@@ -5,7 +5,8 @@ Class {
 		'body',
 		'title',
 		'id',
-		'user'
+		'user',
+		'comments'
 	],
 	#category : #'GToolkit-Demo-TodosAPI-Core'
 }
@@ -13,13 +14,6 @@ Class {
 { #category : #requirements }
 TDSimplePost class >> empty [
 	^ TDNullSimplePost uniqueInstance.
-]
-
-{ #category : #accessing }
-TDSimplePost >> allCommentsForThisPost [
-	| client |
-	client := TDClient new getAllCommentsForPostId: self id.
-	^ client comments.
 ]
 
 { #category : #accessing }
@@ -33,12 +27,18 @@ TDSimplePost >> body: aString [
 ]
 
 { #category : #accessing }
+TDSimplePost >> comments [
+	^ comments.
+]
+
+{ #category : #accessing }
 TDSimplePost >> gtCommentsListFor: aView [
 	<gtView>
+	(comments := self requestCommentsForThisPost) ifEmpty: [^ aView empty].
 	^ aView columnedList
 		title: 'Comments' translated;
 		priority: 5;
-		items: [ self allCommentsForThisPost ];
+		items: [ self comments ];
 		column: 'Id' translated do: [ :aColumn | 
 			aColumn item: [ :aComment | aComment id ] ];
 		column: 'Name' translated do: [ :aColumn | 
@@ -61,12 +61,11 @@ TDSimplePost >> gtPostInfoFor: aView [
 	^ aView columnedList
 		title: 'Details' translated;
 		priority: 10;
-		items: [ { 
-			'Title: ' -> self title.
-			'Id: ' -> self id.
-			'User ID: ' -> self userId } ];
-		column: 'Property' translated format: [ :assoc | assoc key ];
-		column: 'Value' translated format: [ :assoc | assoc value ].
+		items: [ {('Title: ' -> self title).
+			('Id: ' -> self id).
+			('User ID: ' -> self userId)} ];
+		column: 'Property' translated text: [ :assoc | assoc key ];
+		column: 'Value' translated text: [ :assoc | assoc value ]
 ]
 
 { #category : #accessing }
@@ -86,6 +85,12 @@ TDSimplePost >> initialize [
 	id := 0.
 	title := ''.
 	body := ''.
+	comments := OrderedCollection new.
+]
+
+{ #category : #accessing }
+TDSimplePost >> requestCommentsForThisPost [
+	^ TDClient new request requestCommentsForPostId: self id.
 ]
 
 { #category : #accessing }
@@ -110,12 +115,10 @@ TDSimplePost >> user: anObject [
 
 { #category : #accessing }
 TDSimplePost >> userId [
-	^ user idValue.
+	^ self user id.
 ]
 
 { #category : #accessing }
 TDSimplePost >> userId: anInteger [
-	self user: (TDUser new 
-		idValue: anInteger;
-		searchType: #Post).
+	self user: (TDUser new id: anInteger).
 ]

@@ -2,37 +2,13 @@ Class {
 	#name : #TDDownloadCommand,
 	#superclass : #Object,
 	#instVars : [
-		'client',
 		'signalProgress',
 		'znClient',
 		'url',
-		'requestType',
 		'result'
 	],
 	#category : #'GToolkit-Demo-TodosAPI-Command'
 }
-
-{ #category : #accessing }
-TDDownloadCommand >> client [
-	^ client.
-]
-
-{ #category : #accessing }
-TDDownloadCommand >> client: anObject [
-	client := anObject.
-]
-
-{ #category : #accessing }
-TDDownloadCommand >> execute [
-	| aResponse |
-	aResponse := self response.
-	aResponse isSuccess
-		ifFalse: [ ^ self result ].
-	aResponse := aResponse contents.
-	self client rawJSON: aResponse.
-	self result: (self readResponse: aResponse).
-	^ self result
-]
 
 { #category : #accessing }
 TDDownloadCommand >> initialize [
@@ -41,78 +17,111 @@ TDDownloadCommand >> initialize [
 ]
 
 { #category : #accessing }
-TDDownloadCommand >> readResponse: aResponse [
-	(self requestType == #TodosCollection)
-		ifTrue: [ ^ TDJsonMapping readTodosInfo: aResponse].
-	(self requestType == #TodoSingle)
-		ifTrue: [ ^ TDJsonMapping readTodoInfo: aResponse].
-	(self requestType == #PostsCollection)
-		ifTrue: [ ^ TDJsonMapping readPostsInfo: aResponse].
-	(self requestType == #PostSingle)
-		ifTrue: [ ^ TDJsonMapping readPostInfo: aResponse].
-	(self requestType == #CommentSingle)
-		ifTrue: [ ^ TDJsonMapping readCommentInfo: aResponse].
-	(self requestType == #CommentsCollection)
-		ifTrue: [ ^ TDJsonMapping readCommentsInfo: aResponse].
-]
-
-{ #category : #accessing }
 TDDownloadCommand >> requestAllComments [
+	| aResponse |
 	url := self url, 'comments'.
-	requestType := #CommentsCollection.
+	aResponse := self response.
+	aResponse isSuccess
+		ifFalse: [^ self result ].
+	aResponse := aResponse contents.
+	self result: (TDJsonMapping readCommentsInfo: aResponse).
+	^ self result.
 ]
 
 { #category : #accessing }
 TDDownloadCommand >> requestAllPosts [
+	| aResponse |
 	url := self url, 'posts'.
-	requestType := #PostsCollection.
+	aResponse := self response.
+	aResponse isSuccess
+		ifFalse: [^ self result ].
+	aResponse := aResponse contents.
+	self result: (TDJsonMapping readPostsInfo: aResponse).
+	^ self result.
 ]
 
 { #category : #accessing }
 TDDownloadCommand >> requestAllTodos [
+	| aResponse |
 	url := self url, 'todos'.
-	requestType := #TodosCollection.
+	aResponse := self response.
+	aResponse isSuccess
+		ifFalse: [^ self result ].
+	aResponse := aResponse contents.
+	self result: (TDJsonMapping readTodosInfo: aResponse).
+	^ self result.
 ]
 
 { #category : #accessing }
 TDDownloadCommand >> requestCommentWithId: anInteger [
+	| aResponse |
 	url := self url, 'comments/', anInteger asString.
-	requestType := #CommentSingle.
+	aResponse := self response.
+	aResponse isSuccess
+		ifFalse: [^ self result ].
+	aResponse := aResponse contents.
+	self result: (TDJsonMapping readCommentInfo: aResponse).
+	^ self result.
 ]
 
 { #category : #accessing }
 TDDownloadCommand >> requestCommentsForPostId: anInteger [
+	| aResponse |
 	url := self url, 'comments?postId=', anInteger asString.
-	requestType := #CommentsCollection.
+	aResponse := self response.
+	aResponse isSuccess
+		ifFalse: [^ self result ].
+	aResponse := aResponse contents.
+	self result: (TDJsonMapping readCommentsInfo: aResponse).
+	^ self result.
 ]
 
 { #category : #accessing }
 TDDownloadCommand >> requestPostWithId: anInteger [
+	| aResponse |
 	url := self url, 'posts/', anInteger asString.
-	requestType := #PostSingle.
+	aResponse := self response.
+	aResponse isSuccess
+		ifFalse: [^ self result ].
+	aResponse := aResponse contents.
+	self result: (TDJsonMapping readPostInfo: aResponse).
+	^ self result.
 ]
 
 { #category : #accessing }
 TDDownloadCommand >> requestPostsForUserId: anInteger [
+	| aResponse |
 	url := self url, 'posts?userId=', anInteger asString.
-	requestType := #PostsCollection.
+	aResponse := self response.
+	aResponse isSuccess
+		ifFalse: [^ self result ].
+	aResponse := aResponse contents.
+	self result: (TDJsonMapping readPostsInfo: aResponse).
+	^ self result.
 ]
 
 { #category : #accessing }
 TDDownloadCommand >> requestTodoWithId: anInteger [
+	| aResponse |
 	url := self url, 'todos/', anInteger asString.
-	requestType := #TodoSingle.
+	aResponse := self response.
+	aResponse isSuccess
+		ifFalse: [^ self result ].
+	aResponse := aResponse contents.
+	self result: (TDJsonMapping readTodoInfo: aResponse).
+	^ self result.
 ]
 
 { #category : #accessing }
 TDDownloadCommand >> requestTodosForUserId: anInteger [
+	| aResponse |
 	url := self url, 'todos?userId=', anInteger asString.
-	requestType := #TodosCollection.
-]
-
-{ #category : #accessing }
-TDDownloadCommand >> requestType [
-	^ requestType.
+	aResponse := self response.
+	aResponse isSuccess
+		ifFalse: [^ self result ].
+	aResponse := aResponse contents.
+	self result: (TDJsonMapping readTodosInfo: aResponse).
+	^ self result.
 ]
 
 { #category : #accessing }
