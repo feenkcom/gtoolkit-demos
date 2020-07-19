@@ -1,11 +1,11 @@
 Class {
-	#name : #GtRestAPI,
+	#name : #GtWorkingWithARestApi,
 	#superclass : #BrStencil,
 	#category : #'GToolkit-Demo-TodosAPI-Presentation'
 }
 
 { #category : #accessing }
-GtRestAPI >> clientSlideText [
+GtWorkingWithARestApi >> clientSlideText [
 	^ 'The first step is to create the client. This is the component you interact with. Through it you can make different requests to the API.' asRopedText
 	glamorousRegularFont;
 	fontSize: 18;
@@ -13,7 +13,7 @@ GtRestAPI >> clientSlideText [
 ]
 
 { #category : #accessing }
-GtRestAPI >> commentsSlideText [
+GtWorkingWithARestApi >> commentsSlideText [
 	^ 'Finally, a comment is left by a user to a post. It can be identified by an id and it stores the text comment, the id of the post it was left on and the name and email of the user that left it.' asRopedText
 	glamorousRegularFont;
 	fontSize: 18;
@@ -21,7 +21,7 @@ GtRestAPI >> commentsSlideText [
 ]
 
 { #category : #accessing }
-GtRestAPI >> coreSlideText [
+GtWorkingWithARestApi >> coreSlideText [
 	^ 'The information obtained from parsing the JSON file needs to be stored somewhere. So we create a structure of classes to help us with that. Each class will have its default variant and its null variant for instances where the request information is not found.' asRopedText
 	glamorousRegularFont;
 	fontSize: 18;
@@ -29,7 +29,7 @@ GtRestAPI >> coreSlideText [
 ]
 
 { #category : #accessing }
-GtRestAPI >> create [
+GtWorkingWithARestApi >> create [
 	| slideshow |
 	slideshow := GtSlideShow new.
 	slideshow
@@ -162,7 +162,7 @@ GtRestAPI >> create [
 ]
 
 { #category : #accessing }
-GtRestAPI >> parsingSlideText [
+GtWorkingWithARestApi >> parsingSlideText [
 	^ 'While parsing the JSON file we choose what information to store for each type of data by mapping the information to methods named accordingly.' asRopedText
 	glamorousRegularFont;
 	fontSize: 18;
@@ -170,7 +170,7 @@ GtRestAPI >> parsingSlideText [
 ]
 
 { #category : #accessing }
-GtRestAPI >> postsSlideText [
+GtWorkingWithARestApi >> postsSlideText [
 	^ 'The simple post is the second type of post a user can make. It is similar to the todo. The difference is that the post has a body of text instead of the status. It also has a list of comments left by other users to the specific post.' asRopedText
 	glamorousRegularFont;
 	fontSize: 18;
@@ -178,7 +178,7 @@ GtRestAPI >> postsSlideText [
 ]
 
 { #category : #accessing }
-GtRestAPI >> requestsSlideText [
+GtWorkingWithARestApi >> requestsSlideText [
 	^ 'After that, we work on the actual requests. Based on the information from the client, the specific URLs are created and the information is received from the API in the form of a JSON file. This file will then be sent to a parser to read and save the data we need from it, so we can display it in a more pleasent form.' asRopedText
 	glamorousRegularFont;
 	fontSize: 18;
@@ -186,7 +186,7 @@ GtRestAPI >> requestsSlideText [
 ]
 
 { #category : #accessing }
-GtRestAPI >> todosSlideText [
+GtWorkingWithARestApi >> todosSlideText [
 	^ 'Then we have a todo, that is a type of post a user can make. It holds the following informations: the user it is asscoated with, an id, a title and a status, specifically if it was completed or not.' asRopedText
 	glamorousRegularFont;
 	fontSize: 18;
@@ -194,7 +194,7 @@ GtRestAPI >> todosSlideText [
 ]
 
 { #category : #accessing }
-GtRestAPI >> userSlideText [
+GtWorkingWithARestApi >> userSlideText [
 	^ 'The first type of data is a user, that can be identified by an id. He also has a list of posts and a list of todos, associated with him. The two lists are are obtained through two separate requests to the API, after the user has been requested.' asRopedText
 	glamorousRegularFont;
 	fontSize: 18;
