@@ -35,13 +35,13 @@ GtWorkingWithARestApi >> create [
 	slideshow
 		slides:
 			{(GtTitleSlide new
-				titleText: ('Rest API' asRopedText
+				titleText: ('Working with a REST API' asRopedText
 						fontSize: 70;
 						glamorousRegularFont)).
 			(GtTextSlide new
-				newTextWithFormat: ('In the following slides, we will showcase a model that uses the Rest API to access a web service containing posts, todos and comments, made by different users.' asRopedText glamorousRegularFont; fontSize: 18; foreground: Color black)).
+				newTextWithFormat: ('In this slideshow, we exemplify how we can understand and browse an existing REST API containing posts, todos and comments, made by different users.' asRopedText glamorousRegularFont; fontSize: 18; foreground: Color black)).
 			(GtLabelAndElementSlide new
-				newFadedText: 'Using the api, you can request a specific post or todo, by its id';
+				newFadedText: 'Let''s start from the API, you can request a specific post or todo, by its id';
 				element: [GtExampleSlide new
 					method: (TDExamples >> #requestTodoWithIdEightRawExample);
 					asElement ]).
