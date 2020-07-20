@@ -9,13 +9,13 @@ Class {
 
 { #category : #accessing }
 TDClient >> getAllPosts [
-	^TDNullUser new
+	^ TDPostsGroup new
 		posts: self request requestAllPosts.
 ]
 
 { #category : #accessing }
 TDClient >> getAllTodos [
-	^ TDNullUser new
+	^ TDTodosGroup new
 		todos: self request requestAllTodos.
 ]
 
