@@ -18,7 +18,7 @@ TDJsonMapping class >> collectionOfCommentsInfoMappingFor: aNeoJsonMapper [
 TDJsonMapping class >> collectionOfPostsInfoMappingFor: aNeoJsonMapper [
 	aNeoJsonMapper
 		for: #CollectionOfPostsInfo customDo: [ :mapping |
-			mapping listOfElementSchema: TDSimplePost ].
+			mapping listOfElementSchema: TDPost ].
 	self postInfoMappingFor: aNeoJsonMapper.
 ]
 
@@ -26,7 +26,7 @@ TDJsonMapping class >> collectionOfPostsInfoMappingFor: aNeoJsonMapper [
 TDJsonMapping class >> collectionOfTodosInfoMappingFor: aNeoJsonMapper [
 	aNeoJsonMapper
 		for: #CollectionOfTodosInfo customDo: [ :mapping |
-			mapping listOfElementSchema: TDTodoPost ].
+			mapping listOfElementSchema: TDTodo ].
 	self todoInfoMappingFor: aNeoJsonMapper.
 ]
 
@@ -44,7 +44,7 @@ TDJsonMapping class >> commentInfoMappingFor: aNeoJsonMapper [
 { #category : #'as yet unclassified' }
 TDJsonMapping class >> postInfoMappingFor: aNeoJsonMapper [
 	aNeoJsonMapper
-		for: TDSimplePost do: [ :mapping |
+		for: TDPost do: [ :mapping |
 			mapping mapAccessor: #userId.
 			mapping mapAccessor: #id.
 			mapping mapAccessor: #title.
@@ -78,7 +78,7 @@ TDJsonMapping class >> readCommentsInfo: aJsonCollectionOfPostsInfo [
 { #category : #'as yet unclassified' }
 TDJsonMapping class >> readPostInfo: aJsonPostInfo [
 	^ self
-		read: TDSimplePost
+		read: TDPost
 		withMapping: #postInfoMappingFor:
 		on: aJsonPostInfo readStream.
 ]
@@ -94,7 +94,7 @@ TDJsonMapping class >> readPostsInfo: aJsonCollectionOfPostsInfo [
 { #category : #'as yet unclassified' }
 TDJsonMapping class >> readTodoInfo: aJsonPostInfo [
 	^ self
-		read: TDTodoPost
+		read: TDTodo
 		withMapping: #todoInfoMappingFor:
 		on: aJsonPostInfo readStream.
 ]
@@ -110,7 +110,7 @@ TDJsonMapping class >> readTodosInfo: aJsonCollectionOfToDosInfo [
 { #category : #'as yet unclassified' }
 TDJsonMapping class >> todoInfoMappingFor: aNeoJsonMapper [
 	aNeoJsonMapper
-		for: TDTodoPost do: [ :mapping |
+		for: TDTodo do: [ :mapping |
 			mapping mapAccessor: #userId.
 			mapping mapAccessor: #id.
 			mapping mapAccessor: #title.

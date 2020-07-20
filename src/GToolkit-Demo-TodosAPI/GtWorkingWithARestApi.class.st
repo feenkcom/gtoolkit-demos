@@ -192,7 +192,7 @@ GtWorkingWithARestApi >> create [
 					background: Color white;
 					look: BrShadowLook;
 					margin: (BlInsets right: 5);
-					addChild: (GtClassCoder forClass: TDTodoPost) asElement ]).
+					addChild: (GtClassCoder forClass: TDTodo) asElement ]).
 			(GtLabelAndElementSlide new
 				newFadedText: 'A request for a todo will return you that todo with all the informations stored about it.';
 				element: [GtExampleSlide new
@@ -205,7 +205,7 @@ GtWorkingWithARestApi >> create [
 					background: Color white;
 					look: BrShadowLook;
 					margin: (BlInsets right: 5);
-					addChild: (GtClassCoder forClass: TDSimplePost) asElement ]).
+					addChild: (GtClassCoder forClass: TDPost) asElement ]).
 			(GtLabelAndElementSlide new
 				newFadedText: 'Similar with todos, a request for a post will return you that post.';
 				element: [GtExampleSlide new
