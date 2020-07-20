@@ -1,5 +1,5 @@
 Class {
-	#name : #TDNullTodoPost,
+	#name : #TDNullPost,
 	#superclass : #TDNullModel,
 	#traits : 'TGtUniqueInstance',
 	#classTraits : 'TGtUniqueInstance classTrait',
@@ -7,21 +7,26 @@ Class {
 }
 
 { #category : #accessing }
-TDNullTodoPost >> completed [
-	^ nil.
-]
-
-{ #category : #accessing }
-TDNullTodoPost >> id [
-	^ 0.
-]
-
-{ #category : #accessing }
-TDNullTodoPost >> title [
+TDNullPost >> body [
 	^ ''.
 ]
 
 { #category : #accessing }
-TDNullTodoPost >> userId [
+TDNullPost >> comments [
+	^ OrderedCollection new.
+]
+
+{ #category : #accessing }
+TDNullPost >> id [
+	^ 0.
+]
+
+{ #category : #accessing }
+TDNullPost >> title [
+	^ ''.
+]
+
+{ #category : #accessing }
+TDNullPost >> userId [
 	^ 0.
 ]

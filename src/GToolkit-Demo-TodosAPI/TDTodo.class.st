@@ -1,5 +1,5 @@
 Class {
-	#name : #TDTodoPost,
+	#name : #TDTodo,
 	#superclass : #TDModel,
 	#instVars : [
 		'completed',
@@ -11,22 +11,22 @@ Class {
 }
 
 { #category : #requirements }
-TDTodoPost class >> empty [
-	^ TDNullTodoPost uniqueInstance. 
+TDTodo class >> empty [
+	^ TDNullTodo uniqueInstance. 
 ]
 
 { #category : #accessing }
-TDTodoPost >> completed [
+TDTodo >> completed [
 	^ completed.
 ]
 
 { #category : #accessing }
-TDTodoPost >> completed: aBoolean [
+TDTodo >> completed: aBoolean [
 	completed := aBoolean.
 ]
 
 { #category : #accessing }
-TDTodoPost >> gtTodoInforFor: aView [
+TDTodo >> gtTodoInforFor: aView [
 	<gtView>
 	^ aView columnedList
 		title: 'Details' translated;
@@ -40,17 +40,17 @@ TDTodoPost >> gtTodoInforFor: aView [
 ]
 
 { #category : #accessing }
-TDTodoPost >> id [
+TDTodo >> id [
 	^ id.
 ]
 
 { #category : #accessing }
-TDTodoPost >> id: anInteger [
+TDTodo >> id: anInteger [
 	id := anInteger.
 ]
 
 { #category : #accessing }
-TDTodoPost >> initialize [
+TDTodo >> initialize [
 	super initialize.
 	id := 0.
 	user := TDUser empty.
@@ -59,31 +59,31 @@ TDTodoPost >> initialize [
 ]
 
 { #category : #accessing }
-TDTodoPost >> title [
+TDTodo >> title [
 	^ title.
 ]
 
 { #category : #accessing }
-TDTodoPost >> title: aString [
+TDTodo >> title: aString [
 	title := aString.
 ]
 
 { #category : #accessing }
-TDTodoPost >> user [
+TDTodo >> user [
 	^ user.
 ]
 
 { #category : #accessing }
-TDTodoPost >> user: anObject [
+TDTodo >> user: anObject [
 	user := anObject.
 ]
 
 { #category : #accessing }
-TDTodoPost >> userId [
+TDTodo >> userId [
 	^ self user id.
 ]
 
 { #category : #accessing }
-TDTodoPost >> userId: anInteger [
+TDTodo >> userId: anInteger [
 	self user: (TDUser new id: anInteger).
 ]
