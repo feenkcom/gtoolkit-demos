@@ -6,7 +6,8 @@ Class {
 		'id',
 		'name',
 		'email',
-		'body'
+		'body',
+		'post'
 	],
 	#category : #'GToolkit-Demo-TodosAPI-Core'
 }
@@ -73,6 +74,7 @@ TDComment >> id: anInteger [
 { #category : #accessing }
 TDComment >> initialize [
 	super initialize.
+	post := TDPost empty.
 	postId := 0.
 	id := 0.
 	name := ''.
@@ -91,11 +93,21 @@ TDComment >> name: aString [
 ]
 
 { #category : #accessing }
+TDComment >> post [
+	^ post.
+]
+
+{ #category : #accessing }
+TDComment >> post: anObject [
+	post := anObject.
+]
+
+{ #category : #accessing }
 TDComment >> postId [
-	^ postId.
+	^ self post id.
 ]
 
 { #category : #accessing }
 TDComment >> postId: anInteger [
-	postId := anInteger.
+	self post: (TDClient new getPostWithId: anInteger).
 ]
