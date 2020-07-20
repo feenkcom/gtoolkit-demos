@@ -703,15 +703,15 @@ GtTour >> visualizationElement [
 			addChild: (GtBuildingTreeMapsExplanation new treemapWithCustomContainerElement asElement
 				look: BrShadowLook;
 				background: Color white;
-				margin: (BlInsets all: 10));
+				margin: (BlInsets all: 20));
 			addChild: (GtMondrianDomainExamples new structureOfAnElement asElement
 				look: BrShadowLook;
 				background: Color white;
-				margin: (BlInsets all: 10));
+				margin: (BlInsets all: 20));
 			addChild: (GtPlotterHorizontalBarChartExamples new brickDependenciesSizesBarChart asElement
 				look: BrShadowLook;
 				background: Color white;
-				margin: (BlInsets all: 10);
+				margin: (BlInsets all: 20);
 				constraintsDo: [:c |
 					c grid horizontal span: 2
 				])
