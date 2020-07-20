@@ -7,27 +7,27 @@ Class {
 { #category : #accessing }
 TDExamples >> requestAllPosts [
 	<gtExample>
-	| postsList |
-	postsList := TDClient new
+	| postsGroup |
+	postsGroup := TDClient new
 		getAllPosts.
 	
-	self assert: postsList isNotNil.
-	self assert: postsList posts size equals: 100.
+	self assert: postsGroup isNotNil.
+	self assert: postsGroup posts size equals: 100.
 	
-	^ postsList.
+	^ postsGroup.
 ]
 
 { #category : #accessing }
 TDExamples >> requestAllTodos [
 	<gtExample>
-	| todosList |
-	todosList := TDClient new
+	| todosGroup |
+	todosGroup := TDClient new
 		getAllTodos.
 	
-	self assert: todosList isNotNil.
-	self assert: todosList todos size equals: 200.
+	self assert: todosGroup isNotNil.
+	self assert: todosGroup todos size equals: 200.
 	
-	^ todosList.
+	^ todosGroup.
 ]
 
 { #category : #accessing }

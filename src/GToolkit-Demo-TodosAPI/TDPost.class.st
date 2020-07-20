@@ -1,5 +1,5 @@
 Class {
-	#name : #TDSimplePost,
+	#name : #TDPost,
 	#superclass : #TDModel,
 	#instVars : [
 		'body',
@@ -12,27 +12,27 @@ Class {
 }
 
 { #category : #requirements }
-TDSimplePost class >> empty [
-	^ TDNullSimplePost uniqueInstance.
+TDPost class >> empty [
+	^ TDNullPost uniqueInstance.
 ]
 
 { #category : #accessing }
-TDSimplePost >> body [
+TDPost >> body [
 	^ body.
 ]
 
 { #category : #accessing }
-TDSimplePost >> body: aString [
+TDPost >> body: aString [
 	body := aString.
 ]
 
 { #category : #accessing }
-TDSimplePost >> comments [
+TDPost >> comments [
 	^ comments.
 ]
 
 { #category : #accessing }
-TDSimplePost >> gtCommentsListFor: aView [
+TDPost >> gtCommentsListFor: aView [
 	<gtView>
 	(comments := self requestCommentsForThisPost) ifEmpty: [^ aView empty].
 	^ aView columnedList
@@ -46,7 +46,7 @@ TDSimplePost >> gtCommentsListFor: aView [
 ]
 
 { #category : #accessing }
-TDSimplePost >> gtPostBodyFor: aView [
+TDPost >> gtPostBodyFor: aView [
 	<gtView>
 	^ aView textEditor
 		title: 'Content' translated;
@@ -56,7 +56,7 @@ TDSimplePost >> gtPostBodyFor: aView [
 ]
 
 { #category : #accessing }
-TDSimplePost >> gtPostInfoFor: aView [
+TDPost >> gtPostInfoFor: aView [
 	<gtView>
 	^ aView columnedList
 		title: 'Details' translated;
@@ -69,17 +69,17 @@ TDSimplePost >> gtPostInfoFor: aView [
 ]
 
 { #category : #accessing }
-TDSimplePost >> id [
+TDPost >> id [
 	^ id.
 ]
 
 { #category : #accessing }
-TDSimplePost >> id: anInteger [
+TDPost >> id: anInteger [
 	id := anInteger.
 ]
 
 { #category : #accessing }
-TDSimplePost >> initialize [
+TDPost >> initialize [
 	super initialize.
 	user := TDUser empty.
 	id := 0.
@@ -89,36 +89,36 @@ TDSimplePost >> initialize [
 ]
 
 { #category : #accessing }
-TDSimplePost >> requestCommentsForThisPost [
+TDPost >> requestCommentsForThisPost [
 	^ TDClient new request requestCommentsForPostId: self id.
 ]
 
 { #category : #accessing }
-TDSimplePost >> title [
+TDPost >> title [
 	^ title.
 ]
 
 { #category : #accessing }
-TDSimplePost >> title: aString [
+TDPost >> title: aString [
 	title := aString.
 ]
 
 { #category : #accessing }
-TDSimplePost >> user [
+TDPost >> user [
 	^ user.
 ]
 
 { #category : #accessing }
-TDSimplePost >> user: anObject [
+TDPost >> user: anObject [
 	user := anObject.
 ]
 
 { #category : #accessing }
-TDSimplePost >> userId [
+TDPost >> userId [
 	^ self user id.
 ]
 
 { #category : #accessing }
-TDSimplePost >> userId: anInteger [
+TDPost >> userId: anInteger [
 	self user: (TDUser new id: anInteger).
 ]

@@ -9,13 +9,13 @@ Class {
 
 { #category : #accessing }
 TDClient >> getAllPosts [
-	^TDNullUser new
+	^ TDPostsGroup new
 		posts: self request requestAllPosts.
 ]
 
 { #category : #accessing }
 TDClient >> getAllTodos [
-	^ TDNullUser new
+	^ TDTodosGroup new
 		todos: self request requestAllTodos.
 ]
 
@@ -28,13 +28,13 @@ TDClient >> getCommentWithId: anInteger [
 { #category : #accessing }
 TDClient >> getPostWithId: anInteger [
 	^ (self request
-		requestPostWithId: anInteger) ifNil: [TDSimplePost empty].
+		requestPostWithId: anInteger) ifNil: [TDPost empty].
 ]
 
 { #category : #accessing }
 TDClient >> getTodoWithId: anInteger [
 	^ (self request
-		requestTodoWithId: anInteger) ifNil: [TDTodoPost empty].
+		requestTodoWithId: anInteger) ifNil: [TDTodo empty].
 ]
 
 { #category : #accessing }
