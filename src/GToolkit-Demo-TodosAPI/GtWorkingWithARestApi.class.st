@@ -5,54 +5,95 @@ Class {
 }
 
 { #category : #accessing }
-GtWorkingWithARestApi >> allTodosRequestJsonResultExplanation [
-	| leftContainer rightContainer inspectorElement |
-	leftContainer := BlElement new
+GtWorkingWithARestApi >> apiExplanationSlide [
+	| bottomContainer firstExampleContainer secondExampleContainer thirdExampleContainer |
+	
+	firstExampleContainer := BlElement new
 		layout: BlLinearLayout vertical;
 		constraintsDo: [ :c |
 			c vertical matchParent.
-			c horizontal matchParent ];
-		padding: (BlInsets all: 5);
-		addChild: (BrEditor new
-			look: BrGlamorousEditorLook;
-			vExact: 200;
-			text: self allTodosRequestJsonResultExplanationText;
-			margin: (BlInsets all: 5));
+			c horizontal matchParent];
+		margin: (BlInsets all: 5);
 		addChild: (BrButton new
+			margin: (BlInsets all: 5);
+			look: (BrGlamorousLinkSquaredButtonWithLabelLook new fontSize: 16);
+			label: 'https://jsonplaceholder.typicode.com/todos/8';
+			action: [ :aButton | WebBrowser openOn: 'https://jsonplaceholder.typicode.com/todos/8']);
+		addChild: (BlElement new
+			constraintsDo: [ :c |
+				c vertical matchParent.
+				c horizontal matchParent];
+			margin: (BlInsets all: 5);
+			look: BrShadowLook;
+			background: Color white;
+			addChild: ((TDExamples new requestTodoWithIdEightRawExample gtJsonFor: GtPhlowView empty) asElementDo: [ :e | e ])).
+	
+	secondExampleContainer := BlElement new
+		layout: BlLinearLayout vertical;
+		constraintsDo: [ :c |
+			c vertical matchParent.
+			c horizontal matchParent];
+		margin: (BlInsets all: 5);
+		addChild: (BrButton new
+			margin: (BlInsets all: 5);
+			look: (BrGlamorousLinkSquaredButtonWithLabelLook new fontSize: 16);
+			label: 'https://jsonplaceholder.typicode.com/posts?userId=4';
+			action: [ :aButton | WebBrowser openOn: 'https://jsonplaceholder.typicode.com/posts?userId=4']);
+		addChild: (BlElement new
+			constraintsDo: [ :c |
+				c vertical matchParent.
+				c horizontal matchParent];
+			margin: (BlInsets all: 5);
+			look: BrShadowLook;
+			background: Color white;
+			addChild: ((TDExamples new requestPostsForUserWithIdFourRawExample gtJsonFor: GtPhlowView empty) asElementDo: [ :e | e ])).
+	
+	thirdExampleContainer := BlElement new
+		layout: BlLinearLayout vertical;
+		constraintsDo: [ :c |
+			c vertical matchParent.
+			c horizontal matchParent];
+		margin: (BlInsets all: 5);
+		addChild: (BrButton new
+			margin: (BlInsets all: 5);
 			look: (BrGlamorousLinkSquaredButtonWithLabelLook new fontSize: 16);
 			label: 'https://jsonplaceholder.typicode.com/todos';
-			action: [ :aButton | WebBrowser openOn: 'https://jsonplaceholder.typicode.com/todos'] ).
-		
-	inspectorElement := BlUseAsyncFeatures disableDuring: [
-	(GtPhlowView empty composite
-		views: {TDExamples new requestAllTodosRawExample gtJsonFor: GtPhlowView empty};
-		labelled: 'a ZnResponse' asRopedText) asElementDo: [ :e | e ]].
-	inspectorElement forceLayout.
-	inspectorElement phlow firstChildWithView viewContentElement.
-
-	rightContainer := BlElement new
+			action: [ :aButton | WebBrowser openOn: 'https://jsonplaceholder.typicode.com/todos']);
+		addChild: (BlElement new
+			constraintsDo: [ :c |
+				c vertical matchParent.
+				c horizontal matchParent];
+			margin: (BlInsets all: 5);
+			look: BrShadowLook;
+			background: Color white;
+			addChild: ((TDExamples new requestAllTodosRawExample gtJsonFor: GtPhlowView empty) asElementDo: [ :e | e ])).
+	
+	bottomContainer := BlElement new
 		layout: BlLinearLayout horizontal;
 		constraintsDo: [ :c |
 			c vertical matchParent.
 			c horizontal matchParent];
-		look: BrShadowLook;
-		background: Color white;
 		margin: (BlInsets all: 5);
-		addChild: inspectorElement.
+		addChildren: { firstExampleContainer. secondExampleContainer. thirdExampleContainer }.
 	
 	^ BlElement new
 		constraintsDo: [ :c |
 			c vertical matchParent.
 			c horizontal matchParent ];
-		layout: BlLinearLayout horizontal;
+		layout: BlLinearLayout vertical;
 		margin: (BlInsets all: 5);
-		addChild: leftContainer;
-		addChild: rightContainer.
+		addChild: (BrEditor new
+			hMatchParent;
+			vFitContent;
+			look: BrEditorLook;
+			text: self apiExplanationText;
+			margin: (BlInsets top: 20 right: 5 bottom: 100 left: 5));
+		addChild: bottomContainer.
 ]
 
 { #category : #accessing }
-GtWorkingWithARestApi >> allTodosRequestJsonResultExplanationText [
-	^ 'Or you can just request a list of all the todos in the system, using the link below.' asRopedText
+GtWorkingWithARestApi >> apiExplanationText [
+	^ 'By using different links, like the ones presented below, we make requests to the api. The response we get is in the form of a JSON file containing the informations we requested.' asRopedText
 		glamorousRegularFont;
 		fontSize: 16.
 ]
@@ -91,11 +132,7 @@ GtWorkingWithARestApi >> create [
 			(GtTextSlide new
 				newTextWithFormat: ('In this slideshow, we exemplify how we can understand and browse an existing REST API containing posts, todos and comments, made by different users.' asRopedText glamorousRegularFont; fontSize: 18)).
 			(GtElementSlide new
-				element: [ self todoRequestJsonResultExplanation ]).
-			(GtElementSlide new
-				element: [ self postsRequestJsonResultExplanation ]).
-			(GtElementSlide new
-				element: [ self allTodosRequestJsonResultExplanation ]).
+				element: [ self apiExplanationSlide ]).
 			(GtTextSlide new
 				newTextWithFormat: ('Now let''s see how we can implement a user interface for this model and also how to display the information resulted in a more easy way to understand.' asRopedText glamorousRegularFont; fontSize: 18)).
 			(GtTextAndElementSlide new
@@ -210,59 +247,6 @@ GtWorkingWithARestApi >> parsingSlideText [
 ]
 
 { #category : #accessing }
-GtWorkingWithARestApi >> postsRequestJsonResultExplanation [
-	| leftContainer rightContainer inspectorElement |
-	leftContainer := BlElement new
-		layout: BlLinearLayout vertical;
-		constraintsDo: [ :c |
-			c vertical matchParent.
-			c horizontal fitContent ];
-		padding: (BlInsets all: 5);
-		addChild: (BrEditor new
-			look: BrGlamorousEditorLook;
-			vExact: 200;
-			text: self postsRequestJsonResultExplanationText;
-			margin: (BlInsets all: 5));
-		addChild: (BrButton new
-			look: (BrGlamorousLinkSquaredButtonWithLabelLook new fontSize: 16);
-			label: 'https://jsonplaceholder.typicode.com/posts?userId=4';
-			action: [ :aButton | WebBrowser openOn: 'https://jsonplaceholder.typicode.com/posts?userId=4'] ).
-		
-	inspectorElement := BlUseAsyncFeatures disableDuring: [
-	(GtPhlowView empty composite
-		views: {TDExamples new requestPostsForUserWithIdFourRawExample gtJsonFor: GtPhlowView empty};
-		labelled: 'a ZnResponse' asRopedText) asElementDo: [ :e | e ]].
-	inspectorElement forceLayout.
-	inspectorElement phlow firstChildWithView viewContentElement.
-
-	rightContainer := BlElement new
-		constraintsDo: [ :c |
-			c vertical matchParent.
-			c horizontal matchParent];
-		layout: BlLinearLayout horizontal;
-		look: BrShadowLook;
-		background: Color white;
-		margin: (BlInsets all: 5);
-		addChild: inspectorElement.
-	
-	^ BlElement new
-		constraintsDo: [ :c |
-			c vertical matchParent.
-			c horizontal matchParent ];
-		layout: BlLinearLayout horizontal;
-		margin: (BlInsets all: 5);
-		addChild: leftContainer;
-		addChild: rightContainer.
-]
-
-{ #category : #accessing }
-GtWorkingWithARestApi >> postsRequestJsonResultExplanationText [
-	^ 'Similarly, we can tell the API to return from all the posts, the one that has the user id equal to 4. This is done with the following url.' asRopedText
-		glamorousRegularFont;
-		fontSize: 18.
-]
-
-{ #category : #accessing }
 GtWorkingWithARestApi >> postsSlideText [
 	^ 'The simple post is the second type of post a user can make. It is similar to the todo. The difference is that the post has a body of text instead of the status. It also has a list of comments left by other users to the specific post.' asRopedText
 	glamorousRegularFont;
@@ -274,59 +258,6 @@ GtWorkingWithARestApi >> requestsSlideText [
 	^ 'After that, we work on the actual requests. Based on the information from the client, the specific URLs are created and the information is received from the API in the form of a JSON file. This file will then be sent to a parser to read and save the data we need from it, so we can display it in a more pleasent form.' asRopedText
 	glamorousRegularFont;
 	fontSize: 18.
-]
-
-{ #category : #accessing }
-GtWorkingWithARestApi >> todoRequestJsonResultExplanation [
-	| leftContainer rightContainer inspectorElement |
-	leftContainer := BlElement new
-		layout: BlLinearLayout vertical;
-		constraintsDo: [ :c |
-			c vertical matchParent.
-			c horizontal fitContent ];
-		padding: (BlInsets all: 5);
-		addChild: (BrEditor new
-			vExact: 200;
-			look: BrGlamorousEditorLook;
-			text: self todoRequestJsonResultExplanationText;
-			margin: (BlInsets all: 5));
-		addChild: (BrButton new
-			look: (BrGlamorousLinkSquaredButtonWithLabelLook new fontSize: 16);
-			label: 'https://jsonplaceholder.typicode.com/todos/8';
-			action: [ :aButton | WebBrowser openOn: 'https://jsonplaceholder.typicode.com/todos/8'] ).
-		
-	inspectorElement := BlUseAsyncFeatures disableDuring: [
-	(GtPhlowView empty composite
-		views: {TDExamples new requestTodoWithIdEightRawExample gtJsonFor: GtPhlowView empty};
-		labelled: 'a ZnResponse' asRopedText) asElementDo: [ :e | e ]].
-	inspectorElement forceLayout.
-	inspectorElement phlow firstChildWithView viewContentElement.
-
-	rightContainer := BlElement new
-		constraintsDo: [ :c |
-			c vertical matchParent.
-			c horizontal matchParent];
-		layout: BlLinearLayout horizontal;
-		look: BrShadowLook;
-		background: Color white;
-		margin: (BlInsets all: 5);
-		addChild: inspectorElement.
-	
-	^ BlElement new
-		constraintsDo: [ :c |
-			c vertical matchParent.
-			c horizontal matchParent ];
-		layout: BlLinearLayout horizontal;
-		margin: (BlInsets all: 5);
-		addChild: leftContainer;
-		addChild: rightContainer.
-]
-
-{ #category : #accessing }
-GtWorkingWithARestApi >> todoRequestJsonResultExplanationText [
-	^ 'For example, if you access the link below, you initiate a request that tells the API to return from all the todos, the one with id 8.' asRopedText
-		glamorousRegularFont;
-		fontSize: 18.
 ]
 
 { #category : #accessing }
