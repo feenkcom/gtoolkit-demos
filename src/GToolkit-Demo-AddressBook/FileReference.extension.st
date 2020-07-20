@@ -36,6 +36,6 @@ FileReference >> spotterForAddressFileFor: aStep [
 		title: 'Contacts';
 		allCandidates: [ self contactsFromFile ];
 		itemName: #fullName;
-		filter: GTFilterSubstrings;
+		filter: GtFilterSubstrings;
 		wantsToDisplayOnEmptyQuery: true
 ]
