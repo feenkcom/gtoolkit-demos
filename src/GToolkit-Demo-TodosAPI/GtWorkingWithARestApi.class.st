@@ -145,9 +145,7 @@ GtWorkingWithARestApi >> create [
 					addChild: (GtClassCoder forClass: TDClient) asElement ]).
 			(GtLabelAndElementSlide new
 				newFadedText: 'For example, you can make a request for all the posts in the system, as it is presented below.';
-				element: [GtExampleSlide new
-					method: (TDExamples >> #requestAllPosts);
-					asElement ]).
+				element: [ self exampleSlideForMethod: TDExamples >> #requestAllPosts ]).
 			(GtTextAndElementSlide new
 				newTextWithFormat: ('The Requests' asRopedText bold; fontSize: 18);
 				newTextWithFormat: self requestsSlideText;
@@ -182,9 +180,7 @@ GtWorkingWithARestApi >> create [
 					addChild: (GtClassCoder forClass: TDUser) asElement ]).
 			(GtLabelAndElementSlide new
 				newFadedText: 'Requesting a user will return that user with its information and the lists of posts and todos made by him.';
-				element: [GtExampleSlide new
-					method: (TDExamples >> #requestUserWithIdFour);
-					asElement ]).
+				element: [self exampleSlideForMethod: TDExamples >> #requestUserWithIdFour ]).
 			(GtTextAndElementSlide new
 				newTextWithFormat: ('Todos' asRopedText bold; fontSize: 18);
 				newTextWithFormat: self todosSlideText;
@@ -195,9 +191,7 @@ GtWorkingWithARestApi >> create [
 					addChild: (GtClassCoder forClass: TDTodo) asElement ]).
 			(GtLabelAndElementSlide new
 				newFadedText: 'A request for a todo will return you that todo with all the informations stored about it.';
-				element: [GtExampleSlide new
-					method: (TDExamples >> #requestTodoWithIdEight);
-					asElement ]).
+				element: [ self exampleSlideForMethod: TDExamples >> #requestTodoWithIdEight ]).
 			(GtTextAndElementSlide new
 				newTextWithFormat: ('Simple Posts' asRopedText bold; fontSize: 18);
 				newTextWithFormat: self postsSlideText;
@@ -208,9 +202,7 @@ GtWorkingWithARestApi >> create [
 					addChild: (GtClassCoder forClass: TDPost) asElement ]).
 			(GtLabelAndElementSlide new
 				newFadedText: 'Similar with todos, a request for a post will return you that post.';
-				element: [GtExampleSlide new
-					method: (TDExamples >> #requestPostWithIdThree);
-					asElement ]).
+				element: [ self exampleSlideForMethod: TDExamples >> #requestPostWithIdThree ]).
 			(GtTextAndElementSlide new
 				newTextWithFormat: ('Comments' asRopedText bold; fontSize: 18);
 				newTextWithFormat: self commentsSlideText;
@@ -221,9 +213,7 @@ GtWorkingWithARestApi >> create [
 					addChild: (GtClassCoder forClass: TDComment) asElement ]).
 			(GtLabelAndElementSlide new
 				newFadedText: 'And a request for a comment will return you that comment with everything you need to know about it.';
-				element: [GtExampleSlide new
-					method: (TDExamples >> #requestCommentWithIdFive);
-					asElement ]).
+				element: [ self exampleSlideForMethod: TDExamples >> #requestCommentWithIdFive ]).
 			(GtLabelAndElementSlide new
 				newFadedText: 'You can play around with the snippets below to better see the model at work';
 				element: [ GtPlaygroundSlide new
@@ -237,6 +227,42 @@ GtWorkingWithARestApi >> create [
 					asElement ]).
 			}.
 	^ slideshow makeArrowsVisible.
+]
+
+{ #category : #accessing }
+GtWorkingWithARestApi >> exampleSlideForMethod: aMethod [
+	| coderElement inspectorElement |
+	
+	coderElement := ((GtMethodCoder forMethod: aMethod) expanded: true) asElement.
+	coderElement
+		constraintsDo: [ :c |
+			c frame horizontal weight: 0.3.
+			c vertical matchParent.
+			c horizontal matchParent ];
+		forceLayout;
+		vMatchParent;
+		margin: (BlInsets top: 5 right: 15 bottom: 5 left: 5).
+	
+	inspectorElement := BlElement new
+		layout: BlLinearLayout vertical;
+		constraintsDo: [ :c |
+			c frame horizontal weight: 0.7.
+			c frame horizontal alignRight.
+			c vertical matchParent.
+			c horizontal matchParent ];
+		margin: (BlInsets top: 5 right: 5 bottom: 5 left: 15);
+		background: Color white;
+		look: BrShadowLook;
+		addChild: (GtInspector createOn: (TDExamples>>#requestAllTodos) gtExampleValue).
+	
+	^ BlElement new
+		layout: BlFrameLayout new;
+		constraintsDo: [ :c |
+			c vertical matchParent.
+			c horizontal matchParent ];
+		margin: (BlInsets all: 5);
+		padding: (BlInsets all: 5);
+		addChildren: {coderElement. inspectorElement}.
 ]
 
 { #category : #accessing }
