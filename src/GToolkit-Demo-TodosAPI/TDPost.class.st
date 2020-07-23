@@ -28,13 +28,13 @@ TDPost >> body: aString [
 
 { #category : #accessing }
 TDPost >> comments [
-	^ comments.
+	^ comments ifEmpty: [ comments := self requestCommentsForThisPost ].
 ]
 
 { #category : #accessing }
 TDPost >> gtCommentsListFor: aView [
 	<gtView>
-	(comments := self requestCommentsForThisPost) ifEmpty: [^ aView empty].
+	self comments ifEmpty: [^ aView empty].
 	^ aView columnedList
 		title: 'Comments' translated;
 		priority: 5;
