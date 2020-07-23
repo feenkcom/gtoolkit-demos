@@ -17,8 +17,7 @@ TDUser class >> empty [
 { #category : #accessing }
 TDUser >> gtPostsListFor: aView [
 	<gtView>
-	postsGroup := self requestPostsFromThisUser.
-	postsGroup posts ifEmpty: [ ^ aView empty ].
+	self postsGroup posts ifEmpty: [ ^ aView empty ].
 	^ aView forward
 		title: 'Posts';
 		object: [ self postsGroup ];
@@ -28,8 +27,7 @@ TDUser >> gtPostsListFor: aView [
 { #category : #accessing }
 TDUser >> gtTodosListFor: aView [
 	<gtView>
-	todosGroup := self requestTodosFromThisUser.
-	todosGroup todos ifEmpty: [ ^ aView empty ].
+	self todosGroup todos ifEmpty: [ ^ aView empty ].
 	^ aView forward
 		title: 'Todos';
 		object: [ self todosGroup ];
@@ -54,7 +52,7 @@ TDUser >> initialize [
 
 { #category : #accessing }
 TDUser >> postsGroup [
-	^ postsGroup "ifNil: [OrderedCollection new]".
+	^ postsGroup ifNil: [ postsGroup := self requestPostsFromThisUser ].
 ]
 
 { #category : #accessing }
@@ -71,5 +69,5 @@ TDUser >> requestTodosFromThisUser [
 
 { #category : #accessing }
 TDUser >> todosGroup [
-	^ todosGroup "ifNil: [OrderedCollection new]".
+	^ todosGroup ifNil: [ todosGroup := self requestTodosFromThisUser ].
 ]
