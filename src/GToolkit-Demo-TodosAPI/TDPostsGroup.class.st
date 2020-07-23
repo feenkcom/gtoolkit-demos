@@ -8,6 +8,93 @@ Class {
 }
 
 { #category : #accessing }
+TDPostsGroup >> allCommentsForCurrentPosts [
+	| comments |
+	comments := OrderedCollection new.
+	self posts do: [ :each |
+		comments addAll: each comments].
+	
+	^ comments.
+]
+
+{ #category : #accessing }
+TDPostsGroup >> allUsersForCurrentPosts [
+	| tempCollection |
+	tempCollection := OrderedCollection new.
+	
+	self posts do: [ :each |
+		tempCollection detect: [:el | el id = each userId] ifNone: [tempCollection add: each user] ].
+	
+	^ tempCollection.
+]
+
+{ #category : #accessing }
+TDPostsGroup >> gtGraphFor: aView [
+	<gtView>
+	self posts ifEmpty: [ ^ aView empty ].
+	^ aView mondrian
+		title: 'Graph' translated;
+		priority: 10;
+		painting: [ :aGraph |
+			| users comments |
+			users := self allUsersForCurrentPosts.
+			comments := self allCommentsForCurrentPosts.
+			aGraph nodes
+				shape: [ :x |
+					BlTextElement new 
+						text: (('User ', x id asString) asRopedText
+							attributes: {BlTextForegroundAttribute paint: Color black}; fontSize: 14);
+						geometry: BlRectangle new;
+						border: (BlBorder paint: Color black);
+						background: Color paleOrange;
+						size: 50 @ 10;
+						constraintsDo: [ :c | c padding: (BlInsets all: 10) ]];
+				with: users.
+			
+			aGraph nodes
+				shape: [ :x |
+					BlTextElement new 
+						text: (('Post ', x id asString) asRopedText
+							attributes: {BlTextForegroundAttribute paint: Color black}; fontSize: 14);
+						geometry: BlRectangle new;
+						border: (BlBorder paint: Color black);
+						background: Color paleOrange;
+						size: 50 @ 10;
+						constraintsDo: [ :c | c padding: (BlInsets all: 10) ]];
+				with: self posts.
+			
+			aGraph nodes
+				shape: [ :x |
+					BlTextElement new 
+						text: (('Comment ', x id asString) asRopedText
+							attributes: {BlTextForegroundAttribute paint: Color black}; fontSize: 14);
+						geometry: BlRectangle new;
+						border: (BlBorder paint: Color black);
+						background: Color paleOrange;
+						size: 50 @ 10;
+						constraintsDo: [ :c | c padding: (BlInsets all: 10) ]];
+				with: comments.
+			
+			aGraph edges
+				fromCenterBottom;
+				toCenterTop;
+				shape: [ :x |
+					BlLineElement new
+						border: (BlBorder paint: (Color blue alpha: 0.8) width: 1.2)];
+				connect: users from: [ :u | u ] toAll: [ :u | self posts select: [:each | each userId = u id] ].
+			
+			aGraph edges
+				fromCenterBottom;
+				toCenterTop;
+				shape: [ :x |
+					BlLineElement new
+						border: (BlBorder paint: (Color blue alpha: 0.8) width: 1.2)];
+				connect: (self posts) from: [ :p | p ] toAll: [ :p | p comments ].
+			
+			aGraph layout tree].
+]
+
+{ #category : #accessing }
 TDPostsGroup >> gtPostsListFor: aView [
 	<gtView>
 	self posts ifEmpty: [^ aView empty].
