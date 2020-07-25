@@ -50,6 +50,7 @@ TDComment >> gtCommentBodyFor: aView [
 { #category : #accessing }
 TDComment >> gtCommentInfoFor: aView [
 	<gtView>
+	self requestPostForThisComment.
 	^ aView columnedList
 		title: 'Details' translated;
 		priority: 10;
@@ -98,16 +99,16 @@ TDComment >> post [
 ]
 
 { #category : #accessing }
-TDComment >> post: anObject [
-	post := anObject.
-]
-
-{ #category : #accessing }
 TDComment >> postId [
-	^ self post id.
+	^ postId.
 ]
 
 { #category : #accessing }
 TDComment >> postId: anInteger [
-	self post: (TDClient new getPostWithId: anInteger).
+	postId := anInteger.
+]
+
+{ #category : #accessing }
+TDComment >> requestPostForThisComment [
+	post := TDClient new getPostWithId: self postId.
 ]
