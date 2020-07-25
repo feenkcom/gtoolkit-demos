@@ -8,6 +8,11 @@ Class {
 }
 
 { #category : #accessing }
+TDClient >> getAllComments [
+	^ self request requestAllComments.
+]
+
+{ #category : #accessing }
 TDClient >> getAllPosts [
 	^ TDPostsGroup new
 		posts: self request requestAllPosts.
