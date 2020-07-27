@@ -44,7 +44,7 @@ TDPostsGroup >> gtGraphFor: aView [
 					BlTextElement new 
 						text: (('User ', x id asString) asRopedText
 							attributes: {BlTextForegroundAttribute paint: Color black}; fontSize: 14);
-						geometry: BlRectangle new;
+						geometry: BlRoundedRectangleGeometry new;
 						border: (BlBorder paint: Color black);
 						background: Color paleOrange;
 						size: 50 @ 10;
@@ -56,7 +56,7 @@ TDPostsGroup >> gtGraphFor: aView [
 					BlTextElement new 
 						text: (('Post ', x id asString) asRopedText
 							attributes: {BlTextForegroundAttribute paint: Color black}; fontSize: 14);
-						geometry: BlRectangle new;
+						geometry: BlRoundedRectangleGeometry new;
 						border: (BlBorder paint: Color black);
 						background: Color paleOrange;
 						size: 50 @ 10;
@@ -68,7 +68,7 @@ TDPostsGroup >> gtGraphFor: aView [
 					BlTextElement new 
 						text: (('Comment ', x id asString) asRopedText
 							attributes: {BlTextForegroundAttribute paint: Color black}; fontSize: 14);
-						geometry: BlRectangle new;
+						geometry: BlRoundedRectangleGeometry new;
 						border: (BlBorder paint: Color black);
 						background: Color paleOrange;
 						size: 50 @ 10;
