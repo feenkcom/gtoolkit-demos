@@ -10,11 +10,13 @@ Class {
 { #category : #accessing }
 TDPostsGroup >> allCommentsForCurrentPosts [
 	| comments |
-	comments := OrderedCollection new.
-	self posts do: [ :each |
-		comments addAll: each comments].
-	
-	^ comments.
+	comments := TDClient new getAllComments.
+ 
+ 	^ comments select: [ :c |
+ 		self posts 
+ 			detect: [:p | p id = c postId ]
+ 			ifFound: [:el | true]
+			 ifNone: [false] ].
 ]
 
 { #category : #accessing }
@@ -41,57 +43,76 @@ TDPostsGroup >> gtGraphFor: aView [
 			comments := self allCommentsForCurrentPosts.
 			aGraph nodes
 				shape: [ :x |
-					BlTextElement new 
-						text: (('User ', x id asString) asRopedText
-							attributes: {BlTextForegroundAttribute paint: Color black}; fontSize: 14);
-						geometry: BlRoundedRectangleGeometry new;
-						border: (BlBorder paint: Color black);
-						background: Color paleOrange;
-						size: 50 @ 10;
-						constraintsDo: [ :c | c padding: (BlInsets all: 10) ]];
+					BlElement new
+						layout: BlLinearLayout vertical alignCenter;
+						constraintsDo: [ :c |
+							c horizontal fitContent.
+							c vertical fitContent ];
+						padding: (BlInsets all: 10);
+						geometry: (BlRectangle cornerRadius: 4);
+						border: (BlBorder paint: Color black width: 1.5);
+						background: (Color gray alpha: 0.2);
+						addChild: (BlTextElement new
+							constraintsDo: [ :c | c padding: (BlInsets all: 5)];
+							text: (('User ', x id asString) asRopedText
+								glamorousRegularFont;
+								fontSize: 16))];
 				with: users.
 			
 			aGraph nodes
 				shape: [ :x |
-					BlTextElement new 
-						text: (('Post ', x id asString) asRopedText
-							attributes: {BlTextForegroundAttribute paint: Color black}; fontSize: 14);
-						geometry: BlRoundedRectangleGeometry new;
-						border: (BlBorder paint: Color black);
-						background: Color paleOrange;
-						size: 50 @ 10;
-						constraintsDo: [ :c | c padding: (BlInsets all: 10) ]];
+					BlElement new
+						layout: BlLinearLayout vertical alignCenter;
+						constraintsDo: [ :c |
+							c horizontal fitContent.
+							c vertical fitContent ];
+						padding: (BlInsets all: 10);
+						geometry: BlCircle new;
+						border: (BlBorder paint: Color black width: 1.5);
+						background: Color paleGreen ];
+						"addChild: (BlTextElement new
+							constraintsDo: [ :c | c padding: (BlInsets all: 5)];
+							text: ((x id asString) asRopedText
+								glamorousRegularFont;
+								fontSize: 16))];"
 				with: self posts.
 			
 			aGraph nodes
 				shape: [ :x |
-					BlTextElement new 
-						text: (('Comment ', x id asString) asRopedText
-							attributes: {BlTextForegroundAttribute paint: Color black}; fontSize: 14);
-						geometry: BlRoundedRectangleGeometry new;
-						border: (BlBorder paint: Color black);
-						background: Color paleOrange;
-						size: 50 @ 10;
-						constraintsDo: [ :c | c padding: (BlInsets all: 10) ]];
+					BlElement new 
+						layout: BlLinearLayout vertical alignCenter;
+						constraintsDo: [ :c |
+							c horizontal fitContent.
+							c vertical fitContent ];
+						padding: (BlInsets all: 10);
+						geometry: BlCircle new;
+						border: (BlBorder paint: Color black width: 1.5);
+						background: Color paleBlue ];
+						"addChild: (BlTextElement new
+							constraintsDo: [ :c | c padding: (BlInsets all: 5)];
+							text: ((x id asString) asRopedText
+								glamorousRegularFont;
+								fontSize: 16))];"
 				with: comments.
 			
 			aGraph edges
-				fromCenterBottom;
-				toCenterTop;
+				"fromCenterBottom;
+				toCenterTop;"
+				fromNearestBounds;
 				shape: [ :x |
 					BlLineElement new
-						border: (BlBorder paint: (Color blue alpha: 0.8) width: 1.2)];
+						border: (BlBorder paint: (Color gray alpha: 0.5) width: 1)];
 				connect: users from: [ :u | u ] toAll: [ :u | self posts select: [:each | each userId = u id] ].
 			
 			aGraph edges
-				fromCenterBottom;
-				toCenterTop;
+				"fromCenterBottom;
+				toCenterTop;"
 				shape: [ :x |
 					BlLineElement new
-						border: (BlBorder paint: (Color blue alpha: 0.8) width: 1.2)];
-				connect: (self posts) from: [ :p | p ] toAll: [ :p | p comments ].
+						border: (BlBorder paint: (Color gray alpha: 0.5) width: 1)];
+				connect: (self posts) from: [ :p | p ] toAll: [ :p | comments select: [:each | each postId = p id] ].
 			
-			aGraph layout tree].
+			aGraph layout force charge: -800].
 ]
 
 { #category : #accessing }
