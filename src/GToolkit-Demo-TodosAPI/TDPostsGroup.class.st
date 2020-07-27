@@ -49,7 +49,7 @@ TDPostsGroup >> gtGraphFor: aView [
 							c horizontal fitContent.
 							c vertical fitContent ];
 						padding: (BlInsets all: 10);
-						geometry: (BlRectangle cornerRadius: 4);
+						geometry: (BlRoundedRectangleGeometry cornerRadius: 4);
 						border: (BlBorder paint: Color black width: 1.5);
 						background: (Color gray alpha: 0.2);
 						addChild: (BlTextElement new
