@@ -241,11 +241,10 @@ GtABContact >> gtViewContactDetailsOn: aView [
 { #category : #'as yet unclassified' }
 GtABContact >> gtViewContactNotesOn: aView [
 	<gtView>
-	
 	^ aView list
 		title: 'Notes' translated;
 		items: [ self notes ];
-		itemFormat: [ :each | each title ].
+		itemText: [ :each | each title ]
 ]
 
 { #category : #ui }

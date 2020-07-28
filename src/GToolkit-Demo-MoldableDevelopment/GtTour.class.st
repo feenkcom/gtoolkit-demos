@@ -118,6 +118,7 @@ You can also ' asRopedText,
 
 { #category : #'api - instantiation' }
 GtTour >> coderWithComment [
+	<gtExample>
 	| aScripter |
 	aScripter := BlDevScripter new.
 	aScripter
@@ -570,9 +571,7 @@ The playground lets you ' asRopedText,
 ('inspect' asRopedText glamorousExplanationFor: #inspectButton),
 ' and ' asRopedText,
 ('debug' asRopedText glamorousExplanationFor: #debugButton),
-' each snippet individually. Or you can evaluate and inspect all the snippets at once using the playground ' asRopedText,
-('inspect button' asRopedText glamorousExplanationFor: #inspectAllButton),
-'. The result of the last script will be the one opened in the inspector.' asRopedText.
+' each snippet. The result of the last executed script will be the one opened in the inspector.' asRopedText.
 
 	^ text
 		glamorousRegularFont;
@@ -601,7 +600,7 @@ GtTour >> timelineElement [
 			(Date year: 2018 month: 09 day: 10) -> 'first public demo'.
 			(Date year: 2019 month: 04 day: 19) -> 'gt 0.6.42'.
 			(Date year: 2019 month: 07 day: 16) -> 'first public moldable development talk'.
-			(Date year: 2020 month: 02 day: 20) -> 'gt 0.7.x to be released'
+			(Date year: 2020 month: 07 day: 23) -> 'gt v0.7.1214 beta'
 		}.
 		^ plotter asElement
 ]

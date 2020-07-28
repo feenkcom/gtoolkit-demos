@@ -326,12 +326,7 @@ GtABAddressBook >> gtViewContactsOn: aView [
 		title: 'Contacts with details' translated;
 		priority: 5;
 		items: [ self allContacts ];
-		column: 'Avatar'
-			do: [ :aColumn | 
-			aColumn
-				stencil:
-						[ :aContact | aContact avatar asElement asScalableElement size: 32 @ 32 ];
-				noWidth ];
+		column: 'Avatar' icon: [ :aContact | aContact avatar asElement asScalableElement size: 32 @ 32 ];
 		column: 'Name' text: [ :aContact | aContact fullName ];
 		column: 'Phone' text: [ :aContact | aContact telephone ]
 ]
