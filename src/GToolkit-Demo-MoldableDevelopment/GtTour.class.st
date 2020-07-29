@@ -7,7 +7,7 @@ Class {
 { #category : #accessing }
 GtTour >> coderExplanationWithLinks [
 	<gtExample>
-	| container coderElement classNameTarget methodTabTarget commentTabTarget buttonTargets searchButtonTarget addButtonTarget expandClassTarget expandMethodTarget |
+	| container coderElement packageHierarchyTarget classHierarchyTarget classNameTarget methodTabTarget commentTabTarget referencesTab expandClassTarget expandMethodTarget deleteButtonTarget buttonTargets searchButtonTarget addClassButtonTarget addMethodButtonTarget |
 	
 	container := BlElement new
 		constraintsDo: [ :c |
@@ -19,9 +19,21 @@ GtTour >> coderExplanationWithLinks [
 		look: BrShadowLook.
 	
 	coderElement := BlUseAsyncFeatures disableDuring: [ 
-		(GtClassCoder forClass: GtClassCoder) asElement ].
+		((GtCoder forClass: GtABAddressBook) createInPager maximized) asElement ].
 	coderElement forceLayout.
 	
+	packageHierarchyTarget := coderElement
+		allChildrenBreadthFirstDetect: [:aChild |
+			((aChild isKindOf: BlTextElement) and: [aChild text asString = 'Package Hierarchy'])]
+		ifFound: [:aChild | aChild parent].
+	classHierarchyTarget := coderElement
+		allChildrenBreadthFirstDetect: [:aChild |
+			((aChild isKindOf: BlTextElement) and: [aChild text asString = 'Class Hierarchy'])]
+		ifFound: [:aChild | aChild parent].
+	referencesTab := coderElement
+		allChildrenBreadthFirstDetect: [:aChild |
+			((aChild isKindOf: BlTextElement) and: [aChild text asString = 'References'])]
+		ifFound: [:aChild | aChild parent].
 	classNameTarget := coderElement 
 		allChildrenBreadthFirstDetect: [:aChild | 
 			((aChild isKindOf: BrEditableLabel) and: [aChild parent isKindOf: BrHorizontalPane])]
@@ -42,12 +54,27 @@ GtTour >> coderExplanationWithLinks [
 		allChildrenBreadthFirstDetect: [:aChild | 
 			(aChild isKindOf: GtCodersElement)]
 		ifFound: [:aChild | aChild].
+	deleteButtonTarget := coderElement 
+		allChildrenBreadthFirstDetect: [:aChild | 
+			(aChild isKindOf: GtPreviewChangeButton)]
+		ifFound: [:aChild | aChild].
 	buttonTargets := coderElement
 		allChildrenBreadthFirstSelect: [:aChild | 
 			(aChild isKindOf: BrButton) and: [aChild parent isKindOf: BrToolbar]].
-	searchButtonTarget := buttonTargets first.
-	addButtonTarget := buttonTargets last.
+	searchButtonTarget := buttonTargets second.
+	addClassButtonTarget := buttonTargets last.
+	addMethodButtonTarget := buttonTargets first.
 	
+	packageHierarchyTarget
+		addChild:
+			(( self yellowTargetCircleWithExplanationModel: #packageHierarchy)
+				relocate:
+					(15 @ packageHierarchyTarget extent y / 2)).
+	classHierarchyTarget
+		addChild:
+			(( self yellowTargetCircleWithExplanationModel: #classHierarchy)
+				relocate:
+					(15 @ classHierarchyTarget extent y / 2)).
 	classNameTarget
 		addChild:
 			((self yellowTargetCircleWithExplanationModel: #className)
@@ -57,22 +84,17 @@ GtTour >> coderExplanationWithLinks [
 		addChild:
 			((self yellowTargetCircleWithExplanationModel: #methodTab)
 				relocate:
-					(8 @ 18)).
+					(8 @ methodTabTarget extent y / 2)).
 	commentTabTarget
 		addChild:
 			((self yellowTargetCircleWithExplanationModel: #commentTab)
 				relocate:
-					(8 @ 18)).
-	searchButtonTarget
+					(8 @ commentTabTarget extent y / 2)).
+	referencesTab
 		addChild:
-			((self yellowTargetCircleWithExplanationModel: #searchButton)
+			((self yellowTargetCircleWithExplanationModel: #referencesTab)
 				relocate:
-					(5 @ searchButtonTarget extent y / 2)).
-	addButtonTarget
-		addChild:
-			((self yellowTargetCircleWithExplanationModel: #addButton)
-				relocate:
-					(5 @ addButtonTarget extent y / 2)).
+					(8 @ referencesTab extent y / 2)).
 	expandClassTarget
 		addChild:
 			((self yellowTargetCircleWithExplanationModel: #expandClassButton)
@@ -82,7 +104,27 @@ GtTour >> coderExplanationWithLinks [
 		addChild:
 			((self yellowTargetCircleWithExplanationModel: #expandMethodButton)
 				relocate:
-					(12 @ 5)).
+					(12 @ 8)).
+	deleteButtonTarget
+		addChild:
+			((self yellowTargetCircleWithExplanationModel: #deleteClassButton)
+				relocate:
+					(12 @ deleteButtonTarget extent y / 2)).
+	addMethodButtonTarget
+		addChild:
+			((self yellowTargetCircleWithExplanationModel: #addMethodButton)
+				relocate:
+					(5 @ addMethodButtonTarget extent y / 2)).
+	searchButtonTarget
+		addChild:
+			((self yellowTargetCircleWithExplanationModel: #searchButton)
+				relocate:
+					(5 @ searchButtonTarget extent y / 2)).
+	addClassButtonTarget
+		addChild:
+			((self yellowTargetCircleWithExplanationModel: #addClassButton)
+				relocate:
+					(5 @ addClassButtonTarget extent y / 2)).
 	
 	^ container
 		addChild: coderElement.
@@ -93,22 +135,34 @@ GtTour >> coderExplanationWithLinksText [
 	| text |
 	
 	text := 'Coder is where you work with your code. It allows you to browse, create and remove packages, classes and methods.
-Opening the coder on a class displays the ' asRopedText,
-('class name' asRopedText glamorousExplanationFor: #className),
-', the ' asRopedText,
+When you open the coder on a class, the first thing you see is the ' asRopedText,
+('package hierarchy' asRopedText glamorousExplanationFor: #packageHierarchy),
+'. This is a list of all the packages in the system, with the selected package being the one you are currently in. Then you have the ' asRopedText,
+('class hierarchy' asRopedText glamorousExplanationFor: #classHierarchy),
+', a list of all the classes in the selected package. And finally, you have the class currently selected.
+Focusing on the class, you have the ' asRopedText,
+('name' asRopedText glamorousExplanationFor: #className),
+'. Below that is a group of tabs with usefull information about the class, such as the ' asRopedText,
 ('class comment' asRopedText glamorousExplanationFor: #commentTab),
-' and the list of ' asRopedText,
+' a list of ' asRopedText,
 ('methods' asRopedText glamorousExplanationFor: #methodTab),
+' and a list of ' asRopedText,
+('references' asRopedText glamorousExplanationFor: #referencesTab),
 '. The class header can be ' asRopedText,
 ('expanded' asRopedText glamorousExplanationFor: #expandClassButton),
-' in place to get access to and edit details about the class: the superclass, package, tag, traits, instance and class side variables.
-You can also ' asRopedText,
-('expand' asRopedText glamorousExplanationFor: #expandMethodButton),
-' methods. This way, you can work with methods right in place. There is also an option to ' asRopedText,
-('search' asRopedText glamorousExplanationFor: #searchButton),
-' for a method in the class or to ' asRopedText,
-('add' asRopedText glamorousExplanationFor: #addButton),
-' one.' asRopedText.
+' in place so you have access to edit details about the class: the superclass, package, tag, traits, instance and class side variables.
+The coder also gives you the possibility to ' asRopedText,
+('delete' asRopedText glamorousExplanationFor: #deleteClassButton),
+' the current class, to ' asRopedText,
+('add' asRopedText glamorousExplanationFor: #addClassButton),
+' a new one, to perform ' asRopedText,
+('searches' asRopedText glamorousExplanationFor: #searchButton),
+' inside the class or to ' asRopedText,
+('add' asRopedText glamorousExplanationFor: #addMethodButton),
+' new methods to the class.
+As for the methods, they can also be ' asRopedText,
+('expanded' asRopedText glamorousExplanationFor: #expandMethodButton),
+' in place, just like the header of the class. This gives you access to edit the code inside them.' asRopedText.
 	
 	^ text
 		glamorousRegularFont;
@@ -192,7 +246,16 @@ GtTour >> create [
 			
 			GtTextAndElementSlide new
 				newTextWithFormat: GtExplainerExamples new inspectorExplanationText;
-				element: [ GtExplainerExamples new inspectorContainerElement ].
+				element: [ BlElement new
+					constraintsDo: [ :c |
+						c vertical matchParent.
+						c horizontal matchParent];
+					background: Color white;
+					look: BrShadowLook;
+					margin: (BlInsets right: 5);
+					addChild: (GtPager 
+						createWrappedOn: (GtExplainerExamples>>#inspectorContainerElement) gtExampleValue) ];
+				elementWeight: 0.6.
 			GtTextAndElementSlide new
 				newTextWithFormat: GtMethodCoderStylerExamples new viewsExplanationWithLinksText;
 				element: [ self viewMethodWithResultExplanationWithLinksExample ].
