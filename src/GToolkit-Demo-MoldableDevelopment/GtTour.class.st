@@ -254,7 +254,7 @@ GtTour >> create [
 					look: BrShadowLook;
 					margin: (BlInsets right: 5);
 					addChild: (GtPager 
-						createWrappedOn: (GtExplainerExamples>>#inspectorContainerElement) gtExampleValue) ];
+						createWrappedOn: (GtExplainerExamples>>#inspectorContainerElement) gtExampleValue) maximized ];
 				elementWeight: 0.6.
 			GtTextAndElementSlide new
 				newTextWithFormat: GtMethodCoderStylerExamples new viewsExplanationWithLinksText;

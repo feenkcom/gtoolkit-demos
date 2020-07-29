@@ -24,8 +24,8 @@ GtInspectorViews >> columnedListViewExplanationWithLinks [
 		addSelectors:
 			{#columnedList . #title: . #items: . #allContacts . #fullName . #avatar.
 			#telephone}.
-	selectors addSelector: #column:do: withIdentifier: #columns.
-	selectors addSelector: #column:format: withIdentifier: #columns.
+	selectors addSelector: #column:icon: withIdentifier: #columns.
+	selectors addSelector: #column:text: withIdentifier: #columns.
 	variables := GtVariableExplanationLinkStyler new coder: coder.
 	variables addVariables: {'aContact'}.
 	
@@ -68,12 +68,11 @@ GtInspectorViews >> columnedListViewExplanationWithLinks [
 		ifFound: [ :aChild | aChild ].
 	avatarElementsCollection := resultInspectorTree
 		allChildrenBreadthFirstSelect: [ :aChild | 
-			(aChild isKindOf: BlScalableElement)
-				and: [ aChild parent parent isKindOf: BrInfiniteListElement ] ].
+			(aChild isKindOf: BrHorizontalPane) ].
 	listLabelsCollection := resultInspectorTree
 		allChildrenBreadthFirstSelect: [ :aChild | 
-			(aChild isKindOf: BrLabel)
-				and: [ aChild parent parent isKindOf: BrInfiniteListElement ] ].
+			(aChild isKindOf: BlTextElement)
+				and: [ aChild parent parent isKindOf: GtPhlowCellElement ] ].
 	resultInspectorContainer addChild: resultElement.
 	titleTab
 		addChild:
@@ -82,15 +81,15 @@ GtInspectorViews >> columnedListViewExplanationWithLinks [
 	avatarLabel
 		addChild:
 			((self yellowTargetCircleWithExplanationModel: #columns)
-				relocate: -5 @ avatarLabel extent y / 2).
+				relocate: 5 @ avatarLabel extent y / 2).
 	nameLabel
 		addChild:
 			((self yellowTargetCircleWithExplanationModel: #columns)
-				relocate: -5 @ nameLabel extent y / 2).
+				relocate: 5 @ nameLabel extent y / 2).
 	phoneLabel
 		addChild:
 			((self yellowTargetCircleWithExplanationModel: #columns)
-				relocate: -5 @ phoneLabel extent y / 2).
+				relocate: 5 @ phoneLabel extent y / 2).
 	avatarElementsCollection
 		do: [ :eachAvatar | 
 			eachAvatar parent
@@ -208,17 +207,17 @@ GtInspectorViews >> columnedTreeViewExplanationWithLinks [
 		addChild:
 			((self yellowTargetCircleWithExplanationModel: #column)
 				relocate:
-					(-5 @ contactLabel extent y / 2)).
+					(5 @ contactLabel extent y / 2)).
 	cityLabel
 		addChild:
 			((self yellowTargetCircleWithExplanationModel: #column)
 				relocate:
-					(-5 @ cityLabel extent y / 2)).
+					(5 @ cityLabel extent y / 2)).
 	countryLabel
 		addChild:
 			((self yellowTargetCircleWithExplanationModel: #column)
 				relocate:
-					(-5 @ countryLabel extent y / 2)).
+					(5 @ countryLabel extent y / 2)).
 	
 	verticalContainer addChild: codeExplanationLabel.
 	verticalContainer addChild: coderElement.
@@ -436,7 +435,7 @@ GtInspectorViews >> explicitViewExplanationWithLinks [
 	ifFound: [:aChild | aChild].
 	avatarElement := resultInspectorTree
 	allChildrenBreadthFirstDetect: [:aChild | 
-		(aChild children isEmpty) and: [aChild parent parent phlow isView ]]
+		(aChild children isEmpty) and: [aChild parent parent isKindOf: BlScrollableElement ]]
 	ifFound: [:aChild | aChild].
 		
 	resultInspectorContainer addChild: resultElement.
@@ -511,7 +510,7 @@ GtInspectorViews >> listViewExplanationWithLinks [
 	coder := GtMethodCoder forMethod: (GtABAddressBook>>#gtViewContactsListOn:).
 	
 	selectors := GtSelectorExplanationLinkStyler new coder: coder.
-	selectors addSelectors: {#list. #title:. #items:. #itemFormat:. #allContacts. #fullName }.
+	selectors addSelectors: {#list. #title:. #items:. #itemText:. #allContacts. #fullName }.
 	
 	variables := GtVariableExplanationLinkStyler new coder: coder.
 	variables addVariables: {'aContact'}.
@@ -548,7 +547,7 @@ GtInspectorViews >> listViewExplanationWithLinks [
 			addChild:
 				((self yellowTargetCircleWithExplanationModel: #fullName)
 					relocate:
-						(0 @ eachLabel extent y / 2)). ].
+						(-5 @ eachLabel extent y / 2)). ].
 	
 	verticalContainer addChild: codeExplanationLabel.
 	verticalContainer addChild: coderElement.
@@ -567,8 +566,8 @@ GtInspectorViews >> listViewExplanationWithLinksText [
 ' view. It has a ' asRopedText,
 ('title' asRopedText glamorousExplanationFor: #title:),
 ' and a ' asRopedText,
-('format' asRopedText glamorousExplanationFor: #itemFormat:),
-' for the rows.
+('format' asRopedText glamorousExplanationFor: #itemText:),
+' for the rows, in the form of a text element.
 The number of rows it has it is exactly the number of elements in the collection returned by the ' asRopedText,
 ('items: block' asRopedText glamorousExplanationFor: #items:),
 '. In this case, this means it shows all the ' asRopedText,
@@ -610,6 +609,7 @@ GtInspectorViews >> mondrianViewExplanationWithLinks [
 	
 	selectors := GtSelectorExplanationLinkStyler new coder: coder.
 	selectors addSelectors: {#mondrian. #painting:. #nodes. #layout. #circle. #contacts. #avatar. #shape:. #title:}.
+	selectors addSelector: #allContacts withIdentifier: #contacts.
 	
 	coder explanationLink: (GtCompositeExplanationLinkStyler forLinks: { selectors }).
 	coderElement := (coder expanded: true) asElement.
@@ -660,13 +660,14 @@ After the ' asRopedText,
 ('contacts' asRopedText glamorousExplanationFor: #contacts),
 ' and each of them has a ' asRopedText,
 ('shape' asRopedText glamorousExplanationFor: #shape:),
-' represented by the their ' asRopedText,
+' represented by their ' asRopedText,
 ('avatar' asRopedText glamorousExplanationFor: #avatar),
-'
+'.
 Then we set the ' asRopedText,
 ('layout' asRopedText glamorousExplanationFor: #layout),
 ' to be a ' asRopedText,
-('circle' asRopedText glamorousExplanationFor: #circle).
+('circle' asRopedText glamorousExplanationFor: #circle),
+'.' asRopedText.
 	^ text
 		glamorousRegularFont;
 		fontSize: 20;
@@ -897,7 +898,7 @@ As always, the first thing we mention is the ' asRopedText,
 ('title' asRopedText glamorousExplanationFor: #title:),
 '. Then, in the ' asRopedText,
 ('items: block' asRopedText glamorousExplanationFor: #items:),
-' we specify the first items in the tree, the parents where it starts from, in this case, the' asRopedText,
+' we specify the first items in the tree, the parents where it starts from, in this case, the ' asRopedText,
 ('categories' asRopedText glamorousExplanationFor: #categories),
 ' in the address book.
 After that, in the ' asRopedText,
