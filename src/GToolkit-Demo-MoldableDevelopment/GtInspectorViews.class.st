@@ -566,8 +566,8 @@ GtInspectorViews >> listViewExplanationWithLinksText [
 ' view. It has a ' asRopedText,
 ('title' asRopedText glamorousExplanationFor: #title:),
 ' and a ' asRopedText,
-('format' asRopedText glamorousExplanationFor: #itemFormat:),
-' for the rows.
+('format' asRopedText glamorousExplanationFor: #itemText:),
+' for the rows, in the form of a text element.
 The number of rows it has it is exactly the number of elements in the collection returned by the ' asRopedText,
 ('items: block' asRopedText glamorousExplanationFor: #items:),
 '. In this case, this means it shows all the ' asRopedText,
@@ -660,13 +660,14 @@ After the ' asRopedText,
 ('contacts' asRopedText glamorousExplanationFor: #contacts),
 ' and each of them has a ' asRopedText,
 ('shape' asRopedText glamorousExplanationFor: #shape:),
-' represented by the their ' asRopedText,
+' represented by their ' asRopedText,
 ('avatar' asRopedText glamorousExplanationFor: #avatar),
-'
+'.
 Then we set the ' asRopedText,
 ('layout' asRopedText glamorousExplanationFor: #layout),
 ' to be a ' asRopedText,
-('circle' asRopedText glamorousExplanationFor: #circle).
+('circle' asRopedText glamorousExplanationFor: #circle),
+'.' asRopedText.
 	^ text
 		glamorousRegularFont;
 		fontSize: 20;
@@ -897,7 +898,7 @@ As always, the first thing we mention is the ' asRopedText,
 ('title' asRopedText glamorousExplanationFor: #title:),
 '. Then, in the ' asRopedText,
 ('items: block' asRopedText glamorousExplanationFor: #items:),
-' we specify the first items in the tree, the parents where it starts from, in this case, the' asRopedText,
+' we specify the first items in the tree, the parents where it starts from, in this case, the ' asRopedText,
 ('categories' asRopedText glamorousExplanationFor: #categories),
 ' in the address book.
 After that, in the ' asRopedText,
