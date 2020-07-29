@@ -246,7 +246,16 @@ GtTour >> create [
 			
 			GtTextAndElementSlide new
 				newTextWithFormat: GtExplainerExamples new inspectorExplanationText;
-				element: [ GtExplainerExamples new inspectorContainerElement ].
+				element: [ BlElement new
+					constraintsDo: [ :c |
+						c vertical matchParent.
+						c horizontal matchParent];
+					background: Color white;
+					look: BrShadowLook;
+					margin: (BlInsets right: 5);
+					addChild: (GtPager 
+						createWrappedOn: (GtExplainerExamples>>#inspectorContainerElement) gtExampleValue) ];
+				elementWeight: 0.6.
 			GtTextAndElementSlide new
 				newTextWithFormat: GtMethodCoderStylerExamples new viewsExplanationWithLinksText;
 				element: [ self viewMethodWithResultExplanationWithLinksExample ].
