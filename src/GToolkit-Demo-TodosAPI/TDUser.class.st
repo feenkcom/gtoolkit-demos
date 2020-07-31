@@ -57,14 +57,12 @@ TDUser >> postsGroup [
 
 { #category : #accessing }
 TDUser >> requestPostsFromThisUser [
-	^ TDPostsGroup new
-		posts: (TDClient new request requestPostsForUserId: self id).
+	^ TDClient new getPostsForUserId: self id.
 ]
 
 { #category : #accessing }
 TDUser >> requestTodosFromThisUser [
-	^ TDTodosGroup new
-		todos: (TDClient new request requestTodosForUserId: self id).
+	^ TDClient new getTodosForUserId: self id.
 ]
 
 { #category : #accessing }

@@ -16,6 +16,15 @@ TDTodo class >> empty [
 ]
 
 { #category : #accessing }
+TDTodo class >> rawData: aDictionary [
+	^ self new
+		completed: (aDictionary at: 'completed' value);
+		id: (aDictionary at: 'id' value);
+		title: (aDictionary at: 'title' value);
+		userId: (aDictionary at: 'userId' value).
+]
+
+{ #category : #accessing }
 TDTodo >> completed [
 	^ completed.
 ]
