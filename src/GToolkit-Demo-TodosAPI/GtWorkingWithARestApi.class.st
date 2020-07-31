@@ -147,22 +147,6 @@ GtWorkingWithARestApi >> create [
 				newFadedText: 'For example, you can make a request for all the posts in the system, as it is presented below.';
 				element: [ self exampleSlideWithSnippet: 'TDClient new getAllPosts.' ]).
 			(GtTextAndElementSlide new
-				newTextWithFormat: ('The Requests' asRopedText bold; fontSize: 18);
-				newTextWithFormat: self requestsSlideText;
-				element: [ BlElement new
-					background: Color white;
-					look: BrShadowLook;
-					margin: (BlInsets right: 5);
-					addChild: (GtClassCoder forClass: TDDownloadCommand) asElement ]).
-			(GtTextAndElementSlide new
-				newTextWithFormat: ('Parsing' asRopedText bold; fontSize: 18);
-				newTextWithFormat: self parsingSlideText;
-				element: [ BlElement new
-					background: Color white;
-					look: BrShadowLook;
-					margin: (BlInsets right: 5);
-					addChild: (GtClassCoder forClass: TDJsonMapping) asElement ]).
-			(GtTextAndElementSlide new
 				newTextWithFormat: ('Data Structures' asRopedText bold; fontSize: 18);
 				newTextWithFormat: self coreSlideText;
 				element: [ BlElement new
@@ -259,22 +243,8 @@ GtWorkingWithARestApi >> exampleSlideWithSnippet: aSnippetText [
 ]
 
 { #category : #accessing }
-GtWorkingWithARestApi >> parsingSlideText [
-	^ 'While parsing the JSON file we choose what information to store for each type of data by mapping the information to methods named accordingly.' asRopedText
-	glamorousRegularFont;
-	fontSize: 18.
-]
-
-{ #category : #accessing }
 GtWorkingWithARestApi >> postsSlideText [
 	^ 'The simple post is the second type of post a user can make. It is similar to the todo. The difference is that the post has a body of text instead of the status. It also has a list of comments left by other users to the specific post.' asRopedText
-	glamorousRegularFont;
-	fontSize: 18.
-]
-
-{ #category : #accessing }
-GtWorkingWithARestApi >> requestsSlideText [
-	^ 'After that, we work on the actual requests. Based on the information from the client, the specific URLs are created and the information is received from the API in the form of a JSON file. This file will then be sent to a parser to read and save the data we need from it, so we can display it in a more pleasent form.' asRopedText
 	glamorousRegularFont;
 	fontSize: 18.
 ]

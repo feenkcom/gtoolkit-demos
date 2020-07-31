@@ -1,45 +1,95 @@
 Class {
 	#name : #TDClient,
 	#superclass : #Object,
-	#instVars : [
-		'signalProgress'
-	],
 	#category : #'GToolkit-Demo-TodosAPI-Client'
 }
 
 { #category : #accessing }
 TDClient >> getAllComments [
-	^ self request requestAllComments.
+	| dictionaries |
+	dictionaries := STON fromString: 
+		(self requestForUrl: 'https://jsonplaceholder.typicode.com/comments').
+	^ dictionaries collect: [:dict |
+			TDComment rawData: dict].
 ]
 
 { #category : #accessing }
 TDClient >> getAllPosts [
+	| dictionaries |
+	dictionaries := STON fromString: 
+		(self requestForUrl: 'https://jsonplaceholder.typicode.com/posts').
 	^ TDPostsGroup new
-		posts: self request requestAllPosts.
+		posts: (dictionaries collect: [:dict |
+			TDPost rawData: dict]).
 ]
 
 { #category : #accessing }
 TDClient >> getAllTodos [
+	| dictionaries |
+	dictionaries := STON fromString: 
+		(self requestForUrl: 'https://jsonplaceholder.typicode.com/todos').
 	^ TDTodosGroup new
-		todos: self request requestAllTodos.
+		todos: (dictionaries collect: [:dict |
+			TDTodo rawData: dict]).
 ]
 
 { #category : #accessing }
 TDClient >> getCommentWithId: anInteger [
-	^ (self request
-		requestCommentWithId: anInteger) ifNil: [TDComment empty].
+	| dictionary |
+	dictionary := STON fromString: 
+		(self requestForUrl: 'https://jsonplaceholder.typicode.com/comments/', anInteger asString).
+	^ dictionary
+		ifEmpty: [TDComment empty]
+		ifNotEmpty: [TDComment rawData: dictionary].
+]
+
+{ #category : #accessing }
+TDClient >> getCommentsForPostId: anInteger [
+	| dictionaries |
+	dictionaries := STON fromString: 
+		(self requestForUrl: 'https://jsonplaceholder.typicode.com/comments?postId=', anInteger asString).
+	^ dictionaries collect: [:dict |
+			TDComment rawData: dict].
 ]
 
 { #category : #accessing }
 TDClient >> getPostWithId: anInteger [
-	^ (self request
-		requestPostWithId: anInteger) ifNil: [TDPost empty].
+	| dictionary |
+	dictionary := STON fromString: 
+		(self requestForUrl: 'https://jsonplaceholder.typicode.com/posts/', anInteger asString).
+	^ dictionary
+		ifEmpty: [TDPost empty]
+		ifNotEmpty: [TDPost rawData: dictionary].
+]
+
+{ #category : #accessing }
+TDClient >> getPostsForUserId: anInteger [
+	| dictionaries |
+	dictionaries := STON fromString: 
+		(self requestForUrl: 'https://jsonplaceholder.typicode.com/posts?userId=', anInteger asString).
+	^ TDPostsGroup new
+		posts: (dictionaries collect: [:dict |
+			TDPost rawData: dict]).
 ]
 
 { #category : #accessing }
 TDClient >> getTodoWithId: anInteger [
-	^ (self request
-		requestTodoWithId: anInteger) ifNil: [TDTodo empty].
+	| dictionary |
+	dictionary := STON fromString: 
+		(self requestForUrl: 'https://jsonplaceholder.typicode.com/todos/', anInteger asString).
+	^ dictionary
+		ifEmpty: [TDTodo empty]
+		ifNotEmpty: [TDTodo rawData: dictionary].
+]
+
+{ #category : #accessing }
+TDClient >> getTodosForUserId: anInteger [
+	| dictionaries |
+	dictionaries := STON fromString: 
+		(self requestForUrl: 'https://jsonplaceholder.typicode.com/todos?userId=', anInteger asString).
+	^ TDTodosGroup new
+		todos: (dictionaries collect: [:dict |
+			TDTodo rawData: dict]).
 ]
 
 { #category : #accessing }
@@ -51,21 +101,11 @@ TDClient >> getUserWithId: anInteger [
 { #category : #accessing }
 TDClient >> initialize [
 	super initialize.
-	signalProgress := false.
 ]
 
 { #category : #accessing }
-TDClient >> request [
-	^ TDDownloadCommand new
-		signalProgress: self signalProgress.
-]
-
-{ #category : #accessing }
-TDClient >> signalProgress [
-	^ signalProgress.
-]
-
-{ #category : #accessing }
-TDClient >> signalProgress: aBoolean [
-	signalProgress := aBoolean.
+TDClient >> requestForUrl: anUrl [
+	^ ZnClient new
+		url: anUrl;
+		get.
 ]

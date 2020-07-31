@@ -17,6 +17,15 @@ TDPost class >> empty [
 ]
 
 { #category : #accessing }
+TDPost class >> rawData: aDictionary [
+	^ self new
+		body: (aDictionary at: 'body' value);
+		title: (aDictionary at: 'title' value);
+		id: (aDictionary at: 'id' value);
+		userId: (aDictionary at: 'userId' value).
+]
+
+{ #category : #accessing }
 TDPost >> body [
 	^ body.
 ]
@@ -90,7 +99,7 @@ TDPost >> initialize [
 
 { #category : #accessing }
 TDPost >> requestCommentsForThisPost [
-	^ TDClient new request requestCommentsForPostId: self id.
+	^ TDClient new getCommentsForPostId: self id.
 ]
 
 { #category : #accessing }

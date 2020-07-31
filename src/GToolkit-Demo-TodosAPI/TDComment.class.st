@@ -18,6 +18,16 @@ TDComment class >> empty [
 ]
 
 { #category : #accessing }
+TDComment class >> rawData: aDictionary [
+	^ self new
+		name: (aDictionary at: 'name' value);
+		body: (aDictionary at: 'body' value);
+		email: (aDictionary at: 'email' value);
+		id: (aDictionary at: 'id' value);
+		postId: (aDictionary at: 'postId' value).
+]
+
+{ #category : #accessing }
 TDComment >> body [
 	^ body.
 ]
