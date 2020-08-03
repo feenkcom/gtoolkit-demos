@@ -100,7 +100,7 @@ GtWorkingWithARestApi >> apiExplanationText [
 
 { #category : #accessing }
 GtWorkingWithARestApi >> clientSlideText [
-	^ 'The first step is to create the client. This is the component you interact with. Through it you can make different requests to the API.' asRopedText
+	^ 'The client is the main component in this model. Using it we can make different requests to the API. The responses from the API, in the form of JSON files, are then parsed and stored inside coresponding objects so we can better visualize them.' asRopedText
 	glamorousRegularFont;
 	fontSize: 18.
 ]
@@ -114,7 +114,7 @@ GtWorkingWithARestApi >> commentsSlideText [
 
 { #category : #accessing }
 GtWorkingWithARestApi >> coreSlideText [
-	^ 'The information obtained from parsing the JSON file needs to be stored somewhere. So we create a structure of classes to help us with that. Each class will have its default variant and its null variant for instances where the request information is not found.' asRopedText
+	^ 'To store the information we create a structure of classes where each class will represent a type of information that can be requested from the API. At the same time, each class has its default variant for usual cases and its null variant for instances where the requested information is not found.' asRopedText
 	glamorousRegularFont;
 	fontSize: 18.
 ]
@@ -143,9 +143,12 @@ GtWorkingWithARestApi >> create [
 					look: BrShadowLook;
 					margin: (BlInsets right: 5);
 					addChild: (GtClassCoder forClass: TDClient) asElement ]).
+			(GtTextAndElementSlide new
+				newTextWithFormat: (self getAllTodosMethodExplanationText);
+				element: [ self getAllTodosMethodExplanation ]).
 			(GtLabelAndElementSlide new
-				newFadedText: 'For example, you can make a request for all the posts in the system, as it is presented below.';
-				element: [ self exampleSlideWithSnippet: 'TDClient new getAllPosts.' ]).
+				newFadedText: 'And here is how the result of that request looks like.';
+				element: [ self exampleSlideWithSnippet: 'TDClient new getAllTodos.' ]).
 			(GtTextAndElementSlide new
 				newTextWithFormat: ('Data Structures' asRopedText bold; fontSize: 18);
 				newTextWithFormat: self coreSlideText;
@@ -240,6 +243,98 @@ GtWorkingWithARestApi >> exampleSlideWithSnippet: aSnippetText [
 			aStep wait forEmptySpaceTaskQueue ].
 	aScripter syncContinue.
 	^aScripter elementWithoutParent
+]
+
+{ #category : #accessing }
+GtWorkingWithARestApi >> getAllTodosMethodCoderWithExplanationTargets [
+	| coder coderElement selectors literals variables |
+	
+	coder := GtMethodCoder forMethod: TDClient>>#getAllTodos.
+	selectors := GtSelectorExplanationLinkStyler new.
+	selectors
+		addSelectors:
+			{#requestForUrl: . #rawData:}.
+	variables := GtVariableExplanationLinkStyler new.
+	variables
+		addVariables:
+			{#dictionaries . #dict . #TDTodo . #TDTodosGroup}.
+	literals := GtLiteralExplanationLinkStyler new.
+	literals
+		addLiteral: 'https://jsonplaceholder.typicode.com/todos' withIdentifier: #url.
+	coder
+		explanationLink:
+			(GtCompositeExplanationLinkStyler
+				forLinks:
+					{selectors . variables . literals}).
+	coderElement := (coder expanded: true) asElement.
+	coderElement forceLayout.
+	^ coderElement.
+]
+
+{ #category : #accessing }
+GtWorkingWithARestApi >> getAllTodosMethodExplanation [
+	| aScripter coderExpandedElement |
+	
+	aScripter := BlDevScripter new.
+	aScripter
+		substep: 'Add Coder Element'
+		do: [ :aStep | 
+			aStep set
+				label: 'Coder';
+				element: [ self getAllTodosMethodCoderWithExplanationTargets ] ].
+	aScripter
+		substep: 'Wait'
+		do: [ :aStep | 
+			aStep wait forEmptySpaceTaskQueue ].
+	aScripter
+		substep: 'Expand first method inside coder'
+		do: [ :aStep | 
+			aStep click
+				label: 'Click on expand adornment';
+				onBreadthFirstChildOfClass: GtSourceCoderExpandedContentElement;
+				onBreadthFirstChildOfClass: BrEditor;
+				onChildAt: 4;
+				onChildAt: 6.
+			aStep wait forEmptySpaceTaskQueue ].
+	aScripter
+		substep: 'Expand second method inside coder'
+		do: [ :aStep | 
+			aStep click
+				label: 'Click on expand adornment';
+				onBreadthFirstChildOfClass: GtSourceCoderExpandedContentElement;
+				onBreadthFirstChildOfClass: BrEditor;
+				onChildAt: 7;
+				onChildAt: 7.
+			aStep wait forEmptySpaceTaskQueue ].
+	aScripter syncContinue.
+	^ (aScripter elementWithoutParent)
+		vMatchParent;
+		hMatchParent.
+]
+
+{ #category : #accessing }
+GtWorkingWithARestApi >> getAllTodosMethodExplanationText [
+	| text |
+	text := 'This is how a request is implemented. First we send a GET ' asRopedText,
+('request' asRopedText glamorousExplanationFor: #requestForUrl:),
+' to the API using the specific ' asRopedText,
+('url' asRopedText glamorousExplanationFor: #url),
+' for it.
+The response is transformed into a ' asRopedText,
+('list of dictionaries' asRopedText glamorousExplanationFor: #dictionaries),
+', where ' asRopedText,
+('each dictionary' asRopedText glamorousExplanationFor: #dict),
+' represents a certain todo. For each of them we ' asRopedText,
+('save the information' asRopedText glamorousExplanationFor: #rawData:),
+' in a ' asRopedText,
+('todo' asRopedText glamorousExplanationFor: #TDTodo),
+'object thus obtaining a ' asRopedText,
+('group of todos' asRopedText glamorousExplanationFor: #TDTodosGroup),
+'as a result.' asRopedText.
+	
+	^ text
+		glamorousRegularFont;
+		fontSize: 18.
 ]
 
 { #category : #accessing }
