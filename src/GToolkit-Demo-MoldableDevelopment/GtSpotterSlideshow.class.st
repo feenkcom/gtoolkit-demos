@@ -191,10 +191,10 @@ GtSpotterSlideshow >> spottersMashExample [
 	container addChild: ((self spotterElementOn: 'GtSpotter')
 		constraintsDo: [ :c | 
 				c frame horizontal alignLeft. 
-				c frame vertical alignCenter.
+				c frame vertical alignTop.
 				c horizontal exact: 600.
 				c vertical exact: 400 ];
-		margin: (BlInsets all: 10)).
+		margin: (BlInsets top: 100 right: 10 bottom: 10 left: 10)).
 	container addChild: ((self spotterElementOn: 'size:')
 		constraintsDo: [ :c | 
 				c frame horizontal alignCenter. 
