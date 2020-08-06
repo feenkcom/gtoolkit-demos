@@ -21,9 +21,32 @@ GtSpotterSlideshow >> create [
 			(GtTextAndElementSlide new
 				newTextWithFormat: self spotterInterfaceExplanationText;
 				element: [ self spotterInterfaceExplanationWithLinks ];
+				elementWeight: 0.6).
+			(GtTextAndElementSlide new
+				newTextWithFormat: self spotterOpeningExplanationText;
+				element: [ self spotterElementOn: '' ];
+				elementWeight: 0.6).
+			(GtTextAndElementSlide new
+				newTextWithFormat: self spotterLocalContextExplanationText;
+				element: [ self localSpotterExplanationWithLinks ];
 				elementWeight: 0.6)
 			}.
 	^ slideshow.
+]
+
+{ #category : #accessing }
+GtSpotterSlideshow >> localSpotterExplanationWithLinks [
+	| container coderSpotterElement inspectorSpotterElement aScript |
+	
+	container := BlElement new
+		layout: BlLinearLayout new;
+		constraintsDo: [ :c |
+			c vertical matchParent.
+			c horizontal matchParent ];
+		margin: (BlInsets all: 10).
+	
+	coderSpotterElement := nil.
+	^ BlElement new.
 ]
 
 { #category : #accessing }
@@ -178,6 +201,23 @@ GtSpotterSlideshow >> spotterInterfaceExplanationWithLinks [
 				relocate:
 					(5 @ messagesTarget extent y / 2)).
 	^ spotterElement.
+]
+
+{ #category : #accessing }
+GtSpotterSlideshow >> spotterLocalContextExplanationText [
+	| text |
+	text := '' asRopedText.
+	
+	^ text
+		glamorousRegularFont;
+		fontSize: 20.
+]
+
+{ #category : #accessing }
+GtSpotterSlideshow >> spotterOpeningExplanationText [
+	^ 'To open the spotter in a global context you can either click on the search button in the top right corner of the GT window or you can press the key combination Shift + Return. Thus you get presented with the following interface.' asRopedText
+		glamorousRegularFont;
+		fontSize: 20.
 ]
 
 { #category : #accessing }
