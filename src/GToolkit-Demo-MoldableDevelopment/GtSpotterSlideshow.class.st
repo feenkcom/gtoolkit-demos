@@ -21,9 +21,32 @@ GtSpotterSlideshow >> create [
 			(GtTextAndElementSlide new
 				newTextWithFormat: self spotterInterfaceExplanationText;
 				element: [ self spotterInterfaceExplanationWithLinks ];
+				elementWeight: 0.6).
+			(GtTextAndElementSlide new
+				newTextWithFormat: self spotterOpeningExplanationText;
+				element: [ self spotterElementOn: '' ];
+				elementWeight: 0.6).
+			(GtTextAndElementSlide new
+				newTextWithFormat: self spotterLocalContextExplanationText;
+				element: [ self localSpotterExplanationWithLinks ];
 				elementWeight: 0.6)
 			}.
 	^ slideshow.
+]
+
+{ #category : #accessing }
+GtSpotterSlideshow >> localSpotterExplanationWithLinks [
+	| container coderSpotterElement inspectorSpotterElement aScript |
+	
+	container := BlElement new
+		layout: BlLinearLayout new;
+		constraintsDo: [ :c |
+			c vertical matchParent.
+			c horizontal matchParent ];
+		margin: (BlInsets all: 10).
+	
+	coderSpotterElement := nil.
+	^ BlElement new.
 ]
 
 { #category : #accessing }
@@ -60,7 +83,11 @@ GtSpotterSlideshow >> spotterInterfaceExplanationText [
 ('search bar' asRopedText glamorousExplanationFor: #searchBar),
 ' where you can type the string you want to search for, a ' asRopedText,
 ('results' asRopedText glamorousExplanationFor: #results),
-' section where you can find classes and methods that match your search ' asRopedText,
+' section where you can find ' asRopedText,
+('classes' asRopedText glamorousExplanationFor: #classes),
+' and ' asRopedText,
+('methods' asRopedText glamorousExplanationFor: #messages),
+' that match your search and a ' asRopedText,
 ('preview' asRopedText glamorousExplanationFor: #preview),
 ' pane where you can see a preview of the result that is currently selected.' asRopedText.
 	^ text
@@ -70,7 +97,7 @@ GtSpotterSlideshow >> spotterInterfaceExplanationText [
 
 { #category : #accessing }
 GtSpotterSlideshow >> spotterInterfaceExplanationWithLinks [
-	| spotterElement searchBarTarget resultsTarget previewTarget |
+	| spotterElement searchBarTarget resultsTarget previewTarget classesTarget implementorsTarget sendersTarget messagesTarget|
 	spotterElement := BlUseAsyncFeatures disableDuring: [
 		self spotterElementOn: 'GtSpotter' ].
 	spotterElement forceLayout.
@@ -86,6 +113,22 @@ GtSpotterSlideshow >> spotterInterfaceExplanationWithLinks [
 	previewTarget := spotterElement
 		allChildrenBreadthFirstDetect: [:aChild | 
 			(aChild isKindOf: BlTextElement) and: [aChild parent parent isKindOf: GtSpotterPreviewElement]]
+		ifFound: [:aChild | aChild].
+	classesTarget := spotterElement
+		allChildrenBreadthFirstDetect: [:aChild | 
+			(aChild isKindOf: BlTextElement) and: [aChild text asString = '#Classes' asString]]
+		ifFound: [:aChild | aChild].
+	implementorsTarget := spotterElement
+		allChildrenBreadthFirstDetect: [:aChild | 
+			(aChild isKindOf: BlTextElement) and: [aChild text asString = '#Implementors' asString]]
+		ifFound: [:aChild | aChild].
+	sendersTarget := spotterElement
+		allChildrenBreadthFirstDetect: [:aChild | 
+			(aChild isKindOf: BlTextElement) and: [aChild text asString = '#Senders' asString]]
+		ifFound: [:aChild | aChild].
+	messagesTarget := spotterElement
+		allChildrenBreadthFirstDetect: [:aChild | 
+			(aChild isKindOf: BlTextElement) and: [aChild text asString = '#Messages' asString]]
 		ifFound: [:aChild | aChild].
 	
 	searchBarTarget
@@ -106,7 +149,7 @@ GtSpotterSlideshow >> spotterInterfaceExplanationWithLinks [
 				elevation: (BlRelativeElevation elevation: 10);
 				geometry: BlCircle new;
 				look: (GtExplainerTargetLook new explanationModel: #results);
-				relocate: 5 @ 5). 
+				relocate: (resultsTarget extent x / 2) @ 5). 
 	previewTarget
 		addChild:
 			(BrButton new
@@ -116,8 +159,65 @@ GtSpotterSlideshow >> spotterInterfaceExplanationWithLinks [
 				geometry: BlCircle new;
 				look: (GtExplainerTargetLook new explanationModel: #preview);
 				relocate:
-					(5 @ previewTarget extent y / 2)). 
+					(5 @ previewTarget extent y / 2)).
+	classesTarget
+		addChild:
+			(BrButton new
+				constraintsDo: [ :c | c ignoreByLayout ];
+				size: 3 @ 3;
+				elevation: (BlRelativeElevation elevation: 10);
+				geometry: BlCircle new;
+				look: (GtExplainerTargetLook new explanationModel: #classes);
+				relocate:
+					(5 @ classesTarget extent y / 2)).
+	implementorsTarget
+		addChild:
+			(BrButton new
+				constraintsDo: [ :c | c ignoreByLayout ];
+				size: 3 @ 3;
+				elevation: (BlRelativeElevation elevation: 10);
+				geometry: BlCircle new;
+				look: (GtExplainerTargetLook new explanationModel: #classes);
+				relocate:
+					(5 @ implementorsTarget extent y / 2)).
+	sendersTarget
+		addChild:
+			(BrButton new
+				constraintsDo: [ :c | c ignoreByLayout ];
+				size: 3 @ 3;
+				elevation: (BlRelativeElevation elevation: 10);
+				geometry: BlCircle new;
+				look: (GtExplainerTargetLook new explanationModel: #classes);
+				relocate:
+					(5 @ sendersTarget extent y / 2)).
+	messagesTarget
+		addChild:
+			(BrButton new
+				constraintsDo: [ :c | c ignoreByLayout ];
+				size: 3 @ 3;
+				elevation: (BlRelativeElevation elevation: 10);
+				geometry: BlCircle new;
+				look: (GtExplainerTargetLook new explanationModel: #messages);
+				relocate:
+					(5 @ messagesTarget extent y / 2)).
 	^ spotterElement.
+]
+
+{ #category : #accessing }
+GtSpotterSlideshow >> spotterLocalContextExplanationText [
+	| text |
+	text := '' asRopedText.
+	
+	^ text
+		glamorousRegularFont;
+		fontSize: 20.
+]
+
+{ #category : #accessing }
+GtSpotterSlideshow >> spotterOpeningExplanationText [
+	^ 'To open the spotter in a global context you can either click on the search button in the top right corner of the GT window or you can press the key combination Shift + Return. Thus you get presented with the following interface.' asRopedText
+		glamorousRegularFont;
+		fontSize: 20.
 ]
 
 { #category : #accessing }
@@ -131,10 +231,10 @@ GtSpotterSlideshow >> spottersMashExample [
 	container addChild: ((self spotterElementOn: 'GtSpotter')
 		constraintsDo: [ :c | 
 				c frame horizontal alignLeft. 
-				c frame vertical alignCenter.
+				c frame vertical alignTop.
 				c horizontal exact: 600.
 				c vertical exact: 400 ];
-		margin: (BlInsets all: 10)).
+		margin: (BlInsets top: 100 right: 10 bottom: 10 left: 10)).
 	container addChild: ((self spotterElementOn: 'size:')
 		constraintsDo: [ :c | 
 				c frame horizontal alignCenter. 
