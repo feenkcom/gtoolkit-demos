@@ -99,7 +99,7 @@ GtSpotterSlideshow >> spotterInterfaceExplanationText [
 GtSpotterSlideshow >> spotterInterfaceExplanationWithLinks [
 	| spotterElement searchBarTarget resultsTarget previewTarget classesTarget implementorsTarget sendersTarget messagesTarget|
 	spotterElement := BlUseAsyncFeatures disableDuring: [
-		self spotterElementOn: 'GtSpotter' ].
+		self spotterElementOn: 'GtCoder' ].
 	spotterElement forceLayout.
 	
 	searchBarTarget := spotterElement
@@ -149,7 +149,7 @@ GtSpotterSlideshow >> spotterInterfaceExplanationWithLinks [
 				elevation: (BlRelativeElevation elevation: 10);
 				geometry: BlCircle new;
 				look: (GtExplainerTargetLook new explanationModel: #results);
-				relocate: (resultsTarget extent x / 2) @ 5). 
+				relocate: 5 @ 5). 
 	previewTarget
 		addChild:
 			(BrButton new
@@ -177,7 +177,7 @@ GtSpotterSlideshow >> spotterInterfaceExplanationWithLinks [
 				size: 3 @ 3;
 				elevation: (BlRelativeElevation elevation: 10);
 				geometry: BlCircle new;
-				look: (GtExplainerTargetLook new explanationModel: #classes);
+				look: (GtExplainerTargetLook new explanationModel: #messages);
 				relocate:
 					(5 @ implementorsTarget extent y / 2)).
 	sendersTarget
@@ -187,7 +187,7 @@ GtSpotterSlideshow >> spotterInterfaceExplanationWithLinks [
 				size: 3 @ 3;
 				elevation: (BlRelativeElevation elevation: 10);
 				geometry: BlCircle new;
-				look: (GtExplainerTargetLook new explanationModel: #classes);
+				look: (GtExplainerTargetLook new explanationModel: #messages);
 				relocate:
 					(5 @ sendersTarget extent y / 2)).
 	messagesTarget
