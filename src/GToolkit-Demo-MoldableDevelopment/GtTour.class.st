@@ -155,7 +155,7 @@ When opened on a class, you see the ' asRopedText, ('name' asRopedText glamorous
 ' new methods to the class.
 As for methods, they can also be ' asRopedText,
 ('expanded' asRopedText glamorousExplanationFor: #expandMethodButton),
-' in place, just like the header of the class. This gives you access to edit the code inside them.' asRopedText.
+' and edited in place.' asRopedText.
 	
 	^ text
 		glamorousRegularFont;
