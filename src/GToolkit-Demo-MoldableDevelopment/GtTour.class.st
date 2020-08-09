@@ -134,33 +134,26 @@ GtTour >> coderExplanationWithLinks [
 GtTour >> coderExplanationWithLinksText [
 	| text |
 	
-	text := 'Coder is where you work with your code. It allows you to browse, create and remove packages, classes and methods.
-When you open the coder on a class, the first thing you see is the ' asRopedText,
-('package hierarchy' asRopedText glamorousExplanationFor: #packageHierarchy),
-'. This is a list of all the packages in the system, with the selected package being the one you are currently in. Then you have the ' asRopedText,
-('class hierarchy' asRopedText glamorousExplanationFor: #classHierarchy),
-', a list of all the classes in the selected package. And finally, you have the class currently selected.
-Focusing on the class, you have the ' asRopedText,
-('name' asRopedText glamorousExplanationFor: #className),
-'. Below that is a group of tabs with usefull information about the class, such as the ' asRopedText,
+	text := 'Coder is where you manage your code.
+When opened on a class, you see the ' asRopedText, ('name' asRopedText glamorousExplanationFor: #className),
+' and an ' asRopedText,
+('expandable editor' asRopedText glamorousExplanationFor: #expandClassButton),
+ ' for the definition including details like: the superclass, package, tag, traits, instance and class side variables. ' asRopedText,
+'Underneath we have different views on the class such as ' asRopedText,
+('methods' asRopedText glamorousExplanationFor: #methodTab), ' the ' asRopedText,
 ('class comment' asRopedText glamorousExplanationFor: #commentTab),
-' a list of ' asRopedText,
-('methods' asRopedText glamorousExplanationFor: #methodTab),
-' and a list of ' asRopedText,
+' or a list of ' asRopedText,
 ('references' asRopedText glamorousExplanationFor: #referencesTab),
-'. The class header can be ' asRopedText,
-('expanded' asRopedText glamorousExplanationFor: #expandClassButton),
-' in place so you have access to edit details about the class: the superclass, package, tag, traits, instance and class side variables.
-The coder also gives you the possibility to ' asRopedText,
+'. Coder also gives provides the possibility to ' asRopedText,
 ('delete' asRopedText glamorousExplanationFor: #deleteClassButton),
 ' the current class, to ' asRopedText,
 ('add' asRopedText glamorousExplanationFor: #addClassButton),
-' a new one, to perform ' asRopedText,
-('searches' asRopedText glamorousExplanationFor: #searchButton),
+' a new one, to ' asRopedText,
+('search' asRopedText glamorousExplanationFor: #searchButton),
 ' inside the class or to ' asRopedText,
 ('add' asRopedText glamorousExplanationFor: #addMethodButton),
 ' new methods to the class.
-As for the methods, they can also be ' asRopedText,
+As for methods, they can also be ' asRopedText,
 ('expanded' asRopedText glamorousExplanationFor: #expandMethodButton),
 ' in place, just like the header of the class. This gives you access to edit the code inside them.' asRopedText.
 	
