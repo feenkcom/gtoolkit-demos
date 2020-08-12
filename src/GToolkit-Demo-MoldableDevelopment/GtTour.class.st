@@ -7,7 +7,7 @@ Class {
 { #category : #accessing }
 GtTour >> coderExplanationWithLinks [
 	<gtExample>
-	| container coderElement packageHierarchyTarget classHierarchyTarget classNameTarget methodTabTarget commentTabTarget referencesTab expandClassTarget expandMethodTarget deleteButtonTarget buttonTargets searchButtonTarget addClassButtonTarget addMethodButtonTarget |
+	| container coderElement packageHierarchyTarget classHierarchyTarget classNameTarget methodTabTarget commentTabTarget referencesTab expandClassTarget expandMethodTarget deleteButtonTarget classButtonTargets searchButtonTarget addClassButtonTarget methodButtonTargets addMethodButtonTarget filterMethodsButtonTarget |
 	
 	container := BlElement new
 		constraintsDo: [ :c |
@@ -52,18 +52,25 @@ GtTour >> coderExplanationWithLinks [
 		ifFound: [:aChild | aChild].
 	expandMethodTarget := coderElement 
 		allChildrenBreadthFirstDetect: [:aChild | 
-			(aChild isKindOf: GtCodersElement)]
+			(aChild isKindOf: GtExpandableCoderElement)]
 		ifFound: [:aChild | aChild].
 	deleteButtonTarget := coderElement 
 		allChildrenBreadthFirstDetect: [:aChild | 
 			(aChild isKindOf: GtPreviewChangeButton)]
 		ifFound: [:aChild | aChild].
-	buttonTargets := coderElement
+	classButtonTargets := coderElement
 		allChildrenBreadthFirstSelect: [:aChild | 
-			(aChild isKindOf: BrButton) and: [aChild parent isKindOf: BrToolbar]].
-	searchButtonTarget := buttonTargets second.
-	addClassButtonTarget := buttonTargets last.
-	addMethodButtonTarget := buttonTargets first.
+			(aChild isKindOf: BrButton) and: [aChild parent parent isKindOf: GtCoder]].
+	searchButtonTarget := classButtonTargets first.
+	addClassButtonTarget := classButtonTargets last.
+	methodButtonTargets := coderElement
+		allChildrenBreadthFirstDetect: [:aChild | 
+			aChild isKindOf: GtBehaviorCoderElement] 
+		ifFound: [:aChild | 
+			aChild allChildrenBreadthFirstSelect: [:aButtonChild | 
+				(aButtonChild isKindOf: BrButton) and: [aButtonChild parent isKindOf: BrToolbar]]].
+	filterMethodsButtonTarget := methodButtonTargets first.
+	addMethodButtonTarget := methodButtonTargets last.
 	
 	packageHierarchyTarget
 		addChild:
@@ -110,6 +117,11 @@ GtTour >> coderExplanationWithLinks [
 			((self yellowTargetCircleWithExplanationModel: #deleteClassButton)
 				relocate:
 					(12 @ deleteButtonTarget extent y / 2)).
+	filterMethodsButtonTarget
+		addChild:
+			((self yellowTargetCircleWithExplanationModel: #filterButton)
+				relocate:
+					(5 @ filterMethodsButtonTarget extent y / 2)).			
 	addMethodButtonTarget
 		addChild:
 			((self yellowTargetCircleWithExplanationModel: #addMethodButton)
@@ -155,7 +167,9 @@ When opened on a class, you see the ' asRopedText, ('name' asRopedText glamorous
 ' new methods to the class.
 As for methods, they can also be ' asRopedText,
 ('expanded' asRopedText glamorousExplanationFor: #expandMethodButton),
-' and edited in place.
+' and edited in place and they can be ' asRopedText,
+('filtered' asRopedText glamorousExplanationFor: #filterButton),
+' using different criterias chosen from the list.
 When maximized, Coder also offers a ' asRopedText,
 ('package hierarchy' asRopedText glamorousExplanationFor: #packageHierarchy),
 ' view showing all packages in the system, and a ' asRopedText,
