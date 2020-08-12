@@ -16,9 +16,9 @@ GtWorkingWithARestApi >> apiExplanationSlide [
 		margin: (BlInsets all: 5);
 		addChild: (BrButton new
 			margin: (BlInsets all: 5);
-			look: (BrGlamorousLinkSquaredButtonWithLabelLook new fontSize: 16) + (BrGlamorousLabelTooltipLook new text: 'https://jsonplaceholder.typicode.com/todos/8');
-			label: 'https://jsonplaceholder.typicode.com/todos/8';
-			action: [ :aButton | WebBrowser openOn: 'https://jsonplaceholder.typicode.com/todos/8']);
+			look: (BrGlamorousLinkSquaredButtonWithLabelLook new fontSize: 16) + (BrGlamorousLabelTooltipLook new text: 'https://jsonplaceholder.typicode.com/todos');
+			label: 'https://jsonplaceholder.typicode.com/todos';
+			action: [ :aButton | WebBrowser openOn: 'https://jsonplaceholder.typicode.com/todos']);
 		addChild: (BlElement new
 			constraintsDo: [ :c |
 				c vertical matchParent.
@@ -26,7 +26,7 @@ GtWorkingWithARestApi >> apiExplanationSlide [
 			margin: (BlInsets all: 5);
 			look: BrShadowLook;
 			background: Color white;
-			addChild: ((TDExamples new requestTodoWithIdEightRawExample gtJsonFor: GtPhlowView empty) asElementDo: [ :e | e ])).
+			addChild: ((TDExamples new requestAllTodosRawExample gtJsonFor: GtPhlowView empty) asElementDo: [ :e | e ])).
 	
 	secondExampleContainer := BlElement new
 		layout: BlLinearLayout vertical;
@@ -56,9 +56,9 @@ GtWorkingWithARestApi >> apiExplanationSlide [
 		margin: (BlInsets all: 5);
 		addChild: (BrButton new
 			margin: (BlInsets all: 5);
-			look: (BrGlamorousLinkSquaredButtonWithLabelLook new fontSize: 16) + (BrGlamorousLabelTooltipLook new text: 'https://jsonplaceholder.typicode.com/todos');
-			label: 'https://jsonplaceholder.typicode.com/todos';
-			action: [ :aButton | WebBrowser openOn: 'https://jsonplaceholder.typicode.com/todos']);
+			look: (BrGlamorousLinkSquaredButtonWithLabelLook new fontSize: 16) + (BrGlamorousLabelTooltipLook new text: 'https://jsonplaceholder.typicode.com/todos/8');
+			label: 'https://jsonplaceholder.typicode.com/todos/8';
+			action: [ :aButton | WebBrowser openOn: 'https://jsonplaceholder.typicode.com/todos/8']);
 		addChild: (BlElement new
 			constraintsDo: [ :c |
 				c vertical matchParent.
@@ -66,7 +66,7 @@ GtWorkingWithARestApi >> apiExplanationSlide [
 			margin: (BlInsets all: 5);
 			look: BrShadowLook;
 			background: Color white;
-			addChild: ((TDExamples new requestAllTodosRawExample gtJsonFor: GtPhlowView empty) asElementDo: [ :e | e ])).
+			addChild: ((TDExamples new requestTodoWithIdEightRawExample gtJsonFor: GtPhlowView empty) asElementDo: [ :e | e ])).
 	
 	bottomContainer := BlElement new
 		layout: BlLinearLayout horizontal;
@@ -148,7 +148,9 @@ GtWorkingWithARestApi >> create [
 				element: [ self getAllTodosMethodExplanation ]).
 			(GtLabelAndElementSlide new
 				newFadedText: 'And here is how the result of that request looks like.';
-				element: [ self exampleSlideWithSnippet: 'TDClient new getAllTodos.' ]).
+				element: [ GtPlaygroundSlide new
+					snippets: {'TDClient new getAllTodos.'};
+					inspectSnippetAt: 1 ]).
 			(GtTextAndElementSlide new
 				newTextWithFormat: ('Data Structures' asRopedText bold; fontSize: 18);
 				newTextWithFormat: self coreSlideText;
@@ -167,7 +169,9 @@ GtWorkingWithARestApi >> create [
 					addChild: (GtClassCoder forClass: TDUser) asElement ]).
 			(GtLabelAndElementSlide new
 				newFadedText: 'Requesting a user will return that user with its information and the lists of posts and todos made by him.';
-				element: [ self exampleSlideWithSnippet: 'TDClient new getUserWithId: 4.' ]).
+				element: [ GtPlaygroundSlide new
+					snippets: {'TDClient new getUserWithId: 4.'};
+					inspectSnippetAt: 1 ]).
 			(GtTextAndElementSlide new
 				newTextWithFormat: ('Todos' asRopedText bold; fontSize: 18);
 				newTextWithFormat: self todosSlideText;
@@ -178,7 +182,9 @@ GtWorkingWithARestApi >> create [
 					addChild: (GtClassCoder forClass: TDTodo) asElement ]).
 			(GtLabelAndElementSlide new
 				newFadedText: 'A request for a todo will return you that todo with all the informations stored about it.';
-				element: [ self exampleSlideWithSnippet: 'TDClient new getTodoWithId: 8.' ]).
+				element: [ GtPlaygroundSlide new
+					snippets: {'TDClient new getTodoWithId: 8.'};
+					inspectSnippetAt: 1 ]).
 			(GtTextAndElementSlide new
 				newTextWithFormat: ('Simple Posts' asRopedText bold; fontSize: 18);
 				newTextWithFormat: self postsSlideText;
@@ -189,7 +195,9 @@ GtWorkingWithARestApi >> create [
 					addChild: (GtClassCoder forClass: TDPost) asElement ]).
 			(GtLabelAndElementSlide new
 				newFadedText: 'Similar with todos, a request for a post will return you that post.';
-				element: [ self exampleSlideWithSnippet: 'TDClient new getPostWithId: 3.' ]).
+				element: [ GtPlaygroundSlide new
+					snippets: {'TDClient new getPostWithId: 3.'};
+					inspectSnippetAt: 1 ]).
 			(GtTextAndElementSlide new
 				newTextWithFormat: ('Comments' asRopedText bold; fontSize: 18);
 				newTextWithFormat: self commentsSlideText;
@@ -200,7 +208,9 @@ GtWorkingWithARestApi >> create [
 					addChild: (GtClassCoder forClass: TDComment) asElement ]).
 			(GtLabelAndElementSlide new
 				newFadedText: 'And a request for a comment will return you that comment with everything you need to know about it.';
-				element: [ self exampleSlideWithSnippet: 'TDClient new getCommentWithId: 5.' ]).
+				element: [ GtPlaygroundSlide new
+					snippets: {'TDClient new getCommentWithId: 5.'};
+					inspectSnippetAt: 1 ]).
 			(GtLabelAndElementSlide new
 				newFadedText: 'You can play around with the snippets below to better see the model at work';
 				element: [ GtPlaygroundSlide new
@@ -214,35 +224,6 @@ GtWorkingWithARestApi >> create [
 					asElement ]).
 			}.
 	^ slideshow makeArrowsVisible.
-]
-
-{ #category : #accessing }
-GtWorkingWithARestApi >> exampleSlideWithSnippet: aSnippetText [
-	| aPlaybook aPlayground aScripter |
-	
-	aPlaybook := GtPlayBook newWithCodeSnippetContent: aSnippetText.
-	aPlayground := GtPlayground createOn: aPlaybook.
-
-	aScripter := BlDevScripter new.
-	aScripter
-		substep: 'Initial Playground'
-		do: [ :aStep | 
-			aStep set
-				label: 'Playground';
-				element: [ aPlayground ] ].
-	aScripter
-		substep: 'Evaluate and inspect snippet'
-		do: [ :aStep | 
-			aStep click
-				label: 'Click on evaluate and inspect button';
-				onBreadthFirstChildOfClass: GtPlayground;
-				onChildNamed: #content;
-				onBreadthFirstChildOfClass: GtCoderActionsElement;
-				onChildAt: 1;
-				onChildAt: 2.
-			aStep wait forEmptySpaceTaskQueue ].
-	aScripter syncContinue.
-	^aScripter elementWithoutParent
 ]
 
 { #category : #accessing }
