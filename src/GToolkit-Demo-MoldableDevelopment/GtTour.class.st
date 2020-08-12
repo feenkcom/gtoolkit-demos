@@ -156,7 +156,7 @@ When opened on a class, you see the ' asRopedText, ('name' asRopedText glamorous
 ('class comment' asRopedText glamorousExplanationFor: #commentTab),
 ' or a list of ' asRopedText,
 ('references' asRopedText glamorousExplanationFor: #referencesTab),
-'. Coder also provides the possibility to ' asRopedText,
+'. Coder also gives provides the possibility to ' asRopedText,
 ('delete' asRopedText glamorousExplanationFor: #deleteClassButton),
 ' the current class, to ' asRopedText,
 ('add' asRopedText glamorousExplanationFor: #addClassButton),
@@ -167,9 +167,12 @@ When opened on a class, you see the ' asRopedText, ('name' asRopedText glamorous
 ' new methods to the class.
 As for methods, they can also be ' asRopedText,
 ('expanded' asRopedText glamorousExplanationFor: #expandMethodButton),
-' and edited in place and they can be ' asRopedText,
-('filtered' asRopedText glamorousExplanationFor: #filterButton),
-' by different criteria chosen from the list.' asRopedText.
+' and edited in place.
+When maximized, Coder also offers a ' asRopedText,
+('package hierarchy' asRopedText glamorousExplanationFor: #packageHierarchy),
+' view showing all packages in the system, and a ' asRopedText,
+('class hierarchy' asRopedText glamorousExplanationFor: #classHierarchy),
+' with the super and subclasses of the current class.' asRopedText.
 	
 	^ text
 		glamorousRegularFont;
