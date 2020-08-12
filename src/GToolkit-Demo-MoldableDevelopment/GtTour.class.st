@@ -167,7 +167,9 @@ When opened on a class, you see the ' asRopedText, ('name' asRopedText glamorous
 ' new methods to the class.
 As for methods, they can also be ' asRopedText,
 ('expanded' asRopedText glamorousExplanationFor: #expandMethodButton),
-' and edited in place.
+' and edited in place and they can be ' asRopedText,
+('filtered' asRopedText glamorousExplanationFor: #filterButton),
+' using different criterias chosen from the list.
 When maximized, Coder also offers a ' asRopedText,
 ('package hierarchy' asRopedText glamorousExplanationFor: #packageHierarchy),
 ' view showing all packages in the system, and a ' asRopedText,
