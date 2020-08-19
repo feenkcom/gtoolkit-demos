@@ -129,37 +129,34 @@ GtOneRenderingTree >> liveElementTreeSlideForText [
 
 { #category : #'api - instantiation' }
 GtOneRenderingTree >> overviewElement [
-	| container |
-	container := BlElement new
-		constraintsDo: [ :c | c horizontal exact: 1200. c vertical exact: 800. ];
-		layout: BlFrameLayout new.
-	container addChild: ((GtDocumenter forClass: BaselineOfGToolkit)
-			constraintsDo: [ :c | 
-				c frame horizontal alignLeft. 
+	^ (GtMashExampleSlide new
+		leftElementWithConstraints: ((GtDocumenter forClass: BaselineOfGToolkit)
+			constraintsDo: [ :c |
+			    c frame horizontal alignLeft. 
 				c frame vertical alignCenter.
 				c horizontal exact: 600.
-				c vertical exact: 700 ];
-			margin: (BlInsets all: 10); 
+				c vertical exact: 700 ]; 
+			margin: (BlInsets all: 10);
 			background: Color white; 
-			look: BrShadowLook).
-
-	container addChild: ((GtPlotterScaleBasedElementExamples new plot) asScalableElement
-			constraintsDo: [ :c | 
+			look: BrShadowLook);
+		centerElementWithConstraints:((GtPlotterScaleBasedElementExamples new plot) asScalableElement
+			constraintsDo: [ :c |
 				c frame horizontal alignRight. 
 				c frame vertical alignBottom.
 				c horizontal exact: 600.
 				c vertical exact: 400 ];
-			margin: (BlInsets top: 10 left: 10 bottom: 80 right: 100); background: (Color white); look: BrShadowLook).
-
-	container addChild: ((BlDevKeyboard new)
-			constraintsDo: [ :c | 
+			margin: (BlInsets top: 10 left: 10 bottom: 80 right: 100);
+			background: (Color white);
+			look: BrShadowLook);
+		rightElementWithConstraints: ((BlDevKeyboard new)
+			constraintsDo: [ :c |
 				c frame horizontal alignRight. 
 				c frame vertical alignTop.
 				c horizontal exact: 754.
 				c vertical exact: 230 ];
-			margin: (BlInsets top: 100 left: 10 bottom: 10 right: 10); background: (Color white); look: BrShadowLook).
-	
-	^ container asScalableElement 
+			margin: (BlInsets top: 100 left: 10 bottom: 10 right: 10);
+			background: (Color white);
+			look: BrShadowLook)) asElement.
 ]
 
 { #category : #'api - instantiation' }
