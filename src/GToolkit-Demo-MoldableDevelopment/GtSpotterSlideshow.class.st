@@ -476,33 +476,8 @@ For example, the global, default, spotter is an instance of GtSpotterStart, whic
 
 { #category : #accessing }
 GtSpotterSlideshow >> spottersMashExample [
-	| container |
-	container := BlElement new
-		constraintsDo: [ :c | 
-			c horizontal exact: 1200. 
-			c vertical exact: 800. ];
-		layout: BlFrameLayout new.
-	container addChild: ((self spotterElementOn: 'GtSpotter')
-		constraintsDo: [ :c | 
-				c frame horizontal alignLeft. 
-				c frame vertical alignTop.
-				c horizontal exact: 600.
-				c vertical exact: 400 ];
-		margin: (BlInsets top: 100 right: 10 bottom: 10 left: 10)).
-	container addChild: ((self spotterElementOn: 'size:')
-		constraintsDo: [ :c | 
-				c frame horizontal alignCenter. 
-				c frame vertical alignBottom.
-				c horizontal exact: 600.
-				c vertical exact: 400 ];
-		margin: (BlInsets all: 10)).
-	container addChild: ((self spotterElementOn: 'Playground')
-		constraintsDo: [ :c | 
-				c frame horizontal alignRight. 
-				c frame vertical alignTop.
-				c horizontal exact: 600.
-				c vertical exact: 400 ];
-		margin: (BlInsets all: 10)).
-	
-	^ container asScalableElement.
+	^ (GtMashExampleSlide new
+		leftElement: (self spotterElementOn: 'GtSpotter');
+		centerElement: (self spotterElementOn: 'size:');
+		rightElement: (self spotterElementOn: 'Playground')) asElement.
 ]
