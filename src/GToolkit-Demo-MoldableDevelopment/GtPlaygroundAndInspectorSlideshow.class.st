@@ -43,3 +43,373 @@ GtPlaygroundAndInspectorSlideshow >> create [
 			}.
 	^ slideshow.
 ]
+
+{ #category : #accessing }
+GtPlaygroundAndInspectorSlideshow >> fixItAdornmentExplanation [
+	^ BlTextElement new
+		text: ('ToBeImplemented' asRopedText glamorousRegularFont; fontSize: 60).
+]
+
+{ #category : #accessing }
+GtPlaygroundAndInspectorSlideshow >> fixItAdornmentForClassExplanation [
+	<gtExample>
+	| playgroundElement defaultPlaygroundElement aScripter  adornmentButton menuTarget dropDownList createClassButton adornmentButtonTarget |
+	
+	playgroundElement := BlUseAsyncFeatures
+		disableDuring: [(GtPlaygroundSlide new snippets: {'GtDummyClass new.'}) asElement].
+	defaultPlaygroundElement := BlUseAsyncFeatures
+		disableDuring: [(GtPlaygroundSlide new snippets: {'GtDummyClass new.'}) asElement].
+		
+	aScripter := BlDevScripter new.
+	aScripter
+		substep: 'Initiate Playground'
+		do: [ :aStep | 
+			aStep set
+				label: 'Playground';
+				element: [ playgroundElement ].
+			aStep wait forEmptySpaceTaskQueue ].
+	aScripter syncContinue.
+
+	playgroundElement := aScripter elementWithoutParent.	
+	adornmentButton := playgroundElement
+		allChildrenBreadthFirstDetect: [:aChild |
+			(aChild isKindOf: BrTextEditorSegmentElement)]
+		ifFound: [:aChild | aChild childAt: 2].
+
+	"playgroundElement enqueueTask:
+		(BlTaskAction new
+			action: [
+				BlSpace simulateClickOn: adornmentButton.
+				dropDownList := playgroundElement space root childAt: 2.
+				createClassButton := dropDownList
+					allChildrenBreadthFirstDetect: [:aChild |
+						aChild isKindOf: BrInfiniteListElement]
+					ifFound: [:aChild | (aChild childAt: 1) childAt: 1].
+				BlSpace simulateClickOn: createClassButton.
+				BlSpace simulateClickOn: createClassButton. ])."
+	
+	aScripter
+		substep: 'Initiate Default Playground'
+		do: [ :aStep | 
+			aStep set
+				label: 'Playground';
+				element: [ defaultPlaygroundElement ].
+			aStep wait forEmptySpaceTaskQueue ].
+	aScripter syncContinue.
+	defaultPlaygroundElement := aScripter elementWithoutParent.
+	
+	adornmentButtonTarget := defaultPlaygroundElement
+		allChildrenBreadthFirstDetect: [:aChild |
+			(aChild isKindOf: BrTextEditorSegmentElement)]
+		ifFound: [:aChild | aChild childAt: 2].
+
+	menuTarget := playgroundElement
+		allChildrenBreadthFirstDetect: [:aChild |
+			aChild isKindOf: BrFrame]
+		ifFound: [:aChild | aChild].
+		
+	adornmentButtonTarget
+		addChild:
+			((self yellowTargetCircleWithExplanationModel: #fixItAdornment)
+					relocate:
+						(10 @ adornmentButtonTarget extent y / 2)).
+	menuTarget
+		addChild:
+			((self yellowTargetCircleWithExplanationModel: #menu)
+					relocate:
+						(50 @ 50)).
+		
+	^ BlElement new
+		layout: BlLinearLayout vertical;
+		constraintsDo: [:c |
+			c vertical matchParent.
+			c horizontal matchParent ];
+		margin: (BlInsets all: 5);
+		addChild: (defaultPlaygroundElement maximized "vExact: 350").
+		"addChild: playgroundElement maximized."
+]
+
+{ #category : #accessing }
+GtPlaygroundAndInspectorSlideshow >> fixItAdornmentForClassExplanationText [
+	| text |
+	text := 'The Playground also offers the possibility to crate code in place. For example, if you try to instantiate a class that was not defined before, an ' asRopedText,
+('adornment' asRopedText glamorousExplanationFor: #fixItAdornment),
+' appears next to it. Clicking on it gives you the option to create a class. Selecting it opens a ' asRopedText,
+('menu' asRopedText glamorousExplanationFor: #menu),
+', similar to the one in the coder, where you can define your class.' asRopedText.
+	
+	^ text asRopedText
+		glamorousRegularFont;
+		fontSize: 20.
+]
+
+{ #category : #accessing }
+GtPlaygroundAndInspectorSlideshow >> fixItAdornmentForMethodExplanation [
+	<gtExample>
+	| playgroundElement defaultPlaygroundElement aScripter  adornmentButton coderTarget dropDownList createClassButton adornmentButtonTarget |
+	
+	playgroundElement := BlUseAsyncFeatures
+		disableDuring: [(GtPlaygroundSlide new snippets: {'GtDummyExamplesOnInstanceSide new exampleMethod.'}) asElement].
+	defaultPlaygroundElement := BlUseAsyncFeatures
+		disableDuring: [(GtPlaygroundSlide new snippets: {'GtDummyExamplesOnInstanceSide new exampleMethod.'}) asElement].
+		
+	aScripter := BlDevScripter new.
+	aScripter
+		substep: 'Initiate Playground'
+		do: [ :aStep | 
+			aStep set
+				label: 'Playground';
+				element: [ playgroundElement ].
+			aStep wait forEmptySpaceTaskQueue ].
+	aScripter syncContinue.
+
+	playgroundElement := aScripter elementWithoutParent.	
+	adornmentButton := playgroundElement
+		allChildrenBreadthFirstDetect: [:aChild |
+			(aChild isKindOf: BrTextEditorSegmentElement)]
+		ifFound: [:aChild | aChild childAt: 7].
+
+	"playgroundElement enqueueTask:
+		(BlTaskAction new
+			action: [
+				BlSpace simulateClickOn: adornmentButton.
+				dropDownList := playgroundElement space root childAt: 2.
+				createClassButton := dropDownList
+					allChildrenBreadthFirstDetect: [:aChild |
+						aChild isKindOf: BrInfiniteListElement]
+					ifFound: [:aChild | (aChild childAt: 1) childAt: 1].
+				BlSpace simulateClickOn: createClassButton.
+				BlSpace simulateClickOn: createClassButton. ])."
+	
+	aScripter
+		substep: 'Initiate Default Playground'
+		do: [ :aStep | 
+			aStep set
+				label: 'Playground';
+				element: [ defaultPlaygroundElement ].
+			aStep wait forEmptySpaceTaskQueue ].
+	aScripter syncContinue.
+	defaultPlaygroundElement := aScripter elementWithoutParent.
+	
+	adornmentButtonTarget := defaultPlaygroundElement
+		allChildrenBreadthFirstDetect: [:aChild |
+			(aChild isKindOf: BrTextEditorSegmentElement)]
+		ifFound: [:aChild | aChild childAt: 7].
+
+	coderTarget := playgroundElement
+		allChildrenBreadthFirstDetect: [:aChild |
+			aChild isKindOf: BrFrame]
+		ifFound: [:aChild | aChild].
+		
+	adornmentButtonTarget
+		addChild:
+			((self yellowTargetCircleWithExplanationModel: #adornment)
+					relocate:
+						(10 @ adornmentButtonTarget extent y / 2)).
+	coderTarget
+		addChild:
+			((self yellowTargetCircleWithExplanationModel: #coder)
+					relocate:
+						(50 @ 50)).
+		
+	^ BlElement new
+		layout: BlLinearLayout vertical;
+		constraintsDo: [:c |
+			c vertical matchParent.
+			c horizontal matchParent ];
+		margin: (BlInsets all: 5);
+		addChild: defaultPlaygroundElement maximized.
+		"addChild: playgroundElement maximized."
+]
+
+{ #category : #accessing }
+GtPlaygroundAndInspectorSlideshow >> fixItAdornmentForMethodExplanationText [
+	| text |
+	text := 'The same thing applies to methods as well. If we try to call a method that was not yet implemented, the same ' asRopedText,
+('adornment' asRopedText glamorousExplanationFor: #adornment),
+' pops up next to it. Clicking on it gives us the option to create the method in the respective class. If we choose that, a ' asRopedText,
+('method coder' asRopedText glamorousExplanationFor: #coder),
+' opens up inside the playground so we can create the method in place.' asRopedText.
+	
+	^ text asRopedText
+		glamorousRegularFont;
+		fontSize: 20.
+]
+
+{ #category : #accessing }
+GtPlaygroundAndInspectorSlideshow >> playgroundAndInspectorExplanationText [
+	^ 'Playground and inspector are the core tools that enable live exploration. Using the playground you can easily write and run different snippets of code and then visualize their result using the inspector.' asRopedText
+		glamorousRegularFont;
+		fontSize: 20.
+]
+
+{ #category : #accessing }
+GtPlaygroundAndInspectorSlideshow >> playgroundAndInspectorMashExample [
+	<gtExample>
+	^ (GtMashExampleSlide new
+		leftElement: 
+			(BlElement new
+				look: BrShadowLook;
+				background: Color white;
+				addChild: ((GtPlaygroundSlide new 
+					snippets: {'42 + 2.'}) asElement));
+		centerElement:
+			(BlElement new
+				look: BrShadowLook;
+				background: Color white;
+				addChild: ((GtPlaygroundSlide new
+					snippets: {'BlElement new background: Color red.'}) asElement));
+		rightElement:
+			(BlElement new
+				look: BrShadowLook;
+				background: Color white;
+				addChild: ((GtABAddressBookExample new myContactsAddressBook 
+					gtViewsFor: GtPhlowView empty) asElement))) asElement.
+]
+
+{ #category : #accessing }
+GtPlaygroundAndInspectorSlideshow >> playgroundInterfaceExplanationText [
+	| text |
+	text := 'In the playground you can have multiple ' asRopedText,
+('snippets' asRopedText glamorousExplanationFor: #snippets),
+' opened, where you can write your code. To open a new snippet you click on the ' asRopedText,
+('+' asRopedText glamorousExplanationFor: #plusButton),
+' button and then select ' asRopedText,
+('pharo' asRopedText glamorousExplanationFor: #pharoButton),
+'. And if you want to close a snippet you can click on the ' asRopedText,
+('close' asRopedText glamorousExplanationFor: #closeButton),
+'button.
+Each snippet can be ' asRopedText,
+('evaluated' asRopedText glamorousExplanationFor: #evaluateButton),
+', ' asRopedText,
+('inspected' asRopedText glamorousExplanationFor: #inspectButton),
+' or ' asRopedText,
+('debugged' asRopedText glamorousExplanationFor: #debugButton),
+' individually.
+Finally, if you click on the ' asRopedText,
+('search' asRopedText glamorousExplanationFor: #searchButton),
+' button you open up a spotter where you can see a history of all the playground snippets you have evaluated or inspected in this image.' asRopedText.
+	
+	^ text asRopedText
+		glamorousRegularFont;
+		fontSize: 20.
+]
+
+{ #category : #accessing }
+GtPlaygroundAndInspectorSlideshow >> playgroundInterfaceExplanationWithLinks [
+	<gtExample>
+	| playgroundElement aScripter snippetTargets plusButtonTargets pharoButtonTarget closeButtonTargets evaluateButtonTargets inspectButtonTargets debugButtonTargets searchButtonTarget frameToolbar |
+	playgroundElement := (GtPlaygroundSlide new snippets: {'4/20'. '4 factorial'}) asElement.
+	
+	aScripter := BlDevScripter new.
+	aScripter
+		substep: 'Playground Element'
+		do: [ :aStep | 
+			aStep set
+				label: 'Playground';
+				element: [ playgroundElement ] ].
+	aScripter
+		substep: 'Click on plus button to open new snippet'
+		do: [ :aStep | 
+			aStep click
+				label: 'Click on + button';
+				onBreadthFirstChildOfClass: BrInfinitePagerElement;
+				onBreadthFirstChildOfClass: GtPlayground;
+				onChildNamed: #content;
+				onBreadthFirstChildOfClass: GtPageSnippetsElement;
+				onChildAt: 2;
+				onChildAt: 2.
+			aStep wait forEmptySpaceTaskQueue ].
+	aScripter syncContinue.
+	playgroundElement := BlUseAsyncFeatures
+		disableDuring: [ aScripter elementWithoutParent ].
+	
+	plusButtonTargets := OrderedCollection new.
+	closeButtonTargets := OrderedCollection new.
+	evaluateButtonTargets := OrderedCollection new.
+	inspectButtonTargets := OrderedCollection new.
+	debugButtonTargets := OrderedCollection new.
+	
+	snippetTargets := playgroundElement
+		allChildrenBreadthFirstSelect: [:aChild |
+			(aChild isKindOf: BrFrame)].
+	snippetTargets do: [ :each |
+		plusButtonTargets add: (each children at: 2).
+		closeButtonTargets add: (each children at: 1) ].
+	frameToolbar := playgroundElement
+		allChildrenBreadthFirstSelect: [:aChild | 
+			(aChild isKindOf: BrToolbar) 
+				and: [(aChild parent isKindOf: GtCoderActionsElement)
+					and: [aChild hasChildren]]].
+	frameToolbar do: [ :each |
+		evaluateButtonTargets add: (each children at: 1).
+		inspectButtonTargets add: (each children at: 2).
+		debugButtonTargets add: (each children at: 3) ].
+	searchButtonTarget := playgroundElement
+		allChildrenBreadthFirstDetect: [:aChild |
+			aChild isKindOf: BrToolbar] 
+		ifFound: [:aChild | aChild children at: 2].
+	pharoButtonTarget := playgroundElement
+		allChildrenBreadthFirstDetect: [:aChild |
+			(aChild isKindOf: BrToolbar) and: [aChild parent isKindOf: GtSnippetElement]] 
+		ifFound: [:aChild | aChild children at: 3].
+	
+	snippetTargets do: [ :eachSnippet |
+		eachSnippet
+			addChild:
+				((self yellowTargetCircleWithExplanationModel: #snippets)
+					relocate:
+						(5 @ eachSnippet extent y / 2))].
+	plusButtonTargets do: [ :each |
+		each
+			addChild:
+				((self yellowTargetCircleWithExplanationModel: #plusButton)
+					relocate:
+						(10 @ each extent y / 2))].
+	closeButtonTargets do: [ :each |
+		each
+			addChild:
+				((self yellowTargetCircleWithExplanationModel: #closeButton)
+					relocate:
+						(10 @ each extent y / 2))].
+	evaluateButtonTargets do: [ :eachEvaluateButton |
+		eachEvaluateButton parent
+			addChild:
+				((self yellowTargetCircleWithExplanationModel: #evaluateButton)
+					relocate:
+						(eachEvaluateButton position x @ eachEvaluateButton position y + 5))].
+	inspectButtonTargets do: [ :eachInspectButton |
+		eachInspectButton parent
+			addChild:
+				((self yellowTargetCircleWithExplanationModel: #inspectButton)
+					relocate:
+						(eachInspectButton position x @ eachInspectButton position y + 5))].
+	debugButtonTargets do: [ :eachDebugButton |
+		eachDebugButton parent
+			addChild:
+				((self yellowTargetCircleWithExplanationModel: #debugButton)
+					relocate:
+						(eachDebugButton position x @ eachDebugButton position y + 5))].
+	searchButtonTarget
+		addChild:
+			((self yellowTargetCircleWithExplanationModel: #searchButton)
+					relocate:
+						(10 @ searchButtonTarget extent y / 2)).
+	pharoButtonTarget
+		addChild:
+			((self yellowTargetCircleWithExplanationModel: #pharoButton)
+					relocate:
+						(10 @ pharoButtonTarget extent y / 2)).
+	
+	^ playgroundElement maximized.
+]
+
+{ #category : #accessing }
+GtPlaygroundAndInspectorSlideshow >> yellowTargetCircleWithExplanationModel: aModel [
+	^ BrButton new
+				constraintsDo: [ :c | c ignoreByLayout ];
+				size: 0 @ 0;
+				elevation: (BlRelativeElevation elevation: 10);
+				geometry: BlCircle new;
+				look: (GtExplainerTargetLook new explanationModel: aModel).
+]
