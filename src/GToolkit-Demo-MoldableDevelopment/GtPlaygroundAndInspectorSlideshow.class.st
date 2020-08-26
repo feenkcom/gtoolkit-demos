@@ -237,6 +237,142 @@ GtPlaygroundAndInspectorSlideshow >> fixItAdornmentForMethodExplanationText [
 ]
 
 { #category : #accessing }
+GtPlaygroundAndInspectorSlideshow >> inspectorInterfaceExplanationText [
+	| text |
+	text := 'The inspector is made of several parts.
+The first is the ' asRopedText,
+('header' asRopedText glamorousExplanationFor: #header),
+', where you can see a string representation of the inspected object and a list of ' asRopedText,
+('actions' asRopedText glamorousExplanationFor: #actions),
+' specific to the object, such as opening a ' asRopedText,
+('spotter' asRopedText glamorousExplanationFor: #spotterButton),
+' in the context of the object, or opening in a new tab a ' asRopedText,
+('coder' asRopedText glamorousExplanationFor: #coderButton),
+' on the class of the object.
+Then we have the container that has a list of ' asRopedText,
+('views' asRopedText glamorousExplanationFor: #views),
+' for the inspected object. Those views can be custom, specific to the inspected object, for example or default, available for all the objects, for example ' asRopedText,
+('Raw' asRopedText glamorousExplanationFor: #rawView),
+' and ' asRopedText,
+('Meta' asRopedText glamorousExplanationFor: #metaView),
+' views.
+The Meta view offers a coder on the class of the object inside the inspector.' asRopedText.
+	
+	^ text asRopedText
+		glamorousRegularFont;
+		fontSize: 20.
+]
+
+{ #category : #accessing }
+GtPlaygroundAndInspectorSlideshow >> inspectorInterfaceExplanationWithLinks [
+	| inspectorElement headerTarget actionTargets spotterButtonTarget coderButtonTarget viewsTarget rawViewtarget metaViewTarget |
+	
+	inspectorElement := BlUseAsyncFeatures
+		disableDuring: [ (GtABCartoonAddressBookExample new cartoonAddressBook gtViewsFor: GtPhlowView empty) 
+			asElementDo: [ :e | e ] ].
+	inspectorElement forceLayout.
+	
+	headerTarget := inspectorElement phlow firstChildWithView.
+	actionTargets := inspectorElement phlow allChildrenWithAction.
+	spotterButtonTarget := inspectorElement phlow allChildrenWithAction at: 2.
+	coderButtonTarget := inspectorElement phlow allChildrenWithAction at: 1.
+	viewsTarget := inspectorElement
+		allChildrenBreadthFirstSelect: [:aChild |
+			aChild isKindOf: BrTab].
+	rawViewtarget := viewsTarget detect: [:aView | aView label asString = 'Raw' asString].
+	metaViewTarget := viewsTarget detect: [:aView | aView label asString = 'Meta' asString].
+	
+	headerTarget
+		addChild:
+			((self yellowTargetCircleWithExplanationModel: #header)
+				relocate:
+					(5 @ headerTarget extent y / 2)). 
+	actionTargets do: [:each |
+		each addChild:
+			((self yellowTargetCircleWithExplanationModel: #actions)
+				relocate:
+					(5 @ each extent y / 2))].
+	spotterButtonTarget
+		addChild:
+			((self yellowTargetCircleWithExplanationModel: #spotterButton)
+				relocate:
+					(5 @ spotterButtonTarget extent y / 2)).
+	coderButtonTarget
+		addChild:
+			((self yellowTargetCircleWithExplanationModel: #coderButton)
+				relocate:
+					(5 @ coderButtonTarget extent y / 2)).
+	viewsTarget allButFirstDo: [:each |
+		each
+			addChild:
+				((self yellowTargetCircleWithExplanationModel: #views)
+					relocate:
+						(5 @ each extent y / 2))].
+	rawViewtarget
+		addChild:
+			((self yellowTargetCircleWithExplanationModel: #rawView)
+				relocate:
+					(5 @ rawViewtarget extent y / 2)).
+	metaViewTarget
+		addChild:
+			((self yellowTargetCircleWithExplanationModel: #metaView)
+				relocate:
+					(5 @ metaViewTarget extent y / 2)).
+					
+	^ BlElement new
+		look: BrShadowLook;
+		background: Color white;
+		margin: (BlInsets all: 5);
+		addChild: inspectorElement.
+]
+
+{ #category : #accessing }
+GtPlaygroundAndInspectorSlideshow >> inspectorMethodExplanationText [
+	| text |
+	text := 'An inspector view is a method implemented in the class of the object that we want to visualize. This method is annotated with a specific pragma, namely ' asRopedText,
+('gtView' asRopedText glamorousExplanationFor: #gtView),
+'. Inside the method we specify how the view will look. For instance, here we have a ' asRopedText,
+('columned list' asRopedText glamorousExplanationFor: #columnedList),
+' view, so after we give it a ' asRopedText,
+('title' asRopedText glamorousExplanationFor: #title:),
+', we specify the ' asRopedText,
+('items' asRopedText glamorousExplanationFor: #items:),
+' for the list and how the ' asRopedText,
+('columns' asRopedText glamorousExplanationFor: #columns),
+' will be structured inside the list.' asRopedText.
+	
+	^ text asRopedText
+		glamorousRegularFont;
+		fontSize: 20.
+]
+
+{ #category : #accessing }
+GtPlaygroundAndInspectorSlideshow >> inspectorMethodExplanationWithLinks [
+	| coder selectors coderElement |
+	coder := GtMethodCoder
+		forMethod: GtABAddressBook >> #gtViewContactsOn:.
+		
+	selectors := GtSelectorExplanationLinkStyler new coder: coder.
+	selectors
+		addSelectors:
+			{#gtView. #columnedList . #title: . #items:}.
+	selectors addSelector: #column:icon: withIdentifier: #columns.
+	selectors addSelector: #column:text: withIdentifier: #columns.
+	
+	coder
+		explanationLink:
+			(GtCompositeExplanationLinkStyler
+				forLinks:
+					{selectors}).
+	coderElement := (coder expanded: true) asElement
+		margin: (BlInsets all: 10).
+	coderElement forceLayout.
+	coderElement vMatchParent.
+	
+	^ coderElement.
+]
+
+{ #category : #accessing }
 GtPlaygroundAndInspectorSlideshow >> playgroundAndInspectorExplanationText [
 	^ 'Playground and inspector are the core tools that enable live exploration. Using the playground you can easily write and run different snippets of code and then visualize their result using the inspector.' asRopedText
 		glamorousRegularFont;
