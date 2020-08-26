@@ -443,8 +443,9 @@ GtSpotterSlideshow >> spotterSearchMethodExample [
 	selectors := GtSelectorExplanationLinkStyler new coder: coder.
 	selectors
 		addSelectors:
-			{#allClassesAndTraits}.
+			{#allClassesAndTraits. #priority:. #title:. #filter:. #keyBinding:}.
 	selectors addSelector: #gtSearch withIdentifier: #annotation.
+	selectors addSelector: #wantsToDisplayOnEmptyQuery: withIdentifier: #display.
 	coder
 		explanationLink:
 			(GtCompositeExplanationLinkStyler
@@ -467,7 +468,19 @@ GtSpotterSlideshow >> spotterSearchMethodExplanationText [
 
 For example, the global, default, spotter is an instance of GtSpotterStart, which has the following method responsible for searching ' asRopedText,
 ('classes and traits' asRopedText glamorousExplanationFor: #allClassesAndTraits),
-' in the image.' asRopedText.
+' in the image.
+
+The ' asRopedText,
+('priority' asRopedText glamorousExplanationFor: #priority:),
+' is the order of the categories and the ' asRopedText,
+('title' asRopedText glamorousExplanationFor: #title:),
+' represents the name of the categories in the result section. We also mention the ' asRopedText,
+('filter' asRopedText glamorousExplanationFor: #filter:),
+' used in the search, the ' asRopedText,
+('key binding' asRopedText glamorousExplanationFor: #keyBinding:),
+' for the keyboard shortcut to open the spotter on a particular object, and if the category ' asRopedText,
+('displays' asRopedText glamorousExplanationFor: #display),
+' for an empty query.' asRopedText.
 	
 	^ text
 		glamorousRegularFont;
