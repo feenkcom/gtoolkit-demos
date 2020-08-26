@@ -27,18 +27,15 @@ GtSpotterSlideshow >> create [
 				element: [ self spotterElementOn: '' ];
 				elementWeight: 0.6).
 			(GtLabelAndElementSlide new
-				newFadedText: 'Below you can see a search in the context of GtABAddressBook class.' asRopedText;
-				element: [self spotterElementInContextOf: (GtABAddressBook) withSearch: 'contacts:']).
+				newFadedText: 'Below you can see a spotter opened in the context of GtABAddressBook class.' asRopedText;
+				element: [self spotterElementInContextOf: (GtABAddressBook) withSearch: '']).
 			(GtLabelAndElementSlide new
-				newFadedText: 'And here is a spotter opened in the context of an instance of GtABAddressBook.' asRopedText;
+				newFadedText: 'And here, the spotter is opened in the context of an instance of GtABAddressBook class.' asRopedText;
 				element: [self spotterElementInContextOf: (GtABAddressBookExample new myContactsAddressBook) withSearch: '']).
 			(GtTextAndElementSlide new
 				newTextWithFormat: self spotterProcessorsExplanationText;
 				element: [self spotterProcessorsExample];
 				elementWeight: 0.6).
-			(GtLabelAndElementSlide new
-				newFadedText: 'For example you can even search for icons.' asRopedText;
-				element: [self spotterElementOn: 'play #icon']).
 			(GtTextAndElementSlide new
 				newTextWithFormat: self spotterSearchMethodExplanationText;
 				element: [self spotterSearchMethodExample];
@@ -47,16 +44,19 @@ GtSpotterSlideshow >> create [
 				newTextWithFormat: ('Now let''s take a look at how we navigate through spotter.' asRopedText
 					glamorousRegularFont;
 					fontSize: 20)).
-			(GtLabelAndElementSlide new
-				newFadedText: ('Let''s start by opening a spotter in the context of GtABAddressBook class and search by contacts.' asRopedText);
-				element: [self spotterElementInContextOf: GtABAddressBook withSearch: 'contacts']).
+			(GtTextAndElementSlide new
+				newTextWithFormat: (self spotterSearchFilterExplanationText);
+				element: [ self spotterSearchFilterExplanation ]).
 			(GtTextAndElementSlide new
 				newTextWithFormat: (self spotterDiveInExplanationText);
 				element: [ self spotterDiveInExplanation ]).
+			"(GtLabelAndElementSlide new
+				newFadedText: ('Let''s start by opening a spotter in the context of GtABAddressBook class and search by contacts.' asRopedText);
+				element: [self spotterElementInContextOf: GtABAddressBook withSearch: 'contacts'])."
 			(GtLabelAndElementSlide new
-				newFadedText: ('Now we are in the context of the respective method.' asRopedText);
-				element: [self spotterElementInContextOf: GtABAddressBook>>#allContacts withSearch: '']).
-			(GtLabelAndElementSlide new
+				newFadedText: ( 'Now we are in the context of that method.' );
+				element: [ self spotterElementInContextOf: GtABAddressBook>>#contacts withSearch: '' ]).
+			"(GtLabelAndElementSlide new
 				newFadedText: ('Next, we can filter to only see the senders of the method in whose context we are in.' asRopedText);
 				newFadedText: ('So now we can dive in further into the context of GtABCategory>>#allContacts.' asRopedText);
 				element: [self selectResultForSendersFilter]).
@@ -72,7 +72,7 @@ GtSpotterSlideshow >> create [
 			(GtTextSlide new
 				newTextWithFormat: ('As you can see, by searching, filtering and diving in we can easily navigate through various parts of the system.' asRopedText
 					glamorousRegularFont;
-					fontSize: 20)).
+					fontSize: 20))."
 			"(GtTextAndElementSlide new
 				newTextWithFormat: self spotterLocalContextExplanationText;
 				element: [ self localSpotterExplanationWithLinks ];
@@ -130,78 +130,29 @@ GtSpotterSlideshow >> selectResultForSendersFilter [
 
 { #category : #accessing }
 GtSpotterSlideshow >> spotterDiveInExplanation [
-	| spotter keywordTarget filterTarget selectedResultTarget arrowTargets aScripter |
-	spotter := self spotterElementInContextOf: GtABAddressBook withSearch: 'contacts #instancemethods'.
-	
-	aScripter := BlDevScripter new.
-	aScripter
-		substep: 'Add Spotter Element'
-		do: [ :aStep | 
-			aStep set
-				label: 'Spotter';
-				element: [ spotter ] ].
-	aScripter
-		substep: 'Wait'
-		do: [ :aStep | 
-			aStep wait forEmptySpaceTaskQueue ].
-	aScripter
-		substep: 'click spotter result'
-		do: [ :aStep | 
-			aStep click
-				label: 'Click on spotter result';
-				onBreadthFirstChildOfClass: BrPager;
-				onBreadthFirstChildOfClass: GtSpotterPager;
-				onBreadthFirstChildOfClass: BrInfiniteTreeElement;
-				onChildAt: 6.
-			aStep wait forEmptySpaceTaskQueue ].
-	aScripter syncContinue.
-	spotter := BlUseAsyncFeatures disableDuring: [ aScripter elementWithoutParent ].
+	| spotter arrowTargets contextTarget aScripter |
+	spotter := self spotterElementInContextOf: GtABAddressBook withSearch: 'contacts'.
 	spotter forceLayout.
 	
-	keywordTarget := spotter
-		allChildrenBreadthFirstDetect: [:aChild |
-			(aChild isKindOf: BrTextElementWithCursors) and: [aChild text asString = 'contacts' asString]]
-		ifFound: [:aChild | aChild]. 
-	filterTarget := spotter
-		allChildrenBreadthFirstDetect: [:aChild |
-			(aChild isKindOf: BrTextElementWithCursors) and: [aChild text asString = '#instancemethods' asString]]
-		ifFound: [:aChild | aChild].
-	selectedResultTarget := spotter
-		allChildrenBreadthFirstDetect: [:aChild |
-			(aChild isKindOf: BlTextElement) and: [aChild text asString = 'allContacts' asString]]
-		ifFound: [:aChild | aChild].
 	arrowTargets := spotter
-		allChildrenBreadthFirstSelect: [:aChild |
-			(aChild isKindOf: BrButton) and: [aChild parent isKindOf: GtSpotterCandidateElement]].
+		allChildrenBreadthFirstDetect: [:aChild |
+			(aChild isKindOf: GtSpotterCandidateElement)]
+		ifFound: [:aChild | aChild childAt: 3].
+	contextTarget := spotter
+		allChildrenBreadthFirstDetect: [:aChild |
+			(aChild isKindOf: BlTextElement) and: [aChild text asString = 'GtABAddressBook' asString]]
+		ifFound: [:aChild | aChild].
 	
-	keywordTarget
+	contextTarget
 		addChild: (BrButton new
 				constraintsDo: [ :c | c ignoreByLayout ];
 				size: 3 @ 3;
 				elevation: (BlRelativeElevation elevation: 10);
 				geometry: BlCircle new;
-				look: (GtExplainerTargetLook new explanationModel: #keyword);
+				look: (GtExplainerTargetLook new explanationModel: #context);
 				relocate:
-					(-2 @ keywordTarget extent y / 2)).
-	filterTarget
-		addChild: (BrButton new
-				constraintsDo: [ :c | c ignoreByLayout ];
-				size: 3 @ 3;
-				elevation: (BlRelativeElevation elevation: 10);
-				geometry: BlCircle new;
-				look: (GtExplainerTargetLook new explanationModel: #instanceMethodsFilter);
-				relocate:
-					(-2 @ filterTarget extent y / 2)).
-	selectedResultTarget
-		addChild: (BrButton new
-				constraintsDo: [ :c | c ignoreByLayout ];
-				size: 3 @ 3;
-				elevation: (BlRelativeElevation elevation: 10);
-				geometry: BlCircle new;
-				look: (GtExplainerTargetLook new explanationModel: #allContacts);
-				relocate:
-					(-2 @ selectedResultTarget extent y / 2)).
-	(arrowTargets at: 10)
+					(-2 @ contextTarget extent y / 2)).
+	arrowTargets 
 		addChild: (BrButton new
 				constraintsDo: [ :c | c ignoreByLayout ];
 				size: 3 @ 3;
@@ -209,24 +160,19 @@ GtSpotterSlideshow >> spotterDiveInExplanation [
 				geometry: BlCircle new;
 				look: (GtExplainerTargetLook new explanationModel: #blackArrow);
 				relocate:
-					(-2 @ (arrowTargets at: 10) extent y / 2)).
+					(-2 @ arrowTargets extent y / 2)).
 	^ spotter.
 ]
 
 { #category : #accessing }
 GtSpotterSlideshow >> spotterDiveInExplanationText [
 	| text |
-	text := 'When seraching, we can filter the results by different categories. For example, here, we wanted to see only the ' asRopedText,
-('instance side methods' asRopedText glamorousExplanationFor: #instanceMethodsFilter),
-' that contain the keyword ' asRopedText,
-('contacts' asRopedText glamorousExplanationFor: #keyword),
-'.
-Now we can select the result we want, for example the ' asRopedText,
-('allContacts' asRopedText glamorousExplanationFor: #allContacts),
-' method, and we can dive in the context of the selected result. We do that either by clicking the ' asRopedText,
+	text := 'Another important feature in the spotter is the dive in option. Let''s open a spotter in the same ' asRopedText,
+('context' asRopedText glamorousExplanationFor: #context),
+' as before and perform a simple search. So now, if we want to explore a result further we can dive in either by clicking the ' asRopedText,
 ('black arrow' asRopedText glamorousExplanationFor: #blackArrow),
-' next to the result or by pressing the Command + Right key combination.
-You can also dive out by pressing Command + Left key combination.' asRopedText.
+' on the right of the selected result, or by pressing the Command + Right key combination.
+There is also a dive out action, similar to a back button. It can be action by pressing the Command + Left key combination.' asRopedText.
 	
 	^ text
 		glamorousRegularFont;
@@ -271,11 +217,11 @@ GtSpotterSlideshow >> spotterInterfaceExplanationText [
 ('search bar' asRopedText glamorousExplanationFor: #searchBar),
 ' where you can type your search, a ' asRopedText,
 ('results' asRopedText glamorousExplanationFor: #results),
-' section where you can find ' asRopedText,
+' section where the information is sorted in categories. For example, in this case, you can see ' asRopedText,
 ('classes' asRopedText glamorousExplanationFor: #classes),
 ' and ' asRopedText,
 ('methods' asRopedText glamorousExplanationFor: #messages),
-' that match your search and a ' asRopedText,
+' that matched your search. And finally, there is a ' asRopedText,
 ('preview' asRopedText glamorousExplanationFor: #preview),
 ' pane where you can see a preview of the result that is currently selected.' asRopedText.
 	^ text
@@ -410,19 +356,33 @@ GtSpotterSlideshow >> spotterOpeningExplanationText [
 
 { #category : #accessing }
 GtSpotterSlideshow >> spotterProcessorsExample [
-	"^ (GtSpotterStepExamples new defaultStep gtProcessorsFor: GtPhlowView empty) asElementDo: [:e | e]."
-	^ BlElement new
-		layout: BlLinearLayout vertical alignCenter;
-		constraintsDo: [:c |
-			c vertical matchParent.
-			c horizontal matchParent];
-		background: Color white;
-		look: BrShadowLook;
-		margin: (BlInsets all: 10);
-		addChild: (
-			(GtSpotterStepExamples new defaultStep
-				gtProcessorsFor: GtPhlowView empty)
-					asElementDo: [:e | e]).
+	<gtExample>
+	| aScripter inspectorElement |
+	inspectorElement := GtInspector createOn: (GtSpotterStepExamples new defaultStep).
+	
+	aScripter := BlDevScripter new.
+		aScripter
+			substep: 'Initial Inspector'
+			do: [ :aStep | 
+				aStep set
+					label: 'Inspector';
+					element: [ inspectorElement ] ].
+	aScripter
+		substep: 'Selecting view'
+		do: [ :aStep | 
+			aStep click
+				label: 'Click on view tab';
+				onBreadthFirstChildOfClass: BrInfinitePagerElement;
+				onBreadthFirstChildOfClass: GtInspector;
+				onBreadthFirstChildOfClass: BrTabGroup;
+				onChildAt: 2;
+				onBreadthFirstChildOfClass: BlScrollableElement;
+				onBreadthFirstChildOfClass: BlScrollableElement;
+				onChildAt: 1;
+				onChildAt: 2.
+			aStep wait forEmptySpaceTaskQueue].
+	aScripter syncContinue.
+	^ aScripter elementWithoutParent maximized.
 ]
 
 { #category : #accessing }
@@ -431,6 +391,71 @@ GtSpotterSlideshow >> spotterProcessorsExplanationText [
 	text := 'A search is executed through a processor. Each processor has a name and is presented as a category in the actual results. So a search can yield results in multiple categories. Here you can see the processors in the default context.' asRopedText.
 	
 	^ text 
+		glamorousRegularFont;
+		fontSize: 20.
+]
+
+{ #category : #accessing }
+GtSpotterSlideshow >> spotterSearchFilterExplanation [
+	| spotter keywordTarget filterTarget contextTarget |
+	spotter := self spotterElementInContextOf: GtABAddressBook withSearch: 'contacts #instancemethods'.
+	spotter forceLayout.
+	
+	keywordTarget := spotter
+		allChildrenBreadthFirstDetect: [:aChild |
+			(aChild isKindOf: BrTextElementWithCursors) and: [aChild text asString = 'contacts' asString]]
+		ifFound: [:aChild | aChild]. 
+	filterTarget := spotter
+		allChildrenBreadthFirstDetect: [:aChild |
+			(aChild isKindOf: BrTextElementWithCursors) and: [aChild text asString = '#instancemethods' asString]]
+		ifFound: [:aChild | aChild].
+	contextTarget := spotter
+		allChildrenBreadthFirstDetect: [:aChild |
+			(aChild isKindOf: BlTextElement) and: [aChild text asString = 'GtABAddressBook' asString]]
+		ifFound: [:aChild | aChild].
+	
+	keywordTarget
+		addChild: (BrButton new
+				constraintsDo: [ :c | c ignoreByLayout ];
+				size: 3 @ 3;
+				elevation: (BlRelativeElevation elevation: 10);
+				geometry: BlCircle new;
+				look: (GtExplainerTargetLook new explanationModel: #keyword);
+				relocate:
+					(-2 @ keywordTarget extent y / 2)).
+	filterTarget
+		addChild: (BrButton new
+				constraintsDo: [ :c | c ignoreByLayout ];
+				size: 3 @ 3;
+				elevation: (BlRelativeElevation elevation: 10);
+				geometry: BlCircle new;
+				look: (GtExplainerTargetLook new explanationModel: #filter);
+				relocate:
+					(-2 @ filterTarget extent y / 2)).
+	contextTarget
+		addChild: (BrButton new
+				constraintsDo: [ :c | c ignoreByLayout ];
+				size: 3 @ 3;
+				elevation: (BlRelativeElevation elevation: 10);
+				geometry: BlCircle new;
+				look: (GtExplainerTargetLook new explanationModel: #context);
+				relocate:
+					(-2 @ contextTarget extent y / 2)).
+	^ spotter.
+]
+
+{ #category : #accessing }
+GtSpotterSlideshow >> spotterSearchFilterExplanationText [
+	| text |
+	text := 'A first thing to look at is the filtering of the results. You can choose to only see the results from a certain category thus fitting more results from that category on the screen. For example, here, we are in the context of ' asRopedText,
+('GtABAddressBook' asRopedText glamorousExplanationFor: #context),
+' and we search using the ' asRopedText,
+('contacts' asRopedText glamorousExplanationFor: #keyword),
+' keyword, but we also filter the results to only display those that are ' asRopedText,
+('instance methods' asRopedText glamorousExplanationFor: #filter),
+'.' asRopedText.
+
+	^ text asRopedText
 		glamorousRegularFont;
 		fontSize: 20.
 ]
