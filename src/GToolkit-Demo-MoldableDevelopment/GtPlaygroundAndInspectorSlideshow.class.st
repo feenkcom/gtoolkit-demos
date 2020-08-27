@@ -134,8 +134,8 @@ GtPlaygroundAndInspectorSlideshow >> fixItAdornmentForClassExplanationText [
 	| text |
 	text := 'The Playground also offers the possibility to crate code in place. For example, if you try to instantiate a class that was not defined before, an ' asRopedText,
 ('adornment' asRopedText glamorousExplanationFor: #fixItAdornment),
-' appears next to it. Clicking on it gives you the option to create a class. Selecting it opens a ' asRopedText,
-('menu' asRopedText glamorousExplanationFor: #menu),
+' appears next to it. Clicking on it gives you the option to create a class. Selecting it opens a menu' asRopedText,
+"('menu' asRopedText glamorousExplanationFor: #menu),"
 ', similar to the one in the coder, where you can define your class.' asRopedText.
 	
 	^ text asRopedText
@@ -228,8 +228,8 @@ GtPlaygroundAndInspectorSlideshow >> fixItAdornmentForMethodExplanationText [
 	text := 'The same thing applies to methods as well. If we try to call a method that was not yet implemented, the same ' asRopedText,
 ('adornment' asRopedText glamorousExplanationFor: #adornment),
 ' pops up next to it. Clicking on it gives us the option to create the method in the respective class. If we choose that, a ' asRopedText,
-('method coder' asRopedText glamorousExplanationFor: #coder),
-' opens up inside the playground so we can create the method in place.' asRopedText.
+"('method coder' asRopedText glamorousExplanationFor: #coder),"
+'method coder opens up inside the playground so we can create the method in place.' asRopedText.
 	
 	^ text asRopedText
 		glamorousRegularFont;
