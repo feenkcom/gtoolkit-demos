@@ -348,6 +348,102 @@ GtPlaygroundAndInspectorSlideshow >> inspectorMethodExplanationText [
 
 { #category : #accessing }
 GtPlaygroundAndInspectorSlideshow >> inspectorMethodExplanationWithLinks [
+	<gtExample>
+	| coderElement inspectorElement coderLabel inspectorLabel |
+	
+	coderElement := self methodCoderWithExplanationLinks.
+	inspectorElement := self inspectorWithExplanationLinks.
+	coderLabel := BrLabel new
+		text: ('Contacts with details view method' asRopedText glamorousRegularFont; fontSize: 15; foreground: Color gray);
+		margin: (BlInsets top: 20 right: 0 bottom: 0 left: 10);
+		look: BrGlamorousLabelLook new.
+	inspectorLabel := BrLabel new
+		text: ('Contacts with details view result' asRopedText glamorousRegularFont; fontSize: 15; foreground: Color gray);
+		margin: (BlInsets top: 20 right: 0 bottom: 0 left: 10);
+		look: BrGlamorousLabelLook new.
+		
+	^ BlElement new
+		constraintsDo: [ :c | 
+			c horizontal matchParent.
+			c vertical matchParent.
+			c padding: (BlInsets all: 5)];
+		layout: BlLinearLayout vertical;
+		addChildren: {coderLabel. coderElement. inspectorLabel. inspectorElement}.
+]
+
+{ #category : #accessing }
+GtPlaygroundAndInspectorSlideshow >> inspectorWithExplanationLinks [
+	| resultInspectorContainer resultElement resultInspectorTree titleTab avatarLabel nameLabel phoneLabel itemsCollection |
+	
+	resultInspectorContainer := BlElement new
+		constraintsDo: [ :c | 
+			c horizontal matchParent.
+			c vertical matchParent ];
+		layout: BlLinearLayout horizontal;
+		look: BrShadowLook;
+		background: Color white;
+		margin: (BlInsets all: 10).
+	
+	resultElement := BlUseAsyncFeatures
+		disableDuring: [ (GtPhlowView empty composite
+				views:
+					{(GtABCartoonAddressBookExample new cartoonAddressBook
+						gtViewContactsOn: GtPhlowView empty)};
+				labelled: 'a GtABAddressBook (Cartoons)' asRopedText)
+				asElementDo: [ :e | e ] ].
+	resultElement forceLayout.
+	resultInspectorTree := resultElement phlow firstChildWithView viewContentElement.
+	
+	titleTab := resultInspectorTree
+		allChildrenBreadthFirstDetect: [ :aChild | 
+			(aChild isKindOf: BrTab)
+				and: [ aChild label asString = 'Contacts with details' ] ]
+		ifFound: [ :aChild | aChild ].
+	avatarLabel := resultInspectorTree
+		allChildrenBreadthFirstDetect:
+			[ :aChild | (aChild isKindOf: BrLabel) and: [ aChild text asString = 'Avatar' ] ]
+		ifFound: [ :aChild | aChild ].
+	nameLabel := resultInspectorTree
+		allChildrenBreadthFirstDetect:
+			[ :aChild | (aChild isKindOf: BrLabel) and: [ aChild text asString = 'Name' ] ]
+		ifFound: [ :aChild | aChild ].
+	phoneLabel := resultInspectorTree
+		allChildrenBreadthFirstDetect:
+			[ :aChild | (aChild isKindOf: BrLabel) and: [ aChild text asString = 'Phone' ] ]
+		ifFound: [ :aChild | aChild ].
+	itemsCollection := resultInspectorTree
+		allChildrenBreadthFirstSelect: [ :aChild | 
+			(aChild isKindOf: BlElement) and: [aChild parent isKindOf: BrInfiniteListElement] ].
+			
+	titleTab
+		addChild:
+			((self yellowTargetCircleWithExplanationModel: #title:)
+				relocate: 10 @ titleTab extent y / 2).
+	avatarLabel
+		addChild:
+			((self yellowTargetCircleWithExplanationModel: #columns)
+				relocate: 5 @ avatarLabel extent y / 2).
+	nameLabel
+		addChild:
+			((self yellowTargetCircleWithExplanationModel: #columns)
+				relocate: 5 @ nameLabel extent y / 2).
+	phoneLabel
+		addChild:
+			((self yellowTargetCircleWithExplanationModel: #columns)
+				relocate: 5 @ phoneLabel extent y / 2).
+	itemsCollection
+		do: [ :eachRow | 
+			eachRow
+				addChild:
+					((self yellowTargetCircleWithExplanationModel: #items:)
+						relocate: 3 @ eachRow extent y / 2) ].
+
+	^ resultInspectorContainer
+		addChild: resultElement.
+]
+
+{ #category : #accessing }
+GtPlaygroundAndInspectorSlideshow >> methodCoderWithExplanationLinks [
 	| coder selectors coderElement |
 	coder := GtMethodCoder
 		forMethod: GtABAddressBook >> #gtViewContactsOn:.
