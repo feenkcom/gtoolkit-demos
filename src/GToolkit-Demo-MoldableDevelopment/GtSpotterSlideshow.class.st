@@ -106,13 +106,27 @@ GtSpotterSlideshow >> localSpotterExplanationWithLinks [
 { #category : #accessing }
 GtSpotterSlideshow >> spotterAfterFirstDiveInExplanation [
 	<gtExample>
-	| spotterElement |
+	| spotterElement contextTarget |
 	spotterElement := self
 		spotterElement: ((self spotterElementInContextOf: GtABAddressBook withSearch: 'contacts'))
 		withSelectedPosition: 4.
 	spotterElement enqueueTask: (BlTaskAction new
 		action: [
-			spotterElement header spotterModel currentStep diveIn]).
+			spotterElement header spotterModel currentStep diveIn.
+			contextTarget := spotterElement
+				allChildrenBreadthFirstDetect: [:aChild |
+					(aChild isKindOf: BlTextElement) and: [aChild text asString = 'contactsWithAddress:' asString]]
+				ifFound: [:aChild | aChild].
+	
+			contextTarget
+				addChild: (BrButton new
+					constraintsDo: [ :c | c ignoreByLayout ];
+					size: 3 @ 3;
+					elevation: (BlRelativeElevation elevation: 10);
+					geometry: BlCircle new;
+					look: (GtExplainerTargetLook new explanationModel: #secondContext);
+					relocate:
+						(0 @ 10)).]).
 
 	^ spotterElement removeFromParent.
 ]
@@ -121,8 +135,8 @@ GtSpotterSlideshow >> spotterAfterFirstDiveInExplanation [
 GtSpotterSlideshow >> spotterAfterFirstDiveInExplanationText [
 	| text |
 	text := 'We chose to further explore the #contactsWithAddress: method, so now we are in the ' asRopedText,
-('context' asRopedText glamorousExplanationFor: #context),
-' of the respective method. Now we can take a look at one of the senders od this method, namely the #gtSpotterForPeopleFor: method.' asRopedText.
+('context' asRopedText glamorousExplanationFor: #secondContext),
+' of the respective method. Now let''s say we want to take a look at one of the senders of this method, namely the #gtSpotterForPeopleFor: method.' asRopedText.
 	
 	^ text asRopedText
 		glamorousRegularFont;
@@ -132,14 +146,28 @@ GtSpotterSlideshow >> spotterAfterFirstDiveInExplanationText [
 { #category : #accessing }
 GtSpotterSlideshow >> spotterAfterSecondDiveInExplanation [
 	<gtExample>
-	| spotterElement |
+	| spotterElement contextTarget |
 	spotterElement := self
 		spotterElement: (self spotterAfterFirstDiveInExplanation) 
 		withSelectedPosition: 5.
 	
 	spotterElement enqueueTask: (BlTaskAction new
 		action: [
-			spotterElement header spotterModel currentStep diveIn]).
+			spotterElement header spotterModel currentStep diveIn.
+			contextTarget := spotterElement
+				allChildrenBreadthFirstDetect: [:aChild |
+					(aChild isKindOf: BrButton) and: [aChild label asString = 'GtABAddress>>#gtSpotterForPeopleFor:' asString]]
+				ifFound: [:aChild | aChild].
+	
+			contextTarget
+				addChild: (BrButton new
+					constraintsDo: [ :c | c ignoreByLayout ];
+					size: 3 @ 3;
+					elevation: (BlRelativeElevation elevation: 10);
+					geometry: BlCircle new;
+					look: (GtExplainerTargetLook new explanationModel: #thirdContext);
+					relocate:
+						(5 @ 10))]).
 
 	^ spotterElement removeFromParent.
 ]
@@ -148,9 +176,10 @@ GtSpotterSlideshow >> spotterAfterSecondDiveInExplanation [
 GtSpotterSlideshow >> spotterAfterSecondDiveInExplanationText [
 	| text |
 	text := 'As you can see the ' asRopedText,
-('context' asRopedText glamorousExplanationFor: #context),
+('context' asRopedText glamorousExplanationFor: #thirdContext),
 ' changed again. Now we are looking at a spotter method for the address object.
-You can keep going like this until you find what you are looking for. You can also mix in the filters to help in your search.' asRopedText.
+You can keep going like this until you find what you are looking for. You can also mix in the filters to help in your search or you can dive out if you want to go back a step or two.
+You can also switch between contexts by clicking on them on the top of the spotter.' asRopedText.
 	^ text asRopedText
 		glamorousRegularFont;
 		fontSize: 20.
