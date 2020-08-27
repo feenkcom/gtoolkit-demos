@@ -61,29 +61,8 @@ GtSpotterSlideshow >> create [
 				element: [ self spotterAfterSecondDiveInExplanation ];
 				elementWeight: 0.6).
 			(GtLabelAndElementSlide new
-				newFadedText: ('You can play around with the spotter below to better understand how to use it.' asRopedText);
-				element: [self spotterElementOn: '']).
-			"(GtLabelAndElementSlide new
-				newFadedText: ('Next, we can filter to only see the senders of the method in whose context we are in.' asRopedText);
-				newFadedText: ('So now we can dive in further into the context of GtABCategory>>#allContacts.' asRopedText);
-				element: [self selectResultForSendersFilter]).
-			(GtLabelAndElementSlide new
-				newFadedText: ('Now we are in the context of the respective method.' asRopedText);
-				element: [self spotterElementInContextOf: GtABCategory>>#allContacts withSearch: '']).
-			(GtLabelAndElementSlide new
-				newFadedText: ('Here we can filter to see the class of this method, namely GtABCategory.' asRopedText);
-				element: [self spotterElementInContextOf: GtABCategory>>#allContacts withSearch: '#class']).
-			(GtLabelAndElementSlide new
-				newFadedText: ('Diving into the context of that class now we can perform searches related to it.' asRopedText);
-				element: [self spotterElementInContextOf: GtABCategory withSearch: '']).
-			(GtTextSlide new
-				newTextWithFormat: ('As you can see, by searching, filtering and diving in we can easily navigate through various parts of the system.' asRopedText
-					glamorousRegularFont;
-					fontSize: 20))."
-			"(GtTextAndElementSlide new
-				newTextWithFormat: self spotterLocalContextExplanationText;
-				element: [ self localSpotterExplanationWithLinks ];
-				elementWeight: 0.6)"
+				newFadedText: ('You can play around with the spotter below to better understand how it works.' asRopedText);
+				element: [self spotterButtonStencil]).
 			}.
 	^ slideshow.
 ]
@@ -183,6 +162,17 @@ You can also switch between contexts by clicking on them on the top of the spott
 	^ text asRopedText
 		glamorousRegularFont;
 		fontSize: 20.
+]
+
+{ #category : #accessing }
+GtSpotterSlideshow >> spotterButtonStencil [
+	| spotterButton |
+	spotterButton := GtHomeToolsSection new newSpotterButtonStencil create.
+	^ BlElement new
+		layout: BlLinearLayout vertical alignCenter;
+		addChild: (spotterButton
+			height: 180;
+			width: 180).
 ]
 
 { #category : #accessing }
