@@ -44,8 +44,7 @@ GtQueries >> create [
 						glamorousRegularFont)).
 			(GtLabelAndElementSlide new
 				text: 'There already exists a number of filters readily available';
-				element: [(GtSearchFilter gtHierarchyFor: GtPhlowView empty) 
-					asElementDo: [ :e | e ]]).
+				element: [ self filtersTreeExample ]).
 			(GtTextSlide new
 				newTextWithFormat: ('So let''s take a closer look at them' asRopedText glamorousRegularFont; fontSize: 20)).
 			(GtTitleSlide new
@@ -185,6 +184,23 @@ The filter instance knows how to present itself through a ' asRopedText,
 		glamorousRegularFont;
 		fontSize: 20;
 		foreground: Color black.
+]
+
+{ #category : #'api - instantiation' }
+GtQueries >> filtersTreeExample [
+	<gtExample>
+	| filtersTreeElement |
+	filtersTreeElement := (GtPhlowView empty composite
+				views:
+					{(GtSearchFilter gtHierarchyFor: GtPhlowView empty)};
+				labelled: 'a GtABAddressBook (Cartoons)' asRopedText)
+				asElementDo: [ :e | e ].
+	
+	^ BlElement new
+		background: Color white;
+		look: BrShadowLook;
+		margin: (BlInsets all: 5);
+		addChild: filtersTreeElement.
 ]
 
 { #category : #'as yet unclassified' }
