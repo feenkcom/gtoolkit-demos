@@ -484,18 +484,20 @@ GtPlaygroundAndInspectorSlideshow >> playgroundAndInspectorMashExample [
 				look: BrShadowLook;
 				background: Color white;
 				addChild: ((GtPlaygroundSlide new 
-					snippets: {'42 + 2.'}) asElement));
+					snippets: {'42 + 2.'};
+					inspectSnippetAt: 1) asElement));
 		centerElement:
 			(BlElement new
 				look: BrShadowLook;
 				background: Color white;
 				addChild: ((GtPlaygroundSlide new
-					snippets: {'BlElement new background: Color red.'}) asElement));
+					snippets: {'BlElement new background: Color red.'};
+					inspectSnippetAt: 1) asElement));
 		rightElement:
 			(BlElement new
 				look: BrShadowLook;
 				background: Color white;
-				addChild: ((GtABAddressBookExample new myContactsAddressBook 
+				addChild: ((GtABCartoonAddressBookExample new cartoonAddressBook 
 					gtViewsFor: GtPhlowView empty) asElement))) asElement.
 ]
 
