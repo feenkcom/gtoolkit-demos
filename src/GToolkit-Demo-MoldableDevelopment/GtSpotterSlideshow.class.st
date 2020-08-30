@@ -26,12 +26,13 @@ GtSpotterSlideshow >> create [
 				newTextWithFormat: self spotterOpeningExplanationText;
 				element: [ self spotterElementOn: '' ];
 				elementWeight: 0.6).
+			(GtTextAndElementSlide new
+				newTextWithFormat: self spotterInLocalContextExplanationText;
+				element: [ self spotterInLocalContextExplanationWithLinks ];
+				elementWeight: 0.6).
 			(GtLabelAndElementSlide new
-				newFadedText: 'Below you can see a spotter opened in the context of GtABAddressBook class.' asRopedText;
-				element: [self spotterElementInContextOf: (GtABAddressBook) withSearch: '']).
-			(GtLabelAndElementSlide new
-				newFadedText: 'And here, the spotter is opened in the context of an instance of GtABAddressBook class.' asRopedText;
-				element: [self spotterElementInContextOf: (GtABAddressBookExample new myContactsAddressBook) withSearch: '']).
+				newFadedText: 'Below you can see the two spotters opened, each in their local context.' asRopedText;
+				element: [ self spotterInLocalContextExample ]).
 			(GtTextAndElementSlide new
 				newTextWithFormat: self spotterProcessorsExplanationText;
 				element: [self spotterProcessorsExample];
@@ -287,6 +288,98 @@ GtSpotterSlideshow >> spotterElementInContextOf: anObject withSearch: aSearchStr
 { #category : #accessing }
 GtSpotterSlideshow >> spotterElementOn: aSearchString [
 	^ self spotterElementInContextOf: (GtSpotterStart new) withSearch: aSearchString.
+]
+
+{ #category : #accessing }
+GtSpotterSlideshow >> spotterInLocalContextExample [
+	<gtExample>
+	^ BlElement new
+		layout: BlLinearLayout horizontal;
+		constraintsDo: [:c |
+			c vertical matchParent.
+			c horizontal matchParent];
+		margin: (BlInsets all: 5);
+		padding: (BlInsets all: 5);
+		addChild: (self spotterElementInContextOf: (GtABAddressBook) withSearch: '');
+		addChild: (self spotterElementInContextOf: (GtABAddressBookExample new myContactsAddressBook) withSearch: '').
+]
+
+{ #category : #accessing }
+GtSpotterSlideshow >> spotterInLocalContextExplanationText [
+	| text |
+	text := 'To open the spotter in a local context you can simply click on the ' asRopedText,
+('search button' asRopedText glamorousExplanationFor: #search),
+' inside a coder or an inspector.' asRopedText.
+
+	^ text asRopedText
+		glamorousRegularFont;
+		fontSize: 20.
+]
+
+{ #category : #accessing }
+GtSpotterSlideshow >> spotterInLocalContextExplanationWithLinks [
+	<gtExample>
+	| coderElement inspectorElement searchButtonTargets coderLabel inspectorLabel |
+	
+	searchButtonTargets := OrderedCollection new.
+	
+	coderLabel := BrLabel new
+		text: ('Coder example' asRopedText glamorousRegularFont; fontSize: 15; foreground: Color gray);
+		margin: (BlInsets top: 20 right: 0 bottom: 5 left: 5);
+		look: BrGlamorousLabelLook new.
+	inspectorLabel := BrLabel new
+		text: ('Inspector example' asRopedText glamorousRegularFont; fontSize: 15; foreground: Color gray);
+		margin: (BlInsets top: 20 right: 0 bottom: 5 left: 5);
+		look: BrGlamorousLabelLook new.
+		
+	coderElement := BlElement new
+		constraintsDo: [:c |
+			c vertical matchParent.
+			c horizontal matchParent ];
+		background: Color white;
+		look: BrShadowLook;
+		margin: (BlInsets all: 5);
+		addChild: (GtCoder forClass: GtABAddressBook) asElement.
+	inspectorElement := BlElement new
+		constraintsDo: [:c |
+			c vertical matchParent.
+			c horizontal matchParent ];
+		background: Color white;
+		look: BrShadowLook;
+		margin: (BlInsets all: 5);
+		addChild:(BlUseAsyncFeatures
+			disableDuring: [ ((GtABAddressBookExample new myContactsAddressBook) 
+				gtViewsFor: GtPhlowView empty)
+					asElementDo: [:e | e]]).
+	inspectorElement forceLayout.
+	
+	coderElement 
+		allChildrenBreadthFirstDetect: [:aChild | aChild isKindOf: BrToolbar] 
+		ifFound: [:aChild | searchButtonTargets add: (aChild childAt: 1)].
+	inspectorElement 
+		allChildrenBreadthFirstDetect: [:aChild | aChild isKindOf: BrToolbar] 
+		ifFound: [:aChild | searchButtonTargets add: (aChild childAt: 2)].
+	
+	searchButtonTargets do: [:eachTarget |
+		eachTarget
+			addChild: 
+				(BrButton new
+					constraintsDo: [ :c | c ignoreByLayout ];
+					size: 3 @ 3;
+					elevation: (BlRelativeElevation elevation: 10);
+					geometry: BlCircle new;
+					look: (GtExplainerTargetLook new explanationModel: #search);
+					relocate:
+						(5 @ 10))].
+	
+	^ BlElement new
+		layout: BlLinearLayout vertical;
+		constraintsDo: [:c |
+			c vertical matchParent.
+			c horizontal matchParent];
+		margin: (BlInsets all: 5);
+		padding: (BlInsets all: 5);
+		addChildren: {coderLabel. coderElement. inspectorLabel. inspectorElement}.
 ]
 
 { #category : #accessing }
