@@ -60,7 +60,7 @@ GtQueries >> create [
 #printString gtImplementors'.
 '"Methods with a certain expression in the source code"
 ''filter matches: ``@a'' gtASTMatches'.
-'"Methods with a certain subsrting in the source code"
+'"Methods with a certain substring in the source code"
 ''children: #children'' gtSubstringMatch'.
 '"Methods with a certain annotation"
 #gtView gtPragmas'.
@@ -178,7 +178,7 @@ GtQueries >> explanationTextOnPragmaAndReferenceExampleResult [
 '.
 The filter instance knows how to present itself through a ' asRopedText,
 ('view' asRopedText glamorousExplanationFor: #view),
-' through which the inspector diligently shows method widgets. Beside showing the method code, these method widgets also know how to match the input query to the abstract syntax tree (AST) nodes to produce the orange highlighting.' asRopedText.
+' through which the inspector diligently shows method widgets. In addition to showing the method code, these method widgets also know how to match the input query to the abstract syntax tree (AST) nodes to produce the orange highlighting.' asRopedText.
 
 	^ text
 		glamorousRegularFont;
