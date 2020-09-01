@@ -93,14 +93,14 @@ GtWorkingWithARestApi >> apiExplanationSlide [
 
 { #category : #accessing }
 GtWorkingWithARestApi >> apiExplanationText [
-	^ 'By using different links, like the ones presented below, we make requests to the api. The response we get is in the form of a JSON file containing the informations we requested.' asRopedText
+	^ 'By using different links, like the ones presented below, we make requests to the api. The response we get is in the form of a JSON file containing the information we requested.' asRopedText
 		glamorousRegularFont;
 		fontSize: 16.
 ]
 
 { #category : #accessing }
 GtWorkingWithARestApi >> clientSlideText [
-	^ 'The client is the main component in this model. Using it we can make different requests to the API. The responses from the API, in the form of JSON files, are then parsed and stored inside coresponding objects so we can better visualize them.' asRopedText
+	^ 'The client is the main component in this model. Using it we can make different requests to the API. The responses from the API, in the form of JSON files, are then parsed and stored inside corresponding objects so we can better visualize them.' asRopedText
 	glamorousRegularFont;
 	fontSize: 18.
 ]
@@ -181,7 +181,7 @@ GtWorkingWithARestApi >> create [
 					margin: (BlInsets right: 5);
 					addChild: (GtClassCoder forClass: TDTodo) asElement ]).
 			(GtLabelAndElementSlide new
-				newFadedText: 'A request for a todo will return you that todo with all the informations stored about it.';
+				newFadedText: 'A request for a todo will return you that todo with all the information stored about it.';
 				element: [ GtPlaygroundSlide new
 					snippets: {'TDClient new getTodoWithId: 8.'};
 					inspectSnippetAt: 1 ]).
@@ -327,7 +327,7 @@ GtWorkingWithARestApi >> postsSlideText [
 
 { #category : #accessing }
 GtWorkingWithARestApi >> todosSlideText [
-	^ 'Then we have a todo, that is a type of post a user can make. It holds the following informations: the user it is asscoated with, an id, a title and a status, specifically if it was completed or not.' asRopedText
+	^ 'Then we have a todo, that is a type of post a user can make. It holds the following information: the user it is associated with, an id, a title and a status, specifically if it was completed or not.' asRopedText
 	glamorousRegularFont;
 	fontSize: 18.
 ]
