@@ -53,14 +53,14 @@ GtSpotterSlideshow >> create [
 				newTextWithFormat: (self spotterDiveInExplanationText);
 				element: [ self spotterDiveInExplanation ];
 				elementWeight: 0.6).
-			(GtTextAndElementSlide new
+			"(GtTextAndElementSlide new
 				newTextWithFormat: ( self spotterAfterFirstDiveInExplanationText );
 				element: [ self spotterAfterFirstDiveInExplanation ];
-				elementWeight: 0.6).
-			(GtTextAndElementSlide new
+				elementWeight: 0.6)."
+			"(GtTextAndElementSlide new
 				newTextWithFormat: ( self spotterAfterSecondDiveInExplanationText );
 				element: [ self spotterAfterSecondDiveInExplanation ];
-				elementWeight: 0.6).
+				elementWeight: 0.6)."
 			(GtLabelAndElementSlide new
 				newFadedText: ('You can play around with the spotter below to better understand how it works.' asRopedText);
 				element: [self spotterButtonStencil]).
@@ -85,7 +85,7 @@ GtSpotterSlideshow >> localSpotterExplanationWithLinks [
 
 { #category : #accessing }
 GtSpotterSlideshow >> spotterAfterFirstDiveInExplanation [
-	<gtExample>
+	"<gtExample>"
 	| spotterElement contextTarget |
 	spotterElement := self
 		spotterElement: ((self spotterElementInContextOf: GtABAddressBook withSearch: 'contacts'))
@@ -125,7 +125,7 @@ GtSpotterSlideshow >> spotterAfterFirstDiveInExplanationText [
 
 { #category : #accessing }
 GtSpotterSlideshow >> spotterAfterSecondDiveInExplanation [
-	<gtExample>
+	"<gtExample>"
 	| spotterElement contextTarget |
 	spotterElement := self
 		spotterElement: (self spotterAfterFirstDiveInExplanation) 
