@@ -53,14 +53,14 @@ GtSpotterSlideshow >> create [
 				newTextWithFormat: (self spotterDiveInExplanationText);
 				element: [ self spotterDiveInExplanation ];
 				elementWeight: 0.6).
-			"(GtTextAndElementSlide new
+			(GtTextAndElementSlide new
 				newTextWithFormat: ( self spotterAfterFirstDiveInExplanationText );
 				element: [ self spotterAfterFirstDiveInExplanation ];
-				elementWeight: 0.6)."
-			"(GtTextAndElementSlide new
+				elementWeight: 0.6).
+			(GtTextAndElementSlide new
 				newTextWithFormat: ( self spotterAfterSecondDiveInExplanationText );
 				element: [ self spotterAfterSecondDiveInExplanation ];
-				elementWeight: 0.6)."
+				elementWeight: 0.6).
 			(GtLabelAndElementSlide new
 				newFadedText: ('You can play around with the spotter below to better understand how it works.' asRopedText);
 				element: [self spotterButtonStencil]).
@@ -85,11 +85,13 @@ GtSpotterSlideshow >> localSpotterExplanationWithLinks [
 
 { #category : #accessing }
 GtSpotterSlideshow >> spotterAfterFirstDiveInExplanation [
-	"<gtExample>"
+	<gtExample>
 	| spotterElement contextTarget |
 	spotterElement := self
-		spotterElement: ((self spotterElementInContextOf: GtABAddressBook withSearch: 'contacts'))
-		withSelectedPosition: 4.
+		spotterElement: (
+			BlUseAsyncFeatures
+				disableDuring: [self spotterElementInContextOf: GtABAddressBook withSearch: 'contacts'])
+		withSelectedPosition: 5.
 	spotterElement enqueueTask: (BlTaskAction new
 		action: [
 			spotterElement header spotterModel currentStep diveIn.
@@ -125,7 +127,7 @@ GtSpotterSlideshow >> spotterAfterFirstDiveInExplanationText [
 
 { #category : #accessing }
 GtSpotterSlideshow >> spotterAfterSecondDiveInExplanation [
-	"<gtExample>"
+	<gtExample>
 	| spotterElement contextTarget |
 	spotterElement := self
 		spotterElement: (self spotterAfterFirstDiveInExplanation) 
@@ -178,8 +180,9 @@ GtSpotterSlideshow >> spotterButtonStencil [
 
 { #category : #accessing }
 GtSpotterSlideshow >> spotterDiveInExplanation [
-	| spotter arrowTargets contextTarget aScripter |
-	spotter := self spotterElementInContextOf: GtABAddressBook withSearch: 'contacts'.
+	| spotter arrowTargets contextTarget |
+	spotter := BlUseAsyncFeatures 
+		disableDuring: [self spotterElementInContextOf: GtABAddressBook withSearch: 'contacts'].
 	spotter forceLayout.
 	
 	arrowTargets := spotter
@@ -268,21 +271,18 @@ GtSpotterSlideshow >> spotterElementInContextOf: anObject withSearch: aSearchStr
 		margin: (BlInsets all: 20).
 	spotterElement spotterModel: ((GtSpotter on: anObject) search: aSearchString).
 	spotterElement searchField requestFocus.
-
+	spotterElement header searchField text: aSearchString.
+	
 	aScripter := BlDevScripter new.
-		aScripter
-			substep: 'Initial Spotter'
-			do: [ :aStep | 
-				aStep set
-					label: 'Spotter';
-					element: [ spotterElement ] ].
-		aScripter
-			substep: 'Typing'
-			do: [ :aStep | 
-				aStep type: aSearchString.
-				aStep wait forEmptySpaceTaskQueue ].
-		aScripter syncContinue.
-	^ aScripter elementWithoutParent.
+	aScripter
+		substep: 'Add Spotter Element'
+		do: [ :aStep | 
+			aStep set
+				label: 'Spotter';
+				element: [ spotterElement ].
+			aStep wait forEmptySpaceTaskQueue ].
+	aScripter syncContinue.	
+	^ aScripter elementWithoutParent.	
 ]
 
 { #category : #accessing }
@@ -406,7 +406,6 @@ GtSpotterSlideshow >> spotterInterfaceExplanationWithLinks [
 	| spotterElement searchBarTarget resultsTarget previewTarget classesTarget implementorsTarget sendersTarget messagesTarget|
 	spotterElement := BlUseAsyncFeatures disableDuring: [
 		self spotterElementOn: 'GtCoder' ].
-	spotterElement forceLayout.
 	
 	searchBarTarget := spotterElement
 		allChildrenBreadthFirstDetect: [:aChild | 
