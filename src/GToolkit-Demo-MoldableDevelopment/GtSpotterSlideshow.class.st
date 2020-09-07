@@ -88,8 +88,10 @@ GtSpotterSlideshow >> spotterAfterFirstDiveInExplanation [
 	<gtExample>
 	| spotterElement contextTarget |
 	spotterElement := self
-		spotterElement: ((self spotterElementInContextOf: GtABAddressBook withSearch: 'contacts'))
-		withSelectedPosition: 4.
+		spotterElement: (
+			BlUseAsyncFeatures
+				disableDuring: [self spotterElementInContextOf: GtABAddressBook withSearch: 'contacts'])
+		withSelectedPosition: 5.
 	spotterElement enqueueTask: (BlTaskAction new
 		action: [
 			spotterElement header spotterModel currentStep diveIn.
@@ -178,8 +180,9 @@ GtSpotterSlideshow >> spotterButtonStencil [
 
 { #category : #accessing }
 GtSpotterSlideshow >> spotterDiveInExplanation [
-	| spotter arrowTargets contextTarget aScripter |
-	spotter := self spotterElementInContextOf: GtABAddressBook withSearch: 'contacts'.
+	| spotter arrowTargets contextTarget |
+	spotter := BlUseAsyncFeatures 
+		disableDuring: [self spotterElementInContextOf: GtABAddressBook withSearch: 'contacts'].
 	spotter forceLayout.
 	
 	arrowTargets := spotter
@@ -268,21 +271,18 @@ GtSpotterSlideshow >> spotterElementInContextOf: anObject withSearch: aSearchStr
 		margin: (BlInsets all: 20).
 	spotterElement spotterModel: ((GtSpotter on: anObject) search: aSearchString).
 	spotterElement searchField requestFocus.
-
+	spotterElement header searchField text: aSearchString.
+	
 	aScripter := BlDevScripter new.
-		aScripter
-			substep: 'Initial Spotter'
-			do: [ :aStep | 
-				aStep set
-					label: 'Spotter';
-					element: [ spotterElement ] ].
-		aScripter
-			substep: 'Typing'
-			do: [ :aStep | 
-				aStep type: aSearchString.
-				aStep wait forEmptySpaceTaskQueue ].
-		aScripter syncContinue.
-	^ aScripter elementWithoutParent.
+	aScripter
+		substep: 'Add Spotter Element'
+		do: [ :aStep | 
+			aStep set
+				label: 'Spotter';
+				element: [ spotterElement ].
+			aStep wait forEmptySpaceTaskQueue ].
+	aScripter syncContinue.	
+	^ aScripter elementWithoutParent.	
 ]
 
 { #category : #accessing }
@@ -406,7 +406,6 @@ GtSpotterSlideshow >> spotterInterfaceExplanationWithLinks [
 	| spotterElement searchBarTarget resultsTarget previewTarget classesTarget implementorsTarget sendersTarget messagesTarget|
 	spotterElement := BlUseAsyncFeatures disableDuring: [
 		self spotterElementOn: 'GtCoder' ].
-	spotterElement forceLayout.
 	
 	searchBarTarget := spotterElement
 		allChildrenBreadthFirstDetect: [:aChild | 
