@@ -127,6 +127,7 @@ GtSpotterSlideshow >> spotterAfterFirstDiveInExplanationText [
 
 { #category : #accessing }
 GtSpotterSlideshow >> spotterAfterSecondDiveInExplanation [
+	<noTest>
 	<gtExample>
 	| spotterElement contextTarget |
 	spotterElement := self
