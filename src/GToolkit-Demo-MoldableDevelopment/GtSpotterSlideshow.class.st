@@ -5,6 +5,38 @@ Class {
 }
 
 { #category : #accessing }
+GtSpotterSlideshow >> actionBlockForSpotterInCoderContext [
+	| spotterElement button |
+	^ [:anElement |
+		spotterElement := anElement childAt: 2.
+		spotterElement enqueueTask: (BlTaskAction new
+			action: [
+				button := spotterElement
+					allChildrenBreadthFirstDetect: [:aChild |
+						(aChild isKindOf: BrToolbar) and: [aChild parent isKindOf: GtCoder]] 
+					ifFound: [:aChild |
+						aChild childAt: 1].
+				BlSpace simulateClickOn: button.
+				BlSpace simulateClickOn: button])].
+]
+
+{ #category : #accessing }
+GtSpotterSlideshow >> actionBlockForSpotterInInspectorContext [
+	| inspectorElement button |
+	^ [:anElement |
+		inspectorElement := anElement childAt: 2.
+		inspectorElement enqueueTask: (BlTaskAction new
+			action: [
+				button := inspectorElement
+					allChildrenBreadthFirstDetect: [:aChild | 
+						(aChild isKindOf: BrToolbar) 
+							and: [aChild parent parent parent isKindOf: BrTabGroup]] 
+					ifFound: [:aChild | aChild childAt: 3].
+					BlSpace simulateClickOn: button.
+					BlSpace simulateClickOn: button])].
+]
+
+{ #category : #accessing }
 GtSpotterSlideshow >> create [
 	| slideshow |
 	slideshow := GtSlideShow new.
@@ -31,8 +63,13 @@ GtSpotterSlideshow >> create [
 				element: [ self spotterInLocalContextExplanationWithLinks ];
 				elementWeight: 0.6).
 			(GtLabelAndElementSlide new
-				newFadedText: 'Below you can see the two spotters opened, each in their local context.' asRopedText;
-				element: [ self spotterInLocalContextExample ]).
+				newFadedText: 'Below you can see the spotter opened in a local context inside a coder.' asRopedText;
+				element: [ self spotterInLocalContextForCoderExample ];
+				onEveryAddToSceneGraphDo: self actionBlockForSpotterInCoderContext ).
+			(GtLabelAndElementSlide new
+				newFadedText: 'And here, the spotter is opened in a local context inside the inspector.' asRopedText;
+				element: [ self spotterInLocalContextForInspectorExample ];
+				onEveryAddToSceneGraphDo: self actionBlockForSpotterInInspectorContext ).
 			(GtTextAndElementSlide new
 				newTextWithFormat: self spotterProcessorsExplanationText;
 				element: [self spotterProcessorsExample];
@@ -57,15 +94,16 @@ GtSpotterSlideshow >> create [
 				newTextWithFormat: ( self spotterAfterFirstDiveInExplanationText );
 				element: [ self spotterAfterFirstDiveInExplanation ];
 				elementWeight: 0.6).
-			(GtTextAndElementSlide new
+			"(GtTextAndElementSlide new
 				newTextWithFormat: ( self spotterAfterSecondDiveInExplanationText );
 				element: [ self spotterAfterSecondDiveInExplanation ];
-				elementWeight: 0.6).
+				elementWeight: 0.6)."
 			(GtLabelAndElementSlide new
 				newFadedText: ('You can play around with the spotter below to better understand how it works.' asRopedText);
 				element: [self spotterButtonStencil]).
 			}.
 	^ slideshow.
+
 ]
 
 { #category : #accessing }
@@ -91,7 +129,7 @@ GtSpotterSlideshow >> spotterAfterFirstDiveInExplanation [
 		spotterElement: (
 			BlUseAsyncFeatures
 				disableDuring: [self spotterElementInContextOf: GtABAddressBook withSearch: 'contacts'])
-		withSelectedPosition: 5.
+		withSelectedPosition: 4.
 	spotterElement enqueueTask: (BlTaskAction new
 		action: [
 			spotterElement header spotterModel currentStep diveIn.
@@ -235,8 +273,6 @@ There is also a dive out action, similar to a back button. It can be action by p
 GtSpotterSlideshow >> spotterElement: aSpotterElement withSelectedPosition: aNumber [
 	| aScripter |
 	
-	"spotter := self spotterElementInContextOf: GtABAddressBook>>#allContacts withSearch: '#senders'."
-	
 	aScripter := BlDevScripter new.
 	aScripter
 		substep: 'Add Spotter Element'
@@ -289,20 +325,6 @@ GtSpotterSlideshow >> spotterElementInContextOf: anObject withSearch: aSearchStr
 { #category : #accessing }
 GtSpotterSlideshow >> spotterElementOn: aSearchString [
 	^ self spotterElementInContextOf: (GtSpotterStart new) withSearch: aSearchString.
-]
-
-{ #category : #accessing }
-GtSpotterSlideshow >> spotterInLocalContextExample [
-	<gtExample>
-	^ BlElement new
-		layout: BlLinearLayout horizontal;
-		constraintsDo: [:c |
-			c vertical matchParent.
-			c horizontal matchParent];
-		margin: (BlInsets all: 5);
-		padding: (BlInsets all: 5);
-		addChild: (self spotterElementInContextOf: (GtABAddressBook) withSearch: '');
-		addChild: (self spotterElementInContextOf: (GtABAddressBookExample new myContactsAddressBook) withSearch: '').
 ]
 
 { #category : #accessing }
@@ -359,7 +381,7 @@ GtSpotterSlideshow >> spotterInLocalContextExplanationWithLinks [
 		ifFound: [:aChild | searchButtonTargets add: (aChild childAt: 1)].
 	inspectorElement 
 		allChildrenBreadthFirstDetect: [:aChild | aChild isKindOf: BrToolbar] 
-		ifFound: [:aChild | searchButtonTargets add: (aChild childAt: 2)].
+		ifFound: [:aChild | searchButtonTargets add: (aChild childAt: 3)].
 	
 	searchButtonTargets do: [:eachTarget |
 		eachTarget
@@ -381,6 +403,21 @@ GtSpotterSlideshow >> spotterInLocalContextExplanationWithLinks [
 		margin: (BlInsets all: 5);
 		padding: (BlInsets all: 5);
 		addChildren: {coderLabel. coderElement. inspectorLabel. inspectorElement}.
+]
+
+{ #category : #accessing }
+GtSpotterSlideshow >> spotterInLocalContextForCoderExample [
+	<gtExample>
+	^ (GtCoder forClass: GtABAddressBook) createInPager maximized.
+]
+
+{ #category : #accessing }
+GtSpotterSlideshow >> spotterInLocalContextForInspectorExample [
+	<gtExample>
+	^ (BlUseAsyncFeatures
+		disableDuring: [ (GtInspector 
+			createOn: (GtABAddressBookExample new 
+				myContactsAddressBook)) maximized ]) forceLayout.
 ]
 
 { #category : #accessing }

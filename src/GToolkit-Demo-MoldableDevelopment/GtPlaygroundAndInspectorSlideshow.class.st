@@ -25,10 +25,12 @@ GtPlaygroundAndInspectorSlideshow >> create [
 				elementWeight: 0.6).
 			(GtTextAndElementSlide new
 				newTextWithFormat: self fixItAdornmentForClassExplanationText;
-				element: [ self fixItAdornmentForClassExplanation ]).
+				element: [ self fixItAdornmentForClassExplanation ];
+				onFirstAddToSceneGraphDo: self fixItAdornmentAction ).
 			(GtTextAndElementSlide new
 				newTextWithFormat: self fixItAdornmentForMethodExplanationText;
-				element: [ self fixItAdornmentForMethodExplanation ]).
+				element: [ self fixItAdornmentForMethodExplanation ];
+				onFirstAddToSceneGraphDo: self fixItAdornmentForMethodAction ).
 			(GtTextAndElementSlide new
 				newTextWithFormat: self inspectorInterfaceExplanationText;
 				element: [ self inspectorInterfaceExplanationWithLinks ];
@@ -45,15 +47,42 @@ GtPlaygroundAndInspectorSlideshow >> create [
 ]
 
 { #category : #accessing }
-GtPlaygroundAndInspectorSlideshow >> fixItAdornmentExplanation [
-	^ BlTextElement new
-		text: ('ToBeImplemented' asRopedText glamorousRegularFont; fontSize: 60).
+GtPlaygroundAndInspectorSlideshow >> fixItAdornmentAction [
+	^ [:anElement |
+		| button playgroundElement dropDown selection menuTarget |
+		playgroundElement := (anElement childAt: 2) childAt: 2.
+
+		playgroundElement enqueueTask:
+			(BlTaskAction new
+				action: [
+					button := playgroundElement
+						allChildrenBreadthFirstDetect: [:aChild |
+							(aChild isKindOf: BrTextEditorSegmentElement)]
+						ifFound: [:aChild | aChild childAt: 2].
+					BlSpace simulateClickOn: button.
+					BlSpace simulateClickOn: button.
+					dropDown := playgroundElement space root childAt: 2.
+					selection := dropDown
+						allChildrenBreadthFirstDetect: [:aChild |
+							aChild isKindOf: BrInfiniteListElement]
+						ifFound: [:aChild | (aChild childAt: 1) childAt: 1].
+				BlSpace simulateClickOn: selection.
+				BlSpace simulateClickOn: selection.
+				menuTarget := playgroundElement
+					allChildrenBreadthFirstDetect: [:aChild |
+						aChild isKindOf: BrFrame]
+					ifFound: [:aChild | aChild].
+				menuTarget
+					addChild:
+						((self yellowTargetCircleWithExplanationModel: #menu)
+							relocate:
+								(50 @ 50))])].
 ]
 
 { #category : #accessing }
 GtPlaygroundAndInspectorSlideshow >> fixItAdornmentForClassExplanation [
 	<gtExample>
-	| playgroundElement defaultPlaygroundElement aScripter  adornmentButton menuTarget dropDownList createClassButton adornmentButtonTarget |
+	| playgroundElement defaultPlaygroundElement aScripter adornmentButtonTarget |
 	
 	playgroundElement := BlUseAsyncFeatures
 		disableDuring: [(GtPlaygroundSlide new snippets: {'GtDummyClass new.'}) asElement].
@@ -71,22 +100,6 @@ GtPlaygroundAndInspectorSlideshow >> fixItAdornmentForClassExplanation [
 	aScripter syncContinue.
 
 	playgroundElement := aScripter elementWithoutParent.	
-	adornmentButton := playgroundElement
-		allChildrenBreadthFirstDetect: [:aChild |
-			(aChild isKindOf: BrTextEditorSegmentElement)]
-		ifFound: [:aChild | aChild childAt: 2].
-
-	"playgroundElement enqueueTask:
-		(BlTaskAction new
-			action: [
-				BlSpace simulateClickOn: adornmentButton.
-				dropDownList := playgroundElement space root childAt: 2.
-				createClassButton := dropDownList
-					allChildrenBreadthFirstDetect: [:aChild |
-						aChild isKindOf: BrInfiniteListElement]
-					ifFound: [:aChild | (aChild childAt: 1) childAt: 1].
-				BlSpace simulateClickOn: createClassButton.
-				BlSpace simulateClickOn: createClassButton. ])."
 	
 	aScripter
 		substep: 'Initiate Default Playground'
@@ -102,22 +115,12 @@ GtPlaygroundAndInspectorSlideshow >> fixItAdornmentForClassExplanation [
 		allChildrenBreadthFirstDetect: [:aChild |
 			(aChild isKindOf: BrTextEditorSegmentElement)]
 		ifFound: [:aChild | aChild childAt: 2].
-
-	menuTarget := playgroundElement
-		allChildrenBreadthFirstDetect: [:aChild |
-			aChild isKindOf: BrFrame]
-		ifFound: [:aChild | aChild].
 		
 	adornmentButtonTarget
 		addChild:
 			((self yellowTargetCircleWithExplanationModel: #fixItAdornment)
 					relocate:
 						(10 @ adornmentButtonTarget extent y / 2)).
-	menuTarget
-		addChild:
-			((self yellowTargetCircleWithExplanationModel: #menu)
-					relocate:
-						(50 @ 50)).
 		
 	^ BlElement new
 		layout: BlLinearLayout vertical;
@@ -125,8 +128,8 @@ GtPlaygroundAndInspectorSlideshow >> fixItAdornmentForClassExplanation [
 			c vertical matchParent.
 			c horizontal matchParent ];
 		margin: (BlInsets all: 5);
-		addChild: (defaultPlaygroundElement maximized "vExact: 350").
-		"addChild: playgroundElement maximized."
+		addChild: (defaultPlaygroundElement maximized vExact: 350);
+		addChild: playgroundElement maximized.
 ]
 
 { #category : #accessing }
@@ -134,8 +137,8 @@ GtPlaygroundAndInspectorSlideshow >> fixItAdornmentForClassExplanationText [
 	| text |
 	text := 'The Playground also offers the possibility to crate code in place. For example, if you try to instantiate a class that was not defined before, an ' asRopedText,
 ('adornment' asRopedText glamorousExplanationFor: #fixItAdornment),
-' appears next to it. Clicking on it gives you the option to create a class. Selecting it opens a menu' asRopedText,
-"('menu' asRopedText glamorousExplanationFor: #menu),"
+' appears next to it. Clicking on it gives you the option to create a class. Selecting it opens a ' asRopedText,
+('menu' asRopedText glamorousExplanationFor: #menu),
 ', similar to the one in the coder, where you can define your class.' asRopedText.
 	
 	^ text asRopedText
@@ -144,9 +147,42 @@ GtPlaygroundAndInspectorSlideshow >> fixItAdornmentForClassExplanationText [
 ]
 
 { #category : #accessing }
+GtPlaygroundAndInspectorSlideshow >> fixItAdornmentForMethodAction [
+	| button playgroundElement dropDown selection coderTarget |
+	^ [:anElement |
+		playgroundElement := (anElement childAt: 2) childAt: 2.
+
+		playgroundElement enqueueTask:
+			(BlTaskAction new
+				action: [
+					button := playgroundElement
+						allChildrenBreadthFirstDetect: [:aChild |
+							(aChild isKindOf: BrTextEditorSegmentElement)]
+						ifFound: [:aChild | aChild childAt: 7].
+					BlSpace simulateClickOn: button.
+					BlSpace simulateClickOn: button.
+					dropDown := playgroundElement space root childAt: 2.
+					selection := dropDown
+						allChildrenBreadthFirstDetect: [:aChild |
+							aChild isKindOf: BrInfiniteListElement]
+						ifFound: [:aChild | (aChild childAt: 1) childAt: 1].
+					BlSpace simulateClickOn: selection.
+					BlSpace simulateClickOn: selection.
+					coderTarget := playgroundElement
+						allChildrenBreadthFirstDetect: [:aChild |
+							aChild isKindOf: BrFrame]
+						ifFound: [:aChild | aChild].
+					coderTarget
+						addChild:
+							((self yellowTargetCircleWithExplanationModel: #coder)
+								relocate:
+									(50 @ 50))])]
+]
+
+{ #category : #accessing }
 GtPlaygroundAndInspectorSlideshow >> fixItAdornmentForMethodExplanation [
 	<gtExample>
-	| playgroundElement defaultPlaygroundElement aScripter  adornmentButton coderTarget dropDownList createClassButton adornmentButtonTarget |
+	| playgroundElement defaultPlaygroundElement aScripter adornmentButtonTarget |
 	
 	playgroundElement := BlUseAsyncFeatures
 		disableDuring: [(GtPlaygroundSlide new snippets: {'GtDummyExamplesOnInstanceSide new exampleMethod.'}) asElement].
@@ -162,24 +198,7 @@ GtPlaygroundAndInspectorSlideshow >> fixItAdornmentForMethodExplanation [
 				element: [ playgroundElement ].
 			aStep wait forEmptySpaceTaskQueue ].
 	aScripter syncContinue.
-
 	playgroundElement := aScripter elementWithoutParent.	
-	adornmentButton := playgroundElement
-		allChildrenBreadthFirstDetect: [:aChild |
-			(aChild isKindOf: BrTextEditorSegmentElement)]
-		ifFound: [:aChild | aChild childAt: 7].
-
-	"playgroundElement enqueueTask:
-		(BlTaskAction new
-			action: [
-				BlSpace simulateClickOn: adornmentButton.
-				dropDownList := playgroundElement space root childAt: 2.
-				createClassButton := dropDownList
-					allChildrenBreadthFirstDetect: [:aChild |
-						aChild isKindOf: BrInfiniteListElement]
-					ifFound: [:aChild | (aChild childAt: 1) childAt: 1].
-				BlSpace simulateClickOn: createClassButton.
-				BlSpace simulateClickOn: createClassButton. ])."
 	
 	aScripter
 		substep: 'Initiate Default Playground'
@@ -195,22 +214,12 @@ GtPlaygroundAndInspectorSlideshow >> fixItAdornmentForMethodExplanation [
 		allChildrenBreadthFirstDetect: [:aChild |
 			(aChild isKindOf: BrTextEditorSegmentElement)]
 		ifFound: [:aChild | aChild childAt: 7].
-
-	coderTarget := playgroundElement
-		allChildrenBreadthFirstDetect: [:aChild |
-			aChild isKindOf: BrFrame]
-		ifFound: [:aChild | aChild].
 		
 	adornmentButtonTarget
 		addChild:
 			((self yellowTargetCircleWithExplanationModel: #adornment)
 					relocate:
 						(10 @ adornmentButtonTarget extent y / 2)).
-	coderTarget
-		addChild:
-			((self yellowTargetCircleWithExplanationModel: #coder)
-					relocate:
-						(50 @ 50)).
 		
 	^ BlElement new
 		layout: BlLinearLayout vertical;
@@ -218,8 +227,8 @@ GtPlaygroundAndInspectorSlideshow >> fixItAdornmentForMethodExplanation [
 			c vertical matchParent.
 			c horizontal matchParent ];
 		margin: (BlInsets all: 5);
-		addChild: defaultPlaygroundElement maximized.
-		"addChild: playgroundElement maximized."
+		addChild: defaultPlaygroundElement maximized;
+		addChild: playgroundElement maximized.
 ]
 
 { #category : #accessing }
@@ -228,8 +237,8 @@ GtPlaygroundAndInspectorSlideshow >> fixItAdornmentForMethodExplanationText [
 	text := 'The same thing applies to methods as well. If we try to call a method that was not yet implemented, the same ' asRopedText,
 ('adornment' asRopedText glamorousExplanationFor: #adornment),
 ' pops up next to it. Clicking on it gives us the option to create the method in the respective class. If we choose that, a ' asRopedText,
-"('method coder' asRopedText glamorousExplanationFor: #coder),"
-'method coder opens up inside the playground so we can create the method in place.' asRopedText.
+('method coder' asRopedText glamorousExplanationFor: #coder),
+' opens up inside the playground so we can create the method in place.' asRopedText.
 	
 	^ text asRopedText
 		glamorousRegularFont;
@@ -274,8 +283,8 @@ GtPlaygroundAndInspectorSlideshow >> inspectorInterfaceExplanationWithLinks [
 	
 	headerTarget := inspectorElement phlow firstChildWithView.
 	actionTargets := inspectorElement phlow allChildrenWithAction.
-	spotterButtonTarget := inspectorElement phlow allChildrenWithAction at: 2.
-	coderButtonTarget := inspectorElement phlow allChildrenWithAction at: 1.
+	spotterButtonTarget := inspectorElement phlow allChildrenWithAction at: 3.
+	coderButtonTarget := inspectorElement phlow allChildrenWithAction at: 2.
 	viewsTarget := inspectorElement
 		allChildrenBreadthFirstSelect: [:aChild |
 			aChild isKindOf: BrTab].

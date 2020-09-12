@@ -5,15 +5,69 @@ Class {
 }
 
 { #category : #accessing }
+GtCoderSlideshow >> actionBlockForBasicFiltering [
+	| coderElement button |
+	^ [:anElement |
+		coderElement := anElement childAt: 2.
+		coderElement enqueueTask: (BlTaskAction new
+			action: [
+				button := coderElement
+					allChildrenBreadthFirstDetect: [:aChild |
+						(aChild isKindOf: BrToolbar) and: [aChild parent parent parent isKindOf: BrTabGroup]]
+					ifFound: [:aChild | aChild childAt: 1].
+				BlSpace simulateClickOn: button.
+				BlSpace simulateClickOn: button])]
+]
+
+{ #category : #accessing }
+GtCoderSlideshow >> actionBlockForBasicFilteringResult [
+	| coderElement button selection dropList |
+	^ [:anElement |
+		coderElement := anElement childAt: 2.
+		coderElement enqueueTask: (BlTaskAction new
+			action: [
+				button := coderElement
+					allChildrenBreadthFirstDetect: [:aChild |
+						(aChild isKindOf: BrToolbar) and: [aChild parent parent parent isKindOf: BrTabGroup]]
+					ifFound: [:aChild | aChild childAt: 1].
+				BlSpace simulateClickOn: button.
+				BlSpace simulateClickOn: button.
+				"dropList := coderElement space root childAt: 2.
+				selection := dropList
+					allChildrenBreadthFirstDetect: [:aChild |
+						(aChild isKindOf: BrInfiniteListElement)]
+					ifFound: [:aChild | aChild].
+				BlSpace simulateClickOn: selection.
+				BlSpace simulateClickOn: selection"])].
+]
+
+{ #category : #accessing }
+GtCoderSlideshow >> actionBlockForClassAddingExplanation [
+	| coderElement button |
+	^ [:anElement |
+		coderElement := anElement childAt: 2.
+		coderElement enqueueTask: (BlTaskAction new
+			action: [
+				button := coderElement
+					allChildrenBreadthFirstDetect: [:aChild |
+						aChild isKindOf: BrToolbar]
+					ifFound: [:aChild | aChild childAt: 3].
+				BlSpace simulateClickOn: button.
+				"BlSpace simulateClickOn: button"])].
+]
+
+{ #category : #accessing }
 GtCoderSlideshow >> advancedMethodsFilteringExplanationText [
 	| text |
 	text := 'The second option for filtering is by clicking on the ' asRopedText,
 ('dropdown' asRopedText glamorousExplanationFor: #dropdown),
-' button where you can search for by multiple criterias. The you can type your search string in the adjacent ' asRopedText,
+' button where you can search for by multiple criterias. Then you can type your search string in the adjacent ' asRopedText,
 ('field' asRopedText glamorousExplanationFor: #field),
-'. You can even add multiple filters by clicking on the small ' asRopedText,
+'.
+You can add multiple filters by clicking on the small ' asRopedText,
 ('+' asRopedText glamorousExplanationFor: #addFilterButton),
-' button next to those fields. This will perform an OR between the filters.' asRopedText.
+' button next to those fields. This will perform an OR between the filters.
+This method gives you more flexibility to filter.' asRopedText.
 	
 	^ text asRopedText
 		glamorousRegularFont;
@@ -22,7 +76,43 @@ GtCoderSlideshow >> advancedMethodsFilteringExplanationText [
 
 { #category : #accessing }
 GtCoderSlideshow >> advancedMethodsFilteringExplanationWithLinks [
-	^ BlElement new.
+	<gtExample>
+	| coderElement categoryTarget fieldTarget addTarget |
+	coderElement := BlUseAsyncFeatures
+		disableDuring: [ (GtClassCoderSlide new class: GtABAddressBook) asElement ].
+	
+	coderElement
+		allChildrenBreadthFirstDetect: [:aChild |
+			aChild isKindOf: GtFilterTagElement]
+		ifFound: [:aChild |
+			categoryTarget := aChild childAt: 1.
+			fieldTarget := aChild.
+			addTarget := aChild parent childAt: 2].
+	
+	categoryTarget
+		addChild:
+			((self yellowTargetCircleWithExplanationModel: #dropdown)
+					relocate:
+						(2 @ categoryTarget extent y / 2)).
+	fieldTarget
+		addChild:
+			((self yellowTargetCircleWithExplanationModel: #field)
+					relocate:
+						(150 @ fieldTarget extent y / 2)).
+	addTarget
+		addChild:
+			((self yellowTargetCircleWithExplanationModel: #addFilterButton)
+					relocate:
+						(2 @ addTarget extent y / 2)).
+	
+	^ BlElement new
+		constraintsDo: [:c |
+			c vertical matchParent.
+			c horizontal matchParent];
+		look: BrShadowLook;
+		background: Color white;
+		margin: (BlInsets all: 5);
+		addChild: coderElement.
 ]
 
 { #category : #accessing }
@@ -116,6 +206,22 @@ GtCoderSlideshow >> baselineMethodsExplanationWithLinks [
 ]
 
 { #category : #accessing }
+GtCoderSlideshow >> basicFilterResultExample [
+	| coderElement |
+	coderElement := BlUseAsyncFeatures
+		disableDuring: [ (GtClassCoderSlide new class: GtABAddressBook) asElement ].
+		
+	^ BlElement new
+		constraintsDo: [:c |
+			c vertical matchParent.
+			c horizontal matchParent];
+		look: BrShadowLook;
+		background: Color white;
+		margin: (BlInsets all: 5);
+		addChild: coderElement.
+]
+
+{ #category : #accessing }
 GtCoderSlideshow >> basicMethodsFilteringExplanationText [
 	| text |
 	text := 'There are two ways through which you can filter the methods. The first one is by clicking on the ' asRopedText,
@@ -129,7 +235,28 @@ GtCoderSlideshow >> basicMethodsFilteringExplanationText [
 
 { #category : #accessing }
 GtCoderSlideshow >> basicMethodsFilteringExplanationWithLinks [
+	| coderElement filterButton |
+	coderElement := BlUseAsyncFeatures
+		disableDuring: [ (GtClassCoderSlide new class: GtABAddressBook) asElement ].
+	
+	filterButton := coderElement
+		allChildrenBreadthFirstDetect: [:aChild |
+			(aChild isKindOf: BrToolbar) and: [aChild parent parent parent isKindOf: BrTabGroup]]
+		ifFound: [:aChild | aChild childAt: 1].
+	filterButton
+		addChild:
+			((self yellowTargetCircleWithExplanationModel: #filterButton)
+					relocate:
+						(2 @ filterButton extent y / 2)).
+						
 	^ BlElement new
+		constraintsDo: [:c |
+			c vertical matchParent.
+			c horizontal matchParent];
+		look: BrShadowLook;
+		background: Color white;
+		margin: (BlInsets all: 5);
+		addChild: coderElement.
 ]
 
 { #category : #accessing }
@@ -417,7 +544,8 @@ GtCoderSlideshow >> create [
 			(GtTextAndElementSlide new
 				newTextWithFormat: self createClassExplanationText;
 				element: [ self createClassExplanationWithLinks ];
-				elementWeight: 0.6).
+				elementWeight: 0.6;
+				onEveryAddToSceneGraphDo: self actionBlockForClassAddingExplanation ).
 			(GtTextAndElementSlide new
 				newTextWithFormat: self createMethodExplanationText;
 				element: [ self createMethodExplanationWithLinks ];
@@ -425,10 +553,12 @@ GtCoderSlideshow >> create [
 			(GtTextAndElementSlide new
 				newTextWithFormat: self basicMethodsFilteringExplanationText;
 				element: [ self basicMethodsFilteringExplanationWithLinks ];
-				elementWeight: 0.6).
-			(GtLabelAndElementSlide new
-				newFadedText: ('For example below we chose to see only ... ' asRopedText);
-				element: BlElement new).
+				elementWeight: 0.6;
+				onEveryAddToSceneGraphDo: self actionBlockForBasicFiltering ).
+			"(GtLabelAndElementSlide new
+				newFadedText: ('For example below we filtered to see all methods with the add tag.' asRopedText);
+				element: self basicFilterResultExample ;
+				onFirstAddToSceneGraphDo: self actionBlockForBasicFilteringResult )."
 			(GtTextAndElementSlide new
 				newTextWithFormat: self advancedMethodsFilteringExplanationText;
 				element: [ self advancedMethodsFilteringExplanationWithLinks ];
@@ -462,7 +592,28 @@ GtCoderSlideshow >> createClassExplanationText [
 
 { #category : #accessing }
 GtCoderSlideshow >> createClassExplanationWithLinks [
-	^ BlElement new.
+	| coderElement buttonTarget |
+	coderElement := BlUseAsyncFeatures
+		disableDuring: [ (GtCoder forClass: GtABAddressBook) createInPager maximized ].
+		
+	buttonTarget := coderElement
+		allChildrenBreadthFirstDetect: [:aChild |
+			aChild isKindOf: BrToolbar]
+		ifFound: [:aChild | aChild childAt: 3].
+	buttonTarget
+		addChild:
+			((self yellowTargetCircleWithExplanationModel: #addClassButton)
+				relocate:
+					(2 @ 10)).
+					
+	^ BlElement new
+		constraintsDo: [:c |
+			c vertical matchParent.
+			c horizontal matchParent];
+		look: BrShadowLook;
+		background: Color white;
+		margin: (BlInsets all: 5);
+		addChild: coderElement.
 ]
 
 { #category : #accessing }
@@ -562,7 +713,7 @@ GtCoderSlideshow >> createMethodExplanationWithLinks [
 GtCoderSlideshow >> exampleMethodsExplanationText [
 	| text |
 	text := 'Also, if a method is annotated with the ' asRopedText,
-('gtView' asRopedText glamorousExplanationFor: #gtView),
+('gtExample' asRopedText glamorousExplanationFor: #gtView),
 ' pragma, the coder offers you additional buttons similar to the ones in the playground. Through them you can ' asRopedText,
 ('evaluate' asRopedText glamorousExplanationFor: #evaluateButton),
 ', ' asRopedText,
