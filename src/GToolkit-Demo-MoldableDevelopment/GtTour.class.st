@@ -215,10 +215,8 @@ GtTour >> create [
 	show := GtSlideShow new.
 	show
 		slides:
-			{GtFilePictureSlide new
-				fileReference:
-					(GtResourceReference
-						path: Path * 'feenkcom' / 'gtoolkit' / 'doc' / 'gtoolkit.png').
+			{(GtTitleSlide new
+		titleText: ('glamoroustoolkit' asRopedText fontSize: 70; glamorousRegularFont; thin; in: [:t | (t from: 'glamorous' size + 1 to: t size) bold]; yourself)).
 			GtTextAndElementSlide new
 				element: [ self timelineElement margin: (BlInsets left: 50 right: 50) ];
 				elementWeight: 0.7;
