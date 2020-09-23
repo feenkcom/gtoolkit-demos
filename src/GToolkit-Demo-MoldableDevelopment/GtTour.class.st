@@ -60,7 +60,7 @@ GtTour >> coderExplanationWithLinks [
 		ifFound: [:aChild | aChild].
 	classButtonTargets := coderElement
 		allChildrenBreadthFirstSelect: [:aChild | 
-			(aChild isKindOf: BrButton) and: [aChild parent parent isKindOf: GtCoder]].
+			(aChild isKindOf: BrButton) and: [aChild parent parent isKindOf: GtCoderToolbarElement ]].
 	searchButtonTarget := classButtonTargets first.
 	addClassButtonTarget := classButtonTargets last.
 	methodButtonTargets := coderElement

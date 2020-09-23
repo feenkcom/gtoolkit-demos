@@ -377,10 +377,10 @@ GtSpotterSlideshow >> spotterInLocalContextExplanationWithLinks [
 	inspectorElement forceLayout.
 	
 	coderElement 
-		allChildrenBreadthFirstDetect: [:aChild | aChild isKindOf: BrToolbar] 
+		allChildrenBreadthFirstDetect: [:aChild | (aChild isKindOf: BrToolbar) and: [ aChild parent isKindOf: GtCoderToolbarElement ] ] 
 		ifFound: [:aChild | searchButtonTargets add: (aChild childAt: 1)].
 	inspectorElement 
-		allChildrenBreadthFirstDetect: [:aChild | aChild isKindOf: BrToolbar] 
+		allChildrenBreadthFirstDetect: [:aChild | (aChild isKindOf: BrToolbar) and: [ aChild parent isKindOf: GtCoderToolbarElement ] ] 
 		ifFound: [:aChild | searchButtonTargets add: (aChild childAt: 3)].
 	
 	searchButtonTargets do: [:eachTarget |
