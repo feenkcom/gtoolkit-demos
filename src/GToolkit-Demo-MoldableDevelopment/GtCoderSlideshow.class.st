@@ -50,7 +50,7 @@ GtCoderSlideshow >> actionBlockForClassAddingExplanation [
 			action: [
 				button := coderElement
 					allChildrenBreadthFirstDetect: [:aChild |
-						aChild isKindOf: BrToolbar]
+						(aChild isKindOf: BrToolbar) and: [aChild parent isKindOf: GtCoderToolbarElement]]
 					ifFound: [:aChild | aChild childAt: 3].
 				BlSpace simulateClickOn: button.
 				"BlSpace simulateClickOn: button"])].
@@ -440,6 +440,7 @@ On top of that there is an ' asRopedText,
 
 { #category : #accessing }
 GtCoderSlideshow >> coderInterfaceExplanationWithLinks [
+	<gtExample>
 	| coderElement packageHierarchyTarget classHierarchyTarget classCoderTarget addClassButtonTarget spotterButtonTarget buttons |
 	
 	coderElement := BlUseAsyncFeatures
@@ -459,7 +460,7 @@ GtCoderSlideshow >> coderInterfaceExplanationWithLinks [
 		ifFound: [:aChild | aChild].
 	buttons := coderElement
 		allChildrenBreadthFirstDetect: [:aChild |
-			(aChild isKindOf: BrToolbar) and: [aChild parent isKindOf: GtCoder]] 
+			(aChild isKindOf: BrToolbar) and: [aChild parent isKindOf: GtCoderToolbarElement]] 
 		ifFound: [:aChild | aChild].
 	addClassButtonTarget := buttons childAt: 3.
 	spotterButtonTarget := buttons childAt: 1.
@@ -598,7 +599,7 @@ GtCoderSlideshow >> createClassExplanationWithLinks [
 		
 	buttonTarget := coderElement
 		allChildrenBreadthFirstDetect: [:aChild |
-			aChild isKindOf: BrToolbar]
+			(aChild isKindOf: BrToolbar) and: [aChild parent isKindOf: GtCoderToolbarElement]]
 		ifFound: [:aChild | aChild childAt: 3].
 	buttonTarget
 		addChild:
