@@ -1,8 +1,18 @@
 Class {
 	#name : #GtInspectorViews,
-	#superclass : #BrStencil,
+	#superclass : #GtLiveShow,
 	#category : #'GToolkit-Demo-MoldableDevelopment'
 }
+
+{ #category : #accessing }
+GtInspectorViews >> columnedListViewExplanationSlideFor: aSlide [
+	<gtSlide>
+	^ aSlide textAndElement
+		priority: 6;
+		newTextWithFormat: ('Columned List' asRopedText glamorousRegularFont; fontSize: 30);
+		newTextWithFormat: self columnedListViewExplanationWithLinksText;
+		element: [self columnedListViewExplanationWithLinks].
+]
 
 { #category : #tests }
 GtInspectorViews >> columnedListViewExplanationWithLinks [
@@ -146,6 +156,16 @@ For each ' asRopedText,
 ]
 
 { #category : #accessing }
+GtInspectorViews >> columnedTreeExplanationSlideFor: aSlide [
+	<gtSlide>
+	^ aSlide textAndElement
+		priority: 9;
+		newTextWithFormat: ('Columned Tree' asRopedText glamorousRegularFont; fontSize: 30);
+		newTextWithFormat: self columnedTreeViewExplanationWithLinksText;
+		element: [self columnedTreeViewExplanationWithLinks].
+]
+
+{ #category : #accessing }
 GtInspectorViews >> columnedTreeViewExplanationWithLinks [
 	<gtExample>
 	| resultInspectorContainer verticalContainer coder coderElement selectors literals resultElement resultInspectorTree contactLabel cityLabel countryLabel titleTab codeExplanationLabel resultExplanationLabel |
@@ -253,56 +273,14 @@ Lastly, in the ' asRopedText,
 		foreground: Color black.
 ]
 
-{ #category : #'api - instantiation' }
-GtInspectorViews >> create [
-	| show |
-	show := GtSlideShow new.
-	show
-		slides:
-			{(GtTitleSlide new
-				titleText: ('Inspector views' asRopedText
-						fontSize: 70;
-						glamorousRegularFont)).
-			(GtSlideshowSlide new
-				textWithFormat: 'Want to learn more about the Pharo syntax? Follow the show below' asRopedText glamorousRegularFont;
-				slideshow: [ GtPharo101 new create ] withTitle: 'Pharo101').
-			(GtTextAndElementSlide new
-				newTextWithFormat: ('List' asRopedText glamorousRegularFont; fontSize: 30);
-				newTextWithFormat: self listViewExplanationWithLinksText;
-				element: [self listViewExplanationWithLinks]).
-			(GtTextAndElementSlide new
-				newTextWithFormat: ('Columned List' asRopedText glamorousRegularFont; fontSize: 30);
-				newTextWithFormat: self columnedListViewExplanationWithLinksText;
-				element: [self columnedListViewExplanationWithLinks]).
-			(GtTextAndElementSlide new
-				newTextWithFormat: ('Mondrian' asRopedText glamorousRegularFont; fontSize: 30);
-				newTextWithFormat: self mondrianViewExplanationWithLinksText;
-				element: [self mondrianViewExplanationWithLinks]).
-			(GtTextAndElementSlide new
-				newTextWithFormat: ('Tree' asRopedText glamorousRegularFont; fontSize: 30);
-				newTextWithFormat: self treeViewExplanationWithLinksText;
-				element: [self treeViewExplanationWithLinks]).
-			(GtTextAndElementSlide new
-				newTextWithFormat: ('Columned Tree' asRopedText glamorousRegularFont; fontSize: 30);
-				newTextWithFormat: self columnedTreeViewExplanationWithLinksText;
-				element: [self columnedTreeViewExplanationWithLinks]).
-			(GtTextAndElementSlide new
-				newTextWithFormat: ('Explicit' asRopedText glamorousRegularFont; fontSize: 30);
-				newTextWithFormat: self explicitViewExplanationWithLinksText;
-				element: [self explicitViewExplanationWithLinks]).
-			(GtTextAndElementSlide new
-				newTextWithFormat: ('Text Editor' asRopedText glamorousRegularFont; fontSize: 30);
-				newTextWithFormat: self textEditorViewExplanationWithLinksText;
-				element: [self textEditorViewExplanationWithLinks]).
-			(GtTextAndElementSlide new
-				newTextWithFormat: ('Empty' asRopedText glamorousRegularFont; fontSize: 30);
-				newTextWithFormat: self emptyViewExplanationWithLinksText;
-				element: [self emptyViewExplanationWithLinks]).
-			(GtLabelAndElementSlide new
-				element: [self queriesSnippetsSlide];
-				newFadedText: 'You can learn more from the many examples already in the image. Use the queries below to find them.').}.
-	
-	^ show.
+{ #category : #accessing }
+GtInspectorViews >> emptyViewExplanationSlideFor: aSlide [
+	<gtSlide>
+	^ aSlide textAndElement
+		priority: 12;
+		newTextWithFormat: ('Empty' asRopedText glamorousRegularFont; fontSize: 30);
+		newTextWithFormat: self emptyViewExplanationWithLinksText;
+		element: [self emptyViewExplanationWithLinks].
 ]
 
 { #category : #accessing }
@@ -387,6 +365,16 @@ GtInspectorViews >> explanationLabelWithText: aText [
 		text: (aText asRopedText glamorousRegularFont; fontSize: 15; foreground: Color gray);
 		margin: (BlInsets top: 20 right: 0 bottom: 0 left: 10);
 		look: BrGlamorousLabelLook new.
+]
+
+{ #category : #accessing }
+GtInspectorViews >> explicitViewExplanationSlideFor: aSlide [
+	<gtSlide>
+	^ aSlide textAndElement
+		priority: 10;
+		newTextWithFormat: ('Explicit' asRopedText glamorousRegularFont; fontSize: 30);
+		newTextWithFormat: self explicitViewExplanationWithLinksText;
+		element: [self explicitViewExplanationWithLinks].
 ]
 
 { #category : #accessing }
@@ -497,6 +485,16 @@ In this example, we show a ' asRopedText,
 ]
 
 { #category : #accessing }
+GtInspectorViews >> listViewExplanationSlideFor: aSlide [
+	<gtSlide>
+	^ aSlide textAndElement
+		priority: 5;
+		newTextWithFormat: ('List' asRopedText glamorousRegularFont; fontSize: 30);
+		newTextWithFormat: self listViewExplanationWithLinksText;
+		element: [self listViewExplanationWithLinks].
+]
+
+{ #category : #accessing }
 GtInspectorViews >> listViewExplanationWithLinks [
 	<gtExample>
 	| resultInspectorContainer verticalContainer coder coderElement selectors variables resultElement resultInspectorTree titleTab codeExplanationLabel resultExplanationLabel nameLabelsCollection |
@@ -595,6 +593,16 @@ GtInspectorViews >> mainContainerElement [
 ]
 
 { #category : #accessing }
+GtInspectorViews >> mondrianViewExplanationSlideFor: aSlide [
+	<gtSlide>
+	^ aSlide textAndElement
+		priority: 7;
+		newTextWithFormat: ('Mondrian' asRopedText glamorousRegularFont; fontSize: 30);
+		newTextWithFormat: self mondrianViewExplanationWithLinksText;
+		element: [self mondrianViewExplanationWithLinks].
+]
+
+{ #category : #accessing }
 GtInspectorViews >> mondrianViewExplanationWithLinks [
 	<gtExample>
 	| resultInspectorContainer verticalContainer coder coderElement selectors resultElement resultInspectorTree titleTab codeExplanationLabel resultExplanationLabel |
@@ -675,7 +683,7 @@ Then we set the ' asRopedText,
 ]
 
 { #category : #'as yet unclassified' }
-GtInspectorViews >> queriesSnippetsSlide [
+GtInspectorViews >> queriesSnippetsExamples [
 	<gtExample>
 	| container |
 	
@@ -717,6 +725,15 @@ GtInspectorViews >> resultInspectorContainerElement [
 		margin: (BlInsets all: 10).
 ]
 
+{ #category : #accessing }
+GtInspectorViews >> slideshowLinkSlideFor: aSlide [
+	<gtSlide>
+	^ aSlide slideshow
+		priority: 2;
+		textWithFormat: 'Want to learn more about the Pharo syntax? Follow the show below' asRopedText glamorousRegularFont;
+		slideshow: [ GtPharo101 new ] withTitle: 'Pharo101'.
+]
+
 { #category : #'as yet unclassified' }
 GtInspectorViews >> textEditorElementWithText: aText [
 	^ (BrEditor new
@@ -727,6 +744,16 @@ GtInspectorViews >> textEditorElementWithText: aText [
 			maxScale: 1;
 			margin: (BlInsets all: 50);
 			constraintsDo: [ :c | c linear weight: 0.3]
+]
+
+{ #category : #accessing }
+GtInspectorViews >> textEditorViewExplanationSlideFor: aSlide [
+	<gtSlide>
+	^ aSlide textAndElement
+		priority: 11;
+		newTextWithFormat: ('Text Editor' asRopedText glamorousRegularFont; fontSize: 30);
+		newTextWithFormat: self textEditorViewExplanationWithLinksText;
+		element: [self textEditorViewExplanationWithLinks].
 ]
 
 { #category : #accessing }
@@ -813,6 +840,26 @@ The view gets a ' asRopedText,
 		glamorousRegularFont;
 		fontSize: 20;
 		foreground: Color black.
+]
+
+{ #category : #accessing }
+GtInspectorViews >> titleSlideFor: aSlide [
+	<gtSlide>
+	^ aSlide title
+		priority: 1;
+		titleWithFormat: ('Inspector views' asRopedText
+			fontSize: 70;
+			glamorousRegularFont).
+]
+
+{ #category : #accessing }
+GtInspectorViews >> treeViewExplanationSlideFor: aSlide [
+	<gtSlide>
+	^ aSlide textAndElement
+		priority: 8;
+		newTextWithFormat: ('Tree' asRopedText glamorousRegularFont; fontSize: 30);
+		newTextWithFormat: self treeViewExplanationWithLinksText;
+		element: [self treeViewExplanationWithLinks].
 ]
 
 { #category : #accessing }
@@ -925,6 +972,15 @@ GtInspectorViews >> verticalContainerElement [
 			c vertical matchParent.
 			c padding: (BlInsets all: 5)];
 		layout: BlLinearLayout vertical.
+]
+
+{ #category : #accessing }
+GtInspectorViews >> viewsQueryExampleSlideFor: aSlide [
+	<gtSlide>
+	^ aSlide labelAndElement
+		priority: 13;
+		element: [self queriesSnippetsExamples];
+		newFadedText: 'You can learn more from the many examples already in the image. Use the queries below to find them.'.
 ]
 
 { #category : #utility }
