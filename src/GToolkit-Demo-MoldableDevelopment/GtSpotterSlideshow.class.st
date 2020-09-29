@@ -1,125 +1,8 @@
 Class {
 	#name : #GtSpotterSlideshow,
-	#superclass : #BrStencil,
+	#superclass : #GtLiveShow,
 	#category : #'GToolkit-Demo-MoldableDevelopment'
 }
-
-{ #category : #accessing }
-GtSpotterSlideshow >> actionBlockForSpotterInCoderContext [
-	| spotterElement button |
-	^ [:anElement |
-		spotterElement := anElement childAt: 2.
-		spotterElement enqueueTask: (BlTaskAction new
-			action: [
-				button := spotterElement
-					allChildrenBreadthFirstDetect: [:aChild |
-						(aChild isKindOf: BrToolbar) and: [aChild parent isKindOf: GtCoder]] 
-					ifFound: [:aChild |
-						aChild childAt: 1].
-				BlSpace simulateClickOn: button.
-				BlSpace simulateClickOn: button])].
-]
-
-{ #category : #accessing }
-GtSpotterSlideshow >> actionBlockForSpotterInInspectorContext [
-	| inspectorElement button |
-	^ [:anElement |
-		inspectorElement := anElement childAt: 2.
-		inspectorElement enqueueTask: (BlTaskAction new
-			action: [
-				button := inspectorElement
-					allChildrenBreadthFirstDetect: [:aChild | 
-						(aChild isKindOf: BrToolbar) 
-							and: [aChild parent parent parent isKindOf: BrTabGroup]] 
-					ifFound: [:aChild | aChild childAt: 3].
-					BlSpace simulateClickOn: button.
-					BlSpace simulateClickOn: button])].
-]
-
-{ #category : #accessing }
-GtSpotterSlideshow >> create [
-	| slideshow |
-	slideshow := GtSlideShow new.
-	slideshow
-		slides:
-			{(GtTitleSlide new
-				titleText: ('Spotter' asRopedText
-						fontSize: 70;
-						glamorousRegularFont)).
-			(GtTextAndElementSlide new
-				newTextWithFormat: ('Spotter is the moldable search interface. One of its main use cases is navigating through code and the file system.' asRopedText glamorousRegularFont; fontSize: 20);
-				element: [ self spottersMashExample ];
-				elementWeight: 0.6).
-			(GtTextAndElementSlide new
-				newTextWithFormat: self spotterInterfaceExplanationText;
-				element: [ self spotterInterfaceExplanationWithLinks ];
-				elementWeight: 0.6).
-			(GtTextAndElementSlide new
-				newTextWithFormat: self spotterOpeningExplanationText;
-				element: [ self spotterElementOn: '' ];
-				elementWeight: 0.6).
-			(GtTextAndElementSlide new
-				newTextWithFormat: self spotterInLocalContextExplanationText;
-				element: [ self spotterInLocalContextExplanationWithLinks ];
-				elementWeight: 0.6).
-			(GtLabelAndElementSlide new
-				newFadedText: 'Below you can see the spotter opened in a local context inside a coder.' asRopedText;
-				element: [ self spotterInLocalContextForCoderExample ];
-				onEveryAddToSceneGraphDo: self actionBlockForSpotterInCoderContext ).
-			(GtLabelAndElementSlide new
-				newFadedText: 'And here, the spotter is opened in a local context inside the inspector.' asRopedText;
-				element: [ self spotterInLocalContextForInspectorExample ];
-				onEveryAddToSceneGraphDo: self actionBlockForSpotterInInspectorContext ).
-			(GtTextAndElementSlide new
-				newTextWithFormat: self spotterProcessorsExplanationText;
-				element: [self spotterProcessorsExample];
-				elementWeight: 0.6).
-			(GtTextAndElementSlide new
-				newTextWithFormat: self spotterSearchMethodExplanationText;
-				element: [self spotterSearchMethodExample];
-				elementWeight: 0.6).
-			(GtTextSlide new
-				newTextWithFormat: ('Now let''s take a look at how we navigate through spotter.' asRopedText
-					glamorousRegularFont;
-					fontSize: 20)).
-			(GtTextAndElementSlide new
-				newTextWithFormat: (self spotterSearchFilterExplanationText);
-				element: [ self spotterSearchFilterExplanation ];
-				elementWeight: 0.6).
-			(GtTextAndElementSlide new
-				newTextWithFormat: (self spotterDiveInExplanationText);
-				element: [ self spotterDiveInExplanation ];
-				elementWeight: 0.6).
-			(GtTextAndElementSlide new
-				newTextWithFormat: ( self spotterAfterFirstDiveInExplanationText );
-				element: [ self spotterAfterFirstDiveInExplanation ];
-				elementWeight: 0.6).
-			"(GtTextAndElementSlide new
-				newTextWithFormat: ( self spotterAfterSecondDiveInExplanationText );
-				element: [ self spotterAfterSecondDiveInExplanation ];
-				elementWeight: 0.6)."
-			(GtLabelAndElementSlide new
-				newFadedText: ('You can play around with the spotter below to better understand how it works.' asRopedText);
-				element: [self spotterButtonStencil]).
-			}.
-	^ slideshow.
-
-]
-
-{ #category : #accessing }
-GtSpotterSlideshow >> localSpotterExplanationWithLinks [
-	| container coderSpotterElement inspectorSpotterElement aScript |
-	
-	container := BlElement new
-		layout: BlLinearLayout new;
-		constraintsDo: [ :c |
-			c vertical matchParent.
-			c horizontal matchParent ];
-		margin: (BlInsets all: 10).
-	
-	coderSpotterElement := nil.
-	^ BlElement new.
-]
 
 { #category : #accessing }
 GtSpotterSlideshow >> spotterAfterFirstDiveInExplanation [
@@ -152,55 +35,22 @@ GtSpotterSlideshow >> spotterAfterFirstDiveInExplanation [
 ]
 
 { #category : #accessing }
+GtSpotterSlideshow >> spotterAfterFirstDiveInExplanationSlideFor: aSlide [
+	<gtSlide>
+	^ aSlide textAndElement
+		priority: 16;
+		newTextWithFormat: ( self spotterAfterFirstDiveInExplanationText );
+		element: [ self spotterAfterFirstDiveInExplanation ];
+		elementWeight: 0.6.
+]
+
+{ #category : #accessing }
 GtSpotterSlideshow >> spotterAfterFirstDiveInExplanationText [
 	| text |
 	text := 'We chose to further explore the #contactsWithAddress: method, so now we are in the ' asRopedText,
 ('context' asRopedText glamorousExplanationFor: #secondContext),
 ' of the respective method. Now let''s say we want to take a look at one of the senders of this method, namely the #gtSpotterForPeopleFor: method.' asRopedText.
 	
-	^ text asRopedText
-		glamorousRegularFont;
-		fontSize: 20.
-]
-
-{ #category : #accessing }
-GtSpotterSlideshow >> spotterAfterSecondDiveInExplanation [
-	<noTest>
-	<gtExample>
-	| spotterElement contextTarget |
-	spotterElement := self
-		spotterElement: (self spotterAfterFirstDiveInExplanation) 
-		withSelectedPosition: 5.
-	
-	spotterElement enqueueTask: (BlTaskAction new
-		action: [
-			spotterElement header spotterModel currentStep diveIn.
-			contextTarget := spotterElement
-				allChildrenBreadthFirstDetect: [:aChild |
-					(aChild isKindOf: BrButton) and: [aChild label asString = 'GtABAddress>>#gtSpotterForPeopleFor:' asString]]
-				ifFound: [:aChild | aChild].
-	
-			contextTarget
-				addChild: (BrButton new
-					constraintsDo: [ :c | c ignoreByLayout ];
-					size: 3 @ 3;
-					elevation: (BlRelativeElevation elevation: 10);
-					geometry: BlCircle new;
-					look: (GtExplainerTargetLook new explanationModel: #thirdContext);
-					relocate:
-						(5 @ 10))]).
-
-	^ spotterElement removeFromParent.
-]
-
-{ #category : #accessing }
-GtSpotterSlideshow >> spotterAfterSecondDiveInExplanationText [
-	| text |
-	text := 'As you can see the ' asRopedText,
-('context' asRopedText glamorousExplanationFor: #thirdContext),
-' changed again. Now we are looking at a spotter method for the address object.
-You can keep going like this until you find what you are looking for. You can also mix in the filters to help in your search or you can dive out if you want to go back a step or two.
-You can also switch between contexts by clicking on them on the top of the spotter.' asRopedText.
 	^ text asRopedText
 		glamorousRegularFont;
 		fontSize: 20.
@@ -252,6 +102,16 @@ GtSpotterSlideshow >> spotterDiveInExplanation [
 				relocate:
 					(-2 @ arrowTargets extent y / 2)).
 	^ spotter.
+]
+
+{ #category : #accessing }
+GtSpotterSlideshow >> spotterDiveInExplanationSlideFor: aSlide [
+	<gtSlide>
+	^ aSlide textAndElement
+		priority: 15;
+		newTextWithFormat: (self spotterDiveInExplanationText);
+		element: [ self spotterDiveInExplanation ];
+		elementWeight: 0.6.
 ]
 
 { #category : #accessing }
@@ -325,6 +185,25 @@ GtSpotterSlideshow >> spotterElementInContextOf: anObject withSearch: aSearchStr
 { #category : #accessing }
 GtSpotterSlideshow >> spotterElementOn: aSearchString [
 	^ self spotterElementInContextOf: (GtSpotterStart new) withSearch: aSearchString.
+]
+
+{ #category : #accessing }
+GtSpotterSlideshow >> spotterExampleSlideFor: aSlide [
+	<gtSlide>
+	^ aSlide labelAndElement
+		priority: 17;
+		newFadedText: ('You can play around with the spotter below to better understand how it works.' asRopedText);
+		element: [self spotterButtonStencil].
+]
+
+{ #category : #accessing }
+GtSpotterSlideshow >> spotterInLocalContextExplanationSlideFor: aSlide [
+	<gtSlide>
+	^ aSlide textAndElement
+		priority: 8;
+		newTextWithFormat: self spotterInLocalContextExplanationText;
+		element: [ self spotterInLocalContextExplanationWithLinks ];
+		elementWeight: 0.6.
 ]
 
 { #category : #accessing }
@@ -418,6 +297,60 @@ GtSpotterSlideshow >> spotterInLocalContextForInspectorExample [
 		disableDuring: [ (GtInspector 
 			createOn: (GtABAddressBookExample new 
 				myContactsAddressBook)) maximized ]) forceLayout.
+]
+
+{ #category : #accessing }
+GtSpotterSlideshow >> spotterInLocalContextInCoderExampleSlideFor: aSlide [
+	<gtSlide>
+	^ aSlide labelAndElement
+		priority: 9;
+		newFadedText: 'Below you can see the spotter opened in a local context inside a coder.' asRopedText;
+		element: [ self spotterInLocalContextForCoderExample ];
+		onEveryAddToSceneGraphDo:
+			[:anElement |
+				| spotterElement button |
+				spotterElement := anElement childAt: 2.
+				spotterElement enqueueTask: (BlTaskAction new
+					action: [
+						button := spotterElement
+							allChildrenBreadthFirstDetect: [:aChild |
+								(aChild isKindOf: BrToolbar) and: [aChild parent isKindOf: GtCoder]] 
+							ifFound: [:aChild |
+								aChild childAt: 1].
+						BlSpace simulateClickOn: button.
+						BlSpace simulateClickOn: button])].
+]
+
+{ #category : #accessing }
+GtSpotterSlideshow >> spotterInLocalContextInInspectorExampleSlideFor: aSlide [
+	<gtSlide>
+	^ aSlide labelAndElement
+		priority: 10;
+		newFadedText: 'And here, the spotter is opened in a local context inside the inspector.' asRopedText;
+		element: [ self spotterInLocalContextForInspectorExample ];
+		onEveryAddToSceneGraphDo:
+			[:anElement |
+				| inspectorElement button |
+				inspectorElement := anElement childAt: 2.
+				inspectorElement enqueueTask: (BlTaskAction new
+					action: [
+						button := inspectorElement
+							allChildrenBreadthFirstDetect: [:aChild | 
+								(aChild isKindOf: BrToolbar) 
+									and: [aChild parent parent parent isKindOf: BrTabGroup]] 
+							ifFound: [:aChild | aChild childAt: 3].
+							BlSpace simulateClickOn: button.
+							BlSpace simulateClickOn: button])].
+]
+
+{ #category : #accessing }
+GtSpotterSlideshow >> spotterInterfaceExplanationSlideFor: aSlide [
+	<gtSlide>
+	^ aSlide textAndElement
+		priority: 6;
+		newTextWithFormat: self spotterInterfaceExplanationText;
+		element: [ self spotterInterfaceExplanationWithLinks ];
+		elementWeight: 0.6.
 ]
 
 { #category : #accessing }
@@ -557,6 +490,40 @@ GtSpotterSlideshow >> spotterLocalContextExplanationText [
 ]
 
 { #category : #accessing }
+GtSpotterSlideshow >> spotterMashExampleSlideFor: aSlide [
+	<gtSlide>
+	^ aSlide textAndElement
+		priority: 5;
+		newTextWithFormat: (
+			'Spotter is the moldable search interface. One of its main use cases is navigating through code and the file system.' asRopedText
+				glamorousRegularFont; 
+				fontSize: 20);
+		element: [ self spottersMashExample ];
+		elementWeight: 0.6.
+]
+
+{ #category : #accessing }
+GtSpotterSlideshow >> spotterNavigationIntroductionSlideFor: aSlide [
+	<gtSlide>
+	^ aSlide text
+		priority: 13;
+		newTextWithFormat: (
+			'Now let''s take a look at how we navigate through spotter.' asRopedText
+				glamorousRegularFont;
+				fontSize: 20).
+]
+
+{ #category : #accessing }
+GtSpotterSlideshow >> spotterOpeningExplanationSlideFor: aSlide [
+	<gtSlide>
+	^ aSlide textAndElement
+		priority: 7;
+		newTextWithFormat: self spotterOpeningExplanationText;
+		element: [ self spotterElementOn: '' ];
+		elementWeight: 0.6.
+]
+
+{ #category : #accessing }
 GtSpotterSlideshow >> spotterOpeningExplanationText [
 	^ 'A search always happens in the context of an object. The default spotter opens in a default context. To open it you can either click the search button in the top right corner of the GT window or you can press the key combination Shift + Return.' asRopedText
 		glamorousRegularFont;
@@ -592,6 +559,16 @@ GtSpotterSlideshow >> spotterProcessorsExample [
 			aStep wait forEmptySpaceTaskQueue].
 	aScripter syncContinue.
 	^ aScripter elementWithoutParent maximized.
+]
+
+{ #category : #accessing }
+GtSpotterSlideshow >> spotterProcessorsExplanationSlideFor: aSlide [
+	<gtSlide>
+	^ aSlide textAndElement
+		priority: 11;
+		newTextWithFormat: self spotterProcessorsExplanationText;
+		element: [self spotterProcessorsExample];
+		elementWeight: 0.6.
 ]
 
 { #category : #accessing }
@@ -654,6 +631,16 @@ GtSpotterSlideshow >> spotterSearchFilterExplanation [
 ]
 
 { #category : #accessing }
+GtSpotterSlideshow >> spotterSearchFilterExplanationSlideFor: aSlide [
+	<gtSlide>
+	^ aSlide textAndElement
+		priority: 14;
+		newTextWithFormat: (self spotterSearchFilterExplanationText);
+		element: [ self spotterSearchFilterExplanation ];
+		elementWeight: 0.6.
+]
+
+{ #category : #accessing }
 GtSpotterSlideshow >> spotterSearchFilterExplanationText [
 	| text |
 	text := 'A first thing to look at is the filtering of the results. You can choose to only see the results from a certain category thus fitting more results from that category on the screen. For example, here, we are in the context of ' asRopedText,
@@ -694,6 +681,16 @@ GtSpotterSlideshow >> spotterSearchMethodExample [
 ]
 
 { #category : #accessing }
+GtSpotterSlideshow >> spotterSearchMethodExplanationSlideFor: aSlide [
+	<gtSlide>
+	^ aSlide textAndElement
+		priority: 12;
+		newTextWithFormat: self spotterSearchMethodExplanationText;
+		element: [self spotterSearchMethodExample];
+		elementWeight: 0.6.
+]
+
+{ #category : #accessing }
 GtSpotterSlideshow >> spotterSearchMethodExplanationText [
 	| text |
 	text := 'Implementing a Spotter search is similar to implementing an inspector view. It is a method ' asRopedText,
@@ -723,8 +720,18 @@ The ' asRopedText,
 
 { #category : #accessing }
 GtSpotterSlideshow >> spottersMashExample [
-	^ (GtMashExampleSlide new
+	^ (GtMashExampleLiveSlide new
 		leftElement: (self spotterElementOn: 'GtSpotter');
 		centerElement: (self spotterElementOn: 'size:');
 		rightElement: (self spotterElementOn: 'Playground')) asElement.
+]
+
+{ #category : #accessing }
+GtSpotterSlideshow >> titleSlideFor: aSlide [
+	<gtSlide>
+	^ aSlide title
+		priority: 1;
+		titleWithFormat: ('Spotter' asRopedText
+			fontSize: 70;
+			glamorousRegularFont).
 ]
