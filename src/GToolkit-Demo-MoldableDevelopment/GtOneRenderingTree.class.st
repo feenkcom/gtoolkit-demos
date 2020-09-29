@@ -244,7 +244,7 @@ GtOneRenderingTree >> visualizationsExampleSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide labelAndElement
 		priority: 10;
-		element: [ GtSearchFilterHierarchySlide new asElement ];
+		element: [ GtSearchFilterHierarchyLiveSlide new asElement ];
 		newFadedText: 'The visualization below shows an inheritance tree of classes. Now, unfold them, and you get method editors.';
 		newFadedText: 'For this to work, we have to be able to apply graph layouts on arbitrary elements.'.
 ]

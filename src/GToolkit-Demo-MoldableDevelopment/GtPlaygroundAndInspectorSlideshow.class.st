@@ -482,14 +482,14 @@ GtPlaygroundAndInspectorSlideshow >> playgroundAndInspectorMashExample [
 			(BlElement new
 				look: BrShadowLook;
 				background: Color white;
-				addChild: ((GtPlaygroundSlide new 
+				addChild: ((GtPlaygroundLiveSlide new 
 					snippets: {'42 + 2.'};
 					inspectSnippetAt: 1) asElement));
 		centerElement:
 			(BlElement new
 				look: BrShadowLook;
 				background: Color white;
-				addChild: ((GtPlaygroundSlide new
+				addChild: ((GtPlaygroundLiveSlide new
 					snippets: {'BlElement new background: Color red.'};
 					inspectSnippetAt: 1) asElement));
 		rightElement:

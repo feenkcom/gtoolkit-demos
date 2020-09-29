@@ -682,12 +682,12 @@ Then we set the ' asRopedText,
 		foreground: Color black.
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #accessing }
 GtInspectorViews >> queriesSnippetsExamples [
 	<gtExample>
 	| container |
 	
-	container := GtPlaygroundSlide new
+	container := GtPlaygroundLiveSlide new
 						snippets:
 							{
 								'"Show all the methods that use the gtView pragma"
