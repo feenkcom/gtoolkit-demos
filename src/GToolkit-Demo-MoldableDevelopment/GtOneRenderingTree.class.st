@@ -1,86 +1,100 @@
 Class {
 	#name : #GtOneRenderingTree,
-	#superclass : #BrStencil,
+	#superclass : #GtLiveShow,
 	#category : #'GToolkit-Demo-MoldableDevelopment'
 }
 
-{ #category : #'api - instantiation' }
-GtOneRenderingTree >> create [
-	| show |
-	show := GtSlideShow new.
-	show slides: { 
-		GtTitleSlide new
-			titleText: ('One rendering tree' asRopedText fontSize: 70; glamorousRegularFont).
+{ #category : #accessing }
+GtOneRenderingTree >> classHierarchyWithEdgesAndLinesExampleSlideFor: aSlide [
+	<gtSlide>
+	^ aSlide labelAndElement
+		priority: 14;
+		element: [ GtExampleLiveSlide new 
+			method: (GtWhatMakesBlocSpecialExplanation >> #classHierarchyWithEdgesAndLines);
+			asElement ];
+		newFadedText: 'Lines can also be added to the scene, but they are purely decorative graphical elements.'.
+]
 
-		GtTextAndElementSlide new
-				element: [ self overviewElement ];
-				elementWeight: 0.7;
-				newText: 'The graphical stack supporting Glamorous Toolkit offers a core property: any graphical scene is rendered through exactly one single rendering tree.';
-				newText: 'This very window contains multiple elements that all reside in one single rendering tree. This includes the words in the document, the lines in the graph, the dots in the chart or the labels from the visual keyboard on the right.'.
+{ #category : #accessing }
+GtOneRenderingTree >> classHierarchyWithEdgesExampleSlideFor: aSlide [
+	<gtSlide>
+	^ aSlide labelAndElement
+		priority: 13;
+		element: [ GtExampleLiveSlide new
+			method: (GtWhatMakesBlocSpecialExplanation >> #classHierarchyWithEdges);
+			asElement ];
+		newFadedText: 'And now we see the same elements, but laid out as a tree.';
+		newFadedText: 'A tree layout requires the notion of an edge.';
+		newFadedText: 'The edge is modelled as a regular constraint, like in the case of the grid layout.'.
+]
 
-		GtTitleSlide new
-			titleText: ('the text editor is made of plain elements' asRopedText fontSize: 30; glamorousRegularFont).
-		GtEditorElementWithRotatedWords new.
-		GtEditorElementWithTreeSlide new.	
-"		GtEditorElementWithDebugCharacterSlide new."
+{ #category : #accessing }
+GtOneRenderingTree >> classHierarchyWithGridLayoutExampleSlideFor: aSlide [
+	<gtSlide>
+	^ aSlide labelAndElement
+		priority: 12;
+		element: [ GtExampleLiveSlide new
+			method: (GtWhatMakesBlocSpecialExplanation >> #classHierarchyWithGridLayout);
+			asElement ];
+		newFadedText: 'Let''s take a concrete example. Below we see a set of elements arranged in a grid.';
+		newFadedText: 'Interestingly, the elements are centrally aligned in each column';
+		newFadedText: 'This is achived by specifying a grid layout specific constraint for each of the children.'.
+]
 
-		GtTitleSlide new
-			titleText: ('visualizations can be combined with regular elements' asRopedText fontSize: 30; glamorousRegularFont).
-		GtLabelAndElementSlide new
-				element: [ GtSearchFilterHierarchySlide new asElement ];
-				newFadedText: 'The visualization below shows an inheritance tree of classes. Now, unfold them, and you get method editors.';
-				newFadedText: 'For this to work, we have to be able to apply graph layouts on arbitrary elements.'.		
-		
-		GtTitleSlide new
-			titleText: ('graph layouts are regular layouts' asRopedText fontSize: 30; glamorousRegularFont).
-		GtLabelAndElementSlide new
-			element: [ GtExampleSlide new
-				method: (GtWhatMakesBlocSpecialExplanation >> #classHierarchyWithGridLayout);
-				asElement ];
-			newFadedText: 'Let''s take a concrete example. Below we see a set of elements arranged in a grid.';
-			newFadedText: 'Interestingly, the elements are centrally aligned in each column';
-			newFadedText: 'This is achived by specifying a grid layout specific constraint for each of the children.'.
-		GtLabelAndElementSlide new
-			element: [ GtExampleSlide new
-				method: (GtWhatMakesBlocSpecialExplanation >> #classHierarchyWithEdges);
-				asElement ];
-			newFadedText: 'And now we see the same elements, but laid out as a tree.';
-			newFadedText: 'A tree layout requires the notion of an edge.';
-			newFadedText: 'The edge is modelled as a regular constraint, like in the case of the grid layout.'.
-		GtLabelAndElementSlide new
-			element: [ GtExampleSlide new 
-				method: (GtWhatMakesBlocSpecialExplanation >> #classHierarchyWithEdgesAndLines);
-				asElement ];
-			newFadedText: 'Lines can also be added to the scene, but they are purely decorative graphical elements.'.
+{ #category : #accessing }
+GtOneRenderingTree >> connectorExampleSlideFor: aSlide [
+	<gtSlide>
+	^ aSlide labelAndElement
+		priority: 16;
+		element: [ GtConnectorForExampleLiveSlide new asElement ];
+		newFadedText: 'Below we see an editor on an example method. Click on the gray buttons in the code. Resize the panes. Click on the inspect icons.';
+		newFadedText: 'For the scene to work, the lines must be in the same space as the text elements and the panes.'.
+]
 
-		GtTitleSlide new
-			titleText: ('new kind of interfaces' asRopedText fontSize: 30; glamorousRegularFont).
-		GtLabelAndElementSlide new
-				element: [ GtConnectorForExampleSlide new asElement ];
-				newFadedText: 'Below we see an editor on an example method. Click on the gray buttons in the code. Resize the panes. Click on the inspect icons.';
-				newFadedText: 'For the scene to work, the lines must be in the same space as the text elements and the panes.'.
+{ #category : #accessing }
+GtOneRenderingTree >> editorElementWithRotatedWordsSlideFor: aSlide [
+	<gtSlide>
+	^ aSlide editorElement
+		withRotatedWords;
+		priority: 7.
+]
 
-		GtLabelAndElementSlide new
-				element: [ self sampleExplanationWithLinks ];
-				newFadedText: 'Here we see a textual explanation that links with various constructs in the code that it explains.';
-				newFadedText: 'For the scene to work, the arrows must be in the same space as the text elements and the code elements.'.
-		"GtLabelAndElementSlide new
-				element: [ GtArrowHeadWithEmbeddedWorldSlide new asElement ];
-				newFadedText: 'Double click to zoom. Drag.';
-				newFadedText: 'Yes, there is a whole world embedded in the tip of the line.'."
-		GtTitleSlide new
-			titleText: ('a look behind the scene: the annotated tree' asRopedText fontSize: 30; glamorousRegularFont).
-		GtLabelAndElementSlide new
-				element: [ self liveElementTreeSlideForText  asElement];
-				newFadedText: 'On the left we have an inspector showing an editor. On the right we see the corresponding single rendering tree.';
-				newFadedText: 'Move with the mouse over the elements in the scene to see where in the tree they fit.'.
+{ #category : #accessing }
+GtOneRenderingTree >> editorElementWithTreeSlideFor: aSlide [
+	<gtSlide>
+	^ aSlide editorElement
+		withTree;
+		priority: 8.
+]
 
-		GtLabelAndElementSlide new
-				element: [ self liveElementTree asElement ];
-				newFadedText: 'In this case, on the left we have an inspector showing a visualization.';
-				newFadedText: 'The tree on the right reveals some nodes as labelled. In our case, the labels are phlow and graph. These are annotations that provide higher level extensions to navigate the tree. For example, given an element, we can ask it for element graph connectedEdges.'.
-	}.
-	^ show
+{ #category : #accessing }
+GtOneRenderingTree >> explanationWithLinksExampleSlideFor: aSlide [
+	<gtSlide>
+	^ aSlide labelAndElement
+		priority: 17;
+		element: [ self sampleExplanationWithLinks ];
+		newFadedText: 'Here we see a textual explanation that links with various constructs in the code that it explains.';
+		newFadedText: 'For the scene to work, the arrows must be in the same space as the text elements and the code elements.'.
+]
+
+{ #category : #accessing }
+GtOneRenderingTree >> graphLayoutsIntroductionSlideFor: aSlide [
+	<gtSlide>
+	^ aSlide text
+		priority: 11;
+		newTextWithFormat: ('Graph layouts are regular layouts' asRopedText 
+			fontSize: 30;
+			glamorousRegularFont).
+]
+
+{ #category : #accessing }
+GtOneRenderingTree >> interfacesIntroductionSlideFor: aSlide [
+	<gtSlide>
+	^ aSlide text
+		priority: 15;
+		newTextWithFormat: ('New kind of interfaces' asRopedText 
+			fontSize: 30;
+			glamorousRegularFont).
 ]
 
 { #category : #'api - instantiation' }
@@ -99,7 +113,7 @@ GtOneRenderingTree >> liveElementTree [
 		stencil: [ BlSigmoidElement new beVertical border: (BlBorder paint: (Color black alpha: 0.2) width: 2)];
 		connectFrom: [:x | x // 2].
 	m layout tree levelDistance: 30; nodeDistance: 2.
-	^ GtLiveElementTreeSlide new 
+	^ GtLiveElementTreeLiveSlide new 
 		targetElement: (BlUseAsyncFeatures disableDuring: [
 			(m gtViewsFor: GtPhlowView empty) asElementDo: [:e | 
 				e 
@@ -110,13 +124,23 @@ GtOneRenderingTree >> liveElementTree [
 					do: [ :anEvent | anEvent target effect: (BlNullEffect new) ] ]]) forceLayout.
 ]
 
+{ #category : #accessing }
+GtOneRenderingTree >> liveElementTreeIntroductionSlideFor: aSlide [
+	<gtSlide>
+	^ aSlide text
+		priority: 18;
+		newTextWithFormat: ('A look behind the scene: the annotated tree' asRopedText 
+			fontSize: 30;
+			glamorousRegularFont).
+]
+
 { #category : #'api - instantiation' }
 GtOneRenderingTree >> liveElementTreeSlideForText [
 	| editor |
 	editor := BrEditor new 
 		look: BrGlamorousEditorLook;
 		text: GtWhatMakesBlocSpecialExplanation new sampleText.
-	^ GtLiveElementTreeSlide new 
+	^ GtLiveElementTreeLiveSlide new 
 		targetElement: (BlUseAsyncFeatures disableDuring: [
 			(editor gtViewsFor: GtPhlowView empty) asElementDo: [:e | 
 				e 
@@ -127,9 +151,40 @@ GtOneRenderingTree >> liveElementTreeSlideForText [
 					do: [ :anEvent | anEvent target effect: (BlNullEffect new) ] ]]) forceLayout.
 ]
 
+{ #category : #accessing }
+GtOneRenderingTree >> liveTreeOnEditorExampleSlideFor: aSlide [
+	<gtSlide>
+	^ aSlide labelAndElement
+		priority: 19;
+		element: [ self liveElementTreeSlideForText  asElement];
+		newFadedText: 'On the left we have an inspector showing an editor. On the right we see the corresponding single rendering tree.';
+		newFadedText: 'Move with the mouse over the elements in the scene to see where in the tree they fit.'.
+]
+
+{ #category : #accessing }
+GtOneRenderingTree >> liveTreeOnVisualizationExampleSlideFor: aSlide [
+	<gtSlide>
+	^ aSlide labelAndElement
+		priority: 20;
+		element: [ self liveElementTree asElement ];
+		newFadedText: 'In this case, on the left we have an inspector showing a visualization.';
+		newFadedText: 'The tree on the right reveals some nodes as labelled. In our case, the labels are phlow and graph. These are annotations that provide higher level extensions to navigate the tree. For example, given an element, we can ask it for element graph connectedEdges.'.
+]
+
+{ #category : #accessing }
+GtOneRenderingTree >> mashExampleSlideFor: aSlide [
+	<gtSlide>
+	^ aSlide textAndElement
+		priority: 5;
+		element: [ self overviewElement ];
+		elementWeight: 0.7;
+		newText: 'The graphical stack supporting Glamorous Toolkit offers a core property: any graphical scene is rendered through exactly one single rendering tree.';
+		newText: 'This very window contains multiple elements that all reside in one single rendering tree. This includes the words in the document, the lines in the graph, the dots in the chart or the labels from the visual keyboard on the right.'.
+]
+
 { #category : #'api - instantiation' }
 GtOneRenderingTree >> overviewElement [
-	^ (GtMashExampleSlide new
+	^ (GtMashExampleLiveSlide new
 		leftElementWithConstraints: ((GtDocumenter forClass: BaselineOfGToolkit)
 			constraintsDo: [ :c |
 			    c frame horizontal alignLeft. 
@@ -164,4 +219,42 @@ GtOneRenderingTree >> sampleExplanationWithLinks [
 	<gtExample>
 	
 	^ GtMethodCoderStylerExamples new viewsExplanationWithLinks
+]
+
+{ #category : #accessing }
+GtOneRenderingTree >> textEditorIntroductionSlideFor: aSlide [
+	<gtSlide>
+	^ aSlide text
+		priority: 6;
+		newTextWithFormat: ('The text editor is made of plain elements' asRopedText fontSize: 30; glamorousRegularFont).
+]
+
+{ #category : #accessing }
+GtOneRenderingTree >> titleSlideFor: aSlide [
+	<gtSlide>
+	^ aSlide title
+		priority: 1;
+		titleWithFormat: ('One rendering tree' asRopedText 
+			fontSize: 70;
+			glamorousRegularFont).
+]
+
+{ #category : #accessing }
+GtOneRenderingTree >> visualizationsExampleSlideFor: aSlide [
+	<gtSlide>
+	^ aSlide labelAndElement
+		priority: 10;
+		element: [ GtSearchFilterHierarchySlide new asElement ];
+		newFadedText: 'The visualization below shows an inheritance tree of classes. Now, unfold them, and you get method editors.';
+		newFadedText: 'For this to work, we have to be able to apply graph layouts on arbitrary elements.'.
+]
+
+{ #category : #accessing }
+GtOneRenderingTree >> visualizationsIntroductionSlideFor: aSlide [
+	<gtSlide>
+	^ aSlide text
+		priority: 9;
+		newTextWithFormat: ('Visualizations can be combined with regular elements' asRopedText 
+			fontSize: 30;
+			glamorousRegularFont).
 ]
