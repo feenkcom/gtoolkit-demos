@@ -1,8 +1,37 @@
 Class {
 	#name : #GtTour,
-	#superclass : #BrStencil,
+	#superclass : #GtLiveShow,
 	#category : #'GToolkit-Demo-MoldableDevelopment'
 }
+
+{ #category : #accessing }
+GtTour >> allViewsExampleSlideFor: aSlide [
+	<gtSlide>
+	^ aSlide labelAndElement
+		priority: 8;
+		element: [ GtAllViewsLiveSlide new asElement ];
+		newFadedText: 'Every object is different, and the environment should show it, too.'.
+]
+
+{ #category : #accessing }
+GtTour >> classCommentAsLiveDocumentExampleSlideFor: aSlide [
+	<gtSlide>
+	^ aSlide labelAndElement
+		priority: 26;
+		element: [ self coderWithComment ];
+		newFadedText: 'Interestingly, the document is actually the comment of a class.';
+		newFadedText: 'Click on the links to spawn other documents and navigate the image as a wiki.'.
+]
+
+{ #category : #accessing }
+GtTour >> coderExplanationSlideFor: aSlide [
+	<gtSlide>
+	^ aSlide textAndElement
+		priority: 16;
+		newTextWithFormat: self coderExplanationWithLinksText;
+		elementWeight: 0.6;
+		element: [ self coderExplanationWithLinks ].
+]
 
 { #category : #accessing }
 GtTour >> coderExplanationWithLinks [
@@ -209,154 +238,24 @@ GtTour >> coderWithComment [
 	^ aScripter elementWithoutParent
 ]
 
-{ #category : #'api - instantiation' }
-GtTour >> create [
-	| show |
-	show := GtSlideShow new.
-	show
-		slides:
-			{(GtTitleSlide new
-		titleText: ('glamoroustoolkit' asRopedText fontSize: 70; glamorousRegularFont; thin; in: [:t | (t from: 'glamorous' size + 1 to: t size) bold]; yourself)).
-			GtTextAndElementSlide new
-				element: [ self timelineElement margin: (BlInsets left: 50 right: 50) ];
-				elementWeight: 0.7;
-				newText: 'Glamorous Toolkit is the moldable development environment.';
-				newText: 'It is a live notebook. It is a flexible search interface. It is a fancy code editor. It is a software analysis platform. It is a data visualization engine. All in one. It is built in Pharo and it is free and open-source under an MIT license.';
-				newText: 'What is moldable development? A new paradigm that promotes the idea that developers should explain their systems through the lens of custom tools that they create while developing the system.';
-				newText: 'But, let''s take it step by step.'.
-			GtLabelAndElementSlide new
-				element: [ GtRawViewsSlide new asElement ];
-				newFadedText: 'Consider how these different objects look quite similar in the inspector.'.
-			GtLabelAndElementSlide new
-				element: [ GtCustomViewsSlide new asElement ];
-				newFadedText: 'Yet, when we change the view, the differences are obvious.'.
-			GtLabelAndElementSlide new
-				element: [ GtAllViewsSlide new asElement ];
-				newFadedText: 'Every object is different, and the environment should show it, too.'.
-			"GtLabelAndElementSlide new
-				element: [ GtMultipleViewsForOneObjectSlide new asElement ];
-				newFadedText: 'Every object can be seen in multiple ways and the environment must accommodate all of them.';
-				newFadedText: 'Take a look below at a few views on an object holding a piece of text.'."
-			GtTextAndElementSlide new 
-				element: [ GtMultipleViewsForOneObjectSlide new grid asElement ];
-				newText: 'Moldable development starts from the idea that everything about software, including code, is data. And data is shapeless, yet we, humans, need a concrete shape to reason about it. The environment provides this shape, and this is why the environment is essential.';
-				newText: 'To reason about data, we need to view it through a lens that is specific to the question we have. And when we do not have an appropriate view, we should be able to create it inexpensively. This applies for everything in sofware starting from  the tiniest objects.';
-				newText: 'For example, take a look to the right at a few views on an the same object holding a piece of text. Every view is relevant from a certain perspective and the environment must accommodate all of them.';
-				elementWeight: 0.5.
+{ #category : #accessing }
+GtTour >> composedQueryExampleSlideFor: aSlide [
+	<gtSlide>
+	^ aSlide labelAndElement
+		priority: 19;
+		element: [ (GtPlaygroundLiveSlide new
+			snippets: {'#gtView gtPragmas & #list gtReferences'})
+			create ];
+		newFadedText: 'Now, try with this composed query. Notice the highlighting'.
+]
 
-			"		GtTitleSlide new
-			titleText: ('components' asRopedText fontSize: 50; glamorousRegularFont).
-		GtTextAndElementSlide new 
-			element: [ GtAllViewsSlide new asElement ];
-			textWithFormat: ('Glamorous Toolkit is made of multiple programmable components' asRopedText glamorousRegularFont; foreground: Color gray).
-		GtComponentsSlide new.
-"
-			GtTextSlide new
-				newText: 'Let''s start with live programming and inspection.'.
-			
-			GtTextAndElementSlide new
-				newTextWithFormat: GtExplainerExamples new inspectorExplanationText;
-				element: [ BlElement new
-					constraintsDo: [ :c |
-						c vertical matchParent.
-						c horizontal matchParent];
-					background: Color white;
-					look: BrShadowLook;
-					margin: (BlInsets right: 5);
-					addChild: (GtPager 
-						createWrappedOn: (GtExplainerExamples>>#inspectorContainerElement) gtExampleValue) maximized ];
-				elementWeight: 0.6.
-			GtTextAndElementSlide new
-				newTextWithFormat: GtMethodCoderStylerExamples new viewsExplanationWithLinksText;
-				element: [ self viewMethodWithResultExplanationWithLinksExample ].
-			GtSlideshowSlide new
-				text: ('Want to learn more about inspector views? Follow the show below.');
-				slideshow: [ GtInspectorViews new create ] withTitle: 'Inspector views'.
-			GtTextAndElementSlide new
-				newTextWithFormat: self playgroundExplanationWithLinksText;
-				elementWeight: 0.6;
-				element: [ self playgroundExplanationWithLinks ].
-			GtTitleSlide new
-				titleText:
-					('moldable coding' asRopedText
-						fontSize: 50;
-						glamorousRegularFont).
-			GtTextAndElementSlide new
-				newTextWithFormat: self coderExplanationWithLinksText;
-				elementWeight: 0.6;
-				element: [ self coderExplanationWithLinks ].
-			(GtTitleSlide new
-				titleText:
-					('querying' asRopedText
-						fontSize: 50;
-						glamorousRegularFont)).
-			(GtLabelAndElementSlide new
-				element: [ (GtPlaygroundSlide new snippets: {'#gtView gtPragmas'}) create ];
-				newFadedText: 'Inspect the result of this query. Expand the methods').
-			(GtLabelAndElementSlide new
-				element: [ (GtPlaygroundSlide new
-					snippets: {'#gtView gtPragmas & #list gtReferences'})
-					create ];
-				newFadedText: 'Now, try with this composed query. Notice the highlighting').
-			GtSlideshowSlide new
-				textWithFormat: ('To learn more about queries follow the show below.' asRopedText glamorousRegularFont);
-				slideshow: [ GtQueries new create ] withTitle: 'Querying Code'.
-			(GtTitleSlide new
-				titleText:
-					('moldable search' asRopedText
-						fontSize: 50;
-						glamorousRegularFont)).
-			(GtLabelAndElementSlide new
-				element: [ GtSpotterSlide new asElement ];
-				newFadedText: 'Search is pervasive. Try searching for Object').
-			(GtLabelAndElementSlide new
-				element: [ GtSpotterSlide new asElement ];
-				newFadedText: ('Or search for .' , FileSystem disk delimiter asString)).
-			(GtTitleSlide new
-				titleText:
-					('live documents' asRopedText
-						fontSize: 50;
-						glamorousRegularFont)).
-			GtLabelAndElementSlide new
-				element: [ (GtDocumenter forClass: GtCSPicture) 
-					margin: (BlInsets all: 10);
-					background: Color white;
-					look: BrShadowLook];
-				newFadedText: 'This is a live document intertwining text, code and graphics.';
-				newFadedText: 'Browse it. Execute the code. Try editing the text, too. It''s live'.
-			GtLabelAndElementSlide new
-				element: [ self coderWithComment ];
-				newFadedText: 'Interestingly, the document is actually the comment of a class.';
-				newFadedText: 'Click on the links to spawn other documents and navigate the image as a wiki.'.
-"			(GtTitleSlide new
-				titleText:
-					('tracing variables' asRopedText
-						fontSize: 50;
-						fontName: 'Helvetica Neue';
-						bold;
-						yourself)).
-			GtDebuggerOnRopeSlide new."
-			(GtTextSlide new
-				newText: 'Glamorous Toolkit is a platform. While it is implemented in Pharo, it can already tackle multiple other languages.').
-			(GtLabelAndElementSlide new
-				element: [ GtPager createWrappedOn: (GtClassCoder forClass: JSParser) ];
-				newFadedText: 'The first non-Pharo language we accommodated is the language with which we write parsers for other languages.';
-				newFadedText: 'Here you see a concrete instance of the language used for defining the parser for JavaScript.').
-			(GtTextSlide new
-				newText: 'The graphical stack is worth taking a look at as well. It features the property of rendering everything in a single rendering tree.').
-			GtLabelAndElementSlide new
-				element: [self visualizationElement];
-				newFadedText: 'Visualization is supported directly by the graphical stack.'.
-			GtSlideshowSlide new
-				text: ('Want to dive deeper into the rendering stack? Follow the show below.');
-				slideshow: [ GtOneRenderingTree new create ] withTitle: 'One rendering tree'.
-			(GtLabelAndElementSlide new
-				element: [ self treemapWithViewsAndExamples ];
-				newFadedText: 'The need for moldability is pervasive.';
-				newFadedText: 'The visualization below shows a treemap of the classes and packages from the current image.';
-				newFadedText: 'Blue denotes classes that contain at least one custom view; green shows those that have an example.')
-		}.
-	^ show
+{ #category : #accessing }
+GtTour >> customViewsExampleSlideFor: aSlide [
+	<gtSlide>
+	^ aSlide labelAndElement
+		priority: 7;
+		element: [ GtCustomViewsLiveSlide new asElement ];
+		newFadedText: 'Yet, when we change the view, the differences are obvious.'.
 ]
 
 { #category : #accessing }
@@ -503,6 +402,153 @@ container addChild: inspectorContainer.
 ^ container
 ]
 
+{ #category : #accessing }
+GtTour >> graphicalStackFirstExampleSlideFor: aSlide [
+	<gtSlide>
+	^ aSlide labelAndElement
+		priority: 30;
+		element: [ self visualizationElement ];
+		newFadedText: 'Visualization is supported directly by the graphical stack.'.
+]
+
+{ #category : #accessing }
+GtTour >> graphicalStackIntroductionSlideFor: aSlide [
+	<gtSlide>
+	^ aSlide text
+		priority: 29;
+		newText: 'The graphical stack is worth taking a look at as well. It features the property of rendering everything in a single rendering tree.'.
+]
+
+{ #category : #accessing }
+GtTour >> graphicalStackSecondExampleSlideFor: aSlide [
+	<gtSlide>
+	^ aSlide labelAndElement
+		priority: 32;
+		element: [ self treemapWithViewsAndExamples ];
+		newFadedText: 'The need for moldability is pervasive.';
+		newFadedText: 'The visualization below shows a treemap of the classes and packages from the current image.';
+		newFadedText: 'Blue denotes classes that contain at least one custom view; green shows those that have an example.'.
+]
+
+{ #category : #accessing }
+GtTour >> inspectorExplanationSlideFor: aSlide [
+	<gtSlide>
+	^ aSlide textAndElement
+		priority: 11;
+		newTextWithFormat: GtExplainerExamples new inspectorExplanationText;
+		element: [ BlElement new
+			constraintsDo: [ :c |
+				c vertical matchParent.
+				c horizontal matchParent];
+			background: Color white;
+			look: BrShadowLook;
+			margin: (BlInsets right: 5);
+			addChild: (GtPager 
+				createWrappedOn: (GtExplainerExamples>>#inspectorContainerElement) gtExampleValue) maximized ];
+		elementWeight: 0.6.
+]
+
+{ #category : #accessing }
+GtTour >> inspectorViewsSlideshowLinkSlideFor: aSlide [
+	<gtSlide>
+	^ aSlide slideshow
+		priority: 13;
+		text: ('Want to learn more about inspector views? Follow the show below.');
+		slideshow: [ GtInspectorViews new ] withTitle: 'Inspector views'.
+]
+
+{ #category : #accessing }
+GtTour >> jsParserExampleSlideFor: aSlide [
+	<gtSlide>
+	^ aSlide labelAndElement
+		priority: 28;
+		element: [ GtPager createWrappedOn: (GtClassCoder forClass: JSParser) ];
+		newFadedText: 'The first non-Pharo language we accommodated is the language with which we write parsers for other languages.'.
+]
+
+{ #category : #accessing }
+GtTour >> liveDocumentExampleSlideFor: aSlide [
+	<gtSlide>
+	^ aSlide labelAndElement
+		priority: 25;
+		element: [ (GtDocumenter forClass: GtCSPicture) 
+			margin: (BlInsets all: 10);
+			background: Color white;
+			look: BrShadowLook];
+		newFadedText: 'This is a live document intertwining text, code and graphics.';
+		newFadedText: 'Browse it. Execute the code. Try editing the text, too. It''s live'.
+]
+
+{ #category : #accessing }
+GtTour >> liveDocumentTitleSlideFor: aSlide [
+	<gtSlide>
+	^ aSlide title
+		priority: 24;
+		titleWithFormat:
+			('live documents' asRopedText
+				fontSize: 50;
+				glamorousRegularFont).
+]
+
+{ #category : #accessing }
+GtTour >> liveProgrammingIntroductionSlideFor: aSlide [
+	<gtSlide>
+	^ aSlide text
+		priority: 10;
+		newText: 'Let''s start with live programming and inspection.'.
+]
+
+{ #category : #accessing }
+GtTour >> moldableCodingTitleSlideFor: aSlide [
+	<gtSlide>
+	^ aSlide title
+		priority: 15;
+		titleWithFormat:
+			('moldable coding' asRopedText
+				fontSize: 50;
+				glamorousRegularFont).
+]
+
+{ #category : #accessing }
+GtTour >> moldableSearchTitleSlideFor: aSlide [
+	<gtSlide>
+	^ aSlide title
+		priority: 21;
+		titleWithFormat:
+			('moldable search' asRopedText
+				fontSize: 50;
+				glamorousRegularFont).
+]
+
+{ #category : #accessing }
+GtTour >> multipleViewsForOneObjectExampleSlideFor: aSlide [
+	<gtSlide>
+	^ aSlide textAndElement
+		priority: 9;
+		element: [ GtMultipleViewsForOneObjectLiveSlide new grid asElement ];
+		newText: 'Moldable development starts from the idea that everything about software, including code, is data. And data is shapeless, yet we, humans, need a concrete shape to reason about it. The environment provides this shape, and this is why the environment is essential.';
+		newText: 'To reason about data, we need to view it through a lens that is specific to the question we have. And when we do not have an appropriate view, we should be able to create it inexpensively. This applies for everything in sofware starting from  the tiniest objects.';
+		newText: 'For example, take a look to the right at a few views on an the same object holding a piece of text. Every view is relevant from a certain perspective and the environment must accommodate all of them.';
+		elementWeight: 0.5.
+]
+
+{ #category : #accessing }
+GtTour >> oneRenderingTreeSlideshowLinkSlideFor: aSlide [
+	<gtSlide>
+	^ aSlide slideshow
+		priority: 31;
+		text: ('Want to dive deeper into the rendering stack? Follow the show below.');
+		slideshow: [ GtOneRenderingTree new ] withTitle: 'One rendering tree'.
+]
+
+{ #category : #accessing }
+GtTour >> otherLanguagesIntroductionSlideFor: aSlide [
+	<gtSlide>
+	^ aSlide text
+		priority: 27;
+		newText: 'Glamorous Toolkit is a platform. While it is implemented in Pharo, it can already tackle multiple other languages.'.
+]
+
 { #category : #'api - instantiation' }
 GtTour >> overviewElement [
 	| container |
@@ -536,6 +582,16 @@ GtTour >> overviewElement [
 			margin: (BlInsets top: 100 left: 10 bottom: 10 right: 10); background: (Color white); look: BrShadowLook).
 	
 	^ container asScalableElement 
+]
+
+{ #category : #accessing }
+GtTour >> playgroundExplanationSlideFor: aSlide [
+	<gtSlide>
+	^ aSlide textAndElement
+		priority: 14;
+		newTextWithFormat: self playgroundExplanationWithLinksText;
+		elementWeight: 0.6;
+		element: [ self playgroundExplanationWithLinks ].
 ]
 
 { #category : #'as yet unclassified' }
@@ -652,6 +708,62 @@ The playground lets you ' asRopedText,
 		foreground: Color black.
 ]
 
+{ #category : #accessing }
+GtTour >> queryExampleSlideFor: aSlide [
+	<gtSlide>
+	^ aSlide labelAndElement
+		priority: 18;
+		element: [ (GtPlaygroundLiveSlide new snippets: {'#gtView gtPragmas'}) create ];
+		newFadedText: 'Inspect the result of this query. Expand the methods'.
+]
+
+{ #category : #accessing }
+GtTour >> querySlideshowLinkSlideFor: aSlide [
+	<gtSlide>
+	^ aSlide slideshow
+		priority: 20;
+		textWithFormat: ('To learn more about queries follow the show below.' asRopedText glamorousRegularFont);
+		slideshow: [ GtQueries new ] withTitle: 'Querying Code'.
+]
+
+{ #category : #accessing }
+GtTour >> queryTitleSlideFor: aSlide [
+	<gtSlide>
+	^ aSlide title
+		priority: 17;
+		titleWithFormat:
+			('querying' asRopedText
+				fontSize: 50;
+				glamorousRegularFont)
+]
+
+{ #category : #accessing }
+GtTour >> rawViewsExampleSlideFor: aSlide [
+	<gtSlide>
+	^ aSlide labelAndElement
+		priority: 6;
+		element: [ GtRawViewsLiveSlide new asElement ];
+		newFadedText: 'Consider how these different objects look quite similar in the inspector.'.
+]
+
+{ #category : #accessing }
+GtTour >> spotterExampleSlideFor: aSlide [
+	<gtSlide>
+	^ aSlide labelAndElement
+		priority: 22;
+		element: [ GtSpotterLiveSlide new asElement ];
+		newFadedText: 'Search is pervasive. Try searching for Object'.
+]
+
+{ #category : #accessing }
+GtTour >> spotterSecondExampleSlideFor: aSlide [
+	<gtSlide>
+	^ aSlide labelAndElement
+		priority: 23;
+		element: [ GtSpotterLiveSlide new asElement ];
+		newFadedText: ('Or search for .' , FileSystem disk delimiter asString).
+]
+
 { #category : #'api - instantiation' }
 GtTour >> timelineElement [
 	| plotter |
@@ -676,6 +788,31 @@ GtTour >> timelineElement [
 			(Date year: 2020 month: 07 day: 23) -> 'gt v0.7.1214 beta'
 		}.
 		^ plotter asElement
+]
+
+{ #category : #accessing }
+GtTour >> timelineExplanationSlideFor: aSlide [
+	<gtSlide>
+	^ aSlide textAndElement
+		priority: 5;
+		element: [ self timelineElement margin: (BlInsets left: 50 right: 50) ];
+		elementWeight: 0.7;
+		newText: 'Glamorous Toolkit is the moldable development environment.';
+		newText: 'It is a live notebook. It is a flexible search interface. It is a fancy code editor. It is a software analysis platform. It is a data visualization engine. All in one. It is built in Pharo and it is free and open-source under an MIT license.';
+		newText: 'What is moldable development? A new paradigm that promotes the idea that developers should explain their systems through the lens of custom tools that they create while developing the system.';
+		newText: 'But, let''s take it step by step.'.
+]
+
+{ #category : #accessing }
+GtTour >> titleSlideFor: aSlide [
+	<gtSlide>
+	^ aSlide title
+		priority: 1;
+		titleWithFormat: ('glamoroustoolkit' asRopedText 
+			fontSize: 70;
+			glamorousRegularFont;
+			thin; 
+			in: [:t | (t from: 'glamorous' size + 1 to: t size) bold]; yourself).
 ]
 
 { #category : #'api - instantiation' }
@@ -763,6 +900,15 @@ GtTour >> viewMethodWithResultExplanationWithLinksExample [
 	verticalContainer addChild: resultInspectorContainer.
 	
 	^ verticalContainer.
+]
+
+{ #category : #accessing }
+GtTour >> viewsExplanationSlideFor: aSlide [
+	<gtSlide>
+	^ aSlide textAndElement
+		priority: 12;
+		newTextWithFormat: GtMethodCoderStylerExamples new viewsExplanationWithLinksText;
+		element: [ self viewMethodWithResultExplanationWithLinksExample ].
 ]
 
 { #category : #accessing }
