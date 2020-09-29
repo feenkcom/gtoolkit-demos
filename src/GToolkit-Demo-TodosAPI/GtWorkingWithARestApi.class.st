@@ -1,11 +1,11 @@
 Class {
 	#name : #GtWorkingWithARestApi,
-	#superclass : #BrStencil,
+	#superclass : #GtLiveShow,
 	#category : #'GToolkit-Demo-TodosAPI-Presentation'
 }
 
 { #category : #accessing }
-GtWorkingWithARestApi >> apiExplanationSlide [
+GtWorkingWithARestApi >> apiExamples [
 	| bottomContainer firstExampleContainer secondExampleContainer thirdExampleContainer |
 	
 	firstExampleContainer := BlElement new
@@ -92,6 +92,14 @@ GtWorkingWithARestApi >> apiExplanationSlide [
 ]
 
 { #category : #accessing }
+GtWorkingWithARestApi >> apiExamplesSlideFor: aSlide [
+	<gtSlide>
+	^ aSlide element
+		priority: 6;
+		element: [ self apiExamples ].
+]
+
+{ #category : #accessing }
 GtWorkingWithARestApi >> apiExplanationText [
 	^ 'By using different links, like the ones presented below, we make requests to the api. The response we get is in the form of a JSON file containing the information we requested.' asRopedText
 		glamorousRegularFont;
@@ -99,10 +107,49 @@ GtWorkingWithARestApi >> apiExplanationText [
 ]
 
 { #category : #accessing }
+GtWorkingWithARestApi >> clientExplanationSlideFor: aSlide [
+	<gtSlide>
+	^ aSlide textAndElement
+		priority: 8;
+		newTextWithFormat: ('The Client' asRopedText bold; fontSize: 18);
+		newTextWithFormat: self clientSlideText;
+		element: [ BlElement new
+			background: Color white;
+			look: BrShadowLook;
+			margin: (BlInsets right: 5);
+			addChild: (GtClassCoder forClass: TDClient) asElement ].
+]
+
+{ #category : #accessing }
 GtWorkingWithARestApi >> clientSlideText [
 	^ 'The client is the main component in this model. Using it we can make different requests to the API. The responses from the API, in the form of JSON files, are then parsed and stored inside corresponding objects so we can better visualize them.' asRopedText
 	glamorousRegularFont;
 	fontSize: 18.
+]
+
+{ #category : #accessing }
+GtWorkingWithARestApi >> commentsExampleSlideFor: aSlide [
+	<gtSlide>
+	^ aSlide labelAndElement
+		priority: 19;
+		newFadedText: 'And a request for a comment will return you that comment with everything you need to know about it.';
+		element: [ GtPlaygroundLiveSlide new
+			snippets: {'TDClient new getCommentWithId: 5.'};
+			inspectSnippetAt: 1 ].
+]
+
+{ #category : #accessing }
+GtWorkingWithARestApi >> commentsExplanationSlideFor: aSlide [
+	<gtSlide>
+	^ aSlide textAndElement
+		priority: 18;
+		newTextWithFormat: ('Comments' asRopedText bold; fontSize: 18);
+		newTextWithFormat: self commentsSlideText;
+		element: [ BlElement new
+			background: Color white;
+			look: BrShadowLook;
+			margin: (BlInsets right: 5);
+			addChild: (GtClassCoder forClass: TDComment) asElement ].
 ]
 
 { #category : #accessing }
@@ -120,110 +167,17 @@ GtWorkingWithARestApi >> coreSlideText [
 ]
 
 { #category : #accessing }
-GtWorkingWithARestApi >> create [
-	| slideshow |
-	slideshow := GtSlideShow new.
-	slideshow
-		slides:
-			{(GtTitleSlide new
-				titleText: ('Working with a REST API' asRopedText
-						fontSize: 70;
-						glamorousRegularFont)).
-			(GtTextSlide new
-				newTextWithFormat: ('In this slideshow, we exemplify how we can understand and browse an existing REST API containing posts, todos and comments, made by different users.' asRopedText glamorousRegularFont; fontSize: 18)).
-			(GtElementSlide new
-				element: [ self apiExplanationSlide ]).
-			(GtTextSlide new
-				newTextWithFormat: ('Now let''s see how we can implement a user interface for this model and also how to display the information resulted in a more easy way to understand.' asRopedText glamorousRegularFont; fontSize: 18)).
-			(GtTextAndElementSlide new
-				newTextWithFormat: ('The Client' asRopedText bold; fontSize: 18);
-				newTextWithFormat: self clientSlideText;
-				element: [ BlElement new
-					background: Color white;
-					look: BrShadowLook;
-					margin: (BlInsets right: 5);
-					addChild: (GtClassCoder forClass: TDClient) asElement ]).
-			(GtTextAndElementSlide new
-				newTextWithFormat: (self getAllTodosMethodExplanationText);
-				element: [ self getAllTodosMethodExplanation ]).
-			(GtLabelAndElementSlide new
-				newFadedText: 'And here is how the result of that request looks like.';
-				element: [ GtPlaygroundSlide new
-					snippets: {'TDClient new getAllTodos.'};
-					inspectSnippetAt: 1 ]).
-			(GtTextAndElementSlide new
-				newTextWithFormat: ('Data Structures' asRopedText bold; fontSize: 18);
-				newTextWithFormat: self coreSlideText;
-				element: [ BlElement new
-					background: Color white;
-					look: BrShadowLook;
-					margin: (BlInsets right: 5);
-					addChild: (GtPackageTagCoder forPackageTag: ((GtClassCoder forClass: TDUser) packageTag)) asElement ]).
-			(GtTextAndElementSlide new
-				newTextWithFormat: ('Users' asRopedText bold; fontSize: 18);
-				newTextWithFormat: self userSlideText;
-				element: [ BlElement new
-					background: Color white;
-					look: BrShadowLook;
-					margin: (BlInsets right: 5);
-					addChild: (GtClassCoder forClass: TDUser) asElement ]).
-			(GtLabelAndElementSlide new
-				newFadedText: 'Requesting a user will return that user with its information and the lists of posts and todos made by him.';
-				element: [ GtPlaygroundSlide new
-					snippets: {'TDClient new getUserWithId: 4.'};
-					inspectSnippetAt: 1 ]).
-			(GtTextAndElementSlide new
-				newTextWithFormat: ('Todos' asRopedText bold; fontSize: 18);
-				newTextWithFormat: self todosSlideText;
-				element: [ BlElement new
-					background: Color white;
-					look: BrShadowLook;
-					margin: (BlInsets right: 5);
-					addChild: (GtClassCoder forClass: TDTodo) asElement ]).
-			(GtLabelAndElementSlide new
-				newFadedText: 'A request for a todo will return you that todo with all the information stored about it.';
-				element: [ GtPlaygroundSlide new
-					snippets: {'TDClient new getTodoWithId: 8.'};
-					inspectSnippetAt: 1 ]).
-			(GtTextAndElementSlide new
-				newTextWithFormat: ('Simple Posts' asRopedText bold; fontSize: 18);
-				newTextWithFormat: self postsSlideText;
-				element: [ BlElement new
-					background: Color white;
-					look: BrShadowLook;
-					margin: (BlInsets right: 5);
-					addChild: (GtClassCoder forClass: TDPost) asElement ]).
-			(GtLabelAndElementSlide new
-				newFadedText: 'Similar with todos, a request for a post will return you that post.';
-				element: [ GtPlaygroundSlide new
-					snippets: {'TDClient new getPostWithId: 3.'};
-					inspectSnippetAt: 1 ]).
-			(GtTextAndElementSlide new
-				newTextWithFormat: ('Comments' asRopedText bold; fontSize: 18);
-				newTextWithFormat: self commentsSlideText;
-				element: [ BlElement new
-					background: Color white;
-					look: BrShadowLook;
-					margin: (BlInsets right: 5);
-					addChild: (GtClassCoder forClass: TDComment) asElement ]).
-			(GtLabelAndElementSlide new
-				newFadedText: 'And a request for a comment will return you that comment with everything you need to know about it.';
-				element: [ GtPlaygroundSlide new
-					snippets: {'TDClient new getCommentWithId: 5.'};
-					inspectSnippetAt: 1 ]).
-			(GtLabelAndElementSlide new
-				newFadedText: 'You can play around with the snippets below to better see the model at work';
-				element: [ GtPlaygroundSlide new
-					snippets: {
-						'TDClient new getCommentWithId: 6'.
-						'TDClient new getPostWithId: 3'. 
-						'TDClient new getTodoWithId: 4'. 
-						'TDClient new getUserWithId: 5'. 
-						'TDClient new getAllPosts'.
-						'TDClient new getAllTodos' };
-					asElement ]).
-			}.
-	^ slideshow makeArrowsVisible.
+GtWorkingWithARestApi >> dataStructuresExplanationSlideFor: aSlide [
+	<gtSlide>
+	^ aSlide textAndElement
+		priority: 11;
+		newTextWithFormat: ('Data Structures' asRopedText bold; fontSize: 18);
+		newTextWithFormat: self coreSlideText;
+		element: [ BlElement new
+			background: Color white;
+			look: BrShadowLook;
+			margin: (BlInsets right: 5);
+			addChild: (GtPackageTagCoder forPackageTag: ((GtClassCoder forClass: TDUser) packageTag)) asElement ].
 ]
 
 { #category : #accessing }
@@ -319,6 +273,28 @@ The response is transformed into a ' asRopedText,
 ]
 
 { #category : #accessing }
+GtWorkingWithARestApi >> introductionSlideFor: aSlide [
+	<gtSlide>
+	^ aSlide text
+		priority: 5;
+		newTextWithFormat:
+			('In this slideshow, we exemplify how we can understand and browse an existing REST API containing posts, todos and comments, made by different users.' asRopedText 
+				glamorousRegularFont; 
+				fontSize: 18).
+]
+
+{ #category : #accessing }
+GtWorkingWithARestApi >> modelDescriptionIntroductionSlideFor: aSlide [
+	<gtSlide>
+	^ aSlide text
+		priority: 7;
+		newTextWithFormat: 
+			('Now let''s see how we can implement a user interface for this model and also how to display the information resulted in a more easy way to understand.' asRopedText 
+				glamorousRegularFont;
+				fontSize: 18).
+]
+
+{ #category : #accessing }
 GtWorkingWithARestApi >> postsSlideText [
 	^ 'The simple post is the second type of post a user can make. It is similar to the todo. The difference is that the post has a body of text instead of the status. It also has a list of comments left by other users to the specific post.' asRopedText
 	glamorousRegularFont;
@@ -326,10 +302,132 @@ GtWorkingWithARestApi >> postsSlideText [
 ]
 
 { #category : #accessing }
+GtWorkingWithARestApi >> requestMethodExampleSlideFor: aSlide [
+	<gtSlide>
+	^ aSlide labelAndElement
+		priority: 10;
+		newFadedText: 'And here is how the result of that request looks like.';
+		element: [ GtPlaygroundLiveSlide new
+			snippets: {'TDClient new getAllTodos.'};
+			inspectSnippetAt: 1 ].
+]
+
+{ #category : #accessing }
+GtWorkingWithARestApi >> requestMethodExplanationSlideFor: aSlide [
+	<gtSlide>
+	^ aSlide textAndElement
+		priority: 9;
+		newTextWithFormat: (self getAllTodosMethodExplanationText);
+		element: [ self getAllTodosMethodExplanation ].
+]
+
+{ #category : #accessing }
+GtWorkingWithARestApi >> requestSnippetsExampleSlideFor: aSlide [
+	<gtSlide>
+	^ aSlide labelAndElement
+		priority: 20;
+		newFadedText: 'You can play around with the snippets below to better see the model at work';
+		element: [ GtPlaygroundSlide new
+			snippets: {
+				'TDClient new getCommentWithId: 6'.
+				'TDClient new getPostWithId: 3'. 
+				'TDClient new getTodoWithId: 4'. 
+				'TDClient new getUserWithId: 5'. 
+				'TDClient new getAllPosts'.
+				'TDClient new getAllTodos' };
+			asElement ].
+]
+
+{ #category : #accessing }
+GtWorkingWithARestApi >> simplePostsExampleSlideFor: aSlide [
+	<gtSlide>
+	^ aSlide labelAndElement
+		priority: 17;
+		newFadedText: 'Similar with todos, a request for a post will return you that post.';
+		element: [ GtPlaygroundLiveSlide new
+			snippets: {'TDClient new getPostWithId: 3.'};
+			inspectSnippetAt: 1 ].
+]
+
+{ #category : #accessing }
+GtWorkingWithARestApi >> simplePostsExplanationSlideFor: aSlide [
+	<gtSlide>
+	^ aSlide textAndElement
+		priority: 16;
+		newTextWithFormat: ('Simple Posts' asRopedText bold; fontSize: 18);
+		newTextWithFormat: self postsSlideText;
+		element: [ BlElement new
+			background: Color white;
+			look: BrShadowLook;
+			margin: (BlInsets right: 5);
+			addChild: (GtClassCoder forClass: TDPost) asElement ].
+]
+
+{ #category : #accessing }
+GtWorkingWithARestApi >> titleSlideFor: aSlide [
+	<gtSlide>
+	^ aSlide title
+		priority: 1;
+		titleWithFormat: ('Working with a REST API' asRopedText
+			fontSize: 70;
+			glamorousRegularFont).
+]
+
+{ #category : #accessing }
+GtWorkingWithARestApi >> todosExampleSlideFor: aSlide [
+	<gtSlide>
+	^ aSlide labelAndElement
+		priority: 15;
+		newFadedText: 'A request for a todo will return you that todo with all the information stored about it.';
+		element: [ GtPlaygroundLiveSlide new
+			snippets: {'TDClient new getTodoWithId: 8.'};
+			inspectSnippetAt: 1 ].
+]
+
+{ #category : #accessing }
+GtWorkingWithARestApi >> todosExplanationSlideFor: aSlide [
+	<gtSlide>
+	^ aSlide textAndElement
+		priority: 14;
+		newTextWithFormat: ('Todos' asRopedText bold; fontSize: 18);
+		newTextWithFormat: self todosSlideText;
+		element: [ BlElement new
+			background: Color white;
+			look: BrShadowLook;
+			margin: (BlInsets right: 5);
+			addChild: (GtClassCoder forClass: TDTodo) asElement ].
+]
+
+{ #category : #accessing }
 GtWorkingWithARestApi >> todosSlideText [
 	^ 'Then we have a todo, that is a type of post a user can make. It holds the following information: the user it is associated with, an id, a title and a status, specifically if it was completed or not.' asRopedText
 	glamorousRegularFont;
 	fontSize: 18.
+]
+
+{ #category : #accessing }
+GtWorkingWithARestApi >> userExampleSlideFor: aSlide [
+	<gtSlide>
+	^ aSlide labelAndElement
+		priority: 13;
+		newFadedText: 'Requesting a user will return that user with its information and the lists of posts and todos made by him.';
+		element: [ GtPlaygroundLiveSlide new
+			snippets: {'TDClient new getUserWithId: 4.'};
+			inspectSnippetAt: 1 ].
+]
+
+{ #category : #accessing }
+GtWorkingWithARestApi >> userExplanationSlideFor: aSlide [
+	<gtSlide>
+	^ aSlide textAndElement
+		priority: 12;
+		newTextWithFormat: ('Users' asRopedText bold; fontSize: 18);
+		newTextWithFormat: self userSlideText;
+		element: [ BlElement new
+			background: Color white;
+			look: BrShadowLook;
+			margin: (BlInsets right: 5);
+			addChild: (GtClassCoder forClass: TDUser) asElement ].
 ]
 
 { #category : #accessing }

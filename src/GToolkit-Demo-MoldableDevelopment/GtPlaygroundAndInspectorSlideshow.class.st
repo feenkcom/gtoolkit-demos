@@ -1,82 +1,85 @@
 Class {
 	#name : #GtPlaygroundAndInspectorSlideshow,
-	#superclass : #BrStencil,
+	#superclass : #GtLiveShow,
 	#category : #'GToolkit-Demo-MoldableDevelopment'
 }
 
 { #category : #accessing }
-GtPlaygroundAndInspectorSlideshow >> create [
-	| slideshow |
-	slideshow := GtSlideShow new.
-	slideshow
-		slides:
-			{
-			(GtTitleSlide new
-				titleText: ('Playground and Inspector' asRopedText
-					fontSize: 70;
-					glamorousRegularFont)).
-			(GtTextAndElementSlide new
-				newTextWithFormat: self playgroundAndInspectorExplanationText;
-				element: [self playgroundAndInspectorMashExample];
-				elementWeight: 0.6).
-			(GtTextAndElementSlide new
-				newTextWithFormat: self playgroundInterfaceExplanationText;
-				element: [ self playgroundInterfaceExplanationWithLinks ];
-				elementWeight: 0.6).
-			(GtTextAndElementSlide new
-				newTextWithFormat: self fixItAdornmentForClassExplanationText;
-				element: [ self fixItAdornmentForClassExplanation ];
-				onFirstAddToSceneGraphDo: self fixItAdornmentAction ).
-			(GtTextAndElementSlide new
-				newTextWithFormat: self fixItAdornmentForMethodExplanationText;
-				element: [ self fixItAdornmentForMethodExplanation ];
-				onFirstAddToSceneGraphDo: self fixItAdornmentForMethodAction ).
-			(GtTextAndElementSlide new
-				newTextWithFormat: self inspectorInterfaceExplanationText;
-				element: [ self inspectorInterfaceExplanationWithLinks ];
-				elementWeight: 0.6).
-			(GtTextAndElementSlide new
-				newTextWithFormat: self inspectorMethodExplanationText;
-				element: [ self inspectorMethodExplanationWithLinks ];
-				elementWeight: 0.6).
-			(GtSlideshowSlide new
-				text: 'Want to learn more about custom inspector views? Follow the show below.' asRopedText glamorousRegularFont;
-				slideshow: (GtInspectorViews new create) withTitle: 'GtInspectorViews')
-			}.
-	^ slideshow.
+GtPlaygroundAndInspectorSlideshow >> createClassFromPlaygroundExplanationSlideFor: aSlide [
+	<gtSlide>
+	^ aSlide textAndElement
+		priority: 7;
+		newTextWithFormat: self fixItAdornmentForClassExplanationText;
+		element: [ self fixItAdornmentForClassExplanation ];
+		onFirstAddToSceneGraphDo: 
+			[:anElement |
+				| button playgroundElement dropDown selection menuTarget |
+				playgroundElement := (anElement childAt: 2) childAt: 2.
+
+				playgroundElement enqueueTask:
+					(BlTaskAction new
+						action: [
+							button := playgroundElement
+								allChildrenBreadthFirstDetect: [:aChild |
+									(aChild isKindOf: BrTextEditorSegmentElement)]
+								ifFound: [:aChild | aChild childAt: 2].
+							BlSpace simulateClickOn: button.
+							BlSpace simulateClickOn: button.
+							dropDown := playgroundElement space root childAt: 2.
+							selection := dropDown
+								allChildrenBreadthFirstDetect: [:aChild |
+									aChild isKindOf: BrInfiniteListElement]
+								ifFound: [:aChild | (aChild childAt: 1) childAt: 1].
+						BlSpace simulateClickOn: selection.
+						BlSpace simulateClickOn: selection.
+						menuTarget := playgroundElement
+							allChildrenBreadthFirstDetect: [:aChild |
+								aChild isKindOf: BrFrame]
+							ifFound: [:aChild | aChild].
+						menuTarget
+							addChild:
+								((self yellowTargetCircleWithExplanationModel: #menu)
+									relocate:
+										(50 @ 50))])].
 ]
 
 { #category : #accessing }
-GtPlaygroundAndInspectorSlideshow >> fixItAdornmentAction [
-	^ [:anElement |
-		| button playgroundElement dropDown selection menuTarget |
-		playgroundElement := (anElement childAt: 2) childAt: 2.
+GtPlaygroundAndInspectorSlideshow >> createMethodFromPlaygroundExplanationSlideFor: aSlide [
+	<gtSlide>
+	^ aSlide textAndElement
+		priority: 8;
+		newTextWithFormat: self fixItAdornmentForMethodExplanationText;
+		element: [ self fixItAdornmentForMethodExplanation ];
+		onFirstAddToSceneGraphDo:
+			[:anElement |
+				| button playgroundElement dropDown selection coderTarget |
+				playgroundElement := (anElement childAt: 2) childAt: 2.
 
-		playgroundElement enqueueTask:
-			(BlTaskAction new
-				action: [
-					button := playgroundElement
-						allChildrenBreadthFirstDetect: [:aChild |
-							(aChild isKindOf: BrTextEditorSegmentElement)]
-						ifFound: [:aChild | aChild childAt: 2].
-					BlSpace simulateClickOn: button.
-					BlSpace simulateClickOn: button.
-					dropDown := playgroundElement space root childAt: 2.
-					selection := dropDown
-						allChildrenBreadthFirstDetect: [:aChild |
-							aChild isKindOf: BrInfiniteListElement]
-						ifFound: [:aChild | (aChild childAt: 1) childAt: 1].
-				BlSpace simulateClickOn: selection.
-				BlSpace simulateClickOn: selection.
-				menuTarget := playgroundElement
-					allChildrenBreadthFirstDetect: [:aChild |
-						aChild isKindOf: BrFrame]
-					ifFound: [:aChild | aChild].
-				menuTarget
-					addChild:
-						((self yellowTargetCircleWithExplanationModel: #menu)
-							relocate:
-								(50 @ 50))])].
+				playgroundElement enqueueTask:
+					(BlTaskAction new
+						action: [
+							button := playgroundElement
+								allChildrenBreadthFirstDetect: [:aChild |
+									(aChild isKindOf: BrTextEditorSegmentElement)]
+								ifFound: [:aChild | aChild childAt: 7].
+							BlSpace simulateClickOn: button.
+							BlSpace simulateClickOn: button.
+							dropDown := playgroundElement space root childAt: 2.
+							selection := dropDown
+								allChildrenBreadthFirstDetect: [:aChild |
+									aChild isKindOf: BrInfiniteListElement]
+								ifFound: [:aChild | (aChild childAt: 1) childAt: 1].
+							BlSpace simulateClickOn: selection.
+							BlSpace simulateClickOn: selection.
+							coderTarget := playgroundElement
+								allChildrenBreadthFirstDetect: [:aChild |
+									aChild isKindOf: BrFrame]
+								ifFound: [:aChild | aChild].
+							coderTarget
+								addChild:
+									((self yellowTargetCircleWithExplanationModel: #coder)
+										relocate:
+											(50 @ 50))])].
 ]
 
 { #category : #accessing }
@@ -85,9 +88,9 @@ GtPlaygroundAndInspectorSlideshow >> fixItAdornmentForClassExplanation [
 	| playgroundElement defaultPlaygroundElement aScripter adornmentButtonTarget |
 	
 	playgroundElement := BlUseAsyncFeatures
-		disableDuring: [(GtPlaygroundSlide new snippets: {'GtDummyClass new.'}) asElement].
+		disableDuring: [(GtPlaygroundLiveSlide new snippets: {'GtDummyClass new.'}) asElement].
 	defaultPlaygroundElement := BlUseAsyncFeatures
-		disableDuring: [(GtPlaygroundSlide new snippets: {'GtDummyClass new.'}) asElement].
+		disableDuring: [(GtPlaygroundLiveSlide new snippets: {'GtDummyClass new.'}) asElement].
 		
 	aScripter := BlDevScripter new.
 	aScripter
@@ -147,47 +150,14 @@ GtPlaygroundAndInspectorSlideshow >> fixItAdornmentForClassExplanationText [
 ]
 
 { #category : #accessing }
-GtPlaygroundAndInspectorSlideshow >> fixItAdornmentForMethodAction [
-	| button playgroundElement dropDown selection coderTarget |
-	^ [:anElement |
-		playgroundElement := (anElement childAt: 2) childAt: 2.
-
-		playgroundElement enqueueTask:
-			(BlTaskAction new
-				action: [
-					button := playgroundElement
-						allChildrenBreadthFirstDetect: [:aChild |
-							(aChild isKindOf: BrTextEditorSegmentElement)]
-						ifFound: [:aChild | aChild childAt: 7].
-					BlSpace simulateClickOn: button.
-					BlSpace simulateClickOn: button.
-					dropDown := playgroundElement space root childAt: 2.
-					selection := dropDown
-						allChildrenBreadthFirstDetect: [:aChild |
-							aChild isKindOf: BrInfiniteListElement]
-						ifFound: [:aChild | (aChild childAt: 1) childAt: 1].
-					BlSpace simulateClickOn: selection.
-					BlSpace simulateClickOn: selection.
-					coderTarget := playgroundElement
-						allChildrenBreadthFirstDetect: [:aChild |
-							aChild isKindOf: BrFrame]
-						ifFound: [:aChild | aChild].
-					coderTarget
-						addChild:
-							((self yellowTargetCircleWithExplanationModel: #coder)
-								relocate:
-									(50 @ 50))])]
-]
-
-{ #category : #accessing }
 GtPlaygroundAndInspectorSlideshow >> fixItAdornmentForMethodExplanation [
 	<gtExample>
 	| playgroundElement defaultPlaygroundElement aScripter adornmentButtonTarget |
 	
 	playgroundElement := BlUseAsyncFeatures
-		disableDuring: [(GtPlaygroundSlide new snippets: {'GtDummyExamplesOnInstanceSide new exampleMethod.'}) asElement].
+		disableDuring: [(GtPlaygroundLiveSlide new snippets: {'GtDummyExamplesOnInstanceSide new exampleMethod.'}) asElement].
 	defaultPlaygroundElement := BlUseAsyncFeatures
-		disableDuring: [(GtPlaygroundSlide new snippets: {'GtDummyExamplesOnInstanceSide new exampleMethod.'}) asElement].
+		disableDuring: [(GtPlaygroundLiveSlide new snippets: {'GtDummyExamplesOnInstanceSide new exampleMethod.'}) asElement].
 		
 	aScripter := BlDevScripter new.
 	aScripter
@@ -243,6 +213,16 @@ GtPlaygroundAndInspectorSlideshow >> fixItAdornmentForMethodExplanationText [
 	^ text asRopedText
 		glamorousRegularFont;
 		fontSize: 20.
+]
+
+{ #category : #accessing }
+GtPlaygroundAndInspectorSlideshow >> inspectorInterfaceExplanationSlideFor: aSlide [
+	<gtSlide>
+	^ aSlide textAndElement
+		priority: 9;
+		newTextWithFormat: self inspectorInterfaceExplanationText;
+		element: [ self inspectorInterfaceExplanationWithLinks ];
+		elementWeight: 0.6.
 ]
 
 { #category : #accessing }
@@ -333,6 +313,16 @@ GtPlaygroundAndInspectorSlideshow >> inspectorInterfaceExplanationWithLinks [
 		background: Color white;
 		margin: (BlInsets all: 5);
 		addChild: inspectorElement.
+]
+
+{ #category : #accessing }
+GtPlaygroundAndInspectorSlideshow >> inspectorMethodExplanationSlideFor: aSlide [
+	<gtSlide>
+	^ aSlide textAndElement
+		priority: 10;
+		newTextWithFormat: self inspectorMethodExplanationText;
+		element: [ self inspectorMethodExplanationWithLinks ];
+		elementWeight: 0.6.
 ]
 
 { #category : #accessing }
@@ -487,7 +477,7 @@ GtPlaygroundAndInspectorSlideshow >> playgroundAndInspectorExplanationText [
 { #category : #accessing }
 GtPlaygroundAndInspectorSlideshow >> playgroundAndInspectorMashExample [
 	<gtExample>
-	^ (GtMashExampleSlide new
+	^ (GtMashExampleLiveSlide new
 		leftElement: 
 			(BlElement new
 				look: BrShadowLook;
@@ -508,6 +498,26 @@ GtPlaygroundAndInspectorSlideshow >> playgroundAndInspectorMashExample [
 				background: Color white;
 				addChild: ((GtABCartoonAddressBookExample new cartoonAddressBook 
 					gtViewsFor: GtPhlowView empty) asElement))) asElement.
+]
+
+{ #category : #accessing }
+GtPlaygroundAndInspectorSlideshow >> playgroundAndInspectorMashExampleSlideFor: aSlide [
+	<gtSlide>
+	^ aSlide textAndElement
+		priority: 5;
+		newTextWithFormat: self playgroundAndInspectorExplanationText;
+		element: [self playgroundAndInspectorMashExample];
+		elementWeight: 0.6.
+]
+
+{ #category : #accessing }
+GtPlaygroundAndInspectorSlideshow >> playgroundInterfaceExplanationSlideFor: aSlide [
+	<gtSlide>
+	^ aSlide textAndElement
+		priority: 6;
+		newTextWithFormat: self playgroundInterfaceExplanationText;
+		element: [ self playgroundInterfaceExplanationWithLinks ];
+		elementWeight: 0.6.
 ]
 
 { #category : #accessing }
@@ -542,7 +552,7 @@ Finally, if you click on the ' asRopedText,
 GtPlaygroundAndInspectorSlideshow >> playgroundInterfaceExplanationWithLinks [
 	<gtExample>
 	| playgroundElement aScripter snippetTargets plusButtonTargets pharoButtonTarget closeButtonTargets evaluateButtonTargets inspectButtonTargets debugButtonTargets searchButtonTarget frameToolbar |
-	playgroundElement := (GtPlaygroundSlide new snippets: {'4/20'. '4 factorial'}) asElement.
+	playgroundElement := (GtPlaygroundLiveSlide new snippets: {'4/20'. '4 factorial'}) asElement.
 	
 	aScripter := BlDevScripter new.
 	aScripter
@@ -645,6 +655,25 @@ GtPlaygroundAndInspectorSlideshow >> playgroundInterfaceExplanationWithLinks [
 						(10 @ pharoButtonTarget extent y / 2)).
 	
 	^ playgroundElement maximized.
+]
+
+{ #category : #accessing }
+GtPlaygroundAndInspectorSlideshow >> slideshowLinkSlideFor: aSlide [
+	<gtSlide>
+	^ aSlide slideshow
+		priority: 11;
+		text: 'Want to learn more about custom inspector views? Follow the show below.' asRopedText glamorousRegularFont;
+		slideshow: [GtInspectorViews new] withTitle: 'GtInspectorViews'.
+]
+
+{ #category : #accessing }
+GtPlaygroundAndInspectorSlideshow >> titleSlideFor: aSlide [
+	<gtSlide>
+	^ aSlide title
+		priority: 1;
+		titleWithFormat: ('Playground and Inspector' asRopedText
+			fontSize: 70;
+			glamorousRegularFont).
 ]
 
 { #category : #accessing }

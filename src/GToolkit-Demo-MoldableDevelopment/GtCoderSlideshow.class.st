@@ -1,59 +1,17 @@
 Class {
 	#name : #GtCoderSlideshow,
-	#superclass : #BrStencil,
+	#superclass : #GtLiveShow,
 	#category : #'GToolkit-Demo-MoldableDevelopment'
 }
 
 { #category : #accessing }
-GtCoderSlideshow >> actionBlockForBasicFiltering [
-	| coderElement button |
-	^ [:anElement |
-		coderElement := anElement childAt: 2.
-		coderElement enqueueTask: (BlTaskAction new
-			action: [
-				button := coderElement
-					allChildrenBreadthFirstDetect: [:aChild |
-						(aChild isKindOf: BrToolbar) and: [aChild parent parent parent isKindOf: BrTabGroup]]
-					ifFound: [:aChild | aChild childAt: 1].
-				BlSpace simulateClickOn: button.
-				BlSpace simulateClickOn: button])]
-]
-
-{ #category : #accessing }
-GtCoderSlideshow >> actionBlockForBasicFilteringResult [
-	| coderElement button selection dropList |
-	^ [:anElement |
-		coderElement := anElement childAt: 2.
-		coderElement enqueueTask: (BlTaskAction new
-			action: [
-				button := coderElement
-					allChildrenBreadthFirstDetect: [:aChild |
-						(aChild isKindOf: BrToolbar) and: [aChild parent parent parent isKindOf: BrTabGroup]]
-					ifFound: [:aChild | aChild childAt: 1].
-				BlSpace simulateClickOn: button.
-				BlSpace simulateClickOn: button.
-				"dropList := coderElement space root childAt: 2.
-				selection := dropList
-					allChildrenBreadthFirstDetect: [:aChild |
-						(aChild isKindOf: BrInfiniteListElement)]
-					ifFound: [:aChild | aChild].
-				BlSpace simulateClickOn: selection.
-				BlSpace simulateClickOn: selection"])].
-]
-
-{ #category : #accessing }
-GtCoderSlideshow >> actionBlockForClassAddingExplanation [
-	| coderElement button |
-	^ [:anElement |
-		coderElement := anElement childAt: 2.
-		coderElement enqueueTask: (BlTaskAction new
-			action: [
-				button := coderElement
-					allChildrenBreadthFirstDetect: [:aChild |
-						(aChild isKindOf: BrToolbar) and: [aChild parent isKindOf: GtCoderToolbarElement]]
-					ifFound: [:aChild | aChild childAt: 3].
-				BlSpace simulateClickOn: button.
-				"BlSpace simulateClickOn: button"])].
+GtCoderSlideshow >> advancedMethodsFilteringExplanationSlideFor: aSlide [
+	<gtSlide>
+	^ aSlide textAndElement
+		priority: 10;
+		newTextWithFormat: self advancedMethodsFilteringExplanationText;
+		element: [ self advancedMethodsFilteringExplanationWithLinks ];
+		elementWeight: 0.6.
 ]
 
 { #category : #accessing }
@@ -79,7 +37,7 @@ GtCoderSlideshow >> advancedMethodsFilteringExplanationWithLinks [
 	<gtExample>
 	| coderElement categoryTarget fieldTarget addTarget |
 	coderElement := BlUseAsyncFeatures
-		disableDuring: [ (GtClassCoderSlide new class: GtABAddressBook) asElement ].
+		disableDuring: [ (GtClassCoderLiveSlide new class: GtABAddressBook) asElement ].
 	
 	coderElement
 		allChildrenBreadthFirstDetect: [:aChild |
@@ -116,6 +74,16 @@ GtCoderSlideshow >> advancedMethodsFilteringExplanationWithLinks [
 ]
 
 { #category : #accessing }
+GtCoderSlideshow >> baselineMethodsExplanationSlideFor: aSlide [
+	<gtSlide>
+	^ aSlide textAndElement
+		priority: 11;
+		newTextWithFormat: self baselineMethodsExplanationText;
+		element: [ self baselineMethodsExplanationWithLinks ];
+		elementWeight: 0.6.
+]
+
+{ #category : #accessing }
 GtCoderSlideshow >> baselineMethodsExplanationText [
 	| text |
 	text := 'The coder also offers different customizations. For example, here you can see the ' asRopedText,
@@ -136,7 +104,7 @@ GtCoderSlideshow >> baselineMethodsExplanationWithLinks [
 	<gtExample>
 	| classCoderElement aScripter baselineTarget expandBaselineTarget pragmaTarget expandedMethodElement |
 	
-	classCoderElement := (GtClassCoderSlide new class: BaselineOfGToolkit; methodExpanded: 1) asElement.
+	classCoderElement := (GtClassCoderLiveSlide new class: BaselineOfGToolkit; expandMethodAt: 1) asElement.
 	
 	expandedMethodElement := classCoderElement
 		allChildrenBreadthFirstDetect: [:aChild |
@@ -206,19 +174,25 @@ GtCoderSlideshow >> baselineMethodsExplanationWithLinks [
 ]
 
 { #category : #accessing }
-GtCoderSlideshow >> basicFilterResultExample [
-	| coderElement |
-	coderElement := BlUseAsyncFeatures
-		disableDuring: [ (GtClassCoderSlide new class: GtABAddressBook) asElement ].
-		
-	^ BlElement new
-		constraintsDo: [:c |
-			c vertical matchParent.
-			c horizontal matchParent];
-		look: BrShadowLook;
-		background: Color white;
-		margin: (BlInsets all: 5);
-		addChild: coderElement.
+GtCoderSlideshow >> basicMethodsFilteringExplanationSlideFor: aSlide [
+	<gtSlide>
+	^ aSlide textAndElement
+		priority: 9;
+		newTextWithFormat: self basicMethodsFilteringExplanationText;
+		element: [ self basicMethodsFilteringExplanationWithLinks ];
+		elementWeight: 0.6;
+		onEveryAddToSceneGraphDo: 
+			[:anElement |
+				| coderElement button |
+				coderElement := anElement childAt: 2.
+				coderElement enqueueTask: (BlTaskAction new
+					action: [
+						button := coderElement
+							allChildrenBreadthFirstDetect: [:aChild |
+								(aChild isKindOf: BrToolbar) and: [aChild parent parent parent isKindOf: BrTabGroup]]
+							ifFound: [:aChild | aChild childAt: 1].
+						BlSpace simulateClickOn: button.
+						BlSpace simulateClickOn: button])].
 ]
 
 { #category : #accessing }
@@ -237,7 +211,7 @@ GtCoderSlideshow >> basicMethodsFilteringExplanationText [
 GtCoderSlideshow >> basicMethodsFilteringExplanationWithLinks [
 	| coderElement filterButton |
 	coderElement := BlUseAsyncFeatures
-		disableDuring: [ (GtClassCoderSlide new class: GtABAddressBook) asElement ].
+		disableDuring: [ (GtClassCoderLiveSlide new class: GtABAddressBook) asElement ].
 	
 	filterButton := coderElement
 		allChildrenBreadthFirstDetect: [:aChild |
@@ -407,6 +381,36 @@ GtCoderSlideshow >> classCoderInterfaceExplanationWithLinks [
 ]
 
 { #category : #accessing }
+GtCoderSlideshow >> classCreationExplanationSlideFor: aSlide [
+	<gtSlide>
+	^ aSlide textAndElement
+		priority: 7;
+		newTextWithFormat: self createClassExplanationText;
+		element: [ self createClassExplanationWithLinks ];
+		elementWeight: 0.6;
+		onEveryAddToSceneGraphDo: 
+			[:anElement |
+				| coderElement button |
+				coderElement := anElement childAt: 2.
+				coderElement enqueueTask: (BlTaskAction new
+					action: [
+						button := coderElement
+							allChildrenBreadthFirstDetect: [:aChild |
+								(aChild isKindOf: BrToolbar) and: [aChild parent isKindOf: GtCoderToolbarElement]]
+							ifFound: [:aChild | aChild childAt: 3].
+						BlSpace simulateClickOn: button])].
+]
+
+{ #category : #accessing }
+GtCoderSlideshow >> coderExampleSlideFor: aSlide [
+	<gtSlide>
+	^ aSlide labelAndElement
+		priority: 13;
+		newFadedText: ('Feel free to explore.' asRopedText);
+		element: [GtCoder new createInPager maximized].
+]
+
+{ #category : #accessing }
 GtCoderSlideshow >> coderExplanationText [
 	| text |
 	text := 'Coder is the place where you can manage your code. It offers you the means through which you can manipulate static code. You can create and manage packages, classes and methods all in place.' asRopedText.
@@ -414,6 +418,16 @@ GtCoderSlideshow >> coderExplanationText [
 	^ text
 		glamorousRegularFont;
 		fontSize: 20.
+]
+
+{ #category : #accessing }
+GtCoderSlideshow >> coderInterfaceExplanationSlideFor: aSlide [
+	<gtSlide>
+	^ aSlide textAndElement
+		priority: 6;
+		newTextWithFormat: self coderInterfaceExplanationText;
+		element: [ self coderInterfaceExplanationWithLinks ];
+		elementWeight: 0.6.
 ]
 
 { #category : #accessing }
@@ -497,7 +511,7 @@ GtCoderSlideshow >> coderInterfaceExplanationWithLinks [
 { #category : #accessing }
 GtCoderSlideshow >> coderMashExample [
 	<gtExample>
-	^ (GtMashExampleSlide new
+	^ (GtMashExampleLiveSlide new
 		leftElement: 
 			(BlElement new
 				look: BrShadowLook;
@@ -521,62 +535,13 @@ GtCoderSlideshow >> coderMashExample [
 ]
 
 { #category : #accessing }
-GtCoderSlideshow >> create [
-	| slideshow |
-	slideshow := GtSlideShow new.
-	slideshow
-		slides: {
-			(GtTitleSlide new
-				titleText: ('Coder' asRopedText
-						fontSize: 70;
-						glamorousRegularFont)).
-			(GtTextAndElementSlide new
-				newTextWithFormat: self coderExplanationText;
-				element: [ self coderMashExample ];
-				elementWeight: 0.6).
-			(GtTextAndElementSlide new
-				newTextWithFormat: self coderInterfaceExplanationText;
-				element: [ self coderInterfaceExplanationWithLinks ];
-				elementWeight: 0.6).
-			(GtTextAndElementSlide new
-				newTextWithFormat: self classCoderInterfaceExplanationText;
-				element: [ self classCoderInterfaceExplanationWithLinks];
-				elementWeight: 0.6).
-			(GtTextAndElementSlide new
-				newTextWithFormat: self createClassExplanationText;
-				element: [ self createClassExplanationWithLinks ];
-				elementWeight: 0.6;
-				onEveryAddToSceneGraphDo: self actionBlockForClassAddingExplanation ).
-			(GtTextAndElementSlide new
-				newTextWithFormat: self createMethodExplanationText;
-				element: [ self createMethodExplanationWithLinks ];
-				elementWeight: 0.6).
-			(GtTextAndElementSlide new
-				newTextWithFormat: self basicMethodsFilteringExplanationText;
-				element: [ self basicMethodsFilteringExplanationWithLinks ];
-				elementWeight: 0.6;
-				onEveryAddToSceneGraphDo: self actionBlockForBasicFiltering ).
-			"(GtLabelAndElementSlide new
-				newFadedText: ('For example below we filtered to see all methods with the add tag.' asRopedText);
-				element: self basicFilterResultExample ;
-				onFirstAddToSceneGraphDo: self actionBlockForBasicFilteringResult )."
-			(GtTextAndElementSlide new
-				newTextWithFormat: self advancedMethodsFilteringExplanationText;
-				element: [ self advancedMethodsFilteringExplanationWithLinks ];
-				elementWeight: 0.6).
-			(GtTextAndElementSlide new
-				newTextWithFormat: self baselineMethodsExplanationText;
-				element: [ self baselineMethodsExplanationWithLinks ];
-				elementWeight: 0.6).
-			(GtTextAndElementSlide new
-				newTextWithFormat: self exampleMethodsExplanationText;
-				element: [ self exampleMethodsExplanationWithLinks ];
-				elementWeight: 0.6).
-			(GtLabelAndElementSlide new
-				newFadedText: ('Feel free to explore.' asRopedText);
-				element: [GtCoder new createInPager maximized]).
-		}.
-	^ slideshow.
+GtCoderSlideshow >> coderMashExampleSlideFor: aSlide [
+	<gtSlide>
+	^ aSlide textAndElement
+		priority: 5;
+		newTextWithFormat: self coderExplanationText;
+		element: [ self coderMashExample ];
+		elementWeight: 0.6.
 ]
 
 { #category : #accessing }
@@ -641,7 +606,7 @@ GtCoderSlideshow >> createMethodExplanationWithLinks [
 	| classCoderElement buttonsList addMethodButton aScripter newFrameTarget saveButtonTarget removeButtonTarget |
 	
 	classCoderElement := BlUseAsyncFeatures
-		disableDuring: [ (GtClassCoderSlide new class: GtABAddressBook) asElement ].
+		disableDuring: [ (GtClassCoderLiveSlide new class: GtABAddressBook) asElement ].
 		
 	aScripter := BlDevScripter new.
 	aScripter
@@ -708,6 +673,16 @@ GtCoderSlideshow >> createMethodExplanationWithLinks [
 		background: Color white;
 		margin: (BlInsets all: 5);
 		addChild: classCoderElement.
+]
+
+{ #category : #accessing }
+GtCoderSlideshow >> exampleMethodExplanationSlideFor: aSlide [
+	<gtSlide>
+	^ aSlide textAndElement
+		priority: 12;
+		newTextWithFormat: self exampleMethodsExplanationText;
+		element: [ self exampleMethodsExplanationWithLinks ];
+		elementWeight: 0.6.
 ]
 
 { #category : #accessing }
@@ -795,6 +770,26 @@ GtCoderSlideshow >> exampleMethodsExplanationWithLinks [
 						(2 @ debugTarget extent y / 2)).
 	
 	^ classCoderElement.
+]
+
+{ #category : #accessing }
+GtCoderSlideshow >> methodCreationExplanationSlideFor: aSlide [
+	<gtSlide>
+	^ aSlide textAndElement
+		priority: 8;
+		newTextWithFormat: self createMethodExplanationText;
+		element: [ self createMethodExplanationWithLinks ];
+		elementWeight: 0.6.
+]
+
+{ #category : #accessing }
+GtCoderSlideshow >> titleSlideFor: aSlide [
+	<gtSlide>
+	^ aSlide title
+		priority: 1;
+		titleWithFormat: ('Coder' asRopedText
+			fontSize: 70;
+			glamorousRegularFont).
 ]
 
 { #category : #accessing }
