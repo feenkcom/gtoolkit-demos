@@ -327,7 +327,7 @@ GtWorkingWithARestApi >> requestSnippetsExampleSlideFor: aSlide [
 	^ aSlide labelAndElement
 		priority: 20;
 		newFadedText: 'You can play around with the snippets below to better see the model at work';
-		element: [ GtPlaygroundSlide new
+		element: [ GtPlaygroundLiveSlide new
 			snippets: {
 				'TDClient new getCommentWithId: 6'.
 				'TDClient new getPostWithId: 3'. 

@@ -276,9 +276,9 @@ GtCoderSlideshow >> classCoderInterfaceExplanationWithLinks [
 	
 	classCoderElement := BlUseAsyncFeatures
 		disableDuring: [ 
-			(GtClassCoderSlide new 
+			(GtClassCoderLiveSlide new 
 				class: GtABAddressBook;
-				methodExpanded: 3) asElement ].
+				expandMethodAt: 3) asElement ].
 	
 	classNameTarget := classCoderElement
 		allChildrenBreadthFirstDetect: [:aChild | 
@@ -516,16 +516,16 @@ GtCoderSlideshow >> coderMashExample [
 			(BlElement new
 				look: BrShadowLook;
 				background: Color white;
-				addChild: ((GtClassCoderSlide new 
+				addChild: ((GtClassCoderLiveSlide new 
 					class: GtClassCoder;
-					headerExpanded: true) asElement));
+					expandHeader: true) asElement));
 		centerElement:
 			(BlElement new
 				look: BrShadowLook;
 				background: Color white;
-				addChild: ((GtClassCoderSlide new
+				addChild: ((GtClassCoderLiveSlide new
 					class: GtCoderSlideshow;
-					methodExpanded: 3) asElement));
+					expandMethodAt: 3) asElement));
 		rightElement:
 			(BlElement new
 				margin: (BlInsets all: 5);

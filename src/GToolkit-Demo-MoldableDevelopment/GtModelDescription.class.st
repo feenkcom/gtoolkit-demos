@@ -70,9 +70,9 @@ GtModelDescription >> contactClassDescription [
 		foreground: Color black.
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #accessing }
 GtModelDescription >> contactExample [
-	^ GtPlaygroundSlide new
+	^ GtPlaygroundLiveSlide new
 		snippets: { 
 			'anAddress := GtABAddress new
 	city: ''Bern'';
@@ -113,80 +113,80 @@ GtModelDescription >> create [
 	show
 		slides:
 			{
-				(GtTitleSlide new
-					titleText: ('Model Description' asRopedText
+				(GtTitleLiveSlide new
+					titleWithFormat: ('Model Description' asRopedText
 						fontSize: 70;
 						glamorousRegularFont)).
-				(GtTextSlide new
+				(GtTextLiveSlide new
 					newTextWithFormat: (self introductionText)).
-				(GtTextSlide new
+				(GtTextLiveSlide new
 					newTextWithFormat: ('Now let''s take a closer look at each of the classes, starting from the bottom.' asRopedText
 						glamorousRegularFont;
 						fontSize: 20)).
-				(GtTextAndElementSlide new
+				(GtTextAndElementLiveSlide new
 					newTextWithFormat: (self addressClassDescription);
 					element: [ self coderOnClass: GtABAddress ];
 					elementWeight: 0.6).
-				(GtLabelAndElementSlide new
+				(GtLabelAndElementLiveSlide new
 					newText: ('You can inspect the snippet below to see how an address object looks like' asRopedText);
-					element: [GtPlaygroundSlide new
+					element: [GtPlaygroundLiveSlide new
 						snippets: {snippetsCollection at: 1};
 						asElement]).
-				(GtTextAndElementSlide new
+				(GtTextAndElementLiveSlide new
 					newTextWithFormat: (self telephoneClassDescription);
 					element: [ self coderOnClass: GtABTelephone ];
 					elementWeight: 0.6).
-				(GtLabelAndElementSlide new
+				(GtLabelAndElementLiveSlide new
 					newText: ('Below you can inspect a telephone object' asRopedText);
-					element: [GtPlaygroundSlide new
+					element: [GtPlaygroundLiveSlide new
 						snippets: {snippetsCollection at: 2};
 						asElement]).
-				(GtTextAndElementSlide new
+				(GtTextAndElementLiveSlide new
 					newTextWithFormat: (self noteClassDescription);
 					element: [ self coderOnClass: GtABContactNote ];
 					elementWeight: 0.6).
-				(GtLabelAndElementSlide new
+				(GtLabelAndElementLiveSlide new
 					newText: ('Inspect the note below and check its particular view' asRopedText);
-					element: [GtPlaygroundSlide new
+					element: [GtPlaygroundLiveSlide new
 						snippets: {snippetsCollection at: 3};
 						asElement]).
-				(GtTextAndElementSlide new
+				(GtTextAndElementLiveSlide new
 					newTextWithFormat: (self contactClassDescription);
 					element: [ self coderOnClass: GtABContact ];
 					elementWeight: 0.6).
-				(GtLabelAndElementSlide new
+				(GtLabelAndElementLiveSlide new
 					newText: ('You can play around with the example below and inspect it to see how it looks' asRopedText);
-					element: [GtPlaygroundSlide new
+					element: [GtPlaygroundLiveSlide new
 						snippets: {
 							snippetsCollection at: 1.
 							snippetsCollection at: 2.
 							snippetsCollection at: 3.
 							snippetsCollection at: 4};
 						asElement]).
-				(GtTextSlide new
+				(GtTextLiveSlide new
 					newTextWithFormat: ('But now we want to be able to handle multiple contacts.' asRopedText
 						glamorousRegularFont;
 						fontSize: 20)).
-				(GtTextAndElementSlide new
+				(GtTextAndElementLiveSlide new
 					newTextWithFormat: (self addressBookClassDescription);
 					element: [ self coderOnClass: GtABAddressBook ];
 					elementWeight: 0.6).
-				(GtLabelAndElementSlide new
+				(GtLabelAndElementLiveSlide new
 					newText: ('Here is an address book example with two contacts added' asRopedText );
-					element: [ GtPlaygroundSlide new
+					element: [ GtPlaygroundLiveSlide new
 						snippets: snippetsCollection;
 						asElement ]).
-				(GtTextSlide new
+				(GtTextLiveSlide new
 					newTextWithFormat: ('To extend the model even more, we can add categories to our address book, for a better organization.' asRopedText
 						glamorousRegularFont;
 						fontSize: 20)).
-				(GtTextAndElementSlide new
+				(GtTextAndElementLiveSlide new
 					newTextWithFormat: (self categoryClassDescription);
 					element: [ self coderOnClass: GtABCategory ];
 					elementWeight: 0.6).
-				(GtLabelAndElementSlide new
+				(GtLabelAndElementLiveSlide new
 					newText: ('The example below shows an address book with multiple categories and contacts.' asRopedText);
-					element: [ GtExampleSlide new
+					element: [ GtExampleLiveSlide new
 						method: (GtABAddressBookExample>>#contactsAddressBookWithCategories);
 						asElement ]).
 			}.
