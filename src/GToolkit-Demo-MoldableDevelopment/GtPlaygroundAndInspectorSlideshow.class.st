@@ -6,7 +6,7 @@ Class {
 
 { #category : #accessing }
 GtPlaygroundAndInspectorSlideshow >> createClassFromPlaygroundExplanationSlideFor: aSlide [
-	<gtSlide>
+	"<gtSlide>"
 	^ aSlide textAndElement
 		priority: 7;
 		newTextWithFormat: self fixItAdornmentForClassExplanationText;
@@ -45,7 +45,7 @@ GtPlaygroundAndInspectorSlideshow >> createClassFromPlaygroundExplanationSlideFo
 
 { #category : #accessing }
 GtPlaygroundAndInspectorSlideshow >> createMethodFromPlaygroundExplanationSlideFor: aSlide [
-	<gtSlide>
+	"<gtSlide>"
 	^ aSlide textAndElement
 		priority: 8;
 		newTextWithFormat: self fixItAdornmentForMethodExplanationText;
