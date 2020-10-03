@@ -723,7 +723,10 @@ GtCoderSlideshow >> exampleMethodsExplanationWithLinks [
 		do: [ :aStep | 
 			aStep click
 				label: 'Expand first method';
-				onBreadthFirstChildOfClass: BlLazyElement;
+				onBreadthFirstChildOfClass: BlOverlayElement;
+				onBreadthFirstChildOfClass: GtPagerWrapperElement;
+				onBreadthFirstChildOfClass: GtInspectorContentElement;
+				onBreadthFirstChildOfClass: GtBehaviorCoderElement;
 				onBreadthFirstChildOfClass: BrTabGroup;
 				onChildAt: 2;
 				onBreadthFirstChildOfClass: GtCodersElement;
