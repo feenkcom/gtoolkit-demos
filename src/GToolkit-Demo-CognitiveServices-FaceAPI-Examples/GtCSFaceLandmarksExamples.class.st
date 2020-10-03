@@ -5,7 +5,7 @@ Class {
 }
 
 { #category : #examples }
-GtCSFaceLandmarksExamples >> landmarNose [
+GtCSFaceLandmarksExamples >> landmarkNose [
 	<gtExample>
 	| landmarks |
 	landmarks := GtCSFaceLandmarks new.
