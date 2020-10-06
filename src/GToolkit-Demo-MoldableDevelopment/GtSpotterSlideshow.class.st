@@ -12,7 +12,7 @@ GtSpotterSlideshow >> spotterAfterFirstDiveInExplanation [
 		spotterElement: (
 			BlUseAsyncFeatures
 				disableDuring: [self spotterElementInContextOf: GtABAddressBook withSearch: 'contacts'])
-		withSelectedPosition: 4.
+		withSelectedPosition: 3.
 	spotterElement enqueueTask: (BlTaskAction new
 		action: [
 			spotterElement header spotterModel currentStep diveIn.
@@ -259,7 +259,7 @@ GtSpotterSlideshow >> spotterInLocalContextExplanationWithLinks [
 		allChildrenBreadthFirstDetect: [:aChild | (aChild isKindOf: BrToolbar) and: [ aChild parent isKindOf: GtCoderToolbarElement ] ] 
 		ifFound: [:aChild | searchButtonTargets add: (aChild childAt: 1)].
 	inspectorElement 
-		allChildrenBreadthFirstDetect: [:aChild | (aChild isKindOf: BrToolbar) and: [ aChild parent isKindOf: GtCoderToolbarElement ] ] 
+		allChildrenBreadthFirstDetect: [:aChild | (aChild isKindOf: BrToolbar)] 
 		ifFound: [:aChild | searchButtonTargets add: (aChild childAt: 3)].
 	
 	searchButtonTargets do: [:eachTarget |
