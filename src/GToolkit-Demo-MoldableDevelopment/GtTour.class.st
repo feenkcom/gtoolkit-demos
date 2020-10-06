@@ -53,12 +53,12 @@ GtTour >> coderExplanationWithLinks [
 	
 	packageHierarchyTarget := coderElement
 		allChildrenBreadthFirstDetect: [:aChild |
-			((aChild isKindOf: BlTextElement) and: [aChild text asString = 'Package Hierarchy'])]
-		ifFound: [:aChild | aChild parent].
+			((aChild isKindOf: BlTextElement) and: [aChild text asString = 'Package Hierarchy' asString ])]
+		ifFound: [:aChild | aChild].
 	classHierarchyTarget := coderElement
 		allChildrenBreadthFirstDetect: [:aChild |
-			((aChild isKindOf: BlTextElement) and: [aChild text asString = 'Class Hierarchy'])]
-		ifFound: [:aChild | aChild parent].
+			((aChild isKindOf: BlTextElement) and: [aChild text asString = 'Class Hierarchy' asString ])]
+		ifFound: [:aChild | aChild].
 	referencesTab := coderElement
 		allChildrenBreadthFirstDetect: [:aChild |
 			((aChild isKindOf: BlTextElement) and: [aChild text asString = 'References'])]
@@ -99,18 +99,18 @@ GtTour >> coderExplanationWithLinks [
 			aChild allChildrenBreadthFirstSelect: [:aButtonChild | 
 				(aButtonChild isKindOf: BrButton) and: [aButtonChild parent isKindOf: BrToolbar]]].
 	filterMethodsButtonTarget := methodButtonTargets first.
-	addMethodButtonTarget := methodButtonTargets last.
+	addMethodButtonTarget := methodButtonTargets at: 2.
 	
 	packageHierarchyTarget
 		addChild:
 			(( self yellowTargetCircleWithExplanationModel: #packageHierarchy)
 				relocate:
-					(15 @ packageHierarchyTarget extent y / 2)).
+					(2 @ 10)).
 	classHierarchyTarget
 		addChild:
 			(( self yellowTargetCircleWithExplanationModel: #classHierarchy)
 				relocate:
-					(15 @ classHierarchyTarget extent y / 2)).
+					(2 @ 10)).
 	classNameTarget
 		addChild:
 			((self yellowTargetCircleWithExplanationModel: #className)
