@@ -264,7 +264,7 @@ GtPlaygroundAndInspectorSlideshow >> inspectorInterfaceExplanationWithLinks [
 	headerTarget := inspectorElement phlow firstChildWithView.
 	actionTargets := inspectorElement phlow allChildrenWithAction.
 	spotterButtonTarget := inspectorElement phlow allChildrenWithAction at: 3.
-	coderButtonTarget := inspectorElement phlow allChildrenWithAction at: 2.
+	coderButtonTarget := inspectorElement phlow allChildrenWithAction at: 1.
 	viewsTarget := inspectorElement
 		allChildrenBreadthFirstSelect: [:aChild |
 			aChild isKindOf: BrTab].
