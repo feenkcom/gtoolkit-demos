@@ -10,7 +10,7 @@ The main details landmarks related to a face that I support are:
 !!Nose
 The nose is specified using seven points. They identify the right and left alar, the tip and the top of the nose.
 
-${example:GtCSFaceLandmarksExamples>>#landmarNose}$
+${example:GtCSFaceLandmarksExamples>>#landmarkNose}$
 
 !!Eyes
 An indivudual is specified by providing five points. Four points form a rectangle defining the outline of the eye and the fifth identifies the pupil. These details need to be provided for both eyes.
