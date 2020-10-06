@@ -17,7 +17,7 @@ GtTour >> allViewsExampleSlideFor: aSlide [
 GtTour >> classCommentAsLiveDocumentExampleSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide labelAndElement
-		priority: 26;
+		priority: 29;
 		element: [ self coderWithComment ];
 		newFadedText: 'Interestingly, the document is actually the comment of a class.';
 		newFadedText: 'Click on the links to spawn other documents and navigate the image as a wiki.'.
@@ -27,7 +27,7 @@ GtTour >> classCommentAsLiveDocumentExampleSlideFor: aSlide [
 GtTour >> coderExplanationSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide textAndElement
-		priority: 16;
+		priority: 17;
 		newTextWithFormat: self coderExplanationWithLinksText;
 		elementWeight: 0.6;
 		element: [ self coderExplanationWithLinks ].
@@ -211,6 +211,15 @@ When maximized, Coder also offers a ' asRopedText,
 		foreground: Color black.
 ]
 
+{ #category : #'as yet unclassified' }
+GtTour >> coderSlideshowLinkSlideFor: aSlide [
+	<gtSlide>
+	^ aSlide slideshow
+		priority: 18;
+		textWithFormat: 'Want to learn more about the Coder? Follow the show below' asRopedText glamorousRegularFont;
+		slideshow: [ GtCoderSlideshow new] withTitle: 'Coder Slideshow'.
+]
+
 { #category : #'api - instantiation' }
 GtTour >> coderWithComment [
 	<gtExample>
@@ -242,7 +251,7 @@ GtTour >> coderWithComment [
 GtTour >> composedQueryExampleSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide labelAndElement
-		priority: 19;
+		priority: 21;
 		element: [ (GtPlaygroundLiveSlide new
 			snippets: {'#gtView gtPragmas & #list gtReferences'})
 			create ];
@@ -406,7 +415,7 @@ container addChild: inspectorContainer.
 GtTour >> graphicalStackFirstExampleSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide labelAndElement
-		priority: 30;
+		priority: 33;
 		element: [ self visualizationElement ];
 		newFadedText: 'Visualization is supported directly by the graphical stack.'.
 ]
@@ -415,7 +424,7 @@ GtTour >> graphicalStackFirstExampleSlideFor: aSlide [
 GtTour >> graphicalStackIntroductionSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide text
-		priority: 29;
+		priority: 32;
 		newText: 'The graphical stack is worth taking a look at as well. It features the property of rendering everything in a single rendering tree.'.
 ]
 
@@ -423,7 +432,7 @@ GtTour >> graphicalStackIntroductionSlideFor: aSlide [
 GtTour >> graphicalStackSecondExampleSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide labelAndElement
-		priority: 32;
+		priority: 35;
 		element: [ self treemapWithViewsAndExamples ];
 		newFadedText: 'The need for moldability is pervasive.';
 		newFadedText: 'The visualization below shows a treemap of the classes and packages from the current image.';
@@ -461,7 +470,7 @@ GtTour >> inspectorViewsSlideshowLinkSlideFor: aSlide [
 GtTour >> jsParserExampleSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide labelAndElement
-		priority: 28;
+		priority: 31;
 		element: [ GtPager createWrappedOn: (GtClassCoder forClass: JSParser) ];
 		newFadedText: 'The first non-Pharo language we accommodated is the language with which we write parsers for other languages.'.
 ]
@@ -470,7 +479,7 @@ GtTour >> jsParserExampleSlideFor: aSlide [
 GtTour >> liveDocumentExampleSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide labelAndElement
-		priority: 25;
+		priority: 28;
 		element: [ (GtDocumenter forClass: GtCSPicture) 
 			margin: (BlInsets all: 10);
 			background: Color white;
@@ -483,7 +492,7 @@ GtTour >> liveDocumentExampleSlideFor: aSlide [
 GtTour >> liveDocumentTitleSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide title
-		priority: 24;
+		priority: 27;
 		titleWithFormat:
 			('live documents' asRopedText
 				fontSize: 50;
@@ -502,7 +511,7 @@ GtTour >> liveProgrammingIntroductionSlideFor: aSlide [
 GtTour >> moldableCodingTitleSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide title
-		priority: 15;
+		priority: 16;
 		titleWithFormat:
 			('moldable coding' asRopedText
 				fontSize: 50;
@@ -513,7 +522,7 @@ GtTour >> moldableCodingTitleSlideFor: aSlide [
 GtTour >> moldableSearchTitleSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide title
-		priority: 21;
+		priority: 23;
 		titleWithFormat:
 			('moldable search' asRopedText
 				fontSize: 50;
@@ -536,7 +545,7 @@ GtTour >> multipleViewsForOneObjectExampleSlideFor: aSlide [
 GtTour >> oneRenderingTreeSlideshowLinkSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide slideshow
-		priority: 31;
+		priority: 34;
 		text: ('Want to dive deeper into the rendering stack? Follow the show below.');
 		slideshow: [ GtOneRenderingTree new ] withTitle: 'One rendering tree'.
 ]
@@ -545,7 +554,7 @@ GtTour >> oneRenderingTreeSlideshowLinkSlideFor: aSlide [
 GtTour >> otherLanguagesIntroductionSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide text
-		priority: 27;
+		priority: 30;
 		newText: 'Glamorous Toolkit is a platform. While it is implemented in Pharo, it can already tackle multiple other languages.'.
 ]
 
@@ -708,11 +717,20 @@ The playground lets you ' asRopedText,
 		foreground: Color black.
 ]
 
+{ #category : #'as yet unclassified' }
+GtTour >> playgroundSlideshowLinkSlideFor: aSlide [
+	<gtSlide>
+	^ aSlide slideshow
+		priority: 15;
+		textWithFormat: 'Want to learn more about the Playground? Follow the show below' asRopedText glamorousRegularFont;
+		slideshow: [ GtPlaygroundAndInspectorSlideshow new] withTitle: 'Playground Slideshow'.
+]
+
 { #category : #accessing }
 GtTour >> queryExampleSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide labelAndElement
-		priority: 18;
+		priority: 20;
 		element: [ (GtPlaygroundLiveSlide new snippets: {'#gtView gtPragmas'}) create ];
 		newFadedText: 'Inspect the result of this query. Expand the methods'.
 ]
@@ -721,7 +739,7 @@ GtTour >> queryExampleSlideFor: aSlide [
 GtTour >> querySlideshowLinkSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide slideshow
-		priority: 20;
+		priority: 22;
 		textWithFormat: ('To learn more about queries follow the show below.' asRopedText glamorousRegularFont);
 		slideshow: [ GtQueries new ] withTitle: 'Querying Code'.
 ]
@@ -730,7 +748,7 @@ GtTour >> querySlideshowLinkSlideFor: aSlide [
 GtTour >> queryTitleSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide title
-		priority: 17;
+		priority: 19;
 		titleWithFormat:
 			('querying' asRopedText
 				fontSize: 50;
@@ -750,7 +768,7 @@ GtTour >> rawViewsExampleSlideFor: aSlide [
 GtTour >> spotterExampleSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide labelAndElement
-		priority: 22;
+		priority: 24;
 		element: [ GtSpotterLiveSlide new asElement ];
 		newFadedText: 'Search is pervasive. Try searching for Object'.
 ]
@@ -759,9 +777,18 @@ GtTour >> spotterExampleSlideFor: aSlide [
 GtTour >> spotterSecondExampleSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide labelAndElement
-		priority: 23;
+		priority: 25;
 		element: [ GtSpotterLiveSlide new asElement ];
 		newFadedText: ('Or search for .' , FileSystem disk delimiter asString).
+]
+
+{ #category : #'as yet unclassified' }
+GtTour >> spotterSlideshowLinkSlideFor: aSlide [
+	<gtSlide>
+	^ aSlide slideshow
+		priority: 26;
+		textWithFormat: 'Want to learn more about the Spotter? Follow the show below' asRopedText glamorousRegularFont;
+		slideshow: [ GtSpotterSlideshow new] withTitle: 'Spotter Slideshow'.
 ]
 
 { #category : #'api - instantiation' }
