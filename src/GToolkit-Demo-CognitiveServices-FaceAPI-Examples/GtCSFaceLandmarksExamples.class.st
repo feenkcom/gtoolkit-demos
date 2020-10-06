@@ -5,23 +5,6 @@ Class {
 }
 
 { #category : #examples }
-GtCSFaceLandmarksExamples >> landmarNose [
-	<gtExample>
-	| landmarks |
-	landmarks := GtCSFaceLandmarks new.
-	landmarks 
-		propertyAt: #noseRootRight put: 22.4 @ 7.8;
-		propertyAt: #noseRightAlarOutTip put: 31.5 @ 34.2;
-		propertyAt: #noseRootLeft put: 10.6 @ 9.4;
-		propertyAt: #noseTip put: 17.2 @ 33.9;
-		propertyAt: #noseRightAlarTop put: 26.2 @ 25.0;
-		propertyAt: #noseLeftAlarOutTip put: 5.8 @ 37.1;
-		propertyAt: #noseLeftAlarTop put: 10.3 @ 26.8.
-	
-	^ landmarks
-]
-
-{ #category : #examples }
 GtCSFaceLandmarksExamples >> landmarkEyes [
 	<gtExample>
 	| landmarks |
@@ -42,6 +25,23 @@ GtCSFaceLandmarksExamples >> landmarkLeftEye [
 		propertyAt: #pupilRight put: 9.6 @ 4.3;
 		propertyAt: #eyeRightInner put: 2.0 @ 6.2;
 		propertyAt: #eyeRightBottom put: 9.7 @ 9.3.
+	^ landmarks
+]
+
+{ #category : #examples }
+GtCSFaceLandmarksExamples >> landmarkNose [
+	<gtExample>
+	| landmarks |
+	landmarks := GtCSFaceLandmarks new.
+	landmarks 
+		propertyAt: #noseRootRight put: 22.4 @ 7.8;
+		propertyAt: #noseRightAlarOutTip put: 31.5 @ 34.2;
+		propertyAt: #noseRootLeft put: 10.6 @ 9.4;
+		propertyAt: #noseTip put: 17.2 @ 33.9;
+		propertyAt: #noseRightAlarTop put: 26.2 @ 25.0;
+		propertyAt: #noseLeftAlarOutTip put: 5.8 @ 37.1;
+		propertyAt: #noseLeftAlarTop put: 10.3 @ 26.8.
+	
 	^ landmarks
 ]
 
