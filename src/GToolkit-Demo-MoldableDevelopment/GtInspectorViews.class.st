@@ -731,7 +731,7 @@ GtInspectorViews >> slideshowLinkSlideFor: aSlide [
 	^ aSlide slideshow
 		priority: 2;
 		textWithFormat: 'Want to learn more about the Pharo syntax? Follow the show below' asRopedText glamorousRegularFont;
-		slideshow: [ GtLiveShow openWithArrowsVisible: GtPharo101 ] withTitle: 'Pharo101'.
+		slideshow: [ GtLiveShow createWithArrowsVisible: GtPharo101 new ] withTitle: 'Pharo101'.
 ]
 
 { #category : #'as yet unclassified' }

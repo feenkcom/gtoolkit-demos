@@ -217,7 +217,7 @@ GtTour >> coderSlideshowLinkSlideFor: aSlide [
 	^ aSlide slideshow
 		priority: 18;
 		textWithFormat: 'Want to learn more about the Coder? Follow the show below' asRopedText glamorousRegularFont;
-		slideshow: [ GtLiveShow openWithArrowsVisible: GtCoderSlideshow ] withTitle: 'Coder Slideshow'.
+		slideshow: [ GtLiveShow createWithArrowsVisible: GtCoderSlideshow new ] withTitle: 'Coder Slideshow'.
 ]
 
 { #category : #'api - instantiation' }
@@ -463,7 +463,7 @@ GtTour >> inspectorViewsSlideshowLinkSlideFor: aSlide [
 	^ aSlide slideshow
 		priority: 13;
 		text: ('Want to learn more about inspector views? Follow the show below.');
-		slideshow: [ GtLiveShow openWithArrowsVisible: GtInspectorViews ] withTitle: 'Inspector views'.
+		slideshow: [ GtLiveShow createWithArrowsVisible: GtInspectorViews new ] withTitle: 'Inspector views'.
 ]
 
 { #category : #accessing }
@@ -547,7 +547,7 @@ GtTour >> oneRenderingTreeSlideshowLinkSlideFor: aSlide [
 	^ aSlide slideshow
 		priority: 34;
 		text: ('Want to dive deeper into the rendering stack? Follow the show below.');
-		slideshow: [ GtLiveShow openWithArrowsVisible: GtOneRenderingTree ] withTitle: 'One rendering tree'.
+		slideshow: [ GtLiveShow createWithArrowsVisible: GtOneRenderingTree new ] withTitle: 'One rendering tree'.
 ]
 
 { #category : #accessing }
@@ -723,7 +723,7 @@ GtTour >> playgroundSlideshowLinkSlideFor: aSlide [
 	^ aSlide slideshow
 		priority: 15;
 		textWithFormat: 'Want to learn more about the Playground? Follow the show below' asRopedText glamorousRegularFont;
-		slideshow: [ GtLiveShow openWithArrowsVisible: GtPlaygroundAndInspectorSlideshow ] withTitle: 'Playground Slideshow'.
+		slideshow: [ GtLiveShow createWithArrowsVisible: GtPlaygroundAndInspectorSlideshow new ] withTitle: 'Playground Slideshow'.
 ]
 
 { #category : #accessing }
@@ -741,7 +741,7 @@ GtTour >> querySlideshowLinkSlideFor: aSlide [
 	^ aSlide slideshow
 		priority: 22;
 		textWithFormat: ('To learn more about queries follow the show below.' asRopedText glamorousRegularFont);
-		slideshow: [ GtLiveShow openWithArrowsVisible: GtQueries ] withTitle: 'Querying Code'.
+		slideshow: [ GtLiveShow createWithArrowsVisible: GtQueries new ] withTitle: 'Querying Code'.
 ]
 
 { #category : #accessing }
@@ -788,7 +788,7 @@ GtTour >> spotterSlideshowLinkSlideFor: aSlide [
 	^ aSlide slideshow
 		priority: 26;
 		textWithFormat: 'Want to learn more about the Spotter? Follow the show below' asRopedText glamorousRegularFont;
-		slideshow: [ GtLiveShow openWithArrowsVisible: GtSpotterSlideshow ] withTitle: 'Spotter Slideshow'.
+		slideshow: [ GtLiveShow createWithArrowsVisible: GtSpotterSlideshow new ] withTitle: 'Spotter Slideshow'.
 ]
 
 { #category : #'api - instantiation' }

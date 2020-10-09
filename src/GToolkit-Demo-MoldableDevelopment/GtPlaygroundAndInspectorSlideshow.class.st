@@ -663,7 +663,7 @@ GtPlaygroundAndInspectorSlideshow >> slideshowLinkSlideFor: aSlide [
 	^ aSlide slideshow
 		priority: 11;
 		text: 'Want to learn more about custom inspector views? Follow the show below.' asRopedText glamorousRegularFont;
-		slideshow: [ GtLiveShow openWithArrowsVisible: GtInspectorViews ] withTitle: 'GtInspectorViews'.
+		slideshow: [ GtLiveShow createWithArrowsVisible: GtInspectorViews new ] withTitle: 'GtInspectorViews'.
 ]
 
 { #category : #accessing }
