@@ -52,7 +52,7 @@ GtFromJs >> create [
 		show addSlide:( 
 			GtSlideshowLiveSlide new
 				textWithFormat: ('Want to learn more? Follow the interactive tour below.' asRopedText glamorousRegularFont);
-				slideshow: [ GtPharo101 new ] withTitle: 'Pharo 101').
+				slideshow: [ GtLiveShow openWithArrowsVisible: GtPharo101 ] withTitle: 'Pharo 101').
 				
 	^ show
 ]

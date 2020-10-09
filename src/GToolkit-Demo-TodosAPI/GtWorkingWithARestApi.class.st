@@ -1,6 +1,6 @@
 Class {
 	#name : #GtWorkingWithARestApi,
-	#superclass : #GtLiveShow,
+	#superclass : #Object,
 	#category : #'GToolkit-Demo-TodosAPI-Presentation'
 }
 

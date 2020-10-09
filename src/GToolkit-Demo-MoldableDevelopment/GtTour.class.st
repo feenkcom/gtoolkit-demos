@@ -1,6 +1,6 @@
 Class {
 	#name : #GtTour,
-	#superclass : #GtLiveShow,
+	#superclass : #Object,
 	#category : #'GToolkit-Demo-MoldableDevelopment'
 }
 
@@ -211,13 +211,13 @@ When maximized, Coder also offers a ' asRopedText,
 		foreground: Color black.
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #accessing }
 GtTour >> coderSlideshowLinkSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide slideshow
 		priority: 18;
 		textWithFormat: 'Want to learn more about the Coder? Follow the show below' asRopedText glamorousRegularFont;
-		slideshow: [ GtCoderSlideshow new] withTitle: 'Coder Slideshow'.
+		slideshow: [ GtLiveShow openWithArrowsVisible: GtCoderSlideshow ] withTitle: 'Coder Slideshow'.
 ]
 
 { #category : #'api - instantiation' }
@@ -463,7 +463,7 @@ GtTour >> inspectorViewsSlideshowLinkSlideFor: aSlide [
 	^ aSlide slideshow
 		priority: 13;
 		text: ('Want to learn more about inspector views? Follow the show below.');
-		slideshow: [ GtInspectorViews new ] withTitle: 'Inspector views'.
+		slideshow: [ GtLiveShow openWithArrowsVisible: GtInspectorViews ] withTitle: 'Inspector views'.
 ]
 
 { #category : #accessing }
@@ -547,7 +547,7 @@ GtTour >> oneRenderingTreeSlideshowLinkSlideFor: aSlide [
 	^ aSlide slideshow
 		priority: 34;
 		text: ('Want to dive deeper into the rendering stack? Follow the show below.');
-		slideshow: [ GtOneRenderingTree new ] withTitle: 'One rendering tree'.
+		slideshow: [ GtLiveShow openWithArrowsVisible: GtOneRenderingTree ] withTitle: 'One rendering tree'.
 ]
 
 { #category : #accessing }
@@ -717,13 +717,13 @@ The playground lets you ' asRopedText,
 		foreground: Color black.
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #accessing }
 GtTour >> playgroundSlideshowLinkSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide slideshow
 		priority: 15;
 		textWithFormat: 'Want to learn more about the Playground? Follow the show below' asRopedText glamorousRegularFont;
-		slideshow: [ GtPlaygroundAndInspectorSlideshow new] withTitle: 'Playground Slideshow'.
+		slideshow: [ GtLiveShow openWithArrowsVisible: GtPlaygroundAndInspectorSlideshow ] withTitle: 'Playground Slideshow'.
 ]
 
 { #category : #accessing }
@@ -741,7 +741,7 @@ GtTour >> querySlideshowLinkSlideFor: aSlide [
 	^ aSlide slideshow
 		priority: 22;
 		textWithFormat: ('To learn more about queries follow the show below.' asRopedText glamorousRegularFont);
-		slideshow: [ GtQueries new ] withTitle: 'Querying Code'.
+		slideshow: [ GtLiveShow openWithArrowsVisible: GtQueries ] withTitle: 'Querying Code'.
 ]
 
 { #category : #accessing }
@@ -782,13 +782,13 @@ GtTour >> spotterSecondExampleSlideFor: aSlide [
 		newFadedText: ('Or search for .' , FileSystem disk delimiter asString).
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #accessing }
 GtTour >> spotterSlideshowLinkSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide slideshow
 		priority: 26;
 		textWithFormat: 'Want to learn more about the Spotter? Follow the show below' asRopedText glamorousRegularFont;
-		slideshow: [ GtSpotterSlideshow new] withTitle: 'Spotter Slideshow'.
+		slideshow: [ GtLiveShow openWithArrowsVisible: GtSpotterSlideshow ] withTitle: 'Spotter Slideshow'.
 ]
 
 { #category : #'api - instantiation' }
