@@ -1,6 +1,6 @@
 Class {
 	#name : #GtQueries,
-	#superclass : #GtLiveShow,
+	#superclass : #Object,
 	#category : #'GToolkit-Demo-MoldableDevelopment'
 }
 
@@ -401,7 +401,7 @@ GtQueries >> slideshowLinkSlideFor: aSlide [
 	^ aSlide slideshow
 		priority: 2;
 		textWithFormat: 'This slideshow relies on pharo syntax. Follow the tutorial below if you want to learn more about that first' asRopedText glamorousRegularFont;
-		slideshow: [ GtPharo101 new ] withTitle: 'Pharo101'.
+		slideshow: [ GtLiveShow openWithArrowsVisible: GtPharo101 ] withTitle: 'Pharo101'.
 ]
 
 { #category : #accessing }

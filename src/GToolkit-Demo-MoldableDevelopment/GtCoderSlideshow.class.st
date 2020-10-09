@@ -1,6 +1,6 @@
 Class {
 	#name : #GtCoderSlideshow,
-	#superclass : #GtLiveShow,
+	#superclass : #Object,
 	#category : #'GToolkit-Demo-MoldableDevelopment'
 }
 

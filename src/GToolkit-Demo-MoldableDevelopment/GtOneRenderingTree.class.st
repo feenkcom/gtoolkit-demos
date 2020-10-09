@@ -1,6 +1,6 @@
 Class {
 	#name : #GtOneRenderingTree,
-	#superclass : #GtLiveShow,
+	#superclass : #Object,
 	#category : #'GToolkit-Demo-MoldableDevelopment'
 }
 

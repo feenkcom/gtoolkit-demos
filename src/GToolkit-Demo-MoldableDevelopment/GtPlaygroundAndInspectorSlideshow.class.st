@@ -1,6 +1,6 @@
 Class {
 	#name : #GtPlaygroundAndInspectorSlideshow,
-	#superclass : #GtLiveShow,
+	#superclass : #Object,
 	#category : #'GToolkit-Demo-MoldableDevelopment'
 }
 
@@ -663,7 +663,7 @@ GtPlaygroundAndInspectorSlideshow >> slideshowLinkSlideFor: aSlide [
 	^ aSlide slideshow
 		priority: 11;
 		text: 'Want to learn more about custom inspector views? Follow the show below.' asRopedText glamorousRegularFont;
-		slideshow: [GtInspectorViews new] withTitle: 'GtInspectorViews'.
+		slideshow: [ GtLiveShow openWithArrowsVisible: GtInspectorViews ] withTitle: 'GtInspectorViews'.
 ]
 
 { #category : #accessing }
