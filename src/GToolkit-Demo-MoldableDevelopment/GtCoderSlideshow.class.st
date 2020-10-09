@@ -747,9 +747,9 @@ GtCoderSlideshow >> exampleMethodsExplanationWithLinks [
 		ifFound: [:aChild | aChild].
 	buttonsList := expandedMethodElement
 		allChildrenBreadthFirstSelect: [:aChild | aChild isKindOf: BrButton].
-	evaluateTarget := buttonsList at: 4.
-	inspectTarget := buttonsList at: 5.
-	debugTarget := buttonsList at: 6.
+	evaluateTarget := buttonsList detect: [ :aButton | aButton label asString = 'Play' ].
+	inspectTarget := buttonsList detect: [ :aButton | aButton label asString = 'Play and Inspect' ].
+	debugTarget := buttonsList detect: [ :aButton | aButton label asString = 'Debug' ].
 	
 	pragmaTarget
 		addChild:
