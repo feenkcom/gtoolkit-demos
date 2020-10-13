@@ -764,6 +764,22 @@ GtTour >> rawViewsExampleSlideFor: aSlide [
 		newFadedText: 'Consider how these different objects look quite similar in the inspector.'.
 ]
 
+{ #category : #'as yet unclassified' }
+GtTour >> slide1For: aSlide [
+	<gtSlide>
+	^ aSlide element
+		priority: 1.1;
+		element: [| container form |
+				container := BrVerticalPane new 
+					constraintsDo: [ :c | 
+					c horizontal matchParent.
+					c vertical matchParent ];
+				layout: BlLinearLayout new.
+				form := PNGReadWriter formFromFileNamed: (GtResourceReference
+						path: Path * 'feenkcom' / 'gtoolkit' / 'doc' / 'feenk.png') fullName.
+				form asElement asScalableElement maxScale: 0.1]
+]
+
 { #category : #accessing }
 GtTour >> spotterExampleSlideFor: aSlide [
 	<gtSlide>
