@@ -836,10 +836,14 @@ GtTour >> titleSlideFor: aSlide [
 	^ aSlide title
 		priority: 1;
 		titleWithFormat: ('glamoroustoolkit' asRopedText 
-			fontSize: 70;
+			fontSize: 80;
 			glamorousRegularFont;
 			thin; 
-			in: [:t | (t from: 'glamorous' size + 1 to: t size) bold]; yourself).
+			in: [:t | (t from: 'glamorous' size + 1 to: t size) bold]; yourself);
+		subtitleWithFormat: ('a tour' asRopedText 
+			fontSize: 50;
+			glamorousRegularFont;
+			bold).
 ]
 
 { #category : #'api - instantiation' }
