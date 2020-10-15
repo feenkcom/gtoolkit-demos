@@ -764,20 +764,35 @@ GtTour >> rawViewsExampleSlideFor: aSlide [
 		newFadedText: 'Consider how these different objects look quite similar in the inspector.'.
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #accessing }
 GtTour >> slide1For: aSlide [
 	<gtSlide>
 	^ aSlide element
 		priority: 1.1;
 		element: [| container form |
-				container := BrVerticalPane new 
-					constraintsDo: [ :c | 
-					c horizontal matchParent.
-					c vertical matchParent ];
-				layout: BlLinearLayout new.
 				form := PNGReadWriter formFromFileNamed: (GtResourceReference
 						path: Path * 'feenkcom' / 'gtoolkit' / 'doc' / 'feenk.png') fullName.
-				form asElement asScalableElement maxScale: 0.1]
+BlElement new 
+			constraintsDo: [ :c |
+				c horizontal matchParent.
+				c vertical matchParent ];
+			layout: BlLinearLayout horizontal;
+				addChild: (
+					BlElement new
+						constraintsDo: [ :c |
+							c horizontal matchParent.
+							c vertical fitContent.
+							c linear vertical alignCenter ];
+						layout: BlLinearLayout vertical;
+						addChild: (BrVerticalPane new 
+							constraintsDo: [ :c |
+								c linear horizontal alignCenter ];
+							addChild: (form asElement asScalableElement maxScale: 0.2; constraintsDo: [:c | c horizontal matchParent. c vertical matchParent]); hExact: 400; vExact: 200);
+						addChild: (BlTextElement new 
+							constraintsDo: [ :c |
+								c linear horizontal alignCenter ];
+							text: (('we make your systems explainable. literally.' asRopedText glamorousRegularFont bold fontSize: 30))))
+				]
 ]
 
 { #category : #accessing }
@@ -839,7 +854,7 @@ GtTour >> timelineExplanationSlideFor: aSlide [
 	^ aSlide textAndElement
 		priority: 5;
 		element: [ self timelineElement margin: (BlInsets left: 50 right: 50) ];
-		elementWeight: 0.7;
+		elementWeight: 0.6;
 		newText: 'Glamorous Toolkit is the moldable development environment.';
 		newText: 'It is a live notebook. It is a flexible search interface. It is a fancy code editor. It is a software analysis platform. It is a data visualization engine. All in one. It is built in Pharo and it is free and open-source under an MIT license.';
 		newText: 'What is moldable development? A new paradigm that promotes the idea that developers should explain their systems through the lens of custom tools that they create while developing the system.';
