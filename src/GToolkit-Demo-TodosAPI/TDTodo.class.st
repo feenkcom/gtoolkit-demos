@@ -2,10 +2,7 @@ Class {
 	#name : #TDTodo,
 	#superclass : #TDModel,
 	#instVars : [
-		'completed',
-		'title',
-		'id',
-		'user'
+		'rawData'
 	],
 	#category : #'GToolkit-Demo-TodosAPI-Core'
 }
@@ -16,22 +13,8 @@ TDTodo class >> empty [
 ]
 
 { #category : #accessing }
-TDTodo class >> rawData: aDictionary [
-	^ self new
-		completed: (aDictionary at: 'completed' value);
-		id: (aDictionary at: 'id' value);
-		title: (aDictionary at: 'title' value);
-		userId: (aDictionary at: 'userId' value).
-]
-
-{ #category : #accessing }
 TDTodo >> completed [
-	^ completed.
-]
-
-{ #category : #accessing }
-TDTodo >> completed: aBoolean [
-	completed := aBoolean.
+	^ self rawData at: #completed.
 ]
 
 { #category : #accessing }
@@ -42,57 +25,39 @@ TDTodo >> gtTodoInforFor: aView [
 		priority: 5;
 		items: [ {('Title: ' -> self title).
 			('Id: ' -> self id).
-			('User ID: ' -> self userId).
+			('User: ' -> self user).
 			('Completed: ' -> self completed)} ];
 		column: 'Property' translated text: [ :assoc | assoc key ];
-		column: 'Value' translated text: [ :assoc | assoc value ]
+		column: 'Value' translated text: [ :assoc | assoc value ];
+		send: [:association | association value].
 ]
 
 { #category : #accessing }
 TDTodo >> id [
-	^ id.
+	^ self rawData at: #id.
 ]
 
 { #category : #accessing }
-TDTodo >> id: anInteger [
-	id := anInteger.
+TDTodo >> rawData [
+	^ rawData.
 ]
 
 { #category : #accessing }
-TDTodo >> initialize [
-	super initialize.
-	id := 0.
-	user := TDUser empty.
-	title := ''.
-	completed := nil.
+TDTodo >> rawData: aDictionary [
+	rawData := aDictionary.
 ]
 
 { #category : #accessing }
 TDTodo >> title [
-	^ title.
-]
-
-{ #category : #accessing }
-TDTodo >> title: aString [
-	title := aString.
+	^ self rawData at: #title.
 ]
 
 { #category : #accessing }
 TDTodo >> user [
-	^ user.
-]
-
-{ #category : #accessing }
-TDTodo >> user: anObject [
-	user := anObject.
+	^ TDClient new getUserWithId: self userId.
 ]
 
 { #category : #accessing }
 TDTodo >> userId [
-	^ self user id.
-]
-
-{ #category : #accessing }
-TDTodo >> userId: anInteger [
-	self user: (TDUser new id: anInteger).
+	^ self rawData at: #userId.
 ]

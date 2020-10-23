@@ -22,6 +22,11 @@ TDNullTodo >> title [
 ]
 
 { #category : #accessing }
+TDNullTodo >> user [
+	^ nil.
+]
+
+{ #category : #accessing }
 TDNullTodo >> userId [
 	^ 0.
 ]
