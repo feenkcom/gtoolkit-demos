@@ -39,8 +39,9 @@ TDClient >> getAllComments [
 	| dictionaries |
 	dictionaries := STON fromString: 
 		(self requestForUrl: 'https://jsonplaceholder.typicode.com/comments').
-	^ dictionaries collect: [:dict |
-			TDComment rawData: dict].
+	^ TDCommentsGroup new
+		comments: (dictionaries collect: [:dict |
+			TDComment new rawData: dict]).
 ]
 
 { #category : #accessing }
@@ -60,7 +61,7 @@ TDClient >> getAllPosts [
 		(self requestForUrl: 'https://jsonplaceholder.typicode.com/posts').
 	^ TDPostsGroup new
 		posts: (dictionaries collect: [:dict |
-			TDPost rawData: dict]).
+			TDPost new rawData: dict]).
 ]
 
 { #category : #accessing }
@@ -70,7 +71,7 @@ TDClient >> getAllTodos [
 		(self requestForUrl: 'https://jsonplaceholder.typicode.com/todos').
 	^ TDTodosGroup new
 		todos: (dictionaries collect: [:dict |
-			TDTodo rawData: dict]).
+			TDTodo  new rawData: dict]).
 ]
 
 { #category : #accessing }
@@ -80,7 +81,7 @@ TDClient >> getCommentWithId: anInteger [
 		(self requestForUrl: 'https://jsonplaceholder.typicode.com/comments/', anInteger asString).
 	^ dictionary
 		ifEmpty: [TDComment empty]
-		ifNotEmpty: [TDComment rawData: dictionary].
+		ifNotEmpty: [TDComment new rawData: dictionary].
 ]
 
 { #category : #accessing }
@@ -88,8 +89,9 @@ TDClient >> getCommentsForPostId: anInteger [
 	| dictionaries |
 	dictionaries := STON fromString: 
 		(self requestForUrl: 'https://jsonplaceholder.typicode.com/comments?postId=', anInteger asString).
-	^ dictionaries collect: [:dict |
-			TDComment rawData: dict].
+	^ TDCommentsGroup new
+		comments: (dictionaries collect: [:dict |
+			TDComment new rawData: dict]).
 ]
 
 { #category : #accessing }
@@ -119,7 +121,7 @@ TDClient >> getPostWithId: anInteger [
 		(self requestForUrl: 'https://jsonplaceholder.typicode.com/posts/', anInteger asString).
 	^ dictionary
 		ifEmpty: [TDPost empty]
-		ifNotEmpty: [TDPost rawData: dictionary].
+		ifNotEmpty: [TDPost new rawData: dictionary].
 ]
 
 { #category : #accessing }
@@ -129,7 +131,7 @@ TDClient >> getPostsForUserId: anInteger [
 		(self requestForUrl: 'https://jsonplaceholder.typicode.com/posts?userId=', anInteger asString).
 	^ TDPostsGroup new
 		posts: (dictionaries collect: [:dict |
-			TDPost rawData: dict]).
+			TDPost new rawData: dict]).
 ]
 
 { #category : #accessing }
@@ -139,7 +141,7 @@ TDClient >> getTodoWithId: anInteger [
 		(self requestForUrl: 'https://jsonplaceholder.typicode.com/todos/', anInteger asString).
 	^ dictionary
 		ifEmpty: [TDTodo empty]
-		ifNotEmpty: [TDTodo rawData: dictionary].
+		ifNotEmpty: [TDTodo new rawData: dictionary].
 ]
 
 { #category : #accessing }
@@ -149,13 +151,17 @@ TDClient >> getTodosForUserId: anInteger [
 		(self requestForUrl: 'https://jsonplaceholder.typicode.com/todos?userId=', anInteger asString).
 	^ TDTodosGroup new
 		todos: (dictionaries collect: [:dict |
-			TDTodo rawData: dict]).
+			TDTodo new rawData: dict]).
 ]
 
 { #category : #accessing }
 TDClient >> getUserWithId: anInteger [
-	^ TDUser new
-		id: anInteger.
+	| dictionary |
+	dictionary := STON fromString: 
+		(self requestForUrl: 'https://jsonplaceholder.typicode.com/users/', anInteger asString).
+	^ dictionary
+		ifEmpty: [TDUser empty]
+		ifNotEmpty: [TDUser new rawData: dictionary].
 ]
 
 { #category : #accessing }
