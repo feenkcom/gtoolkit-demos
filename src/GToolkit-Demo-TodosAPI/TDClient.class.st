@@ -5,12 +5,52 @@ Class {
 }
 
 { #category : #accessing }
+TDClient >> getAlbumWithId: anInteger [
+	| dictionary |
+	dictionary := STON fromString: 
+		(self requestForUrl: 'https://jsonplaceholder.typicode.com/albums/', anInteger asString).
+	^ dictionary
+		ifEmpty: [TDAlbum empty]
+		ifNotEmpty: [TDAlbum new rawData: dictionary].
+]
+
+{ #category : #accessing }
+TDClient >> getAlbumsForUserId: anInteger [
+	| dictionaries |
+	dictionaries := STON fromString: 
+		(self requestForUrl: 'https://jsonplaceholder.typicode.com/albums?userId=', anInteger asString).
+	^ TDAlbumsGroup new
+		albums: (dictionaries collect: [:dict |
+			TDAlbum new rawData: dict]).
+]
+
+{ #category : #accessing }
+TDClient >> getAllAlbums [
+	| dictionaries |
+	dictionaries := STON fromString: 
+		(self requestForUrl: 'https://jsonplaceholder.typicode.com/albums').
+	^ TDAlbumsGroup new
+		albums: (dictionaries collect: [:dict |
+			TDAlbum new rawData: dict]).
+]
+
+{ #category : #accessing }
 TDClient >> getAllComments [
 	| dictionaries |
 	dictionaries := STON fromString: 
 		(self requestForUrl: 'https://jsonplaceholder.typicode.com/comments').
 	^ dictionaries collect: [:dict |
 			TDComment rawData: dict].
+]
+
+{ #category : #accessing }
+TDClient >> getAllImages [
+	| dictionaries |
+	dictionaries := STON fromString: 
+		(self requestForUrl: 'https://jsonplaceholder.typicode.com/photos').
+	^ TDImagesGroup new
+		images: (dictionaries collect: [:dict |
+			TDImage new rawData: dict]).
 ]
 
 { #category : #accessing }
@@ -50,6 +90,26 @@ TDClient >> getCommentsForPostId: anInteger [
 		(self requestForUrl: 'https://jsonplaceholder.typicode.com/comments?postId=', anInteger asString).
 	^ dictionaries collect: [:dict |
 			TDComment rawData: dict].
+]
+
+{ #category : #accessing }
+TDClient >> getImageWithId: anInteger [
+	| dictionary |
+	dictionary := STON fromString: 
+		(self requestForUrl: 'https://jsonplaceholder.typicode.com/photos/', anInteger asString).
+	^ dictionary
+		ifEmpty: [TDImage empty]
+		ifNotEmpty: [TDImage new rawData: dictionary].
+]
+
+{ #category : #accessing }
+TDClient >> getImagesForAlbumId: anInteger [
+	| dictionaries |
+	dictionaries := STON fromString: 
+		(self requestForUrl: 'https://jsonplaceholder.typicode.com/photos?albumId=', anInteger asString).
+	^ TDImagesGroup new
+		images: (dictionaries collect: [:dict |
+			TDImage new rawData: dict]).
 ]
 
 { #category : #accessing }
