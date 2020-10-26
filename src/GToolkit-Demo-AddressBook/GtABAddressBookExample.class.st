@@ -14,8 +14,6 @@ ${example:GtABAddressBookExample>>#johnDoeContact|show=#gtViewPreviewOn:|noCode}
 Contacts can be added using the ${method:GtABAddressBook>>#addContact:}$
 ${example:GtABAddressBookExample>>#myContactsAddressBook}$
 
-The class ${class:GtABCartoonAddressBookExample}$ contains an example of a larger address book.
-${example:GtABCartoonAddressBookExample>>#cartoonAddressBook}$
 
 
 

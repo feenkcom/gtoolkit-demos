@@ -1,3 +1,7 @@
+"
+${class:GtABCartoonAddressBookExample}$ contains an example of a larger address book.
+${example:GtABCartoonAddressBookExample>>#cartoonAddressBook}$
+"
 Class {
 	#name : #GtABCartoonAddressBookExample,
 	#superclass : #GtExampleProvider,
