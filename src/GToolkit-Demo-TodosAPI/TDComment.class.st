@@ -2,12 +2,7 @@ Class {
 	#name : #TDComment,
 	#superclass : #TDModel,
 	#instVars : [
-		'postId',
-		'id',
-		'name',
-		'email',
-		'body',
-		'post'
+		'rawData'
 	],
 	#category : #'GToolkit-Demo-TodosAPI-Core'
 }
@@ -18,33 +13,13 @@ TDComment class >> empty [
 ]
 
 { #category : #accessing }
-TDComment class >> rawData: aDictionary [
-	^ self new
-		name: (aDictionary at: 'name' value);
-		body: (aDictionary at: 'body' value);
-		email: (aDictionary at: 'email' value);
-		id: (aDictionary at: 'id' value);
-		postId: (aDictionary at: 'postId' value).
-]
-
-{ #category : #accessing }
 TDComment >> body [
-	^ body.
-]
-
-{ #category : #accessing }
-TDComment >> body: aString [
-	body := aString.
+	^ self rawData at: #body.
 ]
 
 { #category : #accessing }
 TDComment >> email [
-	^ email.
-]
-
-{ #category : #accessing }
-TDComment >> email: aString [
-	email := aString.
+	^ self rawData at: #email.
 ]
 
 { #category : #accessing }
@@ -60,65 +35,45 @@ TDComment >> gtCommentBodyFor: aView [
 { #category : #accessing }
 TDComment >> gtCommentInfoFor: aView [
 	<gtView>
-	self requestPostForThisComment.
 	^ aView columnedList
 		title: 'Details' translated;
 		priority: 10;
-		items: [ {('Post Id: ' -> self postId).
-			('Comment Id: ' -> self id).
+		items: [ {
+			('Id: ' -> self id).
 			('Name: ' -> self name).
-			('Email: ' -> self email)} ];
+			('Email: ' -> self email).
+			('Post: ' -> self post)} ];
 		column: 'Property' translated text: [ :assoc | assoc key ];
-		column: 'Value' translated text: [ :assoc | assoc value ]
+		column: 'Value' translated text: [ :assoc | assoc value ];
+		send: [:association | association value].
 ]
 
 { #category : #accessing }
 TDComment >> id [
-	^ id.
-]
-
-{ #category : #accessing }
-TDComment >> id: anInteger [
-	id := anInteger.
-]
-
-{ #category : #accessing }
-TDComment >> initialize [
-	super initialize.
-	post := TDPost empty.
-	postId := 0.
-	id := 0.
-	name := ''.
-	email := ''.
-	body := ''.
+	^ self rawData at: #id.
 ]
 
 { #category : #accessing }
 TDComment >> name [
-	^ name.
-]
-
-{ #category : #accessing }
-TDComment >> name: aString [
-	name := aString.
+	^ self rawData at: #name.
 ]
 
 { #category : #accessing }
 TDComment >> post [
-	^ post.
+	^ TDClient new getPostWithId: self postId.
 ]
 
 { #category : #accessing }
 TDComment >> postId [
-	^ postId.
+	^ self rawData at: #postId.
 ]
 
 { #category : #accessing }
-TDComment >> postId: anInteger [
-	postId := anInteger.
+TDComment >> rawData [
+	^ rawData.
 ]
 
 { #category : #accessing }
-TDComment >> requestPostForThisComment [
-	post := TDClient new getPostWithId: self postId.
+TDComment >> rawData: aDictionary [
+	rawData := aDictionary.
 ]

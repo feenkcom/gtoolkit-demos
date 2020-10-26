@@ -27,6 +27,11 @@ TDNullComment >> name [
 ]
 
 { #category : #accessing }
+TDNullComment >> post [
+	^ nil.
+]
+
+{ #category : #accessing }
 TDNullComment >> postId [
 	^ 0.
 ]

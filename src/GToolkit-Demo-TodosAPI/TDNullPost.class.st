@@ -12,8 +12,8 @@ TDNullPost >> body [
 ]
 
 { #category : #accessing }
-TDNullPost >> comments [
-	^ OrderedCollection new.
+TDNullPost >> commentsGroup [
+	^ nil.
 ]
 
 { #category : #accessing }
@@ -24,6 +24,11 @@ TDNullPost >> id [
 { #category : #accessing }
 TDNullPost >> title [
 	^ ''.
+]
+
+{ #category : #accessing }
+TDNullPost >> user [
+	^ nil.
 ]
 
 { #category : #accessing }
