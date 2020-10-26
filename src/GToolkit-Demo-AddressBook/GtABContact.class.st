@@ -5,13 +5,13 @@ Class {
 	#name : #GtABContact,
 	#superclass : #GtABHierarchyObject,
 	#instVars : [
-		'address',
 		'firstName',
 		'lastName',
 		'avatar',
 		'description',
-		'notes',
-		'telephone'
+		'addresses',
+		'telephones',
+		'notes'
 	],
 	#category : #'GToolkit-Demo-AddressBook-Models'
 }
@@ -35,10 +35,10 @@ GtABContact class >> fromPetit: aPPXmlElement [
 		lastName: (dict at: #lastname ifAbsent: ['Unknown']);
 		avatar: (PNGReadWriter formFromFileNamed: ('data/icons/',(dict at: #avatar ifAbsent: [nil])));
 		description: (dict at: #description ifAbsent: ['Unknown']);
-		address: (GtABAddress new
+		addAddress: (GtABAddress new
 			city: (dict at: #city ifAbsent: ['Gotham']);
-			country: (dict at: #country ifAbsent: ['Narnia']);
-			telephone: (GtABTelephone fromPetit: (dict at: #telephone)))
+			country: (dict at: #country ifAbsent: ['Narnia']));
+		addTelephone: (GtABTelephone fromPetit: (dict at: #telephone))
 ]
 
 { #category : #accessing }
@@ -52,10 +52,10 @@ GtABContact class >> fromXML: aPPXmlElement [
 		lastName: (dict at: #lastname ifAbsent: ['Unknown']);
 		avatar: (PNGReadWriter formFromFileNamed: ('data/icons/',(dict at: #avatar ifAbsent: [nil])));
 		description: (dict at: #description ifAbsent: ['Unknown']);
-		address: (GtABAddress new
+		addAddress: (GtABAddress new
 			city: (dict at: #city ifAbsent: ['Gotham']);
-			country: (dict at: #country ifAbsent: ['Narnia']);
-			telephone: (GtABTelephone fromXML: (dict at: #telephone)))
+			country: (dict at: #country ifAbsent: ['Narnia']));
+		addTelephone: (GtABTelephone fromXML: (dict at: #telephone))
 ]
 
 { #category : #'accessing - defaults' }
@@ -97,7 +97,25 @@ GtABContact class >> unknowsJoeAvatar [
 ]
 
 { #category : #adding }
+GtABContact >> addAddress: anAddress [
+	self assert: [ anAddress notNil ].
+	
+	self addresses add: anAddress.
+]
+
+{ #category : #adding }
+GtABContact >> addAddresses: aCollectionOfAddresses [
+	self assert: [ aCollectionOfAddresses notNil ].
+	self assert: [ aCollectionOfAddresses isCollection ].
+	
+	aCollectionOfAddresses do: [ :anAddress |
+		self addTelephone: anAddress ]
+]
+
+{ #category : #adding }
 GtABContact >> addNote: aNote [
+	self assert: [ aNote notNil ].
+	
 	self notes addLast: aNote.
 ]
 
@@ -106,14 +124,32 @@ GtABContact >> addNotes: aCollection [
 	self notes addAll: aCollection.
 ]
 
-{ #category : #accessing }
-GtABContact >> address [
-	^ address ifNil: [ address := GtABAddress new ]
+{ #category : #adding }
+GtABContact >> addTelephone: aTelephone [
+	self assert: [ aTelephone notNil ].
+	
+	self telephones add: aTelephone.
+]
+
+{ #category : #adding }
+GtABContact >> addTelephones: aCollectionOfTelephones [
+	self assert: [ aCollectionOfTelephones notNil ].
+	self assert: [ aCollectionOfTelephones isCollection ].
+	
+	aCollectionOfTelephones do: [ :aTelephone |
+		self addTelephone: aTelephone ]
 ]
 
 { #category : #accessing }
-GtABContact >> address: anObject [
-	address := anObject
+GtABContact >> address [
+	^ self addresses 
+		ifEmpty: [ nil ] 
+		ifNotEmpty: [ :aCollectionOfAddresses | aCollectionOfAddresses first ]
+]
+
+{ #category : #accessing }
+GtABContact >> addresses [
+	^ addresses
 ]
 
 { #category : #accessing }
@@ -125,6 +161,12 @@ GtABContact >> avatar [
 { #category : #accessing }
 GtABContact >> avatar: anObject [
 	avatar := anObject
+]
+
+{ #category : #testing }
+GtABContact >> canMerge: anotherContact [
+	^ self firstName = anotherContact firstName and: [ 
+		self lastName = anotherContact lastName  ]
 ]
 
 { #category : #accessing }
@@ -153,32 +195,6 @@ GtABContact >> fullName [
 ]
 
 { #category : #ui }
-GtABContact >> gtInspectorContactOn: aComposite [
-	<gtInspectorPresentationOrder: 5>
-	
-	^ aComposite table
-		title: 'Details' translated;
-		display: [ {
-			'Name' -> self fullName.
-			'City' -> self address city.
-			'Country' -> self address country.
-			'Telephone' -> self telephone fullNumber } ];
-		column: 'Detail' evaluated: #key;
-		column: 'Value' evaluated: #value;
-		send: #value
-]
-
-{ #category : #ui }
-GtABContact >> gtInspectorPreviewOn: aComposite [
-	<gtInspectorPresentationOrder: 6>
-	
-	^ aComposite morph 
-		title: 'Preview' translated;
-		display: [ GtABPreviewMorph new contact: self ]
-		
-]
-
-{ #category : #ui }
 GtABContact >> gtSpotterPreviewIn: aComposite [
 	<spotterPreview: 10>
 	| previewMorph |
@@ -199,7 +215,15 @@ GtABContact >> gtViewContactDetailsOn: aView [
 		priority: 5;
 		stencil: [
 			|container verticalContainer detailsTextContainer avatarContainer nameTextContainer details|
-			details := (self telephone fullNumber, String cr, self address gtDisplayString).
+			details := String streamContents: [:aStream |
+				self telephones 
+					do: [ :aTelephone | aStream nextPutAll: aTelephone fullNumber ]
+					separatedBy: [ aStream cr ].
+				aStream cr.
+				self addresses 
+					do: [ :aTelephone | aStream nextPutAll: aTelephone gtDisplayString ]
+					separatedBy: [ aStream cr ] ].
+			
 			container := BlElement new
 				layout: BlLinearLayout horizontal;
 				background: Color white;
@@ -238,7 +262,7 @@ GtABContact >> gtViewContactDetailsOn: aView [
 			container ].
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #ui }
 GtABContact >> gtViewContactNotesOn: aView [
 	<gtView>
 	^ aView list
@@ -267,6 +291,8 @@ GtABContact >> icon [
 { #category : #initialization }
 GtABContact >> initialize [
 	super initialize.
+	addresses := OrderedCollection new.
+	telephones := OrderedCollection new.
 	notes := OrderedCollection new.
 	isCategory := false.
 ]
@@ -279,6 +305,23 @@ GtABContact >> lastName [
 { #category : #accessing }
 GtABContact >> lastName: aString [
 	lastName := aString
+]
+
+{ #category : #actions }
+GtABContact >> merge: anotherContact [
+	self 
+		assert: [ self canMerge: anotherContact ]
+		description: 'Contact cannot be merged.'.
+		
+	anotherContact addresses do: [ :anAddress |
+		(self addresses includes: anAddress) ifFalse: [ 
+			self addresses add: anAddress ] ].
+	anotherContact notes do: [ :aNote |
+		(self notes includes: aNote) ifFalse: [ 
+			self notes add: aNote ] ].
+	anotherContact telephones do: [ :aTelephone |
+		(self telephones includes: aTelephone) ifFalse: [ 
+			self telephones add: aTelephone ] ].
 ]
 
 { #category : #accessing }
@@ -301,10 +344,12 @@ GtABContact >> printOn: aStream [
 
 { #category : #accessing }
 GtABContact >> telephone [
-	^ telephone
+	^ self telephones 
+		ifEmpty: [ nil ] 
+		ifNotEmpty: [ :aCollectionOfTelephones | aCollectionOfTelephones first ]
 ]
 
 { #category : #accessing }
-GtABContact >> telephone: aTelephoneNumber [
-	telephone := aTelephoneNumber
+GtABContact >> telephones [
+	^ telephones
 ]

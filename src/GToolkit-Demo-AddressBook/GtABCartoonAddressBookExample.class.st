@@ -14,17 +14,19 @@ GtABCartoonAddressBookExample >> bugsBunnyContact [
 		lastName: 'Bunny';
 		description: self bugsBunnyDescription;
 		avatar: (self readAvatarWithId: 'bugs-bunny');
-		telephone: (GtABTelephone new 
+		addTelephone: (GtABTelephone new 
 				prefix: '1202'; 
 				number: '5550146');
-		address: (GtABAddress new
+		addAddress: (GtABAddress new
 			city: 'Universal City';
 			country: 'USA').
 
 	self assert: contact firstName equals: 'Bugs'.
 	self assert: contact lastName equals: 'Bunny'.
 	self assert: contact description equals: self bugsBunnyDescription.
-	self assert: contact address notNil.
+	self assert: contact addresses size equals: 1.
+	self assert: contact telephones size equals: 1.
+	
 
 	^ contact
 ]
@@ -63,17 +65,19 @@ GtABCartoonAddressBookExample >> daffyDuckContact [
 		lastName: 'Duck';
 		description: self daffyDuckDescription;
 		avatar: (self readAvatarWithId: 'daffy-duck');
-		telephone: (GtABTelephone new 
+		addTelephone: (GtABTelephone new 
 				prefix: '1202'; 
 				number: '5550151');
-		address: (GtABAddress new
+		addAddress: (GtABAddress new
 			city: 'Universal City';
 			country: 'USA').
 
 	self assert: contact firstName equals: 'Daffy'.
 	self assert: contact lastName equals: 'Duck'.
 	self assert: contact description equals: self daffyDuckDescription.
-	self assert: contact address notNil.
+	self assert: contact addresses size equals: 1.
+	self assert: contact telephones size equals: 1.
+	
 
 	^ contact
 ]
@@ -101,17 +105,18 @@ GtABCartoonAddressBookExample >> porkyPigContact [
 		lastName: 'Pig';
 		description: self porkyPigDescription;
 		avatar: (self readAvatarWithId: 'porky-pig');
-		telephone: (GtABTelephone new 
+		addTelephone: (GtABTelephone new 
 			prefix: '1202'; 
 			number: '5550138');
-		address: (GtABAddress new
+		addAddress: (GtABAddress new
 			city: 'Universal City';
 			country: 'USA').
 
 	self assert: contact firstName equals: 'Porky'.
 	self assert: contact lastName equals: 'Pig'.
 	self assert: contact description equals: self porkyPigDescription.
-	self assert: contact address notNil.
+	self assert: contact addresses size equals: 1.
+	self assert: contact telephones size equals: 1.
 
 	^ contact
 ]
@@ -143,17 +148,18 @@ GtABCartoonAddressBookExample >> roadRunnerContact [
 		lastName: 'Runner';
 		description: self roadRunnerDescription;
 		avatar: (self readAvatarWithId: 'road-runner');
-		telephone: (GtABTelephone new 
+		addTelephone: (GtABTelephone new 
 			prefix: '1202'; 
 			number: '5550110');
-		address: (GtABAddress new
+		addAddress: (GtABAddress new
 			city: 'Burbank';
 			country: 'USA').
 
 	self assert: contact firstName equals: 'Road'.
 	self assert: contact lastName equals: 'Runner'.
 	self assert: contact description equals: self roadRunnerDescription.
-	self assert: contact address notNil.
+	self assert: contact addresses size equals: 1.
+	self assert: contact telephones size equals: 1.
 
 	^ contact
 ]
@@ -173,17 +179,18 @@ GtABCartoonAddressBookExample >> wileECoyoteContact [
 		lastName: 'E. Coyote';
 		description: self wileECoyoteDescription;
 		avatar: (self readAvatarWithId: 'wile-e-coyote');
-		telephone: (GtABTelephone new 
+		addTelephone: (GtABTelephone new 
 			prefix: '1202'; 
 			number: '5550171');
-		address: (GtABAddress new
+		addAddress: (GtABAddress new
 			city: 'Burbank';
 			country: 'USA').
 
 	self assert: contact firstName equals: 'Wile'.
 	self assert: contact lastName equals: 'E. Coyote'.
 	self assert: contact description equals: self wileECoyoteDescription.
-	self assert: contact address notNil.
+	self assert: contact addresses size equals: 1.
+	self assert: contact telephones size equals: 1.
 
 	^ contact
 ]
@@ -203,17 +210,18 @@ GtABCartoonAddressBookExample >> woodyWoodpeckerContact [
 		lastName: 'Woodpecker';
 		description: self woodyWoodpeckerDescription;
 		avatar: (self readAvatarWithId: 'woody-woodpecker');
-		telephone: (GtABTelephone new 
+		addTelephone: (GtABTelephone new 
 			prefix: '1202'; 
 			number: '5550112');
-		address: (GtABAddress new
+		addAddress: (GtABAddress new
 			city: 'Universal City';
 			country: 'USA').
 
 	self assert: contact firstName equals: 'Woody'.
 	self assert: contact lastName equals: 'Woodpecker'.
 	self assert: contact description equals: self woodyWoodpeckerDescription.
-	self assert: contact address notNil.
+	self assert: contact addresses size equals: 1.
+	self assert: contact telephones size equals: 1.
 
 	^ contact
 ]

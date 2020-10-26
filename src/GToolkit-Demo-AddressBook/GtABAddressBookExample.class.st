@@ -117,14 +117,15 @@ GtABAddressBookExample >> brianKentContact [
 		lastName: 'Kent';
 		avatar: GtABContact johnDoeAvatar;
 		description: (String loremIpsum: 200);
-		telephone: self newYorkTelephoneNumber;
-		address: self newYorkAddress.
+		addTelephone: self newYorkTelephoneNumber;
+		addAddress: self newYorkAddress.
 	
 	self assert: contact firstName equals: 'Brian'.
 	self assert: contact lastName equals: 'Kent'.
 	self assert: contact fullName equals: 'Brian Kent'.
 	self assert: contact description size equals: 200.
-	self assert: contact address notNil.
+	self assert: contact addresses size equals: 1.
+	self assert: contact telephones size equals: 1.
 	
 	^ contact
 	
@@ -216,8 +217,8 @@ GtABAddressBookExample >> davidSmithContact [
 		lastName: 'Smith';
 		avatar: GtABContact johnDoeAvatar;
 		description: (String loremIpsum: 84);
-		telephone: self parisTelephoneNumber;
-		address: self parisAddress;
+		addTelephone: self parisTelephoneNumber;
+		addAddress: self parisAddress;
 		addNotes: {
 			self conferenceMeetingNote.
 			self businessNote }.
@@ -226,7 +227,8 @@ GtABAddressBookExample >> davidSmithContact [
 	self assert: contact lastName equals: 'Smith'.
 	self assert: contact fullName equals: 'David Smith'.
 	self assert: contact description size equals: 84.
-	self assert: contact address notNil.
+	self assert: contact addresses size equals: 1.
+	self assert: contact telephones size equals: 1.
 	self assert: contact notes size equals: 2.
 		
 	^ contact
@@ -290,14 +292,15 @@ GtABAddressBookExample >> jamesPoeContact [
 		lastName: 'Poe';
 		avatar: GtABContact johnDoeAvatar;
 		description: (String loremIpsum: 42);
-		telephone: self germanyTelephoneNumber;
-		address: self berlinAddress.
+		addTelephone: self germanyTelephoneNumber;
+		addAddress: self berlinAddress.
 		
 	self assert: contact firstName equals: 'James'.
 	self assert: contact lastName equals: 'Poe'.
 	self assert: contact fullName equals: 'James Poe'.
 	self assert: contact description size equals: 42.
-	self assert: contact address notNil.
+	self assert: contact addresses size equals: 1.
+	self assert: contact telephones size equals: 1.
 		
 	^ contact
 ]
@@ -311,14 +314,15 @@ GtABAddressBookExample >> janeDoeContact [
 		lastName: 'Doe';
 		description: GtABContact loremIpsum;
 		avatar: GtABContact janeDoeAvatar;
-		address: self bernAddress;
-		telephone: self bernTelephoneNumberOne;
+		addAddress: self bernAddress;
+		addTelephone: self bernTelephoneNumberOne;
 		addNotes: { self contactNote }.
 
 	self assert: contact firstName equals: 'Jane'.
 	self assert: contact lastName equals: 'Doe'.
 	self assert: contact description equals: GtABContact loremIpsum.
-	self assert: contact address notNil.
+	self assert: contact addresses size equals: 1.
+	self assert: contact telephones size equals: 1.
 	self assert: contact notes size equals: 1.
 
 	^ contact
@@ -333,13 +337,14 @@ GtABAddressBookExample >> johnDoeContact [
 		lastName: 'Doe';
 		description: GtABContact loremIpsum;
 		avatar: GtABContact johnDoeAvatar;
-		address: self bernAddress;
-		telephone: self bernTelephoneNumberTwo.
+		addAddress: self bernAddress;
+		addTelephone: self bernTelephoneNumberTwo.
 	
 	self assert: contact firstName equals: 'John'.
 	self assert: contact lastName equals: 'Doe'.
 	self assert: contact description equals: GtABContact loremIpsum.
-	self assert: contact address notNil.
+	self assert: contact addresses size equals: 1.
+	self assert: contact telephones size equals: 1.
 
 	^ contact
 ]

@@ -84,16 +84,3 @@ GtABTelephone >> prefix: anObject [
 GtABTelephone >> printOn: aStream [
 	aStream nextPutAll: self fullNumber
 ]
-
-{ #category : #searching }
-GtABTelephone >> spotterForContactsFor: aStep [
-	<spotterOrder: 10>
-	
-	(aStep hasPreviousNavigationFromClass: GtABAddressBook) ifFalse: [ ^ self  ].
-	
-	^ aStep listProcessor 
-		title: 'Contacts';
-		candidatesLimit: Float infinity;
-		allCandidates: [ aStep previousStep origin contactsWithTelephone: self number ];
-		matchSubstring 
-]

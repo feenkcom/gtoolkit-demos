@@ -25,7 +25,7 @@ GtABAddressBookTest >> createJaneDoeContact [
 		lastName: 'Doe';
 		description: GtABContact loremIpsum;
 		avatar: GtABContact janeDoeAvatar;
-		address: self createContactAddress
+		addAddress: self createContactAddress
 ]
 
 { #category : #building }
@@ -35,8 +35,8 @@ GtABAddressBookTest >> createJohnDoeContact [
 		lastName: 'Doe';
 		description: GtABContact loremIpsum;
 		avatar: GtABContact johnDoeAvatar;
-		address: self createContactAddress;
-		telephone: self createAddressTelephone
+		addAddress: self createContactAddress;
+		addTelephone: self createAddressTelephone
 ]
 
 { #category : #tests }

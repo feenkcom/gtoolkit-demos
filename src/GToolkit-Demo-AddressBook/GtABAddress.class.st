@@ -39,7 +39,7 @@ GtABAddress >> country: anObject [
 ]
 
 { #category : #ui }
-GtABAddress >> gtGtSpotterForPeopleFor: aStep [
+GtABAddress >> gtSpotterForPeopleFor: aStep [
 	<gtSearch>
 	(aStep hasPreviousNavigationFromClass: GtABAddressBook)
 		ifFalse: [ ^ self ].
@@ -48,21 +48,6 @@ GtABAddress >> gtGtSpotterForPeopleFor: aStep [
 		title: 'People';
 		itemName: [ :contact | contact fullName ];
 		allCandidates: [ aStep previousStep origin contactsWithAddress: self ];
-		candidatesLimit: 10;
-		matchSubstrings
-]
-
-{ #category : #searching }
-GtABAddress >> gtSpotterForPeopleFor: aStep [
-	<spotterOrder: 10>
-	
-	(aStep hasPreviousNavigationFromClass: GtABAddressBook ) ifFalse: [ ^ self  ].
-	
-	^ aStep listProcessor 
-		title: 'People';
-		itemName: [ :contact | contact fullName ];
-		allCandidates: [ 
-			aStep previousStep origin contactsWithAddress: self ];
 		candidatesLimit: 10;
 		matchSubstrings
 ]

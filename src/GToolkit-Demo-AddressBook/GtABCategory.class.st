@@ -32,7 +32,7 @@ GtABCategory >> addSubcategory: aCategory [
 	self subcategories addLast: aCategory.
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #accessing }
 GtABCategory >> allContacts [
 	"Return the contacts from this category and from all subcategories"
 	| allSubcontacts |
