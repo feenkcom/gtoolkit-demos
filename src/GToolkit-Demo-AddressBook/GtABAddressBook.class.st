@@ -15,15 +15,6 @@ Class {
 	#category : #'GToolkit-Demo-AddressBook-Models'
 }
 
-{ #category : #browsing }
-GtABAddressBook class >> contactsSearch [
-
-	GTSpotterMorph new
-		extent: 400@500;
-		spotterModel: (GTSpotter on: GtABAddressBook default);
-		openCenteredInWorld
-]
-
 { #category : #accessing }
 GtABAddressBook class >> default [
 	^ default ifNil: [ 
@@ -62,6 +53,19 @@ GtABAddressBook >> addContact: aContact [
 { #category : #adding }
 GtABAddressBook >> addContacts: aList [
 	self contacts addAll: aList
+]
+
+{ #category : #adding }
+GtABAddressBook >> addOrMergeContact: aContact [
+	"Add the given contact or merge it into an existing contact if possible."
+	self allContacts do: [ :anotherContact |
+		(anotherContact canMerge: aContact) ifTrue: [ 
+			anotherContact merge: aContact.
+			^ self ] ].
+	
+	"If there was no merge, add the new contact to the address book."
+	self addContact: aContact
+	
 ]
 
 { #category : #accessing }

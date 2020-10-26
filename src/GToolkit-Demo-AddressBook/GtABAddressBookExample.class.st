@@ -47,6 +47,29 @@ GtABAddressBookExample >> acquaintancesCategory [
 	^ category
 ]
 
+{ #category : #'examples - contacts' }
+GtABAddressBookExample >> basicBrianKentContact [
+	<gtExample>
+	| contact |
+	
+	contact := GtABContact new
+		firstName: 'Brian';
+		lastName: 'Kent';
+		avatar: GtABContact johnDoeAvatar;
+		description: (String loremIpsum: 200).
+	
+	self assert: contact firstName equals: 'Brian'.
+	self assert: contact lastName equals: 'Kent'.
+	self assert: contact fullName equals: 'Brian Kent'.
+	self assert: contact description size equals: 200.
+	self assert: contact addresses size equals: 0.
+	self assert: contact telephones size equals: 0.
+	self assert: contact notes size equals: 0.
+	
+	^ contact
+	
+]
+
 { #category : #'examples - addresses' }
 GtABAddressBookExample >> berlinAddress [
 	<gtExample>
@@ -112,18 +135,10 @@ GtABAddressBookExample >> brianKentContact [
 	<gtExample>
 	| contact |
 	
-	contact := GtABContact new
-		firstName: 'Brian';
-		lastName: 'Kent';
-		avatar: GtABContact johnDoeAvatar;
-		description: (String loremIpsum: 200);
+	contact := self basicBrianKentContact
 		addTelephone: self newYorkTelephoneNumber;
 		addAddress: self newYorkAddress.
 	
-	self assert: contact firstName equals: 'Brian'.
-	self assert: contact lastName equals: 'Kent'.
-	self assert: contact fullName equals: 'Brian Kent'.
-	self assert: contact description size equals: 200.
 	self assert: contact addresses size equals: 1.
 	self assert: contact telephones size equals: 1.
 	
