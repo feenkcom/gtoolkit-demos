@@ -1,5 +1,5 @@
 Class {
-	#name : #TDNullTodo,
+	#name : #TDNullAlbum,
 	#superclass : #TDNullModel,
 	#traits : 'TGtUniqueInstance',
 	#classTraits : 'TGtUniqueInstance classTrait',
@@ -7,26 +7,26 @@ Class {
 }
 
 { #category : #accessing }
-TDNullTodo >> completed [
-	^ nil.
-]
-
-{ #category : #accessing }
-TDNullTodo >> id [
+TDNullAlbum >> id [
 	^ 0.
 ]
 
 { #category : #accessing }
-TDNullTodo >> title [
-	^ ''.
-]
-
-{ #category : #accessing }
-TDNullTodo >> user [
+TDNullAlbum >> imagesGroup [
 	^ nil.
 ]
 
 { #category : #accessing }
-TDNullTodo >> userId [
+TDNullAlbum >> title [
+	^ ''.
+]
+
+{ #category : #accessing }
+TDNullAlbum >> user [
+	^ nil.
+]
+
+{ #category : #accessing }
+TDNullAlbum >> userId [
 	^ 0.
 ]

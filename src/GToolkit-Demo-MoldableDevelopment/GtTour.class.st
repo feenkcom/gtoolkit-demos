@@ -269,6 +269,7 @@ GtTour >> customViewsExampleSlideFor: aSlide [
 
 { #category : #accessing }
 GtTour >> explainerOnReactJSComponents [
+	<gtExample>
 	| js inspectorContainer container explanationStyler look sourceElement compositeStyler editor |
 	js := '  function Welcome(props) {
     return <h1>Hello, {props.name}</h1>;

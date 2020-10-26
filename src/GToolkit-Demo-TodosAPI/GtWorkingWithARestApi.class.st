@@ -4,6 +4,38 @@ Class {
 	#category : #'GToolkit-Demo-TodosAPI-Presentation'
 }
 
+{ #category : #accesing }
+GtWorkingWithARestApi >> albumsExampleSlideFor: aSlide [
+	<gtSlide>
+	^ aSlide labelAndElement
+		priority: 21;
+		newFadedText: 'Below you can inspect the result of a request for the album with id 4.';
+		element: [ GtPlaygroundLiveSlide new
+			snippets: {'TDClient new getAlbumWithId: 4.'};
+			inspectSnippetAt: 1 ].
+]
+
+{ #category : #accesing }
+GtWorkingWithARestApi >> albumsExplanationSlideFor: aSlide [
+	<gtSlide>
+	^ aSlide textAndElement
+		priority: 20;
+		newTextWithFormat: ('Albums' asRopedText bold; fontSize: 18);
+		newTextWithFormat: self albumsSlideText;
+		element: [ BlElement new
+			background: Color white;
+			look: BrShadowLook;
+			margin: (BlInsets right: 5);
+			addChild: (GtClassCoder forClass: TDAlbum) asElement ].
+]
+
+{ #category : #accesing }
+GtWorkingWithARestApi >> albumsSlideText [
+	^ 'An album is just a collection of photos. It has a title, an id, the list of photos composing the album and id of the user who created the album.' asRopedText
+		glamorousRegularFont;
+		fontSize: 18.
+]
+
 { #category : #accessing }
 GtWorkingWithARestApi >> apiExamples [
 	| bottomContainer firstExampleContainer secondExampleContainer thirdExampleContainer |
@@ -132,7 +164,7 @@ GtWorkingWithARestApi >> commentsExampleSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide labelAndElement
 		priority: 19;
-		newFadedText: 'And a request for a comment will return you that comment with everything you need to know about it.';
+		newFadedText: 'Requesting a comment will return you that comment with everything you need to know about it.';
 		element: [ GtPlaygroundLiveSlide new
 			snippets: {'TDClient new getCommentWithId: 5.'};
 			inspectSnippetAt: 1 ].
@@ -154,7 +186,7 @@ GtWorkingWithARestApi >> commentsExplanationSlideFor: aSlide [
 
 { #category : #accessing }
 GtWorkingWithARestApi >> commentsSlideText [
-	^ 'Finally, a comment is left by a user to a post. It can be identified by an id and it stores the text comment, the id of the post it was left on and the name and email of the user that left it.' asRopedText
+	^ 'A comment is a message left by a user to a post. It can be identified by an id and it stores the text of that comment, the id of the post it was left on and the name and email of the user that left it.' asRopedText
 	glamorousRegularFont;
 	fontSize: 18.
 ]
@@ -250,16 +282,16 @@ GtWorkingWithARestApi >> getAllTodosMethodExplanation [
 { #category : #accessing }
 GtWorkingWithARestApi >> getAllTodosMethodExplanationText [
 	| text |
-	text := 'This is how a request is implemented. First we send a GET ' asRopedText,
+	text := 'To implement a request, first we send a GET ' asRopedText,
 ('request' asRopedText glamorousExplanationFor: #requestForUrl:),
 ' to the API using the specific ' asRopedText,
 ('url' asRopedText glamorousExplanationFor: #url),
 ' for it.
-The response is transformed into a ' asRopedText,
+The response is then transformed into a ' asRopedText,
 ('list of dictionaries' asRopedText glamorousExplanationFor: #dictionaries),
 ', where ' asRopedText,
 ('each dictionary' asRopedText glamorousExplanationFor: #dict),
-' represents a certain todo. For each of them we ' asRopedText,
+' represents a certain type of object. In this instance, each of them is a todo so for each of them we ' asRopedText,
 ('save the information' asRopedText glamorousExplanationFor: #rawData:),
 ' in a ' asRopedText,
 ('todo' asRopedText glamorousExplanationFor: #TDTodo),
@@ -272,13 +304,13 @@ The response is transformed into a ' asRopedText,
 		fontSize: 18.
 ]
 
-{ #category : #accessing }
+{ #category : #accesing }
 GtWorkingWithARestApi >> introductionSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide text
 		priority: 5;
 		newTextWithFormat:
-			('In this slideshow, we exemplify how we can understand and browse an existing REST API containing posts, todos and comments, made by different users.' asRopedText 
+			('In this slideshow, we exemplify how we can understand and browse an existing REST API containing users, posts, todos, comments, albums and photos.' asRopedText 
 				glamorousRegularFont; 
 				fontSize: 18).
 ]
@@ -289,14 +321,46 @@ GtWorkingWithARestApi >> modelDescriptionIntroductionSlideFor: aSlide [
 	^ aSlide text
 		priority: 7;
 		newTextWithFormat: 
-			('Now let''s see how we can implement a user interface for this model and also how to display the information resulted in a more easy way to understand.' asRopedText 
+			('In the following we will take a look at how to make a user interface for the requests and how to display the resulted information in a more pleasing and understandable manner.' asRopedText 
 				glamorousRegularFont;
 				fontSize: 18).
 ]
 
+{ #category : #accesing }
+GtWorkingWithARestApi >> photosExampleSlideFor: aSlide [
+	<gtSlide>
+	^ aSlide labelAndElement
+		priority: 23;
+		newFadedText: 'Below is an example of a request for the image with id 9.';
+		element: [ GtPlaygroundLiveSlide new
+			snippets: {'TDClient new getImageWithId: 9.'};
+			inspectSnippetAt: 1 ].
+]
+
+{ #category : #accesing }
+GtWorkingWithARestApi >> photosExplanationSlideFor: aSlide [
+	<gtSlide>
+	^ aSlide textAndElement
+		priority: 22;
+		newTextWithFormat: ('Photos' asRopedText bold; fontSize: 18);
+		newTextWithFormat: self photosSlideText;
+		element: [ BlElement new
+			background: Color white;
+			look: BrShadowLook;
+			margin: (BlInsets right: 5);
+			addChild: (GtClassCoder forClass: TDImage) asElement ].
+]
+
+{ #category : #accesing }
+GtWorkingWithARestApi >> photosSlideText [
+	^ 'A photo is what composes the album. It has a title, an id, the id of the album where it is from and two urls. One for the thumbnail image and one for the actual image. To visualize the actual image, a request to the specific url is done. That request returns a byte array that is then transformed into a pharo image.' asRopedText
+		glamorousRegularFont;
+		fontSize: 18.
+]
+
 { #category : #accessing }
 GtWorkingWithARestApi >> postsSlideText [
-	^ 'The simple post is the second type of post a user can make. It is similar to the todo. The difference is that the post has a body of text instead of the status. It also has a list of comments left by other users to the specific post.' asRopedText
+	^ 'Simple posts are the second type of posts a user can make. They are similar with todos, the difference being that the post contains a body of text instead of a status. It also has a list of comments left by other users to the specific post.' asRopedText
 	glamorousRegularFont;
 	fontSize: 18.
 ]
@@ -306,7 +370,7 @@ GtWorkingWithARestApi >> requestMethodExampleSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide labelAndElement
 		priority: 10;
-		newFadedText: 'And here is how the result of that request looks like.';
+		newFadedText: 'So if we were to request all the todos we would get a group of todos, which you can see displayed by running the snippet below.';
 		element: [ GtPlaygroundLiveSlide new
 			snippets: {'TDClient new getAllTodos.'};
 			inspectSnippetAt: 1 ].
@@ -325,16 +389,19 @@ GtWorkingWithARestApi >> requestMethodExplanationSlideFor: aSlide [
 GtWorkingWithARestApi >> requestSnippetsExampleSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide labelAndElement
-		priority: 20;
-		newFadedText: 'You can play around with the snippets below to better see the model at work';
+		priority: 24;
+		newFadedText: 'You can play around with the snippets below to better see the model at work.';
 		element: [ GtPlaygroundLiveSlide new
 			snippets: {
-				'TDClient new getCommentWithId: 6'.
-				'TDClient new getPostWithId: 3'. 
-				'TDClient new getTodoWithId: 4'. 
-				'TDClient new getUserWithId: 5'. 
+				'TDClient new getUserWithId: 5'.
+				'TDClient new getTodoWithId: 4'.
+				'TDClient new getPostWithId: 3'.
+				'TDClient new getCommentWithId: 6'. 
+				'TDClient new getAlbumWithId: 2.'.
+				'TDClient new getImageWithId: 1.'.
+				'TDClient new getAllTodos'.
 				'TDClient new getAllPosts'.
-				'TDClient new getAllTodos' };
+				'TDClient new getAllAlbums.'};
 			asElement ].
 ]
 
@@ -354,7 +421,7 @@ GtWorkingWithARestApi >> simplePostsExplanationSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide textAndElement
 		priority: 16;
-		newTextWithFormat: ('Simple Posts' asRopedText bold; fontSize: 18);
+		newTextWithFormat: ('Posts' asRopedText bold; fontSize: 18);
 		newTextWithFormat: self postsSlideText;
 		element: [ BlElement new
 			background: Color white;
@@ -400,7 +467,7 @@ GtWorkingWithARestApi >> todosExplanationSlideFor: aSlide [
 
 { #category : #accessing }
 GtWorkingWithARestApi >> todosSlideText [
-	^ 'Then we have a todo, that is a type of post a user can make. It holds the following information: the user it is associated with, an id, a title and a status, specifically if it was completed or not.' asRopedText
+	^ 'Next we have a todo. This is a type of post a user can make. It holds the following information: the user it is associated with, an id, a title and a status, namely if it was completed or not.' asRopedText
 	glamorousRegularFont;
 	fontSize: 18.
 ]
@@ -410,7 +477,7 @@ GtWorkingWithARestApi >> userExampleSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide labelAndElement
 		priority: 13;
-		newFadedText: 'Requesting a user will return that user with its information and the lists of posts and todos made by him.';
+		newFadedText: 'Requesting a user will return that user with its information and the lists of posts, todos and albums associated with him.';
 		element: [ GtPlaygroundLiveSlide new
 			snippets: {'TDClient new getUserWithId: 4.'};
 			inspectSnippetAt: 1 ].
@@ -432,7 +499,7 @@ GtWorkingWithARestApi >> userExplanationSlideFor: aSlide [
 
 { #category : #accessing }
 GtWorkingWithARestApi >> userSlideText [
-	^ 'The first type of data is a user, that can be identified by an id. He also has a list of posts and a list of todos, associated with him. The two lists are are obtained through two separate requests to the API, after the user has been requested.' asRopedText
+	^ 'The first, and main type of data is a user. Almost every other type of data is connect to a user. They can be identified by an id and they hold relevant information for the user such as the name, username, phone or email. But on top of that, each user has a list of posts, a list of todos and one of albums associated with him. Those lists are obtained through separate requests to the API, after the information for this user has been parsed and stored.' asRopedText
 	glamorousRegularFont;
 	fontSize: 18.
 ]

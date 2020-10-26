@@ -230,7 +230,8 @@ GtQueries >> methodFiltersExampleSlideFor: aSlide [
 		element: [GtPlaygroundLiveSlide new
 			snippets: {'"Methods with a certain name"
 #printString gtImplementors'.
-'"Methods with a certain expression in the source code"
+'"Methods with a certain expression in the source code. For example, here we are searching for code that looks like 
+	filter matches: something"
 ''filter matches: ``@a'' gtASTMatches'.
 '"Methods with a certain substring in the source code"
 ''children: #children'' gtSubstringMatch'.
