@@ -89,14 +89,18 @@ GtABPreviewMorph >> createDelimiterMorph [
 
 { #category : #initialization }
 GtABPreviewMorph >> createPersonalInformationBrick [
-	^ GLMBandBrick new
+	| brick |
+	brick := GLMBandBrick new
 		margin: 20;
 		vShrinkWrap;
-		hSpaceFill;
-		addBrickBack: (self personal: 'Country' value: self contact address country);
-		addBrickBack: (self personal: 'City' value: self contact address city);
-		addBrickBack: (self personal: 'Telephone' value: self contact telephone fullNumber);
-		yourself
+		hSpaceFill.
+	(self contact addresses ifNotEmpty: [ 
+		brick
+			addBrickBack: (self personal: 'Country' value: self contact addresses first country);
+			addBrickBack: (self personal: 'City' value: self contact addresses first city) ]).
+	self contact telephones do: [ :aTelephone |
+		brick addBrickBack: (self personal: 'Telephone' value: aTelephone fullNumber). ].
+	^ brick
 ]
 
 { #category : #initialization }

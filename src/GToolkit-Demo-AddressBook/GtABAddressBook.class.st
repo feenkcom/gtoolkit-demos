@@ -15,42 +15,11 @@ Class {
 	#category : #'GToolkit-Demo-AddressBook-Models'
 }
 
-{ #category : #browsing }
-GtABAddressBook class >> contactsAddressesSearch [
-
-	GTSpotterMorph new
-		extent: 400@500;
-		spotterModel: (GTSpotter 
-			on: GtABAddressBook default
-			withProcessors: {
-				GtABAddressBook>>#gtSpotterForAddressesFor:.
-				GtABAddress>>#gtSpotterForPeopleFor: });
-		openCenteredInWorld
-]
-
-{ #category : #browsing }
-GtABAddressBook class >> contactsBrowser [
-
-	GTInspector new
-  		filterByMethods: {GtABAddressBook>>#gtInspectorContactsOn: . GtABContact>>#gtInspectorContactOn:};
-  		openOn: GtABAddressBook default
-]
-
-{ #category : #browsing }
-GtABAddressBook class >> contactsSearch [
-
-	GTSpotterMorph new
-		extent: 400@500;
-		spotterModel: (GTSpotter on: GtABAddressBook default);
-		openCenteredInWorld
-]
-
 { #category : #accessing }
 GtABAddressBook class >> default [
 	^ default ifNil: [ 
 		default := self new
 			label: 'My contacts'.
-		self loadDefaultDataIn: default.
 		default ]
 ]
 
@@ -59,51 +28,6 @@ GtABAddressBook class >> initialize [
 
 	"ABAddressBook default loadFromFile: 'data/cartoon.adr'."
 	self reset
-]
-
-{ #category : #private }
-GtABAddressBook class >> loadDefaultDataIn: anAddressBook [
-
-	anAddressBook contacts add: (
-	GtABContact new
-		firstName: 'Andrei';
-		lastName: 'Chis';
-		telephone: (GtABTelephone  new prefix: '41-7'; number: '12345678');
-		address: (
-			GtABAddress new
-				city: 'Bern';
-				country: 'Switzerland')).
-
-	anAddressBook contacts add: (
-	GtABContact new
-		firstName: 'Aliaksei';
-		lastName: 'Syrel';
-		address: (
-			GtABAddress new
-				city: 'Bern';
-				country: 'Switzerland';
-				telephone: (GtABTelephone  new  prefix: '41-7'; number: '11223344'))).
-
-	anAddressBook contacts add: (
-	GtABContact new
-		firstName: 'Tudor';
-		lastName: 'Girba';
-		telephone: (GtABTelephone  new prefix: '41-7'; number: '11224455');
-		address: (
-			GtABAddress new
-				city: 'Bern';
-				country: 'Switzerland')).
-				
-				
-	anAddressBook contacts add: (
-	GtABContact new
-		firstName: 'Juraj';
-		lastName: 'Kubelka';
-		telephone: (GtABTelephone  new prefix: '56-5'; number: '54321345');
-		address: (
-			GtABAddress new
-				city: 'Santiago';
-				country: 'Chile')).
 ]
 
 { #category : #accessing }
@@ -131,7 +55,20 @@ GtABAddressBook >> addContacts: aList [
 	self contacts addAll: aList
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #adding }
+GtABAddressBook >> addOrMergeContact: aContact [
+	"Add the given contact or merge it into an existing contact if possible."
+	self allContacts do: [ :anotherContact |
+		(anotherContact canMerge: aContact) ifTrue: [ 
+			anotherContact merge: aContact.
+			^ self ] ].
+	
+	"If there was no merge, add the new contact to the address book."
+	self addContact: aContact
+	
+]
+
+{ #category : #accessing }
 GtABAddressBook >> allContacts [
 	" Returns the contacts from all categories and the ones that have no category"
 	| allContacts |
@@ -161,12 +98,15 @@ GtABAddressBook >> contacts: anObject [
 
 { #category : #filtering }
 GtABAddressBook >> contactsWithAddress: anAddress [
-	^self contacts select: [ :each | each address = anAddress ] 
+	^self allContacts select: [ :aContact | 
+		aContact address = anAddress ] 
 ]
 
 { #category : #filtering }
 GtABAddressBook >> contactsWithTelephone: aNumber [
-	^self contacts select: [ :each | each address telephone number = aNumber ] 
+	^self allContacts select: [ :aContact | 
+		aContact telephones anySatisfy: [ :aTelephone | 
+			aTelephone number = aNumber ] ]
 ]
 
 { #category : #ui }
@@ -200,49 +140,7 @@ GtABAddressBook >> gtGtSpotterForTelephonesFor: aStep [
 	^ aStep listProcessor
 		priority: 15;
 		title: 'Telephones' translated;
-		allCandidates: [ self contacts collect: [ :aContact | aContact address telephone ] ];
-		matchSubstrings
-]
-
-{ #category : #ui }
-GtABAddressBook >> gtInspectorContactsOn: aComposite [
-	<gtInspectorPresentationOrder: 5>
-	aComposite table
-		title: 'Contacts' translated;
-		display: [ self contacts ];
-		column: 'Name' evaluated: [ :aContact | aContact fullName ];
-		column: 'Telephone' evaluated: [ :aContact | 
-			aContact address telephone ]
-]
-
-{ #category : #searching }
-GtABAddressBook >> gtSpotterForAddressesFor: aStep [
-	<spotterOrder: 10>
-	^ aStep listProcessor 
-		title: 'Addresses' translated;
-		allCandidates: [ (self contacts collect: #address as: Set) asOrderedCollection ];
-		candidatesLimit: 7;
-		itemName: [:each | each city, ', ', each country];
-		matchSubstrings
-]
-
-{ #category : #searching }
-GtABAddressBook >> gtSpotterForPeopleFor: aStep [
-	<spotterOrder: 5>
-	^ aStep listProcessor 
-		title: 'People';
-		allCandidates: [ self contacts ];
-		filter: GtFilterSubstrings;
-		candidatesLimit: 7;
-		itemName: [ :aContact | aContact lastName asUppercase, ', ' , aContact firstName ]
-]
-
-{ #category : #searching }
-GtABAddressBook >> gtSpotterForTelephonesFor: aStep [
-	<spotterOrder: 15>
-	^ aStep listProcessor 
-		title: 'Telephones' translated;
-		allCandidates: [ self contacts collect: [ :aContact | aContact address telephone ] ];
+		allCandidates: [ self contacts flatCollect: [ :aContact | aContact address telephones ] ];
 		matchSubstrings
 ]
 
@@ -326,15 +224,17 @@ GtABAddressBook >> gtViewContactsOn: aView [
 		title: 'Contacts with details' translated;
 		priority: 5;
 		items: [ self allContacts ];
-		column: 'Avatar' icon: [ :aContact | aContact avatar asElement asScalableElement size: 32 @ 32 ];
+		column: 'Avatar' 
+			icon: [ :aContact | aContact avatar asElement asScalableElement size: 32 @ 32 ]
+			width: 75;
 		column: 'Name' text: [ :aContact | aContact fullName ];
 		column: 'Phone' text: [ :aContact | aContact telephone ]
 ]
 
 { #category : #testing }
-GtABAddressBook >> includesContactWithName: aPattern [
-	^ self contacts anySatisfy: [ :aContact | 
-		aPattern match: aContact fullName ]
+GtABAddressBook >> includesContactWithFirstName: aFirstName [
+	^ self allContacts anySatisfy: [ :aContact | 
+		aFirstName = aContact firstName ]
 ]
 
 { #category : #initialization }

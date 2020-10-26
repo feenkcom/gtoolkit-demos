@@ -11,6 +11,13 @@ Class {
 	#category : #'GToolkit-Demo-AddressBook-Models'
 }
 
+{ #category : #comparing }
+GtABContactNote >> = anObject [
+	self == anObject ifTrue: [ ^ true ].
+	self class = anObject class ifFalse: [ ^ false ].
+	^ title = anObject title and: [ content = anObject content ]
+]
+
 { #category : #accessing }
 GtABContactNote >> content [
 	^ content.
@@ -29,6 +36,15 @@ GtABContactNote >> gtViewNoteContentOn: aView [
 		title: 'Content' translated;
 		look: BrGlamorousCodeEditorLook;
 		text: self content.
+]
+
+{ #category : #comparing }
+GtABContactNote >> hash [
+
+	^ self class hash 
+		bitXor: (title hash 
+		bitXor: content hash)
+	
 ]
 
 { #category : #accessing }

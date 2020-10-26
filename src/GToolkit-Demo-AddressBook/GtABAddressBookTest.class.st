@@ -7,7 +7,7 @@ Class {
 { #category : #building }
 GtABAddressBookTest >> createAddressTelephone [
 	^ GtABTelephone new
-		prefix: '41';
+		prefix: '+41';
 		number: '074574363'
 ]
 
@@ -15,8 +15,7 @@ GtABAddressBookTest >> createAddressTelephone [
 GtABAddressBookTest >> createContactAddress [
 	^ GtABAddress new
 		city: 'Bern';
-		country: 'Switzerland';
-		telephone: self createAddressTelephone
+		country: 'Switzerland'
 ]
 
 { #category : #building }
@@ -26,7 +25,7 @@ GtABAddressBookTest >> createJaneDoeContact [
 		lastName: 'Doe';
 		description: GtABContact loremIpsum;
 		avatar: GtABContact janeDoeAvatar;
-		address: self createContactAddress
+		addAddress: self createContactAddress
 ]
 
 { #category : #building }
@@ -36,14 +35,15 @@ GtABAddressBookTest >> createJohnDoeContact [
 		lastName: 'Doe';
 		description: GtABContact loremIpsum;
 		avatar: GtABContact johnDoeAvatar;
-		address: self createContactAddress
+		addAddress: self createContactAddress;
+		addTelephone: self createAddressTelephone
 ]
 
 { #category : #tests }
 GtABAddressBookTest >> testAddressTelephone [
 	| telephone |
 	telephone := self createAddressTelephone.
-	self assert: telephone prefix equals: '41'.
+	self assert: telephone prefix equals: '+41'.
 	self assert: telephone number equals: '074574363'.
 	self assert: telephone fullNumber equals: '+41-074574363'
 ]
@@ -53,8 +53,7 @@ GtABAddressBookTest >> testContactAddress [
 	| address |
 	address := self createContactAddress.
 	self assert: address city equals: 'Bern'.
-	self assert: address country equals: 'Switzerland'.
-	self assert: address telephone notNil
+	self assert: address country equals: 'Switzerland'
 ]
 
 { #category : #tests }
@@ -90,6 +89,6 @@ GtABAddressBookTest >> testMyContactsAddressBook [
 	addressBook addContact: self createJaneDoeContact.
 	
 	self assert: addressBook contacts size equals: 2.
-	self assert: (addressBook includesContactWithName: 'John*').
-	self assert: (addressBook includesContactWithName: 'Jane*')
+	self assert: (addressBook includesContactWithFirstName: 'John*').
+	self assert: (addressBook includesContactWithFirstName: 'Jane*')
 ]

@@ -415,7 +415,7 @@ GtInspectorViews >> explicitViewExplanationWithLinks [
 	ifFound: [:aChild | aChild].
 	phoneTextElement := resultInspectorTree
 	allChildrenBreadthFirstDetect: [:aChild | 
-		(aChild isKindOf: BrTextElementWithCursors) and: [aChild text asString = '+41-074574363']]
+		(aChild isKindOf: BrTextElementWithCursors) and: [aChild text asString = '+41-74574363']]
 	ifFound: [:aChild | aChild].
 	addressTextElement := resultInspectorTree
 	allChildrenBreadthFirstDetect: [:aChild | 
