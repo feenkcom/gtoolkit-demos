@@ -39,7 +39,7 @@ GtABTelephone >> = anObject [
 { #category : #accessing }
 GtABTelephone >> fullNumber [
 
-	^ '+',prefix,'-',number
+	^ prefix,'-',number
 ]
 
 { #category : #ui }

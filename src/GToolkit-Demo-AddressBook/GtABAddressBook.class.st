@@ -131,7 +131,7 @@ GtABAddressBook >> addContacts: aList [
 	self contacts addAll: aList
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #accessing }
 GtABAddressBook >> allContacts [
 	" Returns the contacts from all categories and the ones that have no category"
 	| allContacts |
