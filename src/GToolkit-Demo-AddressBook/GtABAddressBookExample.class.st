@@ -47,6 +47,28 @@ GtABAddressBookExample >> acquaintancesCategory [
 	^ category
 ]
 
+{ #category : #'examples - search' }
+GtABAddressBookExample >> addressBookContainsContactWithJohnFirstName [
+	<gtExample>
+	| addressBook |
+	addressBook := self contactsAddressBookWithCategories.
+
+	self assert: (addressBook includesContactWithFirstName: 'John').
+	
+	^ addressBook
+]
+
+{ #category : #'examples - search' }
+GtABAddressBookExample >> addressBookDoesNotContainContactWithMartinFirstName [
+	<gtExample>
+	| addressBook |
+	addressBook := self contactsAddressBookWithCategories.
+
+	self assert: (addressBook includesContactWithFirstName: 'Martin') not.
+	
+	^ addressBook
+]
+
 { #category : #'examples - contacts' }
 GtABAddressBookExample >> basicBrianKentContact [
 	<gtExample>
@@ -378,8 +400,8 @@ GtABAddressBookExample >> myContactsAddressBook [
 	
 	self assert: addressBook contacts size equals: 5.
 	self assert: addressBook categories size equals: 0.
-	self assert: (addressBook includesContactWithName: 'John*').
-	self assert: (addressBook includesContactWithName: 'Jane*').
+	self assert: (addressBook includesContactWithFirstName: 'John').
+	self assert: (addressBook includesContactWithFirstName: 'Jane').
 	
 	^ addressBook
 ]

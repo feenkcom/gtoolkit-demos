@@ -89,6 +89,6 @@ GtABAddressBookTest >> testMyContactsAddressBook [
 	addressBook addContact: self createJaneDoeContact.
 	
 	self assert: addressBook contacts size equals: 2.
-	self assert: (addressBook includesContactWithName: 'John*').
-	self assert: (addressBook includesContactWithName: 'Jane*')
+	self assert: (addressBook includesContactWithFirstName: 'John*').
+	self assert: (addressBook includesContactWithFirstName: 'Jane*')
 ]

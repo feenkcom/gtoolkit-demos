@@ -50,7 +50,7 @@ GtABCartoonAddressBookExample >> cartoonAddressBook [
 	addressBook addContact: self wileECoyoteContact.
 	addressBook addContact: self woodyWoodpeckerContact.
 	
-	self assert: addressBook contacts size equals:6.
+	self assert: addressBook contacts size equals: 6.
 	
 	^ addressBook
 ]
@@ -66,8 +66,8 @@ GtABCartoonAddressBookExample >> daffyDuckContact [
 		description: self daffyDuckDescription;
 		avatar: (self readAvatarWithId: 'daffy-duck');
 		addTelephone: (GtABTelephone new 
-				prefix: '1202'; 
-				number: '5550151');
+			prefix: '1202'; 
+			number: '5550151');
 		addAddress: (GtABAddress new
 			city: 'Universal City';
 			country: 'USA').

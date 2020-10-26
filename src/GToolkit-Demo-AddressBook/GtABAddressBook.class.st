@@ -98,13 +98,13 @@ GtABAddressBook >> contacts: anObject [
 
 { #category : #filtering }
 GtABAddressBook >> contactsWithAddress: anAddress [
-	^self contacts select: [ :aContact | 
+	^self allContacts select: [ :aContact | 
 		aContact address = anAddress ] 
 ]
 
 { #category : #filtering }
 GtABAddressBook >> contactsWithTelephone: aNumber [
-	^self contacts select: [ :aContact | 
+	^self allContacts select: [ :aContact | 
 		aContact telephones anySatisfy: [ :aTelephone | 
 			aTelephone number = aNumber ] ]
 ]
@@ -232,9 +232,9 @@ GtABAddressBook >> gtViewContactsOn: aView [
 ]
 
 { #category : #testing }
-GtABAddressBook >> includesContactWithName: aPattern [
-	^ self contacts anySatisfy: [ :aContact | 
-		aPattern match: aContact fullName ]
+GtABAddressBook >> includesContactWithFirstName: aFirstName [
+	^ self allContacts anySatisfy: [ :aContact | 
+		aFirstName = aContact firstName ]
 ]
 
 { #category : #initialization }
