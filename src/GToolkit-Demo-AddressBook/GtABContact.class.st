@@ -311,10 +311,7 @@ GtABContact >> merge: anotherContact [
 	self 
 		assert: [ self canMerge: anotherContact ]
 		description: 'Contact cannot be merged.'.
-		
-	anotherContact addresses do: [ :anAddress |
-		(self addresses includes: anAddress) ifFalse: [ 
-			self addresses add: anAddress ] ].
+	
 	anotherContact notes do: [ :aNote |
 		(self notes includes: aNote) ifFalse: [ 
 			self notes add: aNote ] ].
