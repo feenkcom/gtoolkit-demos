@@ -54,7 +54,11 @@ GtABCategory >> contacts [
 GtABCategory >> initialize [
 	contacts := OrderedCollection new.
 	subcategories := OrderedCollection new.
-	isCategory := true.
+]
+
+{ #category : #testing }
+GtABCategory >> isCategory [
+	^ true
 ]
 
 { #category : #accessing }

@@ -294,7 +294,6 @@ GtABContact >> initialize [
 	addresses := OrderedCollection new.
 	telephones := OrderedCollection new.
 	notes := OrderedCollection new.
-	isCategory := false.
 ]
 
 { #category : #accessing }

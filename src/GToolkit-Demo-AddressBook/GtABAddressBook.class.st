@@ -98,7 +98,8 @@ GtABAddressBook >> contacts: anObject [
 
 { #category : #filtering }
 GtABAddressBook >> contactsWithAddress: anAddress [
-	^self contacts select: [ :each | each address = anAddress ] 
+	^self contacts select: [ :aContact | 
+		aContact address = anAddress ] 
 ]
 
 { #category : #filtering }
