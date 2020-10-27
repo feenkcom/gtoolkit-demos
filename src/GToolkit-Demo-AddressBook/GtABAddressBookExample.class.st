@@ -215,14 +215,13 @@ GtABAddressBookExample >> contactsAddressBookWithCategories [
 	| addressBook |
 	
 	addressBook := GtABAddressBook new label: 'My contacts'.
-	addressBook addCategories: { 
+	addressBook importCategories: { 
 		self familyCategory. 
 		self acquaintancesCategory
 	}.
 	
 	self assert: addressBook categories size equals: 2.
-	self assert: addressBook contacts size equals: 0.
-	self assert: addressBook allContacts size equals: 5.
+	self assert: addressBook contacts size equals: 5.
 	
 	^ addressBook. 
 ]

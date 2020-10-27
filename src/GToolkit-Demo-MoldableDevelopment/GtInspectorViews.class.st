@@ -32,7 +32,7 @@ GtInspectorViews >> columnedListViewExplanationWithLinks [
 	selectors := GtSelectorExplanationLinkStyler new coder: coder.
 	selectors
 		addSelectors:
-			{#columnedList . #title: . #items: . #allContacts . #fullName . #avatar.
+			{#columnedList . #title: . #items: . #contacts . #fullName . #avatar.
 			#telephone}.
 	selectors addSelector: #column:icon: withIdentifier: #columns.
 	selectors addSelector: #column:text: withIdentifier: #columns.
@@ -139,7 +139,7 @@ GtInspectorViews >> columnedListViewExplanationWithLinksText [
 The columned list has as many rows as the collection returned by the ' asRopedText,
 ('items: block' asRopedText glamorousExplanationFor: #items:),
 '. In this case, this means it shows all the ' asRopedText,
-('contacts' asRopedText glamorousExplanationFor: #allContacts),
+('contacts' asRopedText glamorousExplanationFor: #contacts),
 ' in the address book.
 For each ' asRopedText, 
 ('contact' asRopedText glamorousExplanationFor: #aContact),
@@ -508,7 +508,7 @@ GtInspectorViews >> listViewExplanationWithLinks [
 	coder := GtMethodCoder forMethod: (GtABAddressBook>>#gtViewContactsListOn:).
 	
 	selectors := GtSelectorExplanationLinkStyler new coder: coder.
-	selectors addSelectors: {#list. #title:. #items:. #itemText:. #allContacts. #fullName }.
+	selectors addSelectors: {#list. #title:. #items:. #itemText:. #contacts. #fullName }.
 	
 	variables := GtVariableExplanationLinkStyler new coder: coder.
 	variables addVariables: {'aContact'}.
@@ -569,7 +569,7 @@ GtInspectorViews >> listViewExplanationWithLinksText [
 The number of rows it has it is exactly the number of elements in the collection returned by the ' asRopedText,
 ('items: block' asRopedText glamorousExplanationFor: #items:),
 '. In this case, this means it shows all the ' asRopedText,
-('contacts' asRopedText glamorousExplanationFor: #allContacts),
+('contacts' asRopedText glamorousExplanationFor: #contacts),
 ' in the address book.
 For each ' asRopedText, 
 ('contact' asRopedText glamorousExplanationFor: #aContact),
