@@ -3,7 +3,7 @@ I model an entry in an address book
 "
 Class {
 	#name : #GtABContact,
-	#superclass : #GtABHierarchyObject,
+	#superclass : #Object,
 	#instVars : [
 		'firstName',
 		'lastName',
