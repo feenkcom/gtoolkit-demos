@@ -3,7 +3,7 @@ I model a simple telefon number
 "
 Class {
 	#name : #GtABTelephone,
-	#superclass : #GtABDomainObject,
+	#superclass : #GtABContactField,
 	#instVars : [
 		'prefix',
 		'number'

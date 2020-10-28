@@ -3,7 +3,7 @@ I model a simple note about a contact
 "
 Class {
 	#name : #GtABContactNote,
-	#superclass : #GtABDomainObject,
+	#superclass : #GtABContactField,
 	#instVars : [
 		'title',
 		'content'
@@ -40,11 +40,9 @@ GtABContactNote >> gtViewNoteContentOn: aView [
 
 { #category : #comparing }
 GtABContactNote >> hash [
-
 	^ self class hash 
 		bitXor: (title hash 
 		bitXor: content hash)
-	
 ]
 
 { #category : #accessing }

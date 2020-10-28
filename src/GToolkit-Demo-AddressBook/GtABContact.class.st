@@ -3,7 +3,7 @@ I model an entry in an address book
 "
 Class {
 	#name : #GtABContact,
-	#superclass : #GtABHierarchyObject,
+	#superclass : #Object,
 	#instVars : [
 		'firstName',
 		'lastName',
@@ -294,7 +294,6 @@ GtABContact >> initialize [
 	addresses := OrderedCollection new.
 	telephones := OrderedCollection new.
 	notes := OrderedCollection new.
-	isCategory := false.
 ]
 
 { #category : #accessing }
@@ -312,10 +311,7 @@ GtABContact >> merge: anotherContact [
 	self 
 		assert: [ self canMerge: anotherContact ]
 		description: 'Contact cannot be merged.'.
-		
-	anotherContact addresses do: [ :anAddress |
-		(self addresses includes: anAddress) ifFalse: [ 
-			self addresses add: anAddress ] ].
+	
 	anotherContact notes do: [ :aNote |
 		(self notes includes: aNote) ifFalse: [ 
 			self notes add: aNote ] ].

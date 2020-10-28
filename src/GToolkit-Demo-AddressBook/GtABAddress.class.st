@@ -3,7 +3,7 @@ I hold all data relevant for an address
 "
 Class {
 	#name : #GtABAddress,
-	#superclass : #GtABDomainObject,
+	#superclass : #GtABContactField,
 	#instVars : [
 		'city',
 		'country'

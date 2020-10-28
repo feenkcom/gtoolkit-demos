@@ -14,8 +14,6 @@ ${example:GtABAddressBookExample>>#johnDoeContact|show=#gtViewPreviewOn:|noCode}
 Contacts can be added using the ${method:GtABAddressBook>>#addContact:}$
 ${example:GtABAddressBookExample>>#myContactsAddressBook}$
 
-The class ${class:GtABCartoonAddressBookExample}$ contains an example of a larger address book.
-${example:GtABCartoonAddressBookExample>>#cartoonAddressBook}$
 
 
 
@@ -45,6 +43,51 @@ GtABAddressBookExample >> acquaintancesCategory [
 	self assert: category subcategories size equals: 2.
 			
 	^ category
+]
+
+{ #category : #'examples - search' }
+GtABAddressBookExample >> addressBookContainsContactWithJohnFirstName [
+	<gtExample>
+	| addressBook |
+	addressBook := self contactsAddressBookWithCategories.
+
+	self assert: (addressBook includesContactWithFirstName: 'John').
+	
+	^ addressBook
+]
+
+{ #category : #'examples - search' }
+GtABAddressBookExample >> addressBookDoesNotContainContactWithMartinFirstName [
+	<gtExample>
+	| addressBook |
+	addressBook := self contactsAddressBookWithCategories.
+
+	self assert: (addressBook includesContactWithFirstName: 'Martin') not.
+	
+	^ addressBook
+]
+
+{ #category : #'examples - contacts' }
+GtABAddressBookExample >> basicBrianKentContact [
+	<gtExample>
+	| contact |
+	
+	contact := GtABContact new
+		firstName: 'Brian';
+		lastName: 'Kent';
+		avatar: GtABContact johnDoeAvatar;
+		description: (String loremIpsum: 200).
+	
+	self assert: contact firstName equals: 'Brian'.
+	self assert: contact lastName equals: 'Kent'.
+	self assert: contact fullName equals: 'Brian Kent'.
+	self assert: contact description size equals: 200.
+	self assert: contact addresses size equals: 0.
+	self assert: contact telephones size equals: 0.
+	self assert: contact notes size equals: 0.
+	
+	^ contact
+	
 ]
 
 { #category : #'examples - addresses' }
@@ -112,18 +155,10 @@ GtABAddressBookExample >> brianKentContact [
 	<gtExample>
 	| contact |
 	
-	contact := GtABContact new
-		firstName: 'Brian';
-		lastName: 'Kent';
-		avatar: GtABContact johnDoeAvatar;
-		description: (String loremIpsum: 200);
+	contact := self basicBrianKentContact
 		addTelephone: self newYorkTelephoneNumber;
 		addAddress: self newYorkAddress.
 	
-	self assert: contact firstName equals: 'Brian'.
-	self assert: contact lastName equals: 'Kent'.
-	self assert: contact fullName equals: 'Brian Kent'.
-	self assert: contact description size equals: 200.
 	self assert: contact addresses size equals: 1.
 	self assert: contact telephones size equals: 1.
 	
@@ -180,14 +215,13 @@ GtABAddressBookExample >> contactsAddressBookWithCategories [
 	| addressBook |
 	
 	addressBook := GtABAddressBook new label: 'My contacts'.
-	addressBook addCategories: { 
+	addressBook importCategories: { 
 		self familyCategory. 
 		self acquaintancesCategory
 	}.
 	
 	self assert: addressBook categories size equals: 2.
-	self assert: addressBook contacts size equals: 0.
-	self assert: addressBook allContacts size equals: 5.
+	self assert: addressBook contacts size equals: 5.
 	
 	^ addressBook. 
 ]
@@ -363,8 +397,8 @@ GtABAddressBookExample >> myContactsAddressBook [
 	
 	self assert: addressBook contacts size equals: 5.
 	self assert: addressBook categories size equals: 0.
-	self assert: (addressBook includesContactWithName: 'John*').
-	self assert: (addressBook includesContactWithName: 'Jane*').
+	self assert: (addressBook includesContactWithFirstName: 'John').
+	self assert: (addressBook includesContactWithFirstName: 'Jane').
 	
 	^ addressBook
 ]

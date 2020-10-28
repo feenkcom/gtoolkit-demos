@@ -15,15 +15,6 @@ Class {
 	#category : #'GToolkit-Demo-AddressBook-Models'
 }
 
-{ #category : #browsing }
-GtABAddressBook class >> contactsSearch [
-
-	GTSpotterMorph new
-		extent: 400@500;
-		spotterModel: (GTSpotter on: GtABAddressBook default);
-		openCenteredInWorld
-]
-
 { #category : #accessing }
 GtABAddressBook class >> default [
 	^ default ifNil: [ 
@@ -45,18 +36,23 @@ GtABAddressBook class >> reset [
 ]
 
 { #category : #adding }
-GtABAddressBook >> addCategories: aCollection [
-	self categories addAll: aCollection.
+GtABAddressBook >> addCategories: aCollectionOfCategories [
+	aCollectionOfCategories do: [ :aCategory |
+		self addCategory: aCategory ]
 ]
 
 { #category : #adding }
 GtABAddressBook >> addCategory: aCategory [
+	self assert: [ aCategory notNil ].
+	self assert: [ aCategory addressBook isNil ].
+	
 	self categories addLast: aCategory.
+	aCategory addressBook: self.
 ]
 
 { #category : #adding }
 GtABAddressBook >> addContact: aContact [
-	self contacts addLast: aContact
+	self contacts addLast: aContact.
 ]
 
 { #category : #adding }
@@ -64,16 +60,22 @@ GtABAddressBook >> addContacts: aList [
 	self contacts addAll: aList
 ]
 
+{ #category : #adding }
+GtABAddressBook >> addOrMergeContact: aContact [
+	"Add the given contact or merge it into an existing contact if possible."
+	self contacts do: [ :anotherContact |
+		(anotherContact canMerge: aContact) ifTrue: [ 
+			anotherContact merge: aContact.
+			^ self ] ].
+	
+	"If there was no merge, add the new contact to the address book."
+	self addContact: aContact
+	
+]
+
 { #category : #accessing }
 GtABAddressBook >> allContacts [
-	" Returns the contacts from all categories and the ones that have no category"
-	| allContacts |
-	allContacts := OrderedCollection new.
-	self categories do: [ :each |
-		allContacts addAll: each allContacts ].
-	allContacts addAll: self contacts.
-	
-	^ allContacts.
+	^ self contacts
 ]
 
 { #category : #accessing }
@@ -94,7 +96,8 @@ GtABAddressBook >> contacts: anObject [
 
 { #category : #filtering }
 GtABAddressBook >> contactsWithAddress: anAddress [
-	^self contacts select: [ :each | each address = anAddress ] 
+	^self contacts select: [ :aContact | 
+		aContact address = anAddress ] 
 ]
 
 { #category : #filtering }
@@ -197,7 +200,7 @@ GtABAddressBook >> gtViewContactsIconsCircularOn: aView [
 			view nodes
 				shape: [ :aContact | 
 					(aContact avatar scaledToSize: 124@124) asElement ];
-				with: self allContacts.
+				with: self contacts.
 			view layout circle
 				radius: 200 ]
 ]
@@ -208,7 +211,7 @@ GtABAddressBook >> gtViewContactsListOn: aView [
 	^ aView list
 		title: 'Contacts List' translated;
 		priority: 8;
-		items: [ self allContacts ];
+		items: [ self contacts ];
 		itemText: [ :aContact | aContact fullName asRopedText ]
 ]
 
@@ -218,7 +221,7 @@ GtABAddressBook >> gtViewContactsOn: aView [
 	^ aView columnedList
 		title: 'Contacts with details' translated;
 		priority: 5;
-		items: [ self allContacts ];
+		items: [ self contacts ];
 		column: 'Avatar' 
 			icon: [ :aContact | aContact avatar asElement asScalableElement size: 32 @ 32 ]
 			width: 75;
@@ -226,10 +229,23 @@ GtABAddressBook >> gtViewContactsOn: aView [
 		column: 'Phone' text: [ :aContact | aContact telephone ]
 ]
 
+{ #category : #adding }
+GtABAddressBook >> importCategories: aCollectionOfCategories [
+	aCollectionOfCategories do: [ :aCategory |
+		self importCategory: aCategory  ]
+]
+
+{ #category : #adding }
+GtABAddressBook >> importCategory: aCategory [
+	self addCategory: aCategory.
+	aCategory allContactsDo: [ :aContact |
+		self addContact: aContact ]
+]
+
 { #category : #testing }
-GtABAddressBook >> includesContactWithName: aPattern [
+GtABAddressBook >> includesContactWithFirstName: aFirstName [
 	^ self contacts anySatisfy: [ :aContact | 
-		aPattern match: aContact fullName ]
+		aFirstName = aContact firstName ]
 ]
 
 { #category : #initialization }
