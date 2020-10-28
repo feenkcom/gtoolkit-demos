@@ -65,7 +65,7 @@ GtNnNetwork >> gtInspectorPaintNetworkIn: aMondrianView [
 				ifFalse: [ BlBorder paint: Color lightGray width: 1 ].
 			
 			BlElement new
-				geometry: BlEllipse new;
+				geometry: BlEllipseGeometry new;
 				size: 20@20;
 				layout: BlLinearLayout horizontal alignCenter;
 				border: aBorder;
