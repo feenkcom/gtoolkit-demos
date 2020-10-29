@@ -357,16 +357,19 @@ editor := BrEditor new
     look: (BrGlamorousRegularEditorLook new fontSize: 16);
     text:
         'Conceptually, components are like JavaScript functions. They accept arbitrary inputs (called “props”) and return React elements describing what should appear on the screen.
+
 The simplest way to define a component is to write a JavaScript '
             asRopedText
             , ('function:' asRopedText glamorousExplanationFor: #function)
             ,
                 '
+
 This function is a valid React component because it accepts a single '
                     asRopedText
             , ('"props"' asRopedText glamorousExplanationFor: #props)
             ,
                 ' (which stands for properties) object argument with data and returns a React element. We call such components “function components” because they are literally JavaScript functions.
+
 Components can refer to other components in their '
                     asRopedText
             , ('output' asRopedText glamorousExplanationFor: #welcome)
@@ -379,11 +382,13 @@ Components can refer to other components in their '
             , ('screen' asRopedText glamorousExplanationFor: #screen)
             ,
                 ': in React apps, all those are commonly expressed as components.
+
 For example, we can create an '
                     asRopedText
             , ('app' asRopedText glamorousExplanationFor: #appFunction)
             ,
                 ' component that renders Welcome many times.
+
 How this example works:
 1. We call '
                     asRopedText

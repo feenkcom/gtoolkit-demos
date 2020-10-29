@@ -104,7 +104,7 @@ GtOneRenderingTree >> liveElementTree [
 	m nodes
 		stencil: [
 			BlElement new 
-				geometry: BlEllipse new; 
+				geometry: BlEllipseGeometry new; 
 				border: (BlBorder paint: Color black width: 2) ];
 		with: (1 to: 5).
 	m edges
