@@ -592,7 +592,7 @@ GtPlaygroundAndInspectorSlideshow >> playgroundInterfaceExplanationWithLinks [
 	frameToolbar := playgroundElement
 		allChildrenBreadthFirstSelect: [:aChild | 
 			(aChild isKindOf: BrToolbar) 
-				and: [(aChild parent isKindOf: GtCoderActionsElement)
+				and: [(aChild parent isKindOf: GtSourceCoderActionsElement)
 					and: [aChild hasChildren]]].
 	frameToolbar do: [ :each |
 		evaluateButtonTargets add: (each children at: 1).

@@ -154,7 +154,7 @@ GtCoderSlideshow >> baselineMethodsExplanationWithLinks [
 				onBreadthFirstChildOfClass: GtBehaviorCoderElement;
 				onBreadthFirstChildOfClass: BrTabGroup;
 				onChildAt: 2;
-				onBreadthFirstChildOfClass: GtCodersElement;
+				onBreadthFirstChildOfClass: GtMethodsCoderElement;
 				onBreadthFirstChildOfClass: BrInfiniteListElement;
 				onChildAt: 1;
 				onChildAt: 2;
@@ -729,7 +729,7 @@ GtCoderSlideshow >> exampleMethodsExplanationWithLinks [
 				onBreadthFirstChildOfClass: GtBehaviorCoderElement;
 				onBreadthFirstChildOfClass: BrTabGroup;
 				onChildAt: 2;
-				onBreadthFirstChildOfClass: GtCodersElement;
+				onBreadthFirstChildOfClass: GtMethodsCoderElement;
 				onBreadthFirstChildOfClass: BrInfiniteListElement;
 				onChildAt: 1;
 				onChildAt: 1.
