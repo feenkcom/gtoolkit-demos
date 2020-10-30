@@ -650,7 +650,7 @@ GtTour >> playgroundExplanationWithLinks [
 	frameToolbarButtons := playgroundElement
 		allChildrenBreadthFirstSelect: [:aChild | 
 			(aChild isKindOf: BrToolbar) 
-				and: [(aChild parent isKindOf: GtCoderActionsElement)
+				and: [(aChild parent isKindOf: GtSourceCoderActionsElement)
 					and: [aChild hasChildren]]].
 	frameToolbarButtons do: [ :each |
 		evaluateButtons add: (each children at: 1).
