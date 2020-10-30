@@ -24,14 +24,13 @@ TDImagesGroup >> gtImagesListFor: aView [
 			self images do: [:eachImage |
 				imageContainer := BlLazyElement new
 					withGlamorousPreview;
-					neverUpdate;
 					constraintsDo: [ :c | 
 						c vertical exact: 100. 
 						c horizontal exact: 150 ];
 					background: Color white;
 					look: BrShadowLook new;
 					margin: (BlInsets all: 10);
-					addChild: eachImage thumbnail;
+					elementBuilder: [ eachImage thumbnail ];
 					when: BlClickEvent
 					do: [:e | imageContainer phlow spawnObject: eachImage].
 				container addChild: imageContainer].
