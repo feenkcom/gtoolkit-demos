@@ -956,9 +956,9 @@ GtTour >> viewMethodWithResultExplanationWithLinksExample [
 		margin: (BlInsets top: 20 right: 0 bottom: 0 left: 10);
 		look: BrGlamorousLabelLook new.
 	
-	coderElement := GtMethodCoderStylerExamples new coderOnViewMethod.
+	coderElement := GtMethodCoderExplanationStylerExamples new coderOnViewMethod.
 		
-	resultElement := GtMethodCoderStylerExamples new inspectorOnViewMethod.	
+	resultElement := GtMethodCoderExplanationStylerExamples new inspectorOnViewMethod.	
 	resultInspectorContainer addChild: resultElement.
 	
 	
@@ -975,7 +975,7 @@ GtTour >> viewsExplanationSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide textAndElement
 		priority: 12;
-		newTextWithFormat: GtMethodCoderStylerExamples new viewsExplanationWithLinksText;
+		newTextWithFormat: GtMethodCoderExplanationStylerExamples new viewsExplanationWithLinksText;
 		element: [ self viewMethodWithResultExplanationWithLinksExample ].
 ]
 

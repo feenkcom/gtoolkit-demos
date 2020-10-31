@@ -218,7 +218,7 @@ GtOneRenderingTree >> overviewElement [
 GtOneRenderingTree >> sampleExplanationWithLinks [
 	<gtExample>
 	
-	^ GtMethodCoderStylerExamples new viewsExplanationWithLinks
+	^ GtMethodCoderExplanationStylerExamples new viewsExplanationWithLinks
 ]
 
 { #category : #accessing }
