@@ -45,8 +45,7 @@ GtInspectorViews >> columnedListViewExplanationWithLinks [
 				forLinks:
 					{selectors.
 					variables}).
-	coderElement := (coder expanded: true) asElement
-		margin: (BlInsets all: 10).
+	coderElement := coder asElement margin: (BlInsets all: 10).
 	coderElement forceLayout.
 	coderElement vMatchParent.
 	resultElement := BlUseAsyncFeatures
@@ -188,7 +187,7 @@ GtInspectorViews >> columnedTreeViewExplanationWithLinks [
 	literals addLiteral: #Contact withIdentifier: #name.
 		
 	coder explanationLink: (GtCompositeExplanationLinkStyler forLinks: { selectors. literals }).
-	coderElement := (coder expanded: true) asElement margin: (BlInsets all: 10).
+	coderElement := coder asElement margin: (BlInsets all: 10).
 	coderElement forceLayout.
 	coderElement vMatchParent.
 	
@@ -306,7 +305,7 @@ GtInspectorViews >> emptyViewExplanationWithLinks [
 	variables addVariables: {#aView}.
 	
 	coder explanationLink: (GtCompositeExplanationLinkStyler forLinks: { selectors. variables. literals }).
-	coderElement := (coder expanded: true) asElement margin: (BlInsets all: 10).
+	coderElement := coder asElement margin: (BlInsets all: 10).
 	coderElement forceLayout.
 	coderElement vMatchParent.
 	
@@ -398,7 +397,7 @@ GtInspectorViews >> explicitViewExplanationWithLinks [
 	variables addVariables: {#self}.
 	
 	coder explanationLink: (GtCompositeExplanationLinkStyler forLinks: { selectors. variables }).
-	coderElement := (coder expanded: true) asElement margin: (BlInsets all: 10).
+	coderElement := coder asElement margin: (BlInsets all: 10).
 	coderElement forceLayout.
 	coderElement vMatchParent.
 	
@@ -514,7 +513,7 @@ GtInspectorViews >> listViewExplanationWithLinks [
 	variables addVariables: {'aContact'}.
 	
 	coder explanationLink: (GtCompositeExplanationLinkStyler forLinks: { selectors. variables }).
-	coderElement := (coder expanded: true) asElement margin: (BlInsets all: 10).
+	coderElement := coder asElement margin: (BlInsets all: 10).
 	coderElement forceLayout.
 	coderElement vMatchParent.
 	
@@ -620,7 +619,7 @@ GtInspectorViews >> mondrianViewExplanationWithLinks [
 	selectors addSelector: #allContacts withIdentifier: #contacts.
 	
 	coder explanationLink: (GtCompositeExplanationLinkStyler forLinks: { selectors }).
-	coderElement := (coder expanded: true) asElement.
+	coderElement := coder asElement.
 	coderElement forceLayout.
 	coderElement vMatchParent.
 	
@@ -776,7 +775,7 @@ GtInspectorViews >> textEditorViewExplanationWithLinks [
 	variables addVariables: {#BrGlamorousCodeEditorLook}.
 	
 	coder explanationLink: (GtCompositeExplanationLinkStyler forLinks: { selectors. variables }).
-	coderElement := (coder expanded: true) asElement margin: (BlInsets all: 10).
+	coderElement := coder asElement margin: (BlInsets all: 10).
 	coderElement forceLayout.
 	coderElement vMatchParent.
 	
@@ -882,7 +881,7 @@ GtInspectorViews >> treeViewExplanationWithLinks [
 	variables addVariables: {#each}.
 	
 	coder explanationLink: (GtCompositeExplanationLinkStyler forLinks: { selectors. variables }).
-	coderElement := (coder expanded: true) asElement margin: (BlInsets all: 10).
+	coderElement := coder asElement margin: (BlInsets all: 10).
 	coderElement forceLayout.
 	coderElement vMatchParent.
 	
