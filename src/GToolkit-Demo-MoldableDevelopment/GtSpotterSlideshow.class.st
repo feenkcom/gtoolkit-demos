@@ -34,7 +34,7 @@ GtSpotterSlideshow >> spotterAfterFirstDiveInExplanation [
 	^ spotterElement removeFromParent.
 ]
 
-{ #category : #accessing }
+{ #category : #slides }
 GtSpotterSlideshow >> spotterAfterFirstDiveInExplanationSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide textAndElement
@@ -104,7 +104,7 @@ GtSpotterSlideshow >> spotterDiveInExplanation [
 	^ spotter.
 ]
 
-{ #category : #accessing }
+{ #category : #slides }
 GtSpotterSlideshow >> spotterDiveInExplanationSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide textAndElement
@@ -187,7 +187,7 @@ GtSpotterSlideshow >> spotterElementOn: aSearchString [
 	^ self spotterElementInContextOf: (GtSpotterStart new) withSearch: aSearchString.
 ]
 
-{ #category : #accessing }
+{ #category : #slides }
 GtSpotterSlideshow >> spotterExampleSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide labelAndElement
@@ -196,7 +196,7 @@ GtSpotterSlideshow >> spotterExampleSlideFor: aSlide [
 		element: [self spotterButtonStencil].
 ]
 
-{ #category : #accessing }
+{ #category : #slides }
 GtSpotterSlideshow >> spotterInLocalContextExplanationSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide textAndElement
@@ -299,7 +299,7 @@ GtSpotterSlideshow >> spotterInLocalContextForInspectorExample [
 				myContactsAddressBook)) maximized ]) forceLayout.
 ]
 
-{ #category : #accessing }
+{ #category : #slides }
 GtSpotterSlideshow >> spotterInLocalContextInCoderExampleSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide labelAndElement
@@ -321,7 +321,7 @@ GtSpotterSlideshow >> spotterInLocalContextInCoderExampleSlideFor: aSlide [
 						BlSpace simulateClickOn: button])].
 ]
 
-{ #category : #accessing }
+{ #category : #slides }
 GtSpotterSlideshow >> spotterInLocalContextInInspectorExampleSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide labelAndElement
@@ -343,7 +343,7 @@ GtSpotterSlideshow >> spotterInLocalContextInInspectorExampleSlideFor: aSlide [
 							BlSpace simulateClickOn: button])].
 ]
 
-{ #category : #accessing }
+{ #category : #slides }
 GtSpotterSlideshow >> spotterInterfaceExplanationSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide textAndElement
@@ -374,6 +374,7 @@ GtSpotterSlideshow >> spotterInterfaceExplanationText [
 
 { #category : #accessing }
 GtSpotterSlideshow >> spotterInterfaceExplanationWithLinks [
+	<gtExample>
 	| spotterElement searchBarTarget resultsTarget previewTarget classesTarget implementorsTarget sendersTarget messagesTarget|
 	spotterElement := BlUseAsyncFeatures disableDuring: [
 		self spotterElementOn: 'GtCoder' ].
@@ -489,7 +490,7 @@ GtSpotterSlideshow >> spotterLocalContextExplanationText [
 		fontSize: 20.
 ]
 
-{ #category : #accessing }
+{ #category : #slides }
 GtSpotterSlideshow >> spotterMashExampleSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide textAndElement
@@ -502,7 +503,7 @@ GtSpotterSlideshow >> spotterMashExampleSlideFor: aSlide [
 		elementWeight: 0.6.
 ]
 
-{ #category : #accessing }
+{ #category : #slides }
 GtSpotterSlideshow >> spotterNavigationIntroductionSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide text
@@ -513,7 +514,7 @@ GtSpotterSlideshow >> spotterNavigationIntroductionSlideFor: aSlide [
 				fontSize: 20).
 ]
 
-{ #category : #accessing }
+{ #category : #slides }
 GtSpotterSlideshow >> spotterOpeningExplanationSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide textAndElement
@@ -561,7 +562,7 @@ GtSpotterSlideshow >> spotterProcessorsExample [
 	^ aScripter elementWithoutParent maximized.
 ]
 
-{ #category : #accessing }
+{ #category : #slides }
 GtSpotterSlideshow >> spotterProcessorsExplanationSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide textAndElement
@@ -583,6 +584,7 @@ GtSpotterSlideshow >> spotterProcessorsExplanationText [
 
 { #category : #accessing }
 GtSpotterSlideshow >> spotterSearchFilterExplanation [
+	<gtExample>
 	| spotter keywordTarget filterTarget contextTarget |
 	spotter := self spotterElementInContextOf: GtABAddressBook withSearch: 'contacts #instancemethods'.
 	spotter forceLayout.
@@ -630,7 +632,7 @@ GtSpotterSlideshow >> spotterSearchFilterExplanation [
 	^ spotter.
 ]
 
-{ #category : #accessing }
+{ #category : #slides }
 GtSpotterSlideshow >> spotterSearchFilterExplanationSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide textAndElement
@@ -658,6 +660,7 @@ GtSpotterSlideshow >> spotterSearchFilterExplanationText [
 
 { #category : #accessing }
 GtSpotterSlideshow >> spotterSearchMethodExample [
+	<gtExample>
 	| coder coderElement selectors |
 	coder := GtMethodCoder forMethod: GtSpotterStart>>#gtSpotterForClassesFor:.
 	
@@ -672,15 +675,14 @@ GtSpotterSlideshow >> spotterSearchMethodExample [
 			(GtCompositeExplanationLinkStyler
 				forLinks:
 					{selectors}).
-	coderElement := (coder expanded: true) asElement
-		margin: (BlInsets all: 10).
+	coderElement := coder asElement margin: (BlInsets all: 10).
 	coderElement forceLayout.
 	coderElement vMatchParent.
 	
 	^ coderElement.
 ]
 
-{ #category : #accessing }
+{ #category : #slides }
 GtSpotterSlideshow >> spotterSearchMethodExplanationSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide textAndElement
@@ -720,13 +722,14 @@ The ' asRopedText,
 
 { #category : #accessing }
 GtSpotterSlideshow >> spottersMashExample [
+	<gtExample>
 	^ (GtMashExampleLiveSlide new
 		leftElement: (self spotterElementOn: 'GtSpotter');
 		centerElement: (self spotterElementOn: 'size:');
 		rightElement: (self spotterElementOn: 'Playground')) asElement.
 ]
 
-{ #category : #accessing }
+{ #category : #slides }
 GtSpotterSlideshow >> titleSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide title

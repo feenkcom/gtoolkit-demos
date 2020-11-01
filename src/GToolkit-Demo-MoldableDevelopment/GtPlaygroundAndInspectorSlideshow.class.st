@@ -443,6 +443,7 @@ GtPlaygroundAndInspectorSlideshow >> inspectorWithExplanationLinks [
 
 { #category : #accessing }
 GtPlaygroundAndInspectorSlideshow >> methodCoderWithExplanationLinks [
+	<gtExample>
 	| coder selectors coderElement |
 	coder := GtMethodCoder
 		forMethod: GtABAddressBook >> #gtViewContactsOn:.
@@ -459,8 +460,7 @@ GtPlaygroundAndInspectorSlideshow >> methodCoderWithExplanationLinks [
 			(GtCompositeExplanationLinkStyler
 				forLinks:
 					{selectors}).
-	coderElement := (coder expanded: true) asElement
-		margin: (BlInsets all: 10).
+	coderElement := coder asElement margin: (BlInsets all: 10).
 	coderElement forceLayout.
 	coderElement vMatchParent.
 	
