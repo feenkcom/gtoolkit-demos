@@ -517,7 +517,7 @@ GtCoderSlideshow >> coderMashExample [
 				look: BrShadowLook;
 				background: Color white;
 				addChild: ((GtClassCoderLiveSlide new 
-					class: GtClassCoder;
+					class: GtBehaviorCoder;
 					expandHeader: true) asElement));
 		centerElement:
 			(BlElement new
@@ -708,7 +708,7 @@ GtCoderSlideshow >> exampleMethodsExplanationWithLinks [
 	<gtExample>
 	| classCoderElement pragmaTarget inspectTarget evaluateTarget debugTarget aScripter expandedMethodElement buttonsList |
 	
-	classCoderElement := (GtInspector createOn:(GtClassCoder forClass: GtABAddressBookExample)) maximized.
+	classCoderElement := (GtInspector createOn:(GtBehaviorCoder forClass: GtABAddressBookExample)) maximized.
 	
 	aScripter := BlDevScripter new.
 	aScripter

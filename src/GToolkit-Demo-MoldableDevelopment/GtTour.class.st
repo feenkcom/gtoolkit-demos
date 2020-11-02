@@ -477,7 +477,7 @@ GtTour >> jsParserExampleSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide labelAndElement
 		priority: 31;
-		element: [ GtPager createWrappedOn: (GtClassCoder forClass: JSParser) ];
+		element: [ GtPager createWrappedOn: (GtBehaviorCoder forClass: JSParser) ];
 		newFadedText: 'The first non-Pharo language we accommodated is the language with which we write parsers for other languages.'.
 ]
 
@@ -588,7 +588,7 @@ GtTour >> overviewElement [
 				c vertical exact: 400 ];
 			margin: (BlInsets top: 10 left: 10 bottom: 20 right: 200); background: (Color white); look: BrShadowLook).
 
-	container addChild: ((GtClassCoder forClass: BaselineOfGToolkit) asElement
+	container addChild: ((GtBehaviorCoder forClass: BaselineOfGToolkit) asElement
 			constraintsDo: [ :c | 
 				c frame horizontal alignRight. 
 				c frame vertical alignTop.
