@@ -627,12 +627,25 @@ GtCoderSlideshow >> createMethodExplanationWithLinks [
 				onBreadthFirstChildOfClass: BrToolbar;
 				onChildAt: 2.
 			aStep wait forEmptySpaceTaskQueue ].
+	aScripter
+		substep: 'Expand Method'
+		do: [ :aStep | 
+			aStep click
+				label: 'Click expand method';
+				onBreadthFirstChildOfClass: GtBehaviorCoderElement;
+				onBreadthFirstChildOfClass: BrTabGroup;
+				onChildAt: 2;
+				onBreadthFirstChildOfClass: GtMethodsCoderElement;
+				onBreadthFirstChildOfClass: BrSimpleList;
+				onBreadthFirstChildOfClass: GtExpandableCoderElement;
+				onChildAt: 1.
+			aStep wait forEmptySpaceTaskQueue ].
 	aScripter syncContinue.	
 	classCoderElement := aScripter elementWithoutParent.
 	
 	newFrameTarget := classCoderElement
 		allChildrenBreadthFirstDetect: [:aChild |
-			aChild isKindOf: GtSourceCoderExpandedContentElement]
+			aChild isKindOf: GtExpandableCoderElement ]
 		ifFound: [:aChild | aChild].
 	newFrameTarget
 		allChildrenBreadthFirstDetect: [:aChild |
