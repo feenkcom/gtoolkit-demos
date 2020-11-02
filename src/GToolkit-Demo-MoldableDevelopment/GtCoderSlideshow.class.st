@@ -290,7 +290,7 @@ GtCoderSlideshow >> classCoderInterfaceExplanationWithLinks [
 		ifFound: [:aChild | aChild].
 	expandHeaderTarget := classCoderElement
 		allChildrenBreadthFirstDetect: [:aChild | 
-			aChild isKindOf: GtBehaviorCoderHeaderElement]
+			aChild isKindOf: GtBehaviorDefinitionCoderElement]
 		ifFound: [:aChild | aChild childAt: 1].
 	methodsTabTarget := classCoderElement
 		allChildrenBreadthFirstDetect: [:aChild | 

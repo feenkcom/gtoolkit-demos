@@ -77,7 +77,7 @@ GtTour >> coderExplanationWithLinks [
 		ifFound: [:aChild | aChild parent].
 	expandClassTarget := coderElement 
 		allChildrenBreadthFirstDetect: [:aChild | 
-			((aChild isKindOf: BlElement) and: [aChild parent isKindOf: GtBehaviorCoderHeaderElement])]
+			((aChild isKindOf: BlElement) and: [aChild parent isKindOf: GtBehaviorDefinitionCoderElement])]
 		ifFound: [:aChild | aChild].
 	expandMethodTarget := coderElement 
 		allChildrenBreadthFirstDetect: [:aChild | 
