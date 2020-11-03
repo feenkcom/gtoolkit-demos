@@ -9,6 +9,29 @@ GtArgoUMLDeprecatedClassesWithNoDeprecatedClients >> description [
 	^ 'Deprecated classes should not be used from classes that are not themselves deprecated.'
 ]
 
+{ #category : #'gt extensions' }
+GtArgoUMLDeprecatedClassesWithNoDeprecatedClients >> gtViewDependenciesFor: aView [
+	<gtView>
+	^ aView mondrian 	
+		title: 'Graph';
+		painting: [ :view |
+			| stillUsedClasses |
+			stillUsedClasses := self issues.
+			view nodes
+				stencil: [:each |
+					BlElement new
+						size: 5@5;
+						geometry: BlCircle new;
+						background:((each isAnnotatedWith: 'Deprecated')
+							ifTrue: [Color red]
+							ifFalse: [Color gray]) ];
+				with: (stillUsedClasses, (stillUsedClasses flatCollect: #clientTypes)) asSet.
+
+			view edges connectFromAll: #clientTypes. 
+			view layout force. 
+			view ]
+]
+
 { #category : #accessing }
 GtArgoUMLDeprecatedClassesWithNoDeprecatedClients >> issues [
 	| allDeprecatedClasses |
