@@ -78,7 +78,7 @@ GtMoldableAnalysisPresentation >> enginesSlidesFor: aSlide [
 		priority: 15;
 		element: [| form |
 			form := PNGReadWriter formFromFileNamed: (GtResourceReference
-				path: Path * 'feenkcom' / 'gtoolkit-demos' / 'data' / 'moldable-analysis' / 'analysis-engines.png') fullName.
+				path: Path * 'feenkcom' / 'gtoolkit-demos' / 'data' / 'moldableanalysis' / 'analysis-engines.png') fullName.
 			BlElement new 
 				constraintsDo: [ :c |
 					c horizontal matchParent.
