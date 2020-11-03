@@ -508,12 +508,26 @@ GtMoldableAnalysisPresentation >> visualizeXMLFileTargets [
 	xmlDoc := XMLDOMParser parse: (interestingDirectories at: 8) / 'build.xml'.
 	tags := xmlDoc // 'target'.
 	view := GtMondrian new.
-	view nodes with: tags.
-	view edges connectFromAll:  [:aTag | |depends|
-	depends:=(aTag @ 'depends') stringValue splitOn: ', '.
-		tags select: [ :each | 
-			depends includes: (each @ 'name') stringValue] ].
-	view layout dominanceTree.
+	view nodes 
+		stencil: [ :each | 
+			BrLabel new
+				text: (each attributeAt: #name);
+				look: BrGlamorousLabelLook ];
+		with: tags.
+	view edges 
+		shape: [ :each |
+			BlParabollaArcElement new 
+				zIndex: 0;
+				curvatureFraction: 0.2;
+				border: (BlBorder paint: (Color gray alpha: 0.2) width: 2);
+				toHead: (BlArrowheadSimpleArrow new
+					border: (BlBorder builder 
+						paint: (Color gray alpha: 0.2); width: 2; build))  ];
+		connectFromAll:  [ :aTag | |depends|
+			depends :=(aTag @ 'depends') stringValue splitOn: ', '.
+				tags select: [ :each | 
+					depends includes: (each @ 'name') stringValue] ].
+	view layout horizontalDominanceTree.
 	view.
 
 ]
