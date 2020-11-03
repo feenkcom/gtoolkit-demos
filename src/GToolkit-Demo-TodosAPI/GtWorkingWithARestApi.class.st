@@ -4,7 +4,7 @@ Class {
 	#category : #'GToolkit-Demo-TodosAPI-Presentation'
 }
 
-{ #category : #accesing }
+{ #category : #slides }
 GtWorkingWithARestApi >> albumsExampleSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide labelAndElement
@@ -15,7 +15,7 @@ GtWorkingWithARestApi >> albumsExampleSlideFor: aSlide [
 			inspectSnippetAt: 1 ].
 ]
 
-{ #category : #accesing }
+{ #category : #slides }
 GtWorkingWithARestApi >> albumsExplanationSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide textAndElement
@@ -26,10 +26,10 @@ GtWorkingWithARestApi >> albumsExplanationSlideFor: aSlide [
 			background: Color white;
 			look: BrShadowLook;
 			margin: (BlInsets right: 5);
-			addChild: (GtClassCoder forClass: TDAlbum) asElement ].
+			addChild: (GtBehaviorCoder forClass: TDAlbum) asElement ].
 ]
 
-{ #category : #accesing }
+{ #category : #accessing }
 GtWorkingWithARestApi >> albumsSlideText [
 	^ 'An album is just a collection of photos. It has a title, an id, the list of photos composing the album and id of the user who created the album.' asRopedText
 		glamorousRegularFont;
@@ -38,6 +38,7 @@ GtWorkingWithARestApi >> albumsSlideText [
 
 { #category : #accessing }
 GtWorkingWithARestApi >> apiExamples [
+	<gtExample>
 	| bottomContainer firstExampleContainer secondExampleContainer thirdExampleContainer |
 	
 	firstExampleContainer := BlElement new
@@ -123,7 +124,7 @@ GtWorkingWithARestApi >> apiExamples [
 		addChild: bottomContainer.
 ]
 
-{ #category : #accessing }
+{ #category : #slides }
 GtWorkingWithARestApi >> apiExamplesSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide element
@@ -138,7 +139,7 @@ GtWorkingWithARestApi >> apiExplanationText [
 		fontSize: 16.
 ]
 
-{ #category : #accessing }
+{ #category : #slides }
 GtWorkingWithARestApi >> clientExplanationSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide textAndElement
@@ -149,7 +150,7 @@ GtWorkingWithARestApi >> clientExplanationSlideFor: aSlide [
 			background: Color white;
 			look: BrShadowLook;
 			margin: (BlInsets right: 5);
-			addChild: (GtClassCoder forClass: TDClient) asElement ].
+			addChild: (GtBehaviorCoder forClass: TDClient) asElement ].
 ]
 
 { #category : #accessing }
@@ -159,7 +160,7 @@ GtWorkingWithARestApi >> clientSlideText [
 	fontSize: 18.
 ]
 
-{ #category : #accessing }
+{ #category : #slides }
 GtWorkingWithARestApi >> commentsExampleSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide labelAndElement
@@ -170,7 +171,7 @@ GtWorkingWithARestApi >> commentsExampleSlideFor: aSlide [
 			inspectSnippetAt: 1 ].
 ]
 
-{ #category : #accessing }
+{ #category : #slides }
 GtWorkingWithARestApi >> commentsExplanationSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide textAndElement
@@ -181,7 +182,7 @@ GtWorkingWithARestApi >> commentsExplanationSlideFor: aSlide [
 			background: Color white;
 			look: BrShadowLook;
 			margin: (BlInsets right: 5);
-			addChild: (GtClassCoder forClass: TDComment) asElement ].
+			addChild: (GtBehaviorCoder forClass: TDComment) asElement ].
 ]
 
 { #category : #accessing }
@@ -198,7 +199,7 @@ GtWorkingWithARestApi >> coreSlideText [
 	fontSize: 18.
 ]
 
-{ #category : #accessing }
+{ #category : #slides }
 GtWorkingWithARestApi >> dataStructuresExplanationSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide textAndElement
@@ -209,11 +210,12 @@ GtWorkingWithARestApi >> dataStructuresExplanationSlideFor: aSlide [
 			background: Color white;
 			look: BrShadowLook;
 			margin: (BlInsets right: 5);
-			addChild: (GtPackageTagCoder forPackageTag: ((GtClassCoder forClass: TDUser) packageTag)) asElement ].
+			addChild: (GtPackageTagCoder forPackageTag: ((GtBehaviorCoder forClass: TDUser) packageTag)) asElement ].
 ]
 
 { #category : #accessing }
 GtWorkingWithARestApi >> getAllTodosMethodCoderWithExplanationTargets [
+	<gtExample>
 	| coder coderElement selectors literals variables |
 	
 	coder := GtMethodCoder forMethod: TDClient>>#getAllTodos.
@@ -233,14 +235,15 @@ GtWorkingWithARestApi >> getAllTodosMethodCoderWithExplanationTargets [
 			(GtCompositeExplanationLinkStyler
 				forLinks:
 					{selectors . variables . literals}).
-	coderElement := (coder expanded: true) asElement.
+	coderElement := coder asElement.
 	coderElement forceLayout.
 	^ coderElement.
 ]
 
 { #category : #accessing }
 GtWorkingWithARestApi >> getAllTodosMethodExplanation [
-	| aScripter coderExpandedElement |
+	<gtExample>
+	| aScripter |
 	
 	aScripter := BlDevScripter new.
 	aScripter
@@ -304,7 +307,7 @@ The response is then transformed into a ' asRopedText,
 		fontSize: 18.
 ]
 
-{ #category : #accesing }
+{ #category : #slides }
 GtWorkingWithARestApi >> introductionSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide text
@@ -315,7 +318,7 @@ GtWorkingWithARestApi >> introductionSlideFor: aSlide [
 				fontSize: 18).
 ]
 
-{ #category : #accessing }
+{ #category : #slides }
 GtWorkingWithARestApi >> modelDescriptionIntroductionSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide text
@@ -326,7 +329,7 @@ GtWorkingWithARestApi >> modelDescriptionIntroductionSlideFor: aSlide [
 				fontSize: 18).
 ]
 
-{ #category : #accesing }
+{ #category : #slides }
 GtWorkingWithARestApi >> photosExampleSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide labelAndElement
@@ -337,7 +340,7 @@ GtWorkingWithARestApi >> photosExampleSlideFor: aSlide [
 			inspectSnippetAt: 1 ].
 ]
 
-{ #category : #accesing }
+{ #category : #slides }
 GtWorkingWithARestApi >> photosExplanationSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide textAndElement
@@ -348,10 +351,10 @@ GtWorkingWithARestApi >> photosExplanationSlideFor: aSlide [
 			background: Color white;
 			look: BrShadowLook;
 			margin: (BlInsets right: 5);
-			addChild: (GtClassCoder forClass: TDImage) asElement ].
+			addChild: (GtBehaviorCoder forClass: TDImage) asElement ].
 ]
 
-{ #category : #accesing }
+{ #category : #accessing }
 GtWorkingWithARestApi >> photosSlideText [
 	^ 'A photo is what composes the album. It has a title, an id, the id of the album where it is from and two urls. One for the thumbnail image and one for the actual image. To visualize the actual image, a request to the specific url is done. That request returns a byte array that is then transformed into a pharo image.' asRopedText
 		glamorousRegularFont;
@@ -365,7 +368,7 @@ GtWorkingWithARestApi >> postsSlideText [
 	fontSize: 18.
 ]
 
-{ #category : #accessing }
+{ #category : #slides }
 GtWorkingWithARestApi >> requestMethodExampleSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide labelAndElement
@@ -376,7 +379,7 @@ GtWorkingWithARestApi >> requestMethodExampleSlideFor: aSlide [
 			inspectSnippetAt: 1 ].
 ]
 
-{ #category : #accessing }
+{ #category : #slides }
 GtWorkingWithARestApi >> requestMethodExplanationSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide textAndElement
@@ -385,7 +388,7 @@ GtWorkingWithARestApi >> requestMethodExplanationSlideFor: aSlide [
 		element: [ self getAllTodosMethodExplanation ].
 ]
 
-{ #category : #accessing }
+{ #category : #slides }
 GtWorkingWithARestApi >> requestSnippetsExampleSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide labelAndElement
@@ -405,7 +408,7 @@ GtWorkingWithARestApi >> requestSnippetsExampleSlideFor: aSlide [
 			asElement ].
 ]
 
-{ #category : #accessing }
+{ #category : #slides }
 GtWorkingWithARestApi >> simplePostsExampleSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide labelAndElement
@@ -416,7 +419,7 @@ GtWorkingWithARestApi >> simplePostsExampleSlideFor: aSlide [
 			inspectSnippetAt: 1 ].
 ]
 
-{ #category : #accessing }
+{ #category : #slides }
 GtWorkingWithARestApi >> simplePostsExplanationSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide textAndElement
@@ -427,10 +430,10 @@ GtWorkingWithARestApi >> simplePostsExplanationSlideFor: aSlide [
 			background: Color white;
 			look: BrShadowLook;
 			margin: (BlInsets right: 5);
-			addChild: (GtClassCoder forClass: TDPost) asElement ].
+			addChild: (GtBehaviorCoder forClass: TDPost) asElement ].
 ]
 
-{ #category : #accessing }
+{ #category : #slides }
 GtWorkingWithARestApi >> titleSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide title
@@ -440,7 +443,7 @@ GtWorkingWithARestApi >> titleSlideFor: aSlide [
 			glamorousRegularFont).
 ]
 
-{ #category : #accessing }
+{ #category : #slides }
 GtWorkingWithARestApi >> todosExampleSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide labelAndElement
@@ -451,7 +454,7 @@ GtWorkingWithARestApi >> todosExampleSlideFor: aSlide [
 			inspectSnippetAt: 1 ].
 ]
 
-{ #category : #accessing }
+{ #category : #slides }
 GtWorkingWithARestApi >> todosExplanationSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide textAndElement
@@ -462,7 +465,7 @@ GtWorkingWithARestApi >> todosExplanationSlideFor: aSlide [
 			background: Color white;
 			look: BrShadowLook;
 			margin: (BlInsets right: 5);
-			addChild: (GtClassCoder forClass: TDTodo) asElement ].
+			addChild: (GtBehaviorCoder forClass: TDTodo) asElement ].
 ]
 
 { #category : #accessing }
@@ -472,7 +475,7 @@ GtWorkingWithARestApi >> todosSlideText [
 	fontSize: 18.
 ]
 
-{ #category : #accessing }
+{ #category : #slides }
 GtWorkingWithARestApi >> userExampleSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide labelAndElement
@@ -483,7 +486,7 @@ GtWorkingWithARestApi >> userExampleSlideFor: aSlide [
 			inspectSnippetAt: 1 ].
 ]
 
-{ #category : #accessing }
+{ #category : #slides }
 GtWorkingWithARestApi >> userExplanationSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide textAndElement
@@ -494,7 +497,7 @@ GtWorkingWithARestApi >> userExplanationSlideFor: aSlide [
 			background: Color white;
 			look: BrShadowLook;
 			margin: (BlInsets right: 5);
-			addChild: (GtClassCoder forClass: TDUser) asElement ].
+			addChild: (GtBehaviorCoder forClass: TDUser) asElement ].
 ]
 
 { #category : #accessing }

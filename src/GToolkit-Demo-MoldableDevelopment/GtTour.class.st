@@ -77,7 +77,7 @@ GtTour >> coderExplanationWithLinks [
 		ifFound: [:aChild | aChild parent].
 	expandClassTarget := coderElement 
 		allChildrenBreadthFirstDetect: [:aChild | 
-			((aChild isKindOf: BlElement) and: [aChild parent isKindOf: GtBehaviorCoderHeaderElement])]
+			((aChild isKindOf: BlElement) and: [aChild parent isKindOf: GtBehaviorDefinitionCoderElement])]
 		ifFound: [:aChild | aChild].
 	expandMethodTarget := coderElement 
 		allChildrenBreadthFirstDetect: [:aChild | 
@@ -477,7 +477,7 @@ GtTour >> jsParserExampleSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide labelAndElement
 		priority: 31;
-		element: [ GtPager createWrappedOn: (GtClassCoder forClass: JSParser) ];
+		element: [ GtPager createWrappedOn: (GtBehaviorCoder forClass: JSParser) ];
 		newFadedText: 'The first non-Pharo language we accommodated is the language with which we write parsers for other languages.'.
 ]
 
@@ -588,7 +588,7 @@ GtTour >> overviewElement [
 				c vertical exact: 400 ];
 			margin: (BlInsets top: 10 left: 10 bottom: 20 right: 200); background: (Color white); look: BrShadowLook).
 
-	container addChild: ((GtClassCoder forClass: BaselineOfGToolkit) asElement
+	container addChild: ((GtBehaviorCoder forClass: BaselineOfGToolkit) asElement
 			constraintsDo: [ :c | 
 				c frame horizontal alignRight. 
 				c frame vertical alignTop.
@@ -956,9 +956,9 @@ GtTour >> viewMethodWithResultExplanationWithLinksExample [
 		margin: (BlInsets top: 20 right: 0 bottom: 0 left: 10);
 		look: BrGlamorousLabelLook new.
 	
-	coderElement := GtMethodCoderStylerExamples new coderOnViewMethod.
+	coderElement := GtMethodCoderExplanationStylerExamples new coderOnViewMethod.
 		
-	resultElement := GtMethodCoderStylerExamples new inspectorOnViewMethod.	
+	resultElement := GtMethodCoderExplanationStylerExamples new inspectorOnViewMethod.	
 	resultInspectorContainer addChild: resultElement.
 	
 	
@@ -975,7 +975,7 @@ GtTour >> viewsExplanationSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide textAndElement
 		priority: 12;
-		newTextWithFormat: GtMethodCoderStylerExamples new viewsExplanationWithLinksText;
+		newTextWithFormat: GtMethodCoderExplanationStylerExamples new viewsExplanationWithLinksText;
 		element: [ self viewMethodWithResultExplanationWithLinksExample ].
 ]
 

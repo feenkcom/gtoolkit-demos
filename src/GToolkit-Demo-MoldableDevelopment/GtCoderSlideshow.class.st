@@ -290,7 +290,7 @@ GtCoderSlideshow >> classCoderInterfaceExplanationWithLinks [
 		ifFound: [:aChild | aChild].
 	expandHeaderTarget := classCoderElement
 		allChildrenBreadthFirstDetect: [:aChild | 
-			aChild isKindOf: GtBehaviorCoderHeaderElement]
+			aChild isKindOf: GtBehaviorDefinitionCoderElement]
 		ifFound: [:aChild | aChild childAt: 1].
 	methodsTabTarget := classCoderElement
 		allChildrenBreadthFirstDetect: [:aChild | 
@@ -517,7 +517,7 @@ GtCoderSlideshow >> coderMashExample [
 				look: BrShadowLook;
 				background: Color white;
 				addChild: ((GtClassCoderLiveSlide new 
-					class: GtClassCoder;
+					class: GtBehaviorCoder;
 					expandHeader: true) asElement));
 		centerElement:
 			(BlElement new
@@ -530,7 +530,7 @@ GtCoderSlideshow >> coderMashExample [
 			(BlElement new
 				margin: (BlInsets all: 5);
 				addChild: (((GtMethodCoder 
-					forMethod: GtABAddressBookExample>>#myContactsAddressBook) 
+					forMethod: GtABAddressBookExample>>#myContactsAddressBook) asCoderUIModel
 						expanded:true) asElement))) asElement.
 ]
 
@@ -627,12 +627,25 @@ GtCoderSlideshow >> createMethodExplanationWithLinks [
 				onBreadthFirstChildOfClass: BrToolbar;
 				onChildAt: 2.
 			aStep wait forEmptySpaceTaskQueue ].
+	aScripter
+		substep: 'Expand Method'
+		do: [ :aStep | 
+			aStep click
+				label: 'Click expand method';
+				onBreadthFirstChildOfClass: GtBehaviorCoderElement;
+				onBreadthFirstChildOfClass: BrTabGroup;
+				onChildAt: 2;
+				onBreadthFirstChildOfClass: GtMethodsCoderElement;
+				onBreadthFirstChildOfClass: BrSimpleList;
+				onBreadthFirstChildOfClass: GtExpandableCoderElement;
+				onChildAt: 1.
+			aStep wait forEmptySpaceTaskQueue ].
 	aScripter syncContinue.	
 	classCoderElement := aScripter elementWithoutParent.
 	
 	newFrameTarget := classCoderElement
 		allChildrenBreadthFirstDetect: [:aChild |
-			aChild isKindOf: GtSourceCoderExpandedContentElement]
+			aChild isKindOf: GtExpandableCoderElement ]
 		ifFound: [:aChild | aChild].
 	newFrameTarget
 		allChildrenBreadthFirstDetect: [:aChild |
@@ -708,7 +721,7 @@ GtCoderSlideshow >> exampleMethodsExplanationWithLinks [
 	<gtExample>
 	| classCoderElement pragmaTarget inspectTarget evaluateTarget debugTarget aScripter expandedMethodElement buttonsList |
 	
-	classCoderElement := (GtInspector createOn:(GtClassCoder forClass: GtABAddressBookExample)) maximized.
+	classCoderElement := (GtInspector createOn:(GtBehaviorCoder forClass: GtABAddressBookExample)) maximized.
 	
 	aScripter := BlDevScripter new.
 	aScripter
