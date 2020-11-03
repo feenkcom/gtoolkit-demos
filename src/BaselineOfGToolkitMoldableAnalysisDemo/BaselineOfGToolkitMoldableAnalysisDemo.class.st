@@ -9,6 +9,10 @@ BaselineOfGToolkitMoldableAnalysisDemo >> baseline: spec [
 	<baseline>
 	spec for: #'common' do: [
 		spec 
-			package: 'GToolkit-Demo-Argouml-ArchitectureRules';
+			baseline: 'GToolkitConstrainer' with: [
+				spec repository: 'github://feenkcom/gtoolkit-constrainer/src' ].
+		spec 
+			package: 'GToolkit-Demo-Argouml-ArchitectureRules' with: [
+				spec requires: #('GToolkitConstrainer' ) ];
 			package: 'GToolkit-Demo-MoldableAnalysis' ].
 ]
