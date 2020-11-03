@@ -295,11 +295,7 @@ GtMoldableAnalysisPresentation >> visualizeDeprecatedClassesFor: stillUsedClasse
 				geometry: BlCircle new;
 				background:((each isAnnotatedWith: 'Deprecated')
 					ifTrue: [Color red]
-					ifFalse: [Color gray]);
-				border: (BlBorder paint: 
-					((each mooseName includesSubstring: '::ui')
-						ifTrue: [ Color blue ]
-						ifFalse: [ Color transparent ])) ];
+					ifFalse: [Color gray]) ];
 		with: (stillUsedClasses, (stillUsedClasses flatCollect: #clientTypes)) asSet.
 
 	view edges connectFromAll: #clientTypes. 
@@ -455,6 +451,31 @@ GtMoldableAnalysisPresentation >> visualizeDeprecatedClassesWithSizeSlideFor: aS
 			}) asElement. ]
 ]
 
+{ #category : #'code examples' }
+GtMoldableAnalysisPresentation >> visualizeDeprecatedClassesWithUIBorderFor: stillUsedClasses [
+	<gtExample>
+	| view |
+	view := GtMondrian new. 
+	
+	view nodes
+		shape: [:each |
+			BlElement new
+				size: 5@5;
+				geometry: BlCircle new;
+				background:((each isAnnotatedWith: 'Deprecated')
+					ifTrue: [Color red]
+					ifFalse: [Color gray]);
+				border: (BlBorder paint: 
+					((each mooseName includesSubstring: '::ui')
+						ifTrue: [ Color blue ]
+						ifFalse: [ Color transparent ])) ];
+		with: (stillUsedClasses, (stillUsedClasses flatCollect: #clientTypes)) asSet.
+
+	view edges connectFromAll: #clientTypes. 
+	view layout force. 
+	view
+]
+
 { #category : #slides }
 GtMoldableAnalysisPresentation >> visualizeDeprecatedClassessSlideFor: aSlide [
 	<gtSlide>
@@ -465,6 +486,19 @@ GtMoldableAnalysisPresentation >> visualizeDeprecatedClassessSlideFor: aSlide [
 				self codeFromSelector: #getArgoUMLModel. 
 				self codeFromSelector: #extractUsedDeprecatedClassesFrom:.
 				self codeFromSelector: #visualizeDeprecatedClassesFor:
+			}) asElement. ]
+]
+
+{ #category : #slides }
+GtMoldableAnalysisPresentation >> visualizeDeprecatedClassessWithUIBorderSlideFor: aSlide [
+	<gtSlide>
+	^ aSlide element
+		priority: 31;
+		element: [
+			(GtPlaygroundLiveSlide new snippets: {
+				self codeFromSelector: #getArgoUMLModel. 
+				self codeFromSelector: #extractUsedDeprecatedClassesFrom:.
+				self codeFromSelector: #visualizeDeprecatedClassesWithUIBorderFor:
 			}) asElement. ]
 ]
 
