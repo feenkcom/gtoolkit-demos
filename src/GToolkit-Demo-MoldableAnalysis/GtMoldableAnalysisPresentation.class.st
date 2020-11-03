@@ -253,7 +253,7 @@ GtMoldableAnalysisPresentation >> visualizeBuildFilesFrom: interestingDirectorie
 	| view |
 	view := GtMondrian new.
 	view nodes
-		shape: [ :each |
+		stencil: [ :each |
 			BlElement new
 				size: 5@5;
 				geometry: BlCircle new;
@@ -289,7 +289,7 @@ GtMoldableAnalysisPresentation >> visualizeDeprecatedClassesFor: stillUsedClasse
 	view := GtMondrian new. 
 	
 	view nodes
-		shape: [:each |
+		stencil: [:each |
 			BlElement new
 				size: 5@5;
 				geometry: BlCircle new;
@@ -316,7 +316,7 @@ GtMoldableAnalysisPresentation >> visualizeDeprecatedClassesWithMethodWithUsageS
 	
 	view := GtMondrian new.
 	view nodes 
-		shape: [ :each |
+		stencil: [ :each |
 			BlElement new 
 				padding: (BlInsets all: 2);
 				constraintsDo: [:c | 
@@ -329,7 +329,7 @@ GtMoldableAnalysisPresentation >> visualizeDeprecatedClassesWithMethodWithUsageS
 			(stillUsedClasses flatCollect: #clientTypes)) asSet;
 		forEach: [ :aClass |
 			view nodes
-				shape: [ :each |
+				stencil: [ :each |
 					BlElement new
 						margin: (BlInsets all: 2);
 						geometry: BlCircle new;
@@ -375,7 +375,7 @@ GtMoldableAnalysisPresentation >> visualizeDeprecatedClassesWithMethodsFor: stil
 	
 	view := GtMondrian new.
 	view nodes 
-		shape: [ :each |
+		stencil: [ :each |
 			BlElement new 
 				background: ((each isAnnotatedWith: 'Deprecated')
 					ifTrue: [ Color lightRed ]
@@ -384,7 +384,7 @@ GtMoldableAnalysisPresentation >> visualizeDeprecatedClassesWithMethodsFor: stil
 			(stillUsedClasses flatCollect: #clientTypes)) asSet;
 		forEach: [ :aClass |
 			view nodes
-				shape: [ :each |
+				stencil: [ :each |
 					BlElement new 
 						size: 5@5;
 						background: Color gray ];
@@ -417,7 +417,7 @@ GtMoldableAnalysisPresentation >> visualizeDeprecatedClassesWithSizeFor: stillUs
 	| view |
 	view := GtMondrian new.
 	view nodes 
-		shape: [ :each |
+		stencil: [ :each |
 			BlElement new 
 				size: (each numberOfMethods min: 50) asPoint;
 				geometry: BlCircle new;
@@ -458,7 +458,7 @@ GtMoldableAnalysisPresentation >> visualizeDeprecatedClassesWithUIBorderFor: sti
 	view := GtMondrian new. 
 	
 	view nodes
-		shape: [:each |
+		stencil: [:each |
 			BlElement new
 				size: 5@5;
 				geometry: BlCircle new;
