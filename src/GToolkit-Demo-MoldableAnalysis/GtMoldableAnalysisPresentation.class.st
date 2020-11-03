@@ -88,6 +88,14 @@ GtMoldableAnalysisPresentation >> enginesSlidesFor: aSlide [
 ]
 
 { #category : #'code examples' }
+GtMoldableAnalysisPresentation >> extractAllDeprecatedClassesFrom: model [
+	<gtExample>
+	| deprecatedClasses |
+	deprecatedClasses := model allModelClasses select: [ :each |
+		each isAnnotatedWith: 'Deprecated' ].
+]
+
+{ #category : #'code examples' }
 GtMoldableAnalysisPresentation >> extractBuildFoldersAndFilesFromModel: model [
 	<gtExample>
 	| interestingDirectories |
@@ -128,20 +136,6 @@ GtMoldableAnalysisPresentation >> extractGraphicalComponentsFrom: model [
 			aSuperclass mooseName = 'java::awt::Component' ] ]
 ]
 
-{ #category : #'code examples' }
-GtMoldableAnalysisPresentation >> extractUsedDeprecatedClassesFrom: model [
-	<gtExample>
-	| deprecatedClasses stillUsedClasses |
-	"Used deprecated classes"
-
-	deprecatedClasses := model allModelClasses select: [ :each |
-		each isAnnotatedWith: 'Deprecated' ].
-
-	stillUsedClasses := deprecatedClasses select: [ :each |
-		(each isAnnotatedWith: 'Deprecated') and: [
-			each clientTypes isNotEmpty ] ]
-]
-
 { #category : #slides }
 GtMoldableAnalysisPresentation >> feenkSlideFor: aSlide [
 	<gtSlide>
@@ -171,6 +165,16 @@ BlElement new
 								c linear horizontal alignCenter ];
 							text: (('we make your systems explainable.' asRopedText glamorousRegularFont bold fontSize: 30))))
 				]
+]
+
+{ #category : #'code examples' }
+GtMoldableAnalysisPresentation >> filterUsedDeprecatedClassesFrom: deprecatedClasses [
+	<gtExample>
+	| stillUsedClasses |
+
+	stillUsedClasses := deprecatedClasses select: [ :each |
+		(each isAnnotatedWith: 'Deprecated') and: [
+			each clientTypes isNotEmpty ] ]
 ]
 
 { #category : #'code examples' }
@@ -357,7 +361,8 @@ GtMoldableAnalysisPresentation >> visualizeDeprecatedClassesWithMethodWithUsageS
 		element: [
 			(GtPlaygroundLiveSlide new snippets: {
 				self codeFromSelector: #getArgoUMLModel. 
-				self codeFromSelector: #extractUsedDeprecatedClassesFrom:.
+				self codeFromSelector: #extractAllDeprecatedClassesFrom:.
+				self codeFromSelector: #filterUsedDeprecatedClassesFrom:.
 				self codeFromSelector: #visualizeDeprecatedClassesWithMethodWithUsageSizeFor:
 			}) asElement. ]
 ]
@@ -406,7 +411,8 @@ GtMoldableAnalysisPresentation >> visualizeDeprecatedClassesWithMethodsSlidesFor
 		element: [
 			(GtPlaygroundLiveSlide new snippets: {
 				self codeFromSelector: #getArgoUMLModel. 
-				self codeFromSelector: #extractUsedDeprecatedClassesFrom:.
+				self codeFromSelector: #extractAllDeprecatedClassesFrom:.
+				self codeFromSelector: #filterUsedDeprecatedClassesFrom:.
 				self codeFromSelector: #visualizeDeprecatedClassesWithMethodsFor:
 			}) asElement. ]
 ]
@@ -446,7 +452,8 @@ GtMoldableAnalysisPresentation >> visualizeDeprecatedClassesWithSizeSlideFor: aS
 		element: [
 			(GtPlaygroundLiveSlide new snippets: {
 				self codeFromSelector: #getArgoUMLModel. 
-				self codeFromSelector: #extractUsedDeprecatedClassesFrom:.
+				self codeFromSelector: #extractAllDeprecatedClassesFrom:.
+				self codeFromSelector: #filterUsedDeprecatedClassesFrom:.
 				self codeFromSelector: #visualizeDeprecatedClassesWithSizeFor:
 			}) asElement. ]
 ]
@@ -484,7 +491,8 @@ GtMoldableAnalysisPresentation >> visualizeDeprecatedClassessSlideFor: aSlide [
 		element: [
 			(GtPlaygroundLiveSlide new snippets: {
 				self codeFromSelector: #getArgoUMLModel. 
-				self codeFromSelector: #extractUsedDeprecatedClassesFrom:.
+				self codeFromSelector: #extractAllDeprecatedClassesFrom:.
+				self codeFromSelector: #filterUsedDeprecatedClassesFrom:.
 				self codeFromSelector: #visualizeDeprecatedClassesFor:
 			}) asElement. ]
 ]
@@ -497,7 +505,8 @@ GtMoldableAnalysisPresentation >> visualizeDeprecatedClassessWithUIBorderSlideFo
 		element: [
 			(GtPlaygroundLiveSlide new snippets: {
 				self codeFromSelector: #getArgoUMLModel. 
-				self codeFromSelector: #extractUsedDeprecatedClassesFrom:.
+				self codeFromSelector: #extractAllDeprecatedClassesFrom:.
+				self codeFromSelector: #filterUsedDeprecatedClassesFrom:.
 				self codeFromSelector: #visualizeDeprecatedClassesWithUIBorderFor:
 			}) asElement. ]
 ]
