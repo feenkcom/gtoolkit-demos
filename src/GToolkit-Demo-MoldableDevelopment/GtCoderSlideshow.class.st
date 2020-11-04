@@ -603,6 +603,7 @@ GtCoderSlideshow >> createMethodExplanationText [
 { #category : #accessing }
 GtCoderSlideshow >> createMethodExplanationWithLinks [
 	<gtExample>
+	<noTest>
 	| classCoderElement buttonsList addMethodButton aScripter newFrameTarget saveButtonTarget removeButtonTarget |
 	
 	classCoderElement := BlUseAsyncFeatures
