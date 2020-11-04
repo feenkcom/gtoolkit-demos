@@ -603,60 +603,38 @@ GtCoderSlideshow >> createMethodExplanationText [
 { #category : #accessing }
 GtCoderSlideshow >> createMethodExplanationWithLinks [
 	<gtExample>
-	<noTest>
-	| classCoderElement buttonsList addMethodButton aScripter newFrameTarget saveButtonTarget removeButtonTarget |
+	| classCoderElement addMethodButton aScripter newFrameTarget saveButtonTarget removeButtonTarget |
 	
 	classCoderElement := BlUseAsyncFeatures
 		disableDuring: [ (GtClassCoderLiveSlide new class: GtABAddressBook) asElement ].
 		
-	aScripter := BlDevScripter new.
-	aScripter
-		substep: 'Add Coder Element'
-		do: [ :aStep | 
-			aStep set
-				label: 'Coder';
-				element: [ classCoderElement ].
-			aStep wait forEmptySpaceTaskQueue ].
+	aScripter := BlDevScripter new
+		element: classCoderElement.
 	aScripter
 		substep: 'Click coder'
 		do: [ :aStep | 
 			aStep click
 				label: 'Click add method button';
-				onBreadthFirstChildOfClass: GtBehaviorCoderElement;
-				onBreadthFirstChildOfClass: BrTabGroup;
-				onChildAt: 1;
-				onBreadthFirstChildOfClass: BrToolbar;
-				onChildAt: 2.
+				onChildNamed: GtBehaviorCoder addNewMethodButtonName.
 			aStep wait forEmptySpaceTaskQueue ].
-	aScripter
-		substep: 'Expand Method'
-		do: [ :aStep | 
-			aStep click
-				label: 'Click expand method';
-				onBreadthFirstChildOfClass: GtBehaviorCoderElement;
-				onBreadthFirstChildOfClass: BrTabGroup;
-				onChildAt: 2;
-				onBreadthFirstChildOfClass: GtMethodsCoderElement;
-				onBreadthFirstChildOfClass: BrSimpleList;
-				onBreadthFirstChildOfClass: GtExpandableCoderElement;
-				onChildAt: 1.
-			aStep wait forEmptySpaceTaskQueue ].
-	aScripter syncContinue.	
+	aScripter syncContinue.
+
 	classCoderElement := aScripter elementWithoutParent.
 	
 	newFrameTarget := classCoderElement
 		allChildrenBreadthFirstDetect: [:aChild |
 			aChild isKindOf: GtExpandableCoderElement ]
 		ifFound: [:aChild | aChild].
+
 	newFrameTarget
 		allChildrenBreadthFirstDetect: [:aChild |
 			aChild isKindOf: BrToolbar]
 		ifFound: [:aChild |
 			saveButtonTarget := aChild childAt: 1.
 			removeButtonTarget := aChild childAt: 2].
-	buttonsList := classCoderElement
-		allChildrenBreadthFirstSelect: [:aChild | (aChild isKindOf: BrButton) and: [aChild parent isKindOf: BrToolbar]].
-	addMethodButton := buttonsList at: 2.
+
+	addMethodButton := classCoderElement
+		childNamed: GtBehaviorCoder addNewMethodButtonName.
 	
 	addMethodButton
 		addChild:
