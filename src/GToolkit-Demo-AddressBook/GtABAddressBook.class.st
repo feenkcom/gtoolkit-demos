@@ -128,8 +128,8 @@ GtABAddressBook >> gtGtSpotterForPeopleFor: aStep [
 		allCandidates: [ self contacts ];
 		filter: GtFilterSubstrings;
 		candidatesLimit: 7;
-		itemName:
-				[ :aContact | aContact lastName asUppercase , ', ' , aContact firstName ]
+		itemName:[ :aContact | 
+			aContact lastName asUppercase , ', ' , aContact firstName ] 
 ]
 
 { #category : #ui }
@@ -138,7 +138,7 @@ GtABAddressBook >> gtGtSpotterForTelephonesFor: aStep [
 	^ aStep listProcessor
 		priority: 15;
 		title: 'Telephones' translated;
-		allCandidates: [ self contacts flatCollect: [ :aContact | aContact address telephones ] ];
+		allCandidates: [ self contacts flatCollect: [ :aContact | aContact telephones ] ];
 		matchSubstrings
 ]
 
