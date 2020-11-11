@@ -418,6 +418,37 @@ container addChild: inspectorContainer.
 ]
 
 { #category : #accessing }
+GtTour >> feenkNameSlideFor: aSlide [
+	<gtSlide>
+	^ aSlide element
+		priority: 1.1;
+		element: [| container form |
+				form := PNGReadWriter formFromFileNamed: (GtResourceReference
+						path: Path * 'feenkcom' / 'gtoolkit' / 'doc' / 'feenk.png') fullName.
+BlElement new 
+			constraintsDo: [ :c |
+				c horizontal matchParent.
+				c vertical matchParent ];
+			layout: BlLinearLayout horizontal;
+				addChild: (
+					BlElement new
+						constraintsDo: [ :c |
+							c horizontal matchParent.
+							c vertical fitContent.
+							c linear vertical alignCenter ];
+						layout: BlLinearLayout vertical;
+						addChild: (BrVerticalPane new 
+							constraintsDo: [ :c |
+								c linear horizontal alignCenter ];
+							addChild: (form asElement asScalableElement maxScale: 0.2; constraintsDo: [:c | c horizontal matchParent. c vertical matchParent]); hExact: 400; vExact: 200);
+						addChild: (BlTextElement new 
+							constraintsDo: [ :c |
+								c linear horizontal alignCenter ];
+							text: (('we make your systems explainable. literally.' asRopedText glamorousRegularFont bold fontSize: 30))))
+				]
+]
+
+{ #category : #accessing }
 GtTour >> graphicalStackFirstExampleSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide labelAndElement
@@ -768,37 +799,6 @@ GtTour >> rawViewsExampleSlideFor: aSlide [
 		priority: 6;
 		element: [ GtRawViewsLiveSlide new asElement ];
 		newFadedText: 'Consider how these different objects look quite similar in the inspector.'.
-]
-
-{ #category : #accessing }
-GtTour >> slide1For: aSlide [
-	<gtSlide>
-	^ aSlide element
-		priority: 1.1;
-		element: [| container form |
-				form := PNGReadWriter formFromFileNamed: (GtResourceReference
-						path: Path * 'feenkcom' / 'gtoolkit' / 'doc' / 'feenk.png') fullName.
-BlElement new 
-			constraintsDo: [ :c |
-				c horizontal matchParent.
-				c vertical matchParent ];
-			layout: BlLinearLayout horizontal;
-				addChild: (
-					BlElement new
-						constraintsDo: [ :c |
-							c horizontal matchParent.
-							c vertical fitContent.
-							c linear vertical alignCenter ];
-						layout: BlLinearLayout vertical;
-						addChild: (BrVerticalPane new 
-							constraintsDo: [ :c |
-								c linear horizontal alignCenter ];
-							addChild: (form asElement asScalableElement maxScale: 0.2; constraintsDo: [:c | c horizontal matchParent. c vertical matchParent]); hExact: 400; vExact: 200);
-						addChild: (BlTextElement new 
-							constraintsDo: [ :c |
-								c linear horizontal alignCenter ];
-							text: (('we make your systems explainable. literally.' asRopedText glamorousRegularFont bold fontSize: 30))))
-				]
 ]
 
 { #category : #accessing }
