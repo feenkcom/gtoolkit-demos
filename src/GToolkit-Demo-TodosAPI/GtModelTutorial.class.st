@@ -172,8 +172,8 @@ GtModelTutorial >> finalExampleSlideFor: aSlide [
 	get.
 dictionaries := STONJSON fromString: json.
 dictionaries collect: [:eachDictionary |
-	MyAlbum new rawData: eachDictionary ].'};
-				inspectSnippetAt: 1) asElement].
+	MyAlbum new rawData: eachDictionary ].'}";
+				inspectSnippetAt: 1") asElement].
 ]
 
 { #category : #accessing }
@@ -218,8 +218,8 @@ GtModelTutorial >> listOfAlbumsExampleSlideFor: aSlide [
 	get.
 dictionaries := STONJSON fromString: json.
 dictionaries collect: [:eachDictionary |
-	MyAlbum new rawData: eachDictionary ].'};
-			inspectSnippetAt: 1) asElement].
+	MyAlbum new rawData: eachDictionary ].'}";
+			inspectSnippetAt: 1") asElement].
 ]
 
 { #category : #slides }
@@ -256,9 +256,9 @@ GtModelTutorial >> requestExplanationWithLinks [
 		snippets: {'json := ZnClient new
 	url: ''https://jsonplaceholder.typicode.com/albums'';
 	get'. 
-'dictionaries := STONJSON fromString: json.'};
+'dictionaries := STONJSON fromString: json.'}";
 		inspectSnippetAt: 1;
-		inspectSnippetAt: 2) asElement.
+		inspectSnippetAt: 2") asElement.
 	playgroundElement forceLayout.
 
 	clientTarget := playgroundElement
