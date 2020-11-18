@@ -3,7 +3,7 @@
 Let us imagine that we want to explain how to create a file with some contents. To store this example, we create a unary method:
 
 % Add changes:01-step.ombu with a class and a method definition.Applying the above changes leads to the following method:
-% Add example:GtExamplesTutorial>>#createFileInMemoryExamples can be collapsed and expanded by default as shown in the following examples:% example: name= GtExamplesTutorial >># createFileInMemory | expandedPreview=true | show=#gtContentsFor:% example: name= BrButtonLabelLookExamples >># labelChangedEvent | expanded=true | expandedPreview=true | noCode=true
+% Add example:GtExamplesTutorial>>#createFileInMemoryExamples can be collapsed and expanded by default as shown in the following examples:% example: name= GtExamplesTutorial >># createFileInMemory | previewExpanded=true | show=#gtContentsFor:% example: name= BrButtonLabelLookExamples >># labelChangedEvent | expanded=true | previewExpanded=true | noCode=true
 
 
 
