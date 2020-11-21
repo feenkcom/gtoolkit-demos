@@ -252,17 +252,15 @@ GtWorkingWithARestApi >> getAllTodosMethodExplanation [
 			aStep set
 				label: 'Coder';
 				element: [ self getAllTodosMethodCoderWithExplanationTargets ] ].
-	aScripter
-		substep: 'Wait'
-		do: [ :aStep | 
-			aStep wait forEmptySpaceTaskQueue ].
+	aScripter wait forEmptySpaceTaskQueue.
+
 	aScripter
 		substep: 'Expand first method inside coder'
 		do: [ :aStep | 
 			aStep click
 				label: 'Click on expand adornment';
 				onBreadthFirstChildOfClass: GtSourceCoderExpandedContentElement;
-				onBreadthFirstChildOfClass: BrEditor;
+				onBreadthFirstChildOfClass: GtSourceCoderEditorElement;
 				onChildAt: 4;
 				onChildAt: 6.
 			aStep wait forEmptySpaceTaskQueue ].
@@ -272,7 +270,7 @@ GtWorkingWithARestApi >> getAllTodosMethodExplanation [
 			aStep click
 				label: 'Click on expand adornment';
 				onBreadthFirstChildOfClass: GtSourceCoderExpandedContentElement;
-				onBreadthFirstChildOfClass: BrEditor;
+				onBreadthFirstChildOfClass: GtSourceCoderEditorElement;
 				onChildAt: 7;
 				onChildAt: 7.
 			aStep wait forEmptySpaceTaskQueue ].
