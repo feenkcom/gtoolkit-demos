@@ -512,7 +512,7 @@ a - b' } asOrderedCollection.
 	frameToolbarButtons := playgroundElement
 		allChildrenBreadthFirstSelect: [ :aChild |
 			(aChild isKindOf: BrToolbar)
-				and: [ (aChild parent isKindOf: GtSourceCoderActionsElement)
+				and: [ (aChild parent isKindOf: GtCoderActionsElement)
 					and: [ aChild hasChildren ]]].
 	frameToolbarButtons do: [ :each |
 		inspectButtons add: (each children at: 2)].

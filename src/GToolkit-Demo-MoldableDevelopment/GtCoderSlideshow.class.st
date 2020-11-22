@@ -158,7 +158,7 @@ GtCoderSlideshow >> baselineMethodsExplanationWithLinks [
 				onBreadthFirstChildOfClass: BrInfiniteListElement;
 				onChildAt: 1;
 				onChildAt: 2;
-				onBreadthFirstChildOfClass: BrEditor;
+				onBreadthFirstChildOfClass: GtSourceCoderEditorElement;
 				onChildAt: 8;
 				onBreadthFirstChildOfClass: BrToggle.
 			aStep wait forEmptySpaceTaskQueue ].
