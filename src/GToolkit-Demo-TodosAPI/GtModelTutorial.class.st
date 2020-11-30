@@ -78,7 +78,9 @@ GtModelTutorial >> albumDetailsViewExampleSlideFor: aSlide [
 dictionaries := STONJSON fromString: json.
 albums := dictionaries collect: [:eachDictionary |
 	MyAlbum new rawData: eachDictionary ].
-albums first.' }) asElement ].
+albums first.' }) asElement ];
+		onEveryAddToSceneGraphDo: [ :anElement |
+			self runSnippetWhenAddedToSceneGraphFor: anElement ].
 ]
 
 { #category : #accessing }
@@ -172,8 +174,9 @@ GtModelTutorial >> finalExampleSlideFor: aSlide [
 	get.
 dictionaries := STONJSON fromString: json.
 dictionaries collect: [:eachDictionary |
-	MyAlbum new rawData: eachDictionary ].'}";
-				inspectSnippetAt: 1") asElement].
+	MyAlbum new rawData: eachDictionary ].'}) asElement];
+		onEveryAddToSceneGraphDo: [ :anElement |
+			self runSnippetWhenAddedToSceneGraphFor: anElement ].
 ]
 
 { #category : #accessing }
@@ -195,7 +198,9 @@ GtModelTutorial >> imageViewExampleSlideFor: aSlide [
 dictionaries := STONJSON fromString: json.
 albums := dictionaries collect: [:eachDictionary |
 	MyAlbum new rawData: eachDictionary ].
-albums first photos first.' }) asElement].
+albums first photos first.' }) asElement];
+		onEveryAddToSceneGraphDo: [ :anElement |
+			self runSnippetWhenAddedToSceneGraphFor: anElement ].
 ]
 
 { #category : #slides }
@@ -218,8 +223,9 @@ GtModelTutorial >> listOfAlbumsExampleSlideFor: aSlide [
 	get.
 dictionaries := STONJSON fromString: json.
 dictionaries collect: [:eachDictionary |
-	MyAlbum new rawData: eachDictionary ].'}";
-			inspectSnippetAt: 1") asElement].
+	MyAlbum new rawData: eachDictionary ].'}) asElement];
+		onEveryAddToSceneGraphDo: [ :anElement |
+			self runSnippetWhenAddedToSceneGraphFor: anElement ].
 ]
 
 { #category : #slides }
@@ -246,7 +252,9 @@ GtModelTutorial >> photoDetailsViewExampleSlideFor: aSlide [
 dictionaries := STONJSON fromString: json.
 albums := dictionaries collect: [:eachDictionary |
 	MyAlbum new rawData: eachDictionary ].
-albums first photos first.' }) asElement ].
+albums first photos first.' }) asElement ];
+		onEveryAddToSceneGraphDo: [ :anElement |
+			self runSnippetWhenAddedToSceneGraphFor: anElement ].
 ]
 
 { #category : #accessing }
@@ -336,6 +344,21 @@ The result is a json string for which we can then use a ' asRopedText,
 		fontSize: 20.
 ]
 
+{ #category : #accessing }
+GtModelTutorial >> runSnippetWhenAddedToSceneGraphFor: anElement [
+	| playgroundElement editor |
+	playgroundElement := anElement childAt: 2.
+
+	playgroundElement enqueueTask:
+		(BlTaskAction new
+			action: [
+				editor := playgroundElement 
+					allChildrenBreadthFirstDetect: [:aChild |
+						aChild isKindOf: GtSourceCoderEditorElement]
+					ifFound: [:aChild | aChild].
+				editor ifNotNil: [ editor sourceCoderUIModel coder doItAndGoAll ]]).
+]
+
 { #category : #slides }
 GtModelTutorial >> slideshowLinkSlideFor: aSlide [
 	<gtSlide>
@@ -375,7 +398,9 @@ GtModelTutorial >> todosListExampleSlideFor: aSlide [
 dictionaries := STONJSON fromString: json.
 albums := dictionaries collect: [:eachDictionary |
 	MyAlbum new rawData: eachDictionary ].
-albums first user.' }) asElement ].
+albums first user.' }) asElement ];
+		onEveryAddToSceneGraphDo: [ :anElement |
+			self runSnippetWhenAddedToSceneGraphFor: anElement ].
 ]
 
 { #category : #accessing }
@@ -392,7 +417,9 @@ GtModelTutorial >> userDetailsViewExampleSlideFor: aSlide [
 dictionaries := STONJSON fromString: json.
 albums := dictionaries collect: [:eachDictionary |
 	MyAlbum new rawData: eachDictionary ].
-albums first user.' }) asElement ].
+albums first user.' }) asElement ];
+		onEveryAddToSceneGraphDo: [ :anElement |
+			self runSnippetWhenAddedToSceneGraphFor: anElement ].
 ]
 
 { #category : #accessing }
@@ -409,5 +436,7 @@ GtModelTutorial >> userExampleSlideFor: aSlide [
 dictionaries := STONJSON fromString: json.
 albums := dictionaries collect: [:eachDictionary |
 	MyAlbum new rawData: eachDictionary ].
-albums first user.' }) asElement].
+albums first user.' }) asElement];
+		onEveryAddToSceneGraphDo: [ :anElement |
+			self runSnippetWhenAddedToSceneGraphFor: anElement ].
 ]

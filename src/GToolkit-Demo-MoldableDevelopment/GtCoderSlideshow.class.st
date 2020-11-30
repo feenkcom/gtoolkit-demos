@@ -739,10 +739,11 @@ GtCoderSlideshow >> exampleMethodsExplanationWithLinks [
 		ifFound: [:aChild | aChild].
 	buttonsList := expandedMethodElement
 		allChildrenBreadthFirstSelect: [:aChild | aChild isKindOf: BrButton].
-	evaluateTarget := buttonsList detect: [ :aButton | aButton label asString = 'Play' ].
-	inspectTarget := buttonsList detect: [ :aButton | aButton label asString = 'Play and Inspect Example Result' ].
-	debugTarget := buttonsList detect: [ :aButton | aButton label asString = 'Debug' ].
-	
+
+	evaluateTarget := expandedMethodElement childNamed: GtMethodCoderPlayExampleActionId.
+	inspectTarget := expandedMethodElement childNamed: GtMethodCoderPlayAndInspectExampleActionId.
+	debugTarget := expandedMethodElement childNamed: GtMethodCoderDebugExampleActionId.
+
 	pragmaTarget
 		addChild:
 			((self yellowTargetCircleWithExplanationModel: #gtView)
