@@ -119,7 +119,7 @@ GtCoderSlideshow >> baselineMethodsExplanationWithLinks [
 			(aChild isKindOf: BrTextElementWithCursors) and: [aChild text asString = '''GToolkitClipboard''' asString]]
 		ifFound: [:aChild | aChild].
 	expandBaselineTarget := baselineTarget parent
-		allChildrenBreadthFirstDetect: [:aChild | aChild isKindOf: BrToggle]
+		allChildrenBreadthFirstDetect: [:aChild | aChild isKindOf: BrTriangle ]
 		ifFound: [:aChild | aChild].
 	
 	pragmaTarget
@@ -160,7 +160,7 @@ GtCoderSlideshow >> baselineMethodsExplanationWithLinks [
 				onChildAt: 2;
 				onBreadthFirstChildOfClass: GtSourceCoderEditorElement;
 				onChildAt: 8;
-				onBreadthFirstChildOfClass: BrToggle.
+				onBreadthFirstChildOfClass: BrTriangle.
 			aStep wait forEmptySpaceTaskQueue ].
 	aScripter syncContinue.	
 	^ BlElement new
