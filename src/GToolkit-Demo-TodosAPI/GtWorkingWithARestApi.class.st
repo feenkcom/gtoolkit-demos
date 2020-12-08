@@ -49,7 +49,7 @@ GtWorkingWithARestApi >> apiExamples [
 		margin: (BlInsets all: 5);
 		addChild: (BrButton new
 			margin: (BlInsets all: 5);
-			look: (BrGlamorousLinkSquaredButtonWithLabelLook new fontSize: 16) + (BrGlamorousLabelTooltipLook new text: 'https://jsonplaceholder.typicode.com/todos');
+			look: (BrGlamorousLinkSquaredButtonWithLabelLook new fontSize: 16) + (BrGlamorousWithLabelTooltipLook new text: 'https://jsonplaceholder.typicode.com/todos');
 			label: 'https://jsonplaceholder.typicode.com/todos';
 			action: [ :aButton | WebBrowser openOn: 'https://jsonplaceholder.typicode.com/todos']);
 		addChild: (BlElement new
@@ -69,7 +69,7 @@ GtWorkingWithARestApi >> apiExamples [
 		margin: (BlInsets all: 5);
 		addChild: (BrButton new
 			margin: (BlInsets all: 5);
-			look: (BrGlamorousLinkSquaredButtonWithLabelLook new fontSize: 16) + (BrGlamorousLabelTooltipLook new text: 'https://jsonplaceholder.typicode.com/posts?userId=4');
+			look: (BrGlamorousLinkSquaredButtonWithLabelLook new fontSize: 16) + (BrGlamorousWithLabelTooltipLook new text: 'https://jsonplaceholder.typicode.com/posts?userId=4');
 			label: 'https://jsonplaceholder.typicode.com/posts?userId=4';
 			action: [ :aButton | WebBrowser openOn: 'https://jsonplaceholder.typicode.com/posts?userId=4']);
 		addChild: (BlElement new
@@ -89,7 +89,7 @@ GtWorkingWithARestApi >> apiExamples [
 		margin: (BlInsets all: 5);
 		addChild: (BrButton new
 			margin: (BlInsets all: 5);
-			look: (BrGlamorousLinkSquaredButtonWithLabelLook new fontSize: 16) + (BrGlamorousLabelTooltipLook new text: 'https://jsonplaceholder.typicode.com/todos/8');
+			look: (BrGlamorousLinkSquaredButtonWithLabelLook new fontSize: 16) + (BrGlamorousWithLabelTooltipLook new text: 'https://jsonplaceholder.typicode.com/todos/8');
 			label: 'https://jsonplaceholder.typicode.com/todos/8';
 			action: [ :aButton | WebBrowser openOn: 'https://jsonplaceholder.typicode.com/todos/8']);
 		addChild: (BlElement new
