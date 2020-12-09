@@ -623,7 +623,7 @@ GtCoderSlideshow >> createMethodExplanationWithLinks [
 	
 	newFrameTarget := classCoderElement
 		allChildrenBreadthFirstDetect: [:aChild |
-			aChild isKindOf: GtExpandableCoderElement ]
+			aChild isKindOf: GtExpandableSourceCoderElement ]
 		ifFound: [:aChild | aChild].
 
 	newFrameTarget
