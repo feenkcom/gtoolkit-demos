@@ -81,7 +81,7 @@ GtTour >> coderExplanationWithLinks [
 		ifFound: [:aChild | aChild].
 	expandMethodTarget := coderElement 
 		allChildrenBreadthFirstDetect: [:aChild | 
-			(aChild isKindOf: GtExpandableCoderElement)]
+			(aChild isKindOf: GtExpandableSourceCoderElement)]
 		ifFound: [:aChild | aChild].
 	deleteButtonTarget := coderElement 
 		allChildrenBreadthFirstDetect: [:aChild | 
