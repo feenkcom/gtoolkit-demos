@@ -192,7 +192,7 @@ GtABAddressBook >> gtViewContactsAddressOn: aView [
 { #category : #ui }
 GtABAddressBook >> gtViewContactsIconsCircularOn: aView [
 	<gtView>
-	self contacts size > 2 ifFalse: [ ^ aView ].
+	self contacts size > 2 ifFalse: [ ^ aView empty].
 	^ aView mondrian
 		title: 'Circular' translated;
 		priority: 50;
