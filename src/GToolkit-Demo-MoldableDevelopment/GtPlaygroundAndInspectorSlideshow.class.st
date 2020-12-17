@@ -106,6 +106,7 @@ GtPlaygroundAndInspectorSlideshow >> fixItAdornmentForClassExplanation [
 
 	playgroundElement := aScripter elementWithoutParent.	
 	
+	aScripter := BlDevScripter new.
 	aScripter
 		substep: 'Initiate Default Playground'
 		do: [ :aStep | 
@@ -172,6 +173,7 @@ GtPlaygroundAndInspectorSlideshow >> fixItAdornmentForMethodExplanation [
 	aScripter syncContinue.
 	playgroundElement := aScripter elementWithoutParent.	
 	
+	aScripter := BlDevScripter new.
 	aScripter
 		substep: 'Initiate Default Playground'
 		do: [ :aStep | 
