@@ -245,7 +245,7 @@ GtMoldableAnalysisPresentation >> titleSlideFor: aSlide [
 	^ aSlide title
 		priority: 1;
 		titleWithFormat: ('moldableanalysis' asRopedText 
-			fontSize: 80;
+			fontSize: 60;
 			glamorousRegularFont;
 			thin; 
 			in: [:t | (t from: 'Moldable' size + 1 to: t size) bold]; yourself)
