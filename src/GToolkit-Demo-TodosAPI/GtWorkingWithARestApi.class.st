@@ -39,7 +39,7 @@ GtWorkingWithARestApi >> albumsSlideText [
 { #category : #accessing }
 GtWorkingWithARestApi >> apiExamples [
 	<gtExample>
-	| bottomContainer firstExampleContainer secondExampleContainer thirdExampleContainer |
+	| firstExampleContainer secondExampleContainer thirdExampleContainer |
 	
 	firstExampleContainer := BlElement new
 		layout: BlLinearLayout vertical;
@@ -101,40 +101,27 @@ GtWorkingWithARestApi >> apiExamples [
 			background: Color white;
 			addChild: ((TDExamples new requestTodoWithIdEightRawExample gtJsonFor: GtPhlowView empty) asElementDo: [ :e | e ])).
 	
-	bottomContainer := BlElement new
+	^ BlElement new
 		layout: BlLinearLayout horizontal;
 		constraintsDo: [ :c |
 			c vertical matchParent.
 			c horizontal matchParent];
 		margin: (BlInsets all: 5);
 		addChildren: { firstExampleContainer. secondExampleContainer. thirdExampleContainer }.
-	
-	^ BlElement new
-		constraintsDo: [ :c |
-			c vertical matchParent.
-			c horizontal matchParent ];
-		layout: BlLinearLayout vertical;
-		margin: (BlInsets all: 5);
-		addChild: (BrEditor new
-			hMatchParent;
-			vFitContent;
-			look: BrEditorLook;
-			text: self apiExplanationText;
-			margin: (BlInsets top: 20 right: 5 bottom: 100 left: 5));
-		addChild: bottomContainer.
 ]
 
 { #category : #slides }
 GtWorkingWithARestApi >> apiExamplesSlideFor: aSlide [
 	<gtSlide>
-	^ aSlide element
+	^ aSlide labelAndElement
 		priority: 6;
-		element: [ self apiExamples ].
+		newFadedText: (self apiExplanationText);
+		element: [ self apiExamples ]
 ]
 
 { #category : #accessing }
 GtWorkingWithARestApi >> apiExplanationText [
-	^ 'By using different links, like the ones presented below, we make requests to the api. The response we get is in the form of a JSON file containing the information we requested.' asRopedText
+	^ 'Below we see examples of the JSON responses for various requests to the API.' asRopedText
 		glamorousRegularFont;
 		fontSize: 16.
 ]
