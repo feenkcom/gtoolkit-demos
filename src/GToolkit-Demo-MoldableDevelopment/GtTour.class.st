@@ -462,7 +462,7 @@ GtTour >> graphicalStackIntroductionSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide text
 		priority: 32;
-		newText: 'The graphical stack is worth taking a look at as well. It features the property of rendering everything in a single rendering tree.'.
+		newText: 'The graphical stack is worth taking a look at as well. It features the property that it renders everything in a single tree.'.
 ]
 
 { #category : #accessing }
