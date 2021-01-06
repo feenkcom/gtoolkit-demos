@@ -3,7 +3,7 @@ I model a picture that can contain a list of detected faces.
 
 I maintain a list of ${class:GtCSFace}$ objects representing the faces detected within this picture and a ${class:Form}$ object holding the graphical representation of the picture. I provide support for adding and removing faces, and setting a graphical representation directly, or by either reading it from a file or downloading it from a URL.
 
-${example:GtCSPictureExamples>>#pictureWithFacesAndForm|noCode|previewShow=gtPictureFor:}$
+${example:GtCSPictureExamples>>#pictureWithFacesWithLandmarksAndForm|noCode|previewShow=gtPictureFor:}$
 
 !!Instantiation
 New instances are created by directly instantiating the class. These instances have no face data or graphical representation by default. 
