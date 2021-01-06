@@ -5,7 +5,7 @@ Class {
 		'picture',
 		'container'
 	],
-	#category : 'GToolkit-Demo-CognitiveServices-FaceAPI-BlocExtensions'
+	#category : #'GToolkit-Demo-CognitiveServices-FaceAPI-BlocExtensions'
 }
 
 { #category : #initialization }
@@ -43,6 +43,7 @@ GtCSInspectorPictureBlocElement >> initializeForPicture: aPicture withFaceColors
 			border: (BlBorder 
 				paint: (facesColor at: aFace ifAbsent: [ Color blue ])
 				width: 2);
+			when: BlClickEvent do: [:e | e target phlow spawnObject: aFace];
 			relocate: aFace rectangle origin.
 		faceElement size: aFace rectangle extent.
 		container addChild: faceElement ].
