@@ -72,7 +72,7 @@ GtNnNetwork >> gtInspectorPaintNetworkIn: aMondrianView [
 				addChild: (BlTextElement new
 					clipChildren: false;
 					preventMouseEvents;
-					text: (each value asString asRopedText monospace fontSize: 7)) ];
+					text: (each value asString asRopedText fontSize: 7)) ];
 		with: nodes.
 
 	aMondrianView edges 

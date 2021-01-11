@@ -14,14 +14,14 @@ GtNnNeuronStencil >> create [
 	incomingNodes := self neuron neuronsAlongIncomingSynapses collect: [ :aNeuron |
 		BlTextElement new
 			in: [ :anElement | anElement graph model: aNeuron ];
-			text: (aNeuron value printShowingDecimalPlaces: 1) asRopedText monospace;
+			text: (aNeuron value printShowingDecimalPlaces: 1) asRopedText;
 			margin: (BlInsets all: 10);
 			padding: (BlInsets all: 5) ].
 
 	outgoingNodes := self neuron neuronsAlongOutgoingSynapses collect: [ :aNeuron |
 		BlTextElement new
 			in: [ :anElement | anElement graph model: aNeuron ];
-			text: (aNeuron value printShowingDecimalPlaces: 1) asRopedText monospace;
+			text: (aNeuron value printShowingDecimalPlaces: 1) asRopedText;
 			margin: (BlInsets all: 10);
 			padding: (BlInsets all: 5) ].
 
@@ -40,7 +40,7 @@ GtNnNeuronStencil >> create [
 		addChildren: outgoingNodes.
 
 	neuronElement := BlTextElement new
-		text: (self neuron value printShowingDecimalPlaces: 2) asRopedText monospace;
+		text: (self neuron value printShowingDecimalPlaces: 2) asRopedText;
 		padding: (BlInsets all: 30);
 		margin: (BlInsets top: 40 left: 120 bottom: 40 right: 120);
 		geometry: BlCircle new;
@@ -64,7 +64,7 @@ GtNnNeuronStencil >> create [
 			toAnchor: (BlNearestPositionTightCircleAnchor nearestTo: aNode from: neuronElement);
 			toHead: (BlArrowheadSimpleArrow new border: aBorderBuilder solid build; arrowLengthFraction: 12);
 			addChild: (BlTextElement new
-				text: (aNode graph model value asRopedText monospace italic foreground: Color darkGray; fontSize: 10);
+				text: (aNode graph model value asRopedText italic foreground: Color darkGray; fontSize: 10);
 				padding: (BlInsets all: 1);
 				background: (Color white alpha: 0.9);
 				constraintsDo: [ :c |
@@ -89,7 +89,7 @@ GtNnNeuronStencil >> create [
 			toAnchor: (BlElementCenterLeftAnchor element: aNode);
 			toHead: (BlArrowheadSimpleArrow new border: aBorderBuilder solid build; arrowLengthFraction: 12);
 			addChild: (BlTextElement new
-				text: (aNode graph model value asRopedText monospace italic foreground: Color darkGray; fontSize: 10);
+				text: (aNode graph model value asRopedText italic foreground: Color darkGray; fontSize: 10);
 				padding: (BlInsets all: 1);
 				background: (Color white alpha: 0.9);
 				constraintsDo: [ :c |
