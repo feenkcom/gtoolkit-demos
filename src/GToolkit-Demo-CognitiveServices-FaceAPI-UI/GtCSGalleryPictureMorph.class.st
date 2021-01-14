@@ -8,7 +8,7 @@ Class {
 		'pictureWrapper',
 		'containerMorph'
 	],
-	#category : 'GToolkit-Demo-CognitiveServices-FaceAPI-UI'
+	#category : #'GToolkit-Demo-CognitiveServices-FaceAPI-UI'
 }
 
 { #category : #accessing }
@@ -20,8 +20,8 @@ GtCSGalleryPictureMorph >> addFaceMorphFor: aFace [
 ]
 
 { #category : #layout }
-GtCSGalleryPictureMorph >> applyLayoutIn: aBounds [
-	super applyLayoutIn: aBounds.
+GtCSGalleryPictureMorph >> applyLayoutIn: aBounds context: aBlElementBoundsUpdateContext [
+	super applyLayoutIn: aBounds context: aBlElementBoundsUpdateContext.
 	pictureWrapper ensureDataLoaded
 ]
 
