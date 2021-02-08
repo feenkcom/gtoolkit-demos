@@ -71,7 +71,7 @@ GtMoldableDevelopmentSlideshow >> slide9For: aSlide [
 	"Rename this method to be more representative for your slide"
 	^ aSlide filePicture
 		priority: 71;
-		fileReference:(GtResourcesUtility resourceAtPath: 'feenkcom/gtoolkit-demos/doc/moldable-development/roles-3.png').
+		fileReference:(GtResourcesUtility resourceAtPath: 'feenkcom/gtoolkit-demos/doc/moldable-development/roles-2.png').
 ]
 
 { #category : #slides }
