@@ -297,6 +297,11 @@ GtABContact >> initialize [
 ]
 
 { #category : #accessing }
+GtABContact >> isCategory [
+	^false
+]
+
+{ #category : #accessing }
 GtABContact >> lastName [
 	^ lastName
 ]
