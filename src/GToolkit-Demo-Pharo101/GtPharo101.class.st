@@ -615,7 +615,7 @@ GtPharo101 >> syntaxExplanationWithLinksSlideFor: aSlide [
 			((GtPharoMethodExample>>#exampleWithNumber:) 
 				gtViewNodesExplanationWithLinksFor: GtPhlowEmptyView new) 
 					asElementDo: [:e | e ]];
-		newFadedText: ('Let''s put it all together. Take a look at the method below. Hover over the syntactical parts on the left to understand how they map on the different parts of the method.' asRopedText fontSize: 70).
+		newFadedText: ('Let''s put it all together. Take a look at the method below. Hover over the syntactical parts on the left to understand how they map on the different parts of the method.' asRopedText fontSize: 70)
 ]
 
 { #category : #accessing }
