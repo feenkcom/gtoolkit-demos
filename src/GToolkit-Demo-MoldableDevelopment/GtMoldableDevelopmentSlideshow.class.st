@@ -7,7 +7,6 @@ Class {
 { #category : #slides }
 GtMoldableDevelopmentSlideshow >> slide10For: aSlide [
 	<gtSlide>
-
 	^ aSlide wardleyMap
 		priority: 81;
 		json: '{
@@ -20,14 +19,14 @@ GtMoldableDevelopmentSlideshow >> slide10For: aSlide [
 				"alpha" : 1.0,
 				"red" : 0.0
 			},
-			"x" : 0.47950303819444445,
-			"y" : 0.12746890686359372,
+			"x" : 0.4093923370874334,
+			"y" : 0.11639613108685265,
 			"width" : 12,
 			"height" : 12,
 			"label" : {
-				"x" : 0.16666666666666666,
-				"y" : -1.166666666666667,
-				"text" : "Label"
+				"x" : 0.0,
+				"y" : -1.0833333333333337,
+				"text" : "developers"
 			}
 		},
 		{
@@ -38,14 +37,14 @@ GtMoldableDevelopmentSlideshow >> slide10For: aSlide [
 				"alpha" : 1.0,
 				"red" : 0.0
 			},
-			"x" : 0.5799913194444445,
-			"y" : 0.11903110135012472,
+			"x" : 0.5221807413386634,
+			"y" : 0.11534017609121104,
 			"width" : 12,
 			"height" : 12,
 			"label" : {
 				"x" : 0.75,
 				"y" : -1.0,
-				"text" : "Label"
+				"text" : "business"
 			}
 		},
 		{
@@ -56,14 +55,14 @@ GtMoldableDevelopmentSlideshow >> slide10For: aSlide [
 				"alpha" : 1.0,
 				"red" : 0.0
 			},
-			"x" : 0.5271592881944446,
-			"y" : 0.21877512818665948,
+			"x" : 0.4693487100886635,
+			"y" : 0.23230852080267633,
 			"width" : 12,
 			"height" : 12,
 			"label" : {
-				"x" : 0.5,
-				"y" : 2.0,
-				"text" : "Label"
+				"x" : -3.1666666666666665,
+				"y" : 0.5,
+				"text" : "challenge"
 			}
 		},
 		{
@@ -79,9 +78,9 @@ GtMoldableDevelopmentSlideshow >> slide10For: aSlide [
 			"width" : 12,
 			"height" : 12,
 			"label" : {
-				"x" : -2.25,
-				"y" : -1.0833333333333333,
-				"text" : "Label"
+				"x" : -3.0833333333333335,
+				"y" : -1.6666666666666667,
+				"text" : "specific problem"
 			}
 		},
 		{
@@ -99,7 +98,7 @@ GtMoldableDevelopmentSlideshow >> slide10For: aSlide [
 			"label" : {
 				"x" : 2.6666666666666665,
 				"y" : -1.0,
-				"text" : "Label"
+				"text" : "assessment"
 			}
 		},
 		{
@@ -110,14 +109,14 @@ GtMoldableDevelopmentSlideshow >> slide10For: aSlide [
 				"alpha" : 1.0,
 				"red" : 0.5004887585532747
 			},
-			"x" : 0.3535427517361111,
-			"y" : 0.5152035928068045,
+			"x" : 0.32525246883328207,
+			"y" : 0.5053611254497014,
 			"width" : 12,
 			"height" : 12,
 			"label" : {
-				"x" : 1.6666666666666667,
-				"y" : 2.0,
-				"text" : "Label"
+				"x" : 2.4166666666666665,
+				"y" : 2.3333333333333335,
+				"text" : " manual views"
 			}
 		},
 		{
@@ -135,7 +134,7 @@ GtMoldableDevelopmentSlideshow >> slide10For: aSlide [
 			"label" : {
 				"x" : -2.1666666666666665,
 				"y" : 2.0833333333333335,
-				"text" : "Label"
+				"text" : "manual inspection"
 			}
 		},
 		{
@@ -153,7 +152,7 @@ GtMoldableDevelopmentSlideshow >> slide10For: aSlide [
 			"label" : {
 				"x" : 0.5,
 				"y" : 2.0,
-				"text" : "Label"
+				"text" : "rigid tools"
 			}
 		},
 		{
@@ -169,9 +168,9 @@ GtMoldableDevelopmentSlideshow >> slide10For: aSlide [
 			"width" : 12,
 			"height" : 12,
 			"label" : {
-				"x" : -1.3333333333333333,
-				"y" : 2.0,
-				"text" : "Label"
+				"x" : -2.25,
+				"y" : 2.0833333333333335,
+				"text" : "specific coding"
 			}
 		},
 		{
@@ -189,7 +188,7 @@ GtMoldableDevelopmentSlideshow >> slide10For: aSlide [
 			"label" : {
 				"x" : 0.5,
 				"y" : 2.0,
-				"text" : "Label"
+				"text" : "moldable tools"
 			}
 		},
 		{
@@ -207,7 +206,7 @@ GtMoldableDevelopmentSlideshow >> slide10For: aSlide [
 			"label" : {
 				"x" : 4.0,
 				"y" : 2.0,
-				"text" : "Label"
+				"text" : "generated views"
 			}
 		}
 	],
@@ -221,7 +220,7 @@ GtMoldableDevelopmentSlideshow >> slide10For: aSlide [
 				"alpha" : 1.0,
 				"red" : 0.0
 			},
-			"width" : 1.0,
+			"width" : 2.0,
 			"arrow" : false
 		},
 		{
@@ -233,7 +232,7 @@ GtMoldableDevelopmentSlideshow >> slide10For: aSlide [
 				"alpha" : 1.0,
 				"red" : 0.0
 			},
-			"width" : 1.0,
+			"width" : 2.0,
 			"arrow" : false
 		},
 		{
@@ -245,7 +244,7 @@ GtMoldableDevelopmentSlideshow >> slide10For: aSlide [
 				"alpha" : 1.0,
 				"red" : 0.0
 			},
-			"width" : 1.0,
+			"width" : 2.0,
 			"arrow" : false
 		},
 		{
@@ -257,7 +256,7 @@ GtMoldableDevelopmentSlideshow >> slide10For: aSlide [
 				"alpha" : 1.0,
 				"red" : 0.0
 			},
-			"width" : 1.0,
+			"width" : 2.0,
 			"arrow" : false
 		},
 		{
@@ -305,7 +304,7 @@ GtMoldableDevelopmentSlideshow >> slide10For: aSlide [
 				"alpha" : 1.0,
 				"red" : 0.0
 			},
-			"width" : 1.0,
+			"width" : 2.0,
 			"arrow" : false
 		},
 		{
@@ -317,7 +316,7 @@ GtMoldableDevelopmentSlideshow >> slide10For: aSlide [
 				"alpha" : 1.0,
 				"red" : 0.0
 			},
-			"width" : 1.0,
+			"width" : 2.0,
 			"arrow" : false
 		},
 		{
@@ -329,7 +328,7 @@ GtMoldableDevelopmentSlideshow >> slide10For: aSlide [
 				"alpha" : 1.0,
 				"red" : 0.0
 			},
-			"width" : 1.0,
+			"width" : 2.0,
 			"arrow" : false
 		},
 		{
@@ -341,7 +340,7 @@ GtMoldableDevelopmentSlideshow >> slide10For: aSlide [
 				"alpha" : 1.0,
 				"red" : 0.0
 			},
-			"width" : 1.0,
+			"width" : 2.0,
 			"arrow" : false
 		},
 		{
@@ -365,19 +364,19 @@ GtMoldableDevelopmentSlideshow >> slide10For: aSlide [
 				"alpha" : 1.0,
 				"red" : 0.0
 			},
-			"width" : 1.0,
+			"width" : 2.0,
 			"arrow" : false
 		},
 		{
 			"from" : "8c046827-9a78-0d00-86f4-4d3e0b72c6e0",
 			"to" : "94046827-9a78-0d00-86f9-90e80b72c6e0",
 			"color" : {
-				"green" : 0.624633431085044,
-				"blue" : 0.624633431085044,
+				"green" : 0.0,
+				"blue" : 0.0,
 				"alpha" : 1.0,
-				"red" : 0.624633431085044
+				"red" : 0.0
 			},
-			"width" : 1.0,
+			"width" : 2.0,
 			"arrow" : false
 		},
 		{
@@ -390,7 +389,7 @@ GtMoldableDevelopmentSlideshow >> slide10For: aSlide [
 				"red" : 1.0
 			},
 			"width" : 2.48832,
-			"arrow" : false
+			"arrow" : true
 		},
 		{
 			"from" : "91046827-9a78-0d00-86f7-abb40b72c6e0",
@@ -402,7 +401,7 @@ GtMoldableDevelopmentSlideshow >> slide10For: aSlide [
 				"red" : 1.0
 			},
 			"width" : 2.48832,
-			"arrow" : false
+			"arrow" : true
 		},
 		{
 			"from" : "92046827-9a78-0d00-86f8-c3280b72c6e0",
@@ -414,7 +413,7 @@ GtMoldableDevelopmentSlideshow >> slide10For: aSlide [
 				"red" : 1.0
 			},
 			"width" : 2.48832,
-			"arrow" : false
+			"arrow" : true
 		}
 	]
 }'
