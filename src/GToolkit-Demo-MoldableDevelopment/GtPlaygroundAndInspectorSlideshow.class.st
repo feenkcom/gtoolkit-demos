@@ -26,7 +26,7 @@ GtPlaygroundAndInspectorSlideshow >> createClassFromPlaygroundExplanationSlideFo
 								ifFound: [:aChild | aChild childAt: 2].
 							BlSpace simulateClickOn: button.
 							BlSpace simulateClickOn: button.
-							dropDown := playgroundElement space root childAt: 2.
+							dropDown := playgroundElement space root children first childAt: 2.
 							selection := dropDown
 								allChildrenBreadthFirstDetect: [:aChild |
 									aChild isKindOf: BrInfiniteListElement]
@@ -66,7 +66,7 @@ GtPlaygroundAndInspectorSlideshow >> createMethodFromPlaygroundExplanationSlideF
 								ifFound: [:aChild | aChild childAt: 7].
 							BlSpace simulateClickOn: button.
 							BlSpace simulateClickOn: button.
-							dropDown := playgroundElement space root childAt: 2.
+							dropDown := playgroundElement space root children first childAt: 2.
 							selection := dropDown
 								allChildrenBreadthFirstDetect: [:aChild |
 									aChild isKindOf: BrInfiniteListElement]

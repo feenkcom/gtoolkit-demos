@@ -4,10 +4,10 @@ Class {
 	#category : #'GToolkit-Demo-Pharo101'
 }
 
-{ #category : #'as yet unclassified' }
+{ #category : #accessing }
 GtPharoMethodExample >> exampleWithNumber: x [
     "A method that illustrates every part of Smalltalk method syntax
-    except primitives. It has unary, binary, and keyboard messages,
+    except primitives. It has unary, binary, and keyword messages,
     declares arguments and temporaries, accesses a global variable
     (but not an instance variable), uses literals (array, character,
     symbol, string, integer, float), uses the pseudo variables
