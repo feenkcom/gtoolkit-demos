@@ -449,7 +449,7 @@ GtPlaygroundAndInspectorSlideshow >> inspectorWithExplanationLinks [
 GtPlaygroundAndInspectorSlideshow >> methodCoderWithExplanationLinks [
 	<gtExample>
 	| coder selectors coderElement |
-	coder := GtMethodCoder
+	coder := GtPharoMethodCoder
 		forMethod: GtABAddressBook >> #gtViewContactsOn:.
 		
 	selectors := GtSelectorExplanationLinkStyler new coder: coder.

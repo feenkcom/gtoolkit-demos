@@ -355,7 +355,7 @@ GtQueries >> packageFiltersTitleSlideFor: aSlide [
 GtQueries >> pragmaAndReferenceQueryExample [
 	<gtExample>
 	
-	^ #gtView gtPragmas & GtMethodCoder gtReferences.
+	^ #gtView gtPragmas & GtPharoMethodCoder gtReferences.
 ]
 
 { #category : #accessing }
