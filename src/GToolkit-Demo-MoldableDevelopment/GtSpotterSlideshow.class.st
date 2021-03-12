@@ -662,7 +662,7 @@ GtSpotterSlideshow >> spotterSearchFilterExplanationText [
 GtSpotterSlideshow >> spotterSearchMethodExample [
 	<gtExample>
 	| coder coderElement selectors |
-	coder := GtMethodCoder forMethod: GtSpotterStart>>#gtSpotterForClassesFor:.
+	coder := GtPharoMethodCoder forMethod: GtSpotterStart>>#gtSpotterForClassesFor:.
 	
 	selectors := GtSelectorExplanationLinkStyler new coder: coder.
 	selectors

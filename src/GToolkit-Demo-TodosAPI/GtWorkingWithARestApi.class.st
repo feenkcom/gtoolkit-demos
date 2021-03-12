@@ -205,7 +205,7 @@ GtWorkingWithARestApi >> getAllTodosMethodCoderWithExplanationTargets [
 	<gtExample>
 	| coder coderElement selectors literals variables |
 	
-	coder := GtMethodCoder forMethod: TDClient>>#getAllTodos.
+	coder := GtPharoMethodCoder forMethod: TDClient>>#getAllTodos.
 	selectors := GtSelectorExplanationLinkStyler new.
 	selectors
 		addSelectors:

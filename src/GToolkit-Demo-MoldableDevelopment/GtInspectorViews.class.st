@@ -26,7 +26,7 @@ GtInspectorViews >> columnedListViewExplanationWithLinks [
 	resultExplanationLabel := self
 		explanationLabelWithText: 'Contacts with details view result'.
 	
-	coder := GtMethodCoder
+	coder := GtPharoMethodCoder
 		forMethod: GtABAddressBook >> #gtViewContactsOn:.
 		
 	selectors := GtSelectorExplanationLinkStyler new coder: coder.
@@ -175,7 +175,7 @@ GtInspectorViews >> columnedTreeViewExplanationWithLinks [
 	codeExplanationLabel := self explanationLabelWithText: 'Contacts Address view method'.
 	resultExplanationLabel := self explanationLabelWithText: 'Contacts Address view result'.
 	
-	coder := GtMethodCoder new forMethod: (GtABAddressBook>>#gtViewContactsAddressOn:).
+	coder := GtPharoMethodCoder new forMethod: (GtABAddressBook>>#gtViewContactsAddressOn:).
 	
 	selectors := GtSelectorExplanationLinkStyler new coder: coder.
 	selectors addSelectors: {#columnedTree. #title:. #items:. #children:}.
@@ -293,7 +293,7 @@ GtInspectorViews >> emptyViewExplanationWithLinks [
 	codeExplanationLabel := self explanationLabelWithText: 'Empty view method'.
 	resultExplanationLabel := self explanationLabelWithText: 'Emtpy view result'.
 	
-	coder := GtMethodCoder new forMethod: (GtABAddressBook>>#gtViewCategoriesTreeWithContactsOn:).
+	coder := GtPharoMethodCoder new forMethod: (GtABAddressBook>>#gtViewCategoriesTreeWithContactsOn:).
 	
 	selectors := GtSelectorExplanationLinkStyler new coder: coder.
 	selectors addSelectors: {#empty}.
@@ -388,7 +388,7 @@ GtInspectorViews >> explicitViewExplanationWithLinks [
 	codeExplanationLabel := self explanationLabelWithText: 'Details view method'.
 	resultExplanationLabel := self explanationLabelWithText: 'Details view result'.
 	
-	coder := GtMethodCoder new forMethod: (GtABContact>>#gtViewContactDetailsOn:).
+	coder := GtPharoMethodCoder new forMethod: (GtABContact>>#gtViewContactDetailsOn:).
 	
 	selectors := GtSelectorExplanationLinkStyler new coder: coder.
 	selectors addSelectors: {#explicit. #stencil:. #fullName. #address. #telephone. #avatar}.
@@ -504,7 +504,7 @@ GtInspectorViews >> listViewExplanationWithLinks [
 	codeExplanationLabel := self explanationLabelWithText: 'Contacts List view method'.
 	resultExplanationLabel := self explanationLabelWithText: 'Contacts List view result'.
 	
-	coder := GtMethodCoder forMethod: (GtABAddressBook>>#gtViewContactsListOn:).
+	coder := GtPharoMethodCoder forMethod: (GtABAddressBook>>#gtViewContactsListOn:).
 	
 	selectors := GtSelectorExplanationLinkStyler new coder: coder.
 	selectors addSelectors: {#list. #title:. #items:. #itemText:. #contacts. #fullName }.
@@ -612,7 +612,7 @@ GtInspectorViews >> mondrianViewExplanationWithLinks [
 	codeExplanationLabel := self explanationLabelWithText: 'Circular view method'.
 	resultExplanationLabel := self explanationLabelWithText: 'Circular view result'.
 	
-	coder := GtMethodCoder new forMethod: (GtABAddressBook>>#gtViewContactsIconsCircularOn:).
+	coder := GtPharoMethodCoder new forMethod: (GtABAddressBook>>#gtViewContactsIconsCircularOn:).
 	
 	selectors := GtSelectorExplanationLinkStyler new coder: coder.
 	selectors addSelectors: {#mondrian. #painting:. #nodes. #layout. #circle. #contacts. #avatar. #shape:. #title:}.
@@ -766,7 +766,7 @@ GtInspectorViews >> textEditorViewExplanationWithLinks [
 	codeExplanationLabel := self explanationLabelWithText: 'Content view method'.
 	resultExplanationLabel := self explanationLabelWithText: 'Content view result'.
 	
-	coder := GtMethodCoder new forMethod: GtABContactNote>>#gtViewNoteContentOn:.
+	coder := GtPharoMethodCoder new forMethod: GtABContactNote>>#gtViewNoteContentOn:.
 	
 	selectors := GtSelectorExplanationLinkStyler new coder: coder.
 	selectors addSelectors: {#textEditor. #title:. #look:. #content. #text:}.
@@ -872,7 +872,7 @@ GtInspectorViews >> treeViewExplanationWithLinks [
 	codeExplanationLabel := self explanationLabelWithText: 'Contents Tree view method'.
 	resultExplanationLabel := self explanationLabelWithText: 'Contents Tree view result'.
 	
-	coder := GtMethodCoder new forMethod: (GtABAddressBook>>#gtViewCategoriesTreeWithContactsOn:).
+	coder := GtPharoMethodCoder new forMethod: (GtABAddressBook>>#gtViewCategoriesTreeWithContactsOn:).
 	
 	selectors := GtSelectorExplanationLinkStyler new coder: coder.
 	selectors addSelectors: {#tree. #title:. #items:. #children:. #categories. #subcategories. #contacts}.

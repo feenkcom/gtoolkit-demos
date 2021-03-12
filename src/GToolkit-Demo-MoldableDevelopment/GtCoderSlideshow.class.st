@@ -529,7 +529,7 @@ GtCoderSlideshow >> coderMashExample [
 		rightElement:
 			(BlElement new
 				margin: (BlInsets all: 5);
-				addChild: (((GtMethodCoder 
+				addChild: (((GtPharoMethodCoder 
 					forMethod: GtABAddressBookExample>>#myContactsAddressBook) asCoderUIModel
 						expanded:true) asElement))) asElement.
 ]
