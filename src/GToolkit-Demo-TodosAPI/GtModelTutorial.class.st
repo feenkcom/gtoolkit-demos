@@ -356,7 +356,7 @@ GtModelTutorial >> runSnippetWhenAddedToSceneGraphFor: anElement [
 					allChildrenBreadthFirstDetect: [:aChild |
 						aChild isKindOf: GtSourceCoderEditorElement]
 					ifFound: [:aChild | aChild].
-				editor ifNotNil: [ editor sourceCoderUIModel coder doItAndGoAll ]]).
+				editor ifNotNil: [ editor textualCoderViewModel coderModel doItAndGoAll ]]).
 ]
 
 { #category : #slides }
