@@ -982,7 +982,7 @@ GtTour >> viewsExplanationSlideFor: aSlide [
 { #category : #accessing }
 GtTour >> visualizationElement [
 	^ BlElement new
-			layout: (BlGridLayout new columnCount: 2);
+			layout: (BlLinearLayout new);
 			constraintsDo: [:c | 
 				c vertical matchParent.
 				c horizontal matchParent];
