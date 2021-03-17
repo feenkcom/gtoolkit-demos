@@ -13,7 +13,7 @@ GtPharoMethodExample >> exampleWithNumber: x [
     symbol, string, integer, float), uses the pseudo variables
     true, false, nil, self, and super, and has sequence, assignment,
     return and cascade. It has both zero argument and one argument blocks."
-	 <syntaxOn: #postcard>
+    <syntaxOn: #postcard>
     | y |
     true & false not & (nil isNil) 
 		ifTrue: [100] ifFalse: [self halt].
