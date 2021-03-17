@@ -555,109 +555,48 @@ Finally, if you click on the ' asRopedText,
 { #category : #accessing }
 GtPlaygroundAndInspectorSlideshow >> playgroundInterfaceExplanationWithLinks [
 	<gtExample>
-	| playgroundElement aScripter snippetTargets plusButtonTargets pharoButtonTarget closeButtonTargets evaluateButtonTargets inspectButtonTargets debugButtonTargets searchButtonTarget frameToolbar |
-	playgroundElement := (GtPlaygroundLiveSlide new snippets: {'4/20'. '4 factorial'}) asElement.
+	| playgroundElement aScripter snippetTargets plusButtonTargets pharoButtonTarget closeButtonTargets evaluateButtonTargets inspectButtonTargets debugButtonTargets searchButtonTarget |
 	
 	aScripter := BlDevScripter new.
-	aScripter
-		substep: 'Playground Element'
-		do: [ :aStep | 
-			aStep set
-				label: 'Playground';
-				element: [ playgroundElement ] ].
-	aScripter
-		substep: 'Click on plus button to open new snippet'
-		do: [ :aStep | 
-			aStep click
-				label: 'Click on + button';
-				onBreadthFirstChildOfClass: BrInfinitePagerElement;
-				onBreadthFirstChildOfClass: GtPlayground;
-				onChildNamed: #content;
-				onBreadthFirstChildOfClass: GtPageSnippetsElement;
-				onChildAt: 2;
-				onChildAt: 2.
-			aStep wait forEmptySpaceTaskQueue ].
+	aScripter element: (GtPlaygroundLiveSlide new snippets: {'4/20'. '4 factorial'}) asElement.
 	aScripter syncContinue.
-	playgroundElement := BlUseAsyncFeatures
-		disableDuring: [ aScripter elementWithoutParent ].
-	
-	plusButtonTargets := OrderedCollection new.
-	closeButtonTargets := OrderedCollection new.
-	evaluateButtonTargets := OrderedCollection new.
-	inspectButtonTargets := OrderedCollection new.
-	debugButtonTargets := OrderedCollection new.
-	
-	snippetTargets := playgroundElement
-		allChildrenBreadthFirstSelect: [:aChild |
-			(aChild isKindOf: BrFrame)].
-	snippetTargets do: [ :each |
-		plusButtonTargets add: (each children at: 2).
-		closeButtonTargets add: (each children at: 1) ].
-	frameToolbar := playgroundElement
-		allChildrenBreadthFirstSelect: [:aChild | 
-			(aChild isKindOf: BrToolbar) 
-				and: [(aChild parent isKindOf: GtCoderActionsElement)
-					and: [aChild hasChildren]]].
-	frameToolbar do: [ :each |
-		evaluateButtonTargets add: (each children at: 1).
-		inspectButtonTargets add: (each children at: 2).
-		debugButtonTargets add: (each children at: 3) ].
-	searchButtonTarget := playgroundElement
-		allChildrenBreadthFirstDetect: [:aChild |
-			aChild isKindOf: BrToolbar] 
-		ifFound: [:aChild | aChild children at: 2].
-	pharoButtonTarget := playgroundElement
-		allChildrenBreadthFirstDetect: [:aChild |
-			(aChild isKindOf: BrToolbar) and: [aChild parent isKindOf: GtSnippetElement]] 
-		ifFound: [:aChild | aChild children at: 3].
+	aScripter click
+		label: 'Click on add new snippet button';
+		id: (GtSnippetElementId indexed: 1);
+		id: GtSnippetAddButtonId.
+	aScripter syncContinue.
+	playgroundElement := aScripter elementWithoutParent.
+
+	snippetTargets := (playgroundElement query // GtSnippetElementId) all.
+	plusButtonTargets := (playgroundElement query // GtSnippetElementId // GtSnippetAddButtonId) all.
+	closeButtonTargets := (playgroundElement query // GtSnippetElementId // GtSnippetRemoveButtonId) all.
+	evaluateButtonTargets := (playgroundElement query // GtSnippetElementId // GtSourceCoderDoItActionId) all. 
+	inspectButtonTargets := (playgroundElement query // GtSnippetElementId // GtSourceCoderDoItAndGoActionId) all. 
+	debugButtonTargets := (playgroundElement query // GtSnippetElementId // GtSourceCoderDebugActionId) all.
+
+	searchButtonTarget := (playgroundElement query // GtPlaygroundSpotterButtonId) anyOne.
+	pharoButtonTarget := (playgroundElement query // GtSnippetElementId // BrButton @ (#label -> 'pharo')) anyOne.
 	
 	snippetTargets do: [ :eachSnippet |
-		eachSnippet
-			addChild:
-				((self yellowTargetCircleWithExplanationModel: #snippets)
-					relocate:
-						(5 @ eachSnippet extent y / 2))].
+		eachSnippet addChild: ((self yellowTargetCircleWithExplanationModel: #snippets) relocate: (5 @ eachSnippet extent y / 2))].
 	plusButtonTargets do: [ :each |
-		each
-			addChild:
-				((self yellowTargetCircleWithExplanationModel: #plusButton)
-					relocate:
-						(10 @ each extent y / 2))].
+		each addChild: ((self yellowTargetCircleWithExplanationModel: #plusButton) relocate: (10 @ each extent y / 2))].
 	closeButtonTargets do: [ :each |
-		each
-			addChild:
-				((self yellowTargetCircleWithExplanationModel: #closeButton)
-					relocate:
-						(10 @ each extent y / 2))].
+		each addChild: ((self yellowTargetCircleWithExplanationModel: #closeButton) relocate: (10 @ each extent y / 2))].
 	evaluateButtonTargets do: [ :eachEvaluateButton |
-		eachEvaluateButton parent
-			addChild:
-				((self yellowTargetCircleWithExplanationModel: #evaluateButton)
-					relocate:
-						(eachEvaluateButton position x @ eachEvaluateButton position y + 5))].
+		eachEvaluateButton addChild: ((self yellowTargetCircleWithExplanationModel: #evaluateButton)
+			relocate: (eachEvaluateButton position x @ eachEvaluateButton position y + 5))].
 	inspectButtonTargets do: [ :eachInspectButton |
-		eachInspectButton parent
-			addChild:
-				((self yellowTargetCircleWithExplanationModel: #inspectButton)
-					relocate:
-						(eachInspectButton position x @ eachInspectButton position y + 5))].
+		eachInspectButton addChild: ((self yellowTargetCircleWithExplanationModel: #inspectButton)
+			relocate: (eachInspectButton position x @ eachInspectButton position y + 5))].
 	debugButtonTargets do: [ :eachDebugButton |
-		eachDebugButton parent
-			addChild:
-				((self yellowTargetCircleWithExplanationModel: #debugButton)
-					relocate:
-						(eachDebugButton position x @ eachDebugButton position y + 5))].
-	searchButtonTarget
-		addChild:
-			((self yellowTargetCircleWithExplanationModel: #searchButton)
-					relocate:
-						(10 @ searchButtonTarget extent y / 2)).
-	pharoButtonTarget
-		addChild:
-			((self yellowTargetCircleWithExplanationModel: #pharoButton)
-					relocate:
-						(10 @ pharoButtonTarget extent y / 2)).
-	
+		eachDebugButton addChild: ((self yellowTargetCircleWithExplanationModel: #debugButton)
+			relocate: (eachDebugButton position x @ eachDebugButton position y + 5))].
+	searchButtonTarget addChild: ((self yellowTargetCircleWithExplanationModel: #searchButton)
+			relocate: (10 @ searchButtonTarget extent y / 2)).
+	pharoButtonTarget addChild: ((self yellowTargetCircleWithExplanationModel: #pharoButton)
+			relocate: (10 @ pharoButtonTarget extent y / 2)).
+
 	^ playgroundElement maximized.
 ]
 
