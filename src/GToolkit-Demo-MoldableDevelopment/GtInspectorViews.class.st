@@ -17,7 +17,7 @@ GtInspectorViews >> columnedListViewExplanationSlideFor: aSlide [
 { #category : #tests }
 GtInspectorViews >> columnedListViewExplanationWithLinks [
 	<gtExample>
-	| resultInspectorContainer verticalContainer coder coderElement selectors variables resultElement resultInspectorTree titleTab avatarLabel nameLabel phoneLabel codeExplanationLabel resultExplanationLabel avatarElementsCollection listLabelsCollection |
+	| resultInspectorContainer verticalContainer coder coderViewModel coderElement selectors variables resultElement resultInspectorTree titleTab avatarLabel nameLabel phoneLabel codeExplanationLabel resultExplanationLabel avatarElementsCollection listLabelsCollection |
 	
 	resultInspectorContainer := self resultInspectorContainerElement.
 	verticalContainer := self verticalContainerElement.
@@ -25,27 +25,20 @@ GtInspectorViews >> columnedListViewExplanationWithLinks [
 		explanationLabelWithText: 'Contacts with details view method'.
 	resultExplanationLabel := self
 		explanationLabelWithText: 'Contacts with details view result'.
-	
-	coder := GtPharoMethodCoder
-		forMethod: GtABAddressBook >> #gtViewContactsOn:.
-		
-	selectors := GtSelectorExplanationLinkStyler new coder: coder.
-	selectors
-		addSelectors:
-			{#columnedList . #title: . #items: . #contacts . #fullName . #avatar.
-			#telephone}.
+
+	selectors := GtSelectorExplanationLinkStyler new.
+	selectors addSelectors: #(columnedList title: items: contacts fullName avatar telephone).
 	selectors addSelector: #column:icon: withIdentifier: #columns.
 	selectors addSelector: #column:text: withIdentifier: #columns.
-	variables := GtVariableExplanationLinkStyler new coder: coder.
+
+	variables := GtVariableExplanationLinkStyler new.
 	variables addVariables: {'aContact'}.
+
+	coder := GtPharoMethodCoder forMethod: GtABAddressBook >> #gtViewContactsOn:.
+	coderViewModel := coder asCoderViewModel.
+	coderViewModel addStylers: { selectors . variables }.
 	
-	coder
-		explanationLink:
-			(GtCompositeExplanationLinkStyler
-				forLinks:
-					{selectors.
-					variables}).
-	coderElement := coder asElement margin: (BlInsets all: 10).
+	coderElement := coderViewModel asElement margin: (BlInsets all: 10).
 	coderElement forceLayout.
 	coderElement vMatchParent.
 	resultElement := BlUseAsyncFeatures
@@ -167,7 +160,7 @@ GtInspectorViews >> columnedTreeExplanationSlideFor: aSlide [
 { #category : #accessing }
 GtInspectorViews >> columnedTreeViewExplanationWithLinks [
 	<gtExample>
-	| resultInspectorContainer verticalContainer coder coderElement selectors literals resultElement resultInspectorTree contactLabel cityLabel countryLabel titleTab codeExplanationLabel resultExplanationLabel |
+	| resultInspectorContainer verticalContainer coder coderViewModel coderElement selectors literals resultElement resultInspectorTree contactLabel cityLabel countryLabel titleTab codeExplanationLabel resultExplanationLabel |
 	
 	resultInspectorContainer := self resultInspectorContainerElement.
 	verticalContainer := self verticalContainerElement.
@@ -175,19 +168,20 @@ GtInspectorViews >> columnedTreeViewExplanationWithLinks [
 	codeExplanationLabel := self explanationLabelWithText: 'Contacts Address view method'.
 	resultExplanationLabel := self explanationLabelWithText: 'Contacts Address view result'.
 	
-	coder := GtPharoMethodCoder new forMethod: (GtABAddressBook>>#gtViewContactsAddressOn:).
-	
-	selectors := GtSelectorExplanationLinkStyler new coder: coder.
+	selectors := GtSelectorExplanationLinkStyler new.
 	selectors addSelectors: {#columnedTree. #title:. #items:. #children:}.
 	selectors addSelector: #column:item: withIdentifier: #column.
 	
-	literals := GtLiteralExplanationLinkStyler new coder: coder.
+	literals := GtLiteralExplanationLinkStyler new.
 	literals addLiteral: #City withIdentifier: #name.
 	literals addLiteral: #Country withIdentifier: #name.
 	literals addLiteral: #Contact withIdentifier: #name.
-		
-	coder explanationLink: (GtCompositeExplanationLinkStyler forLinks: { selectors. literals }).
-	coderElement := coder asElement margin: (BlInsets all: 10).
+	
+	coder := GtPharoMethodCoder new forMethod: (GtABAddressBook>>#gtViewContactsAddressOn:).
+	coderViewModel := coder asCoderViewModel.
+	coderViewModel addStylers: { selectors. literals }.
+	
+	coderElement := coderViewModel asElement margin: (BlInsets all: 10).
 	coderElement forceLayout.
 	coderElement vMatchParent.
 	
@@ -285,7 +279,7 @@ GtInspectorViews >> emptyViewExplanationSlideFor: aSlide [
 { #category : #accessing }
 GtInspectorViews >> emptyViewExplanationWithLinks [
 	<gtExample>
-	| resultInspectorContainer verticalContainer coder coderElement selectors variables literals resultElement codeExplanationLabel resultExplanationLabel inspectorHeader inspectorView |
+	| resultInspectorContainer verticalContainer coder coderViewModel coderElement selectors variables literals resultElement codeExplanationLabel resultExplanationLabel inspectorHeader inspectorView |
 	
 	resultInspectorContainer := self resultInspectorContainerElement.
 	verticalContainer := self verticalContainerElement.
@@ -293,19 +287,20 @@ GtInspectorViews >> emptyViewExplanationWithLinks [
 	codeExplanationLabel := self explanationLabelWithText: 'Empty view method'.
 	resultExplanationLabel := self explanationLabelWithText: 'Emtpy view result'.
 	
-	coder := GtPharoMethodCoder new forMethod: (GtABAddressBook>>#gtViewCategoriesTreeWithContactsOn:).
-	
-	selectors := GtSelectorExplanationLinkStyler new coder: coder.
+	selectors := GtSelectorExplanationLinkStyler new.
 	selectors addSelectors: {#empty}.
 	
-	literals := GtLiteralExplanationLinkStyler new coder: coder.
+	literals := GtLiteralExplanationLinkStyler new.
 	literals addLiteral: 'Contacts Tree' withIdentifier: #viewName.
 	
-	variables := GtVariableExplanationLinkStyler new coder: coder.
+	variables := GtVariableExplanationLinkStyler new.
 	variables addVariables: {#aView}.
 	
-	coder explanationLink: (GtCompositeExplanationLinkStyler forLinks: { selectors. variables. literals }).
-	coderElement := coder asElement margin: (BlInsets all: 10).
+	coder := GtPharoMethodCoder new forMethod: (GtABAddressBook>>#gtViewCategoriesTreeWithContactsOn:).
+	coderViewModel := coder asCoderViewModel.
+	coderViewModel addStylers: { selectors. variables. literals }.
+
+	coderElement := coderViewModel asElement margin: (BlInsets all: 10).
 	coderElement forceLayout.
 	coderElement vMatchParent.
 	

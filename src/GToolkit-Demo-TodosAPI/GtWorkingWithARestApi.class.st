@@ -203,28 +203,20 @@ GtWorkingWithARestApi >> dataStructuresExplanationSlideFor: aSlide [
 { #category : #accessing }
 GtWorkingWithARestApi >> getAllTodosMethodCoderWithExplanationTargets [
 	<gtExample>
-	| coder coderElement selectors literals variables |
-	
-	coder := GtPharoMethodCoder forMethod: TDClient>>#getAllTodos.
+	| coder coderViewModel selectors literals variables |
+
 	selectors := GtSelectorExplanationLinkStyler new.
-	selectors
-		addSelectors:
-			{#requestForUrl: . #rawData:}.
+	selectors addSelectors: #(requestForUrl: rawData).
 	variables := GtVariableExplanationLinkStyler new.
-	variables
-		addVariables:
-			{#dictionaries . #dict . #TDTodo . #TDTodosGroup}.
+	variables addVariables: #(dictionaries dict TDTodo TDTodosGroup).
 	literals := GtLiteralExplanationLinkStyler new.
-	literals
-		addLiteral: 'https://jsonplaceholder.typicode.com/todos' withIdentifier: #url.
-	coder
-		explanationLink:
-			(GtCompositeExplanationLinkStyler
-				forLinks:
-					{selectors . variables . literals}).
-	coderElement := coder asElement.
-	coderElement forceLayout.
-	^ coderElement.
+	literals addLiteral: 'https://jsonplaceholder.typicode.com/todos' withIdentifier: #url.
+
+	coder := GtPharoMethodCoder forMethod: TDClient>>#getAllTodos.
+	coderViewModel := coder asCoderViewModel.
+	coderViewModel addStylers: { selectors . variables . literals }.
+
+	^ coderViewModel asElement
 ]
 
 { #category : #accessing }
