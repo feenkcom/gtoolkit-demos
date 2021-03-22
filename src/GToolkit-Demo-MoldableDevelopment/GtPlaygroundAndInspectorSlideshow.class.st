@@ -448,24 +448,19 @@ GtPlaygroundAndInspectorSlideshow >> inspectorWithExplanationLinks [
 { #category : #accessing }
 GtPlaygroundAndInspectorSlideshow >> methodCoderWithExplanationLinks [
 	<gtExample>
-	| coder selectors coderElement |
-	coder := GtPharoMethodCoder
-		forMethod: GtABAddressBook >> #gtViewContactsOn:.
+	| selectors coder coderViewModel coderElement |
+	
 		
-	selectors := GtSelectorExplanationLinkStyler new coder: coder.
-	selectors
-		addSelectors:
-			{#gtView. #columnedList . #title: . #items:}.
+	selectors := GtSelectorExplanationLinkStyler new.
+	selectors addSelectors: #(gtView columnedList title: items:).
 	selectors addSelector: #column:icon: withIdentifier: #columns.
 	selectors addSelector: #column:text: withIdentifier: #columns.
 	
-	coder
-		explanationLink:
-			(GtCompositeExplanationLinkStyler
-				forLinks:
-					{selectors}).
-	coderElement := coder asElement margin: (BlInsets all: 10).
-	coderElement forceLayout.
+	coder := GtPharoMethodCoder forMethod: GtABAddressBook >> #gtViewContactsOn:.
+	coderViewModel := coder asCoderViewModel.
+	coderViewModel addStyler: selectors.
+	coderElement := coderViewModel asElement.
+	coderElement margin: (BlInsets all: 10).
 	coderElement vMatchParent.
 	
 	^ coderElement.

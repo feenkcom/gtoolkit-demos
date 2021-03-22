@@ -169,7 +169,7 @@ GtInspectorViews >> columnedTreeViewExplanationWithLinks [
 	resultExplanationLabel := self explanationLabelWithText: 'Contacts Address view result'.
 	
 	selectors := GtSelectorExplanationLinkStyler new.
-	selectors addSelectors: {#columnedTree. #title:. #items:. #children:}.
+	selectors addSelectors: #(columnedTree title: items: children:).
 	selectors addSelector: #column:item: withIdentifier: #column.
 	
 	literals := GtLiteralExplanationLinkStyler new.
@@ -288,7 +288,7 @@ GtInspectorViews >> emptyViewExplanationWithLinks [
 	resultExplanationLabel := self explanationLabelWithText: 'Emtpy view result'.
 	
 	selectors := GtSelectorExplanationLinkStyler new.
-	selectors addSelectors: {#empty}.
+	selectors addSelectors: #(empty).
 	
 	literals := GtLiteralExplanationLinkStyler new.
 	literals addLiteral: 'Contacts Tree' withIdentifier: #viewName.

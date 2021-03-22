@@ -661,22 +661,18 @@ GtSpotterSlideshow >> spotterSearchFilterExplanationText [
 { #category : #accessing }
 GtSpotterSlideshow >> spotterSearchMethodExample [
 	<gtExample>
-	| coder coderElement selectors |
-	coder := GtPharoMethodCoder forMethod: GtSpotterStart>>#gtSpotterForClassesFor:.
+	| selectors coder coderViewModel coderElement |
 	
-	selectors := GtSelectorExplanationLinkStyler new coder: coder.
-	selectors
-		addSelectors:
-			{#allClassesAndTraits. #priority:. #title:. #filter:. #keyBinding:}.
+	selectors := GtSelectorExplanationLinkStyler new.
+	selectors addSelectors: #(allClassesAndTraits priority: title: filter: keyBinding:).
 	selectors addSelector: #gtSearch withIdentifier: #annotation.
 	selectors addSelector: #wantsToDisplayOnEmptyQuery: withIdentifier: #display.
-	coder
-		explanationLink:
-			(GtCompositeExplanationLinkStyler
-				forLinks:
-					{selectors}).
-	coderElement := coder asElement margin: (BlInsets all: 10).
-	coderElement forceLayout.
+
+	coder := GtPharoMethodCoder forMethod: GtSpotterStart>>#gtSpotterForClassesFor:.
+	coderViewModel := coder asCoderViewModel.
+	coderViewModel addStyler: selectors.
+	coderElement := coderViewModel asElement.
+	coderElement margin: (BlInsets all: 10).
 	coderElement vMatchParent.
 	
 	^ coderElement.
