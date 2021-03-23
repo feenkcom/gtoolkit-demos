@@ -4,6 +4,14 @@ Class {
 	#category : #'GToolkit-Demo-MoldableDevelopment'
 }
 
+{ #category : #slides }
+GtOneRenderingTree class >> slide1For: aSlide [
+	<gtSlide>
+	"Rename this method to be more representative for your slide"
+	^ aSlide empty
+		priority: 1.
+]
+
 { #category : #accessing }
 GtOneRenderingTree >> classHierarchyWithEdgesAndLinesExampleSlideFor: aSlide [
 	<gtSlide>
