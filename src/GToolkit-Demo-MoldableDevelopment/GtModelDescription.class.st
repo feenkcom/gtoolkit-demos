@@ -136,7 +136,7 @@ GtModelDescription >> coderOnClass: aClass [
 		layout: BlLinearLayout horizontal;
 		margin: (BlInsets all: 5);
 		background: Color white;
-		look: BrShadowLook.
+		aptitude: BrShadowAptitude.
 	
 	coderElement := (GtBehaviorCoder forClass: aClass) asElement.
 	

@@ -124,7 +124,7 @@ GtQueries >> filtersTreeExample [
 	
 	^ BlElement new
 		background: Color white;
-		look: BrShadowLook;
+		aptitude: BrShadowAptitude;
 		margin: (BlInsets all: 5);
 		addChild: filtersTreeElement.
 ]
@@ -153,7 +153,7 @@ GtQueries >> inspectorResultOnPragmaAndReferenceExample [
 	inspectorLabel := BrLabel new
 		text: ('Inspector on query result' asRopedText glamorousRegularFont; fontSize: 15; foreground: Color gray);
 		margin: (BlInsets top: 20 right: 0 bottom: 0 left: 10);
-		look: BrGlamorousLabelLook new.
+		aptitude: BrGlamorousLabelAptitude new.
 	
 	inspectorContainer := BlElement new
 		constraintsDo: [ :c | 
@@ -162,7 +162,7 @@ GtQueries >> inspectorResultOnPragmaAndReferenceExample [
 		layout: BlLinearLayout horizontal;
 		background: Color white;
 		margin: (BlInsets all: 10);
-		look: BrShadowLook.
+		aptitude: BrShadowAptitude.
 
 	subject := BlUseAsyncFeatures
 		disableDuring: [ (self pragmaAndReferenceQueryExample gtViewsFor: GtPhlowView empty) asElementDo: [ :e | e ] ].
@@ -179,7 +179,7 @@ GtQueries >> inspectorResultOnPragmaAndReferenceExample [
 				size: 5 @ 5;
 				elevation: (BlRelativeElevation elevation: 10);
 				geometry: BlCircle new;
-				look: (GtExplainerTargetLook new explanationModel: #inspector);
+				aptitude: (GtExplainerTargetAptitude new explanationModel: #inspector);
 				relocate:
 					(5 @ inspectorHeader extent y / 2)). 
 	inspectorView
@@ -189,7 +189,7 @@ GtQueries >> inspectorResultOnPragmaAndReferenceExample [
 				size: 5 @ 5;
 				elevation: (BlRelativeElevation elevation: 10);
 				geometry: BlCircle new;
-				look: (GtExplainerTargetLook new explanationModel: #view);
+				aptitude: (GtExplainerTargetAptitude new explanationModel: #view);
 				relocate:
 					(5 @ inspectorView extent y / 2)).
 					

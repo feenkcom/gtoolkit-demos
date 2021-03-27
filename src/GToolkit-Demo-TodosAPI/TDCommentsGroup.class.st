@@ -43,7 +43,7 @@ TDCommentsGroup >> gtCommentsListFor: aView [
 						c linear horizontal alignCenter.
 						c vertical fitContent ];
 					background: Color white;
-					look: BrShadowLook;
+					aptitude: BrShadowAptitude;
 					padding: (BlInsets all: 5);
 					margin: (BlInsets all: 5);
 					width: 300.
@@ -58,7 +58,7 @@ TDCommentsGroup >> gtCommentsListFor: aView [
 						c horizontal matchParent.
 						c vertical fitContent ].
 				topEditorElement := BrEditor new
-					look: (BrGlamorousRegularEditorLook new fontSize: 18);
+					aptitude: (BrGlamorousRegularEditorAptitude new fontSize: 18);
 					constraintsDo: [:c |
 						c linear horizontal alignCenter ];
 					margin: (BlInsets top: 0 right: 5 bottom: 0 left: 5);
@@ -69,14 +69,14 @@ TDCommentsGroup >> gtCommentsListFor: aView [
 				topEditorElement
 					when: BlClickEvent
 					do: [:e | topEditorElement phlow spawnObject: each].
-				labelLook := BrTextLabelLook new
+				labelLook := BrTextLabelAptitude new
 					glamorousRegularFont;
 					fontSize: 14;
 					foreground: Color gray.
 				userButton := BrButton new
 					margin: (BlInsets top: 0 right: 5 bottom: 5 left: 12);
 					label: 'Post ', each postId asString;
-					look: (BrGlamorousLinkSquaredButtonWithLabelLook new fontSize: 12);
+					aptitude: (BrGlamorousLinkSquaredButtonWithLabelAptitude new fontSize: 12);
 					action: [ :aButton |
 						aButton phlow spawnObject: (each post)].
 

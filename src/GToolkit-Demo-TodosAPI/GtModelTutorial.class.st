@@ -120,7 +120,7 @@ GtModelTutorial >> createMyAlbumSlideFor: aSlide [
 						size: 3 @ 3;
 						elevation: (BlRelativeElevation elevation: 10);
 						geometry: BlCircle new;
-						look: (GtExplainerTargetLook new explanationModel: #apply))
+						aptitude: (GtExplainerTargetAptitude new explanationModel: #apply))
 							relocate: 3 @ 10).
 			changesElement ].
 ]
@@ -293,7 +293,7 @@ GtModelTutorial >> requestExplanationWithLinks [
 				size: 3 @ 3;
 				elevation: (BlRelativeElevation elevation: 10);
 				geometry: BlCircle new;
-				look: (GtExplainerTargetLook new explanationModel: #client))
+				aptitude: (GtExplainerTargetAptitude new explanationModel: #client))
 					relocate: 0 @ clientTarget extent y / 2).
 	urlTarget
 		addChild: ((
@@ -302,7 +302,7 @@ GtModelTutorial >> requestExplanationWithLinks [
 				size: 3 @ 3;
 				elevation: (BlRelativeElevation elevation: 10);
 				geometry: BlCircle new;
-				look: (GtExplainerTargetLook new explanationModel: #url))
+				aptitude: (GtExplainerTargetAptitude new explanationModel: #url))
 					relocate: 0 @ urlTarget extent y / 2).	
 	requestTarget
 		addChild: ((
@@ -311,7 +311,7 @@ GtModelTutorial >> requestExplanationWithLinks [
 				size: 3 @ 3;
 				elevation: (BlRelativeElevation elevation: 10);
 				geometry: BlCircle new;
-				look: (GtExplainerTargetLook new explanationModel: #request))
+				aptitude: (GtExplainerTargetAptitude new explanationModel: #request))
 					relocate: 0 @ requestTarget extent y / 2).
 	parserTarget
 		addChild: ((
@@ -320,7 +320,7 @@ GtModelTutorial >> requestExplanationWithLinks [
 				size: 3 @ 3;
 				elevation: (BlRelativeElevation elevation: 10);
 				geometry: BlCircle new;
-				look: (GtExplainerTargetLook new explanationModel: #parse))
+				aptitude: (GtExplainerTargetAptitude new explanationModel: #parse))
 					relocate: 0 @ parserTarget extent y / 2).
 	^ playgroundElement.
 ]

@@ -146,7 +146,7 @@ GtOneRenderingTree >> liveElementTreeIntroductionSlideFor: aSlide [
 GtOneRenderingTree >> liveElementTreeSlideForText [
 	| editor |
 	editor := BrEditor new 
-		look: BrGlamorousEditorLook;
+		aptitude: BrGlamorousEditorAptitude;
 		text: GtWhatMakesBlocSpecialExplanation new sampleText.
 	^ GtLiveElementTreeLiveSlide new 
 		targetElement: (BlUseAsyncFeatures disableDuring: [
@@ -201,7 +201,7 @@ GtOneRenderingTree >> overviewElement [
 				c vertical exact: 700 ]; 
 			margin: (BlInsets all: 10);
 			background: Color white; 
-			look: BrShadowLook);
+			aptitude: BrShadowAptitude);
 		centerElementWithConstraints:((GtPlotterScaleBasedElementExamples new plot) asScalableElement
 			constraintsDo: [ :c |
 				c frame horizontal alignRight. 
@@ -210,7 +210,7 @@ GtOneRenderingTree >> overviewElement [
 				c vertical exact: 400 ];
 			margin: (BlInsets top: 10 left: 10 bottom: 80 right: 100);
 			background: (Color white);
-			look: BrShadowLook);
+			aptitude: BrShadowAptitude);
 		rightElementWithConstraints: ((BlDevKeyboard new)
 			constraintsDo: [ :c |
 				c frame horizontal alignRight. 
@@ -219,7 +219,7 @@ GtOneRenderingTree >> overviewElement [
 				c vertical exact: 230 ];
 			margin: (BlInsets top: 100 left: 10 bottom: 10 right: 10);
 			background: (Color white);
-			look: BrShadowLook)) asElement.
+			aptitude: BrShadowAptitude)) asElement.
 ]
 
 { #category : #'api - instantiation' }

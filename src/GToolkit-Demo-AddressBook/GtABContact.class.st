@@ -227,7 +227,7 @@ GtABContact >> gtViewContactDetailsOn: aView [
 			container := BlElement new
 				layout: BlLinearLayout horizontal;
 				background: Color white;
-				look: BrShadowLook;
+				aptitude: BrShadowAptitude;
 				margin: (BlInsets all: 20);
 				constraintsDo: [ :c | 
 					c horizontal fitContent.
@@ -244,7 +244,7 @@ GtABContact >> gtViewContactDetailsOn: aView [
 					fontSize: 30;
 					foreground: Color black).
 			detailsTextContainer := BrEditor new
-				look: (BrGlamorousRegularEditorLook new fontSize: 16);
+				aptitude: (BrGlamorousRegularEditorAptitude new fontSize: 16);
 				text: details;
 				constraintsDo: [ :c | 
 					c horizontal matchParent.

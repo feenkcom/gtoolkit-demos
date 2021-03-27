@@ -67,7 +67,7 @@ GtCoderSlideshow >> advancedMethodsFilteringExplanationWithLinks [
 		constraintsDo: [:c |
 			c vertical matchParent.
 			c horizontal matchParent];
-		look: BrShadowLook;
+		aptitude: BrShadowAptitude;
 		background: Color white;
 		margin: (BlInsets all: 5);
 		addChild: coderElement.
@@ -167,7 +167,7 @@ GtCoderSlideshow >> baselineMethodsExplanationWithLinks [
 		constraintsDo: [:c |
 			c vertical matchParent.
 			c horizontal matchParent];
-		look: BrShadowLook;
+		aptitude: BrShadowAptitude;
 		background: Color white;
 		margin: (BlInsets all: 5);
 		addChild: aScripter elementWithoutParent.
@@ -227,7 +227,7 @@ GtCoderSlideshow >> basicMethodsFilteringExplanationWithLinks [
 		constraintsDo: [:c |
 			c vertical matchParent.
 			c horizontal matchParent];
-		look: BrShadowLook;
+		aptitude: BrShadowAptitude;
 		background: Color white;
 		margin: (BlInsets all: 5);
 		addChild: coderElement.
@@ -374,7 +374,7 @@ GtCoderSlideshow >> classCoderInterfaceExplanationWithLinks [
 						(5 @ removeMethodTarget extent y / 2)).
 
 	^ BlElement new
-		look: BrShadowLook;
+		aptitude: BrShadowAptitude;
 		background: Color white;
 		margin: (BlInsets all: 5);
 		addChild: classCoderElement.
@@ -514,14 +514,14 @@ GtCoderSlideshow >> coderMashExample [
 	^ (GtMashExampleLiveSlide new
 		leftElement: 
 			(BlElement new
-				look: BrShadowLook;
+				aptitude: BrShadowAptitude;
 				background: Color white;
 				addChild: ((GtClassCoderLiveSlide new 
 					class: GtBehaviorCoder;
 					expandHeader: true) asElement));
 		centerElement:
 			(BlElement new
-				look: BrShadowLook;
+				aptitude: BrShadowAptitude;
 				background: Color white;
 				addChild: ((GtClassCoderLiveSlide new
 					class: GtCoderSlideshow;
@@ -576,7 +576,7 @@ GtCoderSlideshow >> createClassExplanationWithLinks [
 		constraintsDo: [:c |
 			c vertical matchParent.
 			c horizontal matchParent];
-		look: BrShadowLook;
+		aptitude: BrShadowAptitude;
 		background: Color white;
 		margin: (BlInsets all: 5);
 		addChild: coderElement.
@@ -661,7 +661,7 @@ GtCoderSlideshow >> createMethodExplanationWithLinks [
 		constraintsDo: [:c |
 			c vertical matchParent.
 			c horizontal matchParent];
-		look: BrShadowLook;
+		aptitude: BrShadowAptitude;
 		background: Color white;
 		margin: (BlInsets all: 5);
 		addChild: classCoderElement.
@@ -795,5 +795,5 @@ GtCoderSlideshow >> yellowTargetCircleWithExplanationModel: aModel [
 				size: 0 @ 0;
 				elevation: (BlRelativeElevation elevation: 10);
 				geometry: BlCircle new;
-				look: (GtExplainerTargetLook new explanationModel: aModel).
+				aptitude: (GtExplainerTargetAptitude new explanationModel: aModel).
 ]

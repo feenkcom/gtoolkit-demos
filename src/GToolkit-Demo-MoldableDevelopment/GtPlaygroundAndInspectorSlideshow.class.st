@@ -313,7 +313,7 @@ GtPlaygroundAndInspectorSlideshow >> inspectorInterfaceExplanationWithLinks [
 					(5 @ metaViewTarget extent y / 2)).
 					
 	^ BlElement new
-		look: BrShadowLook;
+		aptitude: BrShadowAptitude;
 		background: Color white;
 		margin: (BlInsets all: 5);
 		addChild: inspectorElement.
@@ -359,11 +359,11 @@ GtPlaygroundAndInspectorSlideshow >> inspectorMethodExplanationWithLinks [
 	coderLabel := BrLabel new
 		text: ('Contacts with details view method' asRopedText glamorousRegularFont; fontSize: 15; foreground: Color gray);
 		margin: (BlInsets top: 20 right: 0 bottom: 0 left: 10);
-		look: BrGlamorousLabelLook new.
+		aptitude: BrGlamorousLabelAptitude new.
 	inspectorLabel := BrLabel new
 		text: ('Contacts with details view result' asRopedText glamorousRegularFont; fontSize: 15; foreground: Color gray);
 		margin: (BlInsets top: 20 right: 0 bottom: 0 left: 10);
-		look: BrGlamorousLabelLook new.
+		aptitude: BrGlamorousLabelAptitude new.
 		
 	^ BlElement new
 		constraintsDo: [ :c | 
@@ -383,7 +383,7 @@ GtPlaygroundAndInspectorSlideshow >> inspectorWithExplanationLinks [
 			c horizontal matchParent.
 			c vertical matchParent ];
 		layout: BlLinearLayout horizontal;
-		look: BrShadowLook;
+		aptitude: BrShadowAptitude;
 		background: Color white;
 		margin: (BlInsets all: 10).
 	
@@ -479,21 +479,21 @@ GtPlaygroundAndInspectorSlideshow >> playgroundAndInspectorMashExample [
 	^ (GtMashExampleLiveSlide new
 		leftElement: 
 			(BlElement new
-				look: BrShadowLook;
+				aptitude: BrShadowAptitude;
 				background: Color white;
 				addChild: ((GtPlaygroundLiveSlide new 
 					snippets: {'42 + 2.'};
 					inspectSnippetAt: 1) asElement));
 		centerElement:
 			(BlElement new
-				look: BrShadowLook;
+				aptitude: BrShadowAptitude;
 				background: Color white;
 				addChild: ((GtPlaygroundLiveSlide new
 					snippets: {'BlElement new background: Color red.'};
 					inspectSnippetAt: 1) asElement));
 		rightElement:
 			(BlElement new
-				look: BrShadowLook;
+				aptitude: BrShadowAptitude;
 				background: Color white;
 				addChild: ((GtABCartoonAddressBookExample new cartoonAddressBook 
 					gtViewsFor: GtPhlowView empty) asElement))) asElement.
@@ -621,5 +621,5 @@ GtPlaygroundAndInspectorSlideshow >> yellowTargetCircleWithExplanationModel: aMo
 				size: 0 @ 0;
 				elevation: (BlRelativeElevation elevation: 10);
 				geometry: BlCircle new;
-				look: (GtExplainerTargetLook new explanationModel: aModel).
+				aptitude: (GtExplainerTargetAptitude new explanationModel: aModel).
 ]

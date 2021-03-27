@@ -39,7 +39,7 @@ TDPost >> gtPostBodyFor: aView [
 	^ aView textEditor
 		title: 'Content' translated;
 		priority: 10;
-		look: BrGlamorousCodeEditorLook;
+		aptitude: BrGlamorousCodeEditorAptitude;
 		text: self body.
 ]
 

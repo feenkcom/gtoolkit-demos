@@ -33,7 +33,7 @@ TDTodosGroup >> gtTodosListFor: aView [
 						c linear horizontal alignCenter.
 						c vertical fitContent ];
 					background: Color white;
-					look: BrShadowLook;
+					aptitude: BrShadowAptitude;
 					padding: (BlInsets all: 5);
 					margin: (BlInsets all: 5);
 					width: 300.
@@ -54,9 +54,9 @@ TDTodosGroup >> gtTodosListFor: aView [
 				(each completed) 
 					ifTrue: [ 
 						iconContainer icon: BrGlamorousVectorIcons accept.
-						iconContainer look: BrGlamorousButtonIconLook ].	
+						iconContainer aptitude: BrGlamorousButtonIconAptitude ].	
 				topEditorElement := BrEditor new
-					look: (BrGlamorousRegularEditorLook new fontSize: 18);
+					aptitude: (BrGlamorousRegularEditorAptitude new fontSize: 18);
 					constraintsDo: [:c |
 						c linear horizontal alignCenter ];
 					margin: (BlInsets top: 0 right: 5 bottom: 0 left: 5);
@@ -67,14 +67,14 @@ TDTodosGroup >> gtTodosListFor: aView [
 				topEditorElement
 					when: BlClickEvent
 					do: [:e | topEditorElement phlow spawnObject: each].
-				labelLook := BrTextLabelLook new
+				labelLook := BrTextLabelAptitude new
 					glamorousRegularFont;
 					fontSize: 14;
 					foreground: Color gray.
 				userButton := BrButton new
 					margin: (BlInsets top: 0 right: 5 bottom: 5 left: 47);
 					label: 'User ', each userId asString;
-					look: (BrGlamorousLinkSquaredButtonWithLabelLook new fontSize: 12);
+					aptitude: (BrGlamorousLinkSquaredButtonWithLabelAptitude new fontSize: 12);
 					action: [ :aButton |
 						aButton phlow spawnObject: (each user)].
 

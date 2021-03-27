@@ -358,7 +358,7 @@ GtInspectorViews >> explanationLabelWithText: aText [
 	^ BrLabel new
 		text: (aText asRopedText glamorousRegularFont; fontSize: 15; foreground: Color gray);
 		margin: (BlInsets top: 20 right: 0 bottom: 0 left: 10);
-		look: BrGlamorousLabelLook new.
+		aptitude: BrGlamorousLabelAptitude new.
 ]
 
 { #category : #slides }
@@ -716,7 +716,7 @@ GtInspectorViews >> resultInspectorContainerElement [
 			c horizontal matchParent.
 			c vertical matchParent ];
 		layout: BlLinearLayout horizontal;
-		look: BrShadowLook;
+		aptitude: BrShadowAptitude;
 		background: Color white;
 		margin: (BlInsets all: 10).
 ]
@@ -733,7 +733,7 @@ GtInspectorViews >> slideshowLinkSlideFor: aSlide [
 { #category : #utility }
 GtInspectorViews >> textEditorElementWithText: aText [
 	^ (BrEditor new
-		look: (BrGlamorousRegularEditorLook new fontSize: 16; lineSpacing: 2);
+		aptitude: (BrGlamorousRegularEditorAptitude new fontSize: 16; lineSpacing: 2);
 		text: aText;
 		vFitContent; 
 		hMatchParent) asScalableElement 
@@ -766,10 +766,10 @@ GtInspectorViews >> textEditorViewExplanationWithLinks [
 	coder := GtPharoMethodCoder new forMethod: GtABContactNote>>#gtViewNoteContentOn:.
 	
 	selectors := GtSelectorExplanationLinkStyler new.
-	selectors addSelectors: #(textEditor title: look: content text:).
+	selectors addSelectors: #(textEditor title: #aptitude: content text:).
 
 	variables := GtVariableExplanationLinkStyler new.
-	variables addVariables: {#BrGlamorousCodeEditorLook}.
+	variables addVariables: {#BrGlamorousCodeEditorAptitude}.
 	
 	coderViewModel := coder asCoderViewModel.
 	coderViewModel addStylers: { selectors. variables }.
@@ -824,9 +824,9 @@ GtInspectorViews >> textEditorViewExplanationWithLinksText [
 The view gets a ' asRopedText,
 ('title' asRopedText glamorousExplanationFor: #title:),
 ', a ' asRopedText,
-('look' asRopedText glamorousExplanationFor: #look:),
+('look' asRopedText glamorousExplanationFor: #aptitude:),
 ', in this case the default' asRopedText,
-('code editor look' asRopedText glamorousExplanationFor: #BrGlamorousCodeEditorLook),
+('code editor look' asRopedText glamorousExplanationFor: #BrGlamorousCodeEditorAptitude),
 ' and the ' asRopedText,
 ('text' asRopedText glamorousExplanationFor: #text:),
 ', in this case the ' asRopedText,
@@ -988,5 +988,5 @@ GtInspectorViews >> yellowTargetCircleWithExplanationModel: aModel [
 				size: 5 @ 5;
 				elevation: (BlRelativeElevation elevation: 10);
 				geometry: BlCircle new;
-				look: (GtExplainerTargetLook new explanationModel: aModel).
+				aptitude: (GtExplainerTargetAptitude new explanationModel: aModel).
 ]
