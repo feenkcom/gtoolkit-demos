@@ -77,7 +77,7 @@ GtTour >> coderExplanationWithLinks [
 		ifFound: [:aChild | aChild parent].
 	expandClassTarget := coderElement 
 		allChildrenBreadthFirstDetect: [:aChild | 
-			((aChild isKindOf: BlElement) and: [aChild parent isKindOf: GtBehaviorDefinitionCoderElement])]
+			((aChild isKindOf: BlElement) and: [aChild parent isKindOf: GtPharoBehaviorDefinitionCoderElement])]
 		ifFound: [:aChild | aChild].
 	expandMethodTarget := coderElement 
 		allChildrenBreadthFirstDetect: [:aChild | 
@@ -94,7 +94,7 @@ GtTour >> coderExplanationWithLinks [
 	addClassButtonTarget := classButtonTargets last.
 	methodButtonTargets := coderElement
 		allChildrenBreadthFirstDetect: [:aChild | 
-			aChild isKindOf: GtBehaviorCoderElement] 
+			aChild isKindOf: GtPharoBehaviorCoderElement] 
 		ifFound: [:aChild | 
 			aChild allChildrenBreadthFirstSelect: [:aButtonChild | 
 				(aButtonChild isKindOf: BrButton) and: [aButtonChild parent isKindOf: BrToolbar]]].
@@ -236,7 +236,7 @@ GtTour >> coderWithComment [
 		do: [ :aStep | 
 			aStep click
 				label: 'Click on evaluate and inspect button';
-				onBreadthFirstChildOfClass: GtBehaviorCoderElement;
+				onBreadthFirstChildOfClass: GtPharoBehaviorCoderElement;
 				onBreadthFirstChildOfClass: BrTabGroup;
 				onChildNamed: #header;
 				onChildAt: 1;
@@ -508,7 +508,7 @@ GtTour >> jsParserExampleSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide labelAndElement
 		priority: 31;
-		element: [ GtPager createWrappedOn: (GtBehaviorCoder forClass: JSParser) ];
+		element: [ GtPager createWrappedOn: (GtPharoBehaviorCoder forClass: JSParser) ];
 		newFadedText: 'The first non-Pharo language we accommodated is the language with which we write parsers for other languages.'.
 ]
 
@@ -619,7 +619,7 @@ GtTour >> overviewElement [
 				c vertical exact: 400 ];
 			margin: (BlInsets top: 10 left: 10 bottom: 20 right: 200); background: (Color white); aptitude: BrShadowAptitude).
 
-	container addChild: ((GtBehaviorCoder forClass: BaselineOfGToolkit) asElement
+	container addChild: ((GtPharoBehaviorCoder forClass: BaselineOfGToolkit) asElement
 			constraintsDo: [ :c | 
 				c frame horizontal alignRight. 
 				c frame vertical alignTop.

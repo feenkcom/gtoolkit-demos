@@ -26,7 +26,7 @@ GtWorkingWithARestApi >> albumsExplanationSlideFor: aSlide [
 			background: Color white;
 			aptitude: BrShadowAptitude;
 			margin: (BlInsets right: 5);
-			addChild: (GtBehaviorCoder forClass: TDAlbum) asElement ].
+			addChild: (GtPharoBehaviorCoder forClass: TDAlbum) asElement ].
 ]
 
 { #category : #accessing }
@@ -137,7 +137,7 @@ GtWorkingWithARestApi >> clientExplanationSlideFor: aSlide [
 			background: Color white;
 			aptitude: BrShadowAptitude;
 			margin: (BlInsets right: 5);
-			addChild: (GtBehaviorCoder forClass: TDClient) asElement ].
+			addChild: (GtPharoBehaviorCoder forClass: TDClient) asElement ].
 ]
 
 { #category : #accessing }
@@ -169,7 +169,7 @@ GtWorkingWithARestApi >> commentsExplanationSlideFor: aSlide [
 			background: Color white;
 			aptitude: BrShadowAptitude;
 			margin: (BlInsets right: 5);
-			addChild: (GtBehaviorCoder forClass: TDComment) asElement ].
+			addChild: (GtPharoBehaviorCoder forClass: TDComment) asElement ].
 ]
 
 { #category : #accessing }
@@ -197,7 +197,7 @@ GtWorkingWithARestApi >> dataStructuresExplanationSlideFor: aSlide [
 			background: Color white;
 			aptitude: BrShadowAptitude;
 			margin: (BlInsets right: 5);
-			addChild: (GtPackageTagCoder forPackageTag: ((GtBehaviorCoder forClass: TDUser) packageTag)) asElement ].
+			addChild: (GtPharoPackageTagCoder forPackageTag: ((GtPharoBehaviorCoder forClass: TDUser) packageTag)) asElement ].
 ]
 
 { #category : #accessing }
@@ -328,7 +328,7 @@ GtWorkingWithARestApi >> photosExplanationSlideFor: aSlide [
 			background: Color white;
 			aptitude: BrShadowAptitude;
 			margin: (BlInsets right: 5);
-			addChild: (GtBehaviorCoder forClass: TDImage) asElement ].
+			addChild: (GtPharoBehaviorCoder forClass: TDImage) asElement ].
 ]
 
 { #category : #accessing }
@@ -407,7 +407,7 @@ GtWorkingWithARestApi >> simplePostsExplanationSlideFor: aSlide [
 			background: Color white;
 			aptitude: BrShadowAptitude;
 			margin: (BlInsets right: 5);
-			addChild: (GtBehaviorCoder forClass: TDPost) asElement ].
+			addChild: (GtPharoBehaviorCoder forClass: TDPost) asElement ].
 ]
 
 { #category : #slides }
@@ -442,7 +442,7 @@ GtWorkingWithARestApi >> todosExplanationSlideFor: aSlide [
 			background: Color white;
 			aptitude: BrShadowAptitude;
 			margin: (BlInsets right: 5);
-			addChild: (GtBehaviorCoder forClass: TDTodo) asElement ].
+			addChild: (GtPharoBehaviorCoder forClass: TDTodo) asElement ].
 ]
 
 { #category : #accessing }
@@ -474,7 +474,7 @@ GtWorkingWithARestApi >> userExplanationSlideFor: aSlide [
 			background: Color white;
 			aptitude: BrShadowAptitude;
 			margin: (BlInsets right: 5);
-			addChild: (GtBehaviorCoder forClass: TDUser) asElement ].
+			addChild: (GtPharoBehaviorCoder forClass: TDUser) asElement ].
 ]
 
 { #category : #accessing }

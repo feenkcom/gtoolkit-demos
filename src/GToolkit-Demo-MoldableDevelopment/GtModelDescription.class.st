@@ -138,7 +138,7 @@ GtModelDescription >> coderOnClass: aClass [
 		background: Color white;
 		aptitude: BrShadowAptitude.
 	
-	coderElement := (GtBehaviorCoder forClass: aClass) asElement.
+	coderElement := (GtPharoBehaviorCoder forClass: aClass) asElement.
 	
 	^ container
 		addChild: coderElement.

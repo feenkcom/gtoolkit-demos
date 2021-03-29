@@ -151,10 +151,10 @@ GtCoderSlideshow >> baselineMethodsExplanationWithLinks [
 		do: [ :aStep | 
 			aStep click
 				label: 'Expand baseline in place';
-				onBreadthFirstChildOfClass: GtBehaviorCoderElement;
+				onBreadthFirstChildOfClass: GtPharoBehaviorCoderElement;
 				onBreadthFirstChildOfClass: BrTabGroup;
 				onChildAt: 2;
-				onBreadthFirstChildOfClass: GtMethodsCoderElement;
+				onBreadthFirstChildOfClass: GtPharoMethodsCoderElement;
 				onBreadthFirstChildOfClass: BrInfiniteListElement;
 				onChildAt: 1;
 				onChildAt: 2;
@@ -290,7 +290,7 @@ GtCoderSlideshow >> classCoderInterfaceExplanationWithLinks [
 		ifFound: [:aChild | aChild].
 	expandHeaderTarget := classCoderElement
 		allChildrenBreadthFirstDetect: [:aChild | 
-			aChild isKindOf: GtBehaviorDefinitionCoderElement]
+			aChild isKindOf: GtPharoBehaviorDefinitionCoderElement]
 		ifFound: [:aChild | aChild childAt: 1].
 	methodsTabTarget := classCoderElement
 		allChildrenBreadthFirstDetect: [:aChild | 
@@ -470,7 +470,7 @@ GtCoderSlideshow >> coderInterfaceExplanationWithLinks [
 		ifFound: [:aChild | aChild].
 	classCoderTarget := coderElement
 		allChildrenBreadthFirstDetect: [:aChild |
-			aChild isKindOf: GtBehaviorCoderElement]
+			aChild isKindOf: GtPharoBehaviorCoderElement]
 		ifFound: [:aChild | aChild].
 	buttons := coderElement
 		allChildrenBreadthFirstDetect: [:aChild |
@@ -517,7 +517,7 @@ GtCoderSlideshow >> coderMashExample [
 				aptitude: BrShadowAptitude;
 				background: Color white;
 				addChild: ((GtClassCoderLiveSlide new 
-					class: GtBehaviorCoder;
+					class: GtPharoBehaviorCoder;
 					expandHeader: true) asElement));
 		centerElement:
 			(BlElement new
@@ -615,7 +615,7 @@ GtCoderSlideshow >> createMethodExplanationWithLinks [
 		do: [ :aStep | 
 			aStep click
 				label: 'Click add method button';
-				onChildNamed: GtBehaviorCoder addNewMethodButtonName.
+				onChildNamed: GtPharoBehaviorCoder addNewMethodButtonName.
 			aStep wait forEmptySpaceTaskQueue ].
 	aScripter syncContinue.
 
@@ -634,7 +634,7 @@ GtCoderSlideshow >> createMethodExplanationWithLinks [
 			removeButtonTarget := aChild childAt: 2].
 
 	addMethodButton := classCoderElement
-		childNamed: GtBehaviorCoder addNewMethodButtonName.
+		childNamed: GtPharoBehaviorCoder addNewMethodButtonName.
 	
 	addMethodButton
 		addChild:
@@ -700,7 +700,7 @@ GtCoderSlideshow >> exampleMethodsExplanationWithLinks [
 	<gtExample>
 	| classCoderElement pragmaTarget inspectTarget evaluateTarget debugTarget aScripter expandedMethodElement buttonsList |
 	
-	classCoderElement := (GtInspector createOn:(GtBehaviorCoder forClass: GtABAddressBookExample)) maximized.
+	classCoderElement := (GtInspector createOn:(GtPharoBehaviorCoder forClass: GtABAddressBookExample)) maximized.
 	
 	aScripter := BlDevScripter new.
 	aScripter
@@ -718,10 +718,10 @@ GtCoderSlideshow >> exampleMethodsExplanationWithLinks [
 				onBreadthFirstChildOfClass: BlOverlayElement;
 				onBreadthFirstChildOfClass: GtPagerWrapperElement;
 				onBreadthFirstChildOfClass: GtInspectorContentElement;
-				onBreadthFirstChildOfClass: GtBehaviorCoderElement;
+				onBreadthFirstChildOfClass: GtPharoBehaviorCoderElement;
 				onBreadthFirstChildOfClass: BrTabGroup;
 				onChildAt: 2;
-				onBreadthFirstChildOfClass: GtMethodsCoderElement;
+				onBreadthFirstChildOfClass: GtPharoMethodsCoderElement;
 				onBreadthFirstChildOfClass: BrInfiniteListElement;
 				onChildAt: 1;
 				onChildAt: 1.
