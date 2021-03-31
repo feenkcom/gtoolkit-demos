@@ -27,7 +27,7 @@ GtSpotterSlideshow >> spotterAfterFirstDiveInExplanation [
 					size: 3 @ 3;
 					elevation: (BlRelativeElevation elevation: 10);
 					geometry: BlCircle new;
-					look: (GtExplainerTargetLook new explanationModel: #secondContext);
+					aptitude: (GtExplainerTargetAptitude new explanationModel: #secondContext);
 					relocate:
 						(0 @ 10)).]).
 
@@ -89,7 +89,7 @@ GtSpotterSlideshow >> spotterDiveInExplanation [
 				size: 3 @ 3;
 				elevation: (BlRelativeElevation elevation: 10);
 				geometry: BlCircle new;
-				look: (GtExplainerTargetLook new explanationModel: #context);
+				aptitude: (GtExplainerTargetAptitude new explanationModel: #context);
 				relocate:
 					(-2 @ contextTarget extent y / 2)).
 	arrowTargets 
@@ -98,7 +98,7 @@ GtSpotterSlideshow >> spotterDiveInExplanation [
 				size: 3 @ 3;
 				elevation: (BlRelativeElevation elevation: 10);
 				geometry: BlCircle new;
-				look: (GtExplainerTargetLook new explanationModel: #blackArrow);
+				aptitude: (GtExplainerTargetAptitude new explanationModel: #blackArrow);
 				relocate:
 					(-2 @ arrowTargets extent y / 2)).
 	^ spotter.
@@ -164,7 +164,7 @@ GtSpotterSlideshow >> spotterElementInContextOf: anObject withSearch: aSearchStr
 	| spotterElement aScripter |
 	
 	spotterElement := GtSpotterElement new
-		look: BrShadowLook;
+		aptitude: BrShadowAptitude;
 		margin: (BlInsets all: 20).
 	spotterElement spotterModel: ((GtSpotter on: anObject) search: aSearchString).
 	spotterElement searchField requestFocus.
@@ -228,18 +228,18 @@ GtSpotterSlideshow >> spotterInLocalContextExplanationWithLinks [
 	coderLabel := BrLabel new
 		text: ('Coder example' asRopedText glamorousRegularFont; fontSize: 15; foreground: Color gray);
 		margin: (BlInsets top: 20 right: 0 bottom: 5 left: 5);
-		look: BrGlamorousLabelLook new.
+		aptitude: BrGlamorousLabelAptitude new.
 	inspectorLabel := BrLabel new
 		text: ('Inspector example' asRopedText glamorousRegularFont; fontSize: 15; foreground: Color gray);
 		margin: (BlInsets top: 20 right: 0 bottom: 5 left: 5);
-		look: BrGlamorousLabelLook new.
+		aptitude: BrGlamorousLabelAptitude new.
 		
 	coderElement := BlElement new
 		constraintsDo: [:c |
 			c vertical matchParent.
 			c horizontal matchParent ];
 		background: Color white;
-		look: BrShadowLook;
+		aptitude: BrShadowAptitude;
 		margin: (BlInsets all: 5);
 		addChild: (GtCoder forClass: GtABAddressBook) asElement.
 	inspectorElement := BlElement new
@@ -247,7 +247,7 @@ GtSpotterSlideshow >> spotterInLocalContextExplanationWithLinks [
 			c vertical matchParent.
 			c horizontal matchParent ];
 		background: Color white;
-		look: BrShadowLook;
+		aptitude: BrShadowAptitude;
 		margin: (BlInsets all: 5);
 		addChild:(BlUseAsyncFeatures
 			disableDuring: [ ((GtABAddressBookExample new myContactsAddressBook) 
@@ -270,7 +270,7 @@ GtSpotterSlideshow >> spotterInLocalContextExplanationWithLinks [
 					size: 3 @ 3;
 					elevation: (BlRelativeElevation elevation: 10);
 					geometry: BlCircle new;
-					look: (GtExplainerTargetLook new explanationModel: #search);
+					aptitude: (GtExplainerTargetAptitude new explanationModel: #search);
 					relocate:
 						(5 @ 10))].
 	
@@ -415,7 +415,7 @@ GtSpotterSlideshow >> spotterInterfaceExplanationWithLinks [
 				size: 3 @ 3;
 				elevation: (BlRelativeElevation elevation: 10);
 				geometry: BlCircle new;
-				look: (GtExplainerTargetLook new explanationModel: #searchBar);
+				aptitude: (GtExplainerTargetAptitude new explanationModel: #searchBar);
 				relocate:
 					(-2 @ searchBarTarget extent y / 2)).
 	resultsTarget
@@ -425,7 +425,7 @@ GtSpotterSlideshow >> spotterInterfaceExplanationWithLinks [
 				size: 3 @ 3;
 				elevation: (BlRelativeElevation elevation: 10);
 				geometry: BlCircle new;
-				look: (GtExplainerTargetLook new explanationModel: #results);
+				aptitude: (GtExplainerTargetAptitude new explanationModel: #results);
 				relocate: 5 @ 5). 
 	previewTarget
 		addChild:
@@ -434,7 +434,7 @@ GtSpotterSlideshow >> spotterInterfaceExplanationWithLinks [
 				size: 3 @ 3;
 				elevation: (BlRelativeElevation elevation: 10);
 				geometry: BlCircle new;
-				look: (GtExplainerTargetLook new explanationModel: #preview);
+				aptitude: (GtExplainerTargetAptitude new explanationModel: #preview);
 				relocate:
 					(5 @ previewTarget extent y / 2)).
 	classesTarget
@@ -444,7 +444,7 @@ GtSpotterSlideshow >> spotterInterfaceExplanationWithLinks [
 				size: 3 @ 3;
 				elevation: (BlRelativeElevation elevation: 10);
 				geometry: BlCircle new;
-				look: (GtExplainerTargetLook new explanationModel: #classes);
+				aptitude: (GtExplainerTargetAptitude new explanationModel: #classes);
 				relocate:
 					(5 @ classesTarget extent y / 2)).
 	implementorsTarget
@@ -454,7 +454,7 @@ GtSpotterSlideshow >> spotterInterfaceExplanationWithLinks [
 				size: 3 @ 3;
 				elevation: (BlRelativeElevation elevation: 10);
 				geometry: BlCircle new;
-				look: (GtExplainerTargetLook new explanationModel: #messages);
+				aptitude: (GtExplainerTargetAptitude new explanationModel: #messages);
 				relocate:
 					(5 @ implementorsTarget extent y / 2)).
 	sendersTarget
@@ -464,7 +464,7 @@ GtSpotterSlideshow >> spotterInterfaceExplanationWithLinks [
 				size: 3 @ 3;
 				elevation: (BlRelativeElevation elevation: 10);
 				geometry: BlCircle new;
-				look: (GtExplainerTargetLook new explanationModel: #messages);
+				aptitude: (GtExplainerTargetAptitude new explanationModel: #messages);
 				relocate:
 					(5 @ sendersTarget extent y / 2)).
 	messagesTarget
@@ -474,7 +474,7 @@ GtSpotterSlideshow >> spotterInterfaceExplanationWithLinks [
 				size: 3 @ 3;
 				elevation: (BlRelativeElevation elevation: 10);
 				geometry: BlCircle new;
-				look: (GtExplainerTargetLook new explanationModel: #messages);
+				aptitude: (GtExplainerTargetAptitude new explanationModel: #messages);
 				relocate:
 					(5 @ messagesTarget extent y / 2)).
 	^ spotterElement.
@@ -608,7 +608,7 @@ GtSpotterSlideshow >> spotterSearchFilterExplanation [
 				size: 3 @ 3;
 				elevation: (BlRelativeElevation elevation: 10);
 				geometry: BlCircle new;
-				look: (GtExplainerTargetLook new explanationModel: #keyword);
+				aptitude: (GtExplainerTargetAptitude new explanationModel: #keyword);
 				relocate:
 					(-2 @ keywordTarget extent y / 2)).
 	filterTarget
@@ -617,7 +617,7 @@ GtSpotterSlideshow >> spotterSearchFilterExplanation [
 				size: 3 @ 3;
 				elevation: (BlRelativeElevation elevation: 10);
 				geometry: BlCircle new;
-				look: (GtExplainerTargetLook new explanationModel: #filter);
+				aptitude: (GtExplainerTargetAptitude new explanationModel: #filter);
 				relocate:
 					(-2 @ filterTarget extent y / 2)).
 	contextTarget
@@ -626,7 +626,7 @@ GtSpotterSlideshow >> spotterSearchFilterExplanation [
 				size: 3 @ 3;
 				elevation: (BlRelativeElevation elevation: 10);
 				geometry: BlCircle new;
-				look: (GtExplainerTargetLook new explanationModel: #context);
+				aptitude: (GtExplainerTargetAptitude new explanationModel: #context);
 				relocate:
 					(-2 @ contextTarget extent y / 2)).
 	^ spotter.

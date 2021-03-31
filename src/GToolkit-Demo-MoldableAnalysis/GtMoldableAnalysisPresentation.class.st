@@ -521,7 +521,7 @@ GtMoldableAnalysisPresentation >> visualizeXMLFileTargets [
 		stencil: [ :each | 
 			BrLabel new
 				text: (each attributeAt: #name);
-				look: BrGlamorousLabelLook ];
+				aptitude: BrGlamorousLabelAptitude ];
 		with: tags.
 	view edges 
 		shape: [ :each |

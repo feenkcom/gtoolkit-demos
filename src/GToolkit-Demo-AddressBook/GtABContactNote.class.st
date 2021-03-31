@@ -34,7 +34,7 @@ GtABContactNote >> gtViewNoteContentOn: aView [
 	
 	^ aView textEditor
 		title: 'Content' translated;
-		look: BrGlamorousCodeEditorLook;
+		aptitude: BrGlamorousCodeEditorAptitude;
 		text: self content.
 ]
 

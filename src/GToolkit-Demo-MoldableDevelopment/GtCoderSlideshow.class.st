@@ -67,7 +67,7 @@ GtCoderSlideshow >> advancedMethodsFilteringExplanationWithLinks [
 		constraintsDo: [:c |
 			c vertical matchParent.
 			c horizontal matchParent];
-		look: BrShadowLook;
+		aptitude: BrShadowAptitude;
 		background: Color white;
 		margin: (BlInsets all: 5);
 		addChild: coderElement.
@@ -151,10 +151,10 @@ GtCoderSlideshow >> baselineMethodsExplanationWithLinks [
 		do: [ :aStep | 
 			aStep click
 				label: 'Expand baseline in place';
-				onBreadthFirstChildOfClass: GtBehaviorCoderElement;
+				onBreadthFirstChildOfClass: GtPharoBehaviorCoderElement;
 				onBreadthFirstChildOfClass: BrTabGroup;
 				onChildAt: 2;
-				onBreadthFirstChildOfClass: GtMethodsCoderElement;
+				onBreadthFirstChildOfClass: GtPharoMethodsCoderElement;
 				onBreadthFirstChildOfClass: BrInfiniteListElement;
 				onChildAt: 1;
 				onChildAt: 2;
@@ -167,7 +167,7 @@ GtCoderSlideshow >> baselineMethodsExplanationWithLinks [
 		constraintsDo: [:c |
 			c vertical matchParent.
 			c horizontal matchParent];
-		look: BrShadowLook;
+		aptitude: BrShadowAptitude;
 		background: Color white;
 		margin: (BlInsets all: 5);
 		addChild: aScripter elementWithoutParent.
@@ -227,7 +227,7 @@ GtCoderSlideshow >> basicMethodsFilteringExplanationWithLinks [
 		constraintsDo: [:c |
 			c vertical matchParent.
 			c horizontal matchParent];
-		look: BrShadowLook;
+		aptitude: BrShadowAptitude;
 		background: Color white;
 		margin: (BlInsets all: 5);
 		addChild: coderElement.
@@ -290,7 +290,7 @@ GtCoderSlideshow >> classCoderInterfaceExplanationWithLinks [
 		ifFound: [:aChild | aChild].
 	expandHeaderTarget := classCoderElement
 		allChildrenBreadthFirstDetect: [:aChild | 
-			aChild isKindOf: GtBehaviorDefinitionCoderElement]
+			aChild isKindOf: GtPharoBehaviorDefinitionCoderElement]
 		ifFound: [:aChild | aChild childAt: 1].
 	methodsTabTarget := classCoderElement
 		allChildrenBreadthFirstDetect: [:aChild | 
@@ -374,7 +374,7 @@ GtCoderSlideshow >> classCoderInterfaceExplanationWithLinks [
 						(5 @ removeMethodTarget extent y / 2)).
 
 	^ BlElement new
-		look: BrShadowLook;
+		aptitude: BrShadowAptitude;
 		background: Color white;
 		margin: (BlInsets all: 5);
 		addChild: classCoderElement.
@@ -470,7 +470,7 @@ GtCoderSlideshow >> coderInterfaceExplanationWithLinks [
 		ifFound: [:aChild | aChild].
 	classCoderTarget := coderElement
 		allChildrenBreadthFirstDetect: [:aChild |
-			aChild isKindOf: GtBehaviorCoderElement]
+			aChild isKindOf: GtPharoBehaviorCoderElement]
 		ifFound: [:aChild | aChild].
 	buttons := coderElement
 		allChildrenBreadthFirstDetect: [:aChild |
@@ -514,14 +514,14 @@ GtCoderSlideshow >> coderMashExample [
 	^ (GtMashExampleLiveSlide new
 		leftElement: 
 			(BlElement new
-				look: BrShadowLook;
+				aptitude: BrShadowAptitude;
 				background: Color white;
 				addChild: ((GtClassCoderLiveSlide new 
-					class: GtBehaviorCoder;
+					class: GtPharoBehaviorCoder;
 					expandHeader: true) asElement));
 		centerElement:
 			(BlElement new
-				look: BrShadowLook;
+				aptitude: BrShadowAptitude;
 				background: Color white;
 				addChild: ((GtClassCoderLiveSlide new
 					class: GtCoderSlideshow;
@@ -576,7 +576,7 @@ GtCoderSlideshow >> createClassExplanationWithLinks [
 		constraintsDo: [:c |
 			c vertical matchParent.
 			c horizontal matchParent];
-		look: BrShadowLook;
+		aptitude: BrShadowAptitude;
 		background: Color white;
 		margin: (BlInsets all: 5);
 		addChild: coderElement.
@@ -615,7 +615,7 @@ GtCoderSlideshow >> createMethodExplanationWithLinks [
 		do: [ :aStep | 
 			aStep click
 				label: 'Click add method button';
-				onChildNamed: GtBehaviorCoder addNewMethodButtonName.
+				onChildNamed: GtPharoBehaviorCoder addNewMethodButtonName.
 			aStep wait forEmptySpaceTaskQueue ].
 	aScripter syncContinue.
 
@@ -634,7 +634,7 @@ GtCoderSlideshow >> createMethodExplanationWithLinks [
 			removeButtonTarget := aChild childAt: 2].
 
 	addMethodButton := classCoderElement
-		childNamed: GtBehaviorCoder addNewMethodButtonName.
+		childNamed: GtPharoBehaviorCoder addNewMethodButtonName.
 	
 	addMethodButton
 		addChild:
@@ -661,7 +661,7 @@ GtCoderSlideshow >> createMethodExplanationWithLinks [
 		constraintsDo: [:c |
 			c vertical matchParent.
 			c horizontal matchParent];
-		look: BrShadowLook;
+		aptitude: BrShadowAptitude;
 		background: Color white;
 		margin: (BlInsets all: 5);
 		addChild: classCoderElement.
@@ -700,7 +700,7 @@ GtCoderSlideshow >> exampleMethodsExplanationWithLinks [
 	<gtExample>
 	| classCoderElement pragmaTarget inspectTarget evaluateTarget debugTarget aScripter expandedMethodElement buttonsList |
 	
-	classCoderElement := (GtInspector createOn:(GtBehaviorCoder forClass: GtABAddressBookExample)) maximized.
+	classCoderElement := (GtInspector createOn:(GtPharoBehaviorCoder forClass: GtABAddressBookExample)) maximized.
 	
 	aScripter := BlDevScripter new.
 	aScripter
@@ -718,10 +718,10 @@ GtCoderSlideshow >> exampleMethodsExplanationWithLinks [
 				onBreadthFirstChildOfClass: BlOverlayElement;
 				onBreadthFirstChildOfClass: GtPagerWrapperElement;
 				onBreadthFirstChildOfClass: GtInspectorContentElement;
-				onBreadthFirstChildOfClass: GtBehaviorCoderElement;
+				onBreadthFirstChildOfClass: GtPharoBehaviorCoderElement;
 				onBreadthFirstChildOfClass: BrTabGroup;
 				onChildAt: 2;
-				onBreadthFirstChildOfClass: GtMethodsCoderElement;
+				onBreadthFirstChildOfClass: GtPharoMethodsCoderElement;
 				onBreadthFirstChildOfClass: BrInfiniteListElement;
 				onChildAt: 1;
 				onChildAt: 1.
@@ -795,5 +795,5 @@ GtCoderSlideshow >> yellowTargetCircleWithExplanationModel: aModel [
 				size: 0 @ 0;
 				elevation: (BlRelativeElevation elevation: 10);
 				geometry: BlCircle new;
-				look: (GtExplainerTargetLook new explanationModel: aModel).
+				aptitude: (GtExplainerTargetAptitude new explanationModel: aModel).
 ]

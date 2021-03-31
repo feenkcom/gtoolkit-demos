@@ -28,7 +28,7 @@ TDImagesGroup >> gtImagesListFor: aView [
 						c vertical exact: 100. 
 						c horizontal exact: 150 ];
 					background: Color white;
-					look: BrShadowLook new;
+					aptitude: BrShadowAptitude new;
 					margin: (BlInsets all: 10);
 					elementBuilder: [ eachImage thumbnail ];
 					when: BlClickEvent

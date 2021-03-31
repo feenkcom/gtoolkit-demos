@@ -45,7 +45,7 @@ GtTour >> coderExplanationWithLinks [
 		layout: BlLinearLayout horizontal;
 		margin: (BlInsets all: 5);
 		background: Color white;
-		look: BrShadowLook.
+		aptitude: BrShadowAptitude.
 	
 	coderElement := BlUseAsyncFeatures disableDuring: [ 
 		((GtCoder forClass: GtABAddressBook) createInPager maximized) asElement ].
@@ -77,7 +77,7 @@ GtTour >> coderExplanationWithLinks [
 		ifFound: [:aChild | aChild parent].
 	expandClassTarget := coderElement 
 		allChildrenBreadthFirstDetect: [:aChild | 
-			((aChild isKindOf: BlElement) and: [aChild parent isKindOf: GtBehaviorDefinitionCoderElement])]
+			((aChild isKindOf: BlElement) and: [aChild parent isKindOf: GtPharoBehaviorDefinitionCoderElement])]
 		ifFound: [:aChild | aChild].
 	expandMethodTarget := coderElement 
 		allChildrenBreadthFirstDetect: [:aChild | 
@@ -94,7 +94,7 @@ GtTour >> coderExplanationWithLinks [
 	addClassButtonTarget := classButtonTargets last.
 	methodButtonTargets := coderElement
 		allChildrenBreadthFirstDetect: [:aChild | 
-			aChild isKindOf: GtBehaviorCoderElement] 
+			aChild isKindOf: GtPharoBehaviorCoderElement] 
 		ifFound: [:aChild | 
 			aChild allChildrenBreadthFirstSelect: [:aButtonChild | 
 				(aButtonChild isKindOf: BrButton) and: [aButtonChild parent isKindOf: BrToolbar]]].
@@ -236,7 +236,7 @@ GtTour >> coderWithComment [
 		do: [ :aStep | 
 			aStep click
 				label: 'Click on evaluate and inspect button';
-				onBreadthFirstChildOfClass: GtBehaviorCoderElement;
+				onBreadthFirstChildOfClass: GtPharoBehaviorCoderElement;
 				onBreadthFirstChildOfClass: BrTabGroup;
 				onChildNamed: #header;
 				onChildAt: 1;
@@ -294,7 +294,7 @@ inspectorContainer := BlElement new
     layout: BlLinearLayout horizontal;
     margin: (BlInsets all: 30);
     background: Color white;
-    look: BrShadowLook.
+    aptitude: BrShadowAptitude.
 container := BlElement new
     constraintsDo: [ :c | 
         c horizontal matchParent.
@@ -340,7 +340,7 @@ explanationStyler := (GtSmaCCParserStyler forParser: JSXParser)
             styleBlock: [ :styler :node :text | 
                 (text from: node startPosition - 1 to: node startPosition - 1)
                     attributes: {(GtYellowCircleExplanationTextAdornment forIdentifier: #ReactDOM)} ])}.
-look := BrGlamorousCodeEditorLook new.
+look := BrGlamorousCodeEditorAptitude new.
 sourceElement := BrEditor new.
 compositeStyler := GtCompositeSmaCCASTStyler forParser: JSXParser.
 compositeStyler
@@ -349,12 +349,12 @@ compositeStyler
         explanationStyler}.
 look styler: compositeStyler.
 sourceElement
-    look: look;
+    aptitude: look;
     styler: compositeStyler;
     text: js asRopedText.
 inspectorContainer addChild: sourceElement.
 editor := BrEditor new
-    look: (BrGlamorousRegularEditorLook new fontSize: 16);
+    aptitude: (BrGlamorousRegularEditorAptitude new fontSize: 16);
     text:
         'Conceptually, components are like JavaScript functions. They accept arbitrary inputs (called “props”) and return React elements describing what should appear on the screen.
 
@@ -487,7 +487,7 @@ GtTour >> inspectorExplanationSlideFor: aSlide [
 				c vertical matchParent.
 				c horizontal matchParent];
 			background: Color white;
-			look: BrShadowLook;
+			aptitude: BrShadowAptitude;
 			margin: (BlInsets right: 5);
 			addChild: (GtPager 
 				createWrappedOn: (GtExplainerExamples>>#inspectorContainerElement) gtExampleValue) maximized ];
@@ -508,7 +508,7 @@ GtTour >> jsParserExampleSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide labelAndElement
 		priority: 31;
-		element: [ GtPager createWrappedOn: (GtBehaviorCoder forClass: JSParser) ];
+		element: [ GtPager createWrappedOn: (GtPharoBehaviorCoder forClass: JSParser) ];
 		newFadedText: 'The first non-Pharo language we accommodated is the language with which we write parsers for other languages.'.
 ]
 
@@ -520,7 +520,7 @@ GtTour >> liveDocumentExampleSlideFor: aSlide [
 		element: [ (GtDocumenter forClass: GtCSPicture) 
 			margin: (BlInsets all: 10);
 			background: Color white;
-			look: BrShadowLook];
+			aptitude: BrShadowAptitude];
 		newFadedText: 'This is a live document intertwining text, code and graphics.';
 		newFadedText: 'Browse it. Execute the code. Try editing the text, too. It''s live'.
 ]
@@ -609,7 +609,7 @@ GtTour >> overviewElement [
 				c vertical exact: 700 ];
 			margin: (BlInsets all: 10); 
 			background: Color white; 
-			look: BrShadowLook).
+			aptitude: BrShadowAptitude).
 
 	container addChild: ((GtPlotterScaleBasedElementExamples new plot) asScalableElement
 			constraintsDo: [ :c | 
@@ -617,15 +617,15 @@ GtTour >> overviewElement [
 				c frame vertical alignBottom.
 				c horizontal exact: 600.
 				c vertical exact: 400 ];
-			margin: (BlInsets top: 10 left: 10 bottom: 20 right: 200); background: (Color white); look: BrShadowLook).
+			margin: (BlInsets top: 10 left: 10 bottom: 20 right: 200); background: (Color white); aptitude: BrShadowAptitude).
 
-	container addChild: ((GtBehaviorCoder forClass: BaselineOfGToolkit) asElement
+	container addChild: ((GtPharoBehaviorCoder forClass: BaselineOfGToolkit) asElement
 			constraintsDo: [ :c | 
 				c frame horizontal alignRight. 
 				c frame vertical alignTop.
 				c vertical exact: 500.
 				c horizontal exact: 500 ];
-			margin: (BlInsets top: 100 left: 10 bottom: 10 right: 10); background: (Color white); look: BrShadowLook).
+			margin: (BlInsets top: 100 left: 10 bottom: 10 right: 10); background: (Color white); aptitude: BrShadowAptitude).
 	
 	^ container asScalableElement 
 ]
@@ -652,7 +652,7 @@ GtTour >> playgroundExplanationWithLinks [
 		layout: BlLinearLayout horizontal;
 		margin: (BlInsets all: 5);
 		background: Color white;
-		look: BrShadowLook.
+		aptitude: BrShadowAptitude.
 		
 	newSnippetButtons := OrderedCollection new.
 	evaluateButtons := OrderedCollection new.
@@ -903,7 +903,7 @@ GtTour >> treemapWithViewsAndExamples [
 			aNodeContext level = 2 ifTrue: [ 
 				anElement addChild: (BrLabel new 
 					text: (aNodeContext  model name name removePrefix: 'GToolkit-'); 
-					look: (BrGlamorousLabelLook new fontSize: 8; foreground: Color gray); 
+					aptitude: (BrGlamorousLabelAptitude new fontSize: 8; foreground: Color gray); 
 					constraintsDo: [ :c | c ignoreByLayout. ])].
 			anElement border: (BlBorder 
 				paint: (Color gray alpha: 0.7 / aNodeContext level) 
@@ -943,18 +943,18 @@ GtTour >> viewMethodWithResultExplanationWithLinksExample [
 			c horizontal matchParent.
 			c vertical matchParent ];
 		layout: BlLinearLayout horizontal;
-		look: BrShadowLook;
+		aptitude: BrShadowAptitude;
 		background: Color white;
 		margin: (BlInsets all: 10).
 	
 	coderExplanationLabel := BrLabel new
 		text: ('Contacts with details view method' asRopedText glamorousRegularFont; fontSize: 15; foreground: Color gray);
 		margin: (BlInsets top: 20 right: 0 bottom: 0 left: 10);
-		look: BrGlamorousLabelLook new.
+		aptitude: BrGlamorousLabelAptitude new.
 	inspectorExplanationLabel := BrLabel new
 		text: ('Contacts with details view result' asRopedText glamorousRegularFont; fontSize: 15; foreground: Color gray);
 		margin: (BlInsets top: 20 right: 0 bottom: 0 left: 10);
-		look: BrGlamorousLabelLook new.
+		aptitude: BrGlamorousLabelAptitude new.
 	
 	coderElement := GtMethodCoderExplanationStylerExamples new coderOnViewMethod.
 		
@@ -987,15 +987,15 @@ GtTour >> visualizationElement [
 				c vertical matchParent.
 				c horizontal matchParent];
 			addChild: (GtBuildingTreeMapsExplanation new treemapWithCustomContainerElement asElement
-				look: BrShadowLook;
+				aptitude: BrShadowAptitude;
 				background: Color white;
 				margin: (BlInsets all: 20));
 			addChild: (GtMondrianDomainExamples new structureOfAnElement asElement
-				look: BrShadowLook;
+				aptitude: BrShadowAptitude;
 				background: Color white;
 				margin: (BlInsets all: 20));
 			addChild: (GtPlotterHorizontalBarChartExamples new brickDependenciesSizesBarChart asElement
-				look: BrShadowLook;
+				aptitude: BrShadowAptitude;
 				background: Color white;
 				margin: (BlInsets all: 20);
 				constraintsDo: [:c |
@@ -1010,5 +1010,5 @@ GtTour >> yellowTargetCircleWithExplanationModel: aModel [
 				size: 0 @ 0;
 				elevation: (BlRelativeElevation elevation: 10);
 				geometry: BlCircle new;
-				look: (GtExplainerTargetLook new explanationModel: aModel).
+				aptitude: (GtExplainerTargetAptitude new explanationModel: aModel).
 ]

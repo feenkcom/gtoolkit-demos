@@ -24,9 +24,9 @@ GtWorkingWithARestApi >> albumsExplanationSlideFor: aSlide [
 		newTextWithFormat: self albumsSlideText;
 		element: [ BlElement new
 			background: Color white;
-			look: BrShadowLook;
+			aptitude: BrShadowAptitude;
 			margin: (BlInsets right: 5);
-			addChild: (GtBehaviorCoder forClass: TDAlbum) asElement ].
+			addChild: (GtPharoBehaviorCoder forClass: TDAlbum) asElement ].
 ]
 
 { #category : #accessing }
@@ -49,7 +49,7 @@ GtWorkingWithARestApi >> apiExamples [
 		margin: (BlInsets all: 5);
 		addChild: (BrButton new
 			margin: (BlInsets all: 5);
-			look: (BrGlamorousLinkSquaredButtonWithLabelLook new fontSize: 16) + (BrGlamorousWithLabelTooltipLook new text: 'https://jsonplaceholder.typicode.com/todos');
+			aptitude: (BrGlamorousLinkSquaredButtonWithLabelAptitude new fontSize: 16) + (BrGlamorousWithLabelTooltipAptitude new text: 'https://jsonplaceholder.typicode.com/todos');
 			label: 'https://jsonplaceholder.typicode.com/todos';
 			action: [ :aButton | WebBrowser openOn: 'https://jsonplaceholder.typicode.com/todos']);
 		addChild: (BlElement new
@@ -57,7 +57,7 @@ GtWorkingWithARestApi >> apiExamples [
 				c vertical matchParent.
 				c horizontal matchParent];
 			margin: (BlInsets all: 5);
-			look: BrShadowLook;
+			aptitude: BrShadowAptitude;
 			background: Color white;
 			addChild: ((TDExamples new requestAllTodosRawExample gtJsonFor: GtPhlowView empty) asElementDo: [ :e | e ])).
 	
@@ -69,7 +69,7 @@ GtWorkingWithARestApi >> apiExamples [
 		margin: (BlInsets all: 5);
 		addChild: (BrButton new
 			margin: (BlInsets all: 5);
-			look: (BrGlamorousLinkSquaredButtonWithLabelLook new fontSize: 16) + (BrGlamorousWithLabelTooltipLook new text: 'https://jsonplaceholder.typicode.com/posts?userId=4');
+			aptitude: (BrGlamorousLinkSquaredButtonWithLabelAptitude new fontSize: 16) + (BrGlamorousWithLabelTooltipAptitude new text: 'https://jsonplaceholder.typicode.com/posts?userId=4');
 			label: 'https://jsonplaceholder.typicode.com/posts?userId=4';
 			action: [ :aButton | WebBrowser openOn: 'https://jsonplaceholder.typicode.com/posts?userId=4']);
 		addChild: (BlElement new
@@ -77,7 +77,7 @@ GtWorkingWithARestApi >> apiExamples [
 				c vertical matchParent.
 				c horizontal matchParent];
 			margin: (BlInsets all: 5);
-			look: BrShadowLook;
+			aptitude: BrShadowAptitude;
 			background: Color white;
 			addChild: ((TDExamples new requestPostsForUserWithIdFourRawExample gtJsonFor: GtPhlowView empty) asElementDo: [ :e | e ])).
 	
@@ -89,7 +89,7 @@ GtWorkingWithARestApi >> apiExamples [
 		margin: (BlInsets all: 5);
 		addChild: (BrButton new
 			margin: (BlInsets all: 5);
-			look: (BrGlamorousLinkSquaredButtonWithLabelLook new fontSize: 16) + (BrGlamorousWithLabelTooltipLook new text: 'https://jsonplaceholder.typicode.com/todos/8');
+			aptitude: (BrGlamorousLinkSquaredButtonWithLabelAptitude new fontSize: 16) + (BrGlamorousWithLabelTooltipAptitude new text: 'https://jsonplaceholder.typicode.com/todos/8');
 			label: 'https://jsonplaceholder.typicode.com/todos/8';
 			action: [ :aButton | WebBrowser openOn: 'https://jsonplaceholder.typicode.com/todos/8']);
 		addChild: (BlElement new
@@ -97,7 +97,7 @@ GtWorkingWithARestApi >> apiExamples [
 				c vertical matchParent.
 				c horizontal matchParent];
 			margin: (BlInsets all: 5);
-			look: BrShadowLook;
+			aptitude: BrShadowAptitude;
 			background: Color white;
 			addChild: ((TDExamples new requestTodoWithIdEightRawExample gtJsonFor: GtPhlowView empty) asElementDo: [ :e | e ])).
 	
@@ -135,9 +135,9 @@ GtWorkingWithARestApi >> clientExplanationSlideFor: aSlide [
 		newTextWithFormat: self clientSlideText;
 		element: [ BlElement new
 			background: Color white;
-			look: BrShadowLook;
+			aptitude: BrShadowAptitude;
 			margin: (BlInsets right: 5);
-			addChild: (GtBehaviorCoder forClass: TDClient) asElement ].
+			addChild: (GtPharoBehaviorCoder forClass: TDClient) asElement ].
 ]
 
 { #category : #accessing }
@@ -167,9 +167,9 @@ GtWorkingWithARestApi >> commentsExplanationSlideFor: aSlide [
 		newTextWithFormat: self commentsSlideText;
 		element: [ BlElement new
 			background: Color white;
-			look: BrShadowLook;
+			aptitude: BrShadowAptitude;
 			margin: (BlInsets right: 5);
-			addChild: (GtBehaviorCoder forClass: TDComment) asElement ].
+			addChild: (GtPharoBehaviorCoder forClass: TDComment) asElement ].
 ]
 
 { #category : #accessing }
@@ -195,9 +195,9 @@ GtWorkingWithARestApi >> dataStructuresExplanationSlideFor: aSlide [
 		newTextWithFormat: self coreSlideText;
 		element: [ BlElement new
 			background: Color white;
-			look: BrShadowLook;
+			aptitude: BrShadowAptitude;
 			margin: (BlInsets right: 5);
-			addChild: (GtPackageTagCoder forPackageTag: ((GtBehaviorCoder forClass: TDUser) packageTag)) asElement ].
+			addChild: (GtPharoPackageTagCoder forPackageTag: ((GtPharoBehaviorCoder forClass: TDUser) packageTag)) asElement ].
 ]
 
 { #category : #accessing }
@@ -326,9 +326,9 @@ GtWorkingWithARestApi >> photosExplanationSlideFor: aSlide [
 		newTextWithFormat: self photosSlideText;
 		element: [ BlElement new
 			background: Color white;
-			look: BrShadowLook;
+			aptitude: BrShadowAptitude;
 			margin: (BlInsets right: 5);
-			addChild: (GtBehaviorCoder forClass: TDImage) asElement ].
+			addChild: (GtPharoBehaviorCoder forClass: TDImage) asElement ].
 ]
 
 { #category : #accessing }
@@ -405,9 +405,9 @@ GtWorkingWithARestApi >> simplePostsExplanationSlideFor: aSlide [
 		newTextWithFormat: self postsSlideText;
 		element: [ BlElement new
 			background: Color white;
-			look: BrShadowLook;
+			aptitude: BrShadowAptitude;
 			margin: (BlInsets right: 5);
-			addChild: (GtBehaviorCoder forClass: TDPost) asElement ].
+			addChild: (GtPharoBehaviorCoder forClass: TDPost) asElement ].
 ]
 
 { #category : #slides }
@@ -440,9 +440,9 @@ GtWorkingWithARestApi >> todosExplanationSlideFor: aSlide [
 		newTextWithFormat: self todosSlideText;
 		element: [ BlElement new
 			background: Color white;
-			look: BrShadowLook;
+			aptitude: BrShadowAptitude;
 			margin: (BlInsets right: 5);
-			addChild: (GtBehaviorCoder forClass: TDTodo) asElement ].
+			addChild: (GtPharoBehaviorCoder forClass: TDTodo) asElement ].
 ]
 
 { #category : #accessing }
@@ -472,9 +472,9 @@ GtWorkingWithARestApi >> userExplanationSlideFor: aSlide [
 		newTextWithFormat: self userSlideText;
 		element: [ BlElement new
 			background: Color white;
-			look: BrShadowLook;
+			aptitude: BrShadowAptitude;
 			margin: (BlInsets right: 5);
-			addChild: (GtBehaviorCoder forClass: TDUser) asElement ].
+			addChild: (GtPharoBehaviorCoder forClass: TDUser) asElement ].
 ]
 
 { #category : #accessing }

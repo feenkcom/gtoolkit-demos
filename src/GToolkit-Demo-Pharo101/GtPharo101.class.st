@@ -486,7 +486,7 @@ GtPharo101 >> shortPlaygroundExplanation [
 		layout: BlLinearLayout horizontal;
 		margin: (BlInsets all: 5);
 		background: Color white;
-		look: BrShadowLook.
+		aptitude: BrShadowAptitude.
 		
 	newSnippetButtons := OrderedCollection new.
 	inspectButtons := OrderedCollection new.
@@ -648,5 +648,5 @@ GtPharo101 >> yellowTargetCircleWithExplanationModel: aModel [
 				size: 0 @ 0;
 				elevation: (BlRelativeElevation elevation: 10);
 				geometry: BlCircle new;
-				look: (GtExplainerTargetLook new explanationModel: aModel).
+				aptitude: (GtExplainerTargetAptitude new explanationModel: aModel).
 ]
