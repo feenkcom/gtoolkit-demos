@@ -1,11 +1,11 @@
 Class {
-	#name : #GtWorkingWithARestApi,
+	#name : #GtWorkingWithAPlaceholderRestApi,
 	#superclass : #Object,
 	#category : #'GToolkit-Demo-TodosAPI-Presentation'
 }
 
 { #category : #slides }
-GtWorkingWithARestApi >> albumsExampleSlideFor: aSlide [
+GtWorkingWithAPlaceholderRestApi >> albumsExampleSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide labelAndElement
 		priority: 21;
@@ -16,7 +16,7 @@ GtWorkingWithARestApi >> albumsExampleSlideFor: aSlide [
 ]
 
 { #category : #slides }
-GtWorkingWithARestApi >> albumsExplanationSlideFor: aSlide [
+GtWorkingWithAPlaceholderRestApi >> albumsExplanationSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide textAndElement
 		priority: 20;
@@ -30,14 +30,14 @@ GtWorkingWithARestApi >> albumsExplanationSlideFor: aSlide [
 ]
 
 { #category : #accessing }
-GtWorkingWithARestApi >> albumsSlideText [
+GtWorkingWithAPlaceholderRestApi >> albumsSlideText [
 	^ 'An album is just a collection of photos. It has a title, an id, the list of photos composing the album and id of the user who created the album.' asRopedText
 		glamorousRegularFont;
 		fontSize: 18.
 ]
 
 { #category : #accessing }
-GtWorkingWithARestApi >> apiExamples [
+GtWorkingWithAPlaceholderRestApi >> apiExamples [
 	<gtExample>
 	| firstExampleContainer secondExampleContainer thirdExampleContainer |
 	
@@ -111,7 +111,7 @@ GtWorkingWithARestApi >> apiExamples [
 ]
 
 { #category : #slides }
-GtWorkingWithARestApi >> apiExamplesSlideFor: aSlide [
+GtWorkingWithAPlaceholderRestApi >> apiExamplesSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide labelAndElement
 		priority: 6;
@@ -120,14 +120,14 @@ GtWorkingWithARestApi >> apiExamplesSlideFor: aSlide [
 ]
 
 { #category : #accessing }
-GtWorkingWithARestApi >> apiExplanationText [
+GtWorkingWithAPlaceholderRestApi >> apiExplanationText [
 	^ 'Below we see examples of the JSON responses for various requests to the API.' asRopedText
 		glamorousRegularFont;
 		fontSize: 16.
 ]
 
 { #category : #slides }
-GtWorkingWithARestApi >> clientExplanationSlideFor: aSlide [
+GtWorkingWithAPlaceholderRestApi >> clientExplanationSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide textAndElement
 		priority: 8;
@@ -141,14 +141,14 @@ GtWorkingWithARestApi >> clientExplanationSlideFor: aSlide [
 ]
 
 { #category : #accessing }
-GtWorkingWithARestApi >> clientSlideText [
+GtWorkingWithAPlaceholderRestApi >> clientSlideText [
 	^ 'The client is the main component in this model. Using it we can make different requests to the API. The responses from the API, in the form of JSON files, are then parsed and stored inside corresponding objects so we can better visualize them.' asRopedText
 	glamorousRegularFont;
 	fontSize: 18.
 ]
 
 { #category : #slides }
-GtWorkingWithARestApi >> commentsExampleSlideFor: aSlide [
+GtWorkingWithAPlaceholderRestApi >> commentsExampleSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide labelAndElement
 		priority: 19;
@@ -159,7 +159,7 @@ GtWorkingWithARestApi >> commentsExampleSlideFor: aSlide [
 ]
 
 { #category : #slides }
-GtWorkingWithARestApi >> commentsExplanationSlideFor: aSlide [
+GtWorkingWithAPlaceholderRestApi >> commentsExplanationSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide textAndElement
 		priority: 18;
@@ -173,21 +173,21 @@ GtWorkingWithARestApi >> commentsExplanationSlideFor: aSlide [
 ]
 
 { #category : #accessing }
-GtWorkingWithARestApi >> commentsSlideText [
+GtWorkingWithAPlaceholderRestApi >> commentsSlideText [
 	^ 'A comment is a message left by a user to a post. It can be identified by an id and it stores the text of that comment, the id of the post it was left on and the name and email of the user that left it.' asRopedText
 	glamorousRegularFont;
 	fontSize: 18.
 ]
 
 { #category : #accessing }
-GtWorkingWithARestApi >> coreSlideText [
+GtWorkingWithAPlaceholderRestApi >> coreSlideText [
 	^ 'To store the information we create a structure of classes where each class will represent a type of information that can be requested from the API. At the same time, each class has its default variant for usual cases and its null variant for instances where the requested information is not found.' asRopedText
 	glamorousRegularFont;
 	fontSize: 18.
 ]
 
 { #category : #slides }
-GtWorkingWithARestApi >> dataStructuresExplanationSlideFor: aSlide [
+GtWorkingWithAPlaceholderRestApi >> dataStructuresExplanationSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide textAndElement
 		priority: 11;
@@ -201,7 +201,7 @@ GtWorkingWithARestApi >> dataStructuresExplanationSlideFor: aSlide [
 ]
 
 { #category : #accessing }
-GtWorkingWithARestApi >> getAllTodosMethodCoderWithExplanationTargets [
+GtWorkingWithAPlaceholderRestApi >> getAllTodosMethodCoderWithExplanationTargets [
 	<gtExample>
 	| coder coderViewModel selectors literals variables |
 
@@ -220,7 +220,7 @@ GtWorkingWithARestApi >> getAllTodosMethodCoderWithExplanationTargets [
 ]
 
 { #category : #accessing }
-GtWorkingWithARestApi >> getAllTodosMethodExplanation [
+GtWorkingWithAPlaceholderRestApi >> getAllTodosMethodExplanation [
 	<gtExample>
 	| aScripter |
 	
@@ -260,7 +260,7 @@ GtWorkingWithARestApi >> getAllTodosMethodExplanation [
 ]
 
 { #category : #accessing }
-GtWorkingWithARestApi >> getAllTodosMethodExplanationText [
+GtWorkingWithAPlaceholderRestApi >> getAllTodosMethodExplanationText [
 	| text |
 	text := 'To implement a request, first we send a GET ' asRopedText,
 ('request' asRopedText glamorousExplanationFor: #requestForUrl:),
@@ -285,7 +285,7 @@ The response is then transformed into a ' asRopedText,
 ]
 
 { #category : #slides }
-GtWorkingWithARestApi >> introductionSlideFor: aSlide [
+GtWorkingWithAPlaceholderRestApi >> introductionSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide text
 		priority: 5;
@@ -296,7 +296,7 @@ GtWorkingWithARestApi >> introductionSlideFor: aSlide [
 ]
 
 { #category : #slides }
-GtWorkingWithARestApi >> modelDescriptionIntroductionSlideFor: aSlide [
+GtWorkingWithAPlaceholderRestApi >> modelDescriptionIntroductionSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide text
 		priority: 7;
@@ -307,7 +307,7 @@ GtWorkingWithARestApi >> modelDescriptionIntroductionSlideFor: aSlide [
 ]
 
 { #category : #slides }
-GtWorkingWithARestApi >> photosExampleSlideFor: aSlide [
+GtWorkingWithAPlaceholderRestApi >> photosExampleSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide labelAndElement
 		priority: 23;
@@ -318,7 +318,7 @@ GtWorkingWithARestApi >> photosExampleSlideFor: aSlide [
 ]
 
 { #category : #slides }
-GtWorkingWithARestApi >> photosExplanationSlideFor: aSlide [
+GtWorkingWithAPlaceholderRestApi >> photosExplanationSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide textAndElement
 		priority: 22;
@@ -332,21 +332,21 @@ GtWorkingWithARestApi >> photosExplanationSlideFor: aSlide [
 ]
 
 { #category : #accessing }
-GtWorkingWithARestApi >> photosSlideText [
+GtWorkingWithAPlaceholderRestApi >> photosSlideText [
 	^ 'A photo is what composes the album. It has a title, an id, the id of the album where it is from and two urls. One for the thumbnail image and one for the actual image. To visualize the actual image, a request to the specific url is done. That request returns a byte array that is then transformed into a pharo image.' asRopedText
 		glamorousRegularFont;
 		fontSize: 18.
 ]
 
 { #category : #accessing }
-GtWorkingWithARestApi >> postsSlideText [
+GtWorkingWithAPlaceholderRestApi >> postsSlideText [
 	^ 'Simple posts are the second type of posts a user can make. They are similar with todos, the difference being that the post contains a body of text instead of a status. It also has a list of comments left by other users to the specific post.' asRopedText
 	glamorousRegularFont;
 	fontSize: 18.
 ]
 
 { #category : #slides }
-GtWorkingWithARestApi >> requestMethodExampleSlideFor: aSlide [
+GtWorkingWithAPlaceholderRestApi >> requestMethodExampleSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide labelAndElement
 		priority: 10;
@@ -357,7 +357,7 @@ GtWorkingWithARestApi >> requestMethodExampleSlideFor: aSlide [
 ]
 
 { #category : #slides }
-GtWorkingWithARestApi >> requestMethodExplanationSlideFor: aSlide [
+GtWorkingWithAPlaceholderRestApi >> requestMethodExplanationSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide textAndElement
 		priority: 9;
@@ -366,7 +366,7 @@ GtWorkingWithARestApi >> requestMethodExplanationSlideFor: aSlide [
 ]
 
 { #category : #slides }
-GtWorkingWithARestApi >> requestSnippetsExampleSlideFor: aSlide [
+GtWorkingWithAPlaceholderRestApi >> requestSnippetsExampleSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide labelAndElement
 		priority: 24;
@@ -386,7 +386,7 @@ GtWorkingWithARestApi >> requestSnippetsExampleSlideFor: aSlide [
 ]
 
 { #category : #slides }
-GtWorkingWithARestApi >> simplePostsExampleSlideFor: aSlide [
+GtWorkingWithAPlaceholderRestApi >> simplePostsExampleSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide labelAndElement
 		priority: 17;
@@ -397,7 +397,7 @@ GtWorkingWithARestApi >> simplePostsExampleSlideFor: aSlide [
 ]
 
 { #category : #slides }
-GtWorkingWithARestApi >> simplePostsExplanationSlideFor: aSlide [
+GtWorkingWithAPlaceholderRestApi >> simplePostsExplanationSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide textAndElement
 		priority: 16;
@@ -411,7 +411,7 @@ GtWorkingWithARestApi >> simplePostsExplanationSlideFor: aSlide [
 ]
 
 { #category : #slides }
-GtWorkingWithARestApi >> titleSlideFor: aSlide [
+GtWorkingWithAPlaceholderRestApi >> titleSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide title
 		priority: 1;
@@ -421,7 +421,7 @@ GtWorkingWithARestApi >> titleSlideFor: aSlide [
 ]
 
 { #category : #slides }
-GtWorkingWithARestApi >> todosExampleSlideFor: aSlide [
+GtWorkingWithAPlaceholderRestApi >> todosExampleSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide labelAndElement
 		priority: 15;
@@ -432,7 +432,7 @@ GtWorkingWithARestApi >> todosExampleSlideFor: aSlide [
 ]
 
 { #category : #slides }
-GtWorkingWithARestApi >> todosExplanationSlideFor: aSlide [
+GtWorkingWithAPlaceholderRestApi >> todosExplanationSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide textAndElement
 		priority: 14;
@@ -446,14 +446,14 @@ GtWorkingWithARestApi >> todosExplanationSlideFor: aSlide [
 ]
 
 { #category : #accessing }
-GtWorkingWithARestApi >> todosSlideText [
+GtWorkingWithAPlaceholderRestApi >> todosSlideText [
 	^ 'Next we have a todo. This is a type of post a user can make. It holds the following information: the user it is associated with, an id, a title and a status, namely if it was completed or not.' asRopedText
 	glamorousRegularFont;
 	fontSize: 18.
 ]
 
 { #category : #slides }
-GtWorkingWithARestApi >> userExampleSlideFor: aSlide [
+GtWorkingWithAPlaceholderRestApi >> userExampleSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide labelAndElement
 		priority: 13;
@@ -464,7 +464,7 @@ GtWorkingWithARestApi >> userExampleSlideFor: aSlide [
 ]
 
 { #category : #slides }
-GtWorkingWithARestApi >> userExplanationSlideFor: aSlide [
+GtWorkingWithAPlaceholderRestApi >> userExplanationSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide textAndElement
 		priority: 12;
@@ -478,7 +478,7 @@ GtWorkingWithARestApi >> userExplanationSlideFor: aSlide [
 ]
 
 { #category : #accessing }
-GtWorkingWithARestApi >> userSlideText [
+GtWorkingWithAPlaceholderRestApi >> userSlideText [
 	^ 'The first, and main type of data is a user. Almost every other type of data is connect to a user. They can be identified by an id and they hold relevant information for the user such as the name, username, phone or email. But on top of that, each user has a list of posts, a list of todos and one of albums associated with him. Those lists are obtained through separate requests to the API, after the information for this user has been parsed and stored.' asRopedText
 	glamorousRegularFont;
 	fontSize: 18.

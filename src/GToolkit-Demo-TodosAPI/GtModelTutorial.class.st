@@ -367,7 +367,7 @@ GtModelTutorial >> slideshowLinkSlideFor: aSlide [
 		textWithFormat: ('To see an already built expanded version of the model we are about to create, follow the slideshow below.'
 			asRopedText
 			glamorousRegularFont);
-		slideshow: [ GtLiveShow createWithArrowsVisible: GtWorkingWithARestApi new ] withTitle: 'Working With a REST API'.
+		slideshow: [ GtLiveShow createWithArrowsVisible: GtWorkingWithAPlaceholderRestApi new ] withTitle: 'Working With a REST API'.
 ]
 
 { #category : #slides }

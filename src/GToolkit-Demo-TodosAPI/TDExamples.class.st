@@ -7,6 +7,7 @@ Class {
 { #category : #accessing }
 TDExamples >> requestAllPosts [
 	<gtExample>
+	<noTest>
 	| postsGroup |
 	postsGroup := TDClient new
 		getAllPosts.
@@ -20,6 +21,7 @@ TDExamples >> requestAllPosts [
 { #category : #accessing }
 TDExamples >> requestAllTodos [
 	<gtExample>
+	<noTest>
 	| todosGroup |
 	todosGroup := TDClient new
 		getAllTodos.
@@ -33,6 +35,7 @@ TDExamples >> requestAllTodos [
 { #category : #accessing }
 TDExamples >> requestAllTodosRawExample [
 	<gtExample>
+	<noTest>
 	| response |
 	response := ZnClient new
 		url: 'https://jsonplaceholder.typicode.com/todos';
@@ -48,6 +51,7 @@ TDExamples >> requestAllTodosRawExample [
 { #category : #accessing }
 TDExamples >> requestCommentWithIdFive [
 	<gtExample>
+	<noTest>
 	| comment |
 	comment := TDClient new
 		getCommentWithId: 5.
@@ -62,6 +66,7 @@ TDExamples >> requestCommentWithIdFive [
 { #category : #accessing }
 TDExamples >> requestPostWithIdThree [
 	<gtExample>
+	<noTest>
 	| post |
 	post := TDClient new
 		getPostWithId: 3.
@@ -76,6 +81,7 @@ TDExamples >> requestPostWithIdThree [
 { #category : #accessing }
 TDExamples >> requestPostsForUserWithIdFourRawExample [
 	<gtExample>
+	<noTest>
 	| response |
 	response := ZnClient new
 		url: 'https://jsonplaceholder.typicode.com/posts?userId=4';
@@ -91,6 +97,7 @@ TDExamples >> requestPostsForUserWithIdFourRawExample [
 { #category : #accessing }
 TDExamples >> requestTodoWithIdEight [
 	<gtExample>
+	<noTest>
 	| todo |
 	todo := TDClient new
 		getTodoWithId: 8.
@@ -104,6 +111,7 @@ TDExamples >> requestTodoWithIdEight [
 { #category : #accessing }
 TDExamples >> requestTodoWithIdEightRawExample [
 	<gtExample>
+	<noTest>
 	| response |
 	response := ZnClient new
 		url: 'https://jsonplaceholder.typicode.com/todos/8';
@@ -119,6 +127,7 @@ TDExamples >> requestTodoWithIdEightRawExample [
 { #category : #accessing }
 TDExamples >> requestUserWithIdFour [
 	<gtExample>
+	<noTest>
 	| user |
 	user := TDClient new
 		getUserWithId: 4.
