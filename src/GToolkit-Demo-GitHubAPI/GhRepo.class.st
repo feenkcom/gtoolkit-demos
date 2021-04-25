@@ -13,6 +13,11 @@ GhRepo >> contributors [
 ]
 
 { #category : #accessing }
+GhRepo >> description [
+	^ rawData at: 'description'
+]
+
+{ #category : #accessing }
 GhRepo >> events [
 	^ self 
 		createFrom: 'events_url'
