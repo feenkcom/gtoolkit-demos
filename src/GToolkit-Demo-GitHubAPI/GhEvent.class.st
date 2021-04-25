@@ -10,6 +10,11 @@ GhEvent >> actorName [
 ]
 
 { #category : #accessing }
+GhEvent >> creationTimestamp [
+	^ (rawData at: 'created_at') asDateAndTime
+]
+
+{ #category : #accessing }
 GhEvent >> repoName [
 	^ (((self rawData at: 'repo') at: 'url') piecesCutWhere: [:a :b | a = $/]) last
 ]

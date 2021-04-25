@@ -6,17 +6,10 @@ Class {
 
 { #category : #accessing }
 GhOrganization >> events [
-	^ rawData 
-		at: 'events_url' 
-		ifPresent: [ :url | 
-			ZnClient new 
-				get: url
-				onSuccess: [ :result | 
-					[
-						GhEvents new rawData: (STON fromString: result)
-					] on: Error do: [ :e | GhEvents new ] ]
-				onError: [ GhEvents new ] ]
-		ifAbsent: [ {} ]
+	^ self 
+		createFrom: 'events_url'
+		with: [ :data | GhEvents new rawData: data ] 
+		onError: [ GhEvents new ]
 ]
 
 { #category : #accessing }
@@ -27,7 +20,18 @@ GhOrganization >> gtEventsFor: aView [
 		items: [ self events ];
 		column: 'Type' text: #type;
 		column: 'Repository' text: #repoName;
+		column: 'Timestamp' text: [:each | each creationTimestamp asLocalStringYMDHM ];
 		column: 'Actor' text: #actorName
+]
+
+{ #category : #accessing }
+GhOrganization >> gtReposFor: aView [
+	<gtView>
+	^ aView columnedList
+		title: 'Repositories';
+		items: [ self repos ];
+		column: 'Repo' text: #name;
+		column: 'Open issues' text: #numberOfOpenIssues
 ]
 
 { #category : #accessing }
@@ -35,4 +39,12 @@ GhOrganization >> propertyToClass [
 	^ {
 	'events' -> GhEvents.
 	} asDictionary
+]
+
+{ #category : #accessing }
+GhOrganization >> repos [
+	^ self 
+		createFrom: 'repos_url' 
+		with: [ :data | GhRepos new rawData: data ] 
+		onError: [ GhRepos new ]
 ]
