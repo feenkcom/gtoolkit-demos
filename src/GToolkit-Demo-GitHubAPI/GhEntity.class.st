@@ -8,30 +8,46 @@ Class {
 }
 
 { #category : #accessing }
+GhEntity >> createFrom: aKey with: aBlock onError: anErrorBlock [
+	^ rawData 
+		at: aKey
+		ifPresent: [ :url | 
+			| trimmedUrl |
+			trimmedUrl := url
+				copyWithRegex: '{.*}'
+				matchesTranslatedUsing: [ :each | ''].
+			ZnClient new 
+				get: trimmedUrl
+				onSuccess: [ :result | 
+					[
+						aBlock value: (STON fromString: result)
+					] on: Error do: [ :e | anErrorBlock value ] ]
+				onError: [ anErrorBlock value ] ]
+		ifAbsent: [ {} ]
+]
+
+{ #category : #accessing }
 GhEntity >> gtRawDataFor: aView [
 	<gtView>
 	^ aView columnedList 
 		title: 'Raw data';
+		priority: 60;
 		items: [ self rawData isDictionary 
-			ifTrue: [ self rawData associations ]
+			ifTrue: [ self rawData associations sorted: [:a :b | a key < b key ] ]
 			ifFalse: [ self rawData ] ];
-		column: 'Property' text: #key;
+		column: 'Property' text: #key; 
 		column: 'Value' text: #value;
 		send: [ :each | 
 			(each key endsWith: '_url')
 				ifTrue: [ 
-					ZnClient new 
-						get: each value
-						onSuccess: [ :result | 
-							[ | dictionary |
-							dictionary := STON fromString: result.
+					self 
+						createFrom: each key 
+						with: [ :dictionary | 
 							self propertyToClass 
 								at: (each key removeSuffix: '_url') 
 								ifPresent: [ :aClass | aClass new rawData: dictionary ]
-								ifAbsent: [ dictionary ] ] 
-								on: Error 
-								do: [:e | each value ] ]
-						onError: [ each value ] ]
+								ifAbsent: [ dictionary ]] 
+						onError: [each value] ]
 				ifFalse: [ each value ] ]
 ]
 
@@ -42,7 +58,7 @@ GhEntity >> propertyToClass [
 
 { #category : #accessing }
 GhEntity >> rawData [
-	^ rawData
+	^ rawData ifNil: [ Dictionary new ]
 ]
 
 { #category : #accessing }
