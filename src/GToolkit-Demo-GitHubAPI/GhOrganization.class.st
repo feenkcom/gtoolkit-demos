@@ -29,8 +29,10 @@ GhOrganization >> gtReposFor: aView [
 	<gtView>
 	^ aView columnedList
 		title: 'Repositories';
+		priority: 40;
 		items: [ self repos ];
 		column: 'Repo' text: #name;
+		column: 'Description' text: #description;
 		column: 'Open issues' text: #numberOfOpenIssues
 ]
 
