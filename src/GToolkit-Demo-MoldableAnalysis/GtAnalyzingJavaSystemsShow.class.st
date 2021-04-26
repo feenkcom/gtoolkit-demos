@@ -77,8 +77,10 @@ GtAnalyzingJavaSystemsShow >> downloadArgoUMLCodeAndMSE [
 { #category : #slides }
 GtAnalyzingJavaSystemsShow >> enginesSlidesFor: aSlide [
 	<gtSlide>
-	^ aSlide element
+	^ aSlide labelAndElement
 		priority: 115;
+		newFadedText: 'Assessment is a dialog that starts from a question. For it to be effective, we need custom tools.';
+		newFadedText: 'To make this practical, we need an environment that makes their creation inexpensive.';
 		element: [| form |
 			form := PNGReadWriter formFromFileNamed: (GtResourceReference
 				path: Path * 'feenkcom' / 'gtoolkit-demos' / 'data' / 'moldableanalysis' / 'analysis-engines.png') fullName.
@@ -102,6 +104,7 @@ GtAnalyzingJavaSystemsShow >> extractAllDeprecatedClassesFrom: model [
 { #category : #'code examples' }
 GtAnalyzingJavaSystemsShow >> extractBuildFoldersAndFilesFromModel: model [
 	<gtExample>
+	"Find all build.xml files"
 	| interestingDirectories |
 	interestingDirectories := model rootFolder/ 'src' withDeepCollect: [: each | 
 		(each files anySatisfy: [ :f |
@@ -116,18 +119,6 @@ GtAnalyzingJavaSystemsShow >> extractDeprecatedGraphicalComponentsFrom: graphica
 	graphicalComponents select: [ :each |
 		each providerTypes anySatisfy: [ :provider |
 			provider isAnnotatedWith: 'Deprecated'] ]
-]
-
-{ #category : #slides }
-GtAnalyzingJavaSystemsShow >> extractDeprecatedGraphicalComponentsSlidesFor: aSlide [
-	<gtSlide>
-	^ aSlide element
-		priority: 80;
-		element: [
-			GtPlaygroundLiveSlide new 
-				newSnippetFromMethod: self class>> #getArgoUMLModel;
-				newSnippetFromMethod: self class>> #extractGraphicalComponentsFrom:;
-				newSnippetFromMethod: self class>> #extractDeprecatedGraphicalComponentsFrom: ]
 ]
 
 { #category : #'code examples' }
@@ -201,18 +192,31 @@ GtAnalyzingJavaSystemsShow >> loadMSEModelIntoImage [
 { #category : #'code examples' }
 GtAnalyzingJavaSystemsShow >> openArgoUmlReportOn: model [
 	<gtExample>
+	"Run the report"
 	GtArgoUMLReport onModel: model
 ]
 
 { #category : #slides }
 GtAnalyzingJavaSystemsShow >> openArgoUmlReportSlideFor: aSlide [
 	<gtSlide>
-	^ aSlide element
+	^ aSlide labelAndElement
 		priority: 90;
+		newFadedText: 'We place constraints in a report that we can then run against an input model. It''s like running tests against a database. Ah, and the report can be run from the command line, too.';
 		element: [
 			GtPlaygroundLiveSlide new 
 				newSnippetFromMethod: self class>> #getArgoUMLModel;
 				newSnippetFromMethod: self class>> #openArgoUmlReportOn: ]
+]
+
+{ #category : #slides }
+GtAnalyzingJavaSystemsShow >> reportIntroductionFor: aSlide [
+	<gtSlide>
+	^ aSlide text
+		priority: 71;
+		newTextWithFormat:
+			('What did we learn? We used the same tools! OK, now, one final thing. If we can build queries and visualizations like that, we can also transform them into constraints that are checked regularly.' asRopedText 
+				glamorousRegularFont; 
+				fontSize: 18).
 ]
 
 { #category : #'code examples' }
@@ -240,6 +244,7 @@ GtAnalyzingJavaSystemsShow >> titleSlideFor: aSlide [
 { #category : #'code examples' }
 GtAnalyzingJavaSystemsShow >> visualizeBuildFilesFrom: interestingDirectories [
 	<gtExample>
+	"Visualize where the build.xml files are within the file system."
 	| view |
 	view := GtMondrian new.
 	view nodes
@@ -260,8 +265,9 @@ GtAnalyzingJavaSystemsShow >> visualizeBuildFilesFrom: interestingDirectories [
 { #category : #slides }
 GtAnalyzingJavaSystemsShow >> visualizeBuildFilesSlideFor: aSlide [
 	<gtSlide>
-	^ aSlide element
+	^ aSlide labelAndElement
 		priority: 70;
+		newFadedText: 'The system is based on Ant. So, how do we get an overview? First, we visualize all build.xml files. Second, we take one, and see how the targets depend on each other.' ;
 		element: [
 			GtPlaygroundLiveSlide new 
 				newSnippetFromMethod: self class>> #getArgoUMLModel;
@@ -496,6 +502,7 @@ GtAnalyzingJavaSystemsShow >> visualizeDeprecatedClassessWithUIBorderSlideFor: a
 
 { #category : #'code examples' }
 GtAnalyzingJavaSystemsShow >> visualizeXMLFileTargets: interestingDirectories [
+	"For a given build.xml, visualize the target dependencies."
 	| xmlDoc tags view|
 	xmlDoc := XMLDOMParser parse: (interestingDirectories at: 8) / 'build.xml'.
 	tags := xmlDoc // 'target'.
