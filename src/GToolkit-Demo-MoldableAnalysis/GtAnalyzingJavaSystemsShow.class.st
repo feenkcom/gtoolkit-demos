@@ -13,13 +13,13 @@ space show
 ]]]
 "
 Class {
-	#name : #GtMoldableAnalysisPresentation,
+	#name : #GtAnalyzingJavaSystemsShow,
 	#superclass : #Object,
 	#category : #'GToolkit-Demo-MoldableAnalysis'
 }
 
 { #category : #slides }
-GtMoldableAnalysisPresentation >> anyBoundarySlideFor: aSlide [
+GtAnalyzingJavaSystemsShow >> anyBoundarySlideFor: aSlide [
 	<gtSlide>
 	^ aSlide text
 		priority: 10;
@@ -27,7 +27,7 @@ GtMoldableAnalysisPresentation >> anyBoundarySlideFor: aSlide [
 ]
 
 { #category : #utils }
-GtMoldableAnalysisPresentation >> codeFromMethod: aMethod [
+GtAnalyzingJavaSystemsShow >> codeFromMethod: aMethod [
 	| notTemp |
 	notTemp := aMethod ast body children detect: [:aNode | aNode isTemp not ].
 
@@ -47,12 +47,12 @@ GtMoldableAnalysisPresentation >> codeFromMethod: aMethod [
 ]
 
 { #category : #utils }
-GtMoldableAnalysisPresentation >> codeFromSelector: aSelector [
+GtAnalyzingJavaSystemsShow >> codeFromSelector: aSelector [
 	^ self codeFromMethod: self class >> aSelector
 ]
 
 { #category : #'code examples' }
-GtMoldableAnalysisPresentation >> downloadArgoUMLCodeAndMSE [
+GtAnalyzingJavaSystemsShow >> downloadArgoUMLCodeAndMSE [
 	<gtExample>
 	<noTest>
 	| targetFolder archiveFileName archiveUrl |
@@ -72,7 +72,7 @@ GtMoldableAnalysisPresentation >> downloadArgoUMLCodeAndMSE [
 ]
 
 { #category : #slides }
-GtMoldableAnalysisPresentation >> enginesSlidesFor: aSlide [
+GtAnalyzingJavaSystemsShow >> enginesSlidesFor: aSlide [
 	<gtSlide>
 	^ aSlide element
 		priority: 15;
@@ -88,7 +88,7 @@ GtMoldableAnalysisPresentation >> enginesSlidesFor: aSlide [
 ]
 
 { #category : #'code examples' }
-GtMoldableAnalysisPresentation >> extractAllDeprecatedClassesFrom: model [
+GtAnalyzingJavaSystemsShow >> extractAllDeprecatedClassesFrom: model [
 	<gtExample>
 	| deprecatedClasses |
 	deprecatedClasses := model allModelClasses select: [ :each |
@@ -96,7 +96,7 @@ GtMoldableAnalysisPresentation >> extractAllDeprecatedClassesFrom: model [
 ]
 
 { #category : #'code examples' }
-GtMoldableAnalysisPresentation >> extractBuildFoldersAndFilesFromModel: model [
+GtAnalyzingJavaSystemsShow >> extractBuildFoldersAndFilesFromModel: model [
 	<gtExample>
 	| interestingDirectories |
 	interestingDirectories := model rootFolder/ 'src' withDeepCollect: [: each | 
@@ -107,7 +107,7 @@ GtMoldableAnalysisPresentation >> extractBuildFoldersAndFilesFromModel: model [
 ]
 
 { #category : #'code examples' }
-GtMoldableAnalysisPresentation >> extractDeprecatedGraphicalComponentsFrom: graphicalComponents [
+GtAnalyzingJavaSystemsShow >> extractDeprecatedGraphicalComponentsFrom: graphicalComponents [
 	<gtExample>
 	graphicalComponents select: [ :each |
 		each providerTypes anySatisfy: [ :provider |
@@ -115,7 +115,7 @@ GtMoldableAnalysisPresentation >> extractDeprecatedGraphicalComponentsFrom: grap
 ]
 
 { #category : #slides }
-GtMoldableAnalysisPresentation >> extractDeprecatedGraphicalComponentsSlidesFor: aSlide [
+GtAnalyzingJavaSystemsShow >> extractDeprecatedGraphicalComponentsSlidesFor: aSlide [
 	<gtSlide>
 	^ aSlide element
 		priority: 80;
@@ -128,7 +128,7 @@ GtMoldableAnalysisPresentation >> extractDeprecatedGraphicalComponentsSlidesFor:
 ]
 
 { #category : #'code examples' }
-GtMoldableAnalysisPresentation >> extractGraphicalComponentsFrom: model [
+GtAnalyzingJavaSystemsShow >> extractGraphicalComponentsFrom: model [
 	<gtExample>
 	| graphicalComponents |
 	graphicalComponents := model allModelClasses select: [ :aClass |
@@ -137,7 +137,7 @@ GtMoldableAnalysisPresentation >> extractGraphicalComponentsFrom: model [
 ]
 
 { #category : #slides }
-GtMoldableAnalysisPresentation >> feenkSlideFor: aSlide [
+GtAnalyzingJavaSystemsShow >> feenkSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide element
 		priority: 1.1;
@@ -168,7 +168,7 @@ BlElement new
 ]
 
 { #category : #'code examples' }
-GtMoldableAnalysisPresentation >> filterUsedDeprecatedClassesFrom: deprecatedClasses [
+GtAnalyzingJavaSystemsShow >> filterUsedDeprecatedClassesFrom: deprecatedClasses [
 	<gtExample>
 	| stillUsedClasses |
 
@@ -178,7 +178,7 @@ GtMoldableAnalysisPresentation >> filterUsedDeprecatedClassesFrom: deprecatedCla
 ]
 
 { #category : #'code examples' }
-GtMoldableAnalysisPresentation >> getArgoUMLModel [
+GtAnalyzingJavaSystemsShow >> getArgoUMLModel [
 	<gtExample>
 	<noTest>
 	| model |
@@ -187,7 +187,7 @@ GtMoldableAnalysisPresentation >> getArgoUMLModel [
 ]
 
 { #category : #slides }
-GtMoldableAnalysisPresentation >> loadArgoMULSlideFor: aSlide [
+GtAnalyzingJavaSystemsShow >> loadArgoMULSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide element
 		priority: 20;
@@ -200,7 +200,7 @@ GtMoldableAnalysisPresentation >> loadArgoMULSlideFor: aSlide [
 ]
 
 { #category : #'code examples' }
-GtMoldableAnalysisPresentation >> loadMSEModelIntoImage [
+GtAnalyzingJavaSystemsShow >> loadMSEModelIntoImage [
 	<gtExample>
 	<noTest>
 	"Load the MSE file into a FAMIX model. Takes a few minutes"
@@ -215,13 +215,13 @@ GtMoldableAnalysisPresentation >> loadMSEModelIntoImage [
 ]
 
 { #category : #'code examples' }
-GtMoldableAnalysisPresentation >> openArgoUmlReportOn: model [
+GtAnalyzingJavaSystemsShow >> openArgoUmlReportOn: model [
 	<gtExample>
 	GtArgoUMLReport onModel: model
 ]
 
 { #category : #slides }
-GtMoldableAnalysisPresentation >> openArgoUmlReportSlideFor: aSlide [
+GtAnalyzingJavaSystemsShow >> openArgoUmlReportSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide element
 		priority: 90;
@@ -233,26 +233,29 @@ GtMoldableAnalysisPresentation >> openArgoUmlReportSlideFor: aSlide [
 ]
 
 { #category : #'code examples' }
-GtMoldableAnalysisPresentation >> saveTheModel: model [
+GtAnalyzingJavaSystemsShow >> saveTheModel: model [
 	<gtExample>
 	"Save the model so we can reuse it other sides"
 	MooseModel root add: model
 ]
 
 { #category : #slides }
-GtMoldableAnalysisPresentation >> titleSlideFor: aSlide [
+GtAnalyzingJavaSystemsShow >> titleSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide title
 		priority: 1;
-		titleWithFormat: ('moldableanalysis' asRopedText 
-			fontSize: 60;
+		titleWithFormat: ('Analyzing Java systems' asRopedText 
+			fontSize: 50;
 			glamorousRegularFont;
-			thin; 
-			in: [:t | (t from: 'Moldable' size + 1 to: t size) bold]; yourself)
+			bold);
+		subtitleWithFormat: ('use case' asRopedText 
+			fontSize: 40;
+			glamorousRegularFont;
+			thin)
 ]
 
 { #category : #'code examples' }
-GtMoldableAnalysisPresentation >> visualizeBuildFilesFrom: interestingDirectories [
+GtAnalyzingJavaSystemsShow >> visualizeBuildFilesFrom: interestingDirectories [
 	<gtExample>
 	| view |
 	view := GtMondrian new.
@@ -272,7 +275,7 @@ GtMoldableAnalysisPresentation >> visualizeBuildFilesFrom: interestingDirectorie
 ]
 
 { #category : #slides }
-GtMoldableAnalysisPresentation >> visualizeBuildFilesSlideFor: aSlide [
+GtAnalyzingJavaSystemsShow >> visualizeBuildFilesSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide element
 		priority: 70;
@@ -287,7 +290,7 @@ GtMoldableAnalysisPresentation >> visualizeBuildFilesSlideFor: aSlide [
 ]
 
 { #category : #'code examples' }
-GtMoldableAnalysisPresentation >> visualizeDeprecatedClassesFor: stillUsedClasses [
+GtAnalyzingJavaSystemsShow >> visualizeDeprecatedClassesFor: stillUsedClasses [
 	<gtExample>
 	| view |
 	view := GtMondrian new. 
@@ -308,7 +311,7 @@ GtMoldableAnalysisPresentation >> visualizeDeprecatedClassesFor: stillUsedClasse
 ]
 
 { #category : #'code examples' }
-GtMoldableAnalysisPresentation >> visualizeDeprecatedClassesWithMethodWithUsageSizeFor: stillUsedClasses [
+GtAnalyzingJavaSystemsShow >> visualizeDeprecatedClassesWithMethodWithUsageSizeFor: stillUsedClasses [
 	<gtExample>
 	| deprecateMethods clientMethods interestingMethods view |
 	deprecateMethods := (stillUsedClasses flatCollect: #methods)
@@ -354,7 +357,7 @@ GtMoldableAnalysisPresentation >> visualizeDeprecatedClassesWithMethodWithUsageS
 ]
 
 { #category : #slides }
-GtMoldableAnalysisPresentation >> visualizeDeprecatedClassesWithMethodWithUsageSizeSlideFor: aSlide [
+GtAnalyzingJavaSystemsShow >> visualizeDeprecatedClassesWithMethodWithUsageSizeSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide element
 		priority: 60;
@@ -368,7 +371,7 @@ GtMoldableAnalysisPresentation >> visualizeDeprecatedClassesWithMethodWithUsageS
 ]
 
 { #category : #'code examples' }
-GtMoldableAnalysisPresentation >> visualizeDeprecatedClassesWithMethodsFor: stillUsedClasses [
+GtAnalyzingJavaSystemsShow >> visualizeDeprecatedClassesWithMethodsFor: stillUsedClasses [
 	<gtExample>
 	| deprecateMethods clientMethods interestingMethods view |
 	deprecateMethods := (stillUsedClasses flatCollect: #methods)
@@ -404,7 +407,7 @@ GtMoldableAnalysisPresentation >> visualizeDeprecatedClassesWithMethodsFor: stil
 ]
 
 { #category : #slides }
-GtMoldableAnalysisPresentation >> visualizeDeprecatedClassesWithMethodsSlidesFor: aSlide [
+GtAnalyzingJavaSystemsShow >> visualizeDeprecatedClassesWithMethodsSlidesFor: aSlide [
 	<gtSlide>
 	^ aSlide element
 		priority: 50;
@@ -418,7 +421,7 @@ GtMoldableAnalysisPresentation >> visualizeDeprecatedClassesWithMethodsSlidesFor
 ]
 
 { #category : #'code examples' }
-GtMoldableAnalysisPresentation >> visualizeDeprecatedClassesWithSizeFor: stillUsedClasses [
+GtAnalyzingJavaSystemsShow >> visualizeDeprecatedClassesWithSizeFor: stillUsedClasses [
 	<gtExample>
 	| view |
 	view := GtMondrian new.
@@ -445,7 +448,7 @@ GtMoldableAnalysisPresentation >> visualizeDeprecatedClassesWithSizeFor: stillUs
 ]
 
 { #category : #slides }
-GtMoldableAnalysisPresentation >> visualizeDeprecatedClassesWithSizeSlideFor: aSlide [
+GtAnalyzingJavaSystemsShow >> visualizeDeprecatedClassesWithSizeSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide element
 		priority: 40;
@@ -459,7 +462,7 @@ GtMoldableAnalysisPresentation >> visualizeDeprecatedClassesWithSizeSlideFor: aS
 ]
 
 { #category : #'code examples' }
-GtMoldableAnalysisPresentation >> visualizeDeprecatedClassesWithUIBorderFor: stillUsedClasses [
+GtAnalyzingJavaSystemsShow >> visualizeDeprecatedClassesWithUIBorderFor: stillUsedClasses [
 	<gtExample>
 	| view |
 	view := GtMondrian new. 
@@ -484,7 +487,7 @@ GtMoldableAnalysisPresentation >> visualizeDeprecatedClassesWithUIBorderFor: sti
 ]
 
 { #category : #slides }
-GtMoldableAnalysisPresentation >> visualizeDeprecatedClassessSlideFor: aSlide [
+GtAnalyzingJavaSystemsShow >> visualizeDeprecatedClassessSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide element
 		priority: 30;
@@ -498,7 +501,7 @@ GtMoldableAnalysisPresentation >> visualizeDeprecatedClassessSlideFor: aSlide [
 ]
 
 { #category : #slides }
-GtMoldableAnalysisPresentation >> visualizeDeprecatedClassessWithUIBorderSlideFor: aSlide [
+GtAnalyzingJavaSystemsShow >> visualizeDeprecatedClassessWithUIBorderSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide element
 		priority: 31;
@@ -512,7 +515,7 @@ GtMoldableAnalysisPresentation >> visualizeDeprecatedClassessWithUIBorderSlideFo
 ]
 
 { #category : #'code examples' }
-GtMoldableAnalysisPresentation >> visualizeXMLFileTargets [
+GtAnalyzingJavaSystemsShow >> visualizeXMLFileTargets [
 	|interestingDirectories xmlDoc tags view|
 	xmlDoc := XMLDOMParser parse: (interestingDirectories at: 8) / 'build.xml'.
 	tags := xmlDoc // 'target'.

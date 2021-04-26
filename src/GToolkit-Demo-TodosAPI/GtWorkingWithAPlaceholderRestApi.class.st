@@ -206,7 +206,7 @@ GtWorkingWithAPlaceholderRestApi >> getAllTodosMethodCoderWithExplanationTargets
 	| coder coderViewModel selectors literals variables |
 
 	selectors := GtSelectorExplanationLinkStyler new.
-	selectors addSelectors: #(requestForUrl: rawData).
+	selectors addSelectors: #(#'requestForUrl:ifSuccessDo:ifErrorDo:' #'rawData:').
 	variables := GtVariableExplanationLinkStyler new.
 	variables addVariables: #(dictionaries dict TDTodo TDTodosGroup).
 	literals := GtLiteralExplanationLinkStyler new.
