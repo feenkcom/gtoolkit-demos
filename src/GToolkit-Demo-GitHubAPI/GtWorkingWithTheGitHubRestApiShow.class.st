@@ -95,6 +95,12 @@ GtWorkingWithTheGitHubRestApiShow >> apiExplanationText [
 		fontSize: 16.
 ]
 
+{ #category : #accessing }
+GtWorkingWithTheGitHubRestApiShow >> createOrganizationFromRawData: dictionary [
+	<gtExample>
+	GhOrganization new rawData: dictionary
+]
+
 { #category : #slides }
 GtWorkingWithTheGitHubRestApiShow >> introductionSlideFor: aSlide [
 	<gtSlide>
@@ -107,14 +113,24 @@ GtWorkingWithTheGitHubRestApiShow >> introductionSlideFor: aSlide [
 ]
 
 { #category : #accessing }
-GtWorkingWithTheGitHubRestApiShow >> modelDescriptionIntroductionSlideFor: aSlide [
+GtWorkingWithTheGitHubRestApiShow >> parseJson: json [
+	<gtExample>
+	| dictionary |
+	dictionary := STON fromString: json.
+]
+
+{ #category : #slides }
+GtWorkingWithTheGitHubRestApiShow >> playgroundWithFeenkcomFor: aSlide [
 	<gtSlide>
-	^ aSlide text
-		priority: 7;
-		newTextWithFormat: 
-			('In the following we take a look at how to make a user interface for the requests and how to display the resulted information in a more pleasing and understandable manner.' asRopedText 
-				glamorousRegularFont;
-				fontSize: 18).
+	^ aSlide labelAndElement
+		newFadedText: 'Working with an API is as simple as this: get the response, parse it, populate a dedicated object that offers custom views and navigation.';
+		newFadedText: 'Happy browsing!';
+		element: [ 
+			GtPlaygroundLiveSlide new
+				newSnippetFromMethod: self class>>#zincCallToFeenkcom;
+				newSnippetFromMethod: self class>>#parseJson:;
+				newSnippetFromMethod: self class>>#createOrganizationFromRawData:];
+		priority: 7.
 ]
 
 { #category : #examples }
@@ -175,4 +191,12 @@ GtWorkingWithTheGitHubRestApiShow >> titleSlideFor: aSlide [
 			fontSize: 40;
 			thin;
 			glamorousRegularFont)
+]
+
+{ #category : #snippets }
+GtWorkingWithTheGitHubRestApiShow >> zincCallToFeenkcom [
+	<gtExample>
+	<noTest>
+	| json |
+	json := ZnClient new get: 'https://api.github.com/orgs/feenkcom'
 ]
