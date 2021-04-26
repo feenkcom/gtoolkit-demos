@@ -40,10 +40,10 @@ GtAnalyzingJavaSystemsShow >> codeFromMethod: aMethod [
 				nextPutAll: String cr].
 			
 		(aMethod sourceCode 
-			copyFrom: notTemp start to: aMethod ast stop) linesDo: [ :aLine |
-				stream 
-					nextPutAll: (aLine removePrefix: String tab);
-					cr ] ]
+			copyFrom: notTemp start to: aMethod ast stop) lines 
+				do: [ :aLine |
+					stream nextPutAll: (aLine removePrefix: String tab) ]
+				separatedBy: [ stream cr ] ]
 ]
 
 { #category : #utils }
@@ -134,37 +134,6 @@ GtAnalyzingJavaSystemsShow >> extractGraphicalComponentsFrom: model [
 	graphicalComponents := model allModelClasses select: [ :aClass |
 		aClass superclassHierarchyGroup anySatisfy: [ :aSuperclass |
 			aSuperclass mooseName = 'java::awt::Component' ] ]
-]
-
-{ #category : #slides }
-GtAnalyzingJavaSystemsShow >> feenkSlideFor: aSlide [
-	<gtSlide>
-	^ aSlide element
-		priority: 1.1;
-		element: [| container form |
-				form := PNGReadWriter formFromFileNamed: (GtResourceReference
-						path: Path * 'feenkcom' / 'gtoolkit' / 'doc' / 'feenk.png') fullName.
-BlElement new 
-			constraintsDo: [ :c |
-				c horizontal matchParent.
-				c vertical matchParent ];
-			layout: BlLinearLayout horizontal;
-				addChild: (
-					BlElement new
-						constraintsDo: [ :c |
-							c horizontal matchParent.
-							c vertical fitContent.
-							c linear vertical alignCenter ];
-						layout: BlLinearLayout vertical;
-						addChild: (BrVerticalPane new 
-							constraintsDo: [ :c |
-								c linear horizontal alignCenter ];
-							addChild: (form asElement asScalableElement maxScale: 0.2; constraintsDo: [:c | c horizontal matchParent. c vertical matchParent]); hExact: 400; vExact: 200);
-						addChild: (BlTextElement new 
-							constraintsDo: [ :c |
-								c linear horizontal alignCenter ];
-							text: (('we make your systems explainable.' asRopedText glamorousRegularFont bold fontSize: 30))))
-				]
 ]
 
 { #category : #'code examples' }
@@ -493,7 +462,7 @@ GtAnalyzingJavaSystemsShow >> visualizeDeprecatedClassessSlideFor: aSlide [
 		priority: 30;
 		element: [
 			(GtPlaygroundLiveSlide new snippets: {
-				self codeFromSelector: #getArgoUMLModel. 
+				self codeFromSelector: #getArgoUMLModel.
 				self codeFromSelector: #extractAllDeprecatedClassesFrom:.
 				self codeFromSelector: #filterUsedDeprecatedClassesFrom:.
 				self codeFromSelector: #visualizeDeprecatedClassesFor:
