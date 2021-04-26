@@ -1,11 +1,11 @@
 Class {
-	#name : #GtWorkingWithTheGitHubRestApi,
+	#name : #GtWorkingWithTheGitHubRestApiShow,
 	#superclass : #Object,
 	#category : #'GToolkit-Demo-GitHubAPI-Presentation'
 }
 
 { #category : #examples }
-GtWorkingWithTheGitHubRestApi >> apiExamples [
+GtWorkingWithTheGitHubRestApiShow >> apiExamples [
 	<gtExample>
 	| firstExampleContainer secondExampleContainer thirdExampleContainer |
 
@@ -80,7 +80,7 @@ GtWorkingWithTheGitHubRestApi >> apiExamples [
 ]
 
 { #category : #slides }
-GtWorkingWithTheGitHubRestApi >> apiExamplesSlideFor: aSlide [
+GtWorkingWithTheGitHubRestApiShow >> apiExamplesSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide labelAndElement
 		priority: 6;
@@ -89,14 +89,14 @@ GtWorkingWithTheGitHubRestApi >> apiExamplesSlideFor: aSlide [
 ]
 
 { #category : #accessing }
-GtWorkingWithTheGitHubRestApi >> apiExplanationText [
-	^ 'Below we see examples of the JSON responses for various requests to the GitHub API.' asRopedText
+GtWorkingWithTheGitHubRestApiShow >> apiExplanationText [
+	^ 'Below we see examples of the JSON responses for various requests to the GitHub API. This is a way to explore an API. Boring, right? Let''s make it interactive.' asRopedText
 		glamorousRegularFont;
 		fontSize: 16.
 ]
 
-{ #category : #accessing }
-GtWorkingWithTheGitHubRestApi >> introductionSlideFor: aSlide [
+{ #category : #slides }
+GtWorkingWithTheGitHubRestApiShow >> introductionSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide text
 		priority: 5;
@@ -106,8 +106,19 @@ GtWorkingWithTheGitHubRestApi >> introductionSlideFor: aSlide [
 				fontSize: 18).
 ]
 
+{ #category : #accessing }
+GtWorkingWithTheGitHubRestApiShow >> modelDescriptionIntroductionSlideFor: aSlide [
+	<gtSlide>
+	^ aSlide text
+		priority: 7;
+		newTextWithFormat: 
+			('In the following we take a look at how to make a user interface for the requests and how to display the resulted information in a more pleasing and understandable manner.' asRopedText 
+				glamorousRegularFont;
+				fontSize: 18).
+]
+
 { #category : #examples }
-GtWorkingWithTheGitHubRestApi >> responseForFeenkOrg [
+GtWorkingWithTheGitHubRestApiShow >> responseForFeenkOrg [
 	<gtExample>
 	| response |
 	response := ZnClient new
@@ -122,7 +133,7 @@ GtWorkingWithTheGitHubRestApi >> responseForFeenkOrg [
 ]
 
 { #category : #examples }
-GtWorkingWithTheGitHubRestApi >> responseForFeenkRepos [
+GtWorkingWithTheGitHubRestApiShow >> responseForFeenkRepos [
 	<gtExample>
 	| response |
 	response := ZnClient new
@@ -137,7 +148,7 @@ GtWorkingWithTheGitHubRestApi >> responseForFeenkRepos [
 ]
 
 { #category : #examples }
-GtWorkingWithTheGitHubRestApi >> responseForGToolkitRepo [
+GtWorkingWithTheGitHubRestApiShow >> responseForGToolkitRepo [
 	<gtExample>
 	| response |
 	response := ZnClient new
@@ -151,12 +162,17 @@ GtWorkingWithTheGitHubRestApi >> responseForGToolkitRepo [
 	^ response.
 ]
 
-{ #category : #accessing }
-GtWorkingWithTheGitHubRestApi >> titleSlideFor: aSlide [
+{ #category : #slides }
+GtWorkingWithTheGitHubRestApiShow >> titleSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide title
 		priority: 1;
 		titleWithFormat: ('Working with the GitHub REST API' asRopedText
-			fontSize: 60;
-			glamorousRegularFont).
+			fontSize: 50;
+			bold;
+			glamorousRegularFont);
+		subtitleWithFormat: ('use case' asRopedText
+			fontSize: 40;
+			thin;
+			glamorousRegularFont)
 ]
