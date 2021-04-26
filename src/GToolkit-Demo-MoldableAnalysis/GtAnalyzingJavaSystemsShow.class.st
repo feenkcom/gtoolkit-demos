@@ -18,14 +18,6 @@ Class {
 	#category : #'GToolkit-Demo-MoldableAnalysis'
 }
 
-{ #category : #slides }
-GtAnalyzingJavaSystemsShow >> anyBoundarySlideFor: aSlide [
-	<gtSlide>
-	^ aSlide text
-		priority: 10;
-		newTextWithFormat: ('any boundary in software is arbitrary.' asRopedText glamorousRegularFont fontSize: 40; bold)
-]
-
 { #category : #utils }
 GtAnalyzingJavaSystemsShow >> codeFromMethod: aMethod [
 	| notTemp |
@@ -75,7 +67,7 @@ GtAnalyzingJavaSystemsShow >> downloadArgoUMLCodeAndMSE [
 GtAnalyzingJavaSystemsShow >> enginesSlidesFor: aSlide [
 	<gtSlide>
 	^ aSlide element
-		priority: 15;
+		priority: 115;
 		element: [| form |
 			form := PNGReadWriter formFromFileNamed: (GtResourceReference
 				path: Path * 'feenkcom' / 'gtoolkit-demos' / 'data' / 'moldableanalysis' / 'analysis-engines.png') fullName.
@@ -120,11 +112,10 @@ GtAnalyzingJavaSystemsShow >> extractDeprecatedGraphicalComponentsSlidesFor: aSl
 	^ aSlide element
 		priority: 80;
 		element: [
-			(GtPlaygroundLiveSlide new snippets: {
-				self codeFromSelector: #getArgoUMLModel. 
-				self codeFromSelector: #extractGraphicalComponentsFrom:.
-				self codeFromSelector: #extractDeprecatedGraphicalComponentsFrom:
-			}) asElement. ]
+			GtPlaygroundLiveSlide new 
+				newSnippetFromMethod: self class>> #getArgoUMLModel;
+				newSnippetFromMethod: self class>> #extractGraphicalComponentsFrom:;
+				newSnippetFromMethod: self class>> #extractDeprecatedGraphicalComponentsFrom: ]
 ]
 
 { #category : #'code examples' }
@@ -142,8 +133,7 @@ GtAnalyzingJavaSystemsShow >> filterUsedDeprecatedClassesFrom: deprecatedClasses
 	| stillUsedClasses |
 
 	stillUsedClasses := deprecatedClasses select: [ :each |
-		(each isAnnotatedWith: 'Deprecated') and: [
-			each clientTypes isNotEmpty ] ]
+		each clientTypes isNotEmpty ]
 ]
 
 { #category : #'code examples' }
@@ -158,14 +148,14 @@ GtAnalyzingJavaSystemsShow >> getArgoUMLModel [
 { #category : #slides }
 GtAnalyzingJavaSystemsShow >> loadArgoMULSlideFor: aSlide [
 	<gtSlide>
-	^ aSlide element
+	^ aSlide labelAndElement
 		priority: 20;
+		newFadedText: ('We first download the case study code and import the model into Glamorous Toolkit.');
 		element: [
-			(GtPlaygroundLiveSlide new snippets: {
-				self codeFromSelector: #downloadArgoUMLCodeAndMSE. 
-				self codeFromSelector: #loadMSEModelIntoImage.
-				self codeFromSelector: #saveTheModel:
-			}) asElement. ]
+			GtPlaygroundLiveSlide new 
+				newSnippetFromMethod: self class>> #downloadArgoUMLCodeAndMSE;
+				newSnippetFromMethod: self class>> #loadMSEModelIntoImage;
+				newSnippetFromMethod: self class>> #saveTheModel: ]
 ]
 
 { #category : #'code examples' }
@@ -195,10 +185,9 @@ GtAnalyzingJavaSystemsShow >> openArgoUmlReportSlideFor: aSlide [
 	^ aSlide element
 		priority: 90;
 		element: [
-			(GtPlaygroundLiveSlide new snippets: {
-				self codeFromSelector: #getArgoUMLModel. 
-				self codeFromSelector: #openArgoUmlReportOn:
-			}) asElement. ]
+			GtPlaygroundLiveSlide new 
+				newSnippetFromMethod: self class>> #getArgoUMLModel;
+				newSnippetFromMethod: self class>> #openArgoUmlReportOn: ]
 ]
 
 { #category : #'code examples' }
@@ -249,13 +238,11 @@ GtAnalyzingJavaSystemsShow >> visualizeBuildFilesSlideFor: aSlide [
 	^ aSlide element
 		priority: 70;
 		element: [
-			(GtPlaygroundLiveSlide new snippets: {
-				self codeFromSelector: #getArgoUMLModel. 
-				self codeFromSelector: #extractBuildFoldersAndFilesFromModel:.
-				self codeFromSelector: #visualizeBuildFilesFrom:.
-				
-				self codeFromSelector: #visualizeXMLFileTargets
-			}) asElement. ]
+			GtPlaygroundLiveSlide new 
+				newSnippetFromMethod: self class>> #getArgoUMLModel;
+				newSnippetFromMethod: self class>> #extractBuildFoldersAndFilesFromModel:;
+				newSnippetFromMethod: self class>> #visualizeBuildFilesFrom:;
+				newSnippetFromMethod: self class>> #visualizeXMLFileTargets: ]
 ]
 
 { #category : #'code examples' }
@@ -331,12 +318,11 @@ GtAnalyzingJavaSystemsShow >> visualizeDeprecatedClassesWithMethodWithUsageSizeS
 	^ aSlide element
 		priority: 60;
 		element: [
-			(GtPlaygroundLiveSlide new snippets: {
-				self codeFromSelector: #getArgoUMLModel. 
-				self codeFromSelector: #extractAllDeprecatedClassesFrom:.
-				self codeFromSelector: #filterUsedDeprecatedClassesFrom:.
-				self codeFromSelector: #visualizeDeprecatedClassesWithMethodWithUsageSizeFor:
-			}) asElement. ]
+			GtPlaygroundLiveSlide new 
+				newSnippetFromMethod: self class>> #getArgoUMLModel;
+				newSnippetFromMethod: self class>> #extractAllDeprecatedClassesFrom:;
+				newSnippetFromMethod: self class>> #filterUsedDeprecatedClassesFrom:;
+				newSnippetFromMethod: self class>> #visualizeDeprecatedClassesWithMethodWithUsageSizeFor: ]
 ]
 
 { #category : #'code examples' }
@@ -381,12 +367,11 @@ GtAnalyzingJavaSystemsShow >> visualizeDeprecatedClassesWithMethodsSlidesFor: aS
 	^ aSlide element
 		priority: 50;
 		element: [
-			(GtPlaygroundLiveSlide new snippets: {
-				self codeFromSelector: #getArgoUMLModel. 
-				self codeFromSelector: #extractAllDeprecatedClassesFrom:.
-				self codeFromSelector: #filterUsedDeprecatedClassesFrom:.
-				self codeFromSelector: #visualizeDeprecatedClassesWithMethodsFor:
-			}) asElement. ]
+			GtPlaygroundLiveSlide new 
+				newSnippetFromMethod: self class>> #getArgoUMLModel;
+				newSnippetFromMethod: self class>> #extractAllDeprecatedClassesFrom:;
+				newSnippetFromMethod: self class>> #filterUsedDeprecatedClassesFrom:;
+				newSnippetFromMethod: self class>> #visualizeDeprecatedClassesWithMethodsFor: ]
 ]
 
 { #category : #'code examples' }
@@ -422,12 +407,11 @@ GtAnalyzingJavaSystemsShow >> visualizeDeprecatedClassesWithSizeSlideFor: aSlide
 	^ aSlide element
 		priority: 40;
 		element: [
-			(GtPlaygroundLiveSlide new snippets: {
-				self codeFromSelector: #getArgoUMLModel. 
-				self codeFromSelector: #extractAllDeprecatedClassesFrom:.
-				self codeFromSelector: #filterUsedDeprecatedClassesFrom:.
-				self codeFromSelector: #visualizeDeprecatedClassesWithSizeFor:
-			}) asElement. ]
+			GtPlaygroundLiveSlide new 
+				newSnippetFromMethod: self class>> #getArgoUMLModel;
+				newSnippetFromMethod: self class>> #extractAllDeprecatedClassesFrom:;
+				newSnippetFromMethod: self class>> #filterUsedDeprecatedClassesFrom:;
+				newSnippetFromMethod: self class>> #visualizeDeprecatedClassesWithSizeFor:]
 ]
 
 { #category : #'code examples' }
@@ -435,7 +419,6 @@ GtAnalyzingJavaSystemsShow >> visualizeDeprecatedClassesWithUIBorderFor: stillUs
 	<gtExample>
 	| view |
 	view := GtMondrian new. 
-	
 	view nodes
 		stencil: [:each |
 			BlElement new
@@ -449,7 +432,6 @@ GtAnalyzingJavaSystemsShow >> visualizeDeprecatedClassesWithUIBorderFor: stillUs
 						ifTrue: [ Color blue ]
 						ifFalse: [ Color transparent ])) ];
 		with: (stillUsedClasses, (stillUsedClasses flatCollect: #clientTypes)) asSet.
-
 	view edges connectFromAll: #clientTypes. 
 	view layout force. 
 	view
@@ -458,34 +440,35 @@ GtAnalyzingJavaSystemsShow >> visualizeDeprecatedClassesWithUIBorderFor: stillUs
 { #category : #slides }
 GtAnalyzingJavaSystemsShow >> visualizeDeprecatedClassessSlideFor: aSlide [
 	<gtSlide>
-	^ aSlide element
+	^ aSlide labelAndElement
 		priority: 30;
+		newFadedText: ('We find the deprecated classes that are still used. And then we visualize their dependencies to adjacent classes.');
 		element: [
-			(GtPlaygroundLiveSlide new snippets: {
-				self codeFromSelector: #getArgoUMLModel.
-				self codeFromSelector: #extractAllDeprecatedClassesFrom:.
-				self codeFromSelector: #filterUsedDeprecatedClassesFrom:.
-				self codeFromSelector: #visualizeDeprecatedClassesFor:
-			}) asElement. ]
+			GtPlaygroundLiveSlide new 
+				newSnippetFromMethod: self class>>#getArgoUMLModel;
+				newSnippetFromMethod: self class>>#extractAllDeprecatedClassesFrom:;
+				newSnippetFromMethod: self class>>#filterUsedDeprecatedClassesFrom:;
+				newSnippetFromMethod: self class>>#visualizeDeprecatedClassesFor: ]
 ]
 
 { #category : #slides }
 GtAnalyzingJavaSystemsShow >> visualizeDeprecatedClassessWithUIBorderSlideFor: aSlide [
 	<gtSlide>
-	^ aSlide element
+	^ aSlide labelAndElement
 		priority: 31;
+		newFadedText: 'The previous visualization is exciting, but still generic (you can apply on any Java system). Yet, value is always contextual.';
+		newFadedText: 'Instead, let''s map the context we know onto the visualization. For example, in our case we know that the system is split into UI and non-UI, so we highlight that.';
 		element: [
-			(GtPlaygroundLiveSlide new snippets: {
-				self codeFromSelector: #getArgoUMLModel. 
-				self codeFromSelector: #extractAllDeprecatedClassesFrom:.
-				self codeFromSelector: #filterUsedDeprecatedClassesFrom:.
-				self codeFromSelector: #visualizeDeprecatedClassesWithUIBorderFor:
-			}) asElement. ]
+			GtPlaygroundLiveSlide new 
+				newSnippetFromMethod: self class>> #getArgoUMLModel; 
+				newSnippetFromMethod: self class>> #extractAllDeprecatedClassesFrom:;
+				newSnippetFromMethod: self class>> #filterUsedDeprecatedClassesFrom:;
+				newSnippetFromMethod: self class>> #visualizeDeprecatedClassesWithUIBorderFor: ]
 ]
 
 { #category : #'code examples' }
-GtAnalyzingJavaSystemsShow >> visualizeXMLFileTargets [
-	|interestingDirectories xmlDoc tags view|
+GtAnalyzingJavaSystemsShow >> visualizeXMLFileTargets: interestingDirectories [
+	| xmlDoc tags view|
 	xmlDoc := XMLDOMParser parse: (interestingDirectories at: 8) / 'build.xml'.
 	tags := xmlDoc // 'target'.
 	view := GtMondrian new.
