@@ -18,6 +18,17 @@ Class {
 	#category : #'GToolkit-Demo-MoldableAnalysis'
 }
 
+{ #category : #slides }
+GtAnalyzingJavaSystemsShow >> buildSystemIntroductionFor: aSlide [
+	<gtSlide>
+	^ aSlide text
+		priority: 61;
+		newTextWithFormat:
+			('Ok. So, we went from a question to playing with a custom analysis that makes the whole problem simpler to grasp. Now, let''s look at another problem. This time involving the build script.' asRopedText 
+				glamorousRegularFont; 
+				fontSize: 18).
+]
+
 { #category : #utils }
 GtAnalyzingJavaSystemsShow >> codeFromMethod: aMethod [
 	| notTemp |
@@ -328,8 +339,9 @@ GtAnalyzingJavaSystemsShow >> visualizeDeprecatedClassesWithMethodWithUsageSizeF
 { #category : #slides }
 GtAnalyzingJavaSystemsShow >> visualizeDeprecatedClassesWithMethodWithUsageSizeSlideFor: aSlide [
 	<gtSlide>
-	^ aSlide element
+	^ aSlide labelAndElement
 		priority: 60;
+		newFadedText: 'How large are these methods?';
 		element: [
 			GtPlaygroundLiveSlide new 
 				newSnippetFromMethod: self class>> #getArgoUMLModel;
@@ -377,8 +389,9 @@ GtAnalyzingJavaSystemsShow >> visualizeDeprecatedClassesWithMethodsFor: stillUse
 { #category : #slides }
 GtAnalyzingJavaSystemsShow >> visualizeDeprecatedClassesWithMethodsSlidesFor: aSlide [
 	<gtSlide>
-	^ aSlide element
+	^ aSlide labelAndElement
 		priority: 50;
+		newFadedText: 'Well, let''s look at the actual methods.';
 		element: [
 			GtPlaygroundLiveSlide new 
 				newSnippetFromMethod: self class>> #getArgoUMLModel;
@@ -419,7 +432,8 @@ GtAnalyzingJavaSystemsShow >> visualizeDeprecatedClassesWithSizeSlideFor: aSlide
 	<gtSlide>
 	^ aSlide labelAndElement
 		priority: 40;
-		newFadedText: 'Until now, we visualized classes. But, to remove dependencies to the deprecated classes, we have to affecdt methods. So, we refine the visualization to show methods.';
+		newFadedText: 'Until now, we visualized classes. But, to remove dependencies to the deprecated classes, we have to affect methods.';
+		newFadedText: 'So, we look at how many methods each classes has.';
 		element: [
 			GtPlaygroundLiveSlide new 
 				newSnippetFromMethod: self class>> #getArgoUMLModel;
