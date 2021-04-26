@@ -146,6 +146,17 @@ GtAnalyzingJavaSystemsShow >> getArgoUMLModel [
 ]
 
 { #category : #slides }
+GtAnalyzingJavaSystemsShow >> introductionSlideFor: aSlide [
+	<gtSlide>
+	^ aSlide text
+		priority: 2;
+		newTextWithFormat:
+			('Glamorous Toolkit is a platform for analyzing artifacts statically, too. In this show, we exemplify how that works with a couple of simple scenarios. The first one is this: in a Java system we have a few classes marked as deprecated. Which of these we can remove right now, and how do we go about those that we cannot remove.' asRopedText 
+				glamorousRegularFont; 
+				fontSize: 18).
+]
+
+{ #category : #slides }
 GtAnalyzingJavaSystemsShow >> loadArgoMULSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide labelAndElement
@@ -404,8 +415,9 @@ GtAnalyzingJavaSystemsShow >> visualizeDeprecatedClassesWithSizeFor: stillUsedCl
 { #category : #slides }
 GtAnalyzingJavaSystemsShow >> visualizeDeprecatedClassesWithSizeSlideFor: aSlide [
 	<gtSlide>
-	^ aSlide element
+	^ aSlide labelAndElement
 		priority: 40;
+		newFadedText: 'Until now, we visualized classes. But, to remove dependencies to the deprecated classes, we have to affecdt methods. So, we refine the visualization to show methods.';
 		element: [
 			GtPlaygroundLiveSlide new 
 				newSnippetFromMethod: self class>> #getArgoUMLModel;
