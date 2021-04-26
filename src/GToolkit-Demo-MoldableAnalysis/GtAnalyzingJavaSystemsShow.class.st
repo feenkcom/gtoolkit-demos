@@ -47,8 +47,8 @@ GtAnalyzingJavaSystemsShow >> codeFromSelector: aSelector [
 GtAnalyzingJavaSystemsShow >> downloadArgoUMLCodeAndMSE [
 	<gtExample>
 	<noTest>
-	| targetFolder archiveFileName archiveUrl |
 	"Download ArgoUML code and MSE model file"
+	| targetFolder archiveFileName archiveUrl |	
 	targetFolder := (FileLocator imageDirectory / 
 		'models') asFileReference ensureCreateDirectory.
 	archiveFileName := 'ArgoUML-0-34.zip'.
@@ -82,6 +82,7 @@ GtAnalyzingJavaSystemsShow >> enginesSlidesFor: aSlide [
 { #category : #'code examples' }
 GtAnalyzingJavaSystemsShow >> extractAllDeprecatedClassesFrom: model [
 	<gtExample>
+	"Find the deprecated classes"
 	| deprecatedClasses |
 	deprecatedClasses := model allModelClasses select: [ :each |
 		each isAnnotatedWith: 'Deprecated' ].
@@ -130,6 +131,7 @@ GtAnalyzingJavaSystemsShow >> extractGraphicalComponentsFrom: model [
 { #category : #'code examples' }
 GtAnalyzingJavaSystemsShow >> filterUsedDeprecatedClassesFrom: deprecatedClasses [
 	<gtExample>
+	"Find deprecated classes that have clients (i.e., that are still in use)"
 	| stillUsedClasses |
 
 	stillUsedClasses := deprecatedClasses select: [ :each |
@@ -140,6 +142,7 @@ GtAnalyzingJavaSystemsShow >> filterUsedDeprecatedClassesFrom: deprecatedClasses
 GtAnalyzingJavaSystemsShow >> getArgoUMLModel [
 	<gtExample>
 	<noTest>
+	"Get the model from the global variable"
 	| model |
 	model := MooseModel root allModels detect: [ :each | 
 		each name = 'ArgoUML-0-34' ]
@@ -204,7 +207,7 @@ GtAnalyzingJavaSystemsShow >> openArgoUmlReportSlideFor: aSlide [
 { #category : #'code examples' }
 GtAnalyzingJavaSystemsShow >> saveTheModel: model [
 	<gtExample>
-	"Save the model so we can reuse it other sides"
+	"Add the model to a global variable so that we can reuse it in other slides"
 	MooseModel root add: model
 ]
 
@@ -259,9 +262,9 @@ GtAnalyzingJavaSystemsShow >> visualizeBuildFilesSlideFor: aSlide [
 { #category : #'code examples' }
 GtAnalyzingJavaSystemsShow >> visualizeDeprecatedClassesFor: stillUsedClasses [
 	<gtExample>
+	"Visualize deprecated classes (in red) together with all their client classes and the interconnections."
 	| view |
 	view := GtMondrian new. 
-	
 	view nodes
 		stencil: [:each |
 			BlElement new
@@ -271,7 +274,6 @@ GtAnalyzingJavaSystemsShow >> visualizeDeprecatedClassesFor: stillUsedClasses [
 					ifTrue: [Color red]
 					ifFalse: [Color gray]) ];
 		with: (stillUsedClasses, (stillUsedClasses flatCollect: #clientTypes)) asSet.
-
 	view edges connectFromAll: #clientTypes. 
 	view layout force. 
 	view
