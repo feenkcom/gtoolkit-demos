@@ -760,7 +760,7 @@ GtTour >> playgroundSlideshowLinkSlideFor: aSlide [
 	^ aSlide slideshow
 		priority: 15;
 		textWithFormat: 'Want to learn more about the Playground? Follow the show below' asRopedText glamorousRegularFont;
-		slideshow: [ GtLiveShow createWithArrowsVisible: GtPlaygroundAndInspectorSlideshow new ] withTitle: 'Playground Slideshow'.
+		slideshow: [ GtLiveShow createWithArrowsVisible: GtPlaygroundAndInspectorShow new ] withTitle: 'Playground Slideshow'.
 ]
 
 { #category : #accessing }
@@ -778,7 +778,7 @@ GtTour >> querySlideshowLinkSlideFor: aSlide [
 	^ aSlide slideshow
 		priority: 22;
 		textWithFormat: ('To learn more about queries follow the show below.' asRopedText glamorousRegularFont);
-		slideshow: [ GtLiveShow createWithArrowsVisible: GtQueries new ] withTitle: 'Querying Code'.
+		slideshow: [ GtLiveShow createWithArrowsVisible: GtQueryingCodeShow new ] withTitle: 'Querying Code'.
 ]
 
 { #category : #accessing }
@@ -873,14 +873,10 @@ GtTour >> titleSlideFor: aSlide [
 	^ aSlide title
 		priority: 1;
 		titleWithFormat: ('glamoroustoolkit' asRopedText 
-			fontSize: 80;
+			fontSize: 60;
 			glamorousRegularFont;
-			thin; 
-			in: [:t | (t from: 'glamorous' size + 1 to: t size) bold]; yourself);
-		subtitleWithFormat: ('a tour' asRopedText 
-			fontSize: 50;
-			glamorousRegularFont;
-			bold).
+			thin;
+			in: [:t | (t from: 'glamorous' size + 1 to: t size) bold]; yourself)
 ]
 
 { #category : #'api - instantiation' }

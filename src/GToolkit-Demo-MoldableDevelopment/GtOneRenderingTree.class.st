@@ -243,8 +243,13 @@ GtOneRenderingTree >> titleSlideFor: aSlide [
 	^ aSlide title
 		priority: 1;
 		titleWithFormat: ('One rendering tree' asRopedText 
-			fontSize: 70;
-			glamorousRegularFont).
+			fontSize: 50;
+			bold;
+			glamorousRegularFont);
+		subtitleWithFormat: ('graphics' asRopedText 
+			fontSize: 40;
+			thin;
+			glamorousRegularFont)
 ]
 
 { #category : #accessing }

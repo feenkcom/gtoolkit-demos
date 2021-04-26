@@ -87,11 +87,10 @@ GtMoldableDevelopmentSlideshow >> titleFor: aSlide [
 	<gtSlide>
 	^ aSlide title
 		priority: 1;
-		titleWithFormat: ('moldabledevelopment' asRopedText 
-			fontSize: 60;
+		titleWithFormat: ('Moldable Development' asRopedText 
+			fontSize: 50;
 			glamorousRegularFont;
-			thin; 
-			in: [:t | (t from: 'moldable' size + 1 to: t size) bold]; yourself)
+			bold)
 ]
 
 { #category : #slides }
