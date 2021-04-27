@@ -316,7 +316,7 @@ GtSpotterSlideshow >> spotterInLocalContextInCoderExampleSlideFor: aSlide [
 							allChildrenBreadthFirstDetect: [:aChild |
 								(aChild isKindOf: BrToolbar) and: [aChild parent isKindOf: GtCoderToolbarElement]] 
 							ifFound: [:aChild |
-								aChild childAt: 1].
+								aChild childAt: 2].
 						BlSpace simulateClickOn: button.
 						BlSpace simulateClickOn: button])].
 ]
