@@ -6,80 +6,104 @@ Class {
 
 { #category : #slides }
 GtMoldableDevelopmentSlideshow >> dailyAssessmentSlideFor: aSlide [
-	<gtSlide>
-	^ aSlide filePicture
-		priority: 72;
-		fileReference:(GtResourcesUtility resourceAtPath: 'feenkcom/gtoolkit-demos/doc/moldable-development/processes-5.png').
+	"<gtSlide>"
+	^ aSlide textAndElement
+		priority: 92;
+		newText: 'Moldable development has several implications. One of them is to enable the enabling of steering agile architecture.';
+		element: [ GtFilePictureLiveSlide new fileReference:(GtResourcesUtility resourceAtPath: 'feenkcom/gtoolkit-demos/doc/moldable-development/processes-5.png') ].
 ]
 
 { #category : #slides }
 GtMoldableDevelopmentSlideshow >> slide2For: aSlide [
 	<gtSlide>
-	^ aSlide filePicture
+	^ aSlide textAndElement
+		elementWeight: 0.70;
 		priority: 54;
-		fileReference: (GtResourcesUtility resourceAtPath: 'feenkcom/gtoolkit-demos/doc/moldable-development/50percent-1.png').
+		newText: 'When we think of software development, we typically think about the active part. Of constructing. Of building new worlds that never existed. It''s an empowering view.';
+		element: [ 
+			GtFilePictureLiveSlide new fileReference: (GtResourcesUtility resourceAtPath: 'feenkcom/gtoolkit-demos/doc/moldable-development/50percent-1.png') ]
 ]
 
 { #category : #slides }
 GtMoldableDevelopmentSlideshow >> slide3For: aSlide [
 	<gtSlide>
-	"Rename this method to be more representative for your slide"
-	^ aSlide filePicture
+	^ aSlide textAndElement
+		elementWeight: 0.70;
 		priority: 55;
-		fileReference:(GtResourcesUtility resourceAtPath: 'feenkcom/gtoolkit-demos/doc/moldable-development/50percent-2.png').
+		newText: 'Yet, when we look at what developers do, they actually spend most of their time figuring the system out. This currently happens implicitly.';
+		newText: 'This is the single largest development expense we have. We have to make it explicit because that''s the only way to optimize it. So, let''s start that conversation.';
+		element: [ 
+			GtFilePictureLiveSlide new fileReference: (GtResourcesUtility resourceAtPath: 'feenkcom/gtoolkit-demos/doc/moldable-development/50percent-2.png') ]
 ]
 
 { #category : #slides }
 GtMoldableDevelopmentSlideshow >> slide4For: aSlide [
 	<gtSlide>
-	"Rename this method to be more representative for your slide"
-	^ aSlide filePicture
+	^ aSlide textAndElement
+		elementWeight: 0.70;
 		priority: 56;
-		fileReference: (GtResourcesUtility resourceAtPath: 'feenkcom/gtoolkit-demos/doc/moldable-development/50percent-3.png').
+		newText: 'Most of the figuring the system out time is spent reading. The reason people read code is to understand enough so that they figure out what to do next. That''s decision making.';
+		newText: 'From this perspective, reading is but a means to gather information out of data (everything about your system is data; ok, objects if you are lucky). It also happens to be the most manual way to extract information out of data. And this is where we spend most of our time.';
+		newText: 'The alternative is to treat this as a data problem.';
+		element: [ 
+			GtFilePictureLiveSlide new fileReference: (GtResourcesUtility resourceAtPath: 'feenkcom/gtoolkit-demos/doc/moldable-development/50percent-3.png') ]
 ]
 
 { #category : #slides }
 GtMoldableDevelopmentSlideshow >> slide5For: aSlide [
 	<gtSlide>
-	"Rename this method to be more representative for your slide"
-	^ aSlide filePicture
+	^ aSlide textAndElement
 		priority: 60;
-		fileReference: (GtResourcesUtility resourceAtPath: 'feenkcom/gtoolkit-demos/doc/moldable-development/craft-1.png').
+		elementWeight: 0.7;
+		newText: 'When it comes to reasoning about data, we should always start with a hypothesis, apply an analysis, and interpret the results. If we are confident, we act. If not we repeat.';
+		newText: 'Ok. That''s not new. It''s just the scientific method.';
+		element: [ 
+			GtFilePictureLiveSlide new fileReference: (GtResourcesUtility resourceAtPath: 'feenkcom/gtoolkit-demos/doc/moldable-development/craft-1.png') ].
 ]
 
 { #category : #slides }
 GtMoldableDevelopmentSlideshow >> slide6For: aSlide [
 	<gtSlide>
-	"Rename this method to be more representative for your slide"
-	^ aSlide filePicture
+	^ aSlide textAndElement
 		priority: 62;
-		fileReference: (GtResourcesUtility resourceAtPath: 'feenkcom/gtoolkit-demos/doc/moldable-development/craft-2.png').
+		elementWeight: 0.7;
+		newText: 'However, because software is highly contextual, for a given problem we likely do not have an appropriate tool available. This is the main reason why developer read code: reading can handle any context; the only problem is that it''s too slow and innacurate.';
+		newText: ' That is why it is essential to ask this simple question: "do we have an appropriate tool?".';
+		element: [ 
+			GtFilePictureLiveSlide new fileReference: (GtResourcesUtility resourceAtPath: 'feenkcom/gtoolkit-demos/doc/moldable-development/craft-2.png') ].
 ]
 
 { #category : #slides }
 GtMoldableDevelopmentSlideshow >> slide7For: aSlide [
 	<gtSlide>
-	"Rename this method to be more representative for your slide"
-	^ aSlide filePicture
+	^ aSlide textAndElement
 		priority: 63;
-		fileReference:(GtResourcesUtility resourceAtPath: 'feenkcom/gtoolkit-demos/doc/moldable-development/craft-3.png').
+		elementWeight: 0.7;
+		newText: 'And if we don''t have an appropriate tool? We mold one. And we want to do this for every single development problem we have.';
+		newText: 'That''s the essence of moldable development.';
+		element: [ 
+			GtFilePictureLiveSlide new fileReference: (GtResourcesUtility resourceAtPath: 'feenkcom/gtoolkit-demos/doc/moldable-development/craft-3.png') ].
 ]
 
 { #category : #slides }
 GtMoldableDevelopmentSlideshow >> slide8For: aSlide [
 	<gtSlide>
-	^ aSlide filePicture
+	^ aSlide textAndElement
 		priority: 70;
-		fileReference: (GtResourcesUtility resourceAtPath: 'feenkcom/gtoolkit-demos/doc/moldable-development/roles-1.png').
+		elementWeight: 0.7;
+		newText: 'Moldable Development relies on two distinct roles: the facilitator constructs custom tools; the stakeholder knows what to do with them. It''s really not that different from data science.';
+		newText: 'The facilitator is a technologist. Who can be a stakeholder? Anyone with a stake in the system. That can be a product owner, a customer, a developer.';
+		element: [GtFilePictureLiveSlide new fileReference: (GtResourcesUtility resourceAtPath: 'feenkcom/gtoolkit-demos/doc/moldable-development/roles-1.png').]
 ]
 
 { #category : #slides }
 GtMoldableDevelopmentSlideshow >> slide9For: aSlide [
 	<gtSlide>
-	"Rename this method to be more representative for your slide"
-	^ aSlide filePicture
+	^ aSlide textAndElement
 		priority: 71;
-		fileReference:(GtResourcesUtility resourceAtPath: 'feenkcom/gtoolkit-demos/doc/moldable-development/roles-2.png').
+		elementWeight: 0.7;
+		newText: 'Ah, the facilitator role is crosscutting and can be shared across different contexts.';
+		element: [ GtFilePictureLiveSlide new fileReference: (GtResourcesUtility resourceAtPath: 'feenkcom/gtoolkit-demos/doc/moldable-development/roles-2.png') ]
 ]
 
 { #category : #slides }
@@ -96,8 +120,16 @@ GtMoldableDevelopmentSlideshow >> titleFor: aSlide [
 { #category : #slides }
 GtMoldableDevelopmentSlideshow >> wardletMapSlideFor: aSlide [
 	<gtSlide>
-	^ aSlide wardleyMap
+	^ aSlide textAndElement
 		priority: 81;
+		newText: 'Why is Moldable Development important? Let''s look at it through a Wardley Map.';
+		newText: 'A challenge always relates to a specific problem that requires a decision. As systems are highly contextual, assessing the problem requires custom views. Presently, people often create these views manually. This is a problem as systems are too large and change too quickly to be grasped manually.';
+		newText: 'Instead, we inform the decision through custom views that are generated. They are custom in that we literally create them for every problem. We say that it''s the system''s responsibility to present itself in a way humans can reason about.';
+		newText: 'Most of the development effort consists of people trying to figure the system out by reading their way through it. This is directly linked to the nature of tools. Typically, tools offer only generic out-of-the-box presentations. So, people read because that can be adapted.';
+		newText: 'The alternative is to replace manual inspection through code that is specifically crafted for the problem. Through this, we generate custom views that become a commodity.';
+				newText: 'To make this practical, we need moldable tools, but once those tools exist, new strategies for decision making are made possible.';
+		element: [ 
+		GtWardleyMapSlide new
 		json: '{
 	"nodes" : [
 		{
@@ -187,7 +219,7 @@ GtMoldableDevelopmentSlideshow >> wardletMapSlideFor: aSlide [
 			"label" : {
 				"x" : 2.6666666666666665,
 				"y" : -1.0,
-				"text" : "assessment"
+				"text" : "decision"
 			}
 		},
 		{
@@ -505,5 +537,5 @@ GtMoldableDevelopmentSlideshow >> wardletMapSlideFor: aSlide [
 			"arrow" : true
 		}
 	]
-}'
+}']
 ]
