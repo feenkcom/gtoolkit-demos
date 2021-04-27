@@ -625,7 +625,12 @@ GtPharo101 >> titleSlideFor: aSlide [
 		priority: 1;
 		titleWithFormat: ('Pharo 101' asRopedText 
 			glamorousRegularFont;
-			fontSize: 70).
+			bold;
+			fontSize: 50);
+		subtitleWithFormat: ('language' asRopedText 
+			fontSize: 40;
+			thin;
+			glamorousRegularFont)
 ]
 
 { #category : #accessing }

@@ -731,6 +731,11 @@ GtSpotterSlideshow >> titleSlideFor: aSlide [
 	^ aSlide title
 		priority: 1;
 		titleWithFormat: ('Spotter' asRopedText
-			fontSize: 70;
+			fontSize: 50;
+			bold;
+			glamorousRegularFont);
+		subtitleWithFormat: ('tool' asRopedText
+			fontSize: 40;
+			thin;
 			glamorousRegularFont).
 ]

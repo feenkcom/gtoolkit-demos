@@ -1,11 +1,11 @@
 Class {
-	#name : #GtPlaygroundAndInspectorSlideshow,
+	#name : #GtPlaygroundAndInspectorShow,
 	#superclass : #Object,
 	#category : #'GToolkit-Demo-MoldableDevelopment'
 }
 
 { #category : #accessing }
-GtPlaygroundAndInspectorSlideshow >> createClassFromPlaygroundExplanationSlideFor: aSlide [
+GtPlaygroundAndInspectorShow >> createClassFromPlaygroundExplanationSlideFor: aSlide [
 	<gtSlide>
 	<noTest>
 	^ aSlide textAndElement
@@ -45,7 +45,7 @@ GtPlaygroundAndInspectorSlideshow >> createClassFromPlaygroundExplanationSlideFo
 ]
 
 { #category : #accessing }
-GtPlaygroundAndInspectorSlideshow >> createMethodFromPlaygroundExplanationSlideFor: aSlide [
+GtPlaygroundAndInspectorShow >> createMethodFromPlaygroundExplanationSlideFor: aSlide [
 	<gtSlide>
 	<noTest>
 	^ aSlide textAndElement
@@ -85,7 +85,7 @@ GtPlaygroundAndInspectorSlideshow >> createMethodFromPlaygroundExplanationSlideF
 ]
 
 { #category : #accessing }
-GtPlaygroundAndInspectorSlideshow >> fixItAdornmentForClassExplanation [
+GtPlaygroundAndInspectorShow >> fixItAdornmentForClassExplanation [
 	<gtExample>
 	| playgroundElement defaultPlaygroundElement aScripter adornmentButtonTarget |
 	
@@ -139,7 +139,7 @@ GtPlaygroundAndInspectorSlideshow >> fixItAdornmentForClassExplanation [
 ]
 
 { #category : #accessing }
-GtPlaygroundAndInspectorSlideshow >> fixItAdornmentForClassExplanationText [
+GtPlaygroundAndInspectorShow >> fixItAdornmentForClassExplanationText [
 	| text |
 	text := 'The Playground also offers the possibility to crate code in place. For example, if you try to instantiate a class that was not defined before, an ' asRopedText,
 ('adornment' asRopedText glamorousExplanationFor: #fixItAdornment),
@@ -153,7 +153,7 @@ GtPlaygroundAndInspectorSlideshow >> fixItAdornmentForClassExplanationText [
 ]
 
 { #category : #accessing }
-GtPlaygroundAndInspectorSlideshow >> fixItAdornmentForMethodExplanation [
+GtPlaygroundAndInspectorShow >> fixItAdornmentForMethodExplanation [
 	<gtExample>
 	| playgroundElement defaultPlaygroundElement aScripter adornmentButtonTarget |
 	
@@ -206,7 +206,7 @@ GtPlaygroundAndInspectorSlideshow >> fixItAdornmentForMethodExplanation [
 ]
 
 { #category : #accessing }
-GtPlaygroundAndInspectorSlideshow >> fixItAdornmentForMethodExplanationText [
+GtPlaygroundAndInspectorShow >> fixItAdornmentForMethodExplanationText [
 	| text |
 	text := 'The same thing applies to methods as well. If we try to call a method that was not yet implemented, the same ' asRopedText,
 ('adornment' asRopedText glamorousExplanationFor: #adornment),
@@ -220,7 +220,7 @@ GtPlaygroundAndInspectorSlideshow >> fixItAdornmentForMethodExplanationText [
 ]
 
 { #category : #accessing }
-GtPlaygroundAndInspectorSlideshow >> inspectorInterfaceExplanationSlideFor: aSlide [
+GtPlaygroundAndInspectorShow >> inspectorInterfaceExplanationSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide textAndElement
 		priority: 9;
@@ -230,7 +230,7 @@ GtPlaygroundAndInspectorSlideshow >> inspectorInterfaceExplanationSlideFor: aSli
 ]
 
 { #category : #accessing }
-GtPlaygroundAndInspectorSlideshow >> inspectorInterfaceExplanationText [
+GtPlaygroundAndInspectorShow >> inspectorInterfaceExplanationText [
 	| text |
 	text := 'The inspector is made of several parts.
 The first is the ' asRopedText,
@@ -257,7 +257,7 @@ The Meta view offers a coder on the class of the object inside the inspector.' a
 ]
 
 { #category : #accessing }
-GtPlaygroundAndInspectorSlideshow >> inspectorInterfaceExplanationWithLinks [
+GtPlaygroundAndInspectorShow >> inspectorInterfaceExplanationWithLinks [
 	| inspectorElement headerTarget actionTargets spotterButtonTarget coderButtonTarget viewsTarget rawViewtarget metaViewTarget |
 	
 	inspectorElement := BlUseAsyncFeatures
@@ -320,7 +320,7 @@ GtPlaygroundAndInspectorSlideshow >> inspectorInterfaceExplanationWithLinks [
 ]
 
 { #category : #accessing }
-GtPlaygroundAndInspectorSlideshow >> inspectorMethodExplanationSlideFor: aSlide [
+GtPlaygroundAndInspectorShow >> inspectorMethodExplanationSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide textAndElement
 		priority: 10;
@@ -330,7 +330,7 @@ GtPlaygroundAndInspectorSlideshow >> inspectorMethodExplanationSlideFor: aSlide 
 ]
 
 { #category : #accessing }
-GtPlaygroundAndInspectorSlideshow >> inspectorMethodExplanationText [
+GtPlaygroundAndInspectorShow >> inspectorMethodExplanationText [
 	| text |
 	text := 'An inspector view is a method implemented in the class of the object that we want to visualize. This method is annotated with a specific pragma, namely ' asRopedText,
 ('gtView' asRopedText glamorousExplanationFor: #gtView),
@@ -350,7 +350,7 @@ GtPlaygroundAndInspectorSlideshow >> inspectorMethodExplanationText [
 ]
 
 { #category : #accessing }
-GtPlaygroundAndInspectorSlideshow >> inspectorMethodExplanationWithLinks [
+GtPlaygroundAndInspectorShow >> inspectorMethodExplanationWithLinks [
 	<gtExample>
 	| coderElement inspectorElement coderLabel inspectorLabel |
 	
@@ -375,7 +375,7 @@ GtPlaygroundAndInspectorSlideshow >> inspectorMethodExplanationWithLinks [
 ]
 
 { #category : #accessing }
-GtPlaygroundAndInspectorSlideshow >> inspectorWithExplanationLinks [
+GtPlaygroundAndInspectorShow >> inspectorWithExplanationLinks [
 	| resultInspectorContainer resultElement resultInspectorTree titleTab avatarLabel nameLabel phoneLabel itemsCollection |
 	
 	resultInspectorContainer := BlElement new
@@ -446,14 +446,14 @@ GtPlaygroundAndInspectorSlideshow >> inspectorWithExplanationLinks [
 ]
 
 { #category : #accessing }
-GtPlaygroundAndInspectorSlideshow >> methodCoderWithExplanationLinks [
+GtPlaygroundAndInspectorShow >> methodCoderWithExplanationLinks [
 	<gtExample>
 	| selectors coder coderViewModel coderElement |
 	
 		
 	selectors := GtSelectorExplanationLinkStyler new.
 	selectors addSelectors: #(gtView columnedList title: items:).
-	selectors addSelector: #column:icon: withIdentifier: #columns.
+	selectors addSelector: #column:icon:width: withIdentifier: #columns.
 	selectors addSelector: #column:text: withIdentifier: #columns.
 	
 	coder := GtPharoMethodCoder forMethod: GtABAddressBook >> #gtViewContactsOn:.
@@ -467,14 +467,14 @@ GtPlaygroundAndInspectorSlideshow >> methodCoderWithExplanationLinks [
 ]
 
 { #category : #accessing }
-GtPlaygroundAndInspectorSlideshow >> playgroundAndInspectorExplanationText [
+GtPlaygroundAndInspectorShow >> playgroundAndInspectorExplanationText [
 	^ 'Playground and inspector are the core tools that enable live exploration. Using the playground you can easily write and run different snippets of code and then visualize their result using the inspector.' asRopedText
 		glamorousRegularFont;
 		fontSize: 20.
 ]
 
 { #category : #accessing }
-GtPlaygroundAndInspectorSlideshow >> playgroundAndInspectorMashExample [
+GtPlaygroundAndInspectorShow >> playgroundAndInspectorMashExample [
 	<gtExample>
 	^ (GtMashExampleLiveSlide new
 		leftElement: 
@@ -500,7 +500,7 @@ GtPlaygroundAndInspectorSlideshow >> playgroundAndInspectorMashExample [
 ]
 
 { #category : #accessing }
-GtPlaygroundAndInspectorSlideshow >> playgroundAndInspectorMashExampleSlideFor: aSlide [
+GtPlaygroundAndInspectorShow >> playgroundAndInspectorMashExampleSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide textAndElement
 		priority: 5;
@@ -510,7 +510,7 @@ GtPlaygroundAndInspectorSlideshow >> playgroundAndInspectorMashExampleSlideFor: 
 ]
 
 { #category : #accessing }
-GtPlaygroundAndInspectorSlideshow >> playgroundInterfaceExplanationSlideFor: aSlide [
+GtPlaygroundAndInspectorShow >> playgroundInterfaceExplanationSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide textAndElement
 		priority: 6;
@@ -520,7 +520,7 @@ GtPlaygroundAndInspectorSlideshow >> playgroundInterfaceExplanationSlideFor: aSl
 ]
 
 { #category : #accessing }
-GtPlaygroundAndInspectorSlideshow >> playgroundInterfaceExplanationText [
+GtPlaygroundAndInspectorShow >> playgroundInterfaceExplanationText [
 	| text |
 	text := 'In the playground you can have multiple ' asRopedText,
 ('snippets' asRopedText glamorousExplanationFor: #snippets),
@@ -548,7 +548,7 @@ Finally, if you click on the ' asRopedText,
 ]
 
 { #category : #accessing }
-GtPlaygroundAndInspectorSlideshow >> playgroundInterfaceExplanationWithLinks [
+GtPlaygroundAndInspectorShow >> playgroundInterfaceExplanationWithLinks [
 	<gtExample>
 	| playgroundElement aScripter snippetTargets plusButtonTargets pharoButtonTarget closeButtonTargets evaluateButtonTargets inspectButtonTargets debugButtonTargets searchButtonTarget |
 	
@@ -596,7 +596,7 @@ GtPlaygroundAndInspectorSlideshow >> playgroundInterfaceExplanationWithLinks [
 ]
 
 { #category : #accessing }
-GtPlaygroundAndInspectorSlideshow >> slideshowLinkSlideFor: aSlide [
+GtPlaygroundAndInspectorShow >> slideshowLinkSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide slideshow
 		priority: 11;
@@ -605,17 +605,22 @@ GtPlaygroundAndInspectorSlideshow >> slideshowLinkSlideFor: aSlide [
 ]
 
 { #category : #accessing }
-GtPlaygroundAndInspectorSlideshow >> titleSlideFor: aSlide [
+GtPlaygroundAndInspectorShow >> titleSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide title
 		priority: 1;
-		titleWithFormat: ('Playground and Inspector' asRopedText
-			fontSize: 70;
+		titleWithFormat: ('Playground & Inspector' asRopedText
+			fontSize: 50;
+			bold;
+			glamorousRegularFont);
+		subtitleWithFormat: ('tool' asRopedText
+			fontSize: 40;
+			thin;
 			glamorousRegularFont).
 ]
 
 { #category : #accessing }
-GtPlaygroundAndInspectorSlideshow >> yellowTargetCircleWithExplanationModel: aModel [
+GtPlaygroundAndInspectorShow >> yellowTargetCircleWithExplanationModel: aModel [
 	^ BrButton new
 				constraintsDo: [ :c | c ignoreByLayout ];
 				size: 0 @ 0;

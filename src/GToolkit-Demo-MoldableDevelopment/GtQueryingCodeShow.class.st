@@ -1,11 +1,11 @@
 Class {
-	#name : #GtQueries,
+	#name : #GtQueryingCodeShow,
 	#superclass : #Object,
 	#category : #'GToolkit-Demo-MoldableDevelopment'
 }
 
 { #category : #accessing }
-GtQueries >> binaryFiltersTitleSlideFor: aSlide [
+GtQueryingCodeShow >> binaryFiltersTitleSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide title
 		priority: 18;
@@ -15,7 +15,7 @@ GtQueries >> binaryFiltersTitleSlideFor: aSlide [
 ]
 
 { #category : #accessing }
-GtQueries >> classFiltersExampleSlideFor: aSlide [
+GtQueryingCodeShow >> classFiltersExampleSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide labelAndElement
 		priority: 29;
@@ -33,7 +33,7 @@ filter := GtSearchTestClassesFilter new.'};
 ]
 
 { #category : #accessing }
-GtQueries >> classFiltersTitleSlideFor: aSlide [
+GtQueryingCodeShow >> classFiltersTitleSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide title
 		priority: 28;
@@ -43,7 +43,7 @@ GtQueries >> classFiltersTitleSlideFor: aSlide [
 ]
 
 { #category : #accessing }
-GtQueries >> classesAndPackagesFiltersIntroductionSlideFor: aSlide [
+GtQueryingCodeShow >> classesAndPackagesFiltersIntroductionSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide text
 		priority: 25;
@@ -52,8 +52,8 @@ GtQueries >> classesAndPackagesFiltersIntroductionSlideFor: aSlide [
 			fontSize: 20).
 ]
 
-{ #category : #'as yet unclassified' }
-GtQueries >> explanationTextOnPragmaAndReferenceExampleResult [
+{ #category : #examples }
+GtQueryingCodeShow >> explanationTextOnPragmaAndReferenceExampleResult [
 	| text |
 	
 	text := 'Executing the query opens an ' asRopedText,
@@ -72,7 +72,7 @@ The filter instance knows how to present itself through a ' asRopedText,
 ]
 
 { #category : #accessing }
-GtQueries >> filtersCategoriesIntroductionSlideFor: aSlide [
+GtQueryingCodeShow >> filtersCategoriesIntroductionSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide text
 		priority: 12;
@@ -82,7 +82,7 @@ GtQueries >> filtersCategoriesIntroductionSlideFor: aSlide [
 ]
 
 { #category : #accessing }
-GtQueries >> filtersCompositionExampleSlideFor: aSlide [
+GtQueryingCodeShow >> filtersCompositionExampleSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide labelAndElement
 		priority: 9;
@@ -93,7 +93,7 @@ GtQueries >> filtersCompositionExampleSlideFor: aSlide [
 ]
 
 { #category : #accessing }
-GtQueries >> filtersCompositionIntroductionSlideFor: aSlide [
+GtQueryingCodeShow >> filtersCompositionIntroductionSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide text
 		priority: 8;
@@ -103,7 +103,7 @@ GtQueries >> filtersCompositionIntroductionSlideFor: aSlide [
 ]
 
 { #category : #accessing }
-GtQueries >> filtersTitleSlideFor: aSlide [
+GtQueryingCodeShow >> filtersTitleSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide title
 		priority: 10;
@@ -112,8 +112,8 @@ GtQueries >> filtersTitleSlideFor: aSlide [
 			glamorousRegularFont).
 ]
 
-{ #category : #'api - instantiation' }
-GtQueries >> filtersTreeExample [
+{ #category : #examples }
+GtQueryingCodeShow >> filtersTreeExample [
 	<gtExample>
 	| filtersTreeElement |
 	filtersTreeElement := (GtPhlowView empty composite
@@ -130,7 +130,7 @@ GtQueries >> filtersTreeExample [
 ]
 
 { #category : #accessing }
-GtQueries >> filtersTreeExampleSlideFor: aSlide [
+GtQueryingCodeShow >> filtersTreeExampleSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide labelAndElement
 		priority: 11;
@@ -138,8 +138,8 @@ GtQueries >> filtersTreeExampleSlideFor: aSlide [
 		element: [ self filtersTreeExample ].
 ]
 
-{ #category : #'as yet unclassified' }
-GtQueries >> inspectorResultOnPragmaAndReferenceExample [
+{ #category : #examples }
+GtQueryingCodeShow >> inspectorResultOnPragmaAndReferenceExample [
 	<gtExample>
 	| inspectorContainer subject inspectorHeader inspectorView inspectorLabel verticalContainer |
 	
@@ -199,7 +199,7 @@ GtQueries >> inspectorResultOnPragmaAndReferenceExample [
 ]
 
 { #category : #accessing }
-GtQueries >> intersectionFilterExampleSlideFor: aSlide [
+GtQueryingCodeShow >> intersectionFilterExampleSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide labelAndElement
 		priority: 19;
@@ -212,7 +212,7 @@ intersection := filter1 & filter2.'};
 ]
 
 { #category : #accessing }
-GtQueries >> introductionSlideFor: aSlide [
+GtQueryingCodeShow >> introductionSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide text
 		priority: 5;
@@ -222,7 +222,7 @@ GtQueries >> introductionSlideFor: aSlide [
 ]
 
 { #category : #accessing }
-GtQueries >> methodFiltersExampleSlideFor: aSlide [
+GtQueryingCodeShow >> methodFiltersExampleSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide labelAndElement
 		priority: 15;
@@ -243,7 +243,7 @@ GtQueries >> methodFiltersExampleSlideFor: aSlide [
 ]
 
 { #category : #accessing }
-GtQueries >> methodFiltersExplanationSlideFor: aSlide [
+GtQueryingCodeShow >> methodFiltersExplanationSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide text
 		priority: 14;
@@ -253,7 +253,7 @@ GtQueries >> methodFiltersExplanationSlideFor: aSlide [
 ]
 
 { #category : #accessing }
-GtQueries >> methodFiltersForClassesAndPackagesExampleSlideFor: aSlide [
+GtQueryingCodeShow >> methodFiltersForClassesAndPackagesExampleSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide labelAndElement
 		priority: 17;
@@ -267,7 +267,7 @@ GtQueries >> methodFiltersForClassesAndPackagesExampleSlideFor: aSlide [
 ]
 
 { #category : #accessing }
-GtQueries >> methodFiltersTitleSlideFor: aSlide [
+GtQueryingCodeShow >> methodFiltersTitleSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide title
 		priority: 13;
@@ -277,7 +277,7 @@ GtQueries >> methodFiltersTitleSlideFor: aSlide [
 ]
 
 { #category : #accessing }
-GtQueries >> negationFilterExampleSlideFor: aSlide [
+GtQueryingCodeShow >> negationFilterExampleSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide labelAndElement
 		priority: 22;
@@ -293,7 +293,7 @@ negationFilter := GtSearchNegationFilter new
 ]
 
 { #category : #accessing }
-GtQueries >> negationFilterTitleSlideFor: aSlide [
+GtQueryingCodeShow >> negationFilterTitleSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide title
 		priority: 21;
@@ -303,7 +303,7 @@ GtQueries >> negationFilterTitleSlideFor: aSlide [
 ]
 
 { #category : #accessing }
-GtQueries >> nullFilterExampleSlideFor: aSlide [
+GtQueryingCodeShow >> nullFilterExampleSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide labelAndElement
 		priority: 24;
@@ -318,7 +318,7 @@ filter size'.
 ]
 
 { #category : #accessing }
-GtQueries >> nullFilterTitleSlideFor: aSlide [
+GtQueryingCodeShow >> nullFilterTitleSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide title
 		priority: 23;
@@ -328,7 +328,7 @@ GtQueries >> nullFilterTitleSlideFor: aSlide [
 ]
 
 { #category : #accessing }
-GtQueries >> packageFiltersExampleSlideFor: aSlide [
+GtQueryingCodeShow >> packageFiltersExampleSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide labelAndElement
 		priority: 27;
@@ -342,7 +342,7 @@ filter := GtSearchDeprecatedPackagesFilter new.'};
 ]
 
 { #category : #accessing }
-GtQueries >> packageFiltersTitleSlideFor: aSlide [
+GtQueryingCodeShow >> packageFiltersTitleSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide title
 		priority: 26;
@@ -351,15 +351,15 @@ GtQueries >> packageFiltersTitleSlideFor: aSlide [
 			glamorousRegularFont).
 ]
 
-{ #category : #'as yet unclassified' }
-GtQueries >> pragmaAndReferenceQueryExample [
+{ #category : #examples }
+GtQueryingCodeShow >> pragmaAndReferenceQueryExample [
 	<gtExample>
 	
 	^ #gtView gtPragmas & GtPharoMethodCoder gtReferences.
 ]
 
 { #category : #accessing }
-GtQueries >> queryResultExplanationSlideFor: aSlide [
+GtQueryingCodeShow >> queryResultExplanationSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide textAndElement
 		priority: 7;
@@ -368,7 +368,7 @@ GtQueries >> queryResultExplanationSlideFor: aSlide [
 ]
 
 { #category : #accessing }
-GtQueries >> referenceFiltersExampleSlideFor: aSlide [
+GtQueryingCodeShow >> referenceFiltersExampleSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide labelAndElement
 		priority: 16;
@@ -386,7 +386,7 @@ GtSearchReferencesFilter gtReferences'.
 ]
 
 { #category : #accessing }
-GtQueries >> searchForGtViewAnnotationsExampleSlideFor: aSlide [
+GtQueryingCodeShow >> searchForGtViewAnnotationsExampleSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide labelAndElement
 		priority: 6;
@@ -397,7 +397,7 @@ GtQueries >> searchForGtViewAnnotationsExampleSlideFor: aSlide [
 ]
 
 { #category : #accessing }
-GtQueries >> slideshowLinkSlideFor: aSlide [
+GtQueryingCodeShow >> slideshowLinkSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide slideshow
 		priority: 2;
@@ -406,17 +406,22 @@ GtQueries >> slideshowLinkSlideFor: aSlide [
 ]
 
 { #category : #accessing }
-GtQueries >> titleSlideFor: aSlide [
+GtQueryingCodeShow >> titleSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide title
 		priority: 1;
-		titleWithFormat: ('Querying Code' asRopedText
-			fontSize: 70;
+		titleWithFormat: ('Querying Pharo code' asRopedText
+			fontSize: 50;
+			bold;
+			glamorousRegularFont);
+		subtitleWithFormat: ('use case' asRopedText
+			fontSize: 40;
+			thin;
 			glamorousRegularFont).
 ]
 
 { #category : #accessing }
-GtQueries >> unionFiltersExampleSlideFor: aSlide [
+GtQueryingCodeShow >> unionFiltersExampleSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide labelAndElement
 		priority: 20;
