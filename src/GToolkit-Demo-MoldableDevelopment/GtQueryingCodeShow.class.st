@@ -392,7 +392,7 @@ GtQueryingCodeShow >> searchForGtViewAnnotationsExampleSlideFor: aSlide [
 		priority: 6;
 		newText: 'Let''s start with an example: a search for all methods that are annoted with <gtView> and reference the GtMethodCoder class';
 		element: [GtPlaygroundLiveSlide new
-			snippets: {'#gtView gtPragmas & GtMethodCoder gtReferences'};
+			snippets: {'#gtView gtPragmas & GtPharoMethodCoder gtReferences'};
 			asElement].
 ]
 
