@@ -544,6 +544,15 @@ GtTour >> moldableCodingTitleSlideFor: aSlide [
 		newText: 'The moldability principle applies through the whole environment. Including to how we write code.'.
 ]
 
+{ #category : #slides }
+GtTour >> moldableDevelopmentSlideFor: aSlide [
+	<gtSlide>
+	^ aSlide slideshow
+		priority: 37;
+		text: ('Want to learn more about moldable development? Follow the show below.');
+		slideshow: [ GtLiveShow createWithArrowsVisible: GtMoldableDevelopmentSlideshow new ] withTitle: 'Moldable Development'.
+]
+
 { #category : #accessing }
 GtTour >> moldableSearchTitleSlideFor: aSlide [
 	<gtSlide>
