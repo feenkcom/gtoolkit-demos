@@ -14,7 +14,7 @@ GtMoldableDevelopmentSlideshow >> dailyAssessmentSlideFor: aSlide [
 ]
 
 { #category : #slides }
-GtMoldableDevelopmentSlideshow >> slide2For: aSlide [
+GtMoldableDevelopmentSlideshow >> fiftyPercent1For: aSlide [
 	<gtSlide>
 	^ aSlide textAndElement
 		elementWeight: 0.70;
