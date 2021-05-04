@@ -27,7 +27,7 @@ GtTour >> classCommentAsLiveDocumentExampleSlideFor: aSlide [
 GtTour >> coderExplanationSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide textAndElement
-		priority: 17;
+		priority: 21;
 		newTextWithFormat: self coderExplanationWithLinksText;
 		elementWeight: 0.6;
 		element: [ self coderExplanationWithLinks ].
@@ -215,7 +215,7 @@ When maximized, Coder also offers a ' asRopedText,
 GtTour >> coderSlideshowLinkSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide slideshow
-		priority: 18;
+		priority: 22;
 		textWithFormat: 'Want to learn more about the Coder? Follow the show below' asRopedText glamorousRegularFont;
 		slideshow: [ GtLiveShow createWithArrowsVisible: GtCoderSlideshow new ] withTitle: 'Coder Slideshow'.
 ]
@@ -251,11 +251,12 @@ GtTour >> coderWithComment [
 GtTour >> composedQueryExampleSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide labelAndElement
-		priority: 21;
+		priority: 18;
 		element: [ (GtPlaygroundLiveSlide new
 			snippets: {'#gtView gtPragmas & #list gtReferences'})
 			create ];
-		newFadedText: 'Now, try with this composed query. Notice the highlighting'.
+		newFadedText: 'A query is but regular code. Inspecting the result of a query shows a filter object that offers a view through which we can browse code.';
+		newFadedText: 'Just like that, we molded ourselves a query browser. Now, try with this composed query. Notice the highlighting'.
 ]
 
 { #category : #accessing }
@@ -448,28 +449,28 @@ BlElement new
 				]
 ]
 
-{ #category : #accessing }
+{ #category : #slides }
 GtTour >> graphicalStackFirstExampleSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide labelAndElement
-		priority: 33;
+		priority: 34;
 		element: [ self visualizationElement ];
 		newFadedText: 'Visualization is supported directly by the graphical stack.'.
 ]
 
-{ #category : #accessing }
+{ #category : #slides }
 GtTour >> graphicalStackIntroductionSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide text
-		priority: 32;
+		priority: 33;
 		newText: 'The graphical stack is worth taking a look at as well. It features the property that it renders everything in a single tree.'.
 ]
 
-{ #category : #accessing }
+{ #category : #slides }
 GtTour >> graphicalStackSecondExampleSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide labelAndElement
-		priority: 35;
+		priority: 36;
 		element: [ self treemapWithViewsAndExamples ];
 		newFadedText: 'The need for moldability is pervasive.';
 		newFadedText: 'The visualization below shows a treemap of the classes and packages from the current image.';
@@ -492,15 +493,6 @@ GtTour >> inspectorExplanationSlideFor: aSlide [
 			addChild: (GtPager 
 				createWrappedOn: (GtExplainerExamples>>#inspectorContainerElement) gtExampleValue) maximized ];
 		elementWeight: 0.6.
-]
-
-{ #category : #accessing }
-GtTour >> inspectorViewsSlideshowLinkSlideFor: aSlide [
-	<gtSlide>
-	^ aSlide slideshow
-		priority: 13;
-		text: ('Want to learn more about inspector views? Follow the show below.');
-		slideshow: [ GtLiveShow createWithArrowsVisible: GtInspectorViews new ] withTitle: 'Inspector views'.
 ]
 
 { #category : #accessing }
@@ -547,23 +539,17 @@ GtTour >> liveProgrammingIntroductionSlideFor: aSlide [
 { #category : #accessing }
 GtTour >> moldableCodingTitleSlideFor: aSlide [
 	<gtSlide>
-	^ aSlide title
-		priority: 16;
-		titleWithFormat:
-			('moldable coding' asRopedText
-				fontSize: 50;
-				glamorousRegularFont).
+	^ aSlide text
+		priority: 20;
+		newText: 'The moldability principle applies through the whole environment. Including to how we write code.'.
 ]
 
 { #category : #accessing }
 GtTour >> moldableSearchTitleSlideFor: aSlide [
 	<gtSlide>
-	^ aSlide title
+	^ aSlide text
 		priority: 23;
-		titleWithFormat:
-			('moldable search' asRopedText
-				fontSize: 50;
-				glamorousRegularFont).
+		newText: 'Search is moldable, too. The tool that deals with it is called Spotter.'.
 ]
 
 { #category : #accessing }
@@ -578,11 +564,11 @@ GtTour >> multipleViewsForOneObjectExampleSlideFor: aSlide [
 		elementWeight: 0.5.
 ]
 
-{ #category : #accessing }
+{ #category : #slides }
 GtTour >> oneRenderingTreeSlideshowLinkSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide slideshow
-		priority: 34;
+		priority: 35;
 		text: ('Want to dive deeper into the rendering stack? Follow the show below.');
 		slideshow: [ GtLiveShow createWithArrowsVisible: GtOneRenderingTree new ] withTitle: 'One rendering tree'.
 ]
@@ -628,6 +614,94 @@ GtTour >> overviewElement [
 			margin: (BlInsets top: 100 left: 10 bottom: 10 right: 10); background: (Color white); aptitude: BrShadowAptitude).
 	
 	^ container asScalableElement 
+]
+
+{ #category : #accessing }
+GtTour >> parseCSharp [
+	<gtExample>
+	<noTest>
+	"Parse C#"
+	| csharp |
+	csharp := ZnClient new 
+		url: 'https://raw.githubusercontent.com/microsoft/calculator/66ad328d0018c360c1a0dc766f994c7fdb7d4a3f/src/CalculatorUITestFramework/MemoryPanel.cs';
+		get.
+	CSharpParser parse: csharp
+]
+
+{ #category : #accessing }
+GtTour >> parseClojure [
+	<gtExample>
+	<noTest>
+	"Parse Clojure"
+	| clojure |
+	clojure := ZnClient new 
+		url: 'https://raw.githubusercontent.com/clojure/clojure/master/src/clj/clojure/main.clj';
+		get.
+	ClojureParser parse: clojure.
+]
+
+{ #category : #accessing }
+GtTour >> parseJSX [
+	<gtExample>
+	<noTest>
+	"Parse JSX"
+	| js |
+	js := ZnClient new 
+		url: 'https://raw.githubusercontent.com/zooniverse/mobile/a0a7fe122790fc47d8d2c5931a084bcc52518e4e/src/components/Button.js';
+		get.
+	JSXParser parse: js
+]
+
+{ #category : #accessing }
+GtTour >> parseJava [
+	<gtExample>
+	<noTest>
+	"Parse Java"
+	| java |
+	java := ZnClient new 
+		url: 'https://raw.githubusercontent.com/spring-projects/spring-framework/b2bcb0f93ad04a6ddc729a487f9346defa6c39d6/spring-context/src/main/java/org/springframework/format/datetime/DateFormatter.java';
+		get.
+	JavaParser parse: java
+]
+
+{ #category : #accessing }
+GtTour >> parseJavaScript [
+	<gtExample>
+	<noTest>
+	"Parse JavaScript"
+	| js |
+	js := ZnClient new 
+		url: 'https://raw.githubusercontent.com/zooniverse/mobile/a0a7fe122790fc47d8d2c5931a084bcc52518e4e/src/utils/workflow-utils.js';
+		get.
+	JSParser parse: js
+]
+
+{ #category : #slides }
+GtTour >> parseLanguagesSlideFor: aSlide [
+	<gtSlide>
+	^ aSlide labelAndElement
+		priority: 32;
+		newFadedText: ('Glamorous Toolkit comes with multiple parsers. Play with a few below.');
+		element: [
+			GtPlaygroundLiveSlide new 
+				newSnippetFromMethod: self class>> #parseJavaScript;
+				newSnippetFromMethod: self class>> #parseJSX;
+				newSnippetFromMethod: self class>> #parsePython;
+				newSnippetFromMethod: self class>> #parseClojure;
+				newSnippetFromMethod: self class>> #parseJava;
+				newSnippetFromMethod: self class>> #parseCSharp]
+]
+
+{ #category : #accessing }
+GtTour >> parsePython [
+	<gtExample>
+	<noTest>
+	"Parse Python"
+	| python |
+	python := ZnClient new
+		url: 'https://raw.githubusercontent.com/tensorflow/tensorflow/master/tensorflow/python/platform/app.py';
+		get.
+	PythonParser2 parse: python.
 ]
 
 { #category : #accessing }
@@ -767,16 +841,16 @@ GtTour >> playgroundSlideshowLinkSlideFor: aSlide [
 GtTour >> queryExampleSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide labelAndElement
-		priority: 20;
+		priority: 17;
 		element: [ (GtPlaygroundLiveSlide new snippets: {'#gtView gtPragmas'}) create ];
-		newFadedText: 'Inspect the result of this query. Expand the methods'.
+		newFadedText: 'Here is a basic query that searches for all methods that define an inspector extension. Inspect the result of this query. What do you see?'.
 ]
 
 { #category : #accessing }
 GtTour >> querySlideshowLinkSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide slideshow
-		priority: 22;
+		priority: 19;
 		textWithFormat: ('To learn more about queries follow the show below.' asRopedText glamorousRegularFont);
 		slideshow: [ GtLiveShow createWithArrowsVisible: GtQueryingCodeShow new ] withTitle: 'Querying Code'.
 ]
@@ -784,12 +858,10 @@ GtTour >> querySlideshowLinkSlideFor: aSlide [
 { #category : #accessing }
 GtTour >> queryTitleSlideFor: aSlide [
 	<gtSlide>
-	^ aSlide title
-		priority: 19;
-		titleWithFormat:
-			('querying' asRopedText
-				fontSize: 50;
-				glamorousRegularFont)
+	^ aSlide text
+		priority: 16;
+		newText: 'Ok, we have inspectors that can be molded to show objects in many ways. And we have a playground from which to start the conversation with our objects.';
+		newText: 'What can we do with these? Many things. One of them is querying code.'.
 ]
 
 { #category : #accessing }
