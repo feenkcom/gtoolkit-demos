@@ -8,5 +8,6 @@ Class {
 
 { #category : #accessing }
 GhRepos >> items [
-	^ rawData collect: [ :each | GhRepo new rawData: each ]
+	^ (rawData collect: [ :each | GhRepo new rawData: each ])
+		asSortedCollection: [:a :b | a name < b name]
 ]
