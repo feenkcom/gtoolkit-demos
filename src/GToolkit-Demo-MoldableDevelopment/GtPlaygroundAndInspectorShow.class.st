@@ -21,9 +21,8 @@ GtPlaygroundAndInspectorShow >> createClassFromPlaygroundExplanationSlideFor: aS
 					(BlTaskAction new
 						action: [
 							button := playgroundElement
-								allChildrenBreadthFirstDetect: [:aChild |
-									(aChild isKindOf: BrTextEditorSegmentElement)]
-								ifFound: [:aChild | aChild childAt: 2].
+								allChildrenBreadthFirstDetect: [:aChild | aChild isKindOf: GtFixItButton ]
+								ifFound: [:aChild | aChild ].
 							BlSpace simulateClickOn: button.
 							BlSpace simulateClickOn: button.
 							dropDown := playgroundElement space root children first childAt: 2.
@@ -60,28 +59,18 @@ GtPlaygroundAndInspectorShow >> createMethodFromPlaygroundExplanationSlideFor: a
 				playgroundElement enqueueTask:
 					(BlTaskAction new
 						action: [
-							button := playgroundElement
-								allChildrenBreadthFirstDetect: [:aChild |
-									(aChild isKindOf: BrTextEditorSegmentElement)]
-								ifFound: [:aChild | aChild childAt: 7].
+							button := (playgroundElement
+								allChildrenBreadthFirstSelect: [:aChild | 
+									aChild isKindOf: BrTriangle ]) last.
 							BlSpace simulateClickOn: button.
-							BlSpace simulateClickOn: button.
-							dropDown := playgroundElement space root children first childAt: 2.
-							selection := dropDown
-								allChildrenBreadthFirstDetect: [:aChild |
-									aChild isKindOf: BrInfiniteListElement]
-								ifFound: [:aChild | (aChild childAt: 1) childAt: 1].
-							BlSpace simulateClickOn: selection.
-							BlSpace simulateClickOn: selection.
-							coderTarget := playgroundElement
-								allChildrenBreadthFirstDetect: [:aChild |
-									aChild isKindOf: BrFrame]
-								ifFound: [:aChild | aChild].
+							coderTarget := playgroundElement 
+								allChildrenBreadthFirstDetect: [:aChild | aChild isKindOf: GtExpandableMethodCoderElement ]
+								ifFound: [:aChild | aChild ].
 							coderTarget
 								addChild:
 									((self yellowTargetCircleWithExplanationModel: #coder)
 										relocate:
-											(50 @ 50))])].
+											(5 @ 5))])].
 ]
 
 { #category : #accessing }
@@ -158,7 +147,7 @@ GtPlaygroundAndInspectorShow >> fixItAdornmentForMethodExplanation [
 	| playgroundElement defaultPlaygroundElement aScripter adornmentButtonTarget |
 	
 	defaultPlaygroundElement := BlUseAsyncFeatures
-		disableDuring: [(GtPlaygroundLiveSlide new snippets: {'GtDummyExamplesOnInstanceSide new inexistentMethod.'}) asElement].
+		disableDuring: [(GtPlaygroundLiveSlide new snippets: {'GtDummyExamplesOnInstanceSide new inexistentExampleMethod.'}) asElement].
 	playgroundElement := BlUseAsyncFeatures
 		disableDuring: [(GtPlaygroundLiveSlide new snippets: {'GtDummyExamplesOnInstanceSide new exampleMethod.'}) asElement].
 		
