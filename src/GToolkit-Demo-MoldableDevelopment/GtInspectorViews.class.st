@@ -250,15 +250,15 @@ GtInspectorViews >> columnedTreeViewExplanationWithLinksText [
 After we give it a ' asRopedText,
 ('title' asRopedText glamorousExplanationFor: #title:),
 ', in the ' asRopedText,
-('items: block' asRopedText glamorousExplanationFor: #items:),
-' we specify the roots of the tree. Then, to each ' asRopedText,
+('items:' asRopedText glamorousExplanationFor: #items:),
+' block we specify the roots of the tree. Then, to each ' asRopedText,
 ('column' asRopedText glamorousExplanationFor:#column),
 ' we give a ' asRopedText,
 ('name' asRopedText glamorousExplanationFor: #name),
 ' and the items it contains.
 Lastly, in the ' asRopedText,
-('children: block' asRopedText glamorousExplanationFor: #children:),
-' we tell each parent the children it has.' asRopedText.
+('children:' asRopedText glamorousExplanationFor: #children:),
+' block we tell each parent the children it has.' asRopedText.
 	
 	^ text
 		glamorousRegularFont;
@@ -610,7 +610,7 @@ GtInspectorViews >> mondrianViewExplanationWithLinks [
 	resultExplanationLabel := self explanationLabelWithText: 'Circular view result'.
 	
 	selectors := GtSelectorExplanationLinkStyler new.
-	selectors addSelectors: #(mondrian painting: nodes layout circle contacts avatar shape title:).
+	selectors addSelectors: #(mondrian painting: nodes layout circle contacts avatar stencil: title:).
 	selectors addSelector: #allContacts withIdentifier: #contacts.
 	
 	coder := GtPharoMethodCoder new forMethod: (GtABAddressBook>>#gtViewContactsIconsCircularOn:).
@@ -663,7 +663,7 @@ After the ' asRopedText,
 ' are the ' asRopedText,
 ('contacts' asRopedText glamorousExplanationFor: #contacts),
 ' and each of them has a ' asRopedText,
-('shape' asRopedText glamorousExplanationFor: #shape:),
+('stencil' asRopedText glamorousExplanationFor: #stencil:),
 ' represented by their ' asRopedText,
 ('avatar' asRopedText glamorousExplanationFor: #avatar),
 '.

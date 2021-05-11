@@ -198,7 +198,7 @@ GtABAddressBook >> gtViewContactsIconsCircularOn: aView [
 		priority: 50;
 		painting: [ :view |
 			view nodes
-				shape: [ :aContact | 
+				stencil: [ :aContact | 
 					(aContact avatar scaledToSize: 124@124) asElement ];
 				with: self contacts.
 			view layout circle

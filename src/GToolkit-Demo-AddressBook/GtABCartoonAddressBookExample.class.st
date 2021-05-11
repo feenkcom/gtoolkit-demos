@@ -19,7 +19,7 @@ GtABCartoonAddressBookExample >> bugsBunnyContact [
 		description: self bugsBunnyDescription;
 		avatar: (self readAvatarWithId: 'bugs-bunny');
 		addTelephone: (GtABTelephone new 
-				prefix: '1202'; 
+				prefix: '+1202'; 
 				number: '5550146');
 		addAddress: (GtABAddress new
 			city: 'Universal City';
@@ -70,7 +70,7 @@ GtABCartoonAddressBookExample >> daffyDuckContact [
 		description: self daffyDuckDescription;
 		avatar: (self readAvatarWithId: 'daffy-duck');
 		addTelephone: (GtABTelephone new 
-			prefix: '1202'; 
+			prefix: '+1202'; 
 			number: '5550151');
 		addAddress: (GtABAddress new
 			city: 'Universal City';
@@ -110,7 +110,7 @@ GtABCartoonAddressBookExample >> porkyPigContact [
 		description: self porkyPigDescription;
 		avatar: (self readAvatarWithId: 'porky-pig');
 		addTelephone: (GtABTelephone new 
-			prefix: '1202'; 
+			prefix: '+1202'; 
 			number: '5550138');
 		addAddress: (GtABAddress new
 			city: 'Universal City';
@@ -153,7 +153,7 @@ GtABCartoonAddressBookExample >> roadRunnerContact [
 		description: self roadRunnerDescription;
 		avatar: (self readAvatarWithId: 'road-runner');
 		addTelephone: (GtABTelephone new 
-			prefix: '1202'; 
+			prefix: '+1202'; 
 			number: '5550110');
 		addAddress: (GtABAddress new
 			city: 'Burbank';
@@ -184,7 +184,7 @@ GtABCartoonAddressBookExample >> wileECoyoteContact [
 		description: self wileECoyoteDescription;
 		avatar: (self readAvatarWithId: 'wile-e-coyote');
 		addTelephone: (GtABTelephone new 
-			prefix: '1202'; 
+			prefix: '+1202'; 
 			number: '5550171');
 		addAddress: (GtABAddress new
 			city: 'Burbank';
@@ -215,7 +215,7 @@ GtABCartoonAddressBookExample >> woodyWoodpeckerContact [
 		description: self woodyWoodpeckerDescription;
 		avatar: (self readAvatarWithId: 'woody-woodpecker');
 		addTelephone: (GtABTelephone new 
-			prefix: '1202'; 
+			prefix: '+1202'; 
 			number: '5550112');
 		addAddress: (GtABAddress new
 			city: 'Universal City';
