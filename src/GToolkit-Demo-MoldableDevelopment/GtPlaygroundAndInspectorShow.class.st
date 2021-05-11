@@ -23,7 +23,6 @@ GtPlaygroundAndInspectorShow >> createClassFromPlaygroundExplanationSlideFor: aS
 							button := playgroundElement
 								allChildrenBreadthFirstDetect: [:aChild | aChild isKindOf: GtFixItButton ]
 								ifFound: [:aChild | aChild ].
-							self halt.
 							BlSpace simulateClickOn: button.
 							BlSpace simulateClickOn: button.
 							dropDown := playgroundElement space root children first childAt: 2.
