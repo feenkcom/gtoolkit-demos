@@ -157,9 +157,9 @@ GtPlaygroundAndInspectorShow >> fixItAdornmentForMethodExplanation [
 	<gtExample>
 	| playgroundElement defaultPlaygroundElement aScripter adornmentButtonTarget |
 	
-	playgroundElement := BlUseAsyncFeatures
-		disableDuring: [(GtPlaygroundLiveSlide new snippets: {'GtDummyExamplesOnInstanceSide new exampleMethod.'}) asElement].
 	defaultPlaygroundElement := BlUseAsyncFeatures
+		disableDuring: [(GtPlaygroundLiveSlide new snippets: {'GtDummyExamplesOnInstanceSide new inexistentMethod.'}) asElement].
+	playgroundElement := BlUseAsyncFeatures
 		disableDuring: [(GtPlaygroundLiveSlide new snippets: {'GtDummyExamplesOnInstanceSide new exampleMethod.'}) asElement].
 		
 	aScripter := BlDevScripter new.
