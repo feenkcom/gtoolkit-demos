@@ -50,12 +50,11 @@ GtPlaygroundAndInspectorShow >> createMethodFromPlaygroundExplanationSlideFor: a
 	^ aSlide textAndElement
 		priority: 8;
 		newTextWithFormat: self fixItAdornmentForMethodExplanationText;
-		element: [ self fixItAdornmentForMethodExplanation ];
+		element: [ self fixItAdornmentForMethodExplanation ]";
 		onFirstAddToSceneGraphDo:
 			[:anElement |
-				| button playgroundElement dropDown selection coderTarget |
+				| button playgroundElement coderTarget |
 				playgroundElement := (anElement childAt: 2) childAt: 2.
-
 				playgroundElement enqueueTask:
 					(BlTaskAction new
 						action: [
@@ -70,7 +69,7 @@ GtPlaygroundAndInspectorShow >> createMethodFromPlaygroundExplanationSlideFor: a
 								addChild:
 									((self yellowTargetCircleWithExplanationModel: #coder)
 										relocate:
-											(5 @ 5))])].
+											(5 @ 5))])]."
 ]
 
 { #category : #accessing }
