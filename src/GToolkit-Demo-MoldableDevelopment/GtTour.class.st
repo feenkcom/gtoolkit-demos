@@ -103,67 +103,67 @@ GtTour >> coderExplanationWithLinks [
 	
 	packageHierarchyTarget
 		addChild:
-			(( self yellowTargetCircleWithExplanationModel: #packageHierarchy)
+			(( self yellowExplanationTargetCircleFor: #packageHierarchy)
 				relocate:
 					(2 @ 10)).
 	classHierarchyTarget
 		addChild:
-			(( self yellowTargetCircleWithExplanationModel: #classHierarchy)
+			(( self yellowExplanationTargetCircleFor: #classHierarchy)
 				relocate:
 					(2 @ 10)).
 	classNameTarget
 		addChild:
-			((self yellowTargetCircleWithExplanationModel: #className)
+			((self yellowExplanationTargetCircleFor: #className)
 				relocate:
 					(0 @ 18)).
 	methodTabTarget
 		addChild:
-			((self yellowTargetCircleWithExplanationModel: #methodTab)
+			((self yellowExplanationTargetCircleFor: #methodTab)
 				relocate:
 					(8 @ methodTabTarget extent y / 2)).
 	commentTabTarget
 		addChild:
-			((self yellowTargetCircleWithExplanationModel: #commentTab)
+			((self yellowExplanationTargetCircleFor: #commentTab)
 				relocate:
 					(8 @ commentTabTarget extent y / 2)).
 	referencesTab
 		addChild:
-			((self yellowTargetCircleWithExplanationModel: #referencesTab)
+			((self yellowExplanationTargetCircleFor: #referencesTab)
 				relocate:
 					(8 @ referencesTab extent y / 2)).
 	expandClassTarget
 		addChild:
-			((self yellowTargetCircleWithExplanationModel: #expandClassButton)
+			((self yellowExplanationTargetCircleFor: #expandClassButton)
 				relocate:
 					(10 @ expandClassTarget extent y / 2)).
 	expandMethodTarget
 		addChild:
-			((self yellowTargetCircleWithExplanationModel: #expandMethodButton)
+			((self yellowExplanationTargetCircleFor: #expandMethodButton)
 				relocate:
 					(12 @ 8)).
 	deleteButtonTarget
 		addChild:
-			((self yellowTargetCircleWithExplanationModel: #deleteClassButton)
+			((self yellowExplanationTargetCircleFor: #deleteClassButton)
 				relocate:
 					(12 @ deleteButtonTarget extent y / 2)).
 	filterMethodsButtonTarget
 		addChild:
-			((self yellowTargetCircleWithExplanationModel: #filterButton)
+			((self yellowExplanationTargetCircleFor: #filterButton)
 				relocate:
 					(5 @ filterMethodsButtonTarget extent y / 2)).			
 	addMethodButtonTarget
 		addChild:
-			((self yellowTargetCircleWithExplanationModel: #addMethodButton)
+			((self yellowExplanationTargetCircleFor: #addMethodButton)
 				relocate:
 					(5 @ addMethodButtonTarget extent y / 2)).
 	searchButtonTarget
 		addChild:
-			((self yellowTargetCircleWithExplanationModel: #searchButton)
+			((self yellowExplanationTargetCircleFor: #searchButton)
 				relocate:
 					(5 @ searchButtonTarget extent y / 2)).
 	addClassButtonTarget
 		addChild:
-			((self yellowTargetCircleWithExplanationModel: #addClassButton)
+			((self yellowExplanationTargetCircleFor: #addClassButton)
 				relocate:
 					(5 @ addClassButtonTarget extent y / 2)).
 	
@@ -723,92 +723,62 @@ GtTour >> playgroundExplanationSlideFor: aSlide [
 		element: [ self playgroundExplanationWithLinks ].
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #accessing }
 GtTour >> playgroundExplanationWithLinks [
 	<gtExample>
-	| container snippetsCollection playbook playgroundElement snippetElementsCollection inspectAllButton frameToolbarButtons evaluateButtons inspectButtons debugButtons newSnippetButtons |
-	
+	| container playgroundElement snippetElementsCollection frameToolbarButtons scripter |
 	container := BlElement new
-		constraintsDo: [ :c |
+		constraintsDo: [ :c | 
 			c vertical matchParent.
 			c horizontal matchParent ];
 		layout: BlLinearLayout horizontal;
 		margin: (BlInsets all: 5);
 		background: Color white;
 		aptitude: BrShadowAptitude.
-		
-	newSnippetButtons := OrderedCollection new.
-	evaluateButtons := OrderedCollection new.
-	inspectButtons := OrderedCollection new.
-	debugButtons := OrderedCollection new.
-	
-	snippetsCollection := { 'a := 5'.
-'a + 2' } asOrderedCollection.
-
-	playbook := GtPlayBook newWithCodeSnippetContent: snippetsCollection first.
-	snippetsCollection allButFirst do: [:el |
-		playbook pages first addSnippet: GtCoderSnippet new.
-		playbook pages last snippets last sourceCode: el].
-	playgroundElement := playbook asElement.
-	
-	playgroundElement forceLayout.
-	
-	snippetElementsCollection := playgroundElement
-		allChildrenBreadthFirstSelect: [ :aChild | 
-			aChild isKindOf: BrFrame ].
-	snippetElementsCollection do: [ :each |
-		newSnippetButtons add: (each children at: 2) ].
-	inspectAllButton := (playgroundElement
-		allChildrenBreadthFirstSelect: [:aChild | 
-			(aChild isKindOf: BrButton) and: [aChild parent isKindOf: BrToolbar]]) at: 2.
+	playgroundElement := GtPlayground newWithSnippets: {'a := 40' . 'a + 2'} asOrderedCollection.
+	scripter := BlDevScripter new.
+	scripter
+		substep: 'Initiate Playground'
+		do: [ :aStep | 
+			aStep set
+				label: 'Playground';
+				element: [ playgroundElement ].
+			aStep wait forEmptySpaceTaskQueue ].
+	scripter syncContinue.
+	playgroundElement := scripter elementWithoutParent.
+	playgroundElement
+		allChildrenBreadthFirstDo: [ :aChild | 
+			aChild id = (BlElementId named: #'snippet--add-new-button')
+				ifTrue: [ aChild
+						addChild:
+							((self yellowExplanationTargetCircleFor: #plusButton) relocate: 0 @ 5) ].
+			(aChild isKindOf: GtExpandableSourceCoderElement) ifTrue: [ aChild
+						addChild:
+							((self yellowExplanationTargetCircleFor: #snippets) relocate: 0 @ 5) ]. ].
 	frameToolbarButtons := playgroundElement
-		allChildrenBreadthFirstSelect: [:aChild | 
-			(aChild isKindOf: BrToolbar) 
-				and: [(aChild parent isKindOf: GtCoderActionsElement)
-					and: [aChild hasChildren]]].
-	frameToolbarButtons do: [ :each |
-		evaluateButtons add: (each children at: 1).
-		inspectButtons add: (each children at: 2).
-		debugButtons add: (each children at: 3) ].
-	
-	inspectAllButton
-		addChild:
-			((self yellowTargetCircleWithExplanationModel: #inspectAllButton)
-				relocate:
-					(2 @ 2)).
-	snippetElementsCollection do: [ :eachSnippet |
-		eachSnippet
-			addChild:
-				((self yellowTargetCircleWithExplanationModel: #snippets)
-					relocate:
-						(5 @ eachSnippet extent y / 2))].
-	newSnippetButtons do: [ :each |
-		each
-			addChild:
-				((self yellowTargetCircleWithExplanationModel: #plusButton)
-					relocate:
-						(10 @ each extent y / 2))].
-	evaluateButtons do: [ :eachEvaluateButton |
-		eachEvaluateButton parent
-			addChild:
-				((self yellowTargetCircleWithExplanationModel: #evaluateButton)
-					relocate:
-						(eachEvaluateButton position x @ eachEvaluateButton position y + 5))].
-	inspectButtons do: [ :eachInspectButton |
-		eachInspectButton parent
-			addChild:
-				((self yellowTargetCircleWithExplanationModel: #inspectButton)
-					relocate:
-						(eachInspectButton position x @ eachInspectButton position y + 5))].
-	debugButtons do: [ :eachDebugButton |
-		eachDebugButton parent
-			addChild:
-				((self yellowTargetCircleWithExplanationModel: #debugButton)
-					relocate:
-						(eachDebugButton position x @ eachDebugButton position y + 5))].
-				
-	^ container
-		addChild: (GtPager createWrappedOn: playgroundElement).
+		allChildrenBreadthFirstSelect: [ :aChild | 
+			(aChild isKindOf: BrToolbar)
+				and: [ (aChild parent isKindOf: GtCoderActionsElement)
+						and: [ aChild hasChildren ] ] ].
+	frameToolbarButtons
+		do: [ :each | 
+			(each children at: 1)
+				addChild:
+					((self yellowExplanationTargetCircleFor: #evaluateButton)
+						relocate: 0 @ 5).
+			(each children at: 2)
+				addChild:
+					((self yellowExplanationTargetCircleFor: #inspectButton)
+						relocate: 0 @ 5).
+			(each children at: 3)
+				addChild: ((self yellowExplanationTargetCircleFor: #debugButton) relocate: 0 @ 5) ].
+	"snippetElementsCollection
+		do: [ :eachSnippet | 
+			eachSnippet
+				addChild:
+					((self yellowExplanationTargetCircleFor: #snippets)
+						relocate: 5 @ eachSnippet extent y / 2) ]."
+	^ container addChild: (GtPager createWrappedOn: playgroundElement)
 ]
 
 { #category : #accessing }
@@ -1081,10 +1051,10 @@ GtTour >> visualizationElement [
 ]
 
 { #category : #utility }
-GtTour >> yellowTargetCircleWithExplanationModel: aModel [
+GtTour >> yellowExplanationTargetCircleFor: aModel [
 	^ BrButton new
 				constraintsDo: [ :c | c ignoreByLayout ];
-				size: 0 @ 0;
+				size: 1 @ 1;
 				elevation: (BlRelativeElevation elevation: 10);
 				geometry: BlCircle new;
 				aptitude: (GtExplainerTargetAptitude new explanationModel: aModel).

@@ -38,7 +38,7 @@ GtPlaygroundAndInspectorShow >> createClassFromPlaygroundExplanationSlideFor: aS
 							ifFound: [:aChild | aChild].
 						menuTarget
 							addChild:
-								((self yellowTargetCircleWithExplanationModel: #menu)
+								((self yellowExplanationTargetCircleFor: #menu)
 									relocate:
 										(50 @ 50))])].
 ]
@@ -112,7 +112,7 @@ GtPlaygroundAndInspectorShow >> fixItAdornmentForClassExplanation [
 		
 	adornmentButtonTarget
 		addChild:
-			((self yellowTargetCircleWithExplanationModel: #fixItAdornment)
+			((self yellowExplanationTargetCircleFor: #fixItAdornment)
 					relocate:
 						(10 @ adornmentButtonTarget extent y / 2)).
 		
@@ -179,7 +179,7 @@ GtPlaygroundAndInspectorShow >> fixItAdornmentForMethodExplanation [
 		
 	adornmentButtonTarget
 		addChild:
-			((self yellowTargetCircleWithExplanationModel: #adornment)
+			((self yellowExplanationTargetCircleFor: #adornment)
 					relocate:
 						(10 @ adornmentButtonTarget extent y / 2)).
 		
@@ -265,38 +265,38 @@ GtPlaygroundAndInspectorShow >> inspectorInterfaceExplanationWithLinks [
 	
 	headerTarget
 		addChild:
-			((self yellowTargetCircleWithExplanationModel: #header)
+			((self yellowExplanationTargetCircleFor: #header)
 				relocate:
 					(5 @ headerTarget extent y / 2)). 
 	actionTargets do: [:each |
 		each addChild:
-			((self yellowTargetCircleWithExplanationModel: #actions)
+			((self yellowExplanationTargetCircleFor: #actions)
 				relocate:
 					(5 @ each extent y / 2))].
 	spotterButtonTarget
 		addChild:
-			((self yellowTargetCircleWithExplanationModel: #spotterButton)
+			((self yellowExplanationTargetCircleFor: #spotterButton)
 				relocate:
 					(5 @ spotterButtonTarget extent y / 2)).
 	coderButtonTarget
 		addChild:
-			((self yellowTargetCircleWithExplanationModel: #coderButton)
+			((self yellowExplanationTargetCircleFor: #coderButton)
 				relocate:
 					(5 @ coderButtonTarget extent y / 2)).
 	viewsTarget allButFirstDo: [:each |
 		each
 			addChild:
-				((self yellowTargetCircleWithExplanationModel: #views)
+				((self yellowExplanationTargetCircleFor: #views)
 					relocate:
 						(5 @ each extent y / 2))].
 	rawViewtarget
 		addChild:
-			((self yellowTargetCircleWithExplanationModel: #rawView)
+			((self yellowExplanationTargetCircleFor: #rawView)
 				relocate:
 					(5 @ rawViewtarget extent y / 2)).
 	metaViewTarget
 		addChild:
-			((self yellowTargetCircleWithExplanationModel: #metaView)
+			((self yellowExplanationTargetCircleFor: #metaView)
 				relocate:
 					(5 @ metaViewTarget extent y / 2)).
 					
@@ -408,25 +408,25 @@ GtPlaygroundAndInspectorShow >> inspectorWithExplanationLinks [
 			
 	titleTab
 		addChild:
-			((self yellowTargetCircleWithExplanationModel: #title:)
+			((self yellowExplanationTargetCircleFor: #title:)
 				relocate: 10 @ titleTab extent y / 2).
 	avatarLabel
 		addChild:
-			((self yellowTargetCircleWithExplanationModel: #columns)
+			((self yellowExplanationTargetCircleFor: #columns)
 				relocate: 5 @ avatarLabel extent y / 2).
 	nameLabel
 		addChild:
-			((self yellowTargetCircleWithExplanationModel: #columns)
+			((self yellowExplanationTargetCircleFor: #columns)
 				relocate: 5 @ nameLabel extent y / 2).
 	phoneLabel
 		addChild:
-			((self yellowTargetCircleWithExplanationModel: #columns)
+			((self yellowExplanationTargetCircleFor: #columns)
 				relocate: 5 @ phoneLabel extent y / 2).
 	itemsCollection
 		do: [ :eachRow | 
 			eachRow
 				addChild:
-					((self yellowTargetCircleWithExplanationModel: #items:)
+					((self yellowExplanationTargetCircleFor: #items:)
 						relocate: 3 @ eachRow extent y / 2) ].
 
 	^ resultInspectorContainer
@@ -561,23 +561,23 @@ GtPlaygroundAndInspectorShow >> playgroundInterfaceExplanationWithLinks [
 	pharoButtonTarget := (playgroundElement query // GtSnippetElementId // BrButton @ (#label -> 'pharo')) anyOne.
 	
 	snippetTargets do: [ :eachSnippet |
-		eachSnippet addChild: ((self yellowTargetCircleWithExplanationModel: #snippets) relocate: (5 @ eachSnippet extent y / 2))].
+		eachSnippet addChild: ((self yellowExplanationTargetCircleFor: #snippets) relocate: (5 @ eachSnippet extent y / 2))].
 	plusButtonTargets do: [ :each |
-		each addChild: ((self yellowTargetCircleWithExplanationModel: #plusButton) relocate: (10 @ each extent y / 2))].
+		each addChild: ((self yellowExplanationTargetCircleFor: #plusButton) relocate: (10 @ each extent y / 2))].
 	closeButtonTargets do: [ :each |
-		each addChild: ((self yellowTargetCircleWithExplanationModel: #closeButton) relocate: (10 @ each extent y / 2))].
+		each addChild: ((self yellowExplanationTargetCircleFor: #closeButton) relocate: (10 @ each extent y / 2))].
 	evaluateButtonTargets do: [ :eachEvaluateButton |
-		eachEvaluateButton addChild: ((self yellowTargetCircleWithExplanationModel: #evaluateButton)
+		eachEvaluateButton addChild: ((self yellowExplanationTargetCircleFor: #evaluateButton)
 			relocate: (eachEvaluateButton position x @ eachEvaluateButton position y + 5))].
 	inspectButtonTargets do: [ :eachInspectButton |
-		eachInspectButton addChild: ((self yellowTargetCircleWithExplanationModel: #inspectButton)
+		eachInspectButton addChild: ((self yellowExplanationTargetCircleFor: #inspectButton)
 			relocate: (eachInspectButton position x @ eachInspectButton position y + 5))].
 	debugButtonTargets do: [ :eachDebugButton |
-		eachDebugButton addChild: ((self yellowTargetCircleWithExplanationModel: #debugButton)
+		eachDebugButton addChild: ((self yellowExplanationTargetCircleFor: #debugButton)
 			relocate: (eachDebugButton position x @ eachDebugButton position y + 5))].
-	searchButtonTarget addChild: ((self yellowTargetCircleWithExplanationModel: #searchButton)
+	searchButtonTarget addChild: ((self yellowExplanationTargetCircleFor: #searchButton)
 			relocate: (10 @ searchButtonTarget extent y / 2)).
-	pharoButtonTarget addChild: ((self yellowTargetCircleWithExplanationModel: #pharoButton)
+	pharoButtonTarget addChild: ((self yellowExplanationTargetCircleFor: #pharoButton)
 			relocate: (10 @ pharoButtonTarget extent y / 2)).
 
 	^ playgroundElement maximized.
@@ -608,7 +608,7 @@ GtPlaygroundAndInspectorShow >> titleSlideFor: aSlide [
 ]
 
 { #category : #accessing }
-GtPlaygroundAndInspectorShow >> yellowTargetCircleWithExplanationModel: aModel [
+GtPlaygroundAndInspectorShow >> yellowExplanationTargetCircleFor: aModel [
 	^ BrButton new
 				constraintsDo: [ :c | c ignoreByLayout ];
 				size: 0 @ 0;
