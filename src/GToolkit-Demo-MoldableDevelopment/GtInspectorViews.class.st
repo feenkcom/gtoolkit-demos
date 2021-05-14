@@ -78,25 +78,25 @@ GtInspectorViews >> columnedListViewExplanationWithLinks [
 	resultInspectorContainer addChild: resultElement.
 	titleTab
 		addChild:
-			((self yellowTargetCircleWithExplanationModel: #title:)
+			((self yellowExplanationTargetCircleFor: #title:)
 				relocate: 10 @ titleTab extent y / 2).
 	avatarLabel
 		addChild:
-			((self yellowTargetCircleWithExplanationModel: #columns)
+			((self yellowExplanationTargetCircleFor: #columns)
 				relocate: 5 @ avatarLabel extent y / 2).
 	nameLabel
 		addChild:
-			((self yellowTargetCircleWithExplanationModel: #columns)
+			((self yellowExplanationTargetCircleFor: #columns)
 				relocate: 5 @ nameLabel extent y / 2).
 	phoneLabel
 		addChild:
-			((self yellowTargetCircleWithExplanationModel: #columns)
+			((self yellowExplanationTargetCircleFor: #columns)
 				relocate: 5 @ phoneLabel extent y / 2).
 	avatarElementsCollection
 		do: [ :eachAvatar | 
 			eachAvatar parent
 				addChild:
-					((self yellowTargetCircleWithExplanationModel: #avatar)
+					((self yellowExplanationTargetCircleFor: #avatar)
 						relocate: 0 @ eachAvatar extent y / 2) ].
 					
 	listLabelsCollection
@@ -107,7 +107,7 @@ GtInspectorViews >> columnedListViewExplanationWithLinks [
 				ifFalse: [ #fullName ].
 			eachLabel
 				addChild:
-					((self yellowTargetCircleWithExplanationModel: modelName)
+					((self yellowExplanationTargetCircleFor: modelName)
 						relocate: -5 @ eachLabel extent y / 2) ].
 					
 	verticalContainer addChild: codeExplanationLabel.
@@ -213,22 +213,22 @@ GtInspectorViews >> columnedTreeViewExplanationWithLinks [
 	
 	titleTab
 		addChild:
-			((self yellowTargetCircleWithExplanationModel: #title:)
+			((self yellowExplanationTargetCircleFor: #title:)
 				relocate:
 					(10 @ titleTab extent y / 2)).
 	contactLabel
 		addChild:
-			((self yellowTargetCircleWithExplanationModel: #column)
+			((self yellowExplanationTargetCircleFor: #column)
 				relocate:
 					(5 @ contactLabel extent y / 2)).
 	cityLabel
 		addChild:
-			((self yellowTargetCircleWithExplanationModel: #column)
+			((self yellowExplanationTargetCircleFor: #column)
 				relocate:
 					(5 @ cityLabel extent y / 2)).
 	countryLabel
 		addChild:
-			((self yellowTargetCircleWithExplanationModel: #column)
+			((self yellowExplanationTargetCircleFor: #column)
 				relocate:
 					(5 @ countryLabel extent y / 2)).
 	
@@ -313,12 +313,12 @@ GtInspectorViews >> emptyViewExplanationWithLinks [
 	
 	inspectorHeader
 		addChild:
-			((self yellowTargetCircleWithExplanationModel: #inspector)
+			((self yellowExplanationTargetCircleFor: #inspector)
 				relocate:
 					(inspectorHeader position)).
 	inspectorView
 		addChild:
-			((self yellowTargetCircleWithExplanationModel: #viewTabs)
+			((self yellowExplanationTargetCircleFor: #viewTabs)
 				relocate:
 					(inspectorView position)).
 	
@@ -425,22 +425,22 @@ GtInspectorViews >> explicitViewExplanationWithLinks [
 	
 	nameTextElement
 		addChild:
-			((self yellowTargetCircleWithExplanationModel: #fullName)
+			((self yellowExplanationTargetCircleFor: #fullName)
 				relocate:
 					(-5 @ nameTextElement extent y / 2)).
 	phoneTextElement
 		addChild:
-			((self yellowTargetCircleWithExplanationModel: #telephone)
+			((self yellowExplanationTargetCircleFor: #telephone)
 				relocate:
 					(-5 @ phoneTextElement extent y / 2)).
 	addressTextElement
 		addChild:
-			((self yellowTargetCircleWithExplanationModel: #address)
+			((self yellowExplanationTargetCircleFor: #address)
 				relocate:
 					(-5 @ addressTextElement extent y / 2)).
 	avatarElement
 		addChild:
-			((self yellowTargetCircleWithExplanationModel: #avatar)
+			((self yellowExplanationTargetCircleFor: #avatar)
 				relocate:
 					(avatarElement position)).
 	
@@ -533,13 +533,13 @@ GtInspectorViews >> listViewExplanationWithLinks [
 	
 	titleTab
 		addChild:
-			((self yellowTargetCircleWithExplanationModel: #title:)
+			((self yellowExplanationTargetCircleFor: #title:)
 				relocate:
 					(10 @ titleTab extent y / 2)).
 	nameLabelsCollection do: [ :eachLabel |
 		eachLabel
 			addChild:
-				((self yellowTargetCircleWithExplanationModel: #fullName)
+				((self yellowExplanationTargetCircleFor: #fullName)
 					relocate:
 						(-5 @ eachLabel extent y / 2)). ].
 	
@@ -635,7 +635,7 @@ GtInspectorViews >> mondrianViewExplanationWithLinks [
 	
 	titleTab
 		addChild:
-			((self yellowTargetCircleWithExplanationModel: #title:)
+			((self yellowExplanationTargetCircleFor: #title:)
 				relocate:
 					(10 @ titleTab extent y / 2)).
 	
@@ -797,12 +797,12 @@ GtInspectorViews >> textEditorViewExplanationWithLinks [
 	
 	titleTab
 		addChild:
-			((self yellowTargetCircleWithExplanationModel: #title:)
+			((self yellowExplanationTargetCircleFor: #title:)
 				relocate:
 					(10 @ titleTab extent y / 2)).
 	contentEditorSegment
 		addChild:
-			((self yellowTargetCircleWithExplanationModel: #content)
+			((self yellowExplanationTargetCircleFor: #content)
 				relocate:
 					(-5 @ contentEditorSegment extent y /2)).
 	
@@ -913,7 +913,7 @@ GtInspectorViews >> treeViewExplanationWithLinks [
 	
 	titleTab
 		addChild:
-			((self yellowTargetCircleWithExplanationModel: #title:)
+			((self yellowExplanationTargetCircleFor: #title:)
 				relocate:
 					(10 @ titleTab extent y / 2)).
 						
@@ -925,7 +925,7 @@ GtInspectorViews >> treeViewExplanationWithLinks [
 	categoryLabelsCollection do: [ :eachLabel |
 		eachLabel
 			addChild:
-				((self yellowTargetCircleWithExplanationModel: #categories)
+				((self yellowExplanationTargetCircleFor: #categories)
 					relocate:
 						(-5 @ eachLabel extent y / 2)) ].
 	
@@ -987,7 +987,7 @@ GtInspectorViews >> viewsQueryExampleSlideFor: aSlide [
 ]
 
 { #category : #utility }
-GtInspectorViews >> yellowTargetCircleWithExplanationModel: aModel [
+GtInspectorViews >> yellowExplanationTargetCircleFor: aModel [
 	^ BrButton new
 				constraintsDo: [ :c | c ignoreByLayout ];
 				size: 5 @ 5;

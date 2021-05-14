@@ -523,23 +523,23 @@ a - b' } asOrderedCollection.
 	newSnippetButtons do: [ :each |
 		each
 			addChild:
-				((self yellowTargetCircleWithExplanationModel: #newSnippet)
+				((self yellowExplanationTargetCircleFor: #newSnippet)
 					relocate:
 						(10 @ each extent y / 2))].
 	inspectButtons do: [ :eachInspectButton |
 		eachInspectButton parent
 			addChild:
-				((self yellowTargetCircleWithExplanationModel: #inspectButton)
+				((self yellowExplanationTargetCircleFor: #inspectButton)
 					relocate:
 						(eachInspectButton position x @ eachInspectButton position y + 5))].
 	firstSnippet
 			addChild:
-				((self yellowTargetCircleWithExplanationModel: #firstSnippet)
+				((self yellowExplanationTargetCircleFor: #firstSnippet)
 					relocate:
 						(5 @ firstSnippet extent y / 2)).
 	secondSnippet
 			addChild:
-				((self yellowTargetCircleWithExplanationModel: #secondSnippet)
+				((self yellowExplanationTargetCircleFor: #secondSnippet)
 					relocate:
 						(5 @ secondSnippet extent y / 2)).
 	
@@ -647,7 +647,7 @@ GtPharo101 >> unaryMessagesExplanationSlideFor: aSlide [
 ]
 
 { #category : #utility }
-GtPharo101 >> yellowTargetCircleWithExplanationModel: aModel [
+GtPharo101 >> yellowExplanationTargetCircleFor: aModel [
 	^ BrButton new
 				constraintsDo: [ :c | c ignoreByLayout ];
 				size: 0 @ 0;

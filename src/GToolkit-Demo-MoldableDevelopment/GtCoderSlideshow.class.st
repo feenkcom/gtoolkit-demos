@@ -49,17 +49,17 @@ GtCoderSlideshow >> advancedMethodsFilteringExplanationWithLinks [
 	
 	categoryTarget
 		addChild:
-			((self yellowTargetCircleWithExplanationModel: #dropdown)
+			((self yellowExplanationTargetCircleFor: #dropdown)
 					relocate:
 						(2 @ categoryTarget extent y / 2)).
 	fieldTarget
 		addChild:
-			((self yellowTargetCircleWithExplanationModel: #field)
+			((self yellowExplanationTargetCircleFor: #field)
 					relocate:
 						(150 @ fieldTarget extent y / 2)).
 	addTarget
 		addChild:
-			((self yellowTargetCircleWithExplanationModel: #addFilterButton)
+			((self yellowExplanationTargetCircleFor: #addFilterButton)
 					relocate:
 						(2 @ addTarget extent y / 2)).
 	
@@ -124,17 +124,17 @@ GtCoderSlideshow >> baselineMethodsExplanationWithLinks [
 	
 	pragmaTarget
 		addChild:
-			((self yellowTargetCircleWithExplanationModel: #baseline)
+			((self yellowExplanationTargetCircleFor: #baseline)
 					relocate:
 						(2 @ pragmaTarget extent y / 2)).
 	baselineTarget
 		addChild:
-			((self yellowTargetCircleWithExplanationModel: #string)
+			((self yellowExplanationTargetCircleFor: #string)
 					relocate:
 						(2 @ baselineTarget extent y / 2)).
 	expandBaselineTarget
 		addChild:
-			((self yellowTargetCircleWithExplanationModel: #expandButton)
+			((self yellowExplanationTargetCircleFor: #expandButton)
 					relocate:
 						(2 @ expandBaselineTarget extent y / 2)).
 	
@@ -219,7 +219,7 @@ GtCoderSlideshow >> basicMethodsFilteringExplanationWithLinks [
 		ifFound: [:aChild | aChild childAt: 1].
 	filterButton
 		addChild:
-			((self yellowTargetCircleWithExplanationModel: #filterButton)
+			((self yellowExplanationTargetCircleFor: #filterButton)
 					relocate:
 						(2 @ filterButton extent y / 2)).
 						
@@ -319,57 +319,57 @@ GtCoderSlideshow >> classCoderInterfaceExplanationWithLinks [
 	
 	classNameTarget
 		addChild:
-			((self yellowTargetCircleWithExplanationModel: #className)
+			((self yellowExplanationTargetCircleFor: #className)
 					relocate:
 						(2 @ classNameTarget extent y / 2)).
 	removeClassTarget
 		addChild:
-			((self yellowTargetCircleWithExplanationModel: #removeButton)
+			((self yellowExplanationTargetCircleFor: #removeButton)
 					relocate:
 						(2 @ removeClassTarget extent y / 2)).
 	expandHeaderTarget
 		addChild:
-			((self yellowTargetCircleWithExplanationModel: #expandHeaderButton)
+			((self yellowExplanationTargetCircleFor: #expandHeaderButton)
 					relocate:
 						(5 @ expandHeaderTarget extent y / 2)).
 	methodsTabTarget
 		addChild:
-			((self yellowTargetCircleWithExplanationModel: #methodsTab)
+			((self yellowExplanationTargetCircleFor: #methodsTab)
 					relocate:
 						(5 @ methodsTabTarget extent y / 2)).
 	commentTabTarget
 		addChild:
-			((self yellowTargetCircleWithExplanationModel: #commentTab)
+			((self yellowExplanationTargetCircleFor: #commentTab)
 					relocate:
 						(5 @ commentTabTarget extent y / 2)).
 	referencesTabTarget
 		addChild:
-			((self yellowTargetCircleWithExplanationModel: #referencesTab)
+			((self yellowExplanationTargetCircleFor: #referencesTab)
 					relocate:
 						(5 @ referencesTabTarget extent y / 2)).
 	expandMethodTarget
 		addChild:
-			((self yellowTargetCircleWithExplanationModel: #expandMethod)
+			((self yellowExplanationTargetCircleFor: #expandMethod)
 					relocate:
 						(5 @ expandMethodTarget extent y / 2)).
 	addMethodTarget
 		addChild:
-			((self yellowTargetCircleWithExplanationModel: #addMethodButton)
+			((self yellowExplanationTargetCircleFor: #addMethodButton)
 					relocate:
 						(5 @ addMethodTarget extent y / 2)).
 	filterMethodsTarget
 		addChild:
-			((self yellowTargetCircleWithExplanationModel: #filterButton)
+			((self yellowExplanationTargetCircleFor: #filterButton)
 					relocate:
 						(5 @ filterMethodsTarget extent y / 2)).
 	saveMethodTarget
 		addChild:
-			((self yellowTargetCircleWithExplanationModel: #saveMethod)
+			((self yellowExplanationTargetCircleFor: #saveMethod)
 					relocate:
 						(5 @ saveMethodTarget extent y / 2)).
 	removeMethodTarget
 		addChild:
-			((self yellowTargetCircleWithExplanationModel: #deleteMethod)
+			((self yellowExplanationTargetCircleFor: #deleteMethod)
 					relocate:
 						(5 @ removeMethodTarget extent y / 2)).
 
@@ -481,27 +481,27 @@ GtCoderSlideshow >> coderInterfaceExplanationWithLinks [
 	
 	packageHierarchyTarget
 		addChild:
-			((self yellowTargetCircleWithExplanationModel: #packageHierarchy)
+			((self yellowExplanationTargetCircleFor: #packageHierarchy)
 					relocate:
 						(2 @ 10)).
 	classHierarchyTarget
 		addChild:
-			((self yellowTargetCircleWithExplanationModel: #classHierarchy)
+			((self yellowExplanationTargetCircleFor: #classHierarchy)
 					relocate:
 						(2 @ 10)).
 	classCoderTarget
 		addChild:
-			((self yellowTargetCircleWithExplanationModel: #classCoder)
+			((self yellowExplanationTargetCircleFor: #classCoder)
 					relocate:
 						(5 @ 20)).
 	addClassButtonTarget
 		addChild:
-			((self yellowTargetCircleWithExplanationModel: #addClassButton)
+			((self yellowExplanationTargetCircleFor: #addClassButton)
 					relocate:
 						(5 @ 10)).
 	spotterButtonTarget
 		addChild:
-			((self yellowTargetCircleWithExplanationModel: #spotterButton)
+			((self yellowExplanationTargetCircleFor: #spotterButton)
 					relocate:
 						(5 @ 10)).	
 							
@@ -568,7 +568,7 @@ GtCoderSlideshow >> createClassExplanationWithLinks [
 		ifFound: [:aChild | aChild childAt: 3].
 	buttonTarget
 		addChild:
-			((self yellowTargetCircleWithExplanationModel: #addClassButton)
+			((self yellowExplanationTargetCircleFor: #addClassButton)
 				relocate:
 					(2 @ 10)).
 					
@@ -638,22 +638,22 @@ GtCoderSlideshow >> createMethodExplanationWithLinks [
 	
 	addMethodButton
 		addChild:
-			((self yellowTargetCircleWithExplanationModel: #addMethodButton)
+			((self yellowExplanationTargetCircleFor: #addMethodButton)
 					relocate:
 						(2 @ addMethodButton extent y / 2)).
 	newFrameTarget
 		addChild:
-			((self yellowTargetCircleWithExplanationModel: #method)
+			((self yellowExplanationTargetCircleFor: #method)
 					relocate:
 						(2 @ newFrameTarget extent y / 2)).
 	saveButtonTarget
 		addChild:
-			((self yellowTargetCircleWithExplanationModel: #saveMethodButton)
+			((self yellowExplanationTargetCircleFor: #saveMethodButton)
 					relocate:
 						(2 @ saveButtonTarget extent y / 2)).
 	removeButtonTarget
 		addChild:
-			((self yellowTargetCircleWithExplanationModel: #deleteMethodButton)
+			((self yellowExplanationTargetCircleFor: #deleteMethodButton)
 					relocate:
 						(2 @ removeButtonTarget extent y / 2)).
 			
@@ -746,22 +746,22 @@ GtCoderSlideshow >> exampleMethodsExplanationWithLinks [
 
 	pragmaTarget
 		addChild:
-			((self yellowTargetCircleWithExplanationModel: #gtView)
+			((self yellowExplanationTargetCircleFor: #gtView)
 					relocate:
 						(2 @ pragmaTarget extent y / 2)).
 	evaluateTarget
 		addChild:
-			((self yellowTargetCircleWithExplanationModel: #evaluateButton)
+			((self yellowExplanationTargetCircleFor: #evaluateButton)
 					relocate:
 						(2 @ evaluateTarget extent y / 2)).
 	inspectTarget
 		addChild:
-			((self yellowTargetCircleWithExplanationModel: #inspectButton)
+			((self yellowExplanationTargetCircleFor: #inspectButton)
 					relocate:
 						(2 @ inspectTarget extent y / 2)).
 	debugTarget
 		addChild:
-			((self yellowTargetCircleWithExplanationModel: #debugButton)
+			((self yellowExplanationTargetCircleFor: #debugButton)
 					relocate:
 						(2 @ debugTarget extent y / 2)).
 	
@@ -794,7 +794,7 @@ GtCoderSlideshow >> titleSlideFor: aSlide [
 ]
 
 { #category : #accessing }
-GtCoderSlideshow >> yellowTargetCircleWithExplanationModel: aModel [
+GtCoderSlideshow >> yellowExplanationTargetCircleFor: aModel [
 	^ BrButton new
 				constraintsDo: [ :c | c ignoreByLayout ];
 				size: 0 @ 0;
