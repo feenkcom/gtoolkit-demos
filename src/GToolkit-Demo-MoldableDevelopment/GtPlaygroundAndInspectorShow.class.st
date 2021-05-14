@@ -568,13 +568,13 @@ GtPlaygroundAndInspectorShow >> playgroundInterfaceExplanationWithLinks [
 		each addChild: ((self yellowExplanationTargetCircleFor: #closeButton) relocate: (10 @ each extent y / 2))].
 	evaluateButtonTargets do: [ :eachEvaluateButton |
 		eachEvaluateButton addChild: ((self yellowExplanationTargetCircleFor: #evaluateButton)
-			relocate: (eachEvaluateButton position x @ eachEvaluateButton position y + 5))].
+			relocate: 0 @ 5)].
 	inspectButtonTargets do: [ :eachInspectButton |
 		eachInspectButton addChild: ((self yellowExplanationTargetCircleFor: #inspectButton)
-			relocate: (eachInspectButton position x @ eachInspectButton position y + 5))].
+			relocate: (0 @ 5))].
 	debugButtonTargets do: [ :eachDebugButton |
 		eachDebugButton addChild: ((self yellowExplanationTargetCircleFor: #debugButton)
-			relocate: (eachDebugButton position x @ eachDebugButton position y + 5))].
+			relocate: (0 @ eachDebugButton extent y / 2))].
 	searchButtonTarget addChild: ((self yellowExplanationTargetCircleFor: #searchButton)
 			relocate: (10 @ searchButtonTarget extent y / 2)).
 	pharoButtonTarget addChild: ((self yellowExplanationTargetCircleFor: #pharoButton)
