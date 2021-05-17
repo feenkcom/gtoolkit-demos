@@ -50,26 +50,7 @@ GtPlaygroundAndInspectorShow >> createMethodFromPlaygroundExplanationSlideFor: a
 	^ aSlide textAndElement
 		priority: 8;
 		newTextWithFormat: self fixItAdornmentForMethodExplanationText;
-		element: [ self fixItAdornmentForMethodExplanation ]";
-		onFirstAddToSceneGraphDo:
-			[:anElement |
-				| button playgroundElement coderTarget |
-				playgroundElement := (anElement childAt: 2) childAt: 2.
-				playgroundElement enqueueTask:
-					(BlTaskAction new
-						action: [
-							button := (playgroundElement
-								allChildrenBreadthFirstSelect: [:aChild | 
-									aChild isKindOf: BrTriangle ]) last.
-							BlSpace simulateClickOn: button.
-							coderTarget := playgroundElement 
-								allChildrenBreadthFirstDetect: [:aChild | aChild isKindOf: GtExpandableMethodCoderElement ]
-								ifFound: [:aChild | aChild ].
-							coderTarget
-								addChild:
-									((self yellowTargetCircleWithExplanationModel: #coder)
-										relocate:
-											(5 @ 5))])]."
+		element: [ self fixItAdornmentForMethodExplanation ]
 ]
 
 { #category : #accessing }
@@ -143,24 +124,11 @@ GtPlaygroundAndInspectorShow >> fixItAdornmentForClassExplanationText [
 { #category : #accessing }
 GtPlaygroundAndInspectorShow >> fixItAdornmentForMethodExplanation [
 	<gtExample>
-	| playgroundElement defaultPlaygroundElement aScripter adornmentButtonTarget |
-	
+	| defaultPlaygroundElement aScripter adornmentButtonTarget button coderTarget |
 	defaultPlaygroundElement := BlUseAsyncFeatures
-		disableDuring: [(GtPlaygroundLiveSlide new snippets: {'GtDummyExamplesOnInstanceSide new inexistentExampleMethod.'}) asElement].
-	playgroundElement := BlUseAsyncFeatures
-		disableDuring: [(GtPlaygroundLiveSlide new snippets: {'GtDummyExamplesOnInstanceSide new exampleMethod.'}) asElement].
-		
-	aScripter := BlDevScripter new.
-	aScripter
-		substep: 'Initiate Playground'
-		do: [ :aStep | 
-			aStep set
-				label: 'Playground';
-				element: [ playgroundElement ].
-			aStep wait forEmptySpaceTaskQueue ].
-	aScripter syncContinue.
-	playgroundElement := aScripter elementWithoutParent.	
-	
+		disableDuring: [ (GtPlaygroundLiveSlide new
+				snippets: {'GtDummyExamplesOnInstanceSide new inexistentExampleMethod.'})
+				asElement ].
 	aScripter := BlDevScripter new.
 	aScripter
 		substep: 'Initiate Default Playground'
@@ -171,26 +139,21 @@ GtPlaygroundAndInspectorShow >> fixItAdornmentForMethodExplanation [
 			aStep wait forEmptySpaceTaskQueue ].
 	aScripter syncContinue.
 	defaultPlaygroundElement := aScripter elementWithoutParent.
-	
-	adornmentButtonTarget := defaultPlaygroundElement
-		allChildrenBreadthFirstDetect: [:aChild |
-			(aChild isKindOf: BrTextEditorSegmentElement)]
-		ifFound: [:aChild | aChild childAt: 7].
-		
-	adornmentButtonTarget
-		addChild:
-			((self yellowExplanationTargetCircleFor: #adornment)
-					relocate:
-						(10 @ adornmentButtonTarget extent y / 2)).
-		
+	defaultPlaygroundElement
+		allChildrenBreadthFirstDetect: [ :aChild | aChild isKindOf: BrTextEditorSegmentElement ]
+		ifFound: [ :aChild | 
+			adornmentButtonTarget := aChild childAt: 7.
+			adornmentButtonTarget
+				addChild:
+					((self yellowExplanationTargetCircleFor: #adornment)
+						relocate: 10 @ adornmentButtonTarget extent y / 2) ].			
 	^ BlElement new
 		layout: BlLinearLayout vertical;
-		constraintsDo: [:c |
+		constraintsDo: [ :c | 
 			c vertical matchParent.
 			c horizontal matchParent ];
 		margin: (BlInsets all: 5);
-		addChild: defaultPlaygroundElement maximized;
-		addChild: playgroundElement maximized.
+		addChild: defaultPlaygroundElement maximized
 ]
 
 { #category : #accessing }
@@ -198,10 +161,7 @@ GtPlaygroundAndInspectorShow >> fixItAdornmentForMethodExplanationText [
 	| text |
 	text := 'The same thing applies to methods as well. If we try to call a method that was not yet implemented, the same ' asRopedText,
 ('adornment' asRopedText glamorousExplanationFor: #adornment),
-' pops up next to it. Clicking on it gives us the option to create the method in the respective class. If we choose that, a ' asRopedText,
-('method coder' asRopedText glamorousExplanationFor: #coder),
-' opens up inside the playground so we can create the method in place.' asRopedText.
-	
+' pops up next to it. Clicking on it gives us the option to create the method in the respective class. If we choose that, a method coder opens right in the playground so we can create the method in place.' asRopedText.
 	^ text asRopedText
 		glamorousRegularFont;
 		fontSize: 20.
