@@ -78,7 +78,7 @@ GtWhatMakesBlocSpecialExplanation >> classHierarchyWithEdges [
 	<gtExample>
 	| root |
 	root := self rootWithHierarchyElements.
-	GtPhlowAction withAllSubclassesDo: [ :class | 
+	ByteArray withAllSubclassesDo: [ :class | 
 		root children 
 			detect: [ :label | label text asString = class name ]
 			ifFound: [ :subclassLabel | 
@@ -105,7 +105,7 @@ GtWhatMakesBlocSpecialExplanation >> classHierarchyWithEdgesAndLines [
 			line constraints ignoreByLayout.
 			line
 				zIndex: -1;
-				border: (BlBorder paint: (Color gray alpha: 0.2) width: 5);
+				border: (BlBorder paint: (Color gray alpha: 0.2) width: 1);
 				fromAnchor: (BlElementBottomCenterAnchor element: element);
 				toAnchor: (BlElementTopCenterAnchor element: child).
 			root addChild: line ] ].
@@ -196,7 +196,7 @@ GtWhatMakesBlocSpecialExplanation >> rootWithHierarchyElements [
 		c horizontal fitContent. 
 		c vertical fitContent];
 		padding: (BlInsets all: 20).
-		GtPhlowAction withAllSubclassesDo: [ :class | 
+		ByteArray withAllSubclassesDo: [ :class | 
 		| label |
 		label := BlTextElement new 
 			text: class name asRopedText glamorousRegularFont;
