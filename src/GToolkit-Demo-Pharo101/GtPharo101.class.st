@@ -33,8 +33,8 @@ GtPharo101 >> basicTypesTitleSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide title
 		priority: 5;
-		titleWithFormat: ('Pharo 101' asRopedText fontSize: 70);
-		subtitleWithFormat: ('Basic types' asRopedText fontSize:50; foreground: Color gray).
+		titleWithFormat: ('Pharo 101' asRopedText glamorousRegularFont fontSize: 70);
+		subtitleWithFormat: ('Basic types' asRopedText glamorousRegularFont fontSize:50; foreground: Color gray).
 ]
 
 { #category : #accessing }
@@ -74,8 +74,8 @@ GtPharo101 >> blocksTitleSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide title
 		priority: 22;
-		titleWithFormat: ('Pharo 101' asRopedText fontSize: 70);
-		subtitleWithFormat: ('Blocks' asRopedText fontSize:50; foreground: Color gray).
+		titleWithFormat: ('Pharo 101' asRopedText glamorousRegularFont fontSize: 70);
+		subtitleWithFormat: ('Blocks' asRopedText glamorousRegularFont fontSize:50; foreground: Color gray).
 ]
 
 { #category : #accessing }
@@ -83,8 +83,8 @@ GtPharo101 >> booleanAndConditionalsTitleSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide title
 		priority: 24;
-		titleWithFormat: ('Pharo 101' asRopedText fontSize: 70);
-		subtitleWithFormat: ('Boolean and Conditionals' asRopedText fontSize:50; foreground: Color gray).
+		titleWithFormat: ('Pharo 101' asRopedText glamorousRegularFont fontSize: 70);
+		subtitleWithFormat: ('Boolean and Conditionals' asRopedText glamorousRegularFont fontSize:50; foreground: Color gray).
 ]
 
 { #category : #accessing }
@@ -227,9 +227,10 @@ GtPharo101 >> instantiationTitleSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide title
 		priority: 35;
-		titleWithFormat: ('Pharo101' asRopedText fontSize: 70);
+		titleWithFormat: ('Pharo101' asRopedText glamorousRegularFont fontSize: 70);
 		subtitleWithFormat:
-			('Instantiation' asRopedText
+			('Instantiation' asRopedText 
+				glamorousRegularFont 
 				fontSize: 50;
 				foreground: Color gray).
 ]
@@ -303,8 +304,8 @@ GtPharo101 >> loopsIteratorsAndCollectionsTitleSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide title
 		priority: 27;
-		titleWithFormat: ('Pharo 101' asRopedText fontSize: 70);
-		subtitleWithFormat: ('Loops, Iterators and Collections' asRopedText fontSize:50; foreground: Color gray).
+		titleWithFormat: ('Pharo 101' asRopedText glamorousRegularFont fontSize: 70);
+		subtitleWithFormat: ('Loops, Iterators and Collections' asRopedText glamorousRegularFont fontSize:50; foreground: Color gray).
 ]
 
 { #category : #accessing }
@@ -358,8 +359,8 @@ GtPharo101 >> messagesTitleSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide title
 		priority: 13;
-		titleWithFormat: ('Pharo 101' asRopedText fontSize: 70);
-		subtitleWithFormat: ('Messages' asRopedText fontSize:50; foreground: Color gray).
+		titleWithFormat: ('Pharo 101' asRopedText glamorousRegularFont fontSize: 70);
+		subtitleWithFormat: ('Messages' asRopedText glamorousRegularFont fontSize:50; foreground: Color gray).
 ]
 
 { #category : #accessing }
@@ -444,9 +445,10 @@ GtPharo101 >> reflectionTitleSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide title
 		priority: 37;
-		titleWithFormat: ('Pharo101' asRopedText fontSize: 70);
+		titleWithFormat: ('Pharo101' asRopedText glamorousRegularFont; fontSize: 70);
 		subtitleWithFormat:
 			('Reflection' asRopedText
+				glamorousRegularFont; 
 				fontSize: 50;
 				foreground: Color gray).
 ]
