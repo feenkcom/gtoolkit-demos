@@ -1,9 +1,9 @@
 Class {
 	#name : #GhEvents,
-	#superclass : #GhEntity,
+	#superclass : #GhGroup,
 	#traits : 'TGtGroup',
 	#classTraits : 'TGtGroup classTrait',
-	#category : #'GToolkit-Demo-GitHubAPI'
+	#category : #'GToolkit-Demo-GitHubAPI-Model'
 }
 
 { #category : #accessing }
