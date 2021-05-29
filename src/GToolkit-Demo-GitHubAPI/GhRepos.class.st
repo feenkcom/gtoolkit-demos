@@ -1,10 +1,16 @@
 Class {
 	#name : #GhRepos,
-	#superclass : #GhEntity,
-	#traits : 'TGtGroup',
-	#classTraits : 'TGtGroup classTrait',
+	#superclass : #GhGroup,
 	#category : #'GToolkit-Demo-GitHubAPI-Model'
 }
+
+{ #category : #accessing }
+GhRepos >> gtRawDataFor: aView [
+	<gtView>
+	^ aView list
+		title: 'Raw data';
+		items: [ self rawData ]
+]
 
 { #category : #accessing }
 GhRepos >> items [

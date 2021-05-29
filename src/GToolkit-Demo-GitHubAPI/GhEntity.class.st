@@ -1,9 +1,6 @@
 Class {
 	#name : #GhEntity,
-	#superclass : #Object,
-	#instVars : [
-		'rawData'
-	],
+	#superclass : #GhObject,
 	#category : #'GToolkit-Demo-GitHubAPI-Model'
 }
 
@@ -54,14 +51,4 @@ GhEntity >> gtRawDataFor: aView [
 { #category : #accessing }
 GhEntity >> propertyToClass [
 	^ Dictionary new
-]
-
-{ #category : #accessing }
-GhEntity >> rawData [
-	^ rawData ifNil: [ Dictionary new ]
-]
-
-{ #category : #accessing }
-GhEntity >> rawData: dictionary [ 
-	rawData := dictionary
 ]

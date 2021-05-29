@@ -1,8 +1,6 @@
 Class {
 	#name : #GhContributors,
-	#superclass : #GhEntity,
-	#traits : 'TGtGroup',
-	#classTraits : 'TGtGroup classTrait',
+	#superclass : #GhGroup,
 	#category : #'GToolkit-Demo-GitHubAPI-Model'
 }
 

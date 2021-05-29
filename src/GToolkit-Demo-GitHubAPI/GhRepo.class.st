@@ -54,6 +54,11 @@ GhRepo >> gtContributorsFor: aView [
 ]
 
 { #category : #accessing }
+GhRepo >> gtDisplayOn: stream [
+	stream nextPutAll: self name
+]
+
+{ #category : #accessing }
 GhRepo >> gtEventsFor: aView [
 	<gtView>
 	^ aView columnedList
