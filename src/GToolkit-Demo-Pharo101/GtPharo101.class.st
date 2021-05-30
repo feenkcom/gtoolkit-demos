@@ -477,7 +477,7 @@ set1'.
 ]
 
 { #category : #accessing }
-GtPharo101 >> shortPlaygroundExplanation [
+GtPharo101 >> shortLepiterPlaygroundExplanation [
 	<gtExample>
 	| container playbook playgroundElement snippetsCollection snippetElementsCollection newSnippetButtons frameToolbarButtons inspectButtons firstSnippet secondSnippet aScripter snippets |
 	container := BlElement new
@@ -507,6 +507,50 @@ a - b'};
 			aStep wait forEmptySpaceTaskQueue ].
 	aScripter syncContinue.
 	snippets := (aScripter elementWithoutParent query // LePharoSnippetElement) all.
+	snippets first
+		addChild:
+			(self yellowExplanationTargetCircleFor: #firstSnippet).
+	snippets second
+		addChild:
+			(self yellowExplanationTargetCircleFor: #secondSnippet).
+	"((snippets first query // LePharoSnippetElement) all first query // GtSourceCoderDoItAndGoActionId) anyOne
+		addChild: (self yellowExplanationTargetCircleFor: #inspectButton)."
+	^ container addChild: playgroundElement
+]
+
+{ #category : #accessing }
+GtPharo101 >> shortPlaygroundExplanation [
+	<gtExample>
+	| container playbook playgroundElement snippetsCollection snippetElementsCollection newSnippetButtons frameToolbarButtons inspectButtons firstSnippet secondSnippet aScripter snippets |
+	container := BlElement new
+		constraintsDo: [ :c | 
+			c vertical matchParent.
+			c horizontal matchParent ];
+		layout: BlLinearLayout horizontal;
+		margin: (BlInsets all: 5);
+		background: Color white;
+		aptitude: BrShadowAptitude.
+	newSnippetButtons := OrderedCollection new.
+	inspectButtons := OrderedCollection new.
+	playgroundElement := GtPlaygroundLiveSlide new
+		snippets:
+			{'a := 2.
+a + 5' . 'b := 1.
+a - b'};
+		asElement.
+	aScripter := BlDevScripter new.
+	aScripter element: playgroundElement.
+	aScripter
+		substep: 'Selecting snippets'
+		do: [ :aStep | 
+			aStep click
+				label: 'Click on snippet';
+				onBreadthFirstChildOfClass: (GtImage isLepiterEnabled 
+		ifTrue: [LePharoSnippetElement] ifFalse: [GtExpandableSourceCoderElement]).
+			aStep wait forEmptySpaceTaskQueue ].
+	aScripter syncContinue.
+	snippets := (aScripter elementWithoutParent query // (GtImage isLepiterEnabled 
+		ifTrue: [LePharoSnippetElement] ifFalse: [GtExpandableSourceCoderElement])) all.
 	snippets first
 		addChild:
 			(self yellowExplanationTargetCircleFor: #firstSnippet).
