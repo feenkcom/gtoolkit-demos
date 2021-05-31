@@ -476,92 +476,61 @@ set1'.
 		elementWeight: 0.6.
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #accessing }
 GtPharo101 >> shortPlaygroundExplanation [
 	<gtExample>
-	| container playbook playgroundElement snippetsCollection snippetElementsCollection newSnippetButtons frameToolbarButtons inspectButtons firstSnippet secondSnippet |
-	
+	| container playbook playgroundElement snippetsCollection snippetElementsCollection newSnippetButtons frameToolbarButtons inspectButtons firstSnippet secondSnippet aScripter snippets |
 	container := BlElement new
-		constraintsDo: [ :c |
+		constraintsDo: [ :c | 
 			c vertical matchParent.
 			c horizontal matchParent ];
 		layout: BlLinearLayout horizontal;
 		margin: (BlInsets all: 5);
 		background: Color white;
 		aptitude: BrShadowAptitude.
-		
 	newSnippetButtons := OrderedCollection new.
 	inspectButtons := OrderedCollection new.
-	
-	snippetsCollection := { 'a := 2.
-a + 5'.
-'b := 1.
-a - b' } asOrderedCollection.
-	
-	playbook := GtPlayBook newWithCodeSnippetContent: snippetsCollection first.
-	snippetsCollection allButFirst do: [:el |
-		playbook pages first addSnippet: GtCoderSnippet new.
-		playbook pages last snippets last sourceCode: el].
-	playgroundElement := playbook asElement.
-	
-	playgroundElement forceLayout.
-	
-	snippetElementsCollection := playgroundElement
-		allChildrenBreadthFirstSelect: [ :aChild | 
-			aChild isKindOf: BrFrame ].
-	snippetElementsCollection do: [ :each |
-		newSnippetButtons add: (each children at: 2) ].
-	frameToolbarButtons := playgroundElement
-		allChildrenBreadthFirstSelect: [ :aChild |
-			(aChild isKindOf: BrToolbar)
-				and: [ (aChild parent isKindOf: GtCoderActionsElement)
-					and: [ aChild hasChildren ]]].
-	frameToolbarButtons do: [ :each |
-		inspectButtons add: (each children at: 2)].
-	
-	firstSnippet := snippetElementsCollection at: 1.
-	secondSnippet := snippetElementsCollection at: 2.
-	
-	newSnippetButtons do: [ :each |
-		each
-			addChild:
-				((self yellowExplanationTargetCircleFor: #newSnippet)
-					relocate:
-						(10 @ each extent y / 2))].
-	inspectButtons do: [ :eachInspectButton |
-		eachInspectButton parent
-			addChild:
-				((self yellowExplanationTargetCircleFor: #inspectButton)
-					relocate:
-						(eachInspectButton position x @ eachInspectButton position y + 5))].
-	firstSnippet
-			addChild:
-				((self yellowExplanationTargetCircleFor: #firstSnippet)
-					relocate:
-						(5 @ firstSnippet extent y / 2)).
-	secondSnippet
-			addChild:
-				((self yellowExplanationTargetCircleFor: #secondSnippet)
-					relocate:
-						(5 @ secondSnippet extent y / 2)).
-	
-	^ container
-		addChild: (GtPager createWrappedOn: playgroundElement).
+	playgroundElement := GtPlaygroundLiveSlide new
+		snippets:
+			{'a := 2.
+a + 5' . 'b := 1.
+a - b'};
+		asElement.
+	aScripter := BlDevScripter new.
+	aScripter element: playgroundElement.
+	aScripter
+		substep: 'Selecting snippets'
+		do: [ :aStep | 
+			aStep click
+				label: 'Click on snippet';
+				onBreadthFirstChildOfClass: (GtImage isLepiterEnabled 
+		ifTrue: [LePharoSnippetElement] ifFalse: [GtExpandableSourceCoderElement]).
+			aStep wait forEmptySpaceTaskQueue ].
+	aScripter syncContinue.
+	snippets := (aScripter elementWithoutParent query // (GtImage isLepiterEnabled 
+		ifTrue: [LePharoSnippetElement] ifFalse: [GtExpandableSourceCoderElement])) all.
+	snippets first
+		addChild:
+			(self yellowExplanationTargetCircleFor: #firstSnippet).
+	snippets second
+		addChild:
+			(self yellowExplanationTargetCircleFor: #secondSnippet).
+	"((snippets first query // LePharoSnippetElement) all first query // GtSourceCoderDoItAndGoActionId) anyOne
+		addChild: (self yellowExplanationTargetCircleFor: #inspectButton)."
+	^ container addChild: playgroundElement
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #accessing }
 GtPharo101 >> shortPlaygroundExplanationText [
 	| text |
 	
-	text := 'This is the playground. Here you can play around with the code, having one or more snippets that you can inspect. You do that with the ' asRopedText,
+	text := 'This slideshow relies on playground like this in which you can play around with the code, having one or more snippets that you can inspect. You do that with the ' asRopedText,
 ('inspect' asRopedText glamorousExplanationFor: #inspectButton),
-' button. Pressing it, opens up an inspector on the result of that snippet, which is the result of the last line executed in that snippet. In our case, it will be the sum for the ' asRopedText,
+' button. Pressing it, opens up an inspector on the result which is produced by the last line executed in that snippet. In our case, it will be the sum for the ' asRopedText,
 ('first' asRopedText glamorousExplanationFor: #firstSnippet),
 ' snippet and the difference for the ' asRopedText,
 ('second' asRopedText glamorousExplanationFor: #secondSnippet),
-' one.
-
-Using the playground, this tutorial will guide you through the pharo syntax, giving you multiple snippets of code to inspect and see how the code behaves.' asRopedText.
+' one.' asRopedText.
 	
 	^ text 
 		glamorousRegularFont;
