@@ -73,7 +73,7 @@ GtTour >> coderExplanationWithLinks [
 		ifFound: [:aChild | aChild parent].
 	commentTabTarget := coderElement 
 		allChildrenBreadthFirstDetect: [:aChild | 
-			((aChild isKindOf: BlTextElement) and: [aChild text asString = 'Comment'])]
+			((aChild isKindOf: BlTextElement) and: [aChild text asString beginsWith: 'Comment'])]
 		ifFound: [:aChild | aChild parent].
 	expandClassTarget := coderElement 
 		allChildrenBreadthFirstDetect: [:aChild | 
