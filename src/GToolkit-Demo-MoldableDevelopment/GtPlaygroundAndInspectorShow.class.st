@@ -6,7 +6,7 @@ Class {
 
 { #category : #accessing }
 GtPlaygroundAndInspectorShow >> createClassFromPlaygroundExplanationSlideFor: aSlide [
-	<gtSlide>
+	"<gtSlide>"
 	<noTest>
 	^ aSlide textAndElement
 		priority: 7;
@@ -45,7 +45,7 @@ GtPlaygroundAndInspectorShow >> createClassFromPlaygroundExplanationSlideFor: aS
 
 { #category : #accessing }
 GtPlaygroundAndInspectorShow >> createMethodFromPlaygroundExplanationSlideFor: aSlide [
-	<gtSlide>
+	"<gtSlide>"
 	<noTest>
 	^ aSlide textAndElement
 		priority: 8;
@@ -55,7 +55,7 @@ GtPlaygroundAndInspectorShow >> createMethodFromPlaygroundExplanationSlideFor: a
 
 { #category : #accessing }
 GtPlaygroundAndInspectorShow >> fixItAdornmentForClassExplanation [
-	<gtExample>
+	"<gtExample>"
 	| playgroundElement defaultPlaygroundElement aScripter adornmentButtonTarget |
 	
 	playgroundElement := BlUseAsyncFeatures
@@ -123,7 +123,7 @@ GtPlaygroundAndInspectorShow >> fixItAdornmentForClassExplanationText [
 
 { #category : #accessing }
 GtPlaygroundAndInspectorShow >> fixItAdornmentForMethodExplanation [
-	<gtExample>
+	"<gtExample>"
 	| defaultPlaygroundElement aScripter adornmentButtonTarget button coderTarget |
 	defaultPlaygroundElement := BlUseAsyncFeatures
 		disableDuring: [ (GtPlaygroundLiveSlide new
@@ -169,7 +169,7 @@ GtPlaygroundAndInspectorShow >> fixItAdornmentForMethodExplanationText [
 
 { #category : #accessing }
 GtPlaygroundAndInspectorShow >> inspectorInterfaceExplanationSlideFor: aSlide [
-	<gtSlide>
+	"<gtSlide>"
 	^ aSlide textAndElement
 		priority: 9;
 		newTextWithFormat: self inspectorInterfaceExplanationText;
@@ -269,7 +269,7 @@ GtPlaygroundAndInspectorShow >> inspectorInterfaceExplanationWithLinks [
 
 { #category : #accessing }
 GtPlaygroundAndInspectorShow >> inspectorMethodExplanationSlideFor: aSlide [
-	<gtSlide>
+	"<gtSlide>"
 	^ aSlide textAndElement
 		priority: 10;
 		newTextWithFormat: self inspectorMethodExplanationText;
@@ -423,7 +423,7 @@ GtPlaygroundAndInspectorShow >> playgroundAndInspectorExplanationText [
 
 { #category : #accessing }
 GtPlaygroundAndInspectorShow >> playgroundAndInspectorMashExample [
-	<gtExample>
+	"<gtExample>"
 	^ (GtMashExampleLiveSlide new
 		leftElement: 
 			(BlElement new
@@ -449,7 +449,7 @@ GtPlaygroundAndInspectorShow >> playgroundAndInspectorMashExample [
 
 { #category : #accessing }
 GtPlaygroundAndInspectorShow >> playgroundAndInspectorMashExampleSlideFor: aSlide [
-	<gtSlide>
+	"<gtSlide>"
 	^ aSlide textAndElement
 		priority: 5;
 		newTextWithFormat: self playgroundAndInspectorExplanationText;
@@ -459,7 +459,7 @@ GtPlaygroundAndInspectorShow >> playgroundAndInspectorMashExampleSlideFor: aSlid
 
 { #category : #accessing }
 GtPlaygroundAndInspectorShow >> playgroundInterfaceExplanationSlideFor: aSlide [
-	<gtSlide>
+	"<gtSlide>"
 	^ aSlide textAndElement
 		priority: 6;
 		newTextWithFormat: self playgroundInterfaceExplanationText;
@@ -497,7 +497,7 @@ Finally, if you click on the ' asRopedText,
 
 { #category : #accessing }
 GtPlaygroundAndInspectorShow >> playgroundInterfaceExplanationWithLinks [
-	<gtExample>
+	"<gtExample>"
 	| playgroundElement aScripter snippetTargets plusButtonTargets pharoButtonTarget closeButtonTargets evaluateButtonTargets inspectButtonTargets debugButtonTargets searchButtonTarget |
 	
 	aScripter := BlDevScripter new.
