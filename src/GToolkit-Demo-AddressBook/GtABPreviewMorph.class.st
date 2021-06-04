@@ -16,6 +16,8 @@ browser := GLMTabulator new.
 			canvas morph
 				display: #previewMorph ].
 	^ browser openOn: self
+
+
 "
 Class {
 	#name : #GtABPreviewMorph,

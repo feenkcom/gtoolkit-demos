@@ -1,17 +1,18 @@
 "
-[[[
+```
 x0 := GtNnNeuron new constant: 1.
 x1 := GtNnNeuron new constant: 0.
 x2 := GtNnNeuron new constant: 1.
 
 y := GtNnNeuron new.
 
-(x0 ==> y) weight: 10.
-(x1 ==> y) weight: -15.
+(x0 `> y) weight: 10.
+(x1 `> y) weight: -15.
 (x2 ==> y) weight: 10.
 
 y
-]]]
+```
+
 
 "
 Class {

@@ -1,5 +1,7 @@
 "
 I am a morph that can highlight on a picture the list of faces from that picture.
+
+
 "
 Class {
 	#name : #GtCSInspectorPictureMorph,
@@ -8,7 +10,7 @@ Class {
 		'picture',
 		'facesColor'
 	],
-	#category : 'GToolkit-Demo-CognitiveServices-FaceAPI-Extensions'
+	#category : #'GToolkit-Demo-CognitiveServices-FaceAPI-Extensions'
 }
 
 { #category : #drawing }

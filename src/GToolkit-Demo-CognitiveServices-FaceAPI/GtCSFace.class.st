@@ -1,16 +1,18 @@
 "
 I model a face detected in a picture object.
 
-I store the rectangle delimiting the face within a ${class:GtCSPicture}$ object, face attributes (see ${class:GtCSFaceAttributes}$), and face landmarks (see  ${class:GtCSFaceLandmarks}$). I also point to the picture object that contains the face.
-${example:GtCSPictureExamples>>#faceSolovineWithLandmarksInPicture|noCode|previewShow=gtFaceLandmarksViewFor:|previewHeight=260}$
+I store the rectangle delimiting the face within a {{gtClass:GtCSPicture}} object, face attributes (see {{gtClass:GtCSFaceAttributes}}), and face landmarks (see  {{gtClass:GtCSFaceLandmarks}}). I also point to the picture object that contains the face.
+{{gtExample:GtCSPictureExamples>>#faceSolovineWithLandmarksInPicture|noCode|previewShow=gtFaceLandmarksViewFor:|previewHeight=260}}
 
 The rectangle delimiting a face and landmarks can be added to a face, even if the face does not have a graphical representation.
-${example:GtCSPictureExamples>>#faceSolovineWithLandmarks|previewShow=#gtFaceLandmarksViewFor:}$
+{{gtExample:GtCSPictureExamples>>#faceSolovineWithLandmarks|previewShow=#gtFaceLandmarksViewFor:}}
 
 If the face is added to a picture, its graphical representation is obtained by cropping the portion given by the rectangle attribute from the picture.
-${example:GtCSPictureExamples>>#faceSolovineWithLandmarksInPicture}$
+{{gtExample:GtCSPictureExamples>>#faceSolovineWithLandmarksInPicture}}
 
-The recommended way to initialize a face object is using JSON data (${method:GtCSPictureExamples>>#jsonFaceLandmarksSolovine}$).
+The recommended way to initialize a face object is using JSON data ({{gtMethod:GtCSPictureExamples>>#jsonFaceLandmarksSolovine}}).
+
+
 "
 Class {
 	#name : #GtCSFace,

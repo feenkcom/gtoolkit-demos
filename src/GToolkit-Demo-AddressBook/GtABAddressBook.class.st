@@ -1,5 +1,7 @@
 "
 I model an address book that can hold a list of contacts.
+
+
 "
 Class {
 	#name : #GtABAddressBook,

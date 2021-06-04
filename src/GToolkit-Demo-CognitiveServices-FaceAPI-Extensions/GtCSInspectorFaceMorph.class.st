@@ -1,5 +1,7 @@
 "
 I am a morph that can highlight on a face object the landmarks associated with the face.
+
+
 "
 Class {
 	#name : #GtCSInspectorFaceMorph,
@@ -9,7 +11,7 @@ Class {
 		'scale',
 		'cachedForm'
 	],
-	#category : 'GToolkit-Demo-CognitiveServices-FaceAPI-Extensions'
+	#category : #'GToolkit-Demo-CognitiveServices-FaceAPI-Extensions'
 }
 
 { #category : #transformation }

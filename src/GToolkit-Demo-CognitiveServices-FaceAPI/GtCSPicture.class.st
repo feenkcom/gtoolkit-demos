@@ -1,33 +1,39 @@
 "
 I model a picture that can contain a list of detected faces. 
 
-I maintain a list of ${class:GtCSFace}$ objects representing the faces detected within this picture and a ${class:Form}$ object holding the graphical representation of the picture. I provide support for adding and removing faces, and setting a graphical representation directly, or by either reading it from a file or downloading it from a URL.
+I maintain a list of {{gtClass:GtCSFace}} objects representing the faces detected within this picture and a {{gtClass:Form}} object holding the graphical representation of the picture. I provide support for adding and removing faces, and setting a graphical representation directly, or by either reading it from a file or downloading it from a URL.
 
-${example:GtCSPictureExamples>>#pictureWithFacesWithLandmarksAndForm|noCode|previewShow=gtPictureFor:}$
+{{gtExample:GtCSPictureExamples>>#pictureWithFacesWithLandmarksAndForm|noCode|previewShow=gtPictureFor:}}
 
-!!Instantiation
+1. # Instantiation
+
 New instances are created by directly instantiating the class. These instances have no face data or graphical representation by default. 
-${example:GtCSPictureExamples>>#newPictureInstance}$
+{{gtExample:GtCSPictureExamples>>#newPictureInstance}}
 
 Currently a picture objects stores the URL from where the picture can be downloaded. This is just a temporary behaviour and should be removed in the future.
-${example:GtCSPictureExamples>>#emptyPicture}$
+{{gtExample:GtCSPictureExamples>>#emptyPicture}}
 
-!!Adding a graphical representation
+1. # Adding a graphical representation
+
 To explicitly add a graphical representation there are several alternative:
-- set an URL to the picture and load the graphical representation from that URL using ${method:GtCSPicture>>#ensurePictureForm}$; 
-- directly set a ${class:Form}$ as the graphical representation using ${method:GtCSPicture>>#pictureForm:}$.
+- set an URL to the picture and load the graphical representation from that URL using {{gtMethod:GtCSPicture>>#ensurePictureForm}}; 
+- directly set a {{gtClass:Form}} as the graphical representation using {{gtMethod:GtCSPicture>>#pictureForm:}}.
 
-${example:GtCSPictureExamples>>#pictureWithManuallySetForm}$
+{{gtExample:GtCSPictureExamples>>#pictureWithManuallySetForm}}
 
-!!Adding face information.
-The main way to load face information is by calling ${method:GtCSPicture>>#addFace:}$. Before adding faces ${method:GtCSPicture>>#ensureFacesStorage}$ needs to be called to initialize the storage for faces. 
-${example:GtCSPictureExamples>>#pictureWithFacesWithLandmarksAndForm}$
+1. # Adding face information.
+
+The main way to load face information is by calling {{gtMethod:GtCSPicture>>#addFace:}}. Before adding faces {{gtMethod:GtCSPicture>>#ensureFacesStorage}} needs to be called to initialize the storage for faces. 
+{{gtExample:GtCSPictureExamples>>#pictureWithFacesWithLandmarksAndForm}}
 
 Faces can be added to a picture even if the picture does not have a graphical representation.
-${example:GtCSPictureExamples>>#pictureWithFacesAndNoForm}$
+{{gtExample:GtCSPictureExamples>>#pictureWithFacesAndNoForm}}
 
-!!Implementation details
-The fact that the attribute ==faces== is not null indicates that a client of this object already added face data to the picture. An empty list indicates that the picture has no face objects.
+1. # Implementation details
+
+The fact that the attribute `faces` is not null indicates that a client of this object already added face data to the picture. An empty list indicates that the picture has no face objects.
+
+
 "
 Class {
 	#name : #GtCSPicture,

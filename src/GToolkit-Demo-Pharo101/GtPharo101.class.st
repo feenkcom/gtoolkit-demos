@@ -1,5 +1,7 @@
 "
 I am a tutorial presentation for beginners.
+
+
 "
 Class {
 	#name : #GtPharo101,

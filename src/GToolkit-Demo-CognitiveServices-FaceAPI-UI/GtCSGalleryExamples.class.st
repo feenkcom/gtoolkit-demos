@@ -1,5 +1,7 @@
 "
 I provide examples of galeries.
+
+
 "
 Class {
 	#name : #GtCSGalleryExamples,

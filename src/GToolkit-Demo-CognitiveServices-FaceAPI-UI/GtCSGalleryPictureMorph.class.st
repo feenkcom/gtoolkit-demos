@@ -1,5 +1,7 @@
 "
 I am a bloc morph that displays a picture and highlights all faces from that picture.
+
+
 "
 Class {
 	#name : #GtCSGalleryPictureMorph,

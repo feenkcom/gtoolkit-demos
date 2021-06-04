@@ -1,5 +1,5 @@
 "
-I store properties that identify various visual face landmarks from a ${class:GtCSFace}$. For other properties attaches to a face see ${class:GtCSFaceAttributes}$.
+I store properties that identify various visual face landmarks from a {{gtClass:GtCSFace}}. For other properties attaches to a face see {{gtClass:GtCSFaceAttributes}}.
 
 The main details landmarks related to a face that I support are:
 - nose
@@ -7,15 +7,18 @@ The main details landmarks related to a face that I support are:
 - eyebrows 
 - mouth
 
-!!Nose
+1. # Nose
+
 The nose is specified using seven points. They identify the right and left alar, the tip and the top of the nose.
 
-${example:GtCSFaceLandmarksExamples>>#landmarkNose}$
+{{gtExample:GtCSFaceLandmarksExamples>>#landmarkNose}}
 
-!!Eyes
+1. # Eyes
+
 An indivudual is specified by providing five points. Four points form a rectangle defining the outline of the eye and the fifth identifies the pupil. These details need to be provided for both eyes.
 
-${example:GtCSFaceLandmarksExamples>>#landmarkEyes}$
+{{gtExample:GtCSFaceLandmarksExamples>>#landmarkEyes}}
+
 
 "
 Class {

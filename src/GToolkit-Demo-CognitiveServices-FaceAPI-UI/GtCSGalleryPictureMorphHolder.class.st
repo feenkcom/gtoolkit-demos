@@ -1,5 +1,7 @@
 "
 I am an element of an infinite list that can hold a picture wrapper.
+
+
 "
 Class {
 	#name : #GtCSGalleryPictureMorphHolder,
@@ -7,7 +9,7 @@ Class {
 	#instVars : [
 		'pictureWrapper'
 	],
-	#category : 'GToolkit-Demo-CognitiveServices-FaceAPI-UI'
+	#category : #'GToolkit-Demo-CognitiveServices-FaceAPI-UI'
 }
 
 { #category : #initialization }
