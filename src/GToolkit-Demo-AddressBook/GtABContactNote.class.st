@@ -1,5 +1,7 @@
 "
 I model a simple note about a contact
+
+
 "
 Class {
 	#name : #GtABContactNote,

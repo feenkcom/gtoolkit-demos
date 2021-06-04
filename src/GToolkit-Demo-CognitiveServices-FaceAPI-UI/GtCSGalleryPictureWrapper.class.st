@@ -1,5 +1,7 @@
 "
 I wrap a picture object and add support for loading the picture form and the face data.
+
+
 "
 Class {
 	#name : #GtCSGalleryPictureWrapper,
@@ -14,7 +16,7 @@ Class {
 	#classInstVars : [
 		'defaultPictureForm'
 	],
-	#category : 'GToolkit-Demo-CognitiveServices-FaceAPI-UI'
+	#category : #'GToolkit-Demo-CognitiveServices-FaceAPI-UI'
 }
 
 { #category : #accessing }

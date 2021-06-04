@@ -1,18 +1,19 @@
 "
-Address books are instances of the class ${class:GtABAddressBook}$.
-[[[ 
+Address books are instances of the class {{gtClass:GtABAddressBook}}.
+``` 
 	GtABAddressBook new
 		label: 'My contacts'.
-]]]
+```
 
-Contacts are then instances of ${class:GtABContact}$. They can have several properties, like name, address, description.
-${example:GtABAddressBookExample>>#janeDoeContact}$
+Contacts are then instances of {{gtClass:GtABContact}}. They can have several properties, like name, address, description.
+{{gtExample:GtABAddressBookExample>>#janeDoeContact}}
 
 This contact will be dispayed then in the user interface as follows:
-${example:GtABAddressBookExample>>#johnDoeContact|previewShow=#gtViewPreviewOn:|noCode}$
+{{gtExample:GtABAddressBookExample>>#johnDoeContact|previewShow=#gtViewPreviewOn:|noCode}}
 
-Contacts can be added using the ${method:GtABAddressBook>>#addContact:}$
-${example:GtABAddressBookExample>>#myContactsAddressBook}$
+Contacts can be added using the {{gtMethod:GtABAddressBook>>#addContact:}}
+{{gtExample:GtABAddressBookExample>>#myContactsAddressBook}}
+
 
 "
 Class {

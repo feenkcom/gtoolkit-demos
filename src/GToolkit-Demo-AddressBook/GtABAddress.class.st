@@ -1,5 +1,7 @@
 "
 I hold all data relevant for an address
+
+
 "
 Class {
 	#name : #GtABAddress,

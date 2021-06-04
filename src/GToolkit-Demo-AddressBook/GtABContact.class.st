@@ -1,5 +1,7 @@
 "
 I model an entry in an address book
+
+
 "
 Class {
 	#name : #GtABContact,

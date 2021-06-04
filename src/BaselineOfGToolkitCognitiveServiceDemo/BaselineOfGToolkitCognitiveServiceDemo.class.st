@@ -1,7 +1,8 @@
 "
-!Exemplifying software - the Cognitive Service
+1. Exemplifying software - the Cognitive Service
 The exemplifying software tutorial based on a case study of face recognition using the Azure Face API:
-${icebergFile:path=feenkcom/gtoolkit-demos/doc/tutorial/esug-2018/esug-2018-exemplifying-software.pillar}$
+[esug-2018-exemplifying-software.pillar](fileLocator://gtResource/feenkcom/gtoolkit-demos/doc/tutorial/esug-2018/esug-2018-exemplifying-software.pillar)
+
 
 "
 Class {

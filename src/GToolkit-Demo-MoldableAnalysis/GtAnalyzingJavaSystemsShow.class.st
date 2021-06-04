@@ -1,16 +1,18 @@
 "
 Inspect the presentation
-[[[
+```
 (GtLiveShow createWithArrowsVisible: GtMoldableAnalysisPresentation new) create.		
-]]]
+```
 
 Open the presentation in a new window.
-[[[
+```
 space := BlSpace new.
 space root addChild: (GtLiveShow createWithArrowsVisible: GtMoldableAnalysisPresentation new) create.
 space title: 'Moldable analysis'.
 space show			
-]]]
+```
+
+
 "
 Class {
 	#name : #GtAnalyzingJavaSystemsShow,

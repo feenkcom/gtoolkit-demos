@@ -8,9 +8,11 @@ The main attributes related to a face are shown below. Faces may contain also ot
 - glasses: Information about glasses detected in a face;
 - hair: Information about hair, including color.
 
-Each of these attributes can be represented in a custom way. The following is an example of a list of attributes (for the face ${method:GtCSPictureExamples>>#faceHabichtWithLandmarksInPicture}$)
+Each of these attributes can be represented in a custom way. The following is an example of a list of attributes (for the face {{gtMethod:GtCSPictureExamples>>#faceHabichtWithLandmarksInPicture}})
 
-${example:GtCSPictureExamples>>#faceHabichtWithAttributes|noCode|previewShow=#gtViewAttributesListFor:}$
+{{gtExample:GtCSPictureExamples>>#faceHabichtWithAttributes|noCode|previewShow=#gtViewAttributesListFor:}}
+
+
 "
 Class {
 	#name : #GtCSFaceAttributes,

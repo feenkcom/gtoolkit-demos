@@ -2,6 +2,8 @@
 I model a detect request for the Azures Face API.
 
 A detect request returns various informations about the faces from a given picture. I provide an API for configuring what properties should be computed.
+
+
 "
 Class {
 	#name : #GtCSFaceApiDetectRequest,
@@ -12,7 +14,7 @@ Class {
 		'returnFaceLandmarks',
 		'returnFaceAttributes'
 	],
-	#category : 'GToolkit-Demo-CognitiveServices-FaceAPI'
+	#category : #'GToolkit-Demo-CognitiveServices-FaceAPI'
 }
 
 { #category : #accessing }

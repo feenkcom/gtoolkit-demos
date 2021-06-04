@@ -1,5 +1,7 @@
 "
 I model a simple telefon number
+
+
 "
 Class {
 	#name : #GtABTelephone,

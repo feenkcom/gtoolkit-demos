@@ -1,5 +1,7 @@
 "
 I model a category in the addressbook.
+
+
 "
 Class {
 	#name : #GtABCategory,

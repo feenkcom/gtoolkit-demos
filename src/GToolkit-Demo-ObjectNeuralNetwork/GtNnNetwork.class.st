@@ -1,5 +1,5 @@
 "
-[[[
+```
 network := GtNnNetwork new.
 network inputs: 2.
 network outputs: 2.
@@ -7,7 +7,9 @@ network hidden: 0 of: 5.
 network connectAll.
 
 network input: { 1 . 2 }
-]]]
+```
+
+
 "
 Class {
 	#name : #GtNnNetwork,
