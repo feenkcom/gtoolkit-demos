@@ -9,15 +9,10 @@ Contacts are then instances of ${class:GtABContact}$. They can have several prop
 ${example:GtABAddressBookExample>>#janeDoeContact}$
 
 This contact will be dispayed then in the user interface as follows:
-${example:GtABAddressBookExample>>#johnDoeContact|show=#gtViewPreviewOn:|noCode}$
+${example:GtABAddressBookExample>>#johnDoeContact|previewShow=#gtViewPreviewOn:|noCode}$
 
 Contacts can be added using the ${method:GtABAddressBook>>#addContact:}$
 ${example:GtABAddressBookExample>>#myContactsAddressBook}$
-
-
-
-
-
 
 "
 Class {
