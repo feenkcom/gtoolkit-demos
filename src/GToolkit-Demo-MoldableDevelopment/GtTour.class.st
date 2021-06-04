@@ -927,7 +927,11 @@ GtTour >> titleSlideFor: aSlide [
 			fontSize: 60;
 			glamorousRegularFont;
 			thin;
-			in: [:t | (t from: 'glamorous' size + 1 to: t size) bold]; yourself)
+			in: [:t | (t from: 'glamorous' size + 1 to: t size) bold]; yourself);
+		subtitleWithFormat: ('tour' asRopedText 
+			fontSize: 40;
+			glamorousRegularFont;
+			thin)
 ]
 
 { #category : #'api - instantiation' }
