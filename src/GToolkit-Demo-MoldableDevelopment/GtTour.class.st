@@ -735,49 +735,27 @@ GtTour >> playgroundExplanationWithLinks [
 		margin: (BlInsets all: 5);
 		background: Color white;
 		aptitude: BrShadowAptitude.
-	playgroundElement := GtPlayground newWithSnippets: {'a := 40' . 'a + 2'} asOrderedCollection.
 	scripter := BlDevScripter new.
+	scripter element: (GtPlaygroundLiveSlide new snippets: {'a := 40' . 'a + 2'}) asElement.
 	scripter
-		substep: 'Initiate Playground'
+		substep: 'Selecting snippet'
 		do: [ :aStep | 
-			aStep set
-				label: 'Playground';
-				element: [ playgroundElement ].
+			aStep click
+				label: 'Click on snippet';
+				onBreadthFirstChildOfClass: LePharoSnippetElement.
 			aStep wait forEmptySpaceTaskQueue ].
 	scripter syncContinue.
 	playgroundElement := scripter elementWithoutParent.
-	playgroundElement
-		allChildrenBreadthFirstDo: [ :aChild | 
-			aChild id = (BlElementId named: #'snippet--add-new-button')
-				ifTrue: [ aChild
-						addChild:
-							((self yellowExplanationTargetCircleFor: #plusButton) relocate: 0 @ 5) ].
-			(aChild isKindOf: GtExpandableSourceCoderElement) ifTrue: [ aChild
-						addChild:
-							((self yellowExplanationTargetCircleFor: #snippets) relocate: 0 @ 5) ]. ].
-	frameToolbarButtons := playgroundElement
-		allChildrenBreadthFirstSelect: [ :aChild | 
-			(aChild isKindOf: BrToolbar)
-				and: [ (aChild parent isKindOf: GtCoderActionsElement)
-						and: [ aChild hasChildren ] ] ].
-	frameToolbarButtons
-		do: [ :each | 
-			(each children at: 1)
-				addChild:
-					((self yellowExplanationTargetCircleFor: #evaluateButton)
-						relocate: 0 @ 5).
-			(each children at: 2)
-				addChild:
-					((self yellowExplanationTargetCircleFor: #inspectButton)
-						relocate: 0 @ 5).
-			(each children at: 3)
-				addChild: ((self yellowExplanationTargetCircleFor: #debugButton) relocate: 0 @ 5) ].
-	"snippetElementsCollection
-		do: [ :eachSnippet | 
-			eachSnippet
-				addChild:
-					((self yellowExplanationTargetCircleFor: #snippets)
-						relocate: 5 @ eachSnippet extent y / 2) ]."
+	(playgroundElement query // LePharoSnippetElement) all do: [:snippet | 
+		snippet addChild: (self yellowExplanationTargetCircleFor: #snippets).
+		(snippet query // #bottomToolbar) all do: [:toolbar | 
+			toolbar addChild: (self yellowExplanationTargetCircleFor: #plusButton) ].
+		(snippet query // GtSourceCoderDoItActionId) all do: [:toolbar | 
+			toolbar addChild: (self yellowExplanationTargetCircleFor: #evaluateButton) ].
+		(snippet query // GtSourceCoderDoItAndGoActionId) all do: [:toolbar | 
+			toolbar addChild: (self yellowExplanationTargetCircleFor: #inspectButton) ].
+		(snippet query // GtSourceCoderDebugActionId) all do: [:toolbar | 
+			toolbar addChild: (self yellowExplanationTargetCircleFor: #debugButton) ]. ].
 	^ container addChild: (GtPager createWrappedOn: playgroundElement)
 ]
 
@@ -928,10 +906,10 @@ GtTour >> titleSlideFor: aSlide [
 			glamorousRegularFont;
 			thin;
 			in: [:t | (t from: 'glamorous' size + 1 to: t size) bold]; yourself);
-		subtitleWithFormat: ('tour' asRopedText 
+		subtitleWithFormat: ('a tour' asRopedText 
 			fontSize: 40;
 			glamorousRegularFont;
-			thin)
+			bold)
 ]
 
 { #category : #'api - instantiation' }
