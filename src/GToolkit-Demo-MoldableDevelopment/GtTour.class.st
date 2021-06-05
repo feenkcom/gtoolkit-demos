@@ -213,7 +213,7 @@ When maximized, Coder also offers a ' asRopedText,
 
 { #category : #accessing }
 GtTour >> coderSlideshowLinkSlideFor: aSlide [
-	<gtSlide>
+	"<gtSlide>"
 	^ aSlide slideshow
 		priority: 22;
 		textWithFormat: 'Want to learn more about the Coder? Follow the show below' asRopedText glamorousRegularFont;
@@ -468,7 +468,7 @@ GtTour >> graphicalStackIntroductionSlideFor: aSlide [
 
 { #category : #slides }
 GtTour >> graphicalStackSecondExampleSlideFor: aSlide [
-	<gtSlide>
+	"<gtSlide>"
 	^ aSlide labelAndElement
 		priority: 36;
 		element: [ self treemapWithViewsAndExamples ];
@@ -546,7 +546,7 @@ GtTour >> moldableCodingTitleSlideFor: aSlide [
 
 { #category : #slides }
 GtTour >> moldableDevelopmentSlideFor: aSlide [
-	<gtSlide>
+	"<gtSlide>"
 	^ aSlide slideshow
 		priority: 37;
 		text: ('Want to learn more about moldable development? Follow the show below.');
@@ -575,7 +575,7 @@ GtTour >> multipleViewsForOneObjectExampleSlideFor: aSlide [
 
 { #category : #slides }
 GtTour >> oneRenderingTreeSlideshowLinkSlideFor: aSlide [
-	<gtSlide>
+	"<gtSlide>"
 	^ aSlide slideshow
 		priority: 35;
 		text: ('Want to dive deeper into the rendering stack? Follow the show below.');
@@ -787,7 +787,7 @@ The playground lets you ' asRopedText,
 
 { #category : #accessing }
 GtTour >> playgroundSlideshowLinkSlideFor: aSlide [
-	<gtSlide>
+	"<gtSlide>"
 	^ aSlide slideshow
 		priority: 15;
 		textWithFormat: 'Want to learn more about the Playground? Follow the show below' asRopedText glamorousRegularFont;
@@ -805,7 +805,7 @@ GtTour >> queryExampleSlideFor: aSlide [
 
 { #category : #accessing }
 GtTour >> querySlideshowLinkSlideFor: aSlide [
-	<gtSlide>
+	"<gtSlide>"
 	^ aSlide slideshow
 		priority: 19;
 		textWithFormat: ('To learn more about queries follow the show below.' asRopedText glamorousRegularFont);
@@ -850,7 +850,7 @@ GtTour >> spotterSecondExampleSlideFor: aSlide [
 
 { #category : #accessing }
 GtTour >> spotterSlideshowLinkSlideFor: aSlide [
-	<gtSlide>
+	"<gtSlide>"
 	^ aSlide slideshow
 		priority: 26;
 		textWithFormat: 'Want to learn more about the Spotter? Follow the show below' asRopedText glamorousRegularFont;
