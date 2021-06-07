@@ -859,6 +859,7 @@ GtTour >> spotterSlideshowLinkSlideFor: aSlide [
 
 { #category : #'api - instantiation' }
 GtTour >> timelineElement [
+	<gtExample>
 	| plotter |
 	plotter := GtPlotter new.
 	plotter verticalTimeline
@@ -868,17 +869,18 @@ GtTour >> timelineElement [
 		timelineFrom: 2011 asYear 
 		to: (Date today + 1 year) asYear;
 		with: { 
-			(Date year: 2011 month: 08 day: 22) -> 'first gt inspector'.
-			(Date year: 2013 month: 12 day: 28) -> 'first gt debugger'.
-			(Date year: 2014 month: 02 day: 14) -> 'first gt playground'.
-			(Date year: 2014 month: 12 day: 07) -> 'first gt spotter'.
+			(Date year: 2011 month: 08 day: 22) -> 'First GT inspector'.
+			(Date year: 2013 month: 12 day: 28) -> 'First GT debugger'.
+			(Date year: 2014 month: 02 day: 14) -> 'First GT playground'.
+			(Date year: 2014 month: 12 day: 07) -> 'First GT spotter'.
 			(Date year: 2015 month: 10 day: 02) -> 'feenk founding'.
-			(Date year: 2016 month: 09 day: 19) -> 'moldable tools thesis'.
-			(Date year: 2017 month: 08 day: 15) -> 'new generation gt starts'.
-			(Date year: 2018 month: 09 day: 10) -> 'first public demo'.
-			(Date year: 2019 month: 04 day: 19) -> 'gt 0.6.42'.
-			(Date year: 2019 month: 07 day: 16) -> 'first public moldable development talk'.
-			(Date year: 2020 month: 07 day: 23) -> 'gt v0.7.1214 beta'
+			(Date year: 2016 month: 09 day: 19) -> 'Moldable Tools thesis'.
+			(Date year: 2017 month: 08 day: 15) -> 'New generation of Glamorous Toolkit starts'.
+			(Date year: 2018 month: 09 day: 10) -> 'First public demo'.
+			(Date year: 2019 month: 04 day: 19) -> 'Glamorous Toolkit 0.6.42 alpha'.
+			(Date year: 2019 month: 07 day: 16) -> 'First public Moldable Development talk'.
+			(Date year: 2020 month: 07 day: 23) -> 'Glamorous Toolkit v0.7.1214 beta'.
+			(Date year: 2021 month: 06 day: 04) -> 'Lepiter'
 		}.
 		^ plotter asElement
 ]
