@@ -509,7 +509,7 @@ GtTour >> liveDocumentExampleSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide labelAndElement
 		priority: 28;
-		element: [ (GtDocumenter forClass: GtCSPicture) 
+		element: [ (LeCoderCommentElement coderElementFor: 'GtCSPicture') 
 			margin: (BlInsets all: 10);
 			background: Color white;
 			aptitude: BrShadowAptitude];
