@@ -7,6 +7,7 @@ Class {
 { #category : #examples }
 GtWorkingWithTheGitHubRestApiShow >> apiExamples [
 	<gtExample>
+	<noTest>
 	| firstExampleContainer secondExampleContainer thirdExampleContainer |
 
 	firstExampleContainer := BlElement new
@@ -136,6 +137,7 @@ GtWorkingWithTheGitHubRestApiShow >> playgroundWithFeenkcomFor: aSlide [
 { #category : #examples }
 GtWorkingWithTheGitHubRestApiShow >> responseForFeenkOrg [
 	<gtExample>
+	<noTest>
 	| response |
 	response := ZnClient new
 		url: 'https://api.github.com/orgs/feenkcom';
@@ -151,6 +153,7 @@ GtWorkingWithTheGitHubRestApiShow >> responseForFeenkOrg [
 { #category : #examples }
 GtWorkingWithTheGitHubRestApiShow >> responseForFeenkRepos [
 	<gtExample>
+	<noTest>
 	| response |
 	response := ZnClient new
 		url: 'https://api.github.com/orgs/feenkcom/repos';
@@ -166,6 +169,7 @@ GtWorkingWithTheGitHubRestApiShow >> responseForFeenkRepos [
 { #category : #examples }
 GtWorkingWithTheGitHubRestApiShow >> responseForGToolkitRepo [
 	<gtExample>
+	<noTest>
 	| response |
 	response := ZnClient new
 		url: 'https://api.github.com/repos/feenkcom/gtoolkit';
