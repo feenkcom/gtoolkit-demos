@@ -5,7 +5,7 @@ I maintain a list of {{gtClass:GtCSFace}} objects representing the faces detecte
 
 {{gtExample:GtCSPictureExamples>>#pictureWithFacesWithLandmarksAndForm|noCode|previewShow=gtPictureFor:}}
 
-1. # Instantiation
+#Instantiation
 
 New instances are created by directly instantiating the class. These instances have no face data or graphical representation by default. 
 {{gtExample:GtCSPictureExamples>>#newPictureInstance}}
@@ -13,7 +13,7 @@ New instances are created by directly instantiating the class. These instances h
 Currently a picture objects stores the URL from where the picture can be downloaded. This is just a temporary behaviour and should be removed in the future.
 {{gtExample:GtCSPictureExamples>>#emptyPicture}}
 
-1. # Adding a graphical representation
+#Adding a graphical representation
 
 To explicitly add a graphical representation there are several alternative:
 - set an URL to the picture and load the graphical representation from that URL using {{gtMethod:GtCSPicture>>#ensurePictureForm}}; 
@@ -21,7 +21,7 @@ To explicitly add a graphical representation there are several alternative:
 
 {{gtExample:GtCSPictureExamples>>#pictureWithManuallySetForm}}
 
-1. # Adding face information.
+#Adding face information.
 
 The main way to load face information is by calling {{gtMethod:GtCSPicture>>#addFace:}}. Before adding faces {{gtMethod:GtCSPicture>>#ensureFacesStorage}} needs to be called to initialize the storage for faces. 
 {{gtExample:GtCSPictureExamples>>#pictureWithFacesWithLandmarksAndForm}}
@@ -29,7 +29,7 @@ The main way to load face information is by calling {{gtMethod:GtCSPicture>>#add
 Faces can be added to a picture even if the picture does not have a graphical representation.
 {{gtExample:GtCSPictureExamples>>#pictureWithFacesAndNoForm}}
 
-1. # Implementation details
+#Implementation details
 
 The fact that the attribute `faces` is not null indicates that a client of this object already added face data to the picture. An empty list indicates that the picture has no face objects.
 
