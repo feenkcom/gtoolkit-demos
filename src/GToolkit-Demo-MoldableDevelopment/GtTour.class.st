@@ -19,7 +19,7 @@ GtTour >> classCommentAsLiveDocumentExampleSlideFor: aSlide [
 	^ aSlide labelAndElement
 		priority: 29;
 		element: [ self coderWithComment ];
-		newFadedText: 'Interestingly, the document is actually the comment of a class.';
+		newFadedText: 'Interestingly, the same engine works for class comments as well.';
 		newFadedText: 'Click on the links to spawn other documents and navigate the image as a wiki.'.
 ]
 
@@ -509,11 +509,8 @@ GtTour >> liveDocumentExampleSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide labelAndElement
 		priority: 28;
-		element: [ (GtDocumenter forClass: GtCSPicture) 
-			margin: (BlInsets all: 10);
-			background: Color white;
-			aptitude: BrShadowAptitude];
-		newFadedText: 'This is a live document intertwining text, code and graphics.';
+		element: [ (GtLepiterPageLiveSlide new pageNamed: 'Glamorous Toolkit' from: 'Glamorous Toolkit Book') create maximized];
+		newFadedText: 'This is a live document intertwining text, code and graphics. It is also part of a book about Glamorous Toolkit.';
 		newFadedText: 'Browse it. Execute the code. Try editing the text, too. It''s live'.
 ]
 
