@@ -10,18 +10,18 @@ BaselineOfGToolkitDemos >> baseline: spec [
 	spec for: #'common' do: [
 		spec 
 			baseline: 'GToolkitCognitiveServiceDemo' with: [
-				spec repository: 'github://feenkcom/gtoolkit-demos:v0.8.410/src' ];
+				spec repository: 'github://feenkcom/gtoolkit-demos:v0.8.411/src' ];
 			baseline: 'GToolkitObjectNeuralNetworkDemo' with: [
-				spec repository: 'github://feenkcom/gtoolkit-demos:v0.8.410/src' ];
+				spec repository: 'github://feenkcom/gtoolkit-demos:v0.8.411/src' ];
 			baseline: 'GToolkitGitHubApiDemo' with: [
-				spec repository: 'github://feenkcom/gtoolkit-demos:v0.8.410/src' ];
+				spec repository: 'github://feenkcom/gtoolkit-demos:v0.8.411/src' ];
 			baseline: 'GToolkitWhatMakesBlocSpecialDemo' with: [
-				spec repository: 'github://feenkcom/gtoolkit-demos:v0.8.410/src' ];
+				spec repository: 'github://feenkcom/gtoolkit-demos:v0.8.411/src' ];
 			baseline: 'GToolkitMoldableDevelopmentDemo' with: [
-				spec repository: 'github://feenkcom/gtoolkit-demos:v0.8.410/src' ];
+				spec repository: 'github://feenkcom/gtoolkit-demos:v0.8.411/src' ];
 			baseline: 'GToolkitPharo101' with: [
-				spec repository: 'github://feenkcom/gtoolkit-demos:v0.8.410/src' ];
+				spec repository: 'github://feenkcom/gtoolkit-demos:v0.8.411/src' ];
 			baseline: 'GToolkitMoldableAnalysisDemo' with: [
-				spec repository: 'github://feenkcom/gtoolkit-demos:v0.8.410/src' ]. ].
+				spec repository: 'github://feenkcom/gtoolkit-demos:v0.8.411/src' ]. ].
 
 ]
