@@ -9,7 +9,7 @@ BaselineOfGToolkitObjectNeuralNetworkDemo >> baseline: spec [
 	<baseline>
 	spec for: #'common' do: [
 		spec baseline: 'Bloc' with: [
-				spec repository: 'github://feenkcom/Bloc:v0.8.223/src' ].
+				spec repository: 'github://feenkcom/Bloc:v0.8.224/src' ].
 		spec package: 'GToolkit-Demo-ObjectNeuralNetwork'. ].
 
 ]
