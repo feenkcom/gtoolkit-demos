@@ -4,12 +4,13 @@ Class {
 	#category : #BaselineOfGToolkitPharo101
 }
 
-{ #category : #baselines }
+{ #category : #baseline }
 BaselineOfGToolkitPharo101 >> baseline: spec [
 	<baseline>
-	spec for: #'common' do: [ 
+	spec for: #'common' do: [
 		spec baseline: 'Brick' with: [
-			spec repository: 'github://feenkcom/Brick/src' ].
+				spec repository: 'github://feenkcom/Brick:main/src' ].
 		spec package: 'GToolkit-Demo-Pharo101' with: [
-			spec requires: #(#Brick) ] ].
+				spec requires: #('Brick' ). ]. ].
+
 ]
