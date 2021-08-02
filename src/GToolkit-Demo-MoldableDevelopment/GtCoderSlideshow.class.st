@@ -151,16 +151,7 @@ GtCoderSlideshow >> baselineMethodsExplanationWithLinks [
 		do: [ :aStep | 
 			aStep click
 				label: 'Expand baseline in place';
-				onBreadthFirstChildOfClass: GtPharoBehaviorCoderElement;
-				onBreadthFirstChildOfClass: BrTabGroup;
-				onChildAt: 2;
-				onBreadthFirstChildOfClass: GtPharoMethodsCoderElement;
-				onBreadthFirstChildOfClass: BrInfiniteListElement;
-				onChildAt: 1;
-				onChildAt: 2;
-				onBreadthFirstChildOfClass: GtSourceCoderEditorElement;
-				onChildAt: 8;
-				onBreadthFirstChildOfClass: BrTriangle.
+				id: GtSourceCoderEmbeddedExpanderToggleId index: 1.
 			aStep wait forEmptySpaceTaskQueue ].
 	aScripter syncContinue.	
 	^ BlElement new
