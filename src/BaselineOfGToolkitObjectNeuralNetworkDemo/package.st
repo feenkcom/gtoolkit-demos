@@ -1,1 +1,1 @@
-Package { #name : #BaselineOfGToolkitObjectNeuralNetworkDemo }
+Package { #name : 'BaselineOfGToolkitObjectNeuralNetworkDemo' }

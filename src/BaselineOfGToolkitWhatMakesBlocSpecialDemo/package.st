@@ -1,1 +1,1 @@
-Package { #name : #BaselineOfGToolkitWhatMakesBlocSpecialDemo }
+Package { #name : 'BaselineOfGToolkitWhatMakesBlocSpecialDemo' }
