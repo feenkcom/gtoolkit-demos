@@ -45,68 +45,68 @@ The traditional Smalltalk environment was a revolution when it was created. It e
 
 "
 Class {
-	#name : #GtAndPharoExplanation,
-	#superclass : #Object,
-	#category : #'GToolkit-Demo-MoldableDevelopment'
+	#name : 'GtAndPharoExplanation',
+	#superclass : 'Object',
+	#category : 'GToolkit-Demo-MoldableDevelopment'
 }
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 GtAndPharoExplanation >> basePharoLinesOfCode [
 	<gtExample>
 	<noTest>
 	^ GtMetrics default basePharoLinesOfCode
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtAndPharoExplanation >> famix3LinesOfCode [
 	<gtExample>
 	<noTest>
 	^ GtMetrics default famix3LinesOfCode
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 GtAndPharoExplanation >> gtLinesOfCode [
 	<gtExample>
 	<noTest>
 	^ GtMetrics default gtLinesOfCode
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 GtAndPharoExplanation >> pharoToReplaceLinesOfCode [
 	<gtExample>
 	<noTest>
 	^ GtMetrics default pharoToReplaceLinesOfCode
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 GtAndPharoExplanation >> pharoToReplaceProjects [
 	<gtExample>
 	<noTest>
 	^ GtMetrics default pharoToReplaceProjects
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtAndPharoExplanation >> smaccParsersLinesOfCode [
 	<gtExample>
 	<noTest>
 	^ GtMetrics default smaccParsersLinesOfCode
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtAndPharoExplanation >> smaccParsersPackages [
 	<gtExample>
 	<noTest>
 	^ GtMetrics default smaccParserPackages
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 GtAndPharoExplanation >> totalLinesOfCode [
 	<gtExample>
 	<noTest>
 	^ GtMetrics default pharoToReplaceProjects
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtAndPharoExplanation >> xmlSupportLinesOfCode [
 	<gtExample>
 	<noTest>
