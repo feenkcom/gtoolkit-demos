@@ -1,5 +1,5 @@
 Class {
-	#name : #GtExampleDrivenExplanation,
-	#superclass : #Object,
-	#category : #'GToolkit-Demo-MoldableDevelopment'
+	#name : 'GtExampleDrivenExplanation',
+	#superclass : 'Object',
+	#category : 'GToolkit-Demo-MoldableDevelopment'
 }
