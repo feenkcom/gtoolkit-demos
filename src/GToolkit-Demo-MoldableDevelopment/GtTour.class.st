@@ -631,7 +631,7 @@ GtTour >> parseCSharp [
 	csharp := ZnClient new 
 		url: 'https://raw.githubusercontent.com/microsoft/calculator/66ad328d0018c360c1a0dc766f994c7fdb7d4a3f/src/CalculatorUITestFramework/MemoryPanel.cs';
 		get.
-	^ CSharpParser parse: csharp
+	CSharpParser parse: csharp
 ]
 
 { #category : 'parsing' }
@@ -643,7 +643,7 @@ GtTour >> parseClojure [
 	clojure := ZnClient new 
 		url: 'https://raw.githubusercontent.com/clojure/clojure/master/src/clj/clojure/main.clj';
 		get.
-	^ ClojureParser parse: clojure.
+	ClojureParser parse: clojure.
 ]
 
 { #category : 'parsing' }
@@ -655,7 +655,7 @@ GtTour >> parseJSX [
 	js := ZnClient new 
 		url: 'https://raw.githubusercontent.com/zooniverse/mobile/a0a7fe122790fc47d8d2c5931a084bcc52518e4e/src/components/Button.js';
 		get.
-	^ JSXParser parse: js
+	JSXParser parse: js
 ]
 
 { #category : 'parsing' }
@@ -667,7 +667,7 @@ GtTour >> parseJava [
 	java := ZnClient new 
 		url: 'https://raw.githubusercontent.com/spring-projects/spring-framework/b2bcb0f93ad04a6ddc729a487f9346defa6c39d6/spring-context/src/main/java/org/springframework/format/datetime/DateFormatter.java';
 		get.
-	^ JavaParser parse: java
+	JavaParser parse: java
 ]
 
 { #category : 'parsing' }
@@ -679,7 +679,7 @@ GtTour >> parseJavaScript [
 	js := ZnClient new 
 		url: 'https://raw.githubusercontent.com/zooniverse/mobile/a0a7fe122790fc47d8d2c5931a084bcc52518e4e/src/utils/workflow-utils.js';
 		get.
-	^ JSParser parse: js
+	JSParser parse: js
 ]
 
 { #category : 'slides' }
@@ -707,7 +707,7 @@ GtTour >> parsePython [
 	python := ZnClient new
 		url: 'https://raw.githubusercontent.com/tensorflow/tensorflow/master/tensorflow/python/platform/app.py';
 		get.
-	^ PythonParser parse: python.
+	PythonParser parse: python.
 ]
 
 { #category : 'accessing' }
