@@ -1,13 +1,13 @@
 Class {
-	#name : #GtModelDescription,
-	#superclass : #Object,
+	#name : 'GtModelDescription',
+	#superclass : 'Object',
 	#instVars : [
 		'snippetsCollection'
 	],
-	#category : #'GToolkit-Demo-MoldableDevelopment'
+	#category : 'GToolkit-Demo-MoldableDevelopment'
 }
 
-{ #category : #accesing }
+{ #category : 'accesing' }
 GtModelDescription >> addressBookClassDescription [
 	| text |
 	text := 'So we create an address book that can hold multiple contacts. We also assign a label to it.' asRopedText.
@@ -18,7 +18,7 @@ GtModelDescription >> addressBookClassDescription [
 		foreground: Color black.
 ]
 
-{ #category : #accesing }
+{ #category : 'accesing' }
 GtModelDescription >> addressBookClassDescriptionSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide textAndElement
@@ -28,7 +28,7 @@ GtModelDescription >> addressBookClassDescriptionSlideFor: aSlide [
 		elementWeight: 0.6.
 ]
 
-{ #category : #accesing }
+{ #category : 'accesing' }
 GtModelDescription >> addressBookExampleSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide labelAndElement
@@ -40,7 +40,7 @@ GtModelDescription >> addressBookExampleSlideFor: aSlide [
 			asElement ].
 ]
 
-{ #category : #accesing }
+{ #category : 'accesing' }
 GtModelDescription >> addressBookIntroductionSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide text
@@ -51,7 +51,7 @@ GtModelDescription >> addressBookIntroductionSlideFor: aSlide [
 				fontSize: 20).
 ]
 
-{ #category : #accesing }
+{ #category : 'accesing' }
 GtModelDescription >> addressClassDescription [
 	| text |
 	text := 'We start with the address class. It stores the city and the country so we make getter and setter methods for those.' asRopedText.
@@ -62,7 +62,7 @@ GtModelDescription >> addressClassDescription [
 		foreground: Color black.
 ]
 
-{ #category : #accesing }
+{ #category : 'accesing' }
 GtModelDescription >> addressClassDescriptionSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide textAndElement
@@ -72,7 +72,7 @@ GtModelDescription >> addressClassDescriptionSlideFor: aSlide [
 		elementWeight: 0.6
 ]
 
-{ #category : #accesing }
+{ #category : 'accesing' }
 GtModelDescription >> addressClassExampleSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide labelAndElement
@@ -83,7 +83,7 @@ GtModelDescription >> addressClassExampleSlideFor: aSlide [
 			asElement].
 ]
 
-{ #category : #accesing }
+{ #category : 'accesing' }
 GtModelDescription >> categoriesIntroductionSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide text
@@ -93,7 +93,7 @@ GtModelDescription >> categoriesIntroductionSlideFor: aSlide [
 			fontSize: 20).
 ]
 
-{ #category : #accesing }
+{ #category : 'accesing' }
 GtModelDescription >> categoryClassDescription [
 	| text |
 	text := 'A category can hold contacts and other categories, referred to as subcategories. It also has a label to better identify it.' asRopedText.
@@ -104,7 +104,7 @@ GtModelDescription >> categoryClassDescription [
 		foreground: Color black.
 ]
 
-{ #category : #accesing }
+{ #category : 'accesing' }
 GtModelDescription >> categoryClassDescriptionSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide textAndElement
@@ -114,7 +114,7 @@ GtModelDescription >> categoryClassDescriptionSlideFor: aSlide [
 		elementWeight: 0.6.
 ]
 
-{ #category : #accesing }
+{ #category : 'accesing' }
 GtModelDescription >> categoryExampleSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide labelAndElement
@@ -125,7 +125,7 @@ GtModelDescription >> categoryExampleSlideFor: aSlide [
 			asElement ].
 ]
 
-{ #category : #accesing }
+{ #category : 'accesing' }
 GtModelDescription >> coderOnClass: aClass [
 	| coderElement container |
 	
@@ -144,7 +144,7 @@ GtModelDescription >> coderOnClass: aClass [
 		addChild: coderElement.
 ]
 
-{ #category : #accesing }
+{ #category : 'accesing' }
 GtModelDescription >> contactClassDescription [
 	| text |
 	text := 'Next we can work on the class for contacts. Besides the address, telephone and notes, it will have a first name, a last name and an avatar. Some custom views are also defined here for a better visualization of the objects.' asRopedText.
@@ -155,7 +155,7 @@ GtModelDescription >> contactClassDescription [
 		foreground: Color black.
 ]
 
-{ #category : #accesing }
+{ #category : 'accesing' }
 GtModelDescription >> contactClassDescriptionSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide textAndElement
@@ -165,7 +165,7 @@ GtModelDescription >> contactClassDescriptionSlideFor: aSlide [
 		elementWeight: 0.6.
 ]
 
-{ #category : #accesing }
+{ #category : 'accesing' }
 GtModelDescription >> contactClassExampleSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide labelAndElement
@@ -180,7 +180,7 @@ GtModelDescription >> contactClassExampleSlideFor: aSlide [
 			asElement].
 ]
 
-{ #category : #accesing }
+{ #category : 'accesing' }
 GtModelDescription >> descriptionSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide text
@@ -188,7 +188,7 @@ GtModelDescription >> descriptionSlideFor: aSlide [
 		newTextWithFormat: self introductionText.
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 GtModelDescription >> initialize [
 	snippetsCollection := {
 		'address := GtABAddress new
@@ -222,7 +222,7 @@ GtModelDescription >> initialize [
 	addContact: johnDoeContact.'}.
 ]
 
-{ #category : #accesing }
+{ #category : 'accesing' }
 GtModelDescription >> introductionSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide text
@@ -233,7 +233,7 @@ GtModelDescription >> introductionSlideFor: aSlide [
 				fontSize: 20).
 ]
 
-{ #category : #accesing }
+{ #category : 'accesing' }
 GtModelDescription >> introductionText [
 	| text |
 	text := 'In this tutorial we will take a closer look at how to model something in Gt. 
@@ -245,7 +245,7 @@ The example we chose is an address book that holds contacts and optionally it ca
 		foreground: Color black.
 ]
 
-{ #category : #accesing }
+{ #category : 'accesing' }
 GtModelDescription >> noteClassDescription [
 	| text |
 	text := 'Each contact can also have notes. They are different kinds of information about that contact like a reminder or a working schedule. A note has a title and the content. On top of the getter and setter methods, a note has a view method, creating a custom visualization for the object.' asRopedText.
@@ -256,7 +256,7 @@ GtModelDescription >> noteClassDescription [
 		foreground: Color black.
 ]
 
-{ #category : #accesing }
+{ #category : 'accesing' }
 GtModelDescription >> noteClassDescriptionSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide textAndElement
@@ -266,7 +266,7 @@ GtModelDescription >> noteClassDescriptionSlideFor: aSlide [
 		elementWeight: 0.6.
 ]
 
-{ #category : #accesing }
+{ #category : 'accesing' }
 GtModelDescription >> noteClassExampleSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide labelAndElement
@@ -277,7 +277,7 @@ GtModelDescription >> noteClassExampleSlideFor: aSlide [
 				asElement].
 ]
 
-{ #category : #accesing }
+{ #category : 'accesing' }
 GtModelDescription >> telephoneClassDescription [
 	| text |
 	text := 'Next we have the telephone number. It holds the number and the prefix. Like we did for the address, we have getter and setter methods for these. On top of that we have a method that returns the full number: prefix-number.' asRopedText.
@@ -288,7 +288,7 @@ GtModelDescription >> telephoneClassDescription [
 		foreground: Color black.
 ]
 
-{ #category : #accesing }
+{ #category : 'accesing' }
 GtModelDescription >> telephoneClassDescriptionSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide textAndElement
@@ -298,7 +298,7 @@ GtModelDescription >> telephoneClassDescriptionSlideFor: aSlide [
 		elementWeight: 0.6.
 ]
 
-{ #category : #accesing }
+{ #category : 'accesing' }
 GtModelDescription >> telephoneClassExampleSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide labelAndElement
@@ -309,7 +309,7 @@ GtModelDescription >> telephoneClassExampleSlideFor: aSlide [
 			asElement].
 ]
 
-{ #category : #accesing }
+{ #category : 'accesing' }
 GtModelDescription >> titleSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide title

@@ -61,7 +61,7 @@ Narratives are powerful tools. Only when it comes to software, it's the system t
 
 "
 Class {
-	#name : #GtMoldableDevelopmentExplanation,
-	#superclass : #Object,
-	#category : #'GToolkit-Demo-MoldableDevelopment'
+	#name : 'GtMoldableDevelopmentExplanation',
+	#superclass : 'Object',
+	#category : 'GToolkit-Demo-MoldableDevelopment'
 }

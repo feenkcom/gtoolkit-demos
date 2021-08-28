@@ -1,10 +1,10 @@
 Class {
-	#name : #GtCoderSlideshow,
-	#superclass : #Object,
-	#category : #'GToolkit-Demo-MoldableDevelopment'
+	#name : 'GtCoderSlideshow',
+	#superclass : 'Object',
+	#category : 'GToolkit-Demo-MoldableDevelopment'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtCoderSlideshow >> advancedMethodsFilteringExplanationSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide textAndElement
@@ -14,7 +14,7 @@ GtCoderSlideshow >> advancedMethodsFilteringExplanationSlideFor: aSlide [
 		elementWeight: 0.6.
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtCoderSlideshow >> advancedMethodsFilteringExplanationText [
 	| text |
 	text := 'The second option for filtering is by clicking on the ' asRopedText,
@@ -32,7 +32,7 @@ This method gives you more flexibility to filter.' asRopedText.
 		fontSize: 20.
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtCoderSlideshow >> advancedMethodsFilteringExplanationWithLinks [
 	<gtExample>
 	| coderElement categoryTarget fieldTarget addTarget |
@@ -73,7 +73,7 @@ GtCoderSlideshow >> advancedMethodsFilteringExplanationWithLinks [
 		addChild: coderElement.
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtCoderSlideshow >> baselineMethodsExplanationSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide textAndElement
@@ -83,7 +83,7 @@ GtCoderSlideshow >> baselineMethodsExplanationSlideFor: aSlide [
 		elementWeight: 0.6.
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtCoderSlideshow >> baselineMethodsExplanationText [
 	| text |
 	text := 'The coder also offers different customizations. For example, here you can see the ' asRopedText,
@@ -99,7 +99,7 @@ GtCoderSlideshow >> baselineMethodsExplanationText [
 		fontSize: 20.
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtCoderSlideshow >> baselineMethodsExplanationWithLinks [
 	<gtExample>
 	| classCoderElement aScripter baselineTarget expandBaselineTarget pragmaTarget expandedMethodElement |
@@ -164,7 +164,7 @@ GtCoderSlideshow >> baselineMethodsExplanationWithLinks [
 		addChild: aScripter elementWithoutParent.
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtCoderSlideshow >> basicMethodsFilteringExplanationSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide textAndElement
@@ -186,7 +186,7 @@ GtCoderSlideshow >> basicMethodsFilteringExplanationSlideFor: aSlide [
 						BlSpace simulateClickOn: button])].
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtCoderSlideshow >> basicMethodsFilteringExplanationText [
 	| text |
 	text := 'There are two ways through which you can filter the methods. The first one is by clicking on the ' asRopedText,
@@ -198,7 +198,7 @@ GtCoderSlideshow >> basicMethodsFilteringExplanationText [
 		fontSize: 20.
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtCoderSlideshow >> basicMethodsFilteringExplanationWithLinks [
 	| coderElement filterButton |
 	coderElement := BlUseAsyncFeatures
@@ -224,7 +224,7 @@ GtCoderSlideshow >> basicMethodsFilteringExplanationWithLinks [
 		addChild: coderElement.
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtCoderSlideshow >> classCoderInterfaceExplanationText [
 	| text |
 	
@@ -261,7 +261,7 @@ Finally, there is the list of methods, where each one can be ' asRopedText,
 		fontSize: 20.
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtCoderSlideshow >> classCoderInterfaceExplanationWithLinks [
 	| classCoderElement classNameTarget removeClassTarget expandHeaderTarget methodsTabTarget referencesTabTarget commentTabTarget addMethodTarget filterMethodsTarget expandMethodTarget saveMethodTarget removeMethodTarget buttonsList |
 	
@@ -371,7 +371,7 @@ GtCoderSlideshow >> classCoderInterfaceExplanationWithLinks [
 		addChild: classCoderElement.
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtCoderSlideshow >> classCreationExplanationSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide textAndElement
@@ -392,7 +392,7 @@ GtCoderSlideshow >> classCreationExplanationSlideFor: aSlide [
 						BlSpace simulateClickOn: button])].
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtCoderSlideshow >> coderExampleSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide labelAndElement
@@ -401,7 +401,7 @@ GtCoderSlideshow >> coderExampleSlideFor: aSlide [
 		element: [GtCoder new createInPager maximized].
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtCoderSlideshow >> coderExplanationText [
 	| text |
 	text := 'Coder is the place where you can manage your code. It offers you the means through which you can manipulate static code. You can create and manage packages, classes and methods all in place.' asRopedText.
@@ -411,7 +411,7 @@ GtCoderSlideshow >> coderExplanationText [
 		fontSize: 20.
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtCoderSlideshow >> coderInterfaceExplanationSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide textAndElement
@@ -421,7 +421,7 @@ GtCoderSlideshow >> coderInterfaceExplanationSlideFor: aSlide [
 		elementWeight: 0.6.
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtCoderSlideshow >> coderInterfaceExplanationText [
 	| text |
 	text := 'The coder interface is formed from multiple sections. It has a ' asRopedText,
@@ -443,7 +443,7 @@ On top of that there is an ' asRopedText,
 		fontSize: 20.
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtCoderSlideshow >> coderInterfaceExplanationWithLinks [
 	<gtExample>
 	| coderElement packageHierarchyTarget classHierarchyTarget classCoderTarget addClassButtonTarget spotterButtonTarget buttons |
@@ -499,7 +499,7 @@ GtCoderSlideshow >> coderInterfaceExplanationWithLinks [
 	^ coderElement.
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtCoderSlideshow >> coderMashExample [
 	<gtExample>
 	^ (GtMashExampleLiveSlide new
@@ -525,7 +525,7 @@ GtCoderSlideshow >> coderMashExample [
 						expanded:true) asElement))) asElement.
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtCoderSlideshow >> coderMashExampleSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide textAndElement
@@ -535,7 +535,7 @@ GtCoderSlideshow >> coderMashExampleSlideFor: aSlide [
 		elementWeight: 0.6.
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtCoderSlideshow >> createClassExplanationText [
 	| text |
 	text := 'To create a new class, you click on the ' asRopedText,
@@ -547,7 +547,7 @@ GtCoderSlideshow >> createClassExplanationText [
 		fontSize: 20.
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtCoderSlideshow >> createClassExplanationWithLinks [
 	| coderElement buttonTarget |
 	coderElement := BlUseAsyncFeatures
@@ -573,7 +573,7 @@ GtCoderSlideshow >> createClassExplanationWithLinks [
 		addChild: coderElement.
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtCoderSlideshow >> createMethodExplanationText [
 	| text |
 	text := 'Similar, if you want to create a new method you simply click on the other ' asRopedText,
@@ -591,7 +591,7 @@ GtCoderSlideshow >> createMethodExplanationText [
 		fontSize: 20.
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtCoderSlideshow >> createMethodExplanationWithLinks [
 	<gtExample>
 	| classCoderElement addMethodButton aScripter newFrameTarget saveButtonTarget removeButtonTarget |
@@ -658,7 +658,7 @@ GtCoderSlideshow >> createMethodExplanationWithLinks [
 		addChild: classCoderElement.
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtCoderSlideshow >> exampleMethodExplanationSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide textAndElement
@@ -668,7 +668,7 @@ GtCoderSlideshow >> exampleMethodExplanationSlideFor: aSlide [
 		elementWeight: 0.6.
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtCoderSlideshow >> exampleMethodsExplanationText [
 	| text |
 	text := 'Also, if a method is annotated with the ' asRopedText,
@@ -686,7 +686,7 @@ GtCoderSlideshow >> exampleMethodsExplanationText [
 		fontSize: 20.
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtCoderSlideshow >> exampleMethodsExplanationWithLinks [
 	<gtExample>
 	| classCoderElement pragmaTarget inspectTarget evaluateTarget debugTarget aScripter expandedMethodElement buttonsList |
@@ -759,7 +759,7 @@ GtCoderSlideshow >> exampleMethodsExplanationWithLinks [
 	^ classCoderElement.
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtCoderSlideshow >> methodCreationExplanationSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide textAndElement
@@ -769,7 +769,7 @@ GtCoderSlideshow >> methodCreationExplanationSlideFor: aSlide [
 		elementWeight: 0.6.
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtCoderSlideshow >> titleSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide title
@@ -784,7 +784,7 @@ GtCoderSlideshow >> titleSlideFor: aSlide [
 			glamorousRegularFont).
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtCoderSlideshow >> yellowExplanationTargetCircleFor: aModel [
 	^ BrButton new
 				constraintsDo: [ :c | c ignoreByLayout ];

@@ -1,1 +1,1 @@
-Package { #name : #'GToolkit-Demo-MoldableDevelopment' }
+Package { #name : 'GToolkit-Demo-MoldableDevelopment' }
