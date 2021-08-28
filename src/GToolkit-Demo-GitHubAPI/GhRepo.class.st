@@ -1,10 +1,10 @@
 Class {
-	#name : #GhRepo,
-	#superclass : #GhEntity,
-	#category : #'GToolkit-Demo-GitHubAPI-Model'
+	#name : 'GhRepo',
+	#superclass : 'GhEntity',
+	#category : 'GToolkit-Demo-GitHubAPI-Model'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GhRepo >> contributors [
 	^ self 
 		createFrom: 'contributors_url'
@@ -12,12 +12,12 @@ GhRepo >> contributors [
 		onError: [ GhContributors new ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GhRepo >> description [
 	^ rawData at: 'description'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GhRepo >> events [
 	^ self 
 		createFrom: 'events_url'
@@ -25,7 +25,7 @@ GhRepo >> events [
 		onError: [ GhEvents new ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GhRepo >> gtContributorsFor: aView [
 	<gtView>
 	^ aView explicit
@@ -53,12 +53,12 @@ GhRepo >> gtContributorsFor: aView [
 			container asScrollableElement ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GhRepo >> gtDisplayOn: stream [
 	stream nextPutAll: self name
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GhRepo >> gtEventsFor: aView [
 	<gtView>
 	^ aView columnedList
@@ -70,12 +70,12 @@ GhRepo >> gtEventsFor: aView [
 		column: 'Actor' text: #actorName
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GhRepo >> name [ 
 	^ rawData at: 'name'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GhRepo >> numberOfOpenIssues [
 	^ rawData at: 'open_issues'
 ]

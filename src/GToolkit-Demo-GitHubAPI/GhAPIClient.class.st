@@ -1,10 +1,10 @@
 Class {
-	#name : #GhAPIClient,
-	#superclass : #Object,
-	#category : #'GToolkit-Demo-GitHubAPI-Presentation'
+	#name : 'GhAPIClient',
+	#superclass : 'Object',
+	#category : 'GToolkit-Demo-GitHubAPI-Presentation'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GhAPIClient >> get: anUrl onSuccess: aSuccessBlock onError: anErrorBlock [
 	| result client |
 	client := ZnClient new.
