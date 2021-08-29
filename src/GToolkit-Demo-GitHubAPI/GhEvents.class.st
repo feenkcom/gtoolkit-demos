@@ -1,8 +1,6 @@
 Class {
 	#name : 'GhEvents',
 	#superclass : 'GhGroup',
-	#traits : 'TGtGroup',
-	#classTraits : 'TGtGroup classTrait',
 	#category : 'GToolkit-Demo-GitHubAPI-Model'
 }
 
