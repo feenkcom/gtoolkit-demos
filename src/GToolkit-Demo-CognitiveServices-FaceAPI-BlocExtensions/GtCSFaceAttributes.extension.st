@@ -1,6 +1,6 @@
-Extension { #name : #GtCSFaceAttributes }
+Extension { #name : 'GtCSFaceAttributes' }
 
-{ #category : #'*GToolkit-Demo-CognitiveServices-FaceAPI-BlocExtensions' }
+{ #category : '*GToolkit-Demo-CognitiveServices-FaceAPI-BlocExtensions' }
 GtCSFaceAttributes >> gtFaceAttributesListFor: aView [
 	<gtView>
 	^ (self properties gtItemsFor: aView)

@@ -1,6 +1,6 @@
-Extension { #name : #GtCSFace }
+Extension { #name : 'GtCSFace' }
 
-{ #category : #'*GToolkit-Demo-CognitiveServices-FaceAPI-BlocExtensions' }
+{ #category : '*GToolkit-Demo-CognitiveServices-FaceAPI-BlocExtensions' }
 GtCSFace >> gtFaceLandmarksViewFor: aView [
 	<gtView>
 	^ aView explicit
@@ -17,7 +17,7 @@ GtCSFace >> gtFaceLandmarksViewFor: aView [
 			extentElement ]
 ]
 
-{ #category : #'*GToolkit-Demo-CognitiveServices-FaceAPI-BlocExtensions' }
+{ #category : '*GToolkit-Demo-CognitiveServices-FaceAPI-BlocExtensions' }
 GtCSFace >> gtFaceLandmarksVisualFor: aView [
 	<gtView>
 	^ aView explicit
@@ -36,7 +36,7 @@ GtCSFace >> gtFaceLandmarksVisualFor: aView [
 			extentElement ]
 ]
 
-{ #category : #'*GToolkit-Demo-CognitiveServices-FaceAPI-BlocExtensions' }
+{ #category : '*GToolkit-Demo-CognitiveServices-FaceAPI-BlocExtensions' }
 GtCSFace >> gtFaceViewFor: aView [
 	<gtView>
 	^ aView explicit
@@ -57,14 +57,14 @@ GtCSFace >> gtFaceViewFor: aView [
 			extentElement ]
 ]
 
-{ #category : #'*GToolkit-Demo-CognitiveServices-FaceAPI-BlocExtensions' }
+{ #category : '*GToolkit-Demo-CognitiveServices-FaceAPI-BlocExtensions' }
 GtCSFace >> gtViewAttributesListFor: aView [
 	<gtView>
 	^ (self attributes gtFaceAttributesListFor: aView)
 		priority: 20
 ]
 
-{ #category : #'*GToolkit-Demo-CognitiveServices-FaceAPI-BlocExtensions' }
+{ #category : '*GToolkit-Demo-CognitiveServices-FaceAPI-BlocExtensions' }
 GtCSFace >> gtViewLandmarksListFor: aView [
 	<gtView>
 	^ (self landmarks gtFaceLandmarksListFor: aView)

@@ -1,10 +1,10 @@
 Class {
-	#name : #GtABAddressBookContactMergeExample,
-	#superclass : #GtExampleProvider,
-	#category : #'GToolkit-Demo-AddressBook-Examples'
+	#name : 'GtABAddressBookContactMergeExample',
+	#superclass : 'GtExampleProvider',
+	#category : 'GToolkit-Demo-AddressBook-Examples'
 }
 
-{ #category : #'examples - telephone' }
+{ #category : 'examples - telephone' }
 GtABAddressBookContactMergeExample >> bostomTelephoneNumber [
 	<gtExample>
 	| telephone |
@@ -19,7 +19,7 @@ GtABAddressBookContactMergeExample >> bostomTelephoneNumber [
 	^ telephone
 ]
 
-{ #category : #'examples - addresses' }
+{ #category : 'examples - addresses' }
 GtABAddressBookContactMergeExample >> bostonAddress [
 	<gtExample>
 	| address |
@@ -34,7 +34,7 @@ GtABAddressBookContactMergeExample >> bostonAddress [
 	^ address
 ]
 
-{ #category : #'examples - contacts' }
+{ #category : 'examples - contacts' }
 GtABAddressBookContactMergeExample >> brianKentContactWithBostonAddress [
 	<gtExample>
 	| contact |
@@ -50,7 +50,7 @@ GtABAddressBookContactMergeExample >> brianKentContactWithBostonAddress [
 	
 ]
 
-{ #category : #'examples - can merge' }
+{ #category : 'examples - can merge' }
 GtABAddressBookContactMergeExample >> canMergeContactWithNoAddressesTelefonesAndNotes [
 	<gtExample>
 	| mainContact secondContact |
@@ -64,7 +64,7 @@ GtABAddressBookContactMergeExample >> canMergeContactWithNoAddressesTelefonesAnd
 	
 ]
 
-{ #category : #'examples - can merge' }
+{ #category : 'examples - can merge' }
 GtABAddressBookContactMergeExample >> canMergeContactWithSameAddressAndTelephone [
 	<gtExample>
 	| mainContact secondContact |
@@ -78,7 +78,7 @@ GtABAddressBookContactMergeExample >> canMergeContactWithSameAddressAndTelephone
 	
 ]
 
-{ #category : #'examples - can merge' }
+{ #category : 'examples - can merge' }
 GtABAddressBookContactMergeExample >> canMergeContactWithTwoDifferentAddressesAndTelephones [
 	<gtExample>
 	| mainContact contactBoston |
@@ -92,7 +92,7 @@ GtABAddressBookContactMergeExample >> canMergeContactWithTwoDifferentAddressesAn
 	
 ]
 
-{ #category : #'examples - can merge' }
+{ #category : 'examples - can merge' }
 GtABAddressBookContactMergeExample >> cannotMergeDifferentContacts [
 	<gtExample>
 	| mainContact secondContact |
@@ -106,7 +106,7 @@ GtABAddressBookContactMergeExample >> cannotMergeDifferentContacts [
 	
 ]
 
-{ #category : #'examples - merge' }
+{ #category : 'examples - merge' }
 GtABAddressBookContactMergeExample >> mergeContactIntoContactWithNoAddressContactWithAddress [
 	<gtExample>
 	| mainContact secondContact |
@@ -121,7 +121,7 @@ GtABAddressBookContactMergeExample >> mergeContactIntoContactWithNoAddressContac
 	
 ]
 
-{ #category : #'examples - merge' }
+{ #category : 'examples - merge' }
 GtABAddressBookContactMergeExample >> mergeContactIntoContactWithNoAddressContactWithTelephone [
 	<gtExample>
 	| mainContact secondContact |
@@ -136,7 +136,7 @@ GtABAddressBookContactMergeExample >> mergeContactIntoContactWithNoAddressContac
 	
 ]
 
-{ #category : #'examples - merge' }
+{ #category : 'examples - merge' }
 GtABAddressBookContactMergeExample >> mergeContactWithNoAddressesTelefonesAndNotes [
 	<gtExample>
 	| mainContact secondContact |
@@ -153,7 +153,7 @@ GtABAddressBookContactMergeExample >> mergeContactWithNoAddressesTelefonesAndNot
 	
 ]
 
-{ #category : #'examples - merge' }
+{ #category : 'examples - merge' }
 GtABAddressBookContactMergeExample >> mergeContactWithSameAddress [
 	<gtExample>
 	| mainContact secondContact |
@@ -170,7 +170,7 @@ GtABAddressBookContactMergeExample >> mergeContactWithSameAddress [
 	
 ]
 
-{ #category : #'examples - merge' }
+{ #category : 'examples - merge' }
 GtABAddressBookContactMergeExample >> mergeContactsWithCommonAndDifferentAddresses [
 	<gtExample>
 	| bostonAddress miamiAddress mainContact secondContact |
@@ -190,7 +190,7 @@ GtABAddressBookContactMergeExample >> mergeContactsWithCommonAndDifferentAddress
 	
 ]
 
-{ #category : #'examples - merge' }
+{ #category : 'examples - merge' }
 GtABAddressBookContactMergeExample >> mergeContactsWithDifferentAddressesAndTelephones [
 	<gtExample>
 	| mainContact contactBoston |
@@ -207,7 +207,7 @@ GtABAddressBookContactMergeExample >> mergeContactsWithDifferentAddressesAndTele
 	
 ]
 
-{ #category : #'examples - addresses' }
+{ #category : 'examples - addresses' }
 GtABAddressBookContactMergeExample >> miamiAddress [
 	<gtExample>
 	| address |

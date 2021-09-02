@@ -1,13 +1,13 @@
-Extension { #name : #GtCSFaceLandmarks }
+Extension { #name : 'GtCSFaceLandmarks' }
 
-{ #category : #'*GToolkit-Demo-CognitiveServices-FaceAPI-BlocExtensions' }
+{ #category : '*GToolkit-Demo-CognitiveServices-FaceAPI-BlocExtensions' }
 GtCSFaceLandmarks >> gtFaceLandmarksListFor: aView [
 	<gtView>
 	^ (self properties gtItemsFor: aView)
 		title: 'Landmarks'
 ]
 
-{ #category : #'*GToolkit-Demo-CognitiveServices-FaceAPI-BlocExtensions' }
+{ #category : '*GToolkit-Demo-CognitiveServices-FaceAPI-BlocExtensions' }
 GtCSFaceLandmarks >> gtFaceLandmarksViewFor: aView [
 	<gtView>
 	^ aView explicit

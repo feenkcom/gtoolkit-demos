@@ -170,7 +170,7 @@ GtInspectorViews >> columnedTreeViewExplanationWithLinks [
 	
 	selectors := GtSelectorExplanationLinkStyler new.
 	selectors addSelectors: #(columnedTree title: items: children:).
-	selectors addSelector: #column:item: withIdentifier: #column.
+	selectors addSelector: #column:text: withIdentifier: #column.
 	
 	literals := GtLiteralExplanationLinkStyler new.
 	literals addLiteral: #City withIdentifier: #name.

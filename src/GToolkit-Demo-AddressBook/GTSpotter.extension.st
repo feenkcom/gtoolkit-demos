@@ -1,6 +1,6 @@
-Extension { #name : #GTSpotter }
+Extension { #name : 'GTSpotter' }
 
-{ #category : #'*GToolkit-Demo-AddressBook' }
+{ #category : '*GToolkit-Demo-AddressBook' }
 GTSpotter >> spotterAddressBookFor: aStep [
      <spotterOrder: -1>
      aStep listProcessor

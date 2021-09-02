@@ -17,12 +17,12 @@ Contacts can be added using the {{gtMethod:GtABAddressBook>>#addContact:}}
 
 "
 Class {
-	#name : #GtABAddressBookExample,
-	#superclass : #GtExampleProvider,
-	#category : #'GToolkit-Demo-AddressBook-Examples'
+	#name : 'GtABAddressBookExample',
+	#superclass : 'GtExampleProvider',
+	#category : 'GToolkit-Demo-AddressBook-Examples'
 }
 
-{ #category : #'examples - categories' }
+{ #category : 'examples - categories' }
 GtABAddressBookExample >> acquaintancesCategory [ 
 	<gtExample>
 	| category |
@@ -41,7 +41,7 @@ GtABAddressBookExample >> acquaintancesCategory [
 	^ category
 ]
 
-{ #category : #'examples - search' }
+{ #category : 'examples - search' }
 GtABAddressBookExample >> addressBookContainsContactWithJohnFirstName [
 	<gtExample>
 	| addressBook |
@@ -52,7 +52,7 @@ GtABAddressBookExample >> addressBookContainsContactWithJohnFirstName [
 	^ addressBook
 ]
 
-{ #category : #'examples - search' }
+{ #category : 'examples - search' }
 GtABAddressBookExample >> addressBookDoesNotContainContactWithMartinFirstName [
 	<gtExample>
 	| addressBook |
@@ -63,7 +63,7 @@ GtABAddressBookExample >> addressBookDoesNotContainContactWithMartinFirstName [
 	^ addressBook
 ]
 
-{ #category : #'examples - contacts' }
+{ #category : 'examples - contacts' }
 GtABAddressBookExample >> basicBrianKentContact [
 	<gtExample>
 	| contact |
@@ -86,7 +86,7 @@ GtABAddressBookExample >> basicBrianKentContact [
 	
 ]
 
-{ #category : #'examples - addresses' }
+{ #category : 'examples - addresses' }
 GtABAddressBookExample >> berlinAddress [
 	<gtExample>
 	| address |
@@ -101,7 +101,7 @@ GtABAddressBookExample >> berlinAddress [
 	^ address
 ]
 
-{ #category : #'examples - addresses' }
+{ #category : 'examples - addresses' }
 GtABAddressBookExample >> bernAddress [
 	<gtExample>
 	| address |
@@ -116,7 +116,7 @@ GtABAddressBookExample >> bernAddress [
 	^ address
 ]
 
-{ #category : #'examples - telephone' }
+{ #category : 'examples - telephone' }
 GtABAddressBookExample >> bernTelephoneNumberOne [
 	<gtExample>
 	| telephone |
@@ -131,7 +131,7 @@ GtABAddressBookExample >> bernTelephoneNumberOne [
 	^ telephone
 ]
 
-{ #category : #'examples - telephone' }
+{ #category : 'examples - telephone' }
 GtABAddressBookExample >> bernTelephoneNumberTwo [
 	<gtExample>
 	| telephone |
@@ -146,7 +146,7 @@ GtABAddressBookExample >> bernTelephoneNumberTwo [
 	^ telephone
 ]
 
-{ #category : #'examples - contacts' }
+{ #category : 'examples - contacts' }
 GtABAddressBookExample >> brianKentContact [
 	<gtExample>
 	| contact |
@@ -162,7 +162,7 @@ GtABAddressBookExample >> brianKentContact [
 	
 ]
 
-{ #category : #'examples - notes' }
+{ #category : 'examples - notes' }
 GtABAddressBookExample >> businessNote [
 	<gtExample>
 	| note |
@@ -176,7 +176,7 @@ GtABAddressBookExample >> businessNote [
 	^ note.
 ]
 
-{ #category : #'examples - notes' }
+{ #category : 'examples - notes' }
 GtABAddressBookExample >> conferenceMeetingNote [
 	<gtExample>
 	| note |
@@ -190,7 +190,7 @@ GtABAddressBookExample >> conferenceMeetingNote [
 	^ note.
 ]
 
-{ #category : #'examples - notes' }
+{ #category : 'examples - notes' }
 GtABAddressBookExample >> contactNote [
 	<gtExample>
 	| note |
@@ -204,7 +204,7 @@ GtABAddressBookExample >> contactNote [
 	^ note.
 ]
 
-{ #category : #'examples - addressbook' }
+{ #category : 'examples - addressbook' }
 GtABAddressBookExample >> contactsAddressBookWithCategories [
 	<gtExample>
 	<label: 'Friends address book'>
@@ -222,7 +222,7 @@ GtABAddressBookExample >> contactsAddressBookWithCategories [
 	^ addressBook. 
 ]
 
-{ #category : #'examples - categories' }
+{ #category : 'examples - categories' }
 GtABAddressBookExample >> coworkersCategory [ 
 	<gtExample>
 	| category |
@@ -238,7 +238,7 @@ GtABAddressBookExample >> coworkersCategory [
 	^ category
 ]
 
-{ #category : #'examples - contacts' }
+{ #category : 'examples - contacts' }
 GtABAddressBookExample >> davidSmithContact [
 	<gtExample>
 	| contact |
@@ -264,7 +264,7 @@ GtABAddressBookExample >> davidSmithContact [
 	^ contact
 ]
 
-{ #category : #'examples - categories' }
+{ #category : 'examples - categories' }
 GtABAddressBookExample >> familyCategory [ 
 	<gtExample>
 	| category |
@@ -280,7 +280,7 @@ GtABAddressBookExample >> familyCategory [
 	^ category
 ]
 
-{ #category : #'examples - categories' }
+{ #category : 'examples - categories' }
 GtABAddressBookExample >> friendsCategory [ 
 	<gtExample>
 	| category |
@@ -298,7 +298,7 @@ GtABAddressBookExample >> friendsCategory [
 	
 ]
 
-{ #category : #'examples - telephone' }
+{ #category : 'examples - telephone' }
 GtABAddressBookExample >> germanyTelephoneNumber [
 	<gtExample>
 	| telephone |
@@ -313,7 +313,7 @@ GtABAddressBookExample >> germanyTelephoneNumber [
 	^ telephone
 ]
 
-{ #category : #'examples - contacts' }
+{ #category : 'examples - contacts' }
 GtABAddressBookExample >> jamesPoeContact [
 	<gtExample>
 	| contact |
@@ -335,7 +335,7 @@ GtABAddressBookExample >> jamesPoeContact [
 	^ contact
 ]
 
-{ #category : #'examples - contacts' }
+{ #category : 'examples - contacts' }
 GtABAddressBookExample >> janeDoeContact [
 	<gtExample>
 	| contact |
@@ -358,7 +358,7 @@ GtABAddressBookExample >> janeDoeContact [
 	^ contact
 ]
 
-{ #category : #'examples - contacts' }
+{ #category : 'examples - contacts' }
 GtABAddressBookExample >> johnDoeContact [
 	<gtExample>
 	| contact |
@@ -379,7 +379,7 @@ GtABAddressBookExample >> johnDoeContact [
 	^ contact
 ]
 
-{ #category : #'examples - addressbook' }
+{ #category : 'examples - addressbook' }
 GtABAddressBookExample >> myContactsAddressBook [
 	<gtExample>
 	| addressBook |
@@ -399,7 +399,7 @@ GtABAddressBookExample >> myContactsAddressBook [
 	^ addressBook
 ]
 
-{ #category : #'examples - addresses' }
+{ #category : 'examples - addresses' }
 GtABAddressBookExample >> newYorkAddress [
 	<gtExample>
 	| address |
@@ -414,7 +414,7 @@ GtABAddressBookExample >> newYorkAddress [
 	^ address
 ]
 
-{ #category : #'examples - telephone' }
+{ #category : 'examples - telephone' }
 GtABAddressBookExample >> newYorkTelephoneNumber [
 	<gtExample>
 	| telephone |
@@ -429,7 +429,7 @@ GtABAddressBookExample >> newYorkTelephoneNumber [
 	^ telephone
 ]
 
-{ #category : #'examples - addresses' }
+{ #category : 'examples - addresses' }
 GtABAddressBookExample >> parisAddress [
 	<gtExample>
 	| address |
@@ -444,7 +444,7 @@ GtABAddressBookExample >> parisAddress [
 	^ address
 ]
 
-{ #category : #'examples - telephone' }
+{ #category : 'examples - telephone' }
 GtABAddressBookExample >> parisTelephoneNumber [
 	<gtExample>
 	| telephone |

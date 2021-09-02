@@ -1,14 +1,14 @@
 Class {
-	#name : #GtCSInspectorPictureBlocElement,
-	#superclass : #BlElement,
+	#name : 'GtCSInspectorPictureBlocElement',
+	#superclass : 'BlElement',
 	#instVars : [
 		'picture',
 		'container'
 	],
-	#category : #'GToolkit-Demo-CognitiveServices-FaceAPI-BlocExtensions'
+	#category : 'GToolkit-Demo-CognitiveServices-FaceAPI-BlocExtensions'
 }
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 GtCSInspectorPictureBlocElement >> initialize [
 	| extentElement |
 	super initialize.
@@ -25,12 +25,12 @@ GtCSInspectorPictureBlocElement >> initialize [
 	self addChild: extentElement.
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 GtCSInspectorPictureBlocElement >> initializeForPicture: aPicture [
 	self initializeForPicture: aPicture withFaceColors: {  } asDictionary
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 GtCSInspectorPictureBlocElement >> initializeForPicture: aPicture withFaceColors: facesColor [
 	| pictureForm |
 	pictureForm := self pictureFormFor: aPicture.
@@ -49,7 +49,7 @@ GtCSInspectorPictureBlocElement >> initializeForPicture: aPicture withFaceColors
 		container addChild: faceElement ].
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtCSInspectorPictureBlocElement >> pictureFormFor: aPicture [
 	| finalForm |
 	finalForm := aPicture pictureForm.
