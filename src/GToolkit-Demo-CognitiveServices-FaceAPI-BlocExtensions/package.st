@@ -1,1 +1,1 @@
-Package { #name : #'GToolkit-Demo-CognitiveServices-FaceAPI-BlocExtensions' }
+Package { #name : 'GToolkit-Demo-CognitiveServices-FaceAPI-BlocExtensions' }

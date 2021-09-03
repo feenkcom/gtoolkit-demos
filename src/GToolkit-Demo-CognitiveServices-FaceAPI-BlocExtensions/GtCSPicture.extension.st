@@ -1,6 +1,6 @@
-Extension { #name : #GtCSPicture }
+Extension { #name : 'GtCSPicture' }
 
-{ #category : #'*GToolkit-Demo-CognitiveServices-FaceAPI-BlocExtensions' }
+{ #category : '*GToolkit-Demo-CognitiveServices-FaceAPI-BlocExtensions' }
 GtCSPicture >> gtFacesFor: aView [
 	<gtView>
 	^ aView columnedList
@@ -11,11 +11,11 @@ GtCSPicture >> gtFacesFor: aView [
 			aFace hasFaceForm
 				ifFalse: [ Form extent: 32 @ 32 ]
 				ifTrue: [ aFace faceForm scaledIntoFormOfSize: 32 @ 32 ] ];
-		column: 'Gender' item: [ :aFace | aFace attributes gender ];
-		column: 'Location' item: [ :aFace | aFace rectangle ]
+		column: 'Gender' text: [ :aFace | aFace attributes gender ];
+		column: 'Location' text: [ :aFace | aFace rectangle ]
 ]
 
-{ #category : #'*GToolkit-Demo-CognitiveServices-FaceAPI-BlocExtensions' }
+{ #category : '*GToolkit-Demo-CognitiveServices-FaceAPI-BlocExtensions' }
 GtCSPicture >> gtPictureFor: aView [
 	<gtView>
 	^ aView explicit
