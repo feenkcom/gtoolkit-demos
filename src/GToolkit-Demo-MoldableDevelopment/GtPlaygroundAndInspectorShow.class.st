@@ -458,16 +458,6 @@ GtPlaygroundAndInspectorShow >> playgroundAndInspectorMashExampleSlideFor: aSlid
 ]
 
 { #category : 'accessing' }
-GtPlaygroundAndInspectorShow >> playgroundInterfaceExplanationSlideFor: aSlide [
-	"<gtSlide>"
-	^ aSlide textAndElement
-		priority: 6;
-		newTextWithFormat: self playgroundInterfaceExplanationText;
-		element: [ self playgroundInterfaceExplanationWithLinks ];
-		elementWeight: 0.6.
-]
-
-{ #category : 'accessing' }
 GtPlaygroundAndInspectorShow >> playgroundInterfaceExplanationText [
 	| text |
 	text := 'In the playground you can have multiple ' asRopedText,
@@ -493,54 +483,6 @@ Finally, if you click on the ' asRopedText,
 	^ text asRopedText
 		glamorousRegularFont;
 		fontSize: 20.
-]
-
-{ #category : 'accessing' }
-GtPlaygroundAndInspectorShow >> playgroundInterfaceExplanationWithLinks [
-	"<gtExample>"
-	| playgroundElement aScripter snippetTargets plusButtonTargets pharoButtonTarget closeButtonTargets evaluateButtonTargets inspectButtonTargets debugButtonTargets searchButtonTarget |
-	
-	aScripter := BlDevScripter new.
-	aScripter element: (GtPlaygroundLiveSlide new snippets: {'4/20'. '4 factorial'}) asElement.
-	aScripter syncContinue.
-	aScripter click
-		label: 'Click on add new snippet button';
-		id: (GtSnippetElementId indexed: 1);
-		id: GtSnippetAddButtonId.
-	aScripter syncContinue.
-	playgroundElement := aScripter elementWithoutParent.
-
-	snippetTargets := (playgroundElement query // GtSnippetElementId) all.
-	plusButtonTargets := (playgroundElement query // GtSnippetElementId // GtSnippetAddButtonId) all.
-	closeButtonTargets := (playgroundElement query // GtSnippetElementId // GtSnippetRemoveButtonId) all.
-	evaluateButtonTargets := (playgroundElement query // GtSnippetElementId // GtSourceCoderDoItActionId) all. 
-	inspectButtonTargets := (playgroundElement query // GtSnippetElementId // GtSourceCoderDoItAndGoActionId) all. 
-	debugButtonTargets := (playgroundElement query // GtSnippetElementId // GtSourceCoderDebugActionId) all.
-
-	searchButtonTarget := (playgroundElement query // GtPlaygroundSpotterButtonId) anyOne.
-	pharoButtonTarget := (playgroundElement query // GtSnippetElementId // BrButton @ (#label -> 'pharo')) anyOne.
-	
-	snippetTargets do: [ :eachSnippet |
-		eachSnippet addChild: ((self yellowExplanationTargetCircleFor: #snippets) relocate: (5 @ eachSnippet extent y / 2))].
-	plusButtonTargets do: [ :each |
-		each addChild: ((self yellowExplanationTargetCircleFor: #plusButton) relocate: (10 @ each extent y / 2))].
-	closeButtonTargets do: [ :each |
-		each addChild: ((self yellowExplanationTargetCircleFor: #closeButton) relocate: (10 @ each extent y / 2))].
-	evaluateButtonTargets do: [ :eachEvaluateButton |
-		eachEvaluateButton addChild: ((self yellowExplanationTargetCircleFor: #evaluateButton)
-			relocate: 0 @ 5)].
-	inspectButtonTargets do: [ :eachInspectButton |
-		eachInspectButton addChild: ((self yellowExplanationTargetCircleFor: #inspectButton)
-			relocate: (0 @ 5))].
-	debugButtonTargets do: [ :eachDebugButton |
-		eachDebugButton addChild: ((self yellowExplanationTargetCircleFor: #debugButton)
-			relocate: (0 @ eachDebugButton extent y / 2))].
-	searchButtonTarget addChild: ((self yellowExplanationTargetCircleFor: #searchButton)
-			relocate: (10 @ searchButtonTarget extent y / 2)).
-	pharoButtonTarget addChild: ((self yellowExplanationTargetCircleFor: #pharoButton)
-			relocate: (10 @ pharoButtonTarget extent y / 2)).
-
-	^ playgroundElement maximized.
 ]
 
 { #category : 'accessing' }
