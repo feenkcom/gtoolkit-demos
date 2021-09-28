@@ -4,12 +4,12 @@ I am a tutorial presentation for beginners.
 
 "
 Class {
-	#name : #GtPharo101,
-	#superclass : #Object,
-	#category : #'GToolkit-Demo-Pharo101'
+	#name : 'GtPharo101',
+	#superclass : 'Object',
+	#category : 'GToolkit-Demo-Pharo101'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtPharo101 >> arrayExplanationSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide textAndElement
@@ -30,7 +30,7 @@ array3 at: 3'};
 		elementWeight: 0.6.
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtPharo101 >> basicTypesTitleSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide title
@@ -39,7 +39,7 @@ GtPharo101 >> basicTypesTitleSlideFor: aSlide [
 		subtitleWithFormat: ('Basic types' asRopedText glamorousRegularFont fontSize:50; foreground: Color gray).
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtPharo101 >> binaryMessagesExplanationSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide textAndElement
@@ -59,7 +59,7 @@ true & false.'.
 		elementWeight: 0.6.
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtPharo101 >> blocksExplanationSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide textAndElement
@@ -71,7 +71,7 @@ GtPharo101 >> blocksExplanationSlideFor: aSlide [
 		elementWeight: 0.6.
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtPharo101 >> blocksTitleSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide title
@@ -80,7 +80,7 @@ GtPharo101 >> blocksTitleSlideFor: aSlide [
 		subtitleWithFormat: ('Blocks' asRopedText glamorousRegularFont fontSize:50; foreground: Color gray).
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtPharo101 >> booleanAndConditionalsTitleSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide title
@@ -89,7 +89,7 @@ GtPharo101 >> booleanAndConditionalsTitleSlideFor: aSlide [
 		subtitleWithFormat: ('Boolean and Conditionals' asRopedText glamorousRegularFont fontSize:50; foreground: Color gray).
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtPharo101 >> booleansExplanationSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide textAndElement
@@ -109,7 +109,7 @@ GtPharo101 >> booleansExplanationSlideFor: aSlide [
 		elementWeight: 0.6.
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtPharo101 >> cascadeOperatorExplanationSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide textAndElement
@@ -124,7 +124,7 @@ GtPharo101 >> cascadeOperatorExplanationSlideFor: aSlide [
 		elementWeight: 0.6.
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtPharo101 >> charactersExplanationSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide textAndElement
@@ -142,7 +142,7 @@ Character cr charCode.'};
 		elementWeight: 0.6.
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtPharo101 >> collectionsExplanationSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide text
@@ -151,11 +151,11 @@ GtPharo101 >> collectionsExplanationSlideFor: aSlide [
 		newTextWithFormat: (self descriptionString: 'A collection is a group of objects.').
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtPharo101 >> conditionalsExplanation [
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtPharo101 >> conditionalsExplanationSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide textAndElement
@@ -170,12 +170,12 @@ GtPharo101 >> conditionalsExplanationSlideFor: aSlide [
 		elementWeight: 0.6.
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 GtPharo101 >> descriptionString: aString [
 	^ aString asRopedText glamorousRegularFont; fontSize: 20.
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtPharo101 >> dictionaryExplanationSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide textAndElement
@@ -196,7 +196,7 @@ dictionary'.
 		elementWeight: 0.6.
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtPharo101 >> dynamicArraysExplanationSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide textAndElement
@@ -209,7 +209,7 @@ GtPharo101 >> dynamicArraysExplanationSlideFor: aSlide [
 		elementWeight: 0.6.
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtPharo101 >> instantiationExplanationSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide textAndElement
@@ -224,7 +224,7 @@ BrButton allInstances size.' };
 		elementWeight: 0.6.
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtPharo101 >> instantiationTitleSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide title
@@ -237,7 +237,7 @@ GtPharo101 >> instantiationTitleSlideFor: aSlide [
 				foreground: Color gray).
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtPharo101 >> iteratorsExplanationSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide textAndElement
@@ -250,7 +250,7 @@ GtPharo101 >> iteratorsExplanationSlideFor: aSlide [
 		elementWeight: 0.6.
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtPharo101 >> keywordMessagesExplanationSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide textAndElement
@@ -265,7 +265,7 @@ Color r: 0 g: 0.42 b: 0' };
 		elementWeight: 0.6.
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtPharo101 >> literalArraysExplanationSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide textAndElement
@@ -283,7 +283,7 @@ GtPharo101 >> literalArraysExplanationSlideFor: aSlide [
 		elementWeight: 0.6.
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtPharo101 >> loopsExplanationSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide textAndElement
@@ -301,7 +301,7 @@ x := 0.' , String cr , '10 to: 0 by: -2 do: [:i | x := x+i ].' , String cr , 'x.
 		elementWeight: 0.6.
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtPharo101 >> loopsIteratorsAndCollectionsTitleSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide title
@@ -310,7 +310,7 @@ GtPharo101 >> loopsIteratorsAndCollectionsTitleSlideFor: aSlide [
 		subtitleWithFormat: ('Loops, Iterators and Collections' asRopedText glamorousRegularFont fontSize:50; foreground: Color gray).
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtPharo101 >> mathematicalPrecedenceExplanationSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide textAndElement
@@ -330,7 +330,7 @@ GtPharo101 >> mathematicalPrecedenceExplanationSlideFor: aSlide [
 		elementWeight: 0.6.
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtPharo101 >> messagesExecutionOrderExplanationSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide textAndElement
@@ -348,7 +348,7 @@ GtPharo101 >> messagesExecutionOrderExplanationSlideFor: aSlide [
 		elementWeight: 0.6.
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtPharo101 >> messagesExplanationSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide text
@@ -356,7 +356,7 @@ GtPharo101 >> messagesExplanationSlideFor: aSlide [
 		newTextWithFormat: (self descriptionString: 'Messages are sent to objects. There are three types of messages: Unary, Binary and Keyword.').
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtPharo101 >> messagesTitleSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide title
@@ -365,7 +365,7 @@ GtPharo101 >> messagesTitleSlideFor: aSlide [
 		subtitleWithFormat: ('Messages' asRopedText glamorousRegularFont fontSize:50; foreground: Color gray).
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtPharo101 >> numbersExplanationSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide textAndElement
@@ -378,7 +378,7 @@ GtPharo101 >> numbersExplanationSlideFor: aSlide [
 		elementWeight: 0.6.
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtPharo101 >> orderedCollectionExplanationSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide textAndElement
@@ -403,7 +403,7 @@ oc2 last.'.
 		elementWeight: 0.6.
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtPharo101 >> parenthesesExplanationSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide textAndElement
@@ -419,7 +419,7 @@ GtPharo101 >> parenthesesExplanationSlideFor: aSlide [
 		elementWeight: 0.6.
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtPharo101 >> playgroundExplanationSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide textAndElement
@@ -429,7 +429,7 @@ GtPharo101 >> playgroundExplanationSlideFor: aSlide [
 		element: [ self shortPlaygroundExplanation ].
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtPharo101 >> reflectionExplanationSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide textAndElement
@@ -442,7 +442,7 @@ GtPharo101 selectors.' };
 		elementWeight: 0.6.
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtPharo101 >> reflectionTitleSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide title
@@ -455,7 +455,7 @@ GtPharo101 >> reflectionTitleSlideFor: aSlide [
 				foreground: Color gray).
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtPharo101 >> setExplanationSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide textAndElement
@@ -478,7 +478,7 @@ set1'.
 		elementWeight: 0.6.
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtPharo101 >> shortPlaygroundExplanation [
 	<gtExample>
 	| container playbook playgroundElement snippetsCollection snippetElementsCollection newSnippetButtons frameToolbarButtons inspectButtons firstSnippet secondSnippet aScripter snippets |
@@ -505,12 +505,10 @@ a - b'};
 		do: [ :aStep | 
 			aStep click
 				label: 'Click on snippet';
-				onBreadthFirstChildOfClass: (GtImage isLepiterEnabled 
-		ifTrue: [LePharoSnippetElement] ifFalse: [GtExpandableSourceCoderElement]).
+				onBreadthFirstChildOfClass: LePharoSnippetElement.
 			aStep wait forEmptySpaceTaskQueue ].
 	aScripter syncContinue.
-	snippets := (aScripter elementWithoutParent query // (GtImage isLepiterEnabled 
-		ifTrue: [LePharoSnippetElement] ifFalse: [GtExpandableSourceCoderElement])) all.
+	snippets := (aScripter elementWithoutParent query // LePharoSnippetElement) all.
 	snippets first
 		addChild:
 			(self yellowExplanationTargetCircleFor: #firstSnippet).
@@ -522,7 +520,7 @@ a - b'};
 	^ container addChild: playgroundElement
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtPharo101 >> shortPlaygroundExplanationText [
 	| text |
 	
@@ -540,7 +538,7 @@ GtPharo101 >> shortPlaygroundExplanationText [
 		foreground: Color black.
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtPharo101 >> stringsExplanationSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide textAndElement
@@ -555,12 +553,12 @@ GtPharo101 >> stringsExplanationSlideFor: aSlide [
 		elementWeight: 0.6.
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 GtPharo101 >> subtitleString: aString [
 	^ aString asRopedText glamorousRegularFont; fontSize: 40.
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtPharo101 >> symbolsExplanationSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide textAndElement
@@ -579,7 +577,7 @@ GtPharo101 >> symbolsExplanationSlideFor: aSlide [
 		elementWeight: 0.6.
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtPharo101 >> syntaxExplanationWithLinksSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide labelAndElement
@@ -591,7 +589,7 @@ GtPharo101 >> syntaxExplanationWithLinksSlideFor: aSlide [
 		newFadedText: ('Let''s put it all together. Take a look at the method below. Hover over the syntactical parts on the left to understand how they map on the different parts of the method.' asRopedText fontSize: 70)
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtPharo101 >> titleSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide title
@@ -606,7 +604,7 @@ GtPharo101 >> titleSlideFor: aSlide [
 			glamorousRegularFont)
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtPharo101 >> unaryMessagesExplanationSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide textAndElement
@@ -619,7 +617,7 @@ GtPharo101 >> unaryMessagesExplanationSlideFor: aSlide [
 		elementWeight: 0.6.
 ]
 
-{ #category : #utility }
+{ #category : 'utility' }
 GtPharo101 >> yellowExplanationTargetCircleFor: aModel [
 	^ BrButton new
 				constraintsDo: [ :c | c ignoreByLayout ];

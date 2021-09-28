@@ -1,45 +1,45 @@
 Class {
-	#name : #Animal,
-	#superclass : #Object,
+	#name : 'Animal',
+	#superclass : 'Object',
 	#instVars : [
 		'weight',
 		'name'
 	],
-	#category : #'GToolkit-Demo-Pharo101'
+	#category : 'GToolkit-Demo-Pharo101'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 Animal >> eat [ 
 	weight := weight + 1
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 Animal >> initialize [
 	weight := 20.
 	name := 'animal'.
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 Animal >> name [ 
 	^ name
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 Animal >> name: aName [
 	name := aName
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 Animal >> speak [
 	^ GtTranscript new show: 'This ', name, ' makes a noise'.
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 Animal >> weight [
 	^ weight
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 Animal >> weight: aWeight [
 	weight := aWeight
 ]
