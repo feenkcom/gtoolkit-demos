@@ -173,7 +173,7 @@ GtOneRenderingTree >> liveTreeOnVisualizationExampleSlideFor: aSlide [
 
 { #category : 'accessing' }
 GtOneRenderingTree >> mashExampleSlideFor: aSlide [
-	<gtSlide>
+	"<gtSlide>"
 	^ aSlide textAndElement
 		priority: 5;
 		element: [ self overviewElement ];
