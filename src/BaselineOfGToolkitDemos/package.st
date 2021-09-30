@@ -1,1 +1,1 @@
-Package { #name : 'BaselineOfGToolkitDemos' }
+Package { #name : #BaselineOfGToolkitDemos }

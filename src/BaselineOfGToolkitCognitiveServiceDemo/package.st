@@ -1,1 +1,1 @@
-Package { #name : 'BaselineOfGToolkitCognitiveServiceDemo' }
+Package { #name : #BaselineOfGToolkitCognitiveServiceDemo }

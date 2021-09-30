@@ -6,18 +6,18 @@ The exemplifying software tutorial based on a case study of face recognition usi
 
 "
 Class {
-	#name : 'BaselineOfGToolkitCognitiveServiceDemo',
-	#superclass : 'BaselineOf',
-	#category : 'BaselineOfGToolkitCognitiveServiceDemo'
+	#name : #BaselineOfGToolkitCognitiveServiceDemo,
+	#superclass : #BaselineOf,
+	#category : #BaselineOfGToolkitCognitiveServiceDemo
 }
 
-{ #category : 'baseline' }
+{ #category : #baseline }
 BaselineOfGToolkitCognitiveServiceDemo >> baseline: spec [
 	<baseline>
 	spec for: #'common' do: [
 		spec
 			baseline: 'GToolkitUtility' with: [
-				spec repository: 'github://feenkcom/gtoolkit-utility:v0.8.71/src' ].
+				spec repository: 'github://feenkcom/gtoolkit-utility:v0.8.72/src' ].
 		spec
 			baseline: 'Bloc' with: [
 				spec repository: 'github://feenkcom/Bloc:v0.8.236/src' ].
