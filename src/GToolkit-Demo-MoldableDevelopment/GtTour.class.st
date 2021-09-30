@@ -1,10 +1,10 @@
 Class {
-	#name : 'GtTour',
-	#superclass : 'Object',
+	#name : #GtTour,
+	#superclass : #Object,
 	#category : 'GToolkit-Demo-MoldableDevelopment'
 }
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtTour >> allViewsExampleSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide labelAndElement
@@ -13,7 +13,7 @@ GtTour >> allViewsExampleSlideFor: aSlide [
 		newFadedText: 'Every object is different, and the environment should show it, too.'.
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtTour >> classCommentAsLiveDocumentExampleSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide labelAndElement
@@ -23,7 +23,7 @@ GtTour >> classCommentAsLiveDocumentExampleSlideFor: aSlide [
 		newFadedText: 'Click on the links to spawn other documents and navigate the image as a wiki.'.
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtTour >> coderExplanationSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide textAndElement
@@ -33,7 +33,7 @@ GtTour >> coderExplanationSlideFor: aSlide [
 		element: [ self coderExplanationWithLinks ].
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtTour >> coderExplanationWithLinks [
 	<gtExample>
 	| container coderElement packageHierarchyTarget classHierarchyTarget classNameTarget methodTabTarget commentTabTarget referencesTab expandClassTarget expandMethodTarget deleteButtonTarget classButtonTargets searchButtonTarget addClassButtonTarget methodButtonTargets addMethodButtonTarget filterMethodsButtonTarget |
@@ -171,7 +171,7 @@ GtTour >> coderExplanationWithLinks [
 		addChild: coderElement.
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtTour >> coderExplanationWithLinksText [
 	| text |
 	
@@ -211,7 +211,7 @@ When maximized, Coder also offers a ' asRopedText,
 		foreground: Color black.
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtTour >> coderSlideshowLinkSlideFor: aSlide [
 	"<gtSlide>"
 	^ aSlide slideshow
@@ -220,7 +220,7 @@ GtTour >> coderSlideshowLinkSlideFor: aSlide [
 		slideshow: [ GtLiveShow createWithArrowsVisible: GtCoderSlideshow new ] withTitle: 'Coder Slideshow'.
 ]
 
-{ #category : 'api - instantiation' }
+{ #category : #'api - instantiation' }
 GtTour >> coderWithComment [
 	<gtExample>
 	| aScripter |
@@ -247,7 +247,7 @@ GtTour >> coderWithComment [
 	^ aScripter elementWithoutParent
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtTour >> composedQueryExampleSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide labelAndElement
@@ -259,7 +259,7 @@ GtTour >> composedQueryExampleSlideFor: aSlide [
 		newFadedText: 'Just like that, we molded ourselves a query browser. Now, try with this composed query. Notice the highlighting'.
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtTour >> customViewsExampleSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide labelAndElement
@@ -268,7 +268,7 @@ GtTour >> customViewsExampleSlideFor: aSlide [
 		newFadedText: 'Yet, when we change the view, the differences are obvious.'.
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtTour >> explainerOnReactJSComponents [
 	<gtExample>
 	| js inspectorContainer container explanationStyler look sourceElement compositeStyler editor |
@@ -418,7 +418,7 @@ container addChild: inspectorContainer.
 ^ container
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtTour >> feenkNameSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide element
@@ -449,7 +449,7 @@ BlElement new
 				]
 ]
 
-{ #category : 'slides' }
+{ #category : #slides }
 GtTour >> graphicalStackFirstExampleSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide labelAndElement
@@ -458,7 +458,7 @@ GtTour >> graphicalStackFirstExampleSlideFor: aSlide [
 		newFadedText: 'Visualization is supported directly by the graphical stack.'.
 ]
 
-{ #category : 'slides' }
+{ #category : #slides }
 GtTour >> graphicalStackIntroductionSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide text
@@ -466,7 +466,7 @@ GtTour >> graphicalStackIntroductionSlideFor: aSlide [
 		newText: 'The graphical stack is worth taking a look at as well. It features the property that it renders everything in a single tree.'.
 ]
 
-{ #category : 'slides' }
+{ #category : #slides }
 GtTour >> graphicalStackSecondExampleSlideFor: aSlide [
 	"<gtSlide>"
 	^ aSlide labelAndElement
@@ -477,7 +477,7 @@ GtTour >> graphicalStackSecondExampleSlideFor: aSlide [
 		newFadedText: 'Blue denotes classes that contain at least one custom view; green shows those that have an example.'.
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtTour >> inspectorExplanationSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide textAndElement
@@ -495,7 +495,7 @@ GtTour >> inspectorExplanationSlideFor: aSlide [
 		elementWeight: 0.6.
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtTour >> jsParserExampleSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide labelAndElement
@@ -504,7 +504,7 @@ GtTour >> jsParserExampleSlideFor: aSlide [
 		newFadedText: 'The first non-Pharo language we accommodated is the language with which we write parsers for other languages.'.
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtTour >> liveDocumentExampleSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide labelAndElement
@@ -514,7 +514,7 @@ GtTour >> liveDocumentExampleSlideFor: aSlide [
 		newFadedText: 'Browse it. Execute the code. Try editing the text, too. It''s live'.
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtTour >> liveDocumentTitleSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide title
@@ -525,7 +525,7 @@ GtTour >> liveDocumentTitleSlideFor: aSlide [
 				glamorousRegularFont).
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtTour >> liveProgrammingIntroductionSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide text
@@ -533,7 +533,7 @@ GtTour >> liveProgrammingIntroductionSlideFor: aSlide [
 		newText: 'Let''s start with live programming and inspection.'.
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtTour >> moldableCodingTitleSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide text
@@ -541,7 +541,7 @@ GtTour >> moldableCodingTitleSlideFor: aSlide [
 		newText: 'The moldability principle applies through the whole environment. Including to how we write code.'.
 ]
 
-{ #category : 'slides' }
+{ #category : #slides }
 GtTour >> moldableDevelopmentSlideFor: aSlide [
 	"<gtSlide>"
 	^ aSlide slideshow
@@ -550,7 +550,7 @@ GtTour >> moldableDevelopmentSlideFor: aSlide [
 		slideshow: [ GtLiveShow createWithArrowsVisible: GtMoldableDevelopmentSlideshow new ] withTitle: 'Moldable Development'.
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtTour >> moldableSearchTitleSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide text
@@ -558,7 +558,7 @@ GtTour >> moldableSearchTitleSlideFor: aSlide [
 		newText: 'Search is moldable, too. The tool that deals with it is called Spotter.'.
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtTour >> multipleViewsForOneObjectExampleSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide textAndElement
@@ -570,7 +570,7 @@ GtTour >> multipleViewsForOneObjectExampleSlideFor: aSlide [
 		elementWeight: 0.5.
 ]
 
-{ #category : 'slides' }
+{ #category : #slides }
 GtTour >> oneRenderingTreeSlideshowLinkSlideFor: aSlide [
 	"<gtSlide>"
 	^ aSlide slideshow
@@ -579,7 +579,7 @@ GtTour >> oneRenderingTreeSlideshowLinkSlideFor: aSlide [
 		slideshow: [ GtLiveShow createWithArrowsVisible: GtOneRenderingTree new ] withTitle: 'One rendering tree'.
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtTour >> otherLanguagesIntroductionSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide text
@@ -587,7 +587,7 @@ GtTour >> otherLanguagesIntroductionSlideFor: aSlide [
 		newText: 'Glamorous Toolkit is a platform. While it is implemented in Pharo, it can already tackle multiple other languages.'.
 ]
 
-{ #category : 'api - instantiation' }
+{ #category : #'api - instantiation' }
 GtTour >> overviewElement [
 	| container |
 	container := BlElement new
@@ -622,7 +622,7 @@ GtTour >> overviewElement [
 	^ container asScalableElement 
 ]
 
-{ #category : 'parsing' }
+{ #category : #parsing }
 GtTour >> parseCSharp [
 	<gtExample>
 	<noTest>
@@ -634,7 +634,7 @@ GtTour >> parseCSharp [
 	CSharpParser parse: csharp
 ]
 
-{ #category : 'parsing' }
+{ #category : #parsing }
 GtTour >> parseClojure [
 	<gtExample>
 	<noTest>
@@ -646,7 +646,7 @@ GtTour >> parseClojure [
 	ClojureParser parse: clojure.
 ]
 
-{ #category : 'parsing' }
+{ #category : #parsing }
 GtTour >> parseJSX [
 	<gtExample>
 	<noTest>
@@ -658,7 +658,7 @@ GtTour >> parseJSX [
 	JSXParser parse: js
 ]
 
-{ #category : 'parsing' }
+{ #category : #parsing }
 GtTour >> parseJava [
 	<gtExample>
 	<noTest>
@@ -670,7 +670,7 @@ GtTour >> parseJava [
 	JavaParser parse: java
 ]
 
-{ #category : 'parsing' }
+{ #category : #parsing }
 GtTour >> parseJavaScript [
 	<gtExample>
 	<noTest>
@@ -682,7 +682,7 @@ GtTour >> parseJavaScript [
 	JSParser parse: js
 ]
 
-{ #category : 'slides' }
+{ #category : #slides }
 GtTour >> parseLanguagesSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide labelAndElement
@@ -698,7 +698,7 @@ GtTour >> parseLanguagesSlideFor: aSlide [
 				newSnippetFromMethod: self class>> #parseCSharp]
 ]
 
-{ #category : 'parsing' }
+{ #category : #parsing }
 GtTour >> parsePython [
 	<gtExample>
 	<noTest>
@@ -710,7 +710,7 @@ GtTour >> parsePython [
 	PythonParser parse: python.
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtTour >> playgroundExplanationSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide textAndElement
@@ -720,7 +720,7 @@ GtTour >> playgroundExplanationSlideFor: aSlide [
 		element: [ self playgroundExplanationWithLinks ].
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtTour >> playgroundExplanationWithLinks [
 	<gtExample>
 	| container playgroundElement snippetElementsCollection frameToolbarButtons scripter |
@@ -756,7 +756,7 @@ GtTour >> playgroundExplanationWithLinks [
 	^ container addChild: (GtPager createWrappedOn: playgroundElement)
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtTour >> playgroundExplanationWithLinksText [
 	| text |
 	
@@ -782,7 +782,7 @@ The playground lets you ' asRopedText,
 		foreground: Color black.
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtTour >> playgroundSlideshowLinkSlideFor: aSlide [
 	"<gtSlide>"
 	^ aSlide slideshow
@@ -791,7 +791,7 @@ GtTour >> playgroundSlideshowLinkSlideFor: aSlide [
 		slideshow: [ GtLiveShow createWithArrowsVisible: GtPlaygroundAndInspectorShow new ] withTitle: 'Playground Slideshow'.
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtTour >> queryExampleSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide labelAndElement
@@ -800,7 +800,7 @@ GtTour >> queryExampleSlideFor: aSlide [
 		newFadedText: 'Here is a basic query that searches for all methods that define an inspector extension. Inspect the result of this query. What do you see?'.
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtTour >> querySlideshowLinkSlideFor: aSlide [
 	"<gtSlide>"
 	^ aSlide slideshow
@@ -809,7 +809,7 @@ GtTour >> querySlideshowLinkSlideFor: aSlide [
 		slideshow: [ GtLiveShow createWithArrowsVisible: GtQueryingCodeShow new ] withTitle: 'Querying Code'.
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtTour >> queryTitleSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide text
@@ -818,7 +818,7 @@ GtTour >> queryTitleSlideFor: aSlide [
 		newText: 'What can we do with these? Many things. One of them is querying code.'.
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtTour >> rawViewsExampleSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide labelAndElement
@@ -827,7 +827,7 @@ GtTour >> rawViewsExampleSlideFor: aSlide [
 		newFadedText: 'Consider how these different objects look quite similar in the inspector.'.
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtTour >> spotterExampleSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide labelAndElement
@@ -836,7 +836,7 @@ GtTour >> spotterExampleSlideFor: aSlide [
 		newFadedText: 'Search is pervasive. Try searching for Object'.
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtTour >> spotterSecondExampleSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide labelAndElement
@@ -845,7 +845,7 @@ GtTour >> spotterSecondExampleSlideFor: aSlide [
 		newFadedText: ('Or search for .' , FileSystem disk delimiter asString).
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtTour >> spotterSlideshowLinkSlideFor: aSlide [
 	"<gtSlide>"
 	^ aSlide slideshow
@@ -854,7 +854,7 @@ GtTour >> spotterSlideshowLinkSlideFor: aSlide [
 		slideshow: [ GtLiveShow createWithArrowsVisible: GtSpotterSlideshow new ] withTitle: 'Spotter Slideshow'.
 ]
 
-{ #category : 'api - instantiation' }
+{ #category : #'api - instantiation' }
 GtTour >> timelineElement [
 	<gtExample>
 	| plotter |
@@ -882,7 +882,7 @@ GtTour >> timelineElement [
 		^ plotter asElement
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtTour >> timelineExplanationSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide textAndElement
@@ -895,7 +895,7 @@ GtTour >> timelineExplanationSlideFor: aSlide [
 		newText: 'But, let''s take it step by step.'.
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtTour >> titleSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide title
@@ -911,7 +911,7 @@ GtTour >> titleSlideFor: aSlide [
 			bold)
 ]
 
-{ #category : 'api - instantiation' }
+{ #category : #'api - instantiation' }
 GtTour >> treemapWithViewsAndExamples [
 	<gtExample>
 	| tree |
@@ -954,7 +954,7 @@ GtTour >> treemapWithViewsAndExamples [
 		create.
 ]
 
-{ #category : 'as yet unclassified' }
+{ #category : #'as yet unclassified' }
 GtTour >> viewMethodWithResultExplanationWithLinksExample [
 	<gtExample>
 	| resultInspectorContainer verticalContainer coderElement resultElement coderExplanationLabel inspectorExplanationLabel |
@@ -998,7 +998,7 @@ GtTour >> viewMethodWithResultExplanationWithLinksExample [
 	^ verticalContainer.
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtTour >> viewsExplanationSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide textAndElement
@@ -1007,7 +1007,7 @@ GtTour >> viewsExplanationSlideFor: aSlide [
 		element: [ self viewMethodWithResultExplanationWithLinksExample ].
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtTour >> visualizationElement [
 	^ BlElement new
 			layout: (BlLinearLayout new);
@@ -1031,7 +1031,7 @@ GtTour >> visualizationElement [
 				])
 ]
 
-{ #category : 'utility' }
+{ #category : #utility }
 GtTour >> yellowExplanationTargetCircleFor: aModel [
 	^ BrButton new
 				constraintsDo: [ :c | c ignoreByLayout ];

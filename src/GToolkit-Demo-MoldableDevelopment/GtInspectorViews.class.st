@@ -1,10 +1,10 @@
 Class {
-	#name : 'GtInspectorViews',
-	#superclass : 'Object',
+	#name : #GtInspectorViews,
+	#superclass : #Object,
 	#category : 'GToolkit-Demo-MoldableDevelopment'
 }
 
-{ #category : 'slides' }
+{ #category : #slides }
 GtInspectorViews >> columnedListViewExplanationSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide textAndElement
@@ -14,7 +14,7 @@ GtInspectorViews >> columnedListViewExplanationSlideFor: aSlide [
 		element: [self columnedListViewExplanationWithLinks].
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtInspectorViews >> columnedListViewExplanationWithLinks [
 	<gtExample>
 	| resultInspectorContainer verticalContainer coder coderViewModel coderElement selectors variables resultElement resultInspectorTree titleTab avatarLabel nameLabel phoneLabel codeExplanationLabel resultExplanationLabel avatarElementsCollection listLabelsCollection |
@@ -117,7 +117,7 @@ GtInspectorViews >> columnedListViewExplanationWithLinks [
 	^ verticalContainer
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtInspectorViews >> columnedListViewExplanationWithLinksText [
 	| text |
 	
@@ -147,7 +147,7 @@ For each ' asRopedText,
 		foreground: Color black.
 ]
 
-{ #category : 'slides' }
+{ #category : #slides }
 GtInspectorViews >> columnedTreeExplanationSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide textAndElement
@@ -157,7 +157,7 @@ GtInspectorViews >> columnedTreeExplanationSlideFor: aSlide [
 		element: [self columnedTreeViewExplanationWithLinks].
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtInspectorViews >> columnedTreeViewExplanationWithLinks [
 	<gtExample>
 	| resultInspectorContainer verticalContainer coder coderViewModel coderElement selectors literals resultElement resultInspectorTree contactLabel cityLabel countryLabel titleTab codeExplanationLabel resultExplanationLabel |
@@ -240,7 +240,7 @@ GtInspectorViews >> columnedTreeViewExplanationWithLinks [
 	^ verticalContainer.
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtInspectorViews >> columnedTreeViewExplanationWithLinksText [
 	| text |
 	
@@ -266,7 +266,7 @@ Lastly, in the ' asRopedText,
 		foreground: Color black.
 ]
 
-{ #category : 'slides' }
+{ #category : #slides }
 GtInspectorViews >> emptyViewExplanationSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide textAndElement
@@ -276,7 +276,7 @@ GtInspectorViews >> emptyViewExplanationSlideFor: aSlide [
 		element: [self emptyViewExplanationWithLinks].
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtInspectorViews >> emptyViewExplanationWithLinks [
 	<gtExample>
 	| resultInspectorContainer verticalContainer coder coderViewModel coderElement selectors variables literals resultElement codeExplanationLabel resultExplanationLabel inspectorHeader inspectorView |
@@ -330,7 +330,7 @@ GtInspectorViews >> emptyViewExplanationWithLinks [
 	^ verticalContainer.
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtInspectorViews >> emptyViewExplanationWithLinksText [
 	| text |
 	text := 'There are times, when because of certain conditions, we do not want to offer a view for an object. This is where the empty view is useful.
@@ -353,7 +353,7 @@ As you can see in the example below, if the address book does not have any categ
 		foreground: Color black.
 ]
 
-{ #category : 'utility' }
+{ #category : #utility }
 GtInspectorViews >> explanationLabelWithText: aText [
 	^ BrLabel new
 		text: (aText asRopedText glamorousRegularFont; fontSize: 15; foreground: Color gray);
@@ -361,7 +361,7 @@ GtInspectorViews >> explanationLabelWithText: aText [
 		aptitude: BrGlamorousLabelAptitude new.
 ]
 
-{ #category : 'slides' }
+{ #category : #slides }
 GtInspectorViews >> explicitViewExplanationSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide textAndElement
@@ -371,7 +371,7 @@ GtInspectorViews >> explicitViewExplanationSlideFor: aSlide [
 		element: [self explicitViewExplanationWithLinks].
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtInspectorViews >> explicitViewExplanationWithLinks [
 	<gtExample>
 	| resultInspectorContainer verticalContainer coder coderViewModel coderElement selectors variables resultElement resultInspectorTree nameTextElement addressTextElement phoneTextElement avatarElement codeExplanationLabel resultExplanationLabel |
@@ -452,7 +452,7 @@ GtInspectorViews >> explicitViewExplanationWithLinks [
 	^ verticalContainer.
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtInspectorViews >> explicitViewExplanationWithLinksText [
 	<gtExample>
 	| text |
@@ -480,7 +480,7 @@ In this example, we show a ' asRopedText,
 		foreground: Color black.
 ]
 
-{ #category : 'slides' }
+{ #category : #slides }
 GtInspectorViews >> listViewExplanationSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide textAndElement
@@ -490,7 +490,7 @@ GtInspectorViews >> listViewExplanationSlideFor: aSlide [
 		element: [self listViewExplanationWithLinks].
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtInspectorViews >> listViewExplanationWithLinks [
 	<gtExample>
 	| resultInspectorContainer verticalContainer coder coderViewModel coderElement selectors variables resultElement resultInspectorTree titleTab codeExplanationLabel resultExplanationLabel nameLabelsCollection |
@@ -551,7 +551,7 @@ GtInspectorViews >> listViewExplanationWithLinks [
 	^ verticalContainer.
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtInspectorViews >> listViewExplanationWithLinksText [
 	| text |
 	
@@ -579,7 +579,7 @@ For each ' asRopedText,
 		foreground: Color black.
 ]
 
-{ #category : 'utility' }
+{ #category : #utility }
 GtInspectorViews >> mainContainerElement [
 	^ BlElement new
 		constraintsDo: [ :c | 
@@ -588,7 +588,7 @@ GtInspectorViews >> mainContainerElement [
 		layout: BlLinearLayout horizontal.
 ]
 
-{ #category : 'slides' }
+{ #category : #slides }
 GtInspectorViews >> mondrianViewExplanationSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide textAndElement
@@ -598,7 +598,7 @@ GtInspectorViews >> mondrianViewExplanationSlideFor: aSlide [
 		element: [self mondrianViewExplanationWithLinks].
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtInspectorViews >> mondrianViewExplanationWithLinks [
 	<gtExample>
 	| resultInspectorContainer verticalContainer coder coderViewModel coderElement selectors resultElement resultInspectorTree titleTab codeExplanationLabel resultExplanationLabel |
@@ -647,7 +647,7 @@ GtInspectorViews >> mondrianViewExplanationWithLinks [
 	^ verticalContainer.
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtInspectorViews >> mondrianViewExplanationWithLinksText [
 	| text |
 	
@@ -678,7 +678,7 @@ Then we set the ' asRopedText,
 		foreground: Color black.
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtInspectorViews >> queriesSnippetsExamples [
 	<gtExample>
 	| container |
@@ -709,7 +709,7 @@ GtInspectorViews >> queriesSnippetsExamples [
 	^ container.
 ]
 
-{ #category : 'utility' }
+{ #category : #utility }
 GtInspectorViews >> resultInspectorContainerElement [
 	^ BlElement new
 		constraintsDo: [ :c | 
@@ -721,7 +721,7 @@ GtInspectorViews >> resultInspectorContainerElement [
 		margin: (BlInsets all: 10).
 ]
 
-{ #category : 'slides' }
+{ #category : #slides }
 GtInspectorViews >> slideshowLinkSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide slideshow
@@ -730,7 +730,7 @@ GtInspectorViews >> slideshowLinkSlideFor: aSlide [
 		slideshow: [ GtLiveShow createWithArrowsVisible: GtPharo101 new ] withTitle: 'Pharo101'.
 ]
 
-{ #category : 'utility' }
+{ #category : #utility }
 GtInspectorViews >> textEditorElementWithText: aText [
 	^ (BrEditor new
 		aptitude: (BrGlamorousRegularEditorAptitude new fontSize: 16; lineSpacing: 2);
@@ -742,7 +742,7 @@ GtInspectorViews >> textEditorElementWithText: aText [
 			constraintsDo: [ :c | c linear weight: 0.3]
 ]
 
-{ #category : 'slides' }
+{ #category : #slides }
 GtInspectorViews >> textEditorViewExplanationSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide textAndElement
@@ -752,7 +752,7 @@ GtInspectorViews >> textEditorViewExplanationSlideFor: aSlide [
 		element: [self textEditorViewExplanationWithLinks].
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtInspectorViews >> textEditorViewExplanationWithLinks [
 	<gtExample>
 	| resultInspectorContainer verticalContainer coder coderViewModel coderElement selectors variables resultElement resultInspectorTree titleTab contentEditorSegment codeExplanationLabel resultExplanationLabel |
@@ -814,7 +814,7 @@ GtInspectorViews >> textEditorViewExplanationWithLinks [
 	^ verticalContainer.
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtInspectorViews >> textEditorViewExplanationWithLinksText [
 	| text |
 	
@@ -839,7 +839,7 @@ The view gets a ' asRopedText,
 		foreground: Color black.
 ]
 
-{ #category : 'slides' }
+{ #category : #slides }
 GtInspectorViews >> titleSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide title
@@ -854,7 +854,7 @@ GtInspectorViews >> titleSlideFor: aSlide [
 			glamorousRegularFont).
 ]
 
-{ #category : 'slides' }
+{ #category : #slides }
 GtInspectorViews >> treeViewExplanationSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide textAndElement
@@ -864,7 +864,7 @@ GtInspectorViews >> treeViewExplanationSlideFor: aSlide [
 		element: [self treeViewExplanationWithLinks].
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtInspectorViews >> treeViewExplanationWithLinks [
 	<gtExample>
 	| resultInspectorContainer verticalContainer coder coderViewModel coderElement selectors variables resultElement resultInspectorTree titleTab treeLabel codeExplanationLabel resultExplanationLabel categoryLabelsCollection |
@@ -937,7 +937,7 @@ GtInspectorViews >> treeViewExplanationWithLinks [
 	^ verticalContainer.
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtInspectorViews >> treeViewExplanationWithLinksText [
 	| text |
 	
@@ -967,7 +967,7 @@ After that, in the ' asRopedText,
 		foreground: Color black.
 ]
 
-{ #category : 'utility' }
+{ #category : #utility }
 GtInspectorViews >> verticalContainerElement [
 	^ BlElement new
 		constraintsDo: [ :c | 
@@ -977,7 +977,7 @@ GtInspectorViews >> verticalContainerElement [
 		layout: BlLinearLayout vertical.
 ]
 
-{ #category : 'slides' }
+{ #category : #slides }
 GtInspectorViews >> viewsQueryExampleSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide labelAndElement
@@ -986,7 +986,7 @@ GtInspectorViews >> viewsQueryExampleSlideFor: aSlide [
 		newFadedText: 'You can learn more from the many examples already in the image. Use the queries below to find them.'.
 ]
 
-{ #category : 'utility' }
+{ #category : #utility }
 GtInspectorViews >> yellowExplanationTargetCircleFor: aModel [
 	^ BrButton new
 				constraintsDo: [ :c | c ignoreByLayout ];

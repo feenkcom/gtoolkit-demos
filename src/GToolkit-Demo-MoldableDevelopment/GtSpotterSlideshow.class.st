@@ -1,10 +1,10 @@
 Class {
-	#name : 'GtSpotterSlideshow',
-	#superclass : 'Object',
+	#name : #GtSpotterSlideshow,
+	#superclass : #Object,
 	#category : 'GToolkit-Demo-MoldableDevelopment'
 }
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtSpotterSlideshow >> spotterAfterFirstDiveInExplanation [
 	<gtExample>
 	| spotterElement contextTarget |
@@ -34,7 +34,7 @@ GtSpotterSlideshow >> spotterAfterFirstDiveInExplanation [
 	^ spotterElement removeFromParent.
 ]
 
-{ #category : 'slides' }
+{ #category : #slides }
 GtSpotterSlideshow >> spotterAfterFirstDiveInExplanationSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide textAndElement
@@ -44,7 +44,7 @@ GtSpotterSlideshow >> spotterAfterFirstDiveInExplanationSlideFor: aSlide [
 		elementWeight: 0.6.
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtSpotterSlideshow >> spotterAfterFirstDiveInExplanationText [
 	| text |
 	text := 'We chose to further explore the #contactsWithAddress: method, so now we are in the ' asRopedText,
@@ -56,7 +56,7 @@ GtSpotterSlideshow >> spotterAfterFirstDiveInExplanationText [
 		fontSize: 20.
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtSpotterSlideshow >> spotterButtonStencil [
 	| spotterButton |
 	spotterButton := GtHomeToolsSection new newSpotterButtonStencil create.
@@ -67,7 +67,7 @@ GtSpotterSlideshow >> spotterButtonStencil [
 			width: 180).
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtSpotterSlideshow >> spotterDiveInExplanation [
 	| spotter arrowTargets contextTarget |
 	spotter := BlUseAsyncFeatures 
@@ -104,7 +104,7 @@ GtSpotterSlideshow >> spotterDiveInExplanation [
 	^ spotter.
 ]
 
-{ #category : 'slides' }
+{ #category : #slides }
 GtSpotterSlideshow >> spotterDiveInExplanationSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide textAndElement
@@ -114,7 +114,7 @@ GtSpotterSlideshow >> spotterDiveInExplanationSlideFor: aSlide [
 		elementWeight: 0.6.
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtSpotterSlideshow >> spotterDiveInExplanationText [
 	| text |
 	text := 'Another important feature in the spotter is the dive in option. Let''s open a spotter in the same ' asRopedText,
@@ -129,7 +129,7 @@ There is also a dive out action, similar to a back button. It can be action by p
 		fontSize: 20.
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtSpotterSlideshow >> spotterElement: aSpotterElement withSelectedPosition: aNumber [
 	| aScripter |
 	
@@ -159,7 +159,7 @@ GtSpotterSlideshow >> spotterElement: aSpotterElement withSelectedPosition: aNum
 	^ aScripter elementWithoutParent.
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtSpotterSlideshow >> spotterElementInContextOf: anObject withSearch: aSearchString [
 	| spotterElement aScripter |
 	
@@ -182,12 +182,12 @@ GtSpotterSlideshow >> spotterElementInContextOf: anObject withSearch: aSearchStr
 	^ aScripter elementWithoutParent.	
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtSpotterSlideshow >> spotterElementOn: aSearchString [
 	^ self spotterElementInContextOf: (GtSpotterStart new) withSearch: aSearchString.
 ]
 
-{ #category : 'slides' }
+{ #category : #slides }
 GtSpotterSlideshow >> spotterExampleSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide labelAndElement
@@ -196,7 +196,7 @@ GtSpotterSlideshow >> spotterExampleSlideFor: aSlide [
 		element: [self spotterButtonStencil].
 ]
 
-{ #category : 'slides' }
+{ #category : #slides }
 GtSpotterSlideshow >> spotterInLocalContextExplanationSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide textAndElement
@@ -206,7 +206,7 @@ GtSpotterSlideshow >> spotterInLocalContextExplanationSlideFor: aSlide [
 		elementWeight: 0.6.
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtSpotterSlideshow >> spotterInLocalContextExplanationText [
 	| text |
 	text := 'To open the spotter in a local context you can simply click on the ' asRopedText,
@@ -218,7 +218,7 @@ GtSpotterSlideshow >> spotterInLocalContextExplanationText [
 		fontSize: 20.
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtSpotterSlideshow >> spotterInLocalContextExplanationWithLinks [
 	<gtExample>
 	| coderElement inspectorElement searchButtonTargets coderLabel inspectorLabel |
@@ -284,13 +284,13 @@ GtSpotterSlideshow >> spotterInLocalContextExplanationWithLinks [
 		addChildren: {coderLabel. coderElement. inspectorLabel. inspectorElement}.
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtSpotterSlideshow >> spotterInLocalContextForCoderExample [
 	<gtExample>
 	^ (GtCoder forClass: GtABAddressBook) createInPager maximized.
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtSpotterSlideshow >> spotterInLocalContextForInspectorExample [
 	<gtExample>
 	^ (BlUseAsyncFeatures
@@ -299,7 +299,7 @@ GtSpotterSlideshow >> spotterInLocalContextForInspectorExample [
 				myContactsAddressBook)) maximized ]) forceLayout.
 ]
 
-{ #category : 'slides' }
+{ #category : #slides }
 GtSpotterSlideshow >> spotterInLocalContextInCoderExampleSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide labelAndElement
@@ -321,7 +321,7 @@ GtSpotterSlideshow >> spotterInLocalContextInCoderExampleSlideFor: aSlide [
 						BlSpace simulateClickOn: button])].
 ]
 
-{ #category : 'slides' }
+{ #category : #slides }
 GtSpotterSlideshow >> spotterInLocalContextInInspectorExampleSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide labelAndElement
@@ -343,7 +343,7 @@ GtSpotterSlideshow >> spotterInLocalContextInInspectorExampleSlideFor: aSlide [
 							BlSpace simulateClickOn: button])].
 ]
 
-{ #category : 'slides' }
+{ #category : #slides }
 GtSpotterSlideshow >> spotterInterfaceExplanationSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide textAndElement
@@ -353,7 +353,7 @@ GtSpotterSlideshow >> spotterInterfaceExplanationSlideFor: aSlide [
 		elementWeight: 0.6.
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtSpotterSlideshow >> spotterInterfaceExplanationText [
 	| text |
 	text := 'Opening the spotter you are presented with the following interface. A ' asRopedText,
@@ -372,7 +372,7 @@ GtSpotterSlideshow >> spotterInterfaceExplanationText [
 		fontSize: 20.
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtSpotterSlideshow >> spotterInterfaceExplanationWithLinks [
 	<gtExample>
 	| spotterElement searchBarTarget resultsTarget previewTarget classesTarget implementorsTarget sendersTarget messagesTarget|
@@ -480,7 +480,7 @@ GtSpotterSlideshow >> spotterInterfaceExplanationWithLinks [
 	^ spotterElement.
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtSpotterSlideshow >> spotterLocalContextExplanationText [
 	| text |
 	text := '' asRopedText.
@@ -490,7 +490,7 @@ GtSpotterSlideshow >> spotterLocalContextExplanationText [
 		fontSize: 20.
 ]
 
-{ #category : 'slides' }
+{ #category : #slides }
 GtSpotterSlideshow >> spotterMashExampleSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide textAndElement
@@ -503,7 +503,7 @@ GtSpotterSlideshow >> spotterMashExampleSlideFor: aSlide [
 		elementWeight: 0.6.
 ]
 
-{ #category : 'slides' }
+{ #category : #slides }
 GtSpotterSlideshow >> spotterNavigationIntroductionSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide text
@@ -514,7 +514,7 @@ GtSpotterSlideshow >> spotterNavigationIntroductionSlideFor: aSlide [
 				fontSize: 20).
 ]
 
-{ #category : 'slides' }
+{ #category : #slides }
 GtSpotterSlideshow >> spotterOpeningExplanationSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide textAndElement
@@ -524,14 +524,14 @@ GtSpotterSlideshow >> spotterOpeningExplanationSlideFor: aSlide [
 		elementWeight: 0.6.
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtSpotterSlideshow >> spotterOpeningExplanationText [
 	^ 'A search always happens in the context of an object. The default spotter opens in a default context. To open it you can either click the search button in the top right corner of the GT window or you can press the key combination Shift + Return.' asRopedText
 		glamorousRegularFont;
 		fontSize: 20.
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtSpotterSlideshow >> spotterProcessorsExample [
 	<gtExample>
 	| aScripter inspectorElement |
@@ -562,7 +562,7 @@ GtSpotterSlideshow >> spotterProcessorsExample [
 	^ aScripter elementWithoutParent maximized.
 ]
 
-{ #category : 'slides' }
+{ #category : #slides }
 GtSpotterSlideshow >> spotterProcessorsExplanationSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide textAndElement
@@ -572,7 +572,7 @@ GtSpotterSlideshow >> spotterProcessorsExplanationSlideFor: aSlide [
 		elementWeight: 0.6.
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtSpotterSlideshow >> spotterProcessorsExplanationText [
 	| text |
 	text := 'A search is executed through a processor. Each processor has a name and is presented as a category in the actual results. So a search can yield results in multiple categories. Here you can see the processors in the default context.' asRopedText.
@@ -582,7 +582,7 @@ GtSpotterSlideshow >> spotterProcessorsExplanationText [
 		fontSize: 20.
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtSpotterSlideshow >> spotterSearchFilterExplanation [
 	<gtExample>
 	| spotter keywordTarget filterTarget contextTarget |
@@ -632,7 +632,7 @@ GtSpotterSlideshow >> spotterSearchFilterExplanation [
 	^ spotter.
 ]
 
-{ #category : 'slides' }
+{ #category : #slides }
 GtSpotterSlideshow >> spotterSearchFilterExplanationSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide textAndElement
@@ -642,7 +642,7 @@ GtSpotterSlideshow >> spotterSearchFilterExplanationSlideFor: aSlide [
 		elementWeight: 0.6.
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtSpotterSlideshow >> spotterSearchFilterExplanationText [
 	| text |
 	text := 'A first thing to look at is the filtering of the results. You can choose to only see the results from a certain category thus fitting more results from that category on the screen. For example, here, we are in the context of ' asRopedText,
@@ -658,7 +658,7 @@ GtSpotterSlideshow >> spotterSearchFilterExplanationText [
 		fontSize: 20.
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtSpotterSlideshow >> spotterSearchMethodExample [
 	<gtExample>
 	| selectors coder coderViewModel coderElement |
@@ -678,7 +678,7 @@ GtSpotterSlideshow >> spotterSearchMethodExample [
 	^ coderElement.
 ]
 
-{ #category : 'slides' }
+{ #category : #slides }
 GtSpotterSlideshow >> spotterSearchMethodExplanationSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide textAndElement
@@ -688,7 +688,7 @@ GtSpotterSlideshow >> spotterSearchMethodExplanationSlideFor: aSlide [
 		elementWeight: 0.6.
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtSpotterSlideshow >> spotterSearchMethodExplanationText [
 	| text |
 	text := 'Implementing a Spotter search is similar to implementing an inspector view. It is a method ' asRopedText,
@@ -716,7 +716,7 @@ The ' asRopedText,
 		fontSize: 20.
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtSpotterSlideshow >> spottersMashExample [
 	<gtExample>
 	^ (GtMashExampleLiveSlide new
@@ -725,7 +725,7 @@ GtSpotterSlideshow >> spottersMashExample [
 		rightElement: (self spotterElementOn: 'Playground')) asElement.
 ]
 
-{ #category : 'slides' }
+{ #category : #slides }
 GtSpotterSlideshow >> titleSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide title

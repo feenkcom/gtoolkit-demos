@@ -1,10 +1,10 @@
 Class {
-	#name : 'GtMoldableDevelopmentSlideshow',
-	#superclass : 'Object',
+	#name : #GtMoldableDevelopmentSlideshow,
+	#superclass : #Object,
 	#category : 'GToolkit-Demo-MoldableDevelopment'
 }
 
-{ #category : 'slides' }
+{ #category : #slides }
 GtMoldableDevelopmentSlideshow >> dailyAssessmentSlideFor: aSlide [
 	"<gtSlide>"
 	^ aSlide textAndElement
@@ -13,7 +13,7 @@ GtMoldableDevelopmentSlideshow >> dailyAssessmentSlideFor: aSlide [
 		element: [ GtFilePictureLiveSlide new fileReference:(GtResourcesUtility resourceAtPath: 'feenkcom/gtoolkit-demos/doc/moldable-development/processes-5.png') ].
 ]
 
-{ #category : 'slides' }
+{ #category : #slides }
 GtMoldableDevelopmentSlideshow >> fiftyPercent1For: aSlide [
 	<gtSlide>
 	^ aSlide textAndElement
@@ -24,7 +24,7 @@ GtMoldableDevelopmentSlideshow >> fiftyPercent1For: aSlide [
 			GtFilePictureLiveSlide new fileReference: (GtResourcesUtility resourceAtPath: 'feenkcom/gtoolkit-demos/doc/moldable-development/50percent-1.png') ]
 ]
 
-{ #category : 'slides' }
+{ #category : #slides }
 GtMoldableDevelopmentSlideshow >> slide3For: aSlide [
 	<gtSlide>
 	^ aSlide textAndElement
@@ -36,7 +36,7 @@ GtMoldableDevelopmentSlideshow >> slide3For: aSlide [
 			GtFilePictureLiveSlide new fileReference: (GtResourcesUtility resourceAtPath: 'feenkcom/gtoolkit-demos/doc/moldable-development/50percent-2.png') ]
 ]
 
-{ #category : 'slides' }
+{ #category : #slides }
 GtMoldableDevelopmentSlideshow >> slide4For: aSlide [
 	<gtSlide>
 	^ aSlide textAndElement
@@ -49,7 +49,7 @@ GtMoldableDevelopmentSlideshow >> slide4For: aSlide [
 			GtFilePictureLiveSlide new fileReference: (GtResourcesUtility resourceAtPath: 'feenkcom/gtoolkit-demos/doc/moldable-development/50percent-3.png') ]
 ]
 
-{ #category : 'slides' }
+{ #category : #slides }
 GtMoldableDevelopmentSlideshow >> slide5For: aSlide [
 	<gtSlide>
 	^ aSlide textAndElement
@@ -61,7 +61,7 @@ GtMoldableDevelopmentSlideshow >> slide5For: aSlide [
 			GtFilePictureLiveSlide new fileReference: (GtResourcesUtility resourceAtPath: 'feenkcom/gtoolkit-demos/doc/moldable-development/craft-1.png') ].
 ]
 
-{ #category : 'slides' }
+{ #category : #slides }
 GtMoldableDevelopmentSlideshow >> slide6For: aSlide [
 	<gtSlide>
 	^ aSlide textAndElement
@@ -73,7 +73,7 @@ GtMoldableDevelopmentSlideshow >> slide6For: aSlide [
 			GtFilePictureLiveSlide new fileReference: (GtResourcesUtility resourceAtPath: 'feenkcom/gtoolkit-demos/doc/moldable-development/craft-2.png') ].
 ]
 
-{ #category : 'slides' }
+{ #category : #slides }
 GtMoldableDevelopmentSlideshow >> slide7For: aSlide [
 	<gtSlide>
 	^ aSlide textAndElement
@@ -85,7 +85,7 @@ GtMoldableDevelopmentSlideshow >> slide7For: aSlide [
 			GtFilePictureLiveSlide new fileReference: (GtResourcesUtility resourceAtPath: 'feenkcom/gtoolkit-demos/doc/moldable-development/craft-3.png') ].
 ]
 
-{ #category : 'slides' }
+{ #category : #slides }
 GtMoldableDevelopmentSlideshow >> slide8For: aSlide [
 	<gtSlide>
 	^ aSlide textAndElement
@@ -96,7 +96,7 @@ GtMoldableDevelopmentSlideshow >> slide8For: aSlide [
 		element: [GtFilePictureLiveSlide new fileReference: (GtResourcesUtility resourceAtPath: 'feenkcom/gtoolkit-demos/doc/moldable-development/roles-1.png').]
 ]
 
-{ #category : 'slides' }
+{ #category : #slides }
 GtMoldableDevelopmentSlideshow >> slide9For: aSlide [
 	<gtSlide>
 	^ aSlide textAndElement
@@ -106,7 +106,7 @@ GtMoldableDevelopmentSlideshow >> slide9For: aSlide [
 		element: [ GtFilePictureLiveSlide new fileReference: (GtResourcesUtility resourceAtPath: 'feenkcom/gtoolkit-demos/doc/moldable-development/roles-2.png') ]
 ]
 
-{ #category : 'slides' }
+{ #category : #slides }
 GtMoldableDevelopmentSlideshow >> titleFor: aSlide [
 	<gtSlide>
 	^ aSlide title
@@ -117,7 +117,7 @@ GtMoldableDevelopmentSlideshow >> titleFor: aSlide [
 			bold)
 ]
 
-{ #category : 'slides' }
+{ #category : #slides }
 GtMoldableDevelopmentSlideshow >> wardletMapSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide textAndElement

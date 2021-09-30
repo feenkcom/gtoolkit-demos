@@ -1,10 +1,10 @@
 Class {
-	#name : 'GtOneRenderingTree',
-	#superclass : 'Object',
+	#name : #GtOneRenderingTree,
+	#superclass : #Object,
 	#category : 'GToolkit-Demo-MoldableDevelopment'
 }
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtOneRenderingTree >> classHierarchyWithEdgesAndLinesExampleSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide labelAndElement
@@ -15,7 +15,7 @@ GtOneRenderingTree >> classHierarchyWithEdgesAndLinesExampleSlideFor: aSlide [
 		newFadedText: 'Lines can also be added to the scene, but they are purely decorative graphical elements.'.
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtOneRenderingTree >> classHierarchyWithEdgesExampleSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide labelAndElement
@@ -28,7 +28,7 @@ GtOneRenderingTree >> classHierarchyWithEdgesExampleSlideFor: aSlide [
 		newFadedText: 'The edge is modelled as a regular constraint, like in the case of the grid layout.'.
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtOneRenderingTree >> classHierarchyWithGridLayoutExampleSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide labelAndElement
@@ -41,7 +41,7 @@ GtOneRenderingTree >> classHierarchyWithGridLayoutExampleSlideFor: aSlide [
 		newFadedText: 'This is achived by specifying a grid layout specific constraint for each of the children.'.
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtOneRenderingTree >> connectorExampleSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide labelAndElement
@@ -51,7 +51,7 @@ GtOneRenderingTree >> connectorExampleSlideFor: aSlide [
 		newFadedText: 'For the scene to work, the lines must be in the same space as the text elements and the panes.'.
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtOneRenderingTree >> editorElementWithRotatedWordsSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide editorElement
@@ -59,7 +59,7 @@ GtOneRenderingTree >> editorElementWithRotatedWordsSlideFor: aSlide [
 		priority: 7.
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtOneRenderingTree >> editorElementWithTreeSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide editorElement
@@ -67,7 +67,7 @@ GtOneRenderingTree >> editorElementWithTreeSlideFor: aSlide [
 		priority: 8.
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtOneRenderingTree >> explanationWithLinksExampleSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide labelAndElement
@@ -77,7 +77,7 @@ GtOneRenderingTree >> explanationWithLinksExampleSlideFor: aSlide [
 		newFadedText: 'For the scene to work, the arrows must be in the same space as the text elements and the code elements.'.
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtOneRenderingTree >> graphLayoutsIntroductionSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide text
@@ -87,7 +87,7 @@ GtOneRenderingTree >> graphLayoutsIntroductionSlideFor: aSlide [
 			glamorousRegularFont).
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtOneRenderingTree >> interfacesIntroductionSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide text
@@ -97,7 +97,7 @@ GtOneRenderingTree >> interfacesIntroductionSlideFor: aSlide [
 			glamorousRegularFont).
 ]
 
-{ #category : 'api - instantiation' }
+{ #category : #'api - instantiation' }
 GtOneRenderingTree >> liveElementTree [ 
 	| m |
 	m := GtMondrian new.
@@ -124,7 +124,7 @@ GtOneRenderingTree >> liveElementTree [
 					do: [ :anEvent | anEvent target effect: (BlNullEffect new) ] ]]) forceLayout.
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtOneRenderingTree >> liveElementTreeIntroductionSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide text
@@ -134,7 +134,7 @@ GtOneRenderingTree >> liveElementTreeIntroductionSlideFor: aSlide [
 			glamorousRegularFont).
 ]
 
-{ #category : 'api - instantiation' }
+{ #category : #'api - instantiation' }
 GtOneRenderingTree >> liveElementTreeSlideForText [
 	| editor |
 	editor := BrEditor new 
@@ -151,7 +151,7 @@ GtOneRenderingTree >> liveElementTreeSlideForText [
 					do: [ :anEvent | anEvent target effect: (BlNullEffect new) ] ]]) forceLayout.
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtOneRenderingTree >> liveTreeOnEditorExampleSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide labelAndElement
@@ -161,7 +161,7 @@ GtOneRenderingTree >> liveTreeOnEditorExampleSlideFor: aSlide [
 		newFadedText: 'Move with the mouse over the elements in the scene to see where in the tree they fit.'.
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtOneRenderingTree >> liveTreeOnVisualizationExampleSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide labelAndElement
@@ -171,9 +171,9 @@ GtOneRenderingTree >> liveTreeOnVisualizationExampleSlideFor: aSlide [
 		newFadedText: 'The tree on the right reveals some nodes as labelled. In our case, the labels are phlow and graph. These are annotations that provide higher level extensions to navigate the tree. For example, given an element, we can ask it for element graph connectedEdges.'.
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtOneRenderingTree >> mashExampleSlideFor: aSlide [
-	<gtSlide>
+	"<gtSlide>"
 	^ aSlide textAndElement
 		priority: 5;
 		element: [ self overviewElement ];
@@ -182,7 +182,7 @@ GtOneRenderingTree >> mashExampleSlideFor: aSlide [
 		newText: 'This very window contains multiple elements that all reside in one single rendering tree. This includes the words in the document, the lines in the graph, the dots in the chart or the labels from the visual keyboard on the right.'.
 ]
 
-{ #category : 'api - instantiation' }
+{ #category : #'api - instantiation' }
 GtOneRenderingTree >> overviewElement [
 	^ (GtMashExampleLiveSlide new
 		leftElementWithConstraints: ((GtDocumenter forClass: BaselineOfGToolkit)
@@ -214,14 +214,14 @@ GtOneRenderingTree >> overviewElement [
 			aptitude: BrShadowAptitude)) asElement.
 ]
 
-{ #category : 'api - instantiation' }
+{ #category : #'api - instantiation' }
 GtOneRenderingTree >> sampleExplanationWithLinks [
 	<gtExample>
 	
 	^ GtMethodCoderExplanationStylerExamples new viewsExplanationWithLinks
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtOneRenderingTree >> textEditorIntroductionSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide text
@@ -229,7 +229,7 @@ GtOneRenderingTree >> textEditorIntroductionSlideFor: aSlide [
 		newTextWithFormat: ('The text editor is made of plain elements' asRopedText fontSize: 30; glamorousRegularFont).
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtOneRenderingTree >> titleSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide title
@@ -244,7 +244,7 @@ GtOneRenderingTree >> titleSlideFor: aSlide [
 			glamorousRegularFont)
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtOneRenderingTree >> visualizationsExampleSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide labelAndElement
@@ -254,7 +254,7 @@ GtOneRenderingTree >> visualizationsExampleSlideFor: aSlide [
 		newFadedText: 'For this to work, we have to be able to apply graph layouts on arbitrary elements.'.
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtOneRenderingTree >> visualizationsIntroductionSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide text

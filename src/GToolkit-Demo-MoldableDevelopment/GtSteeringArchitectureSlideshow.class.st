@@ -1,10 +1,10 @@
 Class {
-	#name : 'GtSteeringArchitectureSlideshow',
-	#superclass : 'Object',
+	#name : #GtSteeringArchitectureSlideshow,
+	#superclass : #Object,
 	#category : 'GToolkit-Demo-MoldableDevelopment-GToolkit-Demo-MoldableDevelopment'
 }
 
-{ #category : 'slides' }
+{ #category : #slides }
 GtSteeringArchitectureSlideshow >> slide10For: aSlide [
 	<gtSlide>
 	^ aSlide filePicture
@@ -12,7 +12,7 @@ GtSteeringArchitectureSlideshow >> slide10For: aSlide [
 		fileReference: (GtResourcesUtility resourceAtPath: 'feenkcom/gtoolkit-demos/doc/moldable-development/roles-1.png')
 ]
 
-{ #category : 'slides' }
+{ #category : #slides }
 GtSteeringArchitectureSlideshow >> slide11For: aSlide [
 	<gtSlide>
 	^ aSlide filePicture
@@ -20,7 +20,7 @@ GtSteeringArchitectureSlideshow >> slide11For: aSlide [
 		fileReference: (GtResourcesUtility resourceAtPath: 'feenkcom/gtoolkit-demos/doc/moldable-development/roles-2.png')
 ]
 
-{ #category : 'slides' }
+{ #category : #slides }
 GtSteeringArchitectureSlideshow >> slide12For: aSlide [
 	<gtSlide>
 	^ aSlide playground
@@ -28,7 +28,7 @@ GtSteeringArchitectureSlideshow >> slide12For: aSlide [
 		snippets: {'model := MooseModel root allModels anyOne'}
 ]
 
-{ #category : 'slides' }
+{ #category : #slides }
 GtSteeringArchitectureSlideshow >> slide13For: aSlide [
 	<gtSlide>
 	^ aSlide filePicture
@@ -36,7 +36,7 @@ GtSteeringArchitectureSlideshow >> slide13For: aSlide [
 		fileReference: (GtResourcesUtility resourceAtPath: 'feenkcom/gtoolkit-demos/doc/moldable-development/craft-1.png')
 ]
 
-{ #category : 'slides' }
+{ #category : #slides }
 GtSteeringArchitectureSlideshow >> slide14For: aSlide [
 	<gtSlide>
 	^ aSlide filePicture
@@ -44,7 +44,7 @@ GtSteeringArchitectureSlideshow >> slide14For: aSlide [
 		fileReference: (GtResourcesUtility resourceAtPath: 'feenkcom/gtoolkit-demos/doc/moldable-development/craft-2.png')
 ]
 
-{ #category : 'slides' }
+{ #category : #slides }
 GtSteeringArchitectureSlideshow >> slide15For: aSlide [
 	<gtSlide>
 	^ aSlide filePicture
@@ -52,7 +52,7 @@ GtSteeringArchitectureSlideshow >> slide15For: aSlide [
 		fileReference: (GtResourcesUtility resourceAtPath: 'feenkcom/gtoolkit-demos/doc/moldable-development/craft-3.png')
 ]
 
-{ #category : 'slides' }
+{ #category : #slides }
 GtSteeringArchitectureSlideshow >> slide17For: aSlide [
 	<gtSlide>
 	^ aSlide element
@@ -60,7 +60,7 @@ GtSteeringArchitectureSlideshow >> slide17For: aSlide [
 		element: [ GtInspector createOn: '.' asFileReference ]
 ]
 
-{ #category : 'slides' }
+{ #category : #slides }
 GtSteeringArchitectureSlideshow >> slide18For: aSlide [
 	<gtSlide>
 	^ aSlide title
@@ -76,7 +76,7 @@ GtSteeringArchitectureSlideshow >> slide18For: aSlide [
 			bold)
 ]
 
-{ #category : 'slides' }
+{ #category : #slides }
 GtSteeringArchitectureSlideshow >> slide2For: aSlide [
 	<gtSlide>
 	^ aSlide title
@@ -87,7 +87,7 @@ GtSteeringArchitectureSlideshow >> slide2For: aSlide [
 			bold)
 ]
 
-{ #category : 'slides' }
+{ #category : #slides }
 GtSteeringArchitectureSlideshow >> slide3For: aSlide [
 	<gtSlide>
 	^ aSlide title
@@ -104,7 +104,7 @@ GtSteeringArchitectureSlideshow >> slide3For: aSlide [
 			bold)
 ]
 
-{ #category : 'slides' }
+{ #category : #slides }
 GtSteeringArchitectureSlideshow >> slide4For: aSlide [
 	<gtSlide>
 	^ aSlide filePicture
@@ -112,7 +112,7 @@ GtSteeringArchitectureSlideshow >> slide4For: aSlide [
 		fileReference: (GtResourcesUtility resourceAtPath: 'feenkcom/gtoolkit-demos/doc/moldable-development/50percent-1.png')
 ]
 
-{ #category : 'slides' }
+{ #category : #slides }
 GtSteeringArchitectureSlideshow >> slide5For: aSlide [
 	<gtSlide>
 	^ aSlide filePicture
@@ -120,7 +120,7 @@ GtSteeringArchitectureSlideshow >> slide5For: aSlide [
 		fileReference: (GtResourcesUtility resourceAtPath: 'feenkcom/gtoolkit-demos/doc/moldable-development/50percent-2.png')
 ]
 
-{ #category : 'slides' }
+{ #category : #slides }
 GtSteeringArchitectureSlideshow >> slide6For: aSlide [
 	<gtSlide>
 	^ aSlide filePicture
@@ -128,7 +128,7 @@ GtSteeringArchitectureSlideshow >> slide6For: aSlide [
 		fileReference: (GtResourcesUtility resourceAtPath: 'feenkcom/gtoolkit-demos/doc/moldable-development/50percent-3.png')
 ]
 
-{ #category : 'slides' }
+{ #category : #slides }
 GtSteeringArchitectureSlideshow >> slide7For: aSlide [
 	<gtSlide>
 	^ aSlide filePicture
@@ -136,7 +136,7 @@ GtSteeringArchitectureSlideshow >> slide7For: aSlide [
 		fileReference: (GtResourcesUtility resourceAtPath: 'feenkcom/gtoolkit-demos/doc/moldable-development/50percent-4.png')
 ]
 
-{ #category : 'slides' }
+{ #category : #slides }
 GtSteeringArchitectureSlideshow >> titleFor: aSlide [
 	<gtSlide>
 	^ aSlide title
