@@ -1,16 +1,16 @@
 Class {
-	#name : 'BaselineOfGToolkitObjectNeuralNetworkDemo',
-	#superclass : 'BaselineOf',
-	#category : 'BaselineOfGToolkitObjectNeuralNetworkDemo'
+	#name : #BaselineOfGToolkitObjectNeuralNetworkDemo,
+	#superclass : #BaselineOf,
+	#category : #BaselineOfGToolkitObjectNeuralNetworkDemo
 }
 
-{ #category : 'baseline' }
+{ #category : #baseline }
 BaselineOfGToolkitObjectNeuralNetworkDemo >> baseline: spec [
 	<baseline>
 	spec for: #'common' do: [
 		spec
 			baseline: 'Bloc' with: [
-				spec repository: 'github://feenkcom/Bloc:v0.8.236/src' ].
+				spec repository: 'github://feenkcom/Bloc:v0.8.237/src' ].
 
 		spec package: 'GToolkit-Demo-ObjectNeuralNetwork'.
 	]
