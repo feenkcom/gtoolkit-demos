@@ -1,10 +1,10 @@
 Class {
-	#name : 'GtQueryingCodeShow',
-	#superclass : 'Object',
+	#name : #GtQueryingCodeShow,
+	#superclass : #Object,
 	#category : 'GToolkit-Demo-MoldableDevelopment'
 }
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtQueryingCodeShow >> binaryFiltersTitleSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide title
@@ -14,7 +14,7 @@ GtQueryingCodeShow >> binaryFiltersTitleSlideFor: aSlide [
 			glamorousRegularFont).
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtQueryingCodeShow >> classFiltersExampleSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide labelAndElement
@@ -32,7 +32,7 @@ filter := GtSearchTestClassesFilter new.'};
 			asElement].
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtQueryingCodeShow >> classFiltersTitleSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide title
@@ -42,7 +42,7 @@ GtQueryingCodeShow >> classFiltersTitleSlideFor: aSlide [
 			glamorousRegularFont).
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtQueryingCodeShow >> classesAndPackagesFiltersIntroductionSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide text
@@ -52,7 +52,7 @@ GtQueryingCodeShow >> classesAndPackagesFiltersIntroductionSlideFor: aSlide [
 			fontSize: 20).
 ]
 
-{ #category : 'examples' }
+{ #category : #examples }
 GtQueryingCodeShow >> explanationTextOnPragmaAndReferenceExampleResult [
 	| text |
 	
@@ -71,7 +71,7 @@ The filter instance knows how to present itself through a ' asRopedText,
 		foreground: Color black.
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtQueryingCodeShow >> filtersCategoriesIntroductionSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide text
@@ -81,7 +81,7 @@ GtQueryingCodeShow >> filtersCategoriesIntroductionSlideFor: aSlide [
 			fontSize: 20).
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtQueryingCodeShow >> filtersCompositionExampleSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide labelAndElement
@@ -92,7 +92,7 @@ GtQueryingCodeShow >> filtersCompositionExampleSlideFor: aSlide [
 			asElement].
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtQueryingCodeShow >> filtersCompositionIntroductionSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide text
@@ -102,7 +102,7 @@ GtQueryingCodeShow >> filtersCompositionIntroductionSlideFor: aSlide [
 			fontSize:20).
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtQueryingCodeShow >> filtersTitleSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide title
@@ -112,7 +112,7 @@ GtQueryingCodeShow >> filtersTitleSlideFor: aSlide [
 			glamorousRegularFont).
 ]
 
-{ #category : 'examples' }
+{ #category : #examples }
 GtQueryingCodeShow >> filtersTreeExample [
 	<gtExample>
 	| filtersTreeElement |
@@ -129,7 +129,7 @@ GtQueryingCodeShow >> filtersTreeExample [
 		addChild: filtersTreeElement.
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtQueryingCodeShow >> filtersTreeExampleSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide labelAndElement
@@ -138,7 +138,7 @@ GtQueryingCodeShow >> filtersTreeExampleSlideFor: aSlide [
 		element: [ self filtersTreeExample ].
 ]
 
-{ #category : 'examples' }
+{ #category : #examples }
 GtQueryingCodeShow >> inspectorResultOnPragmaAndReferenceExample [
 	<gtExample>
 	| inspectorContainer subject inspectorHeader inspectorView inspectorLabel verticalContainer |
@@ -198,7 +198,7 @@ GtQueryingCodeShow >> inspectorResultOnPragmaAndReferenceExample [
 		addChild: inspectorContainer.
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtQueryingCodeShow >> intersectionFilterExampleSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide labelAndElement
@@ -211,7 +211,7 @@ intersection := filter1 & filter2.'};
 			asElement].
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtQueryingCodeShow >> introductionSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide text
@@ -221,7 +221,7 @@ GtQueryingCodeShow >> introductionSlideFor: aSlide [
 			fontSize: 20).
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtQueryingCodeShow >> methodFiltersExampleSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide labelAndElement
@@ -242,7 +242,7 @@ GtQueryingCodeShow >> methodFiltersExampleSlideFor: aSlide [
 			asElement].
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtQueryingCodeShow >> methodFiltersExplanationSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide text
@@ -252,7 +252,7 @@ GtQueryingCodeShow >> methodFiltersExplanationSlideFor: aSlide [
 			fontSize: 20).
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtQueryingCodeShow >> methodFiltersForClassesAndPackagesExampleSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide labelAndElement
@@ -266,7 +266,7 @@ GtQueryingCodeShow >> methodFiltersForClassesAndPackagesExampleSlideFor: aSlide 
 			asElement].
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtQueryingCodeShow >> methodFiltersTitleSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide title
@@ -276,7 +276,7 @@ GtQueryingCodeShow >> methodFiltersTitleSlideFor: aSlide [
 			glamorousRegularFont).
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtQueryingCodeShow >> negationFilterExampleSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide labelAndElement
@@ -292,7 +292,7 @@ negationFilter := GtSearchNegationFilter new
 			asElement].
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtQueryingCodeShow >> negationFilterTitleSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide title
@@ -302,7 +302,7 @@ GtQueryingCodeShow >> negationFilterTitleSlideFor: aSlide [
 			glamorousRegularFont).
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtQueryingCodeShow >> nullFilterExampleSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide labelAndElement
@@ -317,7 +317,7 @@ filter size'.
 			asElement].
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtQueryingCodeShow >> nullFilterTitleSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide title
@@ -327,7 +327,7 @@ GtQueryingCodeShow >> nullFilterTitleSlideFor: aSlide [
 			glamorousRegularFont).
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtQueryingCodeShow >> packageFiltersExampleSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide labelAndElement
@@ -341,7 +341,7 @@ filter := GtSearchDeprecatedPackagesFilter new.'};
 			asElement].
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtQueryingCodeShow >> packageFiltersTitleSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide title
@@ -351,14 +351,14 @@ GtQueryingCodeShow >> packageFiltersTitleSlideFor: aSlide [
 			glamorousRegularFont).
 ]
 
-{ #category : 'examples' }
+{ #category : #examples }
 GtQueryingCodeShow >> pragmaAndReferenceQueryExample [
 	<gtExample>
 	
 	^ #gtView gtPragmas & GtPharoMethodCoder gtReferences.
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtQueryingCodeShow >> queryResultExplanationSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide textAndElement
@@ -367,7 +367,7 @@ GtQueryingCodeShow >> queryResultExplanationSlideFor: aSlide [
 		element: [self inspectorResultOnPragmaAndReferenceExample].
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtQueryingCodeShow >> referenceFiltersExampleSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide labelAndElement
@@ -385,7 +385,7 @@ GtSearchReferencesFilter gtReferences'.
 			asElement].
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtQueryingCodeShow >> searchForGtViewAnnotationsExampleSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide labelAndElement
@@ -396,7 +396,7 @@ GtQueryingCodeShow >> searchForGtViewAnnotationsExampleSlideFor: aSlide [
 			asElement].
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtQueryingCodeShow >> slideshowLinkSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide slideshow
@@ -405,7 +405,7 @@ GtQueryingCodeShow >> slideshowLinkSlideFor: aSlide [
 		slideshow: [ GtLiveShow createWithArrowsVisible: GtPharo101 new ] withTitle: 'Pharo101'.
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtQueryingCodeShow >> titleSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide title
@@ -420,7 +420,7 @@ GtQueryingCodeShow >> titleSlideFor: aSlide [
 			glamorousRegularFont).
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtQueryingCodeShow >> unionFiltersExampleSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide labelAndElement
