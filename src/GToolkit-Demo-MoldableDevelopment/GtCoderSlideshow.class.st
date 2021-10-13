@@ -1,7 +1,7 @@
 Class {
 	#name : #GtCoderSlideshow,
 	#superclass : #Object,
-	#category : 'GToolkit-Demo-MoldableDevelopment'
+	#category : #'GToolkit-Demo-MoldableDevelopment'
 }
 
 { #category : #accessing }
@@ -104,7 +104,8 @@ GtCoderSlideshow >> baselineMethodsExplanationWithLinks [
 	<gtExample>
 	| classCoderElement aScripter baselineTarget expandBaselineTarget pragmaTarget expandedMethodElement |
 	
-	classCoderElement := (GtClassCoderLiveSlide new class: BaselineOfGToolkit; expandMethodAt: 1) asElement.
+	BlUseAsyncFeatures disableDuring: [ .
+		classCoderElement := (GtClassCoderLiveSlide new class: BaselineOfGToolkit; expandMethodAt: 1) asElement ].
 	
 	expandedMethodElement := classCoderElement
 		allChildrenBreadthFirstDetect: [:aChild |
