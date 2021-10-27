@@ -1,7 +1,7 @@
 Class {
 	#name : #GtOneRenderingTree,
 	#superclass : #Object,
-	#category : 'GToolkit-Demo-MoldableDevelopment'
+	#category : #'GToolkit-Demo-MoldableDevelopment'
 }
 
 { #category : #accessing }
@@ -185,7 +185,7 @@ GtOneRenderingTree >> mashExampleSlideFor: aSlide [
 { #category : #'api - instantiation' }
 GtOneRenderingTree >> overviewElement [
 	^ (GtMashExampleLiveSlide new
-		leftElementWithConstraints: ((GtDocumenter forClass: BaselineOfGToolkit)
+		leftElementWithConstraints: ((LeCoderCommentElement coderElementFor: #BaselineOfGToolkit)
 			constraintsDo: [ :c |
 			    c frame horizontal alignLeft. 
 				c frame vertical alignCenter.

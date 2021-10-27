@@ -1,7 +1,7 @@
 Class {
 	#name : #GtTour,
 	#superclass : #Object,
-	#category : 'GToolkit-Demo-MoldableDevelopment'
+	#category : #'GToolkit-Demo-MoldableDevelopment'
 }
 
 { #category : #accessing }
@@ -593,7 +593,7 @@ GtTour >> overviewElement [
 	container := BlElement new
 		constraintsDo: [ :c | c horizontal exact: 1200. c vertical exact: 800. ];
 		layout: BlFrameLayout new.
-	container addChild: ((GtDocumenter forClass: BaselineOfGToolkit)
+	container addChild: ((LeCoderCommentElement coderElementFor: #BaselineOfGToolkit)
 			constraintsDo: [ :c | 
 				c frame horizontal alignLeft. 
 				c frame vertical alignCenter.
