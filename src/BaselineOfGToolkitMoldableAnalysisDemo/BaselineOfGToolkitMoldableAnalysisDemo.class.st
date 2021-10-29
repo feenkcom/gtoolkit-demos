@@ -1,16 +1,16 @@
 Class {
-	#name : 'BaselineOfGToolkitMoldableAnalysisDemo',
-	#superclass : 'BaselineOf',
-	#category : 'BaselineOfGToolkitMoldableAnalysisDemo'
+	#name : #BaselineOfGToolkitMoldableAnalysisDemo,
+	#superclass : #BaselineOf,
+	#category : #BaselineOfGToolkitMoldableAnalysisDemo
 }
 
-{ #category : 'baseline' }
+{ #category : #baseline }
 BaselineOfGToolkitMoldableAnalysisDemo >> baseline: spec [
 	<baseline>
 	spec for: #'common' do: [
 		spec
 			baseline: 'GToolkitConstrainer' with: [
-				spec repository: 'github://feenkcom/gtoolkit-constrainer:v0.8.7/src' ].
+				spec repository: 'github://feenkcom/gtoolkit-constrainer:v0.8.8/src' ].
 
 		spec package: 'GToolkit-Demo-Argouml-ArchitectureRules' with: [
 			spec requires: #('GToolkitConstrainer') ].

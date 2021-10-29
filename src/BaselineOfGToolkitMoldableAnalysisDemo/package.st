@@ -1,1 +1,1 @@
-Package { #name : 'BaselineOfGToolkitMoldableAnalysisDemo' }
+Package { #name : #BaselineOfGToolkitMoldableAnalysisDemo }
