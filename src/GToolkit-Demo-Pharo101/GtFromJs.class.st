@@ -1,10 +1,10 @@
 Class {
-	#name : 'GtFromJs',
-	#superclass : 'BrStencil',
+	#name : #GtFromJs,
+	#superclass : #BrStencil,
 	#category : 'GToolkit-Demo-Pharo101'
 }
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtFromJs >> create [
 	| show |
 	
@@ -57,7 +57,7 @@ GtFromJs >> create [
 	^ show
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtFromJs >> jsClassText [
 	^ 'class Animal {
   constructor() {
@@ -94,7 +94,7 @@ let animal = new Animal();
 animal.speak();'
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtFromJs >> jsServerText [
 	^ '
 var http = require("http");
@@ -115,7 +115,7 @@ http
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtFromJs >> teapotSlide [
 	^(GtPlaygroundLiveSlide new 
 				snippets: {'
@@ -141,7 +141,7 @@ Teapot on
 ' }) asElement
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtFromJs >> v8 [
 	^ BlElement new
 		constraintsDo: [:c |

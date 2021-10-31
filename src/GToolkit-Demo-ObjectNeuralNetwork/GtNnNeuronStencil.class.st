@@ -43,7 +43,7 @@ GtNnNeuronStencil >> create [
 		text: (self neuron value printShowingDecimalPlaces: 2) asRopedText;
 		padding: (BlInsets all: 30);
 		margin: (BlInsets top: 40 left: 120 bottom: 40 right: 120);
-		geometry: BlCircle new;
+		geometry: BlCircleGeometry new;
 		background: Color white;
 		border: (BlBorder paint: Color gray width: 3).
 

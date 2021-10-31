@@ -21,7 +21,7 @@ GtArgoUMLDeprecatedClassesWithNoDeprecatedClients >> gtViewDependenciesFor: aVie
 				stencil: [:each |
 					BlElement new
 						size: 5@5;
-						geometry: BlCircle new;
+						geometry: BlCircleGeometry new;
 						background:((each isAnnotatedWith: 'Deprecated')
 							ifTrue: [Color red]
 							ifFalse: [Color gray]) ];
