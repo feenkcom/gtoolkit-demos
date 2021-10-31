@@ -791,6 +791,6 @@ GtCoderSlideshow >> yellowExplanationTargetCircleFor: aModel [
 				constraintsDo: [ :c | c ignoreByLayout ];
 				size: 0 @ 0;
 				elevation: (BlRelativeElevation elevation: 10);
-				geometry: BlCircle new;
+				geometry: BlCircleGeometry new;
 				aptitude: (GtExplainerTargetAptitude new explanationModel: aModel).
 ]

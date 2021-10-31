@@ -1037,6 +1037,6 @@ GtTour >> yellowExplanationTargetCircleFor: aModel [
 				constraintsDo: [ :c | c ignoreByLayout ];
 				size: 1 @ 1;
 				elevation: (BlRelativeElevation elevation: 10);
-				geometry: BlCircle new;
+				geometry: BlCircleGeometry new;
 				aptitude: (GtExplainerTargetAptitude new explanationModel: aModel).
 ]

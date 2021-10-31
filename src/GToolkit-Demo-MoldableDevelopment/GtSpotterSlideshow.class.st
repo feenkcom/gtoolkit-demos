@@ -1,7 +1,7 @@
 Class {
 	#name : #GtSpotterSlideshow,
 	#superclass : #Object,
-	#category : 'GToolkit-Demo-MoldableDevelopment'
+	#category : #'GToolkit-Demo-MoldableDevelopment'
 }
 
 { #category : #accessing }
@@ -26,7 +26,7 @@ GtSpotterSlideshow >> spotterAfterFirstDiveInExplanation [
 					constraintsDo: [ :c | c ignoreByLayout ];
 					size: 3 @ 3;
 					elevation: (BlRelativeElevation elevation: 10);
-					geometry: BlCircle new;
+					geometry: BlCircleGeometry new;
 					aptitude: (GtExplainerTargetAptitude new explanationModel: #secondContext);
 					relocate:
 						(0 @ 10)).]).
@@ -88,7 +88,7 @@ GtSpotterSlideshow >> spotterDiveInExplanation [
 				constraintsDo: [ :c | c ignoreByLayout ];
 				size: 3 @ 3;
 				elevation: (BlRelativeElevation elevation: 10);
-				geometry: BlCircle new;
+				geometry: BlCircleGeometry new;
 				aptitude: (GtExplainerTargetAptitude new explanationModel: #context);
 				relocate:
 					(-2 @ contextTarget extent y / 2)).
@@ -97,7 +97,7 @@ GtSpotterSlideshow >> spotterDiveInExplanation [
 				constraintsDo: [ :c | c ignoreByLayout ];
 				size: 3 @ 3;
 				elevation: (BlRelativeElevation elevation: 10);
-				geometry: BlCircle new;
+				geometry: BlCircleGeometry new;
 				aptitude: (GtExplainerTargetAptitude new explanationModel: #blackArrow);
 				relocate:
 					(-2 @ arrowTargets extent y / 2)).
@@ -269,7 +269,7 @@ GtSpotterSlideshow >> spotterInLocalContextExplanationWithLinks [
 					constraintsDo: [ :c | c ignoreByLayout ];
 					size: 3 @ 3;
 					elevation: (BlRelativeElevation elevation: 10);
-					geometry: BlCircle new;
+					geometry: BlCircleGeometry new;
 					aptitude: (GtExplainerTargetAptitude new explanationModel: #search);
 					relocate:
 						(5 @ 10))].
@@ -414,7 +414,7 @@ GtSpotterSlideshow >> spotterInterfaceExplanationWithLinks [
 				constraintsDo: [ :c | c ignoreByLayout ];
 				size: 3 @ 3;
 				elevation: (BlRelativeElevation elevation: 10);
-				geometry: BlCircle new;
+				geometry: BlCircleGeometry new;
 				aptitude: (GtExplainerTargetAptitude new explanationModel: #searchBar);
 				relocate:
 					(-2 @ searchBarTarget extent y / 2)).
@@ -424,7 +424,7 @@ GtSpotterSlideshow >> spotterInterfaceExplanationWithLinks [
 				constraintsDo: [ :c | c ignoreByLayout ];
 				size: 3 @ 3;
 				elevation: (BlRelativeElevation elevation: 10);
-				geometry: BlCircle new;
+				geometry: BlCircleGeometry new;
 				aptitude: (GtExplainerTargetAptitude new explanationModel: #results);
 				relocate: 5 @ 5). 
 	previewTarget
@@ -433,7 +433,7 @@ GtSpotterSlideshow >> spotterInterfaceExplanationWithLinks [
 				constraintsDo: [ :c | c ignoreByLayout ];
 				size: 3 @ 3;
 				elevation: (BlRelativeElevation elevation: 10);
-				geometry: BlCircle new;
+				geometry: BlCircleGeometry new;
 				aptitude: (GtExplainerTargetAptitude new explanationModel: #preview);
 				relocate:
 					(5 @ previewTarget extent y / 2)).
@@ -443,7 +443,7 @@ GtSpotterSlideshow >> spotterInterfaceExplanationWithLinks [
 				constraintsDo: [ :c | c ignoreByLayout ];
 				size: 3 @ 3;
 				elevation: (BlRelativeElevation elevation: 10);
-				geometry: BlCircle new;
+				geometry: BlCircleGeometry new;
 				aptitude: (GtExplainerTargetAptitude new explanationModel: #classes);
 				relocate:
 					(5 @ classesTarget extent y / 2)).
@@ -453,7 +453,7 @@ GtSpotterSlideshow >> spotterInterfaceExplanationWithLinks [
 				constraintsDo: [ :c | c ignoreByLayout ];
 				size: 3 @ 3;
 				elevation: (BlRelativeElevation elevation: 10);
-				geometry: BlCircle new;
+				geometry: BlCircleGeometry new;
 				aptitude: (GtExplainerTargetAptitude new explanationModel: #messages);
 				relocate:
 					(5 @ implementorsTarget extent y / 2)).
@@ -463,7 +463,7 @@ GtSpotterSlideshow >> spotterInterfaceExplanationWithLinks [
 				constraintsDo: [ :c | c ignoreByLayout ];
 				size: 3 @ 3;
 				elevation: (BlRelativeElevation elevation: 10);
-				geometry: BlCircle new;
+				geometry: BlCircleGeometry new;
 				aptitude: (GtExplainerTargetAptitude new explanationModel: #messages);
 				relocate:
 					(5 @ sendersTarget extent y / 2)).
@@ -473,7 +473,7 @@ GtSpotterSlideshow >> spotterInterfaceExplanationWithLinks [
 				constraintsDo: [ :c | c ignoreByLayout ];
 				size: 3 @ 3;
 				elevation: (BlRelativeElevation elevation: 10);
-				geometry: BlCircle new;
+				geometry: BlCircleGeometry new;
 				aptitude: (GtExplainerTargetAptitude new explanationModel: #messages);
 				relocate:
 					(5 @ messagesTarget extent y / 2)).
@@ -607,7 +607,7 @@ GtSpotterSlideshow >> spotterSearchFilterExplanation [
 				constraintsDo: [ :c | c ignoreByLayout ];
 				size: 3 @ 3;
 				elevation: (BlRelativeElevation elevation: 10);
-				geometry: BlCircle new;
+				geometry: BlCircleGeometry new;
 				aptitude: (GtExplainerTargetAptitude new explanationModel: #keyword);
 				relocate:
 					(-2 @ keywordTarget extent y / 2)).
@@ -616,7 +616,7 @@ GtSpotterSlideshow >> spotterSearchFilterExplanation [
 				constraintsDo: [ :c | c ignoreByLayout ];
 				size: 3 @ 3;
 				elevation: (BlRelativeElevation elevation: 10);
-				geometry: BlCircle new;
+				geometry: BlCircleGeometry new;
 				aptitude: (GtExplainerTargetAptitude new explanationModel: #filter);
 				relocate:
 					(-2 @ filterTarget extent y / 2)).
@@ -625,7 +625,7 @@ GtSpotterSlideshow >> spotterSearchFilterExplanation [
 				constraintsDo: [ :c | c ignoreByLayout ];
 				size: 3 @ 3;
 				elevation: (BlRelativeElevation elevation: 10);
-				geometry: BlCircle new;
+				geometry: BlCircleGeometry new;
 				aptitude: (GtExplainerTargetAptitude new explanationModel: #context);
 				relocate:
 					(-2 @ contextTarget extent y / 2)).

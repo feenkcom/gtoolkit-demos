@@ -1,7 +1,7 @@
 Class {
 	#name : #GtInspectorViews,
 	#superclass : #Object,
-	#category : 'GToolkit-Demo-MoldableDevelopment'
+	#category : #'GToolkit-Demo-MoldableDevelopment'
 }
 
 { #category : #slides }
@@ -992,6 +992,6 @@ GtInspectorViews >> yellowExplanationTargetCircleFor: aModel [
 				constraintsDo: [ :c | c ignoreByLayout ];
 				size: 5 @ 5;
 				elevation: (BlRelativeElevation elevation: 10);
-				geometry: BlCircle new;
+				geometry: BlCircleGeometry new;
 				aptitude: (GtExplainerTargetAptitude new explanationModel: aModel).
 ]

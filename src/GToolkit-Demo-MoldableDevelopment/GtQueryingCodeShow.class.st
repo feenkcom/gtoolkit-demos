@@ -1,7 +1,7 @@
 Class {
 	#name : #GtQueryingCodeShow,
 	#superclass : #Object,
-	#category : 'GToolkit-Demo-MoldableDevelopment'
+	#category : #'GToolkit-Demo-MoldableDevelopment'
 }
 
 { #category : #accessing }
@@ -178,7 +178,7 @@ GtQueryingCodeShow >> inspectorResultOnPragmaAndReferenceExample [
 				constraintsDo: [ :c | c ignoreByLayout ];
 				size: 5 @ 5;
 				elevation: (BlRelativeElevation elevation: 10);
-				geometry: BlCircle new;
+				geometry: BlCircleGeometry new;
 				aptitude: (GtExplainerTargetAptitude new explanationModel: #inspector);
 				relocate:
 					(5 @ inspectorHeader extent y / 2)). 
@@ -188,7 +188,7 @@ GtQueryingCodeShow >> inspectorResultOnPragmaAndReferenceExample [
 				constraintsDo: [ :c | c ignoreByLayout ];
 				size: 5 @ 5;
 				elevation: (BlRelativeElevation elevation: 10);
-				geometry: BlCircle new;
+				geometry: BlCircleGeometry new;
 				aptitude: (GtExplainerTargetAptitude new explanationModel: #view);
 				relocate:
 					(5 @ inspectorView extent y / 2)).

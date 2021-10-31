@@ -253,7 +253,7 @@ GtAnalyzingJavaSystemsShow >> visualizeBuildFilesFrom: interestingDirectories [
 		stencil: [ :each |
 			BlElement new
 				size: 5@5;
-				geometry: BlCircle new;
+				geometry: BlCircleGeometry new;
             background: ((each files anySatisfy: [ :f |
 					f basename asLowercase = 'build.xml'])
 						ifTrue: [  Color red]
@@ -288,7 +288,7 @@ GtAnalyzingJavaSystemsShow >> visualizeDeprecatedClassesFor: stillUsedClasses [
 		stencil: [:each |
 			BlElement new
 				size: 5@5;
-				geometry: BlCircle new;
+				geometry: BlCircleGeometry new;
 				background:((each isAnnotatedWith: 'Deprecated')
 					ifTrue: [Color red]
 					ifFalse: [Color gray]) ];
@@ -327,7 +327,7 @@ GtAnalyzingJavaSystemsShow >> visualizeDeprecatedClassesWithMethodWithUsageSizeF
 				stencil: [ :each |
 					BlElement new
 						margin: (BlInsets all: 2);
-						geometry: BlCircle new;
+						geometry: BlCircleGeometry new;
 						size: ((each parentType 
 							isAnnotatedWith: 'Deprecated')
 								ifTrue: [ (each clientMethods 
@@ -417,7 +417,7 @@ GtAnalyzingJavaSystemsShow >> visualizeDeprecatedClassesWithSizeFor: stillUsedCl
 		stencil: [ :each |
 			BlElement new 
 				size: (each numberOfMethods min: 50) asPoint;
-				geometry: BlCircle new;
+				geometry: BlCircleGeometry new;
 				background: ((each isAnnotatedWith: 'Deprecated')
 					ifTrue: [ Color red ]
 					ifFalse: [ Color gray ]);
@@ -459,7 +459,7 @@ GtAnalyzingJavaSystemsShow >> visualizeDeprecatedClassesWithUIBorderFor: stillUs
 		stencil: [:each |
 			BlElement new
 				size: 5@5;
-				geometry: BlCircle new;
+				geometry: BlCircleGeometry new;
 				background:((each isAnnotatedWith: 'Deprecated')
 					ifTrue: [Color red]
 					ifFalse: [Color gray]);

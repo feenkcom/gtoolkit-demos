@@ -1,10 +1,10 @@
 Class {
-	#name : 'GtPharoMethodExample',
-	#superclass : 'Object',
+	#name : #GtPharoMethodExample,
+	#superclass : #Object,
 	#category : 'GToolkit-Demo-Pharo101'
 }
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtPharoMethodExample >> exampleWithNumber: x [
     "A method that illustrates every part of Smalltalk method syntax
     except primitives. It has unary, binary, and keyword messages,

@@ -1,7 +1,7 @@
 Class {
 	#name : #GtPlaygroundAndInspectorShow,
 	#superclass : #Object,
-	#category : 'GToolkit-Demo-MoldableDevelopment'
+	#category : #'GToolkit-Demo-MoldableDevelopment'
 }
 
 { #category : #accessing }
@@ -515,6 +515,6 @@ GtPlaygroundAndInspectorShow >> yellowExplanationTargetCircleFor: aModel [
 				constraintsDo: [ :c | c ignoreByLayout ];
 				size: 0 @ 0;
 				elevation: (BlRelativeElevation elevation: 10);
-				geometry: BlCircle new;
+				geometry: BlCircleGeometry new;
 				aptitude: (GtExplainerTargetAptitude new explanationModel: aModel).
 ]
