@@ -9,7 +9,7 @@ Moldable development puts forward the hypothesis that the shape of software is e
 
 Moldable development was embodied in the first generation of GT which was integrated into Pharo in 2014, and it showed how we can indeed provide an experience that is distinct from any other, including the classic Smalltalk one.
 
-The new GT takes moldable development much further. Especially visible are new kinds of tools, like {{gtClass:BaselineOfGToolkitDocumenter|label=Documenter}} with its live notebooks, slide shows with interactive explanations, a {{gtClass:BaselineOfLepiterEngine|label=Lepiter}} with snippets, or a {{gtClass:BaselineOfGToolkitCoder|label=Coder}} with expandable editors.
+The new GT takes moldable development much further. Especially visible are new kinds of tools, like  {{gtClass:BaselineOfLepiterEngine|label=Lepiter}}  with its live notebooks, slide shows with interactive explanations, or a {{gtClass:BaselineOfGToolkitCoder|label=Coder}} with expandable editors.
 
 Still, there are less visible parts. Underneath, we have a generic infrastructure for handling other languages. It comes with an integration of {{gtClass:BaselineOfGToolkit4Famix3|label=Famix}},  the meta-model through which we can represent various systems, and it also ships with an {{gtClass:BaselineOfGToolkit4SmaCC|label=environment for SmaCC}}, the parsing engine, that allows us to create parsers for new languages. For example, more recently we added  parsers and importers for several languages including {{gtClass:CPPParser|label=CPP}} and {{gtClass:JSParser|label=JavaScript}}.
 
@@ -47,7 +47,7 @@ The traditional Smalltalk environment was a revolution when it was created. It e
 Class {
 	#name : #GtAndPharoExplanation,
 	#superclass : #Object,
-	#category : 'GToolkit-Demo-MoldableDevelopment'
+	#category : #'GToolkit-Demo-MoldableDevelopment'
 }
 
 { #category : #'as yet unclassified' }
