@@ -47,9 +47,10 @@ GtTour >> coderExplanationWithLinks [
 		background: Color white;
 		aptitude: BrShadowAptitude.
 	
-	coderElement := BlUseAsyncFeatures disableDuring: [ 
-		((GtCoder forClass: GtABAddressBook) createInPager maximized) asElement ].
-	coderElement forceLayout.
+	coderElement := BlDevScripter new
+		element: ((GtCoder forClass: GtABAddressBook) createInPager maximized) asElement;
+		play;
+		elementWithoutParent.
 	
 	packageHierarchyTarget := coderElement
 		allChildrenBreadthFirstDetect: [:aChild |
