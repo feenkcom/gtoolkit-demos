@@ -49,7 +49,6 @@ GtTour >> coderExplanationWithLinks [
 	
 	coderElement := BlDevScripter new
 		element: ((GtCoder forClass: GtABAddressBook) createInPager maximized) asElement;
-		play;
 		elementWithoutParent.
 	
 	packageHierarchyTarget := coderElement

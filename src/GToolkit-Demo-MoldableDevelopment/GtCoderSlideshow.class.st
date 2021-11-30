@@ -106,7 +106,6 @@ GtCoderSlideshow >> baselineMethodsExplanationWithLinks [
 		
 	classCoderElement := BlDevScripter new
 		element: (GtClassCoderLiveSlide new class: BaselineOfGToolkit; expandMethodAt: 1) asElement;
-		play;
 		elementWithoutParent.
 	
 	expandedMethodElement := classCoderElement
@@ -595,9 +594,8 @@ GtCoderSlideshow >> createMethodExplanationWithLinks [
 	| classCoderElement addMethodButton aScripter newFrameTarget saveButtonTarget removeButtonTarget |
 		
 	aScripter := BlDevScripter new.
-	aScripter set
-		element: [ (GtClassCoderLiveSlide new class: GtABAddressBook) asElement ];
-		play.
+	aScripter element: (GtClassCoderLiveSlide new class: GtABAddressBook) asElement.
+
 	aScripter click
 		label: 'Click add method button';
 		id: GtPharoBehaviorCoder addNewMethodButtonName;
@@ -684,10 +682,7 @@ GtCoderSlideshow >> exampleMethodsExplanationWithLinks [
 	classCoderElement := (GtInspector createOn:(GtPharoBehaviorCoder forClass: GtABAddressBookExample)) maximized.
 	
 	aScripter := BlDevScripter new.
-	aScripter set
-		label: 'Set Coder';
-		element: [ classCoderElement ];
-		play.
+	aScripter element: classCoderElement.
 
 	aScripter click
 		label: 'Expand first method';
