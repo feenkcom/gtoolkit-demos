@@ -102,10 +102,11 @@ GtCoderSlideshow >> baselineMethodsExplanationText [
 { #category : #accessing }
 GtCoderSlideshow >> baselineMethodsExplanationWithLinks [
 	<gtExample>
-	| classCoderElement aScripter baselineTarget expandBaselineTarget pragmaTarget expandedMethodElement |
-	
-	BlUseAsyncFeatures disableDuring: [ .
-		classCoderElement := (GtClassCoderLiveSlide new class: BaselineOfGToolkit; expandMethodAt: 1) asElement ].
+	| classCoderElement aScripter baselineTarget expandBaselineTarget pragmaTarget expandedMethodElement |		
+		
+	classCoderElement := BlDevScripter new
+		element: (GtClassCoderLiveSlide new class: BaselineOfGToolkit; expandMethodAt: 1) asElement;
+		elementWithoutParent.
 	
 	expandedMethodElement := classCoderElement
 		allChildrenBreadthFirstDetect: [:aChild |
@@ -140,21 +141,16 @@ GtCoderSlideshow >> baselineMethodsExplanationWithLinks [
 						(2 @ expandBaselineTarget extent y / 2)).
 	
 	aScripter := BlDevScripter new.
-	aScripter
-		substep: 'Add Coder Element'
-		do: [ :aStep | 
-			aStep set
-				label: 'Coder';
-				element: [ classCoderElement ].
-			aStep wait forEmptySpaceTaskQueue ].
-	aScripter
-		substep: 'Click coder'
-		do: [ :aStep | 
-			aStep click
-				label: 'Expand baseline in place';
-				id: GtSourceCoderEmbeddedExpanderToggleId index: 1.
-			aStep wait forEmptySpaceTaskQueue ].
-	aScripter syncContinue.	
+	aScripter set
+		label: 'Set coder coder';
+		element: [ classCoderElement ];
+		play.
+
+	aScripter click
+		label: 'Expand baseline in place';
+		id: GtSourceCoderEmbeddedExpanderToggleId index: 1;
+		play.
+
 	^ BlElement new
 		constraintsDo: [:c |
 			c vertical matchParent.
@@ -596,27 +592,18 @@ GtCoderSlideshow >> createMethodExplanationText [
 GtCoderSlideshow >> createMethodExplanationWithLinks [
 	<gtExample>
 	| classCoderElement addMethodButton aScripter newFrameTarget saveButtonTarget removeButtonTarget |
-	
-	classCoderElement := BlUseAsyncFeatures
-		disableDuring: [ (GtClassCoderLiveSlide new class: GtABAddressBook) asElement ].
 		
-	aScripter := BlDevScripter new
-		element: classCoderElement.
-	aScripter
-		substep: 'Click coder'
-		do: [ :aStep | 
-			aStep click
-				label: 'Click add method button';
-				onChildNamed: GtPharoBehaviorCoder addNewMethodButtonName.
-			aStep wait forEmptySpaceTaskQueue ].
-	aScripter syncContinue.
+	aScripter := BlDevScripter new.
+	aScripter element: (GtClassCoderLiveSlide new class: GtABAddressBook) asElement.
 
-	classCoderElement := aScripter elementWithoutParent.
-	
-	newFrameTarget := classCoderElement
-		allChildrenBreadthFirstDetect: [:aChild |
-			aChild isKindOf: GtExpandableSourceCoderElement ]
-		ifFound: [:aChild | aChild].
+	aScripter click
+		label: 'Click add method button';
+		id: GtPharoBehaviorCoder addNewMethodButtonName;
+		play.
+
+	classCoderElement := aScripter rootWithoutParent.
+
+	newFrameTarget := (classCoderElement query // GtExpandedOnlyCoderElement) anyOne.
 
 	newFrameTarget
 		allChildrenBreadthFirstDetect: [:aChild |
@@ -695,30 +682,13 @@ GtCoderSlideshow >> exampleMethodsExplanationWithLinks [
 	classCoderElement := (GtInspector createOn:(GtPharoBehaviorCoder forClass: GtABAddressBookExample)) maximized.
 	
 	aScripter := BlDevScripter new.
-	aScripter
-		substep: 'Add Coder Element'
-		do: [ :aStep | 
-			aStep set
-				label: 'Coder';
-				element: [ classCoderElement ].
-			aStep wait forEmptySpaceTaskQueue ].
-	aScripter
-		substep: 'Click coder'
-		do: [ :aStep | 
-			aStep click
-				label: 'Expand first method';
-				onBreadthFirstChildOfClass: BlOverlayElement;
-				onBreadthFirstChildOfClass: GtPagerWrapperElement;
-				onBreadthFirstChildOfClass: GtInspectorContentElement;
-				onBreadthFirstChildOfClass: GtPharoBehaviorCoderElement;
-				onBreadthFirstChildOfClass: BrTabGroup;
-				onChildAt: 2;
-				onBreadthFirstChildOfClass: GtPharoMethodsCoderElement;
-				onBreadthFirstChildOfClass: BrInfiniteListElement;
-				onChildAt: 1;
-				onChildAt: 1.
-			aStep wait forEmptySpaceTaskQueue ].
-	aScripter syncContinue.	
+	aScripter element: classCoderElement.
+
+	aScripter click
+		label: 'Expand first method';
+		id: GtSourceCoderId index: 1;
+		play.
+
 	classCoderElement := aScripter elementWithoutParent.
 
 	expandedMethodElement := classCoderElement
