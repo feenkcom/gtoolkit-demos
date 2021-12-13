@@ -141,10 +141,7 @@ GtCoderSlideshow >> baselineMethodsExplanationWithLinks [
 						(2 @ expandBaselineTarget extent y / 2)).
 	
 	aScripter := BlDevScripter new.
-	aScripter set
-		label: 'Set coder coder';
-		element: [ classCoderElement ];
-		play.
+	aScripter element: classCoderElement.
 
 	aScripter click
 		label: 'Expand baseline in place';
