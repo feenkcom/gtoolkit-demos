@@ -238,7 +238,7 @@ GtTour >> coderWithComment [
 				label: 'Click on evaluate and inspect button';
 				onBreadthFirstChildOfClass: GtPharoBehaviorCoderElement;
 				onBreadthFirstChildOfClass: BrTabGroup;
-				onChildNamed: #header;
+				id: #header;
 				onChildAt: 1;
 				onChildAt: 1;
 				onChildAt: 2.
