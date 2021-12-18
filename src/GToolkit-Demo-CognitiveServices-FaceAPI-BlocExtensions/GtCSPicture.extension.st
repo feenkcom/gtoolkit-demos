@@ -1,6 +1,6 @@
-Extension { #name : 'GtCSPicture' }
+Extension { #name : #GtCSPicture }
 
-{ #category : '*GToolkit-Demo-CognitiveServices-FaceAPI-BlocExtensions' }
+{ #category : #'*GToolkit-Demo-CognitiveServices-FaceAPI-BlocExtensions' }
 GtCSPicture >> gtFacesFor: aView [
 	<gtView>
 	^ aView columnedList
@@ -15,7 +15,7 @@ GtCSPicture >> gtFacesFor: aView [
 		column: 'Location' text: [ :aFace | aFace rectangle ]
 ]
 
-{ #category : '*GToolkit-Demo-CognitiveServices-FaceAPI-BlocExtensions' }
+{ #category : #'*GToolkit-Demo-CognitiveServices-FaceAPI-BlocExtensions' }
 GtCSPicture >> gtPictureFor: aView [
 	<gtView>
 	^ aView explicit
