@@ -1,6 +1,6 @@
 Class {
-	#name : 'GtCSInspectorFaceBlocElement',
-	#superclass : 'BlElement',
+	#name : #GtCSInspectorFaceBlocElement,
+	#superclass : #BlElement,
 	#instVars : [
 		'face',
 		'scalableElement'
@@ -8,7 +8,7 @@ Class {
 	#category : 'GToolkit-Demo-CognitiveServices-FaceAPI-BlocExtensions'
 }
 
-{ #category : 'drawing' }
+{ #category : #drawing }
 GtCSInspectorFaceBlocElement >> drawConnectedLandmarks: points on: aCanvas [
 	| translatedPoints path |
 	translatedPoints := self translateLandmarks: points.
@@ -25,28 +25,28 @@ GtCSInspectorFaceBlocElement >> drawConnectedLandmarks: points on: aCanvas [
 			draw]
 ]
 
-{ #category : 'drawing' }
+{ #category : #drawing }
 GtCSInspectorFaceBlocElement >> drawEyesDetailsOn: aCanvas [
 	self drawConnectedLandmarks: self faceLandmarks eyeRight on: aCanvas.
 	self drawConnectedLandmarks: self faceLandmarks eyeLeft on: aCanvas.
 	
 ]
 
-{ #category : 'drawing' }
+{ #category : #drawing }
 GtCSInspectorFaceBlocElement >> drawEyesbrowseDetailsOn: aCanvas [
 	self drawConnectedLandmarks: self faceLandmarks eyebrowRight on: aCanvas.
 	self drawConnectedLandmarks: self faceLandmarks eyebrowLeft on: aCanvas.
 	
 ]
 
-{ #category : 'drawing' }
+{ #category : #drawing }
 GtCSInspectorFaceBlocElement >> drawMouthDetailsOn: aCanvas [
 	self drawConnectedLandmarks: self faceLandmarks upperLip on: aCanvas.
 	self drawConnectedLandmarks: self faceLandmarks underLip on: aCanvas.
 	self drawConnectedLandmarks: self faceLandmarks mouth on: aCanvas.
 ]
 
-{ #category : 'drawing' }
+{ #category : #drawing }
 GtCSInspectorFaceBlocElement >> drawNoseDetailsOn: aCanvas [
 	self drawConnectedLandmarks: self faceLandmarks noseTip on: aCanvas.  
 	self drawConnectedLandmarks: self faceLandmarks noseRoot on: aCanvas.
@@ -54,7 +54,7 @@ GtCSInspectorFaceBlocElement >> drawNoseDetailsOn: aCanvas [
 	self drawConnectedLandmarks: self faceLandmarks noseLeftAlar on: aCanvas.
 ]
 
-{ #category : 'drawing' }
+{ #category : #drawing }
 GtCSInspectorFaceBlocElement >> drawOnSpartaCanvas: aSpartaCanvas [
 	super drawOnSpartaCanvas: aSpartaCanvas.
 	
@@ -68,12 +68,12 @@ GtCSInspectorFaceBlocElement >> drawOnSpartaCanvas: aSpartaCanvas [
 		self drawMouthDetailsOn: aSpartaCanvas ].
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtCSInspectorFaceBlocElement >> faceLandmarks [
 	^ face landmarks 
 ]
 
-{ #category : 'initialization' }
+{ #category : #initialization }
 GtCSInspectorFaceBlocElement >> initializeForFace: aFace [
 	self size: aFace rectangle extent.
 	self background: (aFace hasFaceForm 
@@ -83,7 +83,7 @@ GtCSInspectorFaceBlocElement >> initializeForFace: aFace [
 	face := aFace.
 ]
 
-{ #category : 'transformation' }
+{ #category : #transformation }
 GtCSInspectorFaceBlocElement >> translateLandmarks: landmarkPoints [
 	^ landmarkPoints collect: [ :aPoint | 
 		(aPoint - face rectangle topLeft) ]
