@@ -36,7 +36,7 @@ GtTour >> coderExplanationSlideFor: aSlide [
 { #category : #accessing }
 GtTour >> coderExplanationWithLinks [
 	<gtExample>
-	| container coderElement packageHierarchyTarget classHierarchyTarget classNameTarget methodTabTarget commentTabTarget referencesTab expandClassTarget expandMethodTarget deleteButtonTarget classButtonTargets searchButtonTarget addClassButtonTarget methodButtonTargets addMethodButtonTarget filterMethodsButtonTarget |
+	| container coderElement packageHierarchyTarget classHierarchyTarget classNameTarget methodTabTarget commentTabTarget referencesTab expandClassTarget expandMethodTarget deleteButtonTarget classButtonTargets searchButtonTarget addClassButtonTarget methodButtonTargets addMethodButtonTarget filterMethodsButtonTarget scripter |
 	
 	container := BlElement new
 		constraintsDo: [ :c |
@@ -47,9 +47,11 @@ GtTour >> coderExplanationWithLinks [
 		background: Color white;
 		aptitude: BrShadowAptitude.
 	
-	coderElement := BlDevScripter new
-		element: ((GtCoder forClass: GtABAddressBook) createInPager maximized) asElement;
-		elementWithoutParent.
+	scripter := BlDevScripter new.
+	scripter element: ((GtCoder forClass: GtABAddressBook) createInPager maximized) asElement.
+	scripter syncContinue.
+	
+	coderElement := scripter elementWithoutParent.
 	
 	packageHierarchyTarget := coderElement
 		allChildrenBreadthFirstDetect: [:aChild |
