@@ -36,6 +36,7 @@ GtTour >> coderExplanationSlideFor: aSlide [
 { #category : #accessing }
 GtTour >> coderExplanationWithLinks [
 	<gtExample>
+	<noTest>
 	| container coderElement packageHierarchyTarget classHierarchyTarget classNameTarget methodTabTarget commentTabTarget referencesTab expandClassTarget expandMethodTarget deleteButtonTarget classButtonTargets searchButtonTarget addClassButtonTarget methodButtonTargets addMethodButtonTarget filterMethodsButtonTarget scripter |
 	
 	container := BlElement new

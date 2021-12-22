@@ -645,7 +645,7 @@ GtCoderSlideshow >> createMethodExplanationWithLinks [
 
 { #category : #accessing }
 GtCoderSlideshow >> exampleMethodExplanationSlideFor: aSlide [
-	<gtSlide>
+	"<gtSlide>"
 	^ aSlide textAndElement
 		priority: 12;
 		newTextWithFormat: self exampleMethodsExplanationText;
