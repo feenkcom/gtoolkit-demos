@@ -4,8 +4,8 @@ I model a category in the addressbook.
 
 "
 Class {
-	#name : 'GtABCategory',
-	#superclass : 'Object',
+	#name : #GtABCategory,
+	#superclass : #Object,
 	#instVars : [
 		'label',
 		'contacts',
@@ -15,24 +15,24 @@ Class {
 	#category : 'GToolkit-Demo-AddressBook-Models'
 }
 
-{ #category : 'adding' }
+{ #category : #adding }
 GtABCategory >> addContact: aContact [
 	self contacts addLast: aContact.
 ]
 
-{ #category : 'adding' }
+{ #category : #adding }
 GtABCategory >> addContacts: aCollectionOfContacts [
 	aCollectionOfContacts do: [ :aContact |
 		self addContact: aContact ]
 ]
 
-{ #category : 'adding' }
+{ #category : #adding }
 GtABCategory >> addSubcategories: aCollectionOfCategories [
 	aCollectionOfCategories do: [ :aCategory |
 		self addSubcategory: aCategory ]
 ]
 
-{ #category : 'adding' }
+{ #category : #adding }
 GtABCategory >> addSubcategory: aSubCategory [
 	self assert: [ aSubCategory isNotNil ].
 	self assert: [ aSubCategory addressBook isNil ].
@@ -42,12 +42,12 @@ GtABCategory >> addSubcategory: aSubCategory [
 		aSubCategory addressBook: anAddressBook ]
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtABCategory >> addressBook [
 	^ addressBook
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtABCategory >> addressBook: anAddressBook [
 	self assert: [ 
 		anAddressBook notNil and: [ 
@@ -58,13 +58,13 @@ GtABCategory >> addressBook: anAddressBook [
 		aSubCategory addressBook: anAddressBook ]
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtABCategory >> addressBookDo: aBlock [ 	
 	self addressBook ifNotNil: [ :anAddressBook |
 		aBlock value: anAddressBook ]
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtABCategory >> allContacts [
 	"Return the contacts from this category and from all subcategories"
 	| allSubcontacts |
@@ -74,7 +74,7 @@ GtABCategory >> allContacts [
 	^ allSubcontacts
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtABCategory >> allContactsDo: aBlock [
 	self contacts do: [ :aContact | 
 		aBlock value: aContact ].
@@ -83,47 +83,47 @@ GtABCategory >> allContactsDo: aBlock [
 	
 ]
 
-{ #category : 'traversing' }
+{ #category : #traversing }
 GtABCategory >> allSubcategoriesDo: aBlock [ 
 	self subcategories do: [ :aSubCategory |
 		aBlock value: aSubCategory.
 		aSubCategory allSubcategoriesDo: aBlock ]
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtABCategory >> contacts [
 	"Return the contacts from this category only"
 	^ contacts.
 ]
 
-{ #category : 'initialization' }
+{ #category : #initialization }
 GtABCategory >> initialize [
 	contacts := OrderedCollection new.
 	subcategories := OrderedCollection new.
 ]
 
-{ #category : 'testing' }
+{ #category : #testing }
 GtABCategory >> isCategory [
 	^ true
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtABCategory >> label [
 	^ label.
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtABCategory >> label: aString [
 	label := aString.
 ]
 
-{ #category : 'printing' }
+{ #category : #printing }
 GtABCategory >> printOn: aStream [
 
 	aStream nextPutAll: self label
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtABCategory >> subcategories [
 	^ subcategories
 ]

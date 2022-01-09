@@ -4,8 +4,8 @@ I model a simple telefon number
 
 "
 Class {
-	#name : 'GtABTelephone',
-	#superclass : 'GtABContactField',
+	#name : #GtABTelephone,
+	#superclass : #GtABContactField,
 	#instVars : [
 		'prefix',
 		'number'
@@ -13,7 +13,7 @@ Class {
 	#category : 'GToolkit-Demo-AddressBook-Models'
 }
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtABTelephone class >> fromPetit: aPPXmlElement [
 	|dict|
 	dict := Dictionary newFrom: (aPPXmlElement elements collect: [ :each | each name localName asSymbol -> each children first data]).
@@ -22,7 +22,7 @@ GtABTelephone class >> fromPetit: aPPXmlElement [
 		number: (dict at: #number ifAbsent: ['00000'])
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtABTelephone class >> fromXML: aPPXmlElement [
 	|dict|
 	dict := Dictionary newFrom: (aPPXmlElement elements collect: [ :each | each name asSymbol -> each nodes first asString]).
@@ -31,20 +31,20 @@ GtABTelephone class >> fromXML: aPPXmlElement [
 		number: (dict at: #number ifAbsent: ['00000'])
 ]
 
-{ #category : 'comparing' }
+{ #category : #comparing }
 GtABTelephone >> = anObject [
 	self == anObject ifTrue: [ ^ true ].
 	anObject class = self class ifFalse: [ ^false].
 	^anObject number = number and: [ anObject prefix = prefix ]
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtABTelephone >> fullNumber [
 
 	^ prefix,'-',number
 ]
 
-{ #category : 'ui' }
+{ #category : #ui }
 GtABTelephone >> gtSpotterForContactsFor: aStep [
 	<gtSearch>
 	(aStep hasPreviousNavigationFromClass: GtABAddressBook)
@@ -57,32 +57,32 @@ GtABTelephone >> gtSpotterForContactsFor: aStep [
 		matchSubstring
 ]
 
-{ #category : 'comparing' }
+{ #category : #comparing }
 GtABTelephone >> hash [
 	^number hash bitXor: prefix hash
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtABTelephone >> number [
 	^ number
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtABTelephone >> number: anObject [
 	number := anObject
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtABTelephone >> prefix [
 	^ prefix
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtABTelephone >> prefix: anObject [
 	prefix := anObject
 ]
 
-{ #category : 'printing' }
+{ #category : #printing }
 GtABTelephone >> printOn: aStream [
 	aStream nextPutAll: self fullNumber
 ]

@@ -4,43 +4,43 @@ I hold all data relevant for an address
 
 "
 Class {
-	#name : 'GtABAddress',
-	#superclass : 'GtABContactField',
+	#name : #GtABAddress,
+	#superclass : #GtABContactField,
 	#instVars : [
 		'city',
 		'country'
 	],
-	#category : 'GToolkit-Demo-AddressBook-Models'
+	#category : #'GToolkit-Demo-AddressBook-Models'
 }
 
-{ #category : 'comparing' }
+{ #category : #comparing }
 GtABAddress >> = anObject [
 	self == anObject ifTrue: [ ^ true ].
 	self class = anObject class ifFalse: [ ^ false ].
-	^ city = anObject city and: [ country = anObject country ]
+	^ self city = anObject city and: [ self country = anObject country ]
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtABAddress >> city [
 	^ city
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtABAddress >> city: anObject [
 	city := anObject
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtABAddress >> country [
 	^ country
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtABAddress >> country: anObject [
 	country := anObject
 ]
 
-{ #category : 'ui' }
+{ #category : #ui }
 GtABAddress >> gtSpotterForPeopleFor: aStep [
 	<gtSearch>
 	(aStep hasPreviousNavigationFromClass: GtABAddressBook)
@@ -54,14 +54,14 @@ GtABAddress >> gtSpotterForPeopleFor: aStep [
 		matchSubstrings
 ]
 
-{ #category : 'comparing' }
+{ #category : #comparing }
 GtABAddress >> hash [
 
 	^ city hash bitXor: country hash
 	
 ]
 
-{ #category : 'printing' }
+{ #category : #printing }
 GtABAddress >> printOn: aStream [
 
 	aStream nextPutAll: self city.

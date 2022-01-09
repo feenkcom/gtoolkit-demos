@@ -4,26 +4,26 @@ This class contains tests
 
 "
 Class {
-	#name : 'GtABAddressBookTest',
-	#superclass : 'TestCase',
+	#name : #GtABAddressBookTest,
+	#superclass : #TestCase,
 	#category : 'GToolkit-Demo-AddressBook-Tests'
 }
 
-{ #category : 'building' }
+{ #category : #building }
 GtABAddressBookTest >> createAddressTelephone [
 	^ GtABTelephone new
 		prefix: '+41';
 		number: '074574363'
 ]
 
-{ #category : 'building' }
+{ #category : #building }
 GtABAddressBookTest >> createContactAddress [
 	^ GtABAddress new
 		city: 'Bern';
 		country: 'Switzerland'
 ]
 
-{ #category : 'building' }
+{ #category : #building }
 GtABAddressBookTest >> createJaneDoeContact [
 	^ GtABContact new
 		firstName: 'Jane';
@@ -33,7 +33,7 @@ GtABAddressBookTest >> createJaneDoeContact [
 		addAddress: self createContactAddress
 ]
 
-{ #category : 'building' }
+{ #category : #building }
 GtABAddressBookTest >> createJohnDoeContact [
 	^ GtABContact new
 		firstName: 'John';
@@ -44,7 +44,7 @@ GtABAddressBookTest >> createJohnDoeContact [
 		addTelephone: self createAddressTelephone
 ]
 
-{ #category : 'tests' }
+{ #category : #tests }
 GtABAddressBookTest >> testAddressTelephone [
 	| telephone |
 	telephone := self createAddressTelephone.
@@ -53,7 +53,7 @@ GtABAddressBookTest >> testAddressTelephone [
 	self assert: telephone fullNumber equals: '+41-074574363'
 ]
 
-{ #category : 'tests' }
+{ #category : #tests }
 GtABAddressBookTest >> testContactAddress [
 	| address |
 	address := self createContactAddress.
@@ -61,7 +61,7 @@ GtABAddressBookTest >> testContactAddress [
 	self assert: address country equals: 'Switzerland'
 ]
 
-{ #category : 'tests' }
+{ #category : #tests }
 GtABAddressBookTest >> testJaneDoeContact [
 	| contact |
 	contact := self createJaneDoeContact.
@@ -73,7 +73,7 @@ GtABAddressBookTest >> testJaneDoeContact [
 	self assert: contact address notNil
 ]
 
-{ #category : 'tests' }
+{ #category : #tests }
 GtABAddressBookTest >> testJohnDoeContact [
 	| contact |
 	contact := self createJohnDoeContact.
@@ -85,7 +85,7 @@ GtABAddressBookTest >> testJohnDoeContact [
 	self assert: contact address notNil
 ]
 
-{ #category : 'tests' }
+{ #category : #tests }
 GtABAddressBookTest >> testMyContactsAddressBook [
 	| addressBook |
 	addressBook := GtABAddressBook new

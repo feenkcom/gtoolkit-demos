@@ -1,1 +1,1 @@
-Package { #name : 'GToolkit-Demo-AddressBook' }
+Package { #name : #'GToolkit-Demo-AddressBook' }

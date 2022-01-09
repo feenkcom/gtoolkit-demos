@@ -20,15 +20,15 @@ browser := GLMTabulator new.
 
 "
 Class {
-	#name : 'GtABPreviewMorph',
-	#superclass : 'GLMFoundationBrick',
+	#name : #GtABPreviewMorph,
+	#superclass : #GLMFoundationBrick,
 	#instVars : [
 		'contact'
 	],
 	#category : 'GToolkit-Demo-AddressBook-Morphs'
 }
 
-{ #category : 'initialization' }
+{ #category : #initialization }
 GtABPreviewMorph >> buildMorph [
 
 	self addBrickBack: self createBasicInformationMorph.
@@ -37,18 +37,18 @@ GtABPreviewMorph >> buildMorph [
 	
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtABPreviewMorph >> contact [
 	^ contact
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtABPreviewMorph >> contact: anObject [
 	contact := anObject.
 	self buildMorph
 ]
 
-{ #category : 'initialization' }
+{ #category : #initialization }
 GtABPreviewMorph >> createBasicInformationMorph [
 	^ GLMBandBrick new
 		hSpaceFill;
@@ -81,7 +81,7 @@ GtABPreviewMorph >> createBasicInformationMorph [
 		yourself
 ]
 
-{ #category : 'initialization' }
+{ #category : #initialization }
 GtABPreviewMorph >> createDelimiterMorph [
 	^ GLMBrick new
 		color: Color veryVeryLightGray;
@@ -89,7 +89,7 @@ GtABPreviewMorph >> createDelimiterMorph [
 		height: 1
 ]
 
-{ #category : 'initialization' }
+{ #category : #initialization }
 GtABPreviewMorph >> createPersonalInformationBrick [
 	| brick |
 	brick := GLMBandBrick new
@@ -105,24 +105,24 @@ GtABPreviewMorph >> createPersonalInformationBrick [
 	^ brick
 ]
 
-{ #category : 'initialization' }
+{ #category : #initialization }
 GtABPreviewMorph >> initialize [
 	super initialize.
 	self color: Color white.
 	self brickRoot useVerticalLinearLayout
 ]
 
-{ #category : 'instance creation' }
+{ #category : #'instance creation' }
 GtABPreviewMorph >> newImageMorph [
 	^ GLMActionButtonBrick new
 ]
 
-{ #category : 'instance creation' }
+{ #category : #'instance creation' }
 GtABPreviewMorph >> newInformationMorph [
 	^ GLMBandBrick new
 ]
 
-{ #category : 'initialization' }
+{ #category : #initialization }
 GtABPreviewMorph >> personal: aString value: anotherString [
 	^ GLMBrick new
 		hSpaceFill;
