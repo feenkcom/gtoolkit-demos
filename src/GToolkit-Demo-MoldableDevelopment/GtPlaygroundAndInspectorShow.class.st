@@ -405,7 +405,7 @@ GtPlaygroundAndInspectorShow >> methodCoderWithExplanationLinks [
 	selectors addSelector: #column:text: withIdentifier: #columns.
 	
 	coder := GtPharoMethodCoder forMethod: GtABAddressBook >> #gtViewContactsOn:.
-	coderViewModel := coder asCoderViewModel.
+	coderViewModel := coder asCoderUIModel.
 	coderViewModel addStyler: selectors.
 	coderElement := coderViewModel asElement.
 	coderElement margin: (BlInsets all: 10).

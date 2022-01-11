@@ -660,7 +660,7 @@ GtSpotterSlideshow >> spotterSearchMethodExample [
 	selectors addSelector: #wantsToDisplayOnEmptyQuery: withIdentifier: #display.
 
 	coder := GtPharoMethodCoder forMethod: GtSpotterStart>>#gtSpotterForClassesFor:.
-	coderViewModel := coder asCoderViewModel.
+	coderViewModel := coder asCoderUIModel.
 	coderViewModel addStyler: selectors.
 	coderElement := coderViewModel asElement.
 	coderElement margin: (BlInsets all: 10).
