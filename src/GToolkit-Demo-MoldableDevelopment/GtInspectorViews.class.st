@@ -35,7 +35,7 @@ GtInspectorViews >> columnedListViewExplanationWithLinks [
 	variables addVariables: {'aContact'}.
 
 	coder := GtPharoMethodCoder forMethod: GtABAddressBook >> #gtViewContactsOn:.
-	coderViewModel := coder asCoderUIModel.
+	coderViewModel := coder asCoderViewModel.
 	coderViewModel addStylers: { selectors . variables }.
 	
 	coderElement := coderViewModel asElement margin: (BlInsets all: 10).
@@ -178,7 +178,7 @@ GtInspectorViews >> columnedTreeViewExplanationWithLinks [
 	literals addLiteral: #Contact withIdentifier: #name.
 	
 	coder := GtPharoMethodCoder new forMethod: (GtABAddressBook>>#gtViewContactsAddressOn:).
-	coderViewModel := coder asCoderUIModel.
+	coderViewModel := coder asCoderViewModel.
 	coderViewModel addStylers: { selectors. literals }.
 	
 	coderElement := coderViewModel asElement margin: (BlInsets all: 10).
@@ -297,7 +297,7 @@ GtInspectorViews >> emptyViewExplanationWithLinks [
 	variables addVariables: {#aView}.
 	
 	coder := GtPharoMethodCoder new forMethod: (GtABAddressBook>>#gtViewCategoriesTreeWithContactsOn:).
-	coderViewModel := coder asCoderUIModel.
+	coderViewModel := coder asCoderViewModel.
 	coderViewModel addStylers: { selectors. variables. literals }.
 
 	coderElement := coderViewModel asElement margin: (BlInsets all: 10).
@@ -391,7 +391,7 @@ GtInspectorViews >> explicitViewExplanationWithLinks [
 	variables := GtVariableExplanationLinkStyler new.
 	variables addVariables: {#self}.
 
-	coderViewModel := coder asCoderUIModel.
+	coderViewModel := coder asCoderViewModel.
 	coderViewModel addStylers: { selectors. variables }.
 	coderElement := coderViewModel asElement margin: (BlInsets all: 10).
 	coderElement forceLayout.
@@ -508,7 +508,7 @@ GtInspectorViews >> listViewExplanationWithLinks [
 	variables addVariables: {'aContact'}.
 	
 	coder := GtPharoMethodCoder forMethod: (GtABAddressBook>>#gtViewContactsListOn:).
-	coderViewModel := coder asCoderUIModel.
+	coderViewModel := coder asCoderViewModel.
 	coderViewModel addStylers: { selectors. variables }.
 	coderElement := coderViewModel asElement margin: (BlInsets all: 10).
 	coderElement forceLayout.
@@ -614,7 +614,7 @@ GtInspectorViews >> mondrianViewExplanationWithLinks [
 	selectors addSelector: #allContacts withIdentifier: #contacts.
 	
 	coder := GtPharoMethodCoder new forMethod: (GtABAddressBook>>#gtViewContactsIconsCircularOn:).
-	coderViewModel := coder asCoderUIModel.
+	coderViewModel := coder asCoderViewModel.
 	coderViewModel addStyler: selectors.
 	coderElement := coderViewModel asElement.
 	coderElement forceLayout.
@@ -771,7 +771,7 @@ GtInspectorViews >> textEditorViewExplanationWithLinks [
 	variables := GtVariableExplanationLinkStyler new.
 	variables addVariables: {#BrGlamorousCodeEditorAptitude}.
 	
-	coderViewModel := coder asCoderUIModel.
+	coderViewModel := coder asCoderViewModel.
 	coderViewModel addStylers: { selectors. variables }.
 	coderElement := coderViewModel asElement margin: (BlInsets all: 10).
 	coderElement forceLayout.
@@ -883,7 +883,7 @@ GtInspectorViews >> treeViewExplanationWithLinks [
 	variables := GtVariableExplanationLinkStyler new.
 	variables addVariables: { #each }.
 
-	coderViewModel := coder asCoderUIModel.
+	coderViewModel := coder asCoderViewModel.
 	coderViewModel addStylers: { selectors. variables }.
 	coderElement := coderViewModel asElement margin: (BlInsets all: 10).
 	coderElement forceLayout.
