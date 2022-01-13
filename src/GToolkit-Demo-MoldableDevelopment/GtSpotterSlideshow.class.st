@@ -366,6 +366,7 @@ GtSpotterSlideshow >> spotterInterfaceExplanationText [
 { #category : #accessing }
 GtSpotterSlideshow >> spotterInterfaceExplanationWithLinks [
 	<gtExample>
+	<noTest>
 	| spotterElement searchBarTarget resultsTarget previewTarget classesTarget implementorsTarget sendersTarget messagesTarget |
 
 	spotterElement := self spotterElementOn: 'GtCoder'.
