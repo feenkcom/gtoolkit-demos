@@ -1,20 +1,20 @@
 Class {
-	#name : 'GtABFieldLabel',
-	#superclass : 'Object',
+	#name : #GtABFieldLabel,
+	#superclass : #Object,
 	#instVars : [
 		'id'
 	],
 	#category : 'GToolkit-Demo-AddressBook-Models'
 }
 
-{ #category : 'comparing' }
+{ #category : #comparing }
 GtABFieldLabel >> = anObject [
 	self == anObject ifTrue: [ ^ true ].
 	self class = anObject class ifFalse: [ ^ false ].
 	^ id = anObject id
 ]
 
-{ #category : 'printing' }
+{ #category : #printing }
 GtABFieldLabel >> gtDisplayOn: aStream [
 	super gtDisplayOn: aStream.
 	aStream
@@ -23,18 +23,18 @@ GtABFieldLabel >> gtDisplayOn: aStream [
 		nextPutAll: ')'
 ]
 
-{ #category : 'comparing' }
+{ #category : #comparing }
 GtABFieldLabel >> hash [
 	^ self class hash 
 		bitXor: id hash
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtABFieldLabel >> id [
 	^ id
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtABFieldLabel >> id: anId [
 	self assert: [ anId notNil ].
 	self assert: [ id isNil ].

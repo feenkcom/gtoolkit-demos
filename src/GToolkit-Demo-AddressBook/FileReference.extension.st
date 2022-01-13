@@ -1,13 +1,13 @@
-Extension { #name : 'FileReference' }
+Extension { #name : #FileReference }
 
-{ #category : '*GToolkit-Demo-AddressBook' }
+{ #category : #'*GToolkit-Demo-AddressBook' }
 FileReference >> contactsFromFile [ 
 
 	^ ((XMLDOMParser parse: self) // 'contact')
 			collect: [ :each | GtABContact fromXML: each ]
 ]
 
-{ #category : '*GToolkit-Demo-AddressBook' }
+{ #category : #'*GToolkit-Demo-AddressBook' }
 FileReference >> gtInspectorContacts: aComposite [
 	<gtInspectorPresentationOrder: 0>
 	
@@ -19,13 +19,13 @@ FileReference >> gtInspectorContacts: aComposite [
 		when: [ self isAddressBookFile ]
 ]
 
-{ #category : '*GToolkit-Demo-AddressBook' }
+{ #category : #'*GToolkit-Demo-AddressBook' }
 FileReference >> isAddressBookFile [
 
 	^ self isFile and: [ self extension = 'adr' ]
 ]
 
-{ #category : '*GToolkit-Demo-AddressBook' }
+{ #category : #'*GToolkit-Demo-AddressBook' }
 FileReference >> spotterForAddressFileFor: aStep [
 	<spotterOrder: 40>
 

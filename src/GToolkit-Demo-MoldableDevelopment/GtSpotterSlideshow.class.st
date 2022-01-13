@@ -8,11 +8,11 @@ Class {
 GtSpotterSlideshow >> spotterAfterFirstDiveInExplanation [
 	<gtExample>
 	| spotterElement contextTarget |
+
 	spotterElement := self
-		spotterElement: (
-			BlUseAsyncFeatures
-				disableDuring: [self spotterElementInContextOf: GtABAddressBook withSearch: 'contacts'])
+		spotterElement: (self spotterElementInContextOf: GtABAddressBook withSearch: 'contacts')
 		withSelectedPosition: 3.
+
 	spotterElement enqueueTask: (BlTaskAction new
 		action: [
 			spotterElement header spotterModel currentStep diveIn.
@@ -70,9 +70,8 @@ GtSpotterSlideshow >> spotterButtonStencil [
 { #category : #accessing }
 GtSpotterSlideshow >> spotterDiveInExplanation [
 	| spotter arrowTargets contextTarget |
-	spotter := BlUseAsyncFeatures 
-		disableDuring: [self spotterElementInContextOf: GtABAddressBook withSearch: 'contacts'].
-	spotter forceLayout.
+
+	spotter := self spotterElementInContextOf: GtABAddressBook withSearch: 'contacts'.
 	
 	arrowTargets := spotter
 		allChildrenBreadthFirstDetect: [:aChild |
@@ -171,14 +170,8 @@ GtSpotterSlideshow >> spotterElementInContextOf: anObject withSearch: aSearchStr
 	spotterElement header searchField text: aSearchString.
 	
 	aScripter := BlDevScripter new.
-	aScripter
-		substep: 'Add Spotter Element'
-		do: [ :aStep | 
-			aStep set
-				label: 'Spotter';
-				element: [ spotterElement ].
-			aStep wait forEmptySpaceTaskQueue ].
-	aScripter syncContinue.	
+	aScripter element: spotterElement.
+
 	^ aScripter elementWithoutParent.	
 ]
 
@@ -293,10 +286,8 @@ GtSpotterSlideshow >> spotterInLocalContextForCoderExample [
 { #category : #accessing }
 GtSpotterSlideshow >> spotterInLocalContextForInspectorExample [
 	<gtExample>
-	^ (BlUseAsyncFeatures
-		disableDuring: [ (GtInspector 
-			createOn: (GtABAddressBookExample new 
-				myContactsAddressBook)) maximized ]) forceLayout.
+
+	^ (GtInspector createOn: (GtABAddressBookExample new myContactsAddressBook)) maximized
 ]
 
 { #category : #slides }
@@ -375,9 +366,10 @@ GtSpotterSlideshow >> spotterInterfaceExplanationText [
 { #category : #accessing }
 GtSpotterSlideshow >> spotterInterfaceExplanationWithLinks [
 	<gtExample>
-	| spotterElement searchBarTarget resultsTarget previewTarget classesTarget implementorsTarget sendersTarget messagesTarget|
-	spotterElement := BlUseAsyncFeatures disableDuring: [
-		self spotterElementOn: 'GtCoder' ].
+	<noTest>
+	| spotterElement searchBarTarget resultsTarget previewTarget classesTarget implementorsTarget sendersTarget messagesTarget |
+
+	spotterElement := self spotterElementOn: 'GtCoder'.
 	
 	searchBarTarget := spotterElement
 		allChildrenBreadthFirstDetect: [:aChild | 

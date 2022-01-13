@@ -4,8 +4,8 @@ I model an address book that can hold a list of contacts.
 
 "
 Class {
-	#name : 'GtABAddressBook',
-	#superclass : 'Object',
+	#name : #GtABAddressBook,
+	#superclass : #Object,
 	#instVars : [
 		'label',
 		'contacts',
@@ -17,7 +17,7 @@ Class {
 	#category : 'GToolkit-Demo-AddressBook-Models'
 }
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtABAddressBook class >> default [
 	^ default ifNil: [ 
 		default := self new
@@ -25,25 +25,25 @@ GtABAddressBook class >> default [
 		default ]
 ]
 
-{ #category : 'class initialization' }
+{ #category : #'class initialization' }
 GtABAddressBook class >> initialize [
 
 	"ABAddressBook default loadFromFile: 'data/cartoon.adr'."
 	self reset
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtABAddressBook class >> reset [
 	default := nil
 ]
 
-{ #category : 'adding' }
+{ #category : #adding }
 GtABAddressBook >> addCategories: aCollectionOfCategories [
 	aCollectionOfCategories do: [ :aCategory |
 		self addCategory: aCategory ]
 ]
 
-{ #category : 'adding' }
+{ #category : #adding }
 GtABAddressBook >> addCategory: aCategory [
 	self assert: [ aCategory notNil ].
 	self assert: [ aCategory addressBook isNil ].
@@ -52,17 +52,17 @@ GtABAddressBook >> addCategory: aCategory [
 	aCategory addressBook: self.
 ]
 
-{ #category : 'adding' }
+{ #category : #adding }
 GtABAddressBook >> addContact: aContact [
 	self contacts addLast: aContact.
 ]
 
-{ #category : 'adding' }
+{ #category : #adding }
 GtABAddressBook >> addContacts: aList [
 	self contacts addAll: aList
 ]
 
-{ #category : 'adding' }
+{ #category : #adding }
 GtABAddressBook >> addOrMergeContact: aContact [
 	"Add the given contact or merge it into an existing contact if possible."
 	self contacts do: [ :anotherContact |
@@ -75,41 +75,41 @@ GtABAddressBook >> addOrMergeContact: aContact [
 	
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtABAddressBook >> allContacts [
 	^ self contacts
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtABAddressBook >> categories [
 	^ categories.
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtABAddressBook >> contacts [
 	"Returns the contacts that are not in any category"
 	^ contacts
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtABAddressBook >> contacts: anObject [
 	contacts := anObject
 ]
 
-{ #category : 'filtering' }
+{ #category : #filtering }
 GtABAddressBook >> contactsWithAddress: anAddress [
 	^self contacts select: [ :aContact | 
 		aContact address = anAddress ] 
 ]
 
-{ #category : 'filtering' }
+{ #category : #filtering }
 GtABAddressBook >> contactsWithTelephone: aNumber [
 	^self contacts select: [ :aContact | 
 		aContact telephones anySatisfy: [ :aTelephone | 
 			aTelephone number = aNumber ] ]
 ]
 
-{ #category : 'ui' }
+{ #category : #ui }
 GtABAddressBook >> gtGtSpotterForAddressesFor: aStep [
 	<gtSearch>
 	^ aStep listProcessor
@@ -121,7 +121,7 @@ GtABAddressBook >> gtGtSpotterForAddressesFor: aStep [
 		matchSubstrings
 ]
 
-{ #category : 'ui' }
+{ #category : #ui }
 GtABAddressBook >> gtGtSpotterForPeopleFor: aStep [
 	<gtSearch>
 	^ aStep listProcessor
@@ -134,7 +134,7 @@ GtABAddressBook >> gtGtSpotterForPeopleFor: aStep [
 			aContact lastName asUppercase , ', ' , aContact firstName ] 
 ]
 
-{ #category : 'ui' }
+{ #category : #ui }
 GtABAddressBook >> gtGtSpotterForTelephonesFor: aStep [
 	<gtSearch>
 	^ aStep listProcessor
@@ -144,7 +144,7 @@ GtABAddressBook >> gtGtSpotterForTelephonesFor: aStep [
 		matchSubstrings
 ]
 
-{ #category : 'ui' }
+{ #category : #ui }
 GtABAddressBook >> gtSpotterPreviewIn: aComposite [
 	<spotterPreview: 10>
 	aComposite list
@@ -154,7 +154,7 @@ GtABAddressBook >> gtSpotterPreviewIn: aComposite [
 		entity: self contacts
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtABAddressBook >> gtViewCategoriesTreeWithContactsOn: aView [
 	<gtView>
 
@@ -168,7 +168,7 @@ GtABAddressBook >> gtViewCategoriesTreeWithContactsOn: aView [
 				ifFalse: [ #() ] ].
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtABAddressBook >> gtViewContactsAddressOn: aView [
 	<gtView>
 	
@@ -191,7 +191,7 @@ GtABAddressBook >> gtViewContactsAddressOn: aView [
 				ifFalse: [ #() ] ].
 ]
 
-{ #category : 'ui' }
+{ #category : #ui }
 GtABAddressBook >> gtViewContactsIconsCircularOn: aView [
 	<gtView>
 	self contacts size > 2 ifFalse: [ ^ aView empty].
@@ -207,7 +207,7 @@ GtABAddressBook >> gtViewContactsIconsCircularOn: aView [
 				radius: 200 ]
 ]
 
-{ #category : 'ui' }
+{ #category : #ui }
 GtABAddressBook >> gtViewContactsListOn: aView [
 	<gtView>
 	^ aView list
@@ -217,7 +217,7 @@ GtABAddressBook >> gtViewContactsListOn: aView [
 		itemText: [ :aContact | aContact fullName asRopedText ]
 ]
 
-{ #category : 'ui' }
+{ #category : #ui }
 GtABAddressBook >> gtViewContactsOn: aView [
 	<gtView>
 	^ aView columnedList
@@ -231,42 +231,42 @@ GtABAddressBook >> gtViewContactsOn: aView [
 		column: 'Phone' text: [ :aContact | aContact telephone ]
 ]
 
-{ #category : 'adding' }
+{ #category : #adding }
 GtABAddressBook >> importCategories: aCollectionOfCategories [
 	aCollectionOfCategories do: [ :aCategory |
 		self importCategory: aCategory  ]
 ]
 
-{ #category : 'adding' }
+{ #category : #adding }
 GtABAddressBook >> importCategory: aCategory [
 	self addCategory: aCategory.
 	aCategory allContactsDo: [ :aContact |
 		self addContact: aContact ]
 ]
 
-{ #category : 'testing' }
+{ #category : #testing }
 GtABAddressBook >> includesContactWithFirstName: aFirstName [
 	^ self contacts anySatisfy: [ :aContact | 
 		aFirstName = aContact firstName ]
 ]
 
-{ #category : 'initialization' }
+{ #category : #initialization }
 GtABAddressBook >> initialize [
 	contacts := OrderedCollection new.
 	categories := OrderedCollection new.
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtABAddressBook >> label [
 	^ label ifNil: [ '' ]
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtABAddressBook >> label: anObject [
 	label := anObject
 ]
 
-{ #category : 'printing' }
+{ #category : #printing }
 GtABAddressBook >> printOn: aStream [
 
 	aStream nextPutAll: self label
