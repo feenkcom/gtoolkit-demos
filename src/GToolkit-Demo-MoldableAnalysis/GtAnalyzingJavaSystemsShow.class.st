@@ -26,7 +26,7 @@ GtAnalyzingJavaSystemsShow >> buildSystemIntroductionFor: aSlide [
 	^ aSlide text
 		priority: 61;
 		newTextWithFormat:
-			('Ok. So, we went from a question to playing with a custom analysis that makes the whole problem simpler to grasp. Now, let''s look at another problem. This time involving the build script.' asRopedText 
+			('Ok. So, we went from a question to playing with a custom analysis that makes the whole problem simpler to grasp. Now, let''s look at another problem, this time involving the build script.' asRopedText 
 				glamorousRegularFont; 
 				fontSize: 18).
 ]
@@ -158,7 +158,7 @@ GtAnalyzingJavaSystemsShow >> introductionSlideFor: aSlide [
 	^ aSlide text
 		priority: 2;
 		newTextWithFormat:
-			('Glamorous Toolkit is a platform for analyzing artifacts statically, too. In this show, we exemplify how that works with a couple of simple scenarios. The first one is this: in a Java system we have a few classes marked as deprecated. Which of these we can remove right now, and how do we go about those that we cannot remove.' asRopedText 
+			('Glamorous Toolkit is a platform for analyzing artifacts statically, too. In this show, we exemplify how that works with a couple of simple scenarios. The first one is this: in a Java system we have a few classes marked as deprecated. Which of these we can remove right now, and how do we deal with those that we cannot remove?' asRopedText 
 				glamorousRegularFont; 
 				fontSize: 18).
 ]
