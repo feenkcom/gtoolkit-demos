@@ -1,10 +1,10 @@
 Class {
-	#name : 'GhEntity',
-	#superclass : 'GhObject',
+	#name : #GhEntity,
+	#superclass : #GhObject,
 	#category : 'GToolkit-Demo-GitHubAPI-Model'
 }
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GhEntity >> createFrom: aKey with: aBlock onError: anErrorBlock [
 	^ rawData 
 		at: aKey
@@ -23,7 +23,7 @@ GhEntity >> createFrom: aKey with: aBlock onError: anErrorBlock [
 		ifAbsent: [ {} ]
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GhEntity >> gtRawDataFor: aView [
 	<gtView>
 	^ aView columnedList 
@@ -48,7 +48,7 @@ GhEntity >> gtRawDataFor: aView [
 				ifFalse: [ each value ] ]
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GhEntity >> propertyToClass [
 	^ Dictionary new
 ]

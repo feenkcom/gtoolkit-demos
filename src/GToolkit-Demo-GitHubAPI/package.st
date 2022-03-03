@@ -1,1 +1,1 @@
-Package { #name : 'GToolkit-Demo-GitHubAPI' }
+Package { #name : #'GToolkit-Demo-GitHubAPI' }

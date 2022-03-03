@@ -1,10 +1,10 @@
 Class {
-	#name : 'GhContributor',
-	#superclass : 'GhEntity',
+	#name : #GhContributor,
+	#superclass : #GhEntity,
 	#category : 'GToolkit-Demo-GitHubAPI-Model'
 }
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GhContributor >> asCardElement [
 	^ BrHorizontalPane new 
 		hExact: 300;
@@ -20,7 +20,7 @@ GhContributor >> asCardElement [
 		when: BlClickEvent do: [:e | e target phlow spawnObject: self]
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GhContributor >> avatarPicture [
 	| response |
 	response := ZnClient new url: (rawData at: 'avatar_url'); get; response.
@@ -31,12 +31,12 @@ GhContributor >> avatarPicture [
 	^ BlElement new background: Color gray
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GhContributor >> contributions [
 	^ rawData at: 'contributions'
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GhContributor >> events [
 	^ self 
 		createFrom: 'events_url'
@@ -44,7 +44,7 @@ GhContributor >> events [
 		onError: [ GhEvents new ]
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GhContributor >> gtAvatarFor: aView [
 	<gtView>
 	^ aView explicit
@@ -53,12 +53,12 @@ GhContributor >> gtAvatarFor: aView [
 		stencil: [ self avatarPicture ]
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GhContributor >> gtDisplayOn: stream [
 	stream nextPutAll: self loginName
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GhContributor >> gtEventsFor: aView [
 	<gtView>
 	^ aView columnedList
@@ -69,7 +69,7 @@ GhContributor >> gtEventsFor: aView [
 		column: 'Timestamp' text: [:each | each creationTimestamp asLocalStringYMDHM ]
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GhContributor >> loginName [
 	^ rawData at: 'login'
 ]

@@ -1,10 +1,10 @@
 Class {
-	#name : 'GhOrganization',
-	#superclass : 'GhEntity',
+	#name : #GhOrganization,
+	#superclass : #GhEntity,
 	#category : 'GToolkit-Demo-GitHubAPI-Model'
 }
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GhOrganization >> events [
 	^ self 
 		createFrom: 'events_url'
@@ -12,7 +12,7 @@ GhOrganization >> events [
 		onError: [ GhEvents new ]
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GhOrganization >> gtEventsFor: aView [
 	<gtView>
 	^ aView columnedList
@@ -24,7 +24,7 @@ GhOrganization >> gtEventsFor: aView [
 		column: 'Actor' text: #actorName
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GhOrganization >> gtReposFor: aView [
 	<gtView>
 	^ aView columnedList
@@ -36,14 +36,14 @@ GhOrganization >> gtReposFor: aView [
 		column: 'Open issues' text: #numberOfOpenIssues
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GhOrganization >> propertyToClass [
 	^ {
 	'events' -> GhEvents.
 	} asDictionary
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GhOrganization >> repos [
 	^ self 
 		createFrom: 'repos_url' 
