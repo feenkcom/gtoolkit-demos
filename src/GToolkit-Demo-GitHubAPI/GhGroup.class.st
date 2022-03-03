@@ -1,12 +1,12 @@
 Class {
-	#name : 'GhGroup',
-	#superclass : 'GhObject',
+	#name : #GhGroup,
+	#superclass : #GhObject,
 	#traits : 'TGtGroup',
 	#classTraits : 'TGtGroup classTrait',
 	#category : 'GToolkit-Demo-GitHubAPI-Model'
 }
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GhGroup >> gtItemsFor: aView [
 	<gtView>
 	^ aView list 
@@ -15,7 +15,7 @@ GhGroup >> gtItemsFor: aView [
 		items: [self items]
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GhGroup >> gtRawDataFor: aView [
 	<gtView>
 	^ aView list

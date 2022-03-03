@@ -1,10 +1,10 @@
 Class {
-	#name : 'GtWorkingWithTheGitHubRestApiShow',
-	#superclass : 'Object',
+	#name : #GtWorkingWithTheGitHubRestApiShow,
+	#superclass : #Object,
 	#category : 'GToolkit-Demo-GitHubAPI-Presentation'
 }
 
-{ #category : 'examples' }
+{ #category : #examples }
 GtWorkingWithTheGitHubRestApiShow >> apiExamples [
 	<gtExample>
 	<noTest>
@@ -80,7 +80,7 @@ GtWorkingWithTheGitHubRestApiShow >> apiExamples [
 		addChildren: { firstExampleContainer. secondExampleContainer. thirdExampleContainer }.
 ]
 
-{ #category : 'slides' }
+{ #category : #slides }
 GtWorkingWithTheGitHubRestApiShow >> apiExamplesSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide labelAndElement
@@ -89,20 +89,20 @@ GtWorkingWithTheGitHubRestApiShow >> apiExamplesSlideFor: aSlide [
 		element: [ self apiExamples ]
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtWorkingWithTheGitHubRestApiShow >> apiExplanationText [
 	^ 'Below we see examples of the JSON responses for various requests to the GitHub API. This is a way to explore an API. Boring, right? Let''s make it interactive.' asRopedText
 		glamorousRegularFont;
 		fontSize: 16.
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtWorkingWithTheGitHubRestApiShow >> createOrganizationFromRawData: dictionary [
 	<gtExample>
 	GhOrganization new rawData: dictionary
 ]
 
-{ #category : 'slides' }
+{ #category : #slides }
 GtWorkingWithTheGitHubRestApiShow >> introductionSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide text
@@ -113,14 +113,14 @@ GtWorkingWithTheGitHubRestApiShow >> introductionSlideFor: aSlide [
 				fontSize: 18).
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtWorkingWithTheGitHubRestApiShow >> parseJson: json [
 	<gtExample>
 	| dictionary |
 	dictionary := STON fromString: json.
 ]
 
-{ #category : 'slides' }
+{ #category : #slides }
 GtWorkingWithTheGitHubRestApiShow >> playgroundWithFeenkcomFor: aSlide [
 	<gtSlide>
 	^ aSlide labelAndElement
@@ -134,7 +134,7 @@ GtWorkingWithTheGitHubRestApiShow >> playgroundWithFeenkcomFor: aSlide [
 		priority: 7.
 ]
 
-{ #category : 'examples' }
+{ #category : #examples }
 GtWorkingWithTheGitHubRestApiShow >> responseForFeenkOrg [
 	<gtExample>
 	<noTest>
@@ -150,7 +150,7 @@ GtWorkingWithTheGitHubRestApiShow >> responseForFeenkOrg [
 	^ response.
 ]
 
-{ #category : 'examples' }
+{ #category : #examples }
 GtWorkingWithTheGitHubRestApiShow >> responseForFeenkRepos [
 	<gtExample>
 	<noTest>
@@ -166,7 +166,7 @@ GtWorkingWithTheGitHubRestApiShow >> responseForFeenkRepos [
 	^ response.
 ]
 
-{ #category : 'examples' }
+{ #category : #examples }
 GtWorkingWithTheGitHubRestApiShow >> responseForGToolkitRepo [
 	<gtExample>
 	<noTest>
@@ -182,7 +182,7 @@ GtWorkingWithTheGitHubRestApiShow >> responseForGToolkitRepo [
 	^ response.
 ]
 
-{ #category : 'slides' }
+{ #category : #slides }
 GtWorkingWithTheGitHubRestApiShow >> titleSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide title
@@ -197,7 +197,7 @@ GtWorkingWithTheGitHubRestApiShow >> titleSlideFor: aSlide [
 			glamorousRegularFont)
 ]
 
-{ #category : 'snippets' }
+{ #category : #snippets }
 GtWorkingWithTheGitHubRestApiShow >> zincCallToFeenkcom [
 	<gtExample>
 	<noTest>

@@ -1,10 +1,10 @@
 Class {
-	#name : 'GhContributors',
-	#superclass : 'GhGroup',
+	#name : #GhContributors,
+	#superclass : #GhGroup,
 	#category : 'GToolkit-Demo-GitHubAPI-Model'
 }
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GhContributors >> items [
 	^ rawData collect: [ :each | GhContributor new rawData: each ]
 ]

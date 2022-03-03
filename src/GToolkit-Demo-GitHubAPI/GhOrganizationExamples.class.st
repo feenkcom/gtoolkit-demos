@@ -1,10 +1,10 @@
 Class {
-	#name : 'GhOrganizationExamples',
-	#superclass : 'Object',
+	#name : #GhOrganizationExamples,
+	#superclass : #Object,
 	#category : 'GToolkit-Demo-GitHubAPI-Examples'
 }
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GhOrganizationExamples >> feenkcomOrganization [
 	<gtExample>
 	<noTest>
@@ -14,14 +14,14 @@ GhOrganizationExamples >> feenkcomOrganization [
 	^ GhOrganization new rawData: dictionary
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GhOrganizationExamples >> feenkcomRepos [
 	<gtExample>
 	<noTest>
 	^ self feenkcomOrganization repos
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GhOrganizationExamples >> gtoolkitRepo [
 	<gtExample>
 	<noTest>
