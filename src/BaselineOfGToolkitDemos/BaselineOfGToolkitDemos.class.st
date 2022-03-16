@@ -22,6 +22,8 @@ BaselineOfGToolkitDemos >> baseline: spec [
 			baseline: 'GToolkitPharo101' with: [
 				spec repository: 'github://feenkcom/gtoolkit-demos:main/src' ];
 			baseline: 'GToolkitMoldableAnalysisDemo' with: [
-				spec repository: 'github://feenkcom/gtoolkit-demos:main/src' ]. ].
+				spec repository: 'github://feenkcom/gtoolkit-demos:main/src' ];
+			baseline: 'GToolkitDemoMemory' with: [
+				spec repository: 'github://feenkcom/gtoolkit-demos:main/src' ]. ]
 
 ]
