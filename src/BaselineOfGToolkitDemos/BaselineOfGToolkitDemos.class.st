@@ -23,7 +23,7 @@ BaselineOfGToolkitDemos >> baseline: spec [
 				spec repository: 'github://feenkcom/gtoolkit-demos:main/src' ];
 			baseline: 'GToolkitMoldableAnalysisDemo' with: [
 				spec repository: 'github://feenkcom/gtoolkit-demos:main/src' ];
-			baseline: 'GToolkitDemoMemory' with: [
+			baseline: 'GToolkitMemoryDemo' with: [
 				spec repository: 'github://feenkcom/gtoolkit-demos:main/src' ]. ]
 
 ]
