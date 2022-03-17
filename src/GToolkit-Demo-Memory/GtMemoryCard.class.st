@@ -3,7 +3,7 @@ I am a (model of a) card in the memory game.
 I hold a symbol (e.g. a letter or a digit).
 I have a front and a back side. 
 You can flip me to show the other side.
-
+If I have been matched I disappear and am no longer visible.
 "
 Class {
 	#name : #GtMemoryCard,
@@ -11,7 +11,8 @@ Class {
 	#instVars : [
 		'symbol',
 		'flipped',
-		'announcer'
+		'announcer',
+		'visible'
 	],
 	#category : #'GToolkit-Demo-Memory-Model'
 }
@@ -29,6 +30,7 @@ GtMemoryCard >> asElement [
 
 { #category : #actions }
 GtMemoryCard >> disappear [
+	visible := false.
 	self notifyDisappear
 ]
 
@@ -50,12 +52,19 @@ GtMemoryCard >> gtLiveFor: aView [
 GtMemoryCard >> initialize [
 	super initialize.
 	flipped := false.
+	visible := true.
 	announcer := Announcer new.
 ]
 
 { #category : #testing }
 GtMemoryCard >> isFlipped [
+	"I.e., my front side is showing."
 	^ flipped
+]
+
+{ #category : #accessing }
+GtMemoryCard >> isVisible [
+	^ visible
 ]
 
 { #category : #notifying }

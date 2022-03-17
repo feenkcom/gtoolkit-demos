@@ -44,7 +44,7 @@ GtMemoryCardElement >> initialize [
 	self layout: BlFrameLayout new.
 	self size: self cardSize.
 	self background: self backgroundColor.
-	self geometry: (BlRectangle cornerRadius: 12).
+	self geometry: (BlRoundedRectangleGeometry cornerRadius: 12).
 	self initializeFace.
 	self addChild: face.
 	self initializeBack.

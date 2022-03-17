@@ -43,5 +43,6 @@ GtMemoryGameElement >> onUpdated [
 		| aCardElement |
 		aCardElement := self newCardElement card: aCard.	
 		aCardElement addEventHandler: (GtMemoryCardEventListener new game: self game).
-		self addChild: aCardElement ]
+		self addChild: aCardElement.
+		aCard isVisible ifFalse: [ aCard notifyDisappear ] ]
 ]
