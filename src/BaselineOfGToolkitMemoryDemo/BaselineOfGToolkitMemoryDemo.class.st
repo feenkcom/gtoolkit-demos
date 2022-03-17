@@ -1,3 +1,14 @@
+"
+How to load:
+
+```
+Metacello new
+   baseline: 'GToolkitMemoryDemo';
+   repository: 'github://feenkcom/gtoolkit-demos:main/src';
+   load
+```
+
+"
 Class {
 	#name : #BaselineOfGToolkitMemoryDemo,
 	#superclass : #BaselineOf,

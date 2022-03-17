@@ -1,3 +1,17 @@
+"
+I am a (model of a) memory game (for the Memory game tutorial in the GT book).
+I hold a matrix of cards. Each card has a twin. 
+The player can flip two cards. If the two cards are the same, they disappear.
+If they are not the same, after clicking on a third card, the first two are flipped back.
+The goal is to remember where the cards are, and make them all disappear.
+
+You can play the game as follows:
+
+```
+GtMemoryGameElement new game: GtMemoryGame numbers
+```
+
+"
 Class {
 	#name : #GtMemoryGame,
 	#superclass : #Object,
@@ -10,22 +24,41 @@ Class {
 
 { #category : #'instance creation' }
 GtMemoryGame class >> chinese [
+	self error: 'Currently not working. Something is wrong with character encoding.'.
 	^ self new initializeForSymbols: '为从公家里地个时'
 ]
 
 { #category : #'instance creation' }
 GtMemoryGame class >> emoji [
+	self error: 'Currently not working. Something is wrong with character encoding.'.
 	^ self new initializeForSymbols: '💰🏡🎅🍪🍕🚀😸🙈'
 ]
 
 { #category : #'instance creation' }
 GtMemoryGame class >> numbers [
+	<gtExample>
 	^ self new initializeForSymbols: '12345678'
 ]
 
 { #category : #accessing }
 GtMemoryGame >> availableCards [
 	^ availableCards
+]
+
+{ #category : #accessing }
+GtMemoryGame >> availableCards: aCollectionOfCharacters [
+
+	"For creating test examples only.
+	Use #initializeForSymbols: to initialize a game witha shuffled deck of cards.
+	Caveat: Does not check that each card appears #matchesCount times."
+
+	self
+		assert: aCollectionOfCharacters size = self cardsCount
+		description: 'Expected ' , self cardsCount printString
+			, ' characters, but only found '
+			, aCollectionOfCharacters size printString.
+	availableCards := aCollectionOfCharacters asArray collect: [ :char | 
+		                  GtMemoryCard new symbol: char ]
 ]
 
 { #category : #configuration }
@@ -106,13 +139,20 @@ GtMemoryGame >> initialize [
 
 { #category : #initialization }
 GtMemoryGame >> initializeForSymbols: aCollectionOfCharacters [
+
 	self
-		assert: [ aCollectionOfCharacters size = (self cardsCount / self matchesCount) ]
-		description: [ 'Amount of characters must be equal to possible all combinations' ].
-	availableCards := (aCollectionOfCharacters asArray
-			collect: [ :aSymbol | 
-				(1 to: self matchesCount) collect: [ :i | 
-					GtMemoryCard new symbol: aSymbol ] ] ) flattened shuffled asOrderedCollection
+		assert: [ 
+			aCollectionOfCharacters size
+			= (self cardsCount / self matchesCount) ]
+		description: [ 
+			'Expected ' , (self cardsCount / self matchesCount) printString
+			, ' characters, but only found '
+			, aCollectionOfCharacters size printString ].
+	availableCards := (aCollectionOfCharacters asArray collect: [ 
+		                   :aSymbol | 
+		                   (1 to: self matchesCount) collect: [ :i | 
+			                   GtMemoryCard new symbol: aSymbol ] ]) flattened
+		                  shuffled asOrderedCollection
 ]
 
 { #category : #configuration }

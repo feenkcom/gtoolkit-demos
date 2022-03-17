@@ -1,3 +1,10 @@
+"
+I am a (model of a) card in the memory game. 
+I hold a symbol (e.g. a letter or a digit).
+I have a front and a back side. 
+You can flip me to show the other side.
+
+"
 Class {
 	#name : #GtMemoryCard,
 	#superclass : #Object,
