@@ -41,24 +41,14 @@ GtMemoryGame class >> numbers [
 ]
 
 { #category : #accessing }
-GtMemoryGame >> availableCards [
-	^ availableCards
+GtMemoryGame >> asElement [
+	<return: #BlElement>
+	^ GtMemoryGameElement new game: self
 ]
 
 { #category : #accessing }
-GtMemoryGame >> availableCards: aCollectionOfCharacters [
-
-	"For creating test examples only.
-	Use #initializeForSymbols: to initialize a game witha shuffled deck of cards.
-	Caveat: Does not check that each card appears #matchesCount times."
-
-	self
-		assert: aCollectionOfCharacters size = self cardsCount
-		description: 'Expected ' , self cardsCount printString
-			, ' characters, but only found '
-			, aCollectionOfCharacters size printString.
-	availableCards := aCollectionOfCharacters asArray collect: [ :char | 
-		                  GtMemoryCard new symbol: char ]
+GtMemoryGame >> availableCards [
+	^ availableCards
 ]
 
 { #category : #configuration }
@@ -130,6 +120,14 @@ GtMemoryGame >> gtAvailableCardsFor: aView [
 						  columnIndex } ]
 ]
 
+{ #category : #accessing }
+GtMemoryGame >> gtLiveFor: aView [
+	<gtView>
+	^ aView explicit
+		title: 'Live';
+		stencil: [ self asElement ]
+]
+
 { #category : #initialization }
 GtMemoryGame >> initialize [
 	super initialize.
@@ -168,6 +166,21 @@ GtMemoryGame >> resetStep [
 		allButLastDo: [ :aCard | aCard flip ];
 		removeAll;
 		add: lastCard
+]
+
+{ #category : #accessing }
+GtMemoryGame >> setSymbols: aCollectionOfCharacters [
+	"For creating test examples only.
+	Use #initializeForSymbols: to initialize a game witha shuffled deck of cards.
+	Caveat: Does not check that each card appears #matchesCount times."
+
+	self
+		assert: aCollectionOfCharacters size = self cardsCount
+		description: 'Expected ' , self cardsCount printString
+			, ' characters, but only found '
+			, aCollectionOfCharacters size printString.
+	availableCards := aCollectionOfCharacters asArray collect: [ :char | 
+		                  GtMemoryCard new symbol: char ]
 ]
 
 { #category : #testing }

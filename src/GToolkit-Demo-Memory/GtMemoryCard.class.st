@@ -21,6 +21,12 @@ GtMemoryCard >> announcer [
 	^ announcer
 ]
 
+{ #category : #accessing }
+GtMemoryCard >> asElement [
+	<return: #BlElement>
+	^ GtMemoryCardElement new card: self
+]
+
 { #category : #actions }
 GtMemoryCard >> disappear [
 	self notifyDisappear
@@ -30,6 +36,14 @@ GtMemoryCard >> disappear [
 GtMemoryCard >> flip [
 	flipped := flipped not.
 	self notifyFlipped
+]
+
+{ #category : #accessing }
+GtMemoryCard >> gtLiveFor: aView [
+	<gtView>
+	^ aView explicit
+		title: 'Live';
+		stencil: [ self asElement ]
 ]
 
 { #category : #initialization }
