@@ -153,6 +153,11 @@ GtMemoryGame >> initializeForSymbols: aCollectionOfCharacters [
 		                  shuffled asOrderedCollection
 ]
 
+{ #category : #accessing }
+GtMemoryGame >> isOver [
+	^ self visibleCards isEmpty
+]
+
 { #category : #configuration }
 GtMemoryGame >> matchesCount [
 	^ 2
@@ -192,4 +197,9 @@ GtMemoryGame >> shouldCompleteStep [
 { #category : #testing }
 GtMemoryGame >> shouldResetStep [ 
 	^ self chosenCards size > self matchesCount
+]
+
+{ #category : #accessing }
+GtMemoryGame >> visibleCards [
+	^ self availableCards select: #isVisible
 ]
