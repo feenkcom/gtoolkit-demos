@@ -5,6 +5,25 @@ Class {
 }
 
 { #category : #accessing }
+GtMemoryGameExamples >> afterSomeMoves [
+	<gtExample>
+	| aGame |
+	aGame := self chooseMisMatchingPair.
+	self assert: aGame visibleCards size equals: 16.
+	aGame chooseCard: (aGame availableCards at: 6) .
+	aGame chooseCard: (aGame availableCards at: 11) .
+	self assert: aGame visibleCards size equals: 14.
+	aGame chooseCard: (aGame availableCards at: 5) .
+	aGame chooseCard: (aGame availableCards at: 9) .
+	self assert: aGame visibleCards size equals: 12.
+	aGame chooseCard: (aGame availableCards at: 3) .
+	aGame chooseCard: (aGame availableCards at: 14) .
+	self assert: aGame visibleCards size equals: 12.
+	self assert: aGame isOver not.
+	^ aGame
+]
+
+{ #category : #accessing }
 GtMemoryGameExamples >> chooseMatchingPair [
 	<gtExample>
 	| aGame |
@@ -21,11 +40,11 @@ GtMemoryGameExamples >> chooseMatchingPair [
 GtMemoryGameExamples >> chooseMisMatchingPair [
 	<gtExample>
 	| aGame |
-	aGame := self chooseMatchingPair.
-	self assert: aGame visibleCards size equals: 14.
-	aGame chooseCard: (aGame availableCards at: 1) .
-	aGame chooseCard: (aGame availableCards at: 2) .
-	self assert: aGame visibleCards size equals: 14.
+	aGame := self fixedGame.
+	self assert: aGame visibleCards size equals: 16.
+	aGame chooseCard: (aGame availableCards at: 5) .
+	aGame chooseCard: (aGame availableCards at: 11) .
+	self assert: aGame visibleCards size equals: 16.
 	self assert: aGame isOver not.
 	^ aGame
 ]
