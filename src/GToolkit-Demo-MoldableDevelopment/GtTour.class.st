@@ -756,7 +756,7 @@ GtTour >> playgroundExplanationWithLinks [
 			toolbar addChild: (self yellowExplanationTargetCircleFor: #inspectButton) ].
 		(snippet query // GtSourceCoderDebugActionId) all do: [:toolbar | 
 			toolbar addChild: (self yellowExplanationTargetCircleFor: #debugButton) ]. ].
-	^ container addChild: (GtPager createWrappedOn: playgroundElement)
+	^ container addChild: playgroundElement
 ]
 
 { #category : #accessing }
