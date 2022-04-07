@@ -7,6 +7,7 @@ Class {
 { #category : #accessing }
 GtSpotterSlideshow >> spotterAfterFirstDiveInExplanation [
 	<gtExample>
+	<noTest>
 	| spotterElement contextTarget |
 
 	spotterElement := self
@@ -133,29 +134,16 @@ GtSpotterSlideshow >> spotterElement: aSpotterElement withSelectedPosition: aNum
 	| aScripter |
 	
 	aScripter := BlDevScripter new.
-	aScripter
-		substep: 'Add Spotter Element'
-		do: [ :aStep | 
-			aStep set
-				label: 'Spotter';
-				element: [ aSpotterElement ] ].
-	aScripter
-		substep: 'Wait'
-		do: [ :aStep | 
-			aStep wait forEmptySpaceTaskQueue ].
-	aScripter
-		substep: 'Click spotter result'
-		do: [ :aStep | 
-			aStep click
-				label: 'Click on spotter result';
-				onBreadthFirstChildOfClass: BrPager;
-				onBreadthFirstChildOfClass: GtSpotterPager;
-				onBreadthFirstChildOfClass: BrInfiniteTreeElement;
-				onChildAt: aNumber.
-			aStep wait forEmptySpaceTaskQueue ].
-	aScripter syncContinue.
+	aScripter element: aSpotterElement.
 	
-	^ aScripter elementWithoutParent.
+	aScripter click
+		label: 'Click on spotter result';
+		onBreadthFirstChildOfClass: BrPager;
+		onBreadthFirstChildOfClass: GtSpotterPager;
+		onBreadthFirstChildOfClass: BrInfiniteTreeElement;
+		onChildAt: aNumber; play.
+
+	^ aScripter elementWithoutParent
 ]
 
 { #category : #accessing }
