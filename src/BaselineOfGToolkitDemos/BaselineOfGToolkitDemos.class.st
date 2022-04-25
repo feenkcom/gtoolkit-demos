@@ -32,7 +32,7 @@ BaselineOfGToolkitDemos >> baseline: spec [
 
 { #category : #accessing }
 BaselineOfGToolkitDemos >> loadLepiter [
-	| currentProperties |
+	"| currentProperties |
 	currentProperties := LeDatabasesRegistry defaultLogicalDatabase
 		                     properties.
 	currentProperties addRegisteredDirectory:
@@ -43,5 +43,5 @@ BaselineOfGToolkitDemos >> loadLepiter [
 			/ 'gtoolkit-demos' 
 			/ 'lepiter'.
 
-	LeDatabasesRegistry default defaultLogicalDatabase reload
+	LeDatabasesRegistry default defaultLogicalDatabase reload"
 ]
