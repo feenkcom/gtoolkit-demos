@@ -24,24 +24,6 @@ BaselineOfGToolkitDemos >> baseline: spec [
 			baseline: 'GToolkitMoldableAnalysisDemo' with: [
 				spec repository: 'github://feenkcom/gtoolkit-demos:main/src' ];
 			baseline: 'GToolkitMemoryDemo' with: [
-				spec repository: 'github://feenkcom/gtoolkit-demos:main/src' ];
-			baseline: 'GToolkitLudoDemo' with: [
 				spec repository: 'github://feenkcom/gtoolkit-demos:main/src' ]. ]
 
-]
-
-{ #category : #accessing }
-BaselineOfGToolkitDemos >> loadLepiter [
-	"| currentProperties |
-	currentProperties := LeDatabasesRegistry defaultLogicalDatabase
-		                     properties.
-	currentProperties addRegisteredDirectory:
-		FileLocator imageDirectory 
-			/ 'pharo-local' 
-			/ 'iceberg'
-			/ 'feenkcom' 
-			/ 'gtoolkit-demos' 
-			/ 'lepiter'.
-
-	LeDatabasesRegistry default defaultLogicalDatabase reload"
 ]
