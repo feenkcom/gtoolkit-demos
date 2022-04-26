@@ -1,7 +1,7 @@
 Class {
 	#name : #BaselineOfGToolkitLudoDemo,
 	#superclass : #BaselineOf,
-	#category : #'BaselineOfGToolkitLudoDemo-BaselineOfGToolkitLudoDemo'
+	#category : #BaselineOfGToolkitLudoDemo
 }
 
 { #category : #accessing }
