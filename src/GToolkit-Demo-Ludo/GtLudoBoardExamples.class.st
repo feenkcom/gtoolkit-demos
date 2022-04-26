@@ -1,11 +1,11 @@
 Class {
-	#name : #LudoBoardExamples,
+	#name : #GtLudoBoardExamples,
 	#superclass : #Object,
 	#category : #'GToolkit-Demo-Ludo-Examples'
 }
 
 { #category : #examples }
-LudoBoardExamples >> boardWith2PlayingPlayers [
+GtLudoBoardExamples >> boardWith2PlayingPlayers [
 	<gtExample>
 	| playerA playerB board |
 	board := self emptyBoard.
@@ -17,7 +17,7 @@ LudoBoardExamples >> boardWith2PlayingPlayers [
 ]
 
 { #category : #accessing }
-LudoBoardExamples >> emptyBoard [
+GtLudoBoardExamples >> emptyBoard [
 
 	<gtExample>
 	| board |
