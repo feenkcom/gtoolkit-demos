@@ -1,11 +1,23 @@
 Class {
-	#name : #LudoBoardTest,
+	#name : #LudoBoardExamples,
 	#superclass : #Object,
 	#category : #'GToolkit-Demo-Ludo-Examples'
 }
 
+{ #category : #examples }
+LudoBoardExamples >> boardWith2PlayingPlayers [
+	<gtExample>
+	| playerA playerB board |
+	board := self emptyBoard.
+	playerA := board players first.
+	board enterPlayTokenFor: playerA.
+	playerB := board players second.
+	board enterPlayTokenFor: playerB.
+	^ board
+]
+
 { #category : #accessing }
-LudoBoardTest >> emptyBoard [
+LudoBoardExamples >> emptyBoard [
 
 	<gtExample>
 	| board |
