@@ -4,6 +4,20 @@ Class {
 	#category : #BaselineOfGToolkitDemos
 }
 
+{ #category : #accessing }
+BaselineOfGToolkitDemos class >> loadLepiter [
+	"BaselineOfGToolkitDemos loadLepiter"
+	| currentProperties registry |
+	registry := self class environment at: #LeDatabasesRegistry.
+	currentProperties := registry defaultLogicalDatabase
+		                     properties.
+	currentProperties addRegisteredDirectory:
+		FileLocator imageDirectory / 'pharo-local' / 'iceberg' / 'feenkcom'
+		/ 'gtoolkit-demos' / 'lepiter'.
+
+	registry default defaultLogicalDatabase reload
+]
+
 { #category : #baseline }
 BaselineOfGToolkitDemos >> baseline: spec [
 	<baseline>
@@ -28,18 +42,4 @@ BaselineOfGToolkitDemos >> baseline: spec [
 			baseline: 'GToolkitLudoDemo' with: [
 				spec repository: 'github://feenkcom/gtoolkit-demos:main/src' ]. ]
 
-]
-
-{ #category : #accessing }
-BaselineOfGToolkitDemos >> loadLepiter [
-	"BaselineOfGToolkitDemos loadLepiter"
-	| currentProperties registry |
-	registry := self class environment at: #LeDatabasesRegistry.
-	currentProperties := registry defaultLogicalDatabase
-		                     properties.
-	currentProperties addRegisteredDirectory:
-		FileLocator imageDirectory / 'pharo-local' / 'iceberg' / 'feenkcom'
-		/ 'gtoolkit-demos' / 'lepiter'.
-
-	registry default defaultLogicalDatabase reload
 ]
