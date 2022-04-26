@@ -29,7 +29,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2022-04-26T09:42:24.28861+02:00"
+						"dateAndTimeString" : "2022-04-26T15:17:41.439376+02:00"
 					}
 				},
 				"uid" : {
@@ -39,7 +39,7 @@
 				"paragraphStyle" : {
 					"__type" : "textStyle"
 				},
-				"string" : "See [[Ludo Exercise 5]] and [[Ludo Exercise 6]]"
+				"string" : "See [[Ludo Exercise 5]] and [[Ludo Exercise 6]] "
 			},
 			{
 				"__type" : "textSnippet",
@@ -177,14 +177,14 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2022-04-26T10:17:19.178901+02:00"
+						"dateAndTimeString" : "2022-04-26T15:17:59.730611+02:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
 					"uidString" : "KExqFJqZDQCk5M7QD0ILtg=="
 				},
-				"code" : "LudoBoardExamples new emptyBoard"
+				"code" : "GtLudoBoardExamples new emptyBoard"
 			},
 			{
 				"__type" : "textSnippet",
@@ -348,7 +348,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2022-04-26T10:29:05.445291+02:00"
+						"dateAndTimeString" : "2022-04-26T16:20:51.041241+02:00"
 					}
 				},
 				"editEmail" : {
@@ -359,14 +359,14 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2022-04-26T10:30:14.815908+02:00"
+						"dateAndTimeString" : "2022-04-26T16:22:06.685516+02:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
-					"uidString" : "x8EIOeyZDQCvdn6yC0NvOg=="
+					"uidString" : "8JcGI/GZDQCurNwSC30O+g=="
 				},
-				"code" : "board := LudoBoardExamples new emptyBoard.\rplayerA := board players first.\rboard enterPlayTokenFor: playerA.\rplayerB := board players second.\rboard enterPlayTokenFor: playerB.\rboard"
+				"code" : "board := GtLudoBoardExamples new emptyBoard.\rplayerA := board players first.\rboard enterPlayTokenFor: playerA.\rplayerB := board players second.\rboard enterPlayTokenFor: playerB.\rboard"
 			},
 			{
 				"__type" : "textSnippet",

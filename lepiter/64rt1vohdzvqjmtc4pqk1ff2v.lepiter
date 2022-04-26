@@ -97,7 +97,7 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2022-04-26T11:09:28.155335+02:00"
+									"dateAndTimeString" : "2022-04-26T13:44:03.301505+02:00"
 								}
 							},
 							"editEmail" : {
@@ -108,14 +108,14 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2022-04-26T11:32:56.593236+02:00"
+									"dateAndTimeString" : "2022-04-26T13:50:39.153709+02:00"
 								}
 							},
 							"uid" : {
 								"__type" : "uid",
-								"uidString" : "0WBwyeyZDQCC/Kw+ByCWZw=="
+								"uidString" : "hO9H8u6ZDQCwcOqUBOtpgw=="
 							},
-							"code" : "container := BlElement new\r\t             size: 100 @ 100;\r\t             background: Color blue.\rcontainer addChild: (BlElement new\r\t\t background: Color yellow;\r\t\t size: 10@10;\r\t\t relocate: 20 @ 30;\r\t\t when: BlClickEvent\r\t\t do: [ :event | event currentTarget phlow spawnObject: 42 ]).\rcontainer asScalableElement"
+							"code" : "container := (BlElement new)\r\tsize: 100 @ 100;\r\tbackground: Color blue.\rcontainer\r\taddChild:\r\t\t((BlElement new)\r\t\t\tbackground: Color yellow;\r\t\t\tsize: 10 @ 10;\r\t\t\trelocate: 20 @ 30;\r\t\t\twhen: BlClickEvent do: [ :event | \r\t\t\t\tevent currentTarget phlow spawnObject: 42 ]).\rcontainer asScalableElement"
 						},
 						{
 							"__type" : "textSnippet",
@@ -216,7 +216,7 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2022-04-26T11:12:51.752174+02:00"
+									"dateAndTimeString" : "2022-04-26T15:14:19.311213+02:00"
 								}
 							},
 							"uid" : {
@@ -275,7 +275,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2022-04-26T11:09:28.156381+02:00"
+						"dateAndTimeString" : "2022-04-26T15:01:52.916418+02:00"
 					}
 				},
 				"editEmail" : {
@@ -286,49 +286,12 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2022-04-26T11:09:28.156381+02:00"
+						"dateAndTimeString" : "2022-04-26T15:01:52.916418+02:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
-					"uidString" : "5WRwyeyZDQCDARkAByCWZw=="
-				},
-				"paragraphStyle" : {
-					"__type" : "textStyle"
-				},
-				"string" : ""
-			},
-			{
-				"__type" : "textSnippet",
-				"children" : {
-					"__type" : "snippets",
-					"items" : [ ]
-				},
-				"createEmail" : {
-					"__type" : "email",
-					"emailString" : "<unknown>"
-				},
-				"createTime" : {
-					"__type" : "time",
-					"time" : {
-						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2022-04-26T11:12:53.618325+02:00"
-					}
-				},
-				"editEmail" : {
-					"__type" : "email",
-					"emailString" : "<unknown>"
-				},
-				"editTime" : {
-					"__type" : "time",
-					"time" : {
-						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2022-04-26T11:12:53.618325+02:00"
-					}
-				},
-				"uid" : {
-					"__type" : "uid",
-					"uidString" : "sX6v1eyZDQCDCpwHByCWZw=="
+					"uidString" : "/4ucCPCZDQCud0m+C30O+g=="
 				},
 				"paragraphStyle" : {
 					"__type" : "textStyle"
@@ -349,7 +312,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2022-04-26T11:53:47.755496+02:00"
+						"dateAndTimeString" : "2022-04-26T14:31:48.626936+02:00"
 					}
 				},
 				"editEmail" : {
@@ -360,14 +323,156 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2022-04-26T12:06:21.391696+02:00"
+						"dateAndTimeString" : "2022-04-26T15:10:02.5453+02:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
-					"uidString" : "CKj2Z+2ZDQCDOyNEByCWZw=="
+					"uidString" : "EkYRne+ZDQCuZPFkC30O+g=="
 				},
-				"code" : "grid := GtLudoBoardElement new.\r(1 to: 11) do: [ :x | (1 to: 11) do: [ :y | grid addSquareAt: x @ y ] ].\rgrid"
+				"code" : "grid := GtLudoBoardElement new.\rgrid squarePositions do: [ :pos | grid addSquareAt: pos ].\rgrid "
+			},
+			{
+				"__type" : "pharoSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2022-04-26T15:28:45.866836+02:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2022-04-26T15:28:45.866836+02:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "dTfAaPCZDQCug8kpC30O+g=="
+				},
+				"code" : ""
+			},
+			{
+				"__type" : "pharoSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2022-04-26T15:28:46.437339+02:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2022-04-26T15:28:52.55837+02:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "D+zIaPCZDQCuhUCvC30O+g=="
+				},
+				"code" : "#todo: gtPragmas"
+			},
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2022-04-26T14:24:38.665722+02:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2022-04-26T14:24:38.665722+02:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "F5Zwg++ZDQCuXdR4C30O+g=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : ""
+			},
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2022-04-26T14:24:38.918471+02:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2022-04-26T14:24:38.918471+02:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "ZXF0g++ZDQCuXjUUC30O+g=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : ""
 			},
 			{
 				"__type" : "textSnippet",
@@ -479,108 +584,6 @@
 					"__type" : "textStyle"
 				},
 				"string" : ""
-			},
-			{
-				"__type" : "pharoSnippet",
-				"children" : {
-					"__type" : "snippets",
-					"items" : [ ]
-				},
-				"createEmail" : {
-					"__type" : "email",
-					"emailString" : "<unknown>"
-				},
-				"createTime" : {
-					"__type" : "time",
-					"time" : {
-						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2022-04-26T11:13:07.883974+02:00"
-					}
-				},
-				"editEmail" : {
-					"__type" : "email",
-					"emailString" : "<unknown>"
-				},
-				"editTime" : {
-					"__type" : "time",
-					"time" : {
-						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2022-04-26T11:19:15.026599+02:00"
-					}
-				},
-				"uid" : {
-					"__type" : "uid",
-					"uidString" : "6SuJ1uyZDQCDEISuByCWZw=="
-				},
-				"code" : "Color veryVeryLightGray"
-			},
-			{
-				"__type" : "pharoSnippet",
-				"children" : {
-					"__type" : "snippets",
-					"items" : [ ]
-				},
-				"createEmail" : {
-					"__type" : "email",
-					"emailString" : "<unknown>"
-				},
-				"createTime" : {
-					"__type" : "time",
-					"time" : {
-						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2022-04-26T11:27:42.50907+02:00"
-					}
-				},
-				"editEmail" : {
-					"__type" : "email",
-					"emailString" : "<unknown>"
-				},
-				"editTime" : {
-					"__type" : "time",
-					"time" : {
-						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2022-04-26T11:29:16.779894+02:00"
-					}
-				},
-				"uid" : {
-					"__type" : "uid",
-					"uidString" : "MuSqCu2ZDQCDJaPcByCWZw=="
-				},
-				"code" : "(5@5) / (3@4)"
-			},
-			{
-				"__type" : "pharoSnippet",
-				"children" : {
-					"__type" : "snippets",
-					"items" : [ ]
-				},
-				"createEmail" : {
-					"__type" : "email",
-					"emailString" : "<unknown>"
-				},
-				"createTime" : {
-					"__type" : "time",
-					"time" : {
-						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2022-04-26T11:48:53.763946+02:00"
-					}
-				},
-				"editEmail" : {
-					"__type" : "email",
-					"emailString" : "<unknown>"
-				},
-				"editTime" : {
-					"__type" : "time",
-					"time" : {
-						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2022-04-26T11:49:03.428694+02:00"
-					}
-				},
-				"uid" : {
-					"__type" : "uid",
-					"uidString" : "grNwVu2ZDQCDNGZaByCWZw=="
-				},
-				"code" : "GtMemoryCardElement new"
 			},
 			{
 				"__type" : "textSnippet",

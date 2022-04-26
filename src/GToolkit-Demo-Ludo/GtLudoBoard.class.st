@@ -26,6 +26,15 @@ GtLudoBoard >> enterPlayTokenFor: aPlayer [
 ]
 
 { #category : #accessing }
+GtLudoBoard >> gtBoardFor: aView [
+	<gtView>
+	^ aView explicit
+		  title: 'Board';
+		  priority: 30;
+		  stencil: [ GtLudoBoardElement for: self ]
+]
+
+{ #category : #accessing }
 GtLudoBoard >> gtPlayersFor: aView [
 	<gtView>
 	^ aView columnedList
