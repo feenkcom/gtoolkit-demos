@@ -22,9 +22,11 @@ GtLudoSquareElement >> defaultColor [
 
 { #category : #accessing }
 GtLudoSquareElement >> initialize [
+
 	super initialize.
 	isStartSquare := false.
 	self
+		layout: BlFrameLayout new;
 		background: self defaultColor;
 		border: (BlBorder paint: Color gray width: 0.1)
 ]
@@ -50,14 +52,15 @@ GtLudoSquareElement >> isStartSquare: aBoolean [
 { #category : #accessing }
 GtLudoSquareElement >> onUpdate [
 
-	"Do this when GtLudoSquareUpdated is announced"
-
 	self removeChildren.
 	self addChild: (BrLabel new
 			 text: self square printString;
 			 aptitude: (BrGlamorousLabelAptitude new
 					  foreground: Color black;
-					  fontSize: 20))
+					  fontSize: 20);
+			 constraintsDo: [ :c | 
+				 c frame horizontal alignCenter.
+				 c frame vertical alignCenter ])
 ]
 
 { #category : #accessing }
