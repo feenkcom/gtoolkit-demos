@@ -25,6 +25,39 @@ GtLudoBoard >> enterPlayTokenFor: aPlayer [
 		(self startSquareFor: aPlayer)
 ]
 
+{ #category : #accessing }
+GtLudoBoard >> gtBoardFor: aView [
+	<gtView>
+	^ aView explicit
+		  title: 'Board';
+		  priority: 30;
+		  stencil: [ GtLudoBoardElement for: self ]
+]
+
+{ #category : #accessing }
+GtLudoBoard >> gtPlayersFor: aView [
+	<gtView>
+	^ aView columnedList
+		  title: 'Players';
+		  priority: 10;
+		  items: [ self players ];
+		  column: 'Player' text: [ :eachItem | eachItem gtDisplayText ]
+]
+
+{ #category : #accessing }
+GtLudoBoard >> gtSquaresFor: aView [
+	<gtView>
+	^ aView columnedList
+		  title: 'Squares';
+		  priority: 20;
+		  items: [ self squares ];
+		  column: 'Index'
+		  text: [ :eachItem :eachIndex | 
+			  eachIndex asRopedText foreground: Color gray ]
+		  width: 45;
+		  column: 'Tokens' text: [ :eachItem | eachItem gtDisplayText ]
+]
+
 { #category : #initialization }
 GtLudoBoard >> initialize [
 	super initialize.

@@ -2,10 +2,16 @@ Class {
 	#name : #GtLudoSquare,
 	#superclass : #Object,
 	#instVars : [
-		'token'
+		'token',
+		'announcer'
 	],
 	#category : #'GToolkit-Demo-Ludo-Model'
 }
+
+{ #category : #accessing }
+GtLudoSquare >> announcer [
+	^ announcer
+]
 
 { #category : #initialization }
 GtLudoSquare >> clear [
@@ -14,7 +20,14 @@ GtLudoSquare >> clear [
 
 { #category : #initialization }
 GtLudoSquare >> initialize [
+	super initialize.
+	announcer := Announcer new.
 	self clear
+]
+
+{ #category : #accessing }
+GtLudoSquare >> notifyUpdated [
+	self announcer announce: GtLudoSquareUpdated new
 ]
 
 { #category : #printing }
@@ -29,5 +42,6 @@ GtLudoSquare >> token [
 
 { #category : #accessing }
 GtLudoSquare >> token: aLudoToken [
-	token := aLudoToken
+	token := aLudoToken.
+	self notifyUpdated
 ]
