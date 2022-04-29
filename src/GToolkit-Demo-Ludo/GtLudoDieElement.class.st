@@ -77,6 +77,7 @@ GtLudoDieElement >> initialize [
 	self
 		size: self dieWidth @ self dieWidth;
 		background: Color paleBuff;
+		border: (BlBorder paint: Color veryVeryLightGray width: 1);
 		geometry: (BlRoundedRectangleGeometry cornerRadius: 12)
 ]
 

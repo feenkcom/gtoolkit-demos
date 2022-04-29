@@ -803,14 +803,14 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2022-04-29T13:50:00.568182+02:00"
+									"dateAndTimeString" : "2022-04-29T16:21:23.929421+02:00"
 								}
 							},
 							"uid" : {
 								"__type" : "uid",
 								"uidString" : "0z1CySmaDQCDnpyxDm9yhA=="
 							},
-							"code" : "face := (BlElement new)\r\tsize: 100 @ 100;\r\tbackground: Color paleBuff;\r\tgeometry: (BlRoundedRectangleGeometry cornerRadius: 12);\r\tyourself"
+							"code" : "face := (BlElement new)\r\tsize: 100 @ 100;\r\tbackground: Color paleBuff;\r\tborder: (BlBorder paint: Color veryVeryLightGray width: 1);\r\tgeometry: (BlRoundedRectangleGeometry cornerRadius: 12);\r\tyourself"
 						},
 						{
 							"__type" : "textSnippet",
@@ -1127,14 +1127,14 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2022-04-29T13:49:55.662904+02:00"
+									"dateAndTimeString" : "2022-04-29T16:21:55.42192+02:00"
 								}
 							},
 							"uid" : {
 								"__type" : "uid",
 								"uidString" : "qWAaKSuaDQCXcPLED0C+Pw=="
 							},
-							"code" : "newFace := [ (BlElement new)\r\tsize: 100 @ 100;\r\tbackground: Color paleBuff;\r\tgeometry: (BlRoundedRectangleGeometry cornerRadius: 12);\r\tyourself ].\rnewFace value"
+							"code" : "face := (BlElement new)\r\tsize: 100 @ 100;\r\tbackground: Color paleBuff;\r\tborder: (BlBorder paint: Color veryVeryLightGray width: 1);\r\tgeometry: (BlRoundedRectangleGeometry cornerRadius: 12);\r\tyourself"
 						},
 						{
 							"__type" : "textSnippet",
