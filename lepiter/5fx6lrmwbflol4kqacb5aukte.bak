@@ -1127,14 +1127,14 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2022-04-29T16:21:47.748335+02:00"
+									"dateAndTimeString" : "2022-04-29T16:21:55.42192+02:00"
 								}
 							},
 							"uid" : {
 								"__type" : "uid",
 								"uidString" : "qWAaKSuaDQCXcPLED0C+Pw=="
 							},
-							"code" : "face := (BlElement new)\r\tsize: 100 @ 100;\r\tbackground: Color paleBuff;\r\tborder: (BlBorder paint: Color gray width: 0.1);\r\r\tgeometry: (BlRoundedRectangleGeometry cornerRadius: 12);\r\tyourself"
+							"code" : "face := (BlElement new)\r\tsize: 100 @ 100;\r\tbackground: Color paleBuff;\r\tborder: (BlBorder paint: Color veryVeryLightGray width: 1);\r\tgeometry: (BlRoundedRectangleGeometry cornerRadius: 12);\r\tyourself"
 						},
 						{
 							"__type" : "textSnippet",
@@ -2399,6 +2399,300 @@
 					"__type" : "textStyle"
 				},
 				"string" : "#Updating the view"
+			},
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [
+						{
+							"__type" : "textSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2022-04-30T07:57:22.260109+02:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2022-04-30T08:15:24.047457+02:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "B0bjkDqaDQCb5d7tBDQwoQ=="
+							},
+							"paragraphStyle" : {
+								"__type" : "textStyle"
+							},
+							"string" : "Roll the die when you (double) click on the view."
+						},
+						{
+							"__type" : "textSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2022-04-30T07:58:42.650649+02:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2022-04-30T08:03:20.943308+02:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "hxgSljqaDQCb8RNmBDQwoQ=="
+							},
+							"paragraphStyle" : {
+								"__type" : "textStyle"
+							},
+							"string" : "We search in Spotter for “ClickEvent” and find {{gtClass:name=BlDoubleClickEvent}}. This leads us to the `#when:do:` method. We add it to {{gtMethod:name=GtLudoDieElement>>die:|expanded}}. "
+						},
+						{
+							"__type" : "textSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2022-04-30T08:03:24.941633+02:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2022-04-30T08:03:36.59114+02:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "mQ6JpjqaDQCb++uGBDQwoQ=="
+							},
+							"paragraphStyle" : {
+								"__type" : "textStyle"
+							},
+							"string" : "Now the die is rolled when we double-click on it."
+						},
+						{
+							"__type" : "pharoSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2022-04-30T07:58:14.020293+02:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2022-04-30T08:03:05.889476+02:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "+XjklDqaDQCb6SrSBDQwoQ=="
+							},
+							"code" : "die := GtLudoDie new"
+						},
+						{
+							"__type" : "textSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2022-04-30T08:12:26.426123+02:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2022-04-30T08:14:52.853747+02:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "+l3fxTqaDQCcEvnPBDQwoQ=="
+							},
+							"paragraphStyle" : {
+								"__type" : "textStyle"
+							},
+							"string" : ""
+						}
+					]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2022-04-30T07:57:02.614945+02:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2022-04-30T08:15:11.516387+02:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "BPRikDqaDQCb5ICVBDQwoQ=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : "#Exercise"
+			},
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2022-04-30T07:57:09.417308+02:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2022-04-30T07:57:09.417308+02:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "gLUKkTqaDQCb5sWfBDQwoQ=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : ""
+			},
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2022-04-30T07:57:09.640098+02:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2022-04-30T07:57:09.640098+02:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "xRsOkTqaDQCb521gBDQwoQ=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : ""
 			}
 		]
 	},

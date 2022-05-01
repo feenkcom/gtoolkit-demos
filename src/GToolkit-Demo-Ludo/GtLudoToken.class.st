@@ -14,7 +14,12 @@ Class {
 
 { #category : #accessing }
 GtLudoToken class >> blank [
-	^ self named: ' '
+	^ self named: self blankName
+]
+
+{ #category : #accessing }
+GtLudoToken class >> blankName [
+	^ ' '
 ]
 
 { #category : #accessing }
@@ -50,6 +55,11 @@ GtLudoToken >> initialize [
 	state := #start
 	"Should we initialize square to a dummy square?
 	It is only expected to have a value if state is #play."
+]
+
+{ #category : #accessing }
+GtLudoToken >> isBlank [
+	^  self name = self class blankName
 ]
 
 { #category : #accessing }

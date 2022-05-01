@@ -21,11 +21,12 @@ GtLudoDieElement >> die [
 
 { #category : #accessing }
 GtLudoDieElement >> die: aDie [
+
 	die := aDie.
-	self die announcer
-		when: GtLudoDieRolled
-		send: #onRolled
-		to: self.
+	self die announcer when: GtLudoDieRolled send: #onRolled to: self.
+	self when: BlDoubleClickEvent do: [ :anEvent | 
+		anEvent consumed: true.
+		self die roll ].
 	self onRolled
 ]
 

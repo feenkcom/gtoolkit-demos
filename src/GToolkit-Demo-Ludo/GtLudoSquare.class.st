@@ -13,6 +13,11 @@ GtLudoSquare >> announcer [
 	^ announcer
 ]
 
+{ #category : #accessing }
+GtLudoSquare >> blank [
+	^ ' '
+]
+
 { #category : #initialization }
 GtLudoSquare >> clear [
 	self token: GtLudoToken blank
@@ -23,6 +28,11 @@ GtLudoSquare >> initialize [
 	super initialize.
 	announcer := Announcer new.
 	self clear
+]
+
+{ #category : #accessing }
+GtLudoSquare >> isEmpty [
+	^  self token isBlank
 ]
 
 { #category : #accessing }
