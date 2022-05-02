@@ -14,20 +14,26 @@ GtLudoBoardElement class >> for: aBoard [
 		  yourself
 ]
 
-{ #category : #positioning }
-GtLudoBoardElement >> addSquare: aSquare at: aPoint [
-	"We convert a grid position (aPoint) for a square into a pixel-based location on the board element."
+{ #category : #accessing }
+GtLudoBoardElement >> addElement: anElement at: aPoint [
+	"We convert a grid position (aPoint) for an element into a pixel-based location on the board element."
 
-	| location squareSize squareColor squareElement |
+	| location squareSize |
 	squareSize := self defaultSize / self dimensions.
 	location := (aPoint - (1 @ 1)) * squareSize.
-	squareElement := GtLudoSquareElement for: aSquare.
 	self
 		addChild:
-			(squareElement
+			(anElement
 				size: squareSize;
-				relocate: location;
-				when: BlClickEvent do: [ :e | e target phlow spawnObject: aSquare ])
+				relocate: location)
+]
+
+{ #category : #positioning }
+GtLudoBoardElement >> addSquare: aSquare at: aPoint [
+	| squareElement |
+	squareElement := GtLudoSquareElement for: aSquare.
+	squareElement when: BlClickEvent do: [ :e | e target phlow spawnObject: aSquare ].
+	self addElement: squareElement at: aPoint
 ]
 
 { #category : #constants }
@@ -78,6 +84,7 @@ GtLudoBoardElement >> initializeFor: aBoard [
 	aBoard startSquares withIndexDo: [ :square :n | self addSquare: square at: (self startSquarePositions at: n) ].
 	aBoard squares withIndexDo: [ :square :n | self addSquare: square at: (self playPositions at: n) ].
 	aBoard goalSquares withIndexDo: [ :square :n | self addSquare: square at: (self goalSquarePositions at: n) ].
+	self addElement: aBoard die asElement asScalableElement at: 6@6
 	
 ]
 
