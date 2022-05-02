@@ -26,37 +26,30 @@ GtLudoSquareElement class >> for: aSquare [
 		yourself
 ]
 
-{ #category : #constants }
-GtLudoSquareElement >> defaultColor [
-	^ Color yellow
+{ #category : #initialization }
+GtLudoSquareElement >> colorForKind [
+	^ {#start -> Color lightGreen.
+		#initial -> Color lightBlue.
+		#play -> Color yellow.
+		#goal -> Color lightRed} asDictionary at: self square kind
 ]
 
 { #category : #initialization }
 GtLudoSquareElement >> initialize [
 	super initialize.
-	isStartSquare := false.
 	self
 		layout: BlFrameLayout new;
-		background: self defaultColor;
 		border: (BlBorder paint: Color gray width: 0.1)
 ]
 
 { #category : #initialization }
 GtLudoSquareElement >> initializeFor: aSquare [
 	square := aSquare.
-	self onUpdate
-	square announcer when: GtLudoSquareUpdated send: #onUpdate to: self.
-]
-
-{ #category : #testing }
-GtLudoSquareElement >> isStartSquare [
-	^ isStartSquare
-]
-
-{ #category : #accessing }
-GtLudoSquareElement >> isStartSquare: aBoolean [
-	isStartSquare := aBoolean.
-	self background: self startSquareColor
+	self background: self colorForKind.
+	self onUpdate square announcer
+		when: GtLudoSquareUpdated
+		send: #onUpdate
+		to: self
 ]
 
 { #category : #announcements }
@@ -79,9 +72,4 @@ GtLudoSquareElement >> onUpdate [
 { #category : #accessing }
 GtLudoSquareElement >> square [
 	^ square
-]
-
-{ #category : #constants }
-GtLudoSquareElement >> startSquareColor [
-	^ Color lightBlue
 ]
