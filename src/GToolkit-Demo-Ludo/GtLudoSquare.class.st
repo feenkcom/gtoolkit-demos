@@ -2,13 +2,19 @@
 I am a square on the Ludo Board.
 
 There are some 40 squares for playing, but there are also some special squares to hold the tokens that are in the #start or #goal states.
+
+I can be one of four kinds of square: #start, #initial, #play, #goal.
+Tokens are initially parked on a start square. When they are put into play, they move to their initial square., then proceed through various play squares.
+Finally they end in a goal square.
+
 "
 Class {
 	#name : #GtLudoSquare,
 	#superclass : #Object,
 	#instVars : [
 		'token',
-		'announcer'
+		'announcer',
+		'kind'
 	],
 	#category : #'GToolkit-Demo-Ludo-Model'
 }
@@ -24,8 +30,14 @@ GtLudoSquare >> clear [
 ]
 
 { #category : #initialization }
+GtLudoSquare >> defaultKind [
+	^ #play
+]
+
+{ #category : #initialization }
 GtLudoSquare >> initialize [
 	super initialize.
+	kind := self defaultKind.
 	announcer := Announcer new.
 	self clear
 ]
@@ -33,6 +45,17 @@ GtLudoSquare >> initialize [
 { #category : #accessing }
 GtLudoSquare >> isEmpty [
 	^  self token isBlank
+]
+
+{ #category : #accessing }
+GtLudoSquare >> kind [
+	^ kind
+]
+
+{ #category : #accessing }
+GtLudoSquare >> kind: aSymbol [
+	self assert: (self validKinds includes: aSymbol).
+	kind := aSymbol
 ]
 
 { #category : #announcements }
@@ -55,4 +78,9 @@ GtLudoSquare >> token: aLudoToken [
 	self assert: aLudoToken square equals: self.
 	token := aLudoToken.
 	self notifyUpdated
+]
+
+{ #category : #constants }
+GtLudoSquare >> validKinds [
+	^ #(start initial play goal)
 ]
