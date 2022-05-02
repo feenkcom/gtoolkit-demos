@@ -107,7 +107,7 @@ GtLudoBoard >> initializeGoalSquares [
 GtLudoBoard >> initializeSquares [
 	squares := OrderedCollection new.
 	1
-		to: 40
+		to: self totalPlaySquares
 		do:
 			[ :n | 
 			| square |
@@ -135,6 +135,12 @@ GtLudoBoard >> players [
 	^ players
 ]
 
+{ #category : #'test - support' }
+GtLudoBoard >> roll: aValue [
+	"For testing only -- set the value rolled."
+	self die roll: aValue
+]
+
 { #category : #accessing }
 GtLudoBoard >> squares [
 	^ squares
@@ -160,4 +166,9 @@ GtLudoBoard >> startSquares [
 { #category : #accessing }
 GtLudoBoard >> tokens [
 	^ players flatCollect: #tokens
+]
+
+{ #category : #constants }
+GtLudoBoard >> totalPlaySquares [
+	^ 40
 ]

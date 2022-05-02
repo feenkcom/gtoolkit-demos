@@ -52,6 +52,15 @@ GtLudoDie >> roll [
 	^ topFace
 ]
 
+{ #category : #'test - support' }
+GtLudoDie >> roll: aValue [
+	"For testing -- allow the rolled value to be explicitly set."
+	self assert: ((1 to: 6) includes: aValue).
+	topFace := aValue.
+	self notifyRolled.
+	^ topFace
+]
+
 { #category : #accessing }
 GtLudoDie >> topFace [
 	^ topFace

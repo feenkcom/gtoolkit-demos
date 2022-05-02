@@ -34,6 +34,16 @@ GtLudoSquareElement >> colorForKind [
 		#goal -> Color lightRed} asDictionary at: self square kind
 ]
 
+{ #category : #accessing }
+GtLudoSquareElement >> highlight [
+	self border: (BlBorder paint: self highlightColor width: 0.1)
+]
+
+{ #category : #constants }
+GtLudoSquareElement >> highlightColor [
+	^ Color magenta
+]
+
 { #category : #initialization }
 GtLudoSquareElement >> initialize [
 	super initialize.
@@ -50,6 +60,16 @@ GtLudoSquareElement >> initializeFor: aSquare [
 		when: GtLudoSquareUpdated
 		send: #onUpdate
 		to: self
+]
+
+{ #category : #accessing }
+GtLudoSquareElement >> lowlight [
+	self border: (BlBorder paint: self lowlightColor width: 0.1)
+]
+
+{ #category : #constants }
+GtLudoSquareElement >> lowlightColor [
+	^ Color gray
 ]
 
 { #category : #announcements }
