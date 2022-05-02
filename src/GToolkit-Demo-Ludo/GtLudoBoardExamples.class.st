@@ -7,12 +7,18 @@ Class {
 { #category : #examples }
 GtLudoBoardExamples >> boardWith2PlayingPlayers [
 	<gtExample>
+	
 	| playerA playerB board |
 	board := self emptyBoard.
 	playerA := board players first.
 	board enterPlayTokenFor: playerA.
+	self assert: playerA tokens first isInPlay.
+	self assert: playerA tokens second isInStartState.
 	playerB := board players second.
+	playerB tokens do: [ :token | token isInStartState ].
 	board enterPlayTokenFor: playerB.
+	self assert: playerB tokens first isInPlay.
+	self assert: playerB tokens second isInStartState.
 	^ board
 ]
 
@@ -25,7 +31,7 @@ GtLudoBoardExamples >> emptyBoard [
 	self assert: board players size equals: 4.
 	self assert: board squares size equals: 40.
 	self assert: board tokens size equals: 8.
-	board tokens do: [ :token | self assert: token inStartState ].
+	board tokens do: [ :token | self assert: token isInStartState ].
 	board squares do: [ :square | self assert: square isEmpty ].
 	^ board
 ]

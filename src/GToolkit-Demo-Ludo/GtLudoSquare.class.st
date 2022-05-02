@@ -1,3 +1,8 @@
+"
+I am a square on the Ludo Board.
+
+There are some 40 squares for playing, but there are also some special squares to hold the tokens that are in the #start or #goal states.
+"
 Class {
 	#name : #GtLudoSquare,
 	#superclass : #Object,
@@ -8,19 +13,14 @@ Class {
 	#category : #'GToolkit-Demo-Ludo-Model'
 }
 
-{ #category : #accessing }
+{ #category : #announcements }
 GtLudoSquare >> announcer [
 	^ announcer
 ]
 
-{ #category : #accessing }
-GtLudoSquare >> blank [
-	^ ' '
-]
-
 { #category : #initialization }
 GtLudoSquare >> clear [
-	self token: GtLudoToken blank
+	GtLudoToken blank goToSquare: self
 ]
 
 { #category : #initialization }
@@ -35,7 +35,7 @@ GtLudoSquare >> isEmpty [
 	^  self token isBlank
 ]
 
-{ #category : #accessing }
+{ #category : #announcements }
 GtLudoSquare >> notifyUpdated [
 	self announcer announce: GtLudoSquareUpdated new
 ]
@@ -52,6 +52,7 @@ GtLudoSquare >> token [
 
 { #category : #accessing }
 GtLudoSquare >> token: aLudoToken [
+	self assert: aLudoToken square equals: self.
 	token := aLudoToken.
 	self notifyUpdated
 ]

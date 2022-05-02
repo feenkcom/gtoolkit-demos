@@ -1,3 +1,18 @@
+"
+I am a visualization of a {{gtClass:name=GtLudoDie}} instance.
+
+```
+GtLudoDie new asElement inspect
+```
+
+I am updated automatically when a die is rolled.
+When you double-click me, I ask the die to be rolled.
+
+```
+GtLudoDie new inspect
+```
+
+"
 Class {
 	#name : #GtLudoDieElement,
 	#superclass : #BlElement,
@@ -7,7 +22,7 @@ Class {
 	#category : #'GToolkit-Demo-Ludo-UI'
 }
 
-{ #category : #accessing }
+{ #category : #'instance creation' }
 GtLudoDieElement class >> for: aDie [
 	^ self new
 		die: aDie;
@@ -21,7 +36,6 @@ GtLudoDieElement >> die [
 
 { #category : #accessing }
 GtLudoDieElement >> die: aDie [
-
 	die := aDie.
 	self die announcer when: GtLudoDieRolled send: #onRolled to: self.
 	self when: BlDoubleClickEvent do: [ :anEvent | 
@@ -30,25 +44,28 @@ GtLudoDieElement >> die: aDie [
 	self onRolled
 ]
 
-{ #category : #accessing }
+{ #category : #constants }
 GtLudoDieElement >> dieWidth [
 	"There is space for three dots plus spaces between and around them."
 	^ 3 * self dotWidth + (4 * self dotSpace)
 ]
 
-{ #category : #accessing }
+{ #category : #constants }
 GtLudoDieElement >> dotSpace [
 	"Space between a dot and the edge of the die or another dot"
 	^ 10
 ]
 
-{ #category : #accessing }
+{ #category : #constants }
 GtLudoDieElement >> dotWidth [
 	^ 20
 ]
 
-{ #category : #accessing }
+{ #category : #constants }
 GtLudoDieElement >> facePositions [
+	"These are the positions on the 3x3 grid of the dots for each face value from 1 to 6.
+	Note that there are n dot positions for face value n."
+
 	^ {{2 @ 2}.
 		{1 @ 3.
 			3 @ 1}.
@@ -72,7 +89,7 @@ GtLudoDieElement >> facePositions [
 			3 @ 3}}
 ]
 
-{ #category : #accessing }
+{ #category : #initialization }
 GtLudoDieElement >> initialize [
 	super initialize.
 	self
@@ -82,7 +99,7 @@ GtLudoDieElement >> initialize [
 		geometry: (BlRoundedRectangleGeometry cornerRadius: 12)
 ]
 
-{ #category : #accessing }
+{ #category : #displaying }
 GtLudoDieElement >> newDot [
 	^ (BlElement new)
 		geometry: BlCircleGeometry new;
@@ -91,12 +108,12 @@ GtLudoDieElement >> newDot [
 		yourself
 ]
 
-{ #category : #accessing }
+{ #category : #announcements }
 GtLudoDieElement >> onRolled [
 	self showFace: self die topFace
 ]
 
-{ #category : #accessing }
+{ #category : #displaying }
 GtLudoDieElement >> placeDotAt: aPosition [
 	| location |
 	self assert: ((1 to: 3) includes: aPosition x).
@@ -107,7 +124,7 @@ GtLudoDieElement >> placeDotAt: aPosition [
 		yourself
 ]
 
-{ #category : #accessing }
+{ #category : #displaying }
 GtLudoDieElement >> showFace: anInteger [
 	self removeChildren.
 	(self facePositions at: anInteger) do: [ :position | self placeDotAt: position ]

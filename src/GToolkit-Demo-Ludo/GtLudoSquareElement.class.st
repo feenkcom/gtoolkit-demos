@@ -1,3 +1,14 @@
+"
+I provide a simple visualization of a square on the ludo board.
+
+
+```
+(GtLudoSquareElement for: GtLudoSquare new) inspect
+```
+
+
+If I am a start square, I have a different color.
+"
 Class {
 	#name : #GtLudoSquareElement,
 	#superclass : #BlElement,
@@ -8,21 +19,20 @@ Class {
 	#category : #'GToolkit-Demo-Ludo-UI'
 }
 
-{ #category : #accessing }
+{ #category : #'instance creation' }
 GtLudoSquareElement class >> for: aSquare [ 
 	^ self new
 		initializeFor: aSquare;
 		yourself
 ]
 
-{ #category : #accessing }
+{ #category : #constants }
 GtLudoSquareElement >> defaultColor [
 	^ Color yellow
 ]
 
-{ #category : #accessing }
+{ #category : #initialization }
 GtLudoSquareElement >> initialize [
-
 	super initialize.
 	isStartSquare := false.
 	self
@@ -31,14 +41,14 @@ GtLudoSquareElement >> initialize [
 		border: (BlBorder paint: Color gray width: 0.1)
 ]
 
-{ #category : #accessing }
+{ #category : #initialization }
 GtLudoSquareElement >> initializeFor: aSquare [
 	square := aSquare.
 	self onUpdate
 	square announcer when: GtLudoSquareUpdated send: #onUpdate to: self.
 ]
 
-{ #category : #accessing }
+{ #category : #testing }
 GtLudoSquareElement >> isStartSquare [
 	^ isStartSquare
 ]
@@ -49,18 +59,21 @@ GtLudoSquareElement >> isStartSquare: aBoolean [
 	self background: self startSquareColor
 ]
 
-{ #category : #accessing }
+{ #category : #announcements }
 GtLudoSquareElement >> onUpdate [
-
 	self removeChildren.
-	self addChild: (BrLabel new
-			 text: self square printString;
-			 aptitude: (BrGlamorousLabelAptitude new
-					  foreground: Color black;
-					  fontSize: 20);
-			 constraintsDo: [ :c | 
-				 c frame horizontal alignCenter.
-				 c frame vertical alignCenter ])
+	self
+		addChild:
+			((BrLabel new)
+				text: self square printString;
+				aptitude:
+						((BrGlamorousLabelAptitude new)
+								foreground: Color black;
+								fontSize: 20);
+				constraintsDo:
+						[ :c | 
+							c frame horizontal alignCenter.
+							c frame vertical alignCenter ])
 ]
 
 { #category : #accessing }
@@ -68,7 +81,7 @@ GtLudoSquareElement >> square [
 	^ square
 ]
 
-{ #category : #accessing }
+{ #category : #constants }
 GtLudoSquareElement >> startSquareColor [
 	^ Color lightBlue
 ]

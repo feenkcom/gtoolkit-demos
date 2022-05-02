@@ -1,3 +1,13 @@
+"
+I am an ordinary 6-sided die with a graphical display.
+
+
+```
+GtLudoDie new inspect
+```
+
+
+"
 Class {
 	#name : #GtLudoDie,
 	#superclass : #Object,
@@ -13,35 +23,29 @@ GtLudoDie >> announcer [
 	^ announcer
 ]
 
-{ #category : #accessing }
+{ #category : #converting }
 GtLudoDie >> asElement [
 	^ GtLudoDieElement for: self
 ]
 
-{ #category : #accessing }
-GtLudoDie >> gtDieFor: aView [
-
-	"This is a new method"
-]
-
-{ #category : #accessing }
+{ #category : #'gt - extensions' }
 GtLudoDie >> gtLiveFor: aView [
 	<gtView>
 	^ self asElement gtLiveFor: aView
 ]
 
-{ #category : #accessing }
+{ #category : #initialization }
 GtLudoDie >> initialize [
 	announcer := Announcer new.
 	self roll
 ]
 
-{ #category : #accessing }
+{ #category : #announcements }
 GtLudoDie >> notifyRolled [
 	self announcer announce: GtLudoDieRolled new
 ]
 
-{ #category : #accessing }
+{ #category : #rolling }
 GtLudoDie >> roll [
 	topFace := (1 to: 6) atRandom.
 	self notifyRolled.

@@ -1,6 +1,8 @@
 "
 I am a token belonging to a LudoPlayer. I move around the LudoBoard, following the rules of the game.
 I know my state (#start, #play or #goal) and when I am in play, I know which square I am on.
+
+A blank token is just a dummy placeholder, with a blank name, and the state #blank. (It is a kind of Null Object.)
 "
 Class {
 	#name : #GtLudoToken,
@@ -12,41 +14,39 @@ Class {
 	#category : #'GToolkit-Demo-Ludo-Model'
 }
 
-{ #category : #accessing }
+{ #category : #'instance creation' }
 GtLudoToken class >> blank [
-	^ self named: self blankName
+	^ (self named: self blankName)
+		beBlank;
+		yourself
 ]
 
-{ #category : #accessing }
+{ #category : #constants }
 GtLudoToken class >> blankName [
 	^ ' '
 ]
 
-{ #category : #accessing }
+{ #category : #assertions }
+GtLudoToken >> assertValidState [
+	self assert: (#(blank start play goal) includes: state)
+]
+
+{ #category : #state }
+GtLudoToken >> beBlank [
+	state := #blank
+]
+
+{ #category : #moving }
 GtLudoToken >> enterPlayOnSquare: aSquare [
-
-	"Where do we take into account if the square is already occupied, by a token of the same player or another one? 
-	NB: This is the job of the Game, not the Board or the Token."
-
-	aSquare token: self.
 	state := #play.
+	^ self goToSquare: aSquare
+]
+
+{ #category : #accessing }
+GtLudoToken >> goToSquare: aSquare [
 	square := aSquare.
+	aSquare token: self.
 	^ aSquare
-]
-
-{ #category : #testing }
-GtLudoToken >> inGoalState [
-	^ state = #goal
-]
-
-{ #category : #testing }
-GtLudoToken >> inPlay [
-	^ state = #play
-]
-
-{ #category : #testing }
-GtLudoToken >> inStartState [
-	^ state = #start
 ]
 
 { #category : #initialization }
@@ -57,12 +57,33 @@ GtLudoToken >> initialize [
 	It is only expected to have a value if state is #play."
 ]
 
-{ #category : #accessing }
+{ #category : #testing }
 GtLudoToken >> isBlank [
-	^  self name = self class blankName
+	^  state = #blank
+]
+
+{ #category : #testing }
+GtLudoToken >> isInGoalState [
+	^ state = #goal
+]
+
+{ #category : #testing }
+GtLudoToken >> isInPlay [
+	^ state == #play
+]
+
+{ #category : #testing }
+GtLudoToken >> isInStartState [
+	^ state == #start
+]
+
+{ #category : #accessing }
+GtLudoToken >> square [
+	^ square
 ]
 
 { #category : #accessing }
 GtLudoToken >> state [
+	self assertValidState.
 	^ state
 ]
