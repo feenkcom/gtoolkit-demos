@@ -1,5 +1,6 @@
 "
-I contain all the pieces that represent the game state and that need to be rendered.
+I contain all the pieces that represent the game state and that need to be rendered, namely Squares, Players, and indirectly through the players, their Tokens.
+
 I don't manage the game logic, which is in LudoGame.
 "
 Class {
@@ -12,7 +13,12 @@ Class {
 	#category : #'GToolkit-Demo-Ludo-Model'
 }
 
-{ #category : #accessing }
+{ #category : #'gt - extensions' }
+GtLudoBoard >> asElement [
+	^ GtLudoBoardElement for: self
+]
+
+{ #category : #moving }
 GtLudoBoard >> enterPlayTokenFor: aPlayer [
 
 	"What should be the behavior if there are no tokens left to put into play?"
@@ -25,16 +31,16 @@ GtLudoBoard >> enterPlayTokenFor: aPlayer [
 		(self startSquareFor: aPlayer)
 ]
 
-{ #category : #accessing }
+{ #category : #'gt - extensions' }
 GtLudoBoard >> gtBoardFor: aView [
 	<gtView>
 	^ aView explicit
 		  title: 'Board';
 		  priority: 30;
-		  stencil: [ GtLudoBoardElement for: self ]
+		  stencil: [ self asElement ]
 ]
 
-{ #category : #accessing }
+{ #category : #'gt - extensions' }
 GtLudoBoard >> gtPlayersFor: aView [
 	<gtView>
 	^ aView columnedList
@@ -44,7 +50,7 @@ GtLudoBoard >> gtPlayersFor: aView [
 		  column: 'Player' text: [ :eachItem | eachItem gtDisplayText ]
 ]
 
-{ #category : #accessing }
+{ #category : #'gt - extensions' }
 GtLudoBoard >> gtSquaresFor: aView [
 	<gtView>
 	^ aView columnedList
@@ -82,15 +88,15 @@ GtLudoBoard >> squares [
 	^ squares
 ]
 
-{ #category : #accessing }
+{ #category : #moving }
 GtLudoBoard >> startSquareFor: aPlayer [
-	"Evenly distribute the start squares for the players amonsgt the available squares. Should be at positions 1, 11, 21, 31."
+	"Compute the start square for a given player. Positions should be 1, 11, 21, 31."
+
 	| index |
 	self assert: (self players includes: aPlayer).
-	index := 1 + ((self players indexOf: aPlayer) - 1
-	          * (self squares size // self players size)).
+	index := 1 + (((self players indexOf: aPlayer) - 1) * (self squares size // self players size)).
 	self assert: index <= squares size.
-	self assert:( #(1 11 21 31) includes: index).
+	self assert: index \\ 10 equals: 1.
 	^ self squares at: index
 ]
 

@@ -7,41 +7,42 @@ Class {
 	#category : #'GToolkit-Demo-Ludo-UI'
 }
 
-{ #category : #accessing }
+{ #category : #'instance creation' }
 GtLudoBoardElement class >> for: aBoard [
 	^ self new
 		  initializeFor: aBoard;
 		  yourself
 ]
 
-{ #category : #accessing }
+{ #category : #positioning }
 GtLudoBoardElement >> addSquare: aSquare at: aPoint [
+	"We convert a grid position (aPoint) for a square into a pixel-based location on the board element."
 
 	| location squareSize squareColor squareElement |
 	squareSize := self defaultSize / self dimensions.
-	location := aPoint - (1 @ 1) * squareSize.
+	location := (aPoint - (1 @ 1)) * squareSize.
 	squareElement := GtLudoSquareElement for: aSquare.
-	(self startSquares includes: aPoint) ifTrue: [ 
-		squareElement isStartSquare: true ].
-	self addChild: (squareElement
-			 size: squareSize;
-			 relocate: location;
-			 when: BlClickEvent
-			 do: [ :e | e target phlow spawnObject: aSquare ])
+	(self startSquares includes: aPoint) ifTrue: [ squareElement isStartSquare: true ].
+	self
+		addChild:
+			(squareElement
+				size: squareSize;
+				relocate: location;
+				when: BlClickEvent do: [ :e | e target phlow spawnObject: aSquare ])
 ]
 
-{ #category : #accessing }
+{ #category : #constants }
 GtLudoBoardElement >> defaultSize [
 	^ 400@400
 ]
 
-{ #category : #accessing }
+{ #category : #constants }
 GtLudoBoardElement >> dimensions [
 	"Number of squares per side"
 	^ 11 @ 11
 ]
 
-{ #category : #accessing }
+{ #category : #initialization }
 GtLudoBoardElement >> initialize [
 	super initialize.
 	self
@@ -49,7 +50,7 @@ GtLudoBoardElement >> initialize [
 		background: Color veryVeryLightGray
 ]
 
-{ #category : #accessing }
+{ #category : #initialization }
 GtLudoBoardElement >> initializeFor: aBoard [
 	board := aBoard.
 	self assert: aBoard squares size equals: self numberOfSquares.
@@ -57,29 +58,33 @@ GtLudoBoardElement >> initializeFor: aBoard [
 		self addSquare: square at: (self squarePositions at: n) ]
 ]
 
-{ #category : #accessing }
+{ #category : #constants }
 GtLudoBoardElement >> numberOfSquares [
 	^ 40
 ]
 
-{ #category : #accessing }
-GtLudoBoardElement >> squarePositions [
+{ #category : #constants }
+GtLudoBoardElement >> playerAPositions [
+	"The locations of the first ten squares starting from player A's start square."
+	^ {1 @ 5.
+		2 @ 5.
+		3 @ 5.
+		4 @ 5.
+		5 @ 5.
+		5 @ 4.
+		5 @ 3.
+		5 @ 2.
+		5 @ 1.
+		6 @ 1}
+]
 
-	"Compute the standard positions of the 40 Ludo squares on an 11x11 board"
+{ #category : #positioning }
+GtLudoBoardElement >> squarePositions [
+	"Compute the standard positions of the 40 Ludo squares on an 11x11 board. The positions for player A are pre-computed. Those for the other players are obtained by rotation."
 
 	| aPositions bPositions cPositions dPositions squarePositions |
-	aPositions := { 
-		              (1 @ 5).
-		              (2 @ 5).
-		              (3 @ 5).
-		              (4 @ 5).
-		              (5 @ 5).
-		              (5 @ 4).
-		              (5 @ 3).
-		              (5 @ 2).
-		              (5 @ 1).
-		              (6 @ 1) }.
-	bPositions := aPositions collect: [ :p | 12 - p y @ p x ].
+	aPositions := self playerAPositions.
+	bPositions := aPositions collect: [ :p | (12 - p y) @ p x ].
 	cPositions := aPositions collect: [ :p | 12 @ 12 - p ].
 	dPositions := bPositions collect: [ :p | 12 @ 12 - p ].
 	squarePositions := aPositions , bPositions , cPositions , dPositions.
@@ -87,12 +92,11 @@ GtLudoBoardElement >> squarePositions [
 	^ squarePositions
 ]
 
-{ #category : #accessing }
+{ #category : #constants }
 GtLudoBoardElement >> startSquares [
-
-	^ { 
-		  (1 @ 5).
-		  (7 @ 1).
-		  (11 @ 7).
-		  (5 @ 11) }
+	"The grid positions of the 4 start squares."
+	^ {1 @ 5.
+		7 @ 1.
+		11 @ 7.
+		5 @ 11}
 ]
