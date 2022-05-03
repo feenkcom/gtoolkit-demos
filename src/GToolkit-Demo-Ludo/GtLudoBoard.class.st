@@ -99,6 +99,7 @@ GtLudoBoard >> gtSquaresFor: aView [
 GtLudoBoard >> initialize [
 	super initialize.
 	announcer := Announcer new.
+	feedback := ''.
 	players := OrderedCollection new.
 	($A to: $D) do: [ :player | players add: (GtLudoPlayer new name: player) ].
 	self initializeSquares.
