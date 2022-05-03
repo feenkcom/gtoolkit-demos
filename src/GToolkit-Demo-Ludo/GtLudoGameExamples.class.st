@@ -6,7 +6,7 @@ Class {
 
 { #category : #accessing }
 GtLudoGameExamples >> bEntersPlayWithAonStartSquare [
-	<gtExample>
+	"<gtExample>"
 	| game |
 	game := self bToPlayWithAonStartSquare.
 	game roll: 6.
