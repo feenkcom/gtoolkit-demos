@@ -197,24 +197,12 @@ GtLudoBoard >> squares [
 
 { #category : #moving }
 GtLudoBoard >> startSquareFor: aPlayer [
-	"Compute the start square for a given player. Positions should be 1, 11, 21, 31."
-
-	| index |
-	self assert: (self players includes: aPlayer).
-	index := 1 + (((self players indexOf: aPlayer) - 1) * (self squares size // self players size)).
-	self assert: index <= squares size.
-	self assert: index \\ 10 equals: 1.
-	^ self squares at: index
+	^ (self routeFor: aPlayer) first
 ]
 
 { #category : #accessing }
 GtLudoBoard >> startSquares [
 	^ startSquares
-]
-
-{ #category : #accessing }
-GtLudoBoard >> tokenNamed: aString [
-	^ self tokens detect: [ :token | token name = aString ]
 ]
 
 { #category : #accessing }

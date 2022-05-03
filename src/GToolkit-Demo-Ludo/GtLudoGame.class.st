@@ -18,9 +18,35 @@ GtLudoGame >> board [
 	^ board
 ]
 
+{ #category : #playing }
+GtLudoGame >> computeTargetFor: aToken [
+
+	"There are 3 cases for the target square."
+
+	| route targetIndex |
+	route := self currentRoute.
+
+	"(1) a token enters play on the first square of the route"
+	(self die topFace = 6 and: [ aToken isInStartState ]) ifTrue: [ 
+		aToken enterPlay.
+		^ route first ].
+
+	"(2) a token in play moves forward to another square on the route"
+	targetIndex := (route indexOf: aToken square) + self die topFace.
+	targetIndex <= route size ifTrue: [ ^ route at: targetIndex ].
+
+	"(3) the roll would go past the end of the route (we stay where we are)"
+	^ aToken square
+]
+
 { #category : #accessing }
 GtLudoGame >> currentPlayer [
 	^ self players first
+]
+
+{ #category : #acccessing }
+GtLudoGame >> currentRoute [
+	^ self board routeFor: self currentPlayer
 ]
 
 { #category : #'test - support' }
@@ -96,32 +122,38 @@ GtLudoGame >> isOver [
 	^ (self players select: #isFinished) isNotEmpty
 ]
 
-{ #category : #accessing }
+{ #category : #playing }
 GtLudoGame >> move: aTokenName [
 
 	| token targetSquare |
-	
-	
-	
+	self assert: self playerToMove.
 	token := self tokenNamed: aTokenName.
-	
-	
-	
-	
-	
-	(self die topFace = 6 and: [ token isInStartState ])
-		ifTrue: [ 
-			token enterPlayOnSquare:
-				(self board startSquareFor: self currentPlayer) ]
-		ifFalse: [ 
-			targetSquare := (self board squares indexOf: token square)
-			                + self die topFace - 1
-			                \\ self board totalPlaySquares + 1.
-			token goToSquare: (self board squares at: targetSquare) ].
 
+	"We first compute the target square, and then decide what to do."
+	targetSquare := self computeTargetFor: token.
 
+	"If the target square is occupied, either:
+	(a) ifthe token belongs to another player, that token is sent back to its start state and we land there
+	(b) if the token belongs to the same player, then we try to land on the next square (again two cases).
+	In case (b) we must iterate, and if no squares are left, we fall back to the current square."
+	[ targetSquare notEmpty and: [ targetSquare ~= token square ] ] 
+		whileTrue: [ 
+			targetSquare token player = token player
+				ifTrue: [ 
+					| route targetIndex |
+					route := self currentRoute.
+					targetIndex := route indexOf: targetSquare + 1.
+					targetIndex <= route size
+						ifTrue: [ targetSquare := route at: targetIndex ]
+						ifFalse: [ targetSquare := token square ] ]
+				ifFalse: [ targetSquare token sendToStart ] ].
+
+	token goToSquare: targetSquare.
+
+	"At the end, we switch to the next player unless we rolled a 6."
+
+	self die topFace = 6 ifFalse: [ self nextPlayer ].
 	needToRollDie := true.
-	self nextPlayer.
 	self feedback: self gameState
 ]
 
@@ -137,7 +169,7 @@ GtLudoGame >> onRolled [
 	self feedback: self gameState
 ]
 
-{ #category : #testing }
+{ #category : #accessing }
 GtLudoGame >> playerToMove [
 	^ self playerToRoll not
 ]
@@ -155,7 +187,8 @@ GtLudoGame >> players [
 
 { #category : #testing }
 GtLudoGame >> positionOfTokenNamed: aString [
-	^ self board positionOfToken: (self board tokenNamed: 'A')
+
+	^ self board positionOfToken: (self tokenNamed: 'A')
 ]
 
 { #category : #'test - support' }

@@ -17,9 +17,13 @@ GtLudoPlayer >> goalTokens [
 
 { #category : #initialization }
 GtLudoPlayer >> initializeTokens [
+
 	self assert: self name first isUppercase.
-	tokens := {GtLudoToken named: self name.
-		GtLudoToken named: self name asLowercase} asOrderedCollection
+	tokens := { 
+		          (GtLudoToken named: self name).
+		          (GtLudoToken named: self name asLowercase) }
+		          asOrderedCollection.
+	tokens do: [ :token | token player: self ]
 ]
 
 { #category : #testing }
