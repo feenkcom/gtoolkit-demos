@@ -8,7 +8,8 @@ Class {
 		'board',
 		'players',
 		'winner',
-		'needToRollDie'
+		'needToRollDie',
+		'lastDieRolled'
 	],
 	#category : #'GToolkit-Demo-Ludo-Model'
 }
@@ -30,6 +31,10 @@ GtLudoGame >> computeTargetFor: aToken [
 	(self die topFace = 6 and: [ aToken isInStartState ]) ifTrue: [ 
 		aToken enterPlay.
 		^ route first ].
+
+	self
+		assert: aToken isInPlay
+		description: 'Token ' , aToken name , ' is not in play'.
 
 	"(2) a token in play moves forward to another square on the route"
 	targetIndex := (route indexOf: aToken square) + self die topFace.
@@ -119,10 +124,11 @@ GtLudoGame >> initialize [
 
 	board := GtLudoBoard new.
 	self die announcer when: GtLudoDieRolled send: #onRolled to: self.
-	self board squares do: [ :square | 
+	lastDieRolled := self die topFace.
+	self board squares , self board startSquares do: [ :square | 
 		square announcer
 			when: GtLudoSquareSignalTokenMove
-			do: [ :announcement | self move: announcement token ] ].
+			do: [ :announcement | self move: announcement token name ] ].
 	players := board players copy.
 	needToRollDie := true.
 	self setWinner.
@@ -137,7 +143,7 @@ GtLudoGame >> isOver [
 { #category : #playing }
 GtLudoGame >> move: aTokenName [
 	| token targetSquare |
-	self assert: self playerToMove description: 'You have to roll the die first.'.
+	self assert: self playerToMove description: 'Roll the die first!'.
 	token := self tokenNamed: aTokenName.
 	self assert: token player = self currentPlayer description: 'Token ', token name, ' does not belong to current player ', self currentPlayer name.
 
@@ -177,8 +183,14 @@ GtLudoGame >> nextPlayer [
 
 { #category : #announcements }
 GtLudoGame >> onRolled [
-	needToRollDie := false.
-	self feedback: self gameState
+	self playerToRoll
+		ifTrue: [ 
+			needToRollDie := false.
+			self feedback: self gameState ]
+		ifFalse: [ "Ignore roll by pretending the last value was rolled again."
+			needToRollDie := true.
+			self roll: lastDieRolled ].
+	lastDieRolled := self die topFace
 ]
 
 { #category : #accessing }

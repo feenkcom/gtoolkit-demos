@@ -73,13 +73,11 @@ GtLudoSquare >> printOn: aStream [
 	aStream nextPutAll: self token name
 ]
 
-{ #category : #announcements }
-GtLudoSquare >> signalTokenMove [
-
-	"Signal that a player might like to move the token on this square."
-
+{ #category : #accessing }
+GtLudoSquare >> signalMoveToken [
 	self notEmpty ifTrue: [ 
-		self announcer announce: (GtLudoSquareSignalTokenMove for: self token) ]
+		self announcer announce:
+			(GtLudoSquareSignalTokenMove for: self token) ]
 ]
 
 { #category : #accessing }

@@ -10,8 +10,8 @@ Class {
 { #category : #'instance creation' }
 GtLudoSquareSignalTokenMove class >> for: aToken [
 	^ self new
-	token: aToken;
-	yourself
+		  token: aToken;
+		  yourself
 ]
 
 { #category : #accessing }
