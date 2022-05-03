@@ -56,8 +56,8 @@ GtLudoGameExamples >> playerAmovesTokenA [
 	self assert: (game positionOfTokenNamed: 'A') equals: 6.
 
 	self assert: game currentPlayer name equals: 'B'.
-	self assert: game playerToRoll not.
-	self assert: game playerToMove.
+	self assert: game playerToRoll.
+	self assert: game playerToMove not.
 
 	self assert: (game tokensToMove collect: #name) asSet equals: Set new.
 

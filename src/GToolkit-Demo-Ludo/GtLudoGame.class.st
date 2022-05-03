@@ -68,11 +68,18 @@ GtLudoGame >> gameState [
 		self setWinner.
 		^ 'Player ' , self winner , ' has won!' ].
 
+	self playerToMove ifTrue: [ 
+		self tokensToMove notEmpty
+			ifTrue: [ ^ 'Player ' , self currentPlayer name , ' to move.' ]
+			ifFalse: [ 
+				| player |
+				player := self currentPlayer.
+				self nextPlayer.
+				^ 'Player ' , player name , ' cannot move. Player ' , self currentPlayer name
+				  , ' to move.' ] ].
+
 	self playerToRoll ifTrue: [ 
 		^ 'Player ' , self currentPlayer name , ' to roll the die.' ].
-
-	self playerToMove ifTrue: [ 
-		^ 'Player ' , self currentPlayer name , ' to move.' ].
 
 	^ 'Unknown game state!'
 ]
@@ -124,10 +131,10 @@ GtLudoGame >> isOver [
 
 { #category : #playing }
 GtLudoGame >> move: aTokenName [
-
 	| token targetSquare |
 	self assert: self playerToMove.
 	token := self tokenNamed: aTokenName.
+	self assert: token player = self currentPlayer description: 'Token ', token name, ' does not belong to current player ', self currentPlayer name.
 
 	"We first compute the target square, and then decide what to do."
 	targetSquare := self computeTargetFor: token.
