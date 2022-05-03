@@ -97,13 +97,13 @@ GtLudoGame >> isOver [
 ]
 
 { #category : #accessing }
-GtLudoGame >> moveToken: aString [
+GtLudoGame >> move: aTokenName [
 
 	| token targetSquare |
 	
 	
 	
-	token := self tokenNamed: aString.
+	token := self tokenNamed: aTokenName.
 	
 	
 	
@@ -121,6 +121,7 @@ GtLudoGame >> moveToken: aString [
 
 
 	needToRollDie := true.
+	self nextPlayer.
 	self feedback: self gameState
 ]
 

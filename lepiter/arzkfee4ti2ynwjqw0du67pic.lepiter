@@ -2989,7 +2989,7 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2022-05-03T10:47:34.756136+02:00"
+									"dateAndTimeString" : "2022-05-03T11:30:01.154258+02:00"
 								}
 							},
 							"uid" : {
@@ -3151,7 +3151,7 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2022-05-03T11:21:00.934857+02:00"
+									"dateAndTimeString" : "2022-05-03T11:30:01.158495+02:00"
 								}
 							},
 							"editEmail" : {
@@ -3162,7 +3162,7 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2022-05-03T11:22:10.346738+02:00"
+									"dateAndTimeString" : "2022-05-03T11:35:36.069027+02:00"
 								}
 							},
 							"uid" : {
@@ -3172,7 +3172,7 @@
 							"paragraphStyle" : {
 								"__type" : "textStyle"
 							},
-							"string" : "To compute the moves it is useful to have the differents routes for each of the player's tokens, since they start and end on different squares. We add a suitable test to the emoty board game."
+							"string" : "To compute the moves it is useful to have the differents routes for each of the player's tokens, since they start and end on different squares. We add a suitable test to the empty board game."
 						},
 						{
 							"__type" : "pharoSnippet",
@@ -3199,7 +3199,7 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2022-05-03T11:22:28.248683+02:00"
+									"dateAndTimeString" : "2022-05-03T11:35:59.435652+02:00"
 								}
 							},
 							"uid" : {
@@ -3207,6 +3207,77 @@
 								"uidString" : "Yyfgx3maDQCsE/4FAuGw4Q=="
 							},
 							"code" : "GtLudoBoardExamples new emptyBoard"
+						},
+						{
+							"__type" : "textSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2022-05-03T11:36:59.208885+02:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2022-05-03T11:37:29.716127+02:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "CTQD+XmaDQCMGLQvBljAvg=="
+							},
+							"paragraphStyle" : {
+								"__type" : "textStyle"
+							},
+							"string" : "We can also inspect the route for a given player:"
+						},
+						{
+							"__type" : "pharoSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2022-05-03T11:35:40.410573+02:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2022-05-03T11:36:52.586772+02:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "67YK+HmaDQCMFgTlBljAvg=="
+							},
+							"code" : "board := GtLudoBoardExamples new boardWith2PlayingPlayers.\rboard routeFor: board players second"
 						},
 						{
 							"__type" : "textSnippet",
@@ -3456,7 +3527,7 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2022-05-03T10:27:31.460741+02:00"
+									"dateAndTimeString" : "2022-05-03T11:30:01.16453+02:00"
 								}
 							},
 							"uid" : {

@@ -25,7 +25,7 @@ GtLudoGameExamples >> playerAentersTokenA [
 	| game |
 	game := self playerArolls6.
 
-	game moveToken: 'A'.
+	game move: 'A'.
 
 	self
 		assert: (game positionOfTokenNamed: 'A')
@@ -52,7 +52,7 @@ GtLudoGameExamples >> playerAmovesTokenA [
 		assert: (game tokensToMove collect: #name) asSet
 		equals: { 'A' } asSet.
 
-	game moveToken: 'A'.
+	game move: 'A'.
 	self assert: (game positionOfTokenNamed: 'A') equals: 6.
 
 	self assert: game currentPlayer name equals: 'B'.
