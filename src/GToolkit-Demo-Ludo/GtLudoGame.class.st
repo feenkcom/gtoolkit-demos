@@ -6,7 +6,9 @@ Class {
 	#superclass : #Object,
 	#instVars : [
 		'board',
-		'players'
+		'players',
+		'winner',
+		'needToRollDie'
 	],
 	#category : #'GToolkit-Demo-Ludo-Model'
 }
@@ -49,6 +51,16 @@ GtLudoGame >> feedback: aString [
 	self board feedback: aString
 ]
 
+{ #category : #playing }
+GtLudoGame >> gameState [
+	"Prepare feedback."
+
+	self isOver ifTrue: [ 
+		self setWinner.
+		^ 'Player ' , self winner , ' has won!' ].
+	^ 'Unknown'
+]
+
 { #category : #'gt - extensions' }
 GtLudoGame >> gtBoardFor: aView [
 	<gtView>
@@ -82,25 +94,57 @@ GtLudoGame >> gtSquaresFor: aView [
 { #category : #initialization }
 GtLudoGame >> initialize [
 	board := GtLudoBoard new.
-	players := board players copy
+	self die announcer when: GtLudoDieRolled send: #onRolled to: self.
+	players := board players copy.
+	needToRollDie := true.
+	self setWinner
+]
+
+{ #category : #testing }
+GtLudoGame >> isOver [
+	^ (self players select: #isFinished) isNotEmpty
 ]
 
 { #category : #accessing }
 GtLudoGame >> moveToken: aString [
+
 	| token targetSquare |
 	token := self tokenNamed: aString.
 	self assertValidMove: token.
 	(self die topFace = 6 and: [ token isInStartState ])
-		ifTrue: [ token enterPlayOnSquare: (self board startSquareFor: self currentPlayer) ]
-		ifFalse:
-			[ targetSquare := ((self board squares indexOf: token square) + self die topFace - 1) \\ self board totalPlaySquares + 1.
-			token goToSquare: (self board squares at: targetSquare) ]
+		ifTrue: [ 
+			token enterPlayOnSquare:
+				(self board startSquareFor: self currentPlayer) ]
+		ifFalse: [ 
+			targetSquare := (self board squares indexOf: token square)
+			                + self die topFace - 1
+			                \\ self board totalPlaySquares + 1.
+			token goToSquare: (self board squares at: targetSquare) ].
+
+
+	needToRollDie := true
 ]
 
 { #category : #accessing }
 GtLudoGame >> nextPlayer [
 	players addLast: players removeFirst.
 	^ self currentPlayer
+]
+
+{ #category : #announcements }
+GtLudoGame >> onRolled [
+	needToRollDie := false
+]
+
+{ #category : #testing }
+GtLudoGame >> playerToMove [
+	^ self playerToRoll not
+]
+
+{ #category : #testing }
+GtLudoGame >> playerToRoll [
+	self assert: self isOver not.
+	^  needToRollDie
 ]
 
 { #category : #accessing }
@@ -114,7 +158,20 @@ GtLudoGame >> roll: aValue [
 	self die roll: aValue
 ]
 
+{ #category : #playing }
+GtLudoGame >> setWinner [
+	winner := self players
+		          detect: #isFinished
+		          ifFound: [ :player | player name ]
+		          ifNone: [ 'No one' ]
+]
+
 { #category : #accessing }
 GtLudoGame >> tokenNamed: aString [
 	^ self board tokens detect: [ :token | token name = aString ] ifNone: [ self error: 'Found no token named ' , aString ]
+]
+
+{ #category : #acccessing }
+GtLudoGame >> winner [
+	^ winner
 ]

@@ -22,6 +22,11 @@ GtLudoPlayer >> initializeTokens [
 		GtLudoToken named: self name asLowercase} asOrderedCollection
 ]
 
+{ #category : #testing }
+GtLudoPlayer >> isFinished [
+	^ (self tokens reject: #isInGoalState) isEmpty
+]
+
 { #category : #accessing }
 GtLudoPlayer >> playTokens [
 	^ self tokens select: #isInPlay
