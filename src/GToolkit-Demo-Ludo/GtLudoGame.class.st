@@ -79,9 +79,10 @@ GtLudoGame >> gameState [
 			ifFalse: [ 
 				| player |
 				player := self currentPlayer.
+				needToRollDie := true.
 				self nextPlayer.
-				^ 'Player ' , player name , ' cannot move. Player ' , self currentPlayer name
-				  , ' to roll the die.' ] ].
+				^ 'Player ' , player name , ' cannot move. Player '
+				  , self currentPlayer name , ' to roll the die.' ] ].
 
 	self playerToRoll ifTrue: [ 
 		^ 'Player ' , self currentPlayer name , ' to roll the die.' ].
@@ -185,12 +186,12 @@ GtLudoGame >> nextPlayer [
 GtLudoGame >> onRolled [
 	self playerToRoll
 		ifTrue: [ 
+			lastDieRolled := self die topFace.
 			needToRollDie := false.
 			self feedback: self gameState ]
 		ifFalse: [ "Ignore roll by pretending the last value was rolled again."
 			needToRollDie := true.
-			self roll: lastDieRolled ].
-	lastDieRolled := self die topFace
+			self roll: lastDieRolled ]
 ]
 
 { #category : #accessing }
