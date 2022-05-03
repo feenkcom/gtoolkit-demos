@@ -2989,14 +2989,14 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2022-05-03T09:51:13.110216+02:00"
+									"dateAndTimeString" : "2022-05-03T10:47:34.756136+02:00"
 								}
 							},
 							"uid" : {
 								"__type" : "uid",
 								"uidString" : "8+HWfHiaDQCz8nRVCzaNHA=="
 							},
-							"code" : "game := GtLudoGameExamples new emptyGame."
+							"code" : "GtLudoGameExamples new emptyGame"
 						},
 						{
 							"__type" : "textSnippet",
@@ -3036,6 +3036,108 @@
 							"string" : "We add a slot `needToRollDie` and update it after a move, and after a roll of the die."
 						},
 						{
+							"__type" : "pharoSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2022-05-03T10:47:25.065427+02:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2022-05-03T10:48:24.217738+02:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "70B3S3maDQCsCNSzAuGw4Q=="
+							},
+							"code" : "GtLudoGameExamples new playerArolls6"
+						},
+						{
+							"__type" : "pharoSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2022-05-03T10:48:19.209299+02:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2022-05-03T10:51:22.360499+02:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "a2yxTnmaDQCsCxHwAuGw4Q=="
+							},
+							"code" : "GtLudoGameExamples new playerAentersTokenA"
+						},
+						{
+							"__type" : "pharoSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2022-05-03T10:51:27.750644+02:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2022-05-03T10:51:35.727858+02:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "D1buWXmaDQCsDNSSAuGw4Q=="
+							},
+							"code" : "GtLudoGameExamples new playerAmovesTokenA"
+						},
+						{
 							"__type" : "textSnippet",
 							"children" : {
 								"__type" : "snippets",
@@ -3049,7 +3151,7 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2022-05-03T10:02:08.440332+02:00"
+									"dateAndTimeString" : "2022-05-03T11:21:00.934857+02:00"
 								}
 							},
 							"editEmail" : {
@@ -3060,7 +3162,7 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2022-05-03T10:02:08.440332+02:00"
+									"dateAndTimeString" : "2022-05-03T11:22:10.346738+02:00"
 								}
 							},
 							"uid" : {
@@ -3070,7 +3172,41 @@
 							"paragraphStyle" : {
 								"__type" : "textStyle"
 							},
-							"string" : ""
+							"string" : "To compute the moves it is useful to have the differents routes for each of the player's tokens, since they start and end on different squares. We add a suitable test to the emoty board game."
+						},
+						{
+							"__type" : "pharoSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2022-05-03T11:22:12.314955+02:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2022-05-03T11:22:28.248683+02:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "Yyfgx3maDQCsE/4FAuGw4Q=="
+							},
+							"code" : "GtLudoBoardExamples new emptyBoard"
 						},
 						{
 							"__type" : "textSnippet",
@@ -3320,7 +3456,7 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2022-05-03T09:06:55.040654+02:00"
+									"dateAndTimeString" : "2022-05-03T10:27:31.460741+02:00"
 								}
 							},
 							"uid" : {
@@ -3330,7 +3466,81 @@
 							"paragraphStyle" : {
 								"__type" : "textStyle"
 							},
-							"string" : "Have game announce its feedback."
+							"string" : "Have game announce the gameState"
+						},
+						{
+							"__type" : "textSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2022-05-03T10:27:31.828842+02:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2022-05-03T10:27:31.828842+02:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "guhXBHmaDQCsAnmRAuGw4Q=="
+							},
+							"paragraphStyle" : {
+								"__type" : "textStyle"
+							},
+							"string" : ""
+						},
+						{
+							"__type" : "textSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2022-05-03T10:27:32.075834+02:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2022-05-03T10:27:32.075834+02:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "U61bBHmaDQCsA1cdAuGw4Q=="
+							},
+							"paragraphStyle" : {
+								"__type" : "textStyle"
+							},
+							"string" : ""
 						},
 						{
 							"__type" : "textSnippet",

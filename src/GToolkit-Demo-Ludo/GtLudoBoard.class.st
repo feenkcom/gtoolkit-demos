@@ -159,10 +159,34 @@ GtLudoBoard >> players [
 	^ players
 ]
 
+{ #category : #accessing }
+GtLudoBoard >> positionOfToken: aToken [
+	^ self squares indexOf: aToken square
+]
+
 { #category : #'test - support' }
 GtLudoBoard >> roll: aValue [
 	"For testing only -- set the value rolled."
 	self die roll: aValue
+]
+
+{ #category : #accessing }
+GtLudoBoard >> routeFor: aPlayer [
+
+	"Cache these?"
+
+	| route playerNumber first |
+	route := OrderedCollection new.
+	playerNumber := self players indexOf: aPlayer.
+	first := playerNumber - 1 * 10 + 1.
+	route addAll:
+		(self squares copyFrom: first to: self totalPlaySquares).
+	route addAll: (self squares copyFrom: 1 to: first - 1).
+
+	first := playerNumber - 1 * 2 + 1.
+	route addAll: (self goalSquares copyFrom: first to: first + 1).
+
+	^ route
 ]
 
 { #category : #accessing }
@@ -185,6 +209,11 @@ GtLudoBoard >> startSquareFor: aPlayer [
 { #category : #accessing }
 GtLudoBoard >> startSquares [
 	^ startSquares
+]
+
+{ #category : #accessing }
+GtLudoBoard >> tokenNamed: aString [
+	^ self tokens detect: [ :token | token name = aString ]
 ]
 
 { #category : #accessing }

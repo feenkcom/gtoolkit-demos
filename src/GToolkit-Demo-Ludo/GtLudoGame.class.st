@@ -14,24 +14,6 @@ Class {
 }
 
 { #category : #accessing }
-GtLudoGame >> assertValidMove: aToken [
-	"Preconditions for a valid move."
-	self
-		assert: (self currentPlayer tokens includes: aToken)
-		description: 'The token ' , aToken name , ' does not belong to the current player ' , self currentPlayer name.
-	self
-		assert: (aToken isInStartState or: [ aToken isInPlay ])
-		description: 'Token ' , aToken name , ' is not in start or play state.'.
-	self die topFace = 6
-		ifTrue:
-			[ self currentPlayer startTokens notEmpty
-				ifTrue:
-					[ self
-						assert: aToken isInStartState
-						description: 'Can''t move token ' , aToken name , '. A new token must be brought into play.' ] ]
-]
-
-{ #category : #accessing }
 GtLudoGame >> board [
 	^ board
 ]
@@ -53,12 +35,20 @@ GtLudoGame >> feedback: aString [
 
 { #category : #playing }
 GtLudoGame >> gameState [
+
 	"Prepare feedback."
 
 	self isOver ifTrue: [ 
 		self setWinner.
 		^ 'Player ' , self winner , ' has won!' ].
-	^ 'Unknown'
+
+	self playerToRoll ifTrue: [ 
+		^ 'Player ' , self currentPlayer name , ' to roll the die.' ].
+
+	self playerToMove ifTrue: [ 
+		^ 'Player ' , self currentPlayer name , ' to move.' ].
+
+	^ 'Unknown game state!'
 ]
 
 { #category : #'gt - extensions' }
@@ -97,7 +87,8 @@ GtLudoGame >> initialize [
 	self die announcer when: GtLudoDieRolled send: #onRolled to: self.
 	players := board players copy.
 	needToRollDie := true.
-	self setWinner
+	self setWinner.
+	self feedback: self gameState
 ]
 
 { #category : #testing }
@@ -109,8 +100,15 @@ GtLudoGame >> isOver [
 GtLudoGame >> moveToken: aString [
 
 	| token targetSquare |
+	
+	
+	
 	token := self tokenNamed: aString.
-	self assertValidMove: token.
+	
+	
+	
+	
+	
 	(self die topFace = 6 and: [ token isInStartState ])
 		ifTrue: [ 
 			token enterPlayOnSquare:
@@ -122,7 +120,8 @@ GtLudoGame >> moveToken: aString [
 			token goToSquare: (self board squares at: targetSquare) ].
 
 
-	needToRollDie := true
+	needToRollDie := true.
+	self feedback: self gameState
 ]
 
 { #category : #accessing }
@@ -133,7 +132,8 @@ GtLudoGame >> nextPlayer [
 
 { #category : #announcements }
 GtLudoGame >> onRolled [
-	needToRollDie := false
+	needToRollDie := false.
+	self feedback: self gameState
 ]
 
 { #category : #testing }
@@ -150,6 +150,11 @@ GtLudoGame >> playerToRoll [
 { #category : #accessing }
 GtLudoGame >> players [
 	^ players
+]
+
+{ #category : #testing }
+GtLudoGame >> positionOfTokenNamed: aString [
+	^ self board positionOfToken: (self board tokenNamed: 'A')
 ]
 
 { #category : #'test - support' }
@@ -169,6 +174,25 @@ GtLudoGame >> setWinner [
 { #category : #accessing }
 GtLudoGame >> tokenNamed: aString [
 	^ self board tokens detect: [ :token | token name = aString ] ifNone: [ self error: 'Found no token named ' , aString ]
+]
+
+{ #category : #playing }
+GtLudoGame >> tokensToMove [
+
+	<todo: 'Check if these tokens can actually be played!'>
+
+	self isOver ifTrue: [ ^ Set new ].
+	self playerToRoll ifTrue: [ ^ Set new ].
+	self assert: self playerToMove.
+
+
+	self die topFace = 6 ifTrue: [ 
+		self currentPlayer startTokens notEmpty ifTrue: [ 
+			^ self currentPlayer startTokens asSet ] ].
+
+	"If we are close to the goal, butcannot reach it, what happens?"
+			
+	^ self currentPlayer playTokens
 ]
 
 { #category : #acccessing }

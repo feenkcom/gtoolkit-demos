@@ -118,6 +118,7 @@ GtLudoBoardElement >> initializeFor: aBoard [
 		self addSquare: square at: (self goalSquarePositions at: n) ].
 	self addElement: aBoard die asElement asScalableElement at: 6 @ 6.
 	self addFeedbackElement.
+	self onFeedbackUpdate.
 	board announcer
 		when: GtLudoBoardFeedbackUpdated
 		send: #onFeedbackUpdate
