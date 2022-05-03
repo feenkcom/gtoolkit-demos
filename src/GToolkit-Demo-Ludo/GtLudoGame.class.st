@@ -195,6 +195,11 @@ GtLudoGame >> onRolled [
 ]
 
 { #category : #accessing }
+GtLudoGame >> playerNamed: aString [
+	^ self players detect: [ :player | player name = aString ] ifNone: [ self error: 'Found no player named ' , aString ]
+]
+
+{ #category : #accessing }
 GtLudoGame >> playerToMove [
 	^ self playerToRoll not
 ]

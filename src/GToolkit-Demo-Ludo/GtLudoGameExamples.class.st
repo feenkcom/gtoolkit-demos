@@ -5,6 +5,22 @@ Class {
 }
 
 { #category : #accessing }
+GtLudoGameExamples >> bEntersAndPlaysWithAahead [
+
+	"<gtExample>"
+	| game |
+	game := self playerBentersWithTokenAahead.
+	game roll: 6.
+	game move: 'B'.
+	game roll: 1.
+	game move: 'B'.
+	self assert: (game positionOfTokenNamed: 'B') equals: 12.
+	self assert: game currentPlayer name equals: 'C'.
+	self assert: (game playerNamed: 'A') playTokens isEmpty.
+	^ game
+]
+
+{ #category : #accessing }
 GtLudoGameExamples >> bEntersPlayWithAonStartSquare [
 	<gtExample>
 	| game |
@@ -46,30 +62,42 @@ GtLudoGameExamples >> emptyGame [
 ]
 
 { #category : #accessing }
-GtLudoGameExamples >> playerAentersTokenA [
+GtLudoGameExamples >> playerAentersAndLandsOnA [
+	<gtExample>
+	| game |
+	game := self playerAmovesTokenA.
+	game roll: 1.
+	game roll: 1.
+	game roll: 1.
+	self assert: game currentPlayer name equals: 'A'.
+	self assert: (game positionOfTokenNamed: 'A') equals: 6.
+	game roll: 6.
+	game move: 'a'.
+	self assert: (game positionOfTokenNamed: 'a') equals: 1.
+	game roll: 5.
+	game move: 'a'.
+	self assert: (game positionOfTokenNamed: 'A') equals: 6.
+	self assert: (game positionOfTokenNamed: 'a') equals: 7.
+	^ game
 
+]
+
+{ #category : #accessing }
+GtLudoGameExamples >> playerAentersTokenA [
 	<gtExample>
 	| game |
 	game := self playerArolls6.
-
 	game move: 'A'.
-
-	self
-		assert: (game positionOfTokenNamed: 'A')
-		equals: 1.
-
+	self assert: (game positionOfTokenNamed: 'A') equals: 1.
 	self assert: game currentPlayer name equals: 'A'.
 	self assert: game playerToRoll.
 	self assert: game playerToMove not.
-
 	self assert: (game tokensToMove collect: #name) asSet equals: Set new.
-
 	^ game
 ]
 
 { #category : #accessing }
 GtLudoGameExamples >> playerAmovesTokenA [
-
 	<gtExample>
 	| game |
 	game := self playerAentersTokenA.
@@ -93,19 +121,51 @@ GtLudoGameExamples >> playerAmovesTokenA [
 
 { #category : #example }
 GtLudoGameExamples >> playerArolls6 [
-
 	<gtExample>
 	| game |
 	game := self emptyGame.
 	game roll: 6.
-
 	self assert: game currentPlayer name equals: 'A'.
 	self assert: game playerToRoll not.
 	self assert: game playerToMove.
-
 	self
 		assert: (game tokensToMove collect: #name) asSet
 		equals: { 'A'. 'a' } asSet.
+	^ game
+]
 
+{ #category : #accessing }
+GtLudoGameExamples >> playerBentersWithTokenAahead [
+	<gtExample>
+	| game |
+	game := self playerAentersTokenA.
+	game roll: 6.
+	game move: 'a'.
+	self assert: (game positionOfTokenNamed: 'a') equals: 2.
+	game roll: 6.
+	game move: 'A'.
+	game roll: 5.
+	game move: 'A'.
+	self assert: (game positionOfTokenNamed: 'A') equals: 12.
+	self assert: game currentPlayer name equals: 'B'.
+	^ game
+]
+
+{ #category : #accessing }
+GtLudoGameExamples >> playerBentersWithTokensBandAahead [
+
+	<gtExample>
+	| game |
+	game := self playerAentersTokenA.
+	game roll: 6.
+	game move: 'A'.
+	game roll: 6.
+	game move: 'A'.
+	game roll: 1.
+	game move: 'A'.
+	self assert: (game positionOfTokenNamed: 'A') equals: 14.
+	self assert: game currentPlayer name equals: 'B'.
+	game roll: 6.
+	game move: 'B'.
 	^ game
 ]

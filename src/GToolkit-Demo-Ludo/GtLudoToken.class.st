@@ -38,10 +38,12 @@ GtLudoToken >> enterPlayOnSquare: aSquare [
 
 { #category : #accessing }
 GtLudoToken >> goToSquare: aSquare [
+
 	aSquare = self square ifTrue: [ ^ aSquare ].
 	self square ifNotNil: [ self square clear ].
 	square := aSquare.
 	aSquare token: self.
+	aSquare kind = #start ifTrue: [ state := #start ].
 	^ aSquare
 ]
 
