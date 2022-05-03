@@ -49,7 +49,8 @@ GtLudoBoardElement >> addFeedbackElement [
 GtLudoBoardElement >> addSquare: aSquare at: aPoint [
 	| squareElement |
 	squareElement := GtLudoSquareElement for: aSquare.
-	squareElement when: BlClickEvent do: [ :e | e target phlow spawnObject: aSquare ].
+	squareElement when: BlDoubleClickEvent do: [ :e | aSquare signalMoveToken ].
+	"squareElement when: BlClickEvent do: [ :e | e target phlow spawnObject: aSquare ]."
 	self addElement: squareElement at: aPoint
 ]
 

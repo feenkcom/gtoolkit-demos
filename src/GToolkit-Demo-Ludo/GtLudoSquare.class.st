@@ -74,6 +74,13 @@ GtLudoSquare >> printOn: aStream [
 ]
 
 { #category : #accessing }
+GtLudoSquare >> signalMoveToken [
+	self notEmpty ifTrue: [ 
+		self announcer announce:
+			(GtLudoSquareSignalTokenMove for: self token) ]
+]
+
+{ #category : #accessing }
 GtLudoSquare >> token [
 	^ token
 ]
