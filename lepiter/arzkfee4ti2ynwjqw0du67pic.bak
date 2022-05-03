@@ -3599,14 +3599,14 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2022-05-03T18:59:19.605313+02:00"
+									"dateAndTimeString" : "2022-05-03T19:00:03.637745+02:00"
 								}
 							},
 							"uid" : {
 								"__type" : "uid",
 								"uidString" : "6iK2E4CaDQC1j9xdCadtyw=="
 							},
-							"code" : "GtLudoGameExamples new aToPlayWithBonStartSquare  "
+							"code" : "GtLudoGameExamples new bToPlayWithAonStartSquare  "
 						},
 						{
 							"__type" : "pharoSnippet",
@@ -3633,14 +3633,14 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2022-05-03T18:59:24.32236+02:00"
+									"dateAndTimeString" : "2022-05-03T19:00:20.174361+02:00"
 								}
 							},
 							"uid" : {
 								"__type" : "uid",
 								"uidString" : "XaVtFYCaDQC1kGZwCadtyw=="
 							},
-							"code" : "GtLudoGameExamples new aEntersPlayWithBonStartSquare"
+							"code" : "GtLudoGameExamples new bEntersPlayWithAonStartSquare"
 						},
 						{
 							"__type" : "textSnippet",

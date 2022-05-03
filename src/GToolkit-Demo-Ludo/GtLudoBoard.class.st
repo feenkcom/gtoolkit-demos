@@ -43,7 +43,7 @@ GtLudoBoard >> enterPlayTokenFor: aPlayer [
 	self assert: aPlayer startTokens notEmpty.
 
 	^ aPlayer startTokens first enterPlayOnSquare:
-		(self startSquareFor: aPlayer)
+		(self initialSquareFor: aPlayer)
 ]
 
 { #category : #feedback }
@@ -93,6 +93,11 @@ GtLudoBoard >> gtSquaresFor: aView [
 			  eachIndex asRopedText foreground: Color gray ]
 		  width: 45;
 		  column: 'Tokens' text: [ :eachItem | eachItem gtDisplayText ]
+]
+
+{ #category : #moving }
+GtLudoBoard >> initialSquareFor: aPlayer [
+	^ (self routeFor: aPlayer) first
 ]
 
 { #category : #initialization }
@@ -195,14 +200,16 @@ GtLudoBoard >> squares [
 	^ squares
 ]
 
-{ #category : #moving }
-GtLudoBoard >> startSquareFor: aPlayer [
-	^ (self routeFor: aPlayer) first
-]
-
 { #category : #accessing }
 GtLudoBoard >> startSquares [
 	^ startSquares
+]
+
+{ #category : #accessing }
+GtLudoBoard >> startSquaresFor: aPlayer [
+	| index |
+	index := self players indexOf: aPlayer.
+	^ self startSquares copyFrom: index * 2 - 1 to: index * 2
 ]
 
 { #category : #accessing }

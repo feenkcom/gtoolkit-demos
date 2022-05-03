@@ -165,7 +165,7 @@ GtLudoGame >> move: aTokenName [
 					targetIndex <= route size
 						ifTrue: [ targetSquare := route at: targetIndex ]
 						ifFalse: [ targetSquare := token square ] ]
-				ifFalse: [ targetSquare token sendToStart ] ].
+				ifFalse: [ self sendToStart:targetSquare token  ] ].
 
 	token goToSquare: targetSquare.
 
@@ -213,13 +213,19 @@ GtLudoGame >> players [
 { #category : #testing }
 GtLudoGame >> positionOfTokenNamed: aString [
 
-	^ self board positionOfToken: (self tokenNamed: 'A')
+	^ self board positionOfToken: (self tokenNamed: aString)
 ]
 
 { #category : #'test - support' }
 GtLudoGame >> roll: aValue [ 
 	"Only for testing! We can set the value rolled."
 	self die roll: aValue
+]
+
+{ #category : #playing }
+GtLudoGame >> sendToStart: aToken [
+	aToken goToSquare:
+		((self board startSquaresFor: aToken player) detect: #isEmpty)
 ]
 
 { #category : #playing }
