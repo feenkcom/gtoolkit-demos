@@ -4,6 +4,33 @@ Class {
 	#category : #'GToolkit-Demo-Ludo-Examples'
 }
 
+{ #category : #accessing }
+GtLudoGameExamples >> bEntersPlayWithAonStartSquare [
+	"<gtExample>"
+	| game |
+	game := self bToPlayWithAonStartSquare.
+	game roll: 6.
+	game move: 'B'.
+	self assert: (game positionOfTokenNamed: 'B') equals: 11.
+	self assert: game currentPlayer name equals: 'B'.
+	^ game
+	
+]
+
+{ #category : #accessing }
+GtLudoGameExamples >> bToPlayWithAonStartSquare [
+	<gtExample>
+	| game |
+	game := self playerAentersTokenA.
+	game roll: 6.
+	game move: 'A'.
+	game roll: 4.
+	game move: 'A'.
+	self assert: (game positionOfTokenNamed: 'A') equals: 11.
+	self assert: game currentPlayer name equals: 'B'.
+	^ game
+]
+
 { #category : #example }
 GtLudoGameExamples >> emptyGame [
 

@@ -161,7 +161,7 @@ GtLudoGame >> move: aTokenName [
 				ifTrue: [ 
 					| route targetIndex |
 					route := self currentRoute.
-					targetIndex := route indexOf: targetSquare + 1.
+					targetIndex := (route indexOf: targetSquare) + 1.
 					targetIndex <= route size
 						ifTrue: [ targetSquare := route at: targetIndex ]
 						ifFalse: [ targetSquare := token square ] ]
