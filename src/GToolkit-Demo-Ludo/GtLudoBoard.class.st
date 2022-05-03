@@ -99,6 +99,7 @@ GtLudoBoard >> gtSquaresFor: aView [
 GtLudoBoard >> initialize [
 	super initialize.
 	announcer := Announcer new.
+	feedback := ''.
 	players := OrderedCollection new.
 	($A to: $D) do: [ :player | players add: (GtLudoPlayer new name: player) ].
 	self initializeSquares.
@@ -159,10 +160,34 @@ GtLudoBoard >> players [
 	^ players
 ]
 
+{ #category : #accessing }
+GtLudoBoard >> positionOfToken: aToken [
+	^ self squares indexOf: aToken square
+]
+
 { #category : #'test - support' }
 GtLudoBoard >> roll: aValue [
 	"For testing only -- set the value rolled."
 	self die roll: aValue
+]
+
+{ #category : #accessing }
+GtLudoBoard >> routeFor: aPlayer [
+
+	"Cache these?"
+
+	| route playerNumber first |
+	route := OrderedCollection new.
+	playerNumber := self players indexOf: aPlayer.
+	first := playerNumber - 1 * 10 + 1.
+	route addAll:
+		(self squares copyFrom: first to: self totalPlaySquares).
+	route addAll: (self squares copyFrom: 1 to: first - 1).
+
+	first := playerNumber - 1 * 2 + 1.
+	route addAll: (self goalSquares copyFrom: first to: first + 1).
+
+	^ route
 ]
 
 { #category : #accessing }
@@ -172,14 +197,7 @@ GtLudoBoard >> squares [
 
 { #category : #moving }
 GtLudoBoard >> startSquareFor: aPlayer [
-	"Compute the start square for a given player. Positions should be 1, 11, 21, 31."
-
-	| index |
-	self assert: (self players includes: aPlayer).
-	index := 1 + (((self players indexOf: aPlayer) - 1) * (self squares size // self players size)).
-	self assert: index <= squares size.
-	self assert: index \\ 10 equals: 1.
-	^ self squares at: index
+	^ (self routeFor: aPlayer) first
 ]
 
 { #category : #accessing }

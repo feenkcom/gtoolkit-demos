@@ -8,7 +8,8 @@ Class {
 	#superclass : #GtLudoNamedEntity,
 	#instVars : [
 		'state',
-		'square'
+		'square',
+		'player'
 	],
 	#category : #'GToolkit-Demo-Ludo-Model'
 }
@@ -24,13 +25,20 @@ GtLudoToken >> assertValidState [
 ]
 
 { #category : #moving }
+GtLudoToken >> enterPlay [
+
+	state := #play
+]
+
+{ #category : #moving }
 GtLudoToken >> enterPlayOnSquare: aSquare [
-	state := #play.
+	self enterPlay.
 	^ self goToSquare: aSquare
 ]
 
 { #category : #accessing }
 GtLudoToken >> goToSquare: aSquare [
+	aSquare = self square ifTrue: [ ^ aSquare ].
 	self square ifNotNil: [ self square clear ].
 	square := aSquare.
 	aSquare token: self.
@@ -61,6 +69,16 @@ GtLudoToken >> isInPlay [
 { #category : #testing }
 GtLudoToken >> isInStartState [
 	^ state == #start
+]
+
+{ #category : #accessing }
+GtLudoToken >> player [
+	^ player
+]
+
+{ #category : #accessing }
+GtLudoToken >> player: aPlayer [
+	player := aPlayer
 ]
 
 { #category : #accessing }

@@ -4,7 +4,7 @@ Class {
 	#category : #'GToolkit-Demo-Ludo-Examples'
 }
 
-{ #category : #examples }
+{ #category : #example }
 GtLudoBoardExamples >> boardWith2PlayingPlayers [
 	<gtExample>
 	
@@ -24,8 +24,8 @@ GtLudoBoardExamples >> boardWith2PlayingPlayers [
 
 { #category : #accessing }
 GtLudoBoardExamples >> emptyBoard [
+
 	<gtExample>
-	
 	| board |
 	board := GtLudoBoard new.
 	self assert: board players size equals: 4.
@@ -33,5 +33,14 @@ GtLudoBoardExamples >> emptyBoard [
 	self assert: board tokens size equals: 8.
 	board tokens do: [ :token | self assert: token isInStartState ].
 	board squares do: [ :square | self assert: square isEmpty ].
+
+	board players do: [ :player | 
+		| route |
+		route := board routeFor: player.
+		self assert: route size equals: 42.
+		self assert: route first kind equals: #initial.
+		self assert: route last kind equals: #goal.
+		self assert: route nextToLast kind equals: #goal ].
+
 	^ board
 ]

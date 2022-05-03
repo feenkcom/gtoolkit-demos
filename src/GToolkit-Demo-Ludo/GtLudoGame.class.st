@@ -14,31 +14,39 @@ Class {
 }
 
 { #category : #accessing }
-GtLudoGame >> assertValidMove: aToken [
-	"Preconditions for a valid move."
-	self
-		assert: (self currentPlayer tokens includes: aToken)
-		description: 'The token ' , aToken name , ' does not belong to the current player ' , self currentPlayer name.
-	self
-		assert: (aToken isInStartState or: [ aToken isInPlay ])
-		description: 'Token ' , aToken name , ' is not in start or play state.'.
-	self die topFace = 6
-		ifTrue:
-			[ self currentPlayer startTokens notEmpty
-				ifTrue:
-					[ self
-						assert: aToken isInStartState
-						description: 'Can''t move token ' , aToken name , '. A new token must be brought into play.' ] ]
-]
-
-{ #category : #accessing }
 GtLudoGame >> board [
 	^ board
+]
+
+{ #category : #playing }
+GtLudoGame >> computeTargetFor: aToken [
+
+	"There are 3 cases for the target square."
+
+	| route targetIndex |
+	route := self currentRoute.
+
+	"(1) a token enters play on the first square of the route"
+	(self die topFace = 6 and: [ aToken isInStartState ]) ifTrue: [ 
+		aToken enterPlay.
+		^ route first ].
+
+	"(2) a token in play moves forward to another square on the route"
+	targetIndex := (route indexOf: aToken square) + self die topFace.
+	targetIndex <= route size ifTrue: [ ^ route at: targetIndex ].
+
+	"(3) the roll would go past the end of the route (we stay where we are)"
+	^ aToken square
 ]
 
 { #category : #accessing }
 GtLudoGame >> currentPlayer [
 	^ self players first
+]
+
+{ #category : #acccessing }
+GtLudoGame >> currentRoute [
+	^ self board routeFor: self currentPlayer
 ]
 
 { #category : #'test - support' }
@@ -53,12 +61,27 @@ GtLudoGame >> feedback: aString [
 
 { #category : #playing }
 GtLudoGame >> gameState [
+
 	"Prepare feedback."
 
 	self isOver ifTrue: [ 
 		self setWinner.
 		^ 'Player ' , self winner , ' has won!' ].
-	^ 'Unknown'
+
+	self playerToMove ifTrue: [ 
+		self tokensToMove notEmpty
+			ifTrue: [ ^ 'Player ' , self currentPlayer name , ' to move.' ]
+			ifFalse: [ 
+				| player |
+				player := self currentPlayer.
+				self nextPlayer.
+				^ 'Player ' , player name , ' cannot move. Player ' , self currentPlayer name
+				  , ' to move.' ] ].
+
+	self playerToRoll ifTrue: [ 
+		^ 'Player ' , self currentPlayer name , ' to roll the die.' ].
+
+	^ 'Unknown game state!'
 ]
 
 { #category : #'gt - extensions' }
@@ -97,7 +120,8 @@ GtLudoGame >> initialize [
 	self die announcer when: GtLudoDieRolled send: #onRolled to: self.
 	players := board players copy.
 	needToRollDie := true.
-	self setWinner
+	self setWinner.
+	self feedback: self gameState
 ]
 
 { #category : #testing }
@@ -105,24 +129,39 @@ GtLudoGame >> isOver [
 	^ (self players select: #isFinished) isNotEmpty
 ]
 
-{ #category : #accessing }
-GtLudoGame >> moveToken: aString [
-
+{ #category : #playing }
+GtLudoGame >> move: aTokenName [
 	| token targetSquare |
-	token := self tokenNamed: aString.
-	self assertValidMove: token.
-	(self die topFace = 6 and: [ token isInStartState ])
-		ifTrue: [ 
-			token enterPlayOnSquare:
-				(self board startSquareFor: self currentPlayer) ]
-		ifFalse: [ 
-			targetSquare := (self board squares indexOf: token square)
-			                + self die topFace - 1
-			                \\ self board totalPlaySquares + 1.
-			token goToSquare: (self board squares at: targetSquare) ].
+	self assert: self playerToMove.
+	token := self tokenNamed: aTokenName.
+	self assert: token player = self currentPlayer description: 'Token ', token name, ' does not belong to current player ', self currentPlayer name.
 
+	"We first compute the target square, and then decide what to do."
+	targetSquare := self computeTargetFor: token.
 
-	needToRollDie := true
+	"If the target square is occupied, either:
+	(a) ifthe token belongs to another player, that token is sent back to its start state and we land there
+	(b) if the token belongs to the same player, then we try to land on the next square (again two cases).
+	In case (b) we must iterate, and if no squares are left, we fall back to the current square."
+	[ targetSquare notEmpty and: [ targetSquare ~= token square ] ] 
+		whileTrue: [ 
+			targetSquare token player = token player
+				ifTrue: [ 
+					| route targetIndex |
+					route := self currentRoute.
+					targetIndex := route indexOf: targetSquare + 1.
+					targetIndex <= route size
+						ifTrue: [ targetSquare := route at: targetIndex ]
+						ifFalse: [ targetSquare := token square ] ]
+				ifFalse: [ targetSquare token sendToStart ] ].
+
+	token goToSquare: targetSquare.
+
+	"At the end, we switch to the next player unless we rolled a 6."
+
+	self die topFace = 6 ifFalse: [ self nextPlayer ].
+	needToRollDie := true.
+	self feedback: self gameState
 ]
 
 { #category : #accessing }
@@ -133,10 +172,11 @@ GtLudoGame >> nextPlayer [
 
 { #category : #announcements }
 GtLudoGame >> onRolled [
-	needToRollDie := false
+	needToRollDie := false.
+	self feedback: self gameState
 ]
 
-{ #category : #testing }
+{ #category : #accessing }
 GtLudoGame >> playerToMove [
 	^ self playerToRoll not
 ]
@@ -150,6 +190,12 @@ GtLudoGame >> playerToRoll [
 { #category : #accessing }
 GtLudoGame >> players [
 	^ players
+]
+
+{ #category : #testing }
+GtLudoGame >> positionOfTokenNamed: aString [
+
+	^ self board positionOfToken: (self tokenNamed: 'A')
 ]
 
 { #category : #'test - support' }
@@ -169,6 +215,25 @@ GtLudoGame >> setWinner [
 { #category : #accessing }
 GtLudoGame >> tokenNamed: aString [
 	^ self board tokens detect: [ :token | token name = aString ] ifNone: [ self error: 'Found no token named ' , aString ]
+]
+
+{ #category : #playing }
+GtLudoGame >> tokensToMove [
+
+	<todo: 'Check if these tokens can actually be played!'>
+
+	self isOver ifTrue: [ ^ Set new ].
+	self playerToRoll ifTrue: [ ^ Set new ].
+	self assert: self playerToMove.
+
+
+	self die topFace = 6 ifTrue: [ 
+		self currentPlayer startTokens notEmpty ifTrue: [ 
+			^ self currentPlayer startTokens asSet ] ].
+
+	"If we are close to the goal, butcannot reach it, what happens?"
+			
+	^ self currentPlayer playTokens
 ]
 
 { #category : #acccessing }

@@ -42,7 +42,7 @@ GtLudoSquare >> initialize [
 	self clear
 ]
 
-{ #category : #accessing }
+{ #category : #testing }
 GtLudoSquare >> isEmpty [
 	^  self token isBlank
 ]
@@ -56,6 +56,11 @@ GtLudoSquare >> kind [
 GtLudoSquare >> kind: aSymbol [
 	self assert: (self validKinds includes: aSymbol).
 	kind := aSymbol
+]
+
+{ #category : #testing }
+GtLudoSquare >> notEmpty [
+	^ self isEmpty not
 ]
 
 { #category : #announcements }
