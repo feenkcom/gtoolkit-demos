@@ -11,10 +11,17 @@ Class {
 		'squares',
 		'startSquares',
 		'goalSquares',
-		'die'
+		'die',
+		'announcer',
+		'feedback'
 	],
 	#category : #'GToolkit-Demo-Ludo-Model'
 }
+
+{ #category : #announcements }
+GtLudoBoard >> announcer [
+	^ announcer
+]
 
 { #category : #'gt - extensions' }
 GtLudoBoard >> asElement [
@@ -37,6 +44,17 @@ GtLudoBoard >> enterPlayTokenFor: aPlayer [
 
 	^ aPlayer startTokens first enterPlayOnSquare:
 		(self startSquareFor: aPlayer)
+]
+
+{ #category : #feedback }
+GtLudoBoard >> feedback [
+	^ feedback
+]
+
+{ #category : #feedback }
+GtLudoBoard >> feedback: aString [
+	feedback := aString.
+	self notifyFeedbackUpdated
 ]
 
 { #category : #accessing }
@@ -80,6 +98,7 @@ GtLudoBoard >> gtSquaresFor: aView [
 { #category : #initialization }
 GtLudoBoard >> initialize [
 	super initialize.
+	announcer := Announcer new.
 	players := OrderedCollection new.
 	($A to: $D) do: [ :player | players add: (GtLudoPlayer new name: player) ].
 	self initializeSquares.
@@ -128,6 +147,11 @@ GtLudoBoard >> initializeStartSquares [
 				yourself.
 			token goToSquare: square.
 			startSquares add: square ]
+]
+
+{ #category : #announcements }
+GtLudoBoard >> notifyFeedbackUpdated [
+	self announcer announce: GtLudoBoardFeedbackUpdated new
 ]
 
 { #category : #accessing }

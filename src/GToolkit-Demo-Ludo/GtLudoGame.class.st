@@ -44,6 +44,11 @@ GtLudoGame >> die [
 	^ self board die
 ]
 
+{ #category : #feedback }
+GtLudoGame >> feedback: aString [
+	self board feedback: aString
+]
+
 { #category : #'gt - extensions' }
 GtLudoGame >> gtBoardFor: aView [
 	<gtView>

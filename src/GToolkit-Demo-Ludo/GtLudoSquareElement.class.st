@@ -56,10 +56,8 @@ GtLudoSquareElement >> initialize [
 GtLudoSquareElement >> initializeFor: aSquare [
 	square := aSquare.
 	self background: self colorForKind.
-	self onUpdate square announcer
-		when: GtLudoSquareUpdated
-		send: #onUpdate
-		to: self
+	self onUpdate.
+	square announcer when: GtLudoSquareUpdated send: #onUpdate to: self
 ]
 
 { #category : #accessing }
