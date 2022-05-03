@@ -76,7 +76,7 @@ GtLudoGame >> gameState [
 				player := self currentPlayer.
 				self nextPlayer.
 				^ 'Player ' , player name , ' cannot move. Player ' , self currentPlayer name
-				  , ' to roll the die.' ] ].
+				  , ' to move.' ] ].
 
 	self playerToRoll ifTrue: [ 
 		^ 'Player ' , self currentPlayer name , ' to roll the die.' ].
@@ -116,13 +116,8 @@ GtLudoGame >> gtSquaresFor: aView [
 
 { #category : #initialization }
 GtLudoGame >> initialize [
-
 	board := GtLudoBoard new.
 	self die announcer when: GtLudoDieRolled send: #onRolled to: self.
-	self board squares do: [ :square | 
-		square announcer
-			when: GtLudoSquareSignalTokenMove
-			do: [ :announcement | self move: announcement token ] ].
 	players := board players copy.
 	needToRollDie := true.
 	self setWinner.
@@ -137,7 +132,7 @@ GtLudoGame >> isOver [
 { #category : #playing }
 GtLudoGame >> move: aTokenName [
 	| token targetSquare |
-	self assert: self playerToMove description: 'You have to roll the die first.'.
+	self assert: self playerToMove.
 	token := self tokenNamed: aTokenName.
 	self assert: token player = self currentPlayer description: 'Token ', token name, ' does not belong to current player ', self currentPlayer name.
 

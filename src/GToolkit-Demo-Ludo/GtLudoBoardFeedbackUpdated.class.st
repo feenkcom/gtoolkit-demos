@@ -1,5 +1,5 @@
 Class {
 	#name : #GtLudoBoardFeedbackUpdated,
 	#superclass : #Announcement,
-	#category : #'GToolkit-Demo-Ludo-Announcements'
+	#category : #'GToolkit-Demo-Ludo-Model'
 }
