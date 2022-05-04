@@ -354,7 +354,7 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2022-05-04T16:47:26.376506+02:00"
+									"dateAndTimeString" : "2022-05-04T17:21:30.492832+02:00"
 								}
 							},
 							"editEmail" : {
@@ -365,14 +365,14 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2022-05-04T16:47:27.126833+02:00"
+									"dateAndTimeString" : "2022-05-04T17:22:03.913007+02:00"
 								}
 							},
 							"uid" : {
 								"__type" : "uid",
-								"uidString" : "UnrYcJKaDQCaYNpHC+uhHw=="
+								"uidString" : "uzev6pKaDQCCZzVaAGLl2g=="
 							},
-							"code" : "#gtView gtPragmas select: [:each | (each selector select: [:c | c = $:]) size = 2 ]"
+							"code" : "#gtView gtPragmas select: [:each | each selector numArgs = 2 ]"
 						},
 						{
 							"__type" : "textSnippet",
