@@ -44,6 +44,7 @@ GtLudoToken >> goToSquare: aSquare [
 	square := aSquare.
 	aSquare token: self.
 	aSquare kind = #start ifTrue: [ state := #start ].
+	aSquare kind = #goal ifTrue: [ state := #goal ].
 	^ aSquare
 ]
 

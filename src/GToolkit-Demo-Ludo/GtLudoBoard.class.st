@@ -78,11 +78,16 @@ GtLudoBoard >> gtPlayersFor: aView [
 		  title: 'Players';
 		  priority: 10;
 		  items: [ self players ];
-		  column: 'Player' text: [ :eachItem | eachItem gtDisplayText ]
+		  column: 'Player' text: [ :player | player ];
+		  column: 'Token' text: [ :player | player tokens first ];
+		  column: 'State' text: [ :player | player tokens first state ];
+		  column: 'Token' text: [ :player | player tokens second ];
+		  column: 'State' text: [ :player | player tokens second state ]
 ]
 
 { #category : #'gt - extensions' }
 GtLudoBoard >> gtSquaresFor: aView [
+
 	<gtView>
 	^ aView columnedList
 		  title: 'Squares';
@@ -92,7 +97,11 @@ GtLudoBoard >> gtSquaresFor: aView [
 		  text: [ :eachItem :eachIndex | 
 			  eachIndex asRopedText foreground: Color gray ]
 		  width: 45;
-		  column: 'Tokens' text: [ :eachItem | eachItem gtDisplayText ]
+		  column: 'Token' text: [ :square | square token ];
+		  column: 'State' text: [ :square | 
+			  square notEmpty
+				  ifTrue: [ square token state ]
+				  ifFalse: [ '' ] ]
 ]
 
 { #category : #moving }

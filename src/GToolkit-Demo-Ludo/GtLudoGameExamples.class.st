@@ -6,8 +6,8 @@ Class {
 
 { #category : #accessing }
 GtLudoGameExamples >> bEntersAndPlaysWithAahead [
-
-	"<gtExample>"
+	"Example for 4. Landing on another player's token. (Send other token to start.)"
+	<gtExample>
 	| game |
 	game := self playerBentersWithTokenAahead.
 	game roll: 6.
@@ -16,25 +16,28 @@ GtLudoGameExamples >> bEntersAndPlaysWithAahead [
 	game move: 'B'.
 	self assert: (game positionOfTokenNamed: 'B') equals: 12.
 	self assert: game currentPlayer name equals: 'C'.
-	self assert: (game playerNamed: 'A') playTokens isEmpty.
+	self assert: (game tokenNamed: 'A') isInStartState.
 	^ game
 ]
 
 { #category : #accessing }
 GtLudoGameExamples >> bEntersPlayWithAonStartSquare [
+	"Test for 1. Entering play when there is a token of another player on the start square. (Send other token to start state.)"
 	<gtExample>
 	| game |
 	game := self bToPlayWithAonStartSquare.
+	self assert: (game tokenNamed: 'A') isInPlay.
 	game roll: 6.
 	game move: 'B'.
 	self assert: (game positionOfTokenNamed: 'B') equals: 11.
 	self assert: game currentPlayer name equals: 'B'.
+	self assert: (game tokenNamed: 'A') isInStartState.
 	^ game
-	
 ]
 
 { #category : #accessing }
 GtLudoGameExamples >> bToPlayWithAonStartSquare [
+	"Setup for 1. Entering play when there is a token of another player on the start square. (Send other token to start state.)"
 	<gtExample>
 	| game |
 	game := self playerAentersTokenA.
@@ -62,6 +65,48 @@ GtLudoGameExamples >> emptyGame [
 ]
 
 { #category : #accessing }
+GtLudoGameExamples >> playerAarrivesCloseToGoal [
+
+	"Setup for 6. Landing on the first goal square, unoccupied and 7. Landing on the unoccupied second goal square."
+
+	<gtExample>
+	| game |
+	game := self playerAenterAndLandsOnTokenA.
+	self assert: game currentPlayer name equals: 'A'.
+	self assert: (game positionOfTokenNamed: 'A') equals: 1.
+	self assert: (game positionOfTokenNamed: 'a') equals: 2.
+	game roll: 6.
+	game move: 'a'.
+	game roll: 6.
+	game move: 'a'.
+	game roll: 6.
+	game move: 'a'.
+	game roll: 6.
+	game move: 'a'.
+	game roll: 6.
+	game move: 'a'.
+	game roll: 6.
+	game move: 'a'.
+	self assert: (game positionOfTokenNamed: 'a') equals: 38.
+	^ game
+]
+
+{ #category : #accessing }
+GtLudoGameExamples >> playerAenterAndLandsOnTokenA [
+	"Example for 2. Entering play when there is a token of the same player on the start square (ie after rolling a 6 twice)."
+	<gtExample>
+	| game |
+	game := self playerAentersTokenA.
+	self assert: (game positionOfTokenNamed: 'A') equals: 1.
+	game roll: 6.
+	game move: 'a'.
+	self assert: (game positionOfTokenNamed: 'A') equals: 1.
+	self assert: (game positionOfTokenNamed: 'a') equals: 2.
+	self assert: game currentPlayer name equals: 'A'.
+	^ game
+]
+
+{ #category : #accessing }
 GtLudoGameExamples >> playerAentersAndLandsOnA [
 	<gtExample>
 	| game |
@@ -84,6 +129,7 @@ GtLudoGameExamples >> playerAentersAndLandsOnA [
 
 { #category : #accessing }
 GtLudoGameExamples >> playerAentersTokenA [
+	"Setup for 2. Entering play when there is a token of the same player on the start square (ie after rolling a 6 twice)."
 	<gtExample>
 	| game |
 	game := self playerArolls6.
@@ -94,6 +140,70 @@ GtLudoGameExamples >> playerAentersTokenA [
 	self assert: game playerToMove not.
 	self assert: (game tokensToMove collect: #name) asSet equals: Set new.
 	^ game
+]
+
+{ #category : #accessing }
+GtLudoGameExamples >> playerAlandsOnFirstGoalSquare [
+
+	"Example for 6. Landing on the first goal square, unoccupied."
+
+	<gtExample>
+	| game |
+	game := self playerAarrivesCloseToGoal.
+	self assert: game currentPlayer name equals: 'A'.
+	self assert: (game positionOfTokenNamed: 'a') equals: 38.
+	game roll: 3.
+	game move: 'a'.
+	self assert: (game tokenNamed: 'a') isInGoalState.
+	^ game
+]
+
+{ #category : #accessing }
+GtLudoGameExamples >> playerAlandsOnOccupiedGoalSquare [
+
+	"Example for 9. Landing on the first occupied goal square. (Land on next goal square.)"
+
+	<gtExample>
+	| game |
+	game := self playerAsecondTokenCloseToGoal.
+	self assert: game currentPlayer name equals: 'A'.
+	self assert: (game positionOfTokenNamed: 'A') equals: 37.
+	game roll: 4.
+	game move: 'A'.
+	self assert: (game tokenNamed: 'A') isInGoalState.
+	^ game
+]
+
+{ #category : #accessing }
+GtLudoGameExamples >> playerAlandsOnOccupiedSecondGoalSquare [
+
+	"Example for 10. Landing on the occupied second goal square. (Fail to move.)"
+
+	<gtExample>
+	| game |
+	game := self playerAsecondTokenCloseToSecondOccupiedGoal.
+	self assert: game currentPlayer name equals: 'A'.
+	self assert: (game positionOfTokenNamed: 'A') equals: 37.
+	game roll: 5.
+	game move: 'A'.
+	self assert: (game tokenNamed: 'A') isInPlay.
+	self assert: (game positionOfTokenNamed: 'A') equals: 37.
+	^ game
+]
+
+{ #category : #accessing }
+GtLudoGameExamples >> playerAlandsOnSecondGoalSquare [
+	"Example for 7. Landing on the unoccupied second goal square."
+	<gtExample>
+	| game |
+	game := self playerAarrivesCloseToGoal.
+	self assert: game currentPlayer name equals: 'A'.
+	self assert: (game positionOfTokenNamed: 'a') equals: 38.
+	game roll: 4.
+	game move: 'a'.
+	self assert: (game tokenNamed: 'a') isInGoalState.
+	^ game
+
 ]
 
 { #category : #accessing }
@@ -119,6 +229,41 @@ GtLudoGameExamples >> playerAmovesTokenA [
 	^ game
 ]
 
+{ #category : #accessing }
+GtLudoGameExamples >> playerAmovesTwiceAndLandsOnA [
+	"Example for: 3. Landing on a square with the same player's token. (Land on next square.)"
+	<gtExample>
+	| game |
+	game := self playerAenterAndLandsOnTokenA.
+	self assert: game currentPlayer name equals: 'A'.
+	game roll: 6.
+	game move: 'A'.
+	self assert: (game positionOfTokenNamed: 'a') equals: 2.
+	self assert: (game positionOfTokenNamed: 'A') equals: 7.
+	game roll: 5.
+	game move: 'a'.
+	self assert: (game positionOfTokenNamed: 'a') equals: 8.
+	self assert: game currentPlayer name equals: 'B'.
+	^ game
+]
+
+{ #category : #accessing }
+GtLudoGameExamples >> playerAovershootsGoal [
+
+	"Example for 8. Overshooting the goal sqares. (Fail to move.)"
+
+	<gtExample>
+	| game |
+	game := self playerAarrivesCloseToGoal.
+	self assert: game currentPlayer name equals: 'A'.
+	self assert: (game positionOfTokenNamed: 'a') equals: 38.
+	game roll: 5.
+	game move: 'a'.
+	self assert: (game tokenNamed: 'a') isInPlay.
+	self assert: (game positionOfTokenNamed: 'a') equals: 38.
+	^ game
+]
+
 { #category : #example }
 GtLudoGameExamples >> playerArolls6 [
 	<gtExample>
@@ -135,13 +280,71 @@ GtLudoGameExamples >> playerArolls6 [
 ]
 
 { #category : #accessing }
-GtLudoGameExamples >> playerBentersWithTokenAahead [
+GtLudoGameExamples >> playerAsecondTokenCloseToGoal [
+
+	"Setup for 9. Landing on the first occupied goal square. (Land on next goal square.)"
+
 	<gtExample>
 	| game |
-	game := self playerAentersTokenA.
+	game := self playerAlandsOnFirstGoalSquare.
+	self assert: game currentPlayer name equals: 'B'.
+	game roll: 1.
+	game roll: 1.
+	game roll: 1.
+	self assert: game currentPlayer name equals: 'A'.
+	self assert: (game positionOfTokenNamed: 'A') equals: 1.
 	game roll: 6.
-	game move: 'a'.
-	self assert: (game positionOfTokenNamed: 'a') equals: 2.
+	game move: 'A'.
+	game roll: 6.
+	game move: 'A'.
+	game roll: 6.
+	game move: 'A'.
+	game roll: 6.
+	game move: 'A'.
+	game roll: 6.
+	game move: 'A'.
+	game roll: 6.
+	game move: 'A'.
+	self assert: (game positionOfTokenNamed: 'A') equals: 37.
+	^ game
+]
+
+{ #category : #accessing }
+GtLudoGameExamples >> playerAsecondTokenCloseToSecondOccupiedGoal [
+
+	"Setup for 10. Landing on the occupied second goal square. (Fail to move.)"
+
+	<gtExample>
+	| game |
+	game := self playerAlandsOnSecondGoalSquare.
+	self assert: game currentPlayer name equals: 'B'.
+	game roll: 1.
+	game roll: 1.
+	game roll: 1.
+	self assert: game currentPlayer name equals: 'A'.
+	self assert: (game positionOfTokenNamed: 'A') equals: 1.
+	game roll: 6.
+	game move: 'A'.
+	game roll: 6.
+	game move: 'A'.
+	game roll: 6.
+	game move: 'A'.
+	game roll: 6.
+	game move: 'A'.
+	game roll: 6.
+	game move: 'A'.
+	game roll: 6.
+	game move: 'A'.
+	self assert: (game positionOfTokenNamed: 'A') equals: 37.
+	^ game
+]
+
+{ #category : #accessing }
+GtLudoGameExamples >> playerBentersWithTokenAahead [
+	"Setup for 4. Landing on another player's token. (Send other token to start.)"
+	<gtExample>
+	| game |
+	game := self playerAenterAndLandsOnTokenA.
 	game roll: 6.
 	game move: 'A'.
 	game roll: 5.
@@ -152,8 +355,26 @@ GtLudoGameExamples >> playerBentersWithTokenAahead [
 ]
 
 { #category : #accessing }
-GtLudoGameExamples >> playerBentersWithTokensBandAahead [
+GtLudoGameExamples >> playerBplaysWithTokensBandAahead [
+	"Example for 5. Landing on a square with the same play's token, followed by a square with a token of another player. (Land on next square, sending the token there to start.)"
+	<gtExample>
+	| game |
+	game := self playerBtoPlayWithTokensBandAahead.
+	self assert: game currentPlayer name equals: 'B'.
+	self assert: (game positionOfTokenNamed: 'b') equals: 12.
+	self assert: (game positionOfTokenNamed: 'B') equals: 17.
+	self assert: (game positionOfTokenNamed: 'A') equals: 18.
+	game roll: 5.
+	game move: 'b'.
+	self assert: (game positionOfTokenNamed: 'B') equals: 17.
+	self assert: (game positionOfTokenNamed: 'b') equals: 18.
+	self assert: (game tokenNamed: 'A') isInStartState.
+	^ game
+]
 
+{ #category : #accessing }
+GtLudoGameExamples >> playerBtoPlayWithTokensBandAahead [
+	"Setup for 5. Landing on a square with the same play's token, followed by a square with a token of another player. (Land on next square, sending the token there to start.)"
 	<gtExample>
 	| game |
 	game := self playerAentersTokenA.
@@ -161,11 +382,16 @@ GtLudoGameExamples >> playerBentersWithTokensBandAahead [
 	game move: 'A'.
 	game roll: 6.
 	game move: 'A'.
-	game roll: 1.
+	game roll: 5.
 	game move: 'A'.
-	self assert: (game positionOfTokenNamed: 'A') equals: 14.
+	self assert: (game positionOfTokenNamed: 'A') equals: 18.
 	self assert: game currentPlayer name equals: 'B'.
 	game roll: 6.
+	game move: 'B'.	
+	game roll: 6.
+	game move: 'b'.
+	game roll: 6.
 	game move: 'B'.
+	self assert: (game positionOfTokenNamed: 'B') equals: 17.
 	^ game
 ]
