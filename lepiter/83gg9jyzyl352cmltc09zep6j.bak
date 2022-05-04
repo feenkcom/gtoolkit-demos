@@ -29,7 +29,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2022-05-04T13:40:27.560929+02:00"
+						"dateAndTimeString" : "2022-05-04T13:41:41.52727+02:00"
 					}
 				},
 				"uid" : {
@@ -39,7 +39,7 @@
 				"paragraphStyle" : {
 					"__type" : "textStyle"
 				},
-				"string" : "[[About this repo]]"
+				"string" : "[[About this Lepiter database]]"
 			},
 			{
 				"__type" : "textSnippet",

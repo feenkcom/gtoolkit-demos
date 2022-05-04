@@ -25,7 +25,7 @@ GtLudoBoard >> announcer [
 
 { #category : #'gt - extensions' }
 GtLudoBoard >> asElement [
-	^( GtLudoBoardElement for: self) asScalableElement
+	^ GtLudoBoardElement for: self
 ]
 
 { #category : #accessing }
@@ -68,7 +68,7 @@ GtLudoBoard >> gtBoardFor: aView [
 	^ aView explicit
 		  title: 'Board';
 		  priority: 30;
-		  stencil: [ self asElement ]
+		  stencil: [ self asElement asScalableElement ]
 ]
 
 { #category : #'gt - extensions' }

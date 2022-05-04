@@ -5,10 +5,22 @@ Class {
 	#name : #GtLudoPlayer,
 	#superclass : #GtLudoNamedEntity,
 	#instVars : [
-		'tokens'
+		'tokens',
+		'game'
 	],
 	#category : #'GToolkit-Demo-Ludo-Model'
 }
+
+{ #category : #accessing }
+GtLudoPlayer >> game [
+	"NB: could be nil!"
+	^ game
+]
+
+{ #category : #accessing }
+GtLudoPlayer >> game: aGame [
+	game := aGame
+]
 
 { #category : #accessing }
 GtLudoPlayer >> goalTokens [

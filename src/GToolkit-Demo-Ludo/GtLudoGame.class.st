@@ -131,6 +131,7 @@ GtLudoGame >> initialize [
 			when: GtLudoSquareSignalTokenMove
 			do: [ :announcement | self move: announcement token name ] ].
 	players := board players copy.
+	players do: [ :each | each game: self ].
 	needToRollDie := true.
 	self setWinner.
 	self feedback: self gameState
