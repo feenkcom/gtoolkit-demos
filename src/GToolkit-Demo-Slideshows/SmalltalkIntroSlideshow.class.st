@@ -36,7 +36,7 @@ SmalltalkIntroSlideshow >> bouncingAtoms: aSlide [
 
 { #category : #accessing }
 SmalltalkIntroSlideshow >> dbName [
-	^ 'onierstrasz/gt-demos/lepiter'
+	^ 'feenkcom/gtoolkit-demos/lepiter'
 ]
 
 { #category : #slides }
@@ -79,6 +79,7 @@ Gt is built on top of Pharo, a modern, open-source Smalltalk.' asRopedText
 
 { #category : #slides }
 SmalltalkIntroSlideshow >> imageChanges: aSlide [
+
 	<gtSlide>
 	^ aSlide textAndElement
 		  elementWeight: 0.50;
@@ -90,8 +91,13 @@ Changes to classes and methods are logged as you program.' asRopedText
 				   fontSize: 40);
 		  element: [ 
 			  GtFilePictureLiveSlide new fileReference:
-					  (GtResourcesUtility resourceAtPath:
-							   'onierstrasz/gt-demos/images/image+changes.png') ]
+				  (GtResourcesUtility resourceAtPath:
+					   self imageDirectory , 'image+changes.png') ]
+]
+
+{ #category : #accessing }
+SmalltalkIntroSlideshow >> imageDirectory [
+	^ 'feenkcom/gtoolkit-demos/images/'
 ]
 
 { #category : #slides }
@@ -199,8 +205,8 @@ He reasoned that such systems would need to be based on object from the ground u
 				   fontSize: 30);
 		  element: [ 
 			  GtFilePictureLiveSlide new fileReference:
-				  (GtResourcesUtility resourceAtPath:
-					   'onierstrasz/gt-demos/images/smalltalk-80.png') ]
+				  (GtResourcesUtility resourceAtPath: self imageDirectory, 
+					   'smalltalk-80.png') ]
 ]
 
 { #category : #slides }
