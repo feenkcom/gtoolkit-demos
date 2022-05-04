@@ -25,7 +25,7 @@ GtLudoBoard >> announcer [
 
 { #category : #'gt - extensions' }
 GtLudoBoard >> asElement [
-	^ GtLudoBoardElement for: self
+	^( GtLudoBoardElement for: self) asScalableElement
 ]
 
 { #category : #accessing }

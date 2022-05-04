@@ -30,7 +30,7 @@ GtLudoSquareElement class >> for: aSquare [
 GtLudoSquareElement >> colorForKind [
 	^ {#start -> Color lightGreen.
 		#initial -> Color lightBlue.
-		#play -> Color yellow.
+		#play -> Color lightYellow.
 		#goal -> Color lightRed} asDictionary at: self square kind
 ]
 
