@@ -38,6 +38,16 @@ GtLudoPlayer >> gtPositionsFor: aView [
 ]
 
 { #category : #accessing }
+GtLudoPlayer >> gtTokensFor: aView [
+	<gtView>
+	^ aView columnedList
+		title: 'Tokens';
+		items: [ tokens ];
+		column: 'Token' text: #name;
+		column: 'Square' text: [:token | token square gtDisplayString]
+]
+
+{ #category : #accessing }
 GtLudoPlayer >> highlightedBoardElement [
 	| boardElement |
 	boardElement := self game boardElement.
