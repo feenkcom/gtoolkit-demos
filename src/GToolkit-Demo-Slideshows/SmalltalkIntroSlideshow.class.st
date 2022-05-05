@@ -99,12 +99,7 @@ Changes to classes and methods are logged as you program.' asRopedText
 		  element: [ 
 			  GtFilePictureLiveSlide new fileReference:
 				  (GtResourcesUtility resourceAtPath:
-					   self imageDirectory , 'image+changes.png') ]
-]
-
-{ #category : #accessing }
-SmalltalkIntroSlideshow >> imageDirectory [
-	^ 'feenkcom/gtoolkit-demos/images/'
+					   self picturesDirectoryPath  / 'image+changes.png') ]
 ]
 
 { #category : #accessing }
@@ -144,6 +139,11 @@ SmalltalkIntroSlideshow >> outline: aSlide [
 • Live programming of classes and methods
 • GT use cases
 '
+]
+
+{ #category : #accessing }
+SmalltalkIntroSlideshow >> picturesDirectoryPath [
+	^ Path * 'feenkcom' / 'gtoolkit-demos' / 'data' / 'images'
 ]
 
 { #category : #accessing }
@@ -195,7 +195,7 @@ He reasoned that such systems would need to be based on object from the ground u
 				   fontSize: 30);
 		  element: [ 
 			  GtFilePictureLiveSlide new fileReference:
-				  (GtResourcesUtility resourceAtPath: self imageDirectory, 
+				  (GtResourcesUtility resourceAtPath: self picturesDirectoryPath / 
 					   'smalltalk-80.png') ]
 ]
 
