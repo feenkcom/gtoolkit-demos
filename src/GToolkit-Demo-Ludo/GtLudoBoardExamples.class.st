@@ -27,7 +27,7 @@ GtLudoBoardExamples >> emptyBoard [
 
 	<gtExample>
 	| board |
-	board := GtLudoBoard new.
+	board := GtLudoGame new.
 	self assert: board players size equals: 4.
 	self assert: board squares size equals: 40.
 	self assert: board tokens size equals: 8.

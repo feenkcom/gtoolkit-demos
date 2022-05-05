@@ -1393,7 +1393,7 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2022-05-05T11:19:11.825396+02:00"
+									"dateAndTimeString" : "2022-05-05T14:51:08.746748+02:00"
 								}
 							},
 							"uid" : {
@@ -1403,41 +1403,7 @@
 							"paragraphStyle" : {
 								"__type" : "textStyle"
 							},
-							"string" : "**How to do this programmatically?** "
-						},
-						{
-							"__type" : "pharoSnippet",
-							"children" : {
-								"__type" : "snippets",
-								"items" : [ ]
-							},
-							"createEmail" : {
-								"__type" : "email",
-								"emailString" : "<unknown>"
-							},
-							"createTime" : {
-								"__type" : "time",
-								"time" : {
-									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2022-05-05T11:11:18.04636+02:00"
-								}
-							},
-							"editEmail" : {
-								"__type" : "email",
-								"emailString" : "<unknown>"
-							},
-							"editTime" : {
-								"__type" : "time",
-								"time" : {
-									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2022-05-05T11:11:47.468019+02:00"
-								}
-							},
-							"uid" : {
-								"__type" : "uid",
-								"uidString" : "tY6P3KGaDQCdgQMDDdKafQ=="
-							},
-							"code" : "GtLudoBoardExamples "
+							"string" : "**How to run tests programmatically?** "
 						},
 						{
 							"__type" : "textSnippet",
@@ -1900,7 +1866,7 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2022-05-05T14:06:17.010763+02:00"
+									"dateAndTimeString" : "2022-05-05T14:24:41.794328+02:00"
 								}
 							},
 							"uid" : {
@@ -1971,7 +1937,7 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2022-05-05T14:09:50.703615+02:00"
+									"dateAndTimeString" : "2022-05-05T14:24:42.462087+02:00"
 								}
 							},
 							"uid" : {
@@ -1994,7 +1960,7 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2022-05-05T14:10:38.767813+02:00"
+									"dateAndTimeString" : "2022-05-05T14:24:42.467156+02:00"
 								}
 							},
 							"editEmail" : {
@@ -2005,7 +1971,7 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2022-05-05T14:11:00.193969+02:00"
+									"dateAndTimeString" : "2022-05-05T14:51:27.867915+02:00"
 								}
 							},
 							"uid" : {
@@ -2173,7 +2139,7 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2022-05-05T14:19:16.877076+02:00"
+									"dateAndTimeString" : "2022-05-05T14:24:42.48621+02:00"
 								}
 							},
 							"editEmail" : {
@@ -2184,7 +2150,7 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2022-05-05T14:19:34.711117+02:00"
+									"dateAndTimeString" : "2022-05-05T14:24:42.48621+02:00"
 								}
 							},
 							"uid" : {
@@ -2221,14 +2187,14 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2022-05-05T14:21:35.090295+02:00"
+									"dateAndTimeString" : "2022-05-05T15:00:02.138767+02:00"
 								}
 							},
 							"uid" : {
 								"__type" : "uid",
 								"uidString" : "+bkWfqSaDQCsMkqHA7mFbw=="
 							},
-							"code" : "(RBPullUpMethodRefactoring\r\tpullUp: methodsToPushUp\r\tfrom: GtLudoGame) execute"
+							"code" : "(RBPullUpMethodRefactoring pullUp: methodsToPushUp from: GtLudoGame) execute"
 						},
 						{
 							"__type" : "textSnippet",
@@ -2244,7 +2210,7 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2022-05-05T13:50:24.503353+02:00"
+									"dateAndTimeString" : "2022-05-05T15:14:14.987177+02:00"
 								}
 							},
 							"editEmail" : {
@@ -2255,17 +2221,17 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2022-05-05T13:50:24.503353+02:00"
+									"dateAndTimeString" : "2022-05-05T15:15:03.94708+02:00"
 								}
 							},
 							"uid" : {
 								"__type" : "uid",
-								"uidString" : "Wu6SFaSaDQCofF/pB4rJIA=="
+								"uidString" : "JevtD6WaDQCjMLBKCt85Uw=="
 							},
 							"paragraphStyle" : {
 								"__type" : "textStyle"
 							},
-							"string" : ""
+							"string" : "(Actually this raises an error (`Instance of AsyncStreamTransitionBuffer did not understand #preloadAmount:`) but it works in the Morphic browser for now."
 						},
 						{
 							"__type" : "textSnippet",
@@ -2281,7 +2247,7 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2022-05-05T13:50:24.767572+02:00"
+									"dateAndTimeString" : "2022-05-05T15:15:45.771824+02:00"
 								}
 							},
 							"editEmail" : {
@@ -2292,17 +2258,17 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2022-05-05T13:50:24.767572+02:00"
+									"dateAndTimeString" : "2022-05-05T15:15:48.471481+02:00"
 								}
 							},
 							"uid" : {
 								"__type" : "uid",
-								"uidString" : "lfaWFaSaDQCofdqSB4rJIA=="
+								"uidString" : "fRPHRqWaDQCZSGxGDptWSg=="
 							},
 							"paragraphStyle" : {
 								"__type" : "textStyle"
 							},
-							"string" : ""
+							"string" : "We run the tests."
 						},
 						{
 							"__type" : "textSnippet",
@@ -2318,7 +2284,7 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2022-05-05T13:50:24.98772+02:00"
+									"dateAndTimeString" : "2022-05-05T15:15:29.431146+02:00"
 								}
 							},
 							"editEmail" : {
@@ -2329,152 +2295,7 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2022-05-05T13:50:24.98772+02:00"
-								}
-							},
-							"uid" : {
-								"__type" : "uid",
-								"uidString" : "Y1KaFaSaDQCofquNB4rJIA=="
-							},
-							"paragraphStyle" : {
-								"__type" : "textStyle"
-							},
-							"string" : ""
-						},
-						{
-							"__type" : "textSnippet",
-							"children" : {
-								"__type" : "snippets",
-								"items" : [ ]
-							},
-							"createEmail" : {
-								"__type" : "email",
-								"emailString" : "<unknown>"
-							},
-							"createTime" : {
-								"__type" : "time",
-								"time" : {
-									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2022-05-05T13:44:12.225017+02:00"
-								}
-							},
-							"editEmail" : {
-								"__type" : "email",
-								"emailString" : "<unknown>"
-							},
-							"editTime" : {
-								"__type" : "time",
-								"time" : {
-									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2022-05-05T13:44:12.225017+02:00"
-								}
-							},
-							"uid" : {
-								"__type" : "uid",
-								"uidString" : "EGpi/6OaDQCg04boCYgWqQ=="
-							},
-							"paragraphStyle" : {
-								"__type" : "textStyle"
-							},
-							"string" : ""
-						},
-						{
-							"__type" : "textSnippet",
-							"children" : {
-								"__type" : "snippets",
-								"items" : [ ]
-							},
-							"createEmail" : {
-								"__type" : "email",
-								"emailString" : "<unknown>"
-							},
-							"createTime" : {
-								"__type" : "time",
-								"time" : {
-									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2022-05-05T11:55:27.02545+02:00"
-								}
-							},
-							"editEmail" : {
-								"__type" : "email",
-								"emailString" : "<unknown>"
-							},
-							"editTime" : {
-								"__type" : "time",
-								"time" : {
-									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2022-05-05T14:11:23.528448+02:00"
-								}
-							},
-							"uid" : {
-								"__type" : "uid",
-								"uidString" : "VUMGcKKaDQCh/XdYDwDWlA=="
-							},
-							"paragraphStyle" : {
-								"__type" : "textStyle"
-							},
-							"string" : ""
-						},
-						{
-							"__type" : "pharoSnippet",
-							"children" : {
-								"__type" : "snippets",
-								"items" : [ ]
-							},
-							"createEmail" : {
-								"__type" : "email",
-								"emailString" : "<unknown>"
-							},
-							"createTime" : {
-								"__type" : "time",
-								"time" : {
-									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2022-05-05T11:49:35.445134+02:00"
-								}
-							},
-							"editEmail" : {
-								"__type" : "email",
-								"emailString" : "<unknown>"
-							},
-							"editTime" : {
-								"__type" : "time",
-								"time" : {
-									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2022-05-05T11:50:17.419203+02:00"
-								}
-							},
-							"uid" : {
-								"__type" : "uid",
-								"uidString" : "rhR/ZaKaDQCh9crLDwDWlA=="
-							},
-							"code" : "GtLudoBoard compile: (GtLudoGame >> #isOver) sourceCode"
-						},
-						{
-							"__type" : "textSnippet",
-							"children" : {
-								"__type" : "snippets",
-								"items" : [ ]
-							},
-							"createEmail" : {
-								"__type" : "email",
-								"emailString" : "<unknown>"
-							},
-							"createTime" : {
-								"__type" : "time",
-								"time" : {
-									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2022-05-05T11:36:45.846712+02:00"
-								}
-							},
-							"editEmail" : {
-								"__type" : "email",
-								"emailString" : "<unknown>"
-							},
-							"editTime" : {
-								"__type" : "time",
-								"time" : {
-									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2022-05-05T12:02:31.734832+02:00"
+									"dateAndTimeString" : "2022-05-05T15:18:09.440618+02:00"
 								}
 							},
 							"uid" : {
@@ -2484,41 +2305,7 @@
 							"paragraphStyle" : {
 								"__type" : "textStyle"
 							},
-							"string" : "Now we can copy up all the methods *except* `initialize`."
-						},
-						{
-							"__type" : "pharoSnippet",
-							"children" : {
-								"__type" : "snippets",
-								"items" : [ ]
-							},
-							"createEmail" : {
-								"__type" : "email",
-								"emailString" : "<unknown>"
-							},
-							"createTime" : {
-								"__type" : "time",
-								"time" : {
-									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2022-05-05T11:48:07.032654+02:00"
-								}
-							},
-							"editEmail" : {
-								"__type" : "email",
-								"emailString" : "<unknown>"
-							},
-							"editTime" : {
-								"__type" : "time",
-								"time" : {
-									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2022-05-05T11:59:10.246435+02:00"
-								}
-							},
-							"uid" : {
-								"__type" : "uid",
-								"uidString" : "ZgM6YKKaDQCh9L/DDwDWlA=="
-							},
-							"code" : "(GtLudoGame methods reject: [ :m | m selector = #initialize ]) do: [ \r\t:m | \r\tGtLudoBoard compile: m sourceCode.\r\tm removeFromSystem ]"
+							"string" : "Now we just have to fix the initialize method. We copy up the Game initialization and run the tests"
 						},
 						{
 							"__type" : "textSnippet",
@@ -2534,7 +2321,7 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2022-05-05T11:44:09.312776+02:00"
+									"dateAndTimeString" : "2022-05-05T15:18:17.849073+02:00"
 								}
 							},
 							"editEmail" : {
@@ -2545,12 +2332,157 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2022-05-05T11:44:09.312776+02:00"
+									"dateAndTimeString" : "2022-05-05T15:19:22.860658+02:00"
 								}
 							},
 							"uid" : {
 								"__type" : "uid",
 								"uidString" : "IrIOUqKaDQCh5Lu6DwDWlA=="
+							},
+							"paragraphStyle" : {
+								"__type" : "textStyle"
+							},
+							"string" : "Finally we replace all references to `GtLudoGame` to refer to the Board instaed."
+						},
+						{
+							"__type" : "pharoSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2022-05-05T15:18:40.037906+02:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2022-05-05T15:19:52.196869+02:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "K2A2UaWaDQC3iQczBIOwbg=="
+							},
+							"code" : "GtLudoGame gtReferences"
+						},
+						{
+							"__type" : "textSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2022-05-05T15:20:03.011344+02:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2022-05-05T15:20:26.578038+02:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "8PMDVqWaDQCAtq4wCEaEBQ=="
+							},
+							"paragraphStyle" : {
+								"__type" : "textStyle"
+							},
+							"string" : "There is only one (in the examples) so we make it refer to the Board."
+						},
+						{
+							"__type" : "textSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2022-05-05T15:20:27.318029+02:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2022-05-05T15:20:34.928954+02:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "8UmUV6WaDQCAuP9vCEaEBQ=="
+							},
+							"paragraphStyle" : {
+								"__type" : "textStyle"
+							},
+							"string" : "We remove the Game class and run the tests."
+						},
+						{
+							"__type" : "textSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2022-05-05T15:21:38.066333+02:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2022-05-05T15:21:40.757458+02:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "mMIXWKWaDQCAudRdCEaEBQ=="
 							},
 							"paragraphStyle" : {
 								"__type" : "textStyle"

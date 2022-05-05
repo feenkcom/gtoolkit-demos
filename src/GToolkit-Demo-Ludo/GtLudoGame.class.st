@@ -1,10 +1,19 @@
 "
-I manage the logic of the moves of the Ludo Game.
+I contain all the pieces that represent the game state and that need to be rendered, namely Squares, Players, and indirectly through the players, their Tokens.
+
+I don't manage the game logic, which is in LudoGame.
 "
 Class {
 	#name : #GtLudoGame,
-	#superclass : #GtLudoBoard,
+	#superclass : #Object,
 	#instVars : [
+		'players',
+		'squares',
+		'startSquares',
+		'goalSquares',
+		'die',
+		'announcer',
+		'feedback',
 		'winner',
 		'needToRollDie',
 		'lastDieRolled',
@@ -12,6 +21,16 @@ Class {
 	],
 	#category : #'GToolkit-Demo-Ludo-Model'
 }
+
+{ #category : #announcements }
+GtLudoGame >> announcer [
+	^ announcer
+]
+
+{ #category : #'gt - extensions' }
+GtLudoGame >> asElement [
+	^ GtLudoBoardElement for: self
+]
 
 { #category : #playing }
 GtLudoGame >> computeTargetFor: aToken [
@@ -48,6 +67,35 @@ GtLudoGame >> currentRoute [
 	^ self routeFor: self currentPlayer
 ]
 
+{ #category : #accessing }
+GtLudoGame >> die [
+	^ die
+]
+
+{ #category : #moving }
+GtLudoGame >> enterPlayTokenFor: aPlayer [
+
+	"What should be the behavior if there are no tokens left to put into play?"
+
+	"aPlayer startTokens isEmpty ifTrue: [ ^ nil ]."
+	
+	self assert: aPlayer startTokens notEmpty.
+
+	^ aPlayer startTokens first enterPlayOnSquare:
+		(self initialSquareFor: aPlayer)
+]
+
+{ #category : #feedback }
+GtLudoGame >> feedback [
+	^ feedback
+]
+
+{ #category : #feedback }
+GtLudoGame >> feedback: aString [
+	feedback := aString.
+	self notifyFeedbackUpdated
+]
+
 { #category : #playing }
 GtLudoGame >> gameState [
 
@@ -74,9 +122,73 @@ GtLudoGame >> gameState [
 	^ 'Unknown game state!'
 ]
 
+{ #category : #accessing }
+GtLudoGame >> goalSquares [
+	^ goalSquares
+]
+
+{ #category : #'gt - extensions' }
+GtLudoGame >> gtBoardFor: aView [
+	<gtView>
+	^ aView explicit
+		  title: 'Board';
+		  priority: 30;
+		  stencil: [ self asElement asScalableElement ]
+]
+
+{ #category : #'gt - extensions' }
+GtLudoGame >> gtPlayersFor: aView [
+	<gtView>
+	^ aView columnedList
+		  title: 'Players';
+		  priority: 10;
+		  items: [ self players ];
+		  column: 'Player' text: [ :player | player ];
+		  column: 'Token' text: [ :player | player tokens first ];
+		  column: 'State' text: [ :player | player tokens first state ];
+		  column: 'Token' text: [ :player | player tokens second ];
+		  column: 'State' text: [ :player | player tokens second state ]
+]
+
+{ #category : #'gt - extensions' }
+GtLudoGame >> gtSquaresFor: aView [
+
+	<gtView>
+	^ aView columnedList
+		  title: 'Squares';
+		  priority: 20;
+		  items: [ self squares ];
+		  column: 'Index'
+		  text: [ :eachItem :eachIndex | 
+			  eachIndex asRopedText foreground: Color gray ]
+		  width: 45;
+		  column: 'Token' text: [ :square | square token ];
+		  column: 'State' text: [ :square | 
+			  square notEmpty
+				  ifTrue: [ square token state ]
+				  ifFalse: [ '' ] ]
+]
+
+{ #category : #moving }
+GtLudoGame >> initialSquareFor: aPlayer [
+	^ (self routeFor: aPlayer) first
+]
+
 { #category : #initialization }
 GtLudoGame >> initialize [
 	super initialize.
+	announcer := Announcer new.
+	feedback := ''.
+	players := OrderedCollection new.
+	($A to: $D) do: [ :player | players add: (GtLudoPlayer new name: player) ].
+	self initializeSquares.
+	players do: #initializeTokens.
+	self initializeStartSquares.
+	self initializeGoalSquares.
+	die := GtLudoDie new.
+	
+	"Initialization code from the Game class"
+	
 	self die announcer when: GtLudoDieRolled send: #onRolled to: self.
 	lastDieRolled := self die topFace.
 	self squares , self startSquares do: [ :square | 
@@ -88,6 +200,47 @@ GtLudoGame >> initialize [
 	needToRollDie := true.
 	self setWinner.
 	self feedback: self gameState
+]
+
+{ #category : #initialization }
+GtLudoGame >> initializeGoalSquares [
+	goalSquares := OrderedCollection new.
+	1
+		to: 8
+		do:
+			[ :n | 
+			goalSquares
+				add:
+					((GtLudoSquare new)
+						kind: #goal;
+						yourself) ]
+]
+
+{ #category : #initialization }
+GtLudoGame >> initializeSquares [
+	squares := OrderedCollection new.
+	1
+		to: self totalPlaySquares
+		do:
+			[ :n | 
+			| square |
+			square := GtLudoSquare new.
+			n \\ 10 = 1 ifTrue: [ square kind: #initial ].
+			squares add: square ]
+]
+
+{ #category : #initialization }
+GtLudoGame >> initializeStartSquares [
+	startSquares := OrderedCollection new.
+	self tokens
+		do:
+			[ :token | 
+			| square |
+			square := (GtLudoSquare new)
+				kind: #start;
+				yourself.
+			token goToSquare: square.
+			startSquares add: square ]
 ]
 
 { #category : #testing }
@@ -137,6 +290,11 @@ GtLudoGame >> nextPlayer [
 ]
 
 { #category : #announcements }
+GtLudoGame >> notifyFeedbackUpdated [
+	self announcer announce: GtLudoBoardFeedbackUpdated new
+]
+
+{ #category : #announcements }
 GtLudoGame >> onRolled [
 	self playerToRoll
 		ifTrue: [ 
@@ -169,9 +327,44 @@ GtLudoGame >> playerToRoll [
 	^  needToRollDie
 ]
 
+{ #category : #accessing }
+GtLudoGame >> players [
+	^ players
+]
+
+{ #category : #accessing }
+GtLudoGame >> positionOfToken: aToken [
+	^ self squares indexOf: aToken square
+]
+
 { #category : #testing }
 GtLudoGame >> positionOfTokenNamed: aString [
 	^ self positionOfToken: (self tokenNamed: aString)
+]
+
+{ #category : #'test - support' }
+GtLudoGame >> roll: aValue [
+	"For testing only -- set the value rolled."
+	self die roll: aValue
+]
+
+{ #category : #accessing }
+GtLudoGame >> routeFor: aPlayer [
+
+	"Cache these?"
+
+	| route playerNumber first |
+	route := OrderedCollection new.
+	playerNumber := self players indexOf: aPlayer.
+	first := playerNumber - 1 * 10 + 1.
+	route addAll:
+		(self squares copyFrom: first to: self totalPlaySquares).
+	route addAll: (self squares copyFrom: 1 to: first - 1).
+
+	first := playerNumber - 1 * 2 + 1.
+	route addAll: (self goalSquares copyFrom: first to: first + 1).
+
+	^ route
 ]
 
 { #category : #playing }
@@ -189,10 +382,32 @@ GtLudoGame >> setWinner [
 ]
 
 { #category : #accessing }
+GtLudoGame >> squares [
+	^ squares
+]
+
+{ #category : #accessing }
+GtLudoGame >> startSquares [
+	^ startSquares
+]
+
+{ #category : #accessing }
+GtLudoGame >> startSquaresFor: aPlayer [
+	| index |
+	index := self players indexOf: aPlayer.
+	^ self startSquares copyFrom: index * 2 - 1 to: index * 2
+]
+
+{ #category : #accessing }
 GtLudoGame >> tokenNamed: aString [
 	^ self tokens
 		  detect: [ :token | token name = aString ]
 		  ifNone: [ self error: 'Found no token named ' , aString ]
+]
+
+{ #category : #accessing }
+GtLudoGame >> tokens [
+	^ players flatCollect: #tokens
 ]
 
 { #category : #playing }
@@ -212,6 +427,11 @@ GtLudoGame >> tokensToMove [
 	"If we are close to the goal, butcannot reach it, what happens?"
 			
 	^ self currentPlayer playTokens
+]
+
+{ #category : #constants }
+GtLudoGame >> totalPlaySquares [
+	^ 40
 ]
 
 { #category : #acccessing }
