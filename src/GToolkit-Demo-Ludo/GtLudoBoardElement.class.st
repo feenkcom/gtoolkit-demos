@@ -19,6 +19,13 @@ GtLudoBoardElement class >> for: aGame [
 		  yourself
 ]
 
+{ #category : #initialization }
+GtLudoBoardElement >> addDieElement [
+	"By default the die is not added"
+
+	self addElement: self game die asElement asScalableElement at: 6 @ 6
+]
+
 { #category : #accessing }
 GtLudoBoardElement >> addElement: anElement at: aPoint [
 	"We convert a grid position (aPoint) for an element into a pixel-based location on the board element."
@@ -91,8 +98,7 @@ GtLudoBoardElement >> initializeFor: aGame [
 	self assert: aGame squares size equals: self numberOfSquares.
 	aGame startSquares withIndexDo: [ :square :n | self addSquare: square at: (self startSquarePositions at: n) ].
 	aGame squares withIndexDo: [ :square :n | self addSquare: square at: (self playPositions at: n) ].
-	aGame goalSquares withIndexDo: [ :square :n | self addSquare: square at: (self goalSquarePositions at: n) ].
-	self addElement: aGame die asElement asScalableElement at: 6 @ 6
+	aGame goalSquares withIndexDo: [ :square :n | self addSquare: square at: (self goalSquarePositions at: n) ]
 ]
 
 { #category : #constants }

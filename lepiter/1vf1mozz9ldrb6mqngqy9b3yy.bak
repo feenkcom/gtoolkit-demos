@@ -473,14 +473,14 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2022-05-05T16:23:29.578888+02:00"
+									"dateAndTimeString" : "2022-05-05T16:23:40.641343+02:00"
 								}
 							},
 							"uid" : {
 								"__type" : "uid",
 								"uidString" : "oPei0JKaDQCah6p4C+uhHw=="
 							},
-							"code" : "token := move token.\rboardElement := token player game boardElement.\r(gameElement children select: [ :each | \r\t (each isKindOf: GtLudoSquareElement) and: [ \r\t\t each square token = token ] ]) do: #highlight.\rgameElement"
+							"code" : "token := move token.\rboardElement := token player game boardElement.\r(boardElement children select: [ :each | \r\t (each isKindOf: GtLudoSquareElement) and: [ \r\t\t each square token = token ] ]) do: #highlight.\rboardElement"
 						},
 						{
 							"__type" : "pharoSnippet",
@@ -507,14 +507,48 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2022-05-04T17:15:28.893078+02:00"
+									"dateAndTimeString" : "2022-05-05T17:32:54.513445+02:00"
 								}
 							},
 							"uid" : {
 								"__type" : "uid",
 								"uidString" : "G/r21JKaDQCairRnC+uhHw=="
 							},
-							"code" : "token player"
+							"code" : "token p"
+						},
+						{
+							"__type" : "pharoSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2022-05-05T17:32:34.824894+02:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2022-05-05T17:32:34.824894+02:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "134fMKeaDQC8w1IQA3lxgA=="
+							},
+							"code" : ""
 						},
 						{
 							"__type" : "textSnippet",

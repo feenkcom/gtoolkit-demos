@@ -133,15 +133,6 @@ GtLudoGame >> goalSquares [
 ]
 
 { #category : #'gt - extensions' }
-GtLudoGame >> gtBoardFor: aView [
-	<gtView>
-	^ aView explicit
-		  title: 'Board';
-		  priority: 10;
-		  stencil: [ self asElement asScalableElement ]
-]
-
-{ #category : #'gt - extensions' }
 GtLudoGame >> gtPlayersFor: aView [
 	<gtView>
 	^ aView columnedList
@@ -153,6 +144,15 @@ GtLudoGame >> gtPlayersFor: aView [
 		  column: 'State' text: [ :player | player tokens first state ];
 		  column: 'Token' text: [ :player | player tokens second ];
 		  column: 'State' text: [ :player | player tokens second state ]
+]
+
+{ #category : #'gt - extensions' }
+GtLudoGame >> gtPositionsFor: aView [
+	<gtView>
+	^ aView explicit
+		  title: 'Board';
+		  priority: 10;
+		  stencil: [ self asElement asScalableElement ]
 ]
 
 { #category : #'gt - extensions' }
@@ -216,7 +216,7 @@ GtLudoGame >> initializeGoalSquares [
 			[ :n | 
 			goalSquares
 				add:
-					((GtLudoSquare new)
+					((GtLudoSquare for: self)
 						kind: #goal;
 						yourself) ]
 ]
@@ -229,7 +229,7 @@ GtLudoGame >> initializeSquares [
 		do:
 			[ :n | 
 			| square |
-			square := GtLudoSquare new.
+			square := GtLudoSquare for: self.
 			n \\ 10 = 1 ifTrue: [ square kind: #initial ].
 			squares add: square ]
 ]
@@ -241,7 +241,7 @@ GtLudoGame >> initializeStartSquares [
 		do:
 			[ :token | 
 			| square |
-			square := (GtLudoSquare new)
+			square := (GtLudoSquare for: self)
 				kind: #start;
 				yourself.
 			token goToSquare: square.

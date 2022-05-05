@@ -27,6 +27,25 @@ GtLudoPlayer >> goalTokens [
 	^ self tokens select: #isInGoalState
 ]
 
+{ #category : #accessing }
+GtLudoPlayer >> gtPositionsFor: aView [
+	<gtView>
+	
+	^ (aView explicit)
+		title: 'Positions';
+		priority: 10;
+		stencil: [ self highlightedBoardElement ]
+]
+
+{ #category : #accessing }
+GtLudoPlayer >> highlightedBoardElement [
+	| boardElement |
+	boardElement := self game boardElement.
+	(boardElement children select: [ :each | (each isKindOf: GtLudoSquareElement) and: [ each square token player = self ] ])
+		do: #highlight.
+	^ boardElement
+]
+
 { #category : #initialization }
 GtLudoPlayer >> initializeTokens [
 
