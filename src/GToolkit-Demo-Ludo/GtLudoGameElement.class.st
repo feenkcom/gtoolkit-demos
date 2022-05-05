@@ -62,10 +62,13 @@ GtLudoGameElement >> initializeFor: aGame [
 			[ :c | 
 			c vertical fitContent.
 			c horizontal fitContent ].
-	self addChild: aGame boardElement.
+	self
+		addChild:
+			((aGame boardElement)
+				addDieElement;
+				yourself).
 	self addChild: self feedbackElement.
-	
-		self onFeedbackUpdate.
+	self onFeedbackUpdate.
 	game announcer
 		when: GtLudoBoardFeedbackUpdated
 		send: #onFeedbackUpdate

@@ -36,7 +36,7 @@ GtLudoSquareElement >> colorForKind [
 
 { #category : #accessing }
 GtLudoSquareElement >> highlight [
-	self border: (BlBorder paint: self highlightColor width: 0.5)
+	self border: (BlBorder paint: self highlightColor width: 2)
 ]
 
 { #category : #constants }

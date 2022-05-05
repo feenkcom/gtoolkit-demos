@@ -14,10 +14,18 @@ Class {
 	#instVars : [
 		'token',
 		'announcer',
-		'kind'
+		'kind',
+		'game'
 	],
 	#category : #'GToolkit-Demo-Ludo-Model'
 }
+
+{ #category : #initialization }
+GtLudoSquare class >> for: aGame [
+	^ (self new)
+		game: aGame;
+		yourself
+]
 
 { #category : #announcements }
 GtLudoSquare >> announcer [
@@ -32,6 +40,35 @@ GtLudoSquare >> clear [
 { #category : #initialization }
 GtLudoSquare >> defaultKind [
 	^ #play
+]
+
+{ #category : #accessing }
+GtLudoSquare >> game [
+	^ game
+]
+
+{ #category : #accessing }
+GtLudoSquare >> game: aGame [
+	game := aGame
+]
+
+{ #category : #'gt - extensions' }
+GtLudoSquare >> gtPositionsFor: aView [
+	<gtView>
+	
+	^ (aView explicit)
+		title: 'Position';
+		priority: 10;
+		stencil: [ self highlightedBoardElement ]
+]
+
+{ #category : #'gt - extensions' }
+GtLudoSquare >> highlightedBoardElement [
+	| boardElement |
+	boardElement := self game boardElement.
+	(boardElement children select: [ :each | (each isKindOf: GtLudoSquareElement) and: [ each square = self ] ])
+		do: #highlight.
+	^ boardElement
 ]
 
 { #category : #initialization }
