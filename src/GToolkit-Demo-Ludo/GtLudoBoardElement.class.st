@@ -1,17 +1,21 @@
+"
+I display just the board state (without the feedback pane).
+I am used within a GameElement.
+"
 Class {
 	#name : #GtLudoBoardElement,
 	#superclass : #BlElement,
 	#instVars : [
-		'board',
-		'feedbackLabel'
+		'feedbackLabel',
+		'game'
 	],
 	#category : #'GToolkit-Demo-Ludo-UI'
 }
 
 { #category : #'instance creation' }
-GtLudoBoardElement class >> for: aBoard [
+GtLudoBoardElement class >> for: aGame [
 	^ self new
-		  initializeFor: aBoard;
+		  initializeFor: aGame;
 		  yourself
 ]
 
@@ -29,22 +33,6 @@ GtLudoBoardElement >> addElement: anElement at: aPoint [
 				relocate: location)
 ]
 
-{ #category : #initialization }
-GtLudoBoardElement >> addFeedbackElement [
-	| feedbackElement |
-	feedbackElement := BlElement new
-		                   size: self feedbackSize;
-		                   background: Color paleBuff.
-	feedbackLabel := BrLabel new
-		                 aptitude: (BrGlamorousLabelAptitude new
-				                  fontSize: 20;
-				                  yourself);
-		                 yourself.
-	feedbackElement addChild: feedbackLabel.
-	feedbackLabel text: ''.
-	self addChild: (feedbackElement relocate: 0 @ 400)
-]
-
 { #category : #positioning }
 GtLudoBoardElement >> addSquare: aSquare at: aPoint [
 	| squareElement |
@@ -54,15 +42,10 @@ GtLudoBoardElement >> addSquare: aSquare at: aPoint [
 	self addElement: squareElement at: aPoint
 ]
 
-{ #category : #accessing }
-GtLudoBoardElement >> board [
-	^ board
-]
-
 { #category : #constants }
 GtLudoBoardElement >> defaultSize [
 	"Add space for feedback"
-	^ self gridSize + (0 @ 50)
+	^ self gridSize "+ (0 @ 50)"
 ]
 
 { #category : #constants }
@@ -71,14 +54,9 @@ GtLudoBoardElement >> dimensions [
 	^ 11 @ 11
 ]
 
-{ #category : #feedback }
-GtLudoBoardElement >> feedback: aString [
-	feedbackLabel text: aString
-]
-
-{ #category : #constants }
-GtLudoBoardElement >> feedbackSize [
-	^ 400 @ 50
+{ #category : #accessing }
+GtLudoBoardElement >> game [
+	^ game
 ]
 
 { #category : #accessing }
@@ -108,32 +86,18 @@ GtLudoBoardElement >> initialize [
 ]
 
 { #category : #initialization }
-GtLudoBoardElement >> initializeFor: aBoard [
-	board := aBoard.
-	self assert: aBoard squares size equals: self numberOfSquares.
-	aBoard startSquares withIndexDo: [ :square :n | 
-		self addSquare: square at: (self startSquarePositions at: n) ].
-	aBoard squares withIndexDo: [ :square :n | 
-		self addSquare: square at: (self playPositions at: n) ].
-	aBoard goalSquares withIndexDo: [ :square :n | 
-		self addSquare: square at: (self goalSquarePositions at: n) ].
-	self addElement: aBoard die asElement asScalableElement at: 6 @ 6.
-	self addFeedbackElement.
-	self onFeedbackUpdate.
-	board announcer
-		when: GtLudoBoardFeedbackUpdated
-		send: #onFeedbackUpdate
-		to: self
+GtLudoBoardElement >> initializeFor: aGame [
+	game := aGame.
+	self assert: aGame squares size equals: self numberOfSquares.
+	aGame startSquares withIndexDo: [ :square :n | self addSquare: square at: (self startSquarePositions at: n) ].
+	aGame squares withIndexDo: [ :square :n | self addSquare: square at: (self playPositions at: n) ].
+	aGame goalSquares withIndexDo: [ :square :n | self addSquare: square at: (self goalSquarePositions at: n) ].
+	self addElement: aGame die asElement asScalableElement at: 6 @ 6
 ]
 
 { #category : #constants }
 GtLudoBoardElement >> numberOfSquares [
 	^ 40
-]
-
-{ #category : #announcements }
-GtLudoBoardElement >> onFeedbackUpdate [
-	self feedback: self board feedback
 ]
 
 { #category : #positioning }

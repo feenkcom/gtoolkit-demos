@@ -29,7 +29,7 @@ GtLudoGame >> announcer [
 
 { #category : #'gt - extensions' }
 GtLudoGame >> asElement [
-	^ GtLudoBoardElement for: self
+	^ GtLudoGameElement for: self
 ]
 
 { #category : #playing }
@@ -132,7 +132,7 @@ GtLudoGame >> gtBoardFor: aView [
 	<gtView>
 	^ aView explicit
 		  title: 'Board';
-		  priority: 30;
+		  priority: 10;
 		  stencil: [ self asElement asScalableElement ]
 ]
 
@@ -141,7 +141,7 @@ GtLudoGame >> gtPlayersFor: aView [
 	<gtView>
 	^ aView columnedList
 		  title: 'Players';
-		  priority: 10;
+		  priority: 20;
 		  items: [ self players ];
 		  column: 'Player' text: [ :player | player ];
 		  column: 'Token' text: [ :player | player tokens first ];
@@ -156,7 +156,7 @@ GtLudoGame >> gtSquaresFor: aView [
 	<gtView>
 	^ aView columnedList
 		  title: 'Squares';
-		  priority: 20;
+		  priority: 30;
 		  items: [ self squares ];
 		  column: 'Index'
 		  text: [ :eachItem :eachIndex | 
