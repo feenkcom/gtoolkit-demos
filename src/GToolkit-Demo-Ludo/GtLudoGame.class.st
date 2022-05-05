@@ -32,6 +32,11 @@ GtLudoGame >> asElement [
 	^ GtLudoGameElement for: self
 ]
 
+{ #category : #'gt - extensions' }
+GtLudoGame >> boardElement [
+	^ GtLudoBoardElement for: self
+]
+
 { #category : #playing }
 GtLudoGame >> computeTargetFor: aToken [
 

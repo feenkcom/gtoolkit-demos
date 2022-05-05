@@ -56,15 +56,13 @@ GtLudoGameElement >> initialize [
 
 { #category : #initialization }
 GtLudoGameElement >> initializeFor: aGame [
-	| board |
 	game := aGame.
 	self
 		constraintsDo:
 			[ :c | 
 			c vertical fitContent.
 			c horizontal fitContent ].
-	board := GtLudoBoardElement for: aGame.
-	self addChild: board.
+	self addChild: aGame boardElement.
 	self addChild: self feedbackElement.
 	
 		self onFeedbackUpdate.

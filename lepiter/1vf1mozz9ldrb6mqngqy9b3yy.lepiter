@@ -473,14 +473,14 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2022-05-04T17:15:13.645975+02:00"
+									"dateAndTimeString" : "2022-05-05T16:23:40.641343+02:00"
 								}
 							},
 							"uid" : {
 								"__type" : "uid",
 								"uidString" : "oPei0JKaDQCah6p4C+uhHw=="
 							},
-							"code" : "token := move token.\rboardElement := token player game board asElement.\r(boardElement children select: [ :each | \r\t (each isKindOf: GtLudoSquareElement) and: [ \r\t\t each square token = token ] ]) do: #highlight.\rboardElement"
+							"code" : "token := move token.\rboardElement := token player game boardElement.\r(boardElement children select: [ :each | \r\t (each isKindOf: GtLudoSquareElement) and: [ \r\t\t each square token = token ] ]) do: #highlight.\rboardElement"
 						},
 						{
 							"__type" : "pharoSnippet",
@@ -541,7 +541,7 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2022-05-04T17:16:52.077672+02:00"
+									"dateAndTimeString" : "2022-05-05T16:20:07.168242+02:00"
 								}
 							},
 							"uid" : {
@@ -551,7 +551,7 @@
 							"paragraphStyle" : {
 								"__type" : "textStyle"
 							},
-							"string" : "**TODO:** break apart the BoardElement GUI to separate out the feedback part (only needed for the game)."
+							"string" : ""
 						},
 						{
 							"__type" : "textSnippet",
