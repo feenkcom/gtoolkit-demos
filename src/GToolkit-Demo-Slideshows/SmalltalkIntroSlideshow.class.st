@@ -28,14 +28,16 @@ SmalltalkIntroSlideshow >> addTargetCircleFor: aTarget named: aSymbol [
 { #category : #slides }
 SmalltalkIntroSlideshow >> bouncingAtoms: aSlide [
 	<gtSlide>
-	^ aSlide lepiterPage
-		  priority: (self priorityFor: #bouncingAtoms:);
-		  pageNamed: 'Changing a running system on the fly' from: self dbName;
-		  yourself
+	
+	^ (aSlide lepiterPage)
+		priority: (self priorityFor: #bouncingAtoms:);
+		pageNamed: 'Changing a running system on the fly' from: self gtBook;
+		yourself
 ]
 
 { #category : #accessing }
 SmalltalkIntroSlideshow >> dbName [
+	self deprecated: 'Don''t use this database anymore'.
 	^ 'feenkcom/gtoolkit-demos/lepiter'
 ]
 
@@ -44,7 +46,7 @@ SmalltalkIntroSlideshow >> everythingHappensBySendingMessages: aSlide [
 	<gtSlide>
 	^ aSlide lepiterPage
 		  priority: (self priorityFor: #everythingHappensBySendingMessages:);
-		  pageNamed: 'Everything happens by sending messages' from: self dbName
+		  pageNamed: 'Everything happens by sending messages' from: self gtBook
 ]
 
 { #category : #slides }
@@ -52,7 +54,7 @@ SmalltalkIntroSlideshow >> everythingIsAnObject: aSlide [
 	<gtSlide>
 	^ aSlide lepiterPage
 		  priority: (self priorityFor: #everythingIsAnObject:);
-		  pageNamed: 'Everything is an object' from: self dbName
+		  pageNamed: 'Everything is an object' from: self gtBook
 ]
 
 { #category : #accessing }
@@ -62,6 +64,11 @@ SmalltalkIntroSlideshow >> findTargetWithText: aText in: expandedMethodElement [
 			  (aChild isKindOf: BrTextElementWithCursors) and: [ 
 				  aChild text asString = aText asString ] ]
 		  ifFound: [ :aChild | aChild ]
+]
+
+{ #category : #slides }
+SmalltalkIntroSlideshow >> gtBook [
+	^ 'Glamorous Toolkit Book'
 ]
 
 { #category : #slides }
@@ -98,14 +105,6 @@ Changes to classes and methods are logged as you program.' asRopedText
 { #category : #accessing }
 SmalltalkIntroSlideshow >> imageDirectory [
 	^ 'feenkcom/gtoolkit-demos/images/'
-]
-
-{ #category : #slides }
-SmalltalkIntroSlideshow >> messages: aSlide [
-	<gtSlide>
-	^ aSlide lepiterPage
-		  priority: (self priorityFor: #messages:);
-		  pageNamed: 'Three kinds of messages' from: self dbName
 ]
 
 { #category : #accessing }
@@ -161,10 +160,9 @@ SmalltalkIntroSlideshow >> priorities [
 		everythingIsAnObject:
 		everythingHappensBySendingMessages:
 		syntax:
-		messages:
+		threeKindsOfMessages:
 		methodSyntax:
 		bouncingAtoms:
-		scriptingInThePlayground:
 		programmingClassesAndMethods:
 		)
 ]
@@ -177,17 +175,9 @@ SmalltalkIntroSlideshow >> priorityFor: aSlideMethodSelector [
 { #category : #slides }
 SmalltalkIntroSlideshow >> programmingClassesAndMethods: aSlide [
 	<gtSlide>
-	^ aSlide lepiterPage
-		  priority: (self priorityFor: #programmingClassesAndMethods:);
-		  pageNamed: 'Programming Classes and Methods' from: self dbName
-]
-
-{ #category : #slides }
-SmalltalkIntroSlideshow >> scriptingInThePlayground: aSlide [
-	<gtSlide>
-	^ aSlide lepiterPage
-		  priority: (self priorityFor: #scriptingInThePlayground:);
-		  pageNamed: 'Scripting in the Playground' from: self dbName
+	^ (aSlide lepiterPage)
+		priority: (self priorityFor: #programmingClassesAndMethods:);
+		pageNamed: 'Programming Classes and Methods' from: self gtBook
 ]
 
 { #category : #accessing }
@@ -214,7 +204,15 @@ SmalltalkIntroSlideshow >> syntax: aSlide [
 	<gtSlide>
 	^ aSlide lepiterPage
 		  priority: (self priorityFor: #syntax:);
-		  pageNamed: 'Smalltalk Syntax (the funny bits)' from: self dbName
+		  pageNamed: 'Smalltalk Syntax (the funny bits)' from: self gtBook
+]
+
+{ #category : #slides }
+SmalltalkIntroSlideshow >> threeKindsOfMessages: aSlide [
+	<gtSlide>
+	^ aSlide lepiterPage
+		  priority: (self priorityFor: #threeKindsOfMessages:);
+		  pageNamed: 'Three kinds of messages' from: self gtBook
 ]
 
 { #category : #accessing }
