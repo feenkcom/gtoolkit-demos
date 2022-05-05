@@ -1,7 +1,5 @@
 "
-I contain all the pieces that represent the game state and that need to be rendered, namely Squares, Players, and indirectly through the players, their Tokens.
-
-I don't manage the game logic, which is in LudoGame.
+I keep track of the Ludo game board, and manage the logic of the moves.
 "
 Class {
 	#name : #GtLudoGame,
@@ -135,15 +133,17 @@ GtLudoGame >> goalSquares [
 { #category : #'gt - extensions' }
 GtLudoGame >> gtPlayersFor: aView [
 	<gtView>
-	^ aView columnedList
-		  title: 'Players';
-		  priority: 20;
-		  items: [ self players ];
-		  column: 'Player' text: [ :player | player ];
-		  column: 'Token' text: [ :player | player tokens first ];
-		  column: 'State' text: [ :player | player tokens first state ];
-		  column: 'Token' text: [ :player | player tokens second ];
-		  column: 'State' text: [ :player | player tokens second state ]
+	
+	^ (aView columnedList)
+		title: 'Players';
+		priority: 20;
+		items: [ self players ];
+		column: 'Player' text: [ :player | player ];
+		column: 'Token' text: [ :player | player tokens first ];
+		column: 'State' text: [ :player | player tokens first state ];
+		column: 'Token' text: [ :player | player tokens second ];
+		column: 'State' text: [ :player | player tokens second state ];
+		updateWhen: GtLudoGameUpdated in: self announcer
 ]
 
 { #category : #'gt - extensions' }
@@ -157,7 +157,6 @@ GtLudoGame >> gtPositionsFor: aView [
 
 { #category : #'gt - extensions' }
 GtLudoGame >> gtSquaresFor: aView [
-
 	<gtView>
 	^ aView columnedList
 		  title: 'Squares';
@@ -171,7 +170,8 @@ GtLudoGame >> gtSquaresFor: aView [
 		  column: 'State' text: [ :square | 
 			  square notEmpty
 				  ifTrue: [ square token state ]
-				  ifFalse: [ '' ] ]
+				  ifFalse: [ '' ] ];
+		updateWhen: GtLudoGameUpdated in: self announcer
 ]
 
 { #category : #moving }
@@ -285,7 +285,8 @@ GtLudoGame >> move: aTokenName [
 
 	self die topFace = 6 ifFalse: [ self nextPlayer ].
 	needToRollDie := true.
-	self feedback: self gameState
+	self feedback: self gameState.
+	self notifyGameUpdated
 ]
 
 { #category : #accessing }
@@ -297,6 +298,11 @@ GtLudoGame >> nextPlayer [
 { #category : #announcements }
 GtLudoGame >> notifyFeedbackUpdated [
 	self announcer announce: GtLudoBoardFeedbackUpdated new
+]
+
+{ #category : #playing }
+GtLudoGame >> notifyGameUpdated [
+	self announcer announce: GtLudoGameUpdated new
 ]
 
 { #category : #announcements }

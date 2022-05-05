@@ -9,6 +9,11 @@ Class {
 }
 
 { #category : #accessing }
+GtLudoMove >> roll [
+	^ roll
+]
+
+{ #category : #accessing }
 GtLudoMove >> roll: aNumber [
 	self assert: ((1 to: 6) includes: aNumber) description: 'Number must be a valid die roll from 1 to 6'.
 	roll := aNumber
