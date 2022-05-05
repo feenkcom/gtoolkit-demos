@@ -8,6 +8,14 @@ Class {
 	#category : #'GToolkit-Demo-Ludo-Model'
 }
 
+{ #category : #'instance creation' }
+GtLudoMove class >> forRoll: aNumber tokenName: aString inGame: aGame [
+	^ (self new)
+		roll: aNumber;
+		token: (aGame tokenNamed: aString);
+		yourself
+]
+
 { #category : #accessing }
 GtLudoMove >> roll [
 	^ roll
