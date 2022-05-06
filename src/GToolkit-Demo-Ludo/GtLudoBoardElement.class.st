@@ -7,7 +7,8 @@ Class {
 	#superclass : #BlElement,
 	#instVars : [
 		'feedbackLabel',
-		'game'
+		'game',
+		'squares'
 	],
 	#category : #'GToolkit-Demo-Ludo-UI'
 }
@@ -46,7 +47,8 @@ GtLudoBoardElement >> addSquare: aSquare at: aPoint [
 	squareElement := GtLudoSquareElement for: aSquare.
 	squareElement when: BlDoubleClickEvent do: [ :e | aSquare signalMoveToken ].
 	"squareElement when: BlClickEvent do: [ :e | e target phlow spawnObject: aSquare ]."
-	self addElement: squareElement at: aPoint
+	self addElement: squareElement at: aPoint.
+	squares add: squareElement
 ]
 
 { #category : #constants }
@@ -95,6 +97,7 @@ GtLudoBoardElement >> initialize [
 { #category : #initialization }
 GtLudoBoardElement >> initializeFor: aGame [
 	game := aGame.
+	squares := OrderedCollection new.
 	self assert: aGame squares size equals: self numberOfSquares.
 	aGame startSquares withIndexDo: [ :square :n | self addSquare: square at: (self startSquarePositions at: n) ].
 	aGame squares withIndexDo: [ :square :n | self addSquare: square at: (self playPositions at: n) ].
@@ -133,6 +136,11 @@ GtLudoBoardElement >> playerAPositions [
 		5 @ 2.
 		5 @ 1.
 		6 @ 1}
+]
+
+{ #category : #accessing }
+GtLudoBoardElement >> squares [
+	^ squares
 ]
 
 { #category : #constants }

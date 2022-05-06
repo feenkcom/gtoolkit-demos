@@ -18,9 +18,22 @@ GtLudoGameMove >> game [
 GtLudoGameMove >> gtTokenMovesFor: aView [
 
 	<gtView>
-	^ aView list
+	^ aView columnedList
 		  title: 'Token Moves';
-		  items: [ tokenMoves ]
+		  items: [ tokenMoves ];
+		  column: 'Token' text: #token;
+		  column: 'From Square' text: #fromSquare;
+		  column: 'To Square' text: #toSquare
+]
+
+{ #category : #accessing }
+GtLudoGameMove >> highlightedBoardElement [
+
+	| boardElement arc toSquareElement fromSquareElement |
+	boardElement := token game boardElement.
+	tokenMoves do: [ :tokenMove | 
+		tokenMove highlightBoardElement: boardElement ].
+	^ boardElement
 ]
 
 { #category : #accessing }
@@ -83,6 +96,16 @@ GtLudoGameMove >> move [
 	self game requireDieRoll.
 	self game feedback: self game gameState.
 	self game notifyGameUpdated
+]
+
+{ #category : #accessing }
+GtLudoGameMove >> moveOnBoardFor: aView [
+	<gtView>
+	
+	^ (aView explicit)
+		title: 'Move';
+		priority: 10;
+		stencil: [ self highlightedBoardElement ]
 ]
 
 { #category : #accessing }

@@ -95,6 +95,26 @@ GtLudoSquare >> isEmpty [
 	^  self token isBlank
 ]
 
+{ #category : #testing }
+GtLudoSquare >> isGoal [
+	^ self kind = #goal
+]
+
+{ #category : #testing }
+GtLudoSquare >> isInitial [ 
+	^ self kind = #initial
+]
+
+{ #category : #testing }
+GtLudoSquare >> isPlay [
+	^ self kind = #play
+]
+
+{ #category : #testing }
+GtLudoSquare >> isStart [
+	^ self kind = #start
+]
+
 { #category : #accessing }
 GtLudoSquare >> kind [
 	^ kind

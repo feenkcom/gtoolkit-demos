@@ -10,16 +10,44 @@ Class {
 }
 
 { #category : #accessing }
+GtLudoTokenMove >> fromSquare [
+	^ fromSquare
+]
+
+{ #category : #accessing }
 GtLudoTokenMove >> fromSquare: aSquare [
 	fromSquare := aSquare
 ]
 
 { #category : #accessing }
+GtLudoTokenMove >> highlightBoardElement: aBoardElement [
+
+	| toSquareElement fromSquareElement arc |
+	fromSquareElement := aBoardElement squares detect: [ :each | 
+		                     each square = fromSquare ].
+	toSquareElement := aBoardElement squares detect: [ :each | 
+		                   each square = toSquare ].
+	fromSquareElement highlight.
+	toSquareElement highlight.
+	arc := BlParabollaArcElement new
+		        border: (BlBorder paint: (Color blue alpha: 0.5) width: 2);
+		        toHead: (BlArrowheadSimpleArrow new border:
+					         (BlBorder paint: (Color blue alpha: 0.5) width: 2)).
+	arc constraints ignoreByLayout.
+	arc
+		fromAnchor: (BlElementCenterAnchor element: fromSquareElement);
+		toAnchor: (BlElementCenterAnchor element: toSquareElement).
+	arc zIndex: 10.
+	aBoardElement addChild: arc.
+	^ aBoardElement
+]
+
+{ #category : #accessing }
 GtLudoTokenMove >> highlightedBoardElement [
-	| boardElement |
+
+	| boardElement  |
 	boardElement := token game boardElement.
-	(boardElement children select: [ :each | (each isKindOf: GtLudoSquareElement) and: [ each square = fromSquare or: [each square = toSquare] ] ])
-		do: #highlight.
+	self highlightBoardElement: boardElement.
 	^ boardElement
 ]
 
@@ -34,8 +62,18 @@ GtLudoTokenMove >> moveOnBoardFor: aView [
 ]
 
 { #category : #accessing }
+GtLudoTokenMove >> toSquare [
+	^ toSquare
+]
+
+{ #category : #accessing }
 GtLudoTokenMove >> toSquare: aSquare [
 	toSquare := aSquare
+]
+
+{ #category : #accessing }
+GtLudoTokenMove >> token [
+	^ token
 ]
 
 { #category : #accessing }
