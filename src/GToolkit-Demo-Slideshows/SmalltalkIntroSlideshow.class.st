@@ -203,6 +203,7 @@ SmalltalkIntroSlideshow >> pages [
 		exploringLudo:
 		addingAutoPlay:
 		composingExamples:
+		whatsNext:
 		"bouncingAtoms:"
 		"programmingClassesAndMethods:"
 		)
@@ -292,6 +293,16 @@ SmalltalkIntroSlideshow >> twoRules: aSlide [
 
 2. Everything happens by sending messages
 '
+]
+
+{ #category : #slides }
+SmalltalkIntroSlideshow >> whatsNext: aSlide [
+	<gtSlide>
+	
+	^ (aSlide lepiterPage)
+		priority: (self priorityFor: #whatsNext:);
+		pageNamed: 'What''s next?' from: self gtBook;
+		yourself
 ]
 
 { #category : #slides }
