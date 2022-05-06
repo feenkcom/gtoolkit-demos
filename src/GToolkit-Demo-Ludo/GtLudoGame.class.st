@@ -54,7 +54,8 @@ GtLudoGame >> boardElement [
 { #category : #playing }
 GtLudoGame >> computeTargetFor: aToken [
 
-	"There are 3 cases for the target square."
+	"Given a token to move, determine which square it should move to.
+	There are 3 cases for the target square."
 
 	| route targetIndex |
 	route := self currentRoute.

@@ -103,6 +103,18 @@ Changes to classes and methods are logged as you program.' asRopedText
 ]
 
 { #category : #accessing }
+SmalltalkIntroSlideshow >> ludoAppetizer: aSlide [
+	<gtSlide>
+	^ aSlide textAndElement
+		  elementWeight: 0.5;
+		  priority: (self priorityFor: #ludoAppetizer:);
+		  newTextWithFormat: ('Appetizer: the Ludo game as a Smalltalk object.' asRopedText
+				   glamorousRegularFont;
+				   fontSize: 30);
+		  element: [ GtLudoGame new asElement asScalableElement ]
+]
+
+{ #category : #accessing }
 SmalltalkIntroSlideshow >> methodSyntax: aSlide [
 
 	"Methods start with a declaration of the message selector and arguments. Temporaries must be declared. Statements are separate by periods. The caret (^) is special syntax for returning a result."
@@ -147,6 +159,7 @@ SmalltalkIntroSlideshow >> pages [
 	<gtExample>
 	^ #( 
 		titleSlideFor:
+		ludoAppetizer:
 		outline:
 		smalltalk80:
 		gtWorld:
