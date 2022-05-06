@@ -52,6 +52,17 @@ GtLudoSquare >> game: aGame [
 	game := aGame
 ]
 
+{ #category : #accessing }
+GtLudoSquare >> gtDisplayOn: stream [
+
+	stream
+		nextPutAll: 'Square';
+		space;
+		nextPutAll: self kind;
+		space;
+		nextPutAll: self token name
+]
+
 { #category : #'gt - extensions' }
 GtLudoSquare >> gtPositionsFor: aView [
 	<gtView>
@@ -103,11 +114,6 @@ GtLudoSquare >> notEmpty [
 { #category : #announcements }
 GtLudoSquare >> notifyUpdated [
 	self announcer announce: GtLudoSquareUpdated new
-]
-
-{ #category : #printing }
-GtLudoSquare >> printOn: aStream [
-	aStream nextPutAll: self token name
 ]
 
 { #category : #accessing }

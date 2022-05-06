@@ -27,15 +27,33 @@ GtLudoRecordingGame >> gtMovesFor: aView [
 ]
 
 { #category : #accessing }
+GtLudoRecordingGame >> gtTokensFor: aView [
+	<gtView>
+	^ aView columnedList 
+		title: 'Tokens';
+		priority: 40;
+		items: [ self players flatCollect: #tokens ];
+		column: 'Token' text: [:t | t name ];
+		column: 'State' text: [:t | t state ]
+]
+
+{ #category : #accessing }
 GtLudoRecordingGame >> initialize [
 	super initialize.
 	moves := OrderedCollection new
 ]
 
 { #category : #playing }
-GtLudoRecordingGame >> move: aTokenName [
-	super move: aTokenName.
-	self recordMove: aTokenName
+GtLudoRecordingGame >> moveTokenNamed: aTokenName [
+
+	| move |
+	move := GtLudoGameMove new
+		        roll: self die topFace;
+		        token: (self tokenNamed: aTokenName);
+		        yourself.
+	moves addLast: move.
+	self notifyMoveRecorded.
+	^ move move
 ]
 
 { #category : #accessing }
@@ -49,12 +67,6 @@ GtLudoRecordingGame >> notifyMoveRecorded [
 ]
 
 { #category : #playing }
-GtLudoRecordingGame >> playMove: aMove [
-	self roll: aMove roll.
-	self move: aMove token name
-]
-
-{ #category : #playing }
 GtLudoRecordingGame >> playMoves: aMoveCollection [
 	aMoveCollection do: #playMove
 ]
@@ -62,10 +74,11 @@ GtLudoRecordingGame >> playMoves: aMoveCollection [
 { #category : #playing }
 GtLudoRecordingGame >> recordMove: aTokenName [
 	| move |
-	move := (GtLudoMove new)
+	move := (GtLudoGameMove new)
 		roll: self die topFace;
 		token: (self tokenNamed: aTokenName);
 		yourself.
 	moves addLast: move.
-	self notifyMoveRecorded
+	self notifyMoveRecorded.
+	^ move
 ]

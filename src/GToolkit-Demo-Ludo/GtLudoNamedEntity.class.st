@@ -22,6 +22,11 @@ GtLudoNamedEntity >> defaultName [
 	^ 'undefined'
 ]
 
+{ #category : #printing }
+GtLudoNamedEntity >> gtDisplayOn: aStream [
+	aStream nextPutAll: self name
+]
+
 { #category : #initialization }
 GtLudoNamedEntity >> initialize [
 	super initialize.
@@ -36,9 +41,4 @@ GtLudoNamedEntity >> name [
 { #category : #accessing }
 GtLudoNamedEntity >> name: aStringOrChar [
 	name := aStringOrChar asString
-]
-
-{ #category : #printing }
-GtLudoNamedEntity >> printOn: aStream [
-	aStream nextPutAll: self name
 ]
