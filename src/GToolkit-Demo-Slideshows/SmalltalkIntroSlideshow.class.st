@@ -26,8 +26,18 @@ SmalltalkIntroSlideshow >> addTargetCircleFor: aTarget named: aSymbol [
 ]
 
 { #category : #slides }
-SmalltalkIntroSlideshow >> bouncingAtoms: aSlide [
+SmalltalkIntroSlideshow >> addingAutoPlay: aSlide [
 	<gtSlide>
+	
+	^ (aSlide lepiterPage)
+		priority: (self priorityFor: #addingAutoPlay:);
+		pageNamed: 'Changing a running system' from: self gtBook;
+		yourself
+]
+
+{ #category : #slides }
+SmalltalkIntroSlideshow >> bouncingAtoms: aSlide [
+	"<gtSlide>"
 	
 	^ (aSlide lepiterPage)
 		priority: (self priorityFor: #bouncingAtoms:);
@@ -55,6 +65,16 @@ SmalltalkIntroSlideshow >> everythingIsAnObject: aSlide [
 	^ aSlide lepiterPage
 		  priority: (self priorityFor: #everythingIsAnObject:);
 		  pageNamed: 'Everything is an object' from: self gtBook
+]
+
+{ #category : #slides }
+SmalltalkIntroSlideshow >> exploringLudo: aSlide [
+	<gtSlide>
+	
+	^ (aSlide lepiterPage)
+		priority: (self priorityFor: #exploringLudo:);
+		pageNamed: 'Exploring a live system' from: self gtBook;
+		yourself
 ]
 
 { #category : #accessing }
@@ -170,8 +190,10 @@ SmalltalkIntroSlideshow >> pages [
 		syntax:
 		threeKindsOfMessages:
 		methodSyntax:
-		bouncingAtoms:
-		programmingClassesAndMethods:
+		exploringLudo:
+		addingAutoPlay:
+		"bouncingAtoms:"
+		"programmingClassesAndMethods:"
 		)
 ]
 
@@ -187,7 +209,7 @@ SmalltalkIntroSlideshow >> priorityFor: aSlideMethodSelector [
 
 { #category : #slides }
 SmalltalkIntroSlideshow >> programmingClassesAndMethods: aSlide [
-	<gtSlide>
+	"<gtSlide>"
 	^ (aSlide lepiterPage)
 		priority: (self priorityFor: #programmingClassesAndMethods:);
 		pageNamed: 'Programming Classes and Methods' from: self gtBook
