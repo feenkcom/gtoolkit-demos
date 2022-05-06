@@ -4,20 +4,6 @@ Class {
 	#category : #BaselineOfGToolkitDemos
 }
 
-{ #category : #accessing }
-BaselineOfGToolkitDemos class >> loadLepiter [
-	"BaselineOfGToolkitDemos loadLepiter"
-	| currentProperties registry |
-	registry := self class environment at: #LeDatabasesRegistry.
-	currentProperties := registry defaultLogicalDatabase
-		                     properties.
-	currentProperties addRegisteredDirectory:
-		FileLocator imageDirectory / 'pharo-local' / 'iceberg' / 'feenkcom'
-		/ 'gtoolkit-demos' / 'lepiter'.
-
-	registry default defaultLogicalDatabase reload
-]
-
 { #category : #baseline }
 BaselineOfGToolkitDemos >> baseline: spec [
 
