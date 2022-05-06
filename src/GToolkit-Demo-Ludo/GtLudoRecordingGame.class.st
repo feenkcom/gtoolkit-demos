@@ -75,3 +75,23 @@ GtLudoRecordingGame >> recordMove: aToken [
 	self notifyMoveRecorded.
 	^ move
 ]
+
+{ #category : #printing }
+GtLudoRecordingGame >> storeOn: aStream [
+	aStream
+		nextPutAll: '(';
+		nextPutAll: self class name;
+		nextPutAll: ' new'.
+	self moves
+		do:
+			[ :move | 
+			aStream
+				nextPutAll: ' roll: ';
+				nextPutAll: move roll asString;
+				nextPutAll: ';'.
+			aStream
+				nextPutAll: ' moveTokenNamed: ''';
+				nextPutAll: move token name;
+				nextPutAll: ''';' ].
+	aStream nextPutAll: ' yourself)'
+]
