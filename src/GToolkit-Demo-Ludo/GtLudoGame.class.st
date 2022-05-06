@@ -30,6 +30,22 @@ GtLudoGame >> asElement [
 	^ GtLudoGameElement for: self
 ]
 
+{ #category : #playing }
+GtLudoGame >> autoPlay: numberOfMoves [
+	self assert: numberOfMoves > 0.
+	1
+		to: numberOfMoves
+		do:
+			[ :n | 
+			| tokens |
+			self isOver ifTrue: [ ^ self ].
+			self playerToRoll ifTrue: [ self die roll ].
+			self playerToMove
+				ifTrue:
+					[ tokens := self tokensToMove.
+					tokens notEmpty ifTrue: [ self privateMove: tokens atRandom ] ] ]
+]
+
 { #category : #'gt - extensions' }
 GtLudoGame >> boardElement [
 	^ GtLudoBoardElement for: self
@@ -371,7 +387,7 @@ GtLudoGame >> roll: aValue [
 { #category : #accessing }
 GtLudoGame >> routeFor: aPlayer [
 
-	"Cache these?"
+	<todo: 'Introduce a cache'>
 
 	| route playerNumber first |
 	route := OrderedCollection new.
@@ -447,7 +463,7 @@ GtLudoGame >> tokensToMove [
 		self currentPlayer startTokens notEmpty ifTrue: [ 
 			^ self currentPlayer startTokens asSet ] ].
 
-	"If we are close to the goal, butcannot reach it, what happens?"
+	"If we are close to the goal, but cannot reach it, what happens?"
 			
 	^ self currentPlayer playTokens
 ]

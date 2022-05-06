@@ -43,19 +43,6 @@ GtLudoRecordingGame >> initialize [
 	moves := OrderedCollection new
 ]
 
-{ #category : #playing }
-GtLudoRecordingGame >> moveTokenNamed: aTokenName [
-
-	| move |
-	move := GtLudoGameMove new
-		        roll: self die topFace;
-		        token: (self tokenNamed: aTokenName);
-		        yourself.
-	moves addLast: move.
-	self notifyMoveRecorded.
-	^ move move
-]
-
 { #category : #accessing }
 GtLudoRecordingGame >> moves [
 	^ moves
@@ -71,12 +58,18 @@ GtLudoRecordingGame >> playMoves: aMoveCollection [
 	aMoveCollection do: #playMove
 ]
 
+{ #category : #playingg }
+GtLudoRecordingGame >> privateMove: aToken [
+	super privateMove: aToken.
+	self recordMove: aToken
+]
+
 { #category : #playing }
-GtLudoRecordingGame >> recordMove: aTokenName [
+GtLudoRecordingGame >> recordMove: aToken [
 	| move |
 	move := (GtLudoGameMove new)
 		roll: self die topFace;
-		token: (self tokenNamed: aTokenName);
+		token: aToken;
 		yourself.
 	moves addLast: move.
 	self notifyMoveRecorded.
