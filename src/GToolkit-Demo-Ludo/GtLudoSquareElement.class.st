@@ -76,7 +76,7 @@ GtLudoSquareElement >> onUpdate [
 	self
 		addChild:
 			((BrLabel new)
-				text: self square printString;
+				text: self square token name;
 				aptitude:
 						((BrGlamorousLabelAptitude new)
 								foreground: Color black;

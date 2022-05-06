@@ -199,7 +199,7 @@ GtLudoGame >> initialize [
 	self squares , self startSquares do: [ :square | 
 		square announcer
 			when: GtLudoSquareSignalTokenMove
-			do: [ :announcement | self move: announcement token name ] ].
+			do: [ :announcement | self privateMove: announcement token ] ].
 	playerQueue := self players copy.
 	playerQueue do: [ :each | each game: self ].
 	needToRollDie := true.
@@ -254,39 +254,8 @@ GtLudoGame >> isOver [
 ]
 
 { #category : #playing }
-GtLudoGame >> move: aTokenName [
-	| token targetSquare |
-	self assert: self playerToMove description: 'Roll the die first!'.
-	token := self tokenNamed: aTokenName.
-	self assert: token player = self currentPlayer description: 'Token ', token name, ' does not belong to current player ', self currentPlayer name.
-
-	"We first compute the target square, and then decide what to do."
-	targetSquare := self computeTargetFor: token.
-
-	"If the target square is occupied, either:
-	(a) ifthe token belongs to another player, that token is sent back to its start state and we land there
-	(b) if the token belongs to the same player, then we try to land on the next square (again two cases).
-	In case (b) we must iterate, and if no squares are left, we fall back to the current square."
-	[ targetSquare notEmpty and: [ targetSquare ~= token square ] ] 
-		whileTrue: [ 
-			targetSquare token player = token player
-				ifTrue: [ 
-					| route targetIndex |
-					route := self currentRoute.
-					targetIndex := (route indexOf: targetSquare) + 1.
-					targetIndex <= route size
-						ifTrue: [ targetSquare := route at: targetIndex ]
-						ifFalse: [ targetSquare := token square ] ]
-				ifFalse: [ self sendToStart:targetSquare token  ] ].
-
-	token goToSquare: targetSquare.
-
-	"At the end, we switch to the next player unless we rolled a 6."
-
-	self die topFace = 6 ifFalse: [ self nextPlayer ].
-	needToRollDie := true.
-	self feedback: self gameState.
-	self notifyGameUpdated
+GtLudoGame >> moveTokenNamed: aTokenName [
+	self privateMove: (self tokenNamed: aTokenName)
 ]
 
 { #category : #accessing }
@@ -353,6 +322,46 @@ GtLudoGame >> positionOfTokenNamed: aString [
 	^ self positionOfToken: (self tokenNamed: aString)
 ]
 
+{ #category : #playing }
+GtLudoGame >> privateMove: aToken [
+	| targetSquare |
+	self assert: self playerToMove description: 'Roll the die first!'.
+	self assert: aToken player = self currentPlayer description: 'Token ', aToken name, ' does not belong to current player ', self currentPlayer name.
+
+	"We first compute the target square, and then decide what to do."
+	targetSquare := self computeTargetFor: aToken.
+
+	"If the target square is occupied, either:
+	(a) if the token belongs to another player, that token is sent back to its start state and we land there
+	(b) if the token belongs to the same player, then we try to land on the next square (again two cases).
+	In case (b) we must iterate, and if no squares are left, we fall back to the current square."
+	[ targetSquare notEmpty and: [ targetSquare ~= aToken square ] ] 
+		whileTrue: [ 
+			targetSquare token player = aToken player
+				ifTrue: [ 
+					| route targetIndex |
+					route := self currentRoute.
+					targetIndex := (route indexOf: targetSquare) + 1.
+					targetIndex <= route size
+						ifTrue: [ targetSquare := route at: targetIndex ]
+						ifFalse: [ targetSquare := aToken square ] ]
+				ifFalse: [ self sendToStart:targetSquare token  ] ].
+
+	aToken goToSquare: targetSquare.
+
+	"At the end, we switch to the next player unless we rolled a 6."
+
+	self die topFace = 6 ifFalse: [ self nextPlayer ].
+	self requireDieRoll.
+	self feedback: self gameState.
+	self notifyGameUpdated
+]
+
+{ #category : #playing }
+GtLudoGame >> requireDieRoll [
+	needToRollDie := true.
+]
+
 { #category : #'test - support' }
 GtLudoGame >> roll: aValue [
 	"For testing only -- set the value rolled."
@@ -380,8 +389,11 @@ GtLudoGame >> routeFor: aPlayer [
 
 { #category : #playing }
 GtLudoGame >> sendToStart: aToken [
-	aToken goToSquare:
-		((self startSquaresFor: aToken player) detect: #isEmpty)
+
+	| targetSquare |
+	targetSquare := (self startSquaresFor: aToken player) detect: #isEmpty.
+	aToken goToSquare: targetSquare.
+	^ targetSquare
 ]
 
 { #category : #playing }

@@ -11,9 +11,9 @@ GtLudoGameExamples >> bEntersAndPlaysWithAahead [
 	| game |
 	game := self playerBentersWithTokenAahead.
 	game roll: 6.
-	game move: 'B'.
+	game moveTokenNamed: 'B'.
 	game roll: 1.
-	game move: 'B'.
+	game moveTokenNamed: 'B'.
 	self assert: (game positionOfTokenNamed: 'B') equals: 12.
 	self assert: game currentPlayer name equals: 'C'.
 	self assert: (game tokenNamed: 'A') isInStartState.
@@ -28,7 +28,7 @@ GtLudoGameExamples >> bEntersPlayWithAonStartSquare [
 	game := self bToPlayWithAonStartSquare.
 	self assert: (game tokenNamed: 'A') isInPlay.
 	game roll: 6.
-	game move: 'B'.
+	game moveTokenNamed: 'B'.
 	self assert: (game positionOfTokenNamed: 'B') equals: 11.
 	self assert: game currentPlayer name equals: 'B'.
 	self assert: (game tokenNamed: 'A') isInStartState.
@@ -42,9 +42,9 @@ GtLudoGameExamples >> bToPlayWithAonStartSquare [
 	| game |
 	game := self playerAentersTokenA.
 	game roll: 6.
-	game move: 'A'.
+	game moveTokenNamed: 'A'.
 	game roll: 4.
-	game move: 'A'.
+	game moveTokenNamed: 'A'.
 	self assert: (game positionOfTokenNamed: 'A') equals: 11.
 	self assert: game currentPlayer name equals: 'B'.
 	^ game
@@ -76,17 +76,17 @@ GtLudoGameExamples >> playerAarrivesCloseToGoal [
 	self assert: (game positionOfTokenNamed: 'A') equals: 1.
 	self assert: (game positionOfTokenNamed: 'a') equals: 2.
 	game roll: 6.
-	game move: 'a'.
+	game moveTokenNamed: 'a'.
 	game roll: 6.
-	game move: 'a'.
+	game moveTokenNamed: 'a'.
 	game roll: 6.
-	game move: 'a'.
+	game moveTokenNamed: 'a'.
 	game roll: 6.
-	game move: 'a'.
+	game moveTokenNamed: 'a'.
 	game roll: 6.
-	game move: 'a'.
+	game moveTokenNamed: 'a'.
 	game roll: 6.
-	game move: 'a'.
+	game moveTokenNamed: 'a'.
 	self assert: (game positionOfTokenNamed: 'a') equals: 38.
 	^ game
 ]
@@ -99,7 +99,7 @@ GtLudoGameExamples >> playerAenterAndLandsOnTokenA [
 	game := self playerAentersTokenA.
 	self assert: (game positionOfTokenNamed: 'A') equals: 1.
 	game roll: 6.
-	game move: 'a'.
+	game moveTokenNamed: 'a'.
 	self assert: (game positionOfTokenNamed: 'A') equals: 1.
 	self assert: (game positionOfTokenNamed: 'a') equals: 2.
 	self assert: game currentPlayer name equals: 'A'.
@@ -117,10 +117,10 @@ GtLudoGameExamples >> playerAentersAndLandsOnA [
 	self assert: game currentPlayer name equals: 'A'.
 	self assert: (game positionOfTokenNamed: 'A') equals: 6.
 	game roll: 6.
-	game move: 'a'.
+	game moveTokenNamed: 'a'.
 	self assert: (game positionOfTokenNamed: 'a') equals: 1.
 	game roll: 5.
-	game move: 'a'.
+	game moveTokenNamed: 'a'.
 	self assert: (game positionOfTokenNamed: 'A') equals: 6.
 	self assert: (game positionOfTokenNamed: 'a') equals: 7.
 	^ game
@@ -133,7 +133,7 @@ GtLudoGameExamples >> playerAentersTokenA [
 	<gtExample>
 	| game |
 	game := self playerArolls6.
-	game move: 'A'.
+	game moveTokenNamed: 'A'.
 	self assert: (game positionOfTokenNamed: 'A') equals: 1.
 	self assert: game currentPlayer name equals: 'A'.
 	self assert: game playerToRoll.
@@ -153,7 +153,7 @@ GtLudoGameExamples >> playerAlandsOnFirstGoalSquare [
 	self assert: game currentPlayer name equals: 'A'.
 	self assert: (game positionOfTokenNamed: 'a') equals: 38.
 	game roll: 3.
-	game move: 'a'.
+	game moveTokenNamed: 'a'.
 	self assert: (game tokenNamed: 'a') isInGoalState.
 	^ game
 ]
@@ -169,7 +169,7 @@ GtLudoGameExamples >> playerAlandsOnOccupiedGoalSquare [
 	self assert: game currentPlayer name equals: 'A'.
 	self assert: (game positionOfTokenNamed: 'A') equals: 37.
 	game roll: 4.
-	game move: 'A'.
+	game moveTokenNamed: 'A'.
 	self assert: (game tokenNamed: 'A') isInGoalState.
 	^ game
 ]
@@ -185,7 +185,7 @@ GtLudoGameExamples >> playerAlandsOnOccupiedSecondGoalSquare [
 	self assert: game currentPlayer name equals: 'A'.
 	self assert: (game positionOfTokenNamed: 'A') equals: 37.
 	game roll: 5.
-	game move: 'A'.
+	game moveTokenNamed: 'A'.
 	self assert: (game tokenNamed: 'A') isInPlay.
 	self assert: (game positionOfTokenNamed: 'A') equals: 37.
 	^ game
@@ -200,7 +200,7 @@ GtLudoGameExamples >> playerAlandsOnSecondGoalSquare [
 	self assert: game currentPlayer name equals: 'A'.
 	self assert: (game positionOfTokenNamed: 'a') equals: 38.
 	game roll: 4.
-	game move: 'a'.
+	game moveTokenNamed: 'a'.
 	self assert: (game tokenNamed: 'a') isInGoalState.
 	^ game
 
@@ -217,7 +217,7 @@ GtLudoGameExamples >> playerAmovesTokenA [
 		assert: (game tokensToMove collect: #name) asSet
 		equals: { 'A' } asSet.
 
-	game move: 'A'.
+	game moveTokenNamed: 'A'.
 	self assert: (game positionOfTokenNamed: 'A') equals: 6.
 
 	self assert: game currentPlayer name equals: 'B'.
@@ -237,11 +237,11 @@ GtLudoGameExamples >> playerAmovesTwiceAndLandsOnA [
 	game := self playerAenterAndLandsOnTokenA.
 	self assert: game currentPlayer name equals: 'A'.
 	game roll: 6.
-	game move: 'A'.
+	game moveTokenNamed: 'A'.
 	self assert: (game positionOfTokenNamed: 'a') equals: 2.
 	self assert: (game positionOfTokenNamed: 'A') equals: 7.
 	game roll: 5.
-	game move: 'a'.
+	game moveTokenNamed: 'a'.
 	self assert: (game positionOfTokenNamed: 'a') equals: 8.
 	self assert: game currentPlayer name equals: 'B'.
 	^ game
@@ -258,7 +258,7 @@ GtLudoGameExamples >> playerAovershootsGoal [
 	self assert: game currentPlayer name equals: 'A'.
 	self assert: (game positionOfTokenNamed: 'a') equals: 38.
 	game roll: 5.
-	game move: 'a'.
+	game moveTokenNamed: 'a'.
 	self assert: (game tokenNamed: 'a') isInPlay.
 	self assert: (game positionOfTokenNamed: 'a') equals: 38.
 	^ game
@@ -294,17 +294,17 @@ GtLudoGameExamples >> playerAsecondTokenCloseToGoal [
 	self assert: game currentPlayer name equals: 'A'.
 	self assert: (game positionOfTokenNamed: 'A') equals: 1.
 	game roll: 6.
-	game move: 'A'.
+	game moveTokenNamed: 'A'.
 	game roll: 6.
-	game move: 'A'.
+	game moveTokenNamed: 'A'.
 	game roll: 6.
-	game move: 'A'.
+	game moveTokenNamed: 'A'.
 	game roll: 6.
-	game move: 'A'.
+	game moveTokenNamed: 'A'.
 	game roll: 6.
-	game move: 'A'.
+	game moveTokenNamed: 'A'.
 	game roll: 6.
-	game move: 'A'.
+	game moveTokenNamed: 'A'.
 	self assert: (game positionOfTokenNamed: 'A') equals: 37.
 	^ game
 ]
@@ -324,17 +324,17 @@ GtLudoGameExamples >> playerAsecondTokenCloseToSecondOccupiedGoal [
 	self assert: game currentPlayer name equals: 'A'.
 	self assert: (game positionOfTokenNamed: 'A') equals: 1.
 	game roll: 6.
-	game move: 'A'.
+	game moveTokenNamed: 'A'.
 	game roll: 6.
-	game move: 'A'.
+	game moveTokenNamed: 'A'.
 	game roll: 6.
-	game move: 'A'.
+	game moveTokenNamed: 'A'.
 	game roll: 6.
-	game move: 'A'.
+	game moveTokenNamed: 'A'.
 	game roll: 6.
-	game move: 'A'.
+	game moveTokenNamed: 'A'.
 	game roll: 6.
-	game move: 'A'.
+	game moveTokenNamed: 'A'.
 	self assert: (game positionOfTokenNamed: 'A') equals: 37.
 	^ game
 ]
@@ -346,9 +346,9 @@ GtLudoGameExamples >> playerBentersWithTokenAahead [
 	| game |
 	game := self playerAenterAndLandsOnTokenA.
 	game roll: 6.
-	game move: 'A'.
+	game moveTokenNamed: 'A'.
 	game roll: 5.
-	game move: 'A'.
+	game moveTokenNamed: 'A'.
 	self assert: (game positionOfTokenNamed: 'A') equals: 12.
 	self assert: game currentPlayer name equals: 'B'.
 	^ game
@@ -365,7 +365,7 @@ GtLudoGameExamples >> playerBplaysWithTokensBandAahead [
 	self assert: (game positionOfTokenNamed: 'B') equals: 17.
 	self assert: (game positionOfTokenNamed: 'A') equals: 18.
 	game roll: 5.
-	game move: 'b'.
+	game moveTokenNamed: 'b'.
 	self assert: (game positionOfTokenNamed: 'B') equals: 17.
 	self assert: (game positionOfTokenNamed: 'b') equals: 18.
 	self assert: (game tokenNamed: 'A') isInStartState.
@@ -379,19 +379,19 @@ GtLudoGameExamples >> playerBtoPlayWithTokensBandAahead [
 	| game |
 	game := self playerAentersTokenA.
 	game roll: 6.
-	game move: 'A'.
+	game moveTokenNamed: 'A'.
 	game roll: 6.
-	game move: 'A'.
+	game moveTokenNamed: 'A'.
 	game roll: 5.
-	game move: 'A'.
+	game moveTokenNamed: 'A'.
 	self assert: (game positionOfTokenNamed: 'A') equals: 18.
 	self assert: game currentPlayer name equals: 'B'.
 	game roll: 6.
-	game move: 'B'.	
+	game moveTokenNamed: 'B'.	
 	game roll: 6.
-	game move: 'b'.
+	game moveTokenNamed: 'b'.
 	game roll: 6.
-	game move: 'B'.
+	game moveTokenNamed: 'B'.
 	self assert: (game positionOfTokenNamed: 'B') equals: 17.
 	^ game
 ]
