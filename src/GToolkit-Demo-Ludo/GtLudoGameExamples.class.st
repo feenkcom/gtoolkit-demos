@@ -55,13 +55,18 @@ GtLudoGameExamples >> emptyGame [
 
 	<gtExample>
 	| game |
-	game := GtLudoGame new.
+	game := self gameClass new.
 	self assert: game isOver not.
 	self assert: game winner equals: 'No one'.
 	self assert: game currentPlayer name equals: 'A'.
 	self assert: game playerToRoll.
 	self assert: game playerToMove not.
 	^ game
+]
+
+{ #category : #example }
+GtLudoGameExamples >> gameClass [
+	^ GtLudoGame
 ]
 
 { #category : #accessing }
