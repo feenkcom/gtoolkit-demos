@@ -142,12 +142,7 @@ SmalltalkIntroSlideshow >> outline: aSlide [
 ]
 
 { #category : #accessing }
-SmalltalkIntroSlideshow >> picturesDirectoryPath [
-	^ Path * 'feenkcom' / 'gtoolkit-demos' / 'data' / 'images'
-]
-
-{ #category : #accessing }
-SmalltalkIntroSlideshow >> priorities [
+SmalltalkIntroSlideshow >> pages [
 	"Instead of manually setting priorities, just list the slides in order here."
 	<gtExample>
 	^ #( 
@@ -168,8 +163,13 @@ SmalltalkIntroSlideshow >> priorities [
 ]
 
 { #category : #accessing }
+SmalltalkIntroSlideshow >> picturesDirectoryPath [
+	^ Path * 'feenkcom' / 'gtoolkit-demos' / 'data' / 'images'
+]
+
+{ #category : #accessing }
 SmalltalkIntroSlideshow >> priorityFor: aSlideMethodSelector [
-	^ self priorities indexOf: aSlideMethodSelector
+	^ self pages indexOf: aSlideMethodSelector
 ]
 
 { #category : #slides }
