@@ -45,7 +45,7 @@ GtLudoGameMove >> initialize [
 { #category : #accessing }
 GtLudoGameMove >> move [
 
-	| targetSquare fromSquare fromSquare1 |
+	| targetSquare fromSquare fromSquare1 targetSquare1 |
 	self
 		assert: self game playerToMove
 		description: 'Roll the die first!'.
@@ -82,11 +82,11 @@ GtLudoGameMove >> move [
 							 toSquare: targetSquare). ]
 				ifFalse: [ 
 					fromSquare1 := targetSquare.
-					targetSquare := self game sendToStart: targetSquare token.
+					targetSquare1 := self game sendToStart: targetSquare token.
 					tokenMoves add: (GtLudoTokenMove new
 							 token: self token;
 							 fromSquare: fromSquare1;
-							 toSquare: targetSquare) ] ].
+							 toSquare: targetSquare1) ] ].
 
 	self token goToSquare: targetSquare.
 

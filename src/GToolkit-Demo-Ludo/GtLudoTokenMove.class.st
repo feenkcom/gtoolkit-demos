@@ -30,6 +30,7 @@ GtLudoTokenMove >> highlightBoardElement: aBoardElement [
 	fromSquareElement highlight.
 	toSquareElement highlight.
 	arc := BlParabollaArcElement new
+				curvatureFraction: 0.6;
 		        border: (BlBorder paint: (Color blue alpha: 0.5) width: 2);
 		        toHead: (BlArrowheadSimpleArrow new border:
 					         (BlBorder paint: (Color blue alpha: 0.5) width: 2)).
