@@ -45,6 +45,16 @@ SmalltalkIntroSlideshow >> bouncingAtoms: aSlide [
 		yourself
 ]
 
+{ #category : #slides }
+SmalltalkIntroSlideshow >> composingExamples: aSlide [
+	<gtSlide>
+	
+	^ (aSlide lepiterPage)
+		priority: (self priorityFor: #composingExamples:);
+		pageNamed: 'Composing (Test) Examples' from: self gtBook;
+		yourself
+]
+
 { #category : #accessing }
 SmalltalkIntroSlideshow >> dbName [
 	self deprecated: 'Don''t use this database anymore'.
@@ -192,6 +202,7 @@ SmalltalkIntroSlideshow >> pages [
 		methodSyntax:
 		exploringLudo:
 		addingAutoPlay:
+		composingExamples:
 		"bouncingAtoms:"
 		"programmingClassesAndMethods:"
 		)
