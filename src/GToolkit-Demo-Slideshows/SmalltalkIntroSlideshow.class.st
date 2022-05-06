@@ -46,6 +46,16 @@ SmalltalkIntroSlideshow >> bouncingAtoms: aSlide [
 ]
 
 { #category : #slides }
+SmalltalkIntroSlideshow >> codaRecordingMoves: aSlide [
+	<gtSlide>
+	
+	^ (aSlide lepiterPage)
+		priority: (self priorityFor: #codaRecordingMoves:);
+		pageNamed: 'Coda: recording and visualizing token moves' from: self gtBook;
+		yourself
+]
+
+{ #category : #slides }
 SmalltalkIntroSlideshow >> composingExamples: aSlide [
 	<gtSlide>
 	
@@ -203,6 +213,7 @@ SmalltalkIntroSlideshow >> pages [
 		exploringLudo:
 		addingAutoPlay:
 		composingExamples:
+		codaRecordingMoves:
 		whatsNext:
 		"bouncingAtoms:"
 		"programmingClassesAndMethods:"
