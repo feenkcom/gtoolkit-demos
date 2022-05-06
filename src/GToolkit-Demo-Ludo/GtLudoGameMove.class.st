@@ -32,7 +32,7 @@ GtLudoGameMove >> initialize [
 { #category : #accessing }
 GtLudoGameMove >> move [
 
-	| targetSquare fromSquare |
+	| targetSquare fromSquare fromSquare1 |
 	self
 		assert: self game playerToMove
 		description: 'Roll the die first!'.
@@ -54,10 +54,10 @@ GtLudoGameMove >> move [
 	In case (b) we must iterate, and if no squares are left, we fall back to the current square."
 	[ targetSquare notEmpty and: [ targetSquare ~= self token square ] ] 
 		whileTrue: [ 
+			fromSquare := targetSquare.
 			targetSquare token player = self token player
 				ifTrue: [ 
 					| route targetIndex |
-					fromSquare := self token square.
 					route := self game currentRoute.
 					targetIndex := (route indexOf: targetSquare) + 1.
 					targetIndex <= route size
@@ -66,13 +66,13 @@ GtLudoGameMove >> move [
 					tokenMoves add: (GtLudoTokenMove new
 							 token: self token;
 							 fromSquare: fromSquare;
-							 toSquare: targetSquare) ]
+							 toSquare: targetSquare). ]
 				ifFalse: [ 
-					fromSquare := targetSquare.
+					fromSquare1 := targetSquare.
 					targetSquare := self game sendToStart: targetSquare token.
 					tokenMoves add: (GtLudoTokenMove new
 							 token: self token;
-							 fromSquare: fromSquare;
+							 fromSquare: fromSquare1;
 							 toSquare: targetSquare) ] ].
 
 	self token goToSquare: targetSquare.
