@@ -1,5 +1,5 @@
 Class {
-	#name : #GtLudoDieRolled,
+	#name : #GtLudoGameUpdated,
 	#superclass : #Announcement,
 	#category : #'GToolkit-Demo-Ludo-Announcements'
 }

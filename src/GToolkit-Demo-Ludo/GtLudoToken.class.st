@@ -37,12 +37,39 @@ GtLudoToken >> enterPlayOnSquare: aSquare [
 ]
 
 { #category : #accessing }
+GtLudoToken >> game [
+	^ self player game
+]
+
+{ #category : #accessing }
 GtLudoToken >> goToSquare: aSquare [
+
 	aSquare = self square ifTrue: [ ^ aSquare ].
 	self square ifNotNil: [ self square clear ].
 	square := aSquare.
 	aSquare token: self.
+	aSquare kind = #start ifTrue: [ state := #start ].
+	aSquare kind = #goal ifTrue: [ state := #goal ].
 	^ aSquare
+]
+
+{ #category : #'gt - extensions' }
+GtLudoToken >> gtPositionsFor: aView [
+	<gtView>
+	
+	^ (aView explicit)
+		title: 'Position';
+		priority: 10;
+		stencil: [ self highlightedBoardElement ]
+]
+
+{ #category : #accessing }
+GtLudoToken >> highlightedBoardElement [
+	| boardElement |
+	boardElement := self game boardElement.
+	(boardElement children select: [ :each | (each isKindOf: GtLudoSquareElement) and: [ each square token = self ] ])
+		do: #highlight.
+	^ boardElement
 ]
 
 { #category : #initialization }

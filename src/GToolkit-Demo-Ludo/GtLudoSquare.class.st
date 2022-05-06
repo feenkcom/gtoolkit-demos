@@ -14,10 +14,18 @@ Class {
 	#instVars : [
 		'token',
 		'announcer',
-		'kind'
+		'kind',
+		'game'
 	],
 	#category : #'GToolkit-Demo-Ludo-Model'
 }
+
+{ #category : #initialization }
+GtLudoSquare class >> for: aGame [
+	^ (self new)
+		game: aGame;
+		yourself
+]
 
 { #category : #announcements }
 GtLudoSquare >> announcer [
@@ -34,6 +42,46 @@ GtLudoSquare >> defaultKind [
 	^ #play
 ]
 
+{ #category : #accessing }
+GtLudoSquare >> game [
+	^ game
+]
+
+{ #category : #accessing }
+GtLudoSquare >> game: aGame [
+	game := aGame
+]
+
+{ #category : #accessing }
+GtLudoSquare >> gtDisplayOn: stream [
+
+	stream
+		nextPutAll: 'Square';
+		space;
+		nextPutAll: self kind;
+		space;
+		nextPutAll: self token name
+]
+
+{ #category : #'gt - extensions' }
+GtLudoSquare >> gtPositionsFor: aView [
+	<gtView>
+	
+	^ (aView explicit)
+		title: 'Position';
+		priority: 10;
+		stencil: [ self highlightedBoardElement ]
+]
+
+{ #category : #'gt - extensions' }
+GtLudoSquare >> highlightedBoardElement [
+	| boardElement |
+	boardElement := self game boardElement.
+	(boardElement children select: [ :each | (each isKindOf: GtLudoSquareElement) and: [ each square = self ] ])
+		do: #highlight.
+	^ boardElement
+]
+
 { #category : #initialization }
 GtLudoSquare >> initialize [
 	super initialize.
@@ -45,6 +93,26 @@ GtLudoSquare >> initialize [
 { #category : #testing }
 GtLudoSquare >> isEmpty [
 	^  self token isBlank
+]
+
+{ #category : #testing }
+GtLudoSquare >> isGoal [
+	^ self kind = #goal
+]
+
+{ #category : #testing }
+GtLudoSquare >> isInitial [ 
+	^ self kind = #initial
+]
+
+{ #category : #testing }
+GtLudoSquare >> isPlay [
+	^ self kind = #play
+]
+
+{ #category : #testing }
+GtLudoSquare >> isStart [
+	^ self kind = #start
 ]
 
 { #category : #accessing }
@@ -66,11 +134,6 @@ GtLudoSquare >> notEmpty [
 { #category : #announcements }
 GtLudoSquare >> notifyUpdated [
 	self announcer announce: GtLudoSquareUpdated new
-]
-
-{ #category : #printing }
-GtLudoSquare >> printOn: aStream [
-	aStream nextPutAll: self token name
 ]
 
 { #category : #accessing }

@@ -30,13 +30,13 @@ GtLudoSquareElement class >> for: aSquare [
 GtLudoSquareElement >> colorForKind [
 	^ {#start -> Color lightGreen.
 		#initial -> Color lightBlue.
-		#play -> Color yellow.
+		#play -> Color lightYellow.
 		#goal -> Color lightRed} asDictionary at: self square kind
 ]
 
 { #category : #accessing }
 GtLudoSquareElement >> highlight [
-	self border: (BlBorder paint: self highlightColor width: 0.1)
+	self border: (BlBorder paint: self highlightColor width: 2)
 ]
 
 { #category : #constants }
@@ -76,7 +76,7 @@ GtLudoSquareElement >> onUpdate [
 	self
 		addChild:
 			((BrLabel new)
-				text: self square printString;
+				text: self square token name;
 				aptitude:
 						((BrGlamorousLabelAptitude new)
 								foreground: Color black;
