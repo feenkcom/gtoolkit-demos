@@ -20,7 +20,7 @@ GtLudoMove >> canMove [
 
 { #category : #accessing }
 GtLudoMove >> game [
-	^ self token game
+	^ self player game
 ]
 
 { #category : #accessing }
@@ -110,11 +110,10 @@ GtLudoMove >> move [
 { #category : #accessing }
 GtLudoMove >> moveOnBoardFor: aView [
 	<gtView>
-	
-	^ (aView explicit)
-		title: 'Move';
-		priority: 10;
-		stencil: [ self highlightedBoardElement ]
+	^ aView explicit
+		  title: 'Move';
+		  priority: 10;
+		  stencil: [ self highlightedBoardElement ]
 ]
 
 { #category : #accessing }
@@ -125,6 +124,40 @@ GtLudoMove >> player [
 { #category : #accessing }
 GtLudoMove >> player: aPlayer [
 	player := aPlayer
+]
+
+{ #category : #replaying }
+GtLudoMove >> replayGameToHere [
+
+	| movesToPlay replayedGame |
+	movesToPlay := self game moves copyUpThrough: self.
+	replayedGame := GtLudoRecordingGame new.
+	movesToPlay do: [ :move | 
+		replayedGame roll: move roll.
+		move canMove ifTrue: [ replayedGame moveTokenNamed: move token name ] ].
+	^ replayedGame
+]
+
+{ #category : #replaying }
+GtLudoMove >> replayedBoardElement [
+	"TODO -- this doesn't work as the from and to squares belong to a different instance of the game!"
+	| boardElement arc toSquareElement fromSquareElement |
+	
+	self shouldBeImplemented.
+	
+	boardElement := self replayGameToHere boardElement.
+	tokenMoves do: [ :tokenMove | 
+		tokenMove highlightBoardElement: boardElement ].
+	^ boardElement
+]
+
+{ #category : #accessing }
+GtLudoMove >> replayedMoveFor: aView [
+	<gtView>
+	^ aView explicit
+		  title: 'Replay';
+		  priority: 20;
+		  stencil: [ self replayGameToHere ]
 ]
 
 { #category : #accessing }
