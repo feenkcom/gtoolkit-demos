@@ -1,21 +1,30 @@
+"
+I enacapsulate a move on the board as a first-class entity
+"
 Class {
-	#name : #GtLudoGameMove,
+	#name : #GtLudoMove,
 	#superclass : #Object,
 	#instVars : [
 		'token',
 		'roll',
-		'tokenMoves'
+		'tokenMoves',
+		'player'
 	],
 	#category : #'GToolkit-Demo-Ludo-Model'
 }
 
-{ #category : #accessing }
-GtLudoGameMove >> game [
-	^ self token game
+{ #category : #testing }
+GtLudoMove >> canMove [
+	^ tokenMoves notEmpty
 ]
 
 { #category : #accessing }
-GtLudoGameMove >> gtTokenMovesFor: aView [
+GtLudoMove >> game [
+	^ self player game
+]
+
+{ #category : #accessing }
+GtLudoMove >> gtTokenMovesFor: aView [
 
 	<gtView>
 	^ aView columnedList
@@ -27,23 +36,23 @@ GtLudoGameMove >> gtTokenMovesFor: aView [
 ]
 
 { #category : #accessing }
-GtLudoGameMove >> highlightedBoardElement [
-
+GtLudoMove >> highlightedBoardElement [
 	| boardElement arc toSquareElement fromSquareElement |
-	boardElement := token game boardElement.
+	boardElement := self player game boardElement.
 	tokenMoves do: [ :tokenMove | 
 		tokenMove highlightBoardElement: boardElement ].
 	^ boardElement
 ]
 
 { #category : #accessing }
-GtLudoGameMove >> initialize [
+GtLudoMove >> initialize [
 	super initialize.
-	tokenMoves := OrderedCollection new
+	tokenMoves := OrderedCollection new.
+	token := GtLudoBlankToken new
 ]
 
 { #category : #accessing }
-GtLudoGameMove >> move [
+GtLudoMove >> move [
 
 	| targetSquare fromSquare fromSquare1 targetSquare1 |
 	self
@@ -99,32 +108,80 @@ GtLudoGameMove >> move [
 ]
 
 { #category : #accessing }
-GtLudoGameMove >> moveOnBoardFor: aView [
+GtLudoMove >> moveOnBoardFor: aView [
 	<gtView>
-	
-	^ (aView explicit)
-		title: 'Move';
-		priority: 10;
-		stencil: [ self highlightedBoardElement ]
+	^ aView explicit
+		  title: 'Move';
+		  priority: 10;
+		  stencil: [ self highlightedBoardElement ]
 ]
 
 { #category : #accessing }
-GtLudoGameMove >> roll [
+GtLudoMove >> player [
+	^ player
+]
+
+{ #category : #accessing }
+GtLudoMove >> player: aPlayer [
+	player := aPlayer
+]
+
+{ #category : #replaying }
+GtLudoMove >> replayGameToHere [
+
+	| movesToPlay replayedGame |
+	movesToPlay := self game moves copyUpThrough: self.
+	replayedGame := GtLudoRecordingGame new.
+	movesToPlay do: [ :move | 
+		replayedGame roll: move roll.
+		move canMove ifTrue: [ replayedGame moveTokenNamed: move token name ] ].
+	^ replayedGame
+]
+
+{ #category : #replaying }
+GtLudoMove >> replayedBoardElement [
+	"TODO -- this doesn't work as the from and to squares belong to a different instance of the game!"
+	| boardElement arc toSquareElement fromSquareElement |
+	
+	self shouldBeImplemented.
+	
+	boardElement := self replayGameToHere boardElement.
+	tokenMoves do: [ :tokenMove | 
+		tokenMove highlightBoardElement: boardElement ].
+	^ boardElement
+]
+
+{ #category : #accessing }
+GtLudoMove >> replayedMoveFor: aView [
+	<gtView>
+	^ aView explicit
+		  title: 'Replay';
+		  priority: 20;
+		  stencil: [ self replayGameToHere ]
+]
+
+{ #category : #accessing }
+GtLudoMove >> roll [
 	^ roll
 ]
 
 { #category : #accessing }
-GtLudoGameMove >> roll: aNumber [
+GtLudoMove >> roll: aNumber [
 	self assert: ((1 to: 6) includes: aNumber) description: 'Number must be a valid die roll from 1 to 6'.
 	roll := aNumber
 ]
 
 { #category : #accessing }
-GtLudoGameMove >> token [
+GtLudoMove >> token [
 	^ token
 ]
 
 { #category : #accessing }
-GtLudoGameMove >> token: aToken [
+GtLudoMove >> token: aToken [
 	token := aToken
+]
+
+{ #category : #accessing }
+GtLudoMove >> tokensMoved [
+	^ tokenMoves size
 ]

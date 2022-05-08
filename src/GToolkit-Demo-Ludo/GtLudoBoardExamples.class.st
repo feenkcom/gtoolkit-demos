@@ -22,7 +22,7 @@ GtLudoBoardExamples >> boardWith2PlayingPlayers [
 	^ board
 ]
 
-{ #category : #accessing }
+{ #category : #example }
 GtLudoBoardExamples >> emptyBoard [
 
 	<gtExample>

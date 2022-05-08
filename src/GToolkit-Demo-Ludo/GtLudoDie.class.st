@@ -54,10 +54,18 @@ GtLudoDie >> roll [
 
 { #category : #'test - support' }
 GtLudoDie >> roll: aValue [
-	"For testing -- allow the rolled value to be explicitly set."
+	"For testing and playback -- allow the rolled value to be explicitly set."
 	self assert: ((1 to: 6) includes: aValue).
 	topFace := aValue.
 	self notifyRolled.
+	^ topFace
+]
+
+{ #category : #undo }
+GtLudoDie >> rollBack: aValue [
+	"Undo  an invalid roll. Do not notify"
+	self assert: ((1 to: 6) includes: aValue).
+	topFace := aValue.
 	^ topFace
 ]
 
