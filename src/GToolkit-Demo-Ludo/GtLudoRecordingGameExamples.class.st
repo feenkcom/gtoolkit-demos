@@ -4,7 +4,30 @@ Class {
 	#category : #'GToolkit-Demo-Ludo-Examples'
 }
 
-{ #category : #accessing }
+{ #category : #example }
+GtLudoRecordingGameExamples >> evaluatedStoreStringYieldsSameStorestring [
+	<gtExample>
+	| game storeString clonedGame |
+	game := self playerAentersAndLandsOnA.
+	storeString := game storeString.
+	clonedGame := Smalltalk compiler evaluate: storeString.
+	self assert: clonedGame storeString equals: storeString.
+	^ game
+]
+
+{ #category : #example }
 GtLudoRecordingGameExamples >> gameClass [
 	^ GtLudoRecordingGame
+]
+
+{ #category : #example }
+GtLudoRecordingGameExamples >> playerAentersAndLandsOnA [
+	<gtExample>
+	| game |
+	game := super playerAentersAndLandsOnA.
+	self assert: game moves size equals: 7.
+	self assert: game moves last tokensMoved equals: 2.
+	game moves do: [ :move | 
+		self assert: ((0 to: 2) includes: move tokensMoved) ].
+	^ game
 ]

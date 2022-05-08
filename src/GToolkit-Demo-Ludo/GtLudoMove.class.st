@@ -1,5 +1,8 @@
+"
+I enacapsulate a move on the board as a first-class entity
+"
 Class {
-	#name : #GtLudoGameMove,
+	#name : #GtLudoMove,
 	#superclass : #Object,
 	#instVars : [
 		'token',
@@ -10,13 +13,18 @@ Class {
 	#category : #'GToolkit-Demo-Ludo-Model'
 }
 
+{ #category : #testing }
+GtLudoMove >> canMove [
+	^ tokenMoves notEmpty
+]
+
 { #category : #accessing }
-GtLudoGameMove >> game [
+GtLudoMove >> game [
 	^ self token game
 ]
 
 { #category : #accessing }
-GtLudoGameMove >> gtTokenMovesFor: aView [
+GtLudoMove >> gtTokenMovesFor: aView [
 
 	<gtView>
 	^ aView columnedList
@@ -28,7 +36,7 @@ GtLudoGameMove >> gtTokenMovesFor: aView [
 ]
 
 { #category : #accessing }
-GtLudoGameMove >> highlightedBoardElement [
+GtLudoMove >> highlightedBoardElement [
 	| boardElement arc toSquareElement fromSquareElement |
 	boardElement := self player game boardElement.
 	tokenMoves do: [ :tokenMove | 
@@ -37,14 +45,14 @@ GtLudoGameMove >> highlightedBoardElement [
 ]
 
 { #category : #accessing }
-GtLudoGameMove >> initialize [
+GtLudoMove >> initialize [
 	super initialize.
 	tokenMoves := OrderedCollection new.
 	token := GtLudoBlankToken new
 ]
 
 { #category : #accessing }
-GtLudoGameMove >> move [
+GtLudoMove >> move [
 
 	| targetSquare fromSquare fromSquare1 targetSquare1 |
 	self
@@ -100,7 +108,7 @@ GtLudoGameMove >> move [
 ]
 
 { #category : #accessing }
-GtLudoGameMove >> moveOnBoardFor: aView [
+GtLudoMove >> moveOnBoardFor: aView [
 	<gtView>
 	
 	^ (aView explicit)
@@ -110,32 +118,37 @@ GtLudoGameMove >> moveOnBoardFor: aView [
 ]
 
 { #category : #accessing }
-GtLudoGameMove >> player [
+GtLudoMove >> player [
 	^ player
 ]
 
 { #category : #accessing }
-GtLudoGameMove >> player: aPlayer [
+GtLudoMove >> player: aPlayer [
 	player := aPlayer
 ]
 
 { #category : #accessing }
-GtLudoGameMove >> roll [
+GtLudoMove >> roll [
 	^ roll
 ]
 
 { #category : #accessing }
-GtLudoGameMove >> roll: aNumber [
+GtLudoMove >> roll: aNumber [
 	self assert: ((1 to: 6) includes: aNumber) description: 'Number must be a valid die roll from 1 to 6'.
 	roll := aNumber
 ]
 
 { #category : #accessing }
-GtLudoGameMove >> token [
+GtLudoMove >> token [
 	^ token
 ]
 
 { #category : #accessing }
-GtLudoGameMove >> token: aToken [
+GtLudoMove >> token: aToken [
 	token := aToken
+]
+
+{ #category : #accessing }
+GtLudoMove >> tokensMoved [
+	^ tokenMoves size
 ]

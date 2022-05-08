@@ -4,7 +4,7 @@ Class {
 	#category : #'GToolkit-Demo-Ludo-Examples'
 }
 
-{ #category : #accessing }
+{ #category : #example }
 GtLudoGameExamples >> bEntersAndPlaysWithAahead [
 	"Example for 4. Landing on another player's token. (Send other token to start.)"
 	<gtExample>
@@ -20,7 +20,7 @@ GtLudoGameExamples >> bEntersAndPlaysWithAahead [
 	^ game
 ]
 
-{ #category : #accessing }
+{ #category : #example }
 GtLudoGameExamples >> bEntersPlayWithAonStartSquare [
 	"Test for 1. Entering play when there is a token of another player on the start square. (Send other token to start state.)"
 	<gtExample>
@@ -35,7 +35,7 @@ GtLudoGameExamples >> bEntersPlayWithAonStartSquare [
 	^ game
 ]
 
-{ #category : #accessing }
+{ #category : #example }
 GtLudoGameExamples >> bToPlayWithAonStartSquare [
 	"Setup for 1. Entering play when there is a token of another player on the start square. (Send other token to start state.)"
 	<gtExample>
@@ -69,7 +69,7 @@ GtLudoGameExamples >> gameClass [
 	^ GtLudoGame
 ]
 
-{ #category : #accessing }
+{ #category : #example }
 GtLudoGameExamples >> playerAarrivesCloseToGoal [
 
 	"Setup for 6. Landing on the first goal square, unoccupied and 7. Landing on the unoccupied second goal square."
@@ -96,7 +96,7 @@ GtLudoGameExamples >> playerAarrivesCloseToGoal [
 	^ game
 ]
 
-{ #category : #accessing }
+{ #category : #example }
 GtLudoGameExamples >> playerAenterAndLandsOnTokenA [
 	"Example for 2. Entering play when there is a token of the same player on the start square (ie after rolling a 6 twice)."
 	<gtExample>
@@ -111,7 +111,7 @@ GtLudoGameExamples >> playerAenterAndLandsOnTokenA [
 	^ game
 ]
 
-{ #category : #accessing }
+{ #category : #example }
 GtLudoGameExamples >> playerAentersAndLandsOnA [
 	<gtExample>
 	| game |
@@ -132,7 +132,7 @@ GtLudoGameExamples >> playerAentersAndLandsOnA [
 
 ]
 
-{ #category : #accessing }
+{ #category : #example }
 GtLudoGameExamples >> playerAentersTokenA [
 	"Setup for 2. Entering play when there is a token of the same player on the start square (ie after rolling a 6 twice)."
 	<gtExample>
@@ -147,7 +147,7 @@ GtLudoGameExamples >> playerAentersTokenA [
 	^ game
 ]
 
-{ #category : #accessing }
+{ #category : #example }
 GtLudoGameExamples >> playerAlandsOnFirstGoalSquare [
 
 	"Example for 6. Landing on the first goal square, unoccupied."
@@ -163,7 +163,7 @@ GtLudoGameExamples >> playerAlandsOnFirstGoalSquare [
 	^ game
 ]
 
-{ #category : #accessing }
+{ #category : #example }
 GtLudoGameExamples >> playerAlandsOnOccupiedGoalSquare [
 
 	"Example for 9. Landing on the first occupied goal square. (Land on next goal square.)"
@@ -179,7 +179,7 @@ GtLudoGameExamples >> playerAlandsOnOccupiedGoalSquare [
 	^ game
 ]
 
-{ #category : #accessing }
+{ #category : #example }
 GtLudoGameExamples >> playerAlandsOnOccupiedSecondGoalSquare [
 
 	"Example for 10. Landing on the occupied second goal square. (Fail to move.)"
@@ -196,7 +196,7 @@ GtLudoGameExamples >> playerAlandsOnOccupiedSecondGoalSquare [
 	^ game
 ]
 
-{ #category : #accessing }
+{ #category : #example }
 GtLudoGameExamples >> playerAlandsOnSecondGoalSquare [
 	"Example for 7. Landing on the unoccupied second goal square."
 	<gtExample>
@@ -211,7 +211,7 @@ GtLudoGameExamples >> playerAlandsOnSecondGoalSquare [
 
 ]
 
-{ #category : #accessing }
+{ #category : #example }
 GtLudoGameExamples >> playerAmovesTokenA [
 	<gtExample>
 	| game |
@@ -234,7 +234,7 @@ GtLudoGameExamples >> playerAmovesTokenA [
 	^ game
 ]
 
-{ #category : #accessing }
+{ #category : #example }
 GtLudoGameExamples >> playerAmovesTwiceAndLandsOnA [
 	"Example for: 3. Landing on a square with the same player's token. (Land on next square.)"
 	<gtExample>
@@ -252,7 +252,7 @@ GtLudoGameExamples >> playerAmovesTwiceAndLandsOnA [
 	^ game
 ]
 
-{ #category : #accessing }
+{ #category : #example }
 GtLudoGameExamples >> playerAovershootsGoal [
 
 	"Example for 8. Overshooting the goal sqares. (Fail to move.)"
@@ -284,7 +284,7 @@ GtLudoGameExamples >> playerArolls6 [
 	^ game
 ]
 
-{ #category : #accessing }
+{ #category : #example }
 GtLudoGameExamples >> playerAsecondTokenCloseToGoal [
 
 	"Setup for 9. Landing on the first occupied goal square. (Land on next goal square.)"
@@ -314,7 +314,7 @@ GtLudoGameExamples >> playerAsecondTokenCloseToGoal [
 	^ game
 ]
 
-{ #category : #accessing }
+{ #category : #example }
 GtLudoGameExamples >> playerAsecondTokenCloseToSecondOccupiedGoal [
 
 	"Setup for 10. Landing on the occupied second goal square. (Fail to move.)"
@@ -344,7 +344,7 @@ GtLudoGameExamples >> playerAsecondTokenCloseToSecondOccupiedGoal [
 	^ game
 ]
 
-{ #category : #accessing }
+{ #category : #example }
 GtLudoGameExamples >> playerBentersWithTokenAahead [
 	"Setup for 4. Landing on another player's token. (Send other token to start.)"
 	<gtExample>
@@ -359,7 +359,7 @@ GtLudoGameExamples >> playerBentersWithTokenAahead [
 	^ game
 ]
 
-{ #category : #accessing }
+{ #category : #example }
 GtLudoGameExamples >> playerBplaysWithTokensBandAahead [
 	"Example for 5. Landing on a square with the same play's token, followed by a square with a token of another player. (Land on next square, sending the token there to start.)"
 	<gtExample>
@@ -377,7 +377,7 @@ GtLudoGameExamples >> playerBplaysWithTokensBandAahead [
 	^ game
 ]
 
-{ #category : #accessing }
+{ #category : #example }
 GtLudoGameExamples >> playerBtoPlayWithTokensBandAahead [
 	"Setup for 5. Landing on a square with the same play's token, followed by a square with a token of another player. (Land on next square, sending the token there to start.)"
 	<gtExample>

@@ -71,11 +71,6 @@ GtLudoRecordingGame >> notifyMoveRecorded [
 ]
 
 { #category : #playing }
-GtLudoRecordingGame >> playMoves: aMoveCollection [
-	aMoveCollection do: #playMove
-]
-
-{ #category : #playing }
 GtLudoRecordingGame >> startNewMove [
 
 	"Start a new move with the currently rolled die."
@@ -86,7 +81,7 @@ GtLudoRecordingGame >> startNewMove [
 		ifFalse: [ player := self lastPlayer ].
 
 
-	moves addLast: (GtLudoGameMove new
+	moves addLast: (GtLudoMove new
 			 roll: self die topFace;
 			 player: player;
 			 yourself).
@@ -95,21 +90,21 @@ GtLudoRecordingGame >> startNewMove [
 
 { #category : #printing }
 GtLudoRecordingGame >> storeOn: aStream [
+
 	aStream
 		nextPutAll: '(';
 		nextPutAll: self class name;
 		nextPutAll: ' new'.
-	self moves
-		do:
-			[ :move | 
-			aStream
-				nextPutAll: ' roll: ';
-				nextPutAll: move roll asString;
-				nextPutAll: ';'.
+	self moves do: [ :move | 
+		aStream
+			nextPutAll: ' roll: ';
+			nextPutAll: move roll asString;
+			nextPutAll: ';'.
+		move canMove ifTrue: [ 
 			aStream
 				nextPutAll: ' moveTokenNamed: ''';
 				nextPutAll: move token name;
-				nextPutAll: ''';' ].
+				nextPutAll: ''';' ] ].
 	aStream nextPutAll: ' yourself)'
 ]
 
