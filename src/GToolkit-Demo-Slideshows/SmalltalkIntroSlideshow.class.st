@@ -314,6 +314,8 @@ SmalltalkIntroSlideshow >> takeHome: aSlide [
 						asBigText:
 							'
 • To do ...
+
+
 ')
 ]
 
