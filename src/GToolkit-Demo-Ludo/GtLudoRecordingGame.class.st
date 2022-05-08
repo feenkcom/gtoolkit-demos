@@ -10,6 +10,19 @@ Class {
 	#category : #'GToolkit-Demo-Ludo-Model'
 }
 
+{ #category : #playing }
+GtLudoRecordingGame >> autoPlay: numberOfMoves [
+	"NB: For demo purposes we only implement autoPlay: in the GtLudoRecordingGame class, not in GtLudoGame."
+
+	self assert: numberOfMoves > 0.
+	(1 to: numberOfMoves)
+		do:
+			[ :n | 
+			self isOver ifTrue: [ ^ self ].
+			self playerToRoll ifTrue: [ self die roll ].
+			self playerToMove ifTrue: [ self moveTokenNamed: self tokensToMove atRandom name ] ]
+]
+
 { #category : #accessing }
 GtLudoRecordingGame >> gtMovesFor: aView [
 	<gtView>

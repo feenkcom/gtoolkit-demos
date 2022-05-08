@@ -31,22 +31,6 @@ GtLudoGame >> asElement [
 	^ GtLudoGameElement for: self
 ]
 
-{ #category : #playing }
-GtLudoGame >> autoPlay: numberOfMoves [
-	self assert: numberOfMoves > 0.
-	1
-		to: numberOfMoves
-		do:
-			[ :n | 
-			| tokens |
-			self isOver ifTrue: [ ^ self ].
-			self playerToRoll ifTrue: [ self die roll ].
-			self playerToMove
-				ifTrue:
-					[ tokens := self tokensToMove.
-					tokens notEmpty ifTrue: [ self moveToken: tokens atRandom ] ] ]
-]
-
 { #category : #'gt - extensions' }
 GtLudoGame >> boardElement [
 	^ GtLudoBoardElement for: self
