@@ -4,7 +4,8 @@ Class {
 	#instVars : [
 		'token',
 		'roll',
-		'tokenMoves'
+		'tokenMoves',
+		'player'
 	],
 	#category : #'GToolkit-Demo-Ludo-Model'
 }
@@ -28,9 +29,8 @@ GtLudoGameMove >> gtTokenMovesFor: aView [
 
 { #category : #accessing }
 GtLudoGameMove >> highlightedBoardElement [
-
 	| boardElement arc toSquareElement fromSquareElement |
-	boardElement := token game boardElement.
+	boardElement := self player game boardElement.
 	tokenMoves do: [ :tokenMove | 
 		tokenMove highlightBoardElement: boardElement ].
 	^ boardElement
@@ -39,7 +39,8 @@ GtLudoGameMove >> highlightedBoardElement [
 { #category : #accessing }
 GtLudoGameMove >> initialize [
 	super initialize.
-	tokenMoves := OrderedCollection new
+	tokenMoves := OrderedCollection new.
+	token := GtLudoBlankToken new
 ]
 
 { #category : #accessing }
@@ -106,6 +107,16 @@ GtLudoGameMove >> moveOnBoardFor: aView [
 		title: 'Move';
 		priority: 10;
 		stencil: [ self highlightedBoardElement ]
+]
+
+{ #category : #accessing }
+GtLudoGameMove >> player [
+	^ player
+]
+
+{ #category : #accessing }
+GtLudoGameMove >> player: aPlayer [
+	player := aPlayer
 ]
 
 { #category : #accessing }

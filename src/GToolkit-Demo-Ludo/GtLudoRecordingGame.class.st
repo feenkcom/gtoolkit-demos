@@ -22,6 +22,7 @@ GtLudoRecordingGame >> gtMovesFor: aView [
 			text: [ :eachItem :eachIndex | eachIndex asRopedText foreground: Color gray ]
 			width: 45;
 		column: 'Roll' text: [ :move | move roll ];
+		column: 'Player' text: [ :move | move player ];
 		column: 'Token' text: [ :move | move token ];
 		updateWhen: GtLudoMoveRecorded in: self announcer
 ]
@@ -43,15 +44,18 @@ GtLudoRecordingGame >> initialize [
 	moves := OrderedCollection new
 ]
 
+{ #category : #playing }
+GtLudoRecordingGame >> lastPlayer [
+	^ self playerQueue last
+]
+
 { #category : #accessing }
-GtLudoRecordingGame >> moveTokenNamed: aTokenName [
+GtLudoRecordingGame >> moveToken: aToken [
 
 	| move |
-	move := GtLudoGameMove new
-		        roll: self die topFace;
-		        token: (self tokenNamed: aTokenName);
-		        yourself.
-	moves addLast: move.
+	"move := self startNewMove."
+	move := self moves last.
+	move token: aToken.
 	self notifyMoveRecorded.
 	^ move move
 ]
@@ -69,6 +73,24 @@ GtLudoRecordingGame >> notifyMoveRecorded [
 { #category : #playing }
 GtLudoRecordingGame >> playMoves: aMoveCollection [
 	aMoveCollection do: #playMove
+]
+
+{ #category : #playing }
+GtLudoRecordingGame >> startNewMove [
+
+	"Start a new move with the currently rolled die."
+
+	| player |
+	self playerToMove
+		ifTrue: [ player := self currentPlayer ]
+		ifFalse: [ player := self lastPlayer ].
+
+
+	moves addLast: (GtLudoGameMove new
+			 roll: self die topFace;
+			 player: player;
+			 yourself).
+	self notifyMoveRecorded
 ]
 
 { #category : #printing }
@@ -89,4 +111,10 @@ GtLudoRecordingGame >> storeOn: aStream [
 				nextPutAll: move token name;
 				nextPutAll: ''';' ].
 	aStream nextPutAll: ' yourself)'
+]
+
+{ #category : #playing }
+GtLudoRecordingGame >> updateOnRoll [
+	super updateOnRoll.
+	self startNewMove
 ]
