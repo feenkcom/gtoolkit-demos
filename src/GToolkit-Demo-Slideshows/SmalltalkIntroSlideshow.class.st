@@ -205,7 +205,7 @@ SmalltalkIntroSlideshow >> methodSyntax: aSlide [
 ')
 						,
 							(self asText: 'Note the special syntax for variable declarations (|...|), statement separators (period) and returns (^).');
-		element: [ GtPharoSyntaxExplainer new forMethod: BlElementVectorGeometry >> #containsPoint:in:on: ];
+		element: [ GtPharoSyntaxExplainer new forMethod: GtLudoGame>>#computeTargetFor: ];
 		elementWeight: 0.6
 ]
 
