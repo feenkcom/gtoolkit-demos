@@ -24,6 +24,26 @@ GtLudoMove >> game [
 ]
 
 { #category : #accessing }
+GtLudoMove >> gtReplayedHighlightFor: aView [
+	<gtView>
+	
+	^ (aView explicit)
+		title: 'Highlight';
+		priority: 30;
+		stencil: [ self replayGameToHere moves last highlightedBoardElement ]
+]
+
+{ #category : #accessing }
+GtLudoMove >> gtReplayedMoveFor: aView [
+	<gtView>
+	
+	^ (aView explicit)
+		title: 'Replay';
+		priority: 20;
+		stencil: [ self replayGameToHere ]
+]
+
+{ #category : #accessing }
 GtLudoMove >> gtTokenMovesFor: aView [
 
 	<gtView>
@@ -149,15 +169,6 @@ GtLudoMove >> replayedBoardElement [
 	tokenMoves do: [ :tokenMove | 
 		tokenMove highlightBoardElement: boardElement ].
 	^ boardElement
-]
-
-{ #category : #accessing }
-GtLudoMove >> replayedMoveFor: aView [
-	<gtView>
-	^ aView explicit
-		  title: 'Replay';
-		  priority: 20;
-		  stencil: [ self replayGameToHere ]
 ]
 
 { #category : #accessing }
