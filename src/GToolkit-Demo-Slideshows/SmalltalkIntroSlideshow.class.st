@@ -149,9 +149,11 @@ SmalltalkIntroSlideshow >> gtWorld: aSlide [
 		elementWeight: 0.6;
 		priority: (self priorityFor: #gtWorld:);
 		newTextWithFormat:
-				(self
-						asText:
-							'Glamorous Toolkit is a “moldable” development environment with native windows, software analysis tools, and a visualization engine. 
+				(self asText: 'Glamorous Toolkit is a ') , (self asText: 'moldable') italic
+						,
+							(self
+								asText:
+									' development environment with native windows, software analysis tools, and a visualization engine. 
 Gt is built on top of Pharo, a modern, open-source Smalltalk.');
 		element: [ aSlide world ]
 ]
@@ -183,7 +185,8 @@ SmalltalkIntroSlideshow >> ludoAppetizer: aSlide [
 	^ (aSlide textAndElement)
 		elementWeight: 0.5;
 		priority: (self priorityFor: #ludoAppetizer:);
-		newTextWithFormat: (self asText: 'Appetizer: the Ludo game as a Smalltalk object.');
+		newTextWithFormat: (self asHeader: 'Appetizer') bold,(self asText: '
+The Ludo game as a live system');
 		element: [ GtLudoGame new asElement asScalableElement ]
 ]
 
@@ -215,13 +218,14 @@ SmalltalkIntroSlideshow >> outline: aSlide [
 		subtitleWithFormat: (self asSubtitle: 'Outline');
 		paragraphWithFormat:
 				(self
-						asBigText:
+						asText:
 							'
-• Background — What is Smalltalk?
-• Basics — syntax, sending messages
+• What is Smalltalk?
+• Smalltalk basics — syntax, sending messages
 • Scripting in the Playground
 • Live programming of classes and methods
-• GT use cases
+• Testing with composable examples
+• Take home messages
 ')
 ]
 
@@ -246,6 +250,7 @@ SmalltalkIntroSlideshow >> pages [
 		addingAutoPlay:
 		composingExamples:
 		codaRecordingMoves:
+		takeHome:
 		whatsNext:
 		"bouncingAtoms:"
 		"programmingClassesAndMethods:"
@@ -295,6 +300,21 @@ SmalltalkIntroSlideshow >> syntax: aSlide [
 	^ aSlide lepiterPage
 		  priority: (self priorityFor: #syntax:);
 		  pageNamed: 'Smalltalk Syntax (the funny bits)' from: self gtBook
+]
+
+{ #category : #accessing }
+SmalltalkIntroSlideshow >> takeHome: aSlide [
+	<gtSlide>
+	
+	^ (aSlide paragraph)
+		priority: (self priorityFor: #takeHome:);
+		subtitleWithFormat: (self asSubtitle: 'Take home messages');
+		paragraphWithFormat:
+				(self
+						asBigText:
+							'
+• To do ...
+')
 ]
 
 { #category : #slides }
