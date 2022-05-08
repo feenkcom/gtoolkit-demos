@@ -17,14 +17,6 @@ SmalltalkIntroSlideshow class >> show [
 	GtLiveShow openInSpace: SmalltalkIntroSlideshow
 ]
 
-{ #category : #accessing }
-SmalltalkIntroSlideshow >> addTargetCircleFor: aTarget named: aSymbol [
-
-	aTarget addChild:
-		((self yellowExplanationTargetCircleFor: aSymbol) relocate:
-			 2 @ aTarget extent y / 2 )
-]
-
 { #category : #slides }
 SmalltalkIntroSlideshow >> addingAutoPlay: aSlide [
 	<gtSlide>
@@ -33,6 +25,44 @@ SmalltalkIntroSlideshow >> addingAutoPlay: aSlide [
 		priority: (self priorityFor: #addingAutoPlay:);
 		pageNamed: 'Changing a running system' from: self gtBook;
 		yourself
+]
+
+{ #category : #text }
+SmalltalkIntroSlideshow >> asBigText: aString [
+	^ (aString asRopedText)
+		glamorousRegularFont;
+		fontSize: 40
+]
+
+{ #category : #text }
+SmalltalkIntroSlideshow >> asHeader: aString [
+	^ (aString asRopedText)
+		glamorousRegularFont;
+		bold;
+		fontSize: 40
+]
+
+{ #category : #text }
+SmalltalkIntroSlideshow >> asSubtitle: aString [
+	^ (aString asRopedText)
+		glamorousRegularFont;
+		bold;
+		fontSize: 60
+]
+
+{ #category : #text }
+SmalltalkIntroSlideshow >> asText: aString [
+	^ (aString asRopedText)
+		glamorousRegularFont;
+		fontSize: 30
+]
+
+{ #category : #text }
+SmalltalkIntroSlideshow >> asTitle: aString [
+	^ (aString asRopedText)
+		glamorousRegularFont;
+		bold;
+		fontSize: 70
 ]
 
 { #category : #slides }
@@ -114,83 +144,85 @@ SmalltalkIntroSlideshow >> gtBook [
 { #category : #slides }
 SmalltalkIntroSlideshow >> gtWorld: aSlide [
 	<gtSlide>
-	^ aSlide textAndElement
-		  elementWeight: 0.6;
-		  priority: (self priorityFor: #gtWorld:);
-		  newTextWithFormat: ('Glamorous Toolkit is a “moldable” development environment with native windows, software analysis tools, and a visualization engine. 
-Gt is built on top of Pharo, a modern, open-source Smalltalk.' asRopedText
-				   glamorousRegularFont;
-				   fontSize: 30);
-		  element: [ aSlide world ]
+	
+	^ (aSlide textAndElement)
+		elementWeight: 0.6;
+		priority: (self priorityFor: #gtWorld:);
+		newTextWithFormat:
+				(self
+						asText:
+							'Glamorous Toolkit is a “moldable” development environment with native windows, software analysis tools, and a visualization engine. 
+Gt is built on top of Pharo, a modern, open-source Smalltalk.');
+		element: [ aSlide world ]
 ]
 
 { #category : #slides }
 SmalltalkIntroSlideshow >> imageChanges: aSlide [
-
 	<gtSlide>
-	^ aSlide textAndElement
-		  elementWeight: 0.50;
-		  priority: (self priorityFor: #imageChanges:);
-		  newTextWithFormat: ('Smalltalk is a live programming system.
+	
+	^ (aSlide textAndElement)
+		elementWeight: 0.50;
+		priority: (self priorityFor: #imageChanges:);
+		newTextWithFormat:
+				(self asText: 'Smalltalk is a ') , (self asText: 'live') italic
+						,
+							(self
+								asText:
+									' programming system.
 Objects live inside an image running on a VM. 
-Changes to classes and methods are logged as you program.' asRopedText
-				   glamorousRegularFont;
-				   fontSize: 40);
-		  element: [ 
-			  GtFilePictureLiveSlide new fileReference:
-				  (GtResourcesUtility resourceAtPath:
-					   self picturesDirectoryPath  / 'image+changes.png') ]
+Changes to classes and methods are logged as you program.');
+		element:
+				[ GtFilePictureLiveSlide new
+						fileReference: (GtResourcesUtility resourceAtPath: self picturesDirectoryPath / 'image+changes.png') ]
 ]
 
 { #category : #accessing }
 SmalltalkIntroSlideshow >> ludoAppetizer: aSlide [
 	<gtSlide>
-	^ aSlide textAndElement
-		  elementWeight: 0.5;
-		  priority: (self priorityFor: #ludoAppetizer:);
-		  newTextWithFormat: ('Appetizer: the Ludo game as a Smalltalk object.' asRopedText
-				   glamorousRegularFont;
-				   fontSize: 30);
-		  element: [ GtLudoGame new asElement asScalableElement ]
+	
+	^ (aSlide textAndElement)
+		elementWeight: 0.5;
+		priority: (self priorityFor: #ludoAppetizer:);
+		newTextWithFormat: (self asText: 'Appetizer: the Ludo game as a Smalltalk object.');
+		element: [ GtLudoGame new asElement asScalableElement ]
 ]
 
 { #category : #accessing }
 SmalltalkIntroSlideshow >> methodSyntax: aSlide [
-
 	"Methods start with a declaration of the message selector and arguments. Temporaries must be declared. Statements are separate by periods. The caret (^) is special syntax for returning a result."
 
 	<gtSlide>
-	^ aSlide textAndElement
-		  priority: (self priorityFor: #methodSyntax:);
-		  newTextWithFormat: ('Method syntax
-' asRopedText bold;
-				   glamorousRegularFont;
-				   fontSize: 40) , ('Note the special syntax for variable declarations (|...|), statement separators (period) and returns (^).' asRopedText
-				   glamorousRegularFont;
-				   fontSize: 30);
-		  element: [ 
-			  GtPharoSyntaxExplainer new forMethod:
-				  BlElementVectorGeometry >> #containsPoint:in:on: ];
-		  elementWeight: 0.6
+	
+	^ (aSlide textAndElement)
+		priority: (self priorityFor: #methodSyntax:);
+		newTextWithFormat:
+				(self
+						asHeader:
+							'Method syntax
+')
+						,
+							(self asText: 'Note the special syntax for variable declarations (|...|), statement separators (period) and returns (^).');
+		element: [ GtPharoSyntaxExplainer new forMethod: BlElementVectorGeometry >> #containsPoint:in:on: ];
+		elementWeight: 0.6
 ]
 
 { #category : #accessing }
 SmalltalkIntroSlideshow >> outline: aSlide [
-
 	<gtSlide>
-	^ aSlide paragraph
-		  priority: (self priorityFor: #outline:);
-		  subtitleWithFormat: ('Outline' asRopedText
-				   bold;
-				   fontSize: 40;
-				   glamorousRegularFont);
-		  paragraph: '
+	
+	^ (aSlide paragraph)
+		priority: (self priorityFor: #outline:);
+		subtitleWithFormat: (self asSubtitle: 'Outline');
+		paragraphWithFormat:
+				(self
+						asBigText:
+							'
 • Background — What is Smalltalk?
 • Basics — syntax, sending messages
 • Scripting in the Playground
 • Live programming of classes and methods
 • GT use cases
-'
+')
 ]
 
 { #category : #accessing }
@@ -240,21 +272,21 @@ SmalltalkIntroSlideshow >> programmingClassesAndMethods: aSlide [
 
 { #category : #accessing }
 SmalltalkIntroSlideshow >> smalltalk80: aSlide [
-
 	"In the late 60s, Alan Kay predicted that in the foreseeable future handheld multimedia computers would become affordable. He called this a “Dynabook”. (The photo shows a mockup, not a real computer.)
 He reasoned that such systems would need to be based on object from the ground up, so he set up a lab at the Xerox Palo Alto Research Center (PARC) to develop such a fully object-oriented system, including both software and hardware. They developed the first graphical workstations with windowing system and mouse."
 
 	<gtSlide>
-	^ aSlide textAndElement
-		  elementWeight: 0.60;
-		  priority: (self priorityFor: #smalltalk80:);
-		  newTextWithFormat: ('Smalltalk was the first purely object-oriented language and environment, with the first interactive, graphical IDE.' asRopedText
-				   glamorousRegularFont;
-				   fontSize: 30);
-		  element: [ 
-			  GtFilePictureLiveSlide new fileReference:
-				  (GtResourcesUtility resourceAtPath: self picturesDirectoryPath / 
-					   'smalltalk-80.png') ]
+	
+	^ (aSlide textAndElement)
+		elementWeight: 0.60;
+		priority: (self priorityFor: #smalltalk80:);
+		newTextWithFormat:
+				(self
+						asText:
+							'Smalltalk was the first purely object-oriented language and environment, with the first interactive, graphical IDE.');
+		element:
+				[ GtFilePictureLiveSlide new
+						fileReference: (GtResourcesUtility resourceAtPath: self picturesDirectoryPath / 'smalltalk-80.png') ]
 ]
 
 { #category : #slides }
@@ -276,34 +308,30 @@ SmalltalkIntroSlideshow >> threeKindsOfMessages: aSlide [
 { #category : #accessing }
 SmalltalkIntroSlideshow >> titleSlideFor: aSlide [
 	<gtSlide>
-	^ aSlide title
-		  priority: (self priorityFor: #titleSlideFor:);
-		  titleBottomPadding: 30;
-		  titleWithFormat: ('A bit of Smalltalk' asRopedText
-				   fontSize: 70;
-				   bold;
-				   glamorousRegularFont);
-		  subtitleWithFormat: ('@onierstrasz' asRopedText
-				   fontSize: 40;
-				   glamorousRegularFont)
+	
+	^ (aSlide title)
+		priority: (self priorityFor: #titleSlideFor:);
+		titleBottomPadding: 30;
+		titleWithFormat: (self asTitle: 'A bit of Smalltalk');
+		subtitleWithFormat: (self asBigText: '@onierstrasz')
 ]
 
 { #category : #slides }
 SmalltalkIntroSlideshow >> twoRules: aSlide [
-
 	<gtSlide>
-	^ aSlide paragraph
-		  priority: (self priorityFor: #twoRules:);
-		  subtitleWithFormat: ('Two rules' asRopedText
-				   bold;
-				   fontSize: 40;
-				   glamorousRegularFont);
-		  paragraph: '
+	
+	^ (aSlide paragraph)
+		priority: (self priorityFor: #twoRules:);
+		subtitleWithFormat: (self asSubtitle: 'Two rules');
+		paragraphWithFormat:
+				(self
+						asBigText:
+							'
 
 1. Everything is an object
 
 2. Everything happens by sending messages
-'
+')
 ]
 
 { #category : #slides }
@@ -321,15 +349,4 @@ SmalltalkIntroSlideshow >> worldExampleSlideFor: aSlide [
 	"<gtSlide>"
 	^ aSlide world
 		  priority: (self priorityFor: #worldExampleSlideFor:)
-]
-
-{ #category : #accessing }
-SmalltalkIntroSlideshow >> yellowExplanationTargetCircleFor: aModel [
-	"Copied from GtCoderSlideshow"
-	^ BrButton new
-				constraintsDo: [ :c | c ignoreByLayout ];
-				size: 0 @ 0;
-				elevation: (BlRelativeElevation elevation: 10);
-				geometry: BlCircleGeometry new;
-				aptitude: (GtExplainerTargetAptitude new explanationModel: aModel).
 ]
