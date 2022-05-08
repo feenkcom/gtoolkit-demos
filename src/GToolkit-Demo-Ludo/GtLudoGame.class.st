@@ -15,7 +15,8 @@ Class {
 		'winner',
 		'needToRollDie',
 		'lastDieRolled',
-		'playerQueue'
+		'playerQueue',
+		'routeCache'
 	],
 	#category : #'GToolkit-Demo-Ludo-Model'
 }
@@ -208,6 +209,7 @@ GtLudoGame >> initialize [
 	self initializeStartSquares.
 	self initializeGoalSquares.
 	die := GtLudoDie new.
+	routeCache := Dictionary new.
 	
 	"Initialization code from the Game class"
 	
@@ -383,20 +385,20 @@ GtLudoGame >> roll: aValue [
 { #category : #accessing }
 GtLudoGame >> routeFor: aPlayer [
 
-	<todo: 'Introduce a cache'>
-
+	"Each player's tokens take a differenr route through the board and goal squares.
+	Compute this route and cache it to avoid recomputing it each time."
+	
 	| route playerNumber first |
-	route := OrderedCollection new.
-	playerNumber := self players indexOf: aPlayer.
-	first := playerNumber - 1 * 10 + 1.
-	route addAll:
-		(self squares copyFrom: first to: self totalPlaySquares).
-	route addAll: (self squares copyFrom: 1 to: first - 1).
-
-	first := playerNumber - 1 * 2 + 1.
-	route addAll: (self goalSquares copyFrom: first to: first + 1).
-
-	^ route
+	^ routeCache at: aPlayer ifAbsentPut: [ 
+		  route := OrderedCollection new.
+		  playerNumber := self players indexOf: aPlayer.
+		  first := playerNumber - 1 * 10 + 1.
+		  route addAll:
+			  (self squares copyFrom: first to: self totalPlaySquares).
+		  route addAll: (self squares copyFrom: 1 to: first - 1).
+		  first := playerNumber - 1 * 2 + 1.
+		  route addAll: (self goalSquares copyFrom: first to: first + 1).
+		  route ]
 ]
 
 { #category : #playing }
