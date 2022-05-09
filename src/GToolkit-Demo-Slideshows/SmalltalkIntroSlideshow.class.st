@@ -186,7 +186,7 @@ SmalltalkIntroSlideshow >> ludoAppetizer: aSlide [
 		elementWeight: 0.5;
 		priority: (self priorityFor: #ludoAppetizer:);
 		newTextWithFormat: (self asHeader: 'Appetizer') bold,(self asText: '
-The Ludo game as a live system');
+Ludo as a running example of a live system');
 		element: [ GtLudoGame new asElement asScalableElement ]
 ]
 
