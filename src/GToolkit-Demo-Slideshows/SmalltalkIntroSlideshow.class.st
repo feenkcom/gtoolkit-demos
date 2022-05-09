@@ -313,7 +313,11 @@ SmalltalkIntroSlideshow >> takeHome: aSlide [
 				(self
 						asBigText:
 							'
-• To do ...
+• Smalltalk enables live programming of runninvg systems
+
+• Example methods enable compasable tests and live interaction with test results
+
+• GT Inspector views enable a radically different moldable style of development
 
 
 ')
