@@ -52,7 +52,6 @@ GtLudoGameExamples >> bToPlayWithAonStartSquare [
 
 { #category : #example }
 GtLudoGameExamples >> emptyGame [
-
 	<gtExample>
 	| game |
 	game := self gameClass new.
