@@ -314,6 +314,7 @@ SmalltalkIntroSlideshow >> takeHome: aSlide [
 				(self
 						asText:
 							'
+
 • Smalltalk enables '), (self asText: 'live programming') italic, (self asText: '
 
 • Example methods enable '), (self asText: 'composable tests') italic, (self asText: ' and live interaction with test results
@@ -370,11 +371,14 @@ SmalltalkIntroSlideshow >> whatsNext: aSlide [
 				(self
 						asText:
 							'
+
 • Download GT from gtoolkit.com
 
 • Explore the Glamorous Toolkit Book
 
 • Learn about Pharo — go to books.pharo.org
+
+• Have fun!
 ')
 ]
 
