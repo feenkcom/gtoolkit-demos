@@ -243,8 +243,8 @@ SmalltalkIntroSlideshow >> pages [
 		twoRules:
 		everythingIsAnObject:
 		everythingHappensBySendingMessages:
-		syntax:
 		threeKindsOfMessages:
+		syntax:
 		methodSyntax:
 		exploringLudo:
 		addingAutoPlay:
@@ -304,6 +304,7 @@ SmalltalkIntroSlideshow >> syntax: aSlide [
 
 { #category : #accessing }
 SmalltalkIntroSlideshow >> takeHome: aSlide [
+
 	<gtSlide>
 	
 	^ (aSlide paragraph)
@@ -311,15 +312,13 @@ SmalltalkIntroSlideshow >> takeHome: aSlide [
 		subtitleWithFormat: (self asSubtitle: 'Take home messages');
 		paragraphWithFormat:
 				(self
-						asBigText:
+						asText:
 							'
-• Smalltalk enables live programming of runninvg systems
+• Smalltalk enables '), (self asText: 'live programming') italic, (self asText: '
 
-• Example methods enable compasable tests and live interaction with test results
+• Example methods enable '), (self asText: 'composable tests') italic, (self asText: ' and live interaction with test results
 
-• GT Inspector views enable a radically different moldable style of development
-
-
+• '), (self asText: 'Moldable development') italic, (self asText: ' brings together coding and exploration of live systems 
 ')
 ]
 
@@ -364,10 +363,19 @@ SmalltalkIntroSlideshow >> twoRules: aSlide [
 SmalltalkIntroSlideshow >> whatsNext: aSlide [
 	<gtSlide>
 	
-	^ (aSlide lepiterPage)
+	^ (aSlide paragraph)
 		priority: (self priorityFor: #whatsNext:);
-		pageNamed: 'What''s next?' from: self gtBook;
-		yourself
+		subtitleWithFormat: (self asSubtitle: 'What''s next?');
+		paragraphWithFormat:
+				(self
+						asText:
+							'
+• Download GT from gtoolkit.com
+
+• Explore the Glamorous Toolkit Book
+
+• Learn about Pharo — go to books.pharo.org
+')
 ]
 
 { #category : #slides }
