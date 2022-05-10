@@ -13,6 +13,11 @@ Class {
 	#category : #'GToolkit-Demo-Ludo-Model'
 }
 
+{ #category : #converting }
+GtLudoMove >> asElement [
+	^ self highlightedBoardElement
+]
+
 { #category : #testing }
 GtLudoMove >> canMove [
 	^ tokenMoves notEmpty

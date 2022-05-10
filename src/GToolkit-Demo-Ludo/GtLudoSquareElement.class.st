@@ -49,7 +49,8 @@ GtLudoSquareElement >> initialize [
 	super initialize.
 	self
 		layout: BlFrameLayout new;
-		border: (BlBorder paint: Color gray width: 0.1)
+		border: (BlBorder paint: Color gray width: 0.1);
+		geometry: (BlRoundedRectangleGeometry cornerRadius: 15)
 ]
 
 { #category : #initialization }
