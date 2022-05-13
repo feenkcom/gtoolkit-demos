@@ -24,6 +24,25 @@ GtLudoRecordingGame >> autoPlay: numberOfMoves [
 ]
 
 { #category : #accessing }
+GtLudoRecordingGame >> gtHistoryFor: aView [
+	<gtView>
+	| container elements |
+	^ aView explicit 
+		title: 'History';
+		stencil: [ 
+		container := BlElement new.
+container layout: BlFlowLayout new.
+container constraintsDo: [:c | c vertical fitContent . c horizontal matchParent ].
+elements := self moves collect: [:each | 
+	each replayGameToHere moves last highlightedBoardElement asScalableElement
+		size: 200@200;
+		margin: (BlInsets all: 10);
+		when: BlClickEvent do: [:e | e target phlow spawnObject: each ] ].
+container addChildren: elements.
+container asScrollableElement ]
+]
+
+{ #category : #accessing }
 GtLudoRecordingGame >> gtMovesFor: aView [
 	<gtView>
 	

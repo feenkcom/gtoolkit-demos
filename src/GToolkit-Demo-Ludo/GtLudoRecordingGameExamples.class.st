@@ -20,6 +20,13 @@ GtLudoRecordingGameExamples >> gameClass [
 	^ GtLudoRecordingGame
 ]
 
+{ #category : #accessing }
+GtLudoRecordingGameExamples >> playerAenterAndLandsOnTokenA [
+	<gtExample>
+	"workaround: the example snippet works with the class that defines the method instead of the target class"
+	^ super playerAenterAndLandsOnTokenA
+]
+
 { #category : #example }
 GtLudoRecordingGameExamples >> playerAentersAndLandsOnA [
 	<gtExample>

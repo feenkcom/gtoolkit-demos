@@ -29,16 +29,6 @@ GtLudoMove >> game [
 ]
 
 { #category : #accessing }
-GtLudoMove >> gtReplayedHighlightFor: aView [
-	<gtView>
-	
-	^ (aView explicit)
-		title: 'Highlight';
-		priority: 30;
-		stencil: [ self replayGameToHere moves last highlightedBoardElement ]
-]
-
-{ #category : #accessing }
 GtLudoMove >> gtReplayedMoveFor: aView [
 	<gtView>
 	
@@ -135,10 +125,10 @@ GtLudoMove >> move [
 { #category : #accessing }
 GtLudoMove >> moveOnBoardFor: aView [
 	<gtView>
-	^ aView explicit
-		  title: 'Move';
-		  priority: 10;
-		  stencil: [ self highlightedBoardElement ]
+	^ (aView explicit)
+		title: 'Move';
+		priority: 10;
+		stencil: [ self replayGameToHere moves last highlightedBoardElement asScalableElement ]
 ]
 
 { #category : #accessing }

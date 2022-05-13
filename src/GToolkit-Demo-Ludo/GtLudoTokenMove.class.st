@@ -59,7 +59,7 @@ GtLudoTokenMove >> moveOnBoardFor: aView [
 	^ (aView explicit)
 		title: 'Move';
 		priority: 10;
-		stencil: [ self highlightedBoardElement ]
+		stencil: [ self highlightedBoardElement asScalableElement]
 ]
 
 { #category : #accessing }
