@@ -60,6 +60,17 @@ GtLudoRecordingGame >> gtMovesFor: aView [
 ]
 
 { #category : #accessing }
+GtLudoRecordingGame >> gtStoreStringFor: aView [ 
+	<gtView>
+	^ aView explicit 
+		title: 'Serialization';
+		stencil: [ 
+			LePageToolContentTreeElement new 
+				pageViewModel: (LePage unnamedPage addSnippet: (LePharoSnippet new code: self storeString; yourself);  yourself) asContentUIModel;
+				matchParent  ] 
+]
+
+{ #category : #accessing }
 GtLudoRecordingGame >> gtTokensFor: aView [
 	<gtView>
 	^ aView columnedList 
