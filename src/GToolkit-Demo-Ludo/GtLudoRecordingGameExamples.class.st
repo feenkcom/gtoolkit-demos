@@ -20,6 +20,143 @@ GtLudoRecordingGameExamples >> gameClass [
 	^ GtLudoRecordingGame
 ]
 
+{ #category : #examples }
+GtLudoRecordingGameExamples >> gameShowingAllMoves1 [
+
+	<gtExample>
+	| game |
+	game := GtLudoRecordingGame new
+		  roll: 1;
+		  roll: 1;
+		  roll: 1;
+		  roll: 6;
+		  moveTokenNamed: 'D';
+		  yourself.
+	^ game
+]
+
+{ #category : #examples }
+GtLudoRecordingGameExamples >> gameShowingAllMoves2 [
+
+	<gtExample>
+	| game |
+	game := self gameShowingAllMoves1.
+	game
+		roll: 6;
+		moveTokenNamed: 'D';
+		yourself.
+	^ game
+]
+
+{ #category : #examples }
+GtLudoRecordingGameExamples >> gameShowingAllMoves3 [
+
+	<gtExample>
+	| game |
+	game := self gameShowingAllMoves2.
+	game
+		roll: 5;
+		moveTokenNamed: 'D';
+		roll: 6;
+		moveTokenNamed: 'a';
+		roll: 6;
+		moveTokenNamed: 'A';
+		yourself.
+	^ game
+]
+
+{ #category : #examples }
+GtLudoRecordingGameExamples >> gameShowingAllMoves4 [
+
+	<gtExample>
+	| game |
+	game := self gameShowingAllMoves3.
+	game
+		roll: 1;
+		moveTokenNamed: 'a';
+		yourself.
+	^ game
+]
+
+{ #category : #examples }
+GtLudoRecordingGameExamples >> gameShowingAllMoves5 [
+
+	<gtExample>
+	| game |
+	game := self gameShowingAllMoves4.
+	game
+		roll: 6;
+		moveTokenNamed: 'b';
+		roll: 6;
+		moveTokenNamed: 'b';
+		roll: 6;
+		moveTokenNamed: 'b';
+		roll: 6;
+		moveTokenNamed: 'b';
+		roll: 6;
+		moveTokenNamed: 'b';
+		roll: 6;
+		moveTokenNamed: 'b';
+		roll: 6;
+		moveTokenNamed: 'b';
+		roll: 6;
+		moveTokenNamed: 'b';
+		yourself.
+	^ game
+]
+
+{ #category : #examples }
+GtLudoRecordingGameExamples >> gameShowingAllMoves6 [
+
+	<gtExample>
+	| game |
+	game := self gameShowingAllMoves5.
+	game
+		roll: 5;
+		moveTokenNamed: 'b';
+		yourself.
+	^ game
+]
+
+{ #category : #accessing }
+GtLudoRecordingGameExamples >> moveImpossible [
+	<gtExample>
+	^ self gameShowingAllMoves5 moves last
+]
+
+{ #category : #accessing }
+GtLudoRecordingGameExamples >> moveInitial [
+	<gtExample>
+	^ self gameShowingAllMoves1 moves last
+]
+
+{ #category : #accessing }
+GtLudoRecordingGameExamples >> moveInitialJumpingAndCapturing [
+	<gtExample>
+	| move |
+	move := self gameShowingAllMoves3 moves last.
+	self assert: move tokenMoves last token name equals: 'D'.
+	^ move
+]
+
+{ #category : #accessing }
+GtLudoRecordingGameExamples >> moveJumping [
+	<gtExample>
+	^ self gameShowingAllMoves4 moves last
+]
+
+{ #category : #accessing }
+GtLudoRecordingGameExamples >> moveSimple [
+	<gtExample>
+	^ self gameShowingAllMoves2 moves last
+]
+
+{ #category : #accessing }
+GtLudoRecordingGameExamples >> moveToTheEnd [
+	<gtExample>
+	^ self gameShowingAllMoves6 moves last
+]
+
 { #category : #accessing }
 GtLudoRecordingGameExamples >> playerAenterAndLandsOnTokenA [
 	<gtExample>

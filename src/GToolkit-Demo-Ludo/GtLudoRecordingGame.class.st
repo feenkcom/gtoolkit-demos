@@ -113,6 +113,19 @@ GtLudoRecordingGame >> notifyMoveRecorded [
 	announcer announce: GtLudoMoveRecorded new 
 ]
 
+{ #category : #accessing }
+GtLudoRecordingGame >> replayingGameTo: aMove do: aBlock [
+
+	| movesToPlay replayedGame |
+	movesToPlay := self moves copyUpThrough: aMove.
+	replayedGame := GtLudoRecordingGame new.
+	movesToPlay do: [ :move | 
+		replayedGame roll: move roll.
+		move canMove ifTrue: [ replayedGame moveTokenNamed: move token name ].
+		aBlock value: aMove ].
+	^ replayedGame
+]
+
 { #category : #playing }
 GtLudoRecordingGame >> startNewMove [
 

@@ -293,7 +293,7 @@ GtLudoGame >> moveToken: aToken [
 
 { #category : #playing }
 GtLudoGame >> moveTokenNamed: aTokenName [
-	self moveToken: (self tokenNamed: aTokenName)
+	^ self moveToken: (self tokenNamed: aTokenName)
 ]
 
 { #category : #accessing }
