@@ -14,7 +14,14 @@ Class {
 
 { #category : #accessing }
 SmalltalkIntroSlideshow class >> show [
-	GtLiveShow openInSpace: SmalltalkIntroSlideshow
+
+	"GtLiveShow openInSpace: SmalltalkIntroSlideshow"
+
+	| slideshow |
+	slideshow := GtNewSlideShow create: SmalltalkIntroSlideshow new.
+	BlSpace new
+		addChild: (GtNewSlideShowElement new slideShow: slideshow);
+		show
 ]
 
 { #category : #slides }
