@@ -46,6 +46,18 @@ GtLudoCodeDocumentationExamples >> paintClassHierarchyWith: mondrian [
 						padding: (BlInsets all: 2) ];
 				with: (class methods sorted: [ :a :b | a selector < b selector ]).
 			mondrian layout vertical ].
+	mondrian nodes 
+		stencil: [ :class | 
+			GtMondrianUMLClassElement withDefaultContainer
+				label: (class name asRopedText
+						 glamorousRegularFont;
+						 fontSize: 14;
+						 foreground: Color gray;
+						 bold);
+				when: BlClickEvent do: [ :e | 
+				e consumed: true.
+				e target phlow spawnTool: (GtClassCoderTool forClass: class) ] ];
+		with: {BlElement . Announcement }.
 	mondrian edges
 		stencil: [ :class | 
 			BlLineElement new
