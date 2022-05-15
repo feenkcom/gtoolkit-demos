@@ -25,21 +25,23 @@ GtLudoRecordingGame >> autoPlay: numberOfMoves [
 
 { #category : #accessing }
 GtLudoRecordingGame >> gtHistoryFor: aView [
+
 	<gtView>
 	| container elements |
-	^ aView explicit 
-		title: 'History';
-		stencil: [ 
-		container := BlElement new.
-container layout: BlFlowLayout new.
-container constraintsDo: [:c | c vertical fitContent . c horizontal matchParent ].
-elements := self moves collect: [:each | 
-	each replayGameToHere moves last highlightedBoardElement asScalableElement
-		size: 200@200;
-		margin: (BlInsets all: 10);
-		when: BlClickEvent do: [:e | e target phlow spawnObject: each ] ].
-container addChildren: elements.
-container asScrollableElement ]
+	^ aView list
+		  title: 'History';
+		  itemStencil: [ 
+			  BlScalableElement new
+				  size: 200 @ 200;
+				  margin: (BlInsets all: 10) ];
+		  itemDataBinder: [ :eachElement :eachMove :eachIndex | 
+			  eachElement addChild:
+				  (eachMove replayGameToHere moves last highlightedBoardElement
+					   when: BlClickEvent
+					   do: [ :e | 
+						   e consumed: true.
+						   e target phlow spawnObject: eachMove ]) ];
+		  items: self moves
 ]
 
 { #category : #accessing }
