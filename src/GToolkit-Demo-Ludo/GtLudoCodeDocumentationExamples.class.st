@@ -141,51 +141,61 @@ GtLudoCodeDocumentationExamples >> paintClassHierarchyWith: mondrian [
 
 { #category : #accessing }
 GtLudoCodeDocumentationExamples >> paintClassLabeledDependenciesWith: m [
-
-	m nodes
-		stencil:   [ :class | 
-			GtMondrianUMLClassElement withDefaultContainer
-				label: ((class name removePrefix: 'GtLudo') asRopedText
-						 glamorousRegularFont;
-						 fontSize: 6;
-						 bold);
-				when: BlClickEvent do: [ :e | 
-				e consumed: true.
-				e target phlow spawnTool: (GtClassCoderTool forClass: class) ] ];
+	(m nodes)
+		stencil:
+				[ :class | 
+					(GtMondrianUMLClassElement new)
+						label:
+								(((class name removePrefix: 'GtLudo') asRopedText)
+										glamorousRegularFont;
+										fontSize: 10;
+										bold);
+						when: BlClickEvent
+							do:
+								[ :e | 
+									e consumed: true.
+									e target phlow spawnTool: (GtClassCoderTool forClass: class) ] ];
 		with: GtLudoRecordingGame package classes.
-	m nodes
-		stencil: [ :c | 
-			BlElement new
-				geometry: BlCircleGeometry new;
-				border: (BlBorder paint: Color black);
-				background: Color white;
-				size: 5 @ 5;
-				aptitude:
-					(BrGlamorousWithLabelTooltipAptitude new text: [ c name ]);
-				when: BlClickEvent do: [ :e | 
-					e consumed: true.
-					e target phlow spawnTool: (GtClassCoderTool forClass: c) ] ];
-		with: { 
-				BlElement.
-				Announcement }.
-	m edges
-		stencil: [ :c | 
-			BlLineElement new
-				zIndex: -1;
-				border: (BlBorder paint: (Color gray alpha: 0.4));
-				fromHead: (BlArrowheadTriangle new
-						 scale: 2;
-						 border: (BlBorder paint: (Color gray alpha: 0.4))) ];
+	(m nodes)
+		stencil:
+				[ :c | 
+					(BlElement new)
+						geometry: BlCircleGeometry new;
+						border: (BlBorder paint: Color black);
+						background: Color white;
+						size: 5 @ 5;
+						aptitude: (BrGlamorousWithLabelTooltipAptitude new text: [ c name ]);
+						when: BlClickEvent
+							do:
+								[ :e | 
+									e consumed: true.
+									e target phlow spawnTool: (GtClassCoderTool forClass: c) ] ];
+		with:
+				{BlElement.
+						Announcement}.
+	(m edges)
+		stencil:
+				[ :c | 
+					(BlLineElement new)
+						zIndex: -1;
+						border: (BlBorder paint: (Color gray alpha: 0.4));
+						fromHead:
+								((BlArrowheadTriangle new)
+										scale: 2;
+										border: (BlBorder paint: (Color gray alpha: 0.4))) ];
 		connectFrom: [ :c | c superclass ].
-	m edges
-		stencil: [ :c | 
-			BlParabollaArcElement new
-				zIndex: -1;
-				curvatureFraction: 0.2;
-				border: (BlBorder paint: (Color orange alpha: 0.4));
-				toHead: (BlArrowheadSimpleArrow new border:
-							 (BlBorder paint: (Color orange alpha: 0.4))) ];
-		connectToAll: [ :c | 
-		(c methods flatCollectAsSet: #gtReferencedClasses) \ { c } ].
-	m layout force nbIterations: 100
+	(m edges)
+		stencil:
+				[ :c | 
+					(BlParabollaArcElement new)
+						zIndex: -1;
+						curvatureFraction: 0.2;
+						border: (BlBorder paint: (Color orange alpha: 0.4));
+						toHead: (BlArrowheadSimpleArrow new border: (BlBorder paint: (Color orange alpha: 0.4))) ];
+		connectToAll: [ :c | (c methods flatCollectAsSet: #gtReferencedClasses) \ {c} ].
+	"(m layout force)
+		nbIterations: 100;
+		length: 400"
+	m layout circle
+
 ]
