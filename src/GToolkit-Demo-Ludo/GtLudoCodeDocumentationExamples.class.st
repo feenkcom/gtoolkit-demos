@@ -49,7 +49,7 @@ GtLudoCodeDocumentationExamples >> paintClassDependenciesWith: m [
 		stencil: [ :c | 
 			BlElement new
 				geometry: BlCircleGeometry new;
-				border: (BlBorder paint: Color black);
+				border: (BlBorder paint: Color gray);
 				background: Color white;
 				size: 5 @ 5;
 				aptitude:
