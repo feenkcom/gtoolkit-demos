@@ -10,7 +10,7 @@ GtLudoCodeDocumentationExamples >> classHierarchy [
 	| mondrian |
 	mondrian := GtMondrian new.
 	self paintClassHierarchyWith:  mondrian.
-	^ mondrian asElement zoomLevel: 3
+	^ mondrian
 ]
 
 { #category : #accessing }
