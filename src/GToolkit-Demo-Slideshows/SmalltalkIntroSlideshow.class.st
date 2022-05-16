@@ -83,16 +83,6 @@ SmalltalkIntroSlideshow >> bouncingAtoms: aSlide [
 ]
 
 { #category : #slides }
-SmalltalkIntroSlideshow >> codaRecordingMoves: aSlide [
-	<gtSlide>
-	
-	^ (aSlide lepiterPage)
-		priority: (self priorityFor: #codaRecordingMoves:);
-		pageNamed: 'Coda: recording and visualizing token moves' from: self gtBook;
-		yourself
-]
-
-{ #category : #slides }
 SmalltalkIntroSlideshow >> composingExamples: aSlide [
 	<gtSlide>
 	
@@ -229,9 +219,9 @@ SmalltalkIntroSlideshow >> outline: aSlide [
 							'
 • What is Smalltalk?
 • Smalltalk basics — syntax, sending messages
-• Scripting in the Playground
-• Live programming of classes and methods
+• Live programming with interactive views
 • Testing with composable examples
+• Live documentation with Lepiter notebooks
 • Take home messages
 ')
 ]
@@ -256,11 +246,9 @@ SmalltalkIntroSlideshow >> pages [
 		exploringLudo:
 		addingAutoPlay:
 		composingExamples:
-		codaRecordingMoves:
+		recordingMoves:
 		takeHome:
 		whatsNext:
-		"bouncingAtoms:"
-		"programmingClassesAndMethods:"
 		)
 ]
 
@@ -280,6 +268,16 @@ SmalltalkIntroSlideshow >> programmingClassesAndMethods: aSlide [
 	^ (aSlide lepiterPage)
 		priority: (self priorityFor: #programmingClassesAndMethods:);
 		pageNamed: 'Programming Classes and Methods' from: self gtBook
+]
+
+{ #category : #slides }
+SmalltalkIntroSlideshow >> recordingMoves: aSlide [
+	<gtSlide>
+	
+	^ (aSlide lepiterPage)
+		priority: (self priorityFor: #recordingMoves:);
+		pageNamed: 'Recording and visualizing token moves' from: self gtBook;
+		yourself
 ]
 
 { #category : #accessing }
