@@ -175,6 +175,16 @@ Changes to classes and methods are logged as you program.');
 						fileReference: (GtResourcesUtility resourceAtPath: self picturesDirectoryPath / 'image+changes.png') ]
 ]
 
+{ #category : #slides }
+SmalltalkIntroSlideshow >> liveDocumentation: aSlide [
+	<gtSlide>
+	
+	^ (aSlide lepiterPage)
+		priority: (self priorityFor: #liveDocumentation:);
+		pageNamed: 'Live documentation of the game logic' from: self gtBook;
+		yourself
+]
+
 { #category : #accessing }
 SmalltalkIntroSlideshow >> ludoAppetizer: aSlide [
 	<gtSlide>
@@ -247,6 +257,7 @@ SmalltalkIntroSlideshow >> pages [
 		addingAutoPlay:
 		composingExamples:
 		recordingMoves:
+		liveDocumentation:
 		takeHome:
 		whatsNext:
 		)
