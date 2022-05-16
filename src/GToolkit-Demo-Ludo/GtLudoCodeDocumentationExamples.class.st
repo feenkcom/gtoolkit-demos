@@ -10,7 +10,7 @@ GtLudoCodeDocumentationExamples >> classHierarchy [
 	| mondrian |
 	mondrian := GtMondrian new.
 	self paintClassHierarchyWith:  mondrian.
-	^ mondrian
+	^ mondrian asElement zoomLevel: 3
 ]
 
 { #category : #accessing }
@@ -40,7 +40,7 @@ GtLudoCodeDocumentationExamples >> paintClassDependenciesWith: m [
 		stencil: [ :c | 
 			BlElement new
 				geometry: BlCircleGeometry new;
-				border: (BlBorder paint: Color black);
+				border: (BlBorder paint: Color gray);
 				background: Color white;
 				size: 5 @ 5;
 				aptitude:
