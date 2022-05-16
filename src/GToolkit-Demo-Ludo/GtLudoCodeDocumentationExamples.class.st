@@ -14,6 +14,66 @@ GtLudoCodeDocumentationExamples >> classHierarchy [
 ]
 
 { #category : #accessing }
+GtLudoCodeDocumentationExamples >> classReferences [
+	<gtExample>
+	| mondrian |
+	mondrian := GtMondrian new.
+	self paintClassDependenciesWith:  mondrian.
+	^ mondrian
+]
+
+{ #category : #accessing }
+GtLudoCodeDocumentationExamples >> paintClassDependenciesWith: m [
+
+	m nodes
+		stencil: [ :c | 
+			BlElement new
+				geometry: BlCircleGeometry new;
+				background: Color black;
+				size: 5 @ 5;
+				aptitude: (BrGlamorousWithLabelTooltipAptitude new text: c name);
+				when: BlClickEvent do: [ :e | 
+					e consumed: true.
+					e target phlow spawnTool: (GtClassCoderTool forClass: c) ] ];
+		with: GtLudoRecordingGame package classes.
+	m nodes
+		stencil: [ :c | 
+			BlElement new
+				geometry: BlCircleGeometry new;
+				border: (BlBorder paint: Color black);
+				background: Color white;
+				size: 5 @ 5;
+				aptitude:
+					(BrGlamorousWithLabelTooltipAptitude new text: [ c name ]);
+				when: BlClickEvent do: [ :e | 
+					e consumed: true.
+					e target phlow spawnTool: (GtClassCoderTool forClass: c) ] ];
+		with: { 
+				BlElement.
+				Announcement }.
+	m edges
+		stencil: [ :c | 
+			BlLineElement new
+				zIndex: -1;
+				border: (BlBorder paint: (Color gray alpha: 0.4));
+				fromHead: (BlArrowheadTriangle new
+						 scale: 2;
+						 border: (BlBorder paint: (Color gray alpha: 0.4))) ];
+		connectFrom: [ :c | c superclass ].
+	m edges
+		stencil: [ :c | 
+			BlParabollaArcElement new
+				zIndex: -1;
+				curvatureFraction: 0.2;
+				border: (BlBorder paint: (Color orange alpha: 0.4));
+				toHead: (BlArrowheadSimpleArrow new border:
+							 (BlBorder paint: (Color orange alpha: 0.4))) ];
+		connectToAll: [ :c | 
+		(c methods flatCollectAsSet: #gtReferencedClasses) \ { c } ].
+	m layout force nbIterations: 100
+]
+
+{ #category : #accessing }
 GtLudoCodeDocumentationExamples >> paintClassHierarchyWith: mondrian [
 
 	| classes |
