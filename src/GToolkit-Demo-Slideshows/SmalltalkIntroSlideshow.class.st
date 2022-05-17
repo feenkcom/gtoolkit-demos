@@ -176,12 +176,22 @@ Changes to classes and methods are logged as you program.');
 ]
 
 { #category : #slides }
-SmalltalkIntroSlideshow >> liveDocumentation: aSlide [
+SmalltalkIntroSlideshow >> liveDocumentationLogic: aSlide [
 	<gtSlide>
 	
 	^ (aSlide lepiterPage)
-		priority: (self priorityFor: #liveDocumentation:);
+		priority: (self priorityFor: #liveDocumentationLogic:);
 		pageNamed: 'Live documentation of the game logic' from: self gtBook;
+		yourself
+]
+
+{ #category : #slides }
+SmalltalkIntroSlideshow >> liveDocumentationUML: aSlide [
+	<gtSlide>
+	
+	^ (aSlide lepiterPage)
+		priority: (self priorityFor: #liveDocumentationUML:);
+		pageNamed: 'Live documentation of the technical solution' from: self gtBook;
 		yourself
 ]
 
@@ -257,7 +267,8 @@ SmalltalkIntroSlideshow >> pages [
 		addingAutoPlay:
 		composingExamples:
 		recordingMoves:
-		liveDocumentation:
+		liveDocumentationLogic:
+		liveDocumentationUML:
 		takeHome:
 		whatsNext:
 		)
