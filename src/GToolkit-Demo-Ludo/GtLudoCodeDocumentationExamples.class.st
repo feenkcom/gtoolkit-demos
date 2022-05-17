@@ -7,24 +7,15 @@ Class {
 { #category : #accessing }
 GtLudoCodeDocumentationExamples >> classHierarchy [
 	<gtExample>
+	
 	| mondrian |
 	mondrian := GtMondrian new.
-	self paintClassHierarchyWith:  mondrian.
-	^ mondrian
-]
-
-{ #category : #accessing }
-GtLudoCodeDocumentationExamples >> classLabeledCircleReferencesModelClasses [
-	"Circle layout is not ideal, but is readable."
-	<gtExample>
-	
-	| mondrian modelClasses |
-	mondrian := GtMondrian new.
-	modelClasses := GtLudoGame package classes select: [ :c | c category endsWith: 'Model' ].
 	self
-		paintClassLabeledCircleDependenciesWith: mondrian
-		forClasses: modelClasses
-		andRoots: {}.
+		paintClassHierarchyWith: mondrian
+		forClasses: GtLudoGame package classes
+		andRoots:
+			{BlElement.
+				Announcement}.
 	^ mondrian
 ]
 
@@ -38,28 +29,60 @@ GtLudoCodeDocumentationExamples >> classLabeledReferencesAllClasses [
 ]
 
 { #category : #accessing }
-GtLudoCodeDocumentationExamples >> classLabeledReferencesModelClasses [
-	"Using a forced layout. Does not look good."
-
-	<gtExample>
-	
-	| mondrian modelClasses |
-	mondrian := GtMondrian new.
-	modelClasses := GtLudoGame package classes select: [ :c | c category endsWith: 'Model' ].
-	self
-		paintClassLabeledDependenciesWith: mondrian
-		forClasses: modelClasses
-		andRoots: {}.
-	^ mondrian
-]
-
-{ #category : #accessing }
 GtLudoCodeDocumentationExamples >> classReferences [
 	<gtExample>
 	| mondrian |
 	mondrian := GtMondrian new.
 	self paintClassDependenciesWith:  mondrian.
 	^ mondrian
+]
+
+{ #category : #accessing }
+GtLudoCodeDocumentationExamples >> modelClassHierarchy [
+	<gtExample>
+	
+	| mondrian |
+	mondrian := GtMondrian new.
+	self
+		paintClassHierarchyWith: mondrian
+		forClasses: self modelClasses
+		andRoots: {}.
+	^ mondrian
+]
+
+{ #category : #accessing }
+GtLudoCodeDocumentationExamples >> modelClassLabeledCircleReferences [
+	"Circle layout is not ideal, but is readable."
+	<gtExample>
+	
+	| mondrian  |
+	mondrian := GtMondrian new.
+
+	self
+		paintClassLabeledCircleDependenciesWith: mondrian
+		forClasses: self modelClasses
+		andRoots: {}.
+	^ mondrian
+]
+
+{ #category : #accessing }
+GtLudoCodeDocumentationExamples >> modelClassLabeledReferences [
+	"Using a forced layout. Does not look good."
+
+	<gtExample>
+	
+	| mondrian |
+	mondrian := GtMondrian new.
+	self
+		paintClassLabeledDependenciesWith: mondrian
+		forClasses: self modelClasses
+		andRoots: {}.
+	^ mondrian
+]
+
+{ #category : #accessing }
+GtLudoCodeDocumentationExamples >> modelClasses [
+	^ GtLudoGame package classes select: [ :c | c category endsWith: 'Model' ]
 ]
 
 { #category : #accessing }
@@ -114,10 +137,8 @@ GtLudoCodeDocumentationExamples >> paintClassDependenciesWith: m [
 ]
 
 { #category : #accessing }
-GtLudoCodeDocumentationExamples >> paintClassHierarchyWith: mondrian [
+GtLudoCodeDocumentationExamples >> paintClassHierarchyWith: mondrian forClasses: classes andRoots: roots [
 
-	| classes |
-	classes := GtLudoRecordingGame package classes.
 	mondrian nodes
 		stencil: [ :class | 
 			GtMondrianUMLClassElement withDefaultContainer
@@ -157,7 +178,7 @@ GtLudoCodeDocumentationExamples >> paintClassHierarchyWith: mondrian [
 				when: BlClickEvent do: [ :e | 
 				e consumed: true.
 				e target phlow spawnTool: (GtClassCoderTool forClass: class) ] ];
-		with: {BlElement . Announcement }.
+		with: roots.
 	mondrian edges
 		stencil: [ :class | 
 			BlLineElement new
