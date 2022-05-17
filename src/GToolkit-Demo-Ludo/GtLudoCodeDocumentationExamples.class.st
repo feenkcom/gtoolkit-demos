@@ -54,6 +54,26 @@ GtLudoCodeDocumentationExamples >> modelClassCircleLabeledReferences [
 ]
 
 { #category : #accessing }
+GtLudoCodeDocumentationExamples >> modelClassExplicitLabeledReferences [
+	"Use hand-tweaked positions.
+	
+	NOT WORKING -- probably because there is no parent yet when the result has not yet been returned.
+	"
+
+	<gtExample>
+	
+	| mondrian |
+	mondrian := GtMondrian new.
+	self
+		paintClassLabeledDependenciesWith: mondrian
+		forClasses: self modelClasses
+		andRoots: {}.
+	mondrian layout circle.
+	mondrian root children withIndexDo: [ :child :n | child relocate: (self modelClassPositions at: n) ].
+	^ mondrian
+]
+
+{ #category : #accessing }
 GtLudoCodeDocumentationExamples >> modelClassForcedLabeledReferences [
 	"Using a forced layout. Does not look good."
 
@@ -87,8 +107,42 @@ GtLudoCodeDocumentationExamples >> modelClassHierarchy [
 ]
 
 { #category : #accessing }
+GtLudoCodeDocumentationExamples >> modelClassPositions [
+	"Recorded positions from a handtweaked graph:
+	(mondrian root children collect: #position) storeString
+	"
+
+	^ (Array new: 23)
+		at: 1 put: 428.25 @ 440.40216064453125;
+		at: 2 put: 342.25 @ 282.40216064453125;
+		at: 3 put: 212.25 @ 271.40216064453125;
+		at: 4 put: 275.25 @ 466.40216064453125;
+		at: 5 put: 395.25 @ 275.40216064453125;
+		at: 6 put: 371.25 @ 347.40216064453125;
+		at: 7 put: 173.25 @ 373.40216064453125;
+		at: 8 put: 337.25 @ 405.40216064453125;
+		at: 9 put: 452.25 @ 349.40216064453125;
+		at: 10 put: 429.25 @ 515.4021606445313;
+		at: 11 put: 481.4218551090786 @ 375.40216064453125;
+		at: 12 put: 412.9895965920554 @ 304.40216064453125;
+		at: 13 put: 241.07468297848334 @ 296.40216064453125;
+		at: 14 put: 459.3429988861084 @ 304.40216064453125;
+		at: 15 put: 269.64599990844727 @ 275.636538385994;
+		at: 16 put: 252.97752039019034 @ 296.40216064453125;
+		at: 17 put: 266.8829357929719 @ 296.40216064453125;
+		at: 18 put: 328.36999893188477 @ 479.6981032171214;
+		at: 19 put: 251.53184835203405 @ 402.40216064453125;
+		at: 20 put: 328.36999893188477 @ 448.0508989912264;
+		at: 21 put: 434.31399917602533 @ 358.567892616377;
+		at: 22 put: 251.53184835203405 @ 402.40216064453125;
+		at: 23 put: 398.73273805986366 @ 375.40216064453125;
+		yourself
+]
+
+{ #category : #accessing }
 GtLudoCodeDocumentationExamples >> modelClasses [
-	^ GtLudoGame package classes select: [ :c | c category endsWith: 'Model' ]
+	^ (GtLudoGame package classes select: [ :c | c category endsWith: 'Model' ]) asOrderedCollection
+	sort: [ :a :b | a name <= b name ]
 ]
 
 { #category : #accessing }
@@ -203,6 +257,7 @@ GtLudoCodeDocumentationExamples >> paintClassLabeledDependenciesWith: m forClass
 	"
 	Eg classes = GtLudoRecordingGame package classes
 	roots = {BlElement. Announcement}
+	NB: the caller must set the layout.
 	"
 	
 	(m nodes)
@@ -212,7 +267,7 @@ GtLudoCodeDocumentationExamples >> paintClassLabeledDependenciesWith: m forClass
 						label:
 								(((class name removePrefix: 'GtLudo') asRopedText)
 										glamorousRegularFont;
-										fontSize: 20;
+										fontSize: 18;
 										bold);
 						when: BlClickEvent
 							do:
