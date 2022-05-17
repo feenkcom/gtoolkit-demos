@@ -311,6 +311,8 @@ GtLudoCodeDocumentationExamples >> paintClassLabeledDependenciesWith: m forClass
 						toHead: (BlArrowheadSimpleArrow new border: (BlBorder paint: (Color orange alpha: 0.4))) ];
 		connectToAll: [ :c | (c methods flatCollectAsSet: #gtReferencedClasses) \ {c} ].
 	(m layout force)
-		nbIterations: 300;
+		nbIterations: 200;
+		charge: -500;
+		strength: 0;
 		length: 300
 ]
