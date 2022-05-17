@@ -55,10 +55,7 @@ GtLudoCodeDocumentationExamples >> modelClassCircleLabeledReferences [
 
 { #category : #accessing }
 GtLudoCodeDocumentationExamples >> modelClassExplicitLabeledReferences [
-	"Use hand-tweaked positions.
-	
-	NOT WORKING -- probably because there is no parent yet when the result has not yet been returned.
-	"
+	"Use hand-tweaked positions."
 
 	<gtExample>
 	
@@ -68,7 +65,7 @@ GtLudoCodeDocumentationExamples >> modelClassExplicitLabeledReferences [
 		paintClassLabeledDependenciesWith: mondrian
 		forClasses: self modelClasses
 		andRoots: {}.
-	mondrian layout circle.
+	mondrian layout custom: BlBasicLayout new.
 	mondrian root children withIndexDo: [ :child :n | child relocate: (self modelClassPositions at: n) ].
 	^ mondrian
 ]
