@@ -38,20 +38,7 @@ GtLudoCodeDocumentationExamples >> classReferences [
 ]
 
 { #category : #accessing }
-GtLudoCodeDocumentationExamples >> modelClassHierarchy [
-	<gtExample>
-	
-	| mondrian |
-	mondrian := GtMondrian new.
-	self
-		paintClassHierarchyWith: mondrian
-		forClasses: self modelClasses
-		andRoots: {}.
-	^ mondrian
-]
-
-{ #category : #accessing }
-GtLudoCodeDocumentationExamples >> modelClassLabeledCircleReferences [
+GtLudoCodeDocumentationExamples >> modelClassCircleLabeledReferences [
 	"Circle layout is not ideal, but is readable."
 	<gtExample>
 	
@@ -59,14 +46,15 @@ GtLudoCodeDocumentationExamples >> modelClassLabeledCircleReferences [
 	mondrian := GtMondrian new.
 
 	self
-		paintClassLabeledCircleDependenciesWith: mondrian
+		paintClassLabeledDependenciesWith: mondrian
 		forClasses: self modelClasses
 		andRoots: {}.
+	mondrian layout circle.
 	^ mondrian
 ]
 
 { #category : #accessing }
-GtLudoCodeDocumentationExamples >> modelClassLabeledReferences [
+GtLudoCodeDocumentationExamples >> modelClassForcedLabeledReferences [
 	"Using a forced layout. Does not look good."
 
 	<gtExample>
@@ -75,6 +63,24 @@ GtLudoCodeDocumentationExamples >> modelClassLabeledReferences [
 	mondrian := GtMondrian new.
 	self
 		paintClassLabeledDependenciesWith: mondrian
+		forClasses: self modelClasses
+		andRoots: {}.
+	mondrian layout force
+		nbIterations: 200;
+		charge: -500;
+		strength: 0;
+		length: 300.
+	^ mondrian
+]
+
+{ #category : #accessing }
+GtLudoCodeDocumentationExamples >> modelClassHierarchy [
+	<gtExample>
+	
+	| mondrian |
+	mondrian := GtMondrian new.
+	self
+		paintClassHierarchyWith: mondrian
 		forClasses: self modelClasses
 		andRoots: {}.
 	^ mondrian
@@ -192,73 +198,13 @@ GtLudoCodeDocumentationExamples >> paintClassHierarchyWith: mondrian forClasses:
 ]
 
 { #category : #accessing }
-GtLudoCodeDocumentationExamples >> paintClassLabeledCircleDependenciesWith: m forClasses: classes andRoots: roots [
-
-	"Eg classes = GtLudoRecordingGame package classes
-	roots = {BlElement. Announcement}"
-	(m nodes)
-		stencil:
-				[ :class | 
-					(GtMondrianUMLClassElement new)
-						label:
-								(((class name removePrefix: 'GtLudo') asRopedText)
-										glamorousRegularFont;
-										fontSize: 10;
-										bold);
-						when: BlClickEvent
-							do:
-								[ :e | 
-									e consumed: true.
-									e target phlow spawnTool: (GtClassCoderTool forClass: class) ] ];
-		with: classes.
-	(m nodes)
-		stencil:
-				[ :c | 
-					(BlElement new)
-						geometry: BlCircleGeometry new;
-						border: (BlBorder paint: Color black);
-						background: Color white;
-						size: 5 @ 5;
-						aptitude: (BrGlamorousWithLabelTooltipAptitude new text: [ c name ]);
-						when: BlClickEvent
-							do:
-								[ :e | 
-									e consumed: true.
-									e target phlow spawnTool: (GtClassCoderTool forClass: c) ] ];
-		with:
-				roots.
-	(m edges)
-		stencil:
-				[ :c | 
-					(BlLineElement new)
-						zIndex: -1;
-						border: (BlBorder paint: (Color gray alpha: 0.4));
-						fromHead:
-								((BlArrowheadTriangle new)
-										scale: 2;
-										border: (BlBorder paint: (Color gray alpha: 0.4))) ];
-		connectFrom: [ :c | c superclass ].
-	(m edges)
-		stencil:
-				[ :c | 
-					(BlParabollaArcElement new)
-						zIndex: -1;
-						curvatureFraction: 0.2;
-						border: (BlBorder paint: (Color orange alpha: 0.4));
-						toHead: (BlArrowheadSimpleArrow new border: (BlBorder paint: (Color orange alpha: 0.4))) ];
-		connectToAll: [ :c | (c methods flatCollectAsSet: #gtReferencedClasses) \ {c} ].
-	"(m layout force)
-		nbIterations: 100;
-		length: 400"
-	m layout circle
-
-]
-
-{ #category : #accessing }
 GtLudoCodeDocumentationExamples >> paintClassLabeledDependenciesWith: m forClasses: classes andRoots: roots [
 
-	"Eg classes = GtLudoRecordingGame package classes
-	roots = {BlElement. Announcement}"
+	"
+	Eg classes = GtLudoRecordingGame package classes
+	roots = {BlElement. Announcement}
+	"
+	
 	(m nodes)
 		stencil:
 				[ :class | 
@@ -310,9 +256,5 @@ GtLudoCodeDocumentationExamples >> paintClassLabeledDependenciesWith: m forClass
 						border: (BlBorder paint: (Color orange alpha: 0.4));
 						toHead: (BlArrowheadSimpleArrow new border: (BlBorder paint: (Color orange alpha: 0.4))) ];
 		connectToAll: [ :c | (c methods flatCollectAsSet: #gtReferencedClasses) \ {c} ].
-	(m layout force)
-		nbIterations: 200;
-		charge: -500;
-		strength: 0;
-		length: 300
+
 ]
