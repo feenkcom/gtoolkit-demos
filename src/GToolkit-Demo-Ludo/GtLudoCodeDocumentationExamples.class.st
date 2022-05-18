@@ -250,19 +250,18 @@ GtLudoCodeDocumentationExamples >> paintClassHierarchyWith: mondrian forClasses:
 
 { #category : #accessing }
 GtLudoCodeDocumentationExamples >> paintClassLabeledDependenciesWith: m forClasses: classes andRoots: roots [
-
 	"
 	Eg classes = GtLudoRecordingGame package classes
 	roots = {BlElement. Announcement}
 	NB: the caller must set the layout.
 	"
-	
-	(m nodes)
+
+	m nodes
 		stencil:
 				[ :class | 
-					(GtMondrianUMLClassElement new)
+					GtMondrianUMLClassElement new
 						label:
-								(((class name removePrefix: 'GtLudo') asRopedText)
+								((class name removePrefix: 'GtLudo') asRopedText
 										glamorousRegularFont;
 										fontSize: 18;
 										bold);
@@ -272,10 +271,10 @@ GtLudoCodeDocumentationExamples >> paintClassLabeledDependenciesWith: m forClass
 									e consumed: true.
 									e target phlow spawnTool: (GtClassCoderTool forClass: class) ] ];
 		with: classes.
-	(m nodes)
+	m nodes
 		stencil:
 				[ :c | 
-					(BlElement new)
+					BlElement new
 						geometry: BlCircleGeometry new;
 						border: (BlBorder paint: Color black);
 						background: Color white;
@@ -286,27 +285,24 @@ GtLudoCodeDocumentationExamples >> paintClassLabeledDependenciesWith: m forClass
 								[ :e | 
 									e consumed: true.
 									e target phlow spawnTool: (GtClassCoderTool forClass: c) ] ];
-		with:
-				roots.
-	(m edges)
+		with: roots.
+	m edges
 		stencil:
-				[ :c | 
-					(BlLineElement new)
-						zIndex: -1;
-						border: (BlBorder paint: (Color gray alpha: 0.4));
+				[ :class | 
+					BlLineElement new
+						border: (BlBorder paint: (Color black alpha: 0.4));
 						fromHead:
-								((BlArrowheadTriangle new)
-										scale: 2;
-										border: (BlBorder paint: (Color gray alpha: 0.4))) ];
+								(BlArrowheadTriangle new
+										scale: 5;
+										border: (BlBorder paint: (Color black alpha: 0.4))) ];
 		connectFrom: [ :c | c superclass ].
-	(m edges)
+	m edges
 		stencil:
 				[ :c | 
-					(BlParabollaArcElement new)
+					BlParabollaArcElement new
 						zIndex: -1;
 						curvatureFraction: 0.2;
 						border: (BlBorder paint: (Color orange alpha: 0.4));
 						toHead: (BlArrowheadSimpleArrow new border: (BlBorder paint: (Color orange alpha: 0.4))) ];
-		connectToAll: [ :c | (c methods flatCollectAsSet: #gtReferencedClasses) \ {c} ].
-
+		connectToAll: [ :c | (c methods flatCollectAsSet: #gtReferencedClasses) \ {c} ]
 ]
