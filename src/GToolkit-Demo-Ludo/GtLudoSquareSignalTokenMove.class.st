@@ -1,3 +1,6 @@
+"
+I announce the fact that the user has clicked on a square of the board, so there is a request to move the token on that square (if any).
+"
 Class {
 	#name : #GtLudoSquareSignalTokenMove,
 	#superclass : #Announcement,
