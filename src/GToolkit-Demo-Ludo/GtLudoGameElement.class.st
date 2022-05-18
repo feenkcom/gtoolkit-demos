@@ -1,3 +1,6 @@
+"
+I am a composite graphical Element holding the game state (a GtLudoBoardElement) as well as a Feedback element.
+"
 Class {
 	#name : #GtLudoGameElement,
 	#superclass : #BlElement,

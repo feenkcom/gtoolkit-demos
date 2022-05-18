@@ -1,3 +1,8 @@
+"
+I provide numerous examples of the high-level interface to the Ludo Game.
+My examples (should) cover all the possible scenarios of token moves that should be handled.
+For each scenarios there is a “before” and “after” scenario (see the examples map).
+"
 Class {
 	#name : #GtLudoGameExamples,
 	#superclass : #Object,

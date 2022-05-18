@@ -1,3 +1,6 @@
+"
+I encapsulate the move of a Ludo token from one square to another.
+"
 Class {
 	#name : #GtLudoTokenMove,
 	#superclass : #Object,

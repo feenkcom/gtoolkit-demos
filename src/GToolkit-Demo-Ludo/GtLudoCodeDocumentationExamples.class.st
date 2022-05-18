@@ -1,3 +1,6 @@
+"
+I provide a few examples of UML class hierarchy diagrams for the Ludo Game, as well as examples of class dependency diagrams.
+"
 Class {
 	#name : #GtLudoCodeDocumentationExamples,
 	#superclass : #Object,

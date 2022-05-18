@@ -1,3 +1,8 @@
+"
+I provide numerous examples of the recording variant of the Ludo Game, which records the history of the moves.
+As a subclass of GtLudoGameExamples, all the examples of the plain variant of the game work for the recording variant as well.
+In addition, there are several new examples that return instances of GtLudoMove.
+"
 Class {
 	#name : #GtLudoRecordingGameExamples,
 	#superclass : #GtLudoGameExamples,
