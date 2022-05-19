@@ -14,16 +14,7 @@ Class {
 
 { #category : #accessing }
 SmalltalkIntroSlideshow class >> show [
-
-	"GtLiveShow openInSpace: SmalltalkIntroSlideshow"
-
-	| slideshow slideshowViewModel |
-	slideshow := GtPresenterSlideShow create: SmalltalkIntroSlideshow new.
-	slideshowViewModel := GtPresenterSlideShowViewModel new slideShow: slideshow.
-
-	BlSpace new
-		addChild: (GtPresenterSlideShowElement new slideShowViewModel: slideshowViewModel);
-		show
+	GtPresenterSlideShow openInSpace: SmalltalkIntroSlideshow
 ]
 
 { #category : #slides }
