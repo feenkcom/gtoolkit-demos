@@ -1,3 +1,6 @@
+"
+I provide a couple of examples illustrating the low-level board state methods.
+"
 Class {
 	#name : #GtLudoBoardExamples,
 	#superclass : #Object,
