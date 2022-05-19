@@ -17,10 +17,12 @@ SmalltalkIntroSlideshow class >> show [
 
 	"GtLiveShow openInSpace: SmalltalkIntroSlideshow"
 
-	| slideshow |
-	slideshow := GtNewSlideShow create: SmalltalkIntroSlideshow new.
+	| slideshow slideshowViewModel |
+	slideshow := GtPresenterSlideShow create: SmalltalkIntroSlideshow new.
+	slideshowViewModel := GtPresenterSlideShowViewModel new slideShow: slideshow.
+
 	BlSpace new
-		addChild: (GtNewSlideShowElement new slideShow: slideshow);
+		addChild: (GtPresenterSlideShowElement new slideShowViewModel: slideshowViewModel);
 		show
 ]
 
