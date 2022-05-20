@@ -124,6 +124,15 @@ GtLudoRecordingGameExamples >> gameShowingAllMoves6 [
 ]
 
 { #category : #accessing }
+GtLudoRecordingGameExamples >> landingOnOwnPlayerToken [
+	<gtExample>
+	
+	| move |
+	move := self playerAenterAndLandsOnTokenA moves last.
+	^ move
+]
+
+{ #category : #accessing }
 GtLudoRecordingGameExamples >> moveImpossible [
 	<gtExample>
 	^ self gameShowingAllMoves5 moves last
