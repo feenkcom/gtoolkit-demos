@@ -44,15 +44,6 @@ GtNnNetwork >> gtInspectorLayersIn: aComposite [
 ]
 
 { #category : #'gt-inspector-extension' }
-GtNnNetwork >> gtInspectorNetworkGraphIn: aComposite [
-	<gtInspectorPresentationOrder: 1>
-	
-	^ aComposite blocMondrian
-		title: 'Graph';
-		painting: [ :view | self gtInspectorPaintNetworkIn: view ] 
-]
-
-{ #category : #'gt-inspector-extension' }
 GtNnNetwork >> gtInspectorPaintNetworkIn: aMondrianView [
 	| nodes |
 
