@@ -153,19 +153,27 @@ GtSpotterSlideshow >> spotterElementInContextOf: anObject withSearch: aSearchStr
 	spotterElement := GtSpotterElement new
 		aptitude: BrShadowAptitude;
 		margin: (BlInsets all: 20).
-	spotterElement spotterModel: ((GtSpotter on: anObject) search: aSearchString).
-	spotterElement searchField requestFocus.
-	spotterElement header searchField text: aSearchString.
 	
 	aScripter := BlDevScripter new.
 	aScripter element: spotterElement.
-
+	
+	aScripter do
+		action: [ :aSpotterElement | 
+			aSpotterElement spotterModel: ((GtSpotter on: anObject) search: aSearchString).
+			aSpotterElement searchField requestFocus.
+			aSpotterElement header searchField text: aSearchString. ];
+		play.
+	
+	aScripter wait
+		forEnqueuedSpaceTaskTimeout: 250 milliseconds;
+		play.
+	
 	^ aScripter elementWithoutParent.	
 ]
 
 { #category : #accessing }
 GtSpotterSlideshow >> spotterElementOn: aSearchString [
-	^ self spotterElementInContextOf: (GtSpotterStart new) withSearch: aSearchString.
+	^ self spotterElementInContextOf: GtSpotterStart new withSearch: aSearchString.
 ]
 
 { #category : #slides }
@@ -447,7 +455,7 @@ GtSpotterSlideshow >> spotterInterfaceExplanationWithLinks [
 				aptitude: (GtExplainerTargetAptitude new explanationModel: #messages);
 				relocate:
 					(5 @ sendersTarget extent y / 2)).
-	messagesTarget
+	"messagesTarget
 		addChild:
 			(BrButton new
 				constraintsDo: [ :c | c ignoreByLayout ];
@@ -456,7 +464,7 @@ GtSpotterSlideshow >> spotterInterfaceExplanationWithLinks [
 				geometry: BlCircleGeometry new;
 				aptitude: (GtExplainerTargetAptitude new explanationModel: #messages);
 				relocate:
-					(5 @ messagesTarget extent y / 2)).
+					(5 @ messagesTarget extent y / 2))."
 	^ spotterElement.
 ]
 

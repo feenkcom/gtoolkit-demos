@@ -66,14 +66,6 @@ GtNnNeuron >> defaultActivator [
 ]
 
 { #category : #'gt-inspector-extension' }
-GtNnNeuron >> gtInspectorNeuronIn: aComposite [
-	<gtInspectorPresentationOrder: 1>
-	^ aComposite bloc
-		title: 'Neuron';
-		display: [ (GtNnNeuronStencil new neuron: self) asElement ]
-]
-
-{ #category : #'gt-inspector-extension' }
 GtNnNeuron >> gtViewNeuronFor: aView [
 	<gtView>
 	^ aView explicit
