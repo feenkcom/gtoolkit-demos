@@ -131,16 +131,12 @@ GtWhatMakesBlocSpecialExplanation >> classHierarchyWithGridLayout [
 { #category : #examples }
 GtWhatMakesBlocSpecialExplanation >> editorOnSampleText [
 	"GtInspector openOn: self new editorOnSampleText"
-
 	<gtExample>
-	| text editor element |
-	text := self sampleText.
-	editor := BrTextEditor new.
-	editor text: text.
-	element := BrEditorElement new.
-	element editor: editor.
-	element constraintsDo: [:c | c horizontal fitContent. c vertical fitContent].
-	^ element
+	
+	^ BrEditor new
+		aptitude: BrGlamorousEditorAptitude;
+		fitContent;
+		text: self sampleText
 ]
 
 { #category : #examples }
