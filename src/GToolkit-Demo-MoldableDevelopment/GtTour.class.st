@@ -426,7 +426,7 @@ GtTour >> feenkNameSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide element
 		priority: 1.1;
-		element: [| container form |
+		element: [| form |
 				form := PNGReadWriter formFromFileNamed: (GtResourceReference
 						path: Path * 'feenkcom' / 'gtoolkit' / 'doc' / 'feenk.png') fullName.
 BlElement new 
@@ -726,7 +726,7 @@ GtTour >> playgroundExplanationSlideFor: aSlide [
 { #category : #accessing }
 GtTour >> playgroundExplanationWithLinks [
 	<gtExample>
-	| container playgroundElement snippetElementsCollection frameToolbarButtons scripter |
+	| container playgroundElement scripter |
 	container := BlElement new
 		constraintsDo: [ :c | 
 			c vertical matchParent.

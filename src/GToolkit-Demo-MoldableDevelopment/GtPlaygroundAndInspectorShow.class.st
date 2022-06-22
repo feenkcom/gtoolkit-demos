@@ -124,7 +124,7 @@ GtPlaygroundAndInspectorShow >> fixItAdornmentForClassExplanationText [
 { #category : #accessing }
 GtPlaygroundAndInspectorShow >> fixItAdornmentForMethodExplanation [
 	"<gtExample>"
-	| defaultPlaygroundElement aScripter adornmentButtonTarget button coderTarget |
+	| defaultPlaygroundElement aScripter adornmentButtonTarget |
 	defaultPlaygroundElement := BlUseAsyncFeatures
 		disableDuring: [ (GtPlaygroundLiveSlide new
 				snippets: {'GtDummyExamplesOnInstanceSide new inexistentExampleMethod.'})

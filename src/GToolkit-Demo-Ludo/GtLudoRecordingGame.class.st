@@ -27,7 +27,6 @@ GtLudoRecordingGame >> autoPlay: numberOfMoves [
 GtLudoRecordingGame >> gtHistoryFor: aView [
 
 	<gtView>
-	| container elements |
 	^ aView list
 		  title: 'History';
 		  itemStencil: [ 
