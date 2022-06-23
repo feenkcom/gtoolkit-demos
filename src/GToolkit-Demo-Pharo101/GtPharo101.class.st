@@ -481,7 +481,7 @@ set1'.
 { #category : #accessing }
 GtPharo101 >> shortPlaygroundExplanation [
 	<gtExample>
-	| container playbook playgroundElement snippetsCollection snippetElementsCollection newSnippetButtons frameToolbarButtons inspectButtons firstSnippet secondSnippet aScripter snippets |
+	| container playgroundElement newSnippetButtons inspectButtons aScripter snippets |
 	container := BlElement new
 		constraintsDo: [ :c | 
 			c vertical matchParent.
