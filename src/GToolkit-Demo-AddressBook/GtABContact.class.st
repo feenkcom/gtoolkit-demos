@@ -15,7 +15,7 @@ Class {
 		'telephones',
 		'notes'
 	],
-	#category : 'GToolkit-Demo-AddressBook-Models'
+	#category : #'GToolkit-Demo-AddressBook-Models'
 }
 
 { #category : #'instance-creation' }
@@ -197,19 +197,6 @@ GtABContact >> fullName [
 ]
 
 { #category : #ui }
-GtABContact >> gtSpotterPreviewIn: aComposite [
-	<spotterPreview: 10>
-	| previewMorph |
-	previewMorph := GtABPreviewMorph new
-		hSpaceFill;
-		vSpaceFill;
-		contact: self.
-	aComposite custom: previewMorph asBrick
-		vSpaceFill;
-		hSpaceFill
-]
-
-{ #category : #ui }
 GtABContact >> gtViewContactDetailsOn: aView [
 	<gtView>
 	^ aView explicit 
@@ -273,18 +260,6 @@ GtABContact >> gtViewContactNotesOn: aView [
 		itemText: [ :each | each title ]
 ]
 
-{ #category : #ui }
-GtABContact >> gtViewPreviewOn: aView [
-	<gtView>
-	^ aView explicit
-		title: 'Preview' translated;
-		priority: 6;
-		stencil: [
-			"Use the old morph for now"
-			((GtABPreviewMorph new contact: self) extent: 500@300)
-				imageForm asElement asPannableElement ]
-]
-
 { #category : #accessing }
 GtABContact >> icon [
 	^ self avatar scaledToSize: 24@24
@@ -330,14 +305,6 @@ GtABContact >> merge: anotherContact [
 { #category : #accessing }
 GtABContact >> notes [
 	^ notes.
-]
-
-{ #category : #accessing }
-GtABContact >> previewMorph [
-	^ GtABPreviewMorph new
-		hSpaceFill;
-		vSpaceFill;
-		contact: self
 ]
 
 { #category : #printing }
