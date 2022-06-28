@@ -2,7 +2,8 @@ Extension { #name : #GtSpotterStart }
 
 { #category : #'*GToolkit-Demo-AddressBook' }
 GtSpotterStart >> gtSpotterAddressBookFor: aStep [
-	<gtSearch>
+	"<gtSearch>"
+	
 	aStep listProcessor
 		priority:  -1;
 		allCandidates: [ :x | {GtABAddressBook default} ];
