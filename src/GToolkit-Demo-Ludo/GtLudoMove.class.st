@@ -52,7 +52,7 @@ GtLudoMove >> gtTokenMovesFor: aView [
 
 { #category : #accessing }
 GtLudoMove >> highlightedBoardElement [
-	| boardElement arc toSquareElement fromSquareElement |
+	| boardElement |
 	boardElement := self player game boardElement.
 	tokenMoves do: [ :tokenMove | 
 		tokenMove highlightBoardElement: boardElement ].
@@ -157,7 +157,7 @@ GtLudoMove >> replayGameToHere [
 { #category : #replaying }
 GtLudoMove >> replayedBoardElement [
 	"TODO -- this doesn't work as the from and to squares belong to a different instance of the game!"
-	| boardElement arc toSquareElement fromSquareElement |
+	| boardElement |
 	
 	self shouldBeImplemented.
 	
