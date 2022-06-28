@@ -95,29 +95,16 @@ GtMemoryGame >> gridSize [
 
 { #category : #accessing }
 GtMemoryGame >> gtAvailableCardsFor: aView [
-
 	<gtView>
 	self availableCards ifNil: [ ^ aView empty ].
+	
 	^ aView columnedList
 		  title: 'Cards';
 		  items: [ self availableCards ];
-		  column: 'Card' text: [ :rowObject :rowIndex :columnIndex | 
-			  | aComputedItem |
-			  aComputedItem := [ :aCard | aCard ]
-				                   phlowValue: rowObject
-				                   withEnoughArguments: { 
-						                   rowObject.
-						                   rowIndex.
-						                   columnIndex }.
-			  [ :aCard | 
+		  column: 'Card' text: [ :aCard | 
 			  aCard isFlipped
 				  ifFalse: [ aCard printString asRopedText foreground: Color gray ]
 				  ifTrue: [ aCard printString asRopedText ] ]
-				  phlowValue: aComputedItem
-				  withEnoughArguments: { 
-						  aComputedItem.
-						  rowIndex.
-						  columnIndex } ]
 ]
 
 { #category : #accessing }
