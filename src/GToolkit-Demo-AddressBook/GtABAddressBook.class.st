@@ -14,7 +14,7 @@ Class {
 	#classInstVars : [
 		'default'
 	],
-	#category : 'GToolkit-Demo-AddressBook-Models'
+	#category : #'GToolkit-Demo-AddressBook-Models'
 }
 
 { #category : #accessing }
@@ -142,16 +142,6 @@ GtABAddressBook >> gtGtSpotterForTelephonesFor: aStep [
 		title: 'Telephones' translated;
 		allCandidates: [ self contacts flatCollect: [ :aContact | aContact telephones ] ];
 		matchSubstrings
-]
-
-{ #category : #ui }
-GtABAddressBook >> gtSpotterPreviewIn: aComposite [
-	<spotterPreview: 10>
-	aComposite list
-		title: 'People' translated;
-		display: #yourself;
-		format: [ :contact | GTSpotterItemBrick new text: contact fullName; disable ];
-		entity: self contacts
 ]
 
 { #category : #accessing }
