@@ -165,7 +165,7 @@ GtSpotterSlideshow >> spotterElementInContextOf: anObject withSearch: aSearchStr
 		play.
 	
 	aScripter wait
-		forEnqueuedSpaceTaskTimeout: 250 milliseconds;
+		forEnqueuedSpaceTaskTimeout: 250 milliSeconds;
 		play.
 	
 	^ aScripter elementWithoutParent.	
