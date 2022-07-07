@@ -363,7 +363,7 @@ GtSpotterSlideshow >> spotterInterfaceExplanationText [
 GtSpotterSlideshow >> spotterInterfaceExplanationWithLinks [
 	<gtExample>
 	<noTest>
-	| spotterElement searchBarTarget resultsTarget previewTarget classesTarget implementorsTarget sendersTarget messagesTarget |
+	| spotterElement searchBarTarget resultsTarget previewTarget classesTarget implementorsTarget messagesTarget |
 
 	spotterElement := self spotterElementOn: 'GtCoder'.
 	
@@ -387,10 +387,10 @@ GtSpotterSlideshow >> spotterInterfaceExplanationWithLinks [
 		allChildrenBreadthFirstDetect: [:aChild | 
 			(aChild isKindOf: BlTextElement) and: [aChild text asString = '#Implementors' asString]]
 		ifFound: [:aChild | aChild].
-	sendersTarget := spotterElement
+	"sendersTarget := spotterElement
 		allChildrenBreadthFirstDetect: [:aChild | 
 			(aChild isKindOf: BlTextElement) and: [aChild text asString = '#Senders' asString]]
-		ifFound: [:aChild | aChild].
+		ifFound: [:aChild | aChild]."
 	messagesTarget := spotterElement
 		allChildrenBreadthFirstDetect: [:aChild | 
 			(aChild isKindOf: BlTextElement) and: [aChild text asString = '#Messages' asString]]
@@ -445,7 +445,7 @@ GtSpotterSlideshow >> spotterInterfaceExplanationWithLinks [
 				aptitude: (GtExplainerTargetAptitude new explanationModel: #messages);
 				relocate:
 					(5 @ implementorsTarget extent y / 2)).
-	sendersTarget
+	"sendersTarget
 		addChild:
 			(BrButton new
 				constraintsDo: [ :c | c ignoreByLayout ];
@@ -454,7 +454,7 @@ GtSpotterSlideshow >> spotterInterfaceExplanationWithLinks [
 				geometry: BlCircleGeometry new;
 				aptitude: (GtExplainerTargetAptitude new explanationModel: #messages);
 				relocate:
-					(5 @ sendersTarget extent y / 2)).
+					(5 @ sendersTarget extent y / 2))."
 	"messagesTarget
 		addChild:
 			(BrButton new
