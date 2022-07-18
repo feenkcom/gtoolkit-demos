@@ -356,9 +356,15 @@ As you can see in the example below, if the address book does not have any categ
 { #category : #utility }
 GtInspectorViews >> explanationLabelWithText: aText [
 	^ BrLabel new
-		text: (aText asRopedText glamorousRegularFont; fontSize: 15; foreground: Color gray);
-		margin: (BlInsets top: 20 right: 0 bottom: 0 left: 10);
-		aptitude: BrGlamorousLabelAptitude new.
+		text: (aText asRopedText
+				glamorousRegularFont;
+				fontSize: 15;
+				foreground: Color gray);
+		margin: (BlInsets
+				top: 20
+				right: 0
+				bottom: 0
+				left: 10)
 ]
 
 { #category : #slides }
