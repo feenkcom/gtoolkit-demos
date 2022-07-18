@@ -301,25 +301,39 @@ GtPlaygroundAndInspectorShow >> inspectorMethodExplanationText [
 GtPlaygroundAndInspectorShow >> inspectorMethodExplanationWithLinks [
 	<gtExample>
 	| coderElement inspectorElement coderLabel inspectorLabel |
-	
 	coderElement := self methodCoderWithExplanationLinks.
 	inspectorElement := self inspectorWithExplanationLinks.
 	coderLabel := BrLabel new
-		text: ('Contacts with details view method' asRopedText glamorousRegularFont; fontSize: 15; foreground: Color gray);
-		margin: (BlInsets top: 20 right: 0 bottom: 0 left: 10);
-		aptitude: BrGlamorousLabelAptitude new.
+			text: ('Contacts with details view method' asRopedText
+					glamorousRegularFont;
+					fontSize: 15;
+					foreground: Color gray);
+			margin: (BlInsets
+					top: 20
+					right: 0
+					bottom: 0
+					left: 10).
 	inspectorLabel := BrLabel new
-		text: ('Contacts with details view result' asRopedText glamorousRegularFont; fontSize: 15; foreground: Color gray);
-		margin: (BlInsets top: 20 right: 0 bottom: 0 left: 10);
-		aptitude: BrGlamorousLabelAptitude new.
-		
+			text: ('Contacts with details view result' asRopedText
+					glamorousRegularFont;
+					fontSize: 15;
+					foreground: Color gray);
+			margin: (BlInsets
+					top: 20
+					right: 0
+					bottom: 0
+					left: 10).
+
 	^ BlElement new
 		constraintsDo: [ :c | 
 			c horizontal matchParent.
 			c vertical matchParent.
-			c padding: (BlInsets all: 5)];
+			c padding: (BlInsets all: 5) ];
 		layout: BlLinearLayout vertical;
-		addChildren: {coderLabel. coderElement. inspectorLabel. inspectorElement}.
+		addChildren: {coderLabel.
+				coderElement.
+				inspectorLabel.
+				inspectorElement}
 ]
 
 { #category : #accessing }
