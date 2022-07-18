@@ -142,61 +142,60 @@ GtQueryingCodeShow >> filtersTreeExampleSlideFor: aSlide [
 GtQueryingCodeShow >> inspectorResultOnPragmaAndReferenceExample [
 	<gtExample>
 	| inspectorContainer subject inspectorHeader inspectorView inspectorLabel verticalContainer |
+	
 	verticalContainer := BlElement new
-			constraintsDo: [ :c | 
-				c horizontal matchParent.
-				c vertical matchParent.
-				c padding: (BlInsets all: 5) ];
-			layout: BlLinearLayout vertical.
-
+		constraintsDo: [ :c | 
+			c horizontal matchParent.
+			c vertical matchParent.
+			c padding: (BlInsets all: 5)];
+		layout: BlLinearLayout vertical.
+	
 	inspectorLabel := BrLabel new
-			text: ('Inspector on query result' asRopedText
-					glamorousRegularFont;
-					fontSize: 15;
-					foreground: Color gray);
-			margin: (BlInsets
-					top: 20
-					right: 0
-					bottom: 0
-					left: 10).
-
+		text: ('Inspector on query result' asRopedText glamorousRegularFont; fontSize: 15; foreground: Color gray);
+		margin: (BlInsets top: 20 right: 0 bottom: 0 left: 10);
+		aptitude: BrGlamorousLabelAptitude new.
+	
 	inspectorContainer := BlElement new
-			constraintsDo: [ :c | 
-				c horizontal matchParent.
-				c vertical matchParent ];
-			layout: BlLinearLayout horizontal;
-			background: Color white;
-			margin: (BlInsets all: 10);
-			aptitude: BrShadowAptitude.
+		constraintsDo: [ :c | 
+			c horizontal matchParent.
+			c vertical matchParent ];
+		layout: BlLinearLayout horizontal;
+		background: Color white;
+		margin: (BlInsets all: 10);
+		aptitude: BrShadowAptitude.
 
 	subject := BlUseAsyncFeatures
-			disableDuring: [ (self pragmaAndReferenceQueryExample gtViewsFor: GtPhlowView empty)
-					asElementDo: [ :e | e ] ].
+		disableDuring: [ (self pragmaAndReferenceQueryExample gtViewsFor: GtPhlowView empty) asElementDo: [ :e | e ] ].
 	subject forceLayout.
 	inspectorHeader := subject phlow firstChildWithView.
-	inspectorView := inspectorHeader viewContentElement phlow firstChildWithView.
+	inspectorView := inspectorHeader viewContentElement phlow
+		firstChildWithView.
 	inspectorContainer addChild: subject.
-
+		
 	inspectorHeader
-		addChild: (BrButton new
+		addChild:
+			(BrButton new
 				constraintsDo: [ :c | c ignoreByLayout ];
 				size: 5 @ 5;
 				elevation: (BlRelativeElevation elevation: 10);
 				geometry: BlCircleGeometry new;
 				aptitude: (GtExplainerTargetAptitude new explanationModel: #inspector);
-				relocate: 5 @ inspectorHeader extent y / 2).
+				relocate:
+					(5 @ inspectorHeader extent y / 2)). 
 	inspectorView
-		addChild: (BrButton new
+		addChild:
+			(BrButton new
 				constraintsDo: [ :c | c ignoreByLayout ];
 				size: 5 @ 5;
 				elevation: (BlRelativeElevation elevation: 10);
 				geometry: BlCircleGeometry new;
 				aptitude: (GtExplainerTargetAptitude new explanationModel: #view);
-				relocate: 5 @ inspectorView extent y / 2).
-
+				relocate:
+					(5 @ inspectorView extent y / 2)).
+					
 	^ verticalContainer
 		addChild: inspectorLabel;
-		addChild: inspectorContainer
+		addChild: inspectorContainer.
 ]
 
 { #category : #accessing }

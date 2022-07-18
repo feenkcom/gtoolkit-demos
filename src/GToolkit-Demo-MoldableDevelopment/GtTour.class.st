@@ -957,60 +957,48 @@ GtTour >> treemapWithViewsAndExamples [
 		create.
 ]
 
-{ #category : #accessing }
+{ #category : #'as yet unclassified' }
 GtTour >> viewMethodWithResultExplanationWithLinksExample [
 	<gtExample>
 	| resultInspectorContainer verticalContainer coderElement resultElement coderExplanationLabel inspectorExplanationLabel |
+	
 	verticalContainer := BlElement new
-			constraintsDo: [ :c | 
-				c horizontal matchParent.
-				c vertical matchParent.
-				c padding: (BlInsets all: 5) ];
-			layout: BlLinearLayout vertical.
-
+		constraintsDo: [ :c | 
+			c horizontal matchParent.
+			c vertical matchParent.
+			c padding: (BlInsets all: 5)];
+		layout: BlLinearLayout vertical.
+	
 	resultInspectorContainer := BlElement new
-			constraintsDo: [ :c | 
-				c horizontal matchParent.
-				c vertical matchParent ];
-			layout: BlLinearLayout horizontal;
-			aptitude: BrShadowAptitude;
-			background: Color white;
-			margin: (BlInsets all: 10).
-
+		constraintsDo: [ :c | 
+			c horizontal matchParent.
+			c vertical matchParent ];
+		layout: BlLinearLayout horizontal;
+		aptitude: BrShadowAptitude;
+		background: Color white;
+		margin: (BlInsets all: 10).
+	
 	coderExplanationLabel := BrLabel new
-			text: ('Contacts with details view method' asRopedText
-					glamorousRegularFont;
-					fontSize: 15;
-					foreground: Color gray);
-			margin: (BlInsets
-					top: 20
-					right: 0
-					bottom: 0
-					left: 10).
+		text: ('Contacts with details view method' asRopedText glamorousRegularFont; fontSize: 15; foreground: Color gray);
+		margin: (BlInsets top: 20 right: 0 bottom: 0 left: 10);
+		aptitude: BrGlamorousLabelAptitude new.
 	inspectorExplanationLabel := BrLabel new
-			text: ('Contacts with details view result' asRopedText
-					glamorousRegularFont;
-					fontSize: 15;
-					foreground: Color gray);
-			margin: (BlInsets
-					top: 20
-					right: 0
-					bottom: 0
-					left: 10).
-
+		text: ('Contacts with details view result' asRopedText glamorousRegularFont; fontSize: 15; foreground: Color gray);
+		margin: (BlInsets top: 20 right: 0 bottom: 0 left: 10);
+		aptitude: BrGlamorousLabelAptitude new.
+	
 	coderElement := GtMethodCoderExplanationStylerExamples new coderOnViewMethod.
-
-	resultElement := GtMethodCoderExplanationStylerExamples new
-			inspectorOnViewMethod.
+		
+	resultElement := GtMethodCoderExplanationStylerExamples new inspectorOnViewMethod.	
 	resultInspectorContainer addChild: resultElement.
-
-
+	
+	
 	verticalContainer addChild: coderExplanationLabel.
 	verticalContainer addChild: coderElement.
 	verticalContainer addChild: inspectorExplanationLabel.
 	verticalContainer addChild: resultInspectorContainer.
-
-	^ verticalContainer
+	
+	^ verticalContainer.
 ]
 
 { #category : #accessing }
