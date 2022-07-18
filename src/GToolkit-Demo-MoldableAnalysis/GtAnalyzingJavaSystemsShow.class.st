@@ -505,29 +505,30 @@ GtAnalyzingJavaSystemsShow >> visualizeDeprecatedClassessWithUIBorderSlideFor: a
 { #category : #'code examples' }
 GtAnalyzingJavaSystemsShow >> visualizeXMLFileTargets: interestingDirectories [
 	"For a given build.xml, visualize the target dependencies."
-
-	| xmlDoc tags view |
+	| xmlDoc tags view|
 	xmlDoc := XMLDOMParser parse: (interestingDirectories at: 8) / 'build.xml'.
 	tags := xmlDoc // 'target'.
 	view := GtMondrian new.
-	view nodes
-		stencil: [ :each | BrLabel new text: (each attributeAt: #name) ];
+	view nodes 
+		stencil: [ :each | 
+			BrLabel new
+				text: (each attributeAt: #name);
+				aptitude: BrGlamorousLabelAptitude ];
 		with: tags.
-	view edges
-		shape: [ :each | 
-			BlParabollaArcElement new
+	view edges 
+		shape: [ :each |
+			BlParabollaArcElement new 
 				zIndex: 0;
 				curvatureFraction: 0.2;
 				border: (BlBorder paint: (Color gray alpha: 0.2) width: 2);
 				toHead: (BlArrowheadSimpleArrow new
-						border: (BlBorder builder
-								paint: (Color gray alpha: 0.2);
-								width: 2;
-								build)) ];
-		connectFromAll: [ :aTag | 
-			| depends |
-			depends := (aTag @ 'depends') stringValue splitOn: ', '.
-			tags select: [ :each | depends includes: (each @ 'name') stringValue ] ].
+					border: (BlBorder builder 
+						paint: (Color gray alpha: 0.2); width: 2; build))  ];
+		connectFromAll:  [ :aTag | |depends|
+			depends :=(aTag @ 'depends') stringValue splitOn: ', '.
+				tags select: [ :each | 
+					depends includes: (each @ 'name') stringValue] ].
 	view layout horizontalDominanceTree.
-	view
+	view.
+
 ]

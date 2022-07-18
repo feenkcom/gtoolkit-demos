@@ -211,80 +211,66 @@ GtSpotterSlideshow >> spotterInLocalContextExplanationText [
 GtSpotterSlideshow >> spotterInLocalContextExplanationWithLinks [
 	<gtExample>
 	| coderElement inspectorElement searchButtonTargets coderLabel inspectorLabel |
+	
 	searchButtonTargets := OrderedCollection new.
-
+	
 	coderLabel := BrLabel new
-			text: ('Coder example' asRopedText
-					glamorousRegularFont;
-					fontSize: 15;
-					foreground: Color gray);
-			margin: (BlInsets
-					top: 20
-					right: 0
-					bottom: 5
-					left: 5).
+		text: ('Coder example' asRopedText glamorousRegularFont; fontSize: 15; foreground: Color gray);
+		margin: (BlInsets top: 20 right: 0 bottom: 5 left: 5);
+		aptitude: BrGlamorousLabelAptitude new.
 	inspectorLabel := BrLabel new
-			text: ('Inspector example' asRopedText
-					glamorousRegularFont;
-					fontSize: 15;
-					foreground: Color gray);
-			margin: (BlInsets
-					top: 20
-					right: 0
-					bottom: 5
-					left: 5).
-
+		text: ('Inspector example' asRopedText glamorousRegularFont; fontSize: 15; foreground: Color gray);
+		margin: (BlInsets top: 20 right: 0 bottom: 5 left: 5);
+		aptitude: BrGlamorousLabelAptitude new.
+		
 	coderElement := BlElement new
-			constraintsDo: [ :c | 
-				c vertical matchParent.
-				c horizontal matchParent ];
-			background: Color white;
-			aptitude: BrShadowAptitude;
-			margin: (BlInsets all: 5);
-			addChild: (GtCoder forClass: GtABAddressBook) asElement.
-	inspectorElement := BlElement new
-			constraintsDo: [ :c | 
-				c vertical matchParent.
-				c horizontal matchParent ];
-			background: Color white;
-			aptitude: BrShadowAptitude;
-			margin: (BlInsets all: 5);
-			addChild: (BlUseAsyncFeatures
-					disableDuring: [ (GtABAddressBookExample new myContactsAddressBook
-							gtViewsFor: GtPhlowView empty) asElementDo: [ :e | e ] ]).
-	inspectorElement forceLayout.
-
-	coderElement
-		allChildrenBreadthFirstDetect: [ :aChild | 
-			(aChild isKindOf: BrToolbar)
-				and: [ aChild parent isKindOf: GtCoderToolbarElement ] ]
-		ifFound: [ :aChild | searchButtonTargets add: (aChild childAt: 1) ].
-	inspectorElement
-		allChildrenBreadthFirstDetect: [ :aChild | aChild isKindOf: BrToolbar ]
-		ifFound: [ :aChild | searchButtonTargets add: (aChild childAt: 3) ].
-
-	searchButtonTargets
-		do: [ :eachTarget | 
-			eachTarget
-				addChild: (BrButton new
-						constraintsDo: [ :c | c ignoreByLayout ];
-						size: 3 @ 3;
-						elevation: (BlRelativeElevation elevation: 10);
-						geometry: BlCircleGeometry new;
-						aptitude: (GtExplainerTargetAptitude new explanationModel: #search);
-						relocate: 5 @ 10) ].
-
-	^ BlElement new
-		layout: BlLinearLayout vertical;
-		constraintsDo: [ :c | 
+		constraintsDo: [:c |
 			c vertical matchParent.
 			c horizontal matchParent ];
+		background: Color white;
+		aptitude: BrShadowAptitude;
+		margin: (BlInsets all: 5);
+		addChild: (GtCoder forClass: GtABAddressBook) asElement.
+	inspectorElement := BlElement new
+		constraintsDo: [:c |
+			c vertical matchParent.
+			c horizontal matchParent ];
+		background: Color white;
+		aptitude: BrShadowAptitude;
+		margin: (BlInsets all: 5);
+		addChild:(BlUseAsyncFeatures
+			disableDuring: [ ((GtABAddressBookExample new myContactsAddressBook) 
+				gtViewsFor: GtPhlowView empty)
+					asElementDo: [:e | e]]).
+	inspectorElement forceLayout.
+	
+	coderElement 
+		allChildrenBreadthFirstDetect: [:aChild | (aChild isKindOf: BrToolbar) and: [ aChild parent isKindOf: GtCoderToolbarElement ] ] 
+		ifFound: [:aChild | searchButtonTargets add: (aChild childAt: 1)].
+	inspectorElement 
+		allChildrenBreadthFirstDetect: [:aChild | (aChild isKindOf: BrToolbar)] 
+		ifFound: [:aChild | searchButtonTargets add: (aChild childAt: 3)].
+	
+	searchButtonTargets do: [:eachTarget |
+		eachTarget
+			addChild: 
+				(BrButton new
+					constraintsDo: [ :c | c ignoreByLayout ];
+					size: 3 @ 3;
+					elevation: (BlRelativeElevation elevation: 10);
+					geometry: BlCircleGeometry new;
+					aptitude: (GtExplainerTargetAptitude new explanationModel: #search);
+					relocate:
+						(5 @ 10))].
+	
+	^ BlElement new
+		layout: BlLinearLayout vertical;
+		constraintsDo: [:c |
+			c vertical matchParent.
+			c horizontal matchParent];
 		margin: (BlInsets all: 5);
 		padding: (BlInsets all: 5);
-		addChildren: {coderLabel.
-				coderElement.
-				inspectorLabel.
-				inspectorElement}
+		addChildren: {coderLabel. coderElement. inspectorLabel. inspectorElement}.
 ]
 
 { #category : #accessing }
