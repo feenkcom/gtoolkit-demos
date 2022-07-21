@@ -8,14 +8,9 @@ SmalltalkIntroSlideshow show
 "
 Class {
 	#name : #SmalltalkIntroSlideshow,
-	#superclass : #Object,
+	#superclass : #PrioritySlideshow,
 	#category : #'GToolkit-Demo-Slideshows'
 }
-
-{ #category : #accessing }
-SmalltalkIntroSlideshow class >> show [
-	GtPresenterSlideShow openInSpace: SmalltalkIntroSlideshow
-]
 
 { #category : #slides }
 SmalltalkIntroSlideshow >> addingAutoPlay: aSlide [
@@ -25,44 +20,6 @@ SmalltalkIntroSlideshow >> addingAutoPlay: aSlide [
 		priority: (self priorityFor: #addingAutoPlay:);
 		pageNamed: 'Changing a running system' from: self gtBook;
 		yourself
-]
-
-{ #category : #text }
-SmalltalkIntroSlideshow >> asBigText: aString [
-	^ (aString asRopedText)
-		glamorousRegularFont;
-		fontSize: 40
-]
-
-{ #category : #text }
-SmalltalkIntroSlideshow >> asHeader: aString [
-	^ (aString asRopedText)
-		glamorousRegularFont;
-		bold;
-		fontSize: 40
-]
-
-{ #category : #text }
-SmalltalkIntroSlideshow >> asSubtitle: aString [
-	^ (aString asRopedText)
-		glamorousRegularFont;
-		bold;
-		fontSize: 60
-]
-
-{ #category : #text }
-SmalltalkIntroSlideshow >> asText: aString [
-	^ (aString asRopedText)
-		glamorousRegularFont;
-		fontSize: 30
-]
-
-{ #category : #text }
-SmalltalkIntroSlideshow >> asTitle: aString [
-	^ (aString asRopedText)
-		glamorousRegularFont;
-		bold;
-		fontSize: 70
 ]
 
 { #category : #slides }
@@ -124,11 +81,6 @@ SmalltalkIntroSlideshow >> findTargetWithText: aText in: expandedMethodElement [
 			  (aChild isKindOf: BrTextElementWithCursors) and: [ 
 				  aChild text asString = aText asString ] ]
 		  ifFound: [ :aChild | aChild ]
-]
-
-{ #category : #slides }
-SmalltalkIntroSlideshow >> gtBook [
-	^ 'Glamorous Toolkit Book'
 ]
 
 { #category : #slides }
@@ -270,11 +222,6 @@ SmalltalkIntroSlideshow >> pages [
 { #category : #accessing }
 SmalltalkIntroSlideshow >> picturesDirectoryPath [
 	^ Path * 'feenkcom' / 'gtoolkit-demos' / 'data' / 'images'
-]
-
-{ #category : #accessing }
-SmalltalkIntroSlideshow >> priorityFor: aSlideMethodSelector [
-	^ self pages indexOf: aSlideMethodSelector
 ]
 
 { #category : #slides }
