@@ -277,8 +277,8 @@ GtPharo101 >> literalArraysExplanationSlideFor: aSlide [
 #(1 2 3).' . '"Creates an Array with 4 elements, the forth one being another Array"
 #(1 2 3 #(4 5 6)) size.'.
 							'"Creates an empty Array"
-#() isEmpty.' . '#(1 2 3) first.' . '#(4 5 6) last.' . '"Replacing World with Pharo by specifying the index in the array"
-#(''hello'' ''World'') at: 2 put: ''Pharo''; yourself.' };
+#() isEmpty.' . '#(1 2 3) first.' . '#(4 5 6) last.' . '"Replacing World with Pharo by specifying the index in the array. The array is copied since literals are not allowed to be modified."
+#(''hello'' ''World'') copy at: 2 put: ''Pharo''; yourself.' };
 			asElement ];
 		elementWeight: 0.6.
 ]
