@@ -1,5 +1,5 @@
 "
-I treat moves as first classs entities, and record them as they occur for playback and animation.
+I treat moves as first class entities, and record them as they occur for playback and animation.
 "
 Class {
 	#name : #GtLudoRecordingGame,
