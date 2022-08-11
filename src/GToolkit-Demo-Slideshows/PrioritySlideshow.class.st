@@ -59,8 +59,13 @@ PrioritySlideshow >> asTitle: aString [
 
 { #category : #slides }
 PrioritySlideshow >> gtBook [
-	"Convenience for use with GtLepiterPageLiveSlide>>#pageNamed:from:"
 	^ 'Glamorous Toolkit Book'
+]
+
+{ #category : #slides }
+PrioritySlideshow >> myLepiterDB [
+	"Default Lepiter DB to use"
+	^ self gtBook
 ]
 
 { #category : #accessing }
