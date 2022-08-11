@@ -18,7 +18,7 @@ SmalltalkIntroSlideshow >> addingAutoPlay: aSlide [
 	
 	^ (aSlide lepiterPage)
 		priority: (self priorityFor: #addingAutoPlay:);
-		pageNamed: 'Changing a running system' from: self gtBook;
+		pageNamed: 'Changing a running system' from: self myLepiterDB;
 		yourself
 ]
 
@@ -28,7 +28,7 @@ SmalltalkIntroSlideshow >> bouncingAtoms: aSlide [
 	
 	^ (aSlide lepiterPage)
 		priority: (self priorityFor: #bouncingAtoms:);
-		pageNamed: 'Changing a running system on the fly' from: self gtBook;
+		pageNamed: 'Changing a running system on the fly' from: self myLepiterDB;
 		yourself
 ]
 
@@ -38,7 +38,7 @@ SmalltalkIntroSlideshow >> composingExamples: aSlide [
 	
 	^ (aSlide lepiterPage)
 		priority: (self priorityFor: #composingExamples:);
-		pageNamed: 'Composing (Test) Examples' from: self gtBook;
+		pageNamed: 'Composing (Test) Examples' from: self myLepiterDB;
 		yourself
 ]
 
@@ -53,7 +53,7 @@ SmalltalkIntroSlideshow >> everythingHappensBySendingMessages: aSlide [
 	<gtSlide>
 	^ aSlide lepiterPage
 		  priority: (self priorityFor: #everythingHappensBySendingMessages:);
-		  pageNamed: 'Everything happens by sending messages' from: self gtBook
+		  pageNamed: 'Everything happens by sending messages' from: self myLepiterDB
 ]
 
 { #category : #slides }
@@ -61,7 +61,7 @@ SmalltalkIntroSlideshow >> everythingIsAnObject: aSlide [
 	<gtSlide>
 	^ aSlide lepiterPage
 		  priority: (self priorityFor: #everythingIsAnObject:);
-		  pageNamed: 'Everything is an object' from: self gtBook
+		  pageNamed: 'Everything is an object' from: self myLepiterDB
 ]
 
 { #category : #slides }
@@ -70,7 +70,7 @@ SmalltalkIntroSlideshow >> exploringLudo: aSlide [
 	
 	^ (aSlide lepiterPage)
 		priority: (self priorityFor: #exploringLudo:);
-		pageNamed: 'Exploring a live system' from: self gtBook;
+		pageNamed: 'Exploring a live system' from: self myLepiterDB;
 		yourself
 ]
 
@@ -126,7 +126,7 @@ SmalltalkIntroSlideshow >> liveDocumentationLogic: aSlide [
 	
 	^ (aSlide lepiterPage)
 		priority: (self priorityFor: #liveDocumentationLogic:);
-		pageNamed: 'Live documentation of the game logic' from: self gtBook;
+		pageNamed: 'Live documentation of the game logic' from: self myLepiterDB;
 		yourself
 ]
 
@@ -136,7 +136,7 @@ SmalltalkIntroSlideshow >> liveDocumentationUML: aSlide [
 	
 	^ (aSlide lepiterPage)
 		priority: (self priorityFor: #liveDocumentationUML:);
-		pageNamed: 'Live documentation of the technical solution' from: self gtBook;
+		pageNamed: 'Live documentation of the technical solution' from: self myLepiterDB;
 		yourself
 ]
 
@@ -229,7 +229,7 @@ SmalltalkIntroSlideshow >> programmingClassesAndMethods: aSlide [
 	"<gtSlide>"
 	^ (aSlide lepiterPage)
 		priority: (self priorityFor: #programmingClassesAndMethods:);
-		pageNamed: 'Programming Classes and Methods' from: self gtBook
+		pageNamed: 'Programming Classes and Methods' from: self myLepiterDB
 ]
 
 { #category : #slides }
@@ -238,7 +238,7 @@ SmalltalkIntroSlideshow >> recordingMoves: aSlide [
 	
 	^ (aSlide lepiterPage)
 		priority: (self priorityFor: #recordingMoves:);
-		pageNamed: 'Recording and visualizing token moves' from: self gtBook;
+		pageNamed: 'Recording and visualizing token moves' from: self myLepiterDB;
 		yourself
 ]
 
@@ -266,7 +266,7 @@ SmalltalkIntroSlideshow >> syntax: aSlide [
 	<gtSlide>
 	^ aSlide lepiterPage
 		  priority: (self priorityFor: #syntax:);
-		  pageNamed: 'Smalltalk Syntax (the funny bits)' from: self gtBook
+		  pageNamed: 'Smalltalk Syntax (the funny bits)' from: self myLepiterDB
 ]
 
 { #category : #accessing }
@@ -295,7 +295,7 @@ SmalltalkIntroSlideshow >> threeKindsOfMessages: aSlide [
 	<gtSlide>
 	^ aSlide lepiterPage
 		  priority: (self priorityFor: #threeKindsOfMessages:);
-		  pageNamed: 'Three kinds of messages' from: self gtBook
+		  pageNamed: 'Three kinds of messages' from: self myLepiterDB
 ]
 
 { #category : #accessing }
