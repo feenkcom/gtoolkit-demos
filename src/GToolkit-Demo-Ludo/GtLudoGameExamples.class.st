@@ -55,6 +55,12 @@ GtLudoGameExamples >> bToPlayWithAonStartSquare [
 	^ game
 ]
 
+{ #category : #accessing }
+GtLudoGameExamples >> compiledMethodExample [
+	<gtExample>
+	^ GtLudoGameExamples >> #bEntersAndPlaysWithAahead
+]
+
 { #category : #example }
 GtLudoGameExamples >> emptyGame [
 	<gtExample>
