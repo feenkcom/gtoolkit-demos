@@ -74,6 +74,23 @@ GtLudoCodeDocumentationExamples >> modelClassExplicitLabeledReferences [
 ]
 
 { #category : #accessing }
+GtLudoCodeDocumentationExamples >> modelClassExplicitLabeledReferencesV0 [
+	"Simpler version excluding the recording game classes"
+
+	<gtExample>
+	
+	| mondrian |
+	mondrian := GtMondrian new.
+	self
+		paintClassLabeledDependenciesWith: mondrian
+		forClasses: self modelClassesV0
+		andRoots: {}.
+	mondrian layout custom: BlBasicLayout new.
+	mondrian root children withIndexDo: [ :child :n | child relocate: (self modelClassPositionsV0 at: n) ].
+	^ mondrian
+]
+
+{ #category : #accessing }
 GtLudoCodeDocumentationExamples >> modelClassForcedLabeledReferences [
 	"Using a forced layout. Does not look good."
 
@@ -140,9 +157,37 @@ GtLudoCodeDocumentationExamples >> modelClassPositions [
 ]
 
 { #category : #accessing }
+GtLudoCodeDocumentationExamples >> modelClassPositionsV0 [
+	"Recorded positions from a handtweaked graph:
+	(mondrian root children collect: #position) storeString
+	"
+
+	^ (Array new: 13)
+		at: 1 put: 319.25 @ 223.40216064453125;
+		at: 2 put: 215.25 @ 278.40216064453125;
+		at: 3 put: 327.25 @ 277.40216064453125;
+		at: 4 put: 303.25 @ 344.40216064453125;
+		at: 5 put: 262.25 @ 412.40216064453125;
+		at: 6 put: 405.25 @ 345.40216064453125;
+		at: 7 put: 345.7513575625063 @ 306.40216064453125;
+		at: 8 put: 396.4520214769177 @ 306.40216064453125;
+		at: 9 put: 265.3931835332048 @ 247.01002061665264;
+		at: 10 put: 248.78194843447073 @ 303.40216064453125;
+		at: 11 put: 260.64542635749365 @ 303.40216064453125;
+		at: 12 put: 366.3139991760254 @ 350.8626376272799;
+		at: 13 put: 325.0675600837259 @ 371.40216064453125;
+		yourself
+]
+
+{ #category : #accessing }
 GtLudoCodeDocumentationExamples >> modelClasses [
 	^ (GtLudoGame package classes select: [ :c | c category endsWith: 'Model' ]) asOrderedCollection
 	sort: [ :a :b | a name <= b name ]
+]
+
+{ #category : #accessing }
+GtLudoCodeDocumentationExamples >> modelClassesV0 [
+	^ { GtLudoDie. GtLudoGame. GtLudoNamedEntity. GtLudoPlayer. GtLudoSquare. GtLudoToken}
 ]
 
 { #category : #accessing }
