@@ -35,8 +35,7 @@ GtLudoRecordingGameExamples >> gameShowingAllMoves1 [
 		  roll: 1;
 		  roll: 1;
 		  roll: 6;
-		  moveTokenNamed: 'D';
-		  yourself.
+		  moveTokenNamed: 'D'.
 	^ game
 ]
 
@@ -65,8 +64,7 @@ GtLudoRecordingGameExamples >> gameShowingAllMoves3 [
 		roll: 6;
 		moveTokenNamed: 'a';
 		roll: 6;
-		moveTokenNamed: 'A';
-		yourself.
+		moveTokenNamed: 'A'.
 	^ game
 ]
 
@@ -78,8 +76,7 @@ GtLudoRecordingGameExamples >> gameShowingAllMoves4 [
 	game := self gameShowingAllMoves3.
 	game
 		roll: 1;
-		moveTokenNamed: 'a';
-		yourself.
+		moveTokenNamed: 'a'.
 	^ game
 ]
 
@@ -105,8 +102,7 @@ GtLudoRecordingGameExamples >> gameShowingAllMoves5 [
 		roll: 6;
 		moveTokenNamed: 'b';
 		roll: 6;
-		moveTokenNamed: 'b';
-		yourself.
+		moveTokenNamed: 'b'.
 	^ game
 ]
 
@@ -118,8 +114,7 @@ GtLudoRecordingGameExamples >> gameShowingAllMoves6 [
 	game := self gameShowingAllMoves5.
 	game
 		roll: 5;
-		moveTokenNamed: 'b';
-		yourself.
+		moveTokenNamed: 'b'.
 	^ game
 ]
 
