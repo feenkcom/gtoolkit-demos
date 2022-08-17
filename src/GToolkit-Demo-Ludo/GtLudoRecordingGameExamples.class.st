@@ -30,7 +30,8 @@ GtLudoRecordingGameExamples >> gameShowingAllMoves1 [
 
 	<gtExample>
 	| game |
-	game := GtLudoRecordingGame new
+	game := GtLudoRecordingGame new.
+	game
 		  roll: 1;
 		  roll: 1;
 		  roll: 1;
@@ -47,8 +48,7 @@ GtLudoRecordingGameExamples >> gameShowingAllMoves2 [
 	game := self gameShowingAllMoves1.
 	game
 		roll: 6;
-		moveTokenNamed: 'D';
-		yourself.
+		moveTokenNamed: 'D'.
 	^ game
 ]
 
