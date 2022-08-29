@@ -116,7 +116,7 @@ GtLudoGame >> gameState [
 			ifFalse: [ 
 				| player |
 				player := self currentPlayer.
-				needToRollDie := true.
+				self requireDieRoll.
 				self nextPlayer.
 				^ 'Player ' , player name , ' cannot move. Player '
 				  , self currentPlayer name , ' to roll the die.' ] ].
@@ -205,7 +205,7 @@ GtLudoGame >> initialize [
 			do: [ :announcement | self moveToken: announcement token ] ].
 	playerQueue := self players copy.
 	playerQueue do: [ :each | each game: self ].
-	needToRollDie := true.
+	self requireDieRoll.
 	self setWinner.
 	self feedback: self gameState
 ]
