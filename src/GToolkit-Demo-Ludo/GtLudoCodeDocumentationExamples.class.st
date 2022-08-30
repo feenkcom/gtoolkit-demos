@@ -69,6 +69,10 @@ GtLudoCodeDocumentationExamples >> modelClassExplicitLabeledReferences [
 		forClasses: self modelClasses
 		andRoots: {}.
 	mondrian layout custom: BlBasicLayout new.
+	self 
+		assert: mondrian root children size
+		equals: self modelClassPositions size.
+	
 	mondrian root children withIndexDo: [ :child :n | child relocate: (self modelClassPositions at: n) ].
 	^ mondrian
 ]
