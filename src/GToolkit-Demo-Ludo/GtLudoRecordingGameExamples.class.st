@@ -123,7 +123,7 @@ GtLudoRecordingGameExamples >> landingOnOwnPlayerToken [
 	<gtExample>
 	
 	| move |
-	move := self playerAenterAndLandsOnTokenA moves last.
+	move := self playerAentersAndLandsOnTokenA moves last.
 	^ move
 ]
 
@@ -166,13 +166,6 @@ GtLudoRecordingGameExamples >> moveToTheEnd [
 	^ self gameShowingAllMoves6 moves last
 ]
 
-{ #category : #accessing }
-GtLudoRecordingGameExamples >> playerAenterAndLandsOnTokenA [
-	<gtExample>
-	"workaround: the example snippet works with the class that defines the method instead of the target class"
-	^ super playerAenterAndLandsOnTokenA
-]
-
 { #category : #example }
 GtLudoRecordingGameExamples >> playerAentersAndLandsOnA [
 	<gtExample>
@@ -183,4 +176,11 @@ GtLudoRecordingGameExamples >> playerAentersAndLandsOnA [
 	game moves do: [ :move | 
 		self assert: ((0 to: 2) includes: move tokensMoved) ].
 	^ game
+]
+
+{ #category : #accessing }
+GtLudoRecordingGameExamples >> playerAentersAndLandsOnTokenA [
+	<gtExample>
+	"workaround: the example snippet works with the class that defines the method instead of the target class"
+	^ super playerAentersAndLandsOnTokenA
 ]

@@ -86,7 +86,7 @@ GtLudoGameExamples >> playerAarrivesCloseToGoal [
 
 	<gtExample>
 	| game |
-	game := self playerAenterAndLandsOnTokenA.
+	game := self playerAentersAndLandsOnTokenA.
 	self assert: game currentPlayer name equals: 'A'.
 	self assert: (game positionOfTokenNamed: 'A') equals: 1.
 	self assert: (game positionOfTokenNamed: 'a') equals: 2.
@@ -103,21 +103,6 @@ GtLudoGameExamples >> playerAarrivesCloseToGoal [
 	game roll: 6.
 	game moveTokenNamed: 'a'.
 	self assert: (game positionOfTokenNamed: 'a') equals: 38.
-	^ game
-]
-
-{ #category : #example }
-GtLudoGameExamples >> playerAenterAndLandsOnTokenA [
-	"Example for 2. Entering play when there is a token of the same player on the start square (ie after rolling a 6 twice)."
-	<gtExample>
-	| game |
-	game := self playerAentersTokenA.
-	self assert: (game positionOfTokenNamed: 'A') equals: 1.
-	game roll: 6.
-	game moveTokenNamed: 'a'.
-	self assert: (game positionOfTokenNamed: 'A') equals: 1.
-	self assert: (game positionOfTokenNamed: 'a') equals: 2.
-	self assert: game currentPlayer name equals: 'A'.
 	^ game
 ]
 
@@ -140,6 +125,21 @@ GtLudoGameExamples >> playerAentersAndLandsOnA [
 	self assert: (game positionOfTokenNamed: 'a') equals: 7.
 	^ game
 
+]
+
+{ #category : #example }
+GtLudoGameExamples >> playerAentersAndLandsOnTokenA [
+	"Example for 2. Entering play when there is a token of the same player on the start square (ie after rolling a 6 twice)."
+	<gtExample>
+	| game |
+	game := self playerAentersTokenA.
+	self assert: (game positionOfTokenNamed: 'A') equals: 1.
+	game roll: 6.
+	game moveTokenNamed: 'a'.
+	self assert: (game positionOfTokenNamed: 'A') equals: 1.
+	self assert: (game positionOfTokenNamed: 'a') equals: 2.
+	self assert: game currentPlayer name equals: 'A'.
+	^ game
 ]
 
 { #category : #example }
@@ -249,7 +249,7 @@ GtLudoGameExamples >> playerAmovesTwiceAndLandsOnA [
 	"Example for: 3. Landing on a square with the same player's token. (Land on next square.)"
 	<gtExample>
 	| game |
-	game := self playerAenterAndLandsOnTokenA.
+	game := self playerAentersAndLandsOnTokenA.
 	self assert: game currentPlayer name equals: 'A'.
 	game roll: 6.
 	game moveTokenNamed: 'A'.
@@ -359,7 +359,7 @@ GtLudoGameExamples >> playerBentersWithTokenAahead [
 	"Setup for 4. Landing on another player's token. (Send other token to start.)"
 	<gtExample>
 	| game |
-	game := self playerAenterAndLandsOnTokenA.
+	game := self playerAentersAndLandsOnTokenA.
 	game roll: 6.
 	game moveTokenNamed: 'A'.
 	game roll: 5.
