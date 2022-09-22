@@ -522,8 +522,9 @@ GtSpotterSlideshow >> spotterOpeningExplanationText [
 { #category : #accessing }
 GtSpotterSlideshow >> spotterProcessorsExample [
 	<gtExample>
+	<noTest>
 	| aScripter inspectorElement |
-	inspectorElement := GtInspector createOn: (GtSpotterStepExamples new defaultStep).
+	inspectorElement := GtInspector createOn: (GtSpotter on: GtWorldSpotterSearchStart new).
 	
 	aScripter := BlDevScripter new.
 		aScripter
@@ -649,6 +650,7 @@ GtSpotterSlideshow >> spotterSearchFilterExplanationText [
 { #category : #accessing }
 GtSpotterSlideshow >> spotterSearchMethodExample [
 	<gtExample>
+	<noTest>
 	| selectors coder coderViewModel coderElement |
 	
 	selectors := GtSelectorExplanationLinkStyler new.
