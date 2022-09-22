@@ -37,7 +37,7 @@ GtSpotterSlideshow >> spotterAfterFirstDiveInExplanation [
 
 { #category : #slides }
 GtSpotterSlideshow >> spotterAfterFirstDiveInExplanationSlideFor: aSlide [
-	<gtSlide>
+	"<gtSlide>"
 	^ aSlide textAndElement
 		priority: 16;
 		newTextWithFormat: ( self spotterAfterFirstDiveInExplanationText );
@@ -106,7 +106,7 @@ GtSpotterSlideshow >> spotterDiveInExplanation [
 
 { #category : #slides }
 GtSpotterSlideshow >> spotterDiveInExplanationSlideFor: aSlide [
-	<gtSlide>
+	"<gtSlide>"
 	^ aSlide textAndElement
 		priority: 15;
 		newTextWithFormat: (self spotterDiveInExplanationText);
@@ -178,7 +178,7 @@ GtSpotterSlideshow >> spotterElementOn: aSearchString [
 
 { #category : #slides }
 GtSpotterSlideshow >> spotterExampleSlideFor: aSlide [
-	<gtSlide>
+	"<gtSlide>"
 	^ aSlide labelAndElement
 		priority: 17;
 		newFadedText: ('You can play around with the spotter below to better understand how it works.' asRopedText);
@@ -187,7 +187,7 @@ GtSpotterSlideshow >> spotterExampleSlideFor: aSlide [
 
 { #category : #slides }
 GtSpotterSlideshow >> spotterInLocalContextExplanationSlideFor: aSlide [
-	<gtSlide>
+	"<gtSlide>"
 	^ aSlide textAndElement
 		priority: 8;
 		newTextWithFormat: self spotterInLocalContextExplanationText;
@@ -288,7 +288,7 @@ GtSpotterSlideshow >> spotterInLocalContextForInspectorExample [
 
 { #category : #slides }
 GtSpotterSlideshow >> spotterInLocalContextInCoderExampleSlideFor: aSlide [
-	<gtSlide>
+	"<gtSlide>"
 	^ aSlide labelAndElement
 		priority: 9;
 		newFadedText: 'Below you can see the spotter opened in a local context inside a coder.' asRopedText;
@@ -310,7 +310,7 @@ GtSpotterSlideshow >> spotterInLocalContextInCoderExampleSlideFor: aSlide [
 
 { #category : #slides }
 GtSpotterSlideshow >> spotterInLocalContextInInspectorExampleSlideFor: aSlide [
-	<gtSlide>
+	"<gtSlide>"
 	^ aSlide labelAndElement
 		priority: 10;
 		newFadedText: 'And here, the spotter is opened in a local context inside the inspector.' asRopedText;
@@ -332,7 +332,7 @@ GtSpotterSlideshow >> spotterInLocalContextInInspectorExampleSlideFor: aSlide [
 
 { #category : #slides }
 GtSpotterSlideshow >> spotterInterfaceExplanationSlideFor: aSlide [
-	<gtSlide>
+	"<gtSlide>"
 	^ aSlide textAndElement
 		priority: 6;
 		newTextWithFormat: self spotterInterfaceExplanationText;
@@ -480,7 +480,7 @@ GtSpotterSlideshow >> spotterLocalContextExplanationText [
 
 { #category : #slides }
 GtSpotterSlideshow >> spotterMashExampleSlideFor: aSlide [
-	<gtSlide>
+	"<gtSlide>"
 	^ aSlide textAndElement
 		priority: 5;
 		newTextWithFormat: (
@@ -493,7 +493,7 @@ GtSpotterSlideshow >> spotterMashExampleSlideFor: aSlide [
 
 { #category : #slides }
 GtSpotterSlideshow >> spotterNavigationIntroductionSlideFor: aSlide [
-	<gtSlide>
+	"<gtSlide>"
 	^ aSlide text
 		priority: 13;
 		newTextWithFormat: (
@@ -504,7 +504,7 @@ GtSpotterSlideshow >> spotterNavigationIntroductionSlideFor: aSlide [
 
 { #category : #slides }
 GtSpotterSlideshow >> spotterOpeningExplanationSlideFor: aSlide [
-	<gtSlide>
+	"<gtSlide>"
 	^ aSlide textAndElement
 		priority: 7;
 		newTextWithFormat: self spotterOpeningExplanationText;
@@ -552,7 +552,7 @@ GtSpotterSlideshow >> spotterProcessorsExample [
 
 { #category : #slides }
 GtSpotterSlideshow >> spotterProcessorsExplanationSlideFor: aSlide [
-	<gtSlide>
+	"<gtSlide>"
 	^ aSlide textAndElement
 		priority: 11;
 		newTextWithFormat: self spotterProcessorsExplanationText;
@@ -622,7 +622,7 @@ GtSpotterSlideshow >> spotterSearchFilterExplanation [
 
 { #category : #slides }
 GtSpotterSlideshow >> spotterSearchFilterExplanationSlideFor: aSlide [
-	<gtSlide>
+	"<gtSlide>"
 	^ aSlide textAndElement
 		priority: 14;
 		newTextWithFormat: (self spotterSearchFilterExplanationText);
