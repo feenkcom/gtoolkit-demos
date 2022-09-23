@@ -670,7 +670,7 @@ GtSpotterSlideshow >> spotterSearchMethodExample [
 
 { #category : #slides }
 GtSpotterSlideshow >> spotterSearchMethodExplanationSlideFor: aSlide [
-	<gtSlide>
+	"<gtSlide>"
 	^ aSlide textAndElement
 		priority: 12;
 		newTextWithFormat: self spotterSearchMethodExplanationText;
