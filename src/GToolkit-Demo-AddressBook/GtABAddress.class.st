@@ -41,15 +41,15 @@ GtABAddress >> country: anObject [
 ]
 
 { #category : #ui }
-GtABAddress >> gtSpotterForPeopleFor: aStep [
+GtABAddress >> gtSpotterForPeopleFor: aSearch [
 	<gtSearch>
-	(aStep hasPreviousNavigationFromClass: GtABAddressBook)
-		ifFalse: [ ^ self ].
-	^ aStep listProcessor
+	(aSearch hasPreviousNavigationFromClass: GtABAddressBook)
+		ifFalse: [ ^ aSearch empty ].
+	^ aSearch list
 		priority: 10;
 		title: 'People';
 		itemName: [ :contact | contact fullName ];
-		allCandidates: [ aStep previousStep origin contactsWithAddress: self ];
+		items: [ aSearch previousStep origin contactsWithAddress: self ];
 		candidatesLimit: 10;
 		matchSubstrings
 ]

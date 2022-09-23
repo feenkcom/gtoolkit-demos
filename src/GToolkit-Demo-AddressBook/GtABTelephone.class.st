@@ -10,7 +10,7 @@ Class {
 		'prefix',
 		'number'
 	],
-	#category : 'GToolkit-Demo-AddressBook-Models'
+	#category : #'GToolkit-Demo-AddressBook-Models'
 }
 
 { #category : #accessing }
@@ -45,15 +45,15 @@ GtABTelephone >> fullNumber [
 ]
 
 { #category : #ui }
-GtABTelephone >> gtSpotterForContactsFor: aStep [
+GtABTelephone >> gtSpotterForContactsFor: aSearch [
 	<gtSearch>
-	(aStep hasPreviousNavigationFromClass: GtABAddressBook)
-		ifFalse: [ ^ self ].
-	^ aStep listProcessor
+	(aSearch hasPreviousNavigationFromClass: GtABAddressBook)
+		ifFalse: [ ^ aSearch empty ].
+	^ aSearch list
 		priority: 10;
 		title: 'Contacts';
 		candidatesLimit: Float infinity;
-		allCandidates: [ aStep previousStep origin contactsWithTelephone: self number ];
+		items: [ aSearch previousStep origin contactsWithTelephone: self number ];
 		matchSubstring
 ]
 
