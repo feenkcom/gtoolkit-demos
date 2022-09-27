@@ -104,7 +104,7 @@ GtCoderSlideshow >> baselineMethodsExplanationWithLinks [
 	<gtExample>
 	| classCoderElement aScripter baselineTarget expandBaselineTarget pragmaTarget expandedMethodElement |		
 		
-	classCoderElement := BlDevScripter new
+	classCoderElement := BlScripter new
 		element: (GtClassCoderLiveSlide new class: BaselineOfGToolkit; expandMethodAt: 1) asElement;
 		elementWithoutParent.
 	
@@ -140,7 +140,7 @@ GtCoderSlideshow >> baselineMethodsExplanationWithLinks [
 					relocate:
 						(2 @ expandBaselineTarget extent y / 2)).
 	
-	aScripter := BlDevScripter new.
+	aScripter := BlScripter new.
 	aScripter element: classCoderElement.
 
 	aScripter click
@@ -590,7 +590,7 @@ GtCoderSlideshow >> createMethodExplanationWithLinks [
 	<gtExample>
 	| classCoderElement addMethodButton aScripter newFrameTarget saveButtonTarget removeButtonTarget |
 		
-	aScripter := BlDevScripter new.
+	aScripter := BlScripter new.
 	aScripter element: (GtClassCoderLiveSlide new class: GtABAddressBook) asElement.
 
 	aScripter click
@@ -678,7 +678,7 @@ GtCoderSlideshow >> exampleMethodsExplanationWithLinks [
 	
 	classCoderElement := (GtInspector createOn:(GtPharoBehaviorCoder forClass: GtABAddressBookExample)) maximized.
 	
-	aScripter := BlDevScripter new.
+	aScripter := BlScripter new.
 	aScripter element: classCoderElement.
 
 	aScripter click

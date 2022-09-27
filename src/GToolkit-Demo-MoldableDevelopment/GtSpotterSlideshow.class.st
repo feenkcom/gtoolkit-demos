@@ -133,7 +133,7 @@ There is also a dive out action, similar to a back button. It can be action by p
 GtSpotterSlideshow >> spotterElement: aSpotterElement withSelectedPosition: aNumber [
 	| aScripter |
 	
-	aScripter := BlDevScripter new.
+	aScripter := BlScripter new.
 	aScripter element: aSpotterElement.
 	
 	aScripter click
@@ -154,7 +154,7 @@ GtSpotterSlideshow >> spotterElementInContextOf: anObject withSearch: aSearchStr
 		aptitude: BrShadowAptitude;
 		margin: (BlInsets all: 20).
 	
-	aScripter := BlDevScripter new.
+	aScripter := BlScripter new.
 	aScripter element: spotterElement.
 	
 	aScripter do
@@ -526,7 +526,7 @@ GtSpotterSlideshow >> spotterProcessorsExample [
 	| aScripter inspectorElement |
 	inspectorElement := GtInspector createOn: (GtSpotter on: GtWorldSpotterSearchStart new).
 	
-	aScripter := BlDevScripter new.
+	aScripter := BlScripter new.
 		aScripter
 			substep: 'Initial Inspector'
 			do: [ :aStep | 

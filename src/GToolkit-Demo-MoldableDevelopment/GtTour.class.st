@@ -48,7 +48,7 @@ GtTour >> coderExplanationWithLinks [
 		background: Color white;
 		aptitude: BrShadowAptitude.
 	
-	scripter := BlDevScripter new.
+	scripter := BlScripter new.
 	scripter element: ((GtCoder forClass: GtABAddressBook) createInPager maximized) asElement.
 	scripter syncContinue.
 	
@@ -227,7 +227,7 @@ GtTour >> coderSlideshowLinkSlideFor: aSlide [
 GtTour >> coderWithComment [
 	<gtExample>
 	| aScripter |
-	aScripter := BlDevScripter new.
+	aScripter := BlScripter new.
 	aScripter
 		substep: 'Initial Coder'
 		do: [ :aStep | 
@@ -735,7 +735,7 @@ GtTour >> playgroundExplanationWithLinks [
 		margin: (BlInsets all: 5);
 		background: Color white;
 		aptitude: BrShadowAptitude.
-	scripter := BlDevScripter new.
+	scripter := BlScripter new.
 	scripter element: (GtPlaygroundLiveSlide new snippets: {'a := 40' . 'a + 2'}) asElement.
 	scripter
 		substep: 'Selecting snippet'

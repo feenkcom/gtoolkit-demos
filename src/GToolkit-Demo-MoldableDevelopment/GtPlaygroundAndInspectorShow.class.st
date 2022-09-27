@@ -63,7 +63,7 @@ GtPlaygroundAndInspectorShow >> fixItAdornmentForClassExplanation [
 	defaultPlaygroundElement := BlUseAsyncFeatures
 		disableDuring: [(GtPlaygroundLiveSlide new snippets: {'GtDummyClass new.'}) asElement].
 		
-	aScripter := BlDevScripter new.
+	aScripter := BlScripter new.
 	aScripter
 		substep: 'Initiate Playground'
 		do: [ :aStep | 
@@ -75,7 +75,7 @@ GtPlaygroundAndInspectorShow >> fixItAdornmentForClassExplanation [
 
 	playgroundElement := aScripter elementWithoutParent.	
 	
-	aScripter := BlDevScripter new.
+	aScripter := BlScripter new.
 	aScripter
 		substep: 'Initiate Default Playground'
 		do: [ :aStep | 
@@ -129,7 +129,7 @@ GtPlaygroundAndInspectorShow >> fixItAdornmentForMethodExplanation [
 		disableDuring: [ (GtPlaygroundLiveSlide new
 				snippets: {'GtDummyExamplesOnInstanceSide new inexistentExampleMethod.'})
 				asElement ].
-	aScripter := BlDevScripter new.
+	aScripter := BlScripter new.
 	aScripter
 		substep: 'Initiate Default Playground'
 		do: [ :aStep | 
