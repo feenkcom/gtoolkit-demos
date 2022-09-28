@@ -498,7 +498,7 @@ GtPharo101 >> shortPlaygroundExplanation [
 a + 5' . 'b := 1.
 a - b'};
 		asElement.
-	aScripter := BlDevScripter new.
+	aScripter := BlScripter new.
 	aScripter element: playgroundElement.
 	aScripter
 		substep: 'Selecting snippets'
