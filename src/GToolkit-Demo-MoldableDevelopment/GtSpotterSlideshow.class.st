@@ -580,11 +580,11 @@ GtSpotterSlideshow >> spotterSearchFilterExplanation [
 	
 	keywordTarget := spotter
 		allChildrenBreadthFirstDetect: [:aChild |
-			(aChild isKindOf: BrTextElementWithCursors) and: [aChild text asString = 'contacts' asString]]
+			(aChild isKindOf: BrTextElementWithCursors) and: [aChild text asString includesSubstring: 'contacts' ]]
 		ifFound: [:aChild | aChild]. 
 	filterTarget := spotter
 		allChildrenBreadthFirstDetect: [:aChild |
-			(aChild isKindOf: BrTextElementWithCursors) and: [aChild text asString = '#instancemethods' asString]]
+			(aChild isKindOf: BrTextElementWithCursors) and: [aChild text asString includesSubstring: '#instancemethods' ]]
 		ifFound: [:aChild | aChild].
 	contextTarget := spotter
 		allChildrenBreadthFirstDetect: [:aChild |

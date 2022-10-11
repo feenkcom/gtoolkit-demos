@@ -114,11 +114,11 @@ GtCoderSlideshow >> baselineMethodsExplanationWithLinks [
 		ifFound: [:aChild | aChild childAt: 1].
 	pragmaTarget := expandedMethodElement
 		allChildrenBreadthFirstDetect: [:aChild |
-			(aChild isKindOf: BrTextElementWithCursors) and: [aChild text asString = '<baseline>' asString]]
+			(aChild isKindOf: BrTextElementWithCursors) and: [aChild text asString includesSubstring: '<baseline>']]
 		ifFound: [:aChild | aChild].
 	baselineTarget := expandedMethodElement
 		allChildrenBreadthFirstDetect: [:aChild |
-			(aChild isKindOf: BrTextElementWithCursors) and: [aChild text asString = '''GToolkitClipboard''' asString]]
+			(aChild isKindOf: BrTextElementWithCursors) and: [aChild text asString includesSubstring: '''GToolkitClipboard''' ]]
 		ifFound: [:aChild | aChild].
 	expandBaselineTarget := baselineTarget parent
 		allChildrenBreadthFirstDetect: [:aChild | aChild isKindOf: BrTriangle ]
@@ -694,7 +694,7 @@ GtCoderSlideshow >> exampleMethodsExplanationWithLinks [
 		ifFound: [:aChild | aChild childAt: 1].
 	pragmaTarget := expandedMethodElement
 		allChildrenBreadthFirstDetect: [:aChild |
-			(aChild isKindOf: BrTextElementWithCursors) and: [aChild text asString = '<gtExample>' asString]]
+			(aChild isKindOf: BrTextElementWithCursors) and: [aChild text asString includesSubstring: '<gtExample>' ]]
 		ifFound: [:aChild | aChild].
 	buttonsList := expandedMethodElement
 		allChildrenBreadthFirstSelect: [:aChild | aChild isKindOf: BrButton].
