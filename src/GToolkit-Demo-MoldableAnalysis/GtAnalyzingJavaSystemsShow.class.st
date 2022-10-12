@@ -58,21 +58,25 @@ GtAnalyzingJavaSystemsShow >> codeFromSelector: aSelector [
 
 { #category : #'code examples' }
 GtAnalyzingJavaSystemsShow >> downloadArgoUMLCodeAndMSE [
+	"Download ArgoUML code and MSE model file"
+
 	<gtExample>
 	<noTest>
+	| targetFolder archiveFileName archiveUrl |
 	"Download ArgoUML code and MSE model file"
-	| targetFolder archiveFileName archiveUrl |	
-	targetFolder := (FileLocator imageDirectory / 
-		'models') asFileReference ensureCreateDirectory.
+	targetFolder := (FileLocator imageDirectory / 'models') asFileReference
+			ensureCreateDirectory.
 	archiveFileName := 'ArgoUML-0-34.zip'.
-	archiveUrl := 'https://dl.feenk.com/moose-tutorial/argouml/'. 
-	ZnClient new
-		url: archiveUrl, archiveFileName;
-		signalProgress: true;
-		downloadTo: targetFolder.
-	(ZipArchive new 
-		readFrom: targetFolder / archiveFileName) 
-		extractAllTo: targetFolder.
+
+	(targetFolder / archiveFileName) exists
+		ifFalse: [ archiveUrl := 'https://dl.feenk.com/moose-tutorial/argouml/'.
+			ZnClient new
+				url: archiveUrl , archiveFileName;
+				signalProgress: true;
+				downloadTo: targetFolder.
+			(ZipArchive new readFrom: targetFolder / archiveFileName)
+				extractAllTo: targetFolder ].
+
 	targetFolder
 ]
 
