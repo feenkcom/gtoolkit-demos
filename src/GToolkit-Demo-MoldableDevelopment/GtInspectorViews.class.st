@@ -414,7 +414,7 @@ GtInspectorViews >> explicitViewExplanationWithLinks [
 	ifFound: [:aChild | aChild].
 	addressTextElement := resultInspectorTree
 	allChildrenBreadthFirstDetect: [:aChild | 
-		(aChild isKindOf: BrTextElementWithCursors) and: [aChild text asString = 'Bern,']]
+		(aChild isKindOf: BrTextElementWithCursors) and: [aChild text asString includesSubstring: 'Bern,']]
 	ifFound: [:aChild | aChild].
 	avatarElement := resultInspectorTree
 	allChildrenBreadthFirstDetect: [:aChild | 
