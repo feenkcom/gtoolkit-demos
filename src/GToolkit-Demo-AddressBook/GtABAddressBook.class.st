@@ -116,9 +116,9 @@ GtABAddressBook >> gtGtSpotterForAddressesFor: aSearch [
 		priority: 10;
 		title: 'Addresses' translated;
 		items: [ (self contacts collect: #address as: Set) asOrderedCollection ];
-		candidatesLimit: 7;
 		itemName: [ :each | each city , ', ' , each country ];
-		matchSubstrings
+		filterBySubstring;
+		wantsToDisplayOnEmptyQuery: true
 ]
 
 { #category : #ui }
@@ -128,9 +128,9 @@ GtABAddressBook >> gtGtSpotterForPeopleFor: aSearch [
 		priority: 5;
 		title: 'People';
 		items: [ self contacts ];
-		filter: GtFilterSubstrings;
-		candidatesLimit: 7;
-		itemName: [ :aContact | aContact lastName asUppercase , ', ' , aContact firstName ]
+		filterBySubstring;
+		itemName: [ :aContact | aContact lastName asUppercase , ', ' , aContact firstName ];
+		wantsToDisplayOnEmptyQuery: true
 ]
 
 { #category : #ui }
@@ -140,7 +140,8 @@ GtABAddressBook >> gtGtSpotterForTelephonesFor: aSearch [
 		priority: 15;
 		title: 'Telephones' translated;
 		items: [ self contacts flatCollect: [ :aContact | aContact telephones ] ];
-		matchSubstrings
+		filterBySubstring;
+		wantsToDisplayOnEmptyQuery: true
 ]
 
 { #category : #accessing }
