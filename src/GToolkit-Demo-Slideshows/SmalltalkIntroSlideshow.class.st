@@ -12,6 +12,12 @@ Class {
 	#category : #'GToolkit-Demo-Slideshows'
 }
 
+{ #category : #accessing }
+SmalltalkIntroSlideshow class >> show [
+	"Implement this here just so we can run it directly from the Coder."
+	super show
+]
+
 { #category : #slides }
 SmalltalkIntroSlideshow >> addingAutoPlay: aSlide [
 	<gtSlide>
@@ -192,7 +198,30 @@ SmalltalkIntroSlideshow >> outline: aSlide [
 ]
 
 { #category : #accessing }
-SmalltalkIntroSlideshow >> pages [
+SmalltalkIntroSlideshow >> picturesDirectoryPath [
+	^ Path * 'feenkcom' / 'gtoolkit-demos' / 'data' / 'images'
+]
+
+{ #category : #slides }
+SmalltalkIntroSlideshow >> programmingClassesAndMethods: aSlide [
+	"<gtSlide>"
+	^ (aSlide lepiterPage)
+		priority: (self priorityFor: #programmingClassesAndMethods:);
+		pageNamed: 'Programming Classes and Methods' from: self myLepiterDB
+]
+
+{ #category : #slides }
+SmalltalkIntroSlideshow >> recordingMoves: aSlide [
+	<gtSlide>
+	
+	^ (aSlide lepiterPage)
+		priority: (self priorityFor: #recordingMoves:);
+		pageNamed: 'Recording and visualizing token moves' from: self myLepiterDB;
+		yourself
+]
+
+{ #category : #accessing }
+SmalltalkIntroSlideshow >> slidePriorities [
 	"Instead of manually setting priorities, just list the slides in order here."
 	<gtExample>
 	^ #( 
@@ -217,29 +246,6 @@ SmalltalkIntroSlideshow >> pages [
 		takeHome:
 		whatsNext:
 		)
-]
-
-{ #category : #accessing }
-SmalltalkIntroSlideshow >> picturesDirectoryPath [
-	^ Path * 'feenkcom' / 'gtoolkit-demos' / 'data' / 'images'
-]
-
-{ #category : #slides }
-SmalltalkIntroSlideshow >> programmingClassesAndMethods: aSlide [
-	"<gtSlide>"
-	^ (aSlide lepiterPage)
-		priority: (self priorityFor: #programmingClassesAndMethods:);
-		pageNamed: 'Programming Classes and Methods' from: self myLepiterDB
-]
-
-{ #category : #slides }
-SmalltalkIntroSlideshow >> recordingMoves: aSlide [
-	<gtSlide>
-	
-	^ (aSlide lepiterPage)
-		priority: (self priorityFor: #recordingMoves:);
-		pageNamed: 'Recording and visualizing token moves' from: self myLepiterDB;
-		yourself
 ]
 
 { #category : #accessing }
