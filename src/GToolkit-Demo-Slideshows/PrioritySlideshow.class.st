@@ -16,6 +16,7 @@ Class {
 
 { #category : #accessing }
 PrioritySlideshow class >> show [
+	"NB: this is a class-side method."
 	GtPresenterSlideShow openInSpace: self
 ]
 
@@ -70,6 +71,17 @@ PrioritySlideshow >> myLepiterDB [
 
 { #category : #accessing }
 PrioritySlideshow >> pages [
+	self error: 'Use self slidePriorities instead'.
+	^ self slidePriorities
+]
+
+{ #category : #accessing }
+PrioritySlideshow >> priorityFor: aSlideMethodSelector [
+	^ self slidePriorities indexOf: aSlideMethodSelector
+]
+
+{ #category : #accessing }
+PrioritySlideshow >> slidePriorities [
 	"Override this method in the subclass.
 	Instead of manually setting priorities, just list the slides in order here.
 	NB: the names can be the same as the method selectors, but need not be."
@@ -78,9 +90,4 @@ PrioritySlideshow >> pages [
 	^ #( 
 		"Add the names of the slides here ..."
 		)
-]
-
-{ #category : #accessing }
-PrioritySlideshow >> priorityFor: aSlideMethodSelector [
-	^ self pages indexOf: aSlideMethodSelector
 ]
