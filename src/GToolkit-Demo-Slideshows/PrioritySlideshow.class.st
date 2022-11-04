@@ -14,10 +14,15 @@ Class {
 	#category : #'GToolkit-Demo-Slideshows-GToolkit-Demo-Slideshows'
 }
 
-{ #category : #accessing }
+{ #category : #presentation }
 PrioritySlideshow class >> show [
 	"NB: this is a class-side method."
 	GtPresenterSlideShow openInSpace: self
+]
+
+{ #category : #presentation }
+PrioritySlideshow class >> show: aSelector [
+	^ self new perform: aSelector with: GtLiveSlide new
 ]
 
 { #category : #text }
@@ -65,12 +70,12 @@ PrioritySlideshow >> asTitle: aString [
 		fontSize: 70
 ]
 
-{ #category : #slides }
+{ #category : #constants }
 PrioritySlideshow >> gtBook [
 	^ 'Glamorous Toolkit Book'
 ]
 
-{ #category : #slides }
+{ #category : #constants }
 PrioritySlideshow >> myLepiterDB [
 	"Default Lepiter DB to use"
 	^ self gtBook
