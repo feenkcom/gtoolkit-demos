@@ -14,7 +14,7 @@ Class {
 	#category : #'GToolkit-Demo-Slideshows-GToolkit-Demo-Slideshows'
 }
 
-{ #category : #presentation }
+{ #category : #utility }
 PrioritySlideshow class >> show [
 	"NB: this is a class-side method."
 	GtPresenterSlideShow openInSpace: self
