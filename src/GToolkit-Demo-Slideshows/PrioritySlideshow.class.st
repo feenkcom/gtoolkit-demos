@@ -14,10 +14,15 @@ Class {
 	#category : #'GToolkit-Demo-Slideshows-GToolkit-Demo-Slideshows'
 }
 
-{ #category : #accessing }
+{ #category : #utility }
 PrioritySlideshow class >> show [
 	"NB: this is a class-side method."
 	GtPresenterSlideShow openInSpace: self
+]
+
+{ #category : #utility }
+PrioritySlideshow class >> show: aSelector [
+	^ self new perform: aSelector with: GtLiveSlide new
 ]
 
 { #category : #text }
