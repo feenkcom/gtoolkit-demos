@@ -20,7 +20,7 @@ PrioritySlideshow class >> show [
 	GtPresenterSlideShow openInSpace: self
 ]
 
-{ #category : #utility }
+{ #category : #presentation }
 PrioritySlideshow class >> show: aSelector [
 	^ self new perform: aSelector with: GtLiveSlide new
 ]
@@ -70,12 +70,12 @@ PrioritySlideshow >> asTitle: aString [
 		fontSize: 70
 ]
 
-{ #category : #slides }
+{ #category : #constants }
 PrioritySlideshow >> gtBook [
 	^ 'Glamorous Toolkit Book'
 ]
 
-{ #category : #slides }
+{ #category : #constants }
 PrioritySlideshow >> myLepiterDB [
 	"Default Lepiter DB to use"
 	^ self gtBook
