@@ -188,7 +188,7 @@ When opened on a class, you see the ' asRopedText, ('name' asRopedText glamorous
 ('class comment' asRopedText glamorousExplanationFor: #commentTab),
 ' or a list of ' asRopedText,
 ('references' asRopedText glamorousExplanationFor: #referencesTab),
-'. Coder also gives provides the possibility to ' asRopedText,
+'. Coder also provides the possibility to ' asRopedText,
 ('delete' asRopedText glamorousExplanationFor: #deleteClassButton),
 ' the current class, to ' asRopedText,
 ('add' asRopedText glamorousExplanationFor: #addClassButton),
