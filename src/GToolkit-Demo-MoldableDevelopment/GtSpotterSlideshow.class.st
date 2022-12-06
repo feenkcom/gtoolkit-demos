@@ -148,27 +148,20 @@ GtSpotterSlideshow >> spotterElement: aSpotterElement withSelectedPosition: aNum
 
 { #category : #accessing }
 GtSpotterSlideshow >> spotterElementInContextOf: anObject withSearch: aSearchString [
-	| spotterElement aScripter |
+	| spotter spotterElement scripter  |
 	
-	"spotterElement := GtSpotterElement new
+	spotter := GtStreamingSpotter on: anObject.
+	spotter steps first searchQuery: aSearchString.
+	
+	spotterElement := GtStreamingSpotterElement new
+		spotter: spotter;
 		aptitude: BrShadowAptitude;
 		margin: (BlInsets all: 20).
 	
-	aScripter := BlScripter new.
-	aScripter element: spotterElement.
-	
-	aScripter do
-		action: [ :aSpotterElement | 
-			aSpotterElement spotterModel: ((GtStreamingSpotter on: anObject) search: aSearchString).
-			aSpotterElement searchField requestFocus.
-			aSpotterElement header searchField text: aSearchString. ];
-		play.
-	
-	aScripter wait
-		forEnqueuedSpaceTaskTimeout: 250 milliSeconds;
-		play."
-	
-	^ nil"aScripter elementWithoutParent.	"
+	scripter := BlScripter new.
+	scripter element: spotterElement.
+
+	^ scripter elementWithoutParent
 ]
 
 { #category : #accessing }
