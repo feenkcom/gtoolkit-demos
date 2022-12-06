@@ -26,16 +26,16 @@ FileReference >> isAddressBookFile [
 ]
 
 { #category : #'*GToolkit-Demo-AddressBook' }
-FileReference >> spotterForAddressFileFor: aStep [
-	<spotterOrder: 40>
+FileReference >> spotterForAddressFileFor: aSearch [
+	<gtSearch>
 
 	self isAddressBookFile
-		ifFalse: [^ self].
+		ifFalse: [ ^ aSearch empty ].
 
-	aStep listProcessor
+	^ aSearch list
 		title: 'Contacts';
-		allCandidates: [ self contactsFromFile ];
+		items: [ self contactsFromFile ];
 		itemName: #fullName;
-		filter: GtFilterSubstrings;
+		filterBySubstring;
 		wantsToDisplayOnEmptyQuery: true
 ]

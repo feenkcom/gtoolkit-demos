@@ -71,10 +71,10 @@ GtSpotterSlideshow >> spotterButtonStencil [
 { #category : #accessing }
 GtSpotterSlideshow >> spotterDiveInExplanation [
 	| spotter arrowTargets contextTarget |
-
+	
 	spotter := self spotterElementInContextOf: GtABAddressBook withSearch: 'contacts'.
 	
-	arrowTargets := spotter
+	"arrowTargets := spotter
 		allChildrenBreadthFirstDetect: [:aChild |
 			(aChild isKindOf: GtSpotterCandidateElement)]
 		ifFound: [:aChild | aChild childAt: 3].
@@ -100,7 +100,7 @@ GtSpotterSlideshow >> spotterDiveInExplanation [
 				geometry: BlCircleGeometry new;
 				aptitude: (GtExplainerTargetAptitude new explanationModel: #blackArrow);
 				relocate:
-					(-2 @ arrowTargets extent y / 2)).
+					(-2 @ arrowTargets extent y / 2))."
 	^ spotter.
 ]
 
@@ -134,41 +134,34 @@ GtSpotterSlideshow >> spotterElement: aSpotterElement withSelectedPosition: aNum
 	| aScripter |
 	
 	aScripter := BlScripter new.
-	aScripter element: aSpotterElement.
+	"aScripter element: aSpotterElement.
 	
 	aScripter click
 		label: 'Click on spotter result';
 		onBreadthFirstChildOfClass: BrPager;
 		onBreadthFirstChildOfClass: GtSpotterPager;
 		onBreadthFirstChildOfClass: BrInfiniteTreeElement;
-		onChildAt: aNumber; play.
+		onChildAt: aNumber; play."
 
-	^ aScripter elementWithoutParent
+	^ nil "aScripter elementWithoutParent"
 ]
 
 { #category : #accessing }
 GtSpotterSlideshow >> spotterElementInContextOf: anObject withSearch: aSearchString [
-	| spotterElement aScripter |
+	| spotter spotterElement scripter  |
 	
-	spotterElement := GtSpotterElement new
+	spotter := GtStreamingSpotter on: anObject.
+	spotter steps first searchQuery: aSearchString.
+	
+	spotterElement := GtStreamingSpotterElement new
+		spotter: spotter;
 		aptitude: BrShadowAptitude;
 		margin: (BlInsets all: 20).
 	
-	aScripter := BlScripter new.
-	aScripter element: spotterElement.
-	
-	aScripter do
-		action: [ :aSpotterElement | 
-			aSpotterElement spotterModel: ((GtSpotter on: anObject) search: aSearchString).
-			aSpotterElement searchField requestFocus.
-			aSpotterElement header searchField text: aSearchString. ];
-		play.
-	
-	aScripter wait
-		forEnqueuedSpaceTaskTimeout: 250 milliSeconds;
-		play.
-	
-	^ aScripter elementWithoutParent.	
+	scripter := BlScripter new.
+	scripter element: spotterElement.
+
+	^ scripter elementWithoutParent
 ]
 
 { #category : #accessing }
@@ -367,7 +360,7 @@ GtSpotterSlideshow >> spotterInterfaceExplanationWithLinks [
 
 	spotterElement := self spotterElementOn: 'GtCoder'.
 	
-	searchBarTarget := spotterElement
+	"searchBarTarget := spotterElement
 		allChildrenBreadthFirstDetect: [:aChild | 
 			(aChild isKindOf: BrTextEditorSegmentElement)]
 		ifFound: [:aChild | aChild].
@@ -387,10 +380,10 @@ GtSpotterSlideshow >> spotterInterfaceExplanationWithLinks [
 		allChildrenBreadthFirstDetect: [:aChild | 
 			(aChild isKindOf: BlTextElement) and: [aChild text asString = '#Implementors' asString]]
 		ifFound: [:aChild | aChild].
-	"sendersTarget := spotterElement
+	""sendersTarget := spotterElement
 		allChildrenBreadthFirstDetect: [:aChild | 
 			(aChild isKindOf: BlTextElement) and: [aChild text asString = '#Senders' asString]]
-		ifFound: [:aChild | aChild]."
+		ifFound: [:aChild | aChild].""
 	messagesTarget := spotterElement
 		allChildrenBreadthFirstDetect: [:aChild | 
 			(aChild isKindOf: BlTextElement) and: [aChild text asString = '#Messages' asString]]
@@ -444,7 +437,7 @@ GtSpotterSlideshow >> spotterInterfaceExplanationWithLinks [
 				geometry: BlCircleGeometry new;
 				aptitude: (GtExplainerTargetAptitude new explanationModel: #messages);
 				relocate:
-					(5 @ implementorsTarget extent y / 2)).
+					(5 @ implementorsTarget extent y / 2))."
 	"sendersTarget
 		addChild:
 			(BrButton new
@@ -524,7 +517,7 @@ GtSpotterSlideshow >> spotterProcessorsExample [
 	<gtExample>
 	<noTest>
 	| aScripter inspectorElement |
-	inspectorElement := GtInspector createOn: (GtSpotter on: GtWorldSpotterSearchStart new).
+	inspectorElement := GtInspector createOn: (GtStreamingSpotter on: GtWorldSpotterSearchStart new).
 	
 	aScripter := BlScripter new.
 		aScripter
