@@ -160,7 +160,7 @@ GtSpotterSlideshow >> spotterElementDiveIn: aSpotterElement [
 GtSpotterSlideshow >> spotterElementInContextOf: anObject withSearch: aSearchString [
 	| spotter spotterElement scripter |
 	
-	spotter := GtStreamingSpotter on: anObject.
+	spotter := GtSpotter on: anObject.
 	spotter steps first searchQuery: aSearchString.
 	
 	spotterElement := GtStreamingSpotterElement new
@@ -465,7 +465,7 @@ GtSpotterSlideshow >> spotterProcessorsExample [
 	| inspector scripter  |
 
 	inspector := GtInspector
-		createOn: (GtStreamingSpotter on: GtWorldSpotterSearchStart new).
+		createOn: (GtSpotter on: GtWorldSpotterSearchStart new).
 
 	scripter := BlScripter new.
 	scripter element: inspector.
