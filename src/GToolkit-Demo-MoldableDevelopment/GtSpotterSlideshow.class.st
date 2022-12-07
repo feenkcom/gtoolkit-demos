@@ -5,44 +5,41 @@ Class {
 }
 
 { #category : #accessing }
+GtSpotterSlideshow >> newExplainerButton: anExplanationModel position: aPoint [
+	^ BrButton new
+		constraintsDo: [ :c | c ignoreByLayout ];
+		size: 3 @ 3;
+		elevation: (BlRelativeElevation elevation: 10);
+		geometry: BlCircleGeometry new;
+		aptitude: (GtExplainerTargetAptitude new explanationModel: anExplanationModel);
+		relocate: aPoint
+]
+
+{ #category : #accessing }
 GtSpotterSlideshow >> spotterAfterFirstDiveInExplanation [
 	<gtExample>
-	<noTest>
 	| spotterElement contextTarget |
 
 	spotterElement := self
-		spotterElement: (self spotterElementInContextOf: GtABAddressBook withSearch: 'contacts')
-		withSelectedPosition: 3.
-
-	spotterElement enqueueTask: (BlTaskAction new
-		action: [
-			spotterElement header spotterModel currentStep diveIn.
-			contextTarget := spotterElement
-				allChildrenBreadthFirstDetect: [:aChild |
-					(aChild isKindOf: BlTextElement) and: [aChild text asString = 'contactsWithAddress:' asString]]
-				ifFound: [:aChild | aChild].
+		spotterElement: (self spotterElementInContextOf: GtABAddressBook withSearch: 'contactsWithAddress')
+		withSelectedPosition: 1.
+		
+	spotterElement := self spotterElementDiveIn: spotterElement.
 	
-			contextTarget
-				addChild: (BrButton new
-					constraintsDo: [ :c | c ignoreByLayout ];
-					size: 3 @ 3;
-					elevation: (BlRelativeElevation elevation: 10);
-					geometry: BlCircleGeometry new;
-					aptitude: (GtExplainerTargetAptitude new explanationModel: #secondContext);
-					relocate:
-						(0 @ 10)).]).
+	contextTarget := (spotterElement query // GtSpotterCandidateElementId @ 1 // BrLabel) anyOne.
+	contextTarget addChild: (self newExplainerButton: #secondContext position: 0@10).
 
-	^ spotterElement removeFromParent.
+	^ spotterElement
 ]
 
 { #category : #slides }
 GtSpotterSlideshow >> spotterAfterFirstDiveInExplanationSlideFor: aSlide [
-	"<gtSlide>"
+	<gtSlide>
 	^ aSlide textAndElement
 		priority: 16;
 		newTextWithFormat: ( self spotterAfterFirstDiveInExplanationText );
 		element: [ self spotterAfterFirstDiveInExplanation ];
-		elementWeight: 0.6.
+		elementWeight: 0.6
 ]
 
 { #category : #accessing }
@@ -70,6 +67,8 @@ GtSpotterSlideshow >> spotterButtonStencil [
 
 { #category : #accessing }
 GtSpotterSlideshow >> spotterDiveInExplanation [
+	<gtExample>
+	<noTest>
 	| spotter arrowTargets contextTarget |
 	
 	spotter := self spotterElementInContextOf: GtABAddressBook withSearch: 'contacts'.
@@ -129,24 +128,35 @@ There is also a dive out action, similar to a back button. It can be action by p
 		fontSize: 20.
 ]
 
-{ #category : #accessing }
+{ #category : #'private - scripting' }
 GtSpotterSlideshow >> spotterElement: aSpotterElement withSelectedPosition: aNumber [
 	| aScripter |
 	
 	aScripter := BlScripter new.
-	"aScripter element: aSpotterElement.
+	aScripter element: aSpotterElement.
 	
 	aScripter click
-		label: 'Click on spotter result';
-		onBreadthFirstChildOfClass: BrPager;
-		onBreadthFirstChildOfClass: GtSpotterPager;
-		onBreadthFirstChildOfClass: BrInfiniteTreeElement;
-		onChildAt: aNumber; play."
+		id: GtSpotterCandidateElementId index: aNumber;
+		play.
 
-	^ nil "aScripter elementWithoutParent"
+	^ aScripter elementWithoutParent
 ]
 
-{ #category : #accessing }
+{ #category : #'private - scripting' }
+GtSpotterSlideshow >> spotterElementDiveIn: aSpotterElement [
+	| aScripter |
+	
+	aScripter := BlScripter new.
+	aScripter element: aSpotterElement.
+	
+	aScripter shortcut
+		combination: BlKeyCombination primaryArrowRight;
+		play.
+
+	^ aScripter elementWithoutParent
+]
+
+{ #category : #'private - scripting' }
 GtSpotterSlideshow >> spotterElementInContextOf: anObject withSearch: aSearchString [
 	| spotter spotterElement scripter  |
 	
@@ -325,7 +335,7 @@ GtSpotterSlideshow >> spotterInLocalContextInInspectorExampleSlideFor: aSlide [
 
 { #category : #slides }
 GtSpotterSlideshow >> spotterInterfaceExplanationSlideFor: aSlide [
-	"<gtSlide>"
+	<gtSlide>
 	^ aSlide textAndElement
 		priority: 6;
 		newTextWithFormat: self spotterInterfaceExplanationText;
@@ -355,109 +365,46 @@ GtSpotterSlideshow >> spotterInterfaceExplanationText [
 { #category : #accessing }
 GtSpotterSlideshow >> spotterInterfaceExplanationWithLinks [
 	<gtExample>
-	<noTest>
-	| spotterElement searchBarTarget resultsTarget previewTarget classesTarget implementorsTarget messagesTarget |
+	| spotterElement searchBarTarget resultsTarget previewTarget classesTarget implementorsTarget |
 
 	spotterElement := self spotterElementOn: 'GtCoder'.
 	
-	"searchBarTarget := spotterElement
-		allChildrenBreadthFirstDetect: [:aChild | 
-			(aChild isKindOf: BrTextEditorSegmentElement)]
-		ifFound: [:aChild | aChild].
-	resultsTarget := spotterElement
-		allChildrenBreadthFirstDetect: [:aChild | 
-			(aChild isKindOf: GtSpotterPager)]
-		ifFound: [:aChild | aChild].
-	previewTarget := spotterElement
-		allChildrenBreadthFirstDetect: [:aChild | 
-			(aChild isKindOf: BlTextElement) and: [aChild parent parent isKindOf: GtSpotterPreviewElement]]
-		ifFound: [:aChild | aChild].
-	classesTarget := spotterElement
-		allChildrenBreadthFirstDetect: [:aChild | 
-			(aChild isKindOf: BlTextElement) and: [aChild text asString = '#Classes' asString]]
-		ifFound: [:aChild | aChild].
-	implementorsTarget := spotterElement
-		allChildrenBreadthFirstDetect: [:aChild | 
-			(aChild isKindOf: BlTextElement) and: [aChild text asString = '#Implementors' asString]]
-		ifFound: [:aChild | aChild].
-	""sendersTarget := spotterElement
-		allChildrenBreadthFirstDetect: [:aChild | 
-			(aChild isKindOf: BlTextElement) and: [aChild text asString = '#Senders' asString]]
-		ifFound: [:aChild | aChild].""
-	messagesTarget := spotterElement
-		allChildrenBreadthFirstDetect: [:aChild | 
-			(aChild isKindOf: BlTextElement) and: [aChild text asString = '#Messages' asString]]
-		ifFound: [:aChild | aChild].
+	searchBarTarget := (spotterElement query // GtStreamingSpotterHeaderElement) anyOne.
+	resultsTarget := (spotterElement query // GtStreamingSpotterPager) anyOne.
+	previewTarget := (spotterElement query // GtStreamingSpotterPreviewElement) anyOne.
 	
-	searchBarTarget
-		addChild:
-			(BrButton new
-				constraintsDo: [ :c | c ignoreByLayout ];
-				size: 3 @ 3;
-				elevation: (BlRelativeElevation elevation: 10);
-				geometry: BlCircleGeometry new;
-				aptitude: (GtExplainerTargetAptitude new explanationModel: #searchBar);
-				relocate:
-					(-2 @ searchBarTarget extent y / 2)).
-	resultsTarget
-		addChild:
-			(BrButton new
-				constraintsDo: [ :c | c ignoreByLayout ];
-				size: 3 @ 3;
-				elevation: (BlRelativeElevation elevation: 10);
-				geometry: BlCircleGeometry new;
-				aptitude: (GtExplainerTargetAptitude new explanationModel: #results);
-				relocate: 5 @ 5). 
-	previewTarget
-		addChild:
-			(BrButton new
-				constraintsDo: [ :c | c ignoreByLayout ];
-				size: 3 @ 3;
-				elevation: (BlRelativeElevation elevation: 10);
-				geometry: BlCircleGeometry new;
-				aptitude: (GtExplainerTargetAptitude new explanationModel: #preview);
-				relocate:
-					(5 @ previewTarget extent y / 2)).
-	classesTarget
-		addChild:
-			(BrButton new
-				constraintsDo: [ :c | c ignoreByLayout ];
-				size: 3 @ 3;
-				elevation: (BlRelativeElevation elevation: 10);
-				geometry: BlCircleGeometry new;
-				aptitude: (GtExplainerTargetAptitude new explanationModel: #classes);
-				relocate:
-					(5 @ classesTarget extent y / 2)).
+	classesTarget := (spotterElement query
+		// GtSpotterCategoryElementId
+		@ [ :eachCategoryElement | eachCategoryElement search title = 'Classes' ])
+		anyOne.
+	
+	implementorsTarget := (spotterElement query
+		// GtSpotterCategoryElementId
+		@ [ :eachCategoryElement | eachCategoryElement search title = 'Implementors' ])
+		anyOne.
+
+
+	searchBarTarget addChild: (self
+		newExplainerButton: #searchBar
+		position: 5 @ ((searchBarTarget extent y / 2) + 20)).
+
+	resultsTarget addChild: (self
+		newExplainerButton: #results
+		position: 5@5). 
+	
+	previewTarget addChild: (self
+		newExplainerButton: #preview
+		position: 5 @ (previewTarget extent y / 2)).
+
+	classesTarget addChild: (self
+		newExplainerButton: #classes
+		position: 5 @ (classesTarget extent y / 2)).
+
 	implementorsTarget
-		addChild:
-			(BrButton new
-				constraintsDo: [ :c | c ignoreByLayout ];
-				size: 3 @ 3;
-				elevation: (BlRelativeElevation elevation: 10);
-				geometry: BlCircleGeometry new;
-				aptitude: (GtExplainerTargetAptitude new explanationModel: #messages);
-				relocate:
-					(5 @ implementorsTarget extent y / 2))."
-	"sendersTarget
-		addChild:
-			(BrButton new
-				constraintsDo: [ :c | c ignoreByLayout ];
-				size: 3 @ 3;
-				elevation: (BlRelativeElevation elevation: 10);
-				geometry: BlCircleGeometry new;
-				aptitude: (GtExplainerTargetAptitude new explanationModel: #messages);
-				relocate:
-					(5 @ sendersTarget extent y / 2))."
-	"messagesTarget
-		addChild:
-			(BrButton new
-				constraintsDo: [ :c | c ignoreByLayout ];
-				size: 3 @ 3;
-				elevation: (BlRelativeElevation elevation: 10);
-				geometry: BlCircleGeometry new;
-				aptitude: (GtExplainerTargetAptitude new explanationModel: #messages);
-				relocate:
-					(5 @ messagesTarget extent y / 2))."
+		addChild: (self
+		newExplainerButton: #messages
+		position: 5 @ (implementorsTarget extent y / 2)).
+
 	^ spotterElement.
 ]
 
