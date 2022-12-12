@@ -18,6 +18,18 @@ GtLudoMove >> asElement [
 	^ self highlightedBoardElement
 ]
 
+{ #category : #accessing }
+GtLudoMove >> asMoveAndBoardElement [
+	| container |
+	container := BrVerticalPane new fitContent alignCenter.
+	container
+		addChild: (BrLabel new
+				aptitude: (BrGlamorousLabelAptitude new fontSize: 20);
+				text: 'Player ' , self player name , ' rolled ' , self roll asString);
+		addChild: (self replayGameToHere moves last highlightedBoardElement aptitude: BrShadowAptitude; margin: (BlInsets all: 10)).
+	^ container
+]
+
 { #category : #testing }
 GtLudoMove >> canMove [
 	^ tokenMoves notEmpty
@@ -126,10 +138,10 @@ GtLudoMove >> move [
 { #category : #accessing }
 GtLudoMove >> moveOnBoardFor: aView [
 	<gtView>
-	^ (aView explicit)
+	^ aView explicit
 		title: 'Move';
 		priority: 10;
-		stencil: [ self replayGameToHere moves last highlightedBoardElement asScalableElement ]
+		stencil: [ self asMoveAndBoardElement asScalableElement ]
 ]
 
 { #category : #accessing }

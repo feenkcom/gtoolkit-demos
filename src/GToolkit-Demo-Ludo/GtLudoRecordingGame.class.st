@@ -35,7 +35,7 @@ GtLudoRecordingGame >> gtHistoryFor: aView [
 				  margin: (BlInsets all: 10) ];
 		  itemDataBinder: [ :eachElement :eachMove :eachIndex | 
 			  eachElement addChild:
-				  (eachMove replayGameToHere moves last highlightedBoardElement
+				  (eachMove replayGameToHere moves last asMoveAndBoardElement
 					   when: BlClickEvent
 					   do: [ :e | 
 						   e consumed: true.

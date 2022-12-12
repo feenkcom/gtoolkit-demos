@@ -91,7 +91,7 @@ GtLudoBoardElement >> initialize [
 	super initialize.
 	self
 		size: self defaultSize;
-		background: Color veryVeryLightGray
+		background: BrGlamorousColors neutralBackgroundColor
 ]
 
 { #category : #initialization }
