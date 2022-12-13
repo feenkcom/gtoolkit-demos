@@ -1,7 +1,7 @@
 Class {
 	#name : #GhEntity,
 	#superclass : #GhObject,
-	#category : 'GToolkit-Demo-GitHubAPI-Model'
+	#category : #'GToolkit-Demo-GitHubAPI-Model'
 }
 
 { #category : #accessing }
@@ -41,7 +41,7 @@ GhEntity >> gtRawDataFor: aView [
 						createFrom: each key 
 						with: [ :dictionary | 
 							self propertyToClass 
-								at: (each key removeSuffix: '_url') 
+								at: (each key withoutSuffix: '_url') 
 								ifPresent: [ :aClass | aClass new rawData: dictionary ]
 								ifAbsent: [ dictionary ]] 
 						onError: [each value] ]

@@ -1,7 +1,7 @@
 Class {
 	#name : #GhEvent,
 	#superclass : #GhEntity,
-	#category : 'GToolkit-Demo-GitHubAPI-Model'
+	#category : #'GToolkit-Demo-GitHubAPI-Model'
 }
 
 { #category : #accessing }
@@ -21,5 +21,5 @@ GhEvent >> repoName [
 
 { #category : #accessing }
 GhEvent >> type [
-	^ (self rawData at: 'type') removeSuffix: 'Event'
+	^ (self rawData at: 'type') withoutSuffix: 'Event'
 ]

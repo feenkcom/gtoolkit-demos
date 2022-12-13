@@ -251,7 +251,7 @@ GtLudoCodeDocumentationExamples >> paintClassHierarchyWith: mondrian forClasses:
 	mondrian nodes
 		stencil: [ :class | 
 			GtMondrianUMLClassElement withDefaultContainer
-				label: ((class name removePrefix: 'GtLudo') asRopedText
+				label: ((class name withoutPrefix: 'GtLudo') asRopedText
 						 glamorousRegularFont;
 						 fontSize: 20;
 						 bold);
@@ -313,7 +313,7 @@ GtLudoCodeDocumentationExamples >> paintClassLabeledDependenciesWith: m forClass
 				[ :class | 
 					GtMondrianUMLClassElement new
 						label:
-								((class name removePrefix: 'GtLudo') asRopedText
+								((class name withoutPrefix: 'GtLudo') asRopedText
 										glamorousRegularFont;
 										fontSize: 18;
 										bold);
