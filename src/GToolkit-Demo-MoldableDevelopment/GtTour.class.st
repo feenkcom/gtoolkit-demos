@@ -933,7 +933,7 @@ GtTour >> treemapWithViewsAndExamples [
 		containerElement: [ :anElement :aNodeContext | 
 			aNodeContext level = 2 ifTrue: [ 
 				anElement addChild: (BrLabel new 
-					text: (aNodeContext  model name name removePrefix: 'GToolkit-'); 
+					text: (aNodeContext  model name name withoutPrefix: 'GToolkit-'); 
 					aptitude: (BrGlamorousLabelAptitude new fontSize: 8; foreground: Color gray); 
 					constraintsDo: [ :c | c ignoreByLayout. ])].
 			anElement border: (BlBorder 
