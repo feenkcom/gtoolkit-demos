@@ -145,6 +145,11 @@ GtLudoMove >> moveOnBoardFor: aView [
 ]
 
 { #category : #accessing }
+GtLudoMove >> numberOfTokensMoved [
+	^ tokenMoves size
+]
+
+{ #category : #accessing }
 GtLudoMove >> player [
 	^ player
 ]
@@ -203,9 +208,4 @@ GtLudoMove >> token: aToken [
 { #category : #accessing }
 GtLudoMove >> tokenMoves [ 
 	^ tokenMoves 
-]
-
-{ #category : #accessing }
-GtLudoMove >> tokensMoved [
-	^ tokenMoves size
 ]
