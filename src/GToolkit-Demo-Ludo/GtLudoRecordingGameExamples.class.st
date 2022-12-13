@@ -9,6 +9,15 @@ Class {
 	#category : #'GToolkit-Demo-Ludo-Examples'
 }
 
+{ #category : #examples }
+GtLudoRecordingGameExamples >> emptyGame [
+	<gtExample>
+	| game |
+	game := GtLudoRecordingGame new.
+	self assert: game moves isEmpty.
+	^ game
+]
+
 { #category : #example }
 GtLudoRecordingGameExamples >> evaluatedStoreStringYieldsSameStorestring [
 	<gtExample>
@@ -27,16 +36,17 @@ GtLudoRecordingGameExamples >> gameClass [
 
 { #category : #examples }
 GtLudoRecordingGameExamples >> gameShowingAllMoves1 [
-
 	<gtExample>
 	| game |
-	game := GtLudoRecordingGame new.
+	game := self emptyGame.
 	game
-		  roll: 1;
-		  roll: 1;
-		  roll: 1;
-		  roll: 6;
-		  moveTokenNamed: 'D'.
+		roll: 1;
+		roll: 1;
+		roll: 1;
+		roll: 6;
+		moveTokenNamed: 'D'.
+	self assert: game moves size = 4.
+	self assert: game moves last numberOfTokensMoved = 1.
 	^ game
 ]
 
@@ -44,17 +54,19 @@ GtLudoRecordingGameExamples >> gameShowingAllMoves1 [
 GtLudoRecordingGameExamples >> gameShowingAllMoves2 [
 
 	<gtExample>
-	| game |
-	game := self gameShowingAllMoves1.
+	| game gameMoves |
+	game := self gameShowingAllMoves1. 
+	gameMoves := game moves size.
 	game
 		roll: 6;
 		moveTokenNamed: 'D'.
+	self assert: game moves size - gameMoves = 1.
+	self assert: game moves last numberOfTokensMoved = 1.
 	^ game
 ]
 
 { #category : #examples }
 GtLudoRecordingGameExamples >> gameShowingAllMoves3 [
-
 	<gtExample>
 	| game |
 	game := self gameShowingAllMoves2.
@@ -65,6 +77,10 @@ GtLudoRecordingGameExamples >> gameShowingAllMoves3 [
 		moveTokenNamed: 'a';
 		roll: 6;
 		moveTokenNamed: 'A'.
+	self assert: game moves last numberOfTokensMoved = 3.
+	self assert: game moves last tokenMoves first token name = 'A'.
+	self assert: game moves last tokenMoves second token name = 'A'.
+	self assert: game moves last tokenMoves third token name = 'D'.
 	^ game
 ]
 
@@ -77,6 +93,9 @@ GtLudoRecordingGameExamples >> gameShowingAllMoves4 [
 	game
 		roll: 1;
 		moveTokenNamed: 'a'.
+	self assert: game moves last numberOfTokensMoved = 2.
+	self assert: game moves last tokenMoves first token name = 'a'.
+	self assert: game moves last tokenMoves second token name = 'a'.
 	^ game
 ]
 
@@ -103,6 +122,9 @@ GtLudoRecordingGameExamples >> gameShowingAllMoves5 [
 		moveTokenNamed: 'b';
 		roll: 6;
 		moveTokenNamed: 'b'.
+	self assert: game moves last numberOfTokensMoved = 1.
+	self assert: game moves last tokenMoves first token name = 'b'.
+	self assert: game moves last tokenMoves first fromSquare = game moves last tokenMoves first toSquare.
 	^ game
 ]
 
@@ -115,7 +137,15 @@ GtLudoRecordingGameExamples >> gameShowingAllMoves6 [
 	game
 		roll: 5;
 		moveTokenNamed: 'b'.
+	self assert: game moves last numberOfTokensMoved = 1.
+	self assert: game moves last tokenMoves first token name = 'b'.
+	self assert: game moves last tokenMoves first toSquare isGoal.
 	^ game
+]
+
+{ #category : #examples }
+GtLudoRecordingGameExamples >> gameShowingAllMovesStart [
+	^ GtLudoRecordingGame new
 ]
 
 { #category : #accessing }
@@ -172,9 +202,9 @@ GtLudoRecordingGameExamples >> playerAentersAndLandsOnA [
 	| game |
 	game := super playerAentersAndLandsOnA.
 	self assert: game moves size equals: 7.
-	self assert: game moves last tokensMoved equals: 2.
+	self assert: game moves last numberOfTokensMoved equals: 2.
 	game moves do: [ :move | 
-		self assert: ((0 to: 2) includes: move tokensMoved) ].
+		self assert: ((0 to: 2) includes: move numberOfTokensMoved) ].
 	^ game
 ]
 
