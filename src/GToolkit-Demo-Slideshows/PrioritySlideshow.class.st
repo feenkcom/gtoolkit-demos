@@ -44,7 +44,7 @@ PrioritySlideshow >> asHeader: aString [
 	^ (aString asRopedText)
 		glamorousRegularFont;
 		bold;
-		fontSize: 40
+		fontSize: 60
 ]
 
 { #category : #text }
