@@ -28,7 +28,7 @@ GtArgoUMLInvalidUMLModulesDependencies >> issues [
 		otherModulesNames := modulesByName keys copyWithout: moduleName.
 		 
 		invalidDependencies := moduleDependencies select: [:aDependency |
-			aDependency to asCollection anySatisfy: [ :aCandidate |
+			aDependency to asOrderedCollection anySatisfy: [ :aCandidate |
 				otherModulesNames anySatisfy: [ :anotherModuleName |
 					aCandidate mooseName beginsWith: anotherModuleName ] ] ] .
 		allInvalidDependencies addAll: invalidDependencies ].
