@@ -156,6 +156,43 @@
 								"__type" : "textStyle"
 							},
 							"string" : "[[Parsing indentation]] "
+						},
+						{
+							"__type" : "textSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2023-01-26T09:54:22.96161+01:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2023-01-26T09:54:23.567266+01:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "GNq8oYivDQCjhLhACpmwPw=="
+							},
+							"paragraphStyle" : {
+								"__type" : "textStyle"
+							},
+							"string" : "[[Using PetitParser to parse a text file]] "
 						}
 					]
 				},
