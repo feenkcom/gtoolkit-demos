@@ -30,25 +30,23 @@ GhRepo >> gtContributorsFor: aView [
 	<gtView>
 	^ aView explicit
 		title: 'Contributors';
-		stencil: [ 
-			| container imageContainer |
+		stencil: [ | container imageContainer |
 			container := BlElement new
-				layout: BlFlowLayout new;
-				constraintsDo: [ :c | 
-					c vertical fitContent.
-					c horizontal matchParent ];
-				padding: (BlInsets all: 10).
-			self contributors do: [ :each |
-				imageContainer := BrAsyncWidget new
-							aptitude: BrShadowAptitude new;
-		background: Color white;
-
-					margin: (BlInsets all: 20);
+					layout: BlFlowLayout new;
 					constraintsDo: [ :c | 
-						c vertical exact: 100. 
-						c horizontal exact: 300 ];
-					stencil: [ each asCardElement margin: (BlInsets all: 20) ].
-				container addChild: imageContainer].
+						c vertical fitContent.
+						c horizontal matchParent ].
+			self contributors
+				do: [ :each | 
+					imageContainer := BrAsyncWidget new
+							aptitude: BrShadowAptitude new;
+							background: Color white;
+							margin: (BlInsets all: 10);
+							constraintsDo: [ :c | 
+								c vertical exact: 80.
+								c horizontal exact: 180 ];
+							stencil: [ each asCardElement	"margin: (BlInsets all: 20)" ].
+					container addChild: imageContainer ].
 			container asScrollableElement ]
 ]
 

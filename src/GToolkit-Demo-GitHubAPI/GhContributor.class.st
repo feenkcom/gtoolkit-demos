@@ -1,23 +1,25 @@
 Class {
 	#name : #GhContributor,
 	#superclass : #GhEntity,
-	#category : 'GToolkit-Demo-GitHubAPI-Model'
+	#category : #'GToolkit-Demo-GitHubAPI-Model'
 }
 
 { #category : #accessing }
 GhContributor >> asCardElement [
-	^ BrHorizontalPane new 
-		hExact: 300;
-		vFitContent;
-		padding: (BlInsets all: 20);
-		margin: (BlInsets all: 10);		
-		addChild: (self avatarPicture asScalableElement size: 64@64);
+	^ BrHorizontalPane new
+		matchParent;
+		alignCenter;
+		addChild: (self avatarPicture asScalableElement size: 64 @ 64);
 		addChild: (BrVerticalPane new
-			fitContent;
-			margin: (BlInsets left: 20);
-			addChild: (BrLabel new aptitude: BrGlamorousLabelAptitude; text: self loginName);
-			addChild: (BrLabel new aptitude: BrGlamorousLabelAptitude; text: self contributions asString, ' contributions'));
-		when: BlClickEvent do: [:e | e target phlow spawnObject: self]
+				fitContent;
+				margin: (BlInsets left: 10);
+				addChild: (BrLabel new
+						aptitude: BrGlamorousLabelAptitude;
+						text: self loginName);
+				addChild: (BrLabel new
+						aptitude: (BrGlamorousLabelAptitude new foreground: Color gray; glamorousCodeSmallSize);
+						text: self contributions asString , ' contributions'));
+		when: BlClickEvent do: [ :e | e target phlow spawnObject: self ]
 ]
 
 { #category : #accessing }
