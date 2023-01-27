@@ -4,5 +4,5 @@ Extension { #name : #GtHome }
 GtHome >> getDraftDemosSection [
 	<gtHomeSection>
 	^ GtHomeDraftDemosSection new
-		priority: 10
+		priority: 14
 ]
