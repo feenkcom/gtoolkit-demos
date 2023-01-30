@@ -49,7 +49,7 @@ GtInspectorViews >> columnedListViewExplanationWithLinks [
 				labelled: 'a GtABAddressBook (Cartoons)' asRopedText)
 				asElementDo: [ :e | e ] ].
 	resultElement forceLayout.
-	resultInspectorTree := resultElement phlow firstChildWithView viewContentElement.
+	resultInspectorTree := resultElement phlow firstChildWithView.
 	
 	titleTab := resultInspectorTree
 		allChildrenBreadthFirstDetect: [ :aChild | 
@@ -190,7 +190,7 @@ GtInspectorViews >> columnedTreeViewExplanationWithLinks [
 		views: {GtABAddressBookExample new contactsAddressBookWithCategories gtViewContactsAddressOn: GtPhlowView empty};
 		labelled: 'a GtABAddressBook (My contacts)' asRopedText) asElementDo: [ :e | e ]].
 	resultElement forceLayout.
-	resultInspectorTree := resultElement phlow firstChildWithView viewContentElement.
+	resultInspectorTree := resultElement phlow firstChildWithView.
 	
 	titleTab := resultInspectorTree
 	allChildrenBreadthFirstDetect: [:aChild | 
@@ -309,7 +309,7 @@ GtInspectorViews >> emptyViewExplanationWithLinks [
 	inspectorHeader := resultElement phlow firstChildWithView.
 	
 	resultInspectorContainer addChild: resultElement.
-	inspectorView := inspectorHeader viewContentElement phlow firstChildWithView.
+	inspectorView := inspectorHeader phlow firstChildWithView.
 	
 	inspectorHeader
 		addChild:
@@ -402,7 +402,7 @@ GtInspectorViews >> explicitViewExplanationWithLinks [
 		views: {GtABAddressBookExample new janeDoeContact gtViewContactDetailsOn: GtPhlowView empty};
 		labelled: 'a GtABContact (Jane Doe)' asRopedText) asElementDo: [ :e | e ]].
 	resultElement forceLayout.
-	resultInspectorTree := resultElement phlow firstChildWithView viewContentElement.
+	resultInspectorTree := resultElement phlow firstChildWithView.
 	
 	nameTextElement := resultInspectorTree
 	allChildrenBreadthFirstDetect: [:aChild | 
@@ -519,7 +519,7 @@ GtInspectorViews >> listViewExplanationWithLinks [
 		views: {GtABCartoonAddressBookExample new cartoonAddressBook gtViewContactsListOn: GtPhlowView empty};
 		labelled: 'a GtABAddressBook (Cartoons)' asRopedText) asElementDo: [ :e | e ]].
 	resultElement forceLayout.
-	resultInspectorTree := resultElement phlow firstChildWithView viewContentElement.
+	resultInspectorTree := resultElement phlow firstChildWithView.
 	
 	titleTab := resultInspectorTree
 	allChildrenBreadthFirstDetect: [:aChild | 
@@ -624,7 +624,7 @@ GtInspectorViews >> mondrianViewExplanationWithLinks [
 		views: {GtABCartoonAddressBookExample new cartoonAddressBook gtViewContactsIconsCircularOn: GtPhlowView empty};
 		labelled: 'a GtABAddressBook (Cartoons)') asElementDo: [ :e | e ].
 	resultElement forceLayout.
-	resultInspectorTree := resultElement phlow firstChildWithView viewContentElement.
+	resultInspectorTree := resultElement phlow firstChildWithView.
 	
 	titleTab := resultInspectorTree
 	allChildrenBreadthFirstDetect: [:aChild | 
@@ -782,7 +782,7 @@ GtInspectorViews >> textEditorViewExplanationWithLinks [
 		views: {GtABAddressBookExample new contactNote gtViewNoteContentOn: GtPhlowView empty};
 		labelled: 'a GtABContactNote' asRopedText) asElementDo: [ :e | e ]].
 	resultElement forceLayout.
-	resultInspectorTree := resultElement phlow firstChildWithView viewContentElement.
+	resultInspectorTree := resultElement phlow firstChildWithView.
 	
 	titleTab := resultInspectorTree
 	allChildrenBreadthFirstDetect: [:aChild |
@@ -895,7 +895,7 @@ GtInspectorViews >> treeViewExplanationWithLinks [
 			labelled: 'a GtABAddressBook (My Contacts)' asRopedText) asElementDo: [ :e | e ]].
 	resultElement forceLayout.
 	
-	resultInspectorTree := resultElement phlow firstChildWithView viewContentElement.
+	resultInspectorTree := resultElement phlow firstChildWithView.
 	
 	titleTab := resultInspectorTree
 	allChildrenBreadthFirstDetect: [:aChild | 

@@ -343,7 +343,7 @@ GtPlaygroundAndInspectorShow >> inspectorWithExplanationLinks [
 				labelled: 'a GtABAddressBook (Cartoons)' asRopedText)
 				asElementDo: [ :e | e ] ].
 	resultElement forceLayout.
-	resultInspectorTree := resultElement phlow firstChildWithView viewContentElement.
+	resultInspectorTree := resultElement phlow firstChildWithView.
 	
 	titleTab := resultInspectorTree
 		allChildrenBreadthFirstDetect: [ :aChild | 

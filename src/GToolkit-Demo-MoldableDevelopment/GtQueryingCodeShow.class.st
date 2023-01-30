@@ -168,7 +168,7 @@ GtQueryingCodeShow >> inspectorResultOnPragmaAndReferenceExample [
 		disableDuring: [ (self pragmaAndReferenceQueryExample gtViewsFor: GtPhlowView empty) asElementDo: [ :e | e ] ].
 	subject forceLayout.
 	inspectorHeader := subject phlow firstChildWithView.
-	inspectorView := inspectorHeader viewContentElement phlow
+	inspectorView := inspectorHeader phlow
 		firstChildWithView.
 	inspectorContainer addChild: subject.
 		
