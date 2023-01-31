@@ -201,7 +201,7 @@ GtABAddressBook >> gtViewContactsIconsCircularOn: aView [
 GtABAddressBook >> gtViewContactsListOn: aView [
 	<gtView>
 	^ aView list
-		title: 'Contacts List' translated;
+		title: 'Contacts list' translated;
 		priority: 8;
 		items: [ self contacts ];
 		itemText: [ :aContact | aContact fullName asRopedText ]
