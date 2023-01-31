@@ -498,8 +498,8 @@ GtInspectorViews >> listViewExplanationWithLinks [
 	resultInspectorContainer := self resultInspectorContainerElement.
 	verticalContainer := self verticalContainerElement.
 	
-	codeExplanationLabel := self explanationLabelWithText: 'Contacts List view method'.
-	resultExplanationLabel := self explanationLabelWithText: 'Contacts List view result'.
+	codeExplanationLabel := self explanationLabelWithText: 'Contacts list view method'.
+	resultExplanationLabel := self explanationLabelWithText: 'Contacts list view result'.
 	
 	selectors := GtSelectorExplanationLinkStyler new.
 	selectors addSelectors: #(list title: items: itemText: contacts fullName).
@@ -523,7 +523,7 @@ GtInspectorViews >> listViewExplanationWithLinks [
 	
 	titleTab := resultInspectorTree
 	allChildrenBreadthFirstDetect: [:aChild | 
-		(aChild isKindOf: BrTab) and: [aChild label asString = 'Contacts List']]
+		(aChild isKindOf: BrTab) and: [aChild label asString = 'Contacts list']]
 	ifFound: [:aChild | aChild].
 	nameLabelsCollection := resultInspectorTree
 	allChildrenBreadthFirstSelect: [:aChild | 
