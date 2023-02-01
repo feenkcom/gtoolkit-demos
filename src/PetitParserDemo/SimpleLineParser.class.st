@@ -1,5 +1,6 @@
 "
-See `Using PetitParser to parse a text file`
+This is a minimal example of parsing text files.
+See `Using PetitParser to parse a text file`.
 
 "
 Class {
