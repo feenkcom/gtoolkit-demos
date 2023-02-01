@@ -1,3 +1,7 @@
+"
+See `Using PetitParser to parse a text file`
+
+"
 Class {
 	#name : #SimpleLineParser,
 	#superclass : #PP2CompositeNode,
