@@ -33,6 +33,29 @@ BibtexPParserExamples >> bibEntryForAGG [
 ]
 
 { #category : #example }
+BibtexPParserExamples >> bibEntryForBach15a [
+	"Got an error here -- space after the entry type."
+
+	<gtExample>
+	| result |
+	result := parser bibEntry end
+			parse: '@article { Bach15a ,
+author = {Bach, B. and Henry-Riche, N. and Dwyer, T. and Madhyastha, T. and Fekete, J-D. and Grabowski, T.},
+title = {Small MultiPiles: Piling Time to Explore Temporal Patterns in Dynamic Networks},
+journal = {Computer Graphics Forum},
+volume = {34},
+number = {3},
+issn = {1467-8659},
+url = {http://dx.doi.org/10.1111/cgf.12615},
+doi = {10.1111/cgf.12615},
+pages = {31--40},
+year = {2015}
+}'.
+	self assert: result isDictionary.
+	^ result
+]
+
+{ #category : #example }
 BibtexPParserExamples >> bibFileForFeenk [
 	<gtExample>
 	| result |
@@ -380,7 +403,7 @@ BibtexPParserExamples >> fieldWithNestedBraces [
 
 { #category : #initialization }
 BibtexPParserExamples >> initialize [
-	parser := BibtexPParser new
+	parser := BibtexPParser new optimize 
 ]
 
 { #category : #example }
