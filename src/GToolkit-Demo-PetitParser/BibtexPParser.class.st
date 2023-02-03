@@ -23,7 +23,7 @@ Class {
 
 { #category : #grammar }
 BibtexPParser >> bibEntry [
-	^ (type , ${ asPParser trim , citeKey , $, asPParser trim , fields
+	^ (type trim , ${ asPParser trim , citeKey , $, asPParser trim , fields
 		, $} asPParser trim)
 		==> [ :node | 
 			({'entryType' -> node first.
@@ -89,7 +89,7 @@ BibtexPParser >> fieldValueInQuotes [
 
 { #category : #grammar }
 BibtexPParser >> fields [
-	^ (field , ($, asPParser , field) star)
+	^ (field , ($, asPParser trim , field) star)
 		==> [ :node | 
 			(node second collect: #second)
 				addFirst: node first;

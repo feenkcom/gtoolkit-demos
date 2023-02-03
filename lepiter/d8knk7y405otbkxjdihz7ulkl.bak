@@ -2201,7 +2201,7 @@
 														"__type" : "time",
 														"time" : {
 															"__type" : "dateAndTime",
-															"dateAndTimeString" : "2023-02-03T13:43:12.514549+01:00"
+															"dateAndTimeString" : "2023-02-03T18:13:18.30432+01:00"
 														}
 													},
 													"uid" : {
@@ -2231,7 +2231,7 @@
 											"__type" : "time",
 											"time" : {
 												"__type" : "dateAndTime",
-												"dateAndTimeString" : "2023-02-03T13:51:30.865018+01:00"
+												"dateAndTimeString" : "2023-02-03T18:11:23.401727+01:00"
 											}
 										},
 										"uid" : {
@@ -2707,14 +2707,14 @@
 											"__type" : "time",
 											"time" : {
 												"__type" : "dateAndTime",
-												"dateAndTimeString" : "2023-02-03T17:25:05.959986+01:00"
+												"dateAndTimeString" : "2023-02-03T18:08:40.52391+01:00"
 											}
 										},
 										"uid" : {
 											"__type" : "uid",
 											"uidString" : "17vlOSywDQC8nptkBDbgQg=="
 										},
-										"code" : "scgbib := ZnClient new\r\t\tget: 'https://raw.githubusercontent.com/scgbern/scgbib/main/scg.bib'.\rBibtexPParser parse: scgbib"
+										"code" : "scgbib := ZnClient new\r\t\tget: 'https://raw.githubusercontent.com/scgbern/scgbib/main/scg.bib'.\rBibtexPParser parse: scgbib."
 									}
 								]
 							},
@@ -2837,7 +2837,7 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-02-03T17:26:52.924435+01:00"
+									"dateAndTimeString" : "2023-02-03T18:00:13.123702+01:00"
 								}
 							},
 							"editEmail" : {
@@ -2848,14 +2848,51 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-02-03T17:26:52.924435+01:00"
+									"dateAndTimeString" : "2023-02-03T18:09:05.220378+01:00"
 								}
 							},
 							"uid" : {
 								"__type" : "uid",
-								"uidString" : "SOLW4i+wDQCv36aEBDbgQg=="
+								"uidString" : "qH8PWjCwDQC1cvo9BDbgQg=="
 							},
-							"code" : "scgbib := ZnClient new\r\t\tget: 'https://raw.githubusercontent.com/scgbern/scgbib/main/scg.bib'.\r\rparser := BibtexPParser new bibEntry optimize.\rerrors := ((String lf repeat: 2) split: scgbib)\r\t\treject: [ :each | \r\t\t\t| result |\r\t\t\tresult := parser parse: each.\r\t\t\tself assert: result isDictionary ].\r"
+							"code" : "scgbib := ZnClient new\r\t\tget: 'https://raw.githubusercontent.com/scgbern/scgbib/main/scg.bib'.\r\rparser := BibtexPParser new bibEntry end optimize.\r\rbibEntries := (String lf repeat: 2) split: scgbib.\rerrors := bibEntries reject: [ :each | (parser parse: each) isDictionary ]."
+						},
+						{
+							"__type" : "textSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2023-02-03T18:09:07.924995+01:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2023-02-03T18:09:18.367138+01:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "DWuDsS+wDQCpoMsjBDbgQg=="
+							},
+							"paragraphStyle" : {
+								"__type" : "textStyle"
+							},
+							"string" : "After a few iterations, all errors are gone."
 						},
 						{
 							"__type" : "pharoSnippet",
@@ -2871,7 +2908,7 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-02-03T13:04:19.953049+01:00"
+									"dateAndTimeString" : "2023-02-03T18:09:24.452252+01:00"
 								}
 							},
 							"editEmail" : {
@@ -2882,88 +2919,14 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-02-03T17:28:08.584228+01:00"
+									"dateAndTimeString" : "2023-02-03T18:10:11.554838+01:00"
 								}
 							},
 							"uid" : {
 								"__type" : "uid",
-								"uidString" : "KqDjNyywDQC8jxNlBDbgQg=="
+								"uidString" : "0BvsejCwDQC3YUlaBDbgQg=="
 							},
-							"code" : "[ [ :job | \rjob title: 'Checking Bib entries'.\r\r\r1\r\tto: 100\r\tdo: [ :each | \r\t\tjob\r\t\t\tprogress: 0.01 * each;\r\t\t\ttitle: 'Youpi ' , each printString.\r\t\t(Delay forMilliseconds: 100) wait ] \r\t\t\r\t\t\r\t\t\r\t\t] asJob run ] fork"
-						},
-						{
-							"__type" : "textSnippet",
-							"children" : {
-								"__type" : "snippets",
-								"items" : [ ]
-							},
-							"createEmail" : {
-								"__type" : "email",
-								"emailString" : "<unknown>"
-							},
-							"createTime" : {
-								"__type" : "time",
-								"time" : {
-									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-02-03T17:13:05.370524+01:00"
-								}
-							},
-							"editEmail" : {
-								"__type" : "email",
-								"emailString" : "<unknown>"
-							},
-							"editTime" : {
-								"__type" : "time",
-								"time" : {
-									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-02-03T17:13:05.370524+01:00"
-								}
-							},
-							"uid" : {
-								"__type" : "uid",
-								"uidString" : "DWuDsS+wDQCpoMsjBDbgQg=="
-							},
-							"paragraphStyle" : {
-								"__type" : "textStyle"
-							},
-							"string" : ""
-						},
-						{
-							"__type" : "textSnippet",
-							"children" : {
-								"__type" : "snippets",
-								"items" : [ ]
-							},
-							"createEmail" : {
-								"__type" : "email",
-								"emailString" : "<unknown>"
-							},
-							"createTime" : {
-								"__type" : "time",
-								"time" : {
-									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-02-03T17:13:05.61239+01:00"
-								}
-							},
-							"editEmail" : {
-								"__type" : "email",
-								"emailString" : "<unknown>"
-							},
-							"editTime" : {
-								"__type" : "time",
-								"time" : {
-									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-02-03T17:13:05.61239+01:00"
-								}
-							},
-							"uid" : {
-								"__type" : "uid",
-								"uidString" : "JRyHsS+wDQCppBbhBDbgQg=="
-							},
-							"paragraphStyle" : {
-								"__type" : "textStyle"
-							},
-							"string" : ""
+							"code" : "scgbib := ZnClient new\r\t\tget: 'https://raw.githubusercontent.com/scgbern/scgbib/main/scg.bib'.\rtime := [ result := BibtexPParser parse: scgbib ] timeToRun.\rresult."
 						}
 					]
 				},
@@ -2997,6 +2960,152 @@
 					"__type" : "textStyle"
 				},
 				"string" : "#Further testing"
+			},
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2023-02-03T17:13:05.61239+01:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2023-02-03T17:13:05.61239+01:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "JRyHsS+wDQCppBbhBDbgQg=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : ""
+			},
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [
+						{
+							"__type" : "textSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2023-02-03T18:13:05.01865+01:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2023-02-03T18:13:12.271248+01:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "RSDBhzCwDQC4hg+JBDbgQg=="
+							},
+							"paragraphStyle" : {
+								"__type" : "textStyle"
+							},
+							"string" : "We copy back the fixed productions."
+						},
+						{
+							"__type" : "pharoSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2023-02-03T18:13:03.125703+01:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2023-02-03T18:16:42.239777+01:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "Us30hzCwDQC4jSPfBDbgQg=="
+							},
+							"code" : "type := ($@ asPParser , #letter asPParser plus flatten) ==> #second.\rciteKey := (#word asPParser / $- asPParser / $_ asPParser / $: asPParser) plus\r\t\tflatten.\rfieldName := (#word asPParser / $- asPParser / $_ asPParser) plus flatten.\rrawFieldString := #word asPParser plus flatten.\rfieldCharWithinQuotes := ($\\ asPParser / $\" asPParser) negate.\rfieldStringWithinQuotes := (fieldCharWithinQuotes\r\t\t/ ($\\ asPParser , #any asPParser)) star flatten.\rfieldValueInQuotes := ($\" asPParser , fieldStringWithinQuotes , $\" asPParser)\r\t\t==> #second.\rfieldCharWithinBraces := ($\\ asPParser / ${ asPParser / $} asPParser) negate.\rfieldStringWithinBraces := PP2UnresolvedNode new.\rfieldStringWithinBraces\r\tdef: (fieldCharWithinBraces / ($\\ asPParser , #any asPParser)\r\t\t\t/ (${ asPParser , fieldStringWithinBraces , $} asPParser)) star flatten.\rfieldValueInBraces := (${ asPParser , fieldStringWithinBraces , $} asPParser)\r\t\t==> #second.\rfieldValue := fieldValueInQuotes / fieldValueInBraces / rawFieldString.\rfield := (fieldName trim , $= asPParser trim , fieldValue)\r\t\t==> [ :node | node first -> node third ].\rfields := (field , ($, asPParser trim , field) star)\r\t\t==> [ :node | \r\t\t\t(node second collect: #second)\r\t\t\t\taddFirst: node first;\r\t\t\t\tyourself ].\rbibEntry := (type trim , ${ asPParser trim , citeKey , $, asPParser trim\r\t\t, fields , $} asPParser trim)\r\t\t==> [ :node | \r\t\t\t({'entryType' -> node first.\r\t\t\t\t'citeKey' -> node third} copyWithAll: node fifth) asOrderedDictionary ].\rbibFile := (bibEntry , #space asPParser star) star\r\t\t==> [ :node | node collect: #first ].\rscgbib := ZnClient new\r\t\tget: 'https://raw.githubusercontent.com/scgbern/scgbib/main/scg.bib'.\rtime := [ result := bibFile end optimize parse: scgbib ] timeToRun.\rresult.g"
+						}
+					]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2023-02-03T18:12:57.411786+01:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2023-02-03T18:12:58.982685+01:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "wviPhzCwDQC4c76xBDbgQg=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : "#Demo"
 			},
 			{
 				"__type" : "textSnippet",
