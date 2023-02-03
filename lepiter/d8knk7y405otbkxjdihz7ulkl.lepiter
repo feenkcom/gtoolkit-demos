@@ -2848,14 +2848,14 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-02-03T18:09:05.220378+01:00"
+									"dateAndTimeString" : "2023-02-03T18:23:34.469843+01:00"
 								}
 							},
 							"uid" : {
 								"__type" : "uid",
 								"uidString" : "qH8PWjCwDQC1cvo9BDbgQg=="
 							},
-							"code" : "scgbib := ZnClient new\r\t\tget: 'https://raw.githubusercontent.com/scgbern/scgbib/main/scg.bib'.\r\rparser := BibtexPParser new bibEntry end optimize.\r\rbibEntries := (String lf repeat: 2) split: scgbib.\rerrors := bibEntries reject: [ :each | (parser parse: each) isDictionary ]."
+							"code" : "scgbib := ZnClient new\r\t\tget: 'https://raw.githubusercontent.com/scgbern/scgbib/main/scg.bib'.\r\rparser := BibtexPParser new bibEntry end optimize.\r|\rbibEntries := (String lf repeat: 2) split: scgbib.\rerrors := bibEntries reject: [ :each | (parser parse: each) isDictionary ]."
 						},
 						{
 							"__type" : "textSnippet",
@@ -3017,7 +3017,7 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-02-03T18:13:05.01865+01:00"
+									"dateAndTimeString" : "2023-02-03T20:51:33.958915+01:00"
 								}
 							},
 							"editEmail" : {
@@ -3028,7 +3028,7 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-02-03T18:13:12.271248+01:00"
+									"dateAndTimeString" : "2023-02-03T20:57:07.644079+01:00"
 								}
 							},
 							"uid" : {
@@ -3038,7 +3038,7 @@
 							"paragraphStyle" : {
 								"__type" : "textStyle"
 							},
-							"string" : "We copy back the fixed productions."
+							"string" : "This script parses 10K BibTeX entries in under 2 seconds. "
 						},
 						{
 							"__type" : "pharoSnippet",
@@ -3065,14 +3065,14 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-02-03T18:17:11.093856+01:00"
+									"dateAndTimeString" : "2023-02-03T20:54:08.732726+01:00"
 								}
 							},
 							"uid" : {
 								"__type" : "uid",
 								"uidString" : "Us30hzCwDQC4jSPfBDbgQg=="
 							},
-							"code" : "type := ($@ asPParser , #letter asPParser plus flatten) ==> #second.\rciteKey := (#word asPParser / $- asPParser / $_ asPParser / $: asPParser) plus\r\t\tflatten.\rfieldName := (#word asPParser / $- asPParser / $_ asPParser) plus flatten.\rrawFieldString := #word asPParser plus flatten.\rfieldCharWithinQuotes := ($\\ asPParser / $\" asPParser) negate.\rfieldStringWithinQuotes := (fieldCharWithinQuotes\r\t\t/ ($\\ asPParser , #any asPParser)) star flatten.\rfieldValueInQuotes := ($\" asPParser , fieldStringWithinQuotes , $\" asPParser)\r\t\t==> #second.\rfieldCharWithinBraces := ($\\ asPParser / ${ asPParser / $} asPParser) negate.\rfieldStringWithinBraces := PP2UnresolvedNode new.\rfieldStringWithinBraces\r\tdef: (fieldCharWithinBraces / ($\\ asPParser , #any asPParser)\r\t\t\t/ (${ asPParser , fieldStringWithinBraces , $} asPParser)) star flatten.\rfieldValueInBraces := (${ asPParser , fieldStringWithinBraces , $} asPParser)\r\t\t==> #second.\rfieldValue := fieldValueInQuotes / fieldValueInBraces / rawFieldString.\rfield := (fieldName trim , $= asPParser trim , fieldValue)\r\t\t==> [ :node | node first -> node third ].\rfields := (field , ($, asPParser trim , field) star)\r\t\t==> [ :node | \r\t\t\t(node second collect: #second)\r\t\t\t\taddFirst: node first;\r\t\t\t\tyourself ].\rbibEntry := (type trim , ${ asPParser trim , citeKey , $, asPParser trim\r\t\t, fields , $} asPParser trim)\r\t\t==> [ :node | \r\t\t\t({'entryType' -> node first.\r\t\t\t\t'citeKey' -> node third} copyWithAll: node fifth) asOrderedDictionary ].\rbibFile := (bibEntry , #space asPParser star) star\r\t\t==> [ :node | node collect: #first ].\rscgbib := ZnClient new\r\t\tget: 'https://raw.githubusercontent.com/scgbern/scgbib/main/scg.bib'.\rtime := [ result := bibFile end optimize parse: scgbib ] timeToRun.\rresult. "
+							"code" : "\"The scannerless parser\"\rtype := ($@ asPParser , #letter asPParser plus flatten) ==> #second.\rciteKey := (#word asPParser / $- asPParser / $_ asPParser / $: asPParser) plus\r\t\tflatten.\rfieldName := (#word asPParser / $- asPParser / $_ asPParser) plus flatten.\rrawFieldString := #word asPParser plus flatten.\rfieldCharWithinQuotes := ($\\ asPParser / $\" asPParser) negate.\rfieldStringWithinQuotes := (fieldCharWithinQuotes\r\t\t/ ($\\ asPParser , #any asPParser)) star flatten.\rfieldValueInQuotes := ($\" asPParser , fieldStringWithinQuotes , $\" asPParser)\r\t\t==> #second.\rfieldCharWithinBraces := ($\\ asPParser / ${ asPParser / $} asPParser) negate.\rfieldStringWithinBraces := PP2UnresolvedNode new.\rfieldStringWithinBraces\r\tdef: (fieldCharWithinBraces / ($\\ asPParser , #any asPParser)\r\t\t\t/ (${ asPParser , fieldStringWithinBraces , $} asPParser)) star flatten.\rfieldValueInBraces := (${ asPParser , fieldStringWithinBraces , $} asPParser)\r\t\t==> #second.\rfieldValue := fieldValueInQuotes / fieldValueInBraces / rawFieldString.\rfield := (fieldName trim , $= asPParser trim , fieldValue)\r\t\t==> [ :node | node first -> node third ].\rfields := (field , ($, asPParser trim , field) star)\r\t\t==> [ :node | \r\t\t\t(node second collect: #second)\r\t\t\t\taddFirst: node first;\r\t\t\t\tyourself ].\rbibEntry := (type trim , ${ asPParser trim , citeKey , $, asPParser trim\r\t\t, fields , $} asPParser trim)\r\t\t==> [ :node | \r\t\t\t({'entryType' -> node first.\r\t\t\t\t'citeKey' -> node third} copyWithAll: node fifth) asOrderedDictionary ].\rbibFile := (bibEntry , #space asPParser star) star\r\t\t==> [ :node | node collect: #first ].\r\r\"Testing with 10K entries.\"\rscgbib := ZnClient new\r\t\tget: 'https://raw.githubusercontent.com/scgbern/scgbib/main/scg.bib'.\rtime := [ result := bibFile end optimize parse: scgbib ] timeToRun.\rresult\r\taddFirst: time;\r\tyourself"
 						}
 					]
 				},
@@ -3095,7 +3095,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-02-03T18:12:58.982685+01:00"
+						"dateAndTimeString" : "2023-02-03T20:53:18.223777+01:00"
 					}
 				},
 				"uid" : {
@@ -3105,7 +3105,7 @@
 				"paragraphStyle" : {
 					"__type" : "textStyle"
 				},
-				"string" : "#Demo"
+				"string" : "#A complete BibTeX parser as a PetitParser script"
 			},
 			{
 				"__type" : "textSnippet",
@@ -3138,6 +3138,117 @@
 				"uid" : {
 					"__type" : "uid",
 					"uidString" : "hIxENhuwDQCNm+FJDoupyQ=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : ""
+			},
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2023-02-03T20:50:54.043517+01:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2023-02-03T20:50:54.043517+01:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "Dol3vDKwDQC7BvYbBDbgQg=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : ""
+			},
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2023-02-03T20:50:54.2996+01:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2023-02-03T20:50:54.2996+01:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "MHN7vDKwDQC7CsINBDbgQg=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : ""
+			},
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2023-02-03T20:50:54.479673+01:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2023-02-03T20:50:54.479673+01:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "0jJ+vDKwDQC7DkxPBDbgQg=="
 				},
 				"paragraphStyle" : {
 					"__type" : "textStyle"
