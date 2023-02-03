@@ -2373,14 +2373,14 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-02-03T17:15:30.395849+01:00"
+									"dateAndTimeString" : "2023-02-03T17:16:39.636463+01:00"
 								}
 							},
 							"uid" : {
 								"__type" : "uid",
 								"uidString" : "Wug2USywDQCA5WABBDbgQg=="
 							},
-							"code" : "scgPub := '/Users/oscar/Documents/Projects/scgbib/scg-pub.bib' asFileReference\r\t\tcontents.\r[BibtexPParser parse: scgPub] timeToRun"
+							"code" : "scgPub := '/Users/oscar/Documents/Projects/scgbib/scg-pub.bib' asFileReference\r\t\tcontents.\rBibtexPParser parse: scgPub."
 						},
 						{
 							"__type" : "textSnippet",
@@ -2696,40 +2696,6 @@
 											"__type" : "time",
 											"time" : {
 												"__type" : "dateAndTime",
-												"dateAndTimeString" : "2023-02-03T13:04:19.953049+01:00"
-											}
-										},
-										"editEmail" : {
-											"__type" : "email",
-											"emailString" : "<unknown>"
-										},
-										"editTime" : {
-											"__type" : "time",
-											"time" : {
-												"__type" : "dateAndTime",
-												"dateAndTimeString" : "2023-02-03T13:05:11.794039+01:00"
-											}
-										},
-										"uid" : {
-											"__type" : "uid",
-											"uidString" : "KqDjNyywDQC8jxNlBDbgQg=="
-										},
-										"code" : "scgbib := ZnClient new\r\t\tget: 'https://raw.githubusercontent.com/scgbern/scgbib/main/scg.bib'."
-									},
-									{
-										"__type" : "pharoSnippet",
-										"children" : {
-											"__type" : "snippets",
-											"items" : [ ]
-										},
-										"createEmail" : {
-											"__type" : "email",
-											"emailString" : "<unknown>"
-										},
-										"createTime" : {
-											"__type" : "time",
-											"time" : {
-												"__type" : "dateAndTime",
 												"dateAndTimeString" : "2023-02-03T13:04:53.645599+01:00"
 											}
 										},
@@ -2741,14 +2707,14 @@
 											"__type" : "time",
 											"time" : {
 												"__type" : "dateAndTime",
-												"dateAndTimeString" : "2023-02-03T17:02:18.696542+01:00"
+												"dateAndTimeString" : "2023-02-03T17:25:05.959986+01:00"
 											}
 										},
 										"uid" : {
 											"__type" : "uid",
 											"uidString" : "17vlOSywDQC8nptkBDbgQg=="
 										},
-										"code" : "BibtexPParser  parse: scgbib."
+										"code" : "scgbib := ZnClient new\r\t\tget: 'https://raw.githubusercontent.com/scgbern/scgbib/main/scg.bib'.\rBibtexPParser parse: scgbib"
 									}
 								]
 							},
@@ -2819,6 +2785,111 @@
 								"__type" : "textStyle"
 							},
 							"string" : "First get stuck at Bach15a, so add {{gtMethod:name=BibtexPParserExamples>>bibEntryForBach15a}}. "
+						},
+						{
+							"__type" : "textSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2023-02-03T17:25:14.2277+01:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2023-02-03T17:26:40.751062+01:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "deXv3C+wDQCvEEcfBDbgQg=="
+							},
+							"paragraphStyle" : {
+								"__type" : "textStyle"
+							},
+							"string" : "Now we iterate and search for all failing entries."
+						},
+						{
+							"__type" : "pharoSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2023-02-03T17:26:52.924435+01:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2023-02-03T17:26:52.924435+01:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "SOLW4i+wDQCv36aEBDbgQg=="
+							},
+							"code" : "scgbib := ZnClient new\r\t\tget: 'https://raw.githubusercontent.com/scgbern/scgbib/main/scg.bib'.\r\rparser := BibtexPParser new bibEntry optimize.\rerrors := ((String lf repeat: 2) split: scgbib)\r\t\treject: [ :each | \r\t\t\t| result |\r\t\t\tresult := parser parse: each.\r\t\t\tself assert: result isDictionary ].\r"
+						},
+						{
+							"__type" : "pharoSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2023-02-03T13:04:19.953049+01:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2023-02-03T17:28:08.584228+01:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "KqDjNyywDQC8jxNlBDbgQg=="
+							},
+							"code" : "[ [ :job | \rjob title: 'Checking Bib entries'.\r\r\r1\r\tto: 100\r\tdo: [ :each | \r\t\tjob\r\t\t\tprogress: 0.01 * each;\r\t\t\ttitle: 'Youpi ' , each printString.\r\t\t(Delay forMilliseconds: 100) wait ] \r\t\t\r\t\t\r\t\t\r\t\t] asJob run ] fork"
 						},
 						{
 							"__type" : "textSnippet",
