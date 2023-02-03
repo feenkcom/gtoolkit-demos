@@ -23,7 +23,7 @@ Class {
 
 { #category : #grammar }
 BibtexPParser >> bibEntry [
-	^ (type , ${ asPParser , citeKey , $, asPParser trim , fields
+	^ (type , ${ asPParser trim , citeKey , $, asPParser trim , fields
 		, $} asPParser trim)
 		==> [ :node | 
 			({'entryType' -> node first.
