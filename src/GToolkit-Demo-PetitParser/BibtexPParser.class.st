@@ -32,7 +32,7 @@ BibtexPParser >> bibEntry [
 
 { #category : #grammar }
 BibtexPParser >> bibFile [
-	^ (bibEntry , #space asPParser star) star ==> [ :node | node collect: #first ]
+	^ (bibEntry , #space asPParser star) star end ==> [ :node | node collect: #first ]
 ]
 
 { #category : #grammar }

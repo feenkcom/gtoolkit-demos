@@ -29,7 +29,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-01-26T09:45:39.581359+01:00"
+						"dateAndTimeString" : "2023-01-26T13:39:44.625257+01:00"
 					}
 				},
 				"uid" : {
@@ -39,7 +39,7 @@
 				"paragraphStyle" : {
 					"__type" : "textStyle"
 				},
-				"string" : "[[GToolkitDemos]] "
+				"string" : "[[GToolkit Draft Demos]] "
 			},
 			{
 				"__type" : "textSnippet",
