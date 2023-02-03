@@ -1,3 +1,8 @@
+"
+This is a minimal example of parsing text files.
+See `Using PetitParser to parse a text file`.
+
+"
 Class {
 	#name : #SimpleLineParser,
 	#superclass : #PP2CompositeNode,
