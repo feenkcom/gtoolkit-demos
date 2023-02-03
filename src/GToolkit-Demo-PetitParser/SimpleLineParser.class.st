@@ -12,7 +12,7 @@ Class {
 		'nonEmptyLine',
 		'file'
 	],
-	#category : #'PetitParserDemo-PetitParser'
+	#category : #'GToolkit-Demo-PetitParser-PetitParser'
 }
 
 { #category : #accessing }

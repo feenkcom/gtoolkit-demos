@@ -15,11 +15,12 @@ BaselineOfGToolkitDraftDemos class >> loadLepiter [
 
 { #category : #baseline }
 BaselineOfGToolkitDraftDemos >> baseline: spec [
-
 	<baseline>
-	spec for: #common do: [ 
-		spec
-			baseline: 'Gtoolkit-DraftDemos-GtHome'
-			with: [ 
-				spec repository: 'github://feenkcom/gtoolkit-demos:main/src' ]]
+	spec
+		for: #common
+		do: [ spec
+				baseline: 'Gtoolkit-DraftDemos-GtHome'
+					with: [ spec repository: 'github://feenkcom/gtoolkit-demos:main/src' ];
+				baseline: 'Gtoolkit-Demos-PetitParser'
+					with: [ spec repository: 'github://feenkcom/gtoolkit-demos:main/src' ] ]
 ]
