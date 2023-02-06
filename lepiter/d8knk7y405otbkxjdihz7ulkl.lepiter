@@ -2707,7 +2707,7 @@
 											"__type" : "time",
 											"time" : {
 												"__type" : "dateAndTime",
-												"dateAndTimeString" : "2023-02-03T18:08:40.52391+01:00"
+												"dateAndTimeString" : "2023-02-06T09:12:59.316666+01:00"
 											}
 										},
 										"uid" : {
@@ -3111,7 +3111,477 @@
 				"__type" : "textSnippet",
 				"children" : {
 					"__type" : "snippets",
-					"items" : [ ]
+					"items" : [
+						{
+							"__type" : "textSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2023-02-06T09:07:27.537577+01:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2023-02-06T09:07:59.692132+01:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "MjH1QWWwDQCrgmG2CQXHVA=="
+							},
+							"paragraphStyle" : {
+								"__type" : "textStyle"
+							},
+							"string" : "Lukas though the reported timings were slow, so let's look more closely."
+						},
+						{
+							"__type" : "textSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2023-02-06T09:19:36.315344+01:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2023-02-06T09:19:48.070682+01:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "cTScbWWwDQCzMAwDCQXHVA=="
+							},
+							"paragraphStyle" : {
+								"__type" : "textStyle"
+							},
+							"string" : "He [ported the grammar to Dart](https://github.com/petitparser/dart-petitparser-examples/commit/116b0b26327b53806dabc09c94a8e6e4667e5407)."
+						},
+						{
+							"__type" : "textSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2023-02-06T09:08:03.457256+01:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2023-02-06T09:08:07.855557+01:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "bghmRGWwDQCsids4CQXHVA=="
+							},
+							"paragraphStyle" : {
+								"__type" : "textStyle"
+							},
+							"string" : "First the scripted parser:"
+						},
+						{
+							"__type" : "pharoSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2023-02-06T09:08:13.931877+01:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2023-02-06T09:08:16.634446+01:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "I2kNRWWwDQCs4BBlCQXHVA=="
+							},
+							"code" : "\"The scannerless parser\"\rtype := ($@ asPParser , #letter asPParser plus flatten) ==> #second.\rciteKey := (#word asPParser / $- asPParser / $_ asPParser / $: asPParser) plus\r\t\tflatten.\rfieldName := (#word asPParser / $- asPParser / $_ asPParser) plus flatten.\rrawFieldString := #word asPParser plus flatten.\rfieldCharWithinQuotes := ($\\ asPParser / $\" asPParser) negate.\rfieldStringWithinQuotes := (fieldCharWithinQuotes\r\t\t/ ($\\ asPParser , #any asPParser)) star flatten.\rfieldValueInQuotes := ($\" asPParser , fieldStringWithinQuotes , $\" asPParser)\r\t\t==> #second.\rfieldCharWithinBraces := ($\\ asPParser / ${ asPParser / $} asPParser) negate.\rfieldStringWithinBraces := PP2UnresolvedNode new.\rfieldStringWithinBraces\r\tdef: (fieldCharWithinBraces / ($\\ asPParser , #any asPParser)\r\t\t\t/ (${ asPParser , fieldStringWithinBraces , $} asPParser)) star flatten.\rfieldValueInBraces := (${ asPParser , fieldStringWithinBraces , $} asPParser)\r\t\t==> #second.\rfieldValue := fieldValueInQuotes / fieldValueInBraces / rawFieldString.\rfield := (fieldName trim , $= asPParser trim , fieldValue)\r\t\t==> [ :node | node first -> node third ].\rfields := (field , ($, asPParser trim , field) star)\r\t\t==> [ :node | \r\t\t\t(node second collect: #second)\r\t\t\t\taddFirst: node first;\r\t\t\t\tyourself ].\rbibEntry := (type trim , ${ asPParser trim , citeKey , $, asPParser trim\r\t\t, fields , $} asPParser trim)\r\t\t==> [ :node | \r\t\t\t({'entryType' -> node first.\r\t\t\t\t'citeKey' -> node third} copyWithAll: node fifth) asOrderedDictionary ].\rbibFile := (bibEntry , #space asPParser star) star\r\t\t==> [ :node | node collect: #first ]."
+						},
+						{
+							"__type" : "textSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2023-02-06T09:11:43.336664+01:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2023-02-06T09:11:56.541483+01:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "OphNRWWwDQCs6QjMCQXHVA=="
+							},
+							"paragraphStyle" : {
+								"__type" : "textStyle"
+							},
+							"string" : "First benchmark, separating compile and run times."
+						},
+						{
+							"__type" : "pharoSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2023-02-06T09:07:25.128726+01:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2023-02-06T09:14:04.524071+01:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "EL0kQmWwDQCriXYiCQXHVA=="
+							},
+							"code" : "scgbib := ZnClient new\r\t\tget: 'https://raw.githubusercontent.com/scgbern/scgbib/main/scg.bib'.\rinput := scgbib.\rtimeToCompile := [ parser := bibFile end optimize ] timeToRun.\rtimeToRun := [ result := parser parse: input ] timeToRun.\r{'Time to compile' -> timeToCompile.\r\t'Tme to run' -> timeToRun.\r\t'Input size' -> input size.\r\t'Number of bibtex entries' -> result size} asDictionary"
+						},
+						{
+							"__type" : "textSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2023-02-06T09:12:22.295059+01:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2023-02-06T09:12:27.670831+01:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "TX+vU2WwDQCwFqEaCQXHVA=="
+							},
+							"paragraphStyle" : {
+								"__type" : "textStyle"
+							},
+							"string" : "Still takes 1.6 seconds."
+						},
+						{
+							"__type" : "textSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2023-02-06T09:12:28.873852+01:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2023-02-06T09:12:33.947928+01:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "nmw2VGWwDQCwavUxCQXHVA=="
+							},
+							"paragraphStyle" : {
+								"__type" : "textStyle"
+							},
+							"string" : "How about an empty input?"
+						},
+						{
+							"__type" : "pharoSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2023-02-06T09:12:37.041128+01:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2023-02-06T09:13:22.369005+01:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "iyS8VGWwDQCwuXCbCQXHVA=="
+							},
+							"code" : "input := ''.\rtimeToCompile := [ parser := bibFile end optimize ] timeToRun.\rtimeToRun := [ result := parser parse: input ] timeToRun.\r{'Time to compile' -> timeToCompile.\r\t'Tme to run' -> timeToRun.\r\t'Input size' -> input size.\r\t'Number of bibtex entries' -> result size} asDictionary"
+						},
+						{
+							"__type" : "textSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2023-02-06T09:13:31.718156+01:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2023-02-06T09:13:38.006324+01:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "9SC/U2WwDQCwGv3ECQXHVA=="
+							},
+							"paragraphStyle" : {
+								"__type" : "textStyle"
+							},
+							"string" : "Let's increase the size."
+						},
+						{
+							"__type" : "pharoSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2023-02-06T09:13:39.827751+01:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2023-02-06T09:15:49.775939+01:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "oS96WGWwDQCxX7DNCQXHVA=="
+							},
+							"code" : "scgbib := ZnClient new\r\t\tget: 'https://raw.githubusercontent.com/scgbern/scgbib/main/scg.bib'.\rinput := scgbib repeat: 10.\rtimeToCompile := [ parser := bibFile end optimize ] timeToRun.\rtimeToRun := [ result := parser parse: input ] timeToRun.\r{'Time to compile' -> timeToCompile.\r\t'Tme to run' -> timeToRun.\r\t'Input size' -> input size.\r\t'Number of bibtex entries' -> result size} asDictionary"
+						},
+						{
+							"__type" : "textSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2023-02-06T09:15:43.45493+01:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2023-02-06T09:16:21.701517+01:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "qNjFX2WwDQCygGTcCQXHVA=="
+							},
+							"paragraphStyle" : {
+								"__type" : "textStyle"
+							},
+							"string" : "It takes about 10x as long for 10x the entries."
+						},
+						{
+							"__type" : "textSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2023-02-06T09:12:20.673164+01:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2023-02-06T09:12:20.673164+01:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "DGHCU2WwDQCwHnZhCQXHVA=="
+							},
+							"paragraphStyle" : {
+								"__type" : "textStyle"
+							},
+							"string" : ""
+						}
+					]
 				},
 				"createEmail" : {
 					"__type" : "email",
@@ -3121,7 +3591,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-02-02T16:47:01.420744+01:00"
+						"dateAndTimeString" : "2023-02-06T09:07:16.467614+01:00"
 					}
 				},
 				"editEmail" : {
@@ -3132,7 +3602,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-02-03T13:09:18.992397+01:00"
+						"dateAndTimeString" : "2023-02-06T09:07:21.100786+01:00"
 					}
 				},
 				"uid" : {
@@ -3142,7 +3612,7 @@
 				"paragraphStyle" : {
 					"__type" : "textStyle"
 				},
-				"string" : ""
+				"string" : "#Benchmarks"
 			},
 			{
 				"__type" : "textSnippet",
