@@ -3715,7 +3715,7 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-02-06T10:39:59.042602+01:00"
+									"dateAndTimeString" : "2023-02-06T10:40:09.212979+01:00"
 								}
 							},
 							"uid" : {
@@ -3725,7 +3725,7 @@
 							"paragraphStyle" : {
 								"__type" : "textStyle"
 							},
-							"string" : "AC: You can try to profile also using MessageTally and AndeasSystemProfile\nFor MessageTally  if you place the script in a snippet you can use the profile button\nbut you might need to do some iterations to get some results"
+							"string" : "AC: You can try to profile also using MessageTally and AndeasSystemProfile\nFor MessageTally  if you place the script in a snippet you can use the profile button\nbut you might need to do some iterations to get some results.\nAndeasSystemProfile  does not currently work if you are on Mac M1"
 						}
 					]
 				},
