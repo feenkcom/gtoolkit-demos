@@ -3569,7 +3569,7 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-02-06T09:42:35.455893+01:00"
+									"dateAndTimeString" : "2023-02-06T10:36:20.450893+01:00"
 								}
 							},
 							"uid" : {
@@ -3579,7 +3579,7 @@
 							"paragraphStyle" : {
 								"__type" : "textStyle"
 							},
-							"string" : "##What about optimex vs unoptimized?"
+							"string" : "##What about optimized vs unoptimized?"
 						},
 						{
 							"__type" : "textSnippet",
@@ -3595,7 +3595,7 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-02-06T09:43:26.35069+01:00"
+									"dateAndTimeString" : "2023-02-06T10:36:28.171612+01:00"
 								}
 							},
 							"editEmail" : {
@@ -3606,78 +3606,7 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-02-06T09:43:30.288989+01:00"
-								}
-							},
-							"uid" : {
-								"__type" : "uid",
-								"uidString" : "d4bfwmWwDQC6LdgbCQXHVA=="
-							},
-							"paragraphStyle" : {
-								"__type" : "textStyle"
-							},
-							"string" : "Just unoptimized:"
-						},
-						{
-							"__type" : "pharoSnippet",
-							"children" : {
-								"__type" : "snippets",
-								"items" : [ ]
-							},
-							"createEmail" : {
-								"__type" : "email",
-								"emailString" : "<unknown>"
-							},
-							"createTime" : {
-								"__type" : "time",
-								"time" : {
-									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-02-06T09:41:33.208463+01:00"
-								}
-							},
-							"editEmail" : {
-								"__type" : "email",
-								"emailString" : "<unknown>"
-							},
-							"editTime" : {
-								"__type" : "time",
-								"time" : {
-									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-02-06T09:45:20.472158+01:00"
-								}
-							},
-							"uid" : {
-								"__type" : "uid",
-								"uidString" : "ZPY3vGWwDQC6CWxBCQXHVA=="
-							},
-							"code" : "scgbib := ZnClient new\r\t\tget: 'https://raw.githubusercontent.com/scgbern/scgbib/main/scg.bib'.\rinput := scgbib.\rtimeToRun := [ result1 := bibFile end parse: input ] timeToRun.\rtimeToCompile := [ parser := bibFile end optimize ] timeToRun.\r\"timeToRunOptimized := [ result2 := parser parse: input ] timeToRun.\rself assert: result1 equals: result2.\"\r{'Input size' -> input size.\r\t'Number of bibtex entries' -> result1 size.\r\t'Time to run' -> timeToRun.\r\t\"'Time to compile' -> timeToCompile.\r\t'Time to run optimized' -> timeToRunOptimized\"\r\t} asOrderedDictionary"
-						},
-						{
-							"__type" : "textSnippet",
-							"children" : {
-								"__type" : "snippets",
-								"items" : [ ]
-							},
-							"createEmail" : {
-								"__type" : "email",
-								"emailString" : "<unknown>"
-							},
-							"createTime" : {
-								"__type" : "time",
-								"time" : {
-									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-02-06T09:43:42.653303+01:00"
-								}
-							},
-							"editEmail" : {
-								"__type" : "email",
-								"emailString" : "<unknown>"
-							},
-							"editTime" : {
-								"__type" : "time",
-								"time" : {
-									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-02-06T09:43:46.9829+01:00"
+									"dateAndTimeString" : "2023-02-06T10:36:30.575957+01:00"
 								}
 							},
 							"uid" : {
@@ -3687,78 +3616,7 @@
 							"paragraphStyle" : {
 								"__type" : "textStyle"
 							},
-							"string" : "Just optimized:"
-						},
-						{
-							"__type" : "pharoSnippet",
-							"children" : {
-								"__type" : "snippets",
-								"items" : [ ]
-							},
-							"createEmail" : {
-								"__type" : "email",
-								"emailString" : "<unknown>"
-							},
-							"createTime" : {
-								"__type" : "time",
-								"time" : {
-									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-02-06T09:40:28.837468+01:00"
-								}
-							},
-							"editEmail" : {
-								"__type" : "email",
-								"emailString" : "<unknown>"
-							},
-							"editTime" : {
-								"__type" : "time",
-								"time" : {
-									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-02-06T09:45:43.644558+01:00"
-								}
-							},
-							"uid" : {
-								"__type" : "uid",
-								"uidString" : "CLphuGWwDQC59vBUCQXHVA=="
-							},
-							"code" : "scgbib := ZnClient new\r\t\tget: 'https://raw.githubusercontent.com/scgbern/scgbib/main/scg.bib'.\rinput := scgbib.\r\"timeToRun := [ result1 := bibFile end parse: input ] timeToRun.\"\rtimeToCompile := [ parser := bibFile end optimize ] timeToRun.\rtimeToRunOptimized := [ result2 := parser parse: input ] timeToRun.\r\"self assert: result1 equals: result2.\" \r{'Input size' -> input size.\r\t'Number of bibtex entries' -> result2 size.\r\t\"'Time to run' -> timeToRun.\"\r\t'Time to compile' -> timeToCompile.\r\t'Time to run optimized' -> timeToRunOptimized\r\t} asOrderedDictionary"
-						},
-						{
-							"__type" : "textSnippet",
-							"children" : {
-								"__type" : "snippets",
-								"items" : [ ]
-							},
-							"createEmail" : {
-								"__type" : "email",
-								"emailString" : "<unknown>"
-							},
-							"createTime" : {
-								"__type" : "time",
-								"time" : {
-									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-02-06T09:43:51.348067+01:00"
-								}
-							},
-							"editEmail" : {
-								"__type" : "email",
-								"emailString" : "<unknown>"
-							},
-							"editTime" : {
-								"__type" : "time",
-								"time" : {
-									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-02-06T09:43:55.081474+01:00"
-								}
-							},
-							"uid" : {
-								"__type" : "uid",
-								"uidString" : "CrNlxGWwDQC6ppdkCQXHVA=="
-							},
-							"paragraphStyle" : {
-								"__type" : "textStyle"
-							},
-							"string" : "Both:"
+							"string" : "Also w/o GC"
 						},
 						{
 							"__type" : "pharoSnippet",
@@ -3785,14 +3643,14 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-02-06T09:45:58.126786+01:00"
+									"dateAndTimeString" : "2023-02-06T10:35:46.39052+01:00"
 								}
 							},
 							"uid" : {
 								"__type" : "uid",
 								"uidString" : "FBcFqGWwDQC5OEnZCQXHVA=="
 							},
-							"code" : "scgbib := ZnClient new\r\t\tget: 'https://raw.githubusercontent.com/scgbern/scgbib/main/scg.bib'.\rinput := scgbib.\rtimeToRun := [ result1 := bibFile end parse: input ] timeToRun.\rtimeToCompile := [ parser := bibFile end optimize ] timeToRun.\rtimeToRunOptimized := [ result2 := parser parse: input ] timeToRun.\rself assert: result1 equals: result2.\r{'Input size' -> input size.\r\t'Number of bibtex entries' -> result1 size.\r\t'Time to run' -> timeToRun.\r\t'Time to compile' -> timeToCompile.\r\t'Time to run optimized' -> timeToRunOptimized\r\t} asOrderedDictionary"
+							"code" : "scgbib := ZnClient new\r\t\tget: 'https://raw.githubusercontent.com/scgbern/scgbib/main/scg.bib'.\rinput := scgbib.\rtimeToRun := [ result1 := bibFile end parse: input ] timeToRun.\rtimeToCompile := [ parser := bibFile end optimize ] timeToRun.\rtimeToRunOptimized := [ result2 := parser parse: input ] timeToRun.\rtimeToRunWithoutGC := Duration\r\t\tmilliSeconds: [ result2 := parser parse: input ] timeToRunWithoutGC.\rself assert: result1 equals: result2.\r{'Input size' -> input size.\r\t'Number of bibtex entries' -> result1 size.\r\t'Time to run' -> timeToRun.\r\t'Time to compile' -> timeToCompile.\r\t'Time to run optimized' -> timeToRunOptimized.\r\t'Time to run without GC' -> timeToRunWithoutGC} asOrderedDictionary"
 						}
 					]
 				},
@@ -3831,7 +3689,45 @@
 				"__type" : "textSnippet",
 				"children" : {
 					"__type" : "snippets",
-					"items" : [ ]
+					"items" : [
+						{
+							"__type" : "textSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2023-02-06T10:39:47.198101+01:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2023-02-06T10:40:09.212979+01:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "xh4GjGawDQCADa+FCNASZg=="
+							},
+							"paragraphStyle" : {
+								"__type" : "textStyle"
+							},
+							"string" : "AC: You can try to profile also using MessageTally and AndeasSystemProfile\nFor MessageTally  if you place the script in a snippet you can use the profile button\nbut you might need to do some iterations to get some results.\nAndeasSystemProfile  does not currently work if you are on Mac M1"
+						}
+					]
 				},
 				"createEmail" : {
 					"__type" : "email",
@@ -3841,7 +3737,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-02-03T20:50:54.043517+01:00"
+						"dateAndTimeString" : "2023-02-06T10:39:37.287019+01:00"
 					}
 				},
 				"editEmail" : {
@@ -3852,7 +3748,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-02-03T20:50:54.043517+01:00"
+						"dateAndTimeString" : "2023-02-06T10:39:39.208827+01:00"
 					}
 				},
 				"uid" : {
@@ -3862,7 +3758,7 @@
 				"paragraphStyle" : {
 					"__type" : "textStyle"
 				},
-				"string" : ""
+				"string" : "#Profiling"
 			},
 			{
 				"__type" : "textSnippet",
