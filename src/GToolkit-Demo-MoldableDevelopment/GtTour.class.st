@@ -914,6 +914,52 @@ GtTour >> titleSlideFor: aSlide [
 			bold)
 ]
 
+{ #category : #accessing }
+GtTour >> treemapWithBook [
+	<gtExample>
+	| database tocPage topTocSnippets |
+	database := LeDatabasesRegistry defaultLogicalDatabase
+			databaseNamed: 'Glamorous Toolkit Book'.
+	tocPage := database pages
+			detect: [ :each | each title = 'Glamorous Toolkit Book' ].
+	topTocSnippets := tocPage children.
+	^ GtNestedRectangleTreeMap new
+		roots: topTocSnippets;
+		deep: [ :aNode | aNode children select: [ :each | each children notEmpty ] ];
+		leaves: [ :aNode | aNode asCollection , (aNode children select: [ :each | each children isEmpty ]) ];
+		leavesSize: [ :aNode | 
+			| pageLinkedFromSnnipet |
+			pageLinkedFromSnnipet := aNode outgoingTextualLinks anyOne target.
+			pageLinkedFromSnnipet allChildrenBreadthFirst size ];
+		leafElement: [ :anElement :aLeafContext | 
+			anElement border: (Color gray alpha: 0.5 / aLeafContext level).
+			anElement
+				when: BlClickEvent
+				do: [ :e | 
+					anElement phlow
+						spawnTool: aLeafContext model allOutgoingExplicitLinks anyOne target asPhlowTool ].
+			anElement
+				aptitude: ((BrGlamorousWithTooltipAptitude
+						content: [ BrLabel new
+								text: aLeafContext model allOutgoingExplicitLinks anyOne target title;
+								aptitude: BrGlamorousLabelAptitude ]) showDelay: 300 milliSeconds)
+						+ (BrStyleCommonAptitude new
+								default: [ :aStyle | aStyle background: Color transparent ];
+								hovered: [ :aStyle | aStyle background: (Color blue alpha: 0.5) ]) ];
+		containerElement: [ :anElement :aNodeContext | 
+			aNodeContext level = 2
+				ifTrue: [ anElement
+						addChild: (BrLabel new
+								text: ((aNodeContext model contentAsString removePrefix: '[[') removeSuffix: ']]');
+								aptitude: (BrGlamorousLabelAptitude new
+										fontSize: 12;
+										foreground: Color black);
+								constraintsDo: [ :c | c ignoreByLayout ]) ].
+			anElement border: (BlBorder paint: (Color gray alpha: 0.5 / aNodeContext level) width: 1).
+			anElement padding: (BlInsets all: 1) ];
+		asElement
+]
+
 { #category : #'api - instantiation' }
 GtTour >> treemapWithViewsAndExamples [
 	<gtExample>
