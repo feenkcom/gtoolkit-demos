@@ -423,14 +423,14 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-03-02T11:42:36.623882+01:00"
+									"dateAndTimeString" : "2023-03-02T14:26:03.779755+01:00"
 								}
 							},
 							"uid" : {
 								"__type" : "uid",
 								"uidString" : "gGv6LUqyDQCoRcz4D6pEHQ=="
 							},
-							"code" : "keyword := 'var' asPParser, #letter asPParser not\r\t/ 'if' asPParser, #letter asPParser notNil\r\t/ 'else' asPParser, #letter asPParser notNil\r\t/ 'while' asPParser, #letter asPParser notNil\r\t/ 'true' asPParser, #letter asPParser notNil\r\t/ 'false' asPParser, #letter asPParser notNil\r\t/ 'and' asPParser, #letter asPParser notNil\r\t/ 'or' asPParser, #letter asPParser notNil\r\t."
+							"code" : "keyword := ('var' asPParser , #letter asPParser not)\r\t\t/ ('if' asPParser , #letter asPParser not)\r\t\t/ ('else' asPParser , #letter asPParser not)\r\t\t/ ('while' asPParser , #letter asPParser not)\r\t\t/ ('true' asPParser , #letter asPParser not)\r\t\t/ ('false' asPParser , #letter asPParser not)\r\t\t/ ('and' asPParser , #letter asPParser not)\r\t\t/ ('or' asPParser , #letter asPParser not)."
 						},
 						{
 							"__type" : "pharoSnippet",
@@ -457,14 +457,48 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-03-02T11:41:35.521291+01:00"
+									"dateAndTimeString" : "2023-03-02T14:26:38.138146+01:00"
 								}
 							},
 							"uid" : {
 								"__type" : "uid",
 								"uidString" : "hF+ENEqyDQCp2uukD6pEHQ=="
 							},
-							"code" : "identifier := #letter asPParser, #word asPParser star."
+							"code" : "identifier := keyword not, #letter asPParser, #word asPParser star."
+						},
+						{
+							"__type" : "pharoSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2023-03-02T14:26:43.071802+01:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2023-03-02T14:26:54.482694+01:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "/L88hEyyDQCuGZ4vDiUNuQ=="
+							},
+							"code" : "identifier parse: 'var'"
 						}
 					]
 				},
