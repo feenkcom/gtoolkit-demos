@@ -34,7 +34,7 @@ Class {
 
 { #category : #grammar }
 SPLgrammar >> assignment [
-	^ (identifier trim , $= asPParser trim , logicOr) / logicOr
+	^ (identifier trim , $= asPParser trim , assignment) / logicOr
 ]
 
 { #category : #grammar }
@@ -76,7 +76,7 @@ SPLgrammar >> expression [
 
 { #category : #grammar }
 SPLgrammar >> factor [
-	^ unary
+	^ unary , ($/ asPParser trim / $* asPParser trim , unary) star
 ]
 
 { #category : #grammar }
@@ -98,7 +98,7 @@ SPLgrammar >> ifStmt [
 
 { #category : #grammar }
 SPLgrammar >> integer [
-	^ ($- asPParser optional , #digit asPParser plus , $. asPParser not) trim
+	^ (#digit asPParser plus , $. asPParser not) trim
 ]
 
 { #category : #grammar }
@@ -130,7 +130,8 @@ SPLgrammar >> number [
 
 { #category : #grammar }
 SPLgrammar >> primary [
-	^ boolean / number / string / identifier
+	^ ($( asPParser trim , expression , $) asPParser trim) / boolean / number
+		/ string / identifier
 ]
 
 { #category : #grammar }
@@ -165,7 +166,7 @@ SPLgrammar >> term [
 
 { #category : #grammar }
 SPLgrammar >> unary [
-	^ primary
+	^ ($! asPParser trim / $- asPParser trim , unary) / primary
 ]
 
 { #category : #grammar }
