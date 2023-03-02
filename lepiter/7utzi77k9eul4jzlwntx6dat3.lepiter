@@ -305,6 +305,43 @@
 								"__type" : "textStyle"
 							},
 							"string" : "[[SPL Grammar]] "
+						},
+						{
+							"__type" : "textSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2023-03-02T17:47:47.412166+01:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2023-03-02T17:47:56.452222+01:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "sfdTU0+yDQCnVeu8An6zEg=="
+							},
+							"paragraphStyle" : {
+								"__type" : "textStyle"
+							},
+							"string" : "[[Extracting the SPL Grammar class]] "
 						}
 					]
 				},

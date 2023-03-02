@@ -145,14 +145,14 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-03-02T14:28:34.520321+01:00"
+									"dateAndTimeString" : "2023-03-02T17:52:36.321076+01:00"
 								}
 							},
 							"uid" : {
 								"__type" : "uid",
 								"uidString" : "1u9uKkqyDQCm6M57D6pEHQ=="
 							},
-							"code" : "keyword := ('var' asPParser , #letter asPParser not)\r\t\t/ ('if' asPParser , #letter asPParser not)\r\t\t/ ('else' asPParser , #letter asPParser not)\r\t\t/ ('while' asPParser , #letter asPParser not)\r\t\t/ ('true' asPParser , #letter asPParser not)\r\t\t/ ('false' asPParser , #letter asPParser not)\r\t\t/ ('and' asPParser , #letter asPParser not)\r\t\t/ ('or' asPParser , #letter asPParser not).\r\ridentifier := keyword not, #letter asPParser, #word asPParser star.\r\rboolean := 'true' asPParser trim / 'false' asPParser trim.\rinteger := ($- asPParser optional , #digit asPParser plus , $. asPParser not)\r\t\ttrim.\rfloat := ($- asPParser optional , #digit asPParser plus , $. asPParser\r\t\t, #digit asPParser plus) trim.\rnumber := integer / float.\rstring := $\" asPParser , $\" asPParser negate plus , $\" asPParser.\r\rvarDecl := 'var' asPParser trim , identifier , $; asPParser trim.\r\rprimary := boolean / number / string / identifier. \"to extend\"\r\runary := primary.\t\"to do\"\r\rfactor := unary.\rterm := factor , ('-' asPParser trim / '+' asPParser trim , factor) star.\rcomparison := term\r\t\t, ('>=' asPParser trim / '>' asPParser trim / '<=' asPParser trim\r\t\t\t\t/ '<' asPParser trim , term) star.\requality := comparison\r\t\t, ('!=' asPParser trim / '==' asPParser trim , comparison) star.\rlogicAnd := equality , ('and' asPParser trim , equality) star.\rlogicOr := logicAnd , ('or' asPParser trim , logicAnd) star.\r\rassignment := (identifier trim , $= asPParser trim , logicOr) / logicOr.\t\"Add recursive case\"\r\rexpression := assignment.\rexprStmt := expression , $; asPParser trim.\r\rstatement := PP2DelegateNode new.\r\rprintStmt := 'print' asPParser trim , expression , $; asPParser trim.\r\rifStmt := 'if' asPParser trim , $( asPParser trim , expression\r\t\t, $) asPParser trim , statement , ('else' asPParser trim , statement) optional.\r\r\rwhileStmt := 'while' asPParser trim , $( asPParser trim , expression\r\t\t, $) asPParser trim , statement.\r\r\rblock := '{' asPParser trim , declaration star , $} asPParser trim.\r\rstatement def: ifStmt / printStmt / whileStmt / exprStmt / block.\r\r\rdeclaration := varDecl / statement.\rprogram := declaration star end"
+							"code" : "keyword := ('var' asPParser , #letter asPParser not)\r\t\t/ ('if' asPParser , #letter asPParser not)\r\t\t/ ('else' asPParser , #letter asPParser not)\r\t\t/ ('while' asPParser , #letter asPParser not)\r\t\t/ ('true' asPParser , #letter asPParser not)\r\t\t/ ('false' asPParser , #letter asPParser not)\r\t\t/ ('and' asPParser , #letter asPParser not)\r\t\t/ ('or' asPParser , #letter asPParser not).\r\ridentifier := keyword not, #letter asPParser, #word asPParser star.\r\rboolean := 'true' asPParser trim / 'false' asPParser trim.\rinteger := ($- asPParser optional , #digit asPParser plus , $. asPParser not)\r\t\ttrim.\rfloat := ($- asPParser optional , #digit asPParser plus , $. asPParser\r\t\t, #digit asPParser plus) trim.\rnumber := integer / float.\rstring := $\" asPParser , $\" asPParser negate plus , $\" asPParser.\r\rvarDecl := 'var' asPParser trim , identifier , $; asPParser trim.\r\rprimary := boolean / number / string / identifier. \"to extend\"\r\runary := primary.\t\"to do\"\r\rfactor := unary.\rterm := factor , ('-' asPParser trim / '+' asPParser trim , factor) star.\rcomparison := term\r\t\t, ('>=' asPParser trim / '>' asPParser trim / '<=' asPParser trim\r\t\t\t\t/ '<' asPParser trim , term) star.\requality := comparison\r\t\t, ('!=' asPParser trim / '==' asPParser trim , comparison) star.\rlogicAnd := equality , ('and' asPParser trim , equality) star.\rlogicOr := logicAnd , ('or' asPParser trim , logicAnd) star.\r\rassignment := (identifier trim , $= asPParser trim , logicOr) / logicOr.\t\"Add recursive case\"\r\rexpression := assignment.\rexprStmt := expression , $; asPParser trim.\r\rstatement := PP2DelegateNode new.\r\rprintStmt := 'print' asPParser trim , expression , $; asPParser trim.\r\rifStmt := 'if' asPParser trim , $( asPParser trim , expression\r\t\t, $) asPParser trim , statement , ('else' asPParser trim , statement) optional.\r\r\rwhileStmt := 'while' asPParser trim , $( asPParser trim , expression\r\t\t, $) asPParser trim , statement.\r\r\rdeclaration := \r\rblock := '{' asPParser trim , declaration star , $} asPParser trim.\r\rstatement def: ifStmt / printStmt / whileStmt / exprStmt / block.\r\r\rdeclaration := varDecl / statement.\rprogram := declaration star end"
 						},
 						{
 							"__type" : "textSnippet",
@@ -216,7 +216,7 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-03-02T14:29:48.803058+01:00"
+									"dateAndTimeString" : "2023-03-02T14:29:50.906303+01:00"
 								}
 							},
 							"uid" : {
@@ -226,7 +226,7 @@
 							"paragraphStyle" : {
 								"__type" : "textStyle"
 							},
-							"string" : "We'll add these next when we lift thi"
+							"string" : "We'll add these next when we lift this to a class."
 						},
 						{
 							"__type" : "textSnippet",
