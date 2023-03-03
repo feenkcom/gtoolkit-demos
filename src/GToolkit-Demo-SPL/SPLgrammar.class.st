@@ -39,7 +39,7 @@ SPLgrammar >> assignment [
 
 { #category : #grammar }
 SPLgrammar >> block [
-	^ '{' asPParser trim , $} asPParser trim	", declaration star"
+	^ '{' asPParser trim , declaration star , $} asPParser trim
 ]
 
 { #category : #grammar }
@@ -93,7 +93,7 @@ SPLgrammar >> identifier [
 { #category : #grammar }
 SPLgrammar >> ifStmt [
 	^ 'if' asPParser trim , $( asPParser trim , expression , $) asPParser trim
-		, 'else' asPParser trim optional	", statement"	", statement"
+		, statement , ('else' asPParser trim , statement) optional
 ]
 
 { #category : #grammar }
@@ -176,5 +176,6 @@ SPLgrammar >> varDecl [
 
 { #category : #grammar }
 SPLgrammar >> whileStmt [
-	^ 'while' asPParser trim , $( asPParser trim , expression , $) asPParser trim	", statement"
+	^ 'while' asPParser trim , $( asPParser trim , expression , $) asPParser trim
+		, statement
 ]

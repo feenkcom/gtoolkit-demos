@@ -5,6 +5,16 @@ Class {
 }
 
 { #category : #example }
+SPLgrammarExamples >> blockStmt [
+	<gtExample>
+	| input |
+	input := '{ x = 42; print x * x; }'.
+	self parse: input rule: #statement.
+	self fail: input rule: #ifStmt.
+	^ self parse: input rule: #block
+]
+
+{ #category : #example }
 SPLgrammarExamples >> booleanTrue [
 	<gtExample>
 	| input |
@@ -34,6 +44,26 @@ SPLgrammarExamples >> complexExpression [
 ]
 
 { #category : #example }
+SPLgrammarExamples >> complexExpressionStmt [
+	<gtExample>
+	| input |
+	input := '(1+2)*3 > 6 or 6*7 == 42;'.
+	self parse: input rule: #statement.
+	self fail: input rule: #expression.
+	^ self parse: input rule: #exprStmt
+]
+
+{ #category : #example }
+SPLgrammarExamples >> complexStmt [
+	<gtExample>
+	| input |
+	input := 'while (x > y) { if (x<42)  { x = x+1;   print x ; }  print x+y; }'.
+	self parse: input rule: #whileStmt.
+	self fail: input rule: #ifStmt.
+	^ self parse: input rule: #statement
+]
+
+{ #category : #example }
 SPLgrammarExamples >> float3point14 [
 	<gtExample>
 	^ self parse: '3.14' rule: #float
@@ -46,6 +76,26 @@ SPLgrammarExamples >> helloString [
 	input := '"hello"'.
 	self parse: input rule: #expression.
 	^ self parse: input rule: #string
+]
+
+{ #category : #example }
+SPLgrammarExamples >> ifElseStmt [
+	<gtExample>
+	| input |
+	input := 'if (x > y) x = y; else x = -y; '.
+	self parse: input rule: #statement.
+	self fail: input rule: #exprStmt.
+	^ self parse: input rule: #ifStmt
+]
+
+{ #category : #example }
+SPLgrammarExamples >> ifNoElseStmt [
+	<gtExample>
+	| input |
+	input := 'if (x > y) x = y;'.
+	self parse: input rule: #statement.
+	self fail: input rule: #exprStmt.
+	^ self parse: input rule: #ifStmt
 ]
 
 { #category : #example }
@@ -102,6 +152,16 @@ SPLgrammarExamples >> parenthesized42 [
 { #category : #accessing }
 SPLgrammarExamples >> parserClass [
 	^ SPLgrammar
+]
+
+{ #category : #example }
+SPLgrammarExamples >> printStmt [
+	<gtExample>
+	| input |
+	input := 'print 3 + 4;'.
+	self parse: input rule: #statement.
+	self fail: input rule: #ifStmt.
+	^ self parse: input rule: #printStmt
 ]
 
 { #category : #example }
@@ -182,4 +242,14 @@ SPLgrammarExamples >> trueOrFalse [
 	self parse: input rule: #expression.
 	self fail: input rule: #logicAnd.
 	^ self parse: input rule: #logicOr
+]
+
+{ #category : #example }
+SPLgrammarExamples >> whileStmt [
+	<gtExample>
+	| input |
+	input := 'while (x < 42) x = x + 1;'.
+	self parse: input rule: #statement.
+	self fail: input rule: #ifStmt.
+	^ self parse: input rule: #whileStmt
 ]
