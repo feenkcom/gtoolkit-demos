@@ -1,7 +1,7 @@
 Class {
 	#name : #GtHomeDraftDemosSection,
 	#superclass : #GtHomeSection,
-	#category : #'GToolkit-Demos-GtHome-Sections'
+	#category : #'GToolkit-DraftDemos-GtHome-Sections'
 }
 
 { #category : #accessing }
