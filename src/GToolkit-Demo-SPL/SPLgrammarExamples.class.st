@@ -1,11 +1,11 @@
 Class {
-	#name : #SPLgrammarExamples,
+	#name : #SPLGrammarExamples,
 	#superclass : #PP2CompositeNodeExamples,
 	#category : #'GToolkit-Demo-SPL-PetitParser'
 }
 
 { #category : #example }
-SPLgrammarExamples >> blockStmt [
+SPLGrammarExamples >> blockStmt [
 	<gtExample>
 	| input |
 	input := '{ x = 42; print x * x; }'.
@@ -15,7 +15,7 @@ SPLgrammarExamples >> blockStmt [
 ]
 
 { #category : #example }
-SPLgrammarExamples >> booleanTrue [
+SPLGrammarExamples >> booleanTrue [
 	<gtExample>
 	| input |
 	input := 'true'.
@@ -25,7 +25,7 @@ SPLgrammarExamples >> booleanTrue [
 ]
 
 { #category : #example }
-SPLgrammarExamples >> cascadedAssignment [
+SPLGrammarExamples >> cascadedAssignment [
 	<gtExample>
 	| input |
 	input := 'x = y = 3+4'.
@@ -34,7 +34,7 @@ SPLgrammarExamples >> cascadedAssignment [
 ]
 
 { #category : #example }
-SPLgrammarExamples >> complexExpression [
+SPLGrammarExamples >> complexExpression [
 	<gtExample>
 	| input |
 	input := '(1+2)*3 > 6 or 6*7 == 42'.
@@ -44,7 +44,7 @@ SPLgrammarExamples >> complexExpression [
 ]
 
 { #category : #example }
-SPLgrammarExamples >> complexExpressionStmt [
+SPLGrammarExamples >> complexExpressionStmt [
 	<gtExample>
 	| input |
 	input := '(1+2)*3 > 6 or 6*7 == 42;'.
@@ -54,7 +54,7 @@ SPLgrammarExamples >> complexExpressionStmt [
 ]
 
 { #category : #example }
-SPLgrammarExamples >> complexStmt [
+SPLGrammarExamples >> complexStmt [
 	<gtExample>
 	| input |
 	input := 'while (x > y) { if (x<42)  { x = x+1;   print x ; }  print x+y; }'.
@@ -64,7 +64,7 @@ SPLgrammarExamples >> complexStmt [
 ]
 
 { #category : #example }
-SPLgrammarExamples >> fibonacciOracle [
+SPLGrammarExamples >> fibonacciOracle [
 	"This is a Smalltalk implementation of the SPL fibonacci source program.
 	It can be used as an oracle for a test case for the interpreter."
 
@@ -83,7 +83,7 @@ SPLgrammarExamples >> fibonacciOracle [
 ]
 
 { #category : #example }
-SPLgrammarExamples >> fibonacciProgram [
+SPLGrammarExamples >> fibonacciProgram [
 	<gtExample>
 	| input |
 	input := self fibonacciSource.
@@ -93,7 +93,7 @@ SPLgrammarExamples >> fibonacciProgram [
 ]
 
 { #category : #example }
-SPLgrammarExamples >> fibonacciSource [
+SPLGrammarExamples >> fibonacciSource [
 	<gtExample>
 	^ 'var thisFib = 1;
 var lastFib = thisFib;
@@ -111,13 +111,13 @@ print thisFib;
 ]
 
 { #category : #example }
-SPLgrammarExamples >> float3point14 [
+SPLGrammarExamples >> float3point14 [
 	<gtExample>
 	^ self parse: '3.14' rule: #float
 ]
 
 { #category : #example }
-SPLgrammarExamples >> helloString [
+SPLGrammarExamples >> helloString [
 	<gtExample>
 	| input |
 	input := '"hello"'.
@@ -126,7 +126,7 @@ SPLgrammarExamples >> helloString [
 ]
 
 { #category : #example }
-SPLgrammarExamples >> ifElseStmt [
+SPLGrammarExamples >> ifElseStmt [
 	<gtExample>
 	| input |
 	input := 'if (x > y) x = y; else x = -y; '.
@@ -136,7 +136,7 @@ SPLgrammarExamples >> ifElseStmt [
 ]
 
 { #category : #example }
-SPLgrammarExamples >> ifNoElseStmt [
+SPLGrammarExamples >> ifNoElseStmt [
 	<gtExample>
 	| input |
 	input := 'if (x > y) x = y;'.
@@ -146,19 +146,19 @@ SPLgrammarExamples >> ifNoElseStmt [
 ]
 
 { #category : #example }
-SPLgrammarExamples >> integer42 [
+SPLGrammarExamples >> integer42 [
 	<gtExample>
 	^ self parse: '42' rule: #integer
 ]
 
 { #category : #example }
-SPLgrammarExamples >> minus42 [
+SPLGrammarExamples >> minus42 [
 	<gtExample>
 	^ self parse: '-42' rule: #unary
 ]
 
 { #category : #example }
-SPLgrammarExamples >> notTrue [
+SPLGrammarExamples >> notTrue [
 	<gtExample>
 	| input |
 	input := '!true'.
@@ -168,7 +168,7 @@ SPLgrammarExamples >> notTrue [
 ]
 
 { #category : #example }
-SPLgrammarExamples >> orAsKeyword [
+SPLGrammarExamples >> orAsKeyword [
 	<gtExample>
 	| input |
 	input := 'or'.
@@ -178,7 +178,7 @@ SPLgrammarExamples >> orAsKeyword [
 ]
 
 { #category : #example }
-SPLgrammarExamples >> orbeAsIdentifier [
+SPLGrammarExamples >> orbeAsIdentifier [
 	<gtExample>
 	| input |
 	input := 'orbe'.
@@ -188,7 +188,7 @@ SPLgrammarExamples >> orbeAsIdentifier [
 ]
 
 { #category : #example }
-SPLgrammarExamples >> parenthesized42 [
+SPLGrammarExamples >> parenthesized42 [
 	<gtExample>
 	| input |
 	input := '(42)'.
@@ -197,12 +197,12 @@ SPLgrammarExamples >> parenthesized42 [
 ]
 
 { #category : #accessing }
-SPLgrammarExamples >> parserClass [
-	^ SPLgrammar
+SPLGrammarExamples >> parserClass [
+	^ SPLGrammar
 ]
 
 { #category : #example }
-SPLgrammarExamples >> printStmt [
+SPLGrammarExamples >> printStmt [
 	<gtExample>
 	| input |
 	input := 'print 3 + 4;'.
@@ -212,7 +212,7 @@ SPLgrammarExamples >> printStmt [
 ]
 
 { #category : #example }
-SPLgrammarExamples >> threeEqualFour [
+SPLGrammarExamples >> threeEqualFour [
 	<gtExample>
 	| input |
 	input := '3 == 4'.
@@ -222,7 +222,7 @@ SPLgrammarExamples >> threeEqualFour [
 ]
 
 { #category : #example }
-SPLgrammarExamples >> threeLessThanEqualFour [
+SPLGrammarExamples >> threeLessThanEqualFour [
 	<gtExample>
 	| input |
 	input := '3 <= 4'.
@@ -232,7 +232,7 @@ SPLgrammarExamples >> threeLessThanEqualFour [
 ]
 
 { #category : #example }
-SPLgrammarExamples >> threeLessThanFour [
+SPLGrammarExamples >> threeLessThanFour [
 	<gtExample>
 	| input |
 	input := '3 < 4'.
@@ -242,7 +242,7 @@ SPLgrammarExamples >> threeLessThanFour [
 ]
 
 { #category : #example }
-SPLgrammarExamples >> threeNotEqualFour [
+SPLGrammarExamples >> threeNotEqualFour [
 	<gtExample>
 	| input |
 	input := '3 != 4'.
@@ -252,7 +252,7 @@ SPLgrammarExamples >> threeNotEqualFour [
 ]
 
 { #category : #example }
-SPLgrammarExamples >> threePlusFour [
+SPLGrammarExamples >> threePlusFour [
 	<gtExample>
 	| input |
 	input := '3+4'.
@@ -262,7 +262,7 @@ SPLgrammarExamples >> threePlusFour [
 ]
 
 { #category : #example }
-SPLgrammarExamples >> threeTimesFour [
+SPLGrammarExamples >> threeTimesFour [
 	<gtExample>
 	| input |
 	input := '3*4'.
@@ -272,7 +272,7 @@ SPLgrammarExamples >> threeTimesFour [
 ]
 
 { #category : #example }
-SPLgrammarExamples >> trueAndFalse [
+SPLGrammarExamples >> trueAndFalse [
 	<gtExample>
 	| input |
 	input := 'true and false'.
@@ -282,7 +282,7 @@ SPLgrammarExamples >> trueAndFalse [
 ]
 
 { #category : #example }
-SPLgrammarExamples >> trueOrFalse [
+SPLGrammarExamples >> trueOrFalse [
 	<gtExample>
 	| input |
 	input := 'true or false'.
@@ -292,7 +292,7 @@ SPLgrammarExamples >> trueOrFalse [
 ]
 
 { #category : #example }
-SPLgrammarExamples >> varDeclWithInit [
+SPLGrammarExamples >> varDeclWithInit [
 	<gtExample>
 	| input |
 	input := 'var x = 42 + y;'.
@@ -303,7 +303,7 @@ SPLgrammarExamples >> varDeclWithInit [
 ]
 
 { #category : #example }
-SPLgrammarExamples >> varDeclWithoutInit [
+SPLGrammarExamples >> varDeclWithoutInit [
 	<gtExample>
 	| input |
 	input := 'var x;'.
@@ -314,7 +314,7 @@ SPLgrammarExamples >> varDeclWithoutInit [
 ]
 
 { #category : #example }
-SPLgrammarExamples >> whileProgram [
+SPLGrammarExamples >> whileProgram [
 "Example from exercise 02"
 	<gtExample>
 	^ 'var a = 1;
@@ -325,7 +325,7 @@ while (a < 10) {
 ]
 
 { #category : #example }
-SPLgrammarExamples >> whileStmt [
+SPLGrammarExamples >> whileStmt [
 	<gtExample>
 	| input |
 	input := 'while (x < 42) x = x + 1;'.

@@ -34,7 +34,7 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-03-03T08:54:57.522274+01:00"
+									"dateAndTimeString" : "2023-03-03T09:14:57.929418+01:00"
 								}
 							},
 							"uid" : {
@@ -44,7 +44,7 @@
 							"paragraphStyle" : {
 								"__type" : "textStyle"
 							},
-							"string" : "{{gtTodo:label=program}}\n{{gtTodo:label=declaration |completed=2023-03-03}}\n{{gtTodo:label=varDecl|completed=2023-03-03}}"
+							"string" : "{{gtTodo:label=program|completed=2023-03-03}}\n{{gtTodo:label=declaration |completed=2023-03-03}}\n{{gtTodo:label=varDecl|completed=2023-03-03}}"
 						}
 					]
 				},
@@ -156,7 +156,7 @@
 							"exampleSelector" : "varDeclWithoutInit",
 							"previewHeight" : 200,
 							"previewShowSelector" : "gtViewsFor:",
-							"exampleBehaviorName" : "SPLgrammarExamples",
+							"exampleBehaviorName" : "SPLGrammarExamples",
 							"codeExpanded" : true,
 							"previewExpanded" : false,
 							"noCode" : false
@@ -196,7 +196,7 @@
 							"exampleSelector" : "varDeclWithInit",
 							"previewHeight" : 200,
 							"previewShowSelector" : "gtViewsFor:",
-							"exampleBehaviorName" : "SPLgrammarExamples",
+							"exampleBehaviorName" : "SPLGrammarExamples",
 							"codeExpanded" : true,
 							"previewExpanded" : false,
 							"noCode" : false
@@ -226,7 +226,7 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-03-03T08:54:05.665523+01:00"
+									"dateAndTimeString" : "2023-03-03T10:49:16.317733+01:00"
 								}
 							},
 							"uid" : {
@@ -236,7 +236,7 @@
 							"paragraphStyle" : {
 								"__type" : "textStyle"
 							},
-							"string" : "We tweak the rule for {{gtMethod:name=SPLgrammar>>#varDecl}} until the test passes."
+							"string" : "We tweak the rule for {{gtMethod:name=SPLGrammar>>#varDecl}} until the test passes."
 						},
 						{
 							"__type" : "textSnippet",
@@ -347,7 +347,7 @@
 							"exampleSelector" : "whileProgram",
 							"previewHeight" : 200,
 							"previewShowSelector" : "gtViewsFor:",
-							"exampleBehaviorName" : "SPLgrammarExamples",
+							"exampleBehaviorName" : "SPLGrammarExamples",
 							"codeExpanded" : true,
 							"previewExpanded" : false,
 							"noCode" : false
@@ -424,7 +424,7 @@
 							"exampleSelector" : "fibonacciProgram",
 							"previewHeight" : 200,
 							"previewShowSelector" : "gtViewsFor:",
-							"exampleBehaviorName" : "SPLgrammarExamples",
+							"exampleBehaviorName" : "SPLGrammarExamples",
 							"codeExpanded" : true,
 							"previewExpanded" : false,
 							"noCode" : false

@@ -1,5 +1,5 @@
 Class {
-	#name : #SPLgrammar,
+	#name : #SPLGrammar,
 	#superclass : #PP2CompositeNode,
 	#instVars : [
 		'keyword',
@@ -33,76 +33,76 @@ Class {
 }
 
 { #category : #grammar }
-SPLgrammar >> assignment [
+SPLGrammar >> assignment [
 	^ (identifier trim , $= asPParser trim , assignment) / logicOr
 ]
 
 { #category : #grammar }
-SPLgrammar >> block [
+SPLGrammar >> block [
 	^ '{' asPParser trim , declaration star , $} asPParser trim
 ]
 
 { #category : #grammar }
-SPLgrammar >> boolean [
+SPLGrammar >> boolean [
 	^ 'true' asPParser trim / 'false' asPParser trim
 ]
 
 { #category : #grammar }
-SPLgrammar >> comparison [
+SPLGrammar >> comparison [
 	^ term
 		, ('>=' asPParser trim / '>' asPParser trim / '<=' asPParser trim
 				/ '<' asPParser trim , term) star
 ]
 
 { #category : #grammar }
-SPLgrammar >> declaration [
+SPLGrammar >> declaration [
 	^ varDecl / statement
 ]
 
 { #category : #grammar }
-SPLgrammar >> equality [
+SPLGrammar >> equality [
 	^ comparison , ('!=' asPParser trim / '==' asPParser trim , comparison) star
 ]
 
 { #category : #grammar }
-SPLgrammar >> exprStmt [
+SPLGrammar >> exprStmt [
 	^ expression , $; asPParser trim
 ]
 
 { #category : #grammar }
-SPLgrammar >> expression [
+SPLGrammar >> expression [
 	^ assignment
 ]
 
 { #category : #grammar }
-SPLgrammar >> factor [
+SPLGrammar >> factor [
 	^ unary , ($/ asPParser trim / $* asPParser trim , unary) star
 ]
 
 { #category : #grammar }
-SPLgrammar >> float [
+SPLGrammar >> float [
 	^ ($- asPParser optional , #digit asPParser plus , $. asPParser
 		, #digit asPParser plus) trim
 ]
 
 { #category : #grammar }
-SPLgrammar >> identifier [
+SPLGrammar >> identifier [
 	^ keyword not , #letter asPParser , #word asPParser star
 ]
 
 { #category : #grammar }
-SPLgrammar >> ifStmt [
+SPLGrammar >> ifStmt [
 	^ 'if' asPParser trim , $( asPParser trim , expression , $) asPParser trim
 		, statement , ('else' asPParser trim , statement) optional
 ]
 
 { #category : #grammar }
-SPLgrammar >> integer [
+SPLGrammar >> integer [
 	^ (#digit asPParser plus , $. asPParser not) trim
 ]
 
 { #category : #grammar }
-SPLgrammar >> keyword [
+SPLGrammar >> keyword [
 	^ ('var' asPParser , #letter asPParser not)
 		/ ('if' asPParser , #letter asPParser not)
 		/ ('else' asPParser , #letter asPParser not)
@@ -114,69 +114,69 @@ SPLgrammar >> keyword [
 ]
 
 { #category : #grammar }
-SPLgrammar >> logicAnd [
+SPLGrammar >> logicAnd [
 	^ equality , ('and' asPParser trim , equality) star
 ]
 
 { #category : #grammar }
-SPLgrammar >> logicOr [
+SPLGrammar >> logicOr [
 	^ logicAnd , ('or' asPParser trim , logicAnd) star
 ]
 
 { #category : #grammar }
-SPLgrammar >> number [
+SPLGrammar >> number [
 	^ integer / float
 ]
 
 { #category : #grammar }
-SPLgrammar >> primary [
+SPLGrammar >> primary [
 	^ ($( asPParser trim , expression , $) asPParser trim) / boolean / number
 		/ string / identifier
 ]
 
 { #category : #grammar }
-SPLgrammar >> printStmt [
+SPLGrammar >> printStmt [
 	^ 'print' asPParser trim , expression , $; asPParser trim
 ]
 
 { #category : #grammar }
-SPLgrammar >> program [
+SPLGrammar >> program [
 	^ declaration star end
 ]
 
 { #category : #accessing }
-SPLgrammar >> start [
+SPLGrammar >> start [
 	^ program
 ]
 
 { #category : #grammar }
-SPLgrammar >> statement [
+SPLGrammar >> statement [
 	^ ifStmt / printStmt / whileStmt / exprStmt / block
 ]
 
 { #category : #grammar }
-SPLgrammar >> string [
+SPLGrammar >> string [
 	^ $" asPParser , $" asPParser negate plus , $" asPParser
 ]
 
 { #category : #grammar }
-SPLgrammar >> term [
+SPLGrammar >> term [
 	^ factor , ('-' asPParser trim / '+' asPParser trim , factor) star
 ]
 
 { #category : #grammar }
-SPLgrammar >> unary [
+SPLGrammar >> unary [
 	^ ($! asPParser trim / $- asPParser trim , unary) / primary
 ]
 
 { #category : #grammar }
-SPLgrammar >> varDecl [
+SPLGrammar >> varDecl [
 	^ 'var' asPParser trim , identifier , ($= asPParser trim , expression) optional
 		, $; asPParser trim
 ]
 
 { #category : #grammar }
-SPLgrammar >> whileStmt [
+SPLGrammar >> whileStmt [
 	^ 'while' asPParser trim , $( asPParser trim , expression , $) asPParser trim
 		, statement
 ]
