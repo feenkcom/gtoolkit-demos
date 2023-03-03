@@ -1,3 +1,8 @@
+"
+SPL is the toy language for the [compiler construction course](https://seg.inf.unibe.ch/teaching/current/cc/) at UniBE.
+I demonstrate a PetitParser implementation of the grammar.
+My subclasses implement actions.
+"
 Class {
 	#name : #SPLGrammar,
 	#superclass : #PP2CompositeNode,
@@ -27,14 +32,22 @@ Class {
 		'block',
 		'statement',
 		'declaration',
-		'program'
+		'program',
+		'parenthesizedExpression',
+		'negatedUnary',
+		'assignmentExpression'
 	],
 	#category : #'GToolkit-Demo-SPL-PetitParser'
 }
 
 { #category : #grammar }
 SPLGrammar >> assignment [
-	^ (identifier trim , $= asPParser trim , assignment) / logicOr
+	^ assignmentExpression / logicOr
+]
+
+{ #category : #grammar }
+SPLGrammar >> assignmentExpression [
+	^ identifier trim , $= asPParser trim , assignment
 ]
 
 { #category : #grammar }
@@ -124,14 +137,25 @@ SPLGrammar >> logicOr [
 ]
 
 { #category : #grammar }
+SPLGrammar >> negatedUnary [
+	^ ($! asPParser trim / $- asPParser trim , unary)
+]
+
+{ #category : #grammar }
 SPLGrammar >> number [
 	^ integer / float
 ]
 
 { #category : #grammar }
+SPLGrammar >> parenthesizedExpression [
+	"Introduced to have finer control over actions."
+
+	^ $( asPParser trim , expression , $) asPParser trim
+]
+
+{ #category : #grammar }
 SPLGrammar >> primary [
-	^ ($( asPParser trim , expression , $) asPParser trim) / boolean / number
-		/ string / identifier
+	^ parenthesizedExpression / boolean / number / string / identifier
 ]
 
 { #category : #grammar }
@@ -166,7 +190,7 @@ SPLGrammar >> term [
 
 { #category : #grammar }
 SPLGrammar >> unary [
-	^ ($! asPParser trim / $- asPParser trim , unary) / primary
+	^ negatedUnary / primary
 ]
 
 { #category : #grammar }

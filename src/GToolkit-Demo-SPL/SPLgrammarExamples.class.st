@@ -1,7 +1,10 @@
+"
+I provide examples to test the SPL grammar class.
+"
 Class {
 	#name : #SPLGrammarExamples,
 	#superclass : #PP2CompositeNodeExamples,
-	#category : #'GToolkit-Demo-SPL-PetitParser'
+	#category : #'GToolkit-Demo-SPL-Examples'
 }
 
 { #category : #example }
