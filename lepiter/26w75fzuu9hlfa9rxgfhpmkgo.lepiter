@@ -401,7 +401,7 @@
 											"__type" : "time",
 											"time" : {
 												"__type" : "dateAndTime",
-												"dateAndTimeString" : "2023-03-03T09:38:07.258451+01:00"
+												"dateAndTimeString" : "2023-03-03T10:13:10.518142+01:00"
 											}
 										},
 										"editEmail" : {
@@ -412,17 +412,17 @@
 											"__type" : "time",
 											"time" : {
 												"__type" : "dateAndTime",
-												"dateAndTimeString" : "2023-03-03T09:38:24.090902+01:00"
+												"dateAndTimeString" : "2023-03-03T10:15:04.705451+01:00"
 											}
 										},
 										"uid" : {
 											"__type" : "uid",
-											"uidString" : "2cn5mVyyDQCZAMY6D2sEJQ=="
+											"uidString" : "+ftWF12yDQCUfCGCCdXpuA=="
 										},
 										"paragraphStyle" : {
 											"__type" : "textStyle"
 										},
-										"string" : "An expression is evaluated within an environment."
+										"string" : "We represent the state of the program as a triple `<E,O,S>` where `E` is the environment, `O` is the output, and `S` is a statement to be executed. We can use `STOP` as an artificial end of program statement."
 									},
 									{
 										"__type" : "textSnippet",
@@ -438,7 +438,7 @@
 											"__type" : "time",
 											"time" : {
 												"__type" : "dateAndTime",
-												"dateAndTimeString" : "2023-03-03T09:38:29.757825+01:00"
+												"dateAndTimeString" : "2023-03-03T10:15:04.983045+01:00"
 											}
 										},
 										"editEmail" : {
@@ -449,17 +449,17 @@
 											"__type" : "time",
 											"time" : {
 												"__type" : "dateAndTime",
-												"dateAndTimeString" : "2023-03-03T09:38:29.757825+01:00"
+												"dateAndTimeString" : "2023-03-03T10:15:45.719454+01:00"
 											}
 										},
 										"uid" : {
 											"__type" : "uid",
-											"uidString" : "txlRm1yyDQCZ/mB+D2sEJQ=="
+											"uidString" : "0JQpHl2yDQC6wku4CdXpuA=="
 										},
 										"paragraphStyle" : {
 											"__type" : "textStyle"
 										},
-										"string" : ""
+										"string" : "We also represent expressions to be evaluated as `<E,O,X>`, where `X` is an expression to be reduced to a value."
 									}
 								]
 							},
@@ -471,7 +471,7 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-03-03T09:37:55.174476+01:00"
+									"dateAndTimeString" : "2023-03-03T10:13:05.681477+01:00"
 								}
 							},
 							"editEmail" : {
@@ -482,17 +482,17 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-03-03T09:38:06.381456+01:00"
+									"dateAndTimeString" : "2023-03-03T10:13:10.175268+01:00"
 								}
 							},
 							"uid" : {
 								"__type" : "uid",
-								"uidString" : "1mZBmVyyDQCYwIwhD2sEJQ=="
+								"uidString" : "iZdcFV2yDQCH6lctCdXpuA=="
 							},
 							"paragraphStyle" : {
 								"__type" : "textStyle"
 							},
-							"string" : "#Expression"
+							"string" : "#Program state"
 						}
 					]
 				},
@@ -526,6 +526,527 @@
 					"__type" : "textStyle"
 				},
 				"string" : "#Semantic entities"
+			},
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [
+						{
+							"__type" : "textSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [
+									{
+										"__type" : "textSnippet",
+										"children" : {
+											"__type" : "snippets",
+											"items" : [ ]
+										},
+										"createEmail" : {
+											"__type" : "email",
+											"emailString" : "<unknown>"
+										},
+										"createTime" : {
+											"__type" : "time",
+											"time" : {
+												"__type" : "dateAndTime",
+												"dateAndTimeString" : "2023-03-03T10:15:56.677784+01:00"
+											}
+										},
+										"editEmail" : {
+											"__type" : "email",
+											"emailString" : "<unknown>"
+										},
+										"editTime" : {
+											"__type" : "time",
+											"time" : {
+												"__type" : "dateAndTime",
+												"dateAndTimeString" : "2023-03-03T10:16:18.786188+01:00"
+											}
+										},
+										"uid" : {
+											"__type" : "uid",
+											"uidString" : "2cn5mVyyDQCZAMY6D2sEJQ=="
+										},
+										"paragraphStyle" : {
+											"__type" : "textStyle"
+										},
+										"string" : "For all kinds of expressions we have the obvious rules, so, for example:"
+									},
+									{
+										"__type" : "textSnippet",
+										"children" : {
+											"__type" : "snippets",
+											"items" : [ ]
+										},
+										"createEmail" : {
+											"__type" : "email",
+											"emailString" : "<unknown>"
+										},
+										"createTime" : {
+											"__type" : "time",
+											"time" : {
+												"__type" : "dateAndTime",
+												"dateAndTimeString" : "2023-03-03T10:16:20.79596+01:00"
+											}
+										},
+										"editEmail" : {
+											"__type" : "email",
+											"emailString" : "<unknown>"
+										},
+										"editTime" : {
+											"__type" : "time",
+											"time" : {
+												"__type" : "dateAndTime",
+												"dateAndTimeString" : "2023-03-03T10:16:41.185209+01:00"
+											}
+										},
+										"uid" : {
+											"__type" : "uid",
+											"uidString" : "PmWuIl2yDQC+509NCdXpuA=="
+										},
+										"paragraphStyle" : {
+											"__type" : "textStyle"
+										},
+										"string" : "`<E,O,3+4>` -> `<E,O,7>`"
+									},
+									{
+										"__type" : "textSnippet",
+										"children" : {
+											"__type" : "snippets",
+											"items" : [ ]
+										},
+										"createEmail" : {
+											"__type" : "email",
+											"emailString" : "<unknown>"
+										},
+										"createTime" : {
+											"__type" : "time",
+											"time" : {
+												"__type" : "dateAndTime",
+												"dateAndTimeString" : "2023-03-03T10:17:06.524951+01:00"
+											}
+										},
+										"editEmail" : {
+											"__type" : "email",
+											"emailString" : "<unknown>"
+										},
+										"editTime" : {
+											"__type" : "time",
+											"time" : {
+												"__type" : "dateAndTime",
+												"dateAndTimeString" : "2023-03-03T10:17:22.612843+01:00"
+											}
+										},
+										"uid" : {
+											"__type" : "uid",
+											"uidString" : "3yhoJV2yDQCAY819CdXpuA=="
+										},
+										"paragraphStyle" : {
+											"__type" : "textStyle"
+										},
+										"string" : "An identifier is looked up in the environment."
+									},
+									{
+										"__type" : "textSnippet",
+										"children" : {
+											"__type" : "snippets",
+											"items" : [ ]
+										},
+										"createEmail" : {
+											"__type" : "email",
+											"emailString" : "<unknown>"
+										},
+										"createTime" : {
+											"__type" : "time",
+											"time" : {
+												"__type" : "dateAndTime",
+												"dateAndTimeString" : "2023-03-03T10:17:23.511947+01:00"
+											}
+										},
+										"editEmail" : {
+											"__type" : "email",
+											"emailString" : "<unknown>"
+										},
+										"editTime" : {
+											"__type" : "time",
+											"time" : {
+												"__type" : "dateAndTime",
+												"dateAndTimeString" : "2023-03-03T10:17:46.687806+01:00"
+											}
+										},
+										"uid" : {
+											"__type" : "uid",
+											"uidString" : "Dl1rJl2yDQCBYigHCdXpuA=="
+										},
+										"paragraphStyle" : {
+											"__type" : "textStyle"
+										},
+										"string" : "`<{x=3},O,x>` -> `<{x=3},O,3>`"
+									},
+									{
+										"__type" : "textSnippet",
+										"children" : {
+											"__type" : "snippets",
+											"items" : [ ]
+										},
+										"createEmail" : {
+											"__type" : "email",
+											"emailString" : "<unknown>"
+										},
+										"createTime" : {
+											"__type" : "time",
+											"time" : {
+												"__type" : "dateAndTime",
+												"dateAndTimeString" : "2023-03-03T10:16:43.702766+01:00"
+											}
+										},
+										"editEmail" : {
+											"__type" : "email",
+											"emailString" : "<unknown>"
+										},
+										"editTime" : {
+											"__type" : "time",
+											"time" : {
+												"__type" : "dateAndTime",
+												"dateAndTimeString" : "2023-03-03T10:16:56.244719+01:00"
+											}
+										},
+										"uid" : {
+											"__type" : "uid",
+											"uidString" : "x+wLJF2yDQC/ZAX5CdXpuA=="
+										},
+										"paragraphStyle" : {
+											"__type" : "textStyle"
+										},
+										"string" : "An assignment will update the environment."
+									},
+									{
+										"__type" : "textSnippet",
+										"children" : {
+											"__type" : "snippets",
+											"items" : [ ]
+										},
+										"createEmail" : {
+											"__type" : "email",
+											"emailString" : "<unknown>"
+										},
+										"createTime" : {
+											"__type" : "time",
+											"time" : {
+												"__type" : "dateAndTime",
+												"dateAndTimeString" : "2023-03-03T10:17:04.692499+01:00"
+											}
+										},
+										"editEmail" : {
+											"__type" : "email",
+											"emailString" : "<unknown>"
+										},
+										"editTime" : {
+											"__type" : "time",
+											"time" : {
+												"__type" : "dateAndTime",
+												"dateAndTimeString" : "2023-03-03T10:18:04.645327+01:00"
+											}
+										},
+										"uid" : {
+											"__type" : "uid",
+											"uidString" : "SUjnJF2yDQCAO3J/CdXpuA=="
+										},
+										"paragraphStyle" : {
+											"__type" : "textStyle"
+										},
+										"string" : "`<{x=3},O,x=4>` -> `<{x=4},O,4>`"
+									}
+								]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2023-03-03T10:12:25.382519+01:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2023-03-03T10:12:29.192667+01:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "J0GmFF2yDQCFu0yTCdXpuA=="
+							},
+							"paragraphStyle" : {
+								"__type" : "textStyle"
+							},
+							"string" : "##Expressions"
+						},
+						{
+							"__type" : "textSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [
+									{
+										"__type" : "textSnippet",
+										"children" : {
+											"__type" : "snippets",
+											"items" : [ ]
+										},
+										"createEmail" : {
+											"__type" : "email",
+											"emailString" : "<unknown>"
+										},
+										"createTime" : {
+											"__type" : "time",
+											"time" : {
+												"__type" : "dateAndTime",
+												"dateAndTimeString" : "2023-03-03T10:18:13.225928+01:00"
+											}
+										},
+										"editEmail" : {
+											"__type" : "email",
+											"emailString" : "<unknown>"
+										},
+										"editTime" : {
+											"__type" : "time",
+											"time" : {
+												"__type" : "dateAndTime",
+												"dateAndTimeString" : "2023-03-03T10:18:27.975122+01:00"
+											}
+										},
+										"uid" : {
+											"__type" : "uid",
+											"uidString" : "6+9hKV2yDQCCV8JrCdXpuA=="
+										},
+										"paragraphStyle" : {
+											"__type" : "textStyle"
+										},
+										"string" : "Statements are transformed to simpler statements."
+									},
+									{
+										"__type" : "textSnippet",
+										"children" : {
+											"__type" : "snippets",
+											"items" : [ ]
+										},
+										"createEmail" : {
+											"__type" : "email",
+											"emailString" : "<unknown>"
+										},
+										"createTime" : {
+											"__type" : "time",
+											"time" : {
+												"__type" : "dateAndTime",
+												"dateAndTimeString" : "2023-03-03T10:18:32.878672+01:00"
+											}
+										},
+										"editEmail" : {
+											"__type" : "email",
+											"emailString" : "<unknown>"
+										},
+										"editTime" : {
+											"__type" : "time",
+											"time" : {
+												"__type" : "dateAndTime",
+												"dateAndTimeString" : "2023-03-03T10:19:25.304081+01:00"
+											}
+										},
+										"uid" : {
+											"__type" : "uid",
+											"uidString" : "3syNKl2yDQCDVWbACdXpuA=="
+										},
+										"paragraphStyle" : {
+											"__type" : "textStyle"
+										},
+										"string" : "`<E,O,print x>` -> `<E,O,print 3>` -> `<E,O{3},STOP>`"
+									},
+									{
+										"__type" : "textSnippet",
+										"children" : {
+											"__type" : "snippets",
+											"items" : [ ]
+										},
+										"createEmail" : {
+											"__type" : "email",
+											"emailString" : "<unknown>"
+										},
+										"createTime" : {
+											"__type" : "time",
+											"time" : {
+												"__type" : "dateAndTime",
+												"dateAndTimeString" : "2023-03-03T10:19:27.32653+01:00"
+											}
+										},
+										"editEmail" : {
+											"__type" : "email",
+											"emailString" : "<unknown>"
+										},
+										"editTime" : {
+											"__type" : "time",
+											"time" : {
+												"__type" : "dateAndTime",
+												"dateAndTimeString" : "2023-03-03T10:19:43.574483+01:00"
+											}
+										},
+										"uid" : {
+											"__type" : "uid",
+											"uidString" : "HqDMLV2yDQCEgP3aCdXpuA=="
+										},
+										"paragraphStyle" : {
+											"__type" : "textStyle"
+										},
+										"string" : "Similarly for blocks and if or while statements."
+									},
+									{
+										"__type" : "textSnippet",
+										"children" : {
+											"__type" : "snippets",
+											"items" : [ ]
+										},
+										"createEmail" : {
+											"__type" : "email",
+											"emailString" : "<unknown>"
+										},
+										"createTime" : {
+											"__type" : "time",
+											"time" : {
+												"__type" : "dateAndTime",
+												"dateAndTimeString" : "2023-03-03T10:20:24.364508+01:00"
+											}
+										},
+										"editEmail" : {
+											"__type" : "email",
+											"emailString" : "<unknown>"
+										},
+										"editTime" : {
+											"__type" : "time",
+											"time" : {
+												"__type" : "dateAndTime",
+												"dateAndTimeString" : "2023-03-03T10:20:37.164983+01:00"
+											}
+										},
+										"uid" : {
+											"__type" : "uid",
+											"uidString" : "ePMyMV2yDQCGecZKCdXpuA=="
+										},
+										"paragraphStyle" : {
+											"__type" : "textStyle"
+										},
+										"string" : "`<E,O,{S1;S2;}>`"
+									},
+									{
+										"__type" : "textSnippet",
+										"children" : {
+											"__type" : "snippets",
+											"items" : [ ]
+										},
+										"createEmail" : {
+											"__type" : "email",
+											"emailString" : "<unknown>"
+										},
+										"createTime" : {
+											"__type" : "time",
+											"time" : {
+												"__type" : "dateAndTime",
+												"dateAndTimeString" : "2023-03-03T10:19:46.407619+01:00"
+											}
+										},
+										"editEmail" : {
+											"__type" : "email",
+											"emailString" : "<unknown>"
+										},
+										"editTime" : {
+											"__type" : "time",
+											"time" : {
+												"__type" : "dateAndTime",
+												"dateAndTimeString" : "2023-03-03T10:20:06.397799+01:00"
+											}
+										},
+										"uid" : {
+											"__type" : "uid",
+											"uidString" : "bMfvLl2yDQCFdV/7CdXpuA=="
+										},
+										"paragraphStyle" : {
+											"__type" : "textStyle"
+										},
+										"string" : "While statements are translated to if statements."
+									}
+								]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2023-03-03T09:38:29.757825+01:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2023-03-03T10:18:12.498047+01:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "txlRm1yyDQCZ/mB+D2sEJQ=="
+							},
+							"paragraphStyle" : {
+								"__type" : "textStyle"
+							},
+							"string" : "#Statements"
+						}
+					]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2023-03-03T10:12:14.744216+01:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2023-03-03T10:12:20.379841+01:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "1mZBmVyyDQCYwIwhD2sEJQ=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : "#Small step semantics"
 			}
 		]
 	},
