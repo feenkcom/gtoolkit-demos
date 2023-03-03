@@ -318,11 +318,21 @@ SPLGrammarExamples >> varDeclWithoutInit [
 
 { #category : #example }
 SPLGrammarExamples >> whileProgram [
+	<gtExample>
+	| input |
+	input := self whileProgramSource.
+	self fail: input rule: #declaration.
+	self fail: input rule: #statement.
+	^ self parse: input rule: #program
+]
+
+{ #category : #example }
+SPLGrammarExamples >> whileProgramSource [
 "Example from exercise 02"
 	<gtExample>
 	^ 'var a = 1;
 while (a < 10) {
-	3 print a;
+	print a;
 	a = a + 1;
 }'
 ]

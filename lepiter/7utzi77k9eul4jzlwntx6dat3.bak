@@ -521,7 +521,7 @@
 											"__type" : "time",
 											"time" : {
 												"__type" : "dateAndTime",
-												"dateAndTimeString" : "2023-03-03T17:34:51.641125+01:00"
+												"dateAndTimeString" : "2023-03-03T17:35:10.573049+01:00"
 											}
 										},
 										"uid" : {
@@ -531,7 +531,7 @@
 										"paragraphStyle" : {
 											"__type" : "textStyle"
 										},
-										"string" : "[[Building SPL Declarations and Programs]] "
+										"string" : "[[Building SPL Declarations]] "
 									}
 								]
 							},

@@ -145,8 +145,9 @@ SPLParser >> printStmt [
 	^ super printStmt ==> [ :node | SPLPrintStatement for: node second ]
 ]
 
-{ #category : #'as yet unclassified' }
-SPLParser >> program [ ^ super program
+{ #category : #accessing }
+SPLParser >> program [
+	^ super program ==> [ :node | SPLProgram for: node ]
 ]
 
 { #category : #'as yet unclassified' }

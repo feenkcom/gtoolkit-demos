@@ -76,6 +76,29 @@ print (x+y);
 ]
 
 { #category : #accessing }
+SPLParserExamples >> fibonacciProgram [
+	<gtExample>
+	| result |
+	result := super fibonacciProgram.
+	self assert: result printString equals: '
+var thisFib = 1;
+var lastFib = thisFib;
+var nextFib = thisFib;
+var n = 1;
+var end = 20;
+while (iterations<end)
+{
+iterations = (iterations+1);
+nextFib = (thisFib+lastFib);
+lastFib = thisFib;
+thisFib = nextFib;
+}
+print thisFib;
+'.
+	^ result
+]
+
+{ #category : #accessing }
 SPLParserExamples >> float3point14 [
 	<gtExample>
 	| result |
@@ -267,7 +290,7 @@ SPLParserExamples >> varDeclWithInit [
 	<gtExample>
 	| result |
 	result := super varDeclWithInit.
-	"self assert: result printString equals: 'TODO'."
+	self assert: result printString equals: 'var x = (42+y);'.
 	^ result
 ]
 
@@ -276,7 +299,23 @@ SPLParserExamples >> varDeclWithoutInit [
 	<gtExample>
 	| result |
 	result := super varDeclWithoutInit.
-	"self assert: result printString equals: 'TODO'."
+	self assert: result printString equals: 'var x;'.
+	^ result
+]
+
+{ #category : #accessing }
+SPLParserExamples >> whileProgram [
+	<gtExample>
+	| result |
+	result := super whileProgram.
+	self assert: result printString equals: '
+var a = 1;
+while (a<10)
+{
+print a;
+a = (a+1);
+}
+'.
 	^ result
 ]
 

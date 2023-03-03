@@ -195,8 +195,12 @@ SPLGrammar >> unary [
 
 { #category : #grammar }
 SPLGrammar >> varDecl [
-	^ 'var' asPParser trim , identifier , ($= asPParser trim , expression) optional
-		, $; asPParser trim
+	^ ('var' asPParser trim , identifier
+		, ($= asPParser trim , expression) optional , $; asPParser trim)
+		==> [ :node | 
+			node third
+				ifNil: [ SPLDeclaration for: node second ]
+				ifNotNil: [ SPLInitializedDeclaration for: node second with: node third second ] ]
 ]
 
 { #category : #grammar }
