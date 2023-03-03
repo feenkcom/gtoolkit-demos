@@ -18,6 +18,24 @@ SPLParserExamples >> booleanTrue [
 ]
 
 { #category : #accessing }
+SPLParserExamples >> cascadedAssignment [
+	<gtExample>
+	| result |
+	result := super cascadedAssignment.
+	self assert: result printString equals: 'x = y = (3+4)'.
+	^ result
+]
+
+{ #category : #accessing }
+SPLParserExamples >> complexExpression [
+	<gtExample>
+	| result |
+	result := super complexExpression.
+	self assert: result printString equals: '((((1+2)*3)>6) or ((6*7)==42))'.
+	^ result
+]
+
+{ #category : #accessing }
 SPLParserExamples >> float3point14 [
 	<gtExample>
 	| result |
@@ -66,6 +84,15 @@ SPLParserExamples >> notTrue [
 ]
 
 { #category : #accessing }
+SPLParserExamples >> orbeAsIdentifier [
+	<gtExample>
+	| result |
+	result := super orbeAsIdentifier.
+	self assert: result printString equals: 'orbe'.
+	^ result
+]
+
+{ #category : #accessing }
 SPLParserExamples >> parenthesized42 [
 	<gtExample>
 	| result |
@@ -77,6 +104,42 @@ SPLParserExamples >> parenthesized42 [
 { #category : #accessing }
 SPLParserExamples >> parserClass [
 	^ SPLParser
+]
+
+{ #category : #accessing }
+SPLParserExamples >> threeEqualFour [
+	<gtExample>
+	| result |
+	result := super threeEqualFour.
+	self assert: result printString equals: '(3==4)'.
+	^ result
+]
+
+{ #category : #accessing }
+SPLParserExamples >> threeLessThanEqualFour [
+	<gtExample>
+	| result |
+	result := super threeLessThanEqualFour.
+	self assert: result printString equals: '(3<=4)'.
+	^ result
+]
+
+{ #category : #accessing }
+SPLParserExamples >> threeLessThanFour [
+	<gtExample>
+	| result |
+	result := super threeLessThanFour.
+	self assert: result printString equals: '(3<4)'.
+	^ result
+]
+
+{ #category : #accessing }
+SPLParserExamples >> threeNotEqualFour [
+	<gtExample>
+	| result |
+	result := super threeNotEqualFour.
+	self assert: result printString equals: '(3!=4)'.
+	^ result
 ]
 
 { #category : #accessing }
@@ -103,5 +166,23 @@ SPLParserExamples >> threeTimesFourDividedByFive [
 	| result |
 	result := self parse: '3*4/5' rule: #factor.
 	self assert: result printString equals: '((3*4)/5)'.
+	^ result
+]
+
+{ #category : #accessing }
+SPLParserExamples >> trueAndFalse [
+	<gtExample>
+	| result |
+	result := super trueAndFalse.
+	self assert: result printString equals: '(true and false)'.
+	^ result
+]
+
+{ #category : #accessing }
+SPLParserExamples >> trueOrFalse [
+	<gtExample>
+	| result |
+	result := super trueOrFalse.
+	self assert: result printString equals: '(true or false)'.
 	^ result
 ]

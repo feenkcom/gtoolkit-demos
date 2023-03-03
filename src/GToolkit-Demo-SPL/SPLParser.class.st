@@ -8,17 +8,29 @@ Class {
 	#category : #'GToolkit-Demo-SPL-PetitParser'
 }
 
-{ #category : #'as yet unclassified' }
-SPLParser >> assignment [ ^ super assignment
+{ #category : #accessing }
+SPLParser >> assignment [
+	^ super assignment
+]
+
+{ #category : #accessing }
+SPLParser >> assignmentExpression [
+	^ super assignmentExpression
+		==> [ :node | SPLAssignment variable: node first expression: node third ]
 ]
 
 { #category : #accessing }
 SPLParser >> binaryNodeFor: node [
+	^ self binaryNodeFor: node usingClass: SPLBinary
+]
+
+{ #category : #accessing }
+SPLParser >> binaryNodeFor: node usingClass: aNodeClass [
 	| result |
 	result := node first.
 	node second
 		do: [ :each | 
-			result := SPLBinary
+			result := aNodeClass
 					left: result
 					operator: each first
 					right: each second ].
@@ -34,16 +46,18 @@ SPLParser >> boolean [
 	^ super boolean ==> [ :node | SPLBoolean for: node = 'true' ]
 ]
 
-{ #category : #'as yet unclassified' }
-SPLParser >> comparison [ ^ super comparison
+{ #category : #accessing }
+SPLParser >> comparison [
+	^ super comparison ==> [ :node | self binaryNodeFor: node ]
 ]
 
 { #category : #'as yet unclassified' }
 SPLParser >> declaration [ ^ super declaration
 ]
 
-{ #category : #'as yet unclassified' }
-SPLParser >> equality [ ^ super equality
+{ #category : #accessing }
+SPLParser >> equality [
+	^ super equality ==> [ :node | self binaryNodeFor: node ]
 ]
 
 { #category : #'as yet unclassified' }
@@ -64,8 +78,9 @@ SPLParser >> float [
 	^ super float flatten ==> [ :node | SPLNumber for: node asNumber ]
 ]
 
-{ #category : #'as yet unclassified' }
-SPLParser >> identifier [ ^ super identifier
+{ #category : #accessing }
+SPLParser >> identifier [
+	^ super identifier flatten ==> [ :node | SPLVariable for: node ]
 ]
 
 { #category : #'as yet unclassified' }
@@ -81,12 +96,16 @@ SPLParser >> integer [
 SPLParser >> keyword [ ^ super keyword
 ]
 
-{ #category : #'as yet unclassified' }
-SPLParser >> logicAnd [ ^ super logicAnd
+{ #category : #accessing }
+SPLParser >> logicAnd [
+	^ super logicAnd
+		==> [ :node | self binaryNodeFor: node usingClass: SPLLogicalBinary ]
 ]
 
-{ #category : #'as yet unclassified' }
-SPLParser >> logicOr [ ^ super logicOr
+{ #category : #accessing }
+SPLParser >> logicOr [
+	^ super logicOr
+		==> [ :node | self binaryNodeFor: node usingClass: SPLLogicalBinary ]
 ]
 
 { #category : #accessing }
@@ -104,8 +123,9 @@ SPLParser >> parenthesizedExpression [
 	^ super parenthesizedExpression ==> #second
 ]
 
-{ #category : #'as yet unclassified' }
-SPLParser >> primary [ ^ super primary
+{ #category : #accessing }
+SPLParser >> primary [
+	^ super primary
 ]
 
 { #category : #'as yet unclassified' }

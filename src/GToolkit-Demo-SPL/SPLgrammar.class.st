@@ -34,14 +34,20 @@ Class {
 		'declaration',
 		'program',
 		'parenthesizedExpression',
-		'negatedUnary'
+		'negatedUnary',
+		'assignmentExpression'
 	],
 	#category : #'GToolkit-Demo-SPL-PetitParser'
 }
 
 { #category : #grammar }
 SPLGrammar >> assignment [
-	^ (identifier trim , $= asPParser trim , assignment) / logicOr
+	^ assignmentExpression / logicOr
+]
+
+{ #category : #grammar }
+SPLGrammar >> assignmentExpression [
+	^ identifier trim , $= asPParser trim , assignment
 ]
 
 { #category : #grammar }
