@@ -1,3 +1,7 @@
+"
+SPL is the toy language for the [compiler construction course](https://seg.inf.unibe.ch/teaching/current/cc/) at UniBE.
+I implement a parser for SPL that builds an interpreter.
+"
 Class {
 	#name : #SPLParser,
 	#superclass : #SPLGrammar,
@@ -8,13 +12,26 @@ Class {
 SPLParser >> assignment [ ^ super assignment
 ]
 
+{ #category : #accessing }
+SPLParser >> binaryNodeFor: node [
+	| result |
+	result := node first.
+	node second
+		do: [ :each | 
+			result := SPLBinary
+					left: result
+					operator: each first
+					right: each second ].
+	^ result
+]
+
 { #category : #'as yet unclassified' }
 SPLParser >> block [ ^ super block
 ]
 
 { #category : #accessing }
 SPLParser >> boolean [
-	^ super boolean ==> [ :node | node = 'true' ]
+	^ super boolean ==> [ :node | SPLBoolean for: node = 'true' ]
 ]
 
 { #category : #'as yet unclassified' }
@@ -37,13 +54,14 @@ SPLParser >> exprStmt [ ^ super exprStmt
 SPLParser >> expression [ ^ super expression
 ]
 
-{ #category : #'as yet unclassified' }
-SPLParser >> factor [ ^ super factor
+{ #category : #accessing }
+SPLParser >> factor [
+	^ super factor ==> [ :node | self binaryNodeFor: node ]
 ]
 
 { #category : #accessing }
 SPLParser >> float [
-	^ super float flatten ==> [ :node | node asNumber ]
+	^ super float flatten ==> [ :node | SPLNumber for: node asNumber ]
 ]
 
 { #category : #'as yet unclassified' }
@@ -56,7 +74,7 @@ SPLParser >> ifStmt [ ^ super ifStmt
 
 { #category : #accessing }
 SPLParser >> integer [
-	^ super integer flatten ==> [ :node | node asInteger ]
+	^ super integer flatten ==> [ :node | SPLNumber for: node asInteger ]
 ]
 
 { #category : #'as yet unclassified' }
@@ -71,8 +89,19 @@ SPLParser >> logicAnd [ ^ super logicAnd
 SPLParser >> logicOr [ ^ super logicOr
 ]
 
+{ #category : #accessing }
+SPLParser >> negatedUnary [
+	^ super negatedUnary
+		==> [ :node | SPLUnary negate: node first expression: node second ]
+]
+
 { #category : #'as yet unclassified' }
 SPLParser >> number [ ^ super number
+]
+
+{ #category : #accessing }
+SPLParser >> parenthesizedExpression [
+	^ super parenthesizedExpression ==> #second
 ]
 
 { #category : #'as yet unclassified' }
@@ -97,15 +126,17 @@ SPLParser >> statement [ ^ super statement
 
 { #category : #accessing }
 SPLParser >> string [
-	^ super string ==> [ :node | '' join: node second ]
+	^ super string ==> [ :node | SPLString for: ('' join: node second) ]
 ]
 
-{ #category : #'as yet unclassified' }
-SPLParser >> term [ ^ super term
+{ #category : #accessing }
+SPLParser >> term [
+	^ super term ==> [ :node | self binaryNodeFor: node ]
 ]
 
-{ #category : #'as yet unclassified' }
-SPLParser >> unary [ ^ super unary
+{ #category : #accessing }
+SPLParser >> unary [
+	^ super unary
 ]
 
 { #category : #'as yet unclassified' }
