@@ -8,7 +8,7 @@ Class {
 	#category : #'GToolkit-Demo-SPL-Interpreter'
 }
 
-{ #category : #accessing }
+{ #category : #'instance creation' }
 SPLAssignment class >> variable: aVariable expression: anExpression [
 	^ self new
 		variable: aVariable;

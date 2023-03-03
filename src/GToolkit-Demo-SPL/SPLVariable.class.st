@@ -7,7 +7,7 @@ Class {
 	#category : #'GToolkit-Demo-SPL-Interpreter'
 }
 
-{ #category : #accessing }
+{ #category : #'instance creation' }
 SPLVariable class >> for: aVariableName [
 	^ self new
 		variable: aVariableName;

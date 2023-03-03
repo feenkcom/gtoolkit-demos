@@ -8,7 +8,7 @@ Class {
 	#category : #'GToolkit-Demo-SPL-Interpreter'
 }
 
-{ #category : #accessing }
+{ #category : #'instance creation' }
 SPLBinary class >> left: anExpression operator: anOperator right: anExpression2 [
 	^ self new
 		left: anExpression;

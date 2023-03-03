@@ -37,8 +37,9 @@ SPLParser >> binaryNodeFor: node usingClass: aNodeClass [
 	^ result
 ]
 
-{ #category : #'as yet unclassified' }
-SPLParser >> block [ ^ super block
+{ #category : #accessing }
+SPLParser >> block [
+	^ super block ==> [ :node | SPLBlockStatement for: node second ]
 ]
 
 { #category : #accessing }
@@ -60,8 +61,9 @@ SPLParser >> equality [
 	^ super equality ==> [ :node | self binaryNodeFor: node ]
 ]
 
-{ #category : #'as yet unclassified' }
-SPLParser >> exprStmt [ ^ super exprStmt
+{ #category : #accessing }
+SPLParser >> exprStmt [
+	^ super exprStmt ==> [ :node | SPLExpressionStatement for: node first ]
 ]
 
 { #category : #'as yet unclassified' }
@@ -83,8 +85,18 @@ SPLParser >> identifier [
 	^ super identifier flatten ==> [ :node | SPLVariable for: node ]
 ]
 
-{ #category : #'as yet unclassified' }
-SPLParser >> ifStmt [ ^ super ifStmt
+{ #category : #accessing }
+SPLParser >> ifStmt [
+	"NB: the optional else part is the sixth element"
+
+	^ super ifStmt
+		==> [ :node | 
+			node sixth
+				ifNil: [ SPLIfStatement condition: node third ifPart: node fifth ]
+				ifNotNil: [ SPLIfElseStatement
+						condition: node third
+						ifPart: node fifth
+						elsePart: node sixth second ] ]
 ]
 
 { #category : #accessing }
@@ -128,8 +140,9 @@ SPLParser >> primary [
 	^ super primary
 ]
 
-{ #category : #'as yet unclassified' }
-SPLParser >> printStmt [ ^ super printStmt
+{ #category : #accessing }
+SPLParser >> printStmt [
+	^ super printStmt ==> [ :node | SPLPrintStatement for: node second ]
 ]
 
 { #category : #'as yet unclassified' }
@@ -163,6 +176,8 @@ SPLParser >> unary [
 SPLParser >> varDecl [ ^ super varDecl
 ]
 
-{ #category : #'as yet unclassified' }
-SPLParser >> whileStmt [ ^ super whileStmt
+{ #category : #accessing }
+SPLParser >> whileStmt [
+	^ super whileStmt
+		==> [ :node | SPLWhileStatement condition: node third whilePart: node fifth ]
 ]

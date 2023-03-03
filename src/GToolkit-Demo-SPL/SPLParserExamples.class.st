@@ -8,6 +8,19 @@ Class {
 }
 
 { #category : #accessing }
+SPLParserExamples >> blockStmt [
+	<todo: 'handle indentation'>
+	<gtExample>
+	| result |
+	result := super blockStmt.
+	self assert: result printString equals: '{
+x = 42;
+print (x*x);
+}'.
+	^ result
+]
+
+{ #category : #accessing }
 SPLParserExamples >> booleanTrue [
 	<gtExample>
 	| result |
@@ -36,6 +49,33 @@ SPLParserExamples >> complexExpression [
 ]
 
 { #category : #accessing }
+SPLParserExamples >> complexExpressionStmt [
+	<gtExample>
+	| result |
+	result := super complexExpressionStmt.
+	self assert: result printString equals: '((((1+2)*3)>6) or ((6*7)==42));'.
+	^ result
+]
+
+{ #category : #accessing }
+SPLParserExamples >> complexStmt [
+	<todo: 'handle indentation'>
+	<gtExample>
+	| result |
+	result := super complexStmt.
+	self assert: result printString equals: 'while (x>y)
+{
+if (x<42)
+{
+x = (x+1);
+print x;
+}
+print (x+y);
+}'.
+	^ result
+]
+
+{ #category : #accessing }
 SPLParserExamples >> float3point14 [
 	<gtExample>
 	| result |
@@ -52,6 +92,32 @@ SPLParserExamples >> helloString [
 	result := super helloString.
 	self assert: result value equals: 'hello'.
 	self assert: result printString equals: '"hello"'.
+	^ result
+]
+
+{ #category : #accessing }
+SPLParserExamples >> ifElseStmt [
+	<todo: 'handle indentation'>
+	<gtExample>
+	| result |
+	result := super ifElseStmt.
+	self assert: result printString equals: 'if (x>y)
+x = y;
+else
+x = -y;'.
+	^ result
+]
+
+{ #category : #accessing }
+SPLParserExamples >> ifNoElseStmt [
+	<todo: 'handle indentation'>
+	<gtExample>
+	| result |
+	result := super ifNoElseStmt.
+	self
+		assert: result printString
+		equals: 'if (x>y)
+x = y;'.
 	^ result
 ]
 
@@ -104,6 +170,15 @@ SPLParserExamples >> parenthesized42 [
 { #category : #accessing }
 SPLParserExamples >> parserClass [
 	^ SPLParser
+]
+
+{ #category : #accessing }
+SPLParserExamples >> printStmt [
+	<gtExample>
+	| result |
+	result := super printStmt.
+	self assert: result printString equals: 'print (3+4);'.
+	^ result
 ]
 
 { #category : #accessing }
@@ -184,5 +259,34 @@ SPLParserExamples >> trueOrFalse [
 	| result |
 	result := super trueOrFalse.
 	self assert: result printString equals: '(true or false)'.
+	^ result
+]
+
+{ #category : #accessing }
+SPLParserExamples >> varDeclWithInit [
+	<gtExample>
+	| result |
+	result := super varDeclWithInit.
+	"self assert: result printString equals: 'TODO'."
+	^ result
+]
+
+{ #category : #accessing }
+SPLParserExamples >> varDeclWithoutInit [
+	<gtExample>
+	| result |
+	result := super varDeclWithoutInit.
+	"self assert: result printString equals: 'TODO'."
+	^ result
+]
+
+{ #category : #accessing }
+SPLParserExamples >> whileStmt [
+	<todo: 'handle indentation'>
+	<gtExample>
+	| result |
+	result := super whileStmt.
+	self assert: result printString equals: 'while (x<42)
+x = (x+1);'.
 	^ result
 ]

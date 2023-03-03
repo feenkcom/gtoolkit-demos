@@ -7,7 +7,7 @@ Class {
 	#category : #'GToolkit-Demo-SPL-Interpreter'
 }
 
-{ #category : #accessing }
+{ #category : #'instance creation' }
 SPLValue class >> for: aValue [
 	^ self new value: aValue
 ]

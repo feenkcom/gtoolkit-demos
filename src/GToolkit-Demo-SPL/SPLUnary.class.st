@@ -7,7 +7,7 @@ Class {
 	#category : #'GToolkit-Demo-SPL-Interpreter'
 }
 
-{ #category : #accessing }
+{ #category : #'instance creation' }
 SPLUnary class >> negate: anOperator expression: anExpression [
 	^ self new
 		operator: anOperator;

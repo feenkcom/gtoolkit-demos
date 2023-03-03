@@ -29,7 +29,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-03-03T11:40:13.585226+01:00"
+						"dateAndTimeString" : "2023-03-03T16:31:41.431763+01:00"
 					}
 				},
 				"uid" : {
@@ -39,7 +39,7 @@
 				"paragraphStyle" : {
 					"__type" : "textStyle"
 				},
-				"string" : "We continue from [[Building SPL values]]."
+				"string" : "We continue from [[Building SPL Values]]."
 			},
 			{
 				"__type" : "textSnippet",
@@ -145,7 +145,7 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-03-03T16:28:59.287716+01:00"
+									"dateAndTimeString" : "2023-03-03T16:32:10.855806+01:00"
 								}
 							},
 							"uid" : {
@@ -155,7 +155,7 @@
 							"paragraphStyle" : {
 								"__type" : "textStyle"
 							},
-							"string" : "{{gtTodo:label=expression}}\n{{gtTodo:label=assignment|completed=2023-03-03}}\n{{gtTodo:label=logic_or|completed=2023-03-03}}\n{{gtTodo:label=logic_and|completed=2023-03-03}}\n{{gtTodo:label=equality|completed=2023-03-03}}\n{{gtTodo:label=comparison|completed=2023-03-03}}\n{{gtTodo:label=term|completed=2023-03-03}}\n{{gtTodo:label=factor|completed=2023-03-03}}\n{{gtTodo:label=unary|completed=2023-03-03}}\n{{gtTodo:label=primary|completed=2023-03-03}}"
+							"string" : "{{gtTodo:label=expression|completed=2023-03-03}}\n{{gtTodo:label=assignment|completed=2023-03-03}}\n{{gtTodo:label=logic_or|completed=2023-03-03}}\n{{gtTodo:label=logic_and|completed=2023-03-03}}\n{{gtTodo:label=equality|completed=2023-03-03}}\n{{gtTodo:label=comparison|completed=2023-03-03}}\n{{gtTodo:label=term|completed=2023-03-03}}\n{{gtTodo:label=factor|completed=2023-03-03}}\n{{gtTodo:label=unary|completed=2023-03-03}}\n{{gtTodo:label=primary|completed=2023-03-03}}"
 						}
 					]
 				},
