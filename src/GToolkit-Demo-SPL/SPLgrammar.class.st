@@ -171,7 +171,8 @@ SPLgrammar >> unary [
 
 { #category : #grammar }
 SPLgrammar >> varDecl [
-	^ 'var' asPParser trim , identifier , $; asPParser trim
+	^ 'var' asPParser trim , identifier , ($= asPParser trim , expression) optional
+		, $; asPParser trim
 ]
 
 { #category : #grammar }

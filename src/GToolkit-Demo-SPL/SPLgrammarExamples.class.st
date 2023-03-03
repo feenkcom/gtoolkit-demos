@@ -64,6 +64,53 @@ SPLgrammarExamples >> complexStmt [
 ]
 
 { #category : #example }
+SPLgrammarExamples >> fibonacciOracle [
+	"This is a Smalltalk implementation of the SPL fibonacci source program.
+	It can be used as an oracle for a test case for the interpreter."
+
+	<gtExample>
+	| thisFib lastFib iterations end nextFib |
+	thisFib := 1.
+	lastFib := 1.
+	iterations := 1.
+	end := 20.
+	[ iterations < end ]
+		whileTrue: [ iterations := iterations + 1.
+			nextFib := thisFib + lastFib.
+			lastFib := thisFib.
+			thisFib := nextFib ].
+	^ thisFib
+]
+
+{ #category : #example }
+SPLgrammarExamples >> fibonacciProgram [
+	<gtExample>
+	| input |
+	input := self fibonacciSource.
+	self fail: input rule: #declaration.
+	self fail: input rule: #statement.
+	^ self parse: input rule: #program
+]
+
+{ #category : #example }
+SPLgrammarExamples >> fibonacciSource [
+	<gtExample>
+	^ 'var thisFib = 1;
+var lastFib = thisFib;
+var nextFib = thisFib;
+var n = 1;
+var end = 20;
+while ( iterations < end ) {
+	iterations = iterations + 1;
+	nextFib = thisFib + lastFib;
+	lastFib = thisFib;
+	thisFib = nextFib;
+}
+print thisFib;
+'
+]
+
+{ #category : #example }
 SPLgrammarExamples >> float3point14 [
 	<gtExample>
 	^ self parse: '3.14' rule: #float
@@ -242,6 +289,39 @@ SPLgrammarExamples >> trueOrFalse [
 	self parse: input rule: #expression.
 	self fail: input rule: #logicAnd.
 	^ self parse: input rule: #logicOr
+]
+
+{ #category : #example }
+SPLgrammarExamples >> varDeclWithInit [
+	<gtExample>
+	| input |
+	input := 'var x = 42 + y;'.
+	self parse: input rule: #program.
+	self parse: input rule: #declaration.
+	self fail: input rule: #statement.
+	^ self parse: input rule: #varDecl.
+]
+
+{ #category : #example }
+SPLgrammarExamples >> varDeclWithoutInit [
+	<gtExample>
+	| input |
+	input := 'var x;'.
+	self parse: input rule: #program.
+	self parse: input rule: #declaration.
+	self fail: input rule: #statement.
+	^ self parse: input rule: #varDecl.
+]
+
+{ #category : #example }
+SPLgrammarExamples >> whileProgram [
+"Example from exercise 02"
+	<gtExample>
+	^ 'var a = 1;
+while (a < 10) {
+	3 print a;
+	a = a + 1;
+}'
 ]
 
 { #category : #example }
