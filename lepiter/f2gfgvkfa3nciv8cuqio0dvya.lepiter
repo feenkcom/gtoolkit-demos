@@ -8,7 +8,45 @@
 				"__type" : "textSnippet",
 				"children" : {
 					"__type" : "snippets",
-					"items" : [ ]
+					"items" : [
+						{
+							"__type" : "textSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2023-03-03T08:22:39.478656+01:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2023-03-03T09:14:57.929418+01:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "mVsZjFuyDQCCuXjLBEOF/g=="
+							},
+							"paragraphStyle" : {
+								"__type" : "textStyle"
+							},
+							"string" : "{{gtTodo:label=program|completed=2023-03-03}}\n{{gtTodo:label=declaration |completed=2023-03-03}}\n{{gtTodo:label=varDecl|completed=2023-03-03}}"
+						}
+					]
 				},
 				"createEmail" : {
 					"__type" : "email",
@@ -18,7 +56,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-03-02T11:18:14.578075+01:00"
+						"dateAndTimeString" : "2023-03-03T08:22:45.93159+01:00"
 					}
 				},
 				"editEmail" : {
@@ -29,17 +67,17 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-03-02T11:18:24.028566+01:00"
+						"dateAndTimeString" : "2023-03-03T08:22:48.327378+01:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
-					"uidString" : "rXkB4kmyDQCa9w+FD6pEHQ=="
+					"uidString" : "Mc97jFuyDQCCwSXPBEOF/g=="
 				},
 				"paragraphStyle" : {
 					"__type" : "textStyle"
 				},
-				"string" : "We start by prototyping the grammar."
+				"string" : "#Todo"
 			},
 			{
 				"__type" : "textSnippet",
@@ -55,7 +93,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-03-02T11:26:29.479551+01:00"
+						"dateAndTimeString" : "2023-03-03T08:23:00.34161+01:00"
 					}
 				},
 				"editEmail" : {
@@ -66,20 +104,20 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-03-02T11:27:14.616445+01:00"
+						"dateAndTimeString" : "2023-03-03T08:47:49.268161+01:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
-					"uidString" : "w2GO/0myDQCcSv6TD6pEHQ=="
+					"uidString" : "DbJXjVuyDQCDQZPxBEOF/g=="
 				},
 				"paragraphStyle" : {
 					"__type" : "textStyle"
 				},
-				"string" : "Since PP is used to build scannerless parsers, we don't actually have a scanner at all, but we introduce grammar rules for the basic tokens. "
+				"string" : "Finally we parse declarations and programs."
 			},
 			{
-				"__type" : "pharoSnippet",
+				"__type" : "exampleSnippet",
 				"children" : {
 					"__type" : "snippets",
 					"items" : [ ]
@@ -92,7 +130,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-03-02T11:27:30.786856+01:00"
+						"dateAndTimeString" : "2023-03-03T08:48:58.767924+01:00"
 					}
 				},
 				"editEmail" : {
@@ -103,17 +141,23 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-03-02T11:27:48.184822+01:00"
+						"dateAndTimeString" : "2023-03-03T08:48:58.767924+01:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
-					"uidString" : "z99ZA0qyDQCeDIfZD6pEHQ=="
+					"uidString" : "g2Q76luyDQCIbmvJBEOF/g=="
 				},
-				"code" : "boolean := 'true' asPParser / 'false' asPParser."
+				"exampleSelector" : "varDeclWithoutInit",
+				"previewHeight" : 200,
+				"previewShowSelector" : "gtViewsFor:",
+				"exampleBehaviorName" : "SPLGrammarExamples",
+				"codeExpanded" : true,
+				"previewExpanded" : false,
+				"noCode" : false
 			},
 			{
-				"__type" : "pharoSnippet",
+				"__type" : "exampleSnippet",
 				"children" : {
 					"__type" : "snippets",
 					"items" : [ ]
@@ -126,7 +170,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-03-02T11:27:55.352989+01:00"
+						"dateAndTimeString" : "2023-03-03T08:50:34.919205+01:00"
 					}
 				},
 				"editEmail" : {
@@ -137,14 +181,20 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-03-02T11:28:17.272061+01:00"
+						"dateAndTimeString" : "2023-03-03T08:50:34.919205+01:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
-					"uidString" : "iL/QBEqyDQCe42gmD6pEHQ=="
+					"uidString" : "XYv271uyDQCKzd0FBEOF/g=="
 				},
-				"code" : "boolean parse: 'true'."
+				"exampleSelector" : "varDeclWithInit",
+				"previewHeight" : 200,
+				"previewShowSelector" : "gtViewsFor:",
+				"exampleBehaviorName" : "SPLGrammarExamples",
+				"codeExpanded" : true,
+				"previewExpanded" : false,
+				"noCode" : false
 			},
 			{
 				"__type" : "textSnippet",
@@ -160,7 +210,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-03-02T11:28:27.065697+01:00"
+						"dateAndTimeString" : "2023-03-03T08:53:37.85266+01:00"
 					}
 				},
 				"editEmail" : {
@@ -171,85 +221,17 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-03-02T11:28:33.971795+01:00"
+						"dateAndTimeString" : "2023-03-03T10:49:16.317733+01:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
-					"uidString" : "deM1BkqyDQCfdXmzD6pEHQ=="
+					"uidString" : "lH0G9luyDQCMixbvBEOF/g=="
 				},
 				"paragraphStyle" : {
 					"__type" : "textStyle"
 				},
-				"string" : "Numbers are slightly more complex:"
-			},
-			{
-				"__type" : "pharoSnippet",
-				"children" : {
-					"__type" : "snippets",
-					"items" : [ ]
-				},
-				"createEmail" : {
-					"__type" : "email",
-					"emailString" : "<unknown>"
-				},
-				"createTime" : {
-					"__type" : "time",
-					"time" : {
-						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-03-02T11:34:32.92932+01:00"
-					}
-				},
-				"editEmail" : {
-					"__type" : "email",
-					"emailString" : "<unknown>"
-				},
-				"editTime" : {
-					"__type" : "time",
-					"time" : {
-						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-03-02T11:35:52.45147+01:00"
-					}
-				},
-				"uid" : {
-					"__type" : "uid",
-					"uidString" : "skWDHEqyDQCkD+nxD6pEHQ=="
-				},
-				"code" : "integer := $- asPParser optional , #digit asPParser plus , $. asPParser not.\rfloat := $- asPParser optional , #digit asPParser plus , $. asPParser\r\t\t, #digit asPParser plus.\rnumber := integer / float."
-			},
-			{
-				"__type" : "pharoSnippet",
-				"children" : {
-					"__type" : "snippets",
-					"items" : [ ]
-				},
-				"createEmail" : {
-					"__type" : "email",
-					"emailString" : "<unknown>"
-				},
-				"createTime" : {
-					"__type" : "time",
-					"time" : {
-						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-03-02T11:32:21.082768+01:00"
-					}
-				},
-				"editEmail" : {
-					"__type" : "email",
-					"emailString" : "<unknown>"
-				},
-				"editTime" : {
-					"__type" : "time",
-					"time" : {
-						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-03-02T11:36:33.917319+01:00"
-					}
-				},
-				"uid" : {
-					"__type" : "uid",
-					"uidString" : "mHKnFEqyDQCjN2Z6D6pEHQ=="
-				},
-				"code" : "number parse: '-3.14'."
+				"string" : "We tweak the rule for {{gtMethod:name=SPLGrammar>>#varDecl}} until the test passes."
 			},
 			{
 				"__type" : "textSnippet",
@@ -265,7 +247,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-03-02T11:36:40.56191+01:00"
+						"dateAndTimeString" : "2023-03-03T08:54:26.831326+01:00"
 					}
 				},
 				"editEmail" : {
@@ -276,85 +258,17 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-03-02T11:36:48.805106+01:00"
+						"dateAndTimeString" : "2023-03-03T09:08:53.405799+01:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
-					"uidString" : "2oiRI0qyDQCkpeB8D6pEHQ=="
+					"uidString" : "Tz3J/VuyDQCw4o+TBEOF/g=="
 				},
 				"paragraphStyle" : {
 					"__type" : "textStyle"
 				},
-				"string" : "We assume strings have no escapes for now."
-			},
-			{
-				"__type" : "pharoSnippet",
-				"children" : {
-					"__type" : "snippets",
-					"items" : [ ]
-				},
-				"createEmail" : {
-					"__type" : "email",
-					"emailString" : "<unknown>"
-				},
-				"createTime" : {
-					"__type" : "time",
-					"time" : {
-						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-03-02T11:36:50.455459+01:00"
-					}
-				},
-				"editEmail" : {
-					"__type" : "email",
-					"emailString" : "<unknown>"
-				},
-				"editTime" : {
-					"__type" : "time",
-					"time" : {
-						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-03-02T11:37:21.913441+01:00"
-					}
-				},
-				"uid" : {
-					"__type" : "uid",
-					"uidString" : "9re1JEqyDQClTlkOD6pEHQ=="
-				},
-				"code" : "string := $\" asPParser , $\" asPParser negate plus , $\" asPParser."
-			},
-			{
-				"__type" : "pharoSnippet",
-				"children" : {
-					"__type" : "snippets",
-					"items" : [ ]
-				},
-				"createEmail" : {
-					"__type" : "email",
-					"emailString" : "<unknown>"
-				},
-				"createTime" : {
-					"__type" : "time",
-					"time" : {
-						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-03-02T11:37:22.624369+01:00"
-					}
-				},
-				"editEmail" : {
-					"__type" : "email",
-					"emailString" : "<unknown>"
-				},
-				"editTime" : {
-					"__type" : "time",
-					"time" : {
-						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-03-02T11:37:34.762285+01:00"
-					}
-				},
-				"uid" : {
-					"__type" : "uid",
-					"uidString" : "BKCgJkqyDQCmJbXZD6pEHQ=="
-				},
-				"code" : "string parse: '\"hello\"'."
+				"string" : "Finally we test a couple of more complex programs."
 			},
 			{
 				"__type" : "textSnippet",
@@ -370,7 +284,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-03-02T11:39:05.685665+01:00"
+						"dateAndTimeString" : "2023-03-03T09:09:06.553364+01:00"
 					}
 				},
 				"editEmail" : {
@@ -381,20 +295,20 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-03-02T11:39:19.449335+01:00"
+						"dateAndTimeString" : "2023-03-03T09:09:17.153795+01:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
-					"uidString" : "D9g2K0qyDQCnLL6dD6pEHQ=="
+					"uidString" : "t7s4MlyyDQCNwOCEBEOF/g=="
 				},
 				"paragraphStyle" : {
 					"__type" : "textStyle"
 				},
-				"string" : "We should also distinguish keywords from identifiers."
+				"string" : "First, the while program from the exercise sheet."
 			},
 			{
-				"__type" : "pharoSnippet",
+				"__type" : "exampleSnippet",
 				"children" : {
 					"__type" : "snippets",
 					"items" : [ ]
@@ -407,7 +321,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-03-02T11:39:25.951076+01:00"
+						"dateAndTimeString" : "2023-03-03T09:08:58.602643+01:00"
 					}
 				},
 				"editEmail" : {
@@ -418,17 +332,23 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-03-02T14:26:03.779755+01:00"
+						"dateAndTimeString" : "2023-03-03T09:08:58.602643+01:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
-					"uidString" : "gGv6LUqyDQCoRcz4D6pEHQ=="
+					"uidString" : "nWe/MVyyDQCMpO1nBEOF/g=="
 				},
-				"code" : "keyword := ('var' asPParser , #letter asPParser not)\r\t\t/ ('if' asPParser , #letter asPParser not)\r\t\t/ ('else' asPParser , #letter asPParser not)\r\t\t/ ('while' asPParser , #letter asPParser not)\r\t\t/ ('true' asPParser , #letter asPParser not)\r\t\t/ ('false' asPParser , #letter asPParser not)\r\t\t/ ('and' asPParser , #letter asPParser not)\r\t\t/ ('or' asPParser , #letter asPParser not)."
+				"exampleSelector" : "whileProgram",
+				"previewHeight" : 200,
+				"previewShowSelector" : "gtViewsFor:",
+				"exampleBehaviorName" : "SPLGrammarExamples",
+				"codeExpanded" : true,
+				"previewExpanded" : false,
+				"noCode" : false
 			},
 			{
-				"__type" : "pharoSnippet",
+				"__type" : "textSnippet",
 				"children" : {
 					"__type" : "snippets",
 					"items" : [ ]
@@ -441,7 +361,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-03-02T11:41:15.654173+01:00"
+						"dateAndTimeString" : "2023-03-03T09:09:20.61923+01:00"
 					}
 				},
 				"editEmail" : {
@@ -452,17 +372,20 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-03-02T14:26:38.138146+01:00"
+						"dateAndTimeString" : "2023-03-03T09:09:31.13756+01:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
-					"uidString" : "hF+ENEqyDQCp2uukD6pEHQ=="
+					"uidString" : "yVgPM1yyDQCdMUtJBEOF/g=="
 				},
-				"code" : "identifier := keyword not, #letter asPParser, #word asPParser star."
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : "And finally a more complex fibonacci program."
 			},
 			{
-				"__type" : "pharoSnippet",
+				"__type" : "exampleSnippet",
 				"children" : {
 					"__type" : "snippets",
 					"items" : [ ]
@@ -475,7 +398,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-03-02T14:26:43.071802+01:00"
+						"dateAndTimeString" : "2023-03-03T09:09:34.253784+01:00"
 					}
 				},
 				"editEmail" : {
@@ -486,14 +409,57 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-03-02T14:26:54.482694+01:00"
+						"dateAndTimeString" : "2023-03-03T09:09:34.253784+01:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
-					"uidString" : "/L88hEyyDQCuGZ4vDiUNuQ=="
+					"uidString" : "B2nfM1yyDQCtw5gCBEOF/g=="
 				},
-				"code" : "identifier parse: 'var'"
+				"exampleSelector" : "fibonacciProgram",
+				"previewHeight" : 200,
+				"previewShowSelector" : "gtViewsFor:",
+				"exampleBehaviorName" : "SPLGrammarExamples",
+				"codeExpanded" : true,
+				"previewExpanded" : false,
+				"noCode" : false
+			},
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2023-03-03T09:10:36.724611+01:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2023-03-03T09:10:36.724611+01:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "hWysNlyyDQCwGrKSBEOF/g=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : ""
 			}
 		]
 	},
@@ -505,7 +471,7 @@
 		"__type" : "time",
 		"time" : {
 			"__type" : "dateAndTime",
-			"dateAndTimeString" : "2023-03-02T11:18:11.287795+01:00"
+			"dateAndTimeString" : "2023-03-03T08:22:39.447956+01:00"
 		}
 	},
 	"editEmail" : {
@@ -516,15 +482,15 @@
 		"__type" : "time",
 		"time" : {
 			"__type" : "dateAndTime",
-			"dateAndTimeString" : "2023-03-02T11:54:30.117368+01:00"
+			"dateAndTimeString" : "2023-03-03T08:22:39.447956+01:00"
 		}
 	},
 	"pageType" : {
 		"__type" : "namedPage",
-		"title" : "SPL Scanner"
+		"title" : "Parsing SPL Programs"
 	},
 	"uid" : {
 		"__type" : "uuid",
-		"uuid" : "19a100e2-49b2-0d00-9af6-26cf0faa441d"
+		"uuid" : "02e3188c-5bb2-0d00-82b8-5754044385fe"
 	}
 }
