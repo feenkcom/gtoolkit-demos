@@ -1,6 +1,6 @@
 Extension { #name : #GtHome }
 
-{ #category : #'*Gtoolkit-DraftDemos-GtHome' }
+{ #category : #'*GToolkit-Demos-GtHome' }
 GtHome >> getDraftDemosSection [
 	<gtHomeSection>
 	^ GtHomeDraftDemosSection new
