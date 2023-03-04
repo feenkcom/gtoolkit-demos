@@ -1059,7 +1059,7 @@
 				"string" : ""
 			},
 			{
-				"__type" : "pharoSnippet",
+				"__type" : "textSnippet",
 				"children" : {
 					"__type" : "snippets",
 					"items" : [ ]
@@ -1072,7 +1072,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-03-04T10:28:20.542551+01:00"
+						"dateAndTimeString" : "2023-03-04T10:36:36.106108+01:00"
 					}
 				},
 				"editEmail" : {
@@ -1083,14 +1083,17 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-03-04T10:35:39.625307+01:00"
+						"dateAndTimeString" : "2023-03-04T10:36:36.106108+01:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
-					"uidString" : "Ajlsa3GyDQCUkZm1Dx7MqQ=="
+					"uidString" : "NO31iHGyDQCfUwdRDx7MqQ=="
 				},
-				"code" : "env := SPLEnvironment new.\rexpr := SPL parseExpression: 'true != false'.\renv step: expr. "
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : ""
 			}
 		]
 	},
