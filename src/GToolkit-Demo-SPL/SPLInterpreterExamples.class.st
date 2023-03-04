@@ -9,7 +9,7 @@ SPLInterpreterExamples >> a12dividedBy3is4 [
 	<gtExample>
 	| result input |
 	input := self parseExpression: '12/3'.
-	result := self newEnvironment step: input.
+	result := self newContext step: input.
 	self assert: result isValue.
 	self assert: result value equals: 4.
 	^ result
@@ -20,7 +20,7 @@ SPLInterpreterExamples >> a3equals3 [
 	<gtExample>
 	| result input |
 	input := self parseExpression: '3==3'.
-	result := self newEnvironment step: input.
+	result := self newContext step: input.
 	self assert: result isValue.
 	self assert: result value.
 	^ result
@@ -31,7 +31,7 @@ SPLInterpreterExamples >> a3isNot4 [
 	<gtExample>
 	| result input |
 	input := self parseExpression: '3!=4'.
-	result := self newEnvironment step: input.
+	result := self newContext step: input.
 	self assert: result isValue.
 	self assert: result value.
 	^ result
@@ -42,7 +42,7 @@ SPLInterpreterExamples >> a3lessThan4 [
 	<gtExample>
 	| result input |
 	input := self parseExpression: '3<4'.
-	result := self newEnvironment step: input.
+	result := self newContext step: input.
 	self assert: result isValue.
 	self assert: result value.
 	^ result
@@ -53,7 +53,7 @@ SPLInterpreterExamples >> a3lessThanEqual4 [
 	<gtExample>
 	| result input |
 	input := self parseExpression: '3<=4'.
-	result := self newEnvironment step: input.
+	result := self newContext step: input.
 	self assert: result isValue.
 	self assert: result value.
 	^ result
@@ -64,7 +64,7 @@ SPLInterpreterExamples >> a3plus4 [
 	<gtExample>
 	| result |
 	result := self parseExpression: '3+4'.
-	self assert: result isValue not.
+	self assert: result isReduced not.
 	^ result
 ]
 
@@ -73,7 +73,7 @@ SPLInterpreterExamples >> a3plus4is7 [
 	<gtExample>
 	| result input |
 	input := self a3plus4.
-	result := self newEnvironment step: input.
+	result := self newContext step: input.
 	self assert: result isValue.
 	self assert: result value equals: 7.
 	^ result
@@ -84,7 +84,7 @@ SPLInterpreterExamples >> a3plus4times5 [
 	<gtExample>
 	| result input |
 	input := self parseExpression: '3+4*5'.
-	result := self newEnvironment reduce: input.
+	result := self newContext reduce: input.
 	self assert: result isValue.
 	self assert: result value equals: 23.
 	^ result
@@ -95,7 +95,7 @@ SPLInterpreterExamples >> a3times4is12 [
 	<gtExample>
 	| result input |
 	input := self parseExpression: '3*4'.
-	result := self newEnvironment step: input.
+	result := self newContext step: input.
 	self assert: result isValue.
 	self assert: result value equals: 12.
 	^ result
@@ -115,7 +115,7 @@ SPLInterpreterExamples >> a4greaterThan3 [
 	<gtExample>
 	| result input |
 	input := self parseExpression: '4>3'.
-	result := self newEnvironment step: input.
+	result := self newContext step: input.
 	self assert: result isValue.
 	self assert: result value.
 	^ result
@@ -126,7 +126,7 @@ SPLInterpreterExamples >> a4greaterThanEqual3 [
 	<gtExample>
 	| result input |
 	input := self parseExpression: '4>=3'.
-	result := self newEnvironment step: input.
+	result := self newContext step: input.
 	self assert: result isValue.
 	self assert: result value.
 	^ result
@@ -137,10 +137,32 @@ SPLInterpreterExamples >> a4minus3is1 [
 	<gtExample>
 	| result input |
 	input := self parseExpression: '4-3'.
-	result := self newEnvironment step: input.
+	result := self newContext step: input.
 	self assert: result isValue.
 	self assert: result value equals: 1.
 	^ result
+]
+
+{ #category : #parsing }
+SPLInterpreterExamples >> context: aString [
+	^ (self parse: aString) asContext
+]
+
+{ #category : #parsing }
+SPLInterpreterExamples >> contextForExpression: aString [
+	^ (self parseExpression: aString) asContext
+]
+
+{ #category : #accessing }
+SPLInterpreterExamples >> expressionStatement [
+	<gtExample>
+	| result context |
+	context := self context: '3+4;'.
+	result := context.
+	result := context step.
+	self assert: result statements first expression value equals: 7.
+	self assert: context output equals: ''.
+	^ context
 ]
 
 { #category : #accessing }
@@ -148,9 +170,31 @@ SPLInterpreterExamples >> helloEqualsHello [
 	<gtExample>
 	| result input |
 	input := self parseExpression: '"hello" == "hello"'.
-	result := self newEnvironment reduce: input.
+	result := self newContext reduce: input.
 	self assert: result isValue.
 	self assert: result value.
+	^ result
+]
+
+{ #category : #accessing }
+SPLInterpreterExamples >> minus3 [
+	<gtExample>
+	| result input |
+	input := self contextForExpression: '-3'.
+	result := input reduce.
+	self assert: result isValue.
+	self assert: result value equals: -3.
+	^ result
+]
+
+{ #category : #accessing }
+SPLInterpreterExamples >> newContext [
+	<gtExample>
+	| result |
+	result := SPLContext new.
+	self assert: result environment isEmpty.
+	self assert: result environment size equals: 0.
+	self assert: result output isEmpty.
 	^ result
 ]
 
@@ -161,6 +205,17 @@ SPLInterpreterExamples >> newEnvironment [
 	result := SPLEnvironment new.
 	self assert: result isEmpty.
 	self assert: result size equals: 0.
+	^ result
+]
+
+{ #category : #accessing }
+SPLInterpreterExamples >> notTrueIsFalse [
+	<gtExample>
+	| result input |
+	input := self parseExpression: '!true'.
+	result := self newContext reduce: input.
+	self assert: result isValue.
+	self assert: result value not.
 	^ result
 ]
 
@@ -180,11 +235,22 @@ SPLInterpreterExamples >> parserClass [
 ]
 
 { #category : #accessing }
+SPLInterpreterExamples >> printHello [
+	<gtExample>
+	| result context |
+	context := self context: 'print "hello";'.
+	result := context.
+	result := context reduce.
+	self assert: context output equals: 'hello'.
+	^ context
+]
+
+{ #category : #accessing }
 SPLInterpreterExamples >> trueAndTrueIsTrue [
 	<gtExample>
 	| result input |
 	input := self parseExpression: 'true and true'.
-	result := self newEnvironment step: input.
+	result := self newContext step: input.
 	self assert: result isValue.
 	self assert: result value.
 	^ result
@@ -195,7 +261,7 @@ SPLInterpreterExamples >> trueNotEqualFalse [
 	<gtExample>
 	| result input |
 	input := self parseExpression: 'true != false'.
-	result := self newEnvironment reduce: input.
+	result := self newContext reduce: input.
 	self assert: result isValue.
 	self assert: result value.
 	^ result
@@ -206,7 +272,7 @@ SPLInterpreterExamples >> trueOrFalseIsTrue [
 	<gtExample>
 	| result input |
 	input := self parseExpression: 'true or false'.
-	result := self newEnvironment step: input.
+	result := self newContext step: input.
 	self assert: result isValue.
 	self assert: result value.
 	^ result

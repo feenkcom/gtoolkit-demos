@@ -20,7 +20,7 @@ SPLVariable >> printOn: aStream [
 ]
 
 { #category : #stepping }
-SPLVariable >> stepIn: anEnvironment [
+SPLVariable >> stepIn: aContext [
 	^ self notYetImplemented
 ]
 

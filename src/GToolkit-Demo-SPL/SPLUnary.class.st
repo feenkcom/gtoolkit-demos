@@ -15,6 +15,17 @@ SPLUnary class >> negate: anOperator expression: anExpression [
 		yourself 
 ]
 
+{ #category : #stepping }
+SPLUnary >> evaluateIn: aContext [
+	self assert: self expression isReduced.
+	self operator = '!'
+		ifTrue: [ self assert: self expression isBoolean.
+			^ SPLBoolean for: self expression value not ].
+	self operator = '-'
+		ifTrue: [ self assert: self expression isNumber.
+			^ SPLNumber for: self expression value negated ]
+]
+
 { #category : #accessing }
 SPLUnary >> expression [
 	^ expression
@@ -38,6 +49,10 @@ SPLUnary >> printOn: aStream [
 ]
 
 { #category : #stepping }
-SPLUnary >> stepIn: anEnvironment [
-	^ self notYetImplemented
+SPLUnary >> stepIn: aContext [
+	^ self expression isReduced
+		ifTrue: [ self evaluateIn: aContext ]
+		ifFalse: [ self class
+				negate: self operator
+				expression: (self expression stepIn: aContext) ]
 ]

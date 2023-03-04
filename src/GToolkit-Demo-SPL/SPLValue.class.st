@@ -13,6 +13,11 @@ SPLValue class >> for: aValue [
 ]
 
 { #category : #testing }
+SPLValue >> isReduced [
+	^  true
+]
+
+{ #category : #testing }
 SPLValue >> isValue [
 	^  true
 ]
@@ -23,7 +28,7 @@ SPLValue >> printOn: aStream [
 ]
 
 { #category : #stepping }
-SPLValue >> stepIn: anEnvironment [
+SPLValue >> stepIn: aContext [
 	"Should we raise an error, or just return ourself?"
 
 	^ self

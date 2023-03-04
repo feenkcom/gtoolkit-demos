@@ -18,6 +18,12 @@ SPLProgram class >> for: aDeclarationAndStatementCollection [
 	yourself
 ]
 
+{ #category : #testing }
+SPLProgram >> isReduced [
+	^ self statements isEmpty
+		or: [ self statements size = 1 and: [ self statements first isReduced ] ]
+]
+
 { #category : #printing }
 SPLProgram >> printOn: aStream [
 	"todo:handle indentation"
@@ -37,4 +43,16 @@ SPLProgram >> statements [
 { #category : #'instance creation' }
 SPLProgram >> statements: aDeclarationAndStatementCollection [
 	statements := aDeclarationAndStatementCollection
+]
+
+{ #category : #evaluating }
+SPLProgram >> stepIn: aContext [
+	"Take a step in the first statement that is not stopped."
+
+	^ self isReduced
+		ifTrue: [ self ]
+		ifFalse: [ self class
+				for: (self statements allButFirst
+						addFirst: (self statements first stepIn: aContext);
+						yourself) ]
 ]

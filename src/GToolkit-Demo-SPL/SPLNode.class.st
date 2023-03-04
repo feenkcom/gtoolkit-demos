@@ -7,3 +7,27 @@ Class {
 	#superclass : #Object,
 	#category : #'GToolkit-Demo-SPL-Interpreter'
 }
+
+{ #category : #conversion }
+SPLNode >> asContext [
+	^ SPLContext new
+		state: self;
+		yourself
+]
+
+{ #category : #testing }
+SPLNode >> isReduced [
+	"Only true for values and stop statements"
+
+	^ false
+]
+
+{ #category : #testing }
+SPLNode >> isValue [
+	^ false
+]
+
+{ #category : #accessing }
+SPLNode >> stepIn: aContext [
+	self subclassResponsibility
+]

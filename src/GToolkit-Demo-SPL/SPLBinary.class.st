@@ -44,7 +44,7 @@ SPLBinary >> comparisonOperators [
 ]
 
 { #category : #operators }
-SPLBinary >> equalsOp: anEnvironment [
+SPLBinary >> equalsOp: aContext [
 	"NB: We must not override =="
 
 	self assert: self left isNumber.
@@ -53,13 +53,13 @@ SPLBinary >> equalsOp: anEnvironment [
 ]
 
 { #category : #evaluating }
-SPLBinary >> evaluateIn: anEnvironment [
+SPLBinary >> evaluateIn: aContext [
 	self assert: self left isValue.
 	self assert: self right isValue.
 	^ self returnsBoolean
-		ifTrue: [ self comparison: anEnvironment ]
+		ifTrue: [ self comparison: aContext ]
 		ifFalse: [ self assert: self returnsNumber.
-			self numsToNum: anEnvironment ]
+			self numsToNum: aContext ]
 ]
 
 { #category : #accessing }
@@ -140,16 +140,16 @@ SPLBinary >> selectorForOperator [
 ]
 
 { #category : #evaluating }
-SPLBinary >> stepIn: anEnvironment [
+SPLBinary >> stepIn: aContext [
 	^ self left isValue
 		ifTrue: [ self right isValue
-				ifTrue: [ self evaluateIn: anEnvironment ]
+				ifTrue: [ self evaluateIn: aContext ]
 				ifFalse: [ self class
 						left: self left
 						operator: self operator
-						right: (self right stepIn: anEnvironment) ] ]
+						right: (self right stepIn: aContext) ] ]
 		ifFalse: [ self class
-				left: (self left stepIn: anEnvironment)
+				left: (self left stepIn: aContext)
 				operator: self operator
 				right: self right ]
 ]

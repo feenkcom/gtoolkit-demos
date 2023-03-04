@@ -10,3 +10,11 @@ SPLPrintStatement >> printOn: aStream [
 	self expression printOn: aStream.
 	aStream nextPut: $;
 ]
+
+{ #category : #evaluating }
+SPLPrintStatement >> stepIn: aContext [
+	^ self expression isReduced
+		ifTrue: [ aContext outputStream nextPutAll: self expression value asString.
+			SPLStopStatement new ]
+		ifFalse: [ self class for: (self expression stepIn: aContext) ]
+]
