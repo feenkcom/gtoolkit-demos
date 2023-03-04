@@ -25,7 +25,9 @@ SPLEnvironment >> at: aVariableName [
 
 { #category : #accessing }
 SPLEnvironment >> at: aVariableName put: aValue [
-	^ variables at: aVariableName put: aValue
+	variables at: aVariableName put: aValue.
+	self announcer announce: (ValueChanged newValue: self).
+	^ aValue
 ]
 
 { #category : #accessing }

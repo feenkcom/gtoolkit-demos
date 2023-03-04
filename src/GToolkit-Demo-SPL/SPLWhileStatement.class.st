@@ -2,17 +2,27 @@ Class {
 	#name : #SPLWhileStatement,
 	#superclass : #SPLConditionStatement,
 	#instVars : [
-		'whilePart'
+		'doPart'
 	],
 	#category : #'GToolkit-Demo-SPL-Interpreter'
 }
 
 { #category : #'instance creation' }
-SPLWhileStatement class >> condition: anExpression whilePart: aStatement [ 
+SPLWhileStatement class >> while: anExpression do: aStatement [ 
 ^ self new	
 	expression: anExpression;
-	whilePart: aStatement;
+	doPart: aStatement;
 	yourself
+]
+
+{ #category : #accessing }
+SPLWhileStatement >> doPart [
+	^ doPart
+]
+
+{ #category : #accessing }
+SPLWhileStatement >> doPart: aStatement [
+	doPart := aStatement
 ]
 
 { #category : #printing }
@@ -22,15 +32,16 @@ SPLWhileStatement >> printOn: aStream [
 	aStream nextPutAll: 'while '.
 	self expression printOn: aStream.
 	aStream nextPut: Character cr.
-	self whilePart printOn: aStream
+	self doPart printOn: aStream
 ]
 
 { #category : #accessing }
-SPLWhileStatement >> whilePart [
-	^ whilePart
-]
+SPLWhileStatement >> stepIn: aContext [
+	"We translate a while statement to an if statement with a block."
 
-{ #category : #accessing }
-SPLWhileStatement >> whilePart: aStatement [
-	whilePart := aStatement
+	^ SPLIfStatement
+		if: self expression
+		then: (SPLBlockStatement
+				for: {self doPart.
+						self} asOrderedCollection)
 ]

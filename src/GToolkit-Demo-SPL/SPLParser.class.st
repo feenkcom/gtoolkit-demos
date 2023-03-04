@@ -180,5 +180,5 @@ SPLParser >> varDecl [ ^ super varDecl
 { #category : #accessing }
 SPLParser >> whileStmt [
 	^ super whileStmt
-		==> [ :node | SPLWhileStatement condition: node third whilePart: node fifth ]
+		==> [ :node | SPLWhileStatement while: node third do: node fifth ]
 ]

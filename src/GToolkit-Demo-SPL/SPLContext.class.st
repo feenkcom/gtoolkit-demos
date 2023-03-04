@@ -78,6 +78,7 @@ SPLContext >> gtEnvironmentFor: aView [
 		priority: 20;
 		object: [ self environment ];
 		view: #gtVariablesFor:;
+		actionUpdateButton;
 		updateWhen: ValueChanged in: self environment announcer
 ]
 

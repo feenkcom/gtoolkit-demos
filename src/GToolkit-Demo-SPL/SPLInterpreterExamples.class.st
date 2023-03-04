@@ -178,6 +178,31 @@ SPLInterpreterExamples >> expressionStatement [
 ]
 
 { #category : #example }
+SPLInterpreterExamples >> factorialSource [
+<gtExample>
+^ 'var x=5;
+var fact=1;
+while (x>0) {
+	fact = fact * x;
+	x = x - 1;
+}
+print fact;'
+]
+
+{ #category : #example }
+SPLInterpreterExamples >> fibonacci [
+	<gtExample>
+	| result context |
+	context := self context: SPLGrammarExamples new fibonacciSource.
+	result := context.
+	result := context reduce.
+	self
+		assert: context output
+		equals: SPLGrammarExamples new fibonacciOracle asString , String cr.
+	^ context
+]
+
+{ #category : #example }
 SPLInterpreterExamples >> helloEqualsHello [
 	<gtExample>
 	| result input |
@@ -371,10 +396,22 @@ SPLInterpreterExamples >> varXinitializedTo42 [
 SPLInterpreterExamples >> whileStatement [
 	<gtExample>
 	| result context |
-	context := self context: 'if (3<4) { print 7; }'.
+	context := self context: self factorialSource.
 	result := context.
 	result := context reduce.
-	self assert: context output equals: '7
+	self assert: context output equals: '120
+'.
+	^ context
+]
+
+{ #category : #example }
+SPLInterpreterExamples >> whileStatementInFactorial [
+	<gtExample>
+	| result context |
+	context := self context: self factorialSource.
+	result := context.
+	result := context reduce.
+	self assert: context output equals: '120
 '.
 	^ context
 ]

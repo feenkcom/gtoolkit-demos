@@ -43,10 +43,12 @@ SPLBlockStatement >> stepIn: aContext [
 
 	^ self statements isEmpty
 		ifTrue: [ SPLStopStatement new ]
-		ifFalse: [ statements first isReduced
-				ifTrue: [ self class for: self statements allButFirst ]
-				ifFalse: [ self class
-						for: (self statements allButFirst
-								addFirst: (self statements first stepIn: aContext);
-								yourself) ] ]
+		ifFalse: [ self statements size = 1
+				ifTrue: [ self statements first ]
+				ifFalse: [ statements first isReduced
+						ifTrue: [ self class for: self statements allButFirst ]
+						ifFalse: [ self class
+								for: (self statements allButFirst
+										addFirst: (self statements first stepIn: aContext);
+										yourself) ] ] ]
 ]
