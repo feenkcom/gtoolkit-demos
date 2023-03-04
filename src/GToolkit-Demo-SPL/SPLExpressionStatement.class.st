@@ -11,3 +11,10 @@ SPLExpressionStatement >> printOn: aStream [
 	self expression printOn: aStream.
 	aStream nextPut: $;
 ]
+
+{ #category : #stepping }
+SPLExpressionStatement >> stepIn: aContext [
+	^ self expression isReduced
+		ifTrue: [ SPLStopStatement new ]
+		ifFalse: [ self class for: (self expression stepIn: aContext) ]
+]

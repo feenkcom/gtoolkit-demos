@@ -154,6 +154,18 @@ SPLInterpreterExamples >> contextForExpression: aString [
 ]
 
 { #category : #accessing }
+SPLInterpreterExamples >> expressionStatement [
+	<gtExample>
+	| result context |
+	context := self context: '3+4;'.
+	result := context.
+	result := context step.
+	self assert: result statements first expression value equals: 7.
+	self assert: context output equals: ''.
+	^ context
+]
+
+{ #category : #accessing }
 SPLInterpreterExamples >> helloEqualsHello [
 	<gtExample>
 	| result input |
@@ -229,6 +241,7 @@ SPLInterpreterExamples >> printHello [
 	context := self context: 'print "hello";'.
 	result := context.
 	result := context reduce.
+	self assert: context output equals: 'hello'.
 	^ context
 ]
 

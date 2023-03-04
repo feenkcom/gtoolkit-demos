@@ -148,7 +148,8 @@ SPLContext >> stateHolder [
 
 { #category : #evaluating }
 SPLContext >> step [
-	self state: (self step: self state)
+	self state: (self step: self state).
+	^ self state
 ]
 
 { #category : #evaluating }
