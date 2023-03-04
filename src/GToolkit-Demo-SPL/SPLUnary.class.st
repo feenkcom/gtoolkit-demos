@@ -36,3 +36,8 @@ SPLUnary >> printOn: aStream [
 	aStream nextPutAll: self operator.
 	self expression printOn: aStream
 ]
+
+{ #category : #stepping }
+SPLUnary >> stepIn: anEnvironment [
+	^ self notYetImplemented
+]

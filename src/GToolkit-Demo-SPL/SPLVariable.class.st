@@ -19,6 +19,11 @@ SPLVariable >> printOn: aStream [
 	aStream nextPutAll: self variable
 ]
 
+{ #category : #stepping }
+SPLVariable >> stepIn: anEnvironment [
+	^ self notYetImplemented
+]
+
 { #category : #accessing }
 SPLVariable >> variable [
 	^ variable

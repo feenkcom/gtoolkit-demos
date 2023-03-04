@@ -6,3 +6,30 @@ Class {
 	#superclass : #SPLNode,
 	#category : #'GToolkit-Demo-SPL-Interpreter'
 }
+
+{ #category : #testing }
+SPLExpression >> isBoolean [
+	^ false
+]
+
+{ #category : #testing }
+SPLExpression >> isNumber [
+	^ false
+]
+
+{ #category : #testing }
+SPLExpression >> isString [
+	^ false
+]
+
+{ #category : #testing }
+SPLExpression >> isValue [
+	^ false
+]
+
+{ #category : #evaluating }
+SPLExpression >> stepIn: anEnvironment [
+	"I take a reduction step in the environment and return a new, step-reduced node."
+
+	self subclassResponsibility
+]
