@@ -77,7 +77,8 @@ SPLContext >> gtEnvironmentFor: aView [
 		title: 'Environment';
 		priority: 20;
 		object: [ self environment ];
-		view: #gtVariablesFor:
+		view: #gtVariablesFor:;
+		updateWhen: ValueChanged in: self environment announcer
 ]
 
 { #category : #accessing }

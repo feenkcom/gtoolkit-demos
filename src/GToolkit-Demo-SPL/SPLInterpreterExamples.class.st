@@ -315,10 +315,23 @@ SPLInterpreterExamples >> trueOrFalseIsTrue [
 SPLInterpreterExamples >> varX [
 	<gtExample>
 	| result context |
-	context := self context: 'varX;'.
+	context := self context: 'var x;'.
 	result := context.
 	result := context reduce.
 	self assert: context environment size equals: 1.
+	self assert: (context environment at: 'x') isNil.
+	^ context
+]
+
+{ #category : #example }
+SPLInterpreterExamples >> varXinitializedTo42 [
+	<gtExample>
+	| result context |
+	context := self context: 'var x = 6*7;'.
+	result := context.
+	result := context reduce.
+	self assert: context environment size equals: 1.
+	self assert: (context environment at: 'x') value equals: 42.
 	^ context
 ]
 

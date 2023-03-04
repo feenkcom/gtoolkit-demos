@@ -33,3 +33,15 @@ SPLInitializedDeclaration >> printOn: aStream [
 	self expression printOn: aStream.
 	aStream nextPut: $;
 ]
+
+{ #category : #stepping }
+SPLInitializedDeclaration >> stepIn: aContext [
+	^ self expression isReduced
+		ifTrue: [ aContext environment
+				declareVariable: self variable
+				initializedTo: self expression.
+			SPLStopStatement new ]
+		ifFalse: [ self class
+				for: self variable
+				with: (self expression stepIn: aContext) ]
+]

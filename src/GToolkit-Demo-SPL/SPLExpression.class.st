@@ -13,6 +13,11 @@ SPLExpression >> isBoolean [
 ]
 
 { #category : #testing }
+SPLExpression >> isNil [
+	^ false
+]
+
+{ #category : #testing }
 SPLExpression >> isNumber [
 	^ false
 ]
