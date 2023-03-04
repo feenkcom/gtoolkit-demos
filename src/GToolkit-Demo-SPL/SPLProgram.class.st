@@ -38,3 +38,17 @@ SPLProgram >> statements [
 SPLProgram >> statements: aDeclarationAndStatementCollection [
 	statements := aDeclarationAndStatementCollection
 ]
+
+{ #category : #evaluating }
+SPLProgram >> stepIn: aContext [
+	"Take a step in the first statement that is not stopped."
+
+	self statements isEmpty
+		ifTrue: [ ^ self class for: {SPLStopStatement new} asOrderedCollection ].
+	self statements first isStopped
+		ifTrue: [ ^ self class for: self statements allButFirst ].
+	^ self class
+		for: (self statements allButFirst
+				addFirst: (self statements first stepIn: aContext);
+				yourself)
+]

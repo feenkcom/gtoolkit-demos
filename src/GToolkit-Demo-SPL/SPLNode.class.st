@@ -8,7 +8,14 @@ Class {
 	#category : #'GToolkit-Demo-SPL-Interpreter'
 }
 
+{ #category : #testing }
+SPLNode >> isStopped [
+	"Only needed for statements and declarations."
+
+	^ false
+]
+
 { #category : #accessing }
-SPLNode >> stepIn: anEnvironment [
+SPLNode >> stepIn: aContext [
 	self subclassResponsibility
 ]

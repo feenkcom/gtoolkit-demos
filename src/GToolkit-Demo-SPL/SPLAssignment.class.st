@@ -34,7 +34,7 @@ SPLAssignment >> printOn: aStream [
 ]
 
 { #category : #stepping }
-SPLAssignment >> stepIn: anEnvironment [
+SPLAssignment >> stepIn: aContext [
 	^ self notYetImplemented
 ]
 

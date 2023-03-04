@@ -23,7 +23,7 @@ SPLValue >> printOn: aStream [
 ]
 
 { #category : #stepping }
-SPLValue >> stepIn: anEnvironment [
+SPLValue >> stepIn: aContext [
 	"Should we raise an error, or just return ourself?"
 
 	^ self

@@ -155,6 +155,17 @@ SPLInterpreterExamples >> helloEqualsHello [
 ]
 
 { #category : #accessing }
+SPLInterpreterExamples >> minus3 [
+	<gtExample>
+	| result input |
+	input := self parseExpression: '-3'.
+	result := self newContext reduce: input.
+	self assert: result isValue.
+	self assert: result value equals: -3.
+	^ result
+]
+
+{ #category : #accessing }
 SPLInterpreterExamples >> newContext [
 	<gtExample>
 	| result |
@@ -172,6 +183,17 @@ SPLInterpreterExamples >> newEnvironment [
 	result := SPLEnvironment new.
 	self assert: result isEmpty.
 	self assert: result size equals: 0.
+	^ result
+]
+
+{ #category : #accessing }
+SPLInterpreterExamples >> notTrueIsFalse [
+	<gtExample>
+	| result input |
+	input := self parseExpression: '!true'.
+	result := self newContext reduce: input.
+	self assert: result isValue.
+	self assert: result value not.
 	^ result
 ]
 
