@@ -11,7 +11,7 @@ Class {
 { #category : #conversion }
 SPLNode >> asContext [
 	^ SPLContext new
-		code: self;
+		state: self;
 		yourself
 ]
 
@@ -19,6 +19,11 @@ SPLNode >> asContext [
 SPLNode >> isReduced [
 	"Only true for values and stop statements"
 
+	^ false
+]
+
+{ #category : #testing }
+SPLNode >> isValue [
 	^ false
 ]
 

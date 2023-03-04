@@ -17,6 +17,11 @@ SPLValue >> isReduced [
 	^  true
 ]
 
+{ #category : #testing }
+SPLValue >> isValue [
+	^  true
+]
+
 { #category : #printing }
 SPLValue >> printOn: aStream [
 	self value printOn: aStream

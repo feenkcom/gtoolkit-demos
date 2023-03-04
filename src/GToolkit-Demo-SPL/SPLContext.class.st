@@ -7,8 +7,8 @@ Class {
 	#superclass : #Object,
 	#instVars : [
 		'output',
-		'codeHolder',
-		'environment'
+		'environment',
+		'stateHolder'
 	],
 	#category : #'GToolkit-Demo-SPL-Interpreter'
 }
@@ -21,14 +21,14 @@ SPLContext class >> for: anSPLProgramSource [
 { #category : #accessing }
 SPLContext class >> forExpression: anSPLProgramSource [
 	^ self new
-		code: (self parseExpression: anSPLProgramSource);
+		state: (self parseExpression: anSPLProgramSource);
 		yourself
 ]
 
 { #category : #accessing }
 SPLContext class >> forProgram: anSPLProgramSource [
 	^ self new
-		code: (self parse: anSPLProgramSource);
+		state: (self parse: anSPLProgramSource);
 		yourself
 ]
 
@@ -45,21 +45,6 @@ SPLContext class >> parseExpression: anSPLProgramSource [
 { #category : #parsing }
 SPLContext class >> parserClass [
 	^ SPLParser
-]
-
-{ #category : #accessing }
-SPLContext >> code [
-	^ codeHolder value
-]
-
-{ #category : #accessing }
-SPLContext >> code: anSPLCodeNode [
-	codeHolder value: anSPLCodeNode
-]
-
-{ #category : #accessing }
-SPLContext >> codeHolder [
-	^ codeHolder
 ]
 
 { #category : #accessing }
@@ -81,7 +66,7 @@ SPLContext >> gtCodeFor: aView [
 		aptitude: BrGlamorousCodeEditorAptitude;
 		text: [ self code printString asRopedText ];
 		actionUpdateButton;
-		updateWhen: ValueChanged in: self codeHolder announcer
+		updateWhen: ValueChanged in: self stateHolder announcer
 ]
 
 { #category : #accessing }
@@ -117,7 +102,7 @@ SPLContext >> initialize [
 	environment := SPLEnvironment new.
 	expressionValueHolder := NewValueHolder new.
 	output := WriteStream on: ''.
-	codeHolder := NewValueHolder new
+	stateHolder := NewValueHolder new
 ]
 
 { #category : #accessing }
@@ -126,8 +111,14 @@ SPLContext >> output [
 ]
 
 { #category : #evaluating }
+SPLContext >> reduce [
+	[ self state isReduced not ] whileTrue: [ self step ].
+	^ self state
+]
+
+{ #category : #evaluating }
 SPLContext >> reduce: anSPLNode [
-	"Reduce till we reach a value"
+	"Reduce till we cannot take any more steps"
 
 	| result |
 	result := anSPLNode.
@@ -135,9 +126,24 @@ SPLContext >> reduce: anSPLNode [
 	^ result
 ]
 
+{ #category : #accessing }
+SPLContext >> state [
+	^ stateHolder value
+]
+
+{ #category : #accessing }
+SPLContext >> state: anSPLCodeNode [
+	self stateHolder value: anSPLCodeNode
+]
+
+{ #category : #accessing }
+SPLContext >> stateHolder [
+	^ stateHolder
+]
+
 { #category : #evaluating }
 SPLContext >> step [
-	self code: (self step: self code)
+	self state: (self step: self state)
 ]
 
 { #category : #evaluating }
