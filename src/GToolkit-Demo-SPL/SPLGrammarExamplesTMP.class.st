@@ -201,7 +201,7 @@ SPLGrammarExamplesTMP >> parenthesized42 [
 
 { #category : #accessing }
 SPLGrammarExamplesTMP >> parserClass [
-	^ SPLGrammarTMP
+	^ SPLGrammar
 ]
 
 { #category : #example }

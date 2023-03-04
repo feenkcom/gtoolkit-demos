@@ -4,7 +4,7 @@ I demonstrate a PetitParser implementation of the grammar.
 My subclasses implement actions.
 "
 Class {
-	#name : #SPLGrammarTMP,
+	#name : #SPLGrammar,
 	#superclass : #PP2CompositeNode,
 	#instVars : [
 		'keyword',
@@ -41,81 +41,81 @@ Class {
 }
 
 { #category : #grammar }
-SPLGrammarTMP >> assignment [
+SPLGrammar >> assignment [
 	^ assignmentExpression / logicOr
 ]
 
 { #category : #grammar }
-SPLGrammarTMP >> assignmentExpression [
+SPLGrammar >> assignmentExpression [
 	^ identifier trim , $= asPParser trim , assignment
 ]
 
 { #category : #grammar }
-SPLGrammarTMP >> block [
+SPLGrammar >> block [
 	^ '{' asPParser trim , declaration star , $} asPParser trim
 ]
 
 { #category : #grammar }
-SPLGrammarTMP >> boolean [
+SPLGrammar >> boolean [
 	^ 'true' asPParser trim / 'false' asPParser trim
 ]
 
 { #category : #grammar }
-SPLGrammarTMP >> comparison [
+SPLGrammar >> comparison [
 	^ term
 		, ('>=' asPParser trim / '>' asPParser trim / '<=' asPParser trim
 				/ '<' asPParser trim , term) star
 ]
 
 { #category : #grammar }
-SPLGrammarTMP >> declaration [
+SPLGrammar >> declaration [
 	^ varDecl / statement
 ]
 
 { #category : #grammar }
-SPLGrammarTMP >> equality [
+SPLGrammar >> equality [
 	^ comparison , ('!=' asPParser trim / '==' asPParser trim , comparison) star
 ]
 
 { #category : #grammar }
-SPLGrammarTMP >> exprStmt [
+SPLGrammar >> exprStmt [
 	^ expression , $; asPParser trim
 ]
 
 { #category : #grammar }
-SPLGrammarTMP >> expression [
+SPLGrammar >> expression [
 	^ assignment
 ]
 
 { #category : #grammar }
-SPLGrammarTMP >> factor [
+SPLGrammar >> factor [
 	^ unary , ($/ asPParser trim / $* asPParser trim , unary) star
 ]
 
 { #category : #grammar }
-SPLGrammarTMP >> float [
+SPLGrammar >> float [
 	^ ($- asPParser optional , #digit asPParser plus , $. asPParser
 		, #digit asPParser plus) trim
 ]
 
 { #category : #grammar }
-SPLGrammarTMP >> identifier [
+SPLGrammar >> identifier [
 	^ keyword not , #letter asPParser , #word asPParser star
 ]
 
 { #category : #grammar }
-SPLGrammarTMP >> ifStmt [
+SPLGrammar >> ifStmt [
 	^ 'if' asPParser trim , $( asPParser trim , expression , $) asPParser trim
 		, statement , ('else' asPParser trim , statement) optional
 ]
 
 { #category : #grammar }
-SPLGrammarTMP >> integer [
+SPLGrammar >> integer [
 	^ (#digit asPParser plus , $. asPParser not) trim
 ]
 
 { #category : #grammar }
-SPLGrammarTMP >> keyword [
+SPLGrammar >> keyword [
 	^ ('var' asPParser , #letter asPParser not)
 		/ ('if' asPParser , #letter asPParser not)
 		/ ('else' asPParser , #letter asPParser not)
@@ -127,74 +127,74 @@ SPLGrammarTMP >> keyword [
 ]
 
 { #category : #grammar }
-SPLGrammarTMP >> logicAnd [
+SPLGrammar >> logicAnd [
 	^ equality , ('and' asPParser trim , equality) star
 ]
 
 { #category : #grammar }
-SPLGrammarTMP >> logicOr [
+SPLGrammar >> logicOr [
 	^ logicAnd , ('or' asPParser trim , logicAnd) star
 ]
 
 { #category : #grammar }
-SPLGrammarTMP >> negatedUnary [
+SPLGrammar >> negatedUnary [
 	^ ($! asPParser trim / $- asPParser trim , unary)
 ]
 
 { #category : #grammar }
-SPLGrammarTMP >> number [
+SPLGrammar >> number [
 	^ integer / float
 ]
 
 { #category : #grammar }
-SPLGrammarTMP >> parenthesizedExpression [
+SPLGrammar >> parenthesizedExpression [
 	"Introduced to have finer control over actions."
 
 	^ $( asPParser trim , expression , $) asPParser trim
 ]
 
 { #category : #grammar }
-SPLGrammarTMP >> primary [
+SPLGrammar >> primary [
 	^ parenthesizedExpression / boolean / number / string / identifier
 ]
 
 { #category : #grammar }
-SPLGrammarTMP >> printStmt [
+SPLGrammar >> printStmt [
 	^ 'print' asPParser trim , expression , $; asPParser trim
 ]
 
 { #category : #grammar }
-SPLGrammarTMP >> program [
+SPLGrammar >> program [
 	^ declaration star end
 ]
 
 { #category : #accessing }
-SPLGrammarTMP >> start [
+SPLGrammar >> start [
 	^ program
 ]
 
 { #category : #grammar }
-SPLGrammarTMP >> statement [
+SPLGrammar >> statement [
 	^ ifStmt / printStmt / whileStmt / exprStmt / block
 ]
 
 { #category : #grammar }
-SPLGrammarTMP >> string [
+SPLGrammar >> string [
 	^ $" asPParser , $" asPParser negate plus , $" asPParser
 ]
 
 { #category : #grammar }
-SPLGrammarTMP >> term [
+SPLGrammar >> term [
 	^ factor , ('-' asPParser trim / '+' asPParser trim , factor) star
 ]
 
 { #category : #grammar }
-SPLGrammarTMP >> unary [
+SPLGrammar >> unary [
 	^ negatedUnary / primary
 ]
 
 { #category : #grammar }
-SPLGrammarTMP >> varDecl [
+SPLGrammar >> varDecl [
 	^ ('var' asPParser trim , identifier
 		, ($= asPParser trim , expression) optional , $; asPParser trim)
 		==> [ :node | 
@@ -204,7 +204,7 @@ SPLGrammarTMP >> varDecl [
 ]
 
 { #category : #grammar }
-SPLGrammarTMP >> whileStmt [
+SPLGrammar >> whileStmt [
 	^ 'while' asPParser trim , $( asPParser trim , expression , $) asPParser trim
 		, statement
 ]

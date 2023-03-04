@@ -4,7 +4,7 @@ I implement a parser for SPL that builds an interpreter.
 "
 Class {
 	#name : #SPLParser,
-	#superclass : #SPLGrammarTMP,
+	#superclass : #SPLGrammar,
 	#category : #'GToolkit-Demo-SPL-PetitParser'
 }
 
