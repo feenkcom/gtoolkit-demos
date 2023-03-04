@@ -308,7 +308,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-03-04T11:38:49.259776+01:00"
+						"dateAndTimeString" : "2023-03-04T12:23:27.543388+01:00"
 					}
 				},
 				"editEmail" : {
@@ -319,17 +319,17 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-03-04T11:39:59.762199+01:00"
+						"dateAndTimeString" : "2023-03-04T12:23:50.638061+01:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
-					"uidString" : "IVF5Z3KyDQCdAbz/DLiLzw=="
+					"uidString" : "H7gnBnOyDQCYXRaDCwWH5w=="
 				},
 				"paragraphStyle" : {
 					"__type" : "textStyle"
 				},
-				"string" : "Before moving on to statements, let's [[Introducing an Expression Stepper]]."
+				"string" : "Then we will proceed to [[Intropdu"
 			},
 			{
 				"__type" : "textSnippet",
@@ -345,7 +345,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-03-04T11:38:49.48328+01:00"
+						"dateAndTimeString" : "2023-03-04T12:23:11.748842+01:00"
 					}
 				},
 				"editEmail" : {
@@ -356,12 +356,49 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-03-04T11:38:49.48328+01:00"
+						"dateAndTimeString" : "2023-03-04T12:23:11.748842+01:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
-					"uidString" : "5L18Z3KyDQCdBpjxDLiLzw=="
+					"uidString" : "jbArBnOyDQCYYgfzCwWH5w=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : ""
+			},
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2023-03-04T12:23:11.93976+01:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2023-03-04T12:23:11.93976+01:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "dJouBnOyDQCYZ3pDCwWH5w=="
 				},
 				"paragraphStyle" : {
 					"__type" : "textStyle"

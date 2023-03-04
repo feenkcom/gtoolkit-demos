@@ -18,7 +18,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-03-04T11:40:01.94606+01:00"
+						"dateAndTimeString" : "2023-03-04T12:24:00.440663+01:00"
 					}
 				},
 				"editEmail" : {
@@ -29,17 +29,17 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-03-04T11:40:55.48293+01:00"
+						"dateAndTimeString" : "2023-03-04T12:25:04.864324+01:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
-					"uidString" : "53HOa3KyDQCfEtlaDLiLzw=="
+					"uidString" : "bq0SCXOyDQCaY08DCwWH5w=="
 				},
 				"paragraphStyle" : {
 					"__type" : "textStyle"
 				},
-				"string" : "We'd like a {{gtClass:name=SPLExpressionStepper}} to view the execution states."
+				"string" : "We introduce an {{gtClass:name=SPLExpressionStepper}} that holds a parsed expression and an empty environment. It offers views of each."
 			},
 			{
 				"__type" : "textSnippet",
@@ -55,7 +55,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-03-04T12:16:36.140049+01:00"
+						"dateAndTimeString" : "2023-03-04T12:25:05.143771+01:00"
 					}
 				},
 				"editEmail" : {
@@ -66,17 +66,17 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-03-04T12:17:20.271419+01:00"
+						"dateAndTimeString" : "2023-03-04T12:25:31.481821+01:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
-					"uidString" : "rC2X7nKyDQC88cueBlKOtQ=="
+					"uidString" : "wPbtDHOyDQCc/3MfCwWH5w=="
 				},
 				"paragraphStyle" : {
 					"__type" : "textStyle"
 				},
-				"string" : "The stepper holds an expression in a {{gtClass:name=NewValueHolder}}, and an empty environment. We can step through the states, updating the value holder each time. "
+				"string" : "As we step through the states of the expression, the Expression view is updated, with the help of a {{gtClass:name=NewValueHolder}}."
 			},
 			{
 				"__type" : "textSnippet",
@@ -92,7 +92,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-03-04T12:17:21.813677+01:00"
+						"dateAndTimeString" : "2023-03-04T12:25:32.593039+01:00"
 					}
 				},
 				"editEmail" : {
@@ -103,91 +103,17 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-03-04T12:17:51.2817+01:00"
+						"dateAndTimeString" : "2023-03-04T12:26:22.556288+01:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
-					"uidString" : "WxtQ8XKyDQCTmYSbBlKOtQ=="
+					"uidString" : "U86QDnOyDQCfQ16iCwWH5w=="
 				},
 				"paragraphStyle" : {
 					"__type" : "textStyle"
 				},
-				"string" : "We introduce Expression and Environment views, which are updated when they change."
-			},
-			{
-				"__type" : "textSnippet",
-				"children" : {
-					"__type" : "snippets",
-					"items" : [ ]
-				},
-				"createEmail" : {
-					"__type" : "email",
-					"emailString" : "<unknown>"
-				},
-				"createTime" : {
-					"__type" : "time",
-					"time" : {
-						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-03-04T12:18:00.651559+01:00"
-					}
-				},
-				"editEmail" : {
-					"__type" : "email",
-					"emailString" : "<unknown>"
-				},
-				"editTime" : {
-					"__type" : "time",
-					"time" : {
-						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-03-04T12:18:07.321932+01:00"
-					}
-				},
-				"uid" : {
-					"__type" : "uid",
-					"uidString" : "jSRx83KyDQCh0PeDBlKOtQ=="
-				},
-				"paragraphStyle" : {
-					"__type" : "textStyle"
-				},
-				"string" : "{{gtTodo:label=}}"
-			},
-			{
-				"__type" : "textSnippet",
-				"children" : {
-					"__type" : "snippets",
-					"items" : [ ]
-				},
-				"createEmail" : {
-					"__type" : "email",
-					"emailString" : "<unknown>"
-				},
-				"createTime" : {
-					"__type" : "time",
-					"time" : {
-						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-03-04T12:05:56.961241+01:00"
-					}
-				},
-				"editEmail" : {
-					"__type" : "email",
-					"emailString" : "<unknown>"
-				},
-				"editTime" : {
-					"__type" : "time",
-					"time" : {
-						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-03-04T12:06:35.741125+01:00"
-					}
-				},
-				"uid" : {
-					"__type" : "uid",
-					"uidString" : "GBV+yHKyDQChzmfADLiLzw=="
-				},
-				"paragraphStyle" : {
-					"__type" : "textStyle"
-				},
-				"string" : "Just inspect the following in the Expression view, and evaluate `self step`."
+				"string" : "Inspect the following and then evaluate `stepper step`."
 			},
 			{
 				"__type" : "pharoSnippet",
@@ -203,7 +129,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-03-04T11:40:59.329255+01:00"
+						"dateAndTimeString" : "2023-03-04T12:24:03.350799+01:00"
 					}
 				},
 				"editEmail" : {
@@ -214,14 +140,85 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-03-04T11:41:16.926371+01:00"
+						"dateAndTimeString" : "2023-03-04T12:25:57.29983+01:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
-					"uidString" : "awc6b3KyDQCg2zLCDLiLzw=="
+					"uidString" : "qBE/CXOyDQCaZsHECwWH5w=="
 				},
-				"code" : "SPLExpressionStepper for: '1+2*3'"
+				"code" : "stepper := SPLExpressionStepper for: '1+2*3'."
+			},
+			{
+				"__type" : "pharoSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2023-03-04T12:26:03.498628+01:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2023-03-04T12:26:07.953803+01:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "VmNoEHOyDQCgb1CICwWH5w=="
+				},
+				"code" : "stepper step."
+			},
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2023-03-04T12:26:39.453939+01:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2023-03-04T12:26:39.453939+01:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "MKssEnOyDQCg9o12CwWH5w=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : ""
 			}
 		]
 	},
@@ -233,7 +230,7 @@
 		"__type" : "time",
 		"time" : {
 			"__type" : "dateAndTime",
-			"dateAndTimeString" : "2023-03-04T11:40:01.914359+01:00"
+			"dateAndTimeString" : "2023-03-04T12:24:00.412357+01:00"
 		}
 	},
 	"editEmail" : {
@@ -244,7 +241,7 @@
 		"__type" : "time",
 		"time" : {
 			"__type" : "dateAndTime",
-			"dateAndTimeString" : "2023-03-04T11:40:01.914359+01:00"
+			"dateAndTimeString" : "2023-03-04T12:24:00.412357+01:00"
 		}
 	},
 	"pageType" : {
@@ -253,6 +250,6 @@
 	},
 	"uid" : {
 		"__type" : "uuid",
-		"uuid" : "82f5cd6b-72b2-0d00-9f11-e75a0cb88bcf"
+		"uuid" : "153e1209-73b2-0d00-9a62-49480b0587e7"
 	}
 }
