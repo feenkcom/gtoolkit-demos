@@ -7,8 +7,8 @@ Class {
 { #category : #evaluating }
 SPLLogicalBinary >> evaluateIn: anEnvironment [
 	| result |
-	self assert: self left isValue.
-	self assert: self right isValue.
+	self assert: self left isReduced.
+	self assert: self right isReduced.
 	self assert: self left isBoolean.
 	self assert: self right isBoolean.
 	result := self left value

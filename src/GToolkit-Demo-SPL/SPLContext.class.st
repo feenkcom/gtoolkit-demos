@@ -131,7 +131,7 @@ SPLContext >> reduce: anSPLNode [
 
 	| result |
 	result := anSPLNode.
-	[ result isValue not ] whileTrue: [ result := result stepIn: self ].
+	[ result isReduced not ] whileTrue: [ result := result stepIn: self ].
 	^ result
 ]
 

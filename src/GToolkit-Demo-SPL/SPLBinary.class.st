@@ -54,8 +54,8 @@ SPLBinary >> equalsOp: aContext [
 
 { #category : #evaluating }
 SPLBinary >> evaluateIn: aContext [
-	self assert: self left isValue.
-	self assert: self right isValue.
+	self assert: self left isReduced.
+	self assert: self right isReduced.
 	^ self returnsBoolean
 		ifTrue: [ self comparison: aContext ]
 		ifFalse: [ self assert: self returnsNumber.
@@ -141,8 +141,8 @@ SPLBinary >> selectorForOperator [
 
 { #category : #evaluating }
 SPLBinary >> stepIn: aContext [
-	^ self left isValue
-		ifTrue: [ self right isValue
+	^ self left isReduced
+		ifTrue: [ self right isReduced
 				ifTrue: [ self evaluateIn: aContext ]
 				ifFalse: [ self class
 						left: self left

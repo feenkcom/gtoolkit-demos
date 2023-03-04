@@ -45,7 +45,7 @@ SPLProgram >> stepIn: aContext [
 
 	self statements isEmpty
 		ifTrue: [ ^ self class for: {SPLStopStatement new} asOrderedCollection ].
-	self statements first isStopped
+	self statements first isReduced
 		ifTrue: [ ^ self class for: self statements allButFirst ].
 	^ self class
 		for: (self statements allButFirst

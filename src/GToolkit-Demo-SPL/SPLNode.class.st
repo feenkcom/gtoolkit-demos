@@ -8,9 +8,16 @@ Class {
 	#category : #'GToolkit-Demo-SPL-Interpreter'
 }
 
+{ #category : #conversion }
+SPLNode >> asContext [
+	^ SPLContext new
+		code: self;
+		yourself
+]
+
 { #category : #testing }
-SPLNode >> isStopped [
-	"Only needed for statements and declarations."
+SPLNode >> isReduced [
+	"Only true for values and stop statements"
 
 	^ false
 ]

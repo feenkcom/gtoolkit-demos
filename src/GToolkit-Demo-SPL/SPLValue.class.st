@@ -13,7 +13,7 @@ SPLValue class >> for: aValue [
 ]
 
 { #category : #testing }
-SPLValue >> isValue [
+SPLValue >> isReduced [
 	^  true
 ]
 

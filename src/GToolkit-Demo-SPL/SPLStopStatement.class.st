@@ -9,7 +9,7 @@ Class {
 }
 
 { #category : #accessing }
-SPLStopStatement >> isStopped [
+SPLStopStatement >> isReduced [
 	^ true
 ]
 
