@@ -8,6 +8,16 @@ Class {
 }
 
 { #category : #accessing }
+SPL class >> contextFor: anSPLProgramSource [
+	^ SPLContext for: anSPLProgramSource
+]
+
+{ #category : #accessing }
+SPL class >> contextForExpression: anSPLExpressionString [
+	^ SPLContext forExpression: anSPLExpressionString
+]
+
+{ #category : #accessing }
 SPL class >> examples [
 	"Return all the examples in this package.
 	Send runAll to run them all."

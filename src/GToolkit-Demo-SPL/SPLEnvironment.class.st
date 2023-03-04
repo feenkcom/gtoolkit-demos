@@ -42,24 +42,9 @@ SPLEnvironment >> isEmpty [
 	^ self variables isEmpty
 ]
 
-{ #category : #evaluating }
-SPLEnvironment >> reduce: anSPLExpression [
-	"Reduce till we reach a value"
-
-	| result |
-	result := anSPLExpression.
-	[ result isValue not ] whileTrue: [ result := result stepIn: self ].
-	^ result
-]
-
 { #category : #accessing }
 SPLEnvironment >> size [
 	^ self variables size
-]
-
-{ #category : #evaluating }
-SPLEnvironment >> step: anSPLExpression [
-	^ anSPLExpression stepIn: self
 ]
 
 { #category : #accessing }

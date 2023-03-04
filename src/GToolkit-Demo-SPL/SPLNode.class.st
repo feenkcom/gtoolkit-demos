@@ -7,3 +7,8 @@ Class {
 	#superclass : #Object,
 	#category : #'GToolkit-Demo-SPL-Interpreter'
 }
+
+{ #category : #accessing }
+SPLNode >> stepIn: anEnvironment [
+	self subclassResponsibility
+]
