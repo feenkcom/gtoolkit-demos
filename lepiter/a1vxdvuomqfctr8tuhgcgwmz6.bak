@@ -332,8 +332,10 @@
 								"__type" : "uid",
 								"uidString" : "E69E+HSyDQCEAHdKAPJO8g=="
 							},
+							"exampleSelector" : "printHello",
 							"previewHeight" : 200,
 							"previewShowSelector" : "gtViewsFor:",
+							"exampleBehaviorName" : "SPLInterpreterExamples",
 							"codeExpanded" : true,
 							"previewExpanded" : false,
 							"noCode" : false

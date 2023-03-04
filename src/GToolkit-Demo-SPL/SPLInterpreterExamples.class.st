@@ -224,13 +224,12 @@ SPLInterpreterExamples >> parserClass [
 
 { #category : #accessing }
 SPLInterpreterExamples >> printHello [
-	"TO DO"
-
 	<gtExample>
-	| result input |
-	input := self context: 'print "hello";'.
-	result := input reduce.
-	^ result
+	| result context |
+	context := self context: 'print "hello";'.
+	result := context.
+	result := context reduce.
+	^ context
 ]
 
 { #category : #accessing }

@@ -6,9 +6,9 @@ Class {
 	#name : #SPLContext,
 	#superclass : #Object,
 	#instVars : [
-		'output',
 		'environment',
-		'stateHolder'
+		'stateHolder',
+		'outputStream'
 	],
 	#category : #'GToolkit-Demo-SPL-Interpreter'
 }
@@ -64,7 +64,7 @@ SPLContext >> gtCodeFor: aView [
 		title: 'Program state';
 		priority: 10;
 		aptitude: BrGlamorousCodeEditorAptitude;
-		text: [ self code printString asRopedText ];
+		text: [ self state printString asRopedText ];
 		actionUpdateButton;
 		updateWhen: ValueChanged in: self stateHolder announcer
 ]
@@ -90,24 +90,29 @@ SPLContext >> gtExpressionFor: aView [
 SPLContext >> gtOutputFor: aView [
 	<gtView>
 	^ aView textEditor
-		title: 'Ouput';
+		title: 'Output';
 		priority: 30;
 		aptitude: BrGlamorousCodeEditorAptitude;
-		text: [ self output contents asRopedText ];
+		text: [ self output asRopedText ];
 		actionUpdateButton
 ]
 
 { #category : #initialization }
 SPLContext >> initialize [
 	environment := SPLEnvironment new.
-	expressionValueHolder := NewValueHolder new.
-	output := WriteStream on: ''.
+	stateHolder := NewValueHolder new.
+	outputStream := WriteStream on: ''.
 	stateHolder := NewValueHolder new
 ]
 
 { #category : #accessing }
 SPLContext >> output [
-	^ output
+	^ outputStream contents
+]
+
+{ #category : #accessing }
+SPLContext >> outputStream [
+	^ outputStream
 ]
 
 { #category : #evaluating }
