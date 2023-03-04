@@ -27,7 +27,7 @@ SPLExpression >> isValue [
 	^ false
 ]
 
-{ #category : #evaluating }
+{ #category : #stepping }
 SPLExpression >> stepIn: aContext [
 	"I take a reduction step in the environment and return a new, step-reduced node."
 

@@ -8,7 +8,7 @@ Class {
 	#instVars : [
 		'environment',
 		'stateHolder',
-		'outputStream'
+		'outputHolder'
 	],
 	#category : #'GToolkit-Demo-SPL-Interpreter'
 }
@@ -94,25 +94,30 @@ SPLContext >> gtOutputFor: aView [
 		priority: 30;
 		aptitude: BrGlamorousCodeEditorAptitude;
 		text: [ self output asRopedText ];
-		actionUpdateButton
+		actionUpdateButton;
+		updateWhen: ValueChanged in: self outputHolder announcer
 ]
 
 { #category : #initialization }
 SPLContext >> initialize [
-	environment := SPLEnvironment new.
 	stateHolder := NewValueHolder new.
-	outputStream := WriteStream on: ''.
-	stateHolder := NewValueHolder new
+	environment := SPLEnvironment new.
+	outputHolder := NewValueHolder value: ''.
 ]
 
 { #category : #accessing }
 SPLContext >> output [
-	^ outputStream contents
+	^ outputHolder value
 ]
 
 { #category : #accessing }
-SPLContext >> outputStream [
-	^ outputStream
+SPLContext >> outputHolder [
+	^ outputHolder
+]
+
+{ #category : #accessing }
+SPLContext >> print: aString [
+	self outputHolder value: self output , aString
 ]
 
 { #category : #evaluating }

@@ -8,10 +8,10 @@ Class {
 }
 
 { #category : #'instance creation' }
-SPLIfElseStatement class >> condition: anExpression ifPart: aStatement elsePart: aStatement2 [
+SPLIfElseStatement class >> if: anExpression then: aStatement else: aStatement2 [
 	^ self new
 		expression: anExpression;
-		ifPart: aStatement;
+		thenPart: aStatement;
 		elsePart: aStatement2;
 		yourself
 ]
@@ -35,4 +35,15 @@ SPLIfElseStatement >> printOn: aStream [
 	aStream nextPutAll: 'else'.
 	aStream nextPut: Character cr.
 	self elsePart printOn: aStream
+]
+
+{ #category : #stepping }
+SPLIfElseStatement >> stepIn: aContext [
+	^ self expression isReduced
+		ifTrue: [ self assert: self expression isBoolean.
+			self expression value ifTrue: [ self thenPart ] ifFalse: [ self elsePart ] ]
+		ifFalse: [ self class
+				if: (self expression stepIn: aContext)
+				then: self thenPart
+				else: self elsePart ]
 ]

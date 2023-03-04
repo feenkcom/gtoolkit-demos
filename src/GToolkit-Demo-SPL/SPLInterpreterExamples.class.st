@@ -4,7 +4,7 @@ Class {
 	#category : #'GToolkit-Demo-SPL-Examples'
 }
 
-{ #category : #accessing }
+{ #category : #example }
 SPLInterpreterExamples >> a12dividedBy3is4 [
 	<gtExample>
 	| result input |
@@ -15,7 +15,7 @@ SPLInterpreterExamples >> a12dividedBy3is4 [
 	^ result
 ]
 
-{ #category : #accessing }
+{ #category : #example }
 SPLInterpreterExamples >> a3equals3 [
 	<gtExample>
 	| result input |
@@ -26,7 +26,7 @@ SPLInterpreterExamples >> a3equals3 [
 	^ result
 ]
 
-{ #category : #accessing }
+{ #category : #example }
 SPLInterpreterExamples >> a3isNot4 [
 	<gtExample>
 	| result input |
@@ -37,7 +37,7 @@ SPLInterpreterExamples >> a3isNot4 [
 	^ result
 ]
 
-{ #category : #accessing }
+{ #category : #example }
 SPLInterpreterExamples >> a3lessThan4 [
 	<gtExample>
 	| result input |
@@ -48,7 +48,7 @@ SPLInterpreterExamples >> a3lessThan4 [
 	^ result
 ]
 
-{ #category : #accessing }
+{ #category : #example }
 SPLInterpreterExamples >> a3lessThanEqual4 [
 	<gtExample>
 	| result input |
@@ -59,7 +59,7 @@ SPLInterpreterExamples >> a3lessThanEqual4 [
 	^ result
 ]
 
-{ #category : #accessing }
+{ #category : #example }
 SPLInterpreterExamples >> a3plus4 [
 	<gtExample>
 	| result |
@@ -68,7 +68,7 @@ SPLInterpreterExamples >> a3plus4 [
 	^ result
 ]
 
-{ #category : #accessing }
+{ #category : #example }
 SPLInterpreterExamples >> a3plus4is7 [
 	<gtExample>
 	| result input |
@@ -79,7 +79,7 @@ SPLInterpreterExamples >> a3plus4is7 [
 	^ result
 ]
 
-{ #category : #accessing }
+{ #category : #example }
 SPLInterpreterExamples >> a3plus4times5 [
 	<gtExample>
 	| result input |
@@ -90,7 +90,7 @@ SPLInterpreterExamples >> a3plus4times5 [
 	^ result
 ]
 
-{ #category : #accessing }
+{ #category : #example }
 SPLInterpreterExamples >> a3times4is12 [
 	<gtExample>
 	| result input |
@@ -101,7 +101,7 @@ SPLInterpreterExamples >> a3times4is12 [
 	^ result
 ]
 
-{ #category : #accessing }
+{ #category : #example }
 SPLInterpreterExamples >> a42 [
 	<gtExample>
 	| result |
@@ -110,7 +110,7 @@ SPLInterpreterExamples >> a42 [
 	^ result
 ]
 
-{ #category : #accessing }
+{ #category : #example }
 SPLInterpreterExamples >> a4greaterThan3 [
 	<gtExample>
 	| result input |
@@ -121,7 +121,7 @@ SPLInterpreterExamples >> a4greaterThan3 [
 	^ result
 ]
 
-{ #category : #accessing }
+{ #category : #example }
 SPLInterpreterExamples >> a4greaterThanEqual3 [
 	<gtExample>
 	| result input |
@@ -132,7 +132,7 @@ SPLInterpreterExamples >> a4greaterThanEqual3 [
 	^ result
 ]
 
-{ #category : #accessing }
+{ #category : #example }
 SPLInterpreterExamples >> a4minus3is1 [
 	<gtExample>
 	| result input |
@@ -141,6 +141,17 @@ SPLInterpreterExamples >> a4minus3is1 [
 	self assert: result isValue.
 	self assert: result value equals: 1.
 	^ result
+]
+
+{ #category : #example }
+SPLInterpreterExamples >> blockStatement [
+	<gtExample>
+	| result context |
+	context := self context: '{ 1+2; 3*4/2; print 7; }'.
+	result := context.
+	result := context reduce.
+	self assert: context output equals: '7'.
+	^ context
 ]
 
 { #category : #parsing }
@@ -153,7 +164,7 @@ SPLInterpreterExamples >> contextForExpression: aString [
 	^ (self parseExpression: aString) asContext
 ]
 
-{ #category : #accessing }
+{ #category : #example }
 SPLInterpreterExamples >> expressionStatement [
 	<gtExample>
 	| result context |
@@ -165,7 +176,7 @@ SPLInterpreterExamples >> expressionStatement [
 	^ context
 ]
 
-{ #category : #accessing }
+{ #category : #example }
 SPLInterpreterExamples >> helloEqualsHello [
 	<gtExample>
 	| result input |
@@ -176,7 +187,29 @@ SPLInterpreterExamples >> helloEqualsHello [
 	^ result
 ]
 
-{ #category : #accessing }
+{ #category : #example }
+SPLInterpreterExamples >> ifElseStatement [
+	<gtExample>
+	| result context |
+	context := self context: 'if (3>4) { print 7; } else { print "else ok"; }'.
+	result := context.
+	result := context reduce.
+	self assert: context output equals: 'else ok'.
+	^ context
+]
+
+{ #category : #example }
+SPLInterpreterExamples >> ifStatement [
+	<gtExample>
+	| result context |
+	context := self context: 'if (3<4) { print 7; }'.
+	result := context.
+	result := context reduce.
+	self assert: context output equals: '7'.
+	^ context
+]
+
+{ #category : #example }
 SPLInterpreterExamples >> minus3 [
 	<gtExample>
 	| result input |
@@ -187,7 +220,7 @@ SPLInterpreterExamples >> minus3 [
 	^ result
 ]
 
-{ #category : #accessing }
+{ #category : #example }
 SPLInterpreterExamples >> newContext [
 	<gtExample>
 	| result |
@@ -198,7 +231,7 @@ SPLInterpreterExamples >> newContext [
 	^ result
 ]
 
-{ #category : #accessing }
+{ #category : #example }
 SPLInterpreterExamples >> newEnvironment [
 	<gtExample>
 	| result |
@@ -208,7 +241,7 @@ SPLInterpreterExamples >> newEnvironment [
 	^ result
 ]
 
-{ #category : #accessing }
+{ #category : #example }
 SPLInterpreterExamples >> notTrueIsFalse [
 	<gtExample>
 	| result input |
@@ -234,7 +267,7 @@ SPLInterpreterExamples >> parserClass [
 	^ SPLParser
 ]
 
-{ #category : #accessing }
+{ #category : #example }
 SPLInterpreterExamples >> printHello [
 	<gtExample>
 	| result context |
@@ -245,7 +278,7 @@ SPLInterpreterExamples >> printHello [
 	^ context
 ]
 
-{ #category : #accessing }
+{ #category : #example }
 SPLInterpreterExamples >> trueAndTrueIsTrue [
 	<gtExample>
 	| result input |
@@ -256,7 +289,7 @@ SPLInterpreterExamples >> trueAndTrueIsTrue [
 	^ result
 ]
 
-{ #category : #accessing }
+{ #category : #example }
 SPLInterpreterExamples >> trueNotEqualFalse [
 	<gtExample>
 	| result input |
@@ -267,7 +300,7 @@ SPLInterpreterExamples >> trueNotEqualFalse [
 	^ result
 ]
 
-{ #category : #accessing }
+{ #category : #example }
 SPLInterpreterExamples >> trueOrFalseIsTrue [
 	<gtExample>
 	| result input |
@@ -276,4 +309,26 @@ SPLInterpreterExamples >> trueOrFalseIsTrue [
 	self assert: result isValue.
 	self assert: result value.
 	^ result
+]
+
+{ #category : #example }
+SPLInterpreterExamples >> varX [
+	<gtExample>
+	| result context |
+	context := self context: 'varX;'.
+	result := context.
+	result := context reduce.
+	self assert: context environment size equals: 1.
+	^ context
+]
+
+{ #category : #example }
+SPLInterpreterExamples >> whileStatement [
+	<gtExample>
+	| result context |
+	context := self context: 'if (3<4) { print 7; }'.
+	result := context.
+	result := context reduce.
+	self assert: context output equals: '7'.
+	^ context
 ]

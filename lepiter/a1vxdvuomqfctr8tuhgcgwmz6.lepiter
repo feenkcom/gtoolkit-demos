@@ -34,7 +34,7 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-03-04T15:39:36.12456+01:00"
+									"dateAndTimeString" : "2023-03-04T17:01:50.066573+01:00"
 								}
 							},
 							"uid" : {
@@ -44,7 +44,7 @@
 							"paragraphStyle" : {
 								"__type" : "textStyle"
 							},
-							"string" : "{{gtTodo:label=print statements|completed=2023-03-04}}\n{{gtTodo:label=expression statements|completed=2023-03-04}}\n{{gtTodo:label=blocks}}\n{{gtTodo:label=if statements}}\n{{gtTodo:label=if else statements}}\n{{gtTodo:label=while statements}}"
+							"string" : "{{gtTodo:label=print statements|completed=2023-03-04}}\n{{gtTodo:label=expression statements|completed=2023-03-04}}\n{{gtTodo:label=blocks|completed=2023-03-04}}\n{{gtTodo:label=if statements|completed=2023-03-04}}\n{{gtTodo:label=if else statements|completed=2023-03-04}}\n"
 						}
 					]
 				},
@@ -288,7 +288,7 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-03-04T14:31:48.136853+01:00"
+									"dateAndTimeString" : "2023-03-04T15:59:51.388332+01:00"
 								}
 							},
 							"uid" : {
@@ -298,7 +298,7 @@
 							"paragraphStyle" : {
 								"__type" : "textStyle"
 							},
-							"string" : "{{gtTodo:label=Add a test case for print statements}}"
+							"string" : "{{gtTodo:label=Add a test case for print statements|completed=2023-03-04}}"
 						},
 						{
 							"__type" : "exampleSnippet",
@@ -492,7 +492,85 @@
 				"__type" : "textSnippet",
 				"children" : {
 					"__type" : "snippets",
-					"items" : [ ]
+					"items" : [
+						{
+							"__type" : "textSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2023-03-04T16:06:53.389466+01:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2023-03-04T16:07:18.42332+01:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "mawpJnayDQCS2ljpBZ2WQQ=="
+							},
+							"paragraphStyle" : {
+								"__type" : "textStyle"
+							},
+							"string" : "Blocks are similar to programs. We just evaluate statements, replacing them with STOP  when they are done."
+						},
+						{
+							"__type" : "exampleSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2023-03-04T16:07:43.025065+01:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2023-03-04T16:07:43.025065+01:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "CQ4fKXayDQCVGPXIBZ2WQQ=="
+							},
+							"exampleSelector" : "blockStatement",
+							"previewHeight" : 200,
+							"previewShowSelector" : "gtViewsFor:",
+							"exampleBehaviorName" : "SPLInterpreterExamples",
+							"codeExpanded" : true,
+							"previewExpanded" : false,
+							"noCode" : false
+						}
+					]
 				},
 				"createEmail" : {
 					"__type" : "email",
@@ -513,7 +591,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-03-04T15:30:02.339076+01:00"
+						"dateAndTimeString" : "2023-03-04T16:06:52.783803+01:00"
 					}
 				},
 				"uid" : {
@@ -523,13 +601,91 @@
 				"paragraphStyle" : {
 					"__type" : "textStyle"
 				},
-				"string" : ""
+				"string" : "#Blocks"
 			},
 			{
 				"__type" : "textSnippet",
 				"children" : {
 					"__type" : "snippets",
-					"items" : [ ]
+					"items" : [
+						{
+							"__type" : "textSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2023-03-04T16:46:49.641839+01:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2023-03-04T16:48:06.45688+01:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "6JX9tHayDQCiJE47BZ2WQQ=="
+							},
+							"paragraphStyle" : {
+								"__type" : "textStyle"
+							},
+							"string" : "An if statement must first reduce its expression, and then replace itself by the then part or the else part (STOP if no else)."
+						},
+						{
+							"__type" : "exampleSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2023-03-04T16:56:54.426864+01:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2023-03-04T16:56:54.426864+01:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "y94J2XayDQClAyoPBZ2WQQ=="
+							},
+							"exampleSelector" : "ifStatement",
+							"previewHeight" : 200,
+							"previewShowSelector" : "gtViewsFor:",
+							"exampleBehaviorName" : "SPLInterpreterExamples",
+							"codeExpanded" : true,
+							"previewExpanded" : false,
+							"noCode" : false
+						}
+					]
 				},
 				"createEmail" : {
 					"__type" : "email",
@@ -539,7 +695,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-03-04T15:39:49.751009+01:00"
+						"dateAndTimeString" : "2023-03-04T16:07:19.615109+01:00"
 					}
 				},
 				"editEmail" : {
@@ -550,51 +706,17 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-03-04T15:39:49.751009+01:00"
+						"dateAndTimeString" : "2023-03-04T16:46:49.147596+01:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
-					"uidString" : "qepixXWyDQCQpeMlBZ2WQQ=="
+					"uidString" : "jdm5J3ayDQCVB7/rBZ2WQQ=="
 				},
 				"paragraphStyle" : {
 					"__type" : "textStyle"
 				},
-				"string" : ""
-			},
-			{
-				"__type" : "pharoSnippet",
-				"children" : {
-					"__type" : "snippets",
-					"items" : [ ]
-				},
-				"createEmail" : {
-					"__type" : "email",
-					"emailString" : "<unknown>"
-				},
-				"createTime" : {
-					"__type" : "time",
-					"time" : {
-						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-03-04T15:33:32.680758+01:00"
-					}
-				},
-				"editEmail" : {
-					"__type" : "email",
-					"emailString" : "<unknown>"
-				},
-				"editTime" : {
-					"__type" : "time",
-					"time" : {
-						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-03-04T15:33:40.029203+01:00"
-					}
-				},
-				"uid" : {
-					"__type" : "uid",
-					"uidString" : "20bprnWyDQCPlHhwBZ2WQQ=="
-				},
-				"code" : "SPL contextFor: '3+4;'"
+				"string" : "#If statements"
 			}
 		]
 	},
