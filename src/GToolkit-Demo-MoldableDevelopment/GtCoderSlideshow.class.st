@@ -683,7 +683,7 @@ GtCoderSlideshow >> exampleMethodsExplanationWithLinks [
 
 	aScripter click
 		label: 'Expand first method';
-		id: GtSourceCoderId index: 1;
+		// (GtSourceCoderId indexed: 1);
 		play.
 
 	classCoderElement := aScripter elementWithoutParent.

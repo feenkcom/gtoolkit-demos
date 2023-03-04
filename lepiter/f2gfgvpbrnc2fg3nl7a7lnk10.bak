@@ -442,7 +442,7 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-03-03T11:28:29.727003+01:00"
+									"dateAndTimeString" : "2023-03-03T11:28:41.720627+01:00"
 								}
 							},
 							"uid" : {
@@ -452,7 +452,7 @@
 							"paragraphStyle" : {
 								"__type" : "textStyle"
 							},
-							"string" : ""
+							"string" : "Next we work on [[Building SPL Expressions]]. "
 						},
 						{
 							"__type" : "textSnippet",

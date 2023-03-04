@@ -1,90 +1,153 @@
+"
+SPL is the toy language for the [compiler construction course](https://seg.inf.unibe.ch/teaching/current/cc/) at UniBE.
+I implement a parser for SPL that builds an interpreter.
+"
 Class {
 	#name : #SPLParser,
 	#superclass : #SPLGrammar,
 	#category : #'GToolkit-Demo-SPL-PetitParser'
 }
 
-{ #category : #'as yet unclassified' }
-SPLParser >> assignment [ ^ super assignment
+{ #category : #accessing }
+SPLParser >> assignment [
+	^ super assignment
 ]
 
-{ #category : #'as yet unclassified' }
-SPLParser >> block [ ^ super block
+{ #category : #accessing }
+SPLParser >> assignmentExpression [
+	^ super assignmentExpression
+		==> [ :node | SPLAssignment variable: node first expression: node third ]
+]
+
+{ #category : #accessing }
+SPLParser >> binaryNodeFor: node [
+	^ self binaryNodeFor: node usingClass: SPLBinary
+]
+
+{ #category : #accessing }
+SPLParser >> binaryNodeFor: node usingClass: aNodeClass [
+	| result |
+	result := node first.
+	node second
+		do: [ :each | 
+			result := aNodeClass
+					left: result
+					operator: each first
+					right: each second ].
+	^ result
+]
+
+{ #category : #accessing }
+SPLParser >> block [
+	^ super block ==> [ :node | SPLBlockStatement for: node second ]
 ]
 
 { #category : #accessing }
 SPLParser >> boolean [
-	^ super boolean ==> [ :node | node = 'true' ]
+	^ super boolean ==> [ :node | SPLBoolean for: node = 'true' ]
 ]
 
-{ #category : #'as yet unclassified' }
-SPLParser >> comparison [ ^ super comparison
+{ #category : #accessing }
+SPLParser >> comparison [
+	^ super comparison ==> [ :node | self binaryNodeFor: node ]
 ]
 
 { #category : #'as yet unclassified' }
 SPLParser >> declaration [ ^ super declaration
 ]
 
-{ #category : #'as yet unclassified' }
-SPLParser >> equality [ ^ super equality
+{ #category : #accessing }
+SPLParser >> equality [
+	^ super equality ==> [ :node | self binaryNodeFor: node ]
 ]
 
-{ #category : #'as yet unclassified' }
-SPLParser >> exprStmt [ ^ super exprStmt
+{ #category : #accessing }
+SPLParser >> exprStmt [
+	^ super exprStmt ==> [ :node | SPLExpressionStatement for: node first ]
 ]
 
 { #category : #'as yet unclassified' }
 SPLParser >> expression [ ^ super expression
 ]
 
-{ #category : #'as yet unclassified' }
-SPLParser >> factor [ ^ super factor
+{ #category : #accessing }
+SPLParser >> factor [
+	^ super factor ==> [ :node | self binaryNodeFor: node ]
 ]
 
 { #category : #accessing }
 SPLParser >> float [
-	^ super float flatten ==> [ :node | node asNumber ]
+	^ super float flatten ==> [ :node | SPLNumber for: node asNumber ]
 ]
 
-{ #category : #'as yet unclassified' }
-SPLParser >> identifier [ ^ super identifier
+{ #category : #accessing }
+SPLParser >> identifier [
+	^ super identifier flatten ==> [ :node | SPLVariable for: node ]
 ]
 
-{ #category : #'as yet unclassified' }
-SPLParser >> ifStmt [ ^ super ifStmt
+{ #category : #accessing }
+SPLParser >> ifStmt [
+	"NB: the optional else part is the sixth element"
+
+	^ super ifStmt
+		==> [ :node | 
+			node sixth
+				ifNil: [ SPLIfStatement condition: node third ifPart: node fifth ]
+				ifNotNil: [ SPLIfElseStatement
+						condition: node third
+						ifPart: node fifth
+						elsePart: node sixth second ] ]
 ]
 
 { #category : #accessing }
 SPLParser >> integer [
-	^ super integer flatten ==> [ :node | node asInteger ]
+	^ super integer flatten ==> [ :node | SPLNumber for: node asInteger ]
 ]
 
 { #category : #'as yet unclassified' }
 SPLParser >> keyword [ ^ super keyword
 ]
 
-{ #category : #'as yet unclassified' }
-SPLParser >> logicAnd [ ^ super logicAnd
+{ #category : #accessing }
+SPLParser >> logicAnd [
+	^ super logicAnd
+		==> [ :node | self binaryNodeFor: node usingClass: SPLLogicalBinary ]
 ]
 
-{ #category : #'as yet unclassified' }
-SPLParser >> logicOr [ ^ super logicOr
+{ #category : #accessing }
+SPLParser >> logicOr [
+	^ super logicOr
+		==> [ :node | self binaryNodeFor: node usingClass: SPLLogicalBinary ]
+]
+
+{ #category : #accessing }
+SPLParser >> negatedUnary [
+	^ super negatedUnary
+		==> [ :node | SPLUnary negate: node first expression: node second ]
 ]
 
 { #category : #'as yet unclassified' }
 SPLParser >> number [ ^ super number
 ]
 
-{ #category : #'as yet unclassified' }
-SPLParser >> primary [ ^ super primary
+{ #category : #accessing }
+SPLParser >> parenthesizedExpression [
+	^ super parenthesizedExpression ==> #second
 ]
 
-{ #category : #'as yet unclassified' }
-SPLParser >> printStmt [ ^ super printStmt
+{ #category : #accessing }
+SPLParser >> primary [
+	^ super primary
 ]
 
-{ #category : #'as yet unclassified' }
-SPLParser >> program [ ^ super program
+{ #category : #accessing }
+SPLParser >> printStmt [
+	^ super printStmt ==> [ :node | SPLPrintStatement for: node second ]
+]
+
+{ #category : #accessing }
+SPLParser >> program [
+	^ super program ==> [ :node | SPLProgram for: node ]
 ]
 
 { #category : #'as yet unclassified' }
@@ -97,21 +160,25 @@ SPLParser >> statement [ ^ super statement
 
 { #category : #accessing }
 SPLParser >> string [
-	^ super string ==> [ :node | '' join: node second ]
+	^ super string ==> [ :node | SPLString for: ('' join: node second) ]
 ]
 
-{ #category : #'as yet unclassified' }
-SPLParser >> term [ ^ super term
+{ #category : #accessing }
+SPLParser >> term [
+	^ super term ==> [ :node | self binaryNodeFor: node ]
 ]
 
-{ #category : #'as yet unclassified' }
-SPLParser >> unary [ ^ super unary
+{ #category : #accessing }
+SPLParser >> unary [
+	^ super unary
 ]
 
 { #category : #'as yet unclassified' }
 SPLParser >> varDecl [ ^ super varDecl
 ]
 
-{ #category : #'as yet unclassified' }
-SPLParser >> whileStmt [ ^ super whileStmt
+{ #category : #accessing }
+SPLParser >> whileStmt [
+	^ super whileStmt
+		==> [ :node | SPLWhileStatement condition: node third whilePart: node fifth ]
 ]
