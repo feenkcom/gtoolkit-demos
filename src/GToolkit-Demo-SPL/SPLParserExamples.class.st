@@ -3,7 +3,7 @@ I implement examples to test the SPL parser that build an interpreter for SPL.
 "
 Class {
 	#name : #SPLParserExamples,
-	#superclass : #SPLGrammarExamples,
+	#superclass : #SPLGrammarExamplesTMP,
 	#category : #'GToolkit-Demo-SPL-Examples'
 }
 
