@@ -33,6 +33,11 @@ SPLAssignment >> printOn: aStream [
 	self expression printOn: aStream
 ]
 
+{ #category : #stepping }
+SPLAssignment >> stepIn: anEnvironment [
+	^ self notYetImplemented
+]
+
 { #category : #accessing }
 SPLAssignment >> variable [
 	^ variable

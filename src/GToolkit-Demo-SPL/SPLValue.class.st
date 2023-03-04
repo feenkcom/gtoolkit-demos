@@ -12,9 +12,21 @@ SPLValue class >> for: aValue [
 	^ self new value: aValue
 ]
 
+{ #category : #testing }
+SPLValue >> isValue [
+	^  true
+]
+
 { #category : #printing }
 SPLValue >> printOn: aStream [
 	self value printOn: aStream
+]
+
+{ #category : #stepping }
+SPLValue >> stepIn: anEnvironment [
+	"Should we raise an error, or just return ourself?"
+
+	^ self
 ]
 
 { #category : #accessing }

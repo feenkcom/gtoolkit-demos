@@ -4,6 +4,19 @@ Class {
 	#category : #'GToolkit-Demo-SPL-Interpreter'
 }
 
+{ #category : #evaluating }
+SPLLogicalBinary >> evaluateIn: anEnvironment [
+	| result |
+	self assert: self left isValue.
+	self assert: self right isValue.
+	self assert: self left isBoolean.
+	self assert: self right isBoolean.
+	result := self left value
+			perform: self selectorForOperator
+			withArguments: {self right value}.
+	^ SPLBoolean for: result
+]
+
 { #category : #constants }
 SPLLogicalBinary >> operators [
 	^ {'and'.
@@ -21,4 +34,21 @@ SPLLogicalBinary >> printOn: aStream [
 	aStream nextPut: Character space.
 	self right printOn: aStream.
 	aStream nextPut: $)
+]
+
+{ #category : #testing }
+SPLLogicalBinary >> returnsBoolean [
+	^ true
+]
+
+{ #category : #testing }
+SPLLogicalBinary >> returnsNumber [
+	^ false
+]
+
+{ #category : #evaluating }
+SPLLogicalBinary >> selectorForOperator [
+	self operator = 'and' ifTrue: [ ^ #& ].
+	self operator = 'or' ifTrue: [ ^ #| ].
+	^ self operator asSymbol
 ]
