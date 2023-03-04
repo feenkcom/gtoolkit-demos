@@ -24,6 +24,11 @@ SPLEnvironment >> at: aVariableName [
 ]
 
 { #category : #accessing }
+SPLEnvironment >> at: aVariableName put: aValue [
+	^ variables at: aVariableName put: aValue
+]
+
+{ #category : #accessing }
 SPLEnvironment >> declareVariable: aVariableName [
 	self assert: (self variables includesKey: aVariableName) not.
 	self variables at: aVariableName variable put: SPLNil new.

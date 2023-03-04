@@ -117,8 +117,8 @@ SPLContext >> outputHolder [
 ]
 
 { #category : #accessing }
-SPLContext >> print: aString [
-	self outputHolder value: self output , aString
+SPLContext >> printLn: aString [
+	self outputHolder value: self output , aString, String cr
 ]
 
 { #category : #evaluating }

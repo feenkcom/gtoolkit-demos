@@ -21,7 +21,12 @@ SPLVariable >> printOn: aStream [
 
 { #category : #stepping }
 SPLVariable >> stepIn: aContext [
-	^ self notYetImplemented
+	^ aContext environment at: self variable
+]
+
+{ #category : #accessing }
+SPLVariable >> value [
+	^ variable
 ]
 
 { #category : #accessing }

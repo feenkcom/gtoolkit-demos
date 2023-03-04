@@ -150,7 +150,8 @@ SPLInterpreterExamples >> blockStatement [
 	context := self context: '{ 1+2; 3*4/2; print 7; }'.
 	result := context.
 	result := context reduce.
-	self assert: context output equals: '7'.
+	self assert: context output equals: '7
+'.
 	^ context
 ]
 
@@ -194,7 +195,8 @@ SPLInterpreterExamples >> ifElseStatement [
 	context := self context: 'if (3>4) { print 7; } else { print "else ok"; }'.
 	result := context.
 	result := context reduce.
-	self assert: context output equals: 'else ok'.
+	self assert: context output equals: 'else ok
+'.
 	^ context
 ]
 
@@ -205,7 +207,8 @@ SPLInterpreterExamples >> ifStatement [
 	context := self context: 'if (3<4) { print 7; }'.
 	result := context.
 	result := context reduce.
-	self assert: context output equals: '7'.
+	self assert: context output equals: '7
+'.
 	^ context
 ]
 
@@ -274,7 +277,8 @@ SPLInterpreterExamples >> printHello [
 	context := self context: 'print "hello";'.
 	result := context.
 	result := context reduce.
-	self assert: context output equals: 'hello'.
+	self assert: context output equals: 'hello
+'.
 	^ context
 ]
 
@@ -315,6 +319,34 @@ SPLInterpreterExamples >> trueOrFalseIsTrue [
 SPLInterpreterExamples >> varX [
 	<gtExample>
 	| result context |
+	context := self context: 'var x = 42; print x;'.
+	result := context.
+	result := context reduce.
+	self assert: context environment size equals: 1.
+	self assert: (context environment at: 'x') value equals: 42.
+	self assert: (context output) value equals: '42
+'.
+	^ context
+]
+
+{ #category : #example }
+SPLInterpreterExamples >> varXassignedAndPrinted [
+	<gtExample>
+	| result context |
+	context := self context: 'var x; x = 6*7; print x;'.
+	result := context.
+	result := context reduce.
+	self assert: context environment size equals: 1.
+	self assert: (context environment at: 'x') value equals: 42.
+	self assert: context output equals: '42
+'.
+	^ context
+]
+
+{ #category : #example }
+SPLInterpreterExamples >> varXdeclared [
+	<gtExample>
+	| result context |
 	context := self context: 'var x;'.
 	result := context.
 	result := context reduce.
@@ -342,6 +374,7 @@ SPLInterpreterExamples >> whileStatement [
 	context := self context: 'if (3<4) { print 7; }'.
 	result := context.
 	result := context reduce.
-	self assert: context output equals: '7'.
+	self assert: context output equals: '7
+'.
 	^ context
 ]
