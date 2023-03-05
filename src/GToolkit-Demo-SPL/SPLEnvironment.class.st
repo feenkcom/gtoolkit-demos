@@ -19,24 +19,6 @@ SPLEnvironment >> announcer [
 ]
 
 { #category : #accessing }
-SPLEnvironment >> at: aVariable [
-	self
-		deprecated: 'Use #getVariable:'
-		transformWith: '`@receiver at:' -> '`@receiver getVariable:'.
-	^ variables at: aVariable
-]
-
-{ #category : #accessing }
-SPLEnvironment >> at: aVariable put: aValue [
-	self
-		deprecated: 'Use #setVariable:to: instead'
-		transformWith: '`@receiver at: `@var put: `@val' -> '`@receiver setVariable: `@var to: `@val'.
-	variables at: aVariable put: aValue.
-	self announcer announce: (ValueChanged newValue: self).
-	^ aValue
-]
-
-{ #category : #accessing }
 SPLEnvironment >> declareVariable: aVariable [
 	self declareVariable: aVariable initializedTo: SPLNil new
 ]

@@ -57,19 +57,3 @@ SPLVariable >> stepIn: aContext [
 SPLVariable >> value [
 	^ name
 ]
-
-{ #category : #accessing }
-SPLVariable >> variable [
-	self
-		deprecated: 'Use name'
-		transformWith: '`@receiver variable' -> '`@receiver name'.
-	^ name
-]
-
-{ #category : #accessing }
-SPLVariable >> variable: aVariableName [
-	self
-		deprecated: 'Use name:'
-		transformWith: '`@receiver variable:' -> '`@receiver name:'.
-	name := aVariableName
-]

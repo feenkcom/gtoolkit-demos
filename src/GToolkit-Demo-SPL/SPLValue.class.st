@@ -22,14 +22,6 @@ SPLValue >> isSPLValue [
 	^  true
 ]
 
-{ #category : #testing }
-SPLValue >> isValue [
-	self
-		deprecated: 'Use isSPLValue'
-		transformWith: '`@receiver isValue' -> '`@receiver isSPLValue'.
-	^  true
-]
-
 { #category : #printing }
 SPLValue >> printOn: aStream [
 	self value printOn: aStream

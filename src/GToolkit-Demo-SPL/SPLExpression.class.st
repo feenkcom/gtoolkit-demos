@@ -8,23 +8,7 @@ Class {
 }
 
 { #category : #testing }
-SPLExpression >> isBoolean [
-	self
-		deprecated: 'Use isSPLBoolean'
-		transformWith: '`@receiver isBoolean' -> '`@receiver isSPLBoolean'.
-	^ false
-]
-
-{ #category : #testing }
 SPLExpression >> isNil [
-	^ false
-]
-
-{ #category : #testing }
-SPLExpression >> isNumber [
-	self
-		deprecated: 'Use isSPLNumber'
-		transformWith: '`@receiver isNumber' -> '`@receiver isSPLNumber'.
 	^ false
 ]
 
@@ -50,22 +34,6 @@ SPLExpression >> isSPLString [
 
 { #category : #testing }
 SPLExpression >> isSPLValue [
-	^ false
-]
-
-{ #category : #testing }
-SPLExpression >> isString [
-	self
-		deprecated: 'Use isSPLString'
-		transformWith: '`@receiver isString' -> '`@receiver isSPLString'.
-	^ false
-]
-
-{ #category : #testing }
-SPLExpression >> isValue [
-	self
-		deprecated: 'Use isSPLValue'
-		transformWith: '`@receiver isValue' -> '`@receiver isSPLValue'.
 	^ false
 ]
 
