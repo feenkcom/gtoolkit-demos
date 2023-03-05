@@ -191,7 +191,7 @@ print fact;'
 
 { #category : #example }
 SPLInterpreterExamples >> fibonacci [
-	"<gtExample>"
+	<gtExample>
 	| result context |
 	context := self context: SPLGrammarExamples new fibonacciSource.
 	result := context.
@@ -359,7 +359,7 @@ SPLInterpreterExamples >> varXassignedAndPrinted [
 	result := context.
 	result := context reduce.
 	self assert: context environment size equals: 1.
-	self assert: (context environment getVariable: 'x') value equals: 42.
+	self assert: (context environment getVariableNamed: 'x') value equals: 42.
 	self assert: context output equals: '42
 '.
 	^ context
@@ -373,7 +373,7 @@ SPLInterpreterExamples >> varXdeclared [
 	result := context.
 	result := context reduce.
 	self assert: context environment size equals: 1.
-	self assert: (context environment getVariable: 'x') isSPLNil.
+	self assert: (context environment getVariableNamed: 'x') isSPLNil.
 	^ context
 ]
 
@@ -385,7 +385,7 @@ SPLInterpreterExamples >> varXinitializedTo42 [
 	result := context.
 	result := context reduce.
 	self assert: context environment size equals: 1.
-	self assert: (context environment getVariable: 'x') value equals: 42.
+	self assert: (context environment getVariableNamed: 'x') value equals: 42.
 	^ context
 ]
 
@@ -397,7 +397,7 @@ SPLInterpreterExamples >> varXinitializedTo42AndPrinted [
 	result := context.
 	result := context reduce.
 	self assert: context environment size equals: 1.
-	self assert: (context environment getVariable: 'x') value equals: 42.
+	self assert: (context environment getVariableNamed: 'x') value equals: 42.
 	self assert: (context output) value equals: '42
 '.
 	^ context
