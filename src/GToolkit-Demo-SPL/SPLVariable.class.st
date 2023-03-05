@@ -10,7 +10,7 @@ Class {
 { #category : #'instance creation' }
 SPLVariable class >> for: aVariableName [
 	^ self new
-		variable: aVariableName;
+		name: aVariableName;
 		yourself
 ]
 
