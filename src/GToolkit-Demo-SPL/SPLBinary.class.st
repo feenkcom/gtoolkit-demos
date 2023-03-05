@@ -21,9 +21,9 @@ SPLBinary class >> left: anExpression operator: anOperator right: anExpression2 
 SPLBinary >> comparison: anEnvironment [
 	| result |
 	self
-		assert: ((self left isNumber and: [ self right isNumber ])
-				or: [ (self left isBoolean and: [ self right isBoolean ])
-						or: [ self left isString and: [ self right isString ] ] ])
+		assert: ((self left isSPLNumber and: [ self right isSPLNumber ])
+				or: [ (self left isSPLBoolean and: [ self right isSPLBoolean ])
+						or: [ self left isSPLString and: [ self right isSPLString ] ] ])
 		description: 'Arguments to a comparison operator must have the same type.'.
 	result := self left value
 			perform: self selectorForOperator
@@ -54,8 +54,8 @@ SPLBinary >> equalsOp: aContext [
 
 { #category : #evaluating }
 SPLBinary >> evaluateIn: aContext [
-	self assert: self left isValue.
-	self assert: self right isValue.
+	self assert: self left isSPLValue.
+	self assert: self right isSPLValue.
 	^ self returnsBoolean
 		ifTrue: [ self comparison: aContext ]
 		ifFalse: [ self assert: self returnsNumber.
@@ -85,8 +85,8 @@ SPLBinary >> numberOperators [
 { #category : #evaluating }
 SPLBinary >> numsToNum: anEnvironment [
 	| result |
-	self assert: self left isNumber.
-	self assert: self right isNumber.
+	self assert: self left isSPLNumber.
+	self assert: self right isSPLNumber.
 	result := self left value
 			perform: self selectorForOperator
 			withArguments: {self right value}.
@@ -141,8 +141,8 @@ SPLBinary >> selectorForOperator [
 
 { #category : #stepping }
 SPLBinary >> stepIn: aContext [
-	^ self left isValue
-		ifTrue: [ self right isValue
+	^ self left isSPLValue
+		ifTrue: [ self right isSPLValue
 				ifTrue: [ self evaluateIn: aContext ]
 				ifFalse: [ self class
 						left: self left

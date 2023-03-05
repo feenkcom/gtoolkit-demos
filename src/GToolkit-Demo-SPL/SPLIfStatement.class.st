@@ -28,7 +28,7 @@ SPLIfStatement >> printOn: aStream [
 { #category : #stepping }
 SPLIfStatement >> stepIn: aContext [
 	^ self expression isReduced
-		ifTrue: [ self assert: self expression isBoolean.
+		ifTrue: [ self assert: self expression isSPLBoolean.
 			self expression value
 				ifTrue: [ self thenPart ]
 				ifFalse: [ SPLStopStatement new ] ]

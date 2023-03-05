@@ -18,7 +18,15 @@ SPLValue >> isReduced [
 ]
 
 { #category : #testing }
+SPLValue >> isSPLValue [
+	^  true
+]
+
+{ #category : #testing }
 SPLValue >> isValue [
+	self
+		deprecated: 'Use isSPLValue'
+		transformWith: '`@receiver isValue' -> '`@receiver isSPLValue'.
 	^  true
 ]
 

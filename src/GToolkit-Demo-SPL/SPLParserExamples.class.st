@@ -84,8 +84,8 @@ SPLParserExamples >> fibonacciProgram [
 var thisFib = 1;
 var lastFib = thisFib;
 var nextFib = thisFib;
-var n = 1;
-var end = 20;
+var iterations = 1;
+var end = 10;
 while (iterations<end)
 {
 iterations = (iterations+1);

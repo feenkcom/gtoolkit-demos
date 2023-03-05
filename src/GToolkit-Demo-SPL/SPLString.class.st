@@ -5,7 +5,15 @@ Class {
 }
 
 { #category : #testing }
+SPLString >> isSPLString [
+	^ true
+]
+
+{ #category : #testing }
 SPLString >> isString [
+	self
+		deprecated: 'Use isSPLString'
+		transformWith: '`@receiver isString' -> '`@receiver isSPLString'.
 	^ true
 ]
 

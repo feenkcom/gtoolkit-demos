@@ -19,10 +19,10 @@ SPLUnary class >> negate: anOperator expression: anExpression [
 SPLUnary >> evaluateIn: aContext [
 	self assert: self expression isReduced.
 	self operator = '!'
-		ifTrue: [ self assert: self expression isBoolean.
+		ifTrue: [ self assert: self expression isSPLBoolean.
 			^ SPLBoolean for: self expression value not ].
 	self operator = '-'
-		ifTrue: [ self assert: self expression isNumber.
+		ifTrue: [ self assert: self expression isSPLNumber.
 			^ SPLNumber for: self expression value negated ]
 ]
 

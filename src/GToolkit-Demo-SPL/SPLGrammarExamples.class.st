@@ -225,6 +225,16 @@ SPLGrammarExamples >> threeEqualFour [
 ]
 
 { #category : #example }
+SPLGrammarExamples >> threeEqualsThree [
+	<gtExample>
+	| input |
+	input := '3 == 3'.
+	self parse: input rule: #expression.
+	self fail: input rule: #comparison.
+	^ self parse: input rule: #equality
+]
+
+{ #category : #example }
 SPLGrammarExamples >> threeLessThanEqualFour [
 	<gtExample>
 	| input |

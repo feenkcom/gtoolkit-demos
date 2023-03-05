@@ -9,8 +9,8 @@ SPLLogicalBinary >> evaluateIn: anEnvironment [
 	| result |
 	self assert: self left isReduced.
 	self assert: self right isReduced.
-	self assert: self left isBoolean.
-	self assert: self right isBoolean.
+	self assert: self left isSPLBoolean.
+	self assert: self right isSPLBoolean.
 	result := self left value
 			perform: self selectorForOperator
 			withArguments: {self right value}.
