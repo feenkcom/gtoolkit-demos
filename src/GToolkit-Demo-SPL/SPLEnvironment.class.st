@@ -69,7 +69,9 @@ SPLEnvironment >> gtVariablesFor: aView [
 						ifFalse: [ #() ] ] ];
 		column: 'Variable' text: [ :assoc | assoc key ];
 		column: 'Value' text: [ :assoc | assoc value ];
-		send: [ :assoc | assoc value ]
+		send: [ :assoc | assoc value ];
+		actionUpdateButton;
+		updateWhen: ValueChanged in: self announcer
 ]
 
 { #category : #initialization }

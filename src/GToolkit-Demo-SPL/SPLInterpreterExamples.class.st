@@ -180,7 +180,8 @@ SPLInterpreterExamples >> expressionStatement [
 { #category : #example }
 SPLInterpreterExamples >> factorialSource [
 <gtExample>
-^ 'var x=5;
+^ 'var arg=5;
+var x=arg;
 var fact=1;
 while (x>0) {
 	fact = fact * x;
