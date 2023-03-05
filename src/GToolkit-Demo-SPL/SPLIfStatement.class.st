@@ -31,7 +31,7 @@ SPLIfStatement >> stepIn: aContext [
 		ifTrue: [ self assert: self expression isSPLBoolean.
 			self expression value
 				ifTrue: [ self thenPart ]
-				ifFalse: [ SPLStopStatement new ] ]
+				ifFalse: [ SPLSkipStatement new ] ]
 		ifFalse: [ self class
 				if: (self expression stepIn: aContext)
 				then: self thenPart ]
