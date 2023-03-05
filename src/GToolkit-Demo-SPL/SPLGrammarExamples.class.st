@@ -76,7 +76,7 @@ SPLGrammarExamples >> fibonacciOracle [
 	thisFib := 1.
 	lastFib := 1.
 	iterations := 1.
-	end := 20.
+	end := 10.
 	[ iterations < end ]
 		whileTrue: [ iterations := iterations + 1.
 			nextFib := thisFib + lastFib.
@@ -101,8 +101,8 @@ SPLGrammarExamples >> fibonacciSource [
 	^ 'var thisFib = 1;
 var lastFib = thisFib;
 var nextFib = thisFib;
-var n = 1;
-var end = 20;
+var iterations = 1;
+var end = 10;
 while ( iterations < end ) {
 	iterations = iterations + 1;
 	nextFib = thisFib + lastFib;

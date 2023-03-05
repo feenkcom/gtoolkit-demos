@@ -27,7 +27,7 @@ SPLNode >> isValue [
 	^ false
 ]
 
-{ #category : #accessing }
+{ #category : #stepping }
 SPLNode >> stepIn: aContext [
 	self subclassResponsibility
 ]

@@ -45,14 +45,16 @@ SPLProgram >> statements: aDeclarationAndStatementCollection [
 	statements := aDeclarationAndStatementCollection
 ]
 
-{ #category : #evaluating }
+{ #category : #stepping }
 SPLProgram >> stepIn: aContext [
 	"Take a step in the first statement that is not stopped."
 
 	^ self isReduced
-		ifTrue: [ self ]
-		ifFalse: [ self class
-				for: (self statements allButFirst
-						addFirst: (self statements first stepIn: aContext);
-						yourself) ]
+		ifTrue: [ SPLStopStatement new ]
+		ifFalse: [ statements first isReduced
+				ifTrue: [ self class for: self statements allButFirst ]
+				ifFalse: [ self class
+						for: (self statements allButFirst
+								addFirst: (self statements first stepIn: aContext);
+								yourself) ] ]
 ]

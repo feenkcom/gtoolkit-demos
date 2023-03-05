@@ -13,6 +13,11 @@ SPLExpression >> isBoolean [
 ]
 
 { #category : #testing }
+SPLExpression >> isNil [
+	^ false
+]
+
+{ #category : #testing }
 SPLExpression >> isNumber [
 	^ false
 ]
@@ -27,7 +32,7 @@ SPLExpression >> isValue [
 	^ false
 ]
 
-{ #category : #evaluating }
+{ #category : #stepping }
 SPLExpression >> stepIn: aContext [
 	"I take a reduction step in the environment and return a new, step-reduced node."
 

@@ -139,7 +139,7 @@ SPLBinary >> selectorForOperator [
 	^ self operator asSymbol
 ]
 
-{ #category : #evaluating }
+{ #category : #stepping }
 SPLBinary >> stepIn: aContext [
 	^ self left isValue
 		ifTrue: [ self right isValue

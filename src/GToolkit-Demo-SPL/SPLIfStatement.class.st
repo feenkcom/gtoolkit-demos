@@ -2,27 +2,17 @@ Class {
 	#name : #SPLIfStatement,
 	#superclass : #SPLConditionStatement,
 	#instVars : [
-		'ifPart'
+		'thenPart'
 	],
 	#category : #'GToolkit-Demo-SPL-Interpreter'
 }
 
 { #category : #'instance creation' }
-SPLIfStatement class >> condition: anExpression ifPart: aStatement [ 
+SPLIfStatement class >> if: anExpression then: aStatement [ 
 ^ self new	
 	expression: anExpression;
-	ifPart: aStatement;
+	thenPart: aStatement;
 	yourself
-]
-
-{ #category : #accessing }
-SPLIfStatement >> ifPart [
-	^ ifPart
-]
-
-{ #category : #accessing }
-SPLIfStatement >> ifPart: aStatement [
-	ifPart := aStatement
 ]
 
 { #category : #printing }
@@ -32,5 +22,27 @@ SPLIfStatement >> printOn: aStream [
 	aStream nextPutAll: 'if '.
 	self expression printOn: aStream.
 	aStream nextPut: Character cr.
-	self ifPart printOn: aStream
+	self thenPart printOn: aStream
+]
+
+{ #category : #stepping }
+SPLIfStatement >> stepIn: aContext [
+	^ self expression isReduced
+		ifTrue: [ self assert: self expression isBoolean.
+			self expression value
+				ifTrue: [ self thenPart ]
+				ifFalse: [ SPLStopStatement new ] ]
+		ifFalse: [ self class
+				if: (self expression stepIn: aContext)
+				then: self thenPart ]
+]
+
+{ #category : #accessing }
+SPLIfStatement >> thenPart [
+	^ thenPart
+]
+
+{ #category : #accessing }
+SPLIfStatement >> thenPart: aStatement [
+	thenPart := aStatement
 ]

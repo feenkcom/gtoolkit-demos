@@ -7,10 +7,42 @@ Class {
 	#name : #SPLEnvironment,
 	#superclass : #Object,
 	#instVars : [
-		'variables'
+		'variables',
+		'announcer'
 	],
 	#category : #'GToolkit-Demo-SPL-Interpreter'
 }
+
+{ #category : #accessing }
+SPLEnvironment >> announcer [
+	^ announcer
+]
+
+{ #category : #accessing }
+SPLEnvironment >> at: aVariableName [
+	^ variables at: aVariableName
+]
+
+{ #category : #accessing }
+SPLEnvironment >> at: aVariableName put: aValue [
+	variables at: aVariableName put: aValue.
+	self announcer announce: (ValueChanged newValue: self).
+	^ aValue
+]
+
+{ #category : #accessing }
+SPLEnvironment >> declareVariable: aVariableName [
+	self assert: (self variables includesKey: aVariableName) not.
+	self variables at: aVariableName variable put: SPLNil new.
+	self announcer announce: (ValueChanged newValue: self).
+]
+
+{ #category : #accessing }
+SPLEnvironment >> declareVariable: aVariableName initializedTo: aValue [
+	self assert: (self variables includesKey: aVariableName) not.
+	self variables at: aVariableName variable put: aValue.
+	self announcer announce: (ValueChanged newValue: self).
+]
 
 { #category : #accessing }
 SPLEnvironment >> gtVariablesFor: aView [
@@ -20,7 +52,7 @@ SPLEnvironment >> gtVariablesFor: aView [
 	^ aView columnedTree
 		title: 'Items';
 		priority: 1;
-		items: [ self variables ];
+		items: [ self variables associations ];
 		children: [ :each | 
 			each value isDictionary
 				ifTrue: [ each value associations ]
@@ -34,7 +66,8 @@ SPLEnvironment >> gtVariablesFor: aView [
 
 { #category : #initialization }
 SPLEnvironment >> initialize [
-	variables := Dictionary new
+	variables := Dictionary new.
+	announcer := Announcer new.
 ]
 
 { #category : #accessing }

@@ -8,7 +8,7 @@ Class {
 	#instVars : [
 		'environment',
 		'stateHolder',
-		'outputStream'
+		'outputHolder'
 	],
 	#category : #'GToolkit-Demo-SPL-Interpreter'
 }
@@ -77,7 +77,9 @@ SPLContext >> gtEnvironmentFor: aView [
 		title: 'Environment';
 		priority: 20;
 		object: [ self environment ];
-		view: #gtVariablesFor:
+		view: #gtVariablesFor:;
+		actionUpdateButton;
+		updateWhen: ValueChanged in: self environment announcer
 ]
 
 { #category : #accessing }
@@ -94,25 +96,30 @@ SPLContext >> gtOutputFor: aView [
 		priority: 30;
 		aptitude: BrGlamorousCodeEditorAptitude;
 		text: [ self output asRopedText ];
-		actionUpdateButton
+		actionUpdateButton;
+		updateWhen: ValueChanged in: self outputHolder announcer
 ]
 
 { #category : #initialization }
 SPLContext >> initialize [
-	environment := SPLEnvironment new.
 	stateHolder := NewValueHolder new.
-	outputStream := WriteStream on: ''.
-	stateHolder := NewValueHolder new
+	environment := SPLEnvironment new.
+	outputHolder := NewValueHolder value: ''.
 ]
 
 { #category : #accessing }
 SPLContext >> output [
-	^ outputStream contents
+	^ outputHolder value
 ]
 
 { #category : #accessing }
-SPLContext >> outputStream [
-	^ outputStream
+SPLContext >> outputHolder [
+	^ outputHolder
+]
+
+{ #category : #accessing }
+SPLContext >> printLn: aString [
+	self outputHolder value: self output , aString, String cr
 ]
 
 { #category : #evaluating }
@@ -126,6 +133,7 @@ SPLContext >> reduce: anSPLNode [
 	"Reduce till we cannot take any more steps"
 
 	| result |
+	self deprecated: 'Use SPLContext>>#reduce instead'.
 	result := anSPLNode.
 	[ result isReduced not ] whileTrue: [ result := result stepIn: self ].
 	^ result
@@ -148,11 +156,12 @@ SPLContext >> stateHolder [
 
 { #category : #evaluating }
 SPLContext >> step [
-	self state: (self step: self state).
+	self state: (self state stepIn: self).
 	^ self state
 ]
 
 { #category : #evaluating }
 SPLContext >> step: anSPLNode [
+	self deprecated: 'Use SPLContext>>#step instead'.
 	^ anSPLNode stepIn: self
 ]

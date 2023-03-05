@@ -8,7 +8,7 @@ Class {
 	#category : #'GToolkit-Demo-SPL-Interpreter'
 }
 
-{ #category : #accessing }
+{ #category : #testing }
 SPLStopStatement >> isReduced [
 	^ true
 ]
@@ -16,4 +16,9 @@ SPLStopStatement >> isReduced [
 { #category : #printing }
 SPLStopStatement >> printOn: aStream [
 	aStream nextPutAll: 'STOP'
+]
+
+{ #category : #stepping }
+SPLStopStatement >> stepIn: aContext [
+	^ self
 ]

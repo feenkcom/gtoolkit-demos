@@ -92,11 +92,11 @@ SPLParser >> ifStmt [
 	^ super ifStmt
 		==> [ :node | 
 			node sixth
-				ifNil: [ SPLIfStatement condition: node third ifPart: node fifth ]
+				ifNil: [ SPLIfStatement if: node third then: node fifth ]
 				ifNotNil: [ SPLIfElseStatement
-						condition: node third
-						ifPart: node fifth
-						elsePart: node sixth second ] ]
+						if: node third
+						then: node fifth
+						else: node sixth second ] ]
 ]
 
 { #category : #accessing }
@@ -180,5 +180,5 @@ SPLParser >> varDecl [ ^ super varDecl
 { #category : #accessing }
 SPLParser >> whileStmt [
 	^ super whileStmt
-		==> [ :node | SPLWhileStatement condition: node third whilePart: node fifth ]
+		==> [ :node | SPLWhileStatement while: node third do: node fifth ]
 ]
