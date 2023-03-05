@@ -630,80 +630,6 @@
 								"__type" : "textStyle"
 							},
 							"string" : "We can just run all the tests to transform them."
-						},
-						{
-							"__type" : "textSnippet",
-							"children" : {
-								"__type" : "snippets",
-								"items" : [ ]
-							},
-							"createEmail" : {
-								"__type" : "email",
-								"emailString" : "<unknown>"
-							},
-							"createTime" : {
-								"__type" : "time",
-								"time" : {
-									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-03-05T10:50:18.629468+01:00"
-								}
-							},
-							"editEmail" : {
-								"__type" : "email",
-								"emailString" : "<unknown>"
-							},
-							"editTime" : {
-								"__type" : "time",
-								"time" : {
-									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-03-05T10:50:18.629468+01:00"
-								}
-							},
-							"uid" : {
-								"__type" : "uid",
-								"uidString" : "TATU14WyDQCU/kBiDqx8Vw=="
-							},
-							"paragraphStyle" : {
-								"__type" : "textStyle"
-							},
-							"string" : ""
-						},
-						{
-							"__type" : "textSnippet",
-							"children" : {
-								"__type" : "snippets",
-								"items" : [ ]
-							},
-							"createEmail" : {
-								"__type" : "email",
-								"emailString" : "<unknown>"
-							},
-							"createTime" : {
-								"__type" : "time",
-								"time" : {
-									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-03-05T11:21:32.856665+01:00"
-								}
-							},
-							"editEmail" : {
-								"__type" : "email",
-								"emailString" : "<unknown>"
-							},
-							"editTime" : {
-								"__type" : "time",
-								"time" : {
-									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-03-05T11:21:32.856665+01:00"
-								}
-							},
-							"uid" : {
-								"__type" : "uid",
-								"uidString" : "DXOKR4ayDQCZ+1HPDqx8Vw=="
-							},
-							"paragraphStyle" : {
-								"__type" : "textStyle"
-							},
-							"string" : ""
 						}
 					]
 				},
@@ -737,6 +663,155 @@
 					"__type" : "textStyle"
 				},
 				"string" : "#Renaming isBoolean etc"
+			},
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [
+						{
+							"__type" : "textSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2023-03-05T13:45:15.49493+01:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2023-03-05T13:45:42.27193+01:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "U3d9SYiyDQC2/CEFA/OPpQ=="
+							},
+							"paragraphStyle" : {
+								"__type" : "textStyle"
+							},
+							"string" : "We are having problems with confusion between SPLVariable and the name of the variable."
+						},
+						{
+							"__type" : "textSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2023-03-05T13:45:43.800806+01:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2023-03-05T13:46:29.733294+01:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "s2ItS4iyDQCS9Hw5A/OPpQ=="
+							},
+							"paragraphStyle" : {
+								"__type" : "textStyle"
+							},
+							"string" : "Let's change the field name from `variable` to `name` and only access the name from the Environment methods (declare set and get)."
+						},
+						{
+							"__type" : "textSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2023-03-05T13:46:30.072058+01:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2023-03-05T13:46:41.230844+01:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "8GzvTYiyDQC/+DcJA/OPpQ=="
+							},
+							"paragraphStyle" : {
+								"__type" : "textStyle"
+							},
+							"string" : "let's change the Environment at: and at:puyt"
+						}
+					]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2023-03-05T13:44:58.042878+01:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2023-03-05T13:45:19.192865+01:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "nitzSIiyDQCqrdcmA/OPpQ=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : "#Fixing the Variable interface"
 			},
 			{
 				"__type" : "textSnippet",
@@ -1018,7 +1093,7 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-03-05T13:26:48.111394+01:00"
+									"dateAndTimeString" : "2023-03-05T13:29:04.308279+01:00"
 								}
 							},
 							"uid" : {
@@ -1028,7 +1103,47 @@
 							"paragraphStyle" : {
 								"__type" : "textStyle"
 							},
-							"string" : "Also the while example is breaking."
+							"string" : "Also the while example is randomly breaking."
+						},
+						{
+							"__type" : "exampleSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2023-03-05T13:29:23.578604+01:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2023-03-05T13:29:23.578604+01:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "/GDAEIiyDQC57tt8B4TZiw=="
+							},
+							"exampleSelector" : "whileStatementInFactorial",
+							"previewHeight" : 200,
+							"previewShowSelector" : "gtViewsFor:",
+							"exampleBehaviorName" : "SPLInterpreterExamples",
+							"codeExpanded" : true,
+							"previewExpanded" : false,
+							"noCode" : false
 						},
 						{
 							"__type" : "pharoSnippet",
@@ -1055,14 +1170,14 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-03-05T13:26:58.33747+01:00"
+									"dateAndTimeString" : "2023-03-05T13:27:27.51483+01:00"
 								}
 							},
 							"uid" : {
 								"__type" : "uid",
 								"uidString" : "gR3yB4iyDQCkMe/ZAn9Gpw=="
 							},
-							"code" : "SPL contextFor:\r'var thisFib = 1;\rvar lastFib = thisFib;\rvar nextFib = thisFib;'"
+							"code" : "SPL contextFor:\r'var x=5;\rvar fact=1;\rwhile (x>0) {\r\tfact = fact * x;\r\tx = x - 1;\r}\rprint fact;'"
 						},
 						{
 							"__type" : "textSnippet",

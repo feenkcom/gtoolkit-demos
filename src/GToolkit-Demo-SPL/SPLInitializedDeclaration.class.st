@@ -36,6 +36,7 @@ SPLInitializedDeclaration >> printOn: aStream [
 
 { #category : #stepping }
 SPLInitializedDeclaration >> stepIn: aContext [
+self halt.
 	^ self expression isReduced
 		ifTrue: [ aContext environment
 				declareVariable: self variable
