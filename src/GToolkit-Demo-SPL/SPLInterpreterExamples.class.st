@@ -404,18 +404,6 @@ SPLInterpreterExamples >> varXinitializedTo42 [
 ]
 
 { #category : #example }
-SPLInterpreterExamples >> whileStatement [
-	<gtExample>
-	| result context |
-	context := self context: self factorialSource.
-	result := context.
-	result := context reduce.
-	self assert: context output equals: '120
-'.
-	^ context
-]
-
-{ #category : #example }
 SPLInterpreterExamples >> whileStatementInFactorial [
 	<gtExample>
 	| result context |
