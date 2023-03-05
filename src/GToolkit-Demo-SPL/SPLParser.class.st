@@ -82,7 +82,7 @@ SPLParser >> float [
 
 { #category : #accessing }
 SPLParser >> identifier [
-	^ super identifier flatten ==> [ :node | SPLVariable for: node ]
+	^ super identifier flatten ==> [ :node | SPLVariable named: node ]
 ]
 
 { #category : #accessing }

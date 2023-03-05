@@ -50,7 +50,7 @@ SPLEnvironment >> declareVariable: aVariable initializedTo: aValue [
 	self
 		assert: (self variables includesKey: aVariable) not
 		description: 'Variable ' , aVariable printString , ' is already declared'.
-	self variables at: aVariable variable put: aValue.
+	self variables at: aVariable name put: aValue.
 	self announcer announce: (ValueChanged newValue: self)
 ]
 

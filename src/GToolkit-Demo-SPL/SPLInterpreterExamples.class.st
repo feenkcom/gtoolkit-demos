@@ -352,20 +352,6 @@ SPLInterpreterExamples >> trueOrFalseIsTrue [
 ]
 
 { #category : #example }
-SPLInterpreterExamples >> varX [
-	<gtExample>
-	| result context |
-	context := self context: 'var x = 42; print x;'.
-	result := context.
-	result := context reduce.
-	self assert: context environment size equals: 1.
-	self assert: (context environment getVariable: 'x') value equals: 42.
-	self assert: (context output) value equals: '42
-'.
-	^ context
-]
-
-{ #category : #example }
 SPLInterpreterExamples >> varXassignedAndPrinted [
 	<gtExample>
 	| result context |
@@ -395,11 +381,25 @@ SPLInterpreterExamples >> varXdeclared [
 SPLInterpreterExamples >> varXinitializedTo42 [
 	<gtExample>
 	| result context |
-	context := self context: 'var x = 6*7;'.
+	context := self context: 'var x = 42;'.
 	result := context.
 	result := context reduce.
 	self assert: context environment size equals: 1.
 	self assert: (context environment getVariable: 'x') value equals: 42.
+	^ context
+]
+
+{ #category : #example }
+SPLInterpreterExamples >> varXinitializedTo42AndPrinted [
+	<gtExample>
+	| result context |
+	context := self context: 'var x = 42; print x;'.
+	result := context.
+	result := context reduce.
+	self assert: context environment size equals: 1.
+	self assert: (context environment getVariable: 'x') value equals: 42.
+	self assert: (context output) value equals: '42
+'.
 	^ context
 ]
 
