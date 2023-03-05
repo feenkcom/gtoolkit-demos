@@ -10,7 +10,7 @@ SPLInterpreterExamples >> a12dividedBy3is4 [
 	| result context |
 	context := self contextForExpression: '12/3'.
 	result := context step.
-	self assert: result isValue.
+	self assert: result isSPLValue.
 	self assert: result value equals: 4.
 	^ result
 ]
@@ -21,7 +21,7 @@ SPLInterpreterExamples >> a3equals3 [
 	| result context |
 	context := self contextForExpression: '3==3'.
 	result := context step.
-	self assert: result isValue.
+	self assert: result isSPLValue.
 	self assert: result value.
 	^ result
 ]
@@ -32,7 +32,7 @@ SPLInterpreterExamples >> a3isNot4 [
 	| result context |
 	context := self contextForExpression: '3!=4'.
 	result := context step.
-	self assert: result isValue.
+	self assert: result isSPLValue.
 	self assert: result value.
 	^ result
 ]
@@ -43,7 +43,7 @@ SPLInterpreterExamples >> a3lessThan4 [
 	| result context |
 	context := self contextForExpression: '3<4'.
 	result := context step.
-	self assert: result isValue.
+	self assert: result isSPLValue.
 	self assert: result value.
 	^ result
 ]
@@ -54,7 +54,7 @@ SPLInterpreterExamples >> a3lessThanEqual4 [
 	| result context |
 	context := self contextForExpression: '3<=4'.
 	result := context step.
-	self assert: result isValue.
+	self assert: result isSPLValue.
 	self assert: result value.
 	^ result
 ]
@@ -74,7 +74,7 @@ SPLInterpreterExamples >> a3plus4is7 [
 	| result context |
 	context := self a3plus4 asContext.
 	result := context step.
-	self assert: result isValue.
+	self assert: result isSPLValue.
 	self assert: result value equals: 7.
 	^ result
 ]
@@ -85,7 +85,7 @@ SPLInterpreterExamples >> a3plus4times5 [
 	| result context |
 	context := self contextForExpression: '3+4*5'.
 	result := context reduce.
-	self assert: result isValue.
+	self assert: result isSPLValue.
 	self assert: result value equals: 23.
 	^ result
 ]
@@ -96,7 +96,7 @@ SPLInterpreterExamples >> a3times4is12 [
 	| result context |
 	context := self contextForExpression: '3*4'.
 	result := context step.
-	self assert: result isValue.
+	self assert: result isSPLValue.
 	self assert: result value equals: 12.
 	^ result
 ]
@@ -106,7 +106,7 @@ SPLInterpreterExamples >> a42 [
 	<gtExample>
 	| result |
 	result := self parseExpression: '42'.
-	self assert: result isValue.
+	self assert: result isSPLValue.
 	^ result
 ]
 
@@ -116,7 +116,7 @@ SPLInterpreterExamples >> a4greaterThan3 [
 	| result context |
 	context := self contextForExpression: '4>3'.
 	result := context step.
-	self assert: result isValue.
+	self assert: result isSPLValue.
 	self assert: result value.
 	^ result
 ]
@@ -127,7 +127,7 @@ SPLInterpreterExamples >> a4greaterThanEqual3 [
 	| result context |
 	context := self contextForExpression: '4>=3'.
 	result := context step.
-	self assert: result isValue.
+	self assert: result isSPLValue.
 	self assert: result value.
 	^ result
 ]
@@ -138,7 +138,7 @@ SPLInterpreterExamples >> a4minus3is1 [
 	| result context |
 	context := self contextForExpression: '4-3'.
 	result := context step.
-	self assert: result isValue.
+	self assert: result isSPLValue.
 	self assert: result value equals: 1.
 	^ result
 ]
@@ -191,7 +191,7 @@ print fact;'
 
 { #category : #example }
 SPLInterpreterExamples >> fibonacci [
-	<gtExample>
+	"<gtExample>"
 	| result context |
 	context := self context: SPLGrammarExamples new fibonacciSource.
 	result := context.
@@ -208,7 +208,7 @@ SPLInterpreterExamples >> helloEqualsHello [
 	| result context |
 	context := self contextForExpression: '"hello" == "hello"'.
 	result := context reduce.
-	self assert: result isValue.
+	self assert: result isSPLValue.
 	self assert: result value.
 	^ result
 ]
@@ -243,7 +243,7 @@ SPLInterpreterExamples >> minus3 [
 	| result input |
 	input := self contextForExpression: '-3'.
 	result := input reduce.
-	self assert: result isValue.
+	self assert: result isSPLValue.
 	self assert: result value equals: -3.
 	^ result
 ]
@@ -275,7 +275,7 @@ SPLInterpreterExamples >> notTrueIsFalse [
 	| result context |
 	context := self contextForExpression: '!true'.
 	result := context reduce.
-	self assert: result isValue.
+	self assert: result isSPLValue.
 	self assert: result value not.
 	^ result
 ]
@@ -308,12 +308,23 @@ SPLInterpreterExamples >> printHello [
 ]
 
 { #category : #example }
+SPLInterpreterExamples >> threeEqualsThree [
+	<gtExample>
+	| result context |
+	context := self contextForExpression: '3 == 3'.
+	result := context reduce.
+	self assert: result isSPLValue.
+	self assert: result value.
+	^ result
+]
+
+{ #category : #example }
 SPLInterpreterExamples >> trueAndTrueIsTrue [
 	<gtExample>
 	| result context |
 	context := self contextForExpression: 'true and true'.
 	result := context step.
-	self assert: result isValue.
+	self assert: result isSPLValue.
 	self assert: result value.
 	^ result
 ]
@@ -324,7 +335,7 @@ SPLInterpreterExamples >> trueNotEqualFalse [
 	| result context |
 	context := self contextForExpression: 'true != false'.
 	result := context reduce.
-	self assert: result isValue.
+	self assert: result isSPLValue.
 	self assert: result value.
 	^ result
 ]
@@ -335,7 +346,7 @@ SPLInterpreterExamples >> trueOrFalseIsTrue [
 	| result context |
 	context := self contextForExpression: 'true or false'.
 	result := context step.
-	self assert: result isValue.
+	self assert: result isSPLValue.
 	self assert: result value.
 	^ result
 ]
@@ -376,7 +387,7 @@ SPLInterpreterExamples >> varXdeclared [
 	result := context.
 	result := context reduce.
 	self assert: context environment size equals: 1.
-	self assert: (context environment at: 'x') isNil.
+	self assert: (context environment at: 'x') isSPLNil.
 	^ context
 ]
 

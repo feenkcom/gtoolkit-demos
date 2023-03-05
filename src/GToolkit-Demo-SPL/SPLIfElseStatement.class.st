@@ -40,7 +40,7 @@ SPLIfElseStatement >> printOn: aStream [
 { #category : #stepping }
 SPLIfElseStatement >> stepIn: aContext [
 	^ self expression isReduced
-		ifTrue: [ self assert: self expression isBoolean.
+		ifTrue: [ self assert: self expression isSPLBoolean.
 			self expression value ifTrue: [ self thenPart ] ifFalse: [ self elsePart ] ]
 		ifFalse: [ self class
 				if: (self expression stepIn: aContext)

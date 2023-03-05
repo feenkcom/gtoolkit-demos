@@ -12,3 +12,8 @@ Class {
 SPLNil >> isNil [
 	^ true
 ]
+
+{ #category : #testing }
+SPLNil >> isSPLNil [
+	^ true
+]
