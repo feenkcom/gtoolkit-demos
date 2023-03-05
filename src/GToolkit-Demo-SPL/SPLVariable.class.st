@@ -8,7 +8,7 @@ Class {
 }
 
 { #category : #'instance creation' }
-SPLVariable class >> for: aVariableName [
+SPLVariable class >> named: aVariableName [
 	^ self new
 		name: aVariableName;
 		yourself

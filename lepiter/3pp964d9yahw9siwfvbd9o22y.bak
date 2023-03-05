@@ -802,14 +802,14 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-03-05T17:47:58.166081+01:00"
+									"dateAndTimeString" : "2023-03-05T18:09:31.199573+01:00"
 								}
 							},
 							"uid" : {
 								"__type" : "uid",
 								"uidString" : "IMkHkYqyDQCCpviiB1i9fw=="
 							},
-							"code" : "#variable: gtSenders & SPL package name gtPackageMatches."
+							"code" : "#for: gtSenders & SPL package name gtPackageMatches."
 						},
 						{
 							"__type" : "textSnippet",
@@ -1169,7 +1169,7 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-03-05T17:53:14.03892+01:00"
+									"dateAndTimeString" : "2023-03-05T17:54:48.05469+01:00"
 								}
 							},
 							"uid" : {
@@ -1179,7 +1179,7 @@
 							"paragraphStyle" : {
 								"__type" : "textStyle"
 							},
-							"string" : "We try to create a minimal example."
+							"string" : "We try to create a minimal example. This one "
 						},
 						{
 							"__type" : "pharoSnippet",
@@ -1240,12 +1240,120 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-03-05T16:53:42.805363+01:00"
+									"dateAndTimeString" : "2023-03-05T18:04:56.631476+01:00"
 								}
 							},
 							"uid" : {
 								"__type" : "uid",
 								"uidString" : "B1Z164qyDQCokqfLC28vXQ=="
+							},
+							"paragraphStyle" : {
+								"__type" : "textStyle"
+							},
+							"string" : "We still have some basic problems with Environments. Let's write some dedicated tests in {{gtClass:name=SPLEnvironmentExamples}}."
+						},
+						{
+							"__type" : "textSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2023-03-05T18:09:51.875152+01:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2023-03-05T18:10:13.418307+01:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "ks3L+4uyDQCtccZbDz9ycA=="
+							},
+							"paragraphStyle" : {
+								"__type" : "textStyle"
+							},
+							"string" : "Let's also rename `SPLVariable class>>#for:` to `named`."
+						},
+						{
+							"__type" : "pharoSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2023-03-05T18:10:26.851582+01:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2023-03-05T18:10:46.05665+01:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "en/h/YuyDQCujTmlDz9ycA=="
+							},
+							"code" : "#for: gtSenders  & SPLVariable gtReferences\r& SPL package name gtPackageMatches."
+						},
+						{
+							"__type" : "textSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2023-03-05T18:04:05.118362+01:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2023-03-05T18:04:05.118362+01:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "Argg54uyDQCBcWB3DO9WUA=="
 							},
 							"paragraphStyle" : {
 								"__type" : "textStyle"
