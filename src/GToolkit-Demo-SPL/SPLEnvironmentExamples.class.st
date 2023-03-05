@@ -23,7 +23,7 @@ SPLEnvironmentExamples >> envtWithVarX [
 	envt declareVariable: self varX.
 	self assert: envt isEmpty not.
 	self assert: envt variables size equals: 1.
-	self assert: (envt getVariable: self varX) name equals: 'x'.
+	self assert: (envt getVariable: self varX) isSPLNil.
 	^ envt
 ]
 
