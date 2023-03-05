@@ -579,8 +579,10 @@
 					"__type" : "uid",
 					"uidString" : "D+18/XeyDQCk7LCuBAW/7A=="
 				},
+				"exampleSelector" : "fibonacci",
 				"previewHeight" : 200,
 				"previewShowSelector" : "gtViewsFor:",
+				"exampleBehaviorName" : "SPLInterpreterExamples",
 				"codeExpanded" : true,
 				"previewExpanded" : false,
 				"noCode" : false
