@@ -15,6 +15,6 @@ SPLPrintStatement >> printOn: aStream [
 SPLPrintStatement >> stepIn: aContext [
 	^ self expression isReduced
 		ifTrue: [ aContext printLn: self expression value asString.
-			SPLStopStatement new ]
+			SPLSkipStatement new ]
 		ifFalse: [ self class for: (self expression stepIn: aContext) ]
 ]

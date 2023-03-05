@@ -5,14 +5,6 @@ Class {
 }
 
 { #category : #testing }
-SPLNumber >> isNumber [
-	self
-		deprecated: 'Use isSPLNumber'
-		transformWith: '`@receiver isNumber' -> '`@receiver isSPLNumber'.
-	^ true
-]
-
-{ #category : #testing }
 SPLNumber >> isSPLNumber [
 	^ true
 ]

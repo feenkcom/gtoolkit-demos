@@ -24,7 +24,7 @@ SPLDeclaration >> printOn: aStream [
 { #category : #stepping }
 SPLDeclaration >> stepIn: aContext [
 	aContext environment declareVariable: self variable.
-	^ SPLStopStatement new
+	^ SPLSkipStatement new
 ]
 
 { #category : #accessing }

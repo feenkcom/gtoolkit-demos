@@ -14,16 +14,51 @@ SPLEnvironmentExamples >> emptyEnvironment [
 ]
 
 { #category : #example }
-SPLEnvironmentExamples >> envtWithVarX [
-	"This test hangs with the last assertion."
+SPLEnvironmentExamples >> envtWithInitializedVarXupdatedTo7 [
+	<gtExample>
+	| envt |
+	envt := self envtWithVarXinitializedTo42.
+	envt setVariable: self varX to: (SPLNumber for: 42).
+	self assert: envt isEmpty not.
+	self assert: envt variables size equals: 1.
+	self assert: (envt getVariableNamed: 'x') value equals: 42.
+	^ envt
+]
 
+{ #category : #example }
+SPLEnvironmentExamples >> envtWithVarX [
 	<gtExample>
 	| envt |
 	envt := self emptyEnvironment.
 	envt declareVariable: self varX.
 	self assert: envt isEmpty not.
 	self assert: envt variables size equals: 1.
-	self assert: (envt getVariable: self varX) name equals: 'x'.
+	self assert: (envt getVariable: self varX) isSPLNil.
+	self assert: (envt getVariableNamed: 'x') isSPLNil.
+	^ envt
+]
+
+{ #category : #example }
+SPLEnvironmentExamples >> envtWithVarXinitializedTo42 [
+	<gtExample>
+	| envt |
+	envt := self emptyEnvironment.
+	envt declareVariable: self varX initializedTo: (SPLNumber for: 42).
+	self assert: envt isEmpty not.
+	self assert: envt variables size equals: 1.
+	self assert: (envt getVariableNamed: 'x') value equals: 42.
+	^ envt
+]
+
+{ #category : #example }
+SPLEnvironmentExamples >> envtWithVarXupdatedTo42 [
+	<gtExample>
+	| envt |
+	envt := self envtWithVarX.
+	envt setVariable: self varX to: (SPLNumber for: 42).
+	self assert: envt isEmpty not.
+	self assert: envt variables size equals: 1.
+	self assert: (envt getVariableNamed: 'x') value equals: 42.
 	^ envt
 ]
 

@@ -42,7 +42,7 @@ SPLBlockStatement >> stepIn: aContext [
 	"Take a step in the first statement that is not stopped."
 
 	^ self statements isEmpty
-		ifTrue: [ SPLStopStatement new ]
+		ifTrue: [ SPLSkipStatement new ]
 		ifFalse: [ self statements size = 1
 				ifTrue: [ self statements first ]
 				ifFalse: [ statements first isReduced

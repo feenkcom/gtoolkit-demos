@@ -37,14 +37,6 @@ SPLNode >> isSPLVariable [
 	^ false
 ]
 
-{ #category : #testing }
-SPLNode >> isValue [
-	self
-		deprecated: 'Use isSPLValue'
-		transformWith: '`@receiver isValue' -> '`@receiver isSPLValue'.
-	^ false
-]
-
 { #category : #stepping }
 SPLNode >> stepIn: aContext [
 	self subclassResponsibility

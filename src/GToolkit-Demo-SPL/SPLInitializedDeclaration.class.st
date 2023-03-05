@@ -40,7 +40,7 @@ SPLInitializedDeclaration >> stepIn: aContext [
 		ifTrue: [ aContext environment
 				declareVariable: self variable
 				initializedTo: self expression.
-			SPLStopStatement new ]
+			SPLSkipStatement new ]
 		ifFalse: [ self class
 				for: self variable
 				with: (self expression stepIn: aContext) ]

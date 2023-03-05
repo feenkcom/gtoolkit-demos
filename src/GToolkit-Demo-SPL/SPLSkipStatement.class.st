@@ -3,22 +3,22 @@ I am a pseudo-statement only used in the interpreter.
 There is no ""stop"" statement in the syntax.
 "
 Class {
-	#name : #SPLStopStatement,
+	#name : #SPLSkipStatement,
 	#superclass : #SPLNode,
 	#category : #'GToolkit-Demo-SPL-Interpreter'
 }
 
 { #category : #testing }
-SPLStopStatement >> isReduced [
+SPLSkipStatement >> isReduced [
 	^ true
 ]
 
 { #category : #printing }
-SPLStopStatement >> printOn: aStream [
-	aStream nextPutAll: 'STOP'
+SPLSkipStatement >> printOn: aStream [
+	aStream nextPutAll: 'skip;'
 ]
 
 { #category : #stepping }
-SPLStopStatement >> stepIn: aContext [
+SPLSkipStatement >> stepIn: aContext [
 	^ self
 ]

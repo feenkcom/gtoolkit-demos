@@ -19,24 +19,6 @@ SPLEnvironment >> announcer [
 ]
 
 { #category : #accessing }
-SPLEnvironment >> at: aVariable [
-	self
-		deprecated: 'Use #getVariable:'
-		transformWith: '`@receiver at:' -> '`@receiver getVariable:'.
-	^ variables at: aVariable
-]
-
-{ #category : #accessing }
-SPLEnvironment >> at: aVariable put: aValue [
-	self
-		deprecated: 'Use #setVariable:to: instead'
-		transformWith: '`@receiver at: `@var put: `@val' -> '`@receiver setVariable: `@var to: `@val'.
-	variables at: aVariable put: aValue.
-	self announcer announce: (ValueChanged newValue: self).
-	^ aValue
-]
-
-{ #category : #accessing }
 SPLEnvironment >> declareVariable: aVariable [
 	self declareVariable: aVariable initializedTo: SPLNil new
 ]
@@ -50,7 +32,7 @@ SPLEnvironment >> declareVariable: aVariable initializedTo: aValue [
 	self
 		assert: (self variables includesKey: aVariable) not
 		description: 'Variable ' , aVariable printString , ' is already declared'.
-	self variables at: aVariable name put: aValue.
+	self variables at: aVariable put: aValue.
 	self announcer announce: (ValueChanged newValue: self)
 ]
 
@@ -62,6 +44,12 @@ SPLEnvironment >> getVariable: aVariable [
 		assert: (self variables includesKey: aVariable)
 		description: 'Variable ' , aVariable printString , ' is not declared'.
 	^ variables at: aVariable
+]
+
+{ #category : #accessing }
+SPLEnvironment >> getVariableNamed: aVariableName [
+	"Just needed for tests"
+	^ self getVariable: (SPLVariable named: aVariableName)
 ]
 
 { #category : #accessing }

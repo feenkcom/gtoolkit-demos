@@ -81,12 +81,12 @@ SPLParserExamples >> fibonacciProgram [
 	| result |
 	result := super fibonacciProgram.
 	self assert: result printString equals: '
+var arg = 10;
 var thisFib = 1;
 var lastFib = thisFib;
 var nextFib = thisFib;
 var iterations = 1;
-var end = 10;
-while (iterations<end)
+while (iterations<arg)
 {
 iterations = (iterations+1);
 nextFib = (thisFib+lastFib);

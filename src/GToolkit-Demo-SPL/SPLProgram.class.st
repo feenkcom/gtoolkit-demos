@@ -21,7 +21,6 @@ SPLProgram class >> for: aDeclarationAndStatementCollection [
 { #category : #testing }
 SPLProgram >> isReduced [
 	^ self statements isEmpty
-		or: [ self statements size = 1 and: [ self statements first isReduced ] ]
 ]
 
 { #category : #printing }
@@ -50,7 +49,7 @@ SPLProgram >> stepIn: aContext [
 	"Take a step in the first statement that is not stopped."
 
 	^ self isReduced
-		ifTrue: [ SPLStopStatement new ]
+		ifTrue: [ self ]
 		ifFalse: [ statements first isReduced
 				ifTrue: [ self class for: self statements allButFirst ]
 				ifFalse: [ self class
