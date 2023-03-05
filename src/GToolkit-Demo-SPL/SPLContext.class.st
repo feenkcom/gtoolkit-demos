@@ -133,6 +133,7 @@ SPLContext >> reduce: anSPLNode [
 	"Reduce till we cannot take any more steps"
 
 	| result |
+	self deprecated: 'Use SPLContext>>#reduce instead'.
 	result := anSPLNode.
 	[ result isReduced not ] whileTrue: [ result := result stepIn: self ].
 	^ result
@@ -155,11 +156,12 @@ SPLContext >> stateHolder [
 
 { #category : #evaluating }
 SPLContext >> step [
-	self state: (self step: self state).
+	self state: (self state stepIn: self).
 	^ self state
 ]
 
 { #category : #evaluating }
 SPLContext >> step: anSPLNode [
+	self deprecated: 'Use SPLContext>>#step instead'.
 	^ anSPLNode stepIn: self
 ]
