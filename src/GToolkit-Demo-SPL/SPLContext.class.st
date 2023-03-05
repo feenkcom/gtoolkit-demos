@@ -123,6 +123,14 @@ SPLContext >> printLn: aString [
 ]
 
 { #category : #evaluating }
+SPLContext >> program: anSPLProgramSource [
+	"Mainly for interactive testing to change the program on the fly."
+	^ self
+		state: (self class parse: anSPLProgramSource);
+		yourself
+]
+
+{ #category : #evaluating }
 SPLContext >> reduce [
 	[ self state isReduced not ] whileTrue: [ self step ].
 	^ self state
@@ -137,6 +145,14 @@ SPLContext >> reduce: anSPLNode [
 	result := anSPLNode.
 	[ result isReduced not ] whileTrue: [ result := result stepIn: self ].
 	^ result
+]
+
+{ #category : #evaluating }
+SPLContext >> run: anSPLProgramSource [
+	"Mainly for interactive testing to change the program on the fly."
+
+	self program: anSPLProgramSource.
+	^ self reduce
 ]
 
 { #category : #accessing }
