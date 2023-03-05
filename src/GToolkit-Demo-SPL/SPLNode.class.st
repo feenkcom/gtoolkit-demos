@@ -23,7 +23,17 @@ SPLNode >> isReduced [
 ]
 
 { #category : #testing }
+SPLNode >> isSPLNode [
+	^ true
+]
+
+{ #category : #testing }
 SPLNode >> isSPLValue [
+	^ false
+]
+
+{ #category : #testing }
+SPLNode >> isSPLVariable [
 	^ false
 ]
 
