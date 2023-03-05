@@ -1348,7 +1348,7 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-03-05T18:16:56.453531+01:00"
+									"dateAndTimeString" : "2023-03-05T19:01:14.498987+01:00"
 								}
 							},
 							"uid" : {
@@ -1358,7 +1358,81 @@
 							"paragraphStyle" : {
 								"__type" : "textStyle"
 							},
-							"string" : "Now we see that our problems start in retreiving the values of variables in the environment's dictionary."
+							"string" : "Now we see that our problems start in retrieving the values of variables in the environment's dictionary."
+						},
+						{
+							"__type" : "textSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2023-03-05T19:01:48.636361+01:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2023-03-05T19:01:57.106817+01:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "F8+RtYyyDQCa/DHgCCIJhA=="
+							},
+							"paragraphStyle" : {
+								"__type" : "textStyle"
+							},
+							"string" : "We quickly find and fix the the bug in {{gtMethod:name=SPLEnvironment>>#declareVariable:initializedTo:}}."
+						},
+						{
+							"__type" : "textSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2023-03-05T19:01:58.491471+01:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2023-03-05T19:02:04.197486+01:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "3y8otoyyDQCfih+XCCIJhA=="
+							},
+							"paragraphStyle" : {
+								"__type" : "textStyle"
+							},
+							"string" : "All the tests are green."
 						},
 						{
 							"__type" : "exampleSnippet",
@@ -1392,7 +1466,7 @@
 								"__type" : "uid",
 								"uidString" : "ApHfFIyyDQCiFyG9CbOWVQ=="
 							},
-							"exampleSelector" : "envtWithVarX",
+							"exampleSelector" : "envtWithInitializedVarXupdatedTo7",
 							"previewHeight" : 200,
 							"previewShowSelector" : "gtViewsFor:",
 							"exampleBehaviorName" : "SPLEnvironmentExamples",

@@ -65,6 +65,12 @@ SPLEnvironment >> getVariable: aVariable [
 ]
 
 { #category : #accessing }
+SPLEnvironment >> getVariableNamed: aVariableName [
+	"Just needed for tests"
+	^ self getVariable: (SPLVariable named: aVariableName)
+]
+
+{ #category : #accessing }
 SPLEnvironment >> gtVariablesFor: aView [
 	"Copied and adapted from Dictionary>>#gtItemsFor:"
 
