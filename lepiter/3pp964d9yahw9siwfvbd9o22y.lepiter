@@ -1105,6 +1105,108 @@
 							"string" : "We run  the tests ... There are numerous failing tests in {{gtClass:name=SPLParserExamples}}."
 						},
 						{
+							"__type" : "pharoSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2023-03-05T16:58:31.367196+01:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2023-03-05T16:59:16.600827+01:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "hG6o/IqyDQC345kqDliG/w=="
+							},
+							"code" : "SPLParser new block end parse: '{ x = 42; print x * x; }' "
+						},
+						{
+							"__type" : "pharoSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2023-03-05T17:26:13.243302+01:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2023-03-05T17:26:19.416184+01:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "Vqi2X4uyDQCylO2tDdWzBw=="
+							},
+							"code" : "SPLParser parse: '{ x = 42; print x * x; }'"
+						},
+						{
+							"__type" : "pharoSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2023-03-05T17:00:28.707299+01:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2023-03-05T17:26:03.909745+01:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "BeemA4uyDQCPV8x0DliG/w=="
+							},
+							"code" : "SPLGrammar parse: '{ x = 42; print x * x; }' "
+						},
+						{
 							"__type" : "textSnippet",
 							"children" : {
 								"__type" : "snippets",
