@@ -36,7 +36,7 @@ SPLAssignment >> printOn: aStream [
 { #category : #stepping }
 SPLAssignment >> stepIn: aContext [
 	^ self expression isReduced
-		ifTrue: [ aContext environment at: self variable value put: self expression.
+		ifTrue: [ aContext environment setVariable: self variable to: self expression.
 			self expression ]
 		ifFalse: [ self class
 				variable: self variable

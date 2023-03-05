@@ -19,29 +19,49 @@ SPLEnvironment >> announcer [
 ]
 
 { #category : #accessing }
-SPLEnvironment >> at: aVariableName [
-	^ variables at: aVariableName
+SPLEnvironment >> at: aVariable [
+	self
+		deprecated: 'Use #getVariable:'
+		transformWith: '`@receiver at:' -> '`@receiver getVariable:'.
+	^ variables at: aVariable
 ]
 
 { #category : #accessing }
-SPLEnvironment >> at: aVariableName put: aValue [
-	variables at: aVariableName put: aValue.
+SPLEnvironment >> at: aVariable put: aValue [
+	self
+		deprecated: 'Use #setVariable:to: instead'
+		transformWith: '`@receiver at: `@var put: `@val' -> '`@receiver setVariable: `@var to: `@val'.
+	variables at: aVariable put: aValue.
 	self announcer announce: (ValueChanged newValue: self).
 	^ aValue
 ]
 
 { #category : #accessing }
-SPLEnvironment >> declareVariable: aVariableName [
-	self assert: (self variables includesKey: aVariableName) not.
-	self variables at: aVariableName variable put: SPLNil new.
-	self announcer announce: (ValueChanged newValue: self).
+SPLEnvironment >> declareVariable: aVariable [
+	self declareVariable: aVariable initializedTo: SPLNil new
 ]
 
 { #category : #accessing }
-SPLEnvironment >> declareVariable: aVariableName initializedTo: aValue [
-	self assert: (self variables includesKey: aVariableName) not.
-	self variables at: aVariableName variable put: aValue.
-	self announcer announce: (ValueChanged newValue: self).
+SPLEnvironment >> declareVariable: aVariable initializedTo: aValue [
+	self assert: aVariable isSPLNode.
+	self assert: aVariable isSPLVariable.
+	self assert: aValue isSPLNode.
+	self assert: aValue isSPLValue.
+	self
+		assert: (self variables includesKey: aVariable) not
+		description: 'Variable ' , aVariable printString , ' is already declared'.
+	self variables at: aVariable variable put: aValue.
+	self announcer announce: (ValueChanged newValue: self)
+]
+
+{ #category : #accessing }
+SPLEnvironment >> getVariable: aVariable [
+	self assert: aVariable isSPLNode.
+	self assert: aVariable isSPLVariable.
+	self
+		assert: (self variables includesKey: aVariable)
+		description: 'Variable ' , aVariable printString , ' is not declared'.
+	^ variables at: aVariable
 ]
 
 { #category : #accessing }
@@ -73,6 +93,20 @@ SPLEnvironment >> initialize [
 { #category : #accessing }
 SPLEnvironment >> isEmpty [
 	^ self variables isEmpty
+]
+
+{ #category : #accessing }
+SPLEnvironment >> setVariable: aVariable to: aValue [
+	self assert: aVariable isSPLNode.
+	self assert: aVariable isSPLVariable.
+	self assert: aValue isSPLNode.
+	self assert: aValue isSPLValue.
+	self
+		assert: (self variables includesKey: aVariable)
+		description: 'Variable ' , aVariable printString , ' is not declared'.
+	variables at: aVariable put: aValue.
+	self announcer announce: (ValueChanged newValue: self).
+	^ aValue
 ]
 
 { #category : #accessing }

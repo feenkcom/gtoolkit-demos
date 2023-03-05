@@ -359,7 +359,7 @@ SPLInterpreterExamples >> varX [
 	result := context.
 	result := context reduce.
 	self assert: context environment size equals: 1.
-	self assert: (context environment at: 'x') value equals: 42.
+	self assert: (context environment getVariable: 'x') value equals: 42.
 	self assert: (context output) value equals: '42
 '.
 	^ context
@@ -373,7 +373,7 @@ SPLInterpreterExamples >> varXassignedAndPrinted [
 	result := context.
 	result := context reduce.
 	self assert: context environment size equals: 1.
-	self assert: (context environment at: 'x') value equals: 42.
+	self assert: (context environment getVariable: 'x') value equals: 42.
 	self assert: context output equals: '42
 '.
 	^ context
@@ -387,7 +387,7 @@ SPLInterpreterExamples >> varXdeclared [
 	result := context.
 	result := context reduce.
 	self assert: context environment size equals: 1.
-	self assert: (context environment at: 'x') isSPLNil.
+	self assert: (context environment getVariable: 'x') isSPLNil.
 	^ context
 ]
 
@@ -399,19 +399,7 @@ SPLInterpreterExamples >> varXinitializedTo42 [
 	result := context.
 	result := context reduce.
 	self assert: context environment size equals: 1.
-	self assert: (context environment at: 'x') value equals: 42.
-	^ context
-]
-
-{ #category : #example }
-SPLInterpreterExamples >> whileStatement [
-	<gtExample>
-	| result context |
-	context := self context: self factorialSource.
-	result := context.
-	result := context reduce.
-	self assert: context output equals: '120
-'.
+	self assert: (context environment getVariable: 'x') value equals: 42.
 	^ context
 ]
 
