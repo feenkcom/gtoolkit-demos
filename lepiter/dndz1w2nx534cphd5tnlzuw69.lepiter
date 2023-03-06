@@ -501,14 +501,14 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-03-05T19:50:51.248639+01:00"
+									"dateAndTimeString" : "2023-03-06T15:48:25.043573+01:00"
 								}
 							},
 							"uid" : {
 								"__type" : "uid",
 								"uidString" : "/OrSX42yDQC5vMF5CTGP5g=="
 							},
-							"code" : "context := SPL contextFor: factorial.\rcontext environment inspect.\rcontext."
+							"code" : "context := SPL contextFor: factorial.\rcontext environment inspect.\rcontext"
 						},
 						{
 							"__type" : "pharoSnippet",
@@ -749,7 +749,7 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-03-05T19:50:15.064602+01:00"
+									"dateAndTimeString" : "2023-03-06T15:48:17.114818+01:00"
 								}
 							},
 							"uid" : {
