@@ -10,6 +10,9 @@ BaselineOfGToolkitDemoSPL >> baseline: spec [
 	spec
 		for: #common
 		do: [ spec
+				baseline: 'PetitParser2Core'
+				with: [ spec repository: 'github://kursjan/petitparser2:master' ].
+			spec
 				package: 'GToolkit-Demo-SPL'
-				with: [ spec requires: #('GToolkit4PetitParser2') ] ]
+				with: [ spec requires: #('PetitParser2Core') ] ]
 ]
