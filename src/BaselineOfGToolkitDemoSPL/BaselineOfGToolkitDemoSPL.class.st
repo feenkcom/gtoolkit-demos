@@ -7,5 +7,9 @@ Class {
 { #category : #accessing }
 BaselineOfGToolkitDemoSPL >> baseline: spec [
 	<baseline>
-	spec for: #common do: [ spec package: 'GToolkit-Demo-SPL' ]
+	spec
+		for: #common
+		do: [ spec
+				package: 'GToolkit-Demo-SPL'
+				with: [ spec requires: #('GToolkit4PetitParser2') ] ]
 ]
