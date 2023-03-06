@@ -42,43 +42,6 @@
 				"string" : "We would like to join together the program state, environment and output views. How to do this?"
 			},
 			{
-				"__type" : "textSnippet",
-				"children" : {
-					"__type" : "snippets",
-					"items" : [ ]
-				},
-				"createEmail" : {
-					"__type" : "email",
-					"emailString" : "<unknown>"
-				},
-				"createTime" : {
-					"__type" : "time",
-					"time" : {
-						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-03-06T15:44:07.466452+01:00"
-					}
-				},
-				"editEmail" : {
-					"__type" : "email",
-					"emailString" : "<unknown>"
-				},
-				"editTime" : {
-					"__type" : "time",
-					"time" : {
-						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-03-06T15:44:07.466452+01:00"
-					}
-				},
-				"uid" : {
-					"__type" : "uid",
-					"uidString" : "oRhuEJ6yDQCRvQQ6DV7+bQ=="
-				},
-				"paragraphStyle" : {
-					"__type" : "textStyle"
-				},
-				"string" : ""
-			},
-			{
 				"__type" : "pharoSnippet",
 				"children" : {
 					"__type" : "snippets",
@@ -103,48 +66,14 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-03-06T15:58:28.822248+01:00"
+						"dateAndTimeString" : "2023-03-06T16:31:50.222145+01:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
 					"uidString" : "IFXFQ56yDQCa24iLDV7+bQ=="
 				},
-				"code" : "factorial := SPL\r\t\treduce: 'var comment = \"This is an initial context\"; print comment; print \"Here is some output to look at.\";'.\rfactorial program: SPL factorial.\rstate := (factorial gtCodeFor: GtPhlowEmptyView new) asElementDo: [ :e | e ].\renvt := (factorial gtEnvironmentFor: GtPhlowEmptyView new)\r\t\tasElementDo: [ :e | e ].\routput := (factorial gtOutputFor: GtPhlowEmptyView new) asElementDo: [ :e | e ].\r\r{state.\r\tenvt.\r\toutput} do: [ :each | each border: (BlBorder paint: Color lightGray width: 1) ].\r\r\rverticalContainer := BlElement new.\rverticalContainer\r\tlayout: BlLinearLayout vertical;\r\tconstraintsDo: [ :c | \r\t\tc vertical fitContent.\r\t\tc horizontal fitContent ].\rverticalContainer\r\taddChildren: {state.\r\t\t\toutput}.\rverticalContainer asScalableElement.\r\r"
-			},
-			{
-				"__type" : "pharoSnippet",
-				"children" : {
-					"__type" : "snippets",
-					"items" : [ ]
-				},
-				"createEmail" : {
-					"__type" : "email",
-					"emailString" : "<unknown>"
-				},
-				"createTime" : {
-					"__type" : "time",
-					"time" : {
-						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-03-06T15:54:05.758694+01:00"
-					}
-				},
-				"editEmail" : {
-					"__type" : "email",
-					"emailString" : "<unknown>"
-				},
-				"editTime" : {
-					"__type" : "time",
-					"time" : {
-						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-03-06T15:58:28.823849+01:00"
-					}
-				},
-				"uid" : {
-					"__type" : "uid",
-					"uidString" : "n08XNJ6yDQCWjjO8DV7+bQ=="
-				},
-				"code" : "horizontalContainer := BlElement new.\rhorizontalContainer\r\tlayout: BlLinearLayout horizontal;\r\tconstraintsDo: [ :c | \r\t\tc vertical fitContent.\r\t\tc horizontal matchParent ].\rhorizontalContainer\r\taddChildren: {state.\r\t\t\tverticalContainer}.\rhorizontalContainer asScalableElement"
+				"code" : "factorial := SPL\r\t\treduce: 'var comment = \"This is an initial context\"; print comment; print \"Here is some output to look at.\";'.\rfactorial program: SPL factorial.\rstate := (factorial gtCodeFor: GtPhlowEmptyView new) asElementDo: [ :e | e ].\renvt := (factorial gtEnvironmentFor: GtPhlowEmptyView new)\r\t\tasElementDo: [ :e | e ].\routput := (factorial gtOutputFor: GtPhlowEmptyView new) asElementDo: [ :e | e ].\r\r{state.\r\tenvt.\r\toutput} do: [ :each | each border: (BlBorder paint: Color lightGray width: 1) ].\r\r\rverticalContainer := BlElement new.\rverticalContainer\r\tlayout: BlLinearLayout vertical;\r\tconstraintsDo: [ :c | \r\t\tc vertical fitContent.\r\t\tc horizontal fitContent ].\rverticalContainer\r\taddChildren: {envt.\r\t\t\toutput}.\rverticalContainer asScalableElement.\r\rhorizontalContainer := BlElement new.\rhorizontalContainer\r\tlayout: BlLinearLayout horizontal;\r\tconstraintsDo: [ :c | \r\t\tc vertical fitContent.\r\t\tc horizontal matchParent ].\rhorizontalContainer\r\taddChildren: {state.\r\t\t\tverticalContainer}.\rhorizontalContainer asScalableElement."
 			},
 			{
 				"__type" : "textSnippet",
