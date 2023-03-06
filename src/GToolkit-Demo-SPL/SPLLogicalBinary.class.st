@@ -27,13 +27,14 @@ SPLLogicalBinary >> operators [
 SPLLogicalBinary >> printOn: aStream [
 	"Generate parentheses, even if not needed, to make the parse order clear."
 
-	aStream nextPut: $(.
-	self left printOn: aStream.
-	aStream nextPut: Character space.
-	aStream nextPutAll: self operator.
-	aStream nextPut: Character space.
-	self right printOn: aStream.
-	aStream nextPut: $)
+	aStream
+		nextPut: $(;
+		print: self left;
+		space;
+		nextPutAll: self operator;
+		space;
+		print: self right;
+		nextPut: $)
 ]
 
 { #category : #testing }

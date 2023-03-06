@@ -18,12 +18,14 @@ SPLBlockStatement class >> for: aStatementCollection [
 SPLBlockStatement >> printOn: aStream [
 	"todo:handle indentation"
 
-	aStream nextPut: ${.
-	aStream nextPut: Character cr.
+	aStream
+		nextPut: ${;
+		cr.
 	self statements
 		do: [ :each | 
-			each printOn: aStream.
-			aStream nextPut: Character cr ].
+			aStream
+				print: each;
+				cr ].
 	aStream nextPut: $}
 ]
 

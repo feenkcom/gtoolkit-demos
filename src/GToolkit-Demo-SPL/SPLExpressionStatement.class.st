@@ -8,8 +8,9 @@ Class {
 SPLExpressionStatement >> printOn: aStream [
 	"todo:handle indentation"
 
-	self expression printOn: aStream.
-	aStream nextPut: $;
+	aStream
+		print: self expression;
+		nextPut: $;
 ]
 
 { #category : #stepping }

@@ -44,8 +44,9 @@ SPLUnary >> operators [
 
 { #category : #printing }
 SPLUnary >> printOn: aStream [
-	aStream nextPutAll: self operator.
-	self expression printOn: aStream
+	aStream
+		nextPutAll: self operator;
+		print: self expression
 ]
 
 { #category : #stepping }

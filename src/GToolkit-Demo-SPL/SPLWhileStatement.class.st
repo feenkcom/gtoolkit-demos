@@ -29,10 +29,11 @@ SPLWhileStatement >> doPart: aStatement [
 SPLWhileStatement >> printOn: aStream [
 	"todo:handle indentation"
 
-	aStream nextPutAll: 'while '.
-	self expression printOn: aStream.
-	aStream nextPut: Character cr.
-	self doPart printOn: aStream
+	aStream
+		nextPutAll: 'while ';
+		print: self expression;
+		cr;
+		print: self doPart
 ]
 
 { #category : #accessing }

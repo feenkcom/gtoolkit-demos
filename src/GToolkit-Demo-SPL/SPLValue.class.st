@@ -24,7 +24,7 @@ SPLValue >> isSPLValue [
 
 { #category : #printing }
 SPLValue >> printOn: aStream [
-	self value printOn: aStream
+	aStream print: self value
 ]
 
 { #category : #stepping }

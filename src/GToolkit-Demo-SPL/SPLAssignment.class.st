@@ -28,9 +28,10 @@ SPLAssignment >> expression: anExpression [
 
 { #category : #accessing }
 SPLAssignment >> printOn: aStream [
-	self variable printOn: aStream.
-	aStream nextPutAll: ' = '.
-	self expression printOn: aStream
+	aStream
+		print: self variable;
+		nextPutAll: ' = ';
+		print: self expression
 ]
 
 { #category : #stepping }

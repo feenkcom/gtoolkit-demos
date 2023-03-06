@@ -31,10 +31,11 @@ SPLIfElseStatement >> printOn: aStream [
 	"todo:handle indentation"
 
 	super printOn: aStream.
-	aStream nextPut: Character cr.
-	aStream nextPutAll: 'else'.
-	aStream nextPut: Character cr.
-	self elsePart printOn: aStream
+	aStream
+		cr;
+		nextPutAll: 'else';
+		cr;
+		print: self elsePart
 ]
 
 { #category : #stepping }

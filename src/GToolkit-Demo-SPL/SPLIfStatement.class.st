@@ -19,10 +19,11 @@ SPLIfStatement class >> if: anExpression then: aStatement [
 SPLIfStatement >> printOn: aStream [
 	"todo:handle indentation"
 
-	aStream nextPutAll: 'if '.
-	self expression printOn: aStream.
-	aStream nextPut: Character cr.
-	self thenPart printOn: aStream
+	aStream
+		nextPutAll: 'if ';
+		print: self expression;
+		cr;
+		print: self thenPart
 ]
 
 { #category : #stepping }

@@ -6,9 +6,10 @@ Class {
 
 { #category : #accessing }
 SPLPrintStatement >> printOn: aStream [
-	aStream nextPutAll: 'print '.
-	self expression printOn: aStream.
-	aStream nextPut: $;
+	aStream
+		nextPutAll: 'print ';
+		print: self expression;
+		nextPut: $;
 ]
 
 { #category : #stepping }

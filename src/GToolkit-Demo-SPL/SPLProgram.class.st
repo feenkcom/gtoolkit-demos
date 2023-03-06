@@ -27,11 +27,12 @@ SPLProgram >> isReduced [
 SPLProgram >> printOn: aStream [
 	"todo:handle indentation"
 
-	aStream nextPut: Character cr.
+	aStream cr.
 	self statements
 		do: [ :each | 
-			each printOn: aStream.
-			aStream nextPut: Character cr ]
+			aStream
+				print: each;
+				cr ]
 ]
 
 { #category : #accessing }
