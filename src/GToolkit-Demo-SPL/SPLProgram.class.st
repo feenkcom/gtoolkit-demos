@@ -25,9 +25,6 @@ SPLProgram >> isReduced [
 
 { #category : #printing }
 SPLProgram >> printOn: aStream [
-	"todo:handle indentation"
-
-	aStream cr.
 	self statements
 		do: [ :each | 
 			aStream

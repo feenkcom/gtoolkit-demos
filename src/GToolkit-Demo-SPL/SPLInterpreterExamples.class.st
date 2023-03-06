@@ -199,7 +199,7 @@ SPLInterpreterExamples >> fibonacci [
 	result := context reduce.
 	self
 		assert: context output
-		equals: SPLGrammarExamples new fibonacciOracle asString , String cr.
+		equals: SPLGrammarExamples new fibonacciOracle asString.
 	^ context
 ]
 

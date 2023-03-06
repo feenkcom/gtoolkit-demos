@@ -72,17 +72,19 @@ SPLGrammarExamples >> fibonacciOracle [
 	It can be used as an oracle for a test case for the interpreter."
 
 	<gtExample>
-	| thisFib lastFib iterations end nextFib |
+	| thisFib lastFib iterations arg nextFib output |
+	output := '1' , String cr repeat: 2.
+	arg := 10.
 	thisFib := 1.
 	lastFib := 1.
-	iterations := 1.
-	end := 10.
-	[ iterations < end ]
+	iterations := 2.
+	[ iterations < arg ]
 		whileTrue: [ iterations := iterations + 1.
 			nextFib := thisFib + lastFib.
 			lastFib := thisFib.
-			thisFib := nextFib ].
-	^ thisFib
+			thisFib := nextFib.
+			output := output , thisFib asString , String cr ].
+	^ output
 ]
 
 { #category : #example }
@@ -99,17 +101,19 @@ SPLGrammarExamples >> fibonacciProgram [
 SPLGrammarExamples >> fibonacciSource [
 	<gtExample>
 	^ 'var arg = 10;
+var lastFib = 1;
 var thisFib = 1;
-var lastFib = thisFib;
-var nextFib = thisFib;
-var iterations = 1;
+var nextFib;
+var iterations = 2;
+print lastFib;
+print thisFib;
 while ( iterations < arg ) {
 	iterations = iterations + 1;
 	nextFib = thisFib + lastFib;
 	lastFib = thisFib;
 	thisFib = nextFib;
-}
-print thisFib;'
+	print thisFib;
+}'
 ]
 
 { #category : #example }
