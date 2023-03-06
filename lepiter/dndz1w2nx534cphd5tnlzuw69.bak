@@ -247,7 +247,7 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-03-05T20:05:35.996679+01:00"
+									"dateAndTimeString" : "2023-03-05T20:06:05.821698+01:00"
 								}
 							},
 							"uid" : {
@@ -257,7 +257,7 @@
 							"paragraphStyle" : {
 								"__type" : "textStyle"
 							},
-							"string" : ""
+							"string" : "Note how the Program state view represents “the rest of the program” to still be executed. Slowly it is reduced to the empty program."
 						},
 						{
 							"__type" : "textSnippet",
@@ -501,14 +501,14 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-03-05T19:50:51.248639+01:00"
+									"dateAndTimeString" : "2023-03-06T15:46:39.952744+01:00"
 								}
 							},
 							"uid" : {
 								"__type" : "uid",
 								"uidString" : "/OrSX42yDQC5vMF5CTGP5g=="
 							},
-							"code" : "context := SPL contextFor: factorial.\rcontext environment inspect.\rcontext."
+							"code" : "context := SPL contextFor: SPL factorial.\rcontext environment inspect.\rcontext."
 						},
 						{
 							"__type" : "pharoSnippet",
@@ -715,14 +715,14 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-03-05T19:43:33.198082+01:00"
+									"dateAndTimeString" : "2023-03-06T14:49:06.260784+01:00"
 								}
 							},
 							"uid" : {
 								"__type" : "uid",
 								"uidString" : "k+rIQI2yDQCAmDQyCTGP5g=="
 							},
-							"code" : "fibSource := 'var arg = 5;\rvar thisFib = 1;\rvar lastFib = thisFib;\rvar nextFib = thisFib;\rvar iterations = 1;\rwhile ( iterations < arg ) {\r\titerations = iterations + 1;\r\tnextFib = thisFib + lastFib;\r\tlastFib = thisFib;\r\tthisFib = nextFib;\r}\rprint thisFib;'.\rSPL run: fibSource."
+							"code" : "fibSource := 'var arg = 6;\rvar lastFib = 1;\rvar thisFib = 1;\rvar nextFib;\rvar iterations = 2;\rprint lastFib;\rprint thisFib;\rwhile ( iterations < arg ) {\r\titerations = iterations + 1;\r\tnextFib = thisFib + lastFib;\r\tlastFib = thisFib;\r\tthisFib = nextFib;\r\tprint thisFib;\r}'.\rSPL run: fibSource"
 						},
 						{
 							"__type" : "pharoSnippet",
@@ -749,7 +749,7 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-03-05T19:50:15.064602+01:00"
+									"dateAndTimeString" : "2023-03-06T15:48:17.114818+01:00"
 								}
 							},
 							"uid" : {

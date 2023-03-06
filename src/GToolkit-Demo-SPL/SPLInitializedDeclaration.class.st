@@ -41,7 +41,7 @@ SPLInitializedDeclaration >> stepIn: aContext [
 		ifTrue: [ aContext environment
 				declareVariable: self variable
 				initializedTo: self expression.
-			SPLSkipStatement new ]
+			SPLExpressionStatement for: self expression ]
 		ifFalse: [ self class
 				for: self variable
 				with: (self expression stepIn: aContext) ]

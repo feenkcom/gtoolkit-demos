@@ -77,19 +77,22 @@ SPLParserExamples >> fibonacciProgram [
 	<gtExample>
 	| result |
 	result := super fibonacciProgram.
-	self assert: result printString equals: '
-var arg = 10;
+	self
+		assert: result printString
+		equals: 'var arg = 10;
+var lastFib = 1;
 var thisFib = 1;
-var lastFib = thisFib;
-var nextFib = thisFib;
-var iterations = 1;
+var nextFib;
+var iterations = 2;
+print lastFib;
+print thisFib;
 while (iterations<arg) {
   iterations = (iterations+1);
   nextFib = (thisFib+lastFib);
   lastFib = thisFib;
   thisFib = nextFib;
+  print thisFib;
 }
-print thisFib;
 '.
 	^ result
 ]
@@ -299,8 +302,7 @@ SPLParserExamples >> whileProgram [
 	<gtExample>
 	| result |
 	result := super whileProgram.
-	self assert: result printString equals: '
-var a = 1;
+	self assert: result printString equals: 'var a = 1;
 while (a<10) {
   print a;
   a = (a+1);

@@ -4,6 +4,11 @@ Class {
 	#category : #'GToolkit-Demo-SPL-Interpreter'
 }
 
+{ #category : #testing }
+SPLExpressionStatement >> isReduced [
+	^ self expression isReduced
+]
+
 { #category : #printing }
 SPLExpressionStatement >> printOn: aStream indentBy: indentlevel [
 	aStream
@@ -14,7 +19,7 @@ SPLExpressionStatement >> printOn: aStream indentBy: indentlevel [
 
 { #category : #stepping }
 SPLExpressionStatement >> stepIn: aContext [
-	^ self expression isReduced
-		ifTrue: [ SPLSkipStatement new ]
+	^ self isReduced
+		ifTrue: [ self ]
 		ifFalse: [ self class for: (self expression stepIn: aContext) ]
 ]
