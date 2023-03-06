@@ -7,9 +7,5 @@ Class {
 { #category : #accessing }
 BaselineOfGToolkitDemoSPL >> baseline: spec [
 	<baseline>
-	spec
-		for: #common
-		do: [ spec
-				baseline: 'GToolkit-Demo-SPL'
-				with: [ spec repository: 'github://feenkcom/gtoolkit-demos:main/src' ] ]
+	spec for: #common do: [ spec package: 'GToolkit-Demo-SPL' ]
 ]
