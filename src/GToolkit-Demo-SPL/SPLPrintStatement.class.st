@@ -5,8 +5,9 @@ Class {
 }
 
 { #category : #accessing }
-SPLPrintStatement >> printOn: aStream [
+SPLPrintStatement >> printOn: aStream indentBy: indentlevel [
 	aStream
+		nextPutAll: (self indent: indentlevel);
 		nextPutAll: 'print ';
 		print: self expression;
 		nextPut: $;

@@ -15,18 +15,18 @@ SPLBlockStatement class >> for: aStatementCollection [
 ]
 
 { #category : #printing }
-SPLBlockStatement >> printOn: aStream [
-	"todo:handle indentation"
-
+SPLBlockStatement >> printOn: aStream indentBy: indentlevel [
 	aStream
+		nextPutAll: (self indent: indentlevel);
 		nextPut: ${;
 		cr.
 	self statements
 		do: [ :each | 
-			aStream
-				print: each;
-				cr ].
-	aStream nextPut: $}
+			each printOn: aStream indentBy: indentlevel + 1.
+			aStream cr ].
+	aStream
+		nextPutAll: (self indent: indentlevel);
+		nextPut: $}
 ]
 
 { #category : #accessing }

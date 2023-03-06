@@ -26,14 +26,13 @@ SPLWhileStatement >> doPart: aStatement [
 ]
 
 { #category : #printing }
-SPLWhileStatement >> printOn: aStream [
-	"todo:handle indentation"
-
+SPLWhileStatement >> printOn: aStream indentBy: indentlevel [
 	aStream
+		nextPutAll: (self indent: indentlevel);
 		nextPutAll: 'while ';
-		print: self expression;
-		cr;
-		print: self doPart
+		print: self expression.
+	aStream space.
+	self doPart printOn: aStream indentBy: indentlevel
 ]
 
 { #category : #accessing }

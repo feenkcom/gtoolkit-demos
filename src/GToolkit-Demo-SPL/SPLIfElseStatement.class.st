@@ -27,15 +27,13 @@ SPLIfElseStatement >> elsePart: aStatement2 [
 ]
 
 { #category : #printing }
-SPLIfElseStatement >> printOn: aStream [
-	"todo:handle indentation"
-
+SPLIfElseStatement >> printOn: aStream indentBy: indentlevel [
 	super printOn: aStream.
 	aStream
 		cr;
-		nextPutAll: 'else';
-		cr;
-		print: self elsePart
+		nextPutAll: (self indent: indentlevel);
+		nextPutAll: 'else'.
+	self elsePart printOn: aStream indentBy: indentlevel
 ]
 
 { #category : #stepping }

@@ -5,10 +5,9 @@ Class {
 }
 
 { #category : #printing }
-SPLExpressionStatement >> printOn: aStream [
-	"todo:handle indentation"
-
+SPLExpressionStatement >> printOn: aStream indentBy: indentlevel [
 	aStream
+		nextPutAll: (self indent: indentlevel);
 		print: self expression;
 		nextPut: $;
 ]
