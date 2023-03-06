@@ -29,7 +29,8 @@ BaselineOfGToolkitDemos >> baseline: spec [
 				baseline: 'GToolkitLudoDemo'
 					with: [ spec repository: 'github://feenkcom/gtoolkit-demos:main/src' ];
 				baseline: 'GToolkitDemoSlideshows'
-					with: [ spec repository: 'github://feenkcom/gtoolkit-demos:main/src' ];
+					with: [ spec repository: 'github://feenkcom/gtoolkit-demos:main/src' ]
+					";
 				baseline: 'GToolkitDemoSPL'
-					with: [ spec repository: 'github://feenkcom/gtoolkit-demos:main/src' ] ]
+					with: [ spec repository: 'github://feenkcom/gtoolkit-demos:main/src' ]" ]
 ]
