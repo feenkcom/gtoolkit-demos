@@ -59,18 +59,15 @@ SPLParserExamples >> complexExpressionStmt [
 
 { #category : #accessing }
 SPLParserExamples >> complexStmt [
-	<todo: 'handle indentation'>
 	<gtExample>
 	| result |
 	result := super complexStmt.
-	self assert: result printString equals: 'while (x>y)
-{
-if (x<42)
-{
-x = (x+1);
-print x;
-}
-print (x+y);
+	self assert: result printString equals: 'while (x>y) {
+  if (x<42)   {
+    x = (x+1);
+    print x;
+  }
+  print (x+y);
 }'.
 	^ result
 ]
@@ -86,12 +83,11 @@ var thisFib = 1;
 var lastFib = thisFib;
 var nextFib = thisFib;
 var iterations = 1;
-while (iterations<arg)
-{
-iterations = (iterations+1);
-nextFib = (thisFib+lastFib);
-lastFib = thisFib;
-thisFib = nextFib;
+while (iterations<arg) {
+  iterations = (iterations+1);
+  nextFib = (thisFib+lastFib);
+  lastFib = thisFib;
+  thisFib = nextFib;
 }
 print thisFib;
 '.
@@ -120,27 +116,22 @@ SPLParserExamples >> helloString [
 
 { #category : #accessing }
 SPLParserExamples >> ifElseStmt [
-	<todo: 'handle indentation'>
 	<gtExample>
 	| result |
 	result := super ifElseStmt.
-	self assert: result printString equals: 'if (x>y)
-x = y;
-else
-x = -y;'.
+	self assert: result printString equals: 'if (x>y) x = y;
+else x = -y;'.
 	^ result
 ]
 
 { #category : #accessing }
 SPLParserExamples >> ifNoElseStmt [
-	<todo: 'handle indentation'>
 	<gtExample>
 	| result |
 	result := super ifNoElseStmt.
 	self
 		assert: result printString
-		equals: 'if (x>y)
-x = y;'.
+		equals: 'if (x>y) x = y;'.
 	^ result
 ]
 
@@ -310,10 +301,9 @@ SPLParserExamples >> whileProgram [
 	result := super whileProgram.
 	self assert: result printString equals: '
 var a = 1;
-while (a<10)
-{
-print a;
-a = (a+1);
+while (a<10) {
+  print a;
+  a = (a+1);
 }
 '.
 	^ result
@@ -325,7 +315,6 @@ SPLParserExamples >> whileStmt [
 	<gtExample>
 	| result |
 	result := super whileStmt.
-	self assert: result printString equals: 'while (x<42)
-x = (x+1);'.
+	self assert: result printString equals: 'while (x<42) x = (x+1);'.
 	^ result
 ]

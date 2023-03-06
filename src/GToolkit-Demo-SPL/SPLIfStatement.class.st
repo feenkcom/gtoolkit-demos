@@ -21,8 +21,8 @@ SPLIfStatement >> printOn: aStream indentBy: indentlevel [
 		nextPutAll: (self indent: indentlevel);
 		nextPutAll: 'if ';
 		print: self expression;
-		space;
-		print: self thenPart
+		space.
+	self thenPart printOn: aStream indentBy: indentlevel
 ]
 
 { #category : #stepping }

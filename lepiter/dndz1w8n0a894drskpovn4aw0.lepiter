@@ -71,7 +71,7 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-03-06T09:33:31.771119+01:00"
+									"dateAndTimeString" : "2023-03-06T11:54:56.874874+01:00"
 								}
 							},
 							"uid" : {
@@ -81,7 +81,7 @@
 							"paragraphStyle" : {
 								"__type" : "textStyle"
 							},
-							"string" : "{{gtTodo:label=Add indentation for print view}}"
+							"string" : "{{gtTodo:label=Add indentation for print view|completed=2023-03-06}}"
 						},
 						{
 							"__type" : "textSnippet",
@@ -707,7 +707,7 @@
 							"code" : "#printOn:indentBy: gtImplementors"
 						},
 						{
-							"__type" : "pharoSnippet",
+							"__type" : "textSnippet",
 							"children" : {
 								"__type" : "snippets",
 								"items" : [ ]
@@ -720,7 +720,7 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-03-06T10:05:21.318519+01:00"
+									"dateAndTimeString" : "2023-03-06T11:31:47.877139+01:00"
 								}
 							},
 							"editEmail" : {
@@ -731,17 +731,20 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-03-06T10:37:55.062494+01:00"
+									"dateAndTimeString" : "2023-03-06T11:37:21.362906+01:00"
 								}
 							},
 							"uid" : {
 								"__type" : "uid",
-								"uidString" : "S6/lVJmyDQCNVNIxDeNPZA=="
+								"uidString" : "s0oKipqyDQCvPefDA+aMJQ=="
 							},
-							"code" : "SPL\r\tcontextFor: 'var arg=5;\rvar x=arg;\rvar fact=1;\rwhile (x>0) {\r\tfact = fact * x;\r\tx = x - 1;\r}\rprint fact;'"
+							"paragraphStyle" : {
+								"__type" : "textStyle"
+							},
+							"string" : "Fixed a recursion bug in {{gtMethod:name=SPLIfElseStatement>>#printOn:indentBy:}} that would lock the whole system."
 						},
 						{
-							"__type" : "pharoSnippet",
+							"__type" : "textSnippet",
 							"children" : {
 								"__type" : "snippets",
 								"items" : [ ]
@@ -754,7 +757,7 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-03-06T10:39:23.824257+01:00"
+									"dateAndTimeString" : "2023-03-06T11:54:06.62263+01:00"
 								}
 							},
 							"editEmail" : {
@@ -765,14 +768,54 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-03-06T10:39:30.283413+01:00"
+									"dateAndTimeString" : "2023-03-06T11:54:14.055395+01:00"
 								}
 							},
 							"uid" : {
 								"__type" : "uid",
-								"uidString" : "TNmjzpmyDQCZf87dDeNPZA=="
+								"uidString" : "hLOPipqyDQCvyNh+A+aMJQ=="
 							},
-							"code" : "SPL  parse: 'if (x>0) {\r  {\r    fact = (fact*x);\r    x = (x-1);\r}\r  while (x>0) {\r  fact = (fact*x);\r  x = (x-1);\r}\r}'"
+							"paragraphStyle" : {
+								"__type" : "textStyle"
+							},
+							"string" : "Fixed the remaining tests."
+						},
+						{
+							"__type" : "textSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2023-03-06T11:54:14.752241+01:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2023-03-06T11:54:52.485764+01:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "bfpR2pqyDQChyMdWDnFrUQ=="
+							},
+							"paragraphStyle" : {
+								"__type" : "textStyle"
+							},
+							"string" : "There is still a slight problem in that each block starts with indentation, even if it is not need following an `if` or a `while`, leading to extra spaces."
 						}
 					]
 				},
