@@ -28,11 +28,12 @@ SPLIfElseStatement >> elsePart: aStatement2 [
 
 { #category : #printing }
 SPLIfElseStatement >> printOn: aStream indentBy: indentlevel [
-	super printOn: aStream.
+	super printOn: aStream indentBy: indentlevel.
 	aStream
 		cr;
 		nextPutAll: (self indent: indentlevel);
-		nextPutAll: 'else'.
+		nextPutAll: 'else';
+		space.
 	self elsePart printOn: aStream indentBy: indentlevel
 ]
 

@@ -30,8 +30,8 @@ SPLWhileStatement >> printOn: aStream indentBy: indentlevel [
 	aStream
 		nextPutAll: (self indent: indentlevel);
 		nextPutAll: 'while ';
-		print: self expression.
-	aStream space.
+		print: self expression;
+		space.
 	self doPart printOn: aStream indentBy: indentlevel
 ]
 
