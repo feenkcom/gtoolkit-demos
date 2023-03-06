@@ -4,7 +4,7 @@ There is no ""stop"" statement in the syntax.
 "
 Class {
 	#name : #SPLSkipStatement,
-	#superclass : #SPLNode,
+	#superclass : #SPLStatement,
 	#category : #'GToolkit-Demo-SPL-Interpreter'
 }
 

@@ -5,10 +5,12 @@ Class {
 }
 
 { #category : #accessing }
-SPLPrintStatement >> printOn: aStream [
-	aStream nextPutAll: 'print '.
-	self expression printOn: aStream.
-	aStream nextPut: $;
+SPLPrintStatement >> printOn: aStream indentBy: indentlevel [
+	aStream
+		nextPutAll: (self indent: indentlevel);
+		nextPutAll: 'print ';
+		print: self expression;
+		nextPut: $;
 ]
 
 { #category : #stepping }

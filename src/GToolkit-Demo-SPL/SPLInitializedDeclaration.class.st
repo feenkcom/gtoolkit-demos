@@ -27,11 +27,12 @@ SPLInitializedDeclaration >> expression: anExpression [
 
 { #category : #printing }
 SPLInitializedDeclaration >> printOn: aStream [
-	aStream nextPutAll: 'var '.
-	self variable printOn: aStream.
-	aStream nextPutAll: ' = '.
-	self expression printOn: aStream.
-	aStream nextPut: $;
+	aStream
+		nextPutAll: 'var ';
+		print: self variable;
+		nextPutAll: ' = ';
+		print: self expression;
+		nextPut: $;
 ]
 
 { #category : #stepping }

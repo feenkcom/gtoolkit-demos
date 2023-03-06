@@ -5,11 +5,11 @@ Class {
 }
 
 { #category : #printing }
-SPLExpressionStatement >> printOn: aStream [
-	"todo:handle indentation"
-
-	self expression printOn: aStream.
-	aStream nextPut: $;
+SPLExpressionStatement >> printOn: aStream indentBy: indentlevel [
+	aStream
+		nextPutAll: (self indent: indentlevel);
+		print: self expression;
+		nextPut: $;
 ]
 
 { #category : #stepping }

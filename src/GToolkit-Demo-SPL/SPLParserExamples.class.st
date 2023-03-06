@@ -14,8 +14,8 @@ SPLParserExamples >> blockStmt [
 	| result |
 	result := super blockStmt.
 	self assert: result printString equals: '{
-x = 42;
-print (x*x);
+  x = 42;
+  print (x*x);
 }'.
 	^ result
 ]

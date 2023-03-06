@@ -102,11 +102,12 @@ SPLBinary >> operators [
 SPLBinary >> printOn: aStream [
 	"Generate parentheses, even if not needed, to make the parse order clear."
 
-	aStream nextPut: $(.
-	self left printOn: aStream.
-	aStream nextPutAll: self operator.
-	self right printOn: aStream.
-	aStream nextPut: $)
+	aStream
+		nextPut: $(;
+		print: self left;
+		nextPutAll: self operator;
+		print: self right;
+		nextPut: $)
 ]
 
 { #category : #testing }

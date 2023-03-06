@@ -16,9 +16,10 @@ SPLDeclaration class >> for: aVariable [
 
 { #category : #printing }
 SPLDeclaration >> printOn: aStream [
-	aStream nextPutAll: 'var '.
-	self variable printOn: aStream.
-	aStream nextPut: $;
+	aStream
+		nextPutAll: 'var ';
+		print: self variable;
+		nextPut: $;
 ]
 
 { #category : #stepping }
