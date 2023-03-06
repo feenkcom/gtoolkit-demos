@@ -22,7 +22,5 @@ BaselineOfGToolkitDraftDemos >> baseline: spec [
 				baseline: 'GToolkit-Demos-GtHome'
 					with: [ spec repository: 'github://feenkcom/gtoolkit-demos:main/src' ];
 				baseline: 'Gtoolkit-Demos-PetitParser'
-					with: [ spec repository: 'github://feenkcom/gtoolkit-demos:main/src' ];
-				baseline: 'GToolkit-Demo-SPL'
 					with: [ spec repository: 'github://feenkcom/gtoolkit-demos:main/src' ] ]
 ]
