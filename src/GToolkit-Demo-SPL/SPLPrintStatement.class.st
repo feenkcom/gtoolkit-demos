@@ -17,6 +17,6 @@ SPLPrintStatement >> printOn: aStream indentBy: indentlevel [
 SPLPrintStatement >> stepIn: aContext [
 	^ self expression isReduced
 		ifTrue: [ aContext printLn: self expression value asString.
-			SPLSkipStatement new ]
+			SPLExpressionStatement for: self expression ]
 		ifFalse: [ self class for: (self expression stepIn: aContext) ]
 ]

@@ -14,6 +14,17 @@ SPLBlockStatement class >> for: aStatementCollection [
 		yourself
 ]
 
+{ #category : #initialization }
+SPLBlockStatement >> initialize [
+	super initialize.
+	self statements: OrderedCollection new
+]
+
+{ #category : #testing }
+SPLBlockStatement >> isReduced [
+	^ self statements isEmpty
+]
+
 { #category : #printing }
 SPLBlockStatement >> printOn: aStream indentBy: indentlevel [
 	aStream
@@ -43,8 +54,8 @@ SPLBlockStatement >> statements: aStatementCollection [
 SPLBlockStatement >> stepIn: aContext [
 	"Take a step in the first statement that is not stopped."
 
-	^ self statements isEmpty
-		ifTrue: [ SPLSkipStatement new ]
+	^ self isReduced
+		ifTrue: [ self ]
 		ifFalse: [ self statements size = 1
 				ifTrue: [ self statements first ]
 				ifFalse: [ statements first isReduced

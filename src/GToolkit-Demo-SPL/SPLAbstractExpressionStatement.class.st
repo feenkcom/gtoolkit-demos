@@ -12,7 +12,7 @@ Class {
 
 { #category : #'instance creation' }
 SPLAbstractExpressionStatement class >> for: anExpression [
-	"Used for expression statrements and print statements"
+	"Used for expression statements and print statements"
 	^ self new
 		expression: anExpression;
 		yourself
