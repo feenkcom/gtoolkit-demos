@@ -55,7 +55,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-03-06T15:58:28.822248+01:00"
+						"dateAndTimeString" : "2023-03-06T16:44:48.532152+01:00"
 					}
 				},
 				"editEmail" : {
@@ -66,14 +66,119 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-03-06T16:35:54.272416+01:00"
+						"dateAndTimeString" : "2023-03-06T16:47:27.924893+01:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
-					"uidString" : "IFXFQ56yDQCa24iLDV7+bQ=="
+					"uidString" : "olN06Z6yDQCR9CaaA0qRwQ=="
 				},
-				"code" : "factorial := SPL\r\t\treduce: 'var comment = \"This is an initial context\"; print comment; print \"Here is some output to look at.\";'.\rfactorial program: SPL factorial.\rstate := (factorial gtCodeFor: GtPhlowEmptyView new) asElementDo: [ :e | e ].\renvt := (factorial gtEnvironmentFor: GtPhlowEmptyView new)\r\t\tasElementDo: [ :e | e ].\routput := (factorial gtOutputFor: GtPhlowEmptyView new) asElementDo: [ :e | e ].\r\r{state.\r\tenvt.\r\toutput} do: [ :each | each border: (BlBorder paint: Color lightGray width: 1) ].\r\r\rverticalContainer := BlElement new.\rverticalContainer\r\tlayout: BlLinearLayout vertical;\r\tconstraintsDo: [ :c | \r\t\tc vertical fitContent.\r\t\tc horizontal fitContent ].\rverticalContainer\r\taddChildren: {envt.\r\t\t\toutput}.\r\"verticalContainer asScalableElement.\"\r\rhorizontalContainer := BlElement new.\rhorizontalContainer\r\tlayout: BlLinearLayout horizontal;\r\tconstraintsDo: [ :c | \r\t\tc vertical fitContent.\r\t\tc horizontal matchParent ].\rhorizontalContainer\r\taddChildren: {state.\r\t\t\tverticalContainer}.\rhorizontalContainer asScalableElement."
+				"code" : "factorial := SPL\r\t\treduce: 'var comment = \"This is an initial context\"; print comment; print \"Here is some output to look at.\";'.\rfactorial program: SPL factorial.\r\rstate := (factorial gtCodeFor: GtPhlowEmptyView new) asElementDo: [ :e | e ].\r\renvt := (factorial environment gtVariablesFor: GtPhlowEmptyView new)\r\t\tasElementDo: [ :e | e ].\r\routput := (factorial gtOutputFor: GtPhlowEmptyView new) asElementDo: [ :e | e ].\r\r{state.\r\tenvt.\r\toutput} do: [ :each | each border: (BlBorder paint: Color lightGray width: 1) ].\r\r\rverticalContainer := BlElement new.\rverticalContainer\r\tlayout: BlLinearLayout vertical;\r\tconstraintsDo: [ :c | \r\t\tc vertical matchParent.\r\t\tc horizontal matchParent ].\rverticalContainer\r\taddChildren: {envt.\r\t\t\toutput}.\r\rhorizontalContainer := BlElement new.\rhorizontalContainer\r\tlayout: BlLinearLayout horizontal;\r\tconstraintsDo: [ :c | \r\t\tc vertical matchParent.\r\t\tc horizontal matchParent ].\rhorizontalContainer\r\taddChildren: {state.\r\t\t\tverticalContainer}.\rhorizontalContainer asScalableElement."
+			},
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2023-03-06T16:51:02.454363+01:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2023-03-06T16:51:08.979188+01:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "JfC9/56yDQCTdC+FA0qRwQ=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : "We extract this as a method."
+			},
+			{
+				"__type" : "pharoSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2023-03-06T16:50:34.152534+01:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2023-03-06T17:41:19.706345+01:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "vBgO/p6yDQCTGKbAA0qRwQ=="
+				},
+				"code" : "factorial := SPL\r\t\treduce: 'var comment = \"This is an initial context\"; print comment; print \"Here is some output to look at.\";'.\rfactorial program: SPL factorial.\rfactorial"
+			},
+			{
+				"__type" : "pharoSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2023-03-06T16:46:47.531281+01:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2023-03-06T16:46:52.819559+01:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "syGM8J6yDQCSv3dsA0qRwQ=="
+				},
+				"code" : "factorial step."
 			},
 			{
 				"__type" : "textSnippet",
@@ -170,7 +275,7 @@
 		"__type" : "time",
 		"time" : {
 			"__type" : "dateAndTime",
-			"dateAndTimeString" : "2023-03-06T15:43:12.071829+01:00"
+			"dateAndTimeString" : "2023-03-06T17:44:07.100907+01:00"
 		}
 	},
 	"pageType" : {

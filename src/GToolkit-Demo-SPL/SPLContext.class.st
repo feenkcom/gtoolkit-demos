@@ -47,6 +47,43 @@ SPLContext class >> parserClass [
 	^ SPLParser
 ]
 
+{ #category : #view }
+SPLContext >> composedStateElement [
+	| state envt output verticalContainer horizontalContainer |
+	state := (self gtCodeFor: GtPhlowEmptyView new) asElementDo: [ :e | e ].
+
+	envt := (self environment gtVariablesFor: GtPhlowEmptyView new)
+			asElementDo: [ :e | e ].
+
+	output := (self gtOutputFor: GtPhlowEmptyView new) asElementDo: [ :e | e ].
+
+	{state.
+		envt.
+		output}
+		do: [ :each | each border: (BlBorder paint: Color lightGray width: 1) ].
+
+	verticalContainer := BlElement new.
+	verticalContainer
+		layout: BlLinearLayout vertical;
+		constraintsDo: [ :c | 
+			c vertical matchParent.
+			c horizontal matchParent ].
+	verticalContainer
+		addChildren: {envt.
+				output}.
+
+	horizontalContainer := BlElement new.
+	horizontalContainer
+		layout: BlLinearLayout horizontal;
+		constraintsDo: [ :c | 
+			c vertical matchParent.
+			c horizontal matchParent ].
+	horizontalContainer
+		addChildren: {state.
+				verticalContainer}.
+	^ horizontalContainer asScalableElement
+]
+
 { #category : #accessing }
 SPLContext >> environment [
 	^ environment
@@ -62,11 +99,21 @@ SPLContext >> gtCodeFor: aView [
 	<gtView>
 	^ aView textEditor
 		title: 'Program state';
-		priority: 10;
+		priority: 30;
 		aptitude: BrGlamorousCodeEditorAptitude;
 		text: [ self state printString asRopedText ];
 		actionUpdateButton;
 		updateWhen: ValueChanged in: self stateHolder announcer
+]
+
+{ #category : #accessing }
+SPLContext >> gtContextStateFor: aView [
+	"<gtView>"
+	^ aView explicit
+		title: 'Context state';
+		priority: 10;
+		stencil: [ "self composedStateElement" ]
+		
 ]
 
 { #category : #accessing }
@@ -75,7 +122,7 @@ SPLContext >> gtEnvironmentFor: aView [
 ^ aView forward
 
 		title: 'Environment';
-		priority: 20;
+		priority: 40;
 		object: [ self environment ];
 		view: #gtVariablesFor:;
 		actionUpdateButton;
@@ -93,11 +140,20 @@ SPLContext >> gtOutputFor: aView [
 	<gtView>
 	^ aView textEditor
 		title: 'Output';
-		priority: 30;
+		priority: 50;
 		aptitude: BrGlamorousCodeEditorAptitude;
 		text: [ self output asRopedText ];
 		actionUpdateButton;
 		updateWhen: ValueChanged in: self outputHolder announcer
+]
+
+{ #category : #accessing }
+SPLContext >> gtStateFor: aView [
+	<gtView>
+	^ aView explicit
+		title: 'Context state';
+		priority: 10;
+		stencil: [  self composedStateElement ]
 ]
 
 { #category : #initialization }

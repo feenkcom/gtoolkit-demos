@@ -58,7 +58,7 @@ SPLEnvironment >> gtVariablesFor: aView [
 
 	<gtView>
 	^ aView columnedTree
-		title: 'Items';
+		title: 'Variables';
 		priority: 1;
 		items: [ self variables associations ];
 		children: [ :each | 

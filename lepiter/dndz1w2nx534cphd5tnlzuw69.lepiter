@@ -501,14 +501,14 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-03-06T15:48:25.043573+01:00"
+									"dateAndTimeString" : "2023-03-06T17:22:23.817221+01:00"
 								}
 							},
 							"uid" : {
 								"__type" : "uid",
 								"uidString" : "/OrSX42yDQC5vMF5CTGP5g=="
 							},
-							"code" : "context := SPL contextFor: factorial.\rcontext environment inspect.\rcontext"
+							"code" : "context := SPL contextFor: factorial."
 						},
 						{
 							"__type" : "pharoSnippet",
@@ -749,14 +749,14 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-03-06T15:48:17.114818+01:00"
+									"dateAndTimeString" : "2023-03-06T17:21:27.354466+01:00"
 								}
 							},
 							"uid" : {
 								"__type" : "uid",
 								"uidString" : "a95+R42yDQCwUOilCTGP5g=="
 							},
-							"code" : "context := SPL contextFor: fibSource.\rcontext environment inspect.\rcontext."
+							"code" : "context := SPL contextFor: fibSource."
 						},
 						{
 							"__type" : "pharoSnippet",
