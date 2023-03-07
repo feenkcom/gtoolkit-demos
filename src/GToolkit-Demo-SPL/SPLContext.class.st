@@ -8,8 +8,9 @@ Class {
 	#superclass : #Object,
 	#instVars : [
 		'environment',
-		'stateHolder',
-		'outputHolder'
+		'outputHolder',
+		'traceHolder',
+		'nodeHolder'
 	],
 	#category : #'GToolkit-Demo-SPL-Interpreter'
 }
@@ -22,14 +23,14 @@ SPLContext class >> for: anSPLProgramSource [
 { #category : #accessing }
 SPLContext class >> forExpression: anSPLProgramSource [
 	^ self new
-		state: (self parseExpression: anSPLProgramSource);
+		continuation: (self parseExpression: anSPLProgramSource);
 		yourself
 ]
 
 { #category : #accessing }
 SPLContext class >> forProgram: anSPLProgramSource [
 	^ self new
-		state: (self parse: anSPLProgramSource);
+		continuation: (self parse: anSPLProgramSource);
 		yourself
 ]
 
@@ -86,6 +87,16 @@ SPLContext >> composedStateElement [
 ]
 
 { #category : #accessing }
+SPLContext >> continuation [
+	^ nodeHolder value
+]
+
+{ #category : #accessing }
+SPLContext >> continuation: anSPLCodeNode [
+	self nodeHolder value: anSPLCodeNode
+]
+
+{ #category : #accessing }
 SPLContext >> environment [
 	^ environment
 ]
@@ -112,7 +123,7 @@ SPLContext >> gtContinuationFor: aView [
 		title: 'Continuation';
 		priority: 30;
 		aptitude: BrGlamorousCodeEditorAptitude;
-		text: [ self state printString asRopedText ];
+		text: [ self continuation printString asRopedText ];
 		actionUpdateButton;
 		updateWhen: ValueChanged in: self stateHolder announcer
 ]
@@ -159,9 +170,15 @@ SPLContext >> gtStateFor: aView [
 
 { #category : #initialization }
 SPLContext >> initialize [
-	stateHolder := NewValueHolder new.
+	nodeHolder := NewValueHolder new.
 	environment := SPLEnvironment new.
 	outputHolder := NewValueHolder value: OrderedCollection new.
+	traceHolder := NewValueHolder value: {self} asOrderedCollection
+]
+
+{ #category : #accessing }
+SPLContext >> nodeHolder [
+	^ nodeHolder
 ]
 
 { #category : #accessing }
@@ -195,14 +212,14 @@ SPLContext >> printLn: aString [
 SPLContext >> program: anSPLProgramSource [
 	"Mainly for interactive testing to change the program on the fly."
 	^ self
-		state: (self class parse: anSPLProgramSource);
+		continuation: (self class parse: anSPLProgramSource);
 		yourself
 ]
 
 { #category : #evaluating }
 SPLContext >> reduce [
-	[ self state isReduced not ] whileTrue: [ self step ].
-	^ self state
+	[ self continuation isReduced not ] whileTrue: [ self step ].
+	^ self continuation
 ]
 
 { #category : #evaluating }
@@ -225,24 +242,14 @@ SPLContext >> run: anSPLProgramSource [
 ]
 
 { #category : #accessing }
-SPLContext >> state [
-	^ stateHolder value
-]
-
-{ #category : #accessing }
-SPLContext >> state: anSPLCodeNode [
-	self stateHolder value: anSPLCodeNode
-]
-
-{ #category : #accessing }
 SPLContext >> stateHolder [
-	^ stateHolder
+	^ nodeHolder
 ]
 
 { #category : #evaluating }
 SPLContext >> step [
-	self state: (self state stepIn: self).
-	^ self state
+	self continuation: (self continuation stepIn: self).
+	^ self continuation
 ]
 
 { #category : #evaluating }

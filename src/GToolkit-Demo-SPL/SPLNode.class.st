@@ -11,7 +11,7 @@ Class {
 { #category : #conversion }
 SPLNode >> asContext [
 	^ SPLContext new
-		state: self;
+		continuation: self;
 		yourself
 ]
 
