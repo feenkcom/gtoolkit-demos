@@ -1,3 +1,7 @@
+"
+I provide examples of executing SPL programs, using {{gtClass:name=SPLContext}}.
+
+"
 Class {
 	#name : #SPLInterpreterExamples,
 	#superclass : #Object,
@@ -180,7 +184,8 @@ SPLInterpreterExamples >> expressionStatement [
 { #category : #example }
 SPLInterpreterExamples >> factorialSource [
 <gtExample>
-^ 'var arg=5;
+^ '// Factorial in SPL -- computes the factorial of arg
+var arg=5;
 var x=arg;
 var fact=1;
 while (x>0) {
@@ -188,6 +193,18 @@ while (x>0) {
 	x = x - 1;
 }
 print fact;'
+]
+
+{ #category : #example }
+SPLInterpreterExamples >> factorialWithWhileStatement [
+	<gtExample>
+	| result context |
+	context := self context: self factorialSource.
+	result := context.
+	result := context reduce.
+	self assert: context output equals: '120
+'.
+	^ context
 ]
 
 { #category : #example }
@@ -300,10 +317,24 @@ SPLInterpreterExamples >> parserClass [
 SPLInterpreterExamples >> printHello [
 	<gtExample>
 	| result context |
-	context := self context: 'print "hello";'.
+	context := self context: '// Hello program in SPL
+print "hello";'.
 	result := context.
 	result := context reduce.
 	self assert: context output equals: 'hello
+'.
+	^ context
+]
+
+{ #category : #example }
+SPLInterpreterExamples >> programWithComments [
+	<gtExample>
+	| result context |
+	context := SPLParserExamples new programWithComments asContext.
+	result := context reduce.
+	self
+		assert: context output
+		equals: 'hello world
 '.
 	^ context
 ]
@@ -400,18 +431,6 @@ SPLInterpreterExamples >> varXinitializedTo42AndPrinted [
 	self assert: context environment size equals: 1.
 	self assert: (context environment getVariableNamed: 'x') value equals: 42.
 	self assert: (context output) value equals: '42
-'.
-	^ context
-]
-
-{ #category : #example }
-SPLInterpreterExamples >> whileStatementInFactorial [
-	<gtExample>
-	| result context |
-	context := self context: self factorialSource.
-	result := context.
-	result := context reduce.
-	self assert: context output equals: '120
 '.
 	^ context
 ]

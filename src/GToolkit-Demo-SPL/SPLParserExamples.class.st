@@ -1,5 +1,5 @@
 "
-I implement examples to test the SPL parser that build an interpreter for SPL.
+I implement examples to test the SPL parser that builds an interpreter for SPL.
 "
 Class {
 	#name : #SPLParserExamples,
@@ -195,6 +195,17 @@ SPLParserExamples >> printStmt [
 	| result |
 	result := super printStmt.
 	self assert: result printString equals: 'print (3+4);'.
+	^ result
+]
+
+{ #category : #accessing }
+SPLParserExamples >> programWithComments [
+	<gtExample>
+	| result |
+	result := super programWithComments.
+	self assert: result printString equals: 'var hello = "hello world";
+print hello;
+'.
 	^ result
 ]
 

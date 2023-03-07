@@ -35,7 +35,9 @@ Class {
 		'program',
 		'parenthesizedExpression',
 		'negatedUnary',
-		'assignmentExpression'
+		'assignmentExpression',
+		'comment',
+		'ignorable'
 	],
 	#category : #'GToolkit-Demo-SPL-PetitParser'
 }
@@ -47,24 +49,31 @@ SPLGrammar >> assignment [
 
 { #category : #grammar }
 SPLGrammar >> assignmentExpression [
-	^ identifier trim , $= asPParser trim , assignment
+	^ (identifier trim: ignorable) , ($= asPParser trim: ignorable) , assignment
 ]
 
 { #category : #grammar }
 SPLGrammar >> block [
-	^ '{' asPParser trim , declaration star , $} asPParser trim
+	^ ('{' asPParser trim: ignorable) , declaration star
+		, ($} asPParser trim: ignorable)
 ]
 
 { #category : #grammar }
 SPLGrammar >> boolean [
-	^ 'true' asPParser trim / 'false' asPParser trim
+	^ ('true' asPParser trim: ignorable) / ('false' asPParser trim: ignorable)
+]
+
+{ #category : #grammar }
+SPLGrammar >> comment [
+	^ '//' asPParser , #newline asPParser negate star
 ]
 
 { #category : #grammar }
 SPLGrammar >> comparison [
 	^ term
-		, ('>=' asPParser trim / '>' asPParser trim / '<=' asPParser trim
-				/ '<' asPParser trim , term) star
+		, (('>=' asPParser trim: ignorable) / ('>' asPParser trim: ignorable)
+				/ ('<=' asPParser trim: ignorable) / ('<' asPParser trim: ignorable) , term)
+				star
 ]
 
 { #category : #grammar }
@@ -74,12 +83,14 @@ SPLGrammar >> declaration [
 
 { #category : #grammar }
 SPLGrammar >> equality [
-	^ comparison , ('!=' asPParser trim / '==' asPParser trim , comparison) star
+	^ comparison
+		, (('!=' asPParser trim: ignorable) / ('==' asPParser trim: ignorable)
+				, comparison) star
 ]
 
 { #category : #grammar }
 SPLGrammar >> exprStmt [
-	^ expression , $; asPParser trim
+	^ expression , ($; asPParser trim: ignorable)
 ]
 
 { #category : #grammar }
@@ -89,13 +100,14 @@ SPLGrammar >> expression [
 
 { #category : #grammar }
 SPLGrammar >> factor [
-	^ unary , ($/ asPParser trim / $* asPParser trim , unary) star
+	^ unary
+		, (($/ asPParser trim: ignorable) / ($* asPParser trim: ignorable) , unary) star
 ]
 
 { #category : #grammar }
 SPLGrammar >> float [
-	^ ($- asPParser optional , #digit asPParser plus , $. asPParser
-		, #digit asPParser plus) trim
+	^ $- asPParser optional , #digit asPParser plus , $. asPParser
+		, #digit asPParser plus trim: ignorable
 ]
 
 { #category : #grammar }
@@ -105,13 +117,19 @@ SPLGrammar >> identifier [
 
 { #category : #grammar }
 SPLGrammar >> ifStmt [
-	^ 'if' asPParser trim , $( asPParser trim , expression , $) asPParser trim
-		, statement , ('else' asPParser trim , statement) optional
+	^ ('if' asPParser trim: ignorable) , ($( asPParser trim: ignorable)
+		, expression , ($) asPParser trim: ignorable) , statement
+		, (('else' asPParser trim: ignorable) , statement) optional
+]
+
+{ #category : #grammar }
+SPLGrammar >> ignorable [
+	^ (comment / #space asPParser) star
 ]
 
 { #category : #grammar }
 SPLGrammar >> integer [
-	^ (#digit asPParser plus , $. asPParser not) trim
+	^ #digit asPParser plus , $. asPParser not trim: ignorable
 ]
 
 { #category : #grammar }
@@ -128,17 +146,17 @@ SPLGrammar >> keyword [
 
 { #category : #grammar }
 SPLGrammar >> logicAnd [
-	^ equality , ('and' asPParser trim , equality) star
+	^ equality , (('and' asPParser trim: ignorable) , equality) star
 ]
 
 { #category : #grammar }
 SPLGrammar >> logicOr [
-	^ logicAnd , ('or' asPParser trim , logicAnd) star
+	^ logicAnd , (('or' asPParser trim: ignorable) , logicAnd) star
 ]
 
 { #category : #grammar }
 SPLGrammar >> negatedUnary [
-	^ ($! asPParser trim / $- asPParser trim , unary)
+	^ ($! asPParser trim: ignorable) / ($- asPParser trim: ignorable) , unary
 ]
 
 { #category : #grammar }
@@ -150,7 +168,7 @@ SPLGrammar >> number [
 SPLGrammar >> parenthesizedExpression [
 	"Introduced to have finer control over actions."
 
-	^ $( asPParser trim , expression , $) asPParser trim
+	^ ($( asPParser trim: ignorable) , expression , ($) asPParser trim: ignorable)
 ]
 
 { #category : #grammar }
@@ -160,7 +178,8 @@ SPLGrammar >> primary [
 
 { #category : #grammar }
 SPLGrammar >> printStmt [
-	^ 'print' asPParser trim , expression , $; asPParser trim
+	^ ('print' asPParser trim: ignorable) , expression
+		, ($; asPParser trim: ignorable)
 ]
 
 { #category : #grammar }
@@ -185,7 +204,9 @@ SPLGrammar >> string [
 
 { #category : #grammar }
 SPLGrammar >> term [
-	^ factor , ('-' asPParser trim / '+' asPParser trim , factor) star
+	^ factor
+		, (('-' asPParser trim: ignorable) / ('+' asPParser trim: ignorable) , factor)
+				star
 ]
 
 { #category : #grammar }
@@ -195,8 +216,9 @@ SPLGrammar >> unary [
 
 { #category : #grammar }
 SPLGrammar >> varDecl [
-	^ ('var' asPParser trim , identifier
-		, ($= asPParser trim , expression) optional , $; asPParser trim)
+	^ (('var' asPParser trim: ignorable) , identifier
+		, (($= asPParser trim: ignorable) , expression) optional
+		, ($; asPParser trim: ignorable))
 		==> [ :node | 
 			node third
 				ifNil: [ SPLDeclaration for: node second ]
@@ -205,6 +227,6 @@ SPLGrammar >> varDecl [
 
 { #category : #grammar }
 SPLGrammar >> whileStmt [
-	^ 'while' asPParser trim , $( asPParser trim , expression , $) asPParser trim
-		, statement
+	^ ('while' asPParser trim: ignorable) , ($( asPParser trim: ignorable)
+		, expression , ($) asPParser trim: ignorable) , statement
 ]

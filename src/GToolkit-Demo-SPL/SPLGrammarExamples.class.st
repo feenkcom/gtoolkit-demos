@@ -37,6 +37,28 @@ SPLGrammarExamples >> cascadedAssignment [
 ]
 
 { #category : #example }
+SPLGrammarExamples >> comment [
+	<gtExample>
+	| input |
+	input := '// foo'.
+	self fail: input rule: #statement.
+	self fail: input rule: #ifStmt.
+	self parse: input rule: #ignorable.
+	^ self parse: input rule: #comment
+]
+
+{ #category : #example }
+SPLGrammarExamples >> commentWithLeadingSpaces [
+	<gtExample>
+	| input |
+	input := '  // foo'.
+	self fail: input rule: #statement.
+	self fail: input rule: #ifStmt.
+	self fail: input rule: #comment.
+	^ self parse: input rule: #ignorable
+]
+
+{ #category : #example }
 SPLGrammarExamples >> complexExpression [
 	<gtExample>
 	| input |
@@ -100,7 +122,9 @@ SPLGrammarExamples >> fibonacciProgram [
 { #category : #example }
 SPLGrammarExamples >> fibonacciSource [
 	<gtExample>
-	^ 'var arg = 10;
+	^ '// Fibonacci in SPL
+// Outputs the first arg Fibonacci numbers
+var arg = 10;
 var lastFib = 1;
 var thisFib = 1;
 var nextFib;
@@ -215,6 +239,19 @@ SPLGrammarExamples >> printStmt [
 	self parse: input rule: #statement.
 	self fail: input rule: #ifStmt.
 	^ self parse: input rule: #printStmt
+]
+
+{ #category : #example }
+SPLGrammarExamples >> programWithComments [
+	<gtExample>
+	| input |
+	input := '// My first program
+var hello = "hello world"; // this is a variable
+print // a print statement
+	hello // and the argument to the print
+	; // end of statement
+// and we''re done!'.
+	^ self parse: input rule: #program
 ]
 
 { #category : #example }

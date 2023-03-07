@@ -1,6 +1,7 @@
 "
-I provide a context for evaluate SPL programs.
+I provide a context for evaluating SPL programs.
 I hold an environment of variables, an output stream, and a program state.
+See {{gtClass:name=SPLInterpreterExamples}} for examples.
 "
 Class {
 	#name : #SPLContext,
