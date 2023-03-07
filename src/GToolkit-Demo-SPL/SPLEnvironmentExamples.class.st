@@ -1,3 +1,6 @@
+"
+I provide examples to illustrate and test theenvironment of variable bindings for SPL programs.
+"
 Class {
 	#name : #SPLEnvironmentExamples,
 	#superclass : #Object,

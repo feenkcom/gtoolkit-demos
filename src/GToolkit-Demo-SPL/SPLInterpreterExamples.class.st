@@ -1,3 +1,7 @@
+"
+I provide examples of executing SPL programs, using {{gtClass:name=SPLContext}}.
+
+"
 Class {
 	#name : #SPLInterpreterExamples,
 	#superclass : #Object,
