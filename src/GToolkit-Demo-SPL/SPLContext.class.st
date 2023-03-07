@@ -50,15 +50,15 @@ SPLContext class >> parserClass [
 
 { #category : #view }
 SPLContext >> composedStateElement [
-	| state envt output verticalContainer horizontalContainer |
-	state := (self gtCodeFor: GtPhlowEmptyView new) asElementDo: [ :e | e ].
+	| continuation envt output verticalContainer horizontalContainer |
+	continuation := (self gtContinuationFor: GtPhlowEmptyView new) asElementDo: [ :e | e ].
 
 	envt := (self environment gtVariablesFor: GtPhlowEmptyView new)
 			asElementDo: [ :e | e ].
 
 	output := (self gtOutputFor: GtPhlowEmptyView new) asElementDo: [ :e | e ].
 
-	{state.
+	{continuation.
 		envt.
 		output}
 		do: [ :each | each border: (BlBorder paint: Color lightGray width: 1) ].
@@ -80,7 +80,7 @@ SPLContext >> composedStateElement [
 			c vertical matchParent.
 			c horizontal matchParent ].
 	horizontalContainer
-		addChildren: {state.
+		addChildren: {continuation.
 				verticalContainer}.
 	^ horizontalContainer asScalableElement
 ]
@@ -96,18 +96,6 @@ SPLContext >> environment: anObject [
 ]
 
 { #category : #accessing }
-SPLContext >> gtCodeFor: aView [
-	<gtView>
-	^ aView textEditor
-		title: 'Program state';
-		priority: 30;
-		aptitude: BrGlamorousCodeEditorAptitude;
-		text: [ self state printString asRopedText ];
-		actionUpdateButton;
-		updateWhen: ValueChanged in: self stateHolder announcer
-]
-
-{ #category : #accessing }
 SPLContext >> gtContextStateFor: aView [
 	"<gtView>"
 	^ aView explicit
@@ -115,6 +103,18 @@ SPLContext >> gtContextStateFor: aView [
 		priority: 10;
 		stencil: [ "self composedStateElement" ]
 		
+]
+
+{ #category : #accessing }
+SPLContext >> gtContinuationFor: aView [
+	<gtView>
+	^ aView textEditor
+		title: 'Continuation';
+		priority: 30;
+		aptitude: BrGlamorousCodeEditorAptitude;
+		text: [ self state printString asRopedText ];
+		actionUpdateButton;
+		updateWhen: ValueChanged in: self stateHolder announcer
 ]
 
 { #category : #accessing }
@@ -152,7 +152,7 @@ SPLContext >> gtOutputFor: aView [
 SPLContext >> gtStateFor: aView [
 	<gtView>
 	^ aView explicit
-		title: 'Context state';
+		title: 'State';
 		priority: 10;
 		stencil: [  self composedStateElement ]
 ]
@@ -161,12 +161,21 @@ SPLContext >> gtStateFor: aView [
 SPLContext >> initialize [
 	stateHolder := NewValueHolder new.
 	environment := SPLEnvironment new.
-	outputHolder := NewValueHolder value: ''.
+	outputHolder := NewValueHolder value: OrderedCollection new.
 ]
 
 { #category : #accessing }
 SPLContext >> output [
-	^ outputHolder value
+	"The output as a String"
+
+	| result |
+	result := '' writeStream.
+	self outputHolder value
+		do: [ :each | 
+			result
+				nextPutAll: each;
+				cr ].
+	^ result contents
 ]
 
 { #category : #accessing }
@@ -176,7 +185,10 @@ SPLContext >> outputHolder [
 
 { #category : #accessing }
 SPLContext >> printLn: aString [
-	self outputHolder value: self output , aString, String cr
+	self outputHolder
+		value: (self outputHolder value
+				addLast: aString;
+				yourself)
 ]
 
 { #category : #evaluating }

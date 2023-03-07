@@ -51,16 +51,6 @@ SPL class >> examples [
 	^ GtExplicitExampleGroup withAll: self package gtExamplesAllContained
 ]
 
-{ #category : #accessing }
-SPL class >> factorial [
-	^ SPLInterpreterExamples new factorialSource
-]
-
-{ #category : #accessing }
-SPL class >> fibonacci [
-	^ SPLGrammarExamples new fibonacciSource
-]
-
 { #category : #parsing }
 SPL class >> grammarCheck: anSPLProgram [
 	^ self grammarClass parse: anSPLProgram

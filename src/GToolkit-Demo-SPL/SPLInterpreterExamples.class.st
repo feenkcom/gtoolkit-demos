@@ -154,8 +154,7 @@ SPLInterpreterExamples >> blockStatement [
 	context := self context: '{ 1+2; 3*4/2; print 7; }'.
 	result := context.
 	result := context reduce.
-	self assert: context output equals: '7
-'.
+	self assert: context output allButLast equals: '7'.
 	^ context
 ]
 
@@ -202,8 +201,7 @@ SPLInterpreterExamples >> factorialWithWhileStatement [
 	context := self context: self factorialSource.
 	result := context.
 	result := context reduce.
-	self assert: context output equals: '120
-'.
+	self assert: context output allButLast equals: '120'.
 	^ context
 ]
 
@@ -238,8 +236,7 @@ SPLInterpreterExamples >> ifElseStatement [
 	context := self context: 'if (3>4) { print 7; } else { print "else ok"; }'.
 	result := context.
 	result := context reduce.
-	self assert: context output equals: 'else ok
-'.
+	self assert: context output allButLast equals: 'else ok'.
 	^ context
 ]
 
@@ -250,8 +247,7 @@ SPLInterpreterExamples >> ifStatement [
 	context := self context: 'if (3<4) { print 7; }'.
 	result := context.
 	result := context reduce.
-	self assert: context output equals: '7
-'.
+	self assert: context output allButLast equals: '7'.
 	^ context
 ]
 
@@ -321,8 +317,7 @@ SPLInterpreterExamples >> printHello [
 print "hello";'.
 	result := context.
 	result := context reduce.
-	self assert: context output equals: 'hello
-'.
+	self assert: context output allButLast equals: 'hello'.
 	^ context
 ]
 
@@ -333,9 +328,8 @@ SPLInterpreterExamples >> programWithComments [
 	context := SPLParserExamples new programWithComments asContext.
 	result := context reduce.
 	self
-		assert: context output
-		equals: 'hello world
-'.
+		assert: context output allButLast
+		equals: 'hello world'.
 	^ context
 ]
 
@@ -392,8 +386,7 @@ SPLInterpreterExamples >> varXassignedAndPrinted [
 	result := context reduce.
 	self assert: context environment size equals: 1.
 	self assert: (context environment getVariableNamed: 'x') value equals: 42.
-	self assert: context output equals: '42
-'.
+	self assert: context output allButLast equals: '42'.
 	^ context
 ]
 
@@ -430,7 +423,6 @@ SPLInterpreterExamples >> varXinitializedTo42AndPrinted [
 	result := context reduce.
 	self assert: context environment size equals: 1.
 	self assert: (context environment getVariableNamed: 'x') value equals: 42.
-	self assert: (context output) value equals: '42
-'.
+	self assert: context output value allButLast equals: '42'.
 	^ context
 ]
