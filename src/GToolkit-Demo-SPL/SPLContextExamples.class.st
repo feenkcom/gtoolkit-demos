@@ -3,13 +3,13 @@ I provide examples of executing SPL programs, using {{gtClass:name=SPLContext}}.
 
 "
 Class {
-	#name : #SPLInterpreterExamples,
+	#name : #SPLContextExamples,
 	#superclass : #Object,
 	#category : #'GToolkit-Demo-SPL-Examples'
 }
 
 { #category : #example }
-SPLInterpreterExamples >> a12dividedBy3is4 [
+SPLContextExamples >> a12dividedBy3is4 [
 	<gtExample>
 	| result context |
 	context := self contextForExpression: '12/3'.
@@ -20,7 +20,7 @@ SPLInterpreterExamples >> a12dividedBy3is4 [
 ]
 
 { #category : #example }
-SPLInterpreterExamples >> a3equals3 [
+SPLContextExamples >> a3equals3 [
 	<gtExample>
 	| result context |
 	context := self contextForExpression: '3==3'.
@@ -31,7 +31,7 @@ SPLInterpreterExamples >> a3equals3 [
 ]
 
 { #category : #example }
-SPLInterpreterExamples >> a3isNot4 [
+SPLContextExamples >> a3isNot4 [
 	<gtExample>
 	| result context |
 	context := self contextForExpression: '3!=4'.
@@ -42,7 +42,7 @@ SPLInterpreterExamples >> a3isNot4 [
 ]
 
 { #category : #example }
-SPLInterpreterExamples >> a3lessThan4 [
+SPLContextExamples >> a3lessThan4 [
 	<gtExample>
 	| result context |
 	context := self contextForExpression: '3<4'.
@@ -53,7 +53,7 @@ SPLInterpreterExamples >> a3lessThan4 [
 ]
 
 { #category : #example }
-SPLInterpreterExamples >> a3lessThanEqual4 [
+SPLContextExamples >> a3lessThanEqual4 [
 	<gtExample>
 	| result context |
 	context := self contextForExpression: '3<=4'.
@@ -64,7 +64,7 @@ SPLInterpreterExamples >> a3lessThanEqual4 [
 ]
 
 { #category : #example }
-SPLInterpreterExamples >> a3plus4 [
+SPLContextExamples >> a3plus4 [
 	<gtExample>
 	| result |
 	result := self parseExpression: '3+4'.
@@ -73,7 +73,7 @@ SPLInterpreterExamples >> a3plus4 [
 ]
 
 { #category : #example }
-SPLInterpreterExamples >> a3plus4is7 [
+SPLContextExamples >> a3plus4is7 [
 	<gtExample>
 	| result context |
 	context := self a3plus4 asContext.
@@ -84,7 +84,7 @@ SPLInterpreterExamples >> a3plus4is7 [
 ]
 
 { #category : #example }
-SPLInterpreterExamples >> a3plus4times5 [
+SPLContextExamples >> a3plus4times5 [
 	<gtExample>
 	| result context |
 	context := self contextForExpression: '3+4*5'.
@@ -95,7 +95,7 @@ SPLInterpreterExamples >> a3plus4times5 [
 ]
 
 { #category : #example }
-SPLInterpreterExamples >> a3times4is12 [
+SPLContextExamples >> a3times4is12 [
 	<gtExample>
 	| result context |
 	context := self contextForExpression: '3*4'.
@@ -106,7 +106,7 @@ SPLInterpreterExamples >> a3times4is12 [
 ]
 
 { #category : #example }
-SPLInterpreterExamples >> a42 [
+SPLContextExamples >> a42 [
 	<gtExample>
 	| result |
 	result := self parseExpression: '42'.
@@ -115,7 +115,7 @@ SPLInterpreterExamples >> a42 [
 ]
 
 { #category : #example }
-SPLInterpreterExamples >> a4greaterThan3 [
+SPLContextExamples >> a4greaterThan3 [
 	<gtExample>
 	| result context |
 	context := self contextForExpression: '4>3'.
@@ -126,7 +126,7 @@ SPLInterpreterExamples >> a4greaterThan3 [
 ]
 
 { #category : #example }
-SPLInterpreterExamples >> a4greaterThanEqual3 [
+SPLContextExamples >> a4greaterThanEqual3 [
 	<gtExample>
 	| result context |
 	context := self contextForExpression: '4>=3'.
@@ -137,7 +137,7 @@ SPLInterpreterExamples >> a4greaterThanEqual3 [
 ]
 
 { #category : #example }
-SPLInterpreterExamples >> a4minus3is1 [
+SPLContextExamples >> a4minus3is1 [
 	<gtExample>
 	| result context |
 	context := self contextForExpression: '4-3'.
@@ -148,7 +148,7 @@ SPLInterpreterExamples >> a4minus3is1 [
 ]
 
 { #category : #example }
-SPLInterpreterExamples >> blockStatement [
+SPLContextExamples >> blockStatement [
 	<gtExample>
 	| result context |
 	context := self context: '{ 1+2; 3*4/2; print 7; }'.
@@ -159,17 +159,17 @@ SPLInterpreterExamples >> blockStatement [
 ]
 
 { #category : #parsing }
-SPLInterpreterExamples >> context: aString [
+SPLContextExamples >> context: aString [
 	^ (self parse: aString) asContext
 ]
 
 { #category : #parsing }
-SPLInterpreterExamples >> contextForExpression: aString [
+SPLContextExamples >> contextForExpression: aString [
 	^ (self parseExpression: aString) asContext
 ]
 
 { #category : #example }
-SPLInterpreterExamples >> expressionStatement [
+SPLContextExamples >> expressionStatement [
 	<gtExample>
 	| result context |
 	context := self context: '3+4;'.
@@ -181,7 +181,7 @@ SPLInterpreterExamples >> expressionStatement [
 ]
 
 { #category : #example }
-SPLInterpreterExamples >> factorialSource [
+SPLContextExamples >> factorialSource [
 <gtExample>
 ^ '// Factorial in SPL -- computes the factorial of arg
 var arg=5;
@@ -195,7 +195,7 @@ print fact;'
 ]
 
 { #category : #example }
-SPLInterpreterExamples >> factorialWithWhileStatement [
+SPLContextExamples >> factorialWithWhileStatement [
 	<gtExample>
 	| result context |
 	context := self context: self factorialSource.
@@ -206,7 +206,7 @@ SPLInterpreterExamples >> factorialWithWhileStatement [
 ]
 
 { #category : #example }
-SPLInterpreterExamples >> fibonacci [
+SPLContextExamples >> fibonacci [
 	<gtExample>
 	| result context |
 	context := self context: SPLGrammarExamples new fibonacciSource.
@@ -219,7 +219,7 @@ SPLInterpreterExamples >> fibonacci [
 ]
 
 { #category : #example }
-SPLInterpreterExamples >> helloEqualsHello [
+SPLContextExamples >> helloEqualsHello [
 	<gtExample>
 	| result context |
 	context := self contextForExpression: '"hello" == "hello"'.
@@ -230,7 +230,7 @@ SPLInterpreterExamples >> helloEqualsHello [
 ]
 
 { #category : #example }
-SPLInterpreterExamples >> ifElseStatement [
+SPLContextExamples >> ifElseStatement [
 	<gtExample>
 	| result context |
 	context := self context: 'if (3>4) { print 7; } else { print "else ok"; }'.
@@ -241,7 +241,7 @@ SPLInterpreterExamples >> ifElseStatement [
 ]
 
 { #category : #example }
-SPLInterpreterExamples >> ifStatement [
+SPLContextExamples >> ifStatement [
 	<gtExample>
 	| result context |
 	context := self context: 'if (3<4) { print 7; }'.
@@ -252,7 +252,7 @@ SPLInterpreterExamples >> ifStatement [
 ]
 
 { #category : #example }
-SPLInterpreterExamples >> minus3 [
+SPLContextExamples >> minus3 [
 	<gtExample>
 	| result input |
 	input := self contextForExpression: '-3'.
@@ -263,7 +263,7 @@ SPLInterpreterExamples >> minus3 [
 ]
 
 { #category : #example }
-SPLInterpreterExamples >> newContext [
+SPLContextExamples >> newContext [
 	<gtExample>
 	| result |
 	result := SPLContext new.
@@ -274,7 +274,7 @@ SPLInterpreterExamples >> newContext [
 ]
 
 { #category : #example }
-SPLInterpreterExamples >> newEnvironment [
+SPLContextExamples >> newEnvironment [
 	<gtExample>
 	| result |
 	result := SPLEnvironment new.
@@ -284,7 +284,7 @@ SPLInterpreterExamples >> newEnvironment [
 ]
 
 { #category : #example }
-SPLInterpreterExamples >> notTrueIsFalse [
+SPLContextExamples >> notTrueIsFalse [
 	<gtExample>
 	| result context |
 	context := self contextForExpression: '!true'.
@@ -295,22 +295,22 @@ SPLInterpreterExamples >> notTrueIsFalse [
 ]
 
 { #category : #parsing }
-SPLInterpreterExamples >> parse: aString [
+SPLContextExamples >> parse: aString [
 	^ self parserClass parse: aString
 ]
 
 { #category : #parsing }
-SPLInterpreterExamples >> parseExpression: aString [ 
+SPLContextExamples >> parseExpression: aString [ 
 	^ self parserClass new expression parse: aString
 ]
 
 { #category : #constants }
-SPLInterpreterExamples >> parserClass [
+SPLContextExamples >> parserClass [
 	^ SPLParser
 ]
 
 { #category : #example }
-SPLInterpreterExamples >> printHello [
+SPLContextExamples >> printHello [
 	<gtExample>
 	| result context |
 	context := self context: '// Hello program in SPL
@@ -322,7 +322,18 @@ print "hello";'.
 ]
 
 { #category : #example }
-SPLInterpreterExamples >> programWithComments [
+SPLContextExamples >> printHelloCopy [
+	<gtExample>
+	| copy context |
+	context := self printHello.
+	copy := context copy.
+	self assert: context equals: copy.
+	self assert: (context == copy) not.
+	^ context
+]
+
+{ #category : #example }
+SPLContextExamples >> programWithComments [
 	<gtExample>
 	| result context |
 	context := SPLParserExamples new programWithComments asContext.
@@ -334,7 +345,7 @@ SPLInterpreterExamples >> programWithComments [
 ]
 
 { #category : #example }
-SPLInterpreterExamples >> threeEqualsThree [
+SPLContextExamples >> threeEqualsThree [
 	<gtExample>
 	| result context |
 	context := self contextForExpression: '3 == 3'.
@@ -345,7 +356,7 @@ SPLInterpreterExamples >> threeEqualsThree [
 ]
 
 { #category : #example }
-SPLInterpreterExamples >> trueAndTrueIsTrue [
+SPLContextExamples >> trueAndTrueIsTrue [
 	<gtExample>
 	| result context |
 	context := self contextForExpression: 'true and true'.
@@ -356,7 +367,7 @@ SPLInterpreterExamples >> trueAndTrueIsTrue [
 ]
 
 { #category : #example }
-SPLInterpreterExamples >> trueNotEqualFalse [
+SPLContextExamples >> trueNotEqualFalse [
 	<gtExample>
 	| result context |
 	context := self contextForExpression: 'true != false'.
@@ -367,7 +378,7 @@ SPLInterpreterExamples >> trueNotEqualFalse [
 ]
 
 { #category : #example }
-SPLInterpreterExamples >> trueOrFalseIsTrue [
+SPLContextExamples >> trueOrFalseIsTrue [
 	<gtExample>
 	| result context |
 	context := self contextForExpression: 'true or false'.
@@ -378,7 +389,7 @@ SPLInterpreterExamples >> trueOrFalseIsTrue [
 ]
 
 { #category : #example }
-SPLInterpreterExamples >> varXassignedAndPrinted [
+SPLContextExamples >> varXassignedAndPrinted [
 	<gtExample>
 	| result context |
 	context := self context: 'var x; x = 6*7; print x;'.
@@ -391,7 +402,7 @@ SPLInterpreterExamples >> varXassignedAndPrinted [
 ]
 
 { #category : #example }
-SPLInterpreterExamples >> varXdeclared [
+SPLContextExamples >> varXdeclared [
 	<gtExample>
 	| result context |
 	context := self context: 'var x;'.
@@ -403,7 +414,7 @@ SPLInterpreterExamples >> varXdeclared [
 ]
 
 { #category : #example }
-SPLInterpreterExamples >> varXinitializedTo42 [
+SPLContextExamples >> varXinitializedTo42 [
 	<gtExample>
 	| result context |
 	context := self context: 'var x = 42;'.
@@ -415,7 +426,7 @@ SPLInterpreterExamples >> varXinitializedTo42 [
 ]
 
 { #category : #example }
-SPLInterpreterExamples >> varXinitializedTo42AndPrinted [
+SPLContextExamples >> varXinitializedTo42AndPrinted [
 	<gtExample>
 	| result context |
 	context := self context: 'var x = 42; print x;'.

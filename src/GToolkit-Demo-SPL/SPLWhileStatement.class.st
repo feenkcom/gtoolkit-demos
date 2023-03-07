@@ -36,7 +36,7 @@ SPLWhileStatement >> printOn: aStream indentBy: indentlevel [
 ]
 
 { #category : #accessing }
-SPLWhileStatement >> stepIn: aContext [
+SPLWhileStatement >> stepInContext: aContext [
 	"We translate a while statement to an if statement with a block."
 
 	^ SPLIfStatement

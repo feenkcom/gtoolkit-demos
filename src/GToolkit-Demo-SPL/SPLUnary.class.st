@@ -50,10 +50,10 @@ SPLUnary >> printOn: aStream [
 ]
 
 { #category : #stepping }
-SPLUnary >> stepIn: aContext [
+SPLUnary >> stepInContext: aContext [
 	^ self expression isReduced
 		ifTrue: [ self evaluateIn: aContext ]
 		ifFalse: [ self class
 				negate: self operator
-				expression: (self expression stepIn: aContext) ]
+				expression: (self expression stepInContext: aContext) ]
 ]

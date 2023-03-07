@@ -14,16 +14,17 @@ SPLVariable class >> named: aVariableName [
 		yourself
 ]
 
-{ #category : #accessing }
+{ #category : #comparing }
 SPLVariable >> = anObject [
-	"Answer whether the receiver and anObject represent the same object."
+	"Answer whether the receiver and anObject represent the same object.
+	This is needed to use SPL variables as keys in the Environment dictionary."
 
 	self == anObject ifTrue: [ ^ true ].
 	self class = anObject class ifFalse: [ ^ false ].
 	^ self name = anObject name
 ]
 
-{ #category : #accessing }
+{ #category : #comparing }
 SPLVariable >> hash [
 	^ self name hash
 ]
@@ -49,7 +50,7 @@ SPLVariable >> printOn: aStream [
 ]
 
 { #category : #stepping }
-SPLVariable >> stepIn: aContext [
+SPLVariable >> stepInContext: aContext [
 	^ aContext environment getVariable: self
 ]
 

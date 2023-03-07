@@ -49,6 +49,15 @@ SPLContext class >> parserClass [
 	^ SPLParser
 ]
 
+{ #category : #comparing }
+SPLContext >> = anObject [
+	self == anObject ifTrue: [ ^ true ].
+	self class = anObject class ifFalse: [ ^ false ].
+	^ self continuation = anObject continuation
+		and: [ self environment = anObject environment
+				and: [ self outputHolder value = anObject outputHolder value ] ]
+]
+
 { #category : #view }
 SPLContext >> composedStateElement [
 	| continuation envt output verticalContainer horizontalContainer |
@@ -168,6 +177,13 @@ SPLContext >> gtStateFor: aView [
 		stencil: [  self composedStateElement ]
 ]
 
+{ #category : #comparing }
+SPLContext >> hash [
+	"Not really needed. Contexts should not be used as dictionary keys."
+
+	^ self environment hash
+]
+
 { #category : #initialization }
 SPLContext >> initialize [
 	nodeHolder := NewValueHolder new.
@@ -200,6 +216,21 @@ SPLContext >> outputHolder [
 	^ outputHolder
 ]
 
+{ #category : #copying }
+SPLContext >> postCopy [
+	"This is called by Object>>#copy to clean up after the shallow copy is  made.
+	The continuation in the nodeHolder is immutable, so doesn't need to be copied.
+	The environment is updated, so must be copied. It has its own copy method.
+	The output and trace are collections, so we just need shallow copies of those.
+	"
+
+	super postCopy.
+	environment := environment copy.
+	outputHolder value: outputHolder value copy.
+	traceHolder value: traceHolder value copy. 
+	^ self
+]
+
 { #category : #accessing }
 SPLContext >> printLn: aString [
 	self outputHolder
@@ -229,7 +260,7 @@ SPLContext >> reduce: anSPLNode [
 	| result |
 	self deprecated: 'Use SPLContext>>#reduce instead'.
 	result := anSPLNode.
-	[ result isReduced not ] whileTrue: [ result := result stepIn: self ].
+	[ result isReduced not ] whileTrue: [ result := result stepInContext: self ].
 	^ result
 ]
 
@@ -248,12 +279,12 @@ SPLContext >> stateHolder [
 
 { #category : #evaluating }
 SPLContext >> step [
-	self continuation: (self continuation stepIn: self).
+	self continuation: (self continuation stepInContext: self).
 	^ self continuation
 ]
 
 { #category : #evaluating }
 SPLContext >> step: anSPLNode [
 	self deprecated: 'Use SPLContext>>#step instead'.
-	^ anSPLNode stepIn: self
+	^ anSPLNode stepInContext: self
 ]

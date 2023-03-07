@@ -38,7 +38,7 @@ SPLExpression >> isSPLValue [
 ]
 
 { #category : #stepping }
-SPLExpression >> stepIn: aContext [
+SPLExpression >> stepInContext: aContext [
 	"I take a reduction step in the environment and return a new, step-reduced node."
 
 	self subclassResponsibility

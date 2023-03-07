@@ -39,7 +39,7 @@ SPLNode >> isSPLVariable [
 ]
 
 { #category : #stepping }
-SPLNode >> stepIn: aContext [
+SPLNode >> stepInContext: aContext [
 	"Take a single reduction step for this node in the given context.
 	The node must know what to evaluate and whatto return.
 	For example, a binary node contains a left and right argument and an operator.

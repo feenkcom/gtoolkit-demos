@@ -15,7 +15,7 @@ SPLExamples >> context [
 SPLExamples >> factorial [
 	<gtExample>
 	<noTest>
-	^ SPL contextFor: SPLInterpreterExamples new factorialSource
+	^ SPL contextFor: SPLContextExamples new factorialSource
 ]
 
 { #category : #accessing }

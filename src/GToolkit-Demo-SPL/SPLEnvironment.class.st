@@ -15,6 +15,13 @@ Class {
 	#category : #'GToolkit-Demo-SPL-Interpreter'
 }
 
+{ #category : #comparing }
+SPLEnvironment >> = anObject [
+	self == anObject ifTrue: [ ^ true ].
+	self class = anObject class ifFalse: [ ^ false ].
+	^ self variables = anObject variables
+]
+
 { #category : #accessing }
 SPLEnvironment >> announcer [
 	^ announcer
@@ -76,6 +83,11 @@ SPLEnvironment >> gtVariablesFor: aView [
 		updateWhen: ValueChanged in: self announcer
 ]
 
+{ #category : #comparing }
+SPLEnvironment >> hash [
+	^ variables hash
+]
+
 { #category : #initialization }
 SPLEnvironment >> initialize [
 	variables := Dictionary new.
@@ -85,6 +97,14 @@ SPLEnvironment >> initialize [
 { #category : #accessing }
 SPLEnvironment >> isEmpty [
 	^ self variables isEmpty
+]
+
+{ #category : #copying }
+SPLEnvironment >> postCopy [
+	super postCopy.
+	variables := variables copy.
+	announcer := Announcer new.
+	^ self
 ]
 
 { #category : #accessing }
