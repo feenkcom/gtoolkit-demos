@@ -181,6 +181,32 @@ SPLContext >> gtStateFor: aView [
 		stencil: [  self composedStateElement ]
 ]
 
+{ #category : #accessing }
+SPLContext >> gtTraceFor: aView [
+	<gtView>
+	^ aView columnedList
+		title: 'Trace';
+		priority: 60;
+		items: [ self trace ];
+		column: 'Next statement'
+			text: [ :aContext | 
+				aContext continuation statements
+					ifEmpty: [ 'empty' ]
+					ifNotEmpty: [ aContext continuation statements last printString ] ];
+		column: 'Environment'
+			text: [ :aContext | 
+				aContext environment variables
+					ifEmpty: [ 'empty' ]
+					ifNotEmpty:  [ aContext environment variables size printString  ] ];
+		column: 'Output'
+			text: [ :aContext | 
+				aContext outputHolder value
+					ifEmpty: [ 'empty' ]
+					ifNotEmpty: [ aContext outputHolder value last ] ];
+		actionUpdateButton;
+		updateWhen: ValueChanged in: self outputHolder announcer
+]
+
 { #category : #comparing }
 SPLContext >> hash [
 	"Not really needed. Contexts should not be used as dictionary keys."

@@ -225,7 +225,7 @@
 											"__type" : "time",
 											"time" : {
 												"__type" : "dateAndTime",
-												"dateAndTimeString" : "2023-03-07T09:14:03.610845+01:00"
+												"dateAndTimeString" : "2023-03-07T19:03:07.504876+01:00"
 											}
 										},
 										"uid" : {
@@ -235,7 +235,7 @@
 										"paragraphStyle" : {
 											"__type" : "textStyle"
 										},
-										"string" : "{{gtTodo:label=Make contexts (largely) immutable.}}"
+										"string" : "{{gtTodo:label=Make contexts (largely) immutable.|completed=2023-03-07}}"
 									},
 									{
 										"__type" : "textSnippet",
@@ -262,7 +262,7 @@
 											"__type" : "time",
 											"time" : {
 												"__type" : "dateAndTime",
-												"dateAndTimeString" : "2023-03-07T09:13:49.749119+01:00"
+												"dateAndTimeString" : "2023-03-07T19:03:13.641636+01:00"
 											}
 										},
 										"uid" : {
@@ -272,7 +272,7 @@
 										"paragraphStyle" : {
 											"__type" : "textStyle"
 										},
-										"string" : "{{gtTodo:label=Add a trace variable to the context. }}"
+										"string" : "{{gtTodo:label=Add a trace variable to the context. |completed=2023-03-07}}"
 									},
 									{
 										"__type" : "textSnippet",
@@ -971,7 +971,7 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-03-07T18:19:38.962865+01:00"
+									"dateAndTimeString" : "2023-03-07T18:19:59.339171+01:00"
 								}
 							},
 							"uid" : {
@@ -981,7 +981,7 @@
 							"paragraphStyle" : {
 								"__type" : "textStyle"
 							},
-							"string" : "Somehow we are not getting unique copies yet, but the copies are sharing state. OTo be explored ..."
+							"string" : "Somehow we are not getting unique copies yet, but the copies are sharing state. Only the output is being prioperly cloned. To be explored ... We also need tests."
 						},
 						{
 							"__type" : "pharoSnippet",
@@ -1008,14 +1008,14 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-03-07T18:19:14.732682+01:00"
+									"dateAndTimeString" : "2023-03-07T19:03:43.361673+01:00"
 								}
 							},
 							"uid" : {
 								"__type" : "uid",
 								"uidString" : "PeR1VLSyDQCIYRYkCOJfAg=="
 							},
-							"code" : "(SPL reduce: SPLGrammarExamples new fibonacciSource) trace"
+							"code" : "(SPL reduce: SPLGrammarExamples new fibonacciSource) "
 						},
 						{
 							"__type" : "textSnippet",
