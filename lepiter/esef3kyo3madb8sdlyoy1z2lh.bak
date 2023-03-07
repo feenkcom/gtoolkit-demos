@@ -124,7 +124,45 @@
 							"__type" : "textSnippet",
 							"children" : {
 								"__type" : "snippets",
-								"items" : [ ]
+								"items" : [
+									{
+										"__type" : "textSnippet",
+										"children" : {
+											"__type" : "snippets",
+											"items" : [ ]
+										},
+										"createEmail" : {
+											"__type" : "email",
+											"emailString" : "<unknown>"
+										},
+										"createTime" : {
+											"__type" : "time",
+											"time" : {
+												"__type" : "dateAndTime",
+												"dateAndTimeString" : "2023-03-07T09:14:03.60924+01:00"
+											}
+										},
+										"editEmail" : {
+											"__type" : "email",
+											"emailString" : "<unknown>"
+										},
+										"editTime" : {
+											"__type" : "time",
+											"time" : {
+												"__type" : "dateAndTime",
+												"dateAndTimeString" : "2023-03-07T09:14:03.60924+01:00"
+											}
+										},
+										"uid" : {
+											"__type" : "uid",
+											"uidString" : "nO5Ku6yyDQCiBJ+gA2fN+Q=="
+										},
+										"paragraphStyle" : {
+											"__type" : "textStyle"
+										},
+										"string" : "Remove all public setters except initializers. "
+									}
+								]
 							},
 							"createEmail" : {
 								"__type" : "email",
@@ -182,7 +220,7 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-03-07T09:13:45.756818+01:00"
+									"dateAndTimeString" : "2023-03-07T09:14:03.610845+01:00"
 								}
 							},
 							"uid" : {
@@ -192,7 +230,7 @@
 							"paragraphStyle" : {
 								"__type" : "textStyle"
 							},
-							"string" : "Remove all public setters except initializers. \n\n{{gtTodo:label=Make contexts (largely) immutable.}}"
+							"string" : "{{gtTodo:label=Make contexts (largely) immutable.}}"
 						},
 						{
 							"__type" : "textSnippet",
@@ -383,7 +421,45 @@
 							"__type" : "textSnippet",
 							"children" : {
 								"__type" : "snippets",
-								"items" : [ ]
+								"items" : [
+									{
+										"__type" : "textSnippet",
+										"children" : {
+											"__type" : "snippets",
+											"items" : [ ]
+										},
+										"createEmail" : {
+											"__type" : "email",
+											"emailString" : "<unknown>"
+										},
+										"createTime" : {
+											"__type" : "time",
+											"time" : {
+												"__type" : "dateAndTime",
+												"dateAndTimeString" : "2023-03-07T09:13:09.665896+01:00"
+											}
+										},
+										"editEmail" : {
+											"__type" : "email",
+											"emailString" : "<unknown>"
+										},
+										"editTime" : {
+											"__type" : "time",
+											"time" : {
+												"__type" : "dateAndTime",
+												"dateAndTimeString" : "2023-03-07T09:13:58.470345+01:00"
+											}
+										},
+										"uid" : {
+											"__type" : "uid",
+											"uidString" : "htgTuKyyDQChX5a/A2fN+Q=="
+										},
+										"paragraphStyle" : {
+											"__type" : "textStyle"
+										},
+										"string" : "Trace view should show next statement, environment bindings and last output. "
+									}
+								]
 							},
 							"createEmail" : {
 								"__type" : "email",
@@ -415,43 +491,6 @@
 								"__type" : "textStyle"
 							},
 							"string" : "{{gtTodo:label=Make the continutation editable — reparse on changes}}"
-						},
-						{
-							"__type" : "textSnippet",
-							"children" : {
-								"__type" : "snippets",
-								"items" : [ ]
-							},
-							"createEmail" : {
-								"__type" : "email",
-								"emailString" : "<unknown>"
-							},
-							"createTime" : {
-								"__type" : "time",
-								"time" : {
-									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-03-07T09:13:09.665896+01:00"
-								}
-							},
-							"editEmail" : {
-								"__type" : "email",
-								"emailString" : "<unknown>"
-							},
-							"editTime" : {
-								"__type" : "time",
-								"time" : {
-									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-03-07T09:13:58.041821+01:00"
-								}
-							},
-							"uid" : {
-								"__type" : "uid",
-								"uidString" : "htgTuKyyDQChX5a/A2fN+Q=="
-							},
-							"paragraphStyle" : {
-								"__type" : "textStyle"
-							},
-							"string" : "Trace view should show next statement, environment bindings and last output. \n"
 						}
 					]
 				},
