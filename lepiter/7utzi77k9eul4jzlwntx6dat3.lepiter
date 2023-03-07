@@ -224,7 +224,7 @@
 											"__type" : "time",
 											"time" : {
 												"__type" : "dateAndTime",
-												"dateAndTimeString" : "2023-03-07T09:01:53.099483+01:00"
+												"dateAndTimeString" : "2023-03-07T10:58:50.281418+01:00"
 											}
 										},
 										"uid" : {
@@ -234,7 +234,7 @@
 										"paragraphStyle" : {
 											"__type" : "textStyle"
 										},
-										"string" : "[[**Parsing SPL comments]] "
+										"string" : "[[Parsing SPL comments]] "
 									},
 									{
 										"__type" : "textSnippet",

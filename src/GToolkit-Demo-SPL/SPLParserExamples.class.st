@@ -199,6 +199,17 @@ SPLParserExamples >> printStmt [
 ]
 
 { #category : #accessing }
+SPLParserExamples >> programWithComments [
+	<gtExample>
+	| result |
+	result := super programWithComments.
+	self assert: result printString equals: 'var hello = "hello world";
+print hello;
+'.
+	^ result
+]
+
+{ #category : #accessing }
 SPLParserExamples >> threeEqualFour [
 	<gtExample>
 	| result |

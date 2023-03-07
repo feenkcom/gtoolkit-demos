@@ -163,6 +163,77 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2023-03-07T10:43:01.560749+01:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2023-03-07T10:43:07.308809+01:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "WJ91+a2yDQCeuX4jCq3PGg=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : "Ignorable looks like this:"
+			},
+			{
+				"__type" : "pharoSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2023-03-07T10:42:56.855933+01:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2023-03-07T10:44:34.664549+01:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "GdYt+a2yDQCetfgvCq3PGg=="
+				},
+				"code" : "comment := '//' asPParser , #newline asPParser negate star.\rignorable := (comment / #space asPParser) star .\rignorable parse: ' // foo'"
+			},
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
 						"dateAndTimeString" : "2023-03-07T09:39:47.88576+01:00"
 					}
 				},
@@ -349,6 +420,77 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2023-03-07T10:44:50.523774+01:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2023-03-07T10:45:22.431689+01:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "/0P0/62yDQCgwXjTCq3PGg=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : "We implement {{gtMethod:name=SPLGrammar>>#comment}}  and {{gtMethod:name=SPLGrammar>>#ignorable}}. "
+			},
+			{
+				"__type" : "pharoSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2023-03-07T10:16:28.425548+01:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2023-03-07T10:39:32.834955+01:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "p0+Amq2yDQCqrEhNBdZprA=="
+				},
+				"code" : "SPLGrammar new ignorable end parse: ' // foo'"
+			},
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
 						"dateAndTimeString" : "2023-03-07T10:28:50.634817+01:00"
 					}
 				},
@@ -397,14 +539,14 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-03-07T10:29:48.566282+01:00"
+						"dateAndTimeString" : "2023-03-07T10:36:50.694682+01:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
 					"uidString" : "ondHyK2yDQCEcyvnBdZprA=="
 				},
-				"code" : "SPLGrammar gtMethodsInClass "
+				"code" : "SPLGrammar gtMethodsInClass  & #trim: gtSenders"
 			},
 			{
 				"__type" : "textSnippet",
@@ -431,7 +573,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-03-07T10:28:47.688493+01:00"
+						"dateAndTimeString" : "2023-03-07T10:30:23.561934+01:00"
 					}
 				},
 				"uid" : {
@@ -441,10 +583,10 @@
 				"paragraphStyle" : {
 					"__type" : "textStyle"
 				},
-				"string" : ""
+				"string" : "We can use the rewrite snippet."
 			},
 			{
-				"__type" : "textSnippet",
+				"__type" : "pharoRewrite",
 				"children" : {
 					"__type" : "snippets",
 					"items" : [ ]
@@ -457,7 +599,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-03-07T10:28:47.959749+01:00"
+						"dateAndTimeString" : "2023-03-07T10:31:08.635848+01:00"
 					}
 				},
 				"editEmail" : {
@@ -468,91 +610,16 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-03-07T10:28:47.959749+01:00"
+						"dateAndTimeString" : "2023-03-07T10:31:08.635848+01:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
-					"uidString" : "b7SUxq2yDQC7Klb/BdZprA=="
+					"uidString" : "xkH3zq2yDQCLxjJcCq3PGg=="
 				},
-				"paragraphStyle" : {
-					"__type" : "textStyle"
-				},
-				"string" : ""
-			},
-			{
-				"__type" : "textSnippet",
-				"children" : {
-					"__type" : "snippets",
-					"items" : [ ]
-				},
-				"createEmail" : {
-					"__type" : "email",
-					"emailString" : "<unknown>"
-				},
-				"createTime" : {
-					"__type" : "time",
-					"time" : {
-						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-03-07T10:28:48.204812+01:00"
-					}
-				},
-				"editEmail" : {
-					"__type" : "email",
-					"emailString" : "<unknown>"
-				},
-				"editTime" : {
-					"__type" : "time",
-					"time" : {
-						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-03-07T10:28:48.204812+01:00"
-					}
-				},
-				"uid" : {
-					"__type" : "uid",
-					"uidString" : "rXGYxq2yDQC7R2kMBdZprA=="
-				},
-				"paragraphStyle" : {
-					"__type" : "textStyle"
-				},
-				"string" : ""
-			},
-			{
-				"__type" : "textSnippet",
-				"children" : {
-					"__type" : "snippets",
-					"items" : [ ]
-				},
-				"createEmail" : {
-					"__type" : "email",
-					"emailString" : "<unknown>"
-				},
-				"createTime" : {
-					"__type" : "time",
-					"time" : {
-						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-03-07T10:28:48.479811+01:00"
-					}
-				},
-				"editEmail" : {
-					"__type" : "email",
-					"emailString" : "<unknown>"
-				},
-				"editTime" : {
-					"__type" : "time",
-					"time" : {
-						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-03-07T10:28:48.479811+01:00"
-					}
-				},
-				"uid" : {
-					"__type" : "uid",
-					"uidString" : "sKOcxq2yDQC7ZEF2BdZprA=="
-				},
-				"paragraphStyle" : {
-					"__type" : "textStyle"
-				},
-				"string" : ""
+				"search" : "`@p trim",
+				"replace" : "((`@p) trim: ignorable)",
+				"scope" : "#(#('Class' 'SPLGrammar') )"
 			},
 			{
 				"__type" : "textSnippet",
@@ -605,7 +672,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-03-07T10:20:06.637561+01:00"
+						"dateAndTimeString" : "2023-03-07T10:45:57.752757+01:00"
 					}
 				},
 				"editEmail" : {
@@ -616,7 +683,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-03-07T10:20:14.579107+01:00"
+						"dateAndTimeString" : "2023-03-07T10:57:38.842855+01:00"
 					}
 				},
 				"uid" : {
@@ -626,7 +693,85 @@
 				"paragraphStyle" : {
 					"__type" : "textStyle"
 				},
-				"string" : "But it doesn't work yet ..."
+				"string" : "And we add new examples."
+			},
+			{
+				"__type" : "exampleSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2023-03-07T10:58:12.356666+01:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2023-03-07T10:58:12.356666+01:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "X0S/L66yDQCidJHBCq3PGg=="
+				},
+				"exampleSelector" : "programWithComments",
+				"previewHeight" : 200,
+				"previewShowSelector" : "gtViewsFor:",
+				"exampleBehaviorName" : "SPLGrammarExamples",
+				"codeExpanded" : true,
+				"previewExpanded" : false,
+				"noCode" : false
+			},
+			{
+				"__type" : "exampleSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2023-03-07T10:58:20.140329+01:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2023-03-07T10:58:20.140329+01:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "2wg2MK6yDQCifPSzCq3PGg=="
+				},
+				"previewHeight" : 200,
+				"previewShowSelector" : "gtViewsFor:",
+				"codeExpanded" : true,
+				"previewExpanded" : false,
+				"noCode" : false
 			},
 			{
 				"__type" : "pharoSnippet",
@@ -653,48 +798,14 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-03-07T10:23:22.069772+01:00"
+						"dateAndTimeString" : "2023-03-07T10:38:14.458404+01:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
 					"uidString" : "Or4wlq2yDQCosh/zBdZprA=="
 				},
-				"code" : "SPLGrammar parse: '\r// foo\r'"
-			},
-			{
-				"__type" : "pharoSnippet",
-				"children" : {
-					"__type" : "snippets",
-					"items" : [ ]
-				},
-				"createEmail" : {
-					"__type" : "email",
-					"emailString" : "<unknown>"
-				},
-				"createTime" : {
-					"__type" : "time",
-					"time" : {
-						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-03-07T10:16:28.425548+01:00"
-					}
-				},
-				"editEmail" : {
-					"__type" : "email",
-					"emailString" : "<unknown>"
-				},
-				"editTime" : {
-					"__type" : "time",
-					"time" : {
-						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-03-07T10:17:02.459836+01:00"
-					}
-				},
-				"uid" : {
-					"__type" : "uid",
-					"uidString" : "p0+Amq2yDQCqrEhNBdZprA=="
-				},
-				"code" : "SPLGrammar new comment end parse: '// foo'"
+				"code" : "SPLGrammar parse: '\rvar x;\r// foo\rx = x + 1;\r\r'"
 			},
 			{
 				"__type" : "textSnippet",

@@ -309,6 +309,19 @@ SPLInterpreterExamples >> printHello [
 ]
 
 { #category : #example }
+SPLInterpreterExamples >> programWithComments [
+	<gtExample>
+	| result context |
+	context := SPLParserExamples new programWithComments asContext.
+	result := context reduce.
+	self
+		assert: context output
+		equals: 'hello world
+'.
+	^ context
+]
+
+{ #category : #example }
 SPLInterpreterExamples >> threeEqualsThree [
 	<gtExample>
 	| result context |
