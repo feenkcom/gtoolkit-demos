@@ -102,7 +102,11 @@ SPLContext >> continuation [
 
 { #category : #accessing }
 SPLContext >> continuation: anSPLCodeNode [
-	self nodeHolder value: anSPLCodeNode
+	| copy |
+	self nodeHolder value: anSPLCodeNode.
+	copy := self copy.
+	self trace addLast:  copy.
+	self traceHolder valueChanged
 ]
 
 { #category : #accessing }
@@ -189,7 +193,7 @@ SPLContext >> initialize [
 	nodeHolder := NewValueHolder new.
 	environment := SPLEnvironment new.
 	outputHolder := NewValueHolder value: OrderedCollection new.
-	traceHolder := NewValueHolder value: {self} asOrderedCollection
+	traceHolder := NewValueHolder value: OrderedCollection new.
 ]
 
 { #category : #accessing }
@@ -233,10 +237,8 @@ SPLContext >> postCopy [
 
 { #category : #accessing }
 SPLContext >> printLn: aString [
-	self outputHolder
-		value: (self outputHolder value
-				addLast: aString;
-				yourself)
+	self outputHolder value addLast: aString.
+	self outputHolder valueChanged
 ]
 
 { #category : #evaluating }
@@ -270,4 +272,14 @@ SPLContext >> stateHolder [
 SPLContext >> step [
 	self continuation: (self continuation stepInContext: self).
 	^ self continuation
+]
+
+{ #category : #accessing }
+SPLContext >> trace [
+	^ self traceHolder value
+]
+
+{ #category : #accessing }
+SPLContext >> traceHolder [
+	^ traceHolder
 ]
