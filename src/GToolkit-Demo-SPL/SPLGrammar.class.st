@@ -35,7 +35,9 @@ Class {
 		'program',
 		'parenthesizedExpression',
 		'negatedUnary',
-		'assignmentExpression'
+		'assignmentExpression',
+		'comment',
+		'ignorable'
 	],
 	#category : #'GToolkit-Demo-SPL-PetitParser'
 }
@@ -58,6 +60,11 @@ SPLGrammar >> block [
 { #category : #grammar }
 SPLGrammar >> boolean [
 	^ 'true' asPParser trim / 'false' asPParser trim
+]
+
+{ #category : #grammar }
+SPLGrammar >> comment [
+	^ '//' asPParser , #newline asPParser negate star
 ]
 
 { #category : #grammar }
@@ -107,6 +114,11 @@ SPLGrammar >> identifier [
 SPLGrammar >> ifStmt [
 	^ 'if' asPParser trim , $( asPParser trim , expression , $) asPParser trim
 		, statement , ('else' asPParser trim , statement) optional
+]
+
+{ #category : #grammar }
+SPLGrammar >> ignorable [
+	^ comment / #space asPParser star
 ]
 
 { #category : #grammar }
