@@ -4,19 +4,18 @@ Class {
 	#category : #'BaselineOfGToolkitDemoSPL-SPL'
 }
 
-{ #category : #accessing }
+{ #category : #baseline }
 BaselineOfGToolkitDemoSPL >> baseline: spec [
 	<baseline>
-	spec
-		for: #common
-		do: [ spec
-				baseline: 'GToolkitPhlow'
-					with: [ spec repository: 'github://feenkcom/gtoolkit-phlow:main/src' ];
-				baseline: 'GToolkit4PetitParser2'
-					with: [ spec repository: 'github://feenkcom/gt4petitparser2:main/src'	";
-				baseline: 'PetitParser2Core'
-					with: [ spec repository: 'github://kursjan/petitparser2:master'" ].
-			spec
-				package: 'GToolkit-Demo-SPL'
-				with: [ spec requires: #('GToolkitPhlow' 'GToolkit4PetitParser2') ] ]
+	spec for: #'common' do: [
+		spec
+			baseline: 'GToolkitPhlow' with: [
+				spec repository: 'github://feenkcom/gtoolkit-phlow:v0.8.934/src' ].
+		spec
+			baseline: 'GToolkit4PetitParser2' with: [
+				spec repository: 'github://feenkcom/gt4petitparser2:v0.8.29/src' ].
+
+		spec package: 'GToolkit-Demo-SPL' with: [
+			spec requires: #('GToolkitPhlow' 'GToolkit4PetitParser2') ].
+	]
 ]
