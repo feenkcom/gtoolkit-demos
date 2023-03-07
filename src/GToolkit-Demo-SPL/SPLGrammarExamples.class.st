@@ -122,7 +122,9 @@ SPLGrammarExamples >> fibonacciProgram [
 { #category : #example }
 SPLGrammarExamples >> fibonacciSource [
 	<gtExample>
-	^ 'var arg = 10;
+	^ '// Fibonacci in SPL
+// Outputs the first arg Fibonacci numbers
+var arg = 10;
 var lastFib = 1;
 var thisFib = 1;
 var nextFib;
