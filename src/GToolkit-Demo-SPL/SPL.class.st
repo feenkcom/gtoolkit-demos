@@ -1,5 +1,35 @@
 "
 I am a Facade to facilitate parsing, running and stepping through SPL programs.
+
+SPL is a simple programming language designed by Timo Kehrer for his Compiler Construction course at the University of Bern.
+The language has variables, expressions and statements, but no functions or classes.
+
+This package contains an implementation of the grammar, a parser that produces an AST, and an interpreter.
+The grammar is implemented in PetitParser, a framework for producing top-down PEG parsers.
+See {{gtClass:name=SPLGrammar}} for the grammar rules and {{gtClass:name=SPLGrammarExamples}} for examples and tests.
+The subclass {{gtClass:name=SPLParser}} implements the parser that produces the AST.
+{{gtClass:name=SPLNode}} is the root of the AST hierarchy.
+
+The interpreter uses a small-step operational semantics by transforming the AST in reduction steps.
+The state of a running program consists of three parts: 
+(1) the current continuation represented as an AST,
+(2) the current environment of variable bindings (see {{gtClass:name=SPLEnvironment}}), and
+(3) the output stream.
+The state of a program is managed by an instance of {{gtClass:name=SPLContext}}.
+
+See {{gtClass:name=SPLInterpreterExamples}} for examples of running programs.
+
+To parse and interpret a program , use `SPL>>#run:`:
+```
+SPL run: 'print ""Hello world!"";'.
+```
+
+To step through a program, inspect the result of `SPL>>#contextFor:`.
+```
+SPL contextFor: 'print ""Hello world"";'
+```
+
+Then use `self step` to step through the execution, or `self reduce` to run to the end.
 "
 Class {
 	#name : #SPL,
