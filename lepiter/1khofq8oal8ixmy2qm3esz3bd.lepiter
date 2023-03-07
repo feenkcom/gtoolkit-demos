@@ -76,6 +76,80 @@
 				"code" : "#stepIn: gtImplementors"
 			},
 			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2023-03-07T14:49:35.950522+01:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2023-03-07T14:50:32.142173+01:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "thhGa7GyDQCasOWJCNyn/Q=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : "We want to rename just those in the {{gtPackage:name=GToolkit-Demo-SPL}} package."
+			},
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2023-03-07T15:01:51.481973+01:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2023-03-07T15:04:58.785218+01:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "kmEdl7GyDQCyrQT7Afk4kQ=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : "**Not working**  This gives a subscript out of bounds error."
+			},
+			{
 				"__type" : "pharoSnippet",
 				"children" : {
 					"__type" : "snippets",
@@ -89,7 +163,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-03-07T14:42:16.952237+01:00"
+						"dateAndTimeString" : "2023-03-07T14:56:21.230058+01:00"
 					}
 				},
 				"editEmail" : {
@@ -100,14 +174,85 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-03-07T14:42:18.045491+01:00"
+						"dateAndTimeString" : "2023-03-07T14:59:57.815932+01:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
-					"uidString" : "3oEbUbGyDQCb/950CnCBGg=="
+					"uidString" : "fyxug7GyDQC3YiuzDTzEGQ=="
 				},
-				"code" : "(RBRenameMethodRefactoring\n\tmodel: (RBNamespace\n\t\t\tonEnvironment: (RBPackageEnvironment packageName: #SmaCC_Development))\n\trenameMethod: #id\n\tin: SmaCCAction\n\tto: #id1\n\tpermutation: #())\n\tprimitiveExecute;\n\tmodel"
+				"code" : "packageName := SPL package name asSymbol.\roldSelector := #stepIn:.\rnewSelector := #stepInContext:.\r\rclasses := ((#stepIn: gtSenders | #stepIn: gtImplementors\r\t\t& SPL package name gtPackageMatches) contents collect: #methodClass) asSet.\r\rclasses\r\tdo: [ :aClass | \r\t\t(RBRenameMethodRefactoring\r\t\t\tmodel: (RBNamespace\r\t\t\t\t\tonEnvironment: (RBPackageEnvironment packageName: packageName))\r\t\t\trenameMethod: oldSelector\r\t\t\tin: aClass\r\t\t\tto: newSelector\r\t\t\tpermutation: #())\r\t\t\tprimitiveExecute;\r\t\t\tmodel ]"
+			},
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2023-03-07T15:04:35.746276+01:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2023-03-07T15:06:41.801351+01:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "aePnoLGyDQC0yB0LAfk4kQ=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : "Let's try an iterative approach. Also does not work."
+			},
+			{
+				"__type" : "pharoSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2023-03-07T15:03:31.778839+01:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2023-03-07T15:05:47.621854+01:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "uNMXnbGyDQCzPWI1Afk4kQ=="
+				},
+				"code" : "packageName := SPL package name asSymbol.\roldSelector := #stepIn:.\rnewSelector := #stepInContext:.\r\rclasses := (#stepIn: gtSenders | #stepIn: gtImplementors\r\t\t& SPL package name gtPackageMatches) contents collect: #methodClass.\r\r[ classes notEmpty ]\r\twhileTrue: [ aClass := classes first.\r\t\t(RBRenameMethodRefactoring\r\t\t\tmodel: (RBNamespace\r\t\t\t\t\tonEnvironment: (RBPackageEnvironment packageName: packageName))\r\t\t\trenameMethod: oldSelector\r\t\t\tin: aClass\r\t\t\tto: newSelector\r\t\t\tpermutation: #())\r\t\t\tprimitiveExecute;\r\t\t\tmodel.\r\t\tclasses := (#stepIn: gtSenders | #stepIn: gtImplementors\r\t\t\t\t& SPL package name gtPackageMatches) contents collect: #methodClass ]"
 			}
 		]
 	},
@@ -130,12 +275,12 @@
 		"__type" : "time",
 		"time" : {
 			"__type" : "dateAndTime",
-			"dateAndTimeString" : "2023-03-07T14:14:54.405734+01:00"
+			"dateAndTimeString" : "2023-03-07T15:02:04.101452+01:00"
 		}
 	},
 	"pageType" : {
 		"__type" : "namedPage",
-		"title" : "Renaming stepIn: to stepInContext:"
+		"title" : "*** Renaming stepIn: to stepInContext:"
 	},
 	"uid" : {
 		"__type" : "uuid",

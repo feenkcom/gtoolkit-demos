@@ -19,15 +19,9 @@ The state of a program is managed by an instance of {{gtClass:name=SPLContext}}.
 
 See {{gtClass:name=SPLInterpreterExamples}} for examples of running programs.
 
-To parse and interpret a program , use `SPL>>#run:`:
-```
-SPL run: 'print ""Hello world!"";'.
-```
+To parse and interpret a program , use `SPL>>#run:`.  {{gtExample:name=SPLExamples>>run}}
 
-To step through a program, inspect the result of `SPL>>#contextFor:`.
-```
-SPL contextFor: 'print ""Hello world"";'
-```
+To step through a program, inspect the result of `SPL>>#contextFor:`. {{gtExample:name=SPLExamples>>#context}}
 
 Then use `self step` to step through the execution, or `self reduce` to run to the end.
 "
