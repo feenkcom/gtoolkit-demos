@@ -17,7 +17,7 @@ The state of a running program consists of three parts:
 (3) the output stream.
 The state of a program is managed by an instance of {{gtClass:name=SPLContext}}.
 
-See {{gtClass:name=SPLInterpreterExamples}} for examples of running programs.
+See {{gtClass:name=SPLExamples}} for examples of running programs.
 
 To parse and interpret a program , use `SPL>>#run:`.  {{gtExample:name=SPLExamples>>run}}
 
@@ -49,16 +49,6 @@ SPL class >> examples [
 	Send runAll to run them all."
 
 	^ GtExplicitExampleGroup withAll: self package gtExamplesAllContained
-]
-
-{ #category : #accessing }
-SPL class >> factorial [
-	^ SPLInterpreterExamples new factorialSource
-]
-
-{ #category : #accessing }
-SPL class >> fibonacci [
-	^ SPLGrammarExamples new fibonacciSource
 ]
 
 { #category : #parsing }

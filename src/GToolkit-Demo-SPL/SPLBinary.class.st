@@ -141,16 +141,16 @@ SPLBinary >> selectorForOperator [
 ]
 
 { #category : #stepping }
-SPLBinary >> stepIn: aContext [
+SPLBinary >> stepInContext: aContext [
 	^ self left isSPLValue
 		ifTrue: [ self right isSPLValue
 				ifTrue: [ self evaluateIn: aContext ]
 				ifFalse: [ self class
 						left: self left
 						operator: self operator
-						right: (self right stepIn: aContext) ] ]
+						right: (self right stepInContext: aContext) ] ]
 		ifFalse: [ self class
-				left: (self left stepIn: aContext)
+				left: (self left stepInContext: aContext)
 				operator: self operator
 				right: self right ]
 ]

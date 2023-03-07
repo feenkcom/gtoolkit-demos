@@ -1,15 +1,16 @@
 "
 I provide a context for evaluating SPL programs.
 I hold an environment of variables, an output stream, and a program state.
-See {{gtClass:name=SPLInterpreterExamples}} for examples.
+See {{gtClass:name=SPLContextExamples}} for examples.
 "
 Class {
 	#name : #SPLContext,
 	#superclass : #Object,
 	#instVars : [
 		'environment',
-		'stateHolder',
-		'outputHolder'
+		'outputHolder',
+		'traceHolder',
+		'nodeHolder'
 	],
 	#category : #'GToolkit-Demo-SPL-Interpreter'
 }
@@ -22,14 +23,14 @@ SPLContext class >> for: anSPLProgramSource [
 { #category : #accessing }
 SPLContext class >> forExpression: anSPLProgramSource [
 	^ self new
-		state: (self parseExpression: anSPLProgramSource);
+		continuation: (self parseExpression: anSPLProgramSource);
 		yourself
 ]
 
 { #category : #accessing }
 SPLContext class >> forProgram: anSPLProgramSource [
 	^ self new
-		state: (self parse: anSPLProgramSource);
+		continuation: (self parse: anSPLProgramSource);
 		yourself
 ]
 
@@ -48,17 +49,26 @@ SPLContext class >> parserClass [
 	^ SPLParser
 ]
 
+{ #category : #comparing }
+SPLContext >> = anObject [
+	self == anObject ifTrue: [ ^ true ].
+	self class = anObject class ifFalse: [ ^ false ].
+	^ self continuation = anObject continuation
+		and: [ self environment = anObject environment
+				and: [ self outputHolder value = anObject outputHolder value ] ]
+]
+
 { #category : #view }
 SPLContext >> composedStateElement [
-	| state envt output verticalContainer horizontalContainer |
-	state := (self gtCodeFor: GtPhlowEmptyView new) asElementDo: [ :e | e ].
+	| continuation envt output verticalContainer horizontalContainer |
+	continuation := (self gtContinuationFor: GtPhlowEmptyView new) asElementDo: [ :e | e ].
 
 	envt := (self environment gtVariablesFor: GtPhlowEmptyView new)
 			asElementDo: [ :e | e ].
 
 	output := (self gtOutputFor: GtPhlowEmptyView new) asElementDo: [ :e | e ].
 
-	{state.
+	{continuation.
 		envt.
 		output}
 		do: [ :each | each border: (BlBorder paint: Color lightGray width: 1) ].
@@ -80,9 +90,23 @@ SPLContext >> composedStateElement [
 			c vertical matchParent.
 			c horizontal matchParent ].
 	horizontalContainer
-		addChildren: {state.
+		addChildren: {continuation.
 				verticalContainer}.
 	^ horizontalContainer asScalableElement
+]
+
+{ #category : #accessing }
+SPLContext >> continuation [
+	^ nodeHolder value
+]
+
+{ #category : #accessing }
+SPLContext >> continuation: anSPLCodeNode [
+	| copy |
+	self nodeHolder value: anSPLCodeNode.
+	copy := self copy.
+	self trace addLast:  copy.
+	self traceHolder valueChanged
 ]
 
 { #category : #accessing }
@@ -96,18 +120,6 @@ SPLContext >> environment: anObject [
 ]
 
 { #category : #accessing }
-SPLContext >> gtCodeFor: aView [
-	<gtView>
-	^ aView textEditor
-		title: 'Program state';
-		priority: 30;
-		aptitude: BrGlamorousCodeEditorAptitude;
-		text: [ self state printString asRopedText ];
-		actionUpdateButton;
-		updateWhen: ValueChanged in: self stateHolder announcer
-]
-
-{ #category : #accessing }
 SPLContext >> gtContextStateFor: aView [
 	"<gtView>"
 	^ aView explicit
@@ -115,6 +127,18 @@ SPLContext >> gtContextStateFor: aView [
 		priority: 10;
 		stencil: [ "self composedStateElement" ]
 		
+]
+
+{ #category : #accessing }
+SPLContext >> gtContinuationFor: aView [
+	<gtView>
+	^ aView textEditor
+		title: 'Continuation';
+		priority: 30;
+		aptitude: BrGlamorousCodeEditorAptitude;
+		text: [ self continuation printString asRopedText ];
+		actionUpdateButton;
+		updateWhen: ValueChanged in: self stateHolder announcer
 ]
 
 { #category : #accessing }
@@ -152,21 +176,69 @@ SPLContext >> gtOutputFor: aView [
 SPLContext >> gtStateFor: aView [
 	<gtView>
 	^ aView explicit
-		title: 'Context state';
+		title: 'State';
 		priority: 10;
 		stencil: [  self composedStateElement ]
 ]
 
+{ #category : #accessing }
+SPLContext >> gtTraceFor: aView [
+	<gtView>
+	^ aView columnedList
+		title: 'Trace';
+		priority: 60;
+		items: [ self trace ];
+		column: 'Next statement'
+			text: [ :aContext | 
+				aContext continuation statements
+					ifEmpty: [ 'empty' ]
+					ifNotEmpty: [ aContext continuation statements last printString ] ];
+		column: 'Environment'
+			text: [ :aContext | 
+				aContext environment variables
+					ifEmpty: [ 'empty' ]
+					ifNotEmpty:  [ aContext environment variables size printString  ] ];
+		column: 'Output'
+			text: [ :aContext | 
+				aContext outputHolder value
+					ifEmpty: [ 'empty' ]
+					ifNotEmpty: [ aContext outputHolder value last ] ];
+		actionUpdateButton;
+		updateWhen: ValueChanged in: self outputHolder announcer
+]
+
+{ #category : #comparing }
+SPLContext >> hash [
+	"Not really needed. Contexts should not be used as dictionary keys."
+
+	^ self environment hash
+]
+
 { #category : #initialization }
 SPLContext >> initialize [
-	stateHolder := NewValueHolder new.
+	nodeHolder := NewValueHolder new.
 	environment := SPLEnvironment new.
-	outputHolder := NewValueHolder value: ''.
+	outputHolder := NewValueHolder value: OrderedCollection new.
+	traceHolder := NewValueHolder value: OrderedCollection new.
+]
+
+{ #category : #accessing }
+SPLContext >> nodeHolder [
+	^ nodeHolder
 ]
 
 { #category : #accessing }
 SPLContext >> output [
-	^ outputHolder value
+	"The output as a String"
+
+	| result |
+	result := '' writeStream.
+	self outputHolder value
+		do: [ :each | 
+			result
+				nextPutAll: each;
+				cr ].
+	^ result contents
 ]
 
 { #category : #accessing }
@@ -174,34 +246,39 @@ SPLContext >> outputHolder [
 	^ outputHolder
 ]
 
+{ #category : #copying }
+SPLContext >> postCopy [
+	"This is called by Object>>#copy to clean up after the shallow copy is  made.
+	The continuation in the nodeHolder is immutable, so doesn't need to be copied.
+	The environment is updated, so must be copied. It has its own copy method.
+	The output and trace are collections, so we just need shallow copies of those.
+	"
+
+	super postCopy.
+	environment := environment copy.
+	outputHolder value: outputHolder value copy.
+	traceHolder value: traceHolder value copy. 
+	^ self
+]
+
 { #category : #accessing }
 SPLContext >> printLn: aString [
-	self outputHolder value: self output , aString, String cr
+	self outputHolder value addLast: aString.
+	self outputHolder valueChanged
 ]
 
 { #category : #evaluating }
 SPLContext >> program: anSPLProgramSource [
 	"Mainly for interactive testing to change the program on the fly."
 	^ self
-		state: (self class parse: anSPLProgramSource);
+		continuation: (self class parse: anSPLProgramSource);
 		yourself
 ]
 
 { #category : #evaluating }
 SPLContext >> reduce [
-	[ self state isReduced not ] whileTrue: [ self step ].
-	^ self state
-]
-
-{ #category : #evaluating }
-SPLContext >> reduce: anSPLNode [
-	"Reduce till we cannot take any more steps"
-
-	| result |
-	self deprecated: 'Use SPLContext>>#reduce instead'.
-	result := anSPLNode.
-	[ result isReduced not ] whileTrue: [ result := result stepIn: self ].
-	^ result
+	[ self continuation isReduced not ] whileTrue: [ self step ].
+	^ self continuation
 ]
 
 { #category : #evaluating }
@@ -213,28 +290,22 @@ SPLContext >> run: anSPLProgramSource [
 ]
 
 { #category : #accessing }
-SPLContext >> state [
-	^ stateHolder value
-]
-
-{ #category : #accessing }
-SPLContext >> state: anSPLCodeNode [
-	self stateHolder value: anSPLCodeNode
-]
-
-{ #category : #accessing }
 SPLContext >> stateHolder [
-	^ stateHolder
+	^ nodeHolder
 ]
 
 { #category : #evaluating }
 SPLContext >> step [
-	self state: (self state stepIn: self).
-	^ self state
+	self continuation: (self continuation stepInContext: self).
+	^ self continuation
 ]
 
-{ #category : #evaluating }
-SPLContext >> step: anSPLNode [
-	self deprecated: 'Use SPLContext>>#step instead'.
-	^ anSPLNode stepIn: self
+{ #category : #accessing }
+SPLContext >> trace [
+	^ self traceHolder value
+]
+
+{ #category : #accessing }
+SPLContext >> traceHolder [
+	^ traceHolder
 ]

@@ -26,14 +26,14 @@ SPLIfStatement >> printOn: aStream indentBy: indentlevel [
 ]
 
 { #category : #stepping }
-SPLIfStatement >> stepIn: aContext [
+SPLIfStatement >> stepInContext: aContext [
 	^ self expression isReduced
 		ifTrue: [ self assert: self expression isSPLBoolean.
 			self expression value
 				ifTrue: [ self thenPart ]
 				ifFalse: [ SPLBlockStatement new ] ]
 		ifFalse: [ self class
-				if: (self expression stepIn: aContext)
+				if: (self expression stepInContext: aContext)
 				then: self thenPart ]
 ]
 

@@ -17,6 +17,17 @@ SPLEnvironmentExamples >> emptyEnvironment [
 ]
 
 { #category : #example }
+SPLEnvironmentExamples >> emptyEnvironmentCopy [
+	<gtExample>
+	| envt copy |
+	envt := SPLEnvironment new.
+	copy := envt copy.
+	self assert: envt equals: copy.
+	self assert: (envt == copy) not.
+	^ envt
+]
+
+{ #category : #example }
 SPLEnvironmentExamples >> envtWithInitializedVarXupdatedTo7 [
 	<gtExample>
 	| envt |
@@ -25,6 +36,17 @@ SPLEnvironmentExamples >> envtWithInitializedVarXupdatedTo7 [
 	self assert: envt isEmpty not.
 	self assert: envt variables size equals: 1.
 	self assert: (envt getVariableNamed: 'x') value equals: 42.
+	^ envt
+]
+
+{ #category : #example }
+SPLEnvironmentExamples >> envtWithInitializedVarXupdatedTo7Copy [
+	<gtExample>
+	| envt copy |
+	envt := self envtWithInitializedVarXupdatedTo7.
+	copy := envt copy.
+	self assert: envt equals: copy.
+	self assert: (envt == copy) not.
 	^ envt
 ]
 

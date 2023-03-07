@@ -23,7 +23,7 @@ SPLDeclaration >> printOn: aStream [
 ]
 
 { #category : #stepping }
-SPLDeclaration >> stepIn: aContext [
+SPLDeclaration >> stepInContext: aContext [
 	aContext environment declareVariable: self variable.
 	^ SPLExpressionStatement for: SPLNil new
 ]

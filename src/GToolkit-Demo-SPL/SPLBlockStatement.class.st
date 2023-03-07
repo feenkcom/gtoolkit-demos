@@ -51,7 +51,7 @@ SPLBlockStatement >> statements: aStatementCollection [
 ]
 
 { #category : #stepping }
-SPLBlockStatement >> stepIn: aContext [
+SPLBlockStatement >> stepInContext: aContext [
 	"Take a step in the first statement that is not stopped."
 
 	^ self isReduced
@@ -62,6 +62,6 @@ SPLBlockStatement >> stepIn: aContext [
 						ifTrue: [ self class for: self statements allButFirst ]
 						ifFalse: [ self class
 								for: (self statements allButFirst
-										addFirst: (self statements first stepIn: aContext);
+										addFirst: (self statements first stepInContext: aContext);
 										yourself) ] ] ]
 ]

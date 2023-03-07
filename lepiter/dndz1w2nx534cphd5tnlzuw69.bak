@@ -715,14 +715,14 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-03-07T11:07:31.004555+01:00"
+									"dateAndTimeString" : "2023-03-07T11:07:40.766621+01:00"
 								}
 							},
 							"uid" : {
 								"__type" : "uid",
 								"uidString" : "k+rIQI2yDQCAmDQyCTGP5g=="
 							},
-							"code" : "fibSource := '// Fibonacci in SPL\r// Output the first n Fibonacci numbers\rvar arg = 6;\rvar lastFib = 1;\rvar thisFib = 1;\rvar nextFib;\rvar iterations = 2;\rprint lastFib;\rprint thisFib;\rwhile ( iterations < arg ) {\r\titerations = iterations + 1;\r\tnextFib = thisFib + lastFib;\r\tlastFib = thisFib;\r\tthisFib = nextFib;\r\tprint thisFib;\r}'.\rSPL run: fibSource"
+							"code" : "fibSource := '// Fibonacci in SPL\r// Output the first n Fibonacci numbers, where n = arg\rvar arg = 6;\rvar lastFib = 1;\rvar thisFib = 1;\rvar nextFib;\rvar iterations = 2;\rprint lastFib;\rprint thisFib;\rwhile ( iterations < arg ) {\r\titerations = iterations + 1;\r\tnextFib = thisFib + lastFib;\r\tlastFib = thisFib;\r\tthisFib = nextFib;\r\tprint thisFib;\r}'.\rSPL run: fibSource"
 						},
 						{
 							"__type" : "pharoSnippet",

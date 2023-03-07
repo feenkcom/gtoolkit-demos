@@ -36,7 +36,7 @@ SPLInitializedDeclaration >> printOn: aStream [
 ]
 
 { #category : #stepping }
-SPLInitializedDeclaration >> stepIn: aContext [
+SPLInitializedDeclaration >> stepInContext: aContext [
 	^ self expression isReduced
 		ifTrue: [ aContext environment
 				declareVariable: self variable
@@ -44,5 +44,5 @@ SPLInitializedDeclaration >> stepIn: aContext [
 			SPLExpressionStatement for: self expression ]
 		ifFalse: [ self class
 				for: self variable
-				with: (self expression stepIn: aContext) ]
+				with: (self expression stepInContext: aContext) ]
 ]

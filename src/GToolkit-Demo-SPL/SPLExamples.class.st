@@ -12,6 +12,20 @@ SPLExamples >> context [
 ]
 
 { #category : #accessing }
+SPLExamples >> factorial [
+	<gtExample>
+	<noTest>
+	^ SPL contextFor: SPLContextExamples new factorialSource
+]
+
+{ #category : #accessing }
+SPLExamples >> fibonacci [
+	<gtExample>
+	<noTest>
+	^ SPL contextFor: SPLGrammarExamples new fibonacciSource
+]
+
+{ #category : #accessing }
 SPLExamples >> run [
 	<gtExample>
 	<noTest>

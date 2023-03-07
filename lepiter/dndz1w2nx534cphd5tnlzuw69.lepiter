@@ -850,7 +850,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-03-05T19:44:49.499252+01:00"
+						"dateAndTimeString" : "2023-03-07T15:27:28.972865+01:00"
 					}
 				},
 				"uid" : {
@@ -860,7 +860,7 @@
 				"paragraphStyle" : {
 					"__type" : "textStyle"
 				},
-				"string" : "There are also many small examples in {{gtClass:name=SPLInterpreterExamples}}."
+				"string" : "There are also many small examples in {{gtClass:name=SPLInterpreterExamples}} and {{gtClass:name=SPLExamples}}.  "
 			}
 		]
 	},
