@@ -705,7 +705,7 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-03-07T17:47:02.035248+01:00"
+									"dateAndTimeString" : "2023-03-07T17:47:21.318505+01:00"
 								}
 							},
 							"uid" : {
@@ -715,7 +715,7 @@
 							"paragraphStyle" : {
 								"__type" : "textStyle"
 							},
-							"string" : "To add snapshots, we need a `copy` method to create a copy/clone. We should use {{gtMethod:name=Object>>#copy}} and override {{gtMethod:name=Object>>#postCopy|expanded}."
+							"string" : "To add snapshots, we need a `copy` method. We should use {{gtMethod:name=Object>>#copy}} and override {{gtMethod:name=Object>>#postCopy|expanded}}"
 						},
 						{
 							"__type" : "textSnippet",
@@ -908,7 +908,45 @@
 				"__type" : "textSnippet",
 				"children" : {
 					"__type" : "snippets",
-					"items" : [ ]
+					"items" : [
+						{
+							"__type" : "textSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2023-03-07T17:51:13.817809+01:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2023-03-07T17:51:48.668427+01:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "aVrW9LOyDQCF8bk9CjOzYQ=="
+							},
+							"paragraphStyle" : {
+								"__type" : "textStyle"
+							},
+							"string" : "We need to add a new snapshot to the trace every time a step is taken, and the continuation is updated. "
+						}
+					]
 				},
 				"createEmail" : {
 					"__type" : "email",
@@ -1014,6 +1052,74 @@
 					"__type" : "textStyle"
 				},
 				"string" : ""
+			},
+			{
+				"__type" : "pharoSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2023-03-07T17:52:10.231303+01:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2023-03-07T17:52:39.092805+01:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "yCYz+LOyDQCQnX6FCjOzYQ=="
+				},
+				"code" : "#deprecated: gtSenders & SPL package name gtPackageMatches "
+			},
+			{
+				"__type" : "pharoSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2023-03-07T17:52:51.666743+01:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2023-03-07T17:53:04.700727+01:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "hmmr+rOyDQCcYpKeCjOzYQ=="
+				},
+				"code" : "#reduce: gtSenders & SPL package name gtPackageMatches "
 			},
 			{
 				"__type" : "textSnippet",

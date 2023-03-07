@@ -254,17 +254,6 @@ SPLContext >> reduce [
 ]
 
 { #category : #evaluating }
-SPLContext >> reduce: anSPLNode [
-	"Reduce till we cannot take any more steps"
-
-	| result |
-	self deprecated: 'Use SPLContext>>#reduce instead'.
-	result := anSPLNode.
-	[ result isReduced not ] whileTrue: [ result := result stepInContext: self ].
-	^ result
-]
-
-{ #category : #evaluating }
 SPLContext >> run: anSPLProgramSource [
 	"Mainly for interactive testing to change the program on the fly."
 
@@ -281,10 +270,4 @@ SPLContext >> stateHolder [
 SPLContext >> step [
 	self continuation: (self continuation stepInContext: self).
 	^ self continuation
-]
-
-{ #category : #evaluating }
-SPLContext >> step: anSPLNode [
-	self deprecated: 'Use SPLContext>>#step instead'.
-	^ anSPLNode stepInContext: self
 ]
