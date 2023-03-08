@@ -169,6 +169,17 @@ SPLContextExamples >> contextForExpression: aString [
 ]
 
 { #category : #example }
+SPLContextExamples >> emptyTrace [
+	<gtExample>
+	| context |
+	context := self context: ''.
+	context reduce.
+	self assert: context trace size equals: 1.
+	self assert: context trace first equals: context.
+	^ context
+]
+
+{ #category : #example }
 SPLContextExamples >> expressionStatement [
 	<gtExample>
 	| result context |
@@ -227,6 +238,19 @@ SPLContextExamples >> helloEqualsHello [
 	self assert: result isSPLValue.
 	self assert: result value.
 	^ result
+]
+
+{ #category : #example }
+SPLContextExamples >> helloTrace [
+	<gtExample>
+	| context |
+	context := self context: 'print "hello";'.
+	context reduce.
+	self assert: context trace size equals: 3.
+	self assert: context trace first output equals: ''.
+	self assert: context trace second output allButLast equals: 'hello'.
+	self assert: context trace third continuation isReduced.
+	^ context
 ]
 
 { #category : #example }
