@@ -12,7 +12,7 @@ Class {
 	#category : #'GToolkit-Demo-Slideshows'
 }
 
-{ #category : #accessing }
+{ #category : #utility }
 SmalltalkIntroSlideshow class >> show [
 	"Implement this here just so we can run it directly from the Coder."
 	super show
@@ -146,7 +146,7 @@ SmalltalkIntroSlideshow >> liveDocumentationUML: aSlide [
 		yourself
 ]
 
-{ #category : #accessing }
+{ #category : #slides }
 SmalltalkIntroSlideshow >> ludoAppetizer: aSlide [
 	<gtSlide>
 	
@@ -158,7 +158,7 @@ Ludo as a running example of a live system');
 		element: [ GtLudoGame new asElement asScalableElement ]
 ]
 
-{ #category : #accessing }
+{ #category : #slides }
 SmalltalkIntroSlideshow >> methodSyntax: aSlide [
 	"Methods start with a declaration of the message selector and arguments. Temporaries must be declared. Statements are separate by periods. The caret (^) is special syntax for returning a result."
 
@@ -177,7 +177,7 @@ SmalltalkIntroSlideshow >> methodSyntax: aSlide [
 		elementWeight: 0.6
 ]
 
-{ #category : #accessing }
+{ #category : #slides }
 SmalltalkIntroSlideshow >> outline: aSlide [
 	<gtSlide>
 	
@@ -248,7 +248,7 @@ SmalltalkIntroSlideshow >> slidePriorities [
 		)
 ]
 
-{ #category : #accessing }
+{ #category : #slides }
 SmalltalkIntroSlideshow >> smalltalk80: aSlide [
 	"In the late 60s, Alan Kay predicted that in the foreseeable future handheld multimedia computers would become affordable. He called this a “Dynabook”. (The photo shows a mockup, not a real computer.)
 He reasoned that such systems would need to be based on object from the ground up, so he set up a lab at the Xerox Palo Alto Research Center (PARC) to develop such a fully object-oriented system, including both software and hardware. They developed the first graphical workstations with windowing system and mouse."
@@ -275,7 +275,7 @@ SmalltalkIntroSlideshow >> syntax: aSlide [
 		  pageNamed: 'Smalltalk Syntax (the funny bits)' from: self myLepiterDB
 ]
 
-{ #category : #accessing }
+{ #category : #slides }
 SmalltalkIntroSlideshow >> takeHome: aSlide [
 
 	<gtSlide>
@@ -304,7 +304,7 @@ SmalltalkIntroSlideshow >> threeKindsOfMessages: aSlide [
 		  pageNamed: 'Three kinds of messages' from: self myLepiterDB
 ]
 
-{ #category : #accessing }
+{ #category : #slides }
 SmalltalkIntroSlideshow >> titleSlideFor: aSlide [
 	<gtSlide>
 	

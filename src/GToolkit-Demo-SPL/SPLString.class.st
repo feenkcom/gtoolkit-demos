@@ -1,3 +1,9 @@
+"
+I am an SPL string value.
+
+{{gtExample:name=SPLParserExamples>>#helloString}}
+
+"
 Class {
 	#name : #SPLString,
 	#superclass : #SPLValue,

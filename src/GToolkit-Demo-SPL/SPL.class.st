@@ -1,7 +1,7 @@
 "
 I am a Facade to facilitate parsing, running and stepping through SPL programs.
 
-SPL is a simple programming language designed by Timo Kehrer for his Compiler Construction course at the University of Bern.
+SPL is the toy language for the [compiler construction course](https://seg.inf.unibe.ch/teaching/current/cc/) at UniBE.
 The language has variables, expressions and statements, but no functions or classes.
 
 This package contains an implementation of the grammar, a parser that produces an AST, and an interpreter.
@@ -17,11 +17,11 @@ The state of a running program consists of three parts:
 (3) the output stream.
 The state of a program is managed by an instance of {{gtClass:name=SPLContext}}.
 
-See {{gtClass:name=SPLExamples}} for examples of running programs.
+See {{gtClass:name=SPLUsageExamples}} for examples of running programs.
 
-To parse and interpret a program , use `SPL>>#run:`.  {{gtExample:name=SPLExamples>>run}}
+To parse and interpret a program , use `SPL>>#run:`.  {{gtExample:name=SPLUsageExamples>>run}}
 
-To step through a program, inspect the result of `SPL>>#contextFor:`. {{gtExample:name=SPLExamples>>#context}}
+To step through a program, inspect the result of `SPL>>#contextFor:`. {{gtExample:name=SPLUsageExamples>>#context}}
 
 Then use `self step` to step through the execution, or `self reduce` to run to the end.
 "
@@ -43,12 +43,27 @@ SPL class >> contextForExpression: anSPLExpressionString [
 	^ SPLContext forExpression: anSPLExpressionString
 ]
 
+{ #category : #example }
+SPL class >> empty [
+	^  SPL contextFor: ''
+]
+
 { #category : #accessing }
 SPL class >> examples [
 	"Return all the examples in this package.
 	Send runAll to run them all."
 
 	^ GtExplicitExampleGroup withAll: self package gtExamplesAllContained
+]
+
+{ #category : #example }
+SPL class >> factorial [
+	^ SPL contextFor: SPLContextExamples new factorialSource
+]
+
+{ #category : #example }
+SPL class >> fibonacci [
+	^ SPL contextFor: SPLGrammarExamples new fibonacciSource
 ]
 
 { #category : #parsing }
@@ -59,6 +74,19 @@ SPL class >> grammarCheck: anSPLProgram [
 { #category : #constants }
 SPL class >> grammarClass [
 	^ SPLGrammar
+]
+
+{ #category : #example }
+SPL class >> hello [
+	^  SPL contextFor: '// Hello world in SPL
+print "Hello world!";'
+]
+
+{ #category : #example }
+SPL class >> omega [
+	^  SPL contextFor: '// Omega -- the non-terminating program in SPL
+// You can step through me, but please don''t run me!
+while (true) {}'
 ]
 
 { #category : #parsing }

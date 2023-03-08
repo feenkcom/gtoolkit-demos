@@ -1,3 +1,9 @@
+"
+I am an if statement with an else block.
+
+{{gtExample:name=SPLParserExamples>>#ifElseStmt}}
+
+"
 Class {
 	#name : #SPLIfElseStatement,
 	#superclass : #SPLIfStatement,

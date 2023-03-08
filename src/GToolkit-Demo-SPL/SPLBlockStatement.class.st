@@ -1,3 +1,10 @@
+"
+I am an SPL block statement, containing zero or more other statements.
+
+{{gtExample:name=SPLParserExamples>>#complexExpressionStmt}}
+
+
+"
 Class {
 	#name : #SPLBlockStatement,
 	#superclass : #SPLStatement,
@@ -64,4 +71,11 @@ SPLBlockStatement >> stepInContext: aContext [
 								for: (self statements allButFirst
 										addFirst: (self statements first stepInContext: aContext);
 										yourself) ] ] ]
+]
+
+{ #category : #accessing }
+SPLBlockStatement >> summary [
+	^ self statements
+		ifEmpty: [ '{}' ]
+		ifNotEmpty: [ '{' , self statements first summary, '...}' ]
 ]

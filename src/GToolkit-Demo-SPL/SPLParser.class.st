@@ -1,6 +1,10 @@
 "
 SPL is the toy language for the [compiler construction course](https://seg.inf.unibe.ch/teaching/current/cc/) at UniBE.
+
 I implement a parser for SPL that builds an interpreter.
+
+See {{gtClass:name=SPLParserExamples}} for examples of parser rules, and {{gtClass:name=SPLContextExamples}} for examples of the produced ASTs.
+
 "
 Class {
 	#name : #SPLParser,

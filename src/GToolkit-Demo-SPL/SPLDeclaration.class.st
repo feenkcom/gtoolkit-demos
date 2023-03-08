@@ -1,3 +1,8 @@
+"
+I am an SPL declaration without initialization.
+
+{{gtExample:name=SPLParserExamples>>#varDeclWithoutInit}}
+"
 Class {
 	#name : #SPLDeclaration,
 	#superclass : #SPLNode,

@@ -278,7 +278,45 @@
 										"__type" : "textSnippet",
 										"children" : {
 											"__type" : "snippets",
-											"items" : [ ]
+											"items" : [
+												{
+													"__type" : "textSnippet",
+													"children" : {
+														"__type" : "snippets",
+														"items" : [ ]
+													},
+													"createEmail" : {
+														"__type" : "email",
+														"emailString" : "<unknown>"
+													},
+													"createTime" : {
+														"__type" : "time",
+														"time" : {
+															"__type" : "dateAndTime",
+															"dateAndTimeString" : "2023-03-08T08:35:43.127242+01:00"
+														}
+													},
+													"editEmail" : {
+														"__type" : "email",
+														"emailString" : "<unknown>"
+													},
+													"editTime" : {
+														"__type" : "time",
+														"time" : {
+															"__type" : "dateAndTime",
+															"dateAndTimeString" : "2023-03-08T08:46:47.36548+01:00"
+														}
+													},
+													"uid" : {
+														"__type" : "uid",
+														"uidString" : "k7oDUMCyDQCevQRYCenlUQ=="
+													},
+													"paragraphStyle" : {
+														"__type" : "textStyle"
+													},
+													"string" : "{{gtTodo:label=Fix the postCopy|completed=2023-03-08}}"
+												}
+											]
 										},
 										"createEmail" : {
 											"__type" : "email",
@@ -299,7 +337,7 @@
 											"__type" : "time",
 											"time" : {
 												"__type" : "dateAndTime",
-												"dateAndTimeString" : "2023-03-07T09:13:53.360999+01:00"
+												"dateAndTimeString" : "2023-03-08T08:49:35.953363+01:00"
 											}
 										},
 										"uid" : {
@@ -309,46 +347,83 @@
 										"paragraphStyle" : {
 											"__type" : "textStyle"
 										},
-										"string" : "{{gtTodo:label=Clone context states on each step and add to trace. }}"
-									}
-								]
-							},
-							"createEmail" : {
-								"__type" : "email",
-								"emailString" : "<unknown>"
-							},
-							"createTime" : {
-								"__type" : "time",
-								"time" : {
-									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-03-07T09:13:31.241683+01:00"
-								}
-							},
-							"editEmail" : {
-								"__type" : "email",
-								"emailString" : "<unknown>"
-							},
-							"editTime" : {
-								"__type" : "time",
-								"time" : {
-									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-03-07T09:13:31.241683+01:00"
-								}
-							},
-							"uid" : {
-								"__type" : "uid",
-								"uidString" : "fw1duayyDQCheAzgA2fN+Q=="
-							},
-							"paragraphStyle" : {
-								"__type" : "textStyle"
-							},
-							"string" : "{{gtTodo:label=Track SPL execution states}}"
-						},
-						{
-							"__type" : "textSnippet",
-							"children" : {
-								"__type" : "snippets",
-								"items" : [
+										"string" : "{{gtTodo:label=Clone context states on each step and add to trace. |completed=2023-03-08}}"
+									},
+									{
+										"__type" : "textSnippet",
+										"children" : {
+											"__type" : "snippets",
+											"items" : [
+												{
+													"__type" : "textSnippet",
+													"children" : {
+														"__type" : "snippets",
+														"items" : [ ]
+													},
+													"createEmail" : {
+														"__type" : "email",
+														"emailString" : "<unknown>"
+													},
+													"createTime" : {
+														"__type" : "time",
+														"time" : {
+															"__type" : "dateAndTime",
+															"dateAndTimeString" : "2023-03-08T08:35:59.710918+01:00"
+														}
+													},
+													"editEmail" : {
+														"__type" : "email",
+														"emailString" : "<unknown>"
+													},
+													"editTime" : {
+														"__type" : "time",
+														"time" : {
+															"__type" : "dateAndTime",
+															"dateAndTimeString" : "2023-03-08T09:47:46.977268+01:00"
+														}
+													},
+													"uid" : {
+														"__type" : "uid",
+														"uidString" : "CMQAUcCyDQCe1dW5CenlUQ=="
+													},
+													"paragraphStyle" : {
+														"__type" : "textStyle"
+													},
+													"string" : "{{gtTodo:label=Add environment print string|completed=2023-03-08}}"
+												}
+											]
+										},
+										"createEmail" : {
+											"__type" : "email",
+											"emailString" : "<unknown>"
+										},
+										"createTime" : {
+											"__type" : "time",
+											"time" : {
+												"__type" : "dateAndTime",
+												"dateAndTimeString" : "2023-03-07T09:13:54.548419+01:00"
+											}
+										},
+										"editEmail" : {
+											"__type" : "email",
+											"emailString" : "<unknown>"
+										},
+										"editTime" : {
+											"__type" : "time",
+											"time" : {
+												"__type" : "dateAndTime",
+												"dateAndTimeString" : "2023-03-08T09:47:41.806683+01:00"
+											}
+										},
+										"uid" : {
+											"__type" : "uid",
+											"uidString" : "ta/AuqyyDQCh6n9cA2fN+Q=="
+										},
+										"paragraphStyle" : {
+											"__type" : "textStyle"
+										},
+										"string" : "{{gtTodo:label=Add a trace view showing changes between context states|completed=2023-03-08}}"
+									},
 									{
 										"__type" : "textSnippet",
 										"children" : {
@@ -363,7 +438,7 @@
 											"__type" : "time",
 											"time" : {
 												"__type" : "dateAndTime",
-												"dateAndTimeString" : "2023-03-07T09:13:09.665896+01:00"
+												"dateAndTimeString" : "2023-03-08T08:35:44.414459+01:00"
 											}
 										},
 										"editEmail" : {
@@ -374,17 +449,54 @@
 											"__type" : "time",
 											"time" : {
 												"__type" : "dateAndTime",
-												"dateAndTimeString" : "2023-03-07T09:13:58.470345+01:00"
+												"dateAndTimeString" : "2023-03-08T09:55:55.828627+01:00"
 											}
 										},
 										"uid" : {
 											"__type" : "uid",
-											"uidString" : "htgTuKyyDQChX5a/A2fN+Q=="
+											"uidString" : "iV4XUMCyDQCexEHoCenlUQ=="
 										},
 										"paragraphStyle" : {
 											"__type" : "textStyle"
 										},
-										"string" : "Trace view should show next statement, environment bindings and last output. "
+										"string" : "{{gtTodo:label=Add trace tests for empty program, hello etc|completed=2023-03-08}}"
+									},
+									{
+										"__type" : "textSnippet",
+										"children" : {
+											"__type" : "snippets",
+											"items" : [ ]
+										},
+										"createEmail" : {
+											"__type" : "email",
+											"emailString" : "<unknown>"
+										},
+										"createTime" : {
+											"__type" : "time",
+											"time" : {
+												"__type" : "dateAndTime",
+												"dateAndTimeString" : "2023-03-08T08:36:06.006653+01:00"
+											}
+										},
+										"editEmail" : {
+											"__type" : "email",
+											"emailString" : "<unknown>"
+										},
+										"editTime" : {
+											"__type" : "time",
+											"time" : {
+												"__type" : "dateAndTime",
+												"dateAndTimeString" : "2023-03-08T09:02:21.976534+01:00"
+											}
+										},
+										"uid" : {
+											"__type" : "uid",
+											"uidString" : "X9ZgUcCyDQCe5JE5CenlUQ=="
+										},
+										"paragraphStyle" : {
+											"__type" : "textStyle"
+										},
+										"string" : "{{gtTodo:label=Add step and run buttons!|completed=2023-03-08}}"
 									}
 								]
 							},
@@ -396,7 +508,7 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-03-07T09:13:54.548419+01:00"
+									"dateAndTimeString" : "2023-03-07T09:13:31.241683+01:00"
 								}
 							},
 							"editEmail" : {
@@ -407,17 +519,17 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-03-07T09:13:54.548419+01:00"
+									"dateAndTimeString" : "2023-03-08T09:48:42.85855+01:00"
 								}
 							},
 							"uid" : {
 								"__type" : "uid",
-								"uidString" : "ta/AuqyyDQCh6n9cA2fN+Q=="
+								"uidString" : "fw1duayyDQCheAzgA2fN+Q=="
 							},
 							"paragraphStyle" : {
 								"__type" : "textStyle"
 							},
-							"string" : "{{gtTodo:label=Add a trace view showing changes between context states}}"
+							"string" : "{{gtTodo:label=Track SPL execution states|completed=2023-03-08}}"
 						},
 						{
 							"__type" : "textSnippet",
@@ -444,7 +556,7 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-03-07T15:18:41.930623+01:00"
+									"dateAndTimeString" : "2023-03-08T11:19:54.738635+01:00"
 								}
 							},
 							"uid" : {
@@ -454,7 +566,7 @@
 							"paragraphStyle" : {
 								"__type" : "textStyle"
 							},
-							"string" : "{{gtTodo:label=Make the continuation editable — reparse on changes}}"
+							"string" : "{{gtTodo:label=Make the continuation editable — reparse on changes|completed=2023-03-08}}"
 						}
 					]
 				},
@@ -705,7 +817,7 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-03-07T17:47:21.318505+01:00"
+									"dateAndTimeString" : "2023-03-08T08:38:12.204461+01:00"
 								}
 							},
 							"uid" : {
@@ -715,7 +827,7 @@
 							"paragraphStyle" : {
 								"__type" : "textStyle"
 							},
-							"string" : "To add snapshots, we need a `copy` method. We should use {{gtMethod:name=Object>>#copy}} and override {{gtMethod:name=Object>>#postCopy|expanded}}"
+							"string" : "To add snapshots, we need a `copy` method. We should use {{gtMethod:name=Object>>#copy}} and override {{gtMethod:name=Object>>#postCopy}}"
 						},
 						{
 							"__type" : "textSnippet",
@@ -792,7 +904,7 @@
 							"string" : "How do we test that they do the right thing? We add some tests to make sure that copies are equal but not identical. We have to implement {{gtMethod:name=SPLEnvironment>>#=}}  and {{gtMethod:name=SPLContext>>#=}}. "
 						},
 						{
-							"__type" : "exampleSnippet",
+							"__type" : "textSnippet",
 							"children" : {
 								"__type" : "snippets",
 								"items" : [ ]
@@ -805,7 +917,7 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-03-07T17:33:53.400782+01:00"
+									"dateAndTimeString" : "2023-03-08T08:47:40.092015+01:00"
 								}
 							},
 							"editEmail" : {
@@ -816,60 +928,17 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-03-07T17:33:53.400782+01:00"
+									"dateAndTimeString" : "2023-03-08T08:48:35.064378+01:00"
 								}
 							},
 							"uid" : {
 								"__type" : "uid",
-								"uidString" : "QtjStrOyDQCVmopODKhqyA=="
+								"uidString" : "l7+/esCyDQCTM7Z0CsLB2w=="
 							},
-							"exampleSelector" : "envtWithInitializedVarXupdatedTo7Copy",
-							"previewHeight" : 200,
-							"previewShowSelector" : "gtViewsFor:",
-							"exampleBehaviorName" : "SPLEnvironmentExamples",
-							"codeExpanded" : true,
-							"previewExpanded" : false,
-							"noCode" : false
-						},
-						{
-							"__type" : "exampleSnippet",
-							"children" : {
-								"__type" : "snippets",
-								"items" : [ ]
+							"paragraphStyle" : {
+								"__type" : "textStyle"
 							},
-							"createEmail" : {
-								"__type" : "email",
-								"emailString" : "<unknown>"
-							},
-							"createTime" : {
-								"__type" : "time",
-								"time" : {
-									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-03-07T17:44:42.704882+01:00"
-								}
-							},
-							"editEmail" : {
-								"__type" : "email",
-								"emailString" : "<unknown>"
-							},
-							"editTime" : {
-								"__type" : "time",
-								"time" : {
-									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-03-07T17:44:42.704882+01:00"
-								}
-							},
-							"uid" : {
-								"__type" : "uid",
-								"uidString" : "InKG3bOyDQCOInYnAsVO2w=="
-							},
-							"exampleSelector" : "printHelloCopy",
-							"previewHeight" : 200,
-							"previewShowSelector" : "gtViewsFor:",
-							"exampleBehaviorName" : "SPLContextExamples",
-							"codeExpanded" : true,
-							"previewExpanded" : false,
-							"noCode" : false
+							"string" : "We add tests {{gtMethod:name=SPLEnvironmentExamples >> #envtWithInitializedVarXupdatedTo7Copy}} and {{gtMethod:name=SPLContextExamples >> #printHelloCopy}}."
 						}
 					]
 				},
@@ -960,7 +1029,7 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-03-07T17:55:32.405284+01:00"
+									"dateAndTimeString" : "2023-03-08T08:50:15.704667+01:00"
 								}
 							},
 							"editEmail" : {
@@ -971,7 +1040,7 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-03-07T18:19:59.339171+01:00"
+									"dateAndTimeString" : "2023-03-08T08:50:31.588555+01:00"
 								}
 							},
 							"uid" : {
@@ -981,7 +1050,7 @@
 							"paragraphStyle" : {
 								"__type" : "textStyle"
 							},
-							"string" : "Somehow we are not getting unique copies yet, but the copies are sharing state. Only the output is being prioperly cloned. To be explored ... We also need tests."
+							"string" : "The following shows the trace of the fibonacci example."
 						},
 						{
 							"__type" : "pharoSnippet",
@@ -1008,14 +1077,14 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-03-07T19:03:43.361673+01:00"
+									"dateAndTimeString" : "2023-03-08T09:05:03.834923+01:00"
 								}
 							},
 							"uid" : {
 								"__type" : "uid",
 								"uidString" : "PeR1VLSyDQCIYRYkCOJfAg=="
 							},
-							"code" : "(SPL reduce: SPLGrammarExamples new fibonacciSource) "
+							"code" : "SPL fibonacci run; yourself"
 						},
 						{
 							"__type" : "textSnippet",
@@ -1031,7 +1100,7 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-03-07T18:17:48.208268+01:00"
+									"dateAndTimeString" : "2023-03-08T09:02:42.29393+01:00"
 								}
 							},
 							"editEmail" : {
@@ -1042,20 +1111,20 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-03-07T18:17:48.208268+01:00"
+									"dateAndTimeString" : "2023-03-08T09:02:46.989108+01:00"
 								}
 							},
 							"uid" : {
 								"__type" : "uid",
-								"uidString" : "BtPeU7SyDQCHxOjTCOJfAg=="
+								"uidString" : "9kGGsMCyDQCYmlUkCsLB2w=="
 							},
 							"paragraphStyle" : {
 								"__type" : "textStyle"
 							},
-							"string" : ""
+							"string" : "Let's fix the trace view."
 						},
 						{
-							"__type" : "textSnippet",
+							"__type" : "pharoSnippet",
 							"children" : {
 								"__type" : "snippets",
 								"items" : [ ]
@@ -1068,7 +1137,7 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-03-07T18:17:48.499599+01:00"
+									"dateAndTimeString" : "2023-03-08T09:03:22.301287+01:00"
 								}
 							},
 							"editEmail" : {
@@ -1079,128 +1148,14 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-03-07T18:17:48.499599+01:00"
+									"dateAndTimeString" : "2023-03-08T09:04:44.318949+01:00"
 								}
 							},
 							"uid" : {
 								"__type" : "uid",
-								"uidString" : "5UPjU7SyDQCIEr9GCOJfAg=="
+								"uidString" : "hrHossCyDQCZG2H9CsLB2w=="
 							},
-							"paragraphStyle" : {
-								"__type" : "textStyle"
-							},
-							"string" : ""
-						},
-						{
-							"__type" : "textSnippet",
-							"children" : {
-								"__type" : "snippets",
-								"items" : [ ]
-							},
-							"createEmail" : {
-								"__type" : "email",
-								"emailString" : "<unknown>"
-							},
-							"createTime" : {
-								"__type" : "time",
-								"time" : {
-									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-03-07T17:54:52.026778+01:00"
-								}
-							},
-							"editEmail" : {
-								"__type" : "email",
-								"emailString" : "<unknown>"
-							},
-							"editTime" : {
-								"__type" : "time",
-								"time" : {
-									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-03-07T17:54:52.026778+01:00"
-								}
-							},
-							"uid" : {
-								"__type" : "uid",
-								"uidString" : "zPHXAbSyDQC9Pz6LBn3DpA=="
-							},
-							"paragraphStyle" : {
-								"__type" : "textStyle"
-							},
-							"string" : ""
-						},
-						{
-							"__type" : "textSnippet",
-							"children" : {
-								"__type" : "snippets",
-								"items" : [ ]
-							},
-							"createEmail" : {
-								"__type" : "email",
-								"emailString" : "<unknown>"
-							},
-							"createTime" : {
-								"__type" : "time",
-								"time" : {
-									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-03-07T17:54:52.246192+01:00"
-								}
-							},
-							"editEmail" : {
-								"__type" : "email",
-								"emailString" : "<unknown>"
-							},
-							"editTime" : {
-								"__type" : "time",
-								"time" : {
-									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-03-07T17:54:52.246192+01:00"
-								}
-							},
-							"uid" : {
-								"__type" : "uid",
-								"uidString" : "Yk3bAbSyDQC9hvDYBn3DpA=="
-							},
-							"paragraphStyle" : {
-								"__type" : "textStyle"
-							},
-							"string" : ""
-						},
-						{
-							"__type" : "textSnippet",
-							"children" : {
-								"__type" : "snippets",
-								"items" : [ ]
-							},
-							"createEmail" : {
-								"__type" : "email",
-								"emailString" : "<unknown>"
-							},
-							"createTime" : {
-								"__type" : "time",
-								"time" : {
-									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-03-07T17:54:52.498447+01:00"
-								}
-							},
-							"editEmail" : {
-								"__type" : "email",
-								"emailString" : "<unknown>"
-							},
-							"editTime" : {
-								"__type" : "time",
-								"time" : {
-									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-03-07T17:54:52.498447+01:00"
-								}
-							},
-							"uid" : {
-								"__type" : "uid",
-								"uidString" : "siffAbSyDQC9zS+WBn3DpA=="
-							},
-							"paragraphStyle" : {
-								"__type" : "textStyle"
-							},
-							"string" : ""
+							"code" : "SPL fibonacci "
 						}
 					]
 				},
@@ -1234,6 +1189,381 @@
 					"__type" : "textStyle"
 				},
 				"string" : "#Adding snapshots to traces"
+			},
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [
+						{
+							"__type" : "textSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2023-03-08T09:56:11.304791+01:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2023-03-08T09:56:22.53928+01:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "++PLb8GyDQCFoIgABfIaKQ=="
+							},
+							"paragraphStyle" : {
+								"__type" : "textStyle"
+							},
+							"string" : "We add a couple of simple tests for traces."
+						},
+						{
+							"__type" : "exampleSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2023-03-08T09:56:26.333753+01:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2023-03-08T09:56:26.333753+01:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "XDSxcMGyDQCVYK+gBfIaKQ=="
+							},
+							"exampleSelector" : "emptyTrace",
+							"previewHeight" : 200,
+							"previewShowSelector" : "gtViewsFor:",
+							"exampleBehaviorName" : "SPLContextExamples",
+							"codeExpanded" : true,
+							"previewExpanded" : false,
+							"noCode" : false
+						},
+						{
+							"__type" : "exampleSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2023-03-08T09:56:39.742763+01:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2023-03-08T09:56:39.742763+01:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "js99ccGyDQCWh8GXBfIaKQ=="
+							},
+							"exampleSelector" : "helloTrace",
+							"previewHeight" : 200,
+							"previewShowSelector" : "gtViewsFor:",
+							"exampleBehaviorName" : "SPLContextExamples",
+							"codeExpanded" : true,
+							"previewExpanded" : false,
+							"noCode" : false
+						}
+					]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2023-03-08T08:49:16.003749+01:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2023-03-08T09:56:10.566885+01:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "dD13gMCyDQCUXAopCsLB2w=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : "#Testing traces"
+			},
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [
+						{
+							"__type" : "textSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2023-03-08T09:57:01.747121+01:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2023-03-08T09:57:23.992577+01:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "tJPNcsGyDQCggxT1BfIaKQ=="
+							},
+							"paragraphStyle" : {
+								"__type" : "textStyle"
+							},
+							"string" : "We'd like to use the continuation view as a dynamic program editor."
+						},
+						{
+							"__type" : "textSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2023-03-08T11:20:11.295521+01:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2023-03-08T11:20:16.689407+01:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "KQ4zdMGyDQC+t8mHBfIaKQ=="
+							},
+							"paragraphStyle" : {
+								"__type" : "textStyle"
+							},
+							"string" : "We implement this in "
+						},
+						{
+							"__type" : "pharoSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2023-03-08T09:58:07.564639+01:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2023-03-08T09:58:14.147138+01:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "KdC5dsGyDQCpNKdABOa8kg=="
+							},
+							"code" : "SPLContext new "
+						}
+					]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2023-03-08T08:49:16.24876+01:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2023-03-08T09:57:01.387917+01:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "TgB7gMCyDQCUYOuICsLB2w=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : "#Updating the program"
+			},
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2023-03-08T08:49:16.464957+01:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2023-03-08T08:49:16.464957+01:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "CE1+gMCyDQCUZEMuCsLB2w=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : ""
+			},
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2023-03-08T08:49:16.675222+01:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2023-03-08T08:49:16.675222+01:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "M4KBgMCyDQCUaNP4CsLB2w=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : ""
 			},
 			{
 				"__type" : "pharoSnippet",
@@ -1619,12 +1949,12 @@
 		"__type" : "time",
 		"time" : {
 			"__type" : "dateAndTime",
-			"dateAndTimeString" : "2023-03-07T09:13:09.635432+01:00"
+			"dateAndTimeString" : "2023-03-08T11:20:06.433724+01:00"
 		}
 	},
 	"pageType" : {
 		"__type" : "namedPage",
-		"title" : "*** Tracing SPL execution states"
+		"title" : "Tracing SPL execution states"
 	},
 	"uid" : {
 		"__type" : "uuid",

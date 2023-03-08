@@ -1,5 +1,5 @@
 "
-I am an abstract superclass for expressions with a single character operator.s
+I am an abstract superclass for expressions with a single character operators.
 "
 Class {
 	#name : #SPLOperatorExpression,

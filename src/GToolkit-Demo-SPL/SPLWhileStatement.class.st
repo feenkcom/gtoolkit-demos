@@ -1,3 +1,10 @@
+"
+I represent a while statement with a condition and a while block.
+
+{{gtExample:name=SPLParserExamples>>#whileStmt}}
+
+
+"
 Class {
 	#name : #SPLWhileStatement,
 	#superclass : #SPLConditionStatement,
@@ -44,4 +51,9 @@ SPLWhileStatement >> stepInContext: aContext [
 		then: (SPLBlockStatement
 				for: {self doPart.
 						self} asOrderedCollection)
+]
+
+{ #category : #accessing }
+SPLWhileStatement >> summary [
+	^ 'while ', self expression printString
 ]

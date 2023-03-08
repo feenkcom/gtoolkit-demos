@@ -1,6 +1,8 @@
 "
 I represent a complete SPL program made up of declarations and statements.
 For simplicity, we call them all statements.
+
+{{gtExample:name=SPLParserExamples>>#whileProgram}}
 "
 Class {
 	#name : #SPLProgram,

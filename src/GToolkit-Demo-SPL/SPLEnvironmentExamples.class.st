@@ -1,5 +1,7 @@
 "
-I provide examples to illustrate and test theenvironment of variable bindings for SPL programs.
+I provide examples to illustrate and test the environment of variable bindings for SPL programs.
+
+For example: {{gtExample:name=SPLEnvironmentExamples>>#envtWithInitializedVarXupdatedTo7}}
 "
 Class {
 	#name : #SPLEnvironmentExamples,

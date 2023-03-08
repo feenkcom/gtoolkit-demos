@@ -1,5 +1,10 @@
 "
 I implement examples to test the SPL parser that builds an interpreter for SPL.
+
+Pretty much all of the examples are extensions of examples inherited from {{gtClass:name=SPLGrammarExamples}}.
+They typically run the {{gtClass:name=SPLParser}} on the inherited SPL example code, producing an AST, and then test whether the prett-printed code matches an expected result.
+
+For example: {{gtExample:name=SPLParserExamples>>#ifElseStmt}}
 "
 Class {
 	#name : #SPLParserExamples,
@@ -9,7 +14,6 @@ Class {
 
 { #category : #accessing }
 SPLParserExamples >> blockStmt [
-	<todo: 'handle indentation'>
 	<gtExample>
 	| result |
 	result := super blockStmt.
@@ -158,6 +162,15 @@ SPLParserExamples >> minus42 [
 ]
 
 { #category : #accessing }
+SPLParserExamples >> nil [
+	<gtExample>
+	| result |
+	result := self parse: 'nil' rule: #expression.
+	self assert: result printString equals: 'nil'.
+	^ result
+]
+
+{ #category : #accessing }
 SPLParserExamples >> notTrue [
 	<gtExample>
 	| result |
@@ -273,6 +286,15 @@ SPLParserExamples >> threeTimesFourDividedByFive [
 ]
 
 { #category : #accessing }
+SPLParserExamples >> true [
+	<gtExample>
+	| result |
+	result := self parse: 'true' rule: #expression.
+	self assert: result printString equals: 'true'.
+	^ result
+]
+
+{ #category : #accessing }
 SPLParserExamples >> trueAndFalse [
 	<gtExample>
 	| result |
@@ -324,7 +346,6 @@ while (a<10) {
 
 { #category : #accessing }
 SPLParserExamples >> whileStmt [
-	<todo: 'handle indentation'>
 	<gtExample>
 	| result |
 	result := super whileStmt.

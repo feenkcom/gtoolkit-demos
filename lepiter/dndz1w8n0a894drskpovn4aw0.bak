@@ -145,7 +145,7 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-03-06T09:33:39.993329+01:00"
+									"dateAndTimeString" : "2023-03-06T14:44:31.95434+01:00"
 								}
 							},
 							"uid" : {
@@ -155,7 +155,7 @@
 							"paragraphStyle" : {
 								"__type" : "textStyle"
 							},
-							"string" : "{{gtTodo:label=Modify Fibonacci example to output the sequence of values}}"
+							"string" : "{{gtTodo:label=Modify Fibonacci example to output the sequence of values|completed=2023-03-06}}"
 						},
 						{
 							"__type" : "textSnippet",
@@ -182,7 +182,7 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-03-06T09:34:03.394894+01:00"
+									"dateAndTimeString" : "2023-03-08T14:04:58.187223+01:00"
 								}
 							},
 							"uid" : {
@@ -192,7 +192,7 @@
 							"paragraphStyle" : {
 								"__type" : "textStyle"
 							},
-							"string" : "{{gtTodo:label=Prepare a composed state view}}"
+							"string" : "{{gtTodo:label=Prepare a composed state view|completed=2023-03-08}}"
 						},
 						{
 							"__type" : "textSnippet",
@@ -1350,7 +1350,7 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-03-06T14:44:21.324721+01:00"
+									"dateAndTimeString" : "2023-03-06T14:44:26.735814+01:00"
 								}
 							},
 							"uid" : {
@@ -1358,74 +1358,6 @@
 								"uidString" : "PiYD6ZyyDQCXvCJqClwWsw=="
 							},
 							"code" : "SPL run: SPLGrammarExamples new fibonacciSource"
-						},
-						{
-							"__type" : "pharoSnippet",
-							"children" : {
-								"__type" : "snippets",
-								"items" : [ ]
-							},
-							"createEmail" : {
-								"__type" : "email",
-								"emailString" : "<unknown>"
-							},
-							"createTime" : {
-								"__type" : "time",
-								"time" : {
-									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-03-06T14:37:55.032633+01:00"
-								}
-							},
-							"editEmail" : {
-								"__type" : "email",
-								"emailString" : "<unknown>"
-							},
-							"editTime" : {
-								"__type" : "time",
-								"time" : {
-									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-03-06T14:40:35.845572+01:00"
-								}
-							},
-							"uid" : {
-								"__type" : "uid",
-								"uidString" : "HZGnI52yDQCKJmBjD4BMxg=="
-							},
-							"code" : "SPL parse: 'var x;'"
-						},
-						{
-							"__type" : "pharoSnippet",
-							"children" : {
-								"__type" : "snippets",
-								"items" : [ ]
-							},
-							"createEmail" : {
-								"__type" : "email",
-								"emailString" : "<unknown>"
-							},
-							"createTime" : {
-								"__type" : "time",
-								"time" : {
-									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-03-06T14:40:37.047787+01:00"
-								}
-							},
-							"editEmail" : {
-								"__type" : "email",
-								"emailString" : "<unknown>"
-							},
-							"editTime" : {
-								"__type" : "time",
-								"time" : {
-									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-03-06T14:40:54.26288+01:00"
-								}
-							},
-							"uid" : {
-								"__type" : "uid",
-								"uidString" : "fLhPLZ2yDQCK7brSD4BMxg=="
-							},
-							"code" : "SPLParser parse: 'var x;' "
 						}
 					]
 				},

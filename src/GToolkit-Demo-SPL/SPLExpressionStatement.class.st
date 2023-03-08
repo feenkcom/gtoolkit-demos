@@ -1,3 +1,11 @@
+"
+I represent a statement that evaluates an expression. 
+
+(NB: To have a side effect, part ofthe expression should include an assignment.)
+
+
+{{gtExample:name=SPLParserExamples>>#complexExpressionStmt}}
+"
 Class {
 	#name : #SPLExpressionStatement,
 	#superclass : #SPLAbstractExpressionStatement,

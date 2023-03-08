@@ -1,6 +1,10 @@
 "
 I provide examples of executing SPL programs, using {{gtClass:name=SPLContext}}.
 
+Most of my examples test that an interpreted code fragment returns a particular result.
+
+For example:
+{{gtExample:name=SPLContextExamples>>#printHello}}
 "
 Class {
 	#name : #SPLContextExamples,
@@ -169,6 +173,17 @@ SPLContextExamples >> contextForExpression: aString [
 ]
 
 { #category : #example }
+SPLContextExamples >> emptyTrace [
+	<gtExample>
+	| context |
+	context := self context: ''.
+	context reduce.
+	self assert: context trace size equals: 1.
+	self assert: context trace first equals: context.
+	^ context
+]
+
+{ #category : #example }
 SPLContextExamples >> expressionStatement [
 	<gtExample>
 	| result context |
@@ -227,6 +242,19 @@ SPLContextExamples >> helloEqualsHello [
 	self assert: result isSPLValue.
 	self assert: result value.
 	^ result
+]
+
+{ #category : #example }
+SPLContextExamples >> helloTrace [
+	<gtExample>
+	| context |
+	context := self context: 'print "hello";'.
+	context reduce.
+	self assert: context trace size equals: 3.
+	self assert: context trace first output equals: ''.
+	self assert: context trace second output allButLast equals: 'hello'.
+	self assert: context trace third continuation isReduced.
+	^ context
 ]
 
 { #category : #example }
@@ -341,6 +369,14 @@ SPLContextExamples >> programWithComments [
 	self
 		assert: context output allButLast
 		equals: 'hello world'.
+	^ context
+]
+
+{ #category : #example }
+SPLContextExamples >> splContextUsage [
+	<gtExample>
+	| context |
+	context := (SPLParser parse: 'print "hello";') asContext.
 	^ context
 ]
 

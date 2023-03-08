@@ -1,3 +1,8 @@
+"
+I represent a binary expression using logical operators.
+
+{{gtExample:name=SPLParserExamples>>#trueAndFalse}}
+"
 Class {
 	#name : #SPLLogicalBinary,
 	#superclass : #SPLBinary,

@@ -1,3 +1,9 @@
+"
+I am an if statement with a then block but no else block.
+
+{{gtExample:name=SPLParserExamples>>#ifNoElseStmt}} 
+
+"
 Class {
 	#name : #SPLIfStatement,
 	#superclass : #SPLConditionStatement,
@@ -35,6 +41,11 @@ SPLIfStatement >> stepInContext: aContext [
 		ifFalse: [ self class
 				if: (self expression stepInContext: aContext)
 				then: self thenPart ]
+]
+
+{ #category : #printing }
+SPLIfStatement >> summary [
+	^ 'if ', self expression printString
 ]
 
 { #category : #accessing }

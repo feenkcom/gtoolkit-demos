@@ -1,3 +1,8 @@
+"
+I represent an SPL expression with binary operators.
+
+{{gtExample:name=SPLParserExamples>>#threeTimesFourDividedByFive}}
+"
 Class {
 	#name : #SPLBinary,
 	#superclass : #SPLOperatorExpression,

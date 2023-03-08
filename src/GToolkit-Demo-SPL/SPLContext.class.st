@@ -1,7 +1,11 @@
 "
 I provide a context for evaluating SPL programs.
+
 I hold an environment of variables, an output stream, and a program state.
 See {{gtClass:name=SPLContextExamples}} for examples.
+
+Here is a typical usage example: {{gtExample:name=SPLContextExamples>>#splContextUsage}}
+
 "
 Class {
 	#name : #SPLContext,
@@ -138,6 +142,16 @@ SPLContext >> gtContinuationFor: aView [
 		aptitude: BrGlamorousCodeEditorAptitude;
 		text: [ self continuation printString asRopedText ];
 		actionUpdateButton;
+		actionButtonIcon: BrGlamorousIcons right
+			tooltip: 'Step'
+			action: [ :aButton :aTab | 
+				self updateProgramIfChanged: aButton phlow textViewContent asString.
+				self step ];
+		actionButtonIcon: BrGlamorousIcons tohere
+			tooltip: 'Run'
+			action: [ :aButton :aTab | 
+				self updateProgramIfChanged: aButton phlow textViewContent asString.
+				self run ];
 		updateWhen: ValueChanged in: self stateHolder announcer
 ]
 
@@ -161,6 +175,27 @@ SPLContext >> gtExpressionFor: aView [
 ]
 
 { #category : #accessing }
+SPLContext >> gtHistoryFor: aView [
+	<gtView>
+	^ aView columnedList
+		title: 'History';
+		priority: 60;
+		items: [ self trace ];
+		column: 'Next statement'
+			text: [ :aContext | 
+				aContext continuation statements
+					ifEmpty: [ '' ]
+					ifNotEmpty: [ aContext continuation statements first summary ] ];
+		column: 'Environment'
+			text: [  "aContext environment printString":aContext | aContext newBindings ];
+		column: 'Output'
+			text: [ :aContext | aContext newOutput ]
+			width: 100;
+		actionUpdateButton;
+		updateWhen: ValueChanged in: self traceHolder announcer
+]
+
+{ #category : #accessing }
 SPLContext >> gtOutputFor: aView [
 	<gtView>
 	^ aView textEditor
@@ -178,33 +213,17 @@ SPLContext >> gtStateFor: aView [
 	^ aView explicit
 		title: 'State';
 		priority: 10;
-		stencil: [  self composedStateElement ]
-]
-
-{ #category : #accessing }
-SPLContext >> gtTraceFor: aView [
-	<gtView>
-	^ aView columnedList
-		title: 'Trace';
-		priority: 60;
-		items: [ self trace ];
-		column: 'Next statement'
-			text: [ :aContext | 
-				aContext continuation statements
-					ifEmpty: [ 'empty' ]
-					ifNotEmpty: [ aContext continuation statements last printString ] ];
-		column: 'Environment'
-			text: [ :aContext | 
-				aContext environment variables
-					ifEmpty: [ 'empty' ]
-					ifNotEmpty:  [ aContext environment variables size printString  ] ];
-		column: 'Output'
-			text: [ :aContext | 
-				aContext outputHolder value
-					ifEmpty: [ 'empty' ]
-					ifNotEmpty: [ aContext outputHolder value last ] ];
-		actionUpdateButton;
-		updateWhen: ValueChanged in: self outputHolder announcer
+		stencil: [ self composedStateElement ];
+		actionButtonIcon: BrGlamorousIcons right
+			tooltip: 'Step'
+			action: [ :aButton :aTab | 
+				self updateProgramIfChanged: aButton phlow textViewContent asString.
+				self step ];
+		actionButtonIcon: BrGlamorousIcons tohere
+			tooltip: 'Run'
+			action: [ :aButton :aTab | 
+				self updateProgramIfChanged: aButton phlow textViewContent asString.
+				self run ]
 ]
 
 { #category : #comparing }
@@ -216,10 +235,41 @@ SPLContext >> hash [
 
 { #category : #initialization }
 SPLContext >> initialize [
-	nodeHolder := NewValueHolder new.
+	nodeHolder := NewValueHolder value: (self class parse: '').
 	environment := SPLEnvironment new.
 	outputHolder := NewValueHolder value: OrderedCollection new.
-	traceHolder := NewValueHolder value: OrderedCollection new.
+	traceHolder := NewValueHolder value: OrderedCollection new
+]
+
+{ #category : #accessing }
+SPLContext >> newBindings [
+	"The new bindings, if any"
+
+	| difference aStream |
+	self trace size < 1 ifTrue: [ ^ '' ].
+
+	difference := self environment variables
+			difference: self trace last environment variables.
+	
+	aStream := '' writeStream.
+	difference
+		associationsDo: [ :assoc | 
+			aStream
+				print: assoc key;
+				nextPut: $=;
+				print: assoc value;
+				nextPut: $; ].
+	^ aStream contents
+]
+
+{ #category : #accessing }
+SPLContext >> newOutput [
+	"Return the last output, if there was a new one"
+
+	self trace size < 1 ifTrue: [ ^ '' ].
+	^ self outputCollection size > self trace last outputCollection size
+		ifTrue: [ self outputCollection last ]
+		ifFalse: [ '' ]
 ]
 
 { #category : #accessing }
@@ -233,12 +283,17 @@ SPLContext >> output [
 
 	| result |
 	result := '' writeStream.
-	self outputHolder value
+	self outputCollection
 		do: [ :each | 
 			result
 				nextPutAll: each;
 				cr ].
 	^ result contents
+]
+
+{ #category : #accessing }
+SPLContext >> outputCollection [
+	^ self outputHolder value
 ]
 
 { #category : #accessing }
@@ -249,15 +304,25 @@ SPLContext >> outputHolder [
 { #category : #copying }
 SPLContext >> postCopy [
 	"This is called by Object>>#copy to clean up after the shallow copy is  made.
-	The continuation in the nodeHolder is immutable, so doesn't need to be copied.
-	The environment is updated, so must be copied. It has its own copy method.
-	The output and trace are collections, so we just need shallow copies of those.
+	We start with a shallow copy. We make copies of the values, initialize our state, and copy back the snapshotted values.
+	The node is immutable, so should not need to be copied.
+	The other values need to be cloned, as they will be updated.
 	"
 
+	| environmentCopy nodeCopy outputCopy traceCopy |
 	super postCopy.
-	environment := environment copy.
-	outputHolder value: outputHolder value copy.
-	traceHolder value: traceHolder value copy. 
+
+	nodeCopy := nodeHolder value.
+	environmentCopy := environment copy.
+	outputCopy := outputHolder value copy.
+	traceCopy := traceHolder value copy.
+
+	self initialize.
+
+	nodeHolder value: nodeCopy.
+	environment := environmentCopy.
+	outputHolder value: outputCopy.
+	traceHolder value: traceCopy.
 	^ self
 ]
 
@@ -279,6 +344,12 @@ SPLContext >> program: anSPLProgramSource [
 SPLContext >> reduce [
 	[ self continuation isReduced not ] whileTrue: [ self step ].
 	^ self continuation
+]
+
+{ #category : #evaluating }
+SPLContext >> run [
+	self reduce.
+	^ self output
 ]
 
 { #category : #evaluating }
@@ -308,4 +379,10 @@ SPLContext >> trace [
 { #category : #accessing }
 SPLContext >> traceHolder [
 	^ traceHolder
+]
+
+{ #category : #evaluating }
+SPLContext >> updateProgramIfChanged: anSPLProgramSource [
+	self continuation printString = anSPLProgramSource
+		ifFalse: [ self program: anSPLProgramSource ]
 ]
