@@ -138,6 +138,16 @@ SPLContext >> gtContinuationFor: aView [
 		aptitude: BrGlamorousCodeEditorAptitude;
 		text: [ self continuation printString asRopedText ];
 		actionUpdateButton;
+		actionButtonIcon: BrGlamorousIcons right
+			tooltip: 'Step'
+			action: [ :aButton :aTab | 
+				"self program: aButton phlow textViewContent printString."
+				self step ];
+		actionButtonIcon: BrGlamorousIcons tohere
+			tooltip: 'Run'
+			action: [ :aButton :aTab | 
+				"self program: aButton phlow textViewContent printString."
+				self run ];
 		updateWhen: ValueChanged in: self stateHolder announcer
 ]
 
@@ -181,10 +191,12 @@ SPLContext >> gtStateFor: aView [
 		stencil: [ self composedStateElement ];
 		actionButtonIcon: BrGlamorousIcons right
 			tooltip: 'Step'
-			action: [ :aButton :aTab | self step ];
+			action: [ :aButton :aTab | 
+				"self updateProgramIfChanged: aButton phlow textViewContent printString."
+				self step ];
 		actionButtonIcon: BrGlamorousIcons tohere
 			tooltip: 'Run'
-			action: [ :aButton :aTab | self run ]
+			action: [ :aButton "self program: aButton phlow textViewContent printString." :aTab | self run ]
 ]
 
 { #category : #accessing }
@@ -217,10 +229,10 @@ SPLContext >> hash [
 
 { #category : #initialization }
 SPLContext >> initialize [
-	nodeHolder := NewValueHolder new.
+	nodeHolder := NewValueHolder value: (self class parse: '').
 	environment := SPLEnvironment new.
 	outputHolder := NewValueHolder value: OrderedCollection new.
-	traceHolder := NewValueHolder value: OrderedCollection new.
+	traceHolder := NewValueHolder value: OrderedCollection new
 ]
 
 { #category : #accessing }
@@ -361,4 +373,10 @@ SPLContext >> trace [
 { #category : #accessing }
 SPLContext >> traceHolder [
 	^ traceHolder
+]
+
+{ #category : #evaluating }
+SPLContext >> updateProgramIfChanged: anSPLProgramSource [
+	self continuation printString = anSPLProgramSource
+		ifFalse: [ self program: anSPLProgramSource ]
 ]
