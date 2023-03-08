@@ -34,7 +34,7 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-03-05T20:00:33.255933+01:00"
+									"dateAndTimeString" : "2023-03-08T11:33:33.746556+01:00"
 								}
 							},
 							"uid" : {
@@ -44,7 +44,7 @@
 							"paragraphStyle" : {
 								"__type" : "textStyle"
 							},
-							"string" : "The simplest program."
+							"string" : "The simplest program. You can run an SPL program and see its output as follows:"
 						},
 						{
 							"__type" : "pharoSnippet",
@@ -105,7 +105,7 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-03-05T20:01:16.543029+01:00"
+									"dateAndTimeString" : "2023-03-08T11:34:00.702205+01:00"
 								}
 							},
 							"uid" : {
@@ -115,7 +115,7 @@
 							"paragraphStyle" : {
 								"__type" : "textStyle"
 							},
-							"string" : "You can watch it run in the interpretation environment."
+							"string" : "You can also inspect the interpreter context and step through its execution"
 						},
 						{
 							"__type" : "pharoSnippet",
@@ -142,14 +142,14 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-03-08T10:21:36.739243+01:00"
+									"dateAndTimeString" : "2023-03-08T11:33:03.962979+01:00"
 								}
 							},
 							"uid" : {
 								"__type" : "uid",
 								"uidString" : "ts5Vio2yDQCd0z9VCTGP5g=="
 							},
-							"code" : "SPL contextFor: 'print \"Hello world!\";'."
+							"code" : "SPL hello "
 						},
 						{
 							"__type" : "textSnippet",
@@ -165,7 +165,7 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-03-05T20:01:53.722361+01:00"
+									"dateAndTimeString" : "2023-03-08T11:34:08.515011+01:00"
 								}
 							},
 							"editEmail" : {
@@ -176,7 +176,7 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-03-08T10:22:01.691366+01:00"
+									"dateAndTimeString" : "2023-03-08T11:34:32.998197+01:00"
 								}
 							},
 							"uid" : {
@@ -186,7 +186,7 @@
 							"paragraphStyle" : {
 								"__type" : "textStyle"
 							},
-							"string" : "Watch the Program state and Output views in the two windows and step through the execution with the “step” or “run” buttons."
+							"string" : "Click the `Step` button to execute a single reduction step, or `Run` to run to completion."
 						},
 						{
 							"__type" : "textSnippet",
@@ -224,6 +224,43 @@
 								"__type" : "textStyle"
 							},
 							"string" : "Note how the Program state view represents “the rest of the program” to still be executed. Slowly it is reduced to the empty program."
+						},
+						{
+							"__type" : "textSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2023-03-08T11:34:34.029729+01:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2023-03-08T11:34:50.882398+01:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "wlGgz8KyDQCxceGLDPvosw=="
+							},
+							"paragraphStyle" : {
+								"__type" : "textStyle"
+							},
+							"string" : "Go to the `History` view to see all the intermediate states."
 						}
 					]
 				},
@@ -288,7 +325,7 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-03-05T19:48:15.229189+01:00"
+									"dateAndTimeString" : "2023-03-08T11:35:26.189403+01:00"
 								}
 							},
 							"uid" : {
@@ -298,78 +335,7 @@
 							"paragraphStyle" : {
 								"__type" : "textStyle"
 							},
-							"string" : "Change the value of \"arg\" to get different results."
-						},
-						{
-							"__type" : "pharoSnippet",
-							"children" : {
-								"__type" : "snippets",
-								"items" : [ ]
-							},
-							"createEmail" : {
-								"__type" : "email",
-								"emailString" : "<unknown>"
-							},
-							"createTime" : {
-								"__type" : "time",
-								"time" : {
-									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-03-05T19:45:27.471692+01:00"
-								}
-							},
-							"editEmail" : {
-								"__type" : "email",
-								"emailString" : "<unknown>"
-							},
-							"editTime" : {
-								"__type" : "time",
-								"time" : {
-									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-03-07T11:06:48.527795+01:00"
-								}
-							},
-							"uid" : {
-								"__type" : "uid",
-								"uidString" : "2g2qUY2yDQC3kmxzCTGP5g=="
-							},
-							"code" : "factorial := '// Factorial in SPL.\r// Change the value of arg to compute different factorials.\rvar arg=5;\rvar x=arg;\rvar fact=1;\rwhile (x>0) {\r\tfact = fact * x;\r\tx = x - 1;\r}\rprint fact;'.\rSPL run: factorial."
-						},
-						{
-							"__type" : "textSnippet",
-							"children" : {
-								"__type" : "snippets",
-								"items" : [ ]
-							},
-							"createEmail" : {
-								"__type" : "email",
-								"emailString" : "<unknown>"
-							},
-							"createTime" : {
-								"__type" : "time",
-								"time" : {
-									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-03-05T19:48:53.668246+01:00"
-								}
-							},
-							"editEmail" : {
-								"__type" : "email",
-								"emailString" : "<unknown>"
-							},
-							"editTime" : {
-								"__type" : "time",
-								"time" : {
-									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-03-05T19:49:19.204935+01:00"
-								}
-							},
-							"uid" : {
-								"__type" : "uid",
-								"uidString" : "CVz0XY2yDQCIxSPWCTGP5g=="
-							},
-							"paragraphStyle" : {
-								"__type" : "textStyle"
-							},
-							"string" : "You can also step through the execution. Watch the environment view update as you run the program."
+							"string" : "Here is a factorial program. Change the value of \"arg\" to get different results."
 						},
 						{
 							"__type" : "pharoSnippet",
@@ -396,14 +362,51 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-03-08T10:22:46.596811+01:00"
+									"dateAndTimeString" : "2023-03-08T11:32:51.425692+01:00"
 								}
 							},
 							"uid" : {
 								"__type" : "uid",
 								"uidString" : "/OrSX42yDQC5vMF5CTGP5g=="
 							},
-							"code" : "SPL contextFor: factorial."
+							"code" : "SPL factorial"
+						},
+						{
+							"__type" : "textSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2023-03-08T11:32:18.08791+01:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2023-03-08T11:32:40.777168+01:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "qwCGx8KyDQCql2jiDPvosw=="
+							},
+							"paragraphStyle" : {
+								"__type" : "textStyle"
+							},
+							"string" : "Note that you can edit the program in the State or Continutation views and continue executing."
 						}
 					]
 				},
@@ -505,48 +508,14 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-03-08T10:26:43.276759+01:00"
+									"dateAndTimeString" : "2023-03-08T11:36:05.181314+01:00"
 								}
 							},
 							"uid" : {
 								"__type" : "uid",
 								"uidString" : "k+rIQI2yDQCAmDQyCTGP5g=="
 							},
-							"code" : "fibSource := '// Fibonacci in SPL\r// Output the first n Fibonacci numbers, where n = arg\rvar arg = 6;\rvar lastFib = 1;\rvar thisFib = 1;\rvar nextFib;\rvar iterations = 2;\rprint lastFib;\rprint thisFib;\rwhile ( iterations < arg ) {\r\titerations = iterations + 1;\r\tnextFib = thisFib + lastFib;\r\tlastFib = thisFib;\r\tthisFib = nextFib;\r\tprint thisFib;\r}'.\rSPL run: fibSource"
-						},
-						{
-							"__type" : "pharoSnippet",
-							"children" : {
-								"__type" : "snippets",
-								"items" : [ ]
-							},
-							"createEmail" : {
-								"__type" : "email",
-								"emailString" : "<unknown>"
-							},
-							"createTime" : {
-								"__type" : "time",
-								"time" : {
-									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-03-05T19:42:36.868459+01:00"
-								}
-							},
-							"editEmail" : {
-								"__type" : "email",
-								"emailString" : "<unknown>"
-							},
-							"editTime" : {
-								"__type" : "time",
-								"time" : {
-									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-03-08T10:23:30.560832+01:00"
-								}
-							},
-							"uid" : {
-								"__type" : "uid",
-								"uidString" : "a95+R42yDQCwUOilCTGP5g=="
-							},
-							"code" : "context := SPL contextFor: fibSource."
+							"code" : "SPL fibonacci."
 						}
 					]
 				},
@@ -585,6 +554,115 @@
 				"__type" : "textSnippet",
 				"children" : {
 					"__type" : "snippets",
+					"items" : [
+						{
+							"__type" : "textSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2023-03-08T11:36:48.869859+01:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2023-03-08T11:37:08.404204+01:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "q9Gp18KyDQC8QyESAN7Bhw=="
+							},
+							"paragraphStyle" : {
+								"__type" : "textStyle"
+							},
+							"string" : "You can also write yourown code starting form an empty program."
+						},
+						{
+							"__type" : "pharoSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2023-03-08T11:37:10.174612+01:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2023-03-08T11:37:14.173085+01:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "bt3u2MKyDQC90pODAN7Bhw=="
+							},
+							"code" : "SPL empty."
+						}
+					]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2023-03-08T11:36:42.608896+01:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2023-03-08T11:36:48.368704+01:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "YkdK18KyDQC7+MS7AN7Bhw=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : "#Empty"
+			},
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
 					"items" : [ ]
 				},
 				"createEmail" : {
@@ -617,6 +695,43 @@
 					"__type" : "textStyle"
 				},
 				"string" : "There are also many small examples in {{gtClass:name=SPLContextExamples}} and {{gtClass:name=SPL}}."
+			},
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2023-03-08T11:40:16.772483+01:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2023-03-08T11:40:16.772483+01:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "jScO5MKyDQCfEYxtAAh+pg=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : ""
 			}
 		]
 	},

@@ -141,12 +141,12 @@ SPLContext >> gtContinuationFor: aView [
 		actionButtonIcon: BrGlamorousIcons right
 			tooltip: 'Step'
 			action: [ :aButton :aTab | 
-				"self program: aButton phlow textViewContent printString."
+				self updateProgramIfChanged: aButton phlow textViewContent asString.
 				self step ];
 		actionButtonIcon: BrGlamorousIcons tohere
 			tooltip: 'Run'
 			action: [ :aButton :aTab | 
-				"self program: aButton phlow textViewContent printString."
+				self updateProgramIfChanged: aButton phlow textViewContent asString.
 				self run ];
 		updateWhen: ValueChanged in: self stateHolder announcer
 ]
@@ -171,6 +171,27 @@ SPLContext >> gtExpressionFor: aView [
 ]
 
 { #category : #accessing }
+SPLContext >> gtHistoryFor: aView [
+	<gtView>
+	^ aView columnedList
+		title: 'History';
+		priority: 60;
+		items: [ self trace ];
+		column: 'Next statement'
+			text: [ :aContext | 
+				aContext continuation statements
+					ifEmpty: [ '' ]
+					ifNotEmpty: [ aContext continuation statements first summary ] ];
+		column: 'Environment'
+			text: [  "aContext environment printString":aContext | aContext newBindings ];
+		column: 'Output'
+			text: [ :aContext | aContext newOutput ]
+			width: 100;
+		actionUpdateButton;
+		updateWhen: ValueChanged in: self traceHolder announcer
+]
+
+{ #category : #accessing }
 SPLContext >> gtOutputFor: aView [
 	<gtView>
 	^ aView textEditor
@@ -192,32 +213,13 @@ SPLContext >> gtStateFor: aView [
 		actionButtonIcon: BrGlamorousIcons right
 			tooltip: 'Step'
 			action: [ :aButton :aTab | 
-				"self updateProgramIfChanged: aButton phlow textViewContent printString."
+				self updateProgramIfChanged: aButton phlow textViewContent asString.
 				self step ];
 		actionButtonIcon: BrGlamorousIcons tohere
 			tooltip: 'Run'
-			action: [ :aButton "self program: aButton phlow textViewContent printString." :aTab | self run ]
-]
-
-{ #category : #accessing }
-SPLContext >> gtTraceFor: aView [
-	<gtView>
-	^ aView columnedList
-		title: 'Trace';
-		priority: 60;
-		items: [ self trace ];
-		column: 'Next statement'
-			text: [ :aContext | 
-				aContext continuation statements
-					ifEmpty: [ '' ]
-					ifNotEmpty: [ aContext continuation statements first summary ] ];
-		column: 'Environment'
-			text: [  "aContext environment printString":aContext | aContext newBindings ];
-		column: 'Output'
-			text: [ :aContext | aContext newOutput ]
-			width: 100;
-		actionUpdateButton;
-		updateWhen: ValueChanged in: self traceHolder announcer
+			action: [ :aButton :aTab | 
+				self updateProgramIfChanged: aButton phlow textViewContent asString.
+				self run ]
 ]
 
 { #category : #comparing }

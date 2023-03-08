@@ -43,6 +43,11 @@ SPL class >> contextForExpression: anSPLExpressionString [
 	^ SPLContext forExpression: anSPLExpressionString
 ]
 
+{ #category : #example }
+SPL class >> empty [
+	^  SPL contextFor: ''
+]
+
 { #category : #accessing }
 SPL class >> examples [
 	"Return all the examples in this package.
@@ -72,9 +77,16 @@ SPL class >> grammarClass [
 ]
 
 { #category : #example }
-SPL class >> helloWorld [
+SPL class >> hello [
 	^  SPL contextFor: '// Hello world in SPL
 print "Hello world!";'
+]
+
+{ #category : #example }
+SPL class >> omega [
+	^  SPL contextFor: '// Omega -- the non-terminating program in SPL
+// You can step through me, but please don''t run me!
+while (true) {}'
 ]
 
 { #category : #parsing }

@@ -71,7 +71,7 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-03-08T08:35:21.176362+01:00"
+									"dateAndTimeString" : "2023-03-08T11:30:37.499454+01:00"
 								}
 							},
 							"uid" : {
@@ -81,7 +81,7 @@
 							"paragraphStyle" : {
 								"__type" : "textStyle"
 							},
-							"string" : "{{gtTodo:label=Add more noTest example programs}}"
+							"string" : "{{gtTodo:label=Add more noTest example programs|completed=2023-03-08}}"
 						},
 						{
 							"__type" : "textSnippet",
@@ -108,7 +108,7 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-03-08T08:35:17.75204+01:00"
+									"dateAndTimeString" : "2023-03-08T11:30:39.553068+01:00"
 								}
 							},
 							"uid" : {
@@ -118,7 +118,7 @@
 							"paragraphStyle" : {
 								"__type" : "textStyle"
 							},
-							"string" : "{{gtTodo:label=Add some useful class comments to SPL}}"
+							"string" : "{{gtTodo:label=Add some useful class comments to SPL|completed=2023-03-08}}"
 						},
 						{
 							"__type" : "textSnippet",
@@ -145,7 +145,7 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-03-08T08:35:22.386744+01:00"
+									"dateAndTimeString" : "2023-03-08T11:30:51.463038+01:00"
 								}
 							},
 							"uid" : {
@@ -155,7 +155,7 @@
 							"paragraphStyle" : {
 								"__type" : "textStyle"
 							},
-							"string" : "{{gtTodo:label=Rename the examine class to SPLUsageExamples}}"
+							"string" : "{{gtTodo:label=Rename the example class to SPLUsageExamples|completed=2023-03-08}}"
 						},
 						{
 							"__type" : "textSnippet",
