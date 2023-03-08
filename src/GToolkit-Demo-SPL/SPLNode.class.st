@@ -48,3 +48,8 @@ SPLNode >> stepInContext: aContext [
 
 	self subclassResponsibility
 ]
+
+{ #category : #printing }
+SPLNode >> summary [
+	^ self printString
+]

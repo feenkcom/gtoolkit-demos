@@ -198,7 +198,7 @@ SPLContext >> gtTraceFor: aView [
 			text: [ :aContext | 
 				aContext continuation statements
 					ifEmpty: [ 'empty' ]
-					ifNotEmpty: [ aContext continuation statements first printString ] ];
+					ifNotEmpty: [ aContext continuation statements first summary ] ];
 		column: 'Environment'
 			text: [  "aContext environment printString":aContext | aContext newBindings ];
 		column: 'Output'

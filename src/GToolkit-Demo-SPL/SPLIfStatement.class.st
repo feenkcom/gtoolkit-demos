@@ -37,6 +37,11 @@ SPLIfStatement >> stepInContext: aContext [
 				then: self thenPart ]
 ]
 
+{ #category : #printing }
+SPLIfStatement >> summary [
+	^ 'if ', self expression printString
+]
+
 { #category : #accessing }
 SPLIfStatement >> thenPart [
 	^ thenPart

@@ -65,3 +65,10 @@ SPLBlockStatement >> stepInContext: aContext [
 										addFirst: (self statements first stepInContext: aContext);
 										yourself) ] ] ]
 ]
+
+{ #category : #accessing }
+SPLBlockStatement >> summary [
+	^ self statements
+		ifEmpty: [ '{}' ]
+		ifNotEmpty: [ '{' , self statements first summary, '...}' ]
+]

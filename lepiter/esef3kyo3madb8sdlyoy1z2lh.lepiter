@@ -368,43 +368,6 @@
 														"__type" : "time",
 														"time" : {
 															"__type" : "dateAndTime",
-															"dateAndTimeString" : "2023-03-07T09:13:09.665896+01:00"
-														}
-													},
-													"editEmail" : {
-														"__type" : "email",
-														"emailString" : "<unknown>"
-													},
-													"editTime" : {
-														"__type" : "time",
-														"time" : {
-															"__type" : "dateAndTime",
-															"dateAndTimeString" : "2023-03-07T09:13:58.470345+01:00"
-														}
-													},
-													"uid" : {
-														"__type" : "uid",
-														"uidString" : "htgTuKyyDQChX5a/A2fN+Q=="
-													},
-													"paragraphStyle" : {
-														"__type" : "textStyle"
-													},
-													"string" : "Trace view should show next statement, environment bindings and last output. "
-												},
-												{
-													"__type" : "textSnippet",
-													"children" : {
-														"__type" : "snippets",
-														"items" : [ ]
-													},
-													"createEmail" : {
-														"__type" : "email",
-														"emailString" : "<unknown>"
-													},
-													"createTime" : {
-														"__type" : "time",
-														"time" : {
-															"__type" : "dateAndTime",
 															"dateAndTimeString" : "2023-03-08T08:35:59.710918+01:00"
 														}
 													},
@@ -416,7 +379,7 @@
 														"__type" : "time",
 														"time" : {
 															"__type" : "dateAndTime",
-															"dateAndTimeString" : "2023-03-08T08:36:33.700658+01:00"
+															"dateAndTimeString" : "2023-03-08T09:47:46.977268+01:00"
 														}
 													},
 													"uid" : {
@@ -426,7 +389,7 @@
 													"paragraphStyle" : {
 														"__type" : "textStyle"
 													},
-													"string" : "{{gtTodo:label=Add environment print string}}"
+													"string" : "{{gtTodo:label=Add environment print string|completed=2023-03-08}}"
 												}
 											]
 										},
@@ -449,7 +412,7 @@
 											"__type" : "time",
 											"time" : {
 												"__type" : "dateAndTime",
-												"dateAndTimeString" : "2023-03-07T09:13:54.548419+01:00"
+												"dateAndTimeString" : "2023-03-08T09:47:41.806683+01:00"
 											}
 										},
 										"uid" : {
@@ -459,7 +422,7 @@
 										"paragraphStyle" : {
 											"__type" : "textStyle"
 										},
-										"string" : "{{gtTodo:label=Add a trace view showing changes between context states}}"
+										"string" : "{{gtTodo:label=Add a trace view showing changes between context states|completed=2023-03-08}}"
 									},
 									{
 										"__type" : "textSnippet",

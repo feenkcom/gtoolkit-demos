@@ -45,3 +45,8 @@ SPLWhileStatement >> stepInContext: aContext [
 				for: {self doPart.
 						self} asOrderedCollection)
 ]
+
+{ #category : #accessing }
+SPLWhileStatement >> summary [
+	^ 'while ', self expression printString
+]
