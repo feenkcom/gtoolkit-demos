@@ -1,3 +1,6 @@
+"
+I am the abstract superclass of SPL value nodes.
+"
 Class {
 	#name : #SPLValue,
 	#superclass : #SPLExpression,

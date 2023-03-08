@@ -1,3 +1,10 @@
+"
+I am a unary SPL expression.
+
+{{gtExample:name=SPLParserExamples>>#minus42}}
+
+{{gtExample:name=SPLParserExamples>>#notTrue}}
+"
 Class {
 	#name : #SPLUnary,
 	#superclass : #SPLOperatorExpression,

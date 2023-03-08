@@ -1,7 +1,7 @@
 "
 I am a Facade to facilitate parsing, running and stepping through SPL programs.
 
-SPL is a simple programming language designed by Timo Kehrer for his Compiler Construction course at the University of Bern.
+SPL is the toy language for the [compiler construction course](https://seg.inf.unibe.ch/teaching/current/cc/) at UniBE.
 The language has variables, expressions and statements, but no functions or classes.
 
 This package contains an implementation of the grammar, a parser that produces an AST, and an interpreter.

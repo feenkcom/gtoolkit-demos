@@ -1,3 +1,9 @@
+"
+I am an SPL declaration with initialization.
+
+{{gtExample:name=SPLParserExamples>>#varDeclWithInit}}
+
+"
 Class {
 	#name : #SPLInitializedDeclaration,
 	#superclass : #SPLDeclaration,

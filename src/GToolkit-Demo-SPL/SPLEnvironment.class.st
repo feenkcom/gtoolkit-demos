@@ -1,9 +1,13 @@
 "
 I keep track of the values of variables in a running SPL program.
+
 I am basically a wrapper around a Dictionary.
 I can be used to declare new variables, initialize or update them, and retrieve their values.
 
 See {{gtClass:name=SPLEnvironmentExamples}} for examples.
+
+Here is an example illustrating the API.{{gtExample:name=SPLEnvironmentExamples>>#envtWithInitializedVarXupdatedTo7}}
+
 "
 Class {
 	#name : #SPLEnvironment,

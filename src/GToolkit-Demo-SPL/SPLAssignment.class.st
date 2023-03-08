@@ -1,3 +1,8 @@
+"
+I am an assignment expression node.
+
+{{gtExample:name=SPLParserExamples>>#cascadedAssignment}}
+"
 Class {
 	#name : #SPLAssignment,
 	#superclass : #SPLExpression,

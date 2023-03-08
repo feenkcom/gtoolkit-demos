@@ -1,3 +1,10 @@
+"
+I represent a while statement with a condition and a while block.
+
+{{gtExample:name=SPLParserExamples>>#whileStmt}}
+
+
+"
 Class {
 	#name : #SPLWhileStatement,
 	#superclass : #SPLConditionStatement,

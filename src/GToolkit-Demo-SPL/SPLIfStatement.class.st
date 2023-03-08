@@ -1,3 +1,9 @@
+"
+I am an if statement with a then block but no else block.
+
+{{gtExample:name=SPLParserExamples>>#ifNoElseStmt}} 
+
+"
 Class {
 	#name : #SPLIfStatement,
 	#superclass : #SPLConditionStatement,

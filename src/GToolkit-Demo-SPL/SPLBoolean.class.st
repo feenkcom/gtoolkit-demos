@@ -1,3 +1,8 @@
+"
+I am an SPL Boolean value.
+
+{{gtExample:name=SPLParserExamples>>#true}}
+"
 Class {
 	#name : #SPLBoolean,
 	#superclass : #SPLValue,

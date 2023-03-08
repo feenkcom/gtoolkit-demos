@@ -1,3 +1,10 @@
+"
+I represent an SPL variable (AKA identifier).
+
+I can be bound to an SPL value within an {{gtClass:name=SPLEnvironment}}.
+
+{{gtExample:name=SPLParserExamples>>#orbeAsIdentifier}}
+"
 Class {
 	#name : #SPLVariable,
 	#superclass : #SPLExpression,

@@ -1,5 +1,5 @@
 "
-I provide some examples of how to use the SPL facade.
+I provide some examples of how to use the SPL facade. These examples are used in the {{gtClass:name=SPL}}  class comment.
 "
 Class {
 	#name : #SPLUsageExamples,

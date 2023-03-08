@@ -1,3 +1,10 @@
+"
+I am a print statement that can print any SPL value.
+
+{{gtExample:name=SPLParserExamples>>#printStmt}}
+
+
+"
 Class {
 	#name : #SPLPrintStatement,
 	#superclass : #SPLAbstractExpressionStatement,

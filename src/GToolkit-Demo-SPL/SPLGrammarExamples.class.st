@@ -1,5 +1,8 @@
 "
 I provide examples to test the SPL grammar class.
+
+In general, the examples check that a given program fragment is successfully parsed by certain parser rules (parsers), and not others.
+For example: {{gtExample:name=SPLGrammarExamples>>#complexExpressionStmt}}
 "
 Class {
 	#name : #SPLGrammarExamples,

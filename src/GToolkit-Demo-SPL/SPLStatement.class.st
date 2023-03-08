@@ -1,3 +1,7 @@
+"
+I am the abstract superclass of SPL statement nodes.
+
+"
 Class {
 	#name : #SPLStatement,
 	#superclass : #SPLNode,

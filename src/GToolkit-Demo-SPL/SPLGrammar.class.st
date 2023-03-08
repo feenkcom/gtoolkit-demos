@@ -1,7 +1,10 @@
 "
 SPL is the toy language for the [compiler construction course](https://seg.inf.unibe.ch/teaching/current/cc/) at UniBE.
+
 I demonstrate a PetitParser implementation of the grammar.
 My subclasses implement actions.
+
+See {{gtClass:name=SPLGrammarExamples}} for examples of all the parser rules.
 "
 Class {
 	#name : #SPLGrammar,

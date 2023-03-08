@@ -1,6 +1,10 @@
 "
 I provide examples of executing SPL programs, using {{gtClass:name=SPLContext}}.
 
+Most of my examples test that an interpreted code fragment returns a particular result.
+
+For example:
+{{gtExample:name=SPLContextExamples>>#printHello}}
 "
 Class {
 	#name : #SPLContextExamples,
@@ -365,6 +369,14 @@ SPLContextExamples >> programWithComments [
 	self
 		assert: context output allButLast
 		equals: 'hello world'.
+	^ context
+]
+
+{ #category : #example }
+SPLContextExamples >> splContextUsage [
+	<gtExample>
+	| context |
+	context := (SPLParser parse: 'print "hello";') asContext.
 	^ context
 ]
 

@@ -1,3 +1,10 @@
+"
+I am an SPL block statement, containing zero or more other statements.
+
+{{gtExample:name=SPLParserExamples>>#complexExpressionStmt}}
+
+
+"
 Class {
 	#name : #SPLBlockStatement,
 	#superclass : #SPLStatement,
