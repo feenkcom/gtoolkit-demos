@@ -51,6 +51,16 @@ SPL class >> examples [
 	^ GtExplicitExampleGroup withAll: self package gtExamplesAllContained
 ]
 
+{ #category : #example }
+SPL class >> factorial [
+	^ SPL contextFor: SPLContextExamples new factorialSource
+]
+
+{ #category : #example }
+SPL class >> fibonacci [
+	^ SPL contextFor: SPLGrammarExamples new fibonacciSource
+]
+
 { #category : #parsing }
 SPL class >> grammarCheck: anSPLProgram [
 	^ self grammarClass parse: anSPLProgram
@@ -59,6 +69,12 @@ SPL class >> grammarCheck: anSPLProgram [
 { #category : #constants }
 SPL class >> grammarClass [
 	^ SPLGrammar
+]
+
+{ #category : #example }
+SPL class >> helloWorld [
+	^  SPL contextFor: '// Hello world in SPL
+print "Hello world!";'
 ]
 
 { #category : #parsing }

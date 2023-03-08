@@ -108,6 +108,19 @@ SPLEnvironment >> postCopy [
 ]
 
 { #category : #accessing }
+SPLEnvironment >> printOn: aStream [
+	aStream nextPut: ${.
+	variables
+		associationsDo: [ :assoc | 
+			aStream
+				print: assoc key;
+				nextPut: $=;
+				print: assoc value;
+				nextPut: $; ].
+	aStream nextPut: $}
+]
+
+{ #category : #accessing }
 SPLEnvironment >> setVariable: aVariable to: aValue [
 	self assert: aVariable isSPLNode.
 	self assert: aVariable isSPLVariable.
