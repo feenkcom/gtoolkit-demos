@@ -17,11 +17,11 @@ The state of a running program consists of three parts:
 (3) the output stream.
 The state of a program is managed by an instance of {{gtClass:name=SPLContext}}.
 
-See {{gtClass:name=SPLExamples}} for examples of running programs.
+See {{gtClass:name=SPLUsageExamples}} for examples of running programs.
 
-To parse and interpret a program , use `SPL>>#run:`.  {{gtExample:name=SPLExamples>>run}}
+To parse and interpret a program , use `SPL>>#run:`.  {{gtExample:name=SPLUsageExamples>>run}}
 
-To step through a program, inspect the result of `SPL>>#contextFor:`. {{gtExample:name=SPLExamples>>#context}}
+To step through a program, inspect the result of `SPL>>#contextFor:`. {{gtExample:name=SPLUsageExamples>>#context}}
 
 Then use `self step` to step through the execution, or `self reduce` to run to the end.
 "
