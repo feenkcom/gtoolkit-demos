@@ -1,6 +1,8 @@
 Class {
 	#name : #GtTour,
 	#superclass : #Object,
+	#traits : 'TGtSlideShow',
+	#classTraits : 'TGtSlideShow classTrait',
 	#category : #'GToolkit-Demo-MoldableDevelopment'
 }
 
@@ -423,7 +425,7 @@ container addChild: inspectorContainer.
 
 { #category : #accessing }
 GtTour >> feenkNameSlideFor: aSlide [
-	<gtSlide>
+"	<gtSlide>"
 	^ aSlide element
 		priority: 1.1;
 		element: [| form |
@@ -892,10 +894,10 @@ GtTour >> timelineExplanationSlideFor: aSlide [
 		priority: 5;
 		element: [ self timelineElement margin: (BlInsets left: 50 right: 50) ];
 		elementWeight: 0.6;
-		newText: 'Glamorous Toolkit is the moldable development environment.';
+		newText: 'Glamorous Toolkit is the Moldable Development environment.';
 		newText: 'It is a live notebook. It is a flexible search interface. It is a fancy code editor. It is a software analysis platform. It is a data visualization engine. All in one. It is built in Pharo and it is free and open-source under an MIT license.';
-		newText: 'What is moldable development? A new paradigm that promotes the idea that developers should explain their systems through the lens of custom tools that they create while developing the system.';
-		newText: 'But, let''s take it step by step.'.
+		newText: 'What is Moldable Development? A way of programming that promotes the idea that developers should explain their systems through the lens of custom tools that they create while developing the system.';
+		newText: 'Let''s take it step by step.'.
 ]
 
 { #category : #accessing }
