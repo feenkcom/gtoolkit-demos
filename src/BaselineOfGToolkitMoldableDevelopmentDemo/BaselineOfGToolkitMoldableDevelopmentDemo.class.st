@@ -4,15 +4,14 @@ Class {
 	#category : #BaselineOfGToolkitMoldableDevelopmentDemo
 }
 
-{ #category : #baselines }
+{ #category : #baseline }
 BaselineOfGToolkitMoldableDevelopmentDemo >> baseline: spec [
 	<baseline>
-	spec
-		for: #common
-		do: [ spec
-				baseline: 'GToolkitPresenter'
-				with: [ spec repository: 'github://feenkcom/gtoolkit-presenter:main/src' ].
-			spec
-				package: 'GToolkit-Demo-MoldableDevelopment'
-				with: [ spec includes: #(GToolkitPresenter) ] ]
+	spec for: #'common' do: [
+		spec
+			baseline: 'GToolkitPresenter' with: [
+				spec repository: 'github://feenkcom/gtoolkit-presenter:v0.8.1173/src' ].
+
+		spec package: 'GToolkit-Demo-MoldableDevelopment'.
+	]
 ]
