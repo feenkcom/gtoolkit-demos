@@ -8,11 +8,6 @@ Class {
 }
 
 { #category : #testing }
-SPLExpression >> isNil [
-	^ false
-]
-
-{ #category : #testing }
 SPLExpression >> isSPLBoolean [
 	^ false
 ]

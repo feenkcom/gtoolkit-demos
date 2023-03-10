@@ -13,9 +13,7 @@ BaselineOfGToolkitDemoSPL >> baseline: spec [
 				baseline: 'GToolkitPhlow'
 					with: [ spec repository: 'github://feenkcom/gtoolkit-phlow:main/src' ];
 				baseline: 'GToolkit4PetitParser2'
-					with: [ spec repository: 'github://feenkcom/gt4petitparser2:main/src'	";
-				baseline: 'PetitParser2Core'
-					with: [ spec repository: 'github://kursjan/petitparser2:master'" ].
+					with: [ spec repository: 'github://feenkcom/gt4petitparser2:main/src' ].
 			spec
 				package: 'GToolkit-Demo-SPL'
 				with: [ spec requires: #('GToolkitPhlow' 'GToolkit4PetitParser2') ] ]
