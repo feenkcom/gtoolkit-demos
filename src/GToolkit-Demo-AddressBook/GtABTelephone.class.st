@@ -52,7 +52,7 @@ GtABTelephone >> gtSpotterForContactsFor: aSearch [
 	^ aSearch list
 		priority: 10;
 		title: 'Contacts';
-		candidatesLimit: Float infinity;
+		itemsLimit: Float infinity;
 		items: [ aSearch previousStep origin contactsWithTelephone: self number ];
 		matchSubstring
 ]

@@ -50,7 +50,7 @@ GtABAddress >> gtSpotterForPeopleFor: aSearch [
 		title: 'People';
 		itemName: [ :contact | contact fullName ];
 		items: [ aSearch previousStep origin contactsWithAddress: self ];
-		candidatesLimit: 10;
+		itemsLimit: 10;
 		matchSubstrings
 ]
 
