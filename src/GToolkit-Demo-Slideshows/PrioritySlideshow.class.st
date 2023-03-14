@@ -40,6 +40,13 @@ PrioritySlideshow >> asBigText: aString [
 ]
 
 { #category : #text }
+PrioritySlideshow >> asCode: aString [
+	^ (aString asRopedText)
+		glamorousMonospace;
+		fontSize: 20
+]
+
+{ #category : #text }
 PrioritySlideshow >> asHeader: aString [
 	^ (aString asRopedText)
 		glamorousRegularFont;
