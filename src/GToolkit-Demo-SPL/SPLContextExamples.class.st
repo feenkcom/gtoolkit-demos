@@ -196,6 +196,17 @@ SPLContextExamples >> expressionStatement [
 ]
 
 { #category : #example }
+SPLContextExamples >> factorial [
+	<gtExample>
+	| result context |
+	context := self context: self factorialSource.
+	result := context.
+	result := context reduce.
+	self assert: context output allButLast equals: '120'.
+	^ context
+]
+
+{ #category : #example }
 SPLContextExamples >> factorialSource [
 <gtExample>
 ^ '// Factorial in SPL -- computes the factorial of arg
@@ -207,17 +218,6 @@ while (x>0) {
 	x = x - 1;
 }
 print fact;'
-]
-
-{ #category : #example }
-SPLContextExamples >> factorialWithWhileStatement [
-	<gtExample>
-	| result context |
-	context := self context: self factorialSource.
-	result := context.
-	result := context reduce.
-	self assert: context output allButLast equals: '120'.
-	^ context
 ]
 
 { #category : #example }

@@ -103,6 +103,11 @@ SPLEnvironment >> isEmpty [
 	^ self variables isEmpty
 ]
 
+{ #category : #accessing }
+SPLEnvironment >> notEmpty [
+	^ self variables notEmpty
+]
+
 { #category : #copying }
 SPLEnvironment >> postCopy [
 	super postCopy.
