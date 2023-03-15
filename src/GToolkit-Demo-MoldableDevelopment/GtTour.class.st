@@ -1,3 +1,9 @@
+"
+```
+GtPresenterSlideShow openInSpace: GtTour
+```
+
+"
 Class {
 	#name : #GtTour,
 	#superclass : #Object,

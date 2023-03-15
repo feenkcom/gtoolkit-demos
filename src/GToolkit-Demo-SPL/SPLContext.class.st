@@ -181,6 +181,11 @@ SPLContext >> gtHistoryFor: aView [
 		title: 'History';
 		priority: 60;
 		items: [ self trace ];
+		column: 'Index' 
+			text: [ :eachItem :eachIndex | 
+				eachIndex asRopedText foreground: Color gray ]
+			width: 45;
+
 		column: 'Next statement'
 			text: [ :aContext | 
 				aContext continuation statements

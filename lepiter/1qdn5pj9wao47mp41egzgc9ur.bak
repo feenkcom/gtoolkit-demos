@@ -55,77 +55,6 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-03-02T11:38:21.443178+01:00"
-					}
-				},
-				"editEmail" : {
-					"__type" : "email",
-					"emailString" : "<unknown>"
-				},
-				"editTime" : {
-					"__type" : "time",
-					"time" : {
-						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-03-02T11:38:23.177866+01:00"
-					}
-				},
-				"uid" : {
-					"__type" : "uid",
-					"uidString" : "mG3+KUqyDQCmymZXD6pEHQ=="
-				},
-				"paragraphStyle" : {
-					"__type" : "textStyle"
-				},
-				"string" : "#Parser"
-			},
-			{
-				"__type" : "pharoSnippet",
-				"children" : {
-					"__type" : "snippets",
-					"items" : [ ]
-				},
-				"createEmail" : {
-					"__type" : "email",
-					"emailString" : "<unknown>"
-				},
-				"createTime" : {
-					"__type" : "time",
-					"time" : {
-						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-03-03T11:37:02.224837+01:00"
-					}
-				},
-				"editEmail" : {
-					"__type" : "email",
-					"emailString" : "<unknown>"
-				},
-				"editTime" : {
-					"__type" : "time",
-					"time" : {
-						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-03-03T11:37:02.789326+01:00"
-					}
-				},
-				"uid" : {
-					"__type" : "uid",
-					"uidString" : "kbpAQ16yDQCcdztoA0uaBg=="
-				},
-				"code" : "parent := thisSnippet parent.\rparent isPage\r\tifFalse: [ [ parent children notEmpty ] whileTrue: [ parent children last unindent ] ]"
-			},
-			{
-				"__type" : "textSnippet",
-				"children" : {
-					"__type" : "snippets",
-					"items" : [ ]
-				},
-				"createEmail" : {
-					"__type" : "email",
-					"emailString" : "<unknown>"
-				},
-				"createTime" : {
-					"__type" : "time",
-					"time" : {
-						"__type" : "dateAndTime",
 						"dateAndTimeString" : "2023-03-02T11:38:31.075318+01:00"
 					}
 				},
@@ -137,7 +66,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-03-02T11:44:04.693676+01:00"
+						"dateAndTimeString" : "2023-03-14T16:18:01.141172+01:00"
 					}
 				},
 				"uid" : {
@@ -147,7 +76,7 @@
 				"paragraphStyle" : {
 					"__type" : "textStyle"
 				},
-				"string" : "For the parser we directly tarnscribe the grammar into PP rules as far as possible."
+				"string" : "For the parser we directly transcribe the grammar into PP rules as far as possible."
 			},
 			{
 				"__type" : "textSnippet",
@@ -801,14 +730,14 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-03-02T14:00:09.45809+01:00"
+						"dateAndTimeString" : "2023-03-14T17:29:09.097988+01:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
 					"uidString" : "AEVfI0yyDQCcqEQLDiUNuQ=="
 				},
-				"code" : "term parse: '1+2'"
+				"code" : "term end parse: '1++2'"
 			},
 			{
 				"__type" : "pharoSnippet",

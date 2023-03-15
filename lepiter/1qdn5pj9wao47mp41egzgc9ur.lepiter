@@ -66,7 +66,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-03-02T11:44:04.693676+01:00"
+						"dateAndTimeString" : "2023-03-14T16:18:01.141172+01:00"
 					}
 				},
 				"uid" : {
@@ -76,7 +76,7 @@
 				"paragraphStyle" : {
 					"__type" : "textStyle"
 				},
-				"string" : "For the parser we directly tarnscribe the grammar into PP rules as far as possible."
+				"string" : "For the parser we directly transcribe the grammar into PP rules as far as possible."
 			},
 			{
 				"__type" : "textSnippet",
@@ -730,14 +730,14 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-03-02T14:00:09.45809+01:00"
+						"dateAndTimeString" : "2023-03-14T17:29:31.450982+01:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
 					"uidString" : "AEVfI0yyDQCcqEQLDiUNuQ=="
 				},
-				"code" : "term parse: '1+2'"
+				"code" : "term end parse: '1+2'"
 			},
 			{
 				"__type" : "pharoSnippet",
