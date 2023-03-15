@@ -11,7 +11,38 @@ Class {
 SPLCaseStudyExamples >> print3plus4 [
 	<gtExample>
 	| context |
-	context := self context: 'val helloString; hello = "hello"; print helloString;'.
+	context := self context: 'print 3+4;'.
+	self assert: context output isEmpty.
+	^ context
+]
+
+{ #category : #accessing }
+SPLCaseStudyExamples >> print3plus4step1 [
+	<gtExample>
+	| context |
+	context := self print3plus4.
+	context step.
+	self assert: context output isEmpty.
+	^ context
+]
+
+{ #category : #accessing }
+SPLCaseStudyExamples >> print3plus4step2 [
+	<gtExample>
+	| context |
+	context := self print3plus4step1.
+	context step.
+	self assert: context output allButLast equals: '7'.
+	^ context
+]
+
+{ #category : #accessing }
+SPLCaseStudyExamples >> print3plus4step3 [
+	<gtExample>
+	| context |
+	context := self print3plus4step2.
+	context step.
+	self assert: context continuation isReduced.
 	^ context
 ]
 
