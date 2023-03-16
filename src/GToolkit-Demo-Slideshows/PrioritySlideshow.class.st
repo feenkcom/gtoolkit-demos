@@ -41,9 +41,9 @@ PrioritySlideshow >> asBigText: aString [
 
 { #category : #text }
 PrioritySlideshow >> asCode: aString [
-	^ (aString asRopedText)
+	^ aString asRopedText
 		glamorousMonospace;
-		fontSize: 20
+		fontSize: self codeAndTextSize
 ]
 
 { #category : #text }
@@ -66,7 +66,7 @@ PrioritySlideshow >> asSubtitle: aString [
 PrioritySlideshow >> asText: aString [
 	^ (aString asRopedText)
 		glamorousRegularFont;
-		fontSize: 30
+		fontSize: self codeAndTextSize
 ]
 
 { #category : #text }
@@ -75,6 +75,11 @@ PrioritySlideshow >> asTitle: aString [
 		glamorousRegularFont;
 		bold;
 		fontSize: 70
+]
+
+{ #category : #constant }
+PrioritySlideshow >> codeAndTextSize [
+	^ 30
 ]
 
 { #category : #text }
