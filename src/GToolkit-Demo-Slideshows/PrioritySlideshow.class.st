@@ -11,7 +11,7 @@ There are also numerous convenience methods, such as `asTitle:`.
 Class {
 	#name : #PrioritySlideshow,
 	#superclass : #Object,
-	#category : #'GToolkit-Demo-Slideshows-GToolkit-Demo-Slideshows'
+	#category : #'GToolkit-Demo-Slideshows-Slideshows'
 }
 
 { #category : #utility }
@@ -87,6 +87,25 @@ PrioritySlideshow >> cr [
 	"Useful when gluing together text snippets with asHeader and asText."
 
 	^ String cr asRopedText
+]
+
+{ #category : #utility }
+PrioritySlideshow >> ensureEmptyPageNamed: aPageName [
+	| page |
+	page := self ensurePageNamed: aPageName.
+	[ page children notEmpty ]
+		whileTrue: [ page removeSnippet: page children last ].
+	^ page
+]
+
+{ #category : #utility }
+PrioritySlideshow >> ensurePageNamed: aPageName [
+	| database |
+	database := LeDatabasesRegistry default currentLoadedDefaultLogicalDatabase
+			databaseNamed: self myLepiterDB.
+	(database hasPageNamed: aPageName)
+		ifFalse: [ database addPage: (LePage named: aPageName) ].
+	^ database pageNamed: aPageName
 ]
 
 { #category : #constants }
