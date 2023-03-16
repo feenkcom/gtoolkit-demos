@@ -135,6 +135,40 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2023-03-16T14:03:07.301664+01:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2023-03-16T14:03:39.477495+01:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "fRGh0WWzDQC9/Zs+Bd+JmQ=="
+							},
+							"code" : "BlGlutinHostSpace zoomFactor: 1.5."
+						},
+						{
+							"__type" : "pharoSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
 									"dateAndTimeString" : "2023-03-16T09:27:15.343412+01:00"
 								}
 							},
@@ -223,6 +257,43 @@
 							"uid" : {
 								"__type" : "uid",
 								"uidString" : "ZfQlA2GzDQC4FLHBAm7RDA=="
+							},
+							"paragraphStyle" : {
+								"__type" : "textStyle"
+							},
+							"string" : ""
+						},
+						{
+							"__type" : "textSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2023-03-16T12:13:30.092234+01:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2023-03-16T12:13:30.092234+01:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "fc2YSWSzDQCVDRoRDSgVZA=="
 							},
 							"paragraphStyle" : {
 								"__type" : "textStyle"
@@ -477,7 +548,7 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-03-16T12:13:14.775375+01:00"
+									"dateAndTimeString" : "2023-03-16T12:13:17.089436+01:00"
 								}
 							},
 							"uid" : {
@@ -487,7 +558,7 @@
 							"paragraphStyle" : {
 								"__type" : "textStyle"
 							},
-							"string" : "S"
+							"string" : "Slides to do"
 						}
 					]
 				},

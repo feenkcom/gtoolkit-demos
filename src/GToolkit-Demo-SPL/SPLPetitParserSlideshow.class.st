@@ -13,13 +13,45 @@ SPLPetitParserSlideshow class >> show [
 	super show
 ]
 
+{ #category : #accessing }
+SPLPetitParserSlideshow >> asSmallCode: aString [
+	^ aString asRopedText
+		glamorousMonospace;
+		fontSize: 20
+]
+
 { #category : #slides }
 SPLPetitParserSlideshow >> debuggingParsers: aSlide [
 	<gtSlide>
-	^ aSlide headingAndCode
+	self initDebuggingParsersPage.
+	^ aSlide lepiterPage
 		priority: (self priorityFor: #debuggingParsers:);
-		heading: 'What is PetitParser?'
+		pageNamed: 'Debugging parsers' from: self myLepiterDB
 
+]
+
+{ #category : #slides }
+SPLPetitParserSlideshow >> initDebuggingParsersPage [
+	<gtExample>
+	<noTest>
+	| pageName page |
+	pageName := 'Debugging parsers'.
+	page := self ensureEmptyPageNamed: pageName.
+	^ page
+		addSnippet: (LeTextSnippet new
+				string: 'The following parser fails to parse the print statement.';
+				yourself);
+		addSnippet: (LeTextSnippet new
+				string: 'We can debug it by inspecting the error, and stepping through the execution trace.';
+				yourself);
+		addSnippet: (LePharoSnippet new
+				code: 'string := $" asPParser , $" asPParser negate plus , $" asPParser.
+
+printStmt := ''print'' asPParser , string , $; asPParser trim.
+
+printStmt end parse: ''print "hello";''.';
+				yourself);
+		yourself
 ]
 
 { #category : #slides }
@@ -179,10 +211,11 @@ SPLPetitParserSlideshow >> splGrammar: aSlide [
 	<gtSlide>
 	^ aSlide text
 		horizontalWeight: 1;
+		textMargin: 10;
 		priority: (self priorityFor: #splGrammar:);
 		newTextWithFormat: (self asHeader: 'SPL Grammar');
 		newTextWithFormat: (self
-				asCode: 'program        := declaration* EOF ;
+				asSmallCode: 'program        := declaration* EOF ;
 declaration    := varDecl
                | statement ;
 varDecl        := "var" IDENTIFIER ( "=" expression )? ";" ;
