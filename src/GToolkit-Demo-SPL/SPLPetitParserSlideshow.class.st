@@ -13,22 +13,60 @@ SPLPetitParserSlideshow class >> show [
 	super show
 ]
 
+{ #category : #slides }
+SPLPetitParserSlideshow >> parsingTokens: aSlide [
+	<gtSlide>
+	^ aSlide headingAndCode
+		priority: (self priorityFor: #parsingTokens:);
+		heading: 'What is PetitParser?';
+		addTextSnippet: 'PetitParser models parsers as composable objects.';
+		addCodeSnippet: 'number := #digit asPParser plus  token
+	==> [ :token | token  value asNumber ].
+
+addition := (number , $+ asPParser  , number)
+	==> [ :nodes | nodes first + nodes last ].
+
+addition parse: ''3+4'''
+]
+
 { #category : #accessing }
 SPLPetitParserSlideshow >> slidePriorities [
 	"Instead of manually setting priorities, just list the slides in order here."
 	<gtExample>
 	^ #( 
 		titleSlideFor:
-		whatIsPP2:
+		whatIsPP:
 		splGrammar:
+		splExample:
+		parsingTokens:
+	)
+]
 
-		)
+{ #category : #slides }
+SPLPetitParserSlideshow >> splExample: aSlide [
+	<gtSlide>
+	^ aSlide text
+		horizontalWeight: 1;
+		priority: (self priorityFor: #splExample:);
+		newTextWithFormat: (self asText: 'SPL is a minimal language with variables, expressions, if, while and print statements, but no procedures or classes.');
+		newTextWithFormat: (self
+				asCode: '// Factorial in SPL -- computes the factorial of arg
+var arg=5;
+var x=arg;
+var fact=1;
+while (x>0) {
+	fact = fact * x;
+	x = x - 1;
+}
+print fact;
+')
 ]
 
 { #category : #slides }
 SPLPetitParserSlideshow >> splGrammar: aSlide [
 	<gtSlide>
 	^ aSlide text
+		horizontalWeight: 1;
 		priority: (self priorityFor: #splGrammar:);
 		newTextWithFormat: (self asHeader: 'SPL Grammar');
 		newTextWithFormat: (self
@@ -75,21 +113,17 @@ SPLPetitParserSlideshow >> titleSlideFor: aSlide [
 ]
 
 { #category : #slides }
-SPLPetitParserSlideshow >> whatIsPP2: aSlide [
+SPLPetitParserSlideshow >> whatIsPP: aSlide [
 	<gtSlide>
 	^ aSlide headingAndCode
-		priority: (self priorityFor: #whatIsPP2:);
-		heading: 'What is PetitParser2?';
-		
-		addTextSnippet: 'xxx';
-		
-		addCodeSnippet: 'integer := $- asPParser optional , #digit asPParser plus , $. asPParser not.';
-		
-		
-		
-		addCodeSnippet: '
+		priority: (self priorityFor: #whatIsPP:);
+		heading: 'What is PetitParser?';
+		addTextSnippet: 'PetitParser models parsers as composable objects.';
+		addCodeSnippet: 'number := #digit asPParser plus  token
+	==> [ :token | token  value asNumber ].
 
-float := $- asPParser optional , #digit asPParser plus , $. asPParser
-		, #digit asPParser plus.
-number := integer / float.'
+addition := (number , $+ asPParser  , number)
+	==> [ :nodes | nodes first + nodes last ].
+
+addition parse: ''3+4'''
 ]

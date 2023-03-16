@@ -77,6 +77,13 @@ PrioritySlideshow >> asTitle: aString [
 		fontSize: 70
 ]
 
+{ #category : #text }
+PrioritySlideshow >> cr [
+	"Useful when gluing together text snippets with asHeader and asText."
+
+	^ String cr asRopedText
+]
+
 { #category : #constants }
 PrioritySlideshow >> gtBook [
 	^ 'Glamorous Toolkit Book'
