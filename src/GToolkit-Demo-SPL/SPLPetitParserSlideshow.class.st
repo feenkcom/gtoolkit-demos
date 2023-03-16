@@ -21,23 +21,124 @@ SPLPetitParserSlideshow >> asSmallCode: aString [
 ]
 
 { #category : #slides }
-SPLPetitParserSlideshow >> debuggingParsers: aSlide [
+SPLPetitParserSlideshow >> buildingTheAST: aSlide [
 	<gtSlide>
-	self initDebuggingParsersPage.
 	^ aSlide lepiterPage
-		priority: (self priorityFor: #debuggingParsers:);
-		pageNamed: 'Debugging parsers' from: self myLepiterDB
+		priority: (self priorityFor: #buildingTheAST:);
+		startPage: self buildingTheASTPage
 
 ]
 
-{ #category : #slides }
-SPLPetitParserSlideshow >> initDebuggingParsersPage [
+{ #category : #page }
+SPLPetitParserSlideshow >> buildingTheASTPage [
 	<gtExample>
 	<noTest>
-	| pageName page |
-	pageName := 'Debugging parsers'.
-	page := self ensureEmptyPageNamed: pageName.
-	^ page
+	^ (LePage named: 'Building the AST with parser actions')
+		addSnippet: (LeTextSnippet new
+				string: 'The current parser, {{gtClass:name=SPLGrammar}}, just recognizes the grammar, but does nothing with it.';
+				yourself);
+		addSnippet: (LeTextSnippet new
+				string: 'We define a subclass, {{gtClass:name=SPLParser}}, that builds AST nodes.';
+				yourself);
+		addSnippet: (LeTextSnippet new
+				string: 'Actions are specified with the `==>` operation, like this, where we build a {{gtClass:name=SPLPrintStatement}} node for a `print` statement in {{gtMethod:name=SPLParser>>#printStmt|expanded}}';
+				yourself);
+		addSnippet: (LeTextSnippet new
+				string: 'Note that we only want the second part ofthe node that has been parsed by the inherited production, namely the expression.';
+				yourself);
+		addSnippet: (LeTextSnippet new
+				string: 'All the rules look like this.';
+				yourself);
+		addSnippet: (LePharoSnippet new
+				code: 'SPLParser new printStmt parse: ''print "hello";''.';
+				yourself);
+		yourself
+]
+
+{ #category : #slides }
+SPLPetitParserSlideshow >> classExtraction: aSlide [
+	<gtSlide>
+	^ aSlide lepiterPage
+		priority: (self priorityFor: #classExtraction:);
+		startPage: self classExtractionPage
+
+]
+
+{ #category : #page }
+SPLPetitParserSlideshow >> classExtractionPage [
+	<gtExample>
+	<noTest>
+	^ (LePage named: 'Extracting a parser class')
+		addSnippet: (LeTextSnippet new
+				string: 'At some point to continue developing the parser, it should be turned into a class, so we can write tests and deploy the parser.';
+				yourself);
+		addSnippet: (LeTextSnippet new
+				string: 'The class can be extracted automatically. First we initailiuze any recursive productions.';
+				yourself);
+		addSnippet: (LePharoSnippet new
+				code: 'expression := PP2UnresolvedNode new.';
+				yourself);
+		addSnippet: (LeTextSnippet new
+				string: 'We create a snippet that contains *only* definitions of rules, with no reference to outside classes or variables.';
+				yourself);
+		addSnippet: (LePharoSnippet new
+				code: 'boolean := ''true'' asPParser trim / ''false'' asPParser trim.
+integer := #digit asPParser plus , $. asPParser not trim.
+float := $- asPParser optional , #digit asPParser plus , $. asPParser
+		, #digit asPParser plus trim.
+number := integer / float.
+parenthesizedExpression := $( asPParser trim , expression , $) asPParser trim.
+primary := parenthesizedExpression / boolean / number.
+factor := primary , ($/ asPParser trim / $* asPParser trim , primary) star.
+term := factor , (''-'' asPParser trim / ''+'' asPParser trim , factor) star.
+expression := term.
+exprStmt := expression , $; asPParser trim.
+program := exprStmt star end.';
+				yourself);
+		addSnippet: (LeTextSnippet new
+				string: 'We extract the class and test it.';
+				yourself);
+		addSnippet: (LePharoSnippet new
+				code: 'program parse: ''3+4*6;''';
+				yourself);
+		addSnippet: (LeTextSnippet new
+				string: 'Note that the resulting parser class is a subclass of {{gtClass:name=PP2CompositeNode}}, it has both a method and a slot for each production, and a `start` method is automatically generated.';
+				yourself);
+		yourself
+]
+
+{ #category : #slides }
+SPLPetitParserSlideshow >> coda: aSlide [
+	<gtSlide>
+	^ aSlide textAndElement
+		elementWeight: 0.5;
+		priority: (self priorityFor: #coda:);
+		newTextWithFormat: (self asHeader: 'Explore on your own ...') bold , self cr
+				, (self
+						asText: 'You can find the details by downloading GT from gtoolkit.com and visiting the “PetitParser SPL case study” page.');
+		element: [ | aLepiterBaseName aPageName database startPage |
+			aLepiterBaseName := 'Glamorous Toolkit Book'.
+			aPageName := 'PetitParser SPL case study'.
+			database := LeDatabasesRegistry default currentLoadedDefaultLogicalDatabase
+					databaseNamed: aLepiterBaseName.
+			startPage := database pageNamed: aPageName.
+			startPage asPreviewElement  ]
+]
+
+{ #category : #slides }
+SPLPetitParserSlideshow >> debuggingParsers: aSlide [
+	<gtSlide>
+	^ aSlide lepiterPage
+		priority: (self priorityFor: #debuggingParsers:);
+		startPage: self debuggingParsersPage
+
+]
+
+{ #category : #page }
+SPLPetitParserSlideshow >> debuggingParsersPage [
+	<gtExample>
+	<noTest>
+	^ (LePage named: 'Debugging parsers')
 		addSnippet: (LeTextSnippet new
 				string: 'The following parser fails to parse the print statement.';
 				yourself);
@@ -50,6 +151,32 @@ SPLPetitParserSlideshow >> initDebuggingParsersPage [
 printStmt := ''print'' asPParser , string , $; asPParser trim.
 
 printStmt end parse: ''print "hello";''.';
+				yourself);
+		yourself
+]
+
+{ #category : #slides }
+SPLPetitParserSlideshow >> fibonacci: aSlide [
+	<gtSlide>
+	^ aSlide lepiterPage
+		priority: (self priorityFor: #fibonacci:);
+		startPage: self fibonacciPage
+
+]
+
+{ #category : #page }
+SPLPetitParserSlideshow >> fibonacciPage [
+	<gtExample>
+	<noTest>
+	^ (LePage named: 'Fibonacci in SPL')
+		addSnippet: (LeTextSnippet new
+				string: 'Here is a more complex example. Note especially how the `while` statement is reduced.';
+				yourself);
+		addSnippet: (LePharoSnippet new
+				code: 'SPL fibonacci';
+				yourself);
+		addSnippet: (LeTextSnippet new
+				string: 'Look at the history view to explore the reductions in detail.';
 				yourself);
 		yourself
 ]
@@ -161,6 +288,103 @@ SPLPetitParserSlideshow >> parsingTokens: aSlide [
 		newTextWithFormat: (self asText: 'PetitParser is a scannerless parser, so we introduce parsing expressions also for tokens.')
 ]
 
+{ #category : #slides }
+SPLPetitParserSlideshow >> partialGrammarScript: aSlide [
+	<gtSlide>
+	^ aSlide lepiterPage
+		priority: (self priorityFor: #partialGrammarScript:);
+		startPage: self partialGrammarScriptPage
+
+]
+
+{ #category : #page }
+SPLPetitParserSlideshow >> partialGrammarScriptPage [
+	<gtExample>
+	<noTest>
+	^ (LePage named: 'Prototyping the SPL grammar parser as a script')
+		addSnippet: (LeTextSnippet new
+				string: 'We iteratively prototype our parser as a script.';
+				yourself);
+		addSnippet: (LeTextSnippet new
+				string: 'Note that recursive productions, like `expression`, have to be initialized and then redefined.';
+				yourself);
+		addSnippet: (LePharoSnippet new
+				code: 'boolean := ''true'' asPParser trim / ''false'' asPParser trim.
+integer := #digit asPParser plus , $. asPParser not trim.
+float := $- asPParser optional , #digit asPParser plus , $. asPParser
+		, #digit asPParser plus trim.
+number := integer / float.
+
+"A recursive production must be initialized."
+expression := PP2UnresolvedNode new.
+
+parenthesizedExpression := $( asPParser trim , expression , $) asPParser trim.
+primary := parenthesizedExpression / boolean / number.
+factor := primary , ($/ asPParser trim / $* asPParser trim , primary) star.
+term := factor , (''-'' asPParser trim / ''+'' asPParser trim , factor) star.
+
+"Redefine the recursive production."
+expression def: term.
+
+exprStmt := expression , $; asPParser trim.
+program := exprStmt star end.
+
+"A simple test case."
+program parse: ''6 * (3 + 4);''.';
+				yourself);
+		yourself
+]
+
+{ #category : #slides }
+SPLPetitParserSlideshow >> runningAnSPLProgram: aSlide [
+	<gtSlide>
+	^ aSlide lepiterPage
+		priority: (self priorityFor: #runningAnSPLProgram:);
+		startPage: self runningAnSPLProgramPage
+
+]
+
+{ #category : #page }
+SPLPetitParserSlideshow >> runningAnSPLProgramPage [
+	<gtExample>
+	<noTest>
+	^ (LePage named: 'Running an SPL program')
+		addSnippet: (LeTextSnippet new
+				string: 'To run a program, we parse it, and then run it in a *context* that tracks (1) the executing code, (2) the environment, and (3) the output.';
+				yourself);
+		addSnippet: (LePharoSnippet new
+				code: 'SPLContext for: ''var x = 3; print x + 4;''.';
+				yourself);
+		addSnippet: (LeTextSnippet new
+				string: 'As we step through the execution, we see the code being *reduced* step by step, while the environment and output are updated.';
+				yourself);
+		addSnippet: (LeTextSnippet new
+				string: 'We can also see the history of all the states.';
+				yourself);
+		yourself
+]
+
+{ #category : #slides }
+SPLPetitParserSlideshow >> semanticsOfSPL: aSlide [
+	<gtSlide>
+	^ aSlide text
+		horizontalWeight: 1;
+		textMargin: 5;
+		priority: (self priorityFor: #semanticsOfSPL:);
+		newTextWithFormat: (self asHeader: 'SPL Semantics');
+		newTextWithFormat: (self asText: 'We use “small-step” ')
+				, (self asText: 'Structural Operational Semantics') italic
+				, (self
+						asText: ' to model the execution of an SPL program as a sequence of steps from one program state to the next.');
+		newTextWithFormat: (self asText: 'Every program state consists of three parts:');
+		newTextWithFormat: (self asText: '1.  The rest of the code') bold;
+		newTextWithFormat: (self asText: 'The list of statements left to be executed.');
+		newTextWithFormat: (self asText: '2. The environment') bold;
+		newTextWithFormat: (self asText: 'A dictionary of variables and values.');
+		newTextWithFormat: (self asText: '3. The output') bold;
+		newTextWithFormat: (self asText: 'The collection of printed output strings.')
+]
+
 { #category : #accessing }
 SPLPetitParserSlideshow >> slidePriorities [
 	"Instead of manually setting priorities, just list the slides in order here."
@@ -180,6 +404,20 @@ SPLPetitParserSlideshow >> slidePriorities [
 	
 		parsingGrammarRules:
 			debuggingParsers:
+		
+		partialGrammarScript:
+			classExtraction:
+			writingTests:
+		
+		buildingTheAST:
+			theASThierarchy:
+		
+		semanticsOfSPL:
+			runningAnSPLProgram:
+			fibonacci:
+		
+		coda:
+			
 	)
 ]
 
@@ -247,6 +485,35 @@ primary        := "true" | "false" | NUMBER | STRING
 ]
 
 { #category : #slides }
+SPLPetitParserSlideshow >> theASThierarchy: aSlide [
+	<gtSlide>
+	^ aSlide lepiterPage
+		priority: (self priorityFor: #theASThierarchy:);
+		startPage: self theASThierarchyPage
+
+]
+
+{ #category : #page }
+SPLPetitParserSlideshow >> theASThierarchyPage [
+	<gtExample>
+	<noTest>
+	^ (LePage named: 'The SPL AST hierarchy')
+		addSnippet: (LeTextSnippet new
+				string: 'The AST nodes form a hierarchy.';
+				yourself);
+		addSnippet: (LeExampleSnippet new
+				exampleBehaviorName: #SPLCaseStudyExamples;
+				exampleSelector: #splNodeHierarchy;
+				noCode: true;
+				previewShowSelector: #gtLiveFor:;
+				previewHeight: 700);
+		addSnippet: (LeTextSnippet new
+				string: 'Each node can handle pretty printing, and supports step-by-step interpretation.';
+				yourself);
+		yourself
+]
+
+{ #category : #slides }
 SPLPetitParserSlideshow >> titleSlideFor: aSlide [
 	<gtSlide>
 	
@@ -271,4 +538,29 @@ addition := (number , $+ asPParser  , number)
 	==> [ :nodes | nodes first + nodes last ].
 
 addition parse: ''3+4'''
+]
+
+{ #category : #slides }
+SPLPetitParserSlideshow >> writingTests: aSlide [
+	<gtSlide>
+	^ aSlide lepiterPage
+		priority: (self priorityFor: #writingTests:);
+		startPage: self writingTestsPage
+]
+
+{ #category : #page }
+SPLPetitParserSlideshow >> writingTestsPage [
+	<gtExample>
+	<noTest>
+	^ (LePage named: 'Writing parser tests')
+		addSnippet: (LeTextSnippet new
+				string: 'We write tests to verify that code snippets are correctly parsed by certain production rules and not others. ';
+				yourself);
+		addSnippet: (LeExampleSnippet new
+				exampleBehaviorName: #SPLGrammarExamples;
+				exampleSelector: #whileProgram);
+		addSnippet: (LeTextSnippet new
+				string: 'We check that this sample code is parsed as a `program`, and not as a `statement` or a `declaration`.';
+				yourself);
+		yourself
 ]

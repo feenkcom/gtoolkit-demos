@@ -13,13 +13,26 @@ DemoSlideshow class >> show [
 	super show
 ]
 
+{ #category : #accessing }
+DemoSlideshow >> dynamicLePage [
+	<gtExample>
+	<noTest>
+	^ (LePage named: 'Test page')
+		addSnippet: (LeTextSnippet new
+				string: 'This page is dynamically created.';
+				yourself);
+		addSnippet: (LePharoSnippet new
+				code: '''hello''';
+				yourself);
+		yourself
+]
+
 { #category : #slides }
 DemoSlideshow >> dynamicLepiterPage: aSlide [
 	<gtSlide>
-	self initDynamicLepiterPage.
 	^ aSlide lepiterPage
 		priority: (self priorityFor: #dynamicLepiterPage:);
-		pageNamed: 'Dynamic Lepiter Page' from: self myLepiterDB
+		startPage: self dynamicLePage
 ]
 
 { #category : #slides }
@@ -33,23 +46,6 @@ DemoSlideshow >> headingAndCode: aSlide [
 		
 		addCodeSnippet: '"Code to evaluate."
 3+4.'
-]
-
-{ #category : #accessing }
-DemoSlideshow >> initDynamicLepiterPage [
-	<gtExample>
-	<noTest>
-	| pageName page |
-	pageName := 'Dynamic Lepiter Page'.
-	page := self ensureEmptyPageNamed: pageName.
-	^ page
-		addSnippet: (LeTextSnippet new
-				string: 'This page is dynamically created.';
-				yourself);
-		addSnippet: (LePharoSnippet new
-				code: '''hello''';
-				yourself);
-		yourself
 ]
 
 { #category : #slides }
@@ -92,9 +88,23 @@ DemoSlideshow >> slidePriorities [
 		textAndElement:
 		paragraph:
 		lepiterPage:
-		dynamicLepiterPage:
+		#dynamicLepiterPage:
 		headingAndCode:
 	)
+]
+
+{ #category : #accessing }
+DemoSlideshow >> testLePage [
+	<gtExample>
+	<noTest>
+	^ (LePage named: 'Test page')
+		addSnippet: (LeTextSnippet new
+				string: 'This page is dynamically created.';
+				yourself);
+		addSnippet: (LePharoSnippet new
+				code: '''hello''';
+				yourself);
+		yourself
 ]
 
 { #category : #slides }
