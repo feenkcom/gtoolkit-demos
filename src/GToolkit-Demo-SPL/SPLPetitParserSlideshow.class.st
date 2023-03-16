@@ -152,6 +152,9 @@ printStmt := ''print'' asPParser , string , $; asPParser trim.
 
 printStmt end parse: ''print "hello";''.';
 				yourself);
+		addSnippet: (LeTextSnippet new
+				string: 'After debugging, we see that there is a whitespace `trim` missing ...';
+				yourself);
 		yourself
 ]
 
@@ -173,7 +176,7 @@ SPLPetitParserSlideshow >> fibonacciPage [
 				string: 'Here is a more complex example. Note especially how the `while` statement is reduced.';
 				yourself);
 		addSnippet: (LePharoSnippet new
-				code: 'SPL fibonacci';
+				code: 'SPL fibonacci.';
 				yourself);
 		addSnippet: (LeTextSnippet new
 				string: 'Look at the history view to explore the reductions in detail.';
@@ -206,7 +209,8 @@ SPLPetitParserSlideshow >> parsingGrammarRules: aSlide [
 		elementWeight: 0.3;
 		snippetPadding: 5;
 		addTextSnippet: 'We continue to implement parsers for declarations and statements.';
-		addTextSnippet: 'The `trim` operator is used to trim away whitespace. The `end` operator ensure that all the input is consumed.';
+		addTextSnippet: 'The `trim` operator is used to trim away whitespace.
+The `end` operator ensure that all the input is consumed.';
 		addCodeSnippet: 'string := $" asPParser , $" asPParser negate plus , $" asPParser.
 
 printStmt := ''print'' asPParser trim , string , $; asPParser trim.
@@ -221,8 +225,8 @@ SPLPetitParserSlideshow >> parsingIntegersAndFloats: aSlide [
 		priority: (self priorityFor: #parsingIntegersAndFloats:);
 		heading: 'Parsing Integers and Floats';
 		snippetPadding: 5;
-		addTextSnippet: 'Note the use of the `optional`  and `plus` operators.
-The `not` operator ensures no period follows an integer,
+		addTextSnippet: 'Note the use of the `optional`  and `plus` operators.';
+		addTextSnippet: 'The `not` operator ensures no period follows an integer,
 but no input will be consumed.';
 		addCodeSnippet: 'integer := $- asPParser optional ,
 		#digit asPParser plus , 
@@ -231,7 +235,8 @@ integer parse: ''42''.';
 		addTextSnippet: 'Floats are similar, but with a period.';
 		addCodeSnippet: 'float := $- asPParser optional , 
 		#digit asPParser plus , 
-		$. asPParser, #digit asPParser plus.'
+		$. asPParser, #digit asPParser plus.
+float parse: ''3.14''.'
 ]
 
 { #category : #slides }
@@ -284,6 +289,7 @@ SPLPetitParserSlideshow >> parsingTokens: aSlide [
 	<gtSlide>
 	^ aSlide text
 		priority: (self priorityFor: #parsingTokens:);
+		textMargin: 10;
 		newTextWithFormat: (self asHeader: 'Parsing tokens');
 		newTextWithFormat: (self asText: 'PetitParser is a scannerless parser, so we introduce parsing expressions also for tokens.')
 ]
@@ -368,7 +374,7 @@ SPLPetitParserSlideshow >> runningAnSPLProgramPage [
 SPLPetitParserSlideshow >> semanticsOfSPL: aSlide [
 	<gtSlide>
 	^ aSlide text
-		horizontalWeight: 1;
+		horizontalWeight: 0.6;
 		textMargin: 5;
 		priority: (self priorityFor: #semanticsOfSPL:);
 		newTextWithFormat: (self asHeader: 'SPL Semantics');
@@ -425,8 +431,10 @@ SPLPetitParserSlideshow >> slidePriorities [
 SPLPetitParserSlideshow >> splExample: aSlide [
 	<gtSlide>
 	^ aSlide text
-		horizontalWeight: 1;
+		horizontalWeight: 0.75;
+		textMargin: 10;
 		priority: (self priorityFor: #splExample:);
+		newTextWithFormat: (self asHeader: 'An SPL example');
 		newTextWithFormat: (self asText: 'SPL is a minimal language with variables, expressions, ')
 				, (self asCode: 'if') , (self asText: ', ') , (self asCode: 'while')
 				, (self asText: ' and ') , (self asCode: 'print')
@@ -499,7 +507,7 @@ SPLPetitParserSlideshow >> theASThierarchyPage [
 	<noTest>
 	^ (LePage named: 'The SPL AST hierarchy')
 		addSnippet: (LeTextSnippet new
-				string: 'The AST nodes form a hierarchy.';
+				string: 'Each node can handle pretty printing, and supports step-by-step interpretation.';
 				yourself);
 		addSnippet: (LeExampleSnippet new
 				exampleBehaviorName: #SPLCaseStudyExamples;
@@ -561,6 +569,9 @@ SPLPetitParserSlideshow >> writingTestsPage [
 				exampleSelector: #whileProgram);
 		addSnippet: (LeTextSnippet new
 				string: 'We check that this sample code is parsed as a `program`, and not as a `statement` or a `declaration`.';
+				yourself);
+		addSnippet: (LeTextSnippet new
+				string: 'After completing and testing all the parser rules, we end up with {{gtClass:name=SPLGrammar}} and {{gtClass:name=SPLGrammarExamples}}.';
 				yourself);
 		yourself
 ]

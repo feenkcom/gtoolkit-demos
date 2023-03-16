@@ -76,7 +76,7 @@
 											"__type" : "time",
 											"time" : {
 												"__type" : "dateAndTime",
-												"dateAndTimeString" : "2023-03-08T15:04:28.707923+01:00"
+												"dateAndTimeString" : "2023-03-16T18:41:27.258379+01:00"
 											}
 										},
 										"uid" : {
@@ -86,7 +86,7 @@
 										"paragraphStyle" : {
 											"__type" : "textStyle"
 										},
-										"string" : "[[*** SPL Slideshow]] "
+										"string" : "[[SPL Slideshow]] "
 									}
 								]
 							},
