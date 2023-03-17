@@ -31,6 +31,13 @@ SPLVariable >> = anObject [
 	^ self name = anObject name
 ]
 
+{ #category : #accessing }
+SPLVariable >> children [
+	^ super children
+		add: self name;
+		yourself
+]
+
 { #category : #comparing }
 SPLVariable >> hash [
 	^ self name hash

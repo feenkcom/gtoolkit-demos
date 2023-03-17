@@ -20,6 +20,13 @@ SPLProgram class >> for: aDeclarationAndStatementCollection [
 	yourself
 ]
 
+{ #category : #accessing }
+SPLProgram >> children [
+	^ super children
+		addAll: self statements;
+		yourself
+]
+
 { #category : #testing }
 SPLProgram >> isReduced [
 	^ self statements isEmpty

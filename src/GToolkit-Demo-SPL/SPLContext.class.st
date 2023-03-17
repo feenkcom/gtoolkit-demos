@@ -124,6 +124,17 @@ SPLContext >> environment: anObject [
 ]
 
 { #category : #accessing }
+SPLContext >> gtASTFor: aView [
+	<gtView>
+	^ aView forward
+		title: 'AST';
+		priority: 35;
+		object: [ self continuation ];
+		view: #gtASTFor:;
+		actionUpdateButton
+]
+
+{ #category : #accessing }
 SPLContext >> gtContextStateFor: aView [
 	"<gtView>"
 	^ aView explicit

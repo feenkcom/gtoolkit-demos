@@ -11,6 +11,13 @@ Class {
 }
 
 { #category : #accessing }
+SPLOperatorExpression >> children [
+	^ super children
+		add: self operator;
+		yourself
+]
+
+{ #category : #accessing }
 SPLOperatorExpression >> operator [
 	^ operator
 ]

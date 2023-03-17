@@ -15,6 +15,13 @@ SPLValue class >> for: aValue [
 	^ self new value: aValue
 ]
 
+{ #category : #accessing }
+SPLValue >> children [
+	^ super children
+		add: self value;
+		yourself
+]
+
 { #category : #testing }
 SPLValue >> isReduced [
 	^  true

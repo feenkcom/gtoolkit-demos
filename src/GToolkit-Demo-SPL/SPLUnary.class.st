@@ -22,6 +22,13 @@ SPLUnary class >> negate: anOperator expression: anExpression [
 		yourself 
 ]
 
+{ #category : #accessing }
+SPLUnary >> children [
+	^ super children
+		add: self expression;
+		yourself
+]
+
 { #category : #stepping }
 SPLUnary >> evaluateIn: aContext [
 	self assert: self expression isReduced.

@@ -22,6 +22,27 @@ SPLNode >> asContext [
 		yourself
 ]
 
+{ #category : #accessing }
+SPLNode >> children [
+	^OrderedCollection new
+]
+
+{ #category : #accessing }
+SPLNode >> gtASTFor: aView [
+	<gtView>
+	^ aView columnedTree
+		title: 'AST';
+		priority: 20;
+		items: [ self children ];
+		children: [ :each | each isSPLNode ifTrue: [ each children ] ifFalse: [ {} ] ];
+		column: '#' 
+			text: [ :eachItem :eachIndex | 
+				eachIndex asRopedText foreground: Color gray ]
+			width: 45;
+		column: 'AST Node' translated text: #printString;
+		actionUpdateButton
+]
+
 { #category : #testing }
 SPLNode >> isReduced [
 	"This node is fully reduced.
