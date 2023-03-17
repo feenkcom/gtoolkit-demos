@@ -22,6 +22,14 @@ SPLAssignment class >> variable: aVariable expression: anExpression [
 ]
 
 { #category : #accessing }
+SPLAssignment >> children [
+	^ super children
+		add: self variable;
+		add: self expression;
+		yourself
+]
+
+{ #category : #accessing }
 SPLAssignment >> expression [
 	^ expression
 ]

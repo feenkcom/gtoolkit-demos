@@ -23,6 +23,13 @@ SPLIfElseStatement class >> if: anExpression then: aStatement else: aStatement2 
 ]
 
 { #category : #accessing }
+SPLIfElseStatement >> children [
+	^ super children
+		add: self elsePart;
+		yourself
+]
+
+{ #category : #accessing }
 SPLIfElseStatement >> elsePart [
 	^ elsePart
 ]

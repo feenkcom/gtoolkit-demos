@@ -21,6 +21,13 @@ SPLBlockStatement class >> for: aStatementCollection [
 		yourself
 ]
 
+{ #category : #accessing }
+SPLBlockStatement >> children [
+	^ super children
+		addAll: self statements;
+		yourself
+]
+
 { #category : #initialization }
 SPLBlockStatement >> initialize [
 	super initialize.

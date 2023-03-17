@@ -21,6 +21,13 @@ SPLIfStatement class >> if: anExpression then: aStatement [
 	yourself
 ]
 
+{ #category : #accessing }
+SPLIfStatement >> children [
+	^ super children
+		add: self thenPart;
+		yourself
+]
+
 { #category : #printing }
 SPLIfStatement >> printOn: aStream indentBy: indentlevel [
 	aStream

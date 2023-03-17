@@ -23,6 +23,13 @@ SPLWhileStatement class >> while: anExpression do: aStatement [
 ]
 
 { #category : #accessing }
+SPLWhileStatement >> children [
+	^ super children
+		add: self doPart;
+		yourself
+]
+
+{ #category : #accessing }
 SPLWhileStatement >> doPart [
 	^ doPart
 ]

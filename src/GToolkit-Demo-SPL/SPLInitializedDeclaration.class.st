@@ -22,6 +22,13 @@ SPLInitializedDeclaration class >> for: aVariable with: anExpression [
 ]
 
 { #category : #accessing }
+SPLInitializedDeclaration >> children [
+	^ super children
+		add: self expression;
+		yourself
+]
+
+{ #category : #accessing }
 SPLInitializedDeclaration >> expression [
 	^ expression
 ]

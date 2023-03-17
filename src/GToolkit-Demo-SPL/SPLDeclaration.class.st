@@ -19,6 +19,13 @@ SPLDeclaration class >> for: aVariable [
 		yourself
 ]
 
+{ #category : #accessing }
+SPLDeclaration >> children [
+	^ super children
+		add: self variable;
+		yourself
+]
+
 { #category : #printing }
 SPLDeclaration >> printOn: aStream [
 	aStream
