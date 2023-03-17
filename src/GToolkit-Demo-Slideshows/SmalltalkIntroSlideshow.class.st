@@ -21,11 +21,103 @@ SmalltalkIntroSlideshow class >> show [
 { #category : #slides }
 SmalltalkIntroSlideshow >> addingAutoPlay: aSlide [
 	<gtSlide>
-	
-	^ (aSlide lepiterPage)
+	^ aSlide lepiterPage
 		priority: (self priorityFor: #addingAutoPlay:);
-		pageNamed: 'Changing a running system' from: self myLepiterDB;
-		yourself
+		startPage: ((LePage named: 'Changing a running system')
+				addSnippet: (LeTextSnippet new
+						string: '#Introducing an autoplay feature to a running game';
+						addSnippet: (LeTextSnippet new
+								string: 'Since games may last a long time, an autoplay feature would be useful to exercise the game.';
+								yourself);
+						addSnippet: (LeTextSnippet new
+								string: 'We start by inspecting a live instance.';
+								yourself);
+						addSnippet: (LePharoSnippet new
+								code: 'game := GtLudoGame new';
+								yourself);
+						addSnippet: (LeTextSnippet new
+								string: 'We can interact with it programatically. *(NB: Just evaluate the snippet instead of inspecting the result, to see the effect on the game.)* ';
+								yourself);
+						addSnippet: (LePharoSnippet new
+								code: 'game roll: 6.
+game moveTokenNamed: ''a''';
+								yourself);
+						yourself);
+				addSnippet: (LeTextSnippet new
+						string: '#Automating one move.';
+						addSnippet: (LeTextSnippet new
+								string: 'By exploring the code, we see that the methods {{gtMethod:name=GtLudoGame>>playerToRoll}} and {{gtMethod:name=GtLudoGame>>playerToMove}} tell us what should happen next.';
+								yourself);
+						addSnippet: (LeTextSnippet new
+								string: 'Also {{gtMethod:name=GtLudoGame>>tokensToMove}} computes the set of tokens that can possibly move next. ';
+								yourself);
+						addSnippet: (LeTextSnippet new
+								string: 'We roll the die or move as required: *(again, just evaluate the snippets)* ';
+								yourself);
+						addSnippet: (LePharoSnippet new
+								code: 'game playerToRoll ifTrue: [ game die roll ]';
+								yourself);
+						addSnippet: (LePharoSnippet new
+								code: 'game playerToMove ifTrue: [ game moveTokenNamed: game tokensToMove atRandom name ]';
+								yourself);
+						addSnippet: (LeTextSnippet new
+								string: 'Let''s combine them. We can just repeatedly perform this snippet to play the game.';
+								yourself);
+						addSnippet: (LePharoSnippet new
+								code: 'game playerToRoll ifTrue: [ game die roll ].
+game playerToMove ifTrue: [ 
+	game moveTokenNamed: game tokensToMove atRandom name ]';
+								yourself);
+						yourself);
+				addSnippet: (LeTextSnippet new
+						string: '#Introducing an autoPlay:method';
+						addSnippet: (LeTextSnippet new
+								string: 'Let''s turn this into a method that repeatedly plays a number of moves.';
+								yourself);
+						addSnippet: (LeTextSnippet new
+								string: 'Normally we would program this directly in the Coder (i.e., use the + button to add a method), but we can also do it programmatically.';
+								yourself);
+						addSnippet: (LePharoSnippet new
+								code: 'GtLudoGame compile: ''autoPlay: numberOfMoves
+	(1 to: numberOfMoves) do: [ :n | 
+		self playerToRoll ifTrue: [ self die roll ].
+		self playerToMove ifTrue: [ 
+			self moveTokenNamed: self tokensToMove atRandom name ] ]''';
+								yourself);
+						addSnippet: (LeTextSnippet new
+								string: 'Now we can use it to play. Inspect this, and then evaluate the autoplay snippet:';
+								yourself);
+						addSnippet: (LePharoSnippet new
+								code: 'game := GtLudoGame new';
+								yourself);
+						addSnippet: (LePharoSnippet new
+								code: 'game autoPlay: 1000';
+								yourself);
+						addSnippet: (LeTextSnippet new
+								string: 'Note that we get an exception at the end, as we try to continue to play after the game is over.';
+								yourself);
+						addSnippet: (LeTextSnippet new
+								string: 'We can fix the autoPlay: method to immediately return if the game is over.';
+								yourself);
+						addSnippet: (LeTextSnippet new
+								string: '(We add `self isOver ifTrue: [ ^ self ].` at the start of the loop.)';
+								yourself);
+						addSnippet: (LePharoSnippet new
+								code: 'GtLudoGame compile: ''autoPlay: numberOfMoves
+	(1 to: numberOfMoves) do: [ :n | 
+		self isOver ifTrue: [ ^ self ].
+		self playerToRoll ifTrue: [ self die roll ].
+		self playerToMove ifTrue: [ 
+			self moveTokenNamed: self tokensToMove atRandom name ] ]''';
+								yourself);
+						addSnippet: (LeTextSnippet new
+								string: 'Now we can safely play without an exception.';
+								yourself);
+						yourself);
+				addSnippet: (LeTextSnippet new
+						string: '';
+						yourself);
+				yourself)
 ]
 
 { #category : #slides }
@@ -34,18 +126,206 @@ SmalltalkIntroSlideshow >> bouncingAtoms: aSlide [
 	
 	^ (aSlide lepiterPage)
 		priority: (self priorityFor: #bouncingAtoms:);
-		pageNamed: 'Changing a running system on the fly' from: self myLepiterDB;
+		startPage: self bouncingAtomsPage
+]
+
+{ #category : #page }
+SmalltalkIntroSlideshow >> bouncingAtomsPage [
+	"Not used"
+
+	<gtExample>
+	<noTest>
+	^ (LePage named: 'Changing a running system on the fly')
+		addSnippet: (LeTextSnippet new
+				string: '#Bouncing atoms simulation';
+				addSnippet: (LeTextSnippet new
+						string: 'This demo shows a simple simulation of atoms bouncing against four walls.';
+						yourself);
+				addSnippet: (LePharoSnippet new
+						code: 'BlBouncingAtomsElement demo';
+						yourself);
+				addSnippet: (LeTextSnippet new
+						string: 'However these are not just animated pixels but live objects that we can interact with.';
+						yourself);
+				yourself);
+		addSnippet: (LeTextSnippet new
+				string: '#Inspecting live objects';
+				addSnippet: (LeTextSnippet new
+						string: 'Try to find an atom that is not moving. Click on it and drag it.';
+						yourself);
+				addSnippet: (LeTextSnippet new
+						string: 'Double-click on it to open a new Inspector tab on it';
+						addSnippet: (LeTextSnippet new
+								string: '*Tip: to see three columns instead of two, grab the right edge of each column and drag them to make them skinnier.*';
+								yourself);
+						yourself);
+				yourself);
+		addSnippet: (LeTextSnippet new
+				string: '#Objects have (moldable) views';
+				addSnippet: (LeTextSnippet new
+						string: 'Have a look at the various tabs. Each shows a different view.';
+						yourself);
+				addSnippet: (LeTextSnippet new
+						string: 'Children and Parents show us how the graphicalelements are composed.';
+						yourself);
+				addSnippet: (LeTextSnippet new
+						string: 'The Raw view shows us the object state. The Meta view shows us the code.';
+						yourself);
+				addSnippet: (LeTextSnippet new
+						string: 'Note that the velocity (Raw view) is `0@0` — 0 in both x and y directions.';
+						yourself);
+				yourself);
+		addSnippet: (LeTextSnippet new
+				string: '#Interacting with live objects';
+				addSnippet: (LeTextSnippet new
+						string: 'Pull up the bottom edge of the Inspector on the AtomElement to show a Playground. ';
+						yourself);
+				addSnippet: (LeTextSnippet new
+						string: 'Update the velocity by sending this message:';
+						addSnippet: (LeTextSnippet new
+								string: '```language=text
+self velocity: 3@4
+```';
+								yourself);
+						yourself);
+				addSnippet: (LeTextSnippet new
+						string: 'Maybe we can''t see anymore where it is, so let''s change the color:';
+						addSnippet: (LeTextSnippet new
+								string: '```language=text
+self background: Color blue
+```';
+								yourself);
+						yourself);
+				addSnippet: (LeTextSnippet new
+						string: 'We can also make it bigger:';
+						addSnippet: (LeTextSnippet new
+								string: '```language=text
+self size: 10@10
+```';
+								yourself);
+						yourself);
+				yourself);
+		addSnippet: (LeTextSnippet new
+				string: '#Make live changes to the code';
+				addSnippet: (LeTextSnippet new
+						string: 'We would like the atoms to change color when they bounce against the walls.';
+						yourself);
+				addSnippet: (LeTextSnippet new
+						string: 'When they bounce, the atoms change their velocity, so let''s find the *senders* (methods which send) the message `velocity:`. Click on the `velocity:` message and type Cmd-n.';
+						addSnippet: (LeTextSnippet new
+								string: '*Tip:* Some useful keyboard shortcuts: Cmd-n (find seNders), Cmd-m (find iMplementors, Cmd-b (Browse code), Cmd-d (Do it), Cmd-p (Print it), Cmd-g (inspect it)';
+								yourself);
+						yourself);
+				addSnippet: (LeTextSnippet new
+						string: 'We discover that the {{gtMethod:name=BlAtomElement>>bounceIn:}} is the one we want.';
+						yourself);
+				addSnippet: (LeTextSnippet new
+						string: 'We find this line:';
+						addSnippet: (LeTextSnippet new
+								string: '```language=text
+bounced ifTrue: [self velocity: vx @ vy].
+```';
+								yourself);
+						yourself);
+				addSnippet: (LeTextSnippet new
+						string: 'and modify it to add this code:';
+						addSnippet: (LeTextSnippet new
+								string: '```language=text
+		vx < 0
+			ifTrue: [ self background: Color orange ]
+			ifFalse: [ self background: Color green ]
+```';
+								yourself);
+						yourself);
+				addSnippet: (LeTextSnippet new
+						string: 'We commit (save) the method, and it is immediately compiled and affects the running system.';
+						yourself);
+				yourself);
+		addSnippet: (LeTextSnippet new
+				string: '#Exercise';
+				addSnippet: (LeTextSnippet new
+						string: 'From the `BouncingAtomElement` itself, find all the stationary atoms, make them bigger, and make them move.';
+						yourself);
+				yourself);
 		yourself
 ]
 
 { #category : #slides }
 SmalltalkIntroSlideshow >> composingExamples: aSlide [
 	<gtSlide>
-	
-	^ (aSlide lepiterPage)
+	^ aSlide lepiterPage
 		priority: (self priorityFor: #composingExamples:);
-		pageNamed: 'Composing (Test) Examples' from: self myLepiterDB;
-		yourself
+		startPage: ((LePage named: 'Composing (Test) Examples')
+				addSnippet: (LeTextSnippet new
+						string: '#What are example methods?';
+						addSnippet: (LeTextSnippet new
+								string: 'In GT, unit tests are written as *example methods*.';
+								yourself);
+						addSnippet: (LeTextSnippet new
+								string: 'An example method is just like an ordinary test method that we know from the Xunit frameworks, except that an example method *returns an instance of the tested object*.';
+								yourself);
+						addSnippet: (LeTextSnippet new
+								string: 'This is useful for many reasons, but mainly these two:';
+								yourself);
+						addSnippet: (LeTextSnippet new
+								string: '**1.** Instead of just ending with a passed (or failed) test, ***you have an object that you can inspect and explore.***';
+								yourself);
+						addSnippet: (LeTextSnippet new
+								string: '**2.** ***The resulting example can be used as a starting point for composing further tests.***';
+								yourself);
+						addSnippet: (LeTextSnippet new
+								string: 'Here''s a simple example method for the Ludo Game: {{gtMethod:name=GtLudoGameExamples>>emptyGame|expanded}}';
+								yourself);
+						addSnippet: (LeTextSnippet new
+								string: 'It''s an ordinary method, except that it uses the `gtExample` pragma (annotation), it has assertions, and *it returns an example*.';
+								yourself);
+						addSnippet: (LeTextSnippet new
+								string: 'If you `Play and inspect` the method, you will obtain the example to explore.';
+								yourself);
+						addSnippet: (LeTextSnippet new
+								string: '(Change some assertions to see what happens if they fail.)';
+								yourself);
+						yourself);
+				addSnippet: (LeTextSnippet new
+						string: '#Composing examples';
+						addSnippet: (LeTextSnippet new
+								string: 'If we browse the *senders* of the `emptyGame` method, we see it is used to  build another example.';
+								yourself);
+						addSnippet: (LePharoSnippet new
+								code: '#emptyGame gtSenders';
+								yourself);
+						addSnippet: (LeTextSnippet new
+								string: 'The {{gtMethod:name=GtLudoGameExamples>>playerArolls6}}method builds on the emptyGame example and exercises the scenario where player A rolls a 6.';
+								yourself);
+						yourself);
+				addSnippet: (LeTextSnippet new
+						string: '#Before and After examples';
+						addSnippet: (LeTextSnippet new
+								string: 'The tests cover all the special corner cases of the game. For example, what happens if a players rolls a 6 twice, and the second token lands on the square where there is already the first token?';
+								yourself);
+						addSnippet: (LeTextSnippet new
+								string: 'We split this into two examples. The first sets up the situation where there is already a token for player A on the initial square.';
+								yourself);
+						addSnippet: (LePharoSnippet new
+								code: 'GtLudoGameExamples new playerAentersTokenA';
+								yourself);
+						addSnippet: (LeTextSnippet new
+								string: 'The next example starts from this one, and check what happens when the next token enters play.';
+								yourself);
+						addSnippet: (LePharoSnippet new
+								code: 'GtLudoGameExamples new playerAentersAndLandsOnTokenA';
+								yourself);
+						yourself);
+				addSnippet: (LeTextSnippet new
+						string: '#Running and exploring the examples';
+						addSnippet: (LeTextSnippet new
+								string: 'From the `Examples` tab of the {{gtClass:name=GtLudoGameExamples}} class we can both run all the tests, and explore individual examples.';
+								yourself);
+						addSnippet: (LeTextSnippet new
+								string: 'If we select the `Examples map` view, we see that the test examples form a tree built up from the emptyGame example.';
+								yourself);
+						yourself);
+				yourself)
 ]
 
 { #category : #accessing }
@@ -58,26 +338,278 @@ SmalltalkIntroSlideshow >> dbName [
 SmalltalkIntroSlideshow >> everythingHappensBySendingMessages: aSlide [
 	<gtSlide>
 	^ aSlide lepiterPage
-		  priority: (self priorityFor: #everythingHappensBySendingMessages:);
-		  pageNamed: 'Everything happens by sending messages' from: self myLepiterDB
+		priority: (self priorityFor: #everythingHappensBySendingMessages:);
+		startPage: ((LePage named: 'Everything happens by sending messages')
+				addSnippet: (LeTextSnippet new
+						string: 'Smalltalk introduced the metaphor of “methods” — you do not “invoke a method” (which makes no sense linguistically), but rather you *“send a message to an object”*, and it determines whether it *“understands the message”* and has a “method” for responding to it.';
+						yourself);
+				addSnippet: (LeTextSnippet new
+						string: '#A message is a request for a service.
+#A “method” is code to fulfil that request.';
+						addSnippet: (LeTextSnippet new
+								string: 'The expression `3+4` is a *message* “`+4`” with the *selector* “`+`” and argument `4` sent to the *receiver* `3`:';
+								yourself);
+						addSnippet: (LePharoSnippet new
+								code: '3 + 4';
+								yourself);
+						addSnippet: (LeTextSnippet new
+								string: 'The receiver `3` has a *method* (a chunk of code) to compute the result.';
+								yourself);
+						yourself);
+				addSnippet: (LeTextSnippet new
+						string: '#All computations are message sends';
+						addSnippet: (LeTextSnippet new
+								string: 'There are no built-in operators. These are all just message sends:';
+								yourself);
+						addSnippet: (LeTextSnippet new
+								string: 'Sending `/` to a number will invoke a factory method to create an instance of {{gtClass:name=Fraction}}. ';
+								yourself);
+						addSnippet: (LePharoSnippet new
+								code: '3 / 4';
+								yourself);
+						addSnippet: (LeTextSnippet new
+								string: 'As in other OO languages, `=` tests object equality while `==` tests for identity. (If a class does not implement a method for `=`, then by default they are the same.)';
+								yourself);
+						addSnippet: (LePharoSnippet new
+								code: '(3 = 4) not';
+								yourself);
+						addSnippet: (LeTextSnippet new
+								string: 'You can evaluate a block by sending it a `value` message.';
+								yourself);
+						addSnippet: (LePharoSnippet new
+								code: '[ 3 +  4 ] value ';
+								yourself);
+						yourself);
+				addSnippet: (LeTextSnippet new
+						string: '#Objects are created by sending messages to classes';
+						addSnippet: (LePharoSnippet new
+								code: 'OrderedCollection new ';
+								yourself);
+						addSnippet: (LePharoSnippet new
+								code: 'Fraction numerator: 3 denominator: 4';
+								yourself);
+						addSnippet: (LePharoSnippet new
+								code: 'Set with: 3 with: 4';
+								yourself);
+						yourself);
+				addSnippet: (LeTextSnippet new
+						string: '#Changes to the system are message sends';
+						addSnippet: (LeTextSnippet new
+								string: '... although it is more convenient to use the dedicated tools.';
+								yourself);
+						addSnippet: (LeTextSnippet new
+								string: 'You create a class by sending a message to its superclass:';
+								yourself);
+						addSnippet: (LePharoSnippet new
+								code: 'Object subclass: #MyClass';
+								yourself);
+						addSnippet: (LeTextSnippet new
+								string: 'You can ask a class to compile a method:';
+								yourself);
+						addSnippet: (LePharoSnippet new
+								code: 'MyClass compile: ''foo ^ 42''';
+								yourself);
+						addSnippet: (LePharoSnippet new
+								code: 'MyClass new foo ';
+								yourself);
+						addSnippet: (LeTextSnippet new
+								string: 'We can remove the class by asking the `Smalltalk` object to do it:';
+								yourself);
+						addSnippet: (LePharoSnippet new
+								code: 'Smalltalk removeClassNamed: ''MyClass''';
+								yourself);
+						yourself);
+				addSnippet: (LeTextSnippet new
+						string: '#You can change anything!';
+						addSnippet: (LeTextSnippet new
+								string: '*Caveat:* you are allowed to shoot yourself in the foot!';
+								yourself);
+						addSnippet: (LePharoSnippet new
+								code: 'Smalltalk removeClassNamed: ''Object''';
+								yourself);
+						addSnippet: (LeTextSnippet new
+								string: 'Luckily Smalltalk prevents you from doing this, but you can shoot yourself in the foot in many other ways!';
+								yourself);
+						yourself);
+				yourself)
 ]
 
 { #category : #slides }
 SmalltalkIntroSlideshow >> everythingIsAnObject: aSlide [
 	<gtSlide>
 	^ aSlide lepiterPage
-		  priority: (self priorityFor: #everythingIsAnObject:);
-		  pageNamed: 'Everything is an object' from: self myLepiterDB
+		priority: (self priorityFor: #everythingIsAnObject:);
+		startPage: ((LePage named: 'Everything is an object')
+				addSnippet: (LeTextSnippet new
+						string: 'Every object is an instance of a class.';
+						yourself);
+				addSnippet: (LeTextSnippet new
+						string: '#Numbers, strings, booleans and blocks are objects';
+						addSnippet: (LeTextSnippet new
+								string: 'We can evaluate, inspect and interact with live objects.';
+								yourself);
+						addSnippet: (LePharoSnippet new
+								code: '1';
+								yourself);
+						addSnippet: (LePharoSnippet new
+								code: '''hello''';
+								yourself);
+						addSnippet: (LePharoSnippet new
+								code: 'true';
+								yourself);
+						addSnippet: (LePharoSnippet new
+								code: '[ 3 + 4 ]';
+								yourself);
+						addSnippet: (LeTextSnippet new
+								string: 'Note that the object Inspector offers us multiple views of each object, including a `Meta` (code) view.';
+								yourself);
+						yourself);
+				addSnippet: (LeTextSnippet new
+						string: '#Classes are objects';
+						addSnippet: (LeTextSnippet new
+								string: 'Since classes are objects, we can inspect them and interact with them too.';
+								yourself);
+						addSnippet: (LeTextSnippet new
+								string: 'We can also browse them in the Coder. (Select the class name and type Cmd-B.)';
+								yourself);
+						addSnippet: (LePharoSnippet new
+								code: 'SmallInteger';
+								yourself);
+						addSnippet: (LeTextSnippet new
+								string: 'We can send messages to classes.';
+								yourself);
+						addSnippet: (LePharoSnippet new
+								code: 'SmallInteger maxVal';
+								yourself);
+						addSnippet: (LeTextSnippet new
+								string: 'What do you  get if you add 1 to the biggest `SmallInteger`?';
+								yourself);
+						addSnippet: (LeTextSnippet new
+								string: '(Lift up the Playground at the bottom of the inspect to evaluate `self+1`.)';
+								yourself);
+						yourself);
+				addSnippet: (LeTextSnippet new
+						string: '#Methods are objects';
+						addSnippet: (LeTextSnippet new
+								string: 'We can ask a class to give us the compiled code of a method, which we can inspect and interact with.';
+								yourself);
+						addSnippet: (LeTextSnippet new
+								string: 'In particular, we can explore its source code, bytecode and even its abstract syntax tree.';
+								yourself);
+						addSnippet: (LePharoSnippet new
+								code: '4 even';
+								yourself);
+						addSnippet: (LePharoSnippet new
+								code: 'SmallInteger>>#even';
+								yourself);
+						yourself);
+				addSnippet: (LeTextSnippet new
+						string: '#This page is an object';
+						addSnippet: (LePharoSnippet new
+								code: 'thisSnippet page ';
+								yourself);
+						yourself);
+				addSnippet: (LeTextSnippet new
+						string: '#The Ludo game is an object';
+						addSnippet: (LePharoSnippet new
+								code: 'GtLudoGame new';
+								yourself);
+						yourself);
+				addSnippet: (LeTextSnippet new
+						string: '#Tools are objects';
+						addSnippet: (LePharoSnippet new
+								code: 'GtCoder forClass: SmallInteger';
+								yourself);
+						yourself);
+				addSnippet: (LeTextSnippet new
+						string: '#This slideshow is an object';
+						addSnippet: (LePharoSnippet new
+								code: 'GtPresenterSlideShow create: SmalltalkIntroSlideshow new';
+								yourself);
+						yourself);
+				addSnippet: (LeTextSnippet new
+						string: '#The GT World is an object';
+						addSnippet: (LePharoSnippet new
+								code: 'GtWorldElement new ';
+								yourself);
+						yourself);
+				yourself)
 ]
 
 { #category : #slides }
 SmalltalkIntroSlideshow >> exploringLudo: aSlide [
 	<gtSlide>
-	
-	^ (aSlide lepiterPage)
+	^ aSlide lepiterPage
 		priority: (self priorityFor: #exploringLudo:);
-		pageNamed: 'Exploring a live system' from: self myLepiterDB;
-		yourself
+		startPage: ((LePage named: 'Exploring a live system')
+				addSnippet: (LeTextSnippet new
+						string: '#Exploring the Ludo Game';
+						addSnippet: (LeTextSnippet new
+								string: 'Let''s inspect a running instance of a Ludo game.';
+								yourself);
+						addSnippet: (LePharoSnippet new
+								code: 'GtLudoGame new';
+								yourself);
+						addSnippet: (LeTextSnippet new
+								string: 'Have a look at the various views (tabs).';
+								yourself);
+						addSnippet: (LeTextSnippet new
+								string: 'The `Raw` view is the one most IDEs will show you. The others are specialized views. The Board, Players and Squares views are custom-made for the Ludo game.';
+								yourself);
+						addSnippet: (LeTextSnippet new
+								string: 'Note how you can more easily navigate through the game entites (Players, Tokens, Squares) using the dedicated views than with the Raw view.';
+								yourself);
+						yourself);
+				addSnippet: (LeTextSnippet new
+						string: '#Exploring the view code';
+						addSnippet: (LeTextSnippet new
+								string: 'You can OPT-click on the tabs to see the code creating each view.';
+								yourself);
+						addSnippet: (LeTextSnippet new
+								string: 'Most of these are quite simple. The Board view is the most complex one.';
+								yourself);
+						yourself);
+				addSnippet: (LeTextSnippet new
+						string: '#Finding examples';
+						addSnippet: (LeTextSnippet new
+								string: 'From the Meta tab you can explore not only the class definition and the source code of methods, but also find references. This leads us to the classes that define test examples.';
+								yourself);
+						addSnippet: (LeTextSnippet new
+								string: 'Let''s explore {{gtClass:name=GtLudoGameExamples}}.  From the Examples view we can run all the tests.';
+								yourself);
+						addSnippet: (LeTextSnippet new
+								string: 'Let''s have a closer look at {{gtMethod:name=GtLudoGameExamples>>playerAentersTokenA}}. ';
+								yourself);
+						addSnippet: (LeTextSnippet new
+								string: 'It''s a simple scenario of a token entering the game after a 6 is rolled.';
+								yourself);
+						addSnippet: (LeTextSnippet new
+								string: 'Note that we can inspect and interact with the example that results from the test, and we can use the example to build further tests.';
+								yourself);
+						yourself);
+				addSnippet: (LeTextSnippet new
+						string: '#Interacting with Objects';
+						addSnippet: (LeTextSnippet new
+								string: 'Let''s open two (identical) views of the same example.';
+								yourself);
+						addSnippet: (LePharoSnippet new
+								code: 'game := GtLudoGameExamples new playerAentersTokenA';
+								yourself);
+						addSnippet: (LeTextSnippet new
+								string: 'Either navigate from the raw view, or evaluate `self` in the Playground underneath the inspector view (pull up the grey bar).';
+								yourself);
+						addSnippet: (LeTextSnippet new
+								string: 'You can interact both through the GUI or programatically and the views will stay in sync.';
+								yourself);
+						addSnippet: (LePharoSnippet new
+								code: 'game die roll: 5.
+game moveTokenNamed: ''A''';
+								yourself);
+						yourself);
+				addSnippet: (LeTextSnippet new
+						string: '';
+						yourself);
+				yourself)
 ]
 
 { #category : #accessing }
@@ -129,21 +661,136 @@ Changes to classes and methods are logged as you program.');
 { #category : #slides }
 SmalltalkIntroSlideshow >> liveDocumentationLogic: aSlide [
 	<gtSlide>
-	
-	^ (aSlide lepiterPage)
+	^ aSlide lepiterPage
 		priority: (self priorityFor: #liveDocumentationLogic:);
-		pageNamed: 'Live documentation of the game logic' from: self myLepiterDB;
-		yourself
+		startPage: ((LePage named: 'Live documentation of the game logic')
+				addSnippet: (LeTextSnippet new
+						string: 'Notebooks (such as this one) can serve as live documentation for the logic of the game (i.e., the *business domain*) as well s for the technical solution.';
+						yourself);
+				addSnippet: (LeTextSnippet new
+						string: 'Consider the example game {{gtMethod:name=GtLudoRecordingGameExamples >> #gameShowingAllMoves6}}, which shows a short, complete game.';
+						yourself);
+				addSnippet: (LeTextSnippet new
+						string: '#Viewing the history';
+						addSnippet: (LeTextSnippet new
+								string: 'We can visualize the complete history:';
+								yourself);
+						addSnippet: (LeExampleSnippet new
+								exampleBehaviorName: 'GtLudoRecordingGameExamples';
+								exampleSelector: 'gameShowingAllMoves6';
+								noCode: true;
+								previewShowSelector: 'gtHistoryFor:';
+								previewHeight: 500);
+						yourself);
+				addSnippet: (LeTextSnippet new
+						string: '#The different cases of moves';
+						addSnippet: (LeTextSnippet new
+								string: 'We can use this example to illustrate the scenarios that the game must support';
+								yourself);
+						addSnippet: (LeTextSnippet new
+								string: '##The initial move';
+								addSnippet: (LeExampleSnippet new
+										exampleBehaviorName: 'GtLudoRecordingGameExamples';
+										exampleSelector: 'moveInitial';
+										noCode: true;
+										previewShowSelector: 'moveOnBoardFor:');
+								yourself);
+						addSnippet: (LeTextSnippet new
+								string: '##A regular move';
+								addSnippet: (LeExampleSnippet new
+										exampleBehaviorName: 'GtLudoRecordingGameExamples';
+										exampleSelector: 'moveSimple';
+										noCode: true;
+										previewShowSelector: 'moveOnBoardFor:');
+								yourself);
+						addSnippet: (LeTextSnippet new
+								string: '##A move to the end';
+								addSnippet: (LeExampleSnippet new
+										exampleBehaviorName: 'GtLudoRecordingGameExamples';
+										exampleSelector: 'moveToTheEnd';
+										noCode: true;
+										previewShowSelector: 'moveOnBoardFor:');
+								yourself);
+						addSnippet: (LeTextSnippet new
+								string: '##An impossible move';
+								addSnippet: (LeExampleSnippet new
+										exampleBehaviorName: 'GtLudoRecordingGameExamples';
+										exampleSelector: 'moveImpossible';
+										noCode: true;
+										previewShowSelector: 'moveOnBoardFor:');
+								yourself);
+						addSnippet: (LeTextSnippet new
+								string: '##Jumping over one''s own token';
+								addSnippet: (LeExampleSnippet new
+										exampleBehaviorName: 'GtLudoRecordingGameExamples';
+										exampleSelector: 'moveJumping';
+										noCode: true;
+										previewShowSelector: 'moveOnBoardFor:');
+								yourself);
+						addSnippet: (LeTextSnippet new
+								string: '##Capturing another player''s token';
+								addSnippet: (LeExampleSnippet new
+										exampleBehaviorName: 'GtLudoRecordingGameExamples';
+										exampleSelector: 'moveInitialJumpingAndCapturing';
+										noCode: true;
+										previewShowSelector: 'moveOnBoardFor:');
+								addSnippet: (LeTextSnippet new
+										string: 'This case is interesting because it consists of three steps, as token A first jumps over token a, then lands on and captures token D, sending it to the start.';
+										yourself);
+								addSnippet: (LeExampleSnippet new
+										exampleBehaviorName: 'GtLudoRecordingGameExamples';
+										exampleSelector: 'moveInitialJumpingAndCapturing';
+										noCode: true;
+										previewShowSelector: 'gtTokenMovesFor:';
+										previewHeight: 150);
+								yourself);
+						yourself);
+				addSnippet: (LeTextSnippet new
+						string: '';
+						yourself);
+				yourself)
 ]
 
 { #category : #slides }
 SmalltalkIntroSlideshow >> liveDocumentationUML: aSlide [
 	<gtSlide>
-	
-	^ (aSlide lepiterPage)
+	^ aSlide lepiterPage
 		priority: (self priorityFor: #liveDocumentationUML:);
-		pageNamed: 'Live documentation of the technical solution' from: self myLepiterDB;
-		yourself
+		startPage: ((LePage named: 'Live documentation of the technical solution')
+				addSnippet: (LeTextSnippet new
+						string: '#UML class diagrams';
+						addSnippet: (LeTextSnippet new
+								string: 'We can easily obtain a UML diagram for the whole implementation, but it is a bit cluttered:';
+								yourself);
+						yourself);
+				addSnippet: (LeExampleSnippet new
+						exampleBehaviorName: 'GtLudoCodeDocumentationExamples';
+						exampleSelector: 'classHierarchy';
+						noCode: true;
+						previewShowSelector: 'gtLiveFor:';
+						previewHeight: 400);
+				addSnippet: (LeTextSnippet new
+						string: '#Model classes';
+						addSnippet: (LeTextSnippet new
+								string: 'It can be more useful to focus just on a subset of the implementation, such as just the model classes.';
+								yourself);
+						addSnippet: (LeExampleSnippet new
+								exampleBehaviorName: 'GtLudoCodeDocumentationExamples';
+								exampleSelector: 'modelClassHierarchy';
+								noCode: true;
+								previewShowSelector: 'gtLiveFor:';
+								previewHeight: 900);
+						addSnippet: (LeTextSnippet new
+								string: 'We can also visualize the relationships between classes.';
+								yourself);
+						addSnippet: (LeExampleSnippet new
+								exampleBehaviorName: 'GtLudoCodeDocumentationExamples';
+								exampleSelector: 'modelClassExplicitLabeledReferences';
+								noCode: true;
+								previewShowSelector: 'gtLiveFor:';
+								previewHeight: 600);
+						yourself);
+				yourself)
 ]
 
 { #category : #slides }
@@ -213,11 +860,91 @@ SmalltalkIntroSlideshow >> programmingClassesAndMethods: aSlide [
 { #category : #slides }
 SmalltalkIntroSlideshow >> recordingMoves: aSlide [
 	<gtSlide>
-	
-	^ (aSlide lepiterPage)
+	^ aSlide lepiterPage
 		priority: (self priorityFor: #recordingMoves:);
-		pageNamed: 'Recording and visualizing token moves' from: self myLepiterDB;
-		yourself
+		startPage: ((LePage named: 'Recording and visualizing token moves')
+				addSnippet: (LeTextSnippet new
+						string: '#How to visualize the movement of the tokens?';
+						addSnippet: (LeTextSnippet new
+								string: 'A shortcoming of the game is that there is no history of the movement of the tokens.';
+								yourself);
+						addSnippet: (LeTextSnippet new
+								string: 'We only see snapshots of the board. If we could keep a history of the moves, then we could also visualize the actual transitions.';
+								yourself);
+						yourself);
+				addSnippet: (LeTextSnippet new
+						string: '#A Recording Ludo Game';
+						addSnippet: (LeTextSnippet new
+								string: 'We design {{gtClass:name=GtLudoRecordingGame}} as a subclass of {{gtClass:name=GtLudoGame}} that keeps a history of the moves.';
+								yourself);
+						addSnippet: (LeTextSnippet new
+								string: 'This compels us to turn the concept of a **Move** into a first-class object, an instance of {{gtClass:name=GtLudoMove}}. This class has the responsibility to track the actual move data (the die roll value, the token moved, and the list of tokens moved as a result).';
+								yourself);
+						yourself);
+				addSnippet: (LeTextSnippet new
+						string: '#Tracking the moves';
+						addSnippet: (LeTextSnippet new
+								string: 'We subclass our examples, so we now have recording versions of them all.';
+								yourself);
+						addSnippet: (LeTextSnippet new
+								string: 'Let''s look at this one.';
+								yourself);
+						addSnippet: (LePharoSnippet new
+								code: 'GtLudoRecordingGameExamples new playerAovershootsGoal';
+								yourself);
+						addSnippet: (LeTextSnippet new
+								string: 'Inspecting this still just shows a snapshot, but if we look at the `Moves` tab, have the history of the moves.';
+								yourself);
+						addSnippet: (LeTextSnippet new
+								string: 'More interesting, we can now visualize which tokens moved where by inspecting the individual Moves.';
+								yourself);
+						addSnippet: (LeTextSnippet new
+								string: 'Note in particular the second move, which required two hops.';
+								yourself);
+						addSnippet: (LeExampleSnippet new
+								exampleBehaviorName: 'GtLudoRecordingGameExamples';
+								exampleSelector: 'landingOnOwnPlayerToken';
+								noCode: true;
+								previewShowSelector: 'moveOnBoardFor:';
+								previewHeight: 410);
+						yourself);
+				addSnippet: (LeTextSnippet new
+						string: '#Autoplaying a game with history';
+						addSnippet: (LeTextSnippet new
+								string: 'We can now track all the moves that are played with the autoplay feature.';
+								yourself);
+						addSnippet: (LeTextSnippet new
+								string: 'Let''s open up two side-side views of a new game, with the second one showing the list of moves.';
+								yourself);
+						addSnippet: (LePharoSnippet new
+								code: 'game := GtLudoRecordingGame new';
+								yourself);
+						addSnippet: (LeTextSnippet new
+								string: 'As we play moves, we see the history update.';
+								yourself);
+						addSnippet: (LePharoSnippet new
+								code: 'game autoPlay: 1';
+								yourself);
+						yourself);
+				addSnippet: (LeTextSnippet new
+						string: '#Going back in time in the game';
+						addSnippet: (LeTextSnippet new
+								string: 'Now that we have first-class Move objects, we have a complete history of a game.';
+								yourself);
+						addSnippet: (LeTextSnippet new
+								string: 'We can also *replay* all the moves up to a certain point, and go back in time to see the state of the game at any point.';
+								yourself);
+						addSnippet: (LeTextSnippet new
+								string: 'Have look at the `Replay` and `Highlight` views of any move.';
+								yourself);
+						addSnippet: (LeTextSnippet new
+								string: 'From the Replay view you can also explore alternative execution paths (also using the autoplay feature). ';
+								yourself);
+						addSnippet: (LePharoSnippet new
+								code: '(game moves at: 50) replayGameToHere autoPlay: 1000';
+								yourself);
+						yourself);
+				yourself)
 ]
 
 { #category : #accessing }
@@ -271,8 +998,128 @@ He reasoned that such systems would need to be based on object from the ground u
 SmalltalkIntroSlideshow >> syntax: aSlide [
 	<gtSlide>
 	^ aSlide lepiterPage
-		  priority: (self priorityFor: #syntax:);
-		  pageNamed: 'Smalltalk Syntax (the funny bits)' from: self myLepiterDB
+		priority: (self priorityFor: #syntax:);
+		startPage: ((LePage named: 'Smalltalk Syntax (the funny bits)')
+				addSnippet: (LeTextSnippet new
+						string: 'Smalltalk has a tiny syntax, but there are some interesting differences with other languages.';
+						yourself);
+				addSnippet: (LeTextSnippet new
+						string: '#Numbers';
+						addSnippet: (LeTextSnippet new
+								string: 'In addition to the usual integer and floating point numbers, there are also radix numbers, for example this is a binary representation:';
+								yourself);
+						addSnippet: (LePharoSnippet new
+								code: '2r101010';
+								yourself);
+						addSnippet: (LeTextSnippet new
+								string: 'and this is hex:';
+								yourself);
+						addSnippet: (LePharoSnippet new
+								code: '16r2A';
+								yourself);
+						yourself);
+				addSnippet: (LeTextSnippet new
+						string: '#Characters, strings and symbols';
+						addSnippet: (LeTextSnippet new
+								string: 'Printable characters start with a `$`.';
+								yourself);
+						addSnippet: (LePharoSnippet new
+								code: '$a';
+								yourself);
+						addSnippet: (LeTextSnippet new
+								string: 'Strings use *single quotes*.';
+								yourself);
+						addSnippet: (LePharoSnippet new
+								code: '''hello world''';
+								yourself);
+						addSnippet: (LePharoSnippet new
+								code: '''hello world'' first = $h';
+								yourself);
+						addSnippet: (LeTextSnippet new
+								string: 'This is a comment, not a string!';
+								yourself);
+						addSnippet: (LePharoSnippet new
+								code: '"Ceci n''est pas un string"';
+								yourself);
+						addSnippet: (LeTextSnippet new
+								string: '**NB:** a comment is not an object, but you *can* ask a class for its comment and get a string back ...';
+								yourself);
+						addSnippet: (LePharoSnippet new
+								code: 'GtLudoGame comment ';
+								yourself);
+						addSnippet: (LeTextSnippet new
+								string: 'A *symbol* starts with a hash (`#`). It is like a string, but has a unique instance.';
+								yourself);
+						addSnippet: (LePharoSnippet new
+								code: '#ThereIsOnlyOneOfMe';
+								yourself);
+						addSnippet: (LeTextSnippet new
+								string: 'A symbol is not identical to a string with the same characters';
+								yourself);
+						addSnippet: (LePharoSnippet new
+								code: '#ThereIsOnlyOneOfMe == ''ThereIsOnlyOneOfMe''';
+								yourself);
+						addSnippet: (LeTextSnippet new
+								string: 'but they are considered equal as values.';
+								yourself);
+						addSnippet: (LePharoSnippet new
+								code: '#ThereIsOnlyOneOfMe = ''ThereIsOnlyOneOfMe''';
+								yourself);
+						yourself);
+				addSnippet: (LeTextSnippet new
+						string: '#Constants';
+						addSnippet: (LeTextSnippet new
+								string: '`true`, `false` and `nil` are built-in constants.';
+								yourself);
+						addSnippet: (LePharoSnippet new
+								code: '(nil = '''') == false | true';
+								yourself);
+						yourself);
+				addSnippet: (LeTextSnippet new
+						string: '#Arrays';
+						addSnippet: (LeTextSnippet new
+								string: 'A literal array is a compile-time sequence of literal values';
+								yourself);
+						addSnippet: (LePharoSnippet new
+								code: '#( 1 $a #foo #( I am ''nested'' ) )';
+								yourself);
+						yourself);
+				addSnippet: (LeTextSnippet new
+						string: '#Blocks';
+						addSnippet: (LeTextSnippet new
+								string: 'A *block* is an anonymous function, that can take arguments:';
+								yourself);
+						addSnippet: (LePharoSnippet new
+								code: '[ 3 + 4 ] value';
+								yourself);
+						addSnippet: (LePharoSnippet new
+								code: '[ :x | x + 1 ] value: 10';
+								yourself);
+						addSnippet: (LePharoSnippet new
+								code: '[ :x :y | x ** y ] value: 3 value: 2';
+								yourself);
+						addSnippet: (LeTextSnippet new
+								string: 'Blocks are first class values, so you can pass them around like any other object.';
+								yourself);
+						addSnippet: (LePharoSnippet new
+								code: '[ :aBlock :anArg | aBlock value: anArg ]
+	value: [ :aNumber | aNumber + 1 ]
+	value: 1';
+								yourself);
+						yourself);
+				addSnippet: (LeTextSnippet new
+						string: '#Pseudo variables';
+						addSnippet: (LeTextSnippet new
+								string: '`self` and `super` both refer to the receiver of a message, but with different method lookup, as usual.';
+								yourself);
+						addSnippet: (LePharoSnippet new
+								code: 'self == super';
+								yourself);
+						yourself);
+				addSnippet: (LeTextSnippet new
+						string: '';
+						yourself);
+				yourself)
 ]
 
 { #category : #slides }
@@ -300,8 +1147,111 @@ SmalltalkIntroSlideshow >> takeHome: aSlide [
 SmalltalkIntroSlideshow >> threeKindsOfMessages: aSlide [
 	<gtSlide>
 	^ aSlide lepiterPage
-		  priority: (self priorityFor: #threeKindsOfMessages:);
-		  pageNamed: 'Three kinds of messages' from: self myLepiterDB
+		priority: (self priorityFor: #threeKindsOfMessages:);
+		startPage: ((LePage named: 'Three kinds of messages')
+				addSnippet: (LeTextSnippet new
+						string: 'There are three kinds of messages you can send to a Smalltalk object, each taking a different number of arguments.';
+						addSnippet: (LeTextSnippet new
+								string: 'The *receiver* is the object to which the message is sent.';
+								yourself);
+						addSnippet: (LeTextSnippet new
+								string: 'The *sender* is the method sending the message (if the code is in a method somewhere).';
+								yourself);
+						addSnippet: (LeTextSnippet new
+								string: 'The *selector* is the name of the message (without the arguments';
+								yourself);
+						yourself);
+				addSnippet: (LeTextSnippet new
+						string: '#Unary messages';
+						addSnippet: (LeTextSnippet new
+								string: 'Unary messages have no argument.';
+								yourself);
+						addSnippet: (LePharoSnippet new
+								code: '5 factorial';
+								yourself);
+						addSnippet: (LeTextSnippet new
+								string: 'Note that you don''t need to include dot or any parentheses.';
+								yourself);
+						addSnippet: (LeTextSnippet new
+								string: 'You can also send unary messages to classes, as they are objects too.';
+								yourself);
+						addSnippet: (LePharoSnippet new
+								code: 'Float pi ';
+								yourself);
+						addSnippet: (LePharoSnippet new
+								code: 'GtLudoGame new';
+								yourself);
+						yourself);
+				addSnippet: (LeTextSnippet new
+						string: '#Binary messages';
+						addSnippet: (LeTextSnippet new
+								string: 'Binary messages are made up of operator symbols like `+` `-` `*` `/` `>` `<` `=` and others.';
+								yourself);
+						addSnippet: (LeTextSnippet new
+								string: 'They take exactly one argument.';
+								yourself);
+						addSnippet: (LePharoSnippet new
+								code: '3 + 4';
+								yourself);
+						addSnippet: (LePharoSnippet new
+								code: '''hello'', '' '', ''there''';
+								yourself);
+						addSnippet: (LePharoSnippet new
+								code: '1 << 10 ';
+								yourself);
+						yourself);
+				addSnippet: (LeTextSnippet new
+						string: '#Keyword messages';
+						addSnippet: (LeTextSnippet new
+								string: 'If you have one or more arguments you can use a keyword message. Each argument is preceded by a keyword, which ends with a colon (`:`).';
+								yourself);
+						addSnippet: (LeTextSnippet new
+								string: 'Here the receiver is `3`, the message is `raisedTo: 10 modulo: 5`, and the selector is `#raisedTo:modulo:`';
+								yourself);
+						addSnippet: (LePharoSnippet new
+								code: '3 raisedTo: 10 modulo: 5';
+								yourself);
+						addSnippet: (LeTextSnippet new
+								string: 'The Ludo game also accepts various keyword messages.';
+								yourself);
+						addSnippet: (LePharoSnippet new
+								code: 'GtLudoGame new roll: 5.';
+								yourself);
+						yourself);
+				addSnippet: (LeTextSnippet new
+						string: '#Precedence: first unary, then binary, then keyword';
+						addSnippet: (LeTextSnippet new
+								string: 'In expressions that mix different kinds of message sends, first unary, then binary, and finally keyword messages are evaluated.';
+								yourself);
+						addSnippet: (LeTextSnippet new
+								string: 'Otherwise evaluation is strictly from left to right.';
+								yourself);
+						yourself);
+				addSnippet: (LePharoSnippet new
+						code: '2 raisedTo: 1 + 3 factorial';
+						yourself);
+				addSnippet: (LeTextSnippet new
+						string: 'is the same as:';
+						yourself);
+				addSnippet: (LePharoSnippet new
+						code: '2 raisedTo:( 1 + (3 factorial))';
+						yourself);
+				addSnippet: (LeTextSnippet new
+						string: 'Warning! The left-to-right rule applies also to binary messages:';
+						yourself);
+				addSnippet: (LePharoSnippet new
+						code: '1 + 2 * 3';
+						yourself);
+				addSnippet: (LeTextSnippet new
+						string: 'The result is `9` and not `7`.';
+						yourself);
+				addSnippet: (LeTextSnippet new
+						string: 'In practice this is not an issue. Use parentheses to get the order you want.';
+						yourself);
+				addSnippet: (LePharoSnippet new
+						code: '1 + (2 * 3)';
+						yourself);
+				yourself)
 ]
 
 { #category : #slides }
