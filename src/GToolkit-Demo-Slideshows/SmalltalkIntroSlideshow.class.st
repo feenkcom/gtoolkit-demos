@@ -9,7 +9,7 @@ SmalltalkIntroSlideshow show
 Class {
 	#name : #SmalltalkIntroSlideshow,
 	#superclass : #PrioritySlideshow,
-	#category : #'GToolkit-Demo-Slideshows'
+	#category : #'GToolkit-Demo-Slideshows-Slideshows'
 }
 
 { #category : #utility }

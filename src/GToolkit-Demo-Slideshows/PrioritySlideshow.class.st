@@ -11,7 +11,7 @@ There are also numerous convenience methods, such as `asTitle:`.
 Class {
 	#name : #PrioritySlideshow,
 	#superclass : #Object,
-	#category : #'GToolkit-Demo-Slideshows-GToolkit-Demo-Slideshows'
+	#category : #'GToolkit-Demo-Slideshows-Slideshows'
 }
 
 { #category : #utility }
@@ -41,9 +41,9 @@ PrioritySlideshow >> asBigText: aString [
 
 { #category : #text }
 PrioritySlideshow >> asCode: aString [
-	^ (aString asRopedText)
+	^ aString asRopedText
 		glamorousMonospace;
-		fontSize: 20
+		fontSize: self codeAndTextSize
 ]
 
 { #category : #text }
@@ -66,7 +66,7 @@ PrioritySlideshow >> asSubtitle: aString [
 PrioritySlideshow >> asText: aString [
 	^ (aString asRopedText)
 		glamorousRegularFont;
-		fontSize: 30
+		fontSize: self codeAndTextSize
 ]
 
 { #category : #text }
@@ -75,6 +75,37 @@ PrioritySlideshow >> asTitle: aString [
 		glamorousRegularFont;
 		bold;
 		fontSize: 70
+]
+
+{ #category : #constant }
+PrioritySlideshow >> codeAndTextSize [
+	^ 30
+]
+
+{ #category : #text }
+PrioritySlideshow >> cr [
+	"Useful when gluing together text snippets with asHeader and asText."
+
+	^ String cr asRopedText
+]
+
+{ #category : #utility }
+PrioritySlideshow >> ensureEmptyPageNamed: aPageName [
+	| page |
+	page := self ensurePageNamed: aPageName.
+	[ page children notEmpty ]
+		whileTrue: [ page removeSnippet: page children last ].
+	^ page
+]
+
+{ #category : #utility }
+PrioritySlideshow >> ensurePageNamed: aPageName [
+	| database |
+	database := LeDatabasesRegistry default currentLoadedDefaultLogicalDatabase
+			databaseNamed: self myLepiterDB.
+	(database hasPageNamed: aPageName)
+		ifFalse: [ database addPage: (LePage named: aPageName) ].
+	^ database pageNamed: aPageName
 ]
 
 { #category : #constants }
