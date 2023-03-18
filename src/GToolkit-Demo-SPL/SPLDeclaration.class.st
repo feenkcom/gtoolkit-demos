@@ -19,13 +19,6 @@ SPLDeclaration class >> for: aVariable [
 		yourself
 ]
 
-{ #category : #accessing }
-SPLDeclaration >> children [
-	^ super children
-		add: self variable;
-		yourself
-]
-
 { #category : #printing }
 SPLDeclaration >> printOn: aStream [
 	aStream
@@ -38,6 +31,13 @@ SPLDeclaration >> printOn: aStream [
 SPLDeclaration >> stepInContext: aContext [
 	aContext environment declareVariable: self variable.
 	^ SPLExpressionStatement for: SPLNil new
+]
+
+{ #category : #accessing }
+SPLDeclaration >> subNodes [
+	^ super subNodes
+		add: self variable;
+		yourself
 ]
 
 { #category : #accessing }

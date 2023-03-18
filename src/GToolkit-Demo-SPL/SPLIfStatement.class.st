@@ -21,13 +21,6 @@ SPLIfStatement class >> if: anExpression then: aStatement [
 	yourself
 ]
 
-{ #category : #accessing }
-SPLIfStatement >> children [
-	^ super children
-		add: self thenPart;
-		yourself
-]
-
 { #category : #printing }
 SPLIfStatement >> printOn: aStream indentBy: indentlevel [
 	aStream
@@ -48,6 +41,13 @@ SPLIfStatement >> stepInContext: aContext [
 		ifFalse: [ self class
 				if: (self expression stepInContext: aContext)
 				then: self thenPart ]
+]
+
+{ #category : #accessing }
+SPLIfStatement >> subNodes [
+	^ super subNodes
+		add: self thenPart;
+		yourself
 ]
 
 { #category : #printing }

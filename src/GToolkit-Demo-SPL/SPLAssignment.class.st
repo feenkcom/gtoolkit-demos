@@ -22,14 +22,6 @@ SPLAssignment class >> variable: aVariable expression: anExpression [
 ]
 
 { #category : #accessing }
-SPLAssignment >> children [
-	^ super children
-		add: self variable;
-		add: self expression;
-		yourself
-]
-
-{ #category : #accessing }
 SPLAssignment >> expression [
 	^ expression
 ]
@@ -55,6 +47,14 @@ SPLAssignment >> stepInContext: aContext [
 		ifFalse: [ self class
 				variable: self variable
 				expression: (self expression stepInContext: aContext) ]
+]
+
+{ #category : #accessing }
+SPLAssignment >> subNodes [
+	^ super subNodes
+		add: self variable;
+		add: self expression;
+		yourself
 ]
 
 { #category : #accessing }

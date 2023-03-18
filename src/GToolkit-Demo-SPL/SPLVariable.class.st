@@ -31,13 +31,6 @@ SPLVariable >> = anObject [
 	^ self name = anObject name
 ]
 
-{ #category : #accessing }
-SPLVariable >> children [
-	^ super children
-		add: self name;
-		yourself
-]
-
 { #category : #comparing }
 SPLVariable >> hash [
 	^ self name hash
@@ -66,6 +59,13 @@ SPLVariable >> printOn: aStream [
 { #category : #stepping }
 SPLVariable >> stepInContext: aContext [
 	^ aContext environment getVariable: self
+]
+
+{ #category : #accessing }
+SPLVariable >> subNodes [
+	^ super subNodes
+		add: self name;
+		yourself
 ]
 
 { #category : #accessing }

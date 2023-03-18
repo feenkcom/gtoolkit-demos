@@ -23,13 +23,6 @@ SPLWhileStatement class >> while: anExpression do: aStatement [
 ]
 
 { #category : #accessing }
-SPLWhileStatement >> children [
-	^ super children
-		add: self doPart;
-		yourself
-]
-
-{ #category : #accessing }
 SPLWhileStatement >> doPart [
 	^ doPart
 ]
@@ -58,6 +51,13 @@ SPLWhileStatement >> stepInContext: aContext [
 		then: (SPLBlockStatement
 				for: {self doPart.
 						self} asOrderedCollection)
+]
+
+{ #category : #accessing }
+SPLWhileStatement >> subNodes [
+	^ super subNodes
+		add: self doPart;
+		yourself
 ]
 
 { #category : #accessing }
