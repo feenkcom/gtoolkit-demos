@@ -28,7 +28,7 @@ SPLNode >> gtASTFor: aView [
 	^ aView columnedTree
 		title: 'AST';
 		priority: 20;
-		items: [ self subNodes ];
+		items: [ {self} ];
 		children: [ :each | each isSPLNode ifTrue: [ each subNodes ] ifFalse: [ {} ] ];
 		column: '#' 
 			text: [ :eachItem :eachIndex | 
