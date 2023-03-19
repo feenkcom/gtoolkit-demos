@@ -65,17 +65,24 @@ SPLContext >> = anObject [
 { #category : #view }
 SPLContext >> composedStateElement [
 	| continuation envt output verticalContainer horizontalContainer |
-	continuation := (self gtContinuationFor: GtPhlowEmptyView new) asElementDo: [ :e | e ].
+	continuation := (self gtContinuationFor: GtPhlowEmptyView new)
+			asElementDo: [ :e | e ].
 
 	envt := (self environment gtVariablesFor: GtPhlowEmptyView new)
 			asElementDo: [ :e | e ].
 
-	output := (self gtOutputFor: GtPhlowEmptyView new) asElementDo: [ :e | e ].
-
-	{continuation.
-		envt.
+	output := (self gtOutputFor: GtPhlowEmptyView new)
+			asElementDo: [ :e | 
+				BrVerticalPane new
+					matchParent;
+					addChild: e ].
+	{envt.
 		output}
-		do: [ :each | each border: (BlBorder paint: Color lightGray width: 1) ].
+		do: [ :each | 
+			each
+				aptitude: BrShadowAptitude;
+				background: Color white;
+				margin: (BlInsets all: 10) ].
 
 	verticalContainer := BlElement new.
 	verticalContainer
