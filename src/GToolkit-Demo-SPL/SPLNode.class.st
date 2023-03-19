@@ -23,18 +23,13 @@ SPLNode >> asContext [
 ]
 
 { #category : #accessing }
-SPLNode >> children [
-	^OrderedCollection new
-]
-
-{ #category : #accessing }
 SPLNode >> gtASTFor: aView [
 	<gtView>
 	^ aView columnedTree
 		title: 'AST';
 		priority: 20;
-		items: [ self children ];
-		children: [ :each | each isSPLNode ifTrue: [ each children ] ifFalse: [ {} ] ];
+		items: [ self subNodes ];
+		children: [ :each | each isSPLNode ifTrue: [ each subNodes ] ifFalse: [ {} ] ];
 		column: '#' 
 			text: [ :eachItem :eachIndex | 
 				eachIndex asRopedText foreground: Color gray ]
@@ -75,6 +70,11 @@ SPLNode >> stepInContext: aContext [
 	Only if they are both values can the operator be applied in another step."
 
 	self subclassResponsibility
+]
+
+{ #category : #accessing }
+SPLNode >> subNodes [
+	^OrderedCollection new
 ]
 
 { #category : #printing }

@@ -20,13 +20,6 @@ SPLProgram class >> for: aDeclarationAndStatementCollection [
 	yourself
 ]
 
-{ #category : #accessing }
-SPLProgram >> children [
-	^ super children
-		addAll: self statements;
-		yourself
-]
-
 { #category : #testing }
 SPLProgram >> isReduced [
 	^ self statements isEmpty
@@ -63,4 +56,11 @@ SPLProgram >> stepInContext: aContext [
 						for: (self statements allButFirst
 								addFirst: (self statements first stepInContext: aContext);
 								yourself) ] ]
+]
+
+{ #category : #accessing }
+SPLProgram >> subNodes [
+	^ super subNodes
+		addAll: self statements;
+		yourself
 ]

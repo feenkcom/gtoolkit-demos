@@ -11,13 +11,6 @@ Class {
 }
 
 { #category : #accessing }
-SPLOperatorExpression >> children [
-	^ super children
-		add: self operator;
-		yourself
-]
-
-{ #category : #accessing }
 SPLOperatorExpression >> operator [
 	^ operator
 ]
@@ -35,4 +28,11 @@ SPLOperatorExpression >> operator: anOperator [
 { #category : #accessing }
 SPLOperatorExpression >> operators [
 	self subclassResponsibility
+]
+
+{ #category : #accessing }
+SPLOperatorExpression >> subNodes [
+	^ super subNodes
+		add: self operator;
+		yourself
 ]

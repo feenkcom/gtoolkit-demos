@@ -15,13 +15,6 @@ SPLValue class >> for: aValue [
 	^ self new value: aValue
 ]
 
-{ #category : #accessing }
-SPLValue >> children [
-	^ super children
-		add: self value;
-		yourself
-]
-
 { #category : #testing }
 SPLValue >> isReduced [
 	^  true
@@ -42,6 +35,13 @@ SPLValue >> stepInContext: aContext [
 	"Should we raise an error, or just return ourself?"
 
 	^ self
+]
+
+{ #category : #accessing }
+SPLValue >> subNodes [
+	^ super subNodes
+		add: self value;
+		yourself
 ]
 
 { #category : #accessing }

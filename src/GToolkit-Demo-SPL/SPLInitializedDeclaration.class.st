@@ -22,13 +22,6 @@ SPLInitializedDeclaration class >> for: aVariable with: anExpression [
 ]
 
 { #category : #accessing }
-SPLInitializedDeclaration >> children [
-	^ super children
-		add: self expression;
-		yourself
-]
-
-{ #category : #accessing }
 SPLInitializedDeclaration >> expression [
 	^ expression
 ]
@@ -58,4 +51,11 @@ SPLInitializedDeclaration >> stepInContext: aContext [
 		ifFalse: [ self class
 				for: self variable
 				with: (self expression stepInContext: aContext) ]
+]
+
+{ #category : #accessing }
+SPLInitializedDeclaration >> subNodes [
+	^ super subNodes
+		add: self expression;
+		yourself
 ]

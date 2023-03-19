@@ -22,14 +22,6 @@ SPLBinary class >> left: anExpression operator: anOperator right: anExpression2 
 		yourself
 ]
 
-{ #category : #accessing }
-SPLBinary >> children [
-	^ super children
-		add: self left;
-		add: self right;
-		yourself
-]
-
 { #category : #evaluating }
 SPLBinary >> comparison: anEnvironment [
 	| result |
@@ -166,4 +158,12 @@ SPLBinary >> stepInContext: aContext [
 				left: (self left stepInContext: aContext)
 				operator: self operator
 				right: self right ]
+]
+
+{ #category : #accessing }
+SPLBinary >> subNodes [
+	^ super subNodes
+		add: self left;
+		add: self right;
+		yourself
 ]

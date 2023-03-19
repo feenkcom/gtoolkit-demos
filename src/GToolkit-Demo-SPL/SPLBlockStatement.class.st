@@ -21,13 +21,6 @@ SPLBlockStatement class >> for: aStatementCollection [
 		yourself
 ]
 
-{ #category : #accessing }
-SPLBlockStatement >> children [
-	^ super children
-		addAll: self statements;
-		yourself
-]
-
 { #category : #initialization }
 SPLBlockStatement >> initialize [
 	super initialize.
@@ -78,6 +71,13 @@ SPLBlockStatement >> stepInContext: aContext [
 								for: (self statements allButFirst
 										addFirst: (self statements first stepInContext: aContext);
 										yourself) ] ] ]
+]
+
+{ #category : #accessing }
+SPLBlockStatement >> subNodes [
+	^ super subNodes
+		addAll: self statements;
+		yourself
 ]
 
 { #category : #accessing }

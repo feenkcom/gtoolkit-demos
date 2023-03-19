@@ -19,13 +19,6 @@ SPLAbstractExpressionStatement class >> for: anExpression [
 ]
 
 { #category : #accessing }
-SPLAbstractExpressionStatement >> children [
-	^ super children
-		add: self expression;
-		yourself
-]
-
-{ #category : #accessing }
 SPLAbstractExpressionStatement >> expression [
 	^ expression
 ]
@@ -33,4 +26,11 @@ SPLAbstractExpressionStatement >> expression [
 { #category : #accessing }
 SPLAbstractExpressionStatement >> expression: anExpression [
 	expression := anExpression
+]
+
+{ #category : #accessing }
+SPLAbstractExpressionStatement >> subNodes [
+	^ super subNodes
+		add: self expression;
+		yourself
 ]

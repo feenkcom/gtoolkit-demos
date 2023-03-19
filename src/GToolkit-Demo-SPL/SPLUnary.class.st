@@ -22,13 +22,6 @@ SPLUnary class >> negate: anOperator expression: anExpression [
 		yourself 
 ]
 
-{ #category : #accessing }
-SPLUnary >> children [
-	^ super children
-		add: self expression;
-		yourself
-]
-
 { #category : #stepping }
 SPLUnary >> evaluateIn: aContext [
 	self assert: self expression isReduced.
@@ -70,4 +63,11 @@ SPLUnary >> stepInContext: aContext [
 		ifFalse: [ self class
 				negate: self operator
 				expression: (self expression stepInContext: aContext) ]
+]
+
+{ #category : #accessing }
+SPLUnary >> subNodes [
+	^ super subNodes
+		add: self expression;
+		yourself
 ]

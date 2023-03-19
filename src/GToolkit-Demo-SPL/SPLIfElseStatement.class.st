@@ -23,13 +23,6 @@ SPLIfElseStatement class >> if: anExpression then: aStatement else: aStatement2 
 ]
 
 { #category : #accessing }
-SPLIfElseStatement >> children [
-	^ super children
-		add: self elsePart;
-		yourself
-]
-
-{ #category : #accessing }
 SPLIfElseStatement >> elsePart [
 	^ elsePart
 ]
@@ -59,4 +52,11 @@ SPLIfElseStatement >> stepInContext: aContext [
 				if: (self expression stepInContext: aContext)
 				then: self thenPart
 				else: self elsePart ]
+]
+
+{ #category : #accessing }
+SPLIfElseStatement >> subNodes [
+	^ super subNodes
+		add: self elsePart;
+		yourself
 ]
