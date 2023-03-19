@@ -35,6 +35,7 @@ SPLNode >> gtASTFor: aView [
 				eachIndex asRopedText foreground: Color gray ]
 			width: 45;
 		column: 'AST Node' translated text: #printString;
+		expandOneLevel;
 		actionUpdateButton
 ]
 
