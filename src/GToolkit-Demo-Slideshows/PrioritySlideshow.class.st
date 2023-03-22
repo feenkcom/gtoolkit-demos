@@ -11,6 +11,9 @@ There are also numerous convenience methods, such as `asTitle:`.
 Class {
 	#name : #PrioritySlideshow,
 	#superclass : #Object,
+	#instVars : [
+		'db'
+	],
 	#category : #'GToolkit-Demo-Slideshows-Slideshows'
 }
 
@@ -89,6 +92,14 @@ PrioritySlideshow >> cr [
 	^ String cr asRopedText
 ]
 
+{ #category : #accessing }
+PrioritySlideshow >> db [
+	"Transient Lepiter database for the dynamically created pages."
+
+	db ifNil: [ db := LeDatabase new ].
+	^ db
+]
+
 { #category : #utility }
 PrioritySlideshow >> ensureEmptyPageNamed: aPageName [
 	| page |
@@ -111,6 +122,17 @@ PrioritySlideshow >> ensurePageNamed: aPageName [
 { #category : #constants }
 PrioritySlideshow >> gtBook [
 	^ 'Glamorous Toolkit Book'
+]
+
+{ #category : #initialization }
+PrioritySlideshow >> initialize [
+	super initialize.
+	self initializeDb
+]
+
+{ #category : #initialization }
+PrioritySlideshow >> initializeDb [
+	"Add pages to db, if needed."
 ]
 
 { #category : #constants }
