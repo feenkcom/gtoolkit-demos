@@ -10,7 +10,7 @@ BaselineOfGToolkitDemoSPL >> baseline: spec [
 	spec for: #'common' do: [
 		spec
 			baseline: 'GToolkitPhlow' with: [
-				spec repository: 'github://feenkcom/gtoolkit-phlow:v0.8.949/src' ].
+				spec repository: 'github://feenkcom/gtoolkit-phlow:v0.8.950/src' ].
 		spec
 			baseline: 'GToolkit4PetitParser2' with: [
 				spec repository: 'github://feenkcom/gt4petitparser2:v0.8.31/src' ].
