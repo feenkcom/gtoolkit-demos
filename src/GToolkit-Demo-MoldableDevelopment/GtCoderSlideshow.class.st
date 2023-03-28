@@ -600,7 +600,7 @@ GtCoderSlideshow >> createMethodExplanationWithLinks [
 
 	classCoderElement := aScripter rootWithoutParent.
 
-	newFrameTarget := (classCoderElement query // GtExpandedOnlyCoderElement) anyOne.
+	newFrameTarget := (classCoderElement query // GtSourceCoderExpandedContentElement) anyOne.
 
 	newFrameTarget
 		allChildrenBreadthFirstDetect: [:aChild |
