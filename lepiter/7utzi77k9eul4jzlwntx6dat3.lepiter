@@ -45,6 +45,43 @@
 				"__type" : "textSnippet",
 				"children" : {
 					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2023-04-05T10:19:56.180023+02:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2023-04-05T10:20:03.566417+02:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "z5i0MfS0DQCrhPAuDxFBJA=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : "[[YAML to JSON translator]] "
+			},
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
 					"items" : [
 						{
 							"__type" : "textSnippet",
@@ -109,7 +146,7 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-03-08T11:31:09.960037+01:00"
+									"dateAndTimeString" : "2023-04-05T10:20:35.459455+02:00"
 								}
 							},
 							"uid" : {
@@ -119,7 +156,7 @@
 							"paragraphStyle" : {
 								"__type" : "textStyle"
 							},
-							"string" : "[[*** SPL todos]] "
+							"string" : "[[*** SPL OPEN todos]] "
 						},
 						{
 							"__type" : "textSnippet",
