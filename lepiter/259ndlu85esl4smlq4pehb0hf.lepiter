@@ -108,7 +108,7 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-04-05T10:46:23.427653+02:00"
+									"dateAndTimeString" : "2023-04-05T14:49:35.4428+02:00"
 								}
 							},
 							"uid" : {
@@ -118,7 +118,7 @@
 							"paragraphStyle" : {
 								"__type" : "textStyle"
 							},
-							"string" : "{{gtTodo:label=Explore the YAML AST nodes}}"
+							"string" : "{{gtTodo:label=Explore the YAML AST nodes|completed=2023-04-05}}"
 						},
 						{
 							"__type" : "textSnippet",
@@ -145,7 +145,7 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-04-05T10:46:55.448121+02:00"
+									"dateAndTimeString" : "2023-04-05T14:49:36.222433+02:00"
 								}
 							},
 							"uid" : {
@@ -155,7 +155,7 @@
 							"paragraphStyle" : {
 								"__type" : "textStyle"
 							},
-							"string" : "{{gtTodo:label=Find other SmaCC visitor examples}}"
+							"string" : "{{gtTodo:label=Find other SmaCC visitor examples|completed=2023-04-05}}"
 						}
 					]
 				},
@@ -369,7 +369,7 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-04-05T10:55:59.972491+02:00"
+									"dateAndTimeString" : "2023-04-05T11:04:32.204639+02:00"
 								}
 							},
 							"uid" : {
@@ -379,7 +379,7 @@
 							"paragraphStyle" : {
 								"__type" : "textStyle"
 							},
-							"string" : "All SmaCC parsers are subclasses of {{gtClass:name=SmaCCParser}}. The abstract visitors are all root classes, though the nodes they visit are all subclasses of {{gtClass:name=SmaCCParseNode}}. The visitors all use the trait {{gtClass:name=TYAMLParseNodeVisitor}}. "
+							"string" : "All SmaCC parsers are subclasses of {{gtClass:name=SmaCCParser}}. The abstract visitors are all root classes, though the nodes they visit are all subclasses of {{gtClass:name=SmaCCParseNode}}. "
 						},
 						{
 							"__type" : "textSnippet",
@@ -395,7 +395,7 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-04-05T10:53:31.7319+02:00"
+									"dateAndTimeString" : "2023-04-05T11:04:43.215397+02:00"
 								}
 							},
 							"editEmail" : {
@@ -406,7 +406,7 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-04-05T10:53:31.7319+02:00"
+									"dateAndTimeString" : "2023-04-05T11:12:20.696572+02:00"
 								}
 							},
 							"uid" : {
@@ -416,7 +416,7 @@
 							"paragraphStyle" : {
 								"__type" : "textStyle"
 							},
-							"string" : ""
+							"string" : "How to find the visitor classes with subclasses?"
 						},
 						{
 							"__type" : "pharoSnippet",
@@ -443,51 +443,14 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-04-05T10:57:24.725744+02:00"
+									"dateAndTimeString" : "2023-04-05T11:11:58.265939+02:00"
 								}
 							},
 							"uid" : {
 								"__type" : "uid",
 								"uidString" : "UnUdtvS0DQCHEMKcDxFBJA=="
 							},
-							"code" : "TYAMLParseNodeVisitor "
-						},
-						{
-							"__type" : "textSnippet",
-							"children" : {
-								"__type" : "snippets",
-								"items" : [ ]
-							},
-							"createEmail" : {
-								"__type" : "email",
-								"emailString" : "<unknown>"
-							},
-							"createTime" : {
-								"__type" : "time",
-								"time" : {
-									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-04-05T10:53:31.94133+02:00"
-								}
-							},
-							"editEmail" : {
-								"__type" : "email",
-								"emailString" : "<unknown>"
-							},
-							"editTime" : {
-								"__type" : "time",
-								"time" : {
-									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-04-05T10:53:31.94133+02:00"
-								}
-							},
-							"uid" : {
-								"__type" : "uid",
-								"uidString" : "jbPaqfS0DQCGE8dMDxFBJA=="
-							},
-							"paragraphStyle" : {
-								"__type" : "textStyle"
-							},
-							"string" : ""
+							"code" : "visitorClasses := (SmaCCParseNode allSubclasses\r\tflatCollect: [ :each | \r\t\teach package classes\r\t\t\tselect: [ :class | class isClass and: [ class name matches: '*Visitor' ] ] ]) asSet .\rvisitorClasses select: [:each | each subclasses size > 0 ]."
 						}
 					]
 				},
@@ -521,6 +484,330 @@
 					"__type" : "textStyle"
 				},
 				"string" : "# SmaCC Visitor examples"
+			},
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [
+						{
+							"__type" : "pharoSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2023-04-05T13:18:59.188349+02:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2023-04-05T13:22:52.618254+02:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "qt4Jsva0DQCYBEEvB4o1aw=="
+							},
+							"code" : "ast := YAMLParser parse: 'gtoolkit.yaml' asFileReference contents.\rvisitor := YAMLParseNodeVisitor new.\rast acceptVisitor: visitor."
+						}
+					]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2023-04-05T13:18:47.697855+02:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2023-04-05T13:18:53.709549+02:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "Sopasfa0DQCXfKhgB4o1aw=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : "#Test the default visitor"
+			},
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [
+						{
+							"__type" : "textSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2023-04-05T14:37:51.224754+02:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2023-04-05T14:38:38.177788+02:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "wZ4T/PS0DQCXAgXeB4o1aw=="
+							},
+							"paragraphStyle" : {
+								"__type" : "textStyle"
+							},
+							"string" : "We create {{gtClass:name=YAML2JSONVisitor}} as a new class that uses the {{gtClass:name=TYAMLParseNodeVisitor}} trait, and we selectively override the traits methods."
+						},
+						{
+							"__type" : "pharoSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2023-04-05T11:17:12.449743+02:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2023-04-05T14:36:44.187547+02:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "1umF/vS0DQCXVmx7B4o1aw=="
+							},
+							"code" : "ast := YAMLParser parse: 'gtoolkit.yaml' asFileReference contents.\rvisitor := YAML2JSONVisitor new. \rjson := ast acceptVisitor: visitor.\rjson asJson."
+						},
+						{
+							"__type" : "pharoSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2023-04-05T14:29:27.247909+02:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2023-04-05T14:37:13.544765+02:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "y/sMrve0DQClZ1/vB4o1aw=="
+							},
+							"code" : "YAML2JSONVisitor fileOut."
+						}
+					]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2023-04-05T10:53:31.94133+02:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2023-04-05T14:37:44.880655+02:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "jbPaqfS0DQCGE8dMDxFBJA=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : "#Implementing a YAML to JSON visitor"
+			},
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [
+						{
+							"__type" : "textSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2023-04-05T14:51:16.857675+02:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2023-04-05T14:58:04.447334+02:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "uAoc/Pe0DQCpw4mrB4o1aw=="
+							},
+							"paragraphStyle" : {
+								"__type" : "textStyle"
+							},
+							"string" : "Not all examples are working yet."
+						},
+						{
+							"__type" : "pharoSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2023-04-05T14:51:37.380316+02:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2023-04-05T14:53:13.820265+02:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "KitV/fe0DQCpzWepB4o1aw=="
+							},
+							"code" : "(FileLocator imageDirectory parent / 'yamlFiles' childrenMatching: '*.y*ml')\r\tcollect: [ :each | \r\t\tast := YAMLParser parse: each contents.\r\t\tvisitor := YAML2JSONVisitor new.\r\t\tjson := ast acceptVisitor: visitor ]"
+						}
+					]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2023-04-05T11:17:00.510207+02:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2023-04-05T14:51:16.338763+02:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "6LrP/fS0DQCXUTMYB4o1aw=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : "#Testing with GH action files"
 			}
 		]
 	},
