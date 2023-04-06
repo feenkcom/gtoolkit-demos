@@ -1,8 +1,6 @@
 Class {
 	#name : #YAML2JSONVisitor,
-	#superclass : #Object,
-	#traits : 'TYAMLParseNodeVisitor',
-	#classTraits : 'TYAMLParseNodeVisitor classTrait',
+	#superclass : #YAMLParseNodeVisitor,
 	#category : #'GToolkit-Demo-YAML2JSON'
 }
 
