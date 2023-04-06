@@ -146,7 +146,7 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-03-08T11:31:09.960037+01:00"
+									"dateAndTimeString" : "2023-04-05T10:20:35.459455+02:00"
 								}
 							},
 							"uid" : {
@@ -156,7 +156,7 @@
 							"paragraphStyle" : {
 								"__type" : "textStyle"
 							},
-							"string" : "[[*** SPL todos]] "
+							"string" : "[[*** SPL OPEN todos]] "
 						},
 						{
 							"__type" : "textSnippet",
