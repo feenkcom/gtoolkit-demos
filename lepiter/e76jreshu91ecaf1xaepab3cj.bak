@@ -362,14 +362,14 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-04-06T11:34:40.667472+02:00"
+									"dateAndTimeString" : "2023-04-11T09:51:55.333764+02:00"
 								}
 							},
 							"uid" : {
 								"__type" : "uid",
 								"uidString" : "1MATVgm1DQCrNZg8Bdg+oA=="
 							},
-							"code" : "minimal := YAMLParser\r\t\tparse: '\njobs:\n  steps:\n  - run: node something.js \n'.\rminimal acceptVisitor: YAMLMissingKeyVisitor new"
+							"code" : "minimal := YAMLParser\r\t\tparse: '\njobs:\n  steps:\n  - run: yarn build\n'.\rminimal acceptVisitor: YAMLMissingKeyVisitor new"
 						},
 						{
 							"__type" : "textSnippet",
@@ -396,7 +396,7 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-04-06T11:31:18.627147+02:00"
+									"dateAndTimeString" : "2023-04-11T10:02:04.200869+02:00"
 								}
 							},
 							"uid" : {
@@ -406,7 +406,7 @@
 							"paragraphStyle" : {
 								"__type" : "textStyle"
 							},
-							"string" : ""
+							"string" : "JB wrote on slack that he changed the glr "
 						}
 					]
 				},
