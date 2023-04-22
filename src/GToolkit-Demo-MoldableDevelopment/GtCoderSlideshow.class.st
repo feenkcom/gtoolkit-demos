@@ -595,7 +595,7 @@ GtCoderSlideshow >> createMethodExplanationWithLinks [
 
 	aScripter click
 		label: 'Click add method button';
-		id: GtPharoBehaviorCoder addNewMethodButtonName;
+		id: GtPharoAddNewMethodButtonId;
 		play.
 
 	classCoderElement := aScripter rootWithoutParent.
@@ -610,7 +610,7 @@ GtCoderSlideshow >> createMethodExplanationWithLinks [
 			removeButtonTarget := aChild childAt: 2].
 
 	addMethodButton := classCoderElement
-		childNamed: GtPharoBehaviorCoder addNewMethodButtonName.
+		childWithId: GtPharoAddNewMethodButtonId.
 	
 	addMethodButton
 		addChild:
