@@ -31,5 +31,7 @@ BaselineOfGToolkitDemos >> baseline: spec [
 				baseline: 'GToolkitDemoSlideshows'
 					with: [ spec repository: 'github://feenkcom/gtoolkit-demos:main/src' ];
 				baseline: 'GToolkitDemoSPL'
+					with: [ spec repository: 'github://feenkcom/gtoolkit-demos:main/src' ];
+				baseline: 'GToolkitDemoYAML2JSON'
 					with: [ spec repository: 'github://feenkcom/gtoolkit-demos:main/src' ] ]
 ]
