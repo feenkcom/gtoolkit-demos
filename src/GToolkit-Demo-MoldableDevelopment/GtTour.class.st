@@ -192,7 +192,7 @@ When opened on a class, you see the ' asRopedText, ('name' asRopedText glamorous
 ('expandable editor' asRopedText glamorousExplanationFor: #expandClassButton),
  ' for the definition including details like: the superclass, package, tag, traits, instance and class side variables. ' asRopedText,
 'Underneath we have different views on the class such as ' asRopedText,
-('methods' asRopedText glamorousExplanationFor: #methodTab), ' the ' asRopedText,
+('methods' asRopedText glamorousExplanationFor: #methodTab), ', the ' asRopedText,
 ('class comment' asRopedText glamorousExplanationFor: #commentTab),
 ' or a list of ' asRopedText,
 ('references' asRopedText glamorousExplanationFor: #referencesTab),
