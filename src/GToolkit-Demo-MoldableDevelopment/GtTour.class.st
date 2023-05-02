@@ -577,7 +577,7 @@ GtTour >> multipleViewsForOneObjectExampleSlideFor: aSlide [
 		element: [ GtMultipleViewsForOneObjectLiveSlide new grid asElement ];
 		newText: 'Moldable development starts from the idea that everything about software, including code, is data. And data is shapeless, yet we, humans, need a concrete shape to reason about it. The environment provides this shape, and this is why the environment is essential.';
 		newText: 'To reason about data, we need to view it through a lens that is specific to the question we have. And when we do not have an appropriate view, we should be able to create it inexpensively. This applies for everything in software starting from the tiniest objects.';
-		newText: 'For example, take a look to the right at a few views on an the same object holding a piece of text. Every view is relevant from a certain perspective and the environment must accommodate all of them.';
+		newText: 'For example, take a look to the right at a few views on the same object holding a piece of text. Every view is relevant from a certain perspective and the environment must accommodate all of them.';
 		elementWeight: 0.5.
 ]
 
