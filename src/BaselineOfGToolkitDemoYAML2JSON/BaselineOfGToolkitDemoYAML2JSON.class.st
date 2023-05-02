@@ -4,13 +4,15 @@ Class {
 	#category : #BaselineOfGToolkitDemoYAML2JSON
 }
 
-{ #category : #accessing }
+{ #category : #baseline }
 BaselineOfGToolkitDemoYAML2JSON >> baseline: spec [
 	<baseline>
-	spec
-		for: #common
-		do: [ spec
-				baseline: 'GToolkit4SmaCC'
-				with: [ spec repository: 'github://feenkcom/gt4smacc:main/src' ].
-			spec package: 'GToolkit-Demo-YAML2JSON' with: [ spec requires: #('GToolkit4SmaCC') ] ]
+	spec for: #'common' do: [
+		spec
+			baseline: 'GToolkit4SmaCC' with: [
+				spec repository: 'github://feenkcom/gt4smacc:v0.8.194/src' ].
+
+		spec package: 'GToolkit-Demo-YAML2JSON' with: [
+			spec requires: #('GToolkit4SmaCC') ].
+	]
 ]
