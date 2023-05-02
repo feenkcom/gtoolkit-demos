@@ -26,7 +26,7 @@ SmalltalkIntroSlideshow >> addingAutoPlay: aSlide [
 		startPage: (self db pageNamed: 'Changing a running system')
 ]
 
-{ #category : #slides }
+{ #category : #page }
 SmalltalkIntroSlideshow >> addingAutoPlayPage [
 	<gtExample>
 	<noTest>
@@ -263,7 +263,7 @@ SmalltalkIntroSlideshow >> composingExamples: aSlide [
 		startPage: (self db pageNamed: 'Composing (Test) Examples')
 ]
 
-{ #category : #slides }
+{ #category : #page }
 SmalltalkIntroSlideshow >> composingExamplesPage [
 	<gtExample>
 	<noTest>
@@ -354,7 +354,7 @@ SmalltalkIntroSlideshow >> everythingHappensBySendingMessages: aSlide [
 		startPage:  (self db pageNamed:  'Everything happens by sending messages')
 ]
 
-{ #category : #slides }
+{ #category : #page }
 SmalltalkIntroSlideshow >> everythingHappensBySendingMessagesPage [
 	<gtExample>
 	<noTest>
@@ -461,7 +461,7 @@ SmalltalkIntroSlideshow >> everythingIsAnObject: aSlide [
 		startPage: (self db pageNamed: 'Everything is an object')
 ]
 
-{ #category : #slides }
+{ #category : #page }
 SmalltalkIntroSlideshow >> everythingIsAnObjectPage [
 	<gtExample>
 	<noTest>
@@ -570,7 +570,7 @@ SmalltalkIntroSlideshow >> exploringLudo: aSlide [
 		startPage:  (self db pageNamed: 'Exploring a live system')
 ]
 
-{ #category : #slides }
+{ #category : #page }
 SmalltalkIntroSlideshow >> exploringLudoPage [
 	<gtExample>
 	<noTest>
@@ -714,7 +714,7 @@ SmalltalkIntroSlideshow >> liveDocumentationLogic: aSlide [
 		startPage: (self db pageNamed:  'Live documentation of the game logic')
 ]
 
-{ #category : #slides }
+{ #category : #page }
 SmalltalkIntroSlideshow >> liveDocumentationLogicPage [
 	<gtExample>
 	<noTest>
@@ -814,7 +814,7 @@ SmalltalkIntroSlideshow >> liveDocumentationUML: aSlide [
 		startPage: (self db pageNamed: 'Live documentation of the technical solution')
 ]
 
-{ #category : #slides }
+{ #category : #page }
 SmalltalkIntroSlideshow >> liveDocumentationUMLPage [
 	<gtExample>
 	<noTest>
@@ -927,7 +927,7 @@ SmalltalkIntroSlideshow >> recordingMoves: aSlide [
 		startPage:(self db pageNamed: 'Recording and visualizing token moves')
 ]
 
-{ #category : #slides }
+{ #category : #page }
 SmalltalkIntroSlideshow >> recordingMovesPage [
 	<gtExample>
 	<noTest>
@@ -1072,7 +1072,7 @@ SmalltalkIntroSlideshow >> syntax: aSlide [
 		startPage: (self db pageNamed: 'Smalltalk Syntax (the funny bits)')
 ]
 
-{ #category : #slides }
+{ #category : #page }
 SmalltalkIntroSlideshow >> syntaxPage [
 	<gtExample>
 	<noTest>
@@ -1228,7 +1228,7 @@ SmalltalkIntroSlideshow >> threeKindsOfMessages: aSlide [
 		startPage:  (self db pageNamed: 'Three kinds of messages')
 ]
 
-{ #category : #slides }
+{ #category : #page }
 SmalltalkIntroSlideshow >> threeKindsOfMessagesPage [
 	<gtExample>
 	<noTest>
