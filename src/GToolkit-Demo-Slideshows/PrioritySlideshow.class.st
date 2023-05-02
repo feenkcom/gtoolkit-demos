@@ -96,7 +96,9 @@ PrioritySlideshow >> cr [
 PrioritySlideshow >> db [
 	"Transient Lepiter database for the dynamically created pages."
 
-	db ifNil: [ db := LeDatabase new ].
+	db
+		ifNil: [ db := LeDatabase new.
+			db parent: LeDatabasesRegistry uniqueInstance defaultLogicalDatabase ].
 	^ db
 ]
 
