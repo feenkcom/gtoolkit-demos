@@ -340,6 +340,15 @@ SmalltalkIntroSlideshow >> composingExamplesPage [
 		yourself
 ]
 
+{ #category : #page }
+SmalltalkIntroSlideshow >> database [
+	"All the pages"
+
+	<gtExample>
+	<noTest>
+	^ self db
+]
+
 { #category : #accessing }
 SmalltalkIntroSlideshow >> dbName [
 	self deprecated: 'Don''t use this database anymore'.
