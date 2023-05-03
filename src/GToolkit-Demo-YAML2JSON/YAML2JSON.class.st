@@ -1,9 +1,9 @@
 "
 A simple Facade.
 
-YAM2JSON fromFilePath: 'gtoolkit.yaml'
+YAML2JSON fromFilePath: 'gtoolkit.yaml'
 
-YAM2JSON jsonPrettyFromFilePath: 'gtoolkit.yaml'
+YAML2JSON jsonPrettyFromFilePath: 'gtoolkit.yaml'
 
 "
 Class {
