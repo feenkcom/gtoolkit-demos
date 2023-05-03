@@ -7,6 +7,13 @@ See, for example, {{gtMethod:name=SmalltalkIntroSlideshow>>#titleSlideFor:}}.
 
 There are also numerous convenience methods, such as `asTitle:`.
 
+Methods that you should configure:
+- `slidePriorities` — the list of slide pages in the order you want them to appear
+- `initializeDb` — create and add all the internal Lepiter pages you use in the slideshow (if any)
+- `myLepiterDB` — database of any external pages you might refer to (you should prefer the internal one)
+- `show` — do a `super show` for convenience
+
+
 "
 Class {
 	#name : #PrioritySlideshow,
@@ -55,6 +62,14 @@ PrioritySlideshow >> asHeader: aString [
 		glamorousRegularFont;
 		bold;
 		fontSize: 60
+]
+
+{ #category : #text }
+PrioritySlideshow >> asSubTitle: aString [
+	^ (aString asRopedText)
+		glamorousRegularFont;
+		bold;
+		fontSize: 50
 ]
 
 { #category : #text }
