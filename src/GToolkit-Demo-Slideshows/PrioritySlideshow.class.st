@@ -65,6 +65,14 @@ PrioritySlideshow >> asHeader: aString [
 ]
 
 { #category : #text }
+PrioritySlideshow >> asSubTitle: aString [
+	^ (aString asRopedText)
+		glamorousRegularFont;
+		bold;
+		fontSize: 50
+]
+
+{ #category : #text }
 PrioritySlideshow >> asSubtitle: aString [
 	^ (aString asRopedText)
 		glamorousRegularFont;
