@@ -4,6 +4,12 @@ Class {
 	#category : #'BaselineOfGToolkitDemoSPL-SPL'
 }
 
+{ #category : #accessing }
+BaselineOfGToolkitDemoSPL class >> gtDependencyAnalysisPreloadedBaselines [
+	^ super gtDependencyAnalysisPreloadedBaselines
+		copyWith: BaselineOfGToolkit
+]
+
 { #category : #baseline }
 BaselineOfGToolkitDemoSPL >> baseline: spec [
 	<baseline>
