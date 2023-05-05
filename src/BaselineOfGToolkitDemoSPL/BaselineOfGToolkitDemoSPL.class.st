@@ -10,13 +10,13 @@ BaselineOfGToolkitDemoSPL >> baseline: spec [
 	spec for: #'common' do: [
 		spec
 			baseline: 'GToolkitPhlow' with: [
-				spec repository: 'github://feenkcom/gtoolkit-phlow:v0.8.984/src' ].
+				spec repository: 'github://feenkcom/gtoolkit-phlow:v0.8.985/src' ].
 		spec
 			baseline: 'LepiterEngineCore' with: [
-				spec repository: 'github://feenkcom/lepiter:v0.6.1466/src' ].
+				spec repository: 'github://feenkcom/lepiter:v0.6.1467/src' ].
 		spec
 			baseline: 'LepiterEngineExtensions' with: [
-				spec repository: 'github://feenkcom/lepiter:v0.6.1466/src' ].
+				spec repository: 'github://feenkcom/lepiter:v0.6.1467/src' ].
 		spec
 			baseline: 'GToolkit4PetitParser2' with: [
 				spec repository: 'github://feenkcom/gt4petitparser2:v0.8.31/src' ].
