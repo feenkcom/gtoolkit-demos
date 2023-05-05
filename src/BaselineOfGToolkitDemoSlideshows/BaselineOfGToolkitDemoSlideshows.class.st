@@ -5,6 +5,12 @@ Class {
 }
 
 { #category : #accessing }
+BaselineOfGToolkitDemoSlideshows class >> gtDependencyAnalysisPreloadedBaselines [
+	^ super gtDependencyAnalysisPreloadedBaselines
+		copyWith: BaselineOfGToolkit
+]
+
+{ #category : #accessing }
 BaselineOfGToolkitDemoSlideshows >> baseline: spec [
 	<baseline>
 	spec for: #common do: [
