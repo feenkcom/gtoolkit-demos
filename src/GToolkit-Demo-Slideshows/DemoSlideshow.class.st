@@ -13,13 +13,13 @@ DemoSlideshow class >> show [
 	super show
 ]
 
-{ #category : #accessing }
+{ #category : #page }
 DemoSlideshow >> dynamicLePage [
 	<gtExample>
 	<noTest>
-	^ (LePage named: 'Test page')
+	^ (LePage named: 'A dynamic Lepiter page')
 		addSnippet: (LeTextSnippet new
-				string: 'This page is dynamically created.';
+				string: 'This page is dynamically created and stored in a transient Lepiter database.';
 				yourself);
 		addSnippet: (LePharoSnippet new
 				code: '''hello''';
@@ -32,7 +32,7 @@ DemoSlideshow >> dynamicLepiterPage: aSlide [
 	<gtSlide>
 	^ aSlide lepiterPage
 		priority: (self priorityFor: #dynamicLepiterPage:);
-		startPage: self dynamicLePage
+		startPage:  (self db pageNamed: 'A dynamic Lepiter page')
 ]
 
 { #category : #slides }
@@ -48,6 +48,11 @@ DemoSlideshow >> headingAndCode: aSlide [
 3+4.'
 ]
 
+{ #category : #initialization }
+DemoSlideshow >> initializeDb [
+	self db addPage: self dynamicLePage
+]
+
 { #category : #slides }
 DemoSlideshow >> lepiterPage: aSlide [
 	<gtSlide>
@@ -56,12 +61,6 @@ DemoSlideshow >> lepiterPage: aSlide [
 		priority: (self priorityFor: #lepiterPage:);
 		pageNamed: 'Lepiter' from: self gtBook;
 		yourself
-]
-
-{ #category : #accessing }
-DemoSlideshow >> myLepiterDB [
-	"Default Lepiter DB to use"
-	^ 'Documents/lepiter/default'
 ]
 
 { #category : #slides }
@@ -91,20 +90,6 @@ DemoSlideshow >> slidePriorities [
 		#dynamicLepiterPage:
 		headingAndCode:
 	)
-]
-
-{ #category : #accessing }
-DemoSlideshow >> testLePage [
-	<gtExample>
-	<noTest>
-	^ (LePage named: 'Test page')
-		addSnippet: (LeTextSnippet new
-				string: 'This page is dynamically created.';
-				yourself);
-		addSnippet: (LePharoSnippet new
-				code: '''hello''';
-				yourself);
-		yourself
 ]
 
 { #category : #slides }
