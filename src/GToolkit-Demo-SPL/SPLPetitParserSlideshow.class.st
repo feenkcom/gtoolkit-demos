@@ -25,8 +25,7 @@ SPLPetitParserSlideshow >> buildingTheAST: aSlide [
 	<gtSlide>
 	^ aSlide lepiterPage
 		priority: (self priorityFor: #buildingTheAST:);
-		startPage: self buildingTheASTPage
-
+		startPage: (self db pageNamed: 'Building the AST with parser actions')
 ]
 
 { #category : #page }
@@ -60,7 +59,7 @@ SPLPetitParserSlideshow >> classExtraction: aSlide [
 	<gtSlide>
 	^ aSlide lepiterPage
 		priority: (self priorityFor: #classExtraction:);
-		startPage: self classExtractionPage
+		startPage: (self db pageNamed: 'Extracting a parser class')
 
 ]
 
@@ -130,7 +129,7 @@ SPLPetitParserSlideshow >> debuggingParsers: aSlide [
 	<gtSlide>
 	^ aSlide lepiterPage
 		priority: (self priorityFor: #debuggingParsers:);
-		startPage: self debuggingParsersPage
+		startPage: (self db pageNamed: 'Debugging parsers')
 
 ]
 
@@ -163,7 +162,7 @@ SPLPetitParserSlideshow >> fibonacci: aSlide [
 	<gtSlide>
 	^ aSlide lepiterPage
 		priority: (self priorityFor: #fibonacci:);
-		startPage: self fibonacciPage
+		startPage: (self db pageNamed: 'Fibonacci in SPL')
 
 ]
 
@@ -182,6 +181,18 @@ SPLPetitParserSlideshow >> fibonacciPage [
 				string: 'Look at the history view to explore the reductions in detail.';
 				yourself);
 		yourself
+]
+
+{ #category : #initialization }
+SPLPetitParserSlideshow >> initializeDb [
+	self db addPage: self buildingTheASTPage.
+	self db addPage: self classExtractionPage.
+	self db addPage: self debuggingParsersPage.
+	self db addPage: self fibonacciPage.
+	self db addPage: self partialGrammarScriptPage.
+	self db addPage: self runningAnSPLProgramPage.
+	self db addPage: self theASThierarchyPage.
+	self db addPage: self writingTestsPage
 ]
 
 { #category : #slides }
@@ -299,8 +310,7 @@ SPLPetitParserSlideshow >> partialGrammarScript: aSlide [
 	<gtSlide>
 	^ aSlide lepiterPage
 		priority: (self priorityFor: #partialGrammarScript:);
-		startPage: self partialGrammarScriptPage
-
+		startPage: (self db pageNamed: 'Prototyping the SPL grammar parser as a script')
 ]
 
 { #category : #page }
@@ -346,7 +356,7 @@ SPLPetitParserSlideshow >> runningAnSPLProgram: aSlide [
 	<gtSlide>
 	^ aSlide lepiterPage
 		priority: (self priorityFor: #runningAnSPLProgram:);
-		startPage: self runningAnSPLProgramPage
+		startPage: (self db pageNamed: 'Running an SPL program')
 
 ]
 
@@ -497,7 +507,7 @@ SPLPetitParserSlideshow >> theASThierarchy: aSlide [
 	<gtSlide>
 	^ aSlide lepiterPage
 		priority: (self priorityFor: #theASThierarchy:);
-		startPage: self theASThierarchyPage
+		startPage: (self db pageNamed: 'The SPL AST hierarchy')
 
 ]
 
@@ -553,7 +563,7 @@ SPLPetitParserSlideshow >> writingTests: aSlide [
 	<gtSlide>
 	^ aSlide lepiterPage
 		priority: (self priorityFor: #writingTests:);
-		startPage: self writingTestsPage
+		startPage: (self db pageNamed: 'Writing parser tests')
 ]
 
 { #category : #page }
