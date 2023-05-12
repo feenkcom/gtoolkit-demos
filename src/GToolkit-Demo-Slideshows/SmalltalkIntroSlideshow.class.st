@@ -638,7 +638,7 @@ SmalltalkIntroSlideshow >> exploringLudoPage [
 						code: 'game := GtLudoGameExamples new playerAentersTokenA';
 						yourself);
 				addSnippet: (LeTextSnippet new
-						string: 'Either navigate from the raw view, or evaluate `self` in the Playground underneath the inspector view (pull up the grey bar).';
+						string: 'Just click on the `(i)` (Inspect Object) button at the top right.';
 						yourself);
 				addSnippet: (LeTextSnippet new
 						string: 'You can interact both through the GUI or programatically and the views will stay in sync.';
