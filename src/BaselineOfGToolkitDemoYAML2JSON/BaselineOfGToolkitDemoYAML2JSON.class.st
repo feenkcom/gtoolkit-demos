@@ -10,7 +10,7 @@ BaselineOfGToolkitDemoYAML2JSON >> baseline: spec [
 	spec for: #'common' do: [
 		spec
 			baseline: 'GToolkit4SmaCC' with: [
-				spec repository: 'github://feenkcom/gt4smacc:v0.8.197/src' ].
+				spec repository: 'github://feenkcom/gt4smacc:v0.8.198/src' ].
 
 		spec package: 'GToolkit-Demo-YAML2JSON' with: [
 			spec requires: #('GToolkit4SmaCC') ].
