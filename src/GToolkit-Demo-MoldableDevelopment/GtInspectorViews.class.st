@@ -194,7 +194,7 @@ GtInspectorViews >> columnedTreeViewExplanationWithLinks [
 	
 	titleTab := resultInspectorTree
 	allChildrenBreadthFirstDetect: [:aChild | 
-		(aChild isKindOf: BrTab) and: [aChild label asString = 'Contacts Address']]
+		(aChild isKindOf: BrTab) and: [aChild label asString = 'Contacts address']]
 	ifFound: [:aChild | aChild].
 	contactLabel := resultInspectorTree
 	allChildrenBreadthFirstDetect: [:aChild | 
@@ -872,8 +872,8 @@ GtInspectorViews >> treeViewExplanationWithLinks [
 	resultInspectorContainer := self resultInspectorContainerElement.
 	verticalContainer := self verticalContainerElement.
 	
-	codeExplanationLabel := self explanationLabelWithText: 'Contents Tree view method'.
-	resultExplanationLabel := self explanationLabelWithText: 'Contents Tree view result'.
+	codeExplanationLabel := self explanationLabelWithText: 'Contents tree view method'.
+	resultExplanationLabel := self explanationLabelWithText: 'Contents tree view result'.
 	
 	coder := GtPharoMethodCoder new forMethod: (GtABAddressBook>>#gtViewCategoriesTreeWithContactsOn:).
 	
@@ -899,7 +899,7 @@ GtInspectorViews >> treeViewExplanationWithLinks [
 	
 	titleTab := resultInspectorTree
 	allChildrenBreadthFirstDetect: [:aChild | 
-		(aChild isKindOf: BrTab) and: [aChild label asString = 'Contacts Tree']]
+		(aChild isKindOf: BrTab) and: [aChild label asString = 'Contacts tree']]
 	ifFound: [:aChild | aChild].
 	treeLabel := resultInspectorTree
 	allChildrenBreadthFirstDetect: [:aChild | 
