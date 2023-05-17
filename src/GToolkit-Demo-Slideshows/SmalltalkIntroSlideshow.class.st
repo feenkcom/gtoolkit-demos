@@ -921,14 +921,6 @@ SmalltalkIntroSlideshow >> picturesDirectoryPath [
 ]
 
 { #category : #slides }
-SmalltalkIntroSlideshow >> programmingClassesAndMethods: aSlide [
-	"<gtSlide>"
-	^ (aSlide lepiterPage)
-		priority: (self priorityFor: #programmingClassesAndMethods:);
-		pageNamed: 'Programming Classes and Methods' from: self myLepiterDB
-]
-
-{ #category : #slides }
 SmalltalkIntroSlideshow >> recordingMoves: aSlide [
 	<gtSlide>
 	^ aSlide lepiterPage
