@@ -150,7 +150,7 @@ GtABAddressBook >> gtViewCategoriesTreeWithContactsOn: aView [
 
 	(self categories isEmpty) ifTrue: [^ aView empty].
 	^ aView tree
-		title: 'Contacts Tree' translated;
+		title: 'Contacts tree' translated;
 		items: [ self categories ];
 		children: [ :each |
 			(each isCategory)
@@ -164,7 +164,7 @@ GtABAddressBook >> gtViewContactsAddressOn: aView [
 	
 	(self categories isEmpty) ifTrue: [^ aView empty].
 	^ aView columnedTree
-		title: 'Contacts Address' translated;
+		title: 'Contacts address' translated;
 		items: [self categories];
 		column: 'Contact' text: [:each | each];
 		column: 'City' text: [:each | 
