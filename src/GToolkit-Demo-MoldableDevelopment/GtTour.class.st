@@ -890,7 +890,7 @@ GtTour >> timelineElement [
 			(Date year: 2020 month: 07 day: 23) -> 'Glamorous Toolkit v0.7.1214 beta'.
 			(Date year: 2021 month: 06 day: 04) -> 'Lepiter'
 		}.
-		^ plotter asElement
+	^ plotter asElement
 ]
 
 { #category : #accessing }
