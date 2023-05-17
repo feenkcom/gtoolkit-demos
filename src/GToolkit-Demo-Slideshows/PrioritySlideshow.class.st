@@ -185,7 +185,8 @@ PrioritySlideshow >> gtSlideMethodsListViewFor: aView [
 	^ aView list
 		priority: 30;
 		title: 'Slide methods';
-		items: [ self slidePriorities collect: [ :each | self class methodDict at: each ] ]
+		items: [ self slidePriorities
+				collect: [ :each | self class methodDict at: each ifAbsent: [ each -> nil ] ] ]
 ]
 
 { #category : #views }
