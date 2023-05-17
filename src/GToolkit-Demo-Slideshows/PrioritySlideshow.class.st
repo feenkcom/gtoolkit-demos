@@ -158,6 +158,16 @@ PrioritySlideshow >> gtBook [
 ]
 
 { #category : #views }
+PrioritySlideshow >> gtDatabaseFor: aView [
+	<gtView>
+	^ aView forward
+		title: 'Database';
+		priority: 40;
+		object: [ self db ];
+		view: #gtLiveFor:
+]
+
+{ #category : #views }
 PrioritySlideshow >> gtLiveFor: aView [
 	<gtView>
 	^ aView forward
