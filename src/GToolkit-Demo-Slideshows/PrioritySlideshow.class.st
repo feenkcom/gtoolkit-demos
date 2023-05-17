@@ -164,7 +164,8 @@ PrioritySlideshow >> gtDatabaseFor: aView [
 		title: 'Database';
 		priority: 40;
 		object: [ self db ];
-		view: #gtLiveFor:
+		view: #gtLiveFor:;
+		actionUpdateButton
 ]
 
 { #category : #views }
@@ -174,7 +175,8 @@ PrioritySlideshow >> gtLiveFor: aView [
 		title: 'Live';
 		priority: 10;
 		object: [ self slideshow ];
-		view: #gtLiveFor:
+		view: #gtLiveFor:;
+		actionUpdateButton
 ]
 
 { #category : #views }
@@ -186,18 +188,20 @@ PrioritySlideshow >> gtSlideMethodsListViewFor: aView [
 		priority: 30;
 		title: 'Slide methods';
 		items: [ self slidePriorities
-				collect: [ :each | self class methodDict at: each ifAbsent: [ each -> nil ] ] ]
+				collect: [ :each | self class methodDict at: each ifAbsent: [ each -> nil ] ] ];
+		actionUpdateButton
 ]
 
 { #category : #views }
 PrioritySlideshow >> gtSlidesListViewFor: aView [
-"Instead of this, we should get the slidePriorities and generate a list of slides with names. We'll need to wrap the slides ..."
-	<gtView>
+	"Instead of this, we should get the slidePriorities and generate a list of slides with names. We'll need to wrap the slides ..."
 
+	<gtView>
 	^ aView list
 		priority: 20;
 		title: 'Slides';
-		items: [ self slideshow slides slides ]
+		items: [ self slideshow slides slides ];
+		actionUpdateButton
 ]
 
 { #category : #initialization }
