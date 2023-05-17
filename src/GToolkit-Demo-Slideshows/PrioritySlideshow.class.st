@@ -136,9 +136,45 @@ PrioritySlideshow >> ensurePageNamed: aPageName [
 	^ database pageNamed: aPageName
 ]
 
+{ #category : #accessing }
+PrioritySlideshow >> gtActionShowFor: anAction [
+	<gtAction>
+	^ anAction explicit
+		priority: 2;
+		stencil: [ | button |
+			button := BrButton new
+					id: GtInspectorInspectButtonId;
+					aptitude: BrGlamorousButtonWithIconAptitude;
+					icon: BrGlamorousVectorIcons play;
+					label: 'Play slideshow';
+					action: [ :aButton :aModel :anEvent | self class show ].
+			button ]
+]
+
 { #category : #constants }
 PrioritySlideshow >> gtBook [
 	^ 'Glamorous Toolkit Book'
+]
+
+{ #category : #views }
+PrioritySlideshow >> gtLiveFor: aView [
+	<gtView>
+	^ aView forward
+		title: 'Live';
+		priority: 10;
+		object: [ self slideshow ];
+		view: #gtLiveFor:
+]
+
+{ #category : #views }
+PrioritySlideshow >> gtSlidesListViewFor: aView [
+"Instead of this, we should get the slidePriorities and generate a list of slides with names. We'll need to wrap the slides ..."
+	<gtView>
+
+	^ aView list
+		priority: 20;
+		title: 'Slides';
+		items: [ self slideshow slides slides ]
 ]
 
 { #category : #initialization }
