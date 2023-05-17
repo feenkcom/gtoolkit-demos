@@ -181,26 +181,27 @@ PrioritySlideshow >> gtLiveFor: aView [
 
 { #category : #views }
 PrioritySlideshow >> gtSlideMethodsListViewFor: aView [
-	"Instead of this, we should get the slidePriorities and generate a list of slides with names. We'll need to wrap the slides ..."
-
 	<gtView>
 	^ aView list
 		priority: 30;
 		title: 'Slide methods';
-		items: [ self slidePriorities
-				collect: [ :each | self class methodDict at: each ifAbsent: [ each -> nil ] ] ];
+		items: [ self slideMethods ];
 		actionUpdateButton
 ]
 
 { #category : #views }
 PrioritySlideshow >> gtSlidesListViewFor: aView [
-	"Instead of this, we should get the slidePriorities and generate a list of slides with names. We'll need to wrap the slides ..."
-
 	<gtView>
-	^ aView list
+	| dictionary |
+	dictionary := self slideDictionary.
+	^ aView columnedList
 		priority: 20;
 		title: 'Slides';
-		items: [ self slideshow slides slides ];
+		items: [ dictionary keys ];
+		column: 'Index'
+			text: [ :eachItem :eachIndex | eachIndex asRopedText foreground: Color gray ]
+			width: 45;
+		column: 'Slides' text: [ :each | (dictionary at: each) selector ];
 		actionUpdateButton
 ]
 
@@ -230,6 +231,23 @@ PrioritySlideshow >> pages [
 { #category : #accessing }
 PrioritySlideshow >> priorityFor: aSlideMethodSelector [
 	^ self slidePriorities indexOf: aSlideMethodSelector
+]
+
+{ #category : #accessing }
+PrioritySlideshow >> slideDictionary [
+	"A dictionary mapping slides to the methods that produce them."
+
+	| methods |
+	methods := self slideMethods select: [ :each | each isCompiledMethod ].
+	^ (methods
+		collect: [ :each | (self perform: each selector withArguments: {GtProtoLiveSlide new}) -> each ])
+		asOrderedDictionary
+]
+
+{ #category : #accessing }
+PrioritySlideshow >> slideMethods [
+	^ self slidePriorities
+		collect: [ :each | self class methodDict at: each ifAbsent: [ each -> nil ] ]
 ]
 
 { #category : #accessing }
