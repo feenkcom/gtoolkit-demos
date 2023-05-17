@@ -19,7 +19,8 @@ Class {
 	#name : #PrioritySlideshow,
 	#superclass : #Object,
 	#instVars : [
-		'db'
+		'db',
+		'slideshow'
 	],
 	#category : #'GToolkit-Demo-Slideshows-Slideshows'
 }
@@ -167,6 +168,17 @@ PrioritySlideshow >> gtLiveFor: aView [
 ]
 
 { #category : #views }
+PrioritySlideshow >> gtSlideMethodsListViewFor: aView [
+	"Instead of this, we should get the slidePriorities and generate a list of slides with names. We'll need to wrap the slides ..."
+
+	<gtView>
+	^ aView list
+		priority: 30;
+		title: 'Slide methods';
+		items: [ self slidePriorities collect: [ :each | self class methodDict at: each ] ]
+]
+
+{ #category : #views }
 PrioritySlideshow >> gtSlidesListViewFor: aView [
 "Instead of this, we should get the slidePriorities and generate a list of slides with names. We'll need to wrap the slides ..."
 	<gtView>
@@ -215,4 +227,9 @@ PrioritySlideshow >> slidePriorities [
 	^ #( 
 		"Add the names of the slides here ..."
 		)
+]
+
+{ #category : #accessing }
+PrioritySlideshow >> slideshow [
+	^ slideshow ifNil: [ slideshow := GtPresenterSlideShow create: self ]
 ]
