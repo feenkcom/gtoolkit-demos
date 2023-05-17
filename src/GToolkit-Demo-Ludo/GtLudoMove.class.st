@@ -55,7 +55,7 @@ GtLudoMove >> gtTokenMovesFor: aView [
 
 	<gtView>
 	^ aView columnedList
-		  title: 'Token Moves';
+		  title: 'Token moves';
 		  items: [ tokenMoves ];
 		  column: 'Token' text: #token;
 		  column: 'From Square' text: #fromSquare;

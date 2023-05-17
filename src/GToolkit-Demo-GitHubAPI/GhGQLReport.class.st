@@ -34,7 +34,7 @@ GhGQLReport >> gtRepositoryIssuesFor: aView [
 	self isRepository ifFalse: [ ^ aView empty ].
 
 	^ aView columnedList
-		title: 'Open Issues';
+		title: 'Open issues';
 		items: [ self repositoryOpenIssuesStream ];
 		column: 'Index'
 			text: [ :aValue :anIndex | anIndex asRopedText foreground: BrGlamorousColors disabledButtonTextColor ]

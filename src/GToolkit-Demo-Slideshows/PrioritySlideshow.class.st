@@ -19,7 +19,8 @@ Class {
 	#name : #PrioritySlideshow,
 	#superclass : #Object,
 	#instVars : [
-		'db'
+		'db',
+		'slideshow'
 	],
 	#category : #'GToolkit-Demo-Slideshows-Slideshows'
 }
@@ -136,9 +137,72 @@ PrioritySlideshow >> ensurePageNamed: aPageName [
 	^ database pageNamed: aPageName
 ]
 
+{ #category : #accessing }
+PrioritySlideshow >> gtActionShowFor: anAction [
+	<gtAction>
+	^ anAction explicit
+		priority: 2;
+		stencil: [ | button |
+			button := BrButton new
+					id: GtInspectorInspectButtonId;
+					aptitude: BrGlamorousButtonWithIconAptitude;
+					icon: BrGlamorousVectorIcons play;
+					label: 'Play slideshow';
+					action: [ :aButton :aModel :anEvent | self class show ].
+			button ]
+]
+
 { #category : #constants }
 PrioritySlideshow >> gtBook [
 	^ 'Glamorous Toolkit Book'
+]
+
+{ #category : #views }
+PrioritySlideshow >> gtDatabaseFor: aView [
+	<gtView>
+	^ aView forward
+		title: 'Database';
+		priority: 40;
+		object: [ self db ];
+		view: #gtLiveFor:;
+		actionUpdateButton
+]
+
+{ #category : #views }
+PrioritySlideshow >> gtLiveFor: aView [
+	<gtView>
+	^ aView forward
+		title: 'Live';
+		priority: 10;
+		object: [ self slideshow ];
+		view: #gtLiveFor:;
+		actionUpdateButton
+]
+
+{ #category : #views }
+PrioritySlideshow >> gtSlideMethodsListViewFor: aView [
+	<gtView>
+	^ aView list
+		priority: 30;
+		title: 'Slide methods';
+		items: [ self slideMethods ];
+		actionUpdateButton
+]
+
+{ #category : #views }
+PrioritySlideshow >> gtSlidesListViewFor: aView [
+	<gtView>
+	| dictionary |
+	dictionary := self slideDictionary.
+	^ aView columnedList
+		priority: 20;
+		title: 'Slides';
+		items: [ dictionary keys ];
+		column: 'Index'
+			text: [ :eachItem :eachIndex | eachIndex asRopedText foreground: Color gray ]
+			width: 45;
+		column: 'Slides' text: [ :each | (dictionary at: each) selector ];
+		actionUpdateButton
 ]
 
 { #category : #initialization }
@@ -170,6 +234,23 @@ PrioritySlideshow >> priorityFor: aSlideMethodSelector [
 ]
 
 { #category : #accessing }
+PrioritySlideshow >> slideDictionary [
+	"A dictionary mapping slides to the methods that produce them."
+
+	| methods |
+	methods := self slideMethods select: [ :each | each isCompiledMethod ].
+	^ (methods
+		collect: [ :each | (self perform: each selector withArguments: {GtProtoLiveSlide new}) -> each ])
+		asOrderedDictionary
+]
+
+{ #category : #accessing }
+PrioritySlideshow >> slideMethods [
+	^ self slidePriorities
+		collect: [ :each | self class methodDict at: each ifAbsent: [ each -> nil ] ]
+]
+
+{ #category : #accessing }
 PrioritySlideshow >> slidePriorities [
 	"Override this method in the subclass.
 	Instead of manually setting priorities, just list the slides in order here.
@@ -179,4 +260,9 @@ PrioritySlideshow >> slidePriorities [
 	^ #( 
 		"Add the names of the slides here ..."
 		)
+]
+
+{ #category : #accessing }
+PrioritySlideshow >> slideshow [
+	^ slideshow ifNil: [ slideshow := GtPresenterSlideShow create: self ]
 ]
