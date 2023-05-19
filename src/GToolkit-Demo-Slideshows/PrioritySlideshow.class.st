@@ -19,8 +19,7 @@ Class {
 	#name : #PrioritySlideshow,
 	#superclass : #Object,
 	#instVars : [
-		'db',
-		'slideshow'
+		'db'
 	],
 	#category : #'GToolkit-Demo-Slideshows-Slideshows'
 }
@@ -260,9 +259,4 @@ PrioritySlideshow >> slidePriorities [
 	^ #( 
 		"Add the names of the slides here ..."
 		)
-]
-
-{ #category : #accessing }
-PrioritySlideshow >> slideshow [
-	^ slideshow ifNil: [ slideshow := GtPresenterSlideShow create: self ]
 ]
