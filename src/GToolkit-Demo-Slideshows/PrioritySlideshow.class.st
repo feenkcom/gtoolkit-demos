@@ -171,12 +171,12 @@ PrioritySlideshow >> gtDatabaseFor: aView [
 { #category : #views }
 PrioritySlideshow >> gtLiveFor: aView [
 	<gtView>
-	^ aView forward
-		title: 'Live';
+	^ aView empty
+		"title: 'Live';
 		priority: 10;
 		object: [ self slideshow ];
 		view: #gtLiveFor:;
-		actionUpdateButton
+		actionUpdateButton"
 ]
 
 { #category : #views }
