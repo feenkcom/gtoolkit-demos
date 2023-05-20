@@ -39,14 +39,14 @@ PrioritySlideshow class >> show: aSelector [
 PrioritySlideshow >> asBigCode: aString [
 	^ (aString asRopedText)
 		glamorousMonospace;
-		fontSize: 40
+		fontSize: self bigCodeAndTextSize
 ]
 
 { #category : #text }
 PrioritySlideshow >> asBigText: aString [
 	^ (aString asRopedText)
 		glamorousRegularFont;
-		fontSize: 40
+		fontSize: self bigCodeAndTextSize
 ]
 
 { #category : #text }
@@ -61,23 +61,15 @@ PrioritySlideshow >> asHeader: aString [
 	^ (aString asRopedText)
 		glamorousRegularFont;
 		bold;
-		fontSize: 60
-]
-
-{ #category : #text }
-PrioritySlideshow >> asSubTitle: aString [
-	^ (aString asRopedText)
-		glamorousRegularFont;
-		bold;
-		fontSize: 50
+		fontSize: self headerSize
 ]
 
 { #category : #text }
 PrioritySlideshow >> asSubtitle: aString [
-	^ (aString asRopedText)
+	^ aString asRopedText
 		glamorousRegularFont;
 		bold;
-		fontSize: 60
+		fontSize: self subtitleSize
 ]
 
 { #category : #text }
@@ -89,10 +81,15 @@ PrioritySlideshow >> asText: aString [
 
 { #category : #text }
 PrioritySlideshow >> asTitle: aString [
-	^ (aString asRopedText)
+	^ aString asRopedText
 		glamorousRegularFont;
 		bold;
-		fontSize: 70
+		fontSize: self titleSize
+]
+
+{ #category : #constant }
+PrioritySlideshow >> bigCodeAndTextSize [
+	^ 30
 ]
 
 { #category : #constant }
@@ -200,8 +197,18 @@ PrioritySlideshow >> gtSlidesListViewFor: aView [
 		column: 'Index'
 			text: [ :eachItem :eachIndex | eachIndex asRopedText foreground: Color gray ]
 			width: 45;
-		column: 'Slides' text: [ :each | (dictionary at: each) selector ];
+		column: 'Slides'
+			text: [ :each | (dictionary at: each) selector ]
+			width: 200;
+		column: 'Text'
+			text: [ :each | self textForSlide: (dictionary at: each) selector ]
+			width: 300;
 		actionUpdateButton
+]
+
+{ #category : #constant }
+PrioritySlideshow >> headerSize [
+	^ 60
 ]
 
 { #category : #initialization }
@@ -259,4 +266,24 @@ PrioritySlideshow >> slidePriorities [
 	^ #( 
 		"Add the names of the slides here ..."
 		)
+]
+
+{ #category : #text }
+PrioritySlideshow >> subtitleSize [
+	^ 40
+]
+
+{ #category : #utility }
+PrioritySlideshow >> textForSlide: aSelector [
+	"Extract the argument to the <text: ..> pragma, if it exists."
+	| pragmas |
+	(self class includesSelector: aSelector) ifFalse: [ ^ '' ].
+	pragmas := (self class compiledMethodAt: aSelector) pragmas
+			select: [ :p | p selector = #text: ].
+	^ pragmas ifEmpty: [ '' ] ifNotEmpty: [ pragmas first arguments first ]
+]
+
+{ #category : #constant }
+PrioritySlideshow >> titleSize [
+	^ 60
 ]
