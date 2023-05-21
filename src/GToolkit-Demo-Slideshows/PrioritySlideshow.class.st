@@ -268,6 +268,11 @@ PrioritySlideshow >> slidePriorities [
 		)
 ]
 
+{ #category : #accessing }
+PrioritySlideshow >> slides [
+	^ self slideDictionary keys
+]
+
 { #category : #text }
 PrioritySlideshow >> subtitleSize [
 	^ 40
