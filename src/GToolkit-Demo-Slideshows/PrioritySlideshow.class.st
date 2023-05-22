@@ -158,7 +158,7 @@ PrioritySlideshow >> gtDatabaseFor: aView [
 	<gtView>
 	^ aView forward
 		title: 'Database';
-		priority: 40;
+		priority: 80;
 		object: [ self db ];
 		view: #gtLiveFor:;
 		actionUpdateButton
@@ -178,10 +178,25 @@ PrioritySlideshow >> gtLiveFor: aView [
 { #category : #views }
 PrioritySlideshow >> gtSlideMethodsListViewFor: aView [
 	<gtView>
-	^ aView list
+	^ aView columnedList
 		priority: 30;
 		title: 'Slide methods';
 		items: [ self slideMethods ];
+		column: 'Index'
+			text: [ :eachItem :eachIndex | eachIndex asRopedText foreground: Color gray ]
+			width: 45;
+		column: 'Methods' text: [ :each | each ];
+		actionUpdateButton
+]
+
+{ #category : #accessing }
+PrioritySlideshow >> gtSlidePrioritiesFor: aView [
+	<gtView>
+	^ aView forward
+		title: 'Slide priorities';
+		priority: 40;
+		object: [ self class >> #slidePriorities ];
+		view: #gtSourceFor:;
 		actionUpdateButton
 ]
 
