@@ -56,10 +56,9 @@ DemoSlideshow >> initializeDb [
 { #category : #slides }
 DemoSlideshow >> lepiterPage: aSlide [
 	<gtSlide>
-	
-	^ (aSlide lepiterPage)
+	^ aSlide lepiterPage
 		priority: (self priorityFor: #lepiterPage:);
-		pageNamed: 'Lepiter' from: self gtBook;
+		pageNamed: 'Lepiter' from: 'Glamorous Toolkit Book';
 		yourself
 ]
 
