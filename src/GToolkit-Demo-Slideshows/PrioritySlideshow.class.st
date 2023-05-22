@@ -166,7 +166,12 @@ PrioritySlideshow >> gtSlideMethodsListViewFor: aView [
 		column: 'Index'
 			text: [ :eachItem :eachIndex | eachIndex asRopedText foreground: Color gray ]
 			width: 45;
-		column: 'Methods' text: [ :each | each ];
+		column: 'Methods'
+			text: [ :each | each selector ]
+			width: 200;
+		column: 'Text'
+			text: [ :each | self textForSlide: each selector ]
+			width: 300;
 		actionUpdateButton
 ]
 
