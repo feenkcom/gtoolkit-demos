@@ -114,25 +114,6 @@ PrioritySlideshow >> db [
 	^ db
 ]
 
-{ #category : #utility }
-PrioritySlideshow >> ensureEmptyPageNamed: aPageName [
-	| page |
-	page := self ensurePageNamed: aPageName.
-	[ page children notEmpty ]
-		whileTrue: [ page removeSnippet: page children last ].
-	^ page
-]
-
-{ #category : #utility }
-PrioritySlideshow >> ensurePageNamed: aPageName [
-	| database |
-	database := LeDatabasesRegistry default currentLoadedDefaultLogicalDatabase
-			databaseNamed: self myLepiterDB.
-	(database hasPageNamed: aPageName)
-		ifFalse: [ database addPage: (LePage named: aPageName) ].
-	^ database pageNamed: aPageName
-]
-
 { #category : #accessing }
 PrioritySlideshow >> gtActionShowFor: anAction [
 	<gtAction>
@@ -149,7 +130,7 @@ PrioritySlideshow >> gtActionShowFor: anAction [
 ]
 
 { #category : #constants }
-PrioritySlideshow >> gtBook [
+PrioritySlideshow >> gtBookName [
 	^ 'Glamorous Toolkit Book'
 ]
 
@@ -235,12 +216,6 @@ PrioritySlideshow >> initialize [
 { #category : #initialization }
 PrioritySlideshow >> initializeDb [
 	"Add pages to db, if needed."
-]
-
-{ #category : #constants }
-PrioritySlideshow >> myLepiterDB [
-	"Default Lepiter DB to use"
-	^ self gtBook
 ]
 
 { #category : #accessing }
