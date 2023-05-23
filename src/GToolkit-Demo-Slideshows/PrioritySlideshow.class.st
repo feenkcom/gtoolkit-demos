@@ -157,6 +157,18 @@ PrioritySlideshow >> gtLiveFor: aView [
 ]
 
 { #category : #views }
+PrioritySlideshow >> gtSlideDeckFor: aView [
+	"Eventually push this method up."
+	<gtView>
+	^ aView forward
+		title: 'Slide deck';
+		priority: 60;
+		object: [ self slideDeckPage asContentUIModel ];
+		view: #gtLiveFor:;
+		actionUpdateButton
+]
+
+{ #category : #views }
 PrioritySlideshow >> gtSlideMethodsListViewFor: aView [
 	<gtView>
 	^ aView columnedList
@@ -166,7 +178,12 @@ PrioritySlideshow >> gtSlideMethodsListViewFor: aView [
 		column: 'Index'
 			text: [ :eachItem :eachIndex | eachIndex asRopedText foreground: Color gray ]
 			width: 45;
-		column: 'Methods' text: [ :each | each ];
+		column: 'Methods'
+			text: [ :each | each selector ]
+			width: 200;
+		column: 'Text'
+			text: [ :each | self textForSlide: each selector ]
+			width: 300;
 		actionUpdateButton
 ]
 
@@ -229,6 +246,53 @@ PrioritySlideshow >> priorityFor: aSlideMethodSelector [
 	^ self slidePriorities indexOf: aSlideMethodSelector
 ]
 
+{ #category : #utility }
+PrioritySlideshow >> refreshSlideDeckPage [
+	"Remove the page if it exists, and recreate it from scratch."
+
+	| page |
+	page := self db ensurePageNamed: self class name.
+	self db removePage: page.
+	page := self db ensurePageNamed: self class name.
+	self slideDictionary
+		do: [ :assoc | 
+			| text |
+			text := assoc value pragmas
+					detect: [ :p | p selector = #text: ]
+					ifFound: [ :pragma | pragma arguments first ]
+					ifNone: [ '' ].
+			((String cr repeat: 2) split: text)
+				do: [ :each | 
+					page
+						addSnippet: (LeTextSnippet new
+								string: each;
+								yourself) ].
+			page
+				addSnippet: (LeElementSnippet new
+						code: self class name, ' new slideFor: ' , assoc value selector printString;
+						elementHeight: 400;
+						codeVisible: false;
+						yourself) ].
+	^ page
+]
+
+{ #category : #utility }
+PrioritySlideshow >> scalableSlide: aSlide [
+	"Not all gtSlides are scalable, so we wrap them for displaying in the Slides and Slide deck views.
+	If this is fixed, we can remove the wrappers."
+	<todo: 'remove this once slides become scalable.'>
+
+	| scalableSlide |
+	scalableSlide := GtProtoLiveSlide new element
+			element: [ (aSlide asElement size: 1200 @ 900) asScalableElement ].
+	^ scalableSlide
+]
+
+{ #category : #utility }
+PrioritySlideshow >> slideDeckPage [
+	^ self db pageNamed: self class name ifAbsent: [ self refreshSlideDeckPage ]
+]
+
 { #category : #accessing }
 PrioritySlideshow >> slideDictionary [
 	"A dictionary mapping slides to the methods that produce them."
@@ -236,8 +300,17 @@ PrioritySlideshow >> slideDictionary [
 	| methods |
 	methods := self slideMethods select: [ :each | each isCompiledMethod ].
 	^ (methods
-		collect: [ :each | (self perform: each selector withArguments: {GtProtoLiveSlide new}) -> each ])
+		collect: [ :each |
+		(self scalableSlide:(self perform: each selector withArguments: {GtProtoLiveSlide new}) )
+			-> each 
+		])
 		asOrderedDictionary
+]
+
+{ #category : #utility }
+PrioritySlideshow >> slideFor: selector [
+	^ self
+		scalableSlide: (self perform: selector withArguments: {GtProtoLiveSlide new})
 ]
 
 { #category : #accessing }
