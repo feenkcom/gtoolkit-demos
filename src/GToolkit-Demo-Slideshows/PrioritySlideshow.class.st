@@ -145,6 +145,25 @@ PrioritySlideshow >> gtDatabaseFor: aView [
 		actionUpdateButton
 ]
 
+{ #category : #accessing }
+PrioritySlideshow >> gtGitButtonFor: anAction [
+	<gtAction>
+	^ anAction button
+		tooltip: 'Go to repository';
+		priority: 4;
+		icon: BrGlamorousVectorIcons branching;
+		id: GtCoderGitButtonId;
+		action: [ :aButton | 
+			| repository |
+			repository := self class repository.
+			repository
+				ifNil: [ aButton phlow
+						spawnTool: (GtPhlowValuableTool new
+								valuable: [ GtGitAddToRepositoryElement new package: self class package ]) ]
+				ifNotNil: [ aButton phlow
+						spawnTool: (GtGitPhlowTool new repository: repository) ] ]
+]
+
 { #category : #views }
 PrioritySlideshow >> gtLiveFor: aView [
 	<gtView>
