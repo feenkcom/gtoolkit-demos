@@ -157,6 +157,18 @@ PrioritySlideshow >> gtLiveFor: aView [
 ]
 
 { #category : #views }
+PrioritySlideshow >> gtScriptFor: aView [
+	<gtView>
+	self hasTextPragmas ifFalse: [ ^ aView empty ].
+	^ aView forward
+		title: 'Script';
+		priority: 70;
+		object: [ self scriptPage asContentUIModel ];
+		view: #gtLiveFor:;
+		actionUpdateButton
+]
+
+{ #category : #views }
 PrioritySlideshow >> gtSlideDeckFor: aView [
 	"Eventually push this method up."
 	<gtView>
@@ -219,6 +231,14 @@ PrioritySlideshow >> gtSlidesListViewFor: aView [
 		actionUpdateButton
 ]
 
+{ #category : #views }
+PrioritySlideshow >> hasTextPragmas [
+	^ self class methods
+		detect: [ :m | m hasPragmaNamed: 'text:' ]
+		ifFound: [ true ]
+		ifNone: [ false ]
+]
+
 { #category : #constant }
 PrioritySlideshow >> headerSize [
 	^ 60
@@ -235,6 +255,16 @@ PrioritySlideshow >> initializeDb [
 	"Add pages to db, if needed."
 ]
 
+{ #category : #utility }
+PrioritySlideshow >> metrics [
+	| words wordsPerMinutes |
+	wordsPerMinutes := 140.
+	words := self scriptText substrings.
+	^ {'Number of words' -> words size.
+		'Estimated duration'
+			-> ((Duration minutes: words size / wordsPerMinutes) roundTo: 1 second)}
+]
+
 { #category : #accessing }
 PrioritySlideshow >> pages [
 	self error: 'Use self slidePriorities instead'.
@@ -244,6 +274,29 @@ PrioritySlideshow >> pages [
 { #category : #accessing }
 PrioritySlideshow >> priorityFor: aSlideMethodSelector [
 	^ self slidePriorities indexOf: aSlideMethodSelector
+]
+
+{ #category : #utility }
+PrioritySlideshow >> refreshScriptPage [
+	"Remove the page if it exists, and recreate it from scratch."
+
+	| page |
+	page := self db ensurePageNamed: self scriptPageName.
+	self db removePage: page.
+	page := self db ensurePageNamed: self scriptPageName.
+
+	page
+		addSnippet: (LeTextSnippet new
+				string: (String cr
+						join: (self metrics collect: [ :assoc | assoc key , ': ' , assoc value printString ]));
+				yourself).
+
+	page
+		addSnippet: (LeTextSnippet new
+				string: self scriptText;
+				yourself).
+
+	^ page
 ]
 
 { #category : #utility }
@@ -286,6 +339,32 @@ PrioritySlideshow >> scalableSlide: aSlide [
 	scalableSlide := GtProtoLiveSlide new element
 			element: [ (aSlide asElement size: 1200 @ 900) asScalableElement ].
 	^ scalableSlide
+]
+
+{ #category : #utility }
+PrioritySlideshow >> scriptPage [
+	^ self db pageNamed: self scriptPageName ifAbsent: [ self refreshScriptPage ]
+]
+
+{ #category : #utility }
+PrioritySlideshow >> scriptPageName [
+	^ 'Script'
+]
+
+{ #category : #utility }
+PrioritySlideshow >> scriptText [
+	| script |
+	self hasTextPragmas ifFalse: [ ^ '' ].
+	script := String new writeStream.
+	self slideDictionary
+		do: [ :assoc | 
+			| text |
+			text := assoc value pragmas
+					detect: [ :p | p selector = #text: ]
+					ifFound: [ :pragma | pragma arguments first , String cr , String cr ]
+					ifNone: [ '' ].
+			script nextPutAll: text ].
+	^ script contents
 ]
 
 { #category : #utility }
