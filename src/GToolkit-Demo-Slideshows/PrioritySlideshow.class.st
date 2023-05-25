@@ -231,22 +231,23 @@ PrioritySlideshow >> gtSlidePrioritiesFor: aView [
 
 { #category : #views }
 PrioritySlideshow >> gtSlidesListViewFor: aView [
+	"NB: the send: message wll transform the items to what we see in the next pane"
+
 	<gtView>
-	| dictionary |
-	dictionary := self slideDictionary.
 	^ aView columnedList
 		priority: 20;
 		title: 'Slides';
-		items: [ dictionary keys ];
+		items: [ self slideDictionary associations ];
 		column: 'Index'
 			text: [ :eachItem :eachIndex | eachIndex asRopedText foreground: Color gray ]
 			width: 45;
 		column: 'Slides'
-			text: [ :each | (dictionary at: each) selector ]
+			text: [ :each | each value selector ]
 			width: 200;
 		column: 'Text'
-			text: [ :each | self textForSlide: (dictionary at: each) selector ]
+			text: [ :each | self textForSlide: each value selector ]
 			width: 300;
+		send: #key;
 		actionUpdateButton
 ]
 
