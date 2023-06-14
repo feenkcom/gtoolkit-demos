@@ -204,7 +204,7 @@ PrioritySlideshow >> gtSlideMethodsListViewFor: aView [
 	<gtView>
 	^ aView columnedList
 		priority: 30;
-		title: 'Slide methods';
+		title: 'Slides';
 		items: [ self slideMethods ];
 		column: 'Index'
 			text: [ :eachItem :eachIndex | eachIndex asRopedText foreground: Color gray ]
@@ -233,7 +233,9 @@ PrioritySlideshow >> gtSlidePrioritiesFor: aView [
 PrioritySlideshow >> gtSlidesListViewFor: aView [
 	"NB: the send: message wll transform the items to what we see in the next pane"
 
-	<gtView>
+	"<gtView>"
+	
+	"We don't really need this anymore since the slide methods view also shows the slides."
 	^ aView columnedList
 		priority: 20;
 		title: 'Slides';
