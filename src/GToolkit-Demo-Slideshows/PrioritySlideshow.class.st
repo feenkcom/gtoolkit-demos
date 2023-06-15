@@ -176,6 +176,21 @@ PrioritySlideshow >> gtLiveFor: aView [
 ]
 
 { #category : #views }
+PrioritySlideshow >> gtMetricsFor: aView [
+	<gtView>
+	| wordsPerMinutes |
+	self hasTextPragmas ifFalse: [ ^ aView empty ].
+	wordsPerMinutes := 140.
+	^ aView columnedList
+		title: 'Metrics';
+		priority: 75;
+		items: [ self metrics ];
+		column: 'Metric' text: #key;
+		column: 'Value' text: [ :assoc | assoc value asString ];
+		actionUpdateButton
+]
+
+{ #category : #views }
 PrioritySlideshow >> gtScriptFor: aView [
 	<gtView>
 	self hasTextPragmas ifFalse: [ ^ aView empty ].
@@ -313,14 +328,11 @@ PrioritySlideshow >> scalableSlide: aSlide [
 
 { #category : #utility }
 PrioritySlideshow >> scriptPage [
+	"Just the script text, without headings, directions or code snippets."
+
 	| page |
 	page := LePage named: 'Script'.
 	LeDatabase new addPage: page.
-	page
-		addSnippet: (LeTextSnippet new
-				string: (String cr
-						join: (self metrics collect: [ :assoc | assoc key , ': ' , assoc value printString ]));
-				yourself).
 	page
 		addSnippet: (LeTextSnippet new
 				string: self scriptText;
@@ -330,9 +342,12 @@ PrioritySlideshow >> scriptPage [
 
 { #category : #utility }
 PrioritySlideshow >> scriptText [
-	| script |
+	"Remove headings (starting with '#'), directions (starting with '*('), and code snippets (starting with '```')."
+
+	| script separator |
 	self hasTextPragmas ifFalse: [ ^ '' ].
 	script := String new writeStream.
+	separator := String cr repeat: 2.
 	self slideDictionary
 		do: [ :assoc | 
 			| text |
@@ -340,6 +355,11 @@ PrioritySlideshow >> scriptText [
 					detect: [ :p | p selector = #text: ]
 					ifFound: [ :pragma | pragma arguments first , String cr , String cr ]
 					ifNone: [ '' ].
+			text := separator
+					join: ((separator split: text)
+							reject: [ :each | 
+								(each beginsWith: '#')
+									or: [ (each beginsWith: '*(') or: [ each beginsWith: '```' ] ] ]).
 			script nextPutAll: text ].
 	^ script contents
 ]

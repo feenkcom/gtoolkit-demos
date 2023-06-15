@@ -26,7 +26,7 @@ CompiledMethod >> slidePage [
 CompiledMethod >> slideSnippets [
 	"Build a snippets collection for a slide method containing the text (if any) and the rendered slide."
 
-	| snippets text |
+	| snippets text code |
 	snippets := OrderedCollection new.
 	(self hasPragmaNamed: 'gtSlide') ifFalse: [ ^ snippets ].
 	text := self pragmas
@@ -35,10 +35,16 @@ CompiledMethod >> slideSnippets [
 			ifNone: [ '' ].
 	((String cr repeat: 2) split: text)
 		do: [ :each | 
-			snippets
-				add: (LeTextSnippet new
-						string: each;
-						yourself) ].
+			(each beginsWith: '```')
+				ifTrue: [ code := ('```' split: each) second trim.
+					snippets
+						add: (LePharoSnippet new
+								code: code;
+								yourself) ]
+				ifFalse: [ snippets
+						add: (LeTextSnippet new
+								string: each;
+								yourself) ] ].
 	snippets
 		add: (LeElementSnippet new
 				code: self methodClass name , ' new slideFor: ' , self selector printString;
