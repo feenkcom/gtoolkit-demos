@@ -313,12 +313,9 @@ PrioritySlideshow >> scalableSlide: aSlide [
 
 { #category : #utility }
 PrioritySlideshow >> scriptPage [
-	"NB: There is no database associated with this page."
-
 	| page |
-	page := LePage new
-			title: 'Script';
-			yourself.
+	page := LePage named: 'Script'.
+	LeDatabase new addPage: page.
 	page
 		addSnippet: (LeTextSnippet new
 				string: (String cr
@@ -349,31 +346,11 @@ PrioritySlideshow >> scriptText [
 
 { #category : #utility }
 PrioritySlideshow >> slideDeckPage [
-	"NB: There is no database associated with this page."
-
 	| page |
-	page := LePage new
-			title: self class name;
-			yourself.
+	page := LePage named: self class name.
+	LeDatabase new addPage: page.
 	self slideDictionary
-		do: [ :assoc | 
-			| text |
-			text := assoc value pragmas
-					detect: [ :p | p selector = #text: ]
-					ifFound: [ :pragma | pragma arguments first ]
-					ifNone: [ '' ].
-			((String cr repeat: 2) split: text)
-				do: [ :each | 
-					page
-						addSnippet: (LeTextSnippet new
-								string: each;
-								yourself) ].
-			page
-				addSnippet: (LeElementSnippet new
-						code: self class name , ' new slideFor: ' , assoc value selector printString;
-						elementHeight: 400;
-						codeVisible: false;
-						yourself) ].
+		do: [ :assoc | assoc value slideSnippets do: [ :each | page addSnippet: each ] ].
 	^ page
 ]
 
@@ -403,6 +380,15 @@ PrioritySlideshow >> slideMethods [
 		collect: [ :each | self class methodDict at: each ifAbsent: [ each -> nil ] ]
 ]
 
+{ #category : #utility }
+PrioritySlideshow >> slidePageFor: aSlideMethod [
+	| page |
+	page := LePage named: self class name.
+	LeDatabase new addPage: page.
+	aSlideMethod slideSnippets do: [ :each | page addSnippet: each ].
+	^ page
+]
+
 { #category : #accessing }
 PrioritySlideshow >> slidePriorities [
 	"Override this method in the subclass.
@@ -413,31 +399,6 @@ PrioritySlideshow >> slidePriorities [
 	^ #( 
 		"Add the names of the slides here ..."
 		)
-]
-
-{ #category : #utility }
-PrioritySlideshow >> slideSnippetFor: aSlideMethod [
-	"Build a snippet for a slide method containing the text (if any) and the rendered slide."
-
-	| snippet text |
-	snippet := LeTextSnippet new.
-	text := aSlideMethod pragmas
-			detect: [ :p | p selector = #text: ]
-			ifFound: [ :pragma | pragma arguments first ]
-			ifNone: [ '' ].
-	((String cr repeat: 2) split: text)
-		do: [ :each | 
-			snippet
-				addSnippet: (LeTextSnippet new
-						string: each;
-						yourself) ].
-	snippet
-		addSnippet: (LeElementSnippet new
-				code: self class name , ' new slideFor: ' , aSlideMethod selector printString;
-				elementHeight: 400;
-				codeVisible: false;
-				yourself).
-	^ snippet
 ]
 
 { #category : #accessing }
