@@ -190,6 +190,7 @@ PrioritySlideshow >> gtScriptFor: aView [
 { #category : #views }
 PrioritySlideshow >> gtSlideDeckFor: aView [
 	"Eventually push this method up."
+
 	<gtView>
 	^ aView forward
 		title: 'Slide deck';
@@ -299,59 +300,6 @@ PrioritySlideshow >> priorityFor: aSlideMethodSelector [
 ]
 
 { #category : #utility }
-PrioritySlideshow >> refreshScriptPage [
-	"Remove the page if it exists, and recreate it from scratch."
-
-	| page |
-	page := self db ensurePageNamed: self scriptPageName.
-	self db removePage: page.
-	page := self db ensurePageNamed: self scriptPageName.
-
-	page
-		addSnippet: (LeTextSnippet new
-				string: (String cr
-						join: (self metrics collect: [ :assoc | assoc key , ': ' , assoc value printString ]));
-				yourself).
-
-	page
-		addSnippet: (LeTextSnippet new
-				string: self scriptText;
-				yourself).
-
-	^ page
-]
-
-{ #category : #utility }
-PrioritySlideshow >> refreshSlideDeckPage [
-	"Remove the page if it exists, and recreate it from scratch."
-
-	| page |
-	page := self db ensurePageNamed: self class name.
-	self db removePage: page.
-	page := self db ensurePageNamed: self class name.
-	self slideDictionary
-		do: [ :assoc | 
-			| text |
-			text := assoc value pragmas
-					detect: [ :p | p selector = #text: ]
-					ifFound: [ :pragma | pragma arguments first ]
-					ifNone: [ '' ].
-			((String cr repeat: 2) split: text)
-				do: [ :each | 
-					page
-						addSnippet: (LeTextSnippet new
-								string: each;
-								yourself) ].
-			page
-				addSnippet: (LeElementSnippet new
-						code: self class name, ' new slideFor: ' , assoc value selector printString;
-						elementHeight: 400;
-						codeVisible: false;
-						yourself) ].
-	^ page
-]
-
-{ #category : #utility }
 PrioritySlideshow >> scalableSlide: aSlide [
 	"Not all gtSlides are scalable, so we wrap them for displaying in the Slides and Slide deck views.
 	If this is fixed, we can remove the wrappers."
@@ -365,12 +313,22 @@ PrioritySlideshow >> scalableSlide: aSlide [
 
 { #category : #utility }
 PrioritySlideshow >> scriptPage [
-	^ self db pageNamed: self scriptPageName ifAbsent: [ self refreshScriptPage ]
-]
+	"NB: There is no database associated with this page."
 
-{ #category : #utility }
-PrioritySlideshow >> scriptPageName [
-	^ 'Script'
+	| page |
+	page := LePage new
+			title: 'Script';
+			yourself.
+	page
+		addSnippet: (LeTextSnippet new
+				string: (String cr
+						join: (self metrics collect: [ :assoc | assoc key , ': ' , assoc value printString ]));
+				yourself).
+	page
+		addSnippet: (LeTextSnippet new
+				string: self scriptText;
+				yourself).
+	^ page
 ]
 
 { #category : #utility }
@@ -391,7 +349,32 @@ PrioritySlideshow >> scriptText [
 
 { #category : #utility }
 PrioritySlideshow >> slideDeckPage [
-	^ self db pageNamed: self class name ifAbsent: [ self refreshSlideDeckPage ]
+	"NB: There is no database associated with this page."
+
+	| page |
+	page := LePage new
+			title: self class name;
+			yourself.
+	self slideDictionary
+		do: [ :assoc | 
+			| text |
+			text := assoc value pragmas
+					detect: [ :p | p selector = #text: ]
+					ifFound: [ :pragma | pragma arguments first ]
+					ifNone: [ '' ].
+			((String cr repeat: 2) split: text)
+				do: [ :each | 
+					page
+						addSnippet: (LeTextSnippet new
+								string: each;
+								yourself) ].
+			page
+				addSnippet: (LeElementSnippet new
+						code: self class name , ' new slideFor: ' , assoc value selector printString;
+						elementHeight: 400;
+						codeVisible: false;
+						yourself) ].
+	^ page
 ]
 
 { #category : #accessing }
@@ -430,6 +413,31 @@ PrioritySlideshow >> slidePriorities [
 	^ #( 
 		"Add the names of the slides here ..."
 		)
+]
+
+{ #category : #utility }
+PrioritySlideshow >> slideSnippetFor: aSlideMethod [
+	"Build a snippet for a slide method containing the text (if any) and the rendered slide."
+
+	| snippet text |
+	snippet := LeTextSnippet new.
+	text := aSlideMethod pragmas
+			detect: [ :p | p selector = #text: ]
+			ifFound: [ :pragma | pragma arguments first ]
+			ifNone: [ '' ].
+	((String cr repeat: 2) split: text)
+		do: [ :each | 
+			snippet
+				addSnippet: (LeTextSnippet new
+						string: each;
+						yourself) ].
+	snippet
+		addSnippet: (LeElementSnippet new
+				code: self class name , ' new slideFor: ' , aSlideMethod selector printString;
+				elementHeight: 400;
+				codeVisible: false;
+				yourself).
+	^ snippet
 ]
 
 { #category : #accessing }
