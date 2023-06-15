@@ -16,7 +16,7 @@ CompiledMethod >> slidePage [
 	"For a view containing the text and slide of a gtSlide method."
 
 	| page |
-	page := LePage named: self class name.
+	page := LePage named: self selector.
 	LeDatabase new addPage: page.
 	self slideSnippets do: [ :each | page addSnippet: each ].
 	^ page
