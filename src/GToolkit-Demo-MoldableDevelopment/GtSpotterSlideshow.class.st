@@ -241,11 +241,10 @@ GtSpotterSlideshow >> spotterInLocalContextExplanationWithLinks [
 		background: Color white;
 		aptitude: BrShadowAptitude;
 		margin: (BlInsets all: 5);
-		addChild:(BlUseAsyncFeatures
-			disableDuring: [ ((GtABAddressBookExample new myContactsAddressBook) 
+		addChild:(((GtABAddressBookExample new myContactsAddressBook) 
 				gtViewsFor: GtPhlowView empty)
-					asElementDo: [:e | e]]).
-	inspectorElement forceLayout.
+					asElementDo: [:e | e]).
+	BlScripter new element: inspectorElement; elementWithoutParent.
 	
 	coderElement 
 		allChildrenBreadthFirstDetect: [:aChild | (aChild isKindOf: BrToolbar) and: [ aChild parent isKindOf: GtCoderToolbarElement ] ] 
