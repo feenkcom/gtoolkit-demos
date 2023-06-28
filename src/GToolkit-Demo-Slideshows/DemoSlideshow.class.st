@@ -13,6 +13,15 @@ DemoSlideshow class >> show [
 	super show
 ]
 
+{ #category : #slides }
+DemoSlideshow >> coderExampleSlideFor: aSlide [
+	<gtSlide>
+	^ aSlide labelAndElement
+		priority: (self priorityFor: #coderExampleSlideFor:);
+		newFadedText: ('Feel free to explore.' asRopedText);
+		element: [GtCoder new createInPager maximized].
+]
+
 { #category : #page }
 DemoSlideshow >> dynamicLePage [
 	<gtExample>
@@ -36,6 +45,12 @@ DemoSlideshow >> dynamicLepiterPage: aSlide [
 ]
 
 { #category : #slides }
+DemoSlideshow >> gtWorld: aSlide [
+	<gtSlide>
+	^ aSlide world priority: (self priorityFor: #gtWorld:)
+]
+
+{ #category : #slides }
 DemoSlideshow >> headingAndCode: aSlide [
 	<gtSlide>
 	^ aSlide headingAndCode
@@ -51,6 +66,14 @@ DemoSlideshow >> headingAndCode: aSlide [
 { #category : #initialization }
 DemoSlideshow >> initializeDb [
 	self db addPage: self dynamicLePage
+]
+
+{ #category : #slides }
+DemoSlideshow >> inspector: aSlide [
+	<gtSlide>
+	^ aSlide element
+		priority: (self priorityFor: #inspector:);
+		element: [ GtInspector forObject: GtABCartoonAddressBookExample new bugsBunnyContact ]
 ]
 
 { #category : #slides }
@@ -85,10 +108,20 @@ DemoSlideshow >> slidePriorities [
 		titleSlideFor:
 		textAndElement:
 		paragraph:
-		lepiterPage:
-		#dynamicLepiterPage:
 		headingAndCode:
+		lepiterPage:
+		dynamicLepiterPage:
+		gtWorld:
+		coderExampleSlideFor:
+		inspector:
+		spotterExampleSlideFor:
 	)
+]
+
+{ #category : #slides }
+DemoSlideshow >> spotterExampleSlideFor: aSlide [
+	<gtSlide>
+	^ aSlide spotter priority: (self priorityFor: #spotterExampleSlideFor:)
 ]
 
 { #category : #slides }
