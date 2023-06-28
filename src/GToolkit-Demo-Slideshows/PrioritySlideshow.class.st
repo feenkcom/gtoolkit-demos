@@ -137,6 +137,7 @@ PrioritySlideshow >> gtBookName [
 { #category : #views }
 PrioritySlideshow >> gtDatabaseFor: aView [
 	<gtView>
+	self db pages ifEmpty: [ ^ aView empty ].
 	^ aView forward
 		title: 'Database';
 		priority: 80;
