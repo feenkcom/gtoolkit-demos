@@ -4,6 +4,7 @@ Extension { #name : #CompiledMethod }
 CompiledMethod >> gtSlideWithTextFor: aView [
 	<gtView>
 	(self hasPragmaNamed: #gtSlide) ifFalse: [ ^ aView empty ].
+	(self hasPragmaNamed: #text:) ifFalse: [ ^ aView empty ].
 	^ aView forward
 		title: 'Slide with text';
 		priority: 6;
