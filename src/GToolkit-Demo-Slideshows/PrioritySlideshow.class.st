@@ -270,6 +270,18 @@ PrioritySlideshow >> gtSlidesListViewFor: aView [
 		actionUpdateButton
 ]
 
+{ #category : #searching }
+PrioritySlideshow >> gtSpotterForSourceCodeFor: aSearch [
+	<gtSearch>
+	^ aSearch list
+		priority: 30;
+		title: 'Source code';
+		items: [ self slideMethods ];
+		itemName: #sourceCode;
+		filterBySubstring;
+		wantsToDisplayOnEmptyQuery: true
+]
+
 { #category : #views }
 PrioritySlideshow >> hasTextPragmas [
 	^ self class methods
