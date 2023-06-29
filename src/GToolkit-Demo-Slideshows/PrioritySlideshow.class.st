@@ -229,9 +229,7 @@ PrioritySlideshow >> gtSlideMethodsListViewFor: aView [
 		column: 'Methods'
 			text: [ :each | each selector ]
 			width: 200;
-		column: 'Text'
-			text: [ :each | self textForSlide: each selector ]
-			width: 300;
+		column: 'Text' text: [ :each | self textForSlide: each selector ];
 		actionUpdateButton
 ]
 
