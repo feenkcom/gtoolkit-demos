@@ -136,12 +136,12 @@
 		"__type" : "time",
 		"time" : {
 			"__type" : "dateAndTime",
-			"dateAndTimeString" : "2023-03-02T11:15:36.724964+01:00"
+			"dateAndTimeString" : "2023-07-03T17:04:31.432552+02:00"
 		}
 	},
 	"pageType" : {
 		"__type" : "namedPage",
-		"title" : "SPL exercise"
+		"title" : "SPL exercise (done)"
 	},
 	"uid" : {
 		"__type" : "uuid",

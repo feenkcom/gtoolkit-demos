@@ -88,6 +88,43 @@
 							"__type" : "textSnippet",
 							"children" : {
 								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2023-07-03T17:02:13.076324+02:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2023-07-03T17:02:43.778283+02:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "hc5AMPi7DQCgV07MChrhpw=="
+							},
+							"paragraphStyle" : {
+								"__type" : "textStyle"
+							},
+							"string" : "Publish this as a standard demo and create a suitable GT book tutorial page."
+						},
+						{
+							"__type" : "textSnippet",
+							"children" : {
+								"__type" : "snippets",
 								"items" : [
 									{
 										"__type" : "textSnippet",
@@ -2190,7 +2227,7 @@
 														"__type" : "time",
 														"time" : {
 															"__type" : "dateAndTime",
-															"dateAndTimeString" : "2023-02-03T13:30:17.852462+01:00"
+															"dateAndTimeString" : "2023-07-03T16:49:41.736878+02:00"
 														}
 													},
 													"editEmail" : {
@@ -2201,14 +2238,14 @@
 														"__type" : "time",
 														"time" : {
 															"__type" : "dateAndTime",
-															"dateAndTimeString" : "2023-02-03T18:13:18.30432+01:00"
+															"dateAndTimeString" : "2023-07-03T17:00:38.803472+02:00"
 														}
 													},
 													"uid" : {
 														"__type" : "uid",
-														"uidString" : "Hkm/lCywDQCHSFctBDbgQg=="
+														"uidString" : "M0h4A/i7DQCb7af8Chrhpw=="
 													},
-													"code" : "scgPub := '/Users/oscar/Documents/Projects/scgbib/scg-pub.bib' asFileReference contents.\rbibFile end parse: scgPub."
+													"code" : "scgPub := (FileLocator imageDirectory\r\t\t/ 'pharo-local/iceberg/feenkcom/gtoolkit-demos/data/bibtex/scg-pub.bib')\r\t\tcontents.\rbibFile end parse: scgPub."
 												}
 											]
 										},
@@ -2373,14 +2410,14 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-02-03T17:16:39.636463+01:00"
+									"dateAndTimeString" : "2023-07-03T17:00:47.030454+02:00"
 								}
 							},
 							"uid" : {
 								"__type" : "uid",
 								"uidString" : "Wug2USywDQCA5WABBDbgQg=="
 							},
-							"code" : "scgPub := '/Users/oscar/Documents/Projects/scgbib/scg-pub.bib' asFileReference\r\t\tcontents.\rBibtexPParser parse: scgPub."
+							"code" : "scgPub := (FileLocator imageDirectory\r\t\t/ 'pharo-local/iceberg/feenkcom/gtoolkit-demos/data/bibtex/scg-pub.bib')\r\t\tcontents.\rBibtexPParser parse: scgPub."
 						},
 						{
 							"__type" : "textSnippet",
@@ -2516,7 +2553,7 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-02-03T16:23:51.18214+01:00"
+									"dateAndTimeString" : "2023-07-03T17:01:04.454701+02:00"
 								}
 							},
 							"uid" : {
@@ -2526,7 +2563,7 @@
 							"paragraphStyle" : {
 								"__type" : "textStyle"
 							},
-							"string" : "We create an example class {{gtClass:name=BibtexPParserExamples}}. "
+							"string" : "We create an example class {{gtClass:name=BibtexPParserExamples}}.  "
 						},
 						{
 							"__type" : "textSnippet",
@@ -2707,14 +2744,14 @@
 											"__type" : "time",
 											"time" : {
 												"__type" : "dateAndTime",
-												"dateAndTimeString" : "2023-02-06T09:12:59.316666+01:00"
+												"dateAndTimeString" : "2023-07-03T17:01:19.980086+02:00"
 											}
 										},
 										"uid" : {
 											"__type" : "uid",
 											"uidString" : "17vlOSywDQC8nptkBDbgQg=="
 										},
-										"code" : "scgbib := ZnClient new\r\t\tget: 'https://raw.githubusercontent.com/scgbern/scgbib/main/scg.bib'.\rBibtexPParser parse: scgbib."
+										"code" : "scgbib := ZnClient new\r\t\tget: 'https://raw.githubusercontent.com/scgbern/scgbib/main/scg.bib'.\r\rBibtexPParser parse: scgbib."
 									}
 								]
 							},
@@ -2774,7 +2811,7 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-02-03T17:12:58.81285+01:00"
+									"dateAndTimeString" : "2023-07-03T17:01:33.546604+02:00"
 								}
 							},
 							"uid" : {
@@ -2784,7 +2821,7 @@
 							"paragraphStyle" : {
 								"__type" : "textStyle"
 							},
-							"string" : "First get stuck at Bach15a, so add {{gtMethod:name=BibtexPParserExamples>>bibEntryForBach15a}}. "
+							"string" : "First get stuck at Bach15a, so add {{gtMethod:name=BibtexPParserExamples>>bibEntryForBach15a}}.  "
 						},
 						{
 							"__type" : "textSnippet",
@@ -2848,14 +2885,14 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-02-03T18:23:34.469843+01:00"
+									"dateAndTimeString" : "2023-07-03T16:47:02.330136+02:00"
 								}
 							},
 							"uid" : {
 								"__type" : "uid",
 								"uidString" : "qH8PWjCwDQC1cvo9BDbgQg=="
 							},
-							"code" : "scgbib := ZnClient new\r\t\tget: 'https://raw.githubusercontent.com/scgbern/scgbib/main/scg.bib'.\r\rparser := BibtexPParser new bibEntry end optimize.\r|\rbibEntries := (String lf repeat: 2) split: scgbib.\rerrors := bibEntries reject: [ :each | (parser parse: each) isDictionary ]."
+							"code" : "scgbib := ZnClient new\r\t\tget: 'https://raw.githubusercontent.com/scgbern/scgbib/main/scg.bib'.\r\rparser := BibtexPParser new bibEntry end optimize.\r\rbibEntries := (String lf repeat: 2) split: scgbib.\rerrors := bibEntries reject: [ :each | (parser parse: each) isDictionary ]."
 						},
 						{
 							"__type" : "textSnippet",
@@ -4036,12 +4073,12 @@
 		"__type" : "time",
 		"time" : {
 			"__type" : "dateAndTime",
-			"dateAndTimeString" : "2023-02-03T16:19:31.558592+01:00"
+			"dateAndTimeString" : "2023-07-03T17:02:50.151656+02:00"
 		}
 	},
 	"pageType" : {
 		"__type" : "namedPage",
-		"title" : "Parsing Bibtex files"
+		"title" : "* Parsing Bibtex files"
 	},
 	"uid" : {
 		"__type" : "uuid",

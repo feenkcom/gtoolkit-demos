@@ -1008,12 +1008,12 @@
 		"__type" : "time",
 		"time" : {
 			"__type" : "dateAndTime",
-			"dateAndTimeString" : "2023-04-05T10:20:05.317987+02:00"
+			"dateAndTimeString" : "2023-07-03T16:45:35.469105+02:00"
 		}
 	},
 	"pageType" : {
 		"__type" : "namedPage",
-		"title" : "YAML to JSON translator"
+		"title" : "* YAML to JSON translator — page for GT book"
 	},
 	"uid" : {
 		"__type" : "uuid",
