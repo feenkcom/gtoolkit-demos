@@ -86,6 +86,16 @@ DemoSlideshow >> lepiterPage: aSlide [
 ]
 
 { #category : #slides }
+DemoSlideshow >> maximizedPage: aSlide [
+	<gtSlide>
+	^ aSlide element
+		priority: (self priorityFor: #maximizedPage:);
+		element: [ (GtPager
+				createWrappedOn: (LePagePhlowTool page: (self db pageNamed: 'A dynamic Lepiter page')))
+				maximized ]
+]
+
+{ #category : #slides }
 DemoSlideshow >> paragraph: aSlide [
 	<gtSlide>
 	
@@ -111,6 +121,7 @@ DemoSlideshow >> slidePriorities [
 		headingAndCode:
 		lepiterPage:
 		dynamicLepiterPage:
+		maximizedPage:
 		gtWorld:
 		coderExampleSlideFor:
 		inspector:
