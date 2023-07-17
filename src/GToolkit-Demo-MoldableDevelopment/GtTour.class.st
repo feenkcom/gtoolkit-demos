@@ -934,7 +934,7 @@ GtTour >> treemapWithBook [
 	^ GtNestedRectangleTreeMap new
 		roots: topTocSnippets;
 		deep: [ :aNode | aNode children select: [ :each | each children notEmpty ] ];
-		leaves: [ :aNode | aNode asCollection , (aNode children select: [ :each | each children isEmpty ]) ];
+		leaves: [ :aNode | aNode asCollection , (aNode children select: [ :each | each children isEmpty and: [ each allOutgoingExplicitLinks notEmpty ] ]) ];
 		leavesSize: [ :aNode | 
 			| pageLinkedFromSnnipet |
 			pageLinkedFromSnnipet := aNode outgoingTextualLinks anyOne target.
