@@ -319,14 +319,14 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-07-20T16:28:53.636938+02:00"
+						"dateAndTimeString" : "2023-07-20T16:29:24.086924+02:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
 					"uidString" : "Ige1sU29DQCHDtPIBIENOA=="
 				},
-				"code" : "GtHomeDraftDemosSection gtReferences"
+				"code" : "GtHomeDraftDemosSection gtReferences "
 			}
 		]
 	},
