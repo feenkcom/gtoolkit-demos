@@ -248,14 +248,14 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-07-20T16:23:46.013826+02:00"
+						"dateAndTimeString" : "2023-07-20T16:42:15.762143+02:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
 					"uidString" : "74CUmk29DQCLahnkBIENOA=="
 				},
-				"code" : "Smalltalk saveAs: 'gtoolkit-demos'. \"optional\"\r\rgtDemosRepo := BaselineOfGToolkitDemos repository.\rbaselineName := 'BaselineOfGToolkitDraftDemos'.\rdraftDemosToLoad := {\r\t'GToolkit-DraftDemos-GtHome'\r\t. 'GToolkit-Demo-YAML2JSON'\r\t}.\r\r(IcePackage named: baselineName repository: gtDemosRepo) load.\r#BaselineOfGToolkitDraftDemos asClass loadLepiter.\r\rdraftDemosToLoad do: [ :each | (IcePackage named: each repository: gtDemosRepo) load ]."
+				"code" : "Smalltalk saveAs: 'gtoolkit-demos'. \"optional\"\n\ngtDemosRepo := BaselineOfGToolkitDemos repository.\nbaselineName := 'BaselineOfGToolkitDraftDemos'.\ndraftDemosToLoad := {\n\t'GToolkit-Demo-EsugWebsite'\n\t. 'GToolkit-Demo-PetitParser'\n\t. 'GToolkit-Demo-YAML2JSON'\n\t}.\n\n(IcePackage named: baselineName repository: gtDemosRepo) load.\n#BaselineOfGToolkitDraftDemos asClass loadLepiter.\n\ndraftDemosToLoad do: [ :each | (IcePackage named: each repository: gtDemosRepo) load ]."
 			},
 			{
 				"__type" : "textSnippet",

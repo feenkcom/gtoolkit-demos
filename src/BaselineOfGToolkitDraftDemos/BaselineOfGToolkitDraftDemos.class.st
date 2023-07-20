@@ -20,5 +20,7 @@ BaselineOfGToolkitDraftDemos >> baseline: spec [
 		for: #common
 		do: [ spec
 				baseline: 'Gtoolkit-Demos-PetitParser'
+					with: [ spec repository: 'github://feenkcom/gtoolkit-demos:main/src' ];
+				baseline: 'GToolkit-Demo-EsugWebsite'
 					with: [ spec repository: 'github://feenkcom/gtoolkit-demos:main/src' ] ]
 ]
