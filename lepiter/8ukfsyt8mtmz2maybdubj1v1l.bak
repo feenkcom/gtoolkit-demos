@@ -29,7 +29,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-03-07T09:02:38.071776+01:00"
+						"dateAndTimeString" : "2023-03-07T11:06:02.200023+01:00"
 					}
 				},
 				"uid" : {
@@ -39,7 +39,7 @@
 				"paragraphStyle" : {
 					"__type" : "textStyle"
 				},
-				"string" : "{{gtTodo:label=Handle SPL comments}}"
+				"string" : "{{gtTodo:label=Handle SPL comments|completed=2023-03-07}}"
 			},
 			{
 				"__type" : "textSnippet",
@@ -66,7 +66,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-03-07T11:00:47.401613+01:00"
+						"dateAndTimeString" : "2023-03-07T11:06:03.600602+01:00"
 					}
 				},
 				"uid" : {
@@ -76,7 +76,7 @@
 				"paragraphStyle" : {
 					"__type" : "textStyle"
 				},
-				"string" : "{{gtTodo:label=Add some comments to the demo examples}}"
+				"string" : "{{gtTodo:label=Add some comments to the demo examples|completed=2023-03-07}}"
 			},
 			{
 				"__type" : "textSnippet",

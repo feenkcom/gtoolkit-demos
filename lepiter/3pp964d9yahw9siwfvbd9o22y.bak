@@ -2557,14 +2557,14 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-03-05T19:55:01.341455+01:00"
+									"dateAndTimeString" : "2023-03-05T19:55:09.048967+01:00"
 								}
 							},
 							"uid" : {
 								"__type" : "uid",
 								"uidString" : "QUPKb42yDQCbicQVCTGP5g=="
 							},
-							"code" : "SPL contextFor: 'x:=5; while(x>0) { print x; x = x-1; }'"
+							"code" : "SPL contextFor: 'var x=5; while(x>0) { print x; x = x-1; }'"
 						}
 					]
 				},

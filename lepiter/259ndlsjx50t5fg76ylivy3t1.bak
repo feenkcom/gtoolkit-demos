@@ -175,7 +175,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-04-05T10:32:55.409958+02:00"
+						"dateAndTimeString" : "2023-04-05T10:32:57.082273+02:00"
 					}
 				},
 				"uid" : {
@@ -185,7 +185,7 @@
 				"paragraphStyle" : {
 					"__type" : "textStyle"
 				},
-				"string" : "#Using yq from GT to translate YAM"
+				"string" : "#Using yq from GT to translate YAML to JSON"
 			},
 			{
 				"__type" : "textSnippet",

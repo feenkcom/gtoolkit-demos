@@ -251,7 +251,7 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-03-03T18:22:09.45681+01:00"
+									"dateAndTimeString" : "2023-03-03T18:22:13.734399+01:00"
 								}
 							},
 							"editEmail" : {
@@ -262,7 +262,7 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-03-03T18:22:11.830047+01:00"
+									"dateAndTimeString" : "2023-03-03T18:22:38.501721+01:00"
 								}
 							},
 							"uid" : {
@@ -272,7 +272,7 @@
 							"paragraphStyle" : {
 								"__type" : "textStyle"
 							},
-							"string" : "There are none"
+							"string" : "None of the remaining examples need to be elaborated."
 						},
 						{
 							"__type" : "pharoSnippet",

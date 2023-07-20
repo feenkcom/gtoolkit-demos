@@ -137,7 +137,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-03-06T17:11:27.786249+01:00"
+						"dateAndTimeString" : "2023-03-06T17:41:19.706345+01:00"
 					}
 				},
 				"uid" : {
@@ -275,12 +275,12 @@
 		"__type" : "time",
 		"time" : {
 			"__type" : "dateAndTime",
-			"dateAndTimeString" : "2023-03-06T16:43:03.904944+01:00"
+			"dateAndTimeString" : "2023-03-06T17:44:07.100907+01:00"
 		}
 	},
 	"pageType" : {
 		"__type" : "namedPage",
-		"title" : "*** Composing SPL views"
+		"title" : "Composing SPL views"
 	},
 	"uid" : {
 		"__type" : "uuid",

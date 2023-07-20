@@ -71,7 +71,7 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-03-16T08:19:49.27038+01:00"
+									"dateAndTimeString" : "2023-03-16T18:41:56.716829+01:00"
 								}
 							},
 							"uid" : {
@@ -81,7 +81,7 @@
 							"paragraphStyle" : {
 								"__type" : "textStyle"
 							},
-							"string" : "Create slides based on {{gtPage:PetitParser SPL case study|db=2j9m7db2i4oz116bexd7wbdxo}}."
+							"string" : "Created slides based on {{gtPage:PetitParser SPL case study|db=2j9m7db2i4oz116bexd7wbdxo}}."
 						}
 					]
 				},

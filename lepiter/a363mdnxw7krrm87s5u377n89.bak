@@ -187,8 +187,10 @@
 					"__type" : "uid",
 					"uidString" : "59vfU2OyDQCRvOs/CS1mqg=="
 				},
+				"exampleSelector" : "varDeclWithInit",
 				"previewHeight" : 200,
 				"previewShowSelector" : "gtViewsFor:",
+				"exampleBehaviorName" : "SPLParserExamples",
 				"codeExpanded" : true,
 				"previewExpanded" : false,
 				"noCode" : false

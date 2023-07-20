@@ -405,7 +405,7 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-03-03T11:28:27.210782+01:00"
+									"dateAndTimeString" : "2023-03-03T16:31:41.202717+01:00"
 								}
 							},
 							"uid" : {
@@ -415,7 +415,7 @@
 							"paragraphStyle" : {
 								"__type" : "textStyle"
 							},
-							"string" : "We start by [[Building SPL values]] . We translate Booleans, numbers and strings to their Smalltalk equivalents. (Later we will have to wrap them as SPLValue instances so we can recognize them as special cases of Expressions.)"
+							"string" : "We start by [[Building SPL Values]] . We translate Booleans, numbers and strings to their Smalltalk equivalents. (Later we will have to wrap them as SPLValue instances so we can recognize them as special cases of Expressions.)"
 						},
 						{
 							"__type" : "textSnippet",

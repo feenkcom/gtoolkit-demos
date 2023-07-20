@@ -608,12 +608,12 @@
 		"__type" : "time",
 		"time" : {
 			"__type" : "dateAndTime",
-			"dateAndTimeString" : "2023-03-04T13:22:43.257378+01:00"
+			"dateAndTimeString" : "2023-03-05T10:11:31.921525+01:00"
 		}
 	},
 	"pageType" : {
 		"__type" : "namedPage",
-		"title" : "*** Interpreting SPL programs"
+		"title" : "Interpreting SPL programs"
 	},
 	"uid" : {
 		"__type" : "uuid",
