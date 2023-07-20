@@ -29,7 +29,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-07-20T16:00:27.756347+02:00"
+						"dateAndTimeString" : "2023-07-20T16:12:17.036375+02:00"
 					}
 				},
 				"uid" : {
@@ -39,7 +39,7 @@
 				"paragraphStyle" : {
 					"__type" : "textStyle"
 				},
-				"string" : "[[EsugDemo]] "
+				"string" : "[[EsugDemo]]  [[ToDo]] "
 			},
 			{
 				"__type" : "textSnippet",
@@ -389,7 +389,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-07-19T09:20:19.926764+02:00"
+						"dateAndTimeString" : "2023-07-20T16:51:52.525819+02:00"
 					}
 				},
 				"editEmail" : {
@@ -400,14 +400,14 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-07-19T09:21:34.636732+02:00"
+						"dateAndTimeString" : "2023-07-20T16:51:53.12574+02:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
-					"uidString" : "obPhmTO9DQCC+/mcDF7xag=="
+					"uidString" : "QFaRBk69DQCipqR7A3m49w=="
 				},
-				"code" : "GtGitPhlowTool new repository: (GtGitRepository forRepoNamed: 'esugWebsite')"
+				"code" : "GtGitPhlowTool new repository: (GtGitRepository forRepoNamed: 'gtoolkit-demos')"
 			}
 		]
 	},
@@ -430,12 +430,12 @@
 		"__type" : "time",
 		"time" : {
 			"__type" : "dateAndTime",
-			"dateAndTimeString" : "2023-07-19T09:15:08.777736+02:00"
+			"dateAndTimeString" : "2023-07-20T16:12:05.895054+02:00"
 		}
 	},
 	"pageType" : {
 		"__type" : "namedPage",
-		"title" : "Exploring the ESUG Website"
+		"title" : "* Exploring the ESUG Website"
 	},
 	"uid" : {
 		"__type" : "uuid",

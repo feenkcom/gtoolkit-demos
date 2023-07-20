@@ -278,7 +278,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-07-19T09:22:41.366548+02:00"
+						"dateAndTimeString" : "2023-07-20T16:52:09.490066+02:00"
 					}
 				},
 				"editEmail" : {
@@ -289,49 +289,12 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-07-19T09:22:41.366548+02:00"
+						"dateAndTimeString" : "2023-07-20T16:52:09.490066+02:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
-					"uidString" : "oOdPojO9DQCGN9mBDF7xag=="
-				},
-				"paragraphStyle" : {
-					"__type" : "textStyle"
-				},
-				"string" : ""
-			},
-			{
-				"__type" : "textSnippet",
-				"children" : {
-					"__type" : "snippets",
-					"items" : [ ]
-				},
-				"createEmail" : {
-					"__type" : "email",
-					"emailString" : "<unknown>"
-				},
-				"createTime" : {
-					"__type" : "time",
-					"time" : {
-						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-07-19T09:17:25.777168+02:00"
-					}
-				},
-				"editEmail" : {
-					"__type" : "email",
-					"emailString" : "<unknown>"
-				},
-				"editTime" : {
-					"__type" : "time",
-					"time" : {
-						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-07-19T09:17:25.777168+02:00"
-					}
-				},
-				"uid" : {
-					"__type" : "uid",
-					"uidString" : "l2CAjzO9DQCB5+V5DF7xag=="
+					"uidString" : "DTCUB069DQCjialIA3m49w=="
 				},
 				"paragraphStyle" : {
 					"__type" : "textStyle"
@@ -389,7 +352,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-07-19T09:20:19.926764+02:00"
+						"dateAndTimeString" : "2023-07-20T16:51:52.525819+02:00"
 					}
 				},
 				"editEmail" : {
@@ -400,14 +363,14 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-07-19T09:21:34.636732+02:00"
+						"dateAndTimeString" : "2023-07-20T16:51:53.12574+02:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
-					"uidString" : "obPhmTO9DQCC+/mcDF7xag=="
+					"uidString" : "QFaRBk69DQCipqR7A3m49w=="
 				},
-				"code" : "GtGitPhlowTool new repository: (GtGitRepository forRepoNamed: 'esugWebsite')"
+				"code" : "GtGitPhlowTool new repository: (GtGitRepository forRepoNamed: 'gtoolkit-demos')"
 			}
 		]
 	},
