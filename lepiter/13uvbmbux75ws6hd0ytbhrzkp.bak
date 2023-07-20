@@ -141,14 +141,14 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-03-02T17:55:25.87663+01:00"
+						"dateAndTimeString" : "2023-03-03T10:47:40.064694+01:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
 					"uidString" : "Y3qgaU+yDQCrb0oYAn6zEg=="
 				},
-				"code" : "program := SPLgrammar new."
+				"code" : "program := SPLGrammar new."
 			},
 			{
 				"__type" : "textSnippet",
@@ -175,7 +175,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-03-02T18:06:53.774723+01:00"
+						"dateAndTimeString" : "2023-03-03T10:47:44.079694+01:00"
 					}
 				},
 				"uid" : {
@@ -185,7 +185,7 @@
 				"paragraphStyle" : {
 					"__type" : "textStyle"
 				},
-				"string" : "Next we define {{gtClass:name=SPLgrammarExamples}} as a subclass of {{gtClass:name=PP2CompositeNodeExamples}} with {{gtMethod:name=SPLgrammarExamples>>#parserClass}} pointing  to {{gtClass:name=SPLgrammar}}. "
+				"string" : "Next we define {{gtClass:name=SPLgrammarExamples}} as a subclass of {{gtClass:name=PP2CompositeNodeExamples}} with {{gtMethod:name=SPLgrammarExamples>>#parserClass}} pointing  to {{gtClass:name=SPLGrammar}}. "
 			},
 			{
 				"__type" : "textSnippet",

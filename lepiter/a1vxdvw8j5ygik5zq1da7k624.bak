@@ -34,7 +34,7 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-03-04T14:40:46.693336+01:00"
+									"dateAndTimeString" : "2023-03-04T14:41:12.735834+01:00"
 								}
 							},
 							"uid" : {
@@ -44,7 +44,7 @@
 							"paragraphStyle" : {
 								"__type" : "textStyle"
 							},
-							"string" : "{{gtTodo:label=binary expressions|completed=2023-03-04}}\n{{gtTodo:label=values|completed=2023-03-04}}\n{{gtTodo:label=unary expression}}"
+							"string" : "{{gtTodo:label=binary expressions|completed=2023-03-04}}\n{{gtTodo:label=values|completed=2023-03-04}}\n{{gtTodo:label=unary expression|completed=2023-03-04}}"
 						}
 					]
 				},

@@ -18,7 +18,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-03-02T18:15:53.786882+01:00"
+						"dateAndTimeString" : "2023-07-20T16:08:32.427124+02:00"
 					}
 				},
 				"editEmail" : {
@@ -29,51 +29,17 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-03-02T18:20:54.449217+01:00"
+						"dateAndTimeString" : "2023-07-20T16:08:32.427124+02:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
-					"uidString" : "fQPYt0+yDQC5+MNLAn6zEg=="
+					"uidString" : "p/aWa029DQCCx8iEBIENOA=="
 				},
 				"paragraphStyle" : {
 					"__type" : "textStyle"
 				},
-				"string" : "#Parsing tokens"
-			},
-			{
-				"__type" : "pharoSnippet",
-				"children" : {
-					"__type" : "snippets",
-					"items" : [ ]
-				},
-				"createEmail" : {
-					"__type" : "email",
-					"emailString" : "<unknown>"
-				},
-				"createTime" : {
-					"__type" : "time",
-					"time" : {
-						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-03-03T11:37:41.66754+01:00"
-					}
-				},
-				"editEmail" : {
-					"__type" : "email",
-					"emailString" : "<unknown>"
-				},
-				"editTime" : {
-					"__type" : "time",
-					"time" : {
-						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-03-03T11:37:42.188837+01:00"
-					}
-				},
-				"uid" : {
-					"__type" : "uid",
-					"uidString" : "6ZOaRV6yDQCctNIjA0uaBg=="
-				},
-				"code" : "parent := thisSnippet parent.\rparent isPage\r\tifFalse: [ [ parent children notEmpty ] whileTrue: [ parent children last unindent ] ]"
+				"string" : ""
 			},
 			{
 				"__type" : "textSnippet",

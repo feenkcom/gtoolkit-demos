@@ -19,8 +19,8 @@ BaselineOfGToolkitDraftDemos >> baseline: spec [
 	spec
 		for: #common
 		do: [ spec
-				baseline: 'GToolkit-Demos-GtHome'
-					with: [ spec repository: 'github://feenkcom/gtoolkit-demos:main/src' ];
 				baseline: 'Gtoolkit-Demos-PetitParser'
+					with: [ spec repository: 'github://feenkcom/gtoolkit-demos:main/src' ];
+				baseline: 'GToolkit-Demo-EsugWebsite'
 					with: [ spec repository: 'github://feenkcom/gtoolkit-demos:main/src' ] ]
 ]
