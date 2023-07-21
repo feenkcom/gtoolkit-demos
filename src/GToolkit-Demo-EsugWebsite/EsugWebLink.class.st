@@ -92,7 +92,7 @@ EsugWebLink >> gtPagesFor: aView [
 EsugWebLink >> initialize [
 	super initialize.
 	self pages: Set new.
-	self status: ''.
+	self status: self noStatus
 ]
 
 { #category : #testing }
@@ -120,6 +120,11 @@ EsugWebLink >> missingStatus [
 	"There is no file at this path"
 
 	^ 'missing'
+]
+
+{ #category : #constant }
+EsugWebLink >> noStatus [
+	^ ''
 ]
 
 { #category : #constant }
@@ -176,6 +181,11 @@ EsugWebLink >> status [
 { #category : #initialization }
 EsugWebLink >> status: aString [
 	status := aString
+]
+
+{ #category : #testing }
+EsugWebLink >> statusMissing [
+	^ self status = self noStatus
 ]
 
 { #category : #accessing }
