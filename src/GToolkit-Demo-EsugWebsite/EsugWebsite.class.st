@@ -53,7 +53,7 @@ EsugWebsite >> gtBrokenLinksFor: aView [
 	^ aView columnedList
 		title: 'Broken external links';
 		priority: 50;
-		items: [ self missingLinks ];
+		items: [ self brokenLinks ];
 		column: 'Link'
 			text: [ :item | item path ]
 			width: 400;
