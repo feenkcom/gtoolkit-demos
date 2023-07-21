@@ -5,6 +5,27 @@ Class {
 }
 
 { #category : #accessing }
+PillarLinkSeaParserExamples >> linkWithSpaces [
+	<gtExample>
+	| links |
+	links := self parse: '* foo > bar *'.
+	self assert: links size equals: 1.
+	self assert: links first key equals: 'foo'.
+	self assert: links first value equals: 'bar'.
+	^ links
+]
+
+{ #category : #accessing }
+PillarLinkSeaParserExamples >> multiLineNoLinks [
+	<gtExample>
+	| links |
+	links := self parse: '*
+foo>bar*'.
+	self assert: links isEmpty.
+	^ links
+]
+
+{ #category : #accessing }
 PillarLinkSeaParserExamples >> noLinks [
 	<gtExample>
 	| links |
@@ -59,5 +80,14 @@ PillarLinkSeaParserExamples >> twoLinks [
 	self assert: links first value equals: 'bar'.
 	self assert: links second key equals: 'fuzz'.
 	self assert: links second value equals: 'baz'.
+	^ links
+]
+
+{ #category : #accessing }
+PillarLinkSeaParserExamples >> twoStarsNoLinks [
+	<gtExample>
+	| links |
+	links := self parse: '**'.
+	self assert: links isEmpty.
 	^ links
 ]

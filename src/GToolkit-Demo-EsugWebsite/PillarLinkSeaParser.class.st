@@ -13,7 +13,7 @@ Class {
 { #category : #grammar }
 PillarLinkSeaParser >> linkNoText [
 	^ ($* asPParser , textOrUrl , $* asPParser)
-		==> [ :node | node second -> node second ]
+		==> [ :node | node second trim -> node second trim ]
 ]
 
 { #category : #grammar }
@@ -24,7 +24,7 @@ PillarLinkSeaParser >> linkSea [
 { #category : #grammar }
 PillarLinkSeaParser >> linkWithText [
 	^ ($* asPParser , textOrUrl , $> asPParser , textOrUrl , $* asPParser)
-		==> [ :node | node second -> node fourth ]
+		==> [ :node | node second trim -> node fourth trim ]
 ]
 
 { #category : #accessing }
@@ -34,5 +34,5 @@ PillarLinkSeaParser >> start [
 
 { #category : #grammar }
 PillarLinkSeaParser >> textOrUrl [
-	^ ($* asPParser / $> asPParser) negate star flatten
+	^ (#newline asPParser / $* asPParser / $> asPParser) negate plus flatten
 ]

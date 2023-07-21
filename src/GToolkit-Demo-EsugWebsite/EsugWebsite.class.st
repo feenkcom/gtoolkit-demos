@@ -3,7 +3,10 @@ Class {
 	#superclass : #Object,
 	#instVars : [
 		'repo',
-		'pages'
+		'pages',
+		'repoUrl',
+		'repoDir',
+		'linkDict'
 	],
 	#classInstVars : [
 		'instance'
@@ -13,6 +16,8 @@ Class {
 
 { #category : #creation }
 EsugWebsite class >> instance [
+	"Default instance from actual ESUG repo"
+
 	^ instance ifNil: [ instance := self new ]
 ]
 
@@ -34,6 +39,20 @@ EsugWebsite class >> reset [
 { #category : #acccessing }
 EsugWebsite class >> root [
 	^ self instance root
+]
+
+{ #category : #accessing }
+EsugWebsite >> gtLinksFor: aView [
+	<gtView>
+	^ aView columnedList
+		title: 'Links';
+		priority: 20;
+		items: [ self links ];
+		column: 'Link'
+			text: [ :item | item path ]
+			width: 400;
+		column: '# Pages' text: [ :item | item pages size ];
+		actionUpdateButton
 ]
 
 { #category : #accessing }
@@ -72,7 +91,20 @@ EsugWebsite >> gtSpotterForPageNames: aSearch [
 		filterBySubstring
 ]
 
-{ #category : #accessing }
+{ #category : #initialization }
+EsugWebsite >> initialize [
+	self repoUrl: 'https://github.com/ESUG/esug.github.io'.
+	self repoDir: FileLocator imageDirectory / 'esug.github.io'
+]
+
+{ #category : #initialization }
+EsugWebsite >> initializeLinkDict [
+	linkDict := Dictionary new.
+	self pages do: [ :each | each registerLinks ].
+	^ linkDict
+]
+
+{ #category : #initialization }
 EsugWebsite >> initializePages [
 	^ ((self repo allChildrenMatching: '*.pillar')
 		collect: [ :each | EsugWebPage for: each in: self ])
@@ -82,12 +114,11 @@ EsugWebsite >> initializePages [
 						and: [ a pathString < b pathString ] ] ]
 ]
 
-{ #category : #accessing }
+{ #category : #initialization }
 EsugWebsite >> initializeRepo [
 	"Clone the repo unless it already exists."
 
-	| proc repoDir |
-	repoDir := FileLocator imageDirectory / 'esug.github.io'.
+	| proc  |
 	repoDir exists ifTrue: [ ^ repoDir ].
 	proc := GtSubprocessWithInMemoryOutput new
 			workingDirectory: FileLocator imageDirectory;
@@ -97,6 +128,26 @@ EsugWebsite >> initializeRepo [
 			errorBlock: [ :theProc | self error: 'Git clone failed: ' , self repoUrl printString ].
 	proc runAndWait.
 	^ repoDir
+]
+
+{ #category : #accessing }
+EsugWebsite >> linkDict [
+	^ linkDict ifNil: [ linkDict := self initializeLinkDict ]
+]
+
+{ #category : #accessing }
+EsugWebsite >> linkDict: anObject [
+	linkDict := anObject
+]
+
+{ #category : #accessing }
+EsugWebsite >> linkForPath: aPath [
+	^ linkDict at: aPath ifAbsentPut: [ EsugWebLink for: aPath in: self ]
+]
+
+{ #category : #accessing }
+EsugWebsite >> links [
+	^ self linkDict values sort: [ :a :b | a path < b path ]
 ]
 
 { #category : #accessing }
@@ -114,9 +165,24 @@ EsugWebsite >> repo [
 	^ repo ifNil: [ repo := self initializeRepo ]
 ]
 
+{ #category : #accessing }
+EsugWebsite >> repoDir [
+	^ repoDir
+]
+
+{ #category : #accessing }
+EsugWebsite >> repoDir: anObject [
+	repoDir := anObject
+]
+
 { #category : #constant }
 EsugWebsite >> repoUrl [
-	^ 'https://github.com/ESUG/esug.github.io'
+	^ repoUrl
+]
+
+{ #category : #accessing }
+EsugWebsite >> repoUrl: anObject [
+	repoUrl := anObject
 ]
 
 { #category : #accessing }
