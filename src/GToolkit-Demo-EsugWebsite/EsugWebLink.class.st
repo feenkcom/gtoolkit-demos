@@ -35,13 +35,12 @@ EsugWebLink >> checkHttpStatus [
 
 { #category : #accessing }
 EsugWebLink >> checkPageStatus [
-	self
-		status: ((self website hasPageNamed: self path)
-				ifTrue: [ self okPageStatus ]
-				ifFalse: [ (self website repoDir
-						/ (self path copyWithRegex: '^/' matchesReplacedWith: '')) exists
-						ifTrue: [ self okFileStatus ]
-						ifFalse: [ self missingStatus ] ])
+	self isEmail ifTrue: [ ^ self status: self okEmailStatus ].
+	(self website hasPageNamed: self path)
+		ifTrue: [ ^ self status: self okPageStatus ].
+	(self website repoDir / (self path copyWithRegex: '^/' matchesReplacedWith: ''))
+		exists ifTrue: [ ^ self status: self okFileStatus ].
+	^ self status: self missingStatus
 ]
 
 { #category : #accessing }
@@ -97,6 +96,11 @@ EsugWebLink >> initialize [
 ]
 
 { #category : #testing }
+EsugWebLink >> isEmail [
+	^ self path matchesRegex: EsugWebPage emailRegexString
+]
+
+{ #category : #testing }
 EsugWebLink >> isHttp [
 	^ self path beginsWith: 'http'
 ]
@@ -116,6 +120,13 @@ EsugWebLink >> missingStatus [
 	"There is no file at this path"
 
 	^ 'missing'
+]
+
+{ #category : #constant }
+EsugWebLink >> okEmailStatus [
+	"An email link -- we don't check these."
+
+	^ 'ok (email)'
 ]
 
 { #category : #constant }
