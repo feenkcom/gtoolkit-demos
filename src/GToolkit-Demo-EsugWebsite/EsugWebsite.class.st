@@ -46,12 +46,28 @@ EsugWebsite >> gtLinksFor: aView [
 	<gtView>
 	^ aView columnedList
 		title: 'Links';
-		priority: 20;
+		priority: 30;
 		items: [ self links ];
 		column: 'Link'
 			text: [ :item | item path ]
 			width: 400;
 		column: '# Pages' text: [ :item | item pages size ];
+		column: 'Status' text: [ :item | item status ];
+		actionUpdateButton
+]
+
+{ #category : #accessing }
+EsugWebsite >> gtMissingLinksFor: aView [
+	<gtView>
+	^ aView columnedList
+		title: 'Missing links';
+		priority: 40;
+		items: [ self missingLinks ];
+		column: 'Link'
+			text: [ :item | item path ]
+			width: 400;
+		column: '# Pages' text: [ :item | item pages size ];
+		column: 'Status' text: [ :item | item status ];
 		actionUpdateButton
 ]
 
@@ -89,6 +105,14 @@ EsugWebsite >> gtSpotterForPageNames: aSearch [
 		itemsLimit: Float infinity;
 		itemName: #pathString;
 		filterBySubstring
+]
+
+{ #category : #accessing }
+EsugWebsite >> hasPageNamed: aString [
+	^ self pages
+		detect: [ :page | page pathString = aString ]
+		ifFound: [ true ]
+		ifNone: [ false ]
 ]
 
 { #category : #initialization }
@@ -147,7 +171,13 @@ EsugWebsite >> linkForPath: aPath [
 
 { #category : #accessing }
 EsugWebsite >> links [
-	^ self linkDict values sort: [ :a :b | a path < b path ]
+	^ self linkDict values
+]
+
+{ #category : #accessing }
+EsugWebsite >> missingLinks [
+	(self links select: #isInternal) do: #checkStatus.
+	^ self links select: [ :link | link isInternal and: [ link isMissing ] ]
 ]
 
 { #category : #accessing }
