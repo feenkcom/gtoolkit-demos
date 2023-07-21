@@ -3,7 +3,9 @@ Class {
 	#superclass : #Object,
 	#instVars : [
 		'repo',
-		'pages'
+		'pages',
+		'repoUrl',
+		'repoDir'
 	],
 	#classInstVars : [
 		'instance'
@@ -13,6 +15,8 @@ Class {
 
 { #category : #creation }
 EsugWebsite class >> instance [
+	"Default instance from actual ESUG repo"
+
 	^ instance ifNil: [ instance := self new ]
 ]
 
@@ -72,7 +76,13 @@ EsugWebsite >> gtSpotterForPageNames: aSearch [
 		filterBySubstring
 ]
 
-{ #category : #accessing }
+{ #category : #initialization }
+EsugWebsite >> initialize [
+	self repoUrl: 'https://github.com/ESUG/esug.github.io'.
+	self repoDir: FileLocator imageDirectory / 'esug.github.io'
+]
+
+{ #category : #initialization }
 EsugWebsite >> initializePages [
 	^ ((self repo allChildrenMatching: '*.pillar')
 		collect: [ :each | EsugWebPage for: each in: self ])
@@ -82,12 +92,11 @@ EsugWebsite >> initializePages [
 						and: [ a pathString < b pathString ] ] ]
 ]
 
-{ #category : #accessing }
+{ #category : #initialization }
 EsugWebsite >> initializeRepo [
 	"Clone the repo unless it already exists."
 
-	| proc repoDir |
-	repoDir := FileLocator imageDirectory / 'esug.github.io'.
+	| proc  |
 	repoDir exists ifTrue: [ ^ repoDir ].
 	proc := GtSubprocessWithInMemoryOutput new
 			workingDirectory: FileLocator imageDirectory;
@@ -114,9 +123,24 @@ EsugWebsite >> repo [
 	^ repo ifNil: [ repo := self initializeRepo ]
 ]
 
+{ #category : #accessing }
+EsugWebsite >> repoDir [
+	^ repoDir
+]
+
+{ #category : #accessing }
+EsugWebsite >> repoDir: anObject [
+	repoDir := anObject
+]
+
 { #category : #constant }
 EsugWebsite >> repoUrl [
-	^ 'https://github.com/ESUG/esug.github.io'
+	^ repoUrl
+]
+
+{ #category : #accessing }
+EsugWebsite >> repoUrl: anObject [
+	repoUrl := anObject
 ]
 
 { #category : #accessing }

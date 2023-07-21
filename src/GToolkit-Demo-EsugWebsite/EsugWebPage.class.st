@@ -52,15 +52,19 @@ EsugWebPage >> markdownLinks [
 
 { #category : #path }
 EsugWebPage >> normalize: aPath [
-	(aPath beginsWith: 'http') ifTrue: [ ^ aPath ].
-	(aPath beginsWith: '/') ifTrue: [ ^ aPath ].
-	
-	
+	| path |
+	path := aPath.
+	(path beginsWith: 'http') ifTrue: [ ^ path ].
+	(path beginsWith: '/') ifTrue: [ ^ path ].
+	path := self pathPrefix , '/' , path.
+	[ path matchesRegex: '.*/[^/]+/\.\./.*' ]
+		whileTrue: [ path := path copyWithRegex: '/[^/]+/\.\./' matchesReplacedWith: '/' ].
+	^ path
 ]
 
 { #category : #path }
 EsugWebPage >> pathPrefix [
-	^ self pathString
+	^ self pathString copyUpToLast: $/
 ]
 
 { #category : #accessing }
@@ -91,6 +95,11 @@ EsugWebPage >> pillarLinks [
 { #category : #accessing }
 EsugWebPage >> printOn: aStream [
 	aStream nextPutAll: self pathString
+]
+
+{ #category : #accessing }
+EsugWebPage >> website [
+	^ website
 ]
 
 { #category : #accessing }
