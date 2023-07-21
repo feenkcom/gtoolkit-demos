@@ -43,8 +43,7 @@ EsugWebsite class >> root [
 
 { #category : #accessing }
 EsugWebsite >> brokenLinks [
-	(self links select: #isHttp) do: #checkStatus.
-	^ self links select: [ :link | link isHttp and: [ link isMissing ] ]
+	^ self links select: #isBroken
 ]
 
 { #category : #accessing }
@@ -54,10 +53,13 @@ EsugWebsite >> gtBrokenLinksFor: aView [
 		title: 'Broken external links';
 		priority: 50;
 		items: [ self brokenLinks ];
+		column: 'Index'
+			text: [ :eachItem :eachIndex | eachIndex asRopedText foreground: Color gray ]
+			width: 45;
 		column: 'Link'
 			text: [ :item | item path ]
 			width: 400;
-		column: '# Pages' text: [ :item | item pages size ];
+		column: '# Pages' text: [ :item | item pages size ] width: 80;
 		column: 'Status' text: [ :item | item status ];
 		actionUpdateButton
 ]
@@ -69,10 +71,13 @@ EsugWebsite >> gtHttpLinksFor: aView [
 		title: 'HTTP links';
 		priority: 40;
 		items: [ self httpLinks ];
+		column: 'Index'
+			text: [ :eachItem :eachIndex | eachIndex asRopedText foreground: Color gray ]
+			width: 45;
 		column: 'Link'
 			text: [ :item | item path ]
 			width: 400;
-		column: '# Pages' text: [ :item | item pages size ];
+		column: '# Pages' text: [ :item | item pages size ] width: 80;
 		column: 'Status' text: [ :item | item status ];
 		actionUpdateButton
 ]
@@ -84,10 +89,13 @@ EsugWebsite >> gtLinksFor: aView [
 		title: 'Links';
 		priority: 30;
 		items: [ self links ];
+		column: 'Index'
+			text: [ :eachItem :eachIndex | eachIndex asRopedText foreground: Color gray ]
+			width: 45;
 		column: 'Link'
 			text: [ :item | item path ]
 			width: 400;
-		column: '# Pages' text: [ :item | item pages size ];
+		column: '# Pages' text: [ :item | item pages size ] width: 80;
 		column: 'Status' text: [ :item | item status ];
 		actionUpdateButton
 ]
@@ -99,10 +107,31 @@ EsugWebsite >> gtMissingLinksFor: aView [
 		title: 'Missing links';
 		priority: 35;
 		items: [ self missingLinks ];
+		column: 'Index'
+			text: [ :eachItem :eachIndex | eachIndex asRopedText foreground: Color gray ]
+			width: 45;
 		column: 'Link'
 			text: [ :item | item path ]
 			width: 400;
-		column: '# Pages' text: [ :item | item pages size ];
+		column: '# Pages' text: [ :item | item pages size ] width: 80;
+		column: 'Status' text: [ :item | item status ];
+		actionUpdateButton
+]
+
+{ #category : #accessing }
+EsugWebsite >> gtMissingStatusLinksFor: aView [
+	<gtView>
+	^ aView columnedList
+		title: 'Missing status';
+		priority: 55;
+		items: [ self httpLinks select: #statusMissing ];
+		column: 'Index'
+			text: [ :eachItem :eachIndex | eachIndex asRopedText foreground: Color gray ]
+			width: 45;
+		column: 'Link'
+			text: [ :item | item path ]
+			width: 400;
+		column: '# Pages' text: [ :item | item pages size ] width: 80;
 		column: 'Status' text: [ :item | item status ];
 		actionUpdateButton
 ]
@@ -114,9 +143,18 @@ EsugWebsite >> gtPagesFor: aView [
 		title: 'Pages';
 		priority: 10;
 		items: [ self pages ];
-		column: 'Page' text: [ :item | item path ] width: 400;
-		column: 'Pillar links' text: [ :item | item pillarLinks size ] width: 80;
-		column: 'Markdown links' text: [ :item | item markdownLinks size ] width: 80
+		column: 'Index'
+			text: [ :eachItem :eachIndex | eachIndex asRopedText foreground: Color gray ]
+			width: 45;
+		column: 'Page'
+			text: [ :item | item path ]
+			width: 400;
+		column: 'Pillar links'
+			text: [ :item | item pillarLinks size ]
+			width: 80;
+		column: 'Markdown links'
+			text: [ :item | item markdownLinks size ]
+			width: 80
 ]
 
 { #category : #accessing }
