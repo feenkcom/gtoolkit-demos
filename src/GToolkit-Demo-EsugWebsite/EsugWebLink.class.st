@@ -30,7 +30,7 @@ EsugWebLink >> checkHttpStatus [
 		timeout: 1;
 		head: self path;
 		response.
-	self status: 'HTTP OK' ] onErrorDo: [ :ex | self status: ex printString ]
+	self status: self httpOkStatus ] onErrorDo: [ :ex | self status: ex printString ]
 ]
 
 { #category : #accessing }
@@ -88,11 +88,22 @@ EsugWebLink >> gtPagesFor: aView [
 		actionUpdateButton
 ]
 
+{ #category : #constant }
+EsugWebLink >> httpOkStatus [
+	^ 'HTTP OK'
+]
+
 { #category : #initialization }
 EsugWebLink >> initialize [
 	super initialize.
 	self pages: Set new.
-	self status: ''.
+	self status: self noStatus
+]
+
+{ #category : #testing }
+EsugWebLink >> isBroken [
+	^ self isHttp
+		and: [ self statusMissing not and: [ self status ~= self httpOkStatus ] ]
 ]
 
 { #category : #testing }
@@ -120,6 +131,11 @@ EsugWebLink >> missingStatus [
 	"There is no file at this path"
 
 	^ 'missing'
+]
+
+{ #category : #constant }
+EsugWebLink >> noStatus [
+	^ ''
 ]
 
 { #category : #constant }
@@ -176,6 +192,11 @@ EsugWebLink >> status [
 { #category : #initialization }
 EsugWebLink >> status: aString [
 	status := aString
+]
+
+{ #category : #testing }
+EsugWebLink >> statusMissing [
+	^ self status = self noStatus
 ]
 
 { #category : #accessing }
