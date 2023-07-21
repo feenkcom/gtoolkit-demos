@@ -42,6 +42,42 @@ EsugWebsite class >> root [
 ]
 
 { #category : #accessing }
+EsugWebsite >> brokenLinks [
+	(self links select: #isHttp) do: #checkStatus.
+	^ self links select: [ :link | link isHttp and: [ link isMissing ] ]
+]
+
+{ #category : #accessing }
+EsugWebsite >> gtBrokenLinksFor: aView [
+	<gtView>
+	^ aView columnedList
+		title: 'Broken external links';
+		priority: 50;
+		items: [ self missingLinks ];
+		column: 'Link'
+			text: [ :item | item path ]
+			width: 400;
+		column: '# Pages' text: [ :item | item pages size ];
+		column: 'Status' text: [ :item | item status ];
+		actionUpdateButton
+]
+
+{ #category : #accessing }
+EsugWebsite >> gtHttpLinksFor: aView [
+	<gtView>
+	^ aView columnedList
+		title: 'HTTP links';
+		priority: 40;
+		items: [ self httpLinks ];
+		column: 'Link'
+			text: [ :item | item path ]
+			width: 400;
+		column: '# Pages' text: [ :item | item pages size ];
+		column: 'Status' text: [ :item | item status ];
+		actionUpdateButton
+]
+
+{ #category : #accessing }
 EsugWebsite >> gtLinksFor: aView [
 	<gtView>
 	^ aView columnedList
@@ -61,7 +97,7 @@ EsugWebsite >> gtMissingLinksFor: aView [
 	<gtView>
 	^ aView columnedList
 		title: 'Missing links';
-		priority: 40;
+		priority: 35;
 		items: [ self missingLinks ];
 		column: 'Link'
 			text: [ :item | item path ]
@@ -78,7 +114,7 @@ EsugWebsite >> gtPagesFor: aView [
 		title: 'Pages';
 		priority: 10;
 		items: [ self pages ];
-		column: 'Page' text: [ :item | item pathString ] width: 400;
+		column: 'Page' text: [ :item | item path ] width: 400;
 		column: 'Pillar links' text: [ :item | item pillarLinks size ] width: 80;
 		column: 'Markdown links' text: [ :item | item markdownLinks size ] width: 80
 ]
@@ -103,16 +139,21 @@ EsugWebsite >> gtSpotterForPageNames: aSearch [
 		priority: 10;
 		items: [ self pages ];
 		itemsLimit: Float infinity;
-		itemName: #pathString;
+		itemName: #path;
 		filterBySubstring
 ]
 
 { #category : #accessing }
 EsugWebsite >> hasPageNamed: aString [
 	^ self pages
-		detect: [ :page | page pathString = aString ]
+		detect: [ :page | page path = aString ]
 		ifFound: [ true ]
 		ifNone: [ false ]
+]
+
+{ #category : #accessing }
+EsugWebsite >> httpLinks [
+	^  self links select: #isHttp
 ]
 
 { #category : #initialization }
@@ -133,9 +174,9 @@ EsugWebsite >> initializePages [
 	^ ((self repo allChildrenMatching: '*.pillar')
 		collect: [ :each | EsugWebPage for: each in: self ])
 		sort: [ :a :b | 
-			(a pathString occurrencesOf: $/) < (b pathString occurrencesOf: $/)
-				or: [ (a pathString occurrencesOf: $/) = (b pathString occurrencesOf: $/)
-						and: [ a pathString < b pathString ] ] ]
+			(a path occurrencesOf: $/) < (b path occurrencesOf: $/)
+				or: [ (a path occurrencesOf: $/) = (b path occurrencesOf: $/)
+						and: [ a path < b path ] ] ]
 ]
 
 { #category : #initialization }
@@ -172,6 +213,10 @@ EsugWebsite >> linkForPath: aPath [
 { #category : #accessing }
 EsugWebsite >> links [
 	^ self linkDict values
+		sort: [ :a :b | 
+			(a path occurrencesOf: $/) < (b path occurrencesOf: $/)
+				or: [ (a path occurrencesOf: $/) = (b path occurrencesOf: $/)
+						and: [ a path < b path ] ] ]
 ]
 
 { #category : #accessing }
@@ -182,7 +227,7 @@ EsugWebsite >> missingLinks [
 
 { #category : #accessing }
 EsugWebsite >> pageNamed: aString [
-	^ self pages detect: [ :page | page pathString = aString ]
+	^ self pages detect: [ :page | page path = aString ]
 ]
 
 { #category : #accessing }
@@ -217,7 +262,7 @@ EsugWebsite >> repoUrl: anObject [
 
 { #category : #accessing }
 EsugWebsite >> root [
-	^ self pages detect: [ :page | page pathString = self rootPath ]
+	^ self pages detect: [ :page | page path = self rootPath ]
 ]
 
 { #category : #constant }

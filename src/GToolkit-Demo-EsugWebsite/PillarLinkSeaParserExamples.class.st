@@ -5,6 +5,17 @@ Class {
 }
 
 { #category : #accessing }
+PillarLinkSeaParserExamples >> emailLink [
+	<gtExample>
+	| links |
+	links := self parse: 'Email: *Roel.Wuyts@ulb.ac.be*'.
+	self assert: links size equals: 1.
+	self assert: links first key equals: 'Roel.Wuyts@ulb.ac.be'.
+	self assert: links first value equals: 'Roel.Wuyts@ulb.ac.be'.
+	^ links
+]
+
+{ #category : #accessing }
 PillarLinkSeaParserExamples >> linkWithSpaces [
 	<gtExample>
 	| links |
@@ -29,8 +40,10 @@ foo>bar*'.
 PillarLinkSeaParserExamples >> noLinks [
 	<gtExample>
 	| links |
-	links := self parse: ''.
-	self assert: links isEmpty.
+	links := self parse: '... *someLink* '.
+	self assert: links size equals: 1.
+	self assert: links first key equals: 'someLink'.
+	self assert: links first value equals: 'someLink'.
 	^ links
 ]
 

@@ -8,6 +8,11 @@ Class {
 	#category : #'GToolkit-Demo-EsugWebsite-Model'
 }
 
+{ #category : #path }
+EsugWebPage class >> emailRegexString [
+	^ '^[\w._%+-]+@[\w_%+-]+\.[\w._%+-]+$'
+]
+
 { #category : #accessing }
 EsugWebPage class >> for: aFileReference in: anEsugWebsite [
 	^ self new
@@ -87,25 +92,26 @@ EsugWebPage >> normalize: aPath [
 	path := aPath.
 	(path beginsWith: 'http') ifTrue: [ ^ path ].
 	(path beginsWith: '/') ifTrue: [ ^ path ].
+	(path matchesRegex: self class emailRegexString) ifTrue: [ ^ path ].
 	path := self pathPrefix , '/' , path.
 	[ path matchesRegex: '.*/[^/]+/\.\./.*' ]
 		whileTrue: [ path := path copyWithRegex: '/[^/]+/\.\./' matchesReplacedWith: '/' ].
 	^ path
 ]
 
-{ #category : #path }
-EsugWebPage >> pathPrefix [
-	^ self pathString copyUpToLast: $/
-]
-
 { #category : #accessing }
-EsugWebPage >> pathString [
+EsugWebPage >> path [
 	"My path relative to the root of the repo."
 
-	| pathString |
-	pathString := pillarFile pathString withoutPrefix: website repo pathString.
-	self assert: (pathString beginsWith: '/').
-	^ pathString
+	| path |
+	path := pillarFile pathString withoutPrefix: website repo pathString.
+	self assert: (path beginsWith: '/').
+	^ path
+]
+
+{ #category : #path }
+EsugWebPage >> pathPrefix [
+	^ self path copyUpToLast: $/
 ]
 
 { #category : #accessing }
@@ -125,7 +131,7 @@ EsugWebPage >> pillarLinks [
 
 { #category : #accessing }
 EsugWebPage >> printOn: aStream [
-	aStream nextPutAll: self pathString
+	aStream nextPutAll: self path
 ]
 
 { #category : #accessing }
