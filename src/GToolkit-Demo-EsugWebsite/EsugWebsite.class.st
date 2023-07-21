@@ -5,7 +5,8 @@ Class {
 		'repo',
 		'pages',
 		'repoUrl',
-		'repoDir'
+		'repoDir',
+		'linkDict'
 	],
 	#classInstVars : [
 		'instance'
@@ -38,6 +39,20 @@ EsugWebsite class >> reset [
 { #category : #acccessing }
 EsugWebsite class >> root [
 	^ self instance root
+]
+
+{ #category : #accessing }
+EsugWebsite >> gtLinksFor: aView [
+	<gtView>
+	^ aView columnedList
+		title: 'Links';
+		priority: 20;
+		items: [ self links ];
+		column: 'Link'
+			text: [ :item | item path ]
+			width: 400;
+		column: '# Pages' text: [ :item | item pages size ];
+		actionUpdateButton
 ]
 
 { #category : #accessing }
@@ -83,6 +98,13 @@ EsugWebsite >> initialize [
 ]
 
 { #category : #initialization }
+EsugWebsite >> initializeLinkDict [
+	linkDict := Dictionary new.
+	self pages do: [ :each | each registerLinks ].
+	^ linkDict
+]
+
+{ #category : #initialization }
 EsugWebsite >> initializePages [
 	^ ((self repo allChildrenMatching: '*.pillar')
 		collect: [ :each | EsugWebPage for: each in: self ])
@@ -106,6 +128,26 @@ EsugWebsite >> initializeRepo [
 			errorBlock: [ :theProc | self error: 'Git clone failed: ' , self repoUrl printString ].
 	proc runAndWait.
 	^ repoDir
+]
+
+{ #category : #accessing }
+EsugWebsite >> linkDict [
+	^ linkDict ifNil: [ linkDict := self initializeLinkDict ]
+]
+
+{ #category : #accessing }
+EsugWebsite >> linkDict: anObject [
+	linkDict := anObject
+]
+
+{ #category : #accessing }
+EsugWebsite >> linkForPath: aPath [
+	^ linkDict at: aPath ifAbsentPut: [ EsugWebLink for: aPath in: self ]
+]
+
+{ #category : #accessing }
+EsugWebsite >> links [
+	^ self linkDict values sort: [ :a :b | a path < b path ]
 ]
 
 { #category : #accessing }

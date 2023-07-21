@@ -32,15 +32,46 @@ EsugWebPage >> gtContentsFor: aView [
 ]
 
 { #category : #accessing }
+EsugWebPage >> gtLinksFor: aView [
+	<gtView>
+	^ aView columnedList
+		title: 'Links';
+		priority: 30;
+		items: [ self links ];
+		column: 'Link'
+			text: [ :item | item path ]
+			width: 400;
+		column: '# Pages' text: [ :item | item pages size ];
+		actionUpdateButton
+]
+
+{ #category : #accessing }
 EsugWebPage >> gtPillarlinksFor: aView [
 	<gtView>
 	^ aView columnedList
 		title: 'Pillar links';
 		priority: 20;
 		items: [ self pillarLinks ];
-		column: 'Text' text: [ :item | item key ] width: 300;
-		column: 'Link' text: [ :item | item value ] width: 400;
+		column: 'Text'
+			text: [ :item | item key ]
+			width: 300;
+		column: 'Link'
+			text: [ :item | item value ]
+			width: 400;
+		send: [ :item | self linkForPath: item value ];
 		actionUpdateButton
+]
+
+{ #category : #accessing }
+EsugWebPage >> linkForPath: aPath [
+	^ self website linkForPath: (self normalize: aPath)
+]
+
+{ #category : #accessing }
+EsugWebPage >> links [
+	"Lookup the EsugWebLink instances for each link."
+
+	^ self pillarLinks collect: [ :assoc | self linkForPath: assoc value ]
 ]
 
 { #category : #accessing }
@@ -95,6 +126,11 @@ EsugWebPage >> pillarLinks [
 { #category : #accessing }
 EsugWebPage >> printOn: aStream [
 	aStream nextPutAll: self pathString
+]
+
+{ #category : #accessing }
+EsugWebPage >> registerLinks [
+	^ self links do: [ :link | link addPage: self ]
 ]
 
 { #category : #accessing }
