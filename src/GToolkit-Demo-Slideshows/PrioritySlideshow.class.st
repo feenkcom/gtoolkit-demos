@@ -355,10 +355,15 @@ PrioritySlideshow >> scriptPage [
 PrioritySlideshow >> scriptText [
 	"Remove headings (starting with '#'), directions (starting with '*('), and code snippets (starting with '```')."
 
-	| script separator |
+	| script separator regexStrings scriptText |
 	self hasTextPragmas ifFalse: [ ^ '' ].
+	regexStrings := {'`([^`]+)`'.
+			'\*([^*]+)\*'.
+			'\*\*([^*]+)\*\*'.
+			'\*\*\*([^*]+)\*\*\*'}.
 	script := String new writeStream.
 	separator := String cr repeat: 2.
+	"Collect all the <text: ...> strings"
 	self slideDictionary
 		do: [ :assoc | 
 			| text |
@@ -372,7 +377,16 @@ PrioritySlideshow >> scriptText [
 								(each beginsWith: '#')
 									or: [ (each beginsWith: '*(') or: [ each beginsWith: '```' ] ] ]).
 			script nextPutAll: text ].
-	^ script contents
+	scriptText := script contents.
+	"Strip out formatting using * and `"
+	regexStrings
+		do: [ :re | 
+			| regex |
+			regex := re asRegex.
+			scriptText := regex
+					copy: scriptText
+					translatingMatchesUsing: [ :each | regex subexpression: 2 ] ].
+	^ scriptText
 ]
 
 { #category : #utility }
