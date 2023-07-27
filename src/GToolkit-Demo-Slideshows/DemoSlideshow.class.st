@@ -19,7 +19,7 @@ DemoSlideshow >> coderExampleSlideFor: aSlide [
 	^ aSlide labelAndElement
 		priority: (self priorityFor: #coderExampleSlideFor:);
 		newFadedText: ('Feel free to explore.' asRopedText);
-		element: [GtCoder new createInPager maximized].
+		element: [GtCoderElement new createInPager maximized].
 ]
 
 { #category : #page }

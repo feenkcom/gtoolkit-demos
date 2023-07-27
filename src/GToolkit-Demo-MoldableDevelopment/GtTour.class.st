@@ -57,7 +57,7 @@ GtTour >> coderExplanationWithLinks [
 		aptitude: BrShadowAptitude.
 	
 	scripter := BlScripter new.
-	scripter element: ((GtCoder forClass: GtABAddressBook) createInPager maximized) asElement.
+	scripter element: ((GtCoderElement forClass: GtABAddressBook) createInPager maximized) asElement.
 	scripter syncContinue.
 	
 	coderElement := scripter elementWithoutParent.
@@ -241,7 +241,7 @@ GtTour >> coderWithComment [
 		do: [ :aStep | 
 			aStep set
 				label: 'Coder';
-				element: [ (GtCoder forClass: GtCSPicture) createInPager maximized ] ].
+				element: [ (GtCoderElement forClass: GtCSPicture) createInPager maximized ] ].
 	aScripter
 		substep: 'Evaluate first snippet and inspect'
 		do: [ :aStep | 

@@ -233,7 +233,7 @@ GtSpotterSlideshow >> spotterInLocalContextExplanationWithLinks [
 		background: Color white;
 		aptitude: BrShadowAptitude;
 		margin: (BlInsets all: 5);
-		addChild: (GtCoder forClass: GtABAddressBook) asElement.
+		addChild: (GtCoderElement forClass: GtABAddressBook) asElement.
 	inspectorElement := BlElement new
 		constraintsDo: [:c |
 			c vertical matchParent.
@@ -278,7 +278,7 @@ GtSpotterSlideshow >> spotterInLocalContextExplanationWithLinks [
 { #category : #examples }
 GtSpotterSlideshow >> spotterInLocalContextForCoderExample [
 	<gtExample>
-	^ (GtCoder forClass: GtABAddressBook) createInPager maximized.
+	^ (GtCoderElement forClass: GtABAddressBook) createInPager maximized.
 ]
 
 { #category : #examples }
