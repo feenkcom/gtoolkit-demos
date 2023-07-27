@@ -392,7 +392,7 @@ GtCoderSlideshow >> coderExampleSlideFor: aSlide [
 	^ aSlide labelAndElement
 		priority: 13;
 		newFadedText: ('Feel free to explore.' asRopedText);
-		element: [GtCoder new createInPager maximized].
+		element: [GtCoderElement new createInPager maximized].
 ]
 
 { #category : #accessing }
@@ -443,7 +443,7 @@ GtCoderSlideshow >> coderInterfaceExplanationWithLinks [
 	| coderElement packageHierarchyTarget classHierarchyTarget classCoderTarget addClassButtonTarget spotterButtonTarget buttons |
 	
 	coderElement := BlUseAsyncFeatures
-		disableDuring: [ (GtCoder forClass: GtABAddressBook) createInPager maximized ].
+		disableDuring: [ (GtCoderElement forClass: GtABAddressBook) createInPager maximized ].
 	
 	packageHierarchyTarget := coderElement
 		allChildrenBreadthFirstDetect: [:aChild |
@@ -545,7 +545,7 @@ GtCoderSlideshow >> createClassExplanationText [
 GtCoderSlideshow >> createClassExplanationWithLinks [
 	| coderElement buttonTarget |
 	coderElement := BlUseAsyncFeatures
-		disableDuring: [ (GtCoder forClass: GtABAddressBook) createInPager maximized ].
+		disableDuring: [ (GtCoderElement forClass: GtABAddressBook) createInPager maximized ].
 		
 	buttonTarget := coderElement
 		allChildrenBreadthFirstDetect: [:aChild |
