@@ -41,11 +41,11 @@ GtCoderSlideshow >> advancedMethodsFilteringExplanationWithLinks [
 	
 	coderElement
 		allChildrenBreadthFirstDetect: [:aChild |
-			aChild isKindOf: GtFilterTagElement]
-		ifFound: [:aChild |
-			categoryTarget := aChild childAt: 1.
-			fieldTarget := aChild.
-			addTarget := aChild parent childAt: 2].
+			aChild isKindOf: GtFiltersElement]
+		ifFound: [:filters |
+			categoryTarget := filters childAt: 1.
+			fieldTarget := filters childAt: 1.
+			addTarget := filters childAt: 1].
 	
 	categoryTarget
 		addChild:
