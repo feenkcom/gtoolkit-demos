@@ -1,7 +1,7 @@
 Class {
 	#name : #GtOneRenderingTree,
 	#superclass : #Object,
-	#category : #'GToolkit-Demo-MoldableDevelopment'
+	#category : #'GToolkit-Demo-MoldableDevelopment-Slideshows'
 }
 
 { #category : #accessing }
