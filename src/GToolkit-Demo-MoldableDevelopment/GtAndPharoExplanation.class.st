@@ -47,7 +47,7 @@ The traditional Smalltalk environment was a revolution when it was created. It e
 Class {
 	#name : #GtAndPharoExplanation,
 	#superclass : #Object,
-	#category : #'GToolkit-Demo-MoldableDevelopment'
+	#category : #'GToolkit-Demo-MoldableDevelopment-Examples'
 }
 
 { #category : #'as yet unclassified' }

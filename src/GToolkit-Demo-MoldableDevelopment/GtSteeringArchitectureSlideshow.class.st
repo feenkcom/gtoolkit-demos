@@ -1,7 +1,7 @@
 Class {
 	#name : #GtSteeringArchitectureSlideshow,
 	#superclass : #Object,
-	#category : 'GToolkit-Demo-MoldableDevelopment-GToolkit-Demo-MoldableDevelopment'
+	#category : #'GToolkit-Demo-MoldableDevelopment-Slideshows'
 }
 
 { #category : #slides }

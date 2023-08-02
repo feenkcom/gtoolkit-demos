@@ -4,7 +4,7 @@ Class {
 	#instVars : [
 		'snippetsCollection'
 	],
-	#category : 'GToolkit-Demo-MoldableDevelopment'
+	#category : #'GToolkit-Demo-MoldableDevelopment-Slideshows'
 }
 
 { #category : #accesing }
