@@ -17,19 +17,15 @@ GtCoderSlideshow >> advancedMethodsFilteringExplanationSlideFor: aSlide [
 { #category : #accessing }
 GtCoderSlideshow >> advancedMethodsFilteringExplanationText [
 	| text |
-	text := 'The second option for filtering is by clicking on the ' asRopedText,
-('dropdown' asRopedText glamorousExplanationFor: #dropdown),
-' button where you can search for by multiple criterias. Then you can type your search string in the adjacent ' asRopedText,
-('field' asRopedText glamorousExplanationFor: #field),
-'.
-You can add multiple filters by clicking on the small ' asRopedText,
-('+' asRopedText glamorousExplanationFor: #addFilterButton),
-' button next to those fields. This will perform an OR between the filters.
-This method gives you more flexibility to filter.' asRopedText.
-	
+	text := 'The second option for filtering is by clicking on the small '
+			asRopedText , ('+' asRopedText glamorousExplanationFor: #addFilterButton)
+			, ' button to add a filter. You can then click on the dropdown button to search for various criteria and add your search string in the adjacent field.
+To add more criteria, just click on the ' asRopedText
+			, ('+' asRopedText glamorousExplanationFor: #addFilterButton)
+			, ' button again. This will perform an OR between the filters.' asRopedText.
 	^ text asRopedText
 		glamorousRegularFont;
-		fontSize: 20.
+		fontSize: 20
 ]
 
 { #category : #accessing }
