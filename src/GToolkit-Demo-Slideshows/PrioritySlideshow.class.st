@@ -18,6 +18,8 @@ Methods that you should configure:
 Class {
 	#name : #PrioritySlideshow,
 	#superclass : #Object,
+	#traits : 'TGtSlideShow',
+	#classTraits : 'TGtSlideShow classTrait',
 	#instVars : [
 		'db'
 	],

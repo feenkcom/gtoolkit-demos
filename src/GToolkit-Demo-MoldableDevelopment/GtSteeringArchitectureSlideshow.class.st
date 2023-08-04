@@ -1,6 +1,8 @@
 Class {
 	#name : #GtSteeringArchitectureSlideshow,
 	#superclass : #Object,
+	#traits : 'TGtSlideShow',
+	#classTraits : 'TGtSlideShow classTrait',
 	#category : #'GToolkit-Demo-MoldableDevelopment-Slideshows'
 }
 
