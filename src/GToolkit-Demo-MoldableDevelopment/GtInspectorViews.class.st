@@ -1,6 +1,8 @@
 Class {
 	#name : #GtInspectorViews,
 	#superclass : #Object,
+	#traits : 'TGtSlideShow',
+	#classTraits : 'TGtSlideShow classTrait',
 	#category : #'GToolkit-Demo-MoldableDevelopment-Slideshows'
 }
 

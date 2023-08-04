@@ -1,7 +1,9 @@
 Class {
 	#name : #GtWorkingWithTheGitHubRestApiShow,
 	#superclass : #Object,
-	#category : 'GToolkit-Demo-GitHubAPI-Presentation'
+	#traits : 'TGtSlideShow',
+	#classTraits : 'TGtSlideShow classTrait',
+	#category : #'GToolkit-Demo-GitHubAPI-Presentation'
 }
 
 { #category : #examples }

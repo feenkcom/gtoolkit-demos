@@ -6,6 +6,8 @@ I am a tutorial presentation for beginners.
 Class {
 	#name : #GtPharo101,
 	#superclass : #Object,
+	#traits : 'TGtSlideShow',
+	#classTraits : 'TGtSlideShow classTrait',
 	#category : #'GToolkit-Demo-Pharo101'
 }
 

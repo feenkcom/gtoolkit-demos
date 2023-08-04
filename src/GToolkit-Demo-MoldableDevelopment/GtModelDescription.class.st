@@ -1,6 +1,8 @@
 Class {
 	#name : #GtModelDescription,
 	#superclass : #Object,
+	#traits : 'TGtSlideShow',
+	#classTraits : 'TGtSlideShow classTrait',
 	#instVars : [
 		'snippetsCollection'
 	],
