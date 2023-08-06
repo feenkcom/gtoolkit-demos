@@ -22,6 +22,12 @@ PillarWebPage class >> for: aFileReference in: aPillarWebsite [
 ]
 
 { #category : #accessing }
+PillarWebPage >> childrenPages [
+	"Pages that can be reached directly from links on this page."
+	^ (self links select: #isPage) collect: #page
+]
+
+{ #category : #accessing }
 PillarWebPage >> contents [
 	^ self pillarFile contents
 ]
@@ -131,6 +137,22 @@ PillarWebPage >> pillarLinks [
 { #category : #printing }
 PillarWebPage >> printOn: aStream [
 	aStream nextPutAll: self path
+]
+
+{ #category : #links }
+PillarWebPage >> reachable [
+	| reachable pagesToCheck |
+	reachable := OrderedCollection new.
+	pagesToCheck := OrderedCollection with: self.
+	[ pagesToCheck notEmpty ]
+		whileTrue: [ | aPage |
+			aPage := pagesToCheck removeFirst.
+			reachable addLast: aPage.
+			aPage childrenPages
+				do: [ :each | 
+					(reachable includes: each)
+						ifFalse: [ (pagesToCheck includes: each) ifFalse: [ pagesToCheck addLast: each ] ] ] ].
+	^ reachable
 ]
 
 { #category : #links }

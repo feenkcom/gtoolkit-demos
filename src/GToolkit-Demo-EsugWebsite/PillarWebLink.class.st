@@ -151,13 +151,15 @@ PillarWebLink >> isInternal [
 
 { #category : #testing }
 PillarWebLink >> isMissing [
-	self statusMissing ifTrue: [ self checkStatus ].
+	self isHttp ifTrue: [ ^ false ].
+	self statusMissing ifTrue: [ self checkPageStatus ].
 	^ self status = self missingStatus
 ]
 
 { #category : #testing }
 PillarWebLink >> isPage [
-	self statusMissing ifTrue: [ self checkStatus ].
+	self isHttp ifTrue: [ ^ false ].
+	self statusMissing ifTrue: [ self checkPageStatus ].
 	^ self status = self okPageStatus
 ]
 
@@ -198,6 +200,12 @@ PillarWebLink >> okPageStatus [
 	"There is a Pillar page at this path."
 
 	^ 'ok'
+]
+
+{ #category : #accessing }
+PillarWebLink >> page [
+	self assert: self isPage.
+	^ self website pageNamed: self path
 ]
 
 { #category : #accessing }
