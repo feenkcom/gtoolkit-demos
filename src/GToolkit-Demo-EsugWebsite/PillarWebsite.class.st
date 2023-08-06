@@ -6,7 +6,8 @@ Class {
 		'url',
 		'pages',
 		'linkDict',
-		'announcer'
+		'announcer',
+		'process'
 	],
 	#category : #'GToolkit-Demo-EsugWebsite-Model'
 }
@@ -62,6 +63,40 @@ PillarWebsite >> brokenLinks [
 	^ self links select: #isBroken
 ]
 
+{ #category : #links }
+PillarWebsite >> checkStatusWhereMissing [
+	process
+		ifNotNil: [ process isTerminated
+				ifFalse: [ ^ self inform: 'There is already a background check running.' ] ].
+	self missingStatusLinks
+		ifEmpty: [ self inform: 'Nothing to do' ]
+		ifNotEmpty: [ self inform: 'Starting background checks'.
+			process := [ self missingStatusLinks do: [ :aWebsite | aWebsite checkStatus ] ]
+					fork ]
+]
+
+{ #category : #action }
+PillarWebsite >> gtActionCheckStatusFor: anAction [
+	<gtAction>
+	self missingStatusLinks ifEmpty: [ ^ anAction noAction ].
+	^ anAction button
+		tooltip: 'Check status';
+		priority: 10;
+		icon: BrGlamorousIcons accept;
+		action: [ self checkStatusWhereMissing ]
+]
+
+{ #category : #action }
+PillarWebsite >> gtActionStopCheckStatusFor: anAction [
+	<gtAction>
+	self missingStatusLinks ifEmpty: [ ^ anAction noAction ].
+	^ anAction button
+		tooltip: 'Stop background status check';
+		priority: 11;
+		icon: BrGlamorousIcons close;
+		action: [ self killBackgroundCheck ]
+]
+
 { #category : #view }
 PillarWebsite >> gtBrokenLinksFor: aView [
 	<gtView>
@@ -114,7 +149,7 @@ PillarWebsite >> gtLinksFor: aView [
 			width: 45;
 		column: 'Link'
 			text: [ :item | item path ]
-			width: 400;
+			width: 300;
 		column: '# Pages'
 			text: [ :item | item pages size ]
 			width: 60;
@@ -251,6 +286,15 @@ PillarWebsite >> initializePages [
 				(a path occurrencesOf: $/) < (b path occurrencesOf: $/)
 					or: [ (a path occurrencesOf: $/) = (b path occurrencesOf: $/)
 							and: [ a path < b path ] ] ]
+]
+
+{ #category : #links }
+PillarWebsite >> killBackgroundCheck [
+	process
+		ifNil: [ self inform: 'Nothing to do' ]
+		ifNotNil: [ process terminate.
+			process := nil.
+			self inform: 'Background check terminated' ]
 ]
 
 { #category : #links }

@@ -26,6 +26,16 @@ PillarWebPage >> contents [
 	^ self pillarFile contents
 ]
 
+{ #category : #action }
+PillarWebPage >> gtActionWebBrowseFor: anAction [
+	<gtAction>
+	^ anAction button
+		tooltip: 'Open in browser';
+		priority: 10;
+		icon: BrGlamorousIcons go;
+		action: [ WebBrowser openOn: self url ]
+]
+
 { #category : #view }
 PillarWebPage >> gtContentsFor: aView [
 	<gtView>
@@ -126,6 +136,11 @@ PillarWebPage >> printOn: aStream [
 { #category : #links }
 PillarWebPage >> registerLinks [
 	^ self links do: [ :link | link addPage: self ]
+]
+
+{ #category : #accessing }
+PillarWebPage >> url [
+	^ self website url , self path removeSuffix: '.pillar'
 ]
 
 { #category : #accessing }

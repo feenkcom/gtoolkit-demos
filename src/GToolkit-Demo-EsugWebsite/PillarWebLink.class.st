@@ -59,16 +59,25 @@ PillarWebLink >> checkStatus [
 	self isHttp ifTrue: [ self checkHttpStatus ] ifFalse: [ self checkPageStatus ]
 ]
 
-{ #category : #accessing }
+{ #category : #action }
 PillarWebLink >> gtActionCheckStatusFor: anAction [
-
 	<gtAction>
-	self status ifNotEmpty:  [ ^ anAction noAction ].
-
+	self status ifNotEmpty: [ ^ anAction noAction ].
 	^ anAction button
-		  icon: BrGlamorousIcons accept;
-		  tooltip: 'Check status';
-		  action: [self checkStatus ]
+		tooltip: 'Check status';
+		priority: 10;
+		icon: BrGlamorousIcons accept;
+		action: [ self checkStatus ]
+]
+
+{ #category : #action }
+PillarWebLink >> gtActionWebBrowseFor: anAction [
+	<gtAction>
+	^ anAction button
+		tooltip: 'Open in browser';
+		priority: 20;
+		icon: BrGlamorousIcons go;
+		action: [ WebBrowser openOn: self url ]
 ]
 
 { #category : #accessing }
@@ -121,7 +130,7 @@ PillarWebLink >> isBroken [
 
 { #category : #testing }
 PillarWebLink >> isEmail [
-	^ self path matchesRegex: EsugWebPage emailRegexString
+	^ self path matchesRegex: PillarWebPage emailRegexString
 ]
 
 { #category : #testing }
@@ -217,6 +226,13 @@ PillarWebLink >> status: aString [
 { #category : #testing }
 PillarWebLink >> statusMissing [
 	^ self status = self noStatus
+]
+
+{ #category : #accessing }
+PillarWebLink >> url [
+	^ self isHttp
+		ifTrue: [ self path ]
+		ifFalse: [ self website url , self path removeSuffix: '.pillar' ]
 ]
 
 { #category : #accessing }
