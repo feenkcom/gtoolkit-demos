@@ -5,7 +5,8 @@ Class {
 		'path',
 		'website',
 		'pages',
-		'status'
+		'status',
+		'announcer'
 	],
 	#category : #'GToolkit-Demo-EsugWebsite-Model'
 }
@@ -21,6 +22,16 @@ PillarWebLink class >> for: aPath in: aWebsite [
 { #category : #accessing }
 PillarWebLink >> addPage: aPage [
 	self pages add: aPage
+]
+
+{ #category : #announcements }
+PillarWebLink >> announcer [
+	^ announcer
+]
+
+{ #category : #announcements }
+PillarWebLink >> announcer: anObject [
+	announcer := anObject
 ]
 
 { #category : #accessing }
@@ -75,7 +86,8 @@ PillarWebLink >> gtOverviewFor: aView [
 		column: 'Value'
 			text: [ :item | item value ]
 			width: 400;
-		actionUpdateButton
+		actionUpdateButton;
+		updateWhen: PillarWebLinkStatusUpdated in: self announcer
 ]
 
 { #category : #accessing }
@@ -96,8 +108,9 @@ PillarWebLink >> httpOkStatus [
 { #category : #initialization }
 PillarWebLink >> initialize [
 	super initialize.
+	self announcer: Announcer new.
 	self pages: Set new.
-	self status: self noStatus
+	self status: self noStatus.
 ]
 
 { #category : #testing }
@@ -136,6 +149,12 @@ PillarWebLink >> missingStatus [
 { #category : #constant }
 PillarWebLink >> noStatus [
 	^ ''
+]
+
+{ #category : #announcements }
+PillarWebLink >> notifyStatusUpdate [
+	self announcer announce: PillarWebLinkStatusUpdated new.
+	self website ifNotNil: [ self website notifyStatusUpdate ]
 ]
 
 { #category : #constant }
@@ -191,7 +210,8 @@ PillarWebLink >> status [
 
 { #category : #initialization }
 PillarWebLink >> status: aString [
-	status := aString
+	status := aString.
+	self notifyStatusUpdate
 ]
 
 { #category : #testing }
