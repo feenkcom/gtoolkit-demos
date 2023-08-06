@@ -245,7 +245,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-07-21T14:14:58.549638+02:00"
+						"dateAndTimeString" : "2023-07-21T14:15:04.116648+02:00"
 					}
 				},
 				"uid" : {
@@ -255,7 +255,7 @@
 				"paragraphStyle" : {
 					"__type" : "textStyle"
 				},
-				"string" : "Now we can grab a page and use it fo"
+				"string" : "Now we can grab a page and use it for test examples:"
 			},
 			{
 				"__type" : "pharoSnippet",
