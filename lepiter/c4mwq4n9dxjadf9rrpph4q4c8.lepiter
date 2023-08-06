@@ -532,12 +532,12 @@
 		"__type" : "time",
 		"time" : {
 			"__type" : "dateAndTime",
-			"dateAndTimeString" : "2023-08-06T12:19:57.346366+02:00"
+			"dateAndTimeString" : "2023-08-06T18:13:23.022341+02:00"
 		}
 	},
 	"pageType" : {
 		"__type" : "namedPage",
-		"title" : "Debugging the spotter search category"
+		"title" : "* Debugging the spotter search category"
 	},
 	"uid" : {
 		"__type" : "uuid",

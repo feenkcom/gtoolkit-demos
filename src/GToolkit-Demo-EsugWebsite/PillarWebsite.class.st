@@ -38,6 +38,7 @@ PillarWebsite class >> initializeRepoDir: aRepoDir fromRepoUrl: aRepoUrl [
 
 	| proc |
 	aRepoDir exists ifTrue: [ ^ aRepoDir ].
+	self inform: 'Cloning ' , aRepoUrl , ' into ' , aRepoDir basename.
 	proc := GtSubprocessWithInMemoryOutput new
 			workingDirectory: FileLocator imageDirectory;
 			command: 'git';
@@ -342,6 +343,11 @@ PillarWebsite >> pages [
 	^ pages
 ]
 
+{ #category : #links }
+PillarWebsite >> reachable [
+	^ self root reachable
+]
+
 { #category : #accessing }
 PillarWebsite >> repoDir [
 	^ repoDir
@@ -364,6 +370,11 @@ PillarWebsite >> rootPath [
 	"Assume this is the root of any pillar website."
 
 	^ '/index.pillar'
+]
+
+{ #category : #links }
+PillarWebsite >> unreachable [
+	^ self pages difference: self reachable
 ]
 
 { #category : #accessing }

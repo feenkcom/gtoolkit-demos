@@ -1,3 +1,9 @@
+"
+I represent a pillarlink in a pillar web page to either an internal (pillar) or external (http) resource that may or may not exist.
+
+My status reveals which I am. By default this is not checked, but must be requested by sending `checkStatus`.
+
+"
 Class {
 	#name : #PillarWebLink,
 	#superclass : #Object,
@@ -145,7 +151,16 @@ PillarWebLink >> isInternal [
 
 { #category : #testing }
 PillarWebLink >> isMissing [
+	self isHttp ifTrue: [ ^ false ].
+	self statusMissing ifTrue: [ self checkPageStatus ].
 	^ self status = self missingStatus
+]
+
+{ #category : #testing }
+PillarWebLink >> isPage [
+	self isHttp ifTrue: [ ^ false ].
+	self statusMissing ifTrue: [ self checkPageStatus ].
+	^ self status = self okPageStatus
 ]
 
 { #category : #constant }
@@ -185,6 +200,12 @@ PillarWebLink >> okPageStatus [
 	"There is a Pillar page at this path."
 
 	^ 'ok'
+]
+
+{ #category : #accessing }
+PillarWebLink >> page [
+	self assert: self isPage.
+	^ self website pageNamed: self path
 ]
 
 { #category : #accessing }
