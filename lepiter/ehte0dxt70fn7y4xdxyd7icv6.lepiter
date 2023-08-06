@@ -322,7 +322,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-08-06T13:43:46.901776+02:00"
+						"dateAndTimeString" : "2023-08-06T14:01:58.059609+02:00"
 					}
 				},
 				"uid" : {
@@ -369,47 +369,10 @@
 				"exampleSelector" : "esug2014homePage",
 				"previewHeight" : 200,
 				"previewShowSelector" : "gtViewsFor:",
-				"exampleBehaviorName" : "PillarWebsiteExamples",
+				"exampleBehaviorName" : "PillarWebPageExamples",
 				"codeExpanded" : true,
 				"previewExpanded" : false,
 				"noCode" : false
-			},
-			{
-				"__type" : "textSnippet",
-				"children" : {
-					"__type" : "snippets",
-					"items" : [ ]
-				},
-				"createEmail" : {
-					"__type" : "email",
-					"emailString" : "<unknown>"
-				},
-				"createTime" : {
-					"__type" : "time",
-					"time" : {
-						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-08-06T13:46:32.078539+02:00"
-					}
-				},
-				"editEmail" : {
-					"__type" : "email",
-					"emailString" : "<unknown>"
-				},
-				"editTime" : {
-					"__type" : "time",
-					"time" : {
-						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-08-06T13:46:32.078539+02:00"
-					}
-				},
-				"uid" : {
-					"__type" : "uid",
-					"uidString" : "40vd8l+9DQCKGhKaChXW9A=="
-				},
-				"paragraphStyle" : {
-					"__type" : "textStyle"
-				},
-				"string" : ""
 			}
 		]
 	},

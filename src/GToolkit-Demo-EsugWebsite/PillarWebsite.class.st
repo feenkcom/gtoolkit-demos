@@ -4,7 +4,8 @@ Class {
 	#instVars : [
 		'repoDir',
 		'url',
-		'pages'
+		'pages',
+		'linkDict'
 	],
 	#category : #'GToolkit-Demo-EsugWebsite-Model'
 }
@@ -45,7 +46,112 @@ PillarWebsite class >> initializeRepoDir: aRepoDir fromRepoUrl: aRepoUrl [
 	^ aRepoDir
 ]
 
-{ #category : #accessing }
+{ #category : #links }
+PillarWebsite >> brokenLinks [
+	^ self links select: #isBroken
+]
+
+{ #category : #view }
+PillarWebsite >> gtBrokenLinksFor: aView [
+	<gtView>
+	^ aView columnedList
+		title: 'Broken external links';
+		priority: 50;
+		items: [ self brokenLinks ];
+		column: 'Index'
+			text: [ :eachItem :eachIndex | eachIndex asRopedText foreground: Color gray ]
+			width: 45;
+		column: 'Link'
+			text: [ :item | item path ]
+			width: 400;
+		column: '# Pages' text: [ :item | item pages size ] width: 60;
+		column: 'Status' text: [ :item | item status ];
+		actionUpdateButton
+]
+
+{ #category : #view }
+PillarWebsite >> gtHttpLinksFor: aView [
+	<gtView>
+	^ aView columnedList
+		title: 'HTTP links';
+		priority: 40;
+		items: [ self httpLinks ];
+		column: 'Index'
+			text: [ :eachItem :eachIndex | eachIndex asRopedText foreground: Color gray ]
+			width: 45;
+		column: 'Link'
+			text: [ :item | item path ]
+			width: 400;
+		column: '# Pages'
+			text: [ :item | item pages size ]
+			width: 60;
+		column: 'Status' text: [ :item | item status ];
+		actionUpdateButton
+]
+
+{ #category : #view }
+PillarWebsite >> gtLinksFor: aView [
+	<gtView>
+	^ aView columnedList
+		title: 'Links';
+		priority: 30;
+		items: [ self links ];
+		column: 'Index'
+			text: [ :eachItem :eachIndex | eachIndex asRopedText foreground: Color gray ]
+			width: 45;
+		column: 'Link'
+			text: [ :item | item path ]
+			width: 400;
+		column: '# Pages'
+			text: [ :item | item pages size ]
+			width: 60;
+		column: 'Status' text: [ :item | item status ];
+		actionUpdateButton
+]
+
+{ #category : #view }
+PillarWebsite >> gtMissingLinksFor: aView [
+	<gtView>
+	^ aView columnedList
+		title: 'Missing links';
+		priority: 35;
+		items: [ self missingLinks ];
+		column: 'Index'
+			text: [ :eachItem :eachIndex | eachIndex asRopedText foreground: Color gray ]
+			width: 45;
+		column: 'Link'
+			text: [ :item | item path ]
+			width: 300;
+		column: '# Pages'
+			text: [ :item | item pages size ]
+			width: 60;
+		column: 'Status'
+			text: [ :item | item status ]
+			width: 100;
+		actionUpdateButton
+]
+
+{ #category : #view }
+PillarWebsite >> gtMissingStatusLinksFor: aView [
+	<gtView>
+	^ aView columnedList
+		title: 'Missing status';
+		priority: 55;
+		items: [ self httpLinks select: #statusMissing ];
+		column: 'Index'
+			text: [ :eachItem :eachIndex | eachIndex asRopedText foreground: Color gray ]
+			width: 45;
+		column: 'Link'
+			text: [ :item | item path ]
+			width: 400;
+		column: '# Pages'
+			text: [ :item | item pages size ]
+			width: 60;
+		column: 'Status' text: [ :item | item status ];
+		actionUpdateButton
+]
+
+{ #category : #view }
 PillarWebsite >> gtPagesFor: aView [
 	<gtView>
 	^ aView columnedList
@@ -96,6 +202,26 @@ PillarWebsite >> gtSpotterForPageNames: aSearch [
 		filterBySubstring
 ]
 
+{ #category : #testing }
+PillarWebsite >> hasPageNamed: aString [
+	^ self pages
+		detect: [ :page | page path = aString ]
+		ifFound: [ true ]
+		ifNone: [ false ]
+]
+
+{ #category : #links }
+PillarWebsite >> httpLinks [
+	^  self links select: #isHttp
+]
+
+{ #category : #initialization }
+PillarWebsite >> initializeLinkDict [
+	linkDict := Dictionary new.
+	self pages do: [ :each | each registerLinks ].
+	^ linkDict
+]
+
 { #category : #accessing }
 PillarWebsite >> initializePages [
 	^ pages := ((self repoDir allChildrenMatching: '*.pillar')
@@ -104,6 +230,31 @@ PillarWebsite >> initializePages [
 				(a path occurrencesOf: $/) < (b path occurrencesOf: $/)
 					or: [ (a path occurrencesOf: $/) = (b path occurrencesOf: $/)
 							and: [ a path < b path ] ] ]
+]
+
+{ #category : #links }
+PillarWebsite >> linkDict [
+	^ linkDict ifNil: [ linkDict := self initializeLinkDict ]
+]
+
+{ #category : #links }
+PillarWebsite >> linkForPath: aPath [
+	^ linkDict at: aPath ifAbsentPut: [ PillarWebLink for: aPath in: self ]
+]
+
+{ #category : #links }
+PillarWebsite >> links [
+	^ self linkDict values
+		sort: [ :a :b | 
+			(a path occurrencesOf: $/) < (b path occurrencesOf: $/)
+				or: [ (a path occurrencesOf: $/) = (b path occurrencesOf: $/)
+						and: [ a path < b path ] ] ]
+]
+
+{ #category : #links }
+PillarWebsite >> missingLinks [
+	(self links select: #isInternal) do: #checkStatus.
+	^ self links select: [ :link | link isInternal and: [ link isMissing ] ]
 ]
 
 { #category : #accessing }

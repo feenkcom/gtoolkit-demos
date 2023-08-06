@@ -232,7 +232,7 @@
 							"string" : "A good example is:"
 						},
 						{
-							"__type" : "pharoSnippet",
+							"__type" : "exampleSnippet",
 							"children" : {
 								"__type" : "snippets",
 								"items" : [ ]
@@ -245,7 +245,7 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-07-19T15:26:14.82576+02:00"
+									"dateAndTimeString" : "2023-08-06T14:04:27.699613+02:00"
 								}
 							},
 							"editEmail" : {
@@ -256,14 +256,20 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-07-21T15:57:52.256629+02:00"
+									"dateAndTimeString" : "2023-08-06T14:04:27.699613+02:00"
 								}
 							},
 							"uid" : {
 								"__type" : "uid",
-								"uidString" : "Q9l+tji9DQCIEHgsCdMjsQ=="
+								"uidString" : "KNMmq6G+DQCRQ43KB4kzKg=="
 							},
-							"code" : "EsugWebPageExamples new esug2014 "
+							"exampleSelector" : "esug2014homePage",
+							"previewHeight" : 200,
+							"previewShowSelector" : "gtViewsFor:",
+							"exampleBehaviorName" : "PillarWebPageExamples",
+							"codeExpanded" : true,
+							"previewExpanded" : false,
+							"noCode" : false
 						},
 						{
 							"__type" : "textSnippet",
@@ -316,7 +322,7 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-07-21T11:25:54.089966+02:00"
+									"dateAndTimeString" : "2023-08-06T14:04:58.116225+02:00"
 								}
 							},
 							"editEmail" : {
@@ -327,17 +333,17 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-07-21T11:51:20.346406+02:00"
+									"dateAndTimeString" : "2023-08-06T14:12:30.151022+02:00"
 								}
 							},
 							"uid" : {
 								"__type" : "uid",
-								"uidString" : "tKiill29DQCUoduXCzmFhg=="
+								"uidString" : "svH2rKG+DQCRWps+B4kzKg=="
 							},
 							"paragraphStyle" : {
 								"__type" : "textStyle"
 							},
-							"string" : "We implement {{gtMethod:name=EsugWebPage>>#normalize:}} and a number of tests in {{gtClass:name=EsugWebPageExamples}}."
+							"string" : "We implement {{gtMethod:name=PillarWebPage>>#normalize:}} and a number of tests in {{gtClass:name=PillarWebPageExamples}}. "
 						}
 					]
 				},
@@ -402,7 +408,7 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-07-21T14:17:59.084541+02:00"
+									"dateAndTimeString" : "2023-08-06T14:18:16.933047+02:00"
 								}
 							},
 							"uid" : {
@@ -412,118 +418,7 @@
 							"paragraphStyle" : {
 								"__type" : "textStyle"
 							},
-							"string" : "For a given website (the real on or the test example) we should have a registry of links."
-						},
-						{
-							"__type" : "textSnippet",
-							"children" : {
-								"__type" : "snippets",
-								"items" : [ ]
-							},
-							"createEmail" : {
-								"__type" : "email",
-								"emailString" : "<unknown>"
-							},
-							"createTime" : {
-								"__type" : "time",
-								"time" : {
-									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-07-21T14:24:59.915788+02:00"
-								}
-							},
-							"editEmail" : {
-								"__type" : "email",
-								"emailString" : "<unknown>"
-							},
-							"editTime" : {
-								"__type" : "time",
-								"time" : {
-									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-07-21T14:24:59.915788+02:00"
-								}
-							},
-							"uid" : {
-								"__type" : "uid",
-								"uidString" : "wvIiF2C9DQCYlNNMChXW9A=="
-							},
-							"paragraphStyle" : {
-								"__type" : "textStyle"
-							},
-							"string" : "The website knows all the links. Each page knows its links. "
-						},
-						{
-							"__type" : "textSnippet",
-							"children" : {
-								"__type" : "snippets",
-								"items" : [ ]
-							},
-							"createEmail" : {
-								"__type" : "email",
-								"emailString" : "<unknown>"
-							},
-							"createTime" : {
-								"__type" : "time",
-								"time" : {
-									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-07-21T14:22:56.125169+02:00"
-								}
-							},
-							"editEmail" : {
-								"__type" : "email",
-								"emailString" : "<unknown>"
-							},
-							"editTime" : {
-								"__type" : "time",
-								"time" : {
-									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-07-21T14:24:59.9178+02:00"
-								}
-							},
-							"uid" : {
-								"__type" : "uid",
-								"uidString" : "joUmD2C9DQCTKl1AChXW9A=="
-							},
-							"paragraphStyle" : {
-								"__type" : "textStyle"
-							},
-							"string" : "Each link knows whether it is internal or external, and whether it is valid or not (status)."
-						},
-						{
-							"__type" : "textSnippet",
-							"children" : {
-								"__type" : "snippets",
-								"items" : [ ]
-							},
-							"createEmail" : {
-								"__type" : "email",
-								"emailString" : "<unknown>"
-							},
-							"createTime" : {
-								"__type" : "time",
-								"time" : {
-									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-07-21T14:23:40.87518+02:00"
-								}
-							},
-							"editEmail" : {
-								"__type" : "email",
-								"emailString" : "<unknown>"
-							},
-							"editTime" : {
-								"__type" : "time",
-								"time" : {
-									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-07-21T14:35:02.355922+02:00"
-								}
-							},
-							"uid" : {
-								"__type" : "uid",
-								"uidString" : "EuNsEmC9DQCWchFJChXW9A=="
-							},
-							"paragraphStyle" : {
-								"__type" : "textStyle"
-							},
-							"string" : "A link knows which pages have references to it. (Could compute or cache.)"
+							"string" : "For a given website (the real on or the test example) we should have a registry of links. The website knows all the links. Each page knows its links.  Each link knows whether it is internal or external, and whether it is valid or not (status). A link knows which pages have references to it. (Could compute or cache.)"
 						},
 						{
 							"__type" : "textSnippet",
@@ -550,7 +445,7 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-07-21T15:59:19.888295+02:00"
+									"dateAndTimeString" : "2023-08-06T14:13:42.285749+02:00"
 								}
 							},
 							"uid" : {
@@ -560,7 +455,44 @@
 							"paragraphStyle" : {
 								"__type" : "textStyle"
 							},
-							"string" : "We introduce a dictionary of links in the website,and a new class {{gtClass:name=EsugWebLink}}.  "
+							"string" : "We introduce a dictionary of links in the website, and a new class {{gtClass:name=PillarWebLink}}.   "
+						},
+						{
+							"__type" : "textSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2023-08-06T14:18:32.025913+02:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2023-08-06T14:20:59.972565+02:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "mTh63aG+DQCVtjpRB4kzKg=="
+							},
+							"paragraphStyle" : {
+								"__type" : "textStyle"
+							},
+							"string" : "We add a new *Links* view and methods to initialize and access the link dictionary."
 						},
 						{
 							"__type" : "pharoSnippet",
@@ -576,7 +508,7 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-07-21T14:25:08.545205+02:00"
+									"dateAndTimeString" : "2023-08-06T14:21:01.816929+02:00"
 								}
 							},
 							"editEmail" : {
@@ -587,14 +519,14 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-07-21T15:04:07.098501+02:00"
+									"dateAndTimeString" : "2023-08-06T14:25:53.896047+02:00"
 								}
 							},
 							"uid" : {
 								"__type" : "uid",
-								"uidString" : "aJ6mF2C9DQCYm+kmChXW9A=="
+								"uidString" : "u9hn5qG+DQCX+ZawB4kzKg=="
 							},
-							"code" : "EsugWebsite instance "
+							"code" : "PillarWebsiteExamples new esug2014"
 						}
 					]
 				},
@@ -659,7 +591,7 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-07-21T16:45:36.812047+02:00"
+									"dateAndTimeString" : "2023-08-06T14:28:26.768177+02:00"
 								}
 							},
 							"uid" : {
@@ -669,7 +601,7 @@
 							"paragraphStyle" : {
 								"__type" : "textStyle"
 							},
-							"string" : "We add a {{gtMethod:name=EsugWebLink>>#checkStatus}} method that checks validity of internal or external links."
+							"string" : "We add a {{gtMethod:name=PillarWebLink>>#checkStatus}} method that checks validity of internal or external links."
 						},
 						{
 							"__type" : "textSnippet",
@@ -709,6 +641,40 @@
 							"string" : "We add a *Missing links* view to the website."
 						},
 						{
+							"__type" : "pharoSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2023-08-06T14:28:44.283883+02:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2023-08-06T14:28:44.749721+02:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "oIj4AaK+DQCZWyI6B4kzKg=="
+							},
+							"code" : "PillarWebsiteExamples new esug2014"
+						},
+						{
 							"__type" : "textSnippet",
 							"children" : {
 								"__type" : "snippets",
@@ -744,6 +710,80 @@
 								"__type" : "textStyle"
 							},
 							"string" : "We check for links to email addresses and files that are not pillar pages."
+						},
+						{
+							"__type" : "textSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2023-08-06T14:50:50.537097+02:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2023-08-06T14:50:50.537097+02:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "+Y0FUaK+DQCarO7uB4kzKg=="
+							},
+							"paragraphStyle" : {
+								"__type" : "textStyle"
+							},
+							"string" : ""
+						},
+						{
+							"__type" : "textSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2023-08-06T14:50:51.031696+02:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2023-08-06T14:50:51.031696+02:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "HBoNUaK+DQCasGsqB4kzKg=="
+							},
+							"paragraphStyle" : {
+								"__type" : "textStyle"
+							},
+							"string" : ""
 						}
 					]
 				},
@@ -782,6 +822,117 @@
 				"__type" : "textSnippet",
 				"children" : {
 					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2023-08-06T14:50:51.302243+02:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2023-08-06T14:50:51.302243+02:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "5joRUaK+DQCatPUfB4kzKg=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : ""
+			},
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2023-08-06T14:50:59.032832+02:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2023-08-06T14:50:59.032832+02:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "czGHUaK+DQCauyWRB4kzKg=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : ""
+			},
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2023-08-06T14:50:59.346722+02:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2023-08-06T14:50:59.346722+02:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "IveLUaK+DQCav1fwB4kzKg=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : ""
+			},
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
 					"items" : [
 						{
 							"__type" : "textSnippet",
@@ -808,7 +959,7 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-07-21T18:03:56.126168+02:00"
+									"dateAndTimeString" : "2023-08-06T14:30:23.538492+02:00"
 								}
 							},
 							"uid" : {
@@ -818,7 +969,7 @@
 							"paragraphStyle" : {
 								"__type" : "textStyle"
 							},
-							"string" : "Checking external links takes some time. See {{gtMethod:name=EsugWebLink>>#checkHttpStatus}}. "
+							"string" : "Checking external links takes some time. See {{gtMethod:name=PillarWebLink>>#checkHttpStatus}}. "
 						},
 						{
 							"__type" : "textSnippet",
@@ -882,14 +1033,14 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-07-21T18:45:34.893988+02:00"
+									"dateAndTimeString" : "2023-08-06T14:30:39.506613+02:00"
 								}
 							},
 							"uid" : {
 								"__type" : "uid",
 								"uidString" : "TksPmGO9DQCYH/3DAGOulw=="
 							},
-							"code" : "linkPool := (1 to: 20) collect: [ :each | OrderedCollection new ].\r(EsugWebsite instance httpLinks select: #statusMissing )\r\tdoWithIndex: [ :link :index | (linkPool at: 1 + (index \\\\ 20)) add: link ].\rtasks := linkPool\r\t\tcollect: [ :links | \r\t\t\t[ | budget lastTime |\r\t\t\tbudget := 1 milliseconds.\r\t\t\tlastTime := Time now asDuration.\r\t\t\tlinks\r\t\t\t\tdo: [ :each | \r\t\t\t\t\tTime now asDuration - lastTime > budget\r\t\t\t\t\t\tifTrue: [ Processor yield.\r\t\t\t\t\t\t\tlastTime := Time now asDuration ].\r\t\t\t\t\teach checkHttpStatus ] ] ].\rprocesses := OrderedCollection new.\rtasks do: [ :task | processes add: [ task value ] fork ].\rprocesses."
+							"code" : "linkPool := (1 to: 20) collect: [ :each | OrderedCollection new ].\r(PillarWebsiteExamples new esug2014 httpLinks select: #statusMissing )\r\tdoWithIndex: [ :link :index | (linkPool at: 1 + (index \\\\ 20)) add: link ].\rtasks := linkPool\r\t\tcollect: [ :links | \r\t\t\t[ | budget lastTime |\r\t\t\tbudget := 1 milliseconds.\r\t\t\tlastTime := Time now asDuration.\r\t\t\tlinks\r\t\t\t\tdo: [ :each | \r\t\t\t\t\tTime now asDuration - lastTime > budget\r\t\t\t\t\t\tifTrue: [ Processor yield.\r\t\t\t\t\t\t\tlastTime := Time now asDuration ].\r\t\t\t\t\teach checkHttpStatus ] ] ].\rprocesses := OrderedCollection new.\rtasks do: [ :task | processes add: [ task value ] fork ].\rprocesses."
 						},
 						{
 							"__type" : "pharoSnippet",
@@ -916,14 +1067,14 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-07-21T18:51:34.89515+02:00"
+									"dateAndTimeString" : "2023-08-06T14:33:44.514666+02:00"
 								}
 							},
 							"uid" : {
 								"__type" : "uid",
 								"uidString" : "2GqLu2O9DQCdgAtwAGOulw=="
 							},
-							"code" : "[(EsugWebsite instance httpLinks select: #statusMissing \r)\r\r\r\r\r]"
+							"code" : "[ PillarWebsiteExamples new esug2014 httpLinks select: #statusMissing ]"
 						},
 						{
 							"__type" : "textSnippet",
@@ -1090,12 +1241,12 @@
 		"__type" : "time",
 		"time" : {
 			"__type" : "dateAndTime",
-			"dateAndTimeString" : "2023-07-19T15:23:17.575727+02:00"
+			"dateAndTimeString" : "2023-08-06T13:47:03.452893+02:00"
 		}
 	},
 	"pageType" : {
 		"__type" : "namedPage",
-		"title" : "Checking links"
+		"title" : "*** Checking links"
 	},
 	"uid" : {
 		"__type" : "uuid",

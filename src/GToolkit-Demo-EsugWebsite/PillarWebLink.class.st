@@ -1,5 +1,5 @@
 Class {
-	#name : #EsugWebLink,
+	#name : #PillarWebLink,
 	#superclass : #Object,
 	#instVars : [
 		'path',
@@ -11,7 +11,7 @@ Class {
 }
 
 { #category : #accessing }
-EsugWebLink class >> for: aPath in: aWebsite [
+PillarWebLink class >> for: aPath in: aWebsite [
 	^ self new
 		path: aPath;
 		website: aWebsite;
@@ -19,12 +19,12 @@ EsugWebLink class >> for: aPath in: aWebsite [
 ]
 
 { #category : #accessing }
-EsugWebLink >> addPage: aPage [
+PillarWebLink >> addPage: aPage [
 	self pages add: aPage
 ]
 
 { #category : #accessing }
-EsugWebLink >> checkHttpStatus [
+PillarWebLink >> checkHttpStatus [
 	[ ZnClient new
 		enforceHttpSuccess;
 		timeout: 1;
@@ -34,7 +34,7 @@ EsugWebLink >> checkHttpStatus [
 ]
 
 { #category : #accessing }
-EsugWebLink >> checkPageStatus [
+PillarWebLink >> checkPageStatus [
 	self isEmail ifTrue: [ ^ self status: self okEmailStatus ].
 	(self website hasPageNamed: self path)
 		ifTrue: [ ^ self status: self okPageStatus ].
@@ -44,12 +44,12 @@ EsugWebLink >> checkPageStatus [
 ]
 
 { #category : #accessing }
-EsugWebLink >> checkStatus [
+PillarWebLink >> checkStatus [
 	self isHttp ifTrue: [ self checkHttpStatus ] ifFalse: [ self checkPageStatus ]
 ]
 
 { #category : #accessing }
-EsugWebLink >> gtActionCheckStatusFor: anAction [
+PillarWebLink >> gtActionCheckStatusFor: anAction [
 
 	<gtAction>
 	self status ifNotEmpty:  [ ^ anAction noAction ].
@@ -61,7 +61,7 @@ EsugWebLink >> gtActionCheckStatusFor: anAction [
 ]
 
 { #category : #accessing }
-EsugWebLink >> gtOverviewFor: aView [
+PillarWebLink >> gtOverviewFor: aView [
 	<gtView>
 	^ aView columnedList
 		title: 'Overview';
@@ -79,7 +79,7 @@ EsugWebLink >> gtOverviewFor: aView [
 ]
 
 { #category : #accessing }
-EsugWebLink >> gtPagesFor: aView [
+PillarWebLink >> gtPagesFor: aView [
 	<gtView>
 	^ aView list
 		title: 'Pages';
@@ -89,122 +89,122 @@ EsugWebLink >> gtPagesFor: aView [
 ]
 
 { #category : #constant }
-EsugWebLink >> httpOkStatus [
+PillarWebLink >> httpOkStatus [
 	^ 'HTTP OK'
 ]
 
 { #category : #initialization }
-EsugWebLink >> initialize [
+PillarWebLink >> initialize [
 	super initialize.
 	self pages: Set new.
 	self status: self noStatus
 ]
 
 { #category : #testing }
-EsugWebLink >> isBroken [
+PillarWebLink >> isBroken [
 	^ self isHttp
 		and: [ self statusMissing not and: [ self status ~= self httpOkStatus ] ]
 ]
 
 { #category : #testing }
-EsugWebLink >> isEmail [
+PillarWebLink >> isEmail [
 	^ self path matchesRegex: EsugWebPage emailRegexString
 ]
 
 { #category : #testing }
-EsugWebLink >> isHttp [
+PillarWebLink >> isHttp [
 	^ self path beginsWith: 'http'
 ]
 
 { #category : #testing }
-EsugWebLink >> isInternal [
+PillarWebLink >> isInternal [
 	^ self isHttp not
 ]
 
 { #category : #testing }
-EsugWebLink >> isMissing [
+PillarWebLink >> isMissing [
 	^ self status = self missingStatus
 ]
 
 { #category : #constant }
-EsugWebLink >> missingStatus [
+PillarWebLink >> missingStatus [
 	"There is no file at this path"
 
 	^ 'missing'
 ]
 
 { #category : #constant }
-EsugWebLink >> noStatus [
+PillarWebLink >> noStatus [
 	^ ''
 ]
 
 { #category : #constant }
-EsugWebLink >> okEmailStatus [
+PillarWebLink >> okEmailStatus [
 	"An email link -- we don't check these."
 
 	^ 'ok (email)'
 ]
 
 { #category : #constant }
-EsugWebLink >> okFileStatus [
+PillarWebLink >> okFileStatus [
 	"There is a non-Pillar file at this path."
 
 	^ 'ok (file)'
 ]
 
 { #category : #constant }
-EsugWebLink >> okPageStatus [
+PillarWebLink >> okPageStatus [
 	"There is a Pillar page at this path."
 
 	^ 'ok'
 ]
 
 { #category : #accessing }
-EsugWebLink >> pages [
+PillarWebLink >> pages [
 	^ pages
 ]
 
 { #category : #accessing }
-EsugWebLink >> pages: anObject [
+PillarWebLink >> pages: anObject [
 	pages := anObject
 ]
 
 { #category : #accessing }
-EsugWebLink >> path [
+PillarWebLink >> path [
 	^ path
 ]
 
 { #category : #accessing }
-EsugWebLink >> path: aPath [
+PillarWebLink >> path: aPath [
 	path := aPath
 ]
 
 { #category : #accessing }
-EsugWebLink >> printOn: aStream [
+PillarWebLink >> printOn: aStream [
 	self path printOn: aStream
 ]
 
 { #category : #accessing }
-EsugWebLink >> status [
+PillarWebLink >> status [
 	^ status
 ]
 
 { #category : #initialization }
-EsugWebLink >> status: aString [
+PillarWebLink >> status: aString [
 	status := aString
 ]
 
 { #category : #testing }
-EsugWebLink >> statusMissing [
+PillarWebLink >> statusMissing [
 	^ self status = self noStatus
 ]
 
 { #category : #accessing }
-EsugWebLink >> website [
+PillarWebLink >> website [
 	^ website
 ]
 
 { #category : #accessing }
-EsugWebLink >> website: aWebsite [
+PillarWebLink >> website: aWebsite [
 	website := aWebsite
 ]

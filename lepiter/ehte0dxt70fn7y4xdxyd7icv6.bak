@@ -322,7 +322,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-08-06T13:43:46.901776+02:00"
+						"dateAndTimeString" : "2023-08-06T14:01:58.059609+02:00"
 					}
 				},
 				"uid" : {
@@ -366,8 +366,10 @@
 					"__type" : "uid",
 					"uidString" : "t/V/aqG+DQC7sx/5B4RfSg=="
 				},
+				"exampleSelector" : "esug2014homePage",
 				"previewHeight" : 200,
 				"previewShowSelector" : "gtViewsFor:",
+				"exampleBehaviorName" : "PillarWebPageExamples",
 				"codeExpanded" : true,
 				"previewExpanded" : false,
 				"noCode" : false
@@ -386,7 +388,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-08-06T13:42:20.897268+02:00"
+						"dateAndTimeString" : "2023-08-06T13:46:32.078539+02:00"
 					}
 				},
 				"editEmail" : {
@@ -397,44 +399,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-08-06T13:42:20.897268+02:00"
-					}
-				},
-				"uid" : {
-					"__type" : "uid",
-					"uidString" : "L20RXKG+DQC6GP7cB4RfSg=="
-				},
-				"paragraphStyle" : {
-					"__type" : "textStyle"
-				},
-				"string" : ""
-			},
-			{
-				"__type" : "textSnippet",
-				"children" : {
-					"__type" : "snippets",
-					"items" : [ ]
-				},
-				"createEmail" : {
-					"__type" : "email",
-					"emailString" : "<unknown>"
-				},
-				"createTime" : {
-					"__type" : "time",
-					"time" : {
-						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-07-21T14:14:51.371149+02:00"
-					}
-				},
-				"editEmail" : {
-					"__type" : "email",
-					"emailString" : "<unknown>"
-				},
-				"editTime" : {
-					"__type" : "time",
-					"time" : {
-						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-07-21T14:15:04.116648+02:00"
+						"dateAndTimeString" : "2023-08-06T13:46:32.078539+02:00"
 					}
 				},
 				"uid" : {
@@ -444,7 +409,7 @@
 				"paragraphStyle" : {
 					"__type" : "textStyle"
 				},
-				"string" : "Now we can grab a page and use it for test examples:"
+				"string" : ""
 			}
 		]
 	},
@@ -467,12 +432,12 @@
 		"__type" : "time",
 		"time" : {
 			"__type" : "dateAndTime",
-			"dateAndTimeString" : "2023-08-06T12:38:27.910014+02:00"
+			"dateAndTimeString" : "2023-08-06T13:46:42.251692+02:00"
 		}
 	},
 	"pageType" : {
 		"__type" : "namedPage",
-		"title" : "*** Set up test examples"
+		"title" : "Set up test examples"
 	},
 	"uid" : {
 		"__type" : "uuid",
