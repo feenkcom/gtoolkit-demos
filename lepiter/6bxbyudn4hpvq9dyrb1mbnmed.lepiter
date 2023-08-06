@@ -182,14 +182,14 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-07-19T11:11:27.640836+02:00"
+									"dateAndTimeString" : "2023-08-06T12:32:23.020584+02:00"
 								}
 							},
 							"uid" : {
 								"__type" : "uid",
 								"uidString" : "D8fYDTW9DQCEQmogDF7xag=="
 							},
-							"code" : "testPage := EsugWebsite instance pages detect: [:page | page pathString = '/2019-Conference/talks/2019-Caffeine.pillar' ].\rparseTree := MicrodownParser parse: testPage contents .\r(MicLinkVisitor new\r\tvisit: parseTree;\r\tyourself) links"
+							"code" : "testPage := PillarWebsite esug pages\r\t\tdetect: [ :page | page path = '/2019-Conference/talks/2019-Caffeine.pillar' ].\rparseTree := MicrodownParser parse: testPage contents.\r(MicLinkVisitor new\r\tvisit: parseTree;\r\tyourself) links"
 						},
 						{
 							"__type" : "textSnippet",
@@ -216,7 +216,7 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-07-19T13:27:57.396706+02:00"
+									"dateAndTimeString" : "2023-08-06T12:30:43.003117+02:00"
 								}
 							},
 							"uid" : {
@@ -226,7 +226,7 @@
 							"paragraphStyle" : {
 								"__type" : "textStyle"
 							},
-							"string" : "WHich pages have more than one markdown style link?"
+							"string" : "Which pages have more than one markdown style link?"
 						},
 						{
 							"__type" : "pharoSnippet",
@@ -253,14 +253,14 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-07-19T13:30:43.001542+02:00"
+									"dateAndTimeString" : "2023-08-06T12:32:33.001532+02:00"
 								}
 							},
 							"uid" : {
 								"__type" : "uid",
 								"uidString" : "Fn6PDze9DQC6XjTxBXBtjA=="
 							},
-							"code" : "((EsugWebsite instance pages\r\tcollect: [ :page | \r\t\tpage\r\t\t\t-> (MicLinkVisitor new\r\t\t\t\t\tvisit: (MicrodownParser parse: page contents);\r\t\t\t\t\tyourself) links ]) select: [ :assoc | assoc value notEmpty ])\r\tsort: [ :a :b | a value size > b value size ]"
+							"code" : "((PillarWebsite esug pages\r\tcollect: [ :page | \r\t\tpage\r\t\t\t-> (MicLinkVisitor new\r\t\t\t\t\tvisit: (MicrodownParser parse: page contents);\r\t\t\t\t\tyourself) links ]) select: [ :assoc | assoc value notEmpty ])\r\tsort: [ :a :b | a value size > b value size ]"
 						},
 						{
 							"__type" : "textSnippet",
@@ -436,14 +436,14 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-07-19T13:38:07.934336+02:00"
+									"dateAndTimeString" : "2023-08-06T12:33:05.915829+02:00"
 								}
 							},
 							"uid" : {
 								"__type" : "uid",
 								"uidString" : "8RDaKje9DQCB+dkJBXBtjA=="
 							},
-							"code" : "EsugWebsite root"
+							"code" : "PillarWebsite esug root"
 						},
 						{
 							"__type" : "pharoSnippet",
@@ -470,14 +470,14 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-07-19T13:38:15.454087+02:00"
+									"dateAndTimeString" : "2023-08-06T12:34:26.520584+02:00"
 								}
 							},
 							"uid" : {
 								"__type" : "uid",
 								"uidString" : "pJ4CLTW9DQCHaJ3ADF7xag=="
 							},
-							"code" : "parseTree := MicrodownParser parse: EsugWebsite root contents"
+							"code" : "parseTree := MicrodownParser parse: PillarWebsite esug root contents"
 						},
 						{
 							"__type" : "textSnippet",
@@ -650,14 +650,14 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-07-19T13:48:51.859905+02:00"
+									"dateAndTimeString" : "2023-08-06T12:35:01.246747+02:00"
 								}
 							},
 							"uid" : {
 								"__type" : "uid",
 								"uidString" : "1fg36Ta9DQCyHItGBXBtjA=="
 							},
-							"code" : "link := $* asPParser , \r\t$> asPParser negate star flatten , $> asPParser, \r\t$* asPParser negate star flatten , $* asPParser \r\t\t==> [:node | node second -> node fourth ].\r\rlinkSea := (link sea ==> #second) star.\r\rlinkSea parse: EsugWebsite root contents"
+							"code" : "link := ($* asPParser , $> asPParser negate star flatten , $> asPParser\r\t\t, $* asPParser negate star flatten , $* asPParser)\r\t\t==> [ :node | node second -> node fourth ].\r\rlinkSea := (link sea ==> #second) star.\r\rlinkSea parse: PillarWebsite esug root contents"
 						},
 						{
 							"__type" : "textSnippet",
@@ -721,14 +721,14 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-07-19T13:25:54.482088+02:00"
+									"dateAndTimeString" : "2023-08-06T12:35:17.009141+02:00"
 								}
 							},
 							"uid" : {
 								"__type" : "uid",
 								"uidString" : "WSr2BDe9DQC1x7DaBXBtjA=="
 							},
-							"code" : "EsugWebsite instance pages\r\tselect: [ :page | (page contents matches: '>') and: [ page contents matches: '](' ] ]"
+							"code" : "PillarWebsite esug pages\r\tselect: [ :page | (page contents matches: '>') and: [ page contents matches: '](' ] ]"
 						},
 						{
 							"__type" : "textSnippet",
@@ -863,14 +863,14 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-07-19T13:39:18.736034+02:00"
+									"dateAndTimeString" : "2023-08-06T12:35:49.115586+02:00"
 								}
 							},
 							"uid" : {
 								"__type" : "uid",
 								"uidString" : "S0b6Nje9DQCDxAIKBXBtjA=="
 							},
-							"code" : "EsugWebsite root pillarLinks "
+							"code" : "PillarWebsite esug root pillarLinks"
 						},
 						{
 							"__type" : "textSnippet",
@@ -934,14 +934,14 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-07-19T13:53:10.204706+02:00"
+									"dateAndTimeString" : "2023-08-06T12:37:03.959723+02:00"
 								}
 							},
 							"uid" : {
 								"__type" : "uid",
 								"uidString" : "ZGBXPze9DQCFjy0gBXBtjA=="
 							},
-							"code" : "(EsugWebsite pages collect: [ :page | page -> page pillarLinks ])\r\tsort: [ :a :b | a value size > b value size ]"
+							"code" : "(PillarWebsite esug pages collect: [ :page | page -> page pillarLinks ])\r\tsort: [ :a :b | a value size > b value size ]"
 						},
 						{
 							"__type" : "textSnippet",
@@ -1005,14 +1005,14 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-07-19T14:15:11.663803+02:00"
+									"dateAndTimeString" : "2023-08-06T12:37:31.979624+02:00"
 								}
 							},
 							"uid" : {
 								"__type" : "uid",
 								"uidString" : "QywebTe9DQCJeCv8BXBtjA=="
 							},
-							"code" : "EsugWebsite instance "
+							"code" : "PillarWebsite esug"
 						}
 					]
 				},
