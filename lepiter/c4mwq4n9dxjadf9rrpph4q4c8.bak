@@ -465,7 +465,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-08-06T12:28:32.054466+02:00"
+						"dateAndTimeString" : "2023-08-06T12:28:36.286002+02:00"
 					}
 				},
 				"uid" : {
@@ -475,7 +475,7 @@
 				"paragraphStyle" : {
 					"__type" : "textStyle"
 				},
-				"string" : "Probably we should look at othe"
+				"string" : "Probably we should look at other explicit searches ..."
 			},
 			{
 				"__type" : "pharoSnippet",

@@ -38,6 +38,7 @@ PillarWebsite class >> initializeRepoDir: aRepoDir fromRepoUrl: aRepoUrl [
 
 	| proc |
 	aRepoDir exists ifTrue: [ ^ aRepoDir ].
+	self inform: 'Cloning ' , aRepoUrl , ' into ' , aRepoDir basename.
 	proc := GtSubprocessWithInMemoryOutput new
 			workingDirectory: FileLocator imageDirectory;
 			command: 'git';
