@@ -32,6 +32,13 @@ PillarWebPage >> gtContentsFor: aView [
 ]
 
 { #category : #accessing }
+PillarWebPage >> markdownLinks [
+	^ (MicLinkVisitor new
+		visit: (MicrodownParser parse: self contents);
+		yourself) links
+]
+
+{ #category : #accessing }
 PillarWebPage >> path [
 	"My path relative to the root of the repo."
 

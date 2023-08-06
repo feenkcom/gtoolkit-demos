@@ -45,7 +45,45 @@
 				"__type" : "textSnippet",
 				"children" : {
 					"__type" : "snippets",
-					"items" : [ ]
+					"items" : [
+						{
+							"__type" : "textSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2023-08-06T12:39:30.066682+02:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2023-08-06T12:39:39.275022+02:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "kR9Pe6C+DQCxa0MIDavezA=="
+							},
+							"paragraphStyle" : {
+								"__type" : "textStyle"
+							},
+							"string" : "feenkcom/gtoolkit#3373"
+						}
+					]
 				},
 				"createEmail" : {
 					"__type" : "email",
@@ -402,7 +440,7 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-08-06T12:38:27.917458+02:00"
+									"dateAndTimeString" : "2023-08-06T13:46:42.259372+02:00"
 								}
 							},
 							"uid" : {
@@ -412,7 +450,7 @@
 							"paragraphStyle" : {
 								"__type" : "textStyle"
 							},
-							"string" : "[[*** Set up test examples]]"
+							"string" : "[[Set up test examples]]"
 						},
 						{
 							"__type" : "textSnippet",
