@@ -5,7 +5,8 @@ Class {
 		'repoDir',
 		'url',
 		'pages',
-		'linkDict'
+		'linkDict',
+		'announcer'
 	],
 	#category : #'GToolkit-Demo-EsugWebsite-Model'
 }
@@ -46,6 +47,16 @@ PillarWebsite class >> initializeRepoDir: aRepoDir fromRepoUrl: aRepoUrl [
 	^ aRepoDir
 ]
 
+{ #category : #announcements }
+PillarWebsite >> announcer [
+	^ announcer
+]
+
+{ #category : #announcements }
+PillarWebsite >> announcer: anAnnouncement [
+	announcer := anAnnouncement
+]
+
 { #category : #links }
 PillarWebsite >> brokenLinks [
 	^ self links select: #isBroken
@@ -55,7 +66,7 @@ PillarWebsite >> brokenLinks [
 PillarWebsite >> gtBrokenLinksFor: aView [
 	<gtView>
 	^ aView columnedList
-		title: 'Broken external links';
+		title: 'Broken HTTP links';
 		priority: 50;
 		items: [ self brokenLinks ];
 		column: 'Index'
@@ -66,7 +77,8 @@ PillarWebsite >> gtBrokenLinksFor: aView [
 			width: 400;
 		column: '# Pages' text: [ :item | item pages size ] width: 60;
 		column: 'Status' text: [ :item | item status ];
-		actionUpdateButton
+		actionUpdateButton;
+		updateWhen: PillarWebLinkStatusUpdated in: self announcer
 ]
 
 { #category : #view }
@@ -86,7 +98,8 @@ PillarWebsite >> gtHttpLinksFor: aView [
 			text: [ :item | item pages size ]
 			width: 60;
 		column: 'Status' text: [ :item | item status ];
-		actionUpdateButton
+		actionUpdateButton;
+		updateWhen: PillarWebLinkStatusUpdated in: self announcer
 ]
 
 { #category : #view }
@@ -106,7 +119,8 @@ PillarWebsite >> gtLinksFor: aView [
 			text: [ :item | item pages size ]
 			width: 60;
 		column: 'Status' text: [ :item | item status ];
-		actionUpdateButton
+		actionUpdateButton;
+		updateWhen: PillarWebLinkStatusUpdated in: self announcer
 ]
 
 { #category : #view }
@@ -128,7 +142,8 @@ PillarWebsite >> gtMissingLinksFor: aView [
 		column: 'Status'
 			text: [ :item | item status ]
 			width: 100;
-		actionUpdateButton
+		actionUpdateButton;
+		updateWhen: PillarWebLinkStatusUpdated in: self announcer
 ]
 
 { #category : #view }
@@ -137,7 +152,7 @@ PillarWebsite >> gtMissingStatusLinksFor: aView [
 	^ aView columnedList
 		title: 'Missing status';
 		priority: 55;
-		items: [ self httpLinks select: #statusMissing ];
+		items: [ self missingStatusLinks ];
 		column: 'Index'
 			text: [ :eachItem :eachIndex | eachIndex asRopedText foreground: Color gray ]
 			width: 45;
@@ -148,7 +163,8 @@ PillarWebsite >> gtMissingStatusLinksFor: aView [
 			text: [ :item | item pages size ]
 			width: 60;
 		column: 'Status' text: [ :item | item status ];
-		actionUpdateButton
+		actionUpdateButton;
+		updateWhen: PillarWebLinkStatusUpdated in: self announcer
 ]
 
 { #category : #view }
@@ -215,6 +231,11 @@ PillarWebsite >> httpLinks [
 	^  self links select: #isHttp
 ]
 
+{ #category : #initializations }
+PillarWebsite >> initialize [
+	self announcer: Announcer new
+]
+
 { #category : #initialization }
 PillarWebsite >> initializeLinkDict [
 	linkDict := Dictionary new.
@@ -234,7 +255,7 @@ PillarWebsite >> initializePages [
 
 { #category : #links }
 PillarWebsite >> linkDict [
-	^ linkDict ifNil: [ linkDict := self initializeLinkDict ]
+	^ linkDict
 ]
 
 { #category : #links }
@@ -257,6 +278,16 @@ PillarWebsite >> missingLinks [
 	^ self links select: [ :link | link isInternal and: [ link isMissing ] ]
 ]
 
+{ #category : #links }
+PillarWebsite >> missingStatusLinks [
+	^ self httpLinks select: #statusMissing
+]
+
+{ #category : #announcements }
+PillarWebsite >> notifyStatusUpdate [
+	self announcer announce: PillarWebLinkStatusUpdated new
+]
+
 { #category : #accessing }
 PillarWebsite >> pageNamed: aString [
 	^ self pages detect: [ :page | page path = aString ]
@@ -264,7 +295,7 @@ PillarWebsite >> pageNamed: aString [
 
 { #category : #accessing }
 PillarWebsite >> pages [
-^ pages ifNil: [ self initializePages ]
+	^ pages
 ]
 
 { #category : #accessing }
@@ -273,8 +304,10 @@ PillarWebsite >> repoDir [
 ]
 
 { #category : #accessing }
-PillarWebsite >> repoDir: anObject [
-	repoDir := anObject
+PillarWebsite >> repoDir: aFileReference [
+	repoDir := aFileReference.
+	self initializePages.
+	self initializeLinkDict
 ]
 
 { #category : #accessing }
