@@ -66,7 +66,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-07-21T14:12:34.588418+02:00"
+						"dateAndTimeString" : "2023-08-06T13:40:03.858911+02:00"
 					}
 				},
 				"uid" : {
@@ -76,7 +76,7 @@
 				"paragraphStyle" : {
 					"__type" : "textStyle"
 				},
-				"string" : "We need a way to test using a dummy page, but without necessarily loading the esug repo."
+				"string" : "We need a way to test using a dummy page, but without necessarily loading the entire ESUG repo."
 			},
 			{
 				"__type" : "textSnippet",
@@ -103,7 +103,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-07-21T14:14:04.742441+02:00"
+						"dateAndTimeString" : "2023-08-06T13:40:21.147643+02:00"
 					}
 				},
 				"uid" : {
@@ -113,7 +113,7 @@
 				"paragraphStyle" : {
 					"__type" : "textStyle"
 				},
-				"string" : "We install a minimal subset of the ESUG website in this repo:"
+				"string" : "We install a minimal subset of the ESUG website in this demo repo:"
 			},
 			{
 				"__type" : "pharoSnippet",
@@ -140,14 +140,14 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-07-21T14:13:52.887179+02:00"
+						"dateAndTimeString" : "2023-08-06T13:31:30.065854+02:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
 					"uidString" : "trk/71+9DQCHXpZwChXW9A=="
 				},
-				"code" : "FileLocator imageDirectory\r\t/ 'pharo-local/iceberg/feenkcom/gtoolkit-demos/data/esug.github.io'"
+				"code" : "(FileLocator imageDirectory\r\t/ 'pharo-local/iceberg/feenkcom/gtoolkit-demos/data/esug.github.io') asFileReference"
 			},
 			{
 				"__type" : "textSnippet",
@@ -163,7 +163,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-07-21T14:14:07.733897+02:00"
+						"dateAndTimeString" : "2023-08-06T13:33:47.625537+02:00"
 					}
 				},
 				"editEmail" : {
@@ -174,17 +174,94 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-07-21T14:14:47.314072+02:00"
+						"dateAndTimeString" : "2023-08-06T13:35:21.591209+02:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
-					"uidString" : "yXFD8F+9DQCH2wdQChXW9A=="
+					"uidString" : "xIV5PaG+DQC3oopaB4RfSg=="
 				},
 				"paragraphStyle" : {
 					"__type" : "textStyle"
 				},
-				"string" : "And we instantiate a website from it, overriding the default location for the website files:"
+				"string" : "And we instantiate a website from it as an example."
+			},
+			{
+				"__type" : "exampleSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2023-08-06T13:35:06.729755+02:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2023-08-06T13:35:06.729755+02:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "Uo8wQqG+DQC3yMqZB4RfSg=="
+				},
+				"exampleSelector" : "esug2014",
+				"previewHeight" : 200,
+				"previewShowSelector" : "gtViewsFor:",
+				"exampleBehaviorName" : "PillarWebsiteExamples",
+				"codeExpanded" : true,
+				"previewExpanded" : false,
+				"noCode" : false
+			},
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2023-08-06T13:42:05.495821+02:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2023-08-06T13:42:16.21648+02:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "QGsmW6G+DQC5IEqMB4RfSg=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : "We need a way to grab a particular page by name."
 			},
 			{
 				"__type" : "pharoSnippet",
@@ -200,7 +277,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-07-21T14:13:19.742134+02:00"
+						"dateAndTimeString" : "2023-07-21T14:12:45.917178+02:00"
 					}
 				},
 				"editEmail" : {
@@ -211,14 +288,126 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-07-21T14:13:20.504456+02:00"
+						"dateAndTimeString" : "2023-08-06T13:43:06.308945+02:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
-					"uidString" : "ISdn7V+9DQCGfTW9ChXW9A=="
+					"uidString" : "XgRj61+9DQCGSp9PChXW9A=="
 				},
-				"code" : "EsugWebsiteExamples new esug2014"
+				"code" : "PillarWebsiteExamples new esug2014 pageNamed: '/2014-Conference/conf2014.pillar'"
+			},
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2023-08-06T13:42:20.653649+02:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2023-08-06T13:43:46.901776+02:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "+7YNXKG+DQC6FF54B4RfSg=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : "So we can grab specific pages for testing."
+			},
+			{
+				"__type" : "exampleSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2023-08-06T13:46:23.022017+02:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2023-08-06T13:46:23.022017+02:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "t/V/aqG+DQC7sx/5B4RfSg=="
+				},
+				"previewHeight" : 200,
+				"previewShowSelector" : "gtViewsFor:",
+				"codeExpanded" : true,
+				"previewExpanded" : false,
+				"noCode" : false
+			},
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2023-08-06T13:42:20.897268+02:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2023-08-06T13:42:20.897268+02:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "L20RXKG+DQC6GP7cB4RfSg=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : ""
 			},
 			{
 				"__type" : "textSnippet",
@@ -256,40 +445,6 @@
 					"__type" : "textStyle"
 				},
 				"string" : "Now we can grab a page and use it for test examples:"
-			},
-			{
-				"__type" : "pharoSnippet",
-				"children" : {
-					"__type" : "snippets",
-					"items" : [ ]
-				},
-				"createEmail" : {
-					"__type" : "email",
-					"emailString" : "<unknown>"
-				},
-				"createTime" : {
-					"__type" : "time",
-					"time" : {
-						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-07-21T14:12:45.917178+02:00"
-					}
-				},
-				"editEmail" : {
-					"__type" : "email",
-					"emailString" : "<unknown>"
-				},
-				"editTime" : {
-					"__type" : "time",
-					"time" : {
-						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-07-21T14:12:46.36213+02:00"
-					}
-				},
-				"uid" : {
-					"__type" : "uid",
-					"uidString" : "XgRj61+9DQCGSp9PChXW9A=="
-				},
-				"code" : "EsugWebPageExamples new esug2014 "
 			}
 		]
 	},
@@ -312,12 +467,12 @@
 		"__type" : "time",
 		"time" : {
 			"__type" : "dateAndTime",
-			"dateAndTimeString" : "2023-07-21T14:12:11.258132+02:00"
+			"dateAndTimeString" : "2023-08-06T12:38:27.910014+02:00"
 		}
 	},
 	"pageType" : {
 		"__type" : "namedPage",
-		"title" : "Set up test examples"
+		"title" : "*** Set up test examples"
 	},
 	"uid" : {
 		"__type" : "uuid",

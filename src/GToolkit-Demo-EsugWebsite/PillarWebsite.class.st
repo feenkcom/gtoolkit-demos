@@ -13,7 +13,7 @@ Class {
 PillarWebsite class >> esug [
 	^ self new
 		repoDir: self esugRepoDir;
-		url: 'https://esug.github.io';
+		url: self esugUrl;
 		yourself
 ]
 
@@ -22,6 +22,11 @@ PillarWebsite class >> esugRepoDir [
 	^ self
 		initializeRepoDir: 'esug.github.io' asFileReference
 		fromRepoUrl: 'https://github.com/ESUG/esug.github.io'
+]
+
+{ #category : #constant }
+PillarWebsite class >> esugUrl [
+	^ 'https://esug.github.io'
 ]
 
 { #category : #initialization }
@@ -54,11 +59,17 @@ PillarWebsite >> gtPagesFor: aView [
 			text: [ :item | item path ]
 			width: 400;
 		column: 'Pillar links'
-			text: [ :item | item pillarLinks size ]
-			width: 80	";
+			text: [ :item | 
+				| size |
+				size := item pillarLinks size.
+				size = 0 ifTrue: [ '' ] ifFalse: [ size ] ]
+			width: 80;
 		column: 'Markdown links'
-			text: [ :item | item markdownLinks size ]
-			width: 80"
+			text: [ :item | 
+				| size |
+				size := item markdownLinks size.
+				size = 0 ifTrue: [ '' ] ifFalse: [ size ] ]
+			width: 80
 ]
 
 { #category : #searching }
@@ -93,6 +104,11 @@ PillarWebsite >> initializePages [
 				(a path occurrencesOf: $/) < (b path occurrencesOf: $/)
 					or: [ (a path occurrencesOf: $/) = (b path occurrencesOf: $/)
 							and: [ a path < b path ] ] ]
+]
+
+{ #category : #accessing }
+PillarWebsite >> pageNamed: aString [
+	^ self pages detect: [ :page | page path = aString ]
 ]
 
 { #category : #accessing }

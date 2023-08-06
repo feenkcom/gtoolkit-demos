@@ -916,14 +916,14 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-07-21T18:50:51.902731+02:00"
+									"dateAndTimeString" : "2023-07-21T18:51:34.89515+02:00"
 								}
 							},
 							"uid" : {
 								"__type" : "uid",
 								"uidString" : "2GqLu2O9DQCdgAtwAGOulw=="
 							},
-							"code" : "[(EsugWebsite instance httpLinks select: #statusMissing ).\r\r\r\r\r\r]"
+							"code" : "[(EsugWebsite instance httpLinks select: #statusMissing \r)\r\r\r\r\r]"
 						},
 						{
 							"__type" : "textSnippet",
