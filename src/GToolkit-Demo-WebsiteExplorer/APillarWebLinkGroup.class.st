@@ -206,11 +206,11 @@ APillarWebLinkGroup >> links [
 
 { #category : #links }
 APillarWebLinkGroup >> missingLinks [
-	(self links select: #isInternal) do: #checkStatus.
+	((self links select: #isInternal) select: #statusMissing) do: #checkStatus.
 	^ self links select: [ :link | link isInternal and: [ link isMissing ] ]
 ]
 
 { #category : #links }
 APillarWebLinkGroup >> missingStatusLinks [
-	^ self httpLinks select: #statusMissing
+	^ self links select: #statusMissing
 ]
