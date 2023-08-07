@@ -1,7 +1,7 @@
 Class {
 	#name : #PillarWebsiteExamples,
 	#superclass : #Object,
-	#category : #'GToolkit-Demo-EsugWebsite-Examples'
+	#category : #'GToolkit-Demo-WebsiteExplorer-Examples'
 }
 
 { #category : #accessing }
@@ -15,17 +15,6 @@ PillarWebsiteExamples >> esug2014 [
 		url: self esug2014url.
 	self assert: website pages size equals: 18.
 	^ website
-]
-
-{ #category : #accessing }
-PillarWebsiteExamples >> esug2014homePage [
-	<gtExample>
-	| website page |
-	website := self esug2014.
-	page := website pageNamed: '/2014-Conference/conf2014.pillar'.
-	self assert: page pillarLinks size equals: 21.
-	self assert: page markdownLinks size equals: 0.
-	^ page
 ]
 
 { #category : #constant }

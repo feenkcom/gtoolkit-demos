@@ -1,3 +1,16 @@
+"
+This is a demo of a Pillar website explorer.
+
+To load a demo, inspect
+
+{{gtMethod:name=PillarWebsiteExamples>>#esug2014}}
+
+To explore the full ESUG website (repo will be cloned), inspect
+
+{{gtMethod:name=PillarWebsite class>>#esug}}
+
+Eventually this could be a subclass of a more generic website explorer for other formats than Pillar (eg markdown-based websites like Pico and GitHub Pages).
+"
 Class {
 	#name : #PillarWebsite,
 	#superclass : #Object,
@@ -9,7 +22,7 @@ Class {
 		'announcer',
 		'process'
 	],
-	#category : #'GToolkit-Demo-EsugWebsite-Model'
+	#category : #'GToolkit-Demo-WebsiteExplorer-Model'
 }
 
 { #category : #creation }

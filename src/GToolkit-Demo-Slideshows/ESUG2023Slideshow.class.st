@@ -1,7 +1,7 @@
 Class {
 	#name : #ESUG2023Slideshow,
 	#superclass : #PrioritySlideshow,
-	#category : #'GToolkit-Demo-EsugWebsite-Slideshows'
+	#category : #'GToolkit-Demo-Slideshows-Slideshows'
 }
 
 { #category : #slides }

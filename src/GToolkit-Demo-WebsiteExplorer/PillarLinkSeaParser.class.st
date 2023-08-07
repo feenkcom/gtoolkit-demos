@@ -7,7 +7,7 @@ Class {
 		'linkWithText',
 		'linkSea'
 	],
-	#category : #'GToolkit-Demo-EsugWebsite-Parser'
+	#category : #'GToolkit-Demo-WebsiteExplorer-Parser'
 }
 
 { #category : #grammar }

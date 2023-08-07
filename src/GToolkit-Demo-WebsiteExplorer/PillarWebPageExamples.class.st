@@ -1,7 +1,7 @@
 Class {
 	#name : #PillarWebPageExamples,
 	#superclass : #Object,
-	#category : #'GToolkit-Demo-EsugWebsite-Examples'
+	#category : #'GToolkit-Demo-WebsiteExplorer-Examples'
 }
 
 { #category : #accessing }

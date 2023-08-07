@@ -5,7 +5,7 @@ Class {
 		'website',
 		'pillarFile'
 	],
-	#category : #'GToolkit-Demo-EsugWebsite-Model'
+	#category : #'GToolkit-Demo-WebsiteExplorer-Model'
 }
 
 { #category : #path }

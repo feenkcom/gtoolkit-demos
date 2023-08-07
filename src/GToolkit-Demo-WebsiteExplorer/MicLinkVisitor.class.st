@@ -4,7 +4,7 @@ Class {
 	#instVars : [
 		'links'
 	],
-	#category : #'GToolkit-Demo-EsugWebsite-Visitors'
+	#category : #'GToolkit-Demo-WebsiteExplorer-Visitors'
 }
 
 { #category : #accessing }

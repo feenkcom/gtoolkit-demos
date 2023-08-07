@@ -14,7 +14,7 @@ Class {
 		'status',
 		'announcer'
 	],
-	#category : #'GToolkit-Demo-EsugWebsite-Model'
+	#category : #'GToolkit-Demo-WebsiteExplorer-Model'
 }
 
 { #category : #accessing }
