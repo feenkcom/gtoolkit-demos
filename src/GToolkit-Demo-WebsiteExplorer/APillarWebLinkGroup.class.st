@@ -154,6 +154,9 @@ APillarWebLinkGroup >> gtMissingLinksFor: aView [
 			text: [ :item | item status ]
 			width: 100;
 		actionUpdateButton;
+		actionButtonIcon: BrGlamorousVectorIcons inspect
+			tooltip: 'Inspect  value'
+			action: [ :aButton :aTab | aButton phlow spawnObject: (PillarWebLinkGroup withAll: self missingLinks) ];
 		updateWhen: PillarWebLinkStatusUpdated in: self announcer
 ]
 

@@ -139,6 +139,43 @@
 											"__type" : "time",
 											"time" : {
 												"__type" : "dateAndTime",
+												"dateAndTimeString" : "2023-08-07T20:31:03.042496+02:00"
+											}
+										},
+										"editEmail" : {
+											"__type" : "email",
+											"emailString" : "<unknown>"
+										},
+										"editTime" : {
+											"__type" : "time",
+											"time" : {
+												"__type" : "dateAndTime",
+												"dateAndTimeString" : "2023-08-07T20:31:03.042496+02:00"
+											}
+										},
+										"uid" : {
+											"__type" : "uid",
+											"uidString" : "5AqLL7u+DQCS+oHuBilaEw=="
+										},
+										"paragraphStyle" : {
+											"__type" : "textStyle"
+										},
+										"string" : ""
+									},
+									{
+										"__type" : "textSnippet",
+										"children" : {
+											"__type" : "snippets",
+											"items" : [ ]
+										},
+										"createEmail" : {
+											"__type" : "email",
+											"emailString" : "<unknown>"
+										},
+										"createTime" : {
+											"__type" : "time",
+											"time" : {
+												"__type" : "dateAndTime",
 												"dateAndTimeString" : "2023-08-07T20:00:23.59653+02:00"
 											}
 										},
@@ -183,7 +220,7 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-08-07T20:00:36.625169+02:00"
+									"dateAndTimeString" : "2023-08-07T20:31:01.379219+02:00"
 								}
 							},
 							"uid" : {
@@ -193,7 +230,7 @@
 							"paragraphStyle" : {
 								"__type" : "textStyle"
 							},
-							"string" : "***For some reason*** won't work for the *Missing links* view"
+							"string" : "For some reason won't work for the *Missing links* view"
 						}
 					]
 				},
@@ -459,6 +496,43 @@
 											"__type" : "textStyle"
 										},
 										"string" : "For some reason we need to explicitly ask for the `contents` or else we get an AsyncStream. Not sure why this is different from the case with pages."
+									},
+									{
+										"__type" : "textSnippet",
+										"children" : {
+											"__type" : "snippets",
+											"items" : [ ]
+										},
+										"createEmail" : {
+											"__type" : "email",
+											"emailString" : "<unknown>"
+										},
+										"createTime" : {
+											"__type" : "time",
+											"time" : {
+												"__type" : "dateAndTime",
+												"dateAndTimeString" : "2023-08-07T20:26:46.05881+02:00"
+											}
+										},
+										"editEmail" : {
+											"__type" : "email",
+											"emailString" : "<unknown>"
+										},
+										"editTime" : {
+											"__type" : "time",
+											"time" : {
+												"__type" : "dateAndTime",
+												"dateAndTimeString" : "2023-08-07T20:26:46.05881+02:00"
+											}
+										},
+										"uid" : {
+											"__type" : "uid",
+											"uidString" : "WT26H7u+DQCR/RU6BilaEw=="
+										},
+										"paragraphStyle" : {
+											"__type" : "textStyle"
+										},
+										"string" : ""
 									}
 								]
 							},
@@ -659,14 +733,14 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-08-07T20:25:29.708627+02:00"
+						"dateAndTimeString" : "2023-08-07T20:25:35.548953+02:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
 					"uidString" : "l5RtG7u+DQCmSLLdCgVaYw=="
 				},
-				"code" : "PillarWebsiteExamples new esug2014"
+				"code" : "PillarWebsite esug"
 			}
 		]
 	},
