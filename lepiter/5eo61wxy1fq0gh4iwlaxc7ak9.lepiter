@@ -55,40 +55,6 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-08-07T09:49:42.903738+02:00"
-					}
-				},
-				"editEmail" : {
-					"__type" : "email",
-					"emailString" : "<unknown>"
-				},
-				"editTime" : {
-					"__type" : "time",
-					"time" : {
-						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-08-07T09:49:52.341851+02:00"
-					}
-				},
-				"uid" : {
-					"__type" : "uid",
-					"uidString" : "jLjyObK+DQCBRtA5DP1WWw=="
-				},
-				"code" : "PillarWebsiteExamples new esug2014 reachable "
-			},
-			{
-				"__type" : "pharoSnippet",
-				"children" : {
-					"__type" : "snippets",
-					"items" : [ ]
-				},
-				"createEmail" : {
-					"__type" : "email",
-					"emailString" : "<unknown>"
-				},
-				"createTime" : {
-					"__type" : "time",
-					"time" : {
-						"__type" : "dateAndTime",
 						"dateAndTimeString" : "2023-08-07T09:50:12.758662+02:00"
 					}
 				},
@@ -160,7 +126,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-08-07T09:54:40.704564+02:00"
+						"dateAndTimeString" : "2023-08-07T11:05:53.428572+02:00"
 					}
 				},
 				"editEmail" : {
@@ -171,17 +137,17 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-08-07T09:54:46.103869+02:00"
+						"dateAndTimeString" : "2023-08-07T11:06:37.369906+02:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
-					"uidString" : "ycuyS7K+DQCDWMWyDP1WWw=="
+					"uidString" : "R8epVbK+DQCEolBeDP1WWw=="
 				},
 				"paragraphStyle" : {
 					"__type" : "textStyle"
 				},
-				"string" : "We do the same for links."
+				"string" : "We create a common superclass {{gtClass:name=APillarWebLinkGroup}}  for the website and groups of links."
 			},
 			{
 				"__type" : "pharoSnippet",
@@ -231,7 +197,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-08-07T09:57:27.884998+02:00"
+						"dateAndTimeString" : "2023-08-07T10:15:09.897525+02:00"
 					}
 				},
 				"editEmail" : {
@@ -242,20 +208,20 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-08-07T09:57:52.120592+02:00"
+						"dateAndTimeString" : "2023-08-07T11:24:17.93433+02:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
-					"uidString" : "R8epVbK+DQCEolBeDP1WWw=="
+					"uidString" : "GaolV7K+DQCGWMeNDP1WWw=="
 				},
 				"paragraphStyle" : {
 					"__type" : "textStyle"
 				},
-				"string" : "We add a view {{gtMethod:name=PillarWebLinkGroup>>#gtLinksFor:}}. But we would like to be notified of updates in the status of the links."
+				"string" : "Now we can add a *Reachable links* view to the website and to a given page."
 			},
 			{
-				"__type" : "textSnippet",
+				"__type" : "pharoSnippet",
 				"children" : {
 					"__type" : "snippets",
 					"items" : [ ]
@@ -268,7 +234,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-08-07T10:15:09.897525+02:00"
+						"dateAndTimeString" : "2023-08-07T11:24:36.372624+02:00"
 					}
 				},
 				"editEmail" : {
@@ -279,17 +245,14 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-08-07T10:15:09.897525+02:00"
+						"dateAndTimeString" : "2023-08-07T11:29:28.077092+02:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
-					"uidString" : "GaolV7K+DQCGWMeNDP1WWw=="
+					"uidString" : "nyhOjbO+DQCd5xoVBLfEEA=="
 				},
-				"paragraphStyle" : {
-					"__type" : "textStyle"
-				},
-				"string" : ""
+				"code" : "PillarWebsiteExamples new esug2014 "
 			}
 		]
 	},

@@ -18,8 +18,7 @@ Class {
 		'repoDir',
 		'url',
 		'pages',
-		'linkDict',
-		'process'
+		'linkDict'
 	],
 	#category : #'GToolkit-Demo-WebsiteExplorer-Model'
 }
@@ -61,129 +60,6 @@ PillarWebsite class >> initializeRepoDir: aRepoDir fromRepoUrl: aRepoUrl [
 	^ aRepoDir
 ]
 
-{ #category : #links }
-PillarWebsite >> brokenLinks [
-	^ self links select: #isBroken
-]
-
-{ #category : #links }
-PillarWebsite >> checkStatusWhereMissing [
-	process
-		ifNotNil: [ process isTerminated
-				ifFalse: [ ^ self inform: 'There is already a background check running.' ] ].
-	self missingStatusLinks
-		ifEmpty: [ self inform: 'Nothing to do' ]
-		ifNotEmpty: [ self inform: 'Starting background checks'.
-			process := [ self missingStatusLinks do: [ :aWebsite | aWebsite checkStatus ] ]
-					fork ]
-]
-
-{ #category : #action }
-PillarWebsite >> gtActionCheckStatusFor: anAction [
-	<gtAction>
-	self missingStatusLinks ifEmpty: [ ^ anAction noAction ].
-	^ anAction button
-		tooltip: 'Check status';
-		priority: 10;
-		icon: BrGlamorousIcons accept;
-		action: [ self checkStatusWhereMissing ]
-]
-
-{ #category : #action }
-PillarWebsite >> gtActionStopCheckStatusFor: anAction [
-	<gtAction>
-	self missingStatusLinks ifEmpty: [ ^ anAction noAction ].
-	^ anAction button
-		tooltip: 'Stop background status check';
-		priority: 11;
-		icon: BrGlamorousIcons close;
-		action: [ self killBackgroundCheck ]
-]
-
-{ #category : #view }
-PillarWebsite >> gtBrokenLinksFor: aView [
-	<gtView>
-	^ aView columnedList
-		title: 'Broken HTTP links';
-		priority: 50;
-		items: [ self brokenLinks ];
-		column: 'Index'
-			text: [ :eachItem :eachIndex | eachIndex asRopedText foreground: Color gray ]
-			width: 45;
-		column: 'Link'
-			text: [ :item | item path ]
-			width: 400;
-		column: '# Pages' text: [ :item | item pages size ] width: 60;
-		column: 'Status' text: [ :item | item status ];
-		actionUpdateButton;
-		updateWhen: PillarWebLinkStatusUpdated in: self announcer
-]
-
-{ #category : #view }
-PillarWebsite >> gtHttpLinksFor: aView [
-	<gtView>
-	^ aView columnedList
-		title: 'HTTP links';
-		priority: 40;
-		items: [ self httpLinks ];
-		column: 'Index'
-			text: [ :eachItem :eachIndex | eachIndex asRopedText foreground: Color gray ]
-			width: 45;
-		column: 'Link'
-			text: [ :item | item path ]
-			width: 400;
-		column: '# Pages'
-			text: [ :item | item pages size ]
-			width: 60;
-		column: 'Status' text: [ :item | item status ];
-		actionUpdateButton;
-		updateWhen: PillarWebLinkStatusUpdated in: self announcer
-]
-
-{ #category : #view }
-PillarWebsite >> gtMissingLinksFor: aView [
-	<gtView>
-	^ aView columnedList
-		title: 'Missing links';
-		priority: 35;
-		items: [ self missingLinks ];
-		column: 'Index'
-			text: [ :eachItem :eachIndex | eachIndex asRopedText foreground: Color gray ]
-			width: 45;
-		column: 'Link'
-			text: [ :item | item path ]
-			width: 300;
-		column: '# Pages'
-			text: [ :item | item pages size ]
-			width: 60;
-		column: 'Status'
-			text: [ :item | item status ]
-			width: 100;
-		actionUpdateButton;
-		updateWhen: PillarWebLinkStatusUpdated in: self announcer
-]
-
-{ #category : #view }
-PillarWebsite >> gtMissingStatusLinksFor: aView [
-	<gtView>
-	^ aView columnedList
-		title: 'Missing status';
-		priority: 55;
-		items: [ self missingStatusLinks ];
-		column: 'Index'
-			text: [ :eachItem :eachIndex | eachIndex asRopedText foreground: Color gray ]
-			width: 45;
-		column: 'Link'
-			text: [ :item | item path ]
-			width: 400;
-		column: '# Pages'
-			text: [ :item | item pages size ]
-			width: 60;
-		column: 'Status' text: [ :item | item status ];
-		actionUpdateButton;
-		updateWhen: PillarWebLinkStatusUpdated in: self announcer
-]
-
 { #category : #view }
 PillarWebsite >> gtPagesFor: aView [
 	<gtView>
@@ -211,6 +87,16 @@ PillarWebsite >> gtPagesFor: aView [
 			width: 80
 ]
 
+{ #category : #accessing }
+PillarWebsite >> gtReachablePagesFor: aView [
+	<gtView>
+	^ aView forward
+		title: 'Reachable pages';
+		priority: 60;
+		object: [ PillarWebPageGroup withAll: self reachable ];
+		view: #gtPagesFor:
+]
+
 { #category : #searching }
 PillarWebsite >> gtSpotterForPageContents: aSearch [
 	<gtSearch>
@@ -235,17 +121,23 @@ PillarWebsite >> gtSpotterForPageNames: aSearch [
 		filterBySubstring
 ]
 
+{ #category : #accessing }
+PillarWebsite >> gtUnreachablePagesFor: aView [
+	<gtView>
+	self unreachable ifEmpty: [ ^ aView empty ].
+	^ aView forward
+		title: 'Unreachable pages';
+		priority: 61;
+		object: [ PillarWebPageGroup withAll: self unreachable ];
+		view: #gtPagesFor:
+]
+
 { #category : #testing }
 PillarWebsite >> hasPageNamed: aString [
 	^ self pages
 		detect: [ :page | page path = aString ]
 		ifFound: [ true ]
 		ifNone: [ false ]
-]
-
-{ #category : #links }
-PillarWebsite >> httpLinks [
-	^  self links select: #isHttp
 ]
 
 { #category : #initialization }
@@ -266,15 +158,6 @@ PillarWebsite >> initializePages [
 ]
 
 { #category : #links }
-PillarWebsite >> killBackgroundCheck [
-	process
-		ifNil: [ self inform: 'Nothing to do' ]
-		ifNotNil: [ process terminate.
-			process := nil.
-			self inform: 'Background check terminated' ]
-]
-
-{ #category : #links }
 PillarWebsite >> linkDict [
 	^ linkDict
 ]
@@ -291,17 +174,6 @@ PillarWebsite >> links [
 			(a path occurrencesOf: $/) < (b path occurrencesOf: $/)
 				or: [ (a path occurrencesOf: $/) = (b path occurrencesOf: $/)
 						and: [ a path < b path ] ] ]
-]
-
-{ #category : #links }
-PillarWebsite >> missingLinks [
-	(self links select: #isInternal) do: #checkStatus.
-	^ self links select: [ :link | link isInternal and: [ link isMissing ] ]
-]
-
-{ #category : #links }
-PillarWebsite >> missingStatusLinks [
-	^ self httpLinks select: #statusMissing
 ]
 
 { #category : #announcements }
