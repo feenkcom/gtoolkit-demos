@@ -369,7 +369,7 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-08-07T20:12:45.093635+02:00"
+									"dateAndTimeString" : "2023-08-07T20:12:56.742906+02:00"
 								}
 							},
 							"uid" : {
@@ -379,7 +379,119 @@
 							"paragraphStyle" : {
 								"__type" : "textStyle"
 							},
-							"string" : "Also for the website and link groups, each of the link methods (links, missing links, httpLinks) defined in {{gtC}}"
+							"string" : "Also for the website and link groups, each of the link methods (links, missing links, httpLinks) defined in {{gtClass:name=APillarWebLinkGroup}} returns a raw collection of Link objects."
+						},
+						{
+							"__type" : "textSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [
+									{
+										"__type" : "textSnippet",
+										"children" : {
+											"__type" : "snippets",
+											"items" : [ ]
+										},
+										"createEmail" : {
+											"__type" : "email",
+											"emailString" : "<unknown>"
+										},
+										"createTime" : {
+											"__type" : "time",
+											"time" : {
+												"__type" : "dateAndTime",
+												"dateAndTimeString" : "2023-08-07T20:23:21.707376+02:00"
+											}
+										},
+										"editEmail" : {
+											"__type" : "email",
+											"emailString" : "<unknown>"
+										},
+										"editTime" : {
+											"__type" : "time",
+											"time" : {
+												"__type" : "dateAndTime",
+												"dateAndTimeString" : "2023-08-07T20:23:21.710249+02:00"
+											}
+										},
+										"uid" : {
+											"__type" : "uid",
+											"uidString" : "yv7qB7u+DQC/KHqeAsgVIw=="
+										},
+										"paragraphStyle" : {
+											"__type" : "textStyle"
+										},
+										"string" : "gtSpotterForLinkNames: aSearch\r\t<gtSearch>\r\t^ aSearch list\r\t\ttitle: 'Link names';\r\t\tpriority: 30;\r\t\titems: [ self links ];\r\t\titemsLimit: Float infinity;\r\t\titemName: #path;\r\t\tsendCategory: [ :aCategory :aStep :thisSearch | PillarWebLinkGroup withAll: aCategory items contents ];\r\t\tfilterBySubstring"
+									},
+									{
+										"__type" : "textSnippet",
+										"children" : {
+											"__type" : "snippets",
+											"items" : [ ]
+										},
+										"createEmail" : {
+											"__type" : "email",
+											"emailString" : "<unknown>"
+										},
+										"createTime" : {
+											"__type" : "time",
+											"time" : {
+												"__type" : "dateAndTime",
+												"dateAndTimeString" : "2023-08-07T20:19:01.361337+02:00"
+											}
+										},
+										"editEmail" : {
+											"__type" : "email",
+											"emailString" : "<unknown>"
+										},
+										"editTime" : {
+											"__type" : "time",
+											"time" : {
+												"__type" : "dateAndTime",
+												"dateAndTimeString" : "2023-08-07T20:25:17.008015+02:00"
+											}
+										},
+										"uid" : {
+											"__type" : "uid",
+											"uidString" : "aBCHBLu+DQC+kDbOAsgVIw=="
+										},
+										"paragraphStyle" : {
+											"__type" : "textStyle"
+										},
+										"string" : "For some reason we need to explicitly ask for the `contents` or else we get an AsyncStream. Not sure why this is different from the case with pages."
+									}
+								]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2023-08-07T20:12:57.38181+02:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2023-08-07T20:19:49.366653+02:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "US7V7rq+DQC4/E6jAh4jmw=="
+							},
+							"paragraphStyle" : {
+								"__type" : "textStyle"
+							},
+							"string" : "We should now add a Link name search: {{gtMethod:name=APillarWebLinkGroup>>#gtSpotterForLinkNames:}}. "
 						}
 					]
 				},
@@ -519,6 +631,40 @@
 				"uid" : {
 					"__type" : "uid",
 					"uidString" : "o1TGurq+DQChOTxTAh4jmw=="
+				},
+				"code" : "PillarWebsiteExamples new esug2014"
+			},
+			{
+				"__type" : "pharoSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2023-08-07T20:25:25.567095+02:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2023-08-07T20:25:29.708627+02:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "l5RtG7u+DQCmSLLdCgVaYw=="
 				},
 				"code" : "PillarWebsiteExamples new esug2014"
 			}

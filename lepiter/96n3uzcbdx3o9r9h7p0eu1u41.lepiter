@@ -385,7 +385,82 @@
 							"__type" : "textSnippet",
 							"children" : {
 								"__type" : "snippets",
-								"items" : [ ]
+								"items" : [
+									{
+										"__type" : "textSnippet",
+										"children" : {
+											"__type" : "snippets",
+											"items" : [ ]
+										},
+										"createEmail" : {
+											"__type" : "email",
+											"emailString" : "<unknown>"
+										},
+										"createTime" : {
+											"__type" : "time",
+											"time" : {
+												"__type" : "dateAndTime",
+												"dateAndTimeString" : "2023-08-07T20:23:21.707376+02:00"
+											}
+										},
+										"editEmail" : {
+											"__type" : "email",
+											"emailString" : "<unknown>"
+										},
+										"editTime" : {
+											"__type" : "time",
+											"time" : {
+												"__type" : "dateAndTime",
+												"dateAndTimeString" : "2023-08-07T20:23:21.710249+02:00"
+											}
+										},
+										"uid" : {
+											"__type" : "uid",
+											"uidString" : "yv7qB7u+DQC/KHqeAsgVIw=="
+										},
+										"paragraphStyle" : {
+											"__type" : "textStyle"
+										},
+										"string" : "gtSpotterForLinkNames: aSearch\r\t<gtSearch>\r\t^ aSearch list\r\t\ttitle: 'Link names';\r\t\tpriority: 30;\r\t\titems: [ self links ];\r\t\titemsLimit: Float infinity;\r\t\titemName: #path;\r\t\tsendCategory: [ :aCategory :aStep :thisSearch | PillarWebLinkGroup withAll: aCategory items contents ];\r\t\tfilterBySubstring"
+									},
+									{
+										"__type" : "textSnippet",
+										"children" : {
+											"__type" : "snippets",
+											"items" : [ ]
+										},
+										"createEmail" : {
+											"__type" : "email",
+											"emailString" : "<unknown>"
+										},
+										"createTime" : {
+											"__type" : "time",
+											"time" : {
+												"__type" : "dateAndTime",
+												"dateAndTimeString" : "2023-08-07T20:19:01.361337+02:00"
+											}
+										},
+										"editEmail" : {
+											"__type" : "email",
+											"emailString" : "<unknown>"
+										},
+										"editTime" : {
+											"__type" : "time",
+											"time" : {
+												"__type" : "dateAndTime",
+												"dateAndTimeString" : "2023-08-07T20:25:17.008015+02:00"
+											}
+										},
+										"uid" : {
+											"__type" : "uid",
+											"uidString" : "aBCHBLu+DQC+kDbOAsgVIw=="
+										},
+										"paragraphStyle" : {
+											"__type" : "textStyle"
+										},
+										"string" : "For some reason we need to explicitly ask for the `contents` or else we get an AsyncStream. Not sure why this is different from the case with pages."
+									}
+								]
 							},
 							"createEmail" : {
 								"__type" : "email",
@@ -406,7 +481,7 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-08-07T20:12:57.38181+02:00"
+									"dateAndTimeString" : "2023-08-07T20:19:49.366653+02:00"
 								}
 							},
 							"uid" : {
@@ -416,81 +491,7 @@
 							"paragraphStyle" : {
 								"__type" : "textStyle"
 							},
-							"string" : ""
-						},
-						{
-							"__type" : "textSnippet",
-							"children" : {
-								"__type" : "snippets",
-								"items" : [ ]
-							},
-							"createEmail" : {
-								"__type" : "email",
-								"emailString" : "<unknown>"
-							},
-							"createTime" : {
-								"__type" : "time",
-								"time" : {
-									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-08-07T20:12:59.554015+02:00"
-								}
-							},
-							"editEmail" : {
-								"__type" : "email",
-								"emailString" : "<unknown>"
-							},
-							"editTime" : {
-								"__type" : "time",
-								"time" : {
-									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-08-07T20:12:59.554015+02:00"
-								}
-							},
-							"uid" : {
-								"__type" : "uid",
-								"uidString" : "+1H27rq+DQC5AU2YAh4jmw=="
-							},
-							"paragraphStyle" : {
-								"__type" : "textStyle"
-							},
-							"string" : ""
-						},
-						{
-							"__type" : "textSnippet",
-							"children" : {
-								"__type" : "snippets",
-								"items" : [ ]
-							},
-							"createEmail" : {
-								"__type" : "email",
-								"emailString" : "<unknown>"
-							},
-							"createTime" : {
-								"__type" : "time",
-								"time" : {
-									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-08-07T20:12:59.74529+02:00"
-								}
-							},
-							"editEmail" : {
-								"__type" : "email",
-								"emailString" : "<unknown>"
-							},
-							"editTime" : {
-								"__type" : "time",
-								"time" : {
-									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-08-07T20:12:59.74529+02:00"
-								}
-							},
-							"uid" : {
-								"__type" : "uid",
-								"uidString" : "fTr57rq+DQC5Bt63Ah4jmw=="
-							},
-							"paragraphStyle" : {
-								"__type" : "textStyle"
-							},
-							"string" : ""
+							"string" : "We should now add a Link name search: {{gtMethod:name=APillarWebLinkGroup>>#gtSpotterForLinkNames:}}. "
 						}
 					]
 				},
@@ -632,6 +633,40 @@
 					"uidString" : "o1TGurq+DQChOTxTAh4jmw=="
 				},
 				"code" : "PillarWebsiteExamples new esug2014"
+			},
+			{
+				"__type" : "pharoSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2023-08-07T20:25:25.567095+02:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2023-08-07T20:25:35.548953+02:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "l5RtG7u+DQCmSLLdCgVaYw=="
+				},
+				"code" : "PillarWebsite esug"
 			}
 		]
 	},

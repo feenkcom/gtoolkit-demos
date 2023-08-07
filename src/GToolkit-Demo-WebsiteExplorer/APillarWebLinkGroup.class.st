@@ -179,6 +179,19 @@ APillarWebLinkGroup >> gtMissingStatusLinksFor: aView [
 		updateWhen: PillarWebLinkStatusUpdated in: self announcer
 ]
 
+{ #category : #accessing }
+APillarWebLinkGroup >> gtSpotterForLinkNames: aSearch [
+	<gtSearch>
+	^ aSearch list
+		title: 'Link names';
+		priority: 30;
+		items: [ self links ];
+		itemsLimit: Float infinity;
+		itemName: #path;
+		sendCategory: [ :aCategory :aStep :thisSearch | PillarWebLinkGroup withAll: aCategory items contents ];
+		filterBySubstring
+]
+
 { #category : #links }
 APillarWebLinkGroup >> httpLinks [
 	^  self links select: #isHttp
