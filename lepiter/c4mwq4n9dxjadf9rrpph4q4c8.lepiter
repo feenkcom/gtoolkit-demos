@@ -273,7 +273,7 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-08-06T12:20:40.898776+02:00"
+									"dateAndTimeString" : "2023-08-07T13:30:46.686837+02:00"
 								}
 							},
 							"editEmail" : {
@@ -284,7 +284,7 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-08-06T12:20:46.4885+02:00"
+									"dateAndTimeString" : "2023-08-07T13:31:04.115008+02:00"
 								}
 							},
 							"uid" : {
@@ -294,81 +294,7 @@
 							"paragraphStyle" : {
 								"__type" : "textStyle"
 							},
-							"string" : "But I cannot get it to work."
-						},
-						{
-							"__type" : "textSnippet",
-							"children" : {
-								"__type" : "snippets",
-								"items" : [ ]
-							},
-							"createEmail" : {
-								"__type" : "email",
-								"emailString" : "<unknown>"
-							},
-							"createTime" : {
-								"__type" : "time",
-								"time" : {
-									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-08-06T12:21:52.625455+02:00"
-								}
-							},
-							"editEmail" : {
-								"__type" : "email",
-								"emailString" : "<unknown>"
-							},
-							"editTime" : {
-								"__type" : "time",
-								"time" : {
-									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-08-06T12:22:57.312899+02:00"
-								}
-							},
-							"uid" : {
-								"__type" : "uid",
-								"uidString" : "PdhHPKC+DQCc79vEDavezA=="
-							},
-							"paragraphStyle" : {
-								"__type" : "textStyle"
-							},
-							"string" : "There is a difference in the search actions.For a lepiter database it is {{gtMethod:name=LeDatabaseNavigationModel>>#gtSearchPageFor:}} while for our case it is the default {{gtMethod:name=Object>>#gtActionSearchFor:}}. "
-						},
-						{
-							"__type" : "textSnippet",
-							"children" : {
-								"__type" : "snippets",
-								"items" : [ ]
-							},
-							"createEmail" : {
-								"__type" : "email",
-								"emailString" : "<unknown>"
-							},
-							"createTime" : {
-								"__type" : "time",
-								"time" : {
-									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-08-06T12:23:36.067418+02:00"
-								}
-							},
-							"editEmail" : {
-								"__type" : "email",
-								"emailString" : "<unknown>"
-							},
-							"editTime" : {
-								"__type" : "time",
-								"time" : {
-									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-08-06T12:24:29.515466+02:00"
-								}
-							},
-							"uid" : {
-								"__type" : "uid",
-								"uidString" : "pz5yQqC+DQCfnHz6DavezA=="
-							},
-							"paragraphStyle" : {
-								"__type" : "textStyle"
-							},
-							"string" : "In the case of the category searches, the difference is between {{gtMethod:name=PillarWebsite>>#gtSpotterForPageNames:}} and {{gtMethod:name=LeDatabaseSpotterStart>>#gtSpotterForPagesFor:}}. "
+							"string" : "Finally it works in: {{gtMethod:name=TPillarWebPageGroup>>#gtSpotterForPageNames:}}. "
 						}
 					]
 				},
@@ -439,77 +365,6 @@
 					"__type" : "textStyle"
 				},
 				"string" : ""
-			},
-			{
-				"__type" : "textSnippet",
-				"children" : {
-					"__type" : "snippets",
-					"items" : [ ]
-				},
-				"createEmail" : {
-					"__type" : "email",
-					"emailString" : "<unknown>"
-				},
-				"createTime" : {
-					"__type" : "time",
-					"time" : {
-						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-08-06T12:28:25.710974+02:00"
-					}
-				},
-				"editEmail" : {
-					"__type" : "email",
-					"emailString" : "<unknown>"
-				},
-				"editTime" : {
-					"__type" : "time",
-					"time" : {
-						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-08-06T12:28:36.286002+02:00"
-					}
-				},
-				"uid" : {
-					"__type" : "uid",
-					"uidString" : "Yte1U6C+DQCiMt/eDavezA=="
-				},
-				"paragraphStyle" : {
-					"__type" : "textStyle"
-				},
-				"string" : "Probably we should look at other explicit searches ..."
-			},
-			{
-				"__type" : "pharoSnippet",
-				"children" : {
-					"__type" : "snippets",
-					"items" : [ ]
-				},
-				"createEmail" : {
-					"__type" : "email",
-					"emailString" : "<unknown>"
-				},
-				"createTime" : {
-					"__type" : "time",
-					"time" : {
-						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-08-06T12:27:17.796107+02:00"
-					}
-				},
-				"editEmail" : {
-					"__type" : "email",
-					"emailString" : "<unknown>"
-				},
-				"editTime" : {
-					"__type" : "time",
-					"time" : {
-						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-08-06T12:27:39.026117+02:00"
-					}
-				},
-				"uid" : {
-					"__type" : "uid",
-					"uidString" : "tY2pT6C+DQChVmGYDavezA=="
-				},
-				"code" : "#gtSearch gtPragmas & #explicit gtSenders "
 			}
 		]
 	},
@@ -532,12 +387,12 @@
 		"__type" : "time",
 		"time" : {
 			"__type" : "dateAndTime",
-			"dateAndTimeString" : "2023-08-06T18:13:23.022341+02:00"
+			"dateAndTimeString" : "2023-08-07T13:31:18.246367+02:00"
 		}
 	},
 	"pageType" : {
 		"__type" : "namedPage",
-		"title" : "* Debugging the spotter search category"
+		"title" : "Debugging the spotter search category"
 	},
 	"uid" : {
 		"__type" : "uuid",

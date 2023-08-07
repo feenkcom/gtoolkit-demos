@@ -14,11 +14,14 @@ Eventually this could be a subclass of a more generic website explorer for other
 Class {
 	#name : #PillarWebsite,
 	#superclass : #APillarWebLinkGroup,
+	#traits : 'TPillarWebPageGroup',
+	#classTraits : 'TPillarWebPageGroup classTrait',
 	#instVars : [
 		'repoDir',
 		'url',
 		'pages',
-		'linkDict'
+		'linkDict',
+		'reachable'
 	],
 	#category : #'GToolkit-Demo-WebsiteExplorer-Model'
 }
@@ -100,32 +103,8 @@ PillarWebsite >> gtReachablePagesFor: aView [
 	^ aView forward
 		title: 'Reachable pages';
 		priority: 60;
-		object: [ PillarWebPageGroup withAll: self reachable ];
+		object: [  self reachable ];
 		view: #gtPagesFor:
-]
-
-{ #category : #searching }
-PillarWebsite >> gtSpotterForPageContents: aSearch [
-	<gtSearch>
-	^ aSearch list
-		title: 'Page content';
-		priority: 20;
-		items: [ self pages ];
-		itemsLimit: Float infinity;
-		itemName: #contents;
-		filterBySubstring
-]
-
-{ #category : #searching }
-PillarWebsite >> gtSpotterForPageNames: aSearch [
-	<gtSearch>
-	^ aSearch list
-		title: 'Page names';
-		priority: 10;
-		items: [ self pages ];
-		itemsLimit: Float infinity;
-		itemName: #path;
-		filterBySubstring
 ]
 
 { #category : #accessing }
@@ -135,7 +114,7 @@ PillarWebsite >> gtUnreachablePagesFor: aView [
 	^ aView forward
 		title: 'Unreachable pages';
 		priority: 61;
-		object: [ PillarWebPageGroup withAll: self unreachable ];
+		object: [  self unreachable ];
 		view: #gtPagesFor:
 ]
 
@@ -200,7 +179,10 @@ PillarWebsite >> pages [
 
 { #category : #links }
 PillarWebsite >> reachable [
-	^ self root reachableFrom: self rootPages
+	"Expensive to compute and won't change, so we cache it."
+
+	^ reachable
+		ifNil: [ PillarWebPageGroup withAll: (self root reachableFrom: self rootPages) ]
 ]
 
 { #category : #accessing }
@@ -247,7 +229,7 @@ PillarWebsite >> rootPath [
 
 { #category : #links }
 PillarWebsite >> unreachable [
-	^ self pages difference: self reachable
+	^ PillarWebPageGroup withAll: (self pages difference: self reachable items)
 ]
 
 { #category : #accessing }

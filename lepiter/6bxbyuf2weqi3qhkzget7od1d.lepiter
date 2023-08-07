@@ -193,40 +193,6 @@
 					"__type" : "snippets",
 					"items" : [
 						{
-							"__type" : "pharoSnippet",
-							"children" : {
-								"__type" : "snippets",
-								"items" : [ ]
-							},
-							"createEmail" : {
-								"__type" : "email",
-								"emailString" : "<unknown>"
-							},
-							"createTime" : {
-								"__type" : "time",
-								"time" : {
-									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-08-06T12:31:28.16815+02:00"
-								}
-							},
-							"editEmail" : {
-								"__type" : "email",
-								"emailString" : "<unknown>"
-							},
-							"editTime" : {
-								"__type" : "time",
-								"time" : {
-									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-08-06T14:27:38.458404+02:00"
-								}
-							},
-							"uid" : {
-								"__type" : "uid",
-								"uidString" : "7+yVXqC+DQCkda4mDavezA=="
-							},
-							"code" : "PillarWebsite esug "
-						},
-						{
 							"__type" : "textSnippet",
 							"children" : {
 								"__type" : "snippets",
@@ -251,7 +217,7 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-08-06T14:27:51.387378+02:00"
+									"dateAndTimeString" : "2023-08-07T13:35:26.639254+02:00"
 								}
 							},
 							"uid" : {
@@ -261,7 +227,7 @@
 							"paragraphStyle" : {
 								"__type" : "textStyle"
 							},
-							"string" : "Or explore just the test site:"
+							"string" : "Explore just the test site:"
 						},
 						{
 							"__type" : "pharoSnippet",
@@ -296,6 +262,77 @@
 								"uidString" : "2UIT/qG+DQCYdSK+B4kzKg=="
 							},
 							"code" : "PillarWebsiteExamples new esug2014"
+						},
+						{
+							"__type" : "textSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2023-08-07T13:35:33.484034+02:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2023-08-07T13:35:39.279321+02:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "JCugYbW+DQC5qUEsDc8GOw=="
+							},
+							"paragraphStyle" : {
+								"__type" : "textStyle"
+							},
+							"string" : "Or the full website:"
+						},
+						{
+							"__type" : "pharoSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2023-08-06T12:31:28.16815+02:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2023-08-06T14:27:38.458404+02:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "7+yVXqC+DQCkda4mDavezA=="
+							},
+							"code" : "PillarWebsite esug "
 						}
 					]
 				},
@@ -334,86 +371,50 @@
 				"__type" : "textSnippet",
 				"children" : {
 					"__type" : "snippets",
-					"items" : [ ]
-				},
-				"createEmail" : {
-					"__type" : "email",
-					"emailString" : "<unknown>"
-				},
-				"createTime" : {
-					"__type" : "time",
-					"time" : {
-						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-08-06T12:31:52.331022+02:00"
-					}
-				},
-				"editEmail" : {
-					"__type" : "email",
-					"emailString" : "<unknown>"
-				},
-				"editTime" : {
-					"__type" : "time",
-					"time" : {
-						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-08-06T12:31:52.331022+02:00"
-					}
-				},
-				"uid" : {
-					"__type" : "uid",
-					"uidString" : "H50GYKC+DQClDn+LDavezA=="
-				},
-				"paragraphStyle" : {
-					"__type" : "textStyle"
-				},
-				"string" : ""
-			},
-			{
-				"__type" : "textSnippet",
-				"children" : {
-					"__type" : "snippets",
 					"items" : [
 						{
 							"__type" : "textSnippet",
 							"children" : {
 								"__type" : "snippets",
-								"items" : [ ]
-							},
-							"createEmail" : {
-								"__type" : "email",
-								"emailString" : "<unknown>"
-							},
-							"createTime" : {
-								"__type" : "time",
-								"time" : {
-									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-08-07T09:09:52.705244+02:00"
-								}
-							},
-							"editEmail" : {
-								"__type" : "email",
-								"emailString" : "<unknown>"
-							},
-							"editTime" : {
-								"__type" : "time",
-								"time" : {
-									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-08-07T09:10:05.638057+02:00"
-								}
-							},
-							"uid" : {
-								"__type" : "uid",
-								"uidString" : "OPtdfJ++DQCFMpCjDavezA=="
-							},
-							"paragraphStyle" : {
-								"__type" : "textStyle"
-							},
-							"string" : "Renaming the package."
-						},
-						{
-							"__type" : "textSnippet",
-							"children" : {
-								"__type" : "snippets",
-								"items" : [ ]
+								"items" : [
+									{
+										"__type" : "textSnippet",
+										"children" : {
+											"__type" : "snippets",
+											"items" : [ ]
+										},
+										"createEmail" : {
+											"__type" : "email",
+											"emailString" : "<unknown>"
+										},
+										"createTime" : {
+											"__type" : "time",
+											"time" : {
+												"__type" : "dateAndTime",
+												"dateAndTimeString" : "2023-08-06T12:18:17.859683+02:00"
+											}
+										},
+										"editEmail" : {
+											"__type" : "email",
+											"emailString" : "<unknown>"
+										},
+										"editTime" : {
+											"__type" : "time",
+											"time" : {
+												"__type" : "dateAndTime",
+												"dateAndTimeString" : "2023-08-07T13:31:18.254562+02:00"
+											}
+										},
+										"uid" : {
+											"__type" : "uid",
+											"uidString" : "gMd6L6C+DQCZnNFtDavezA=="
+										},
+										"paragraphStyle" : {
+											"__type" : "textStyle"
+										},
+										"string" : "[[Debugging the spotter search category]] "
+									}
+								]
 							},
 							"createEmail" : {
 								"__type" : "email",
@@ -806,7 +807,7 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-08-07T12:08:43.135342+02:00"
+									"dateAndTimeString" : "2023-08-07T13:35:01.928043+02:00"
 								}
 							},
 							"uid" : {
@@ -816,7 +817,7 @@
 							"paragraphStyle" : {
 								"__type" : "textStyle"
 							},
-							"string" : ""
+							"string" : "Generating some visualizations ..."
 						},
 						{
 							"__type" : "textSnippet",
@@ -832,7 +833,7 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-08-06T12:18:17.859683+02:00"
+									"dateAndTimeString" : "2023-08-07T13:35:06.979652+02:00"
 								}
 							},
 							"editEmail" : {
@@ -843,17 +844,17 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-08-06T18:13:24.109757+02:00"
+									"dateAndTimeString" : "2023-08-07T13:35:06.979652+02:00"
 								}
 							},
 							"uid" : {
 								"__type" : "uid",
-								"uidString" : "gMd6L6C+DQCZnNFtDavezA=="
+								"uidString" : "8L8LYLW+DQC5kdqsDc8GOw=="
 							},
 							"paragraphStyle" : {
 								"__type" : "textStyle"
 							},
-							"string" : "[[* Debugging the spotter search category]] "
+							"string" : ""
 						}
 					]
 				},

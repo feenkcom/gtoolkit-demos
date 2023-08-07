@@ -91,7 +91,7 @@ PillarWebPage >> gtReachablePagesFor: aView [
 	^ aView forward
 		title: 'Reachable pages';
 		priority: 40;
-		object: [ PillarWebPageGroup withAll: self reachable ];
+		object: [ self reachable ];
 		view: #gtPagesFor:
 ]
 
@@ -164,7 +164,7 @@ PillarWebPage >> printOn: aStream [
 
 { #category : #links }
 PillarWebPage >> reachable [
-	^ self reachableFrom: {self}
+	^ PillarWebPageGroup withAll: (self reachableFrom: {self})
 ]
 
 { #category : #links }

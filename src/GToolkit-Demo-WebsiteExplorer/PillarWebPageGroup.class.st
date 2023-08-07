@@ -1,8 +1,8 @@
 Class {
 	#name : #PillarWebPageGroup,
 	#superclass : #Object,
-	#traits : 'TGtGroupWithItems',
-	#classTraits : 'TGtGroupWithItems classTrait',
+	#traits : 'TGtGroupWithItems + TPillarWebPageGroup',
+	#classTraits : 'TGtGroupWithItems classTrait + TPillarWebPageGroup classTrait',
 	#category : #'GToolkit-Demo-WebsiteExplorer-Model'
 }
 
@@ -31,4 +31,9 @@ PillarWebPageGroup >> gtPagesFor: aView [
 				size := item markdownLinks size.
 				size = 0 ifTrue: [ '' ] ifFalse: [ size ] ]
 			width: 80
+]
+
+{ #category : #accessing }
+PillarWebPageGroup >> pages [
+	^ self items
 ]
