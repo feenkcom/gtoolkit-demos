@@ -897,6 +897,43 @@
 											"__type" : "textStyle"
 										},
 										"string" : "\t\tactionButtonIcon: BrGlamorousVectorIcons inspect\r\t\t\ttooltip: 'Inspect  value'\r\t\t\taction: [ :aButton :aTab | aButton phlow spawnObject: (PillarWebLinkGroup withAll: self links) ];"
+									},
+									{
+										"__type" : "textSnippet",
+										"children" : {
+											"__type" : "snippets",
+											"items" : [ ]
+										},
+										"createEmail" : {
+											"__type" : "email",
+											"emailString" : "<unknown>"
+										},
+										"createTime" : {
+											"__type" : "time",
+											"time" : {
+												"__type" : "dateAndTime",
+												"dateAndTimeString" : "2023-08-07T19:49:27.006554+02:00"
+											}
+										},
+										"editEmail" : {
+											"__type" : "email",
+											"emailString" : "<unknown>"
+										},
+										"editTime" : {
+											"__type" : "time",
+											"time" : {
+												"__type" : "dateAndTime",
+												"dateAndTimeString" : "2023-08-07T19:49:52.882358+02:00"
+											}
+										},
+										"uid" : {
+											"__type" : "uid",
+											"uidString" : "g47Emrq+DQCS6nVDDzZO1g=="
+										},
+										"paragraphStyle" : {
+											"__type" : "textStyle"
+										},
+										"string" : "***For some reason** won't work for the *Missing links* view"
 									}
 								]
 							},

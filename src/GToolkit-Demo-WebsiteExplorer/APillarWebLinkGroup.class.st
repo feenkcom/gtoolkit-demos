@@ -99,6 +99,9 @@ APillarWebLinkGroup >> gtHttpLinksFor: aView [
 			width: 60;
 		column: 'Status' text: [ :item | item status ];
 		actionUpdateButton;
+		actionButtonIcon: BrGlamorousVectorIcons inspect
+			tooltip: 'Inspect  value'
+			action: [ :aButton :aTab | aButton phlow spawnObject: (PillarWebLinkGroup withAll: self httpLinks) ];
 		updateWhen: PillarWebLinkStatusUpdated in: self announcer
 ]
 
@@ -121,11 +124,17 @@ APillarWebLinkGroup >> gtLinksFor: aView [
 			width: 60;
 		column: 'Status' text: [ :item | item status ];
 		actionUpdateButton;
+		actionButtonIcon: BrGlamorousVectorIcons inspect
+			tooltip: 'Inspect  value'
+			action: [ :aButton :aTab | aButton phlow spawnObject: (PillarWebLinkGroup withAll: self links) ];
 		updateWhen: PillarWebLinkStatusUpdated in: self announcer
 ]
 
 { #category : #view }
 APillarWebLinkGroup >> gtMissingLinksFor: aView [
+
+"ADDING AN INSPECT BUTTON BREAKS AND FREEZES THE IMAGE"
+
 	<gtView>
 	self missingLinks ifEmpty: [ ^ aView empty ].
 	^ aView columnedList
