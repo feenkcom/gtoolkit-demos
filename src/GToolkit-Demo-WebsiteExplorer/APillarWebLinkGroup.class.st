@@ -99,6 +99,9 @@ APillarWebLinkGroup >> gtHttpLinksFor: aView [
 			width: 60;
 		column: 'Status' text: [ :item | item status ];
 		actionUpdateButton;
+		actionButtonIcon: BrGlamorousVectorIcons inspect
+			tooltip: 'Inspect  value'
+			action: [ :aButton :aTab | aButton phlow spawnObject: (PillarWebLinkGroup withAll: self httpLinks) ];
 		updateWhen: PillarWebLinkStatusUpdated in: self announcer
 ]
 
@@ -121,11 +124,17 @@ APillarWebLinkGroup >> gtLinksFor: aView [
 			width: 60;
 		column: 'Status' text: [ :item | item status ];
 		actionUpdateButton;
+		actionButtonIcon: BrGlamorousVectorIcons inspect
+			tooltip: 'Inspect  value'
+			action: [ :aButton :aTab | aButton phlow spawnObject: (PillarWebLinkGroup withAll: self links) ];
 		updateWhen: PillarWebLinkStatusUpdated in: self announcer
 ]
 
 { #category : #view }
 APillarWebLinkGroup >> gtMissingLinksFor: aView [
+
+"ADDING AN INSPECT BUTTON BREAKS AND FREEZES THE IMAGE"
+
 	<gtView>
 	self missingLinks ifEmpty: [ ^ aView empty ].
 	^ aView columnedList
@@ -145,6 +154,9 @@ APillarWebLinkGroup >> gtMissingLinksFor: aView [
 			text: [ :item | item status ]
 			width: 100;
 		actionUpdateButton;
+		actionButtonIcon: BrGlamorousVectorIcons inspect
+			tooltip: 'Inspect  value'
+			action: [ :aButton :aTab | aButton phlow spawnObject: (PillarWebLinkGroup withAll: self missingLinks) ];
 		updateWhen: PillarWebLinkStatusUpdated in: self announcer
 ]
 
@@ -168,6 +180,19 @@ APillarWebLinkGroup >> gtMissingStatusLinksFor: aView [
 		column: 'Status' text: [ :item | item status ];
 		actionUpdateButton;
 		updateWhen: PillarWebLinkStatusUpdated in: self announcer
+]
+
+{ #category : #accessing }
+APillarWebLinkGroup >> gtSpotterForLinkNames: aSearch [
+	<gtSearch>
+	^ aSearch list
+		title: 'Link names';
+		priority: 30;
+		items: [ self links ];
+		itemsLimit: Float infinity;
+		itemName: #path;
+		sendCategory: [ :aCategory :aStep :thisSearch | PillarWebLinkGroup withAll: aCategory items contents ];
+		filterBySubstring
 ]
 
 { #category : #links }
@@ -197,11 +222,11 @@ APillarWebLinkGroup >> links [
 
 { #category : #links }
 APillarWebLinkGroup >> missingLinks [
-	(self links select: #isInternal) do: #checkStatus.
+	((self links select: #isInternal) select: #statusMissing) do: #checkStatus.
 	^ self links select: [ :link | link isInternal and: [ link isMissing ] ]
 ]
 
 { #category : #links }
 APillarWebLinkGroup >> missingStatusLinks [
-	^ self httpLinks select: #statusMissing
+	^ self links select: #statusMissing
 ]

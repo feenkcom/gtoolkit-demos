@@ -844,7 +844,7 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-08-07T18:35:41.60112+02:00"
+									"dateAndTimeString" : "2023-08-07T19:57:12.533805+02:00"
 								}
 							},
 							"uid" : {
@@ -854,7 +854,7 @@
 							"paragraphStyle" : {
 								"__type" : "textStyle"
 							},
-							"string" : ""
+							"string" : "[[Add inspect and search buttons for groups]]"
 						},
 						{
 							"__type" : "textSnippet",
@@ -875,7 +875,7 @@
 											"__type" : "time",
 											"time" : {
 												"__type" : "dateAndTime",
-												"dateAndTimeString" : "2023-08-07T18:37:14.601509+02:00"
+												"dateAndTimeString" : "2023-08-07T18:37:43.278743+02:00"
 											}
 										},
 										"editEmail" : {
@@ -886,56 +886,56 @@
 											"__type" : "time",
 											"time" : {
 												"__type" : "dateAndTime",
-												"dateAndTimeString" : "2023-08-07T18:37:18.327415+02:00"
+												"dateAndTimeString" : "2023-08-07T18:37:53.413777+02:00"
 											}
 										},
 										"uid" : {
 											"__type" : "uid",
-											"uidString" : "2k6JmLm+DQCPiLG1B2jWnA=="
+											"uidString" : "jt0+mrm+DQCQomW1B2jWnA=="
 										},
 										"paragraphStyle" : {
 											"__type" : "textStyle"
 										},
-										"string" : "\t\tactionButtonIcon: BrGlamorousVectorIcons inspect\r\t\t\ttooltip: 'Inspect  value'\r\t\t\taction: [ :aButton :aTab | aButton phlow spawnObject: (PillarWebLinkGroup withAll: self links) ];"
+										"string" : "Make sure the category searches spawn correctly."
+									},
+									{
+										"__type" : "textSnippet",
+										"children" : {
+											"__type" : "snippets",
+											"items" : [ ]
+										},
+										"createEmail" : {
+											"__type" : "email",
+											"emailString" : "<unknown>"
+										},
+										"createTime" : {
+											"__type" : "time",
+											"time" : {
+												"__type" : "dateAndTime",
+												"dateAndTimeString" : "2023-08-07T18:37:54.289442+02:00"
+											}
+										},
+										"editEmail" : {
+											"__type" : "email",
+											"emailString" : "<unknown>"
+										},
+										"editTime" : {
+											"__type" : "time",
+											"time" : {
+												"__type" : "dateAndTime",
+												"dateAndTimeString" : "2023-08-07T18:37:54.289442+02:00"
+											}
+										},
+										"uid" : {
+											"__type" : "uid",
+											"uidString" : "5eXmmrm+DQCRmVQYB2jWnA=="
+										},
+										"paragraphStyle" : {
+											"__type" : "textStyle"
+										},
+										"string" : ""
 									}
 								]
-							},
-							"createEmail" : {
-								"__type" : "email",
-								"emailString" : "<unknown>"
-							},
-							"createTime" : {
-								"__type" : "time",
-								"time" : {
-									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-08-07T18:36:58.222887+02:00"
-								}
-							},
-							"editEmail" : {
-								"__type" : "email",
-								"emailString" : "<unknown>"
-							},
-							"editTime" : {
-								"__type" : "time",
-								"time" : {
-									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-08-07T18:37:23.038759+02:00"
-								}
-							},
-							"uid" : {
-								"__type" : "uid",
-								"uidString" : "nV6Pl7m+DQCOt2dZB2jWnA=="
-							},
-							"paragraphStyle" : {
-								"__type" : "textStyle"
-							},
-							"string" : "Add inspect buttons for the various views, eg:"
-						},
-						{
-							"__type" : "textSnippet",
-							"children" : {
-								"__type" : "snippets",
-								"items" : [ ]
 							},
 							"createEmail" : {
 								"__type" : "email",
@@ -967,43 +967,6 @@
 								"__type" : "textStyle"
 							},
 							"string" : "Add searches for both Link and Page groups"
-						},
-						{
-							"__type" : "textSnippet",
-							"children" : {
-								"__type" : "snippets",
-								"items" : [ ]
-							},
-							"createEmail" : {
-								"__type" : "email",
-								"emailString" : "<unknown>"
-							},
-							"createTime" : {
-								"__type" : "time",
-								"time" : {
-									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-08-07T18:37:43.278743+02:00"
-								}
-							},
-							"editEmail" : {
-								"__type" : "email",
-								"emailString" : "<unknown>"
-							},
-							"editTime" : {
-								"__type" : "time",
-								"time" : {
-									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-08-07T18:37:43.278743+02:00"
-								}
-							},
-							"uid" : {
-								"__type" : "uid",
-								"uidString" : "jt0+mrm+DQCQomW1B2jWnA=="
-							},
-							"paragraphStyle" : {
-								"__type" : "textStyle"
-							},
-							"string" : ""
 						},
 						{
 							"__type" : "textSnippet",

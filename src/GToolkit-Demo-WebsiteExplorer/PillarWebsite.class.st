@@ -127,8 +127,11 @@ PillarWebsite >> gtReachablePagesFor: aView [
 	^ aView forward
 		title: 'Reachable pages';
 		priority: 60;
-		object: [  self reachable ];
-		view: #gtPagesFor:
+		object: [ self reachable ];
+		view: #gtPagesFor:;
+		actionButtonIcon: BrGlamorousVectorIcons inspect
+			tooltip: 'Inspect  value'
+			action: [ :aButton :aTab | aButton phlow spawnObject: self reachable ]
 ]
 
 { #category : #accessing }
@@ -138,8 +141,11 @@ PillarWebsite >> gtUnreachablePagesFor: aView [
 	^ aView forward
 		title: 'Unreachable pages';
 		priority: 61;
-		object: [  self unreachable ];
-		view: #gtPagesFor:
+		object: [ self unreachable ];
+		view: #gtPagesFor:;
+		actionButtonIcon: BrGlamorousVectorIcons inspect
+			tooltip: 'Inspect  value'
+			action: [ :aButton :aTab | aButton phlow spawnObject: self unreachable ]
 ]
 
 { #category : #testing }
