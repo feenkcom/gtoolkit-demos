@@ -70,6 +70,15 @@ PillarWebsite >> cleanJson: anJsonString [
 	^ anJsonString copyReplaceAll: badLine with: ''
 ]
 
+{ #category : #accessing }
+PillarWebsite >> gtMapFor: aView [
+	<gtView>
+	^ aView mondrian
+		title: 'Map';
+		priority: 15;
+		painting: [ :aMondrian | self mapFor: aMondrian ]
+]
+
 { #category : #view }
 PillarWebsite >> gtPagesFor: aView [
 	<gtView>
@@ -160,6 +169,31 @@ PillarWebsite >> links [
 			(a path occurrencesOf: $/) < (b path occurrencesOf: $/)
 				or: [ (a path occurrencesOf: $/) = (b path occurrencesOf: $/)
 						and: [ a path < b path ] ] ]
+]
+
+{ #category : #accessing }
+PillarWebsite >> mapFor: aMondrian [
+	aMondrian nodes
+		stencil: [ :each | 
+			BlElement new
+				size: 5 @ 5;
+				geometry: BlCircleGeometry new;
+				background: ((self rootPages includes: each) ifTrue: [ Color blue ] ifFalse: [ Color red ]) ];
+		with: (self pages select: [ :each | each reachable isNotEmpty ]).
+
+	aMondrian edges
+		stencil: [ :each | 
+			BlLineElement new
+				zIndex: -1;
+				border: (BlBorder paint: (Color veryVeryLightGray alpha: 0.5)) ];
+		connectToAll: [ :each | each childrenPages asSet ].
+	aMondrian layout force.
+	^ aMondrian
+]
+
+{ #category : #accessing }
+PillarWebsite >> mondrianMap [
+	^ self mapFor: GtMondrian new
 ]
 
 { #category : #announcements }
