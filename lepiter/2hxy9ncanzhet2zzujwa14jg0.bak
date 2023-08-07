@@ -18,7 +18,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-08-06T14:50:59.032832+02:00"
+						"dateAndTimeString" : "2023-08-07T08:54:17.671468+02:00"
 					}
 				},
 				"editEmail" : {
@@ -29,7 +29,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-08-06T14:50:59.032832+02:00"
+						"dateAndTimeString" : "2023-08-07T08:56:04.674475+02:00"
 					}
 				},
 				"uid" : {
@@ -39,7 +39,152 @@
 				"paragraphStyle" : {
 					"__type" : "textStyle"
 				},
+				"string" : "We want to check external links in the background. The easiest way to do this is with plain Smalltalk processes."
+			},
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2023-08-07T08:56:00.120621+02:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2023-08-07T08:57:25.455836+02:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "5/XaebG+DQCdtcYsD0s6MQ=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : "We introduce {{gtMethod:name=PillarWebsite>>#checkStatusWhereMissing}} to run a background process, and {{gtMethod:name=PillarWebsite>>#killBackgroundCheck}} to kill it, if necessary."
+			},
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2023-08-07T08:54:18.120084+02:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2023-08-07T08:54:18.120084+02:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "i43Gc7G+DQCbSGVWD0s6MQ=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
 				"string" : ""
+			},
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2023-08-07T08:54:18.392556+02:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2023-08-07T08:54:18.392556+02:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "aLXKc7G+DQCbTDtID0s6MQ=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : ""
+			},
+			{
+				"__type" : "pharoSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2023-08-07T08:54:32.137839+02:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2023-08-07T08:54:32.661836+02:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "9HCcdLG+DQCbUNlwD0s6MQ=="
+				},
+				"code" : "PillarWebsiteExamples new esug2014"
 			},
 			{
 				"__type" : "textSnippet",
@@ -82,223 +227,6 @@
 				"__type" : "textSnippet",
 				"children" : {
 					"__type" : "snippets",
-					"items" : [
-						{
-							"__type" : "textSnippet",
-							"children" : {
-								"__type" : "snippets",
-								"items" : [ ]
-							},
-							"createEmail" : {
-								"__type" : "email",
-								"emailString" : "<unknown>"
-							},
-							"createTime" : {
-								"__type" : "time",
-								"time" : {
-									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-07-21T17:57:15.547557+02:00"
-								}
-							},
-							"editEmail" : {
-								"__type" : "email",
-								"emailString" : "<unknown>"
-							},
-							"editTime" : {
-								"__type" : "time",
-								"time" : {
-									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-08-06T14:30:23.538492+02:00"
-								}
-							},
-							"uid" : {
-								"__type" : "uid",
-								"uidString" : "f0Y9DmO9DQCcrIJ8Cb0M7w=="
-							},
-							"paragraphStyle" : {
-								"__type" : "textStyle"
-							},
-							"string" : "Checking external links takes some time. See {{gtMethod:name=PillarWebLink>>#checkHttpStatus}}. "
-						},
-						{
-							"__type" : "textSnippet",
-							"children" : {
-								"__type" : "snippets",
-								"items" : [ ]
-							},
-							"createEmail" : {
-								"__type" : "email",
-								"emailString" : "<unknown>"
-							},
-							"createTime" : {
-								"__type" : "time",
-								"time" : {
-									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-07-21T17:57:30.100991+02:00"
-								}
-							},
-							"editEmail" : {
-								"__type" : "email",
-								"emailString" : "<unknown>"
-							},
-							"editTime" : {
-								"__type" : "time",
-								"time" : {
-									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-07-21T18:42:41.046618+02:00"
-								}
-							},
-							"uid" : {
-								"__type" : "uid",
-								"uidString" : "o1cbD2O9DQCdfQ2YCb0M7w=="
-							},
-							"paragraphStyle" : {
-								"__type" : "textStyle"
-							},
-							"string" : "Let's try to schedule a bunch of processes. We partition the links into a pool of 20 groups, and assign them to 20 processes checking the links in one of the groups."
-						},
-						{
-							"__type" : "pharoSnippet",
-							"children" : {
-								"__type" : "snippets",
-								"items" : [ ]
-							},
-							"createEmail" : {
-								"__type" : "email",
-								"emailString" : "<unknown>"
-							},
-							"createTime" : {
-								"__type" : "time",
-								"time" : {
-									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-07-21T18:35:47.790981+02:00"
-								}
-							},
-							"editEmail" : {
-								"__type" : "email",
-								"emailString" : "<unknown>"
-							},
-							"editTime" : {
-								"__type" : "time",
-								"time" : {
-									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-08-06T14:30:39.506613+02:00"
-								}
-							},
-							"uid" : {
-								"__type" : "uid",
-								"uidString" : "TksPmGO9DQCYH/3DAGOulw=="
-							},
-							"code" : "linkPool := (1 to: 20) collect: [ :each | OrderedCollection new ].\r(PillarWebsiteExamples new esug2014 httpLinks select: #statusMissing )\r\tdoWithIndex: [ :link :index | (linkPool at: 1 + (index \\\\ 20)) add: link ].\rtasks := linkPool\r\t\tcollect: [ :links | \r\t\t\t[ | budget lastTime |\r\t\t\tbudget := 1 milliseconds.\r\t\t\tlastTime := Time now asDuration.\r\t\t\tlinks\r\t\t\t\tdo: [ :each | \r\t\t\t\t\tTime now asDuration - lastTime > budget\r\t\t\t\t\t\tifTrue: [ Processor yield.\r\t\t\t\t\t\t\tlastTime := Time now asDuration ].\r\t\t\t\t\teach checkHttpStatus ] ] ].\rprocesses := OrderedCollection new.\rtasks do: [ :task | processes add: [ task value ] fork ].\rprocesses."
-						},
-						{
-							"__type" : "pharoSnippet",
-							"children" : {
-								"__type" : "snippets",
-								"items" : [ ]
-							},
-							"createEmail" : {
-								"__type" : "email",
-								"emailString" : "<unknown>"
-							},
-							"createTime" : {
-								"__type" : "time",
-								"time" : {
-									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-07-21T18:45:43.127163+02:00"
-								}
-							},
-							"editEmail" : {
-								"__type" : "email",
-								"emailString" : "<unknown>"
-							},
-							"editTime" : {
-								"__type" : "time",
-								"time" : {
-									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-08-06T14:33:44.514666+02:00"
-								}
-							},
-							"uid" : {
-								"__type" : "uid",
-								"uidString" : "2GqLu2O9DQCdgAtwAGOulw=="
-							},
-							"code" : "[ PillarWebsiteExamples new esug2014 httpLinks select: #statusMissing ]"
-						},
-						{
-							"__type" : "textSnippet",
-							"children" : {
-								"__type" : "snippets",
-								"items" : [ ]
-							},
-							"createEmail" : {
-								"__type" : "email",
-								"emailString" : "<unknown>"
-							},
-							"createTime" : {
-								"__type" : "time",
-								"time" : {
-									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-07-21T18:40:37.962542+02:00"
-								}
-							},
-							"editEmail" : {
-								"__type" : "email",
-								"emailString" : "<unknown>"
-							},
-							"editTime" : {
-								"__type" : "time",
-								"time" : {
-									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-07-21T18:40:48.064099+02:00"
-								}
-							},
-							"uid" : {
-								"__type" : "uid",
-								"uidString" : "PfhaqWO9DQCYyTmpAGOulw=="
-							},
-							"paragraphStyle" : {
-								"__type" : "textStyle"
-							},
-							"string" : "TODO: add broken links view."
-						}
-					]
-				},
-				"createEmail" : {
-					"__type" : "email",
-					"emailString" : "<unknown>"
-				},
-				"createTime" : {
-					"__type" : "time",
-					"time" : {
-						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-07-21T17:56:52.381377+02:00"
-					}
-				},
-				"editEmail" : {
-					"__type" : "email",
-					"emailString" : "<unknown>"
-				},
-				"editTime" : {
-					"__type" : "time",
-					"time" : {
-						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-07-21T17:57:14.206883+02:00"
-					}
-				},
-				"uid" : {
-					"__type" : "uid",
-					"uidString" : "f8jbDGO9DQCbpF2/Cb0M7w=="
-				},
-				"paragraphStyle" : {
-					"__type" : "textStyle"
-				},
-				"string" : "# Checking external links with futures"
-			},
-			{
-				"__type" : "textSnippet",
-				"children" : {
-					"__type" : "snippets",
 					"items" : [ ]
 				},
 				"createEmail" : {
@@ -309,7 +237,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-07-21T11:25:54.314945+02:00"
+						"dateAndTimeString" : "2023-08-07T08:57:49.020408+02:00"
 					}
 				},
 				"editEmail" : {
@@ -320,12 +248,12 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-07-21T11:25:54.314945+02:00"
+						"dateAndTimeString" : "2023-08-07T08:57:49.020408+02:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
-					"uidString" : "KRemll29DQCUppC+CzmFhg=="
+					"uidString" : "iKJYgLG+DQCfmyS2D0s6MQ=="
 				},
 				"paragraphStyle" : {
 					"__type" : "textStyle"
@@ -346,7 +274,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-07-21T11:50:15.537066+02:00"
+						"dateAndTimeString" : "2023-08-07T08:57:49.214725+02:00"
 					}
 				},
 				"editEmail" : {
@@ -357,17 +285,51 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-07-21T11:50:15.537066+02:00"
+						"dateAndTimeString" : "2023-08-07T08:57:57.370125+02:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
-					"uidString" : "wdnRMDm9DQCB6EdhBmm2vw=="
+					"uidString" : "/phbgLG+DQCfn4euD0s6MQ=="
 				},
 				"paragraphStyle" : {
 					"__type" : "textStyle"
 				},
-				"string" : ""
+				"string" : "[[Checking external links with futures]]"
+			},
+			{
+				"__type" : "pharoSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2023-08-07T08:58:05.890106+02:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2023-08-07T08:58:12.409616+02:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "jglagbG+DQCfwHkQD0s6MQ=="
+				},
+				"code" : "thisSnippet moveFollowingSnippetsToPage: 'Checking external links with futures'"
 			}
 		]
 	},
@@ -390,12 +352,12 @@
 		"__type" : "time",
 		"time" : {
 			"__type" : "dateAndTime",
-			"dateAndTimeString" : "2023-08-06T14:51:19.664935+02:00"
+			"dateAndTimeString" : "2023-08-07T08:54:14.124837+02:00"
 		}
 	},
 	"pageType" : {
 		"__type" : "namedPage",
-		"title" : "Checking external links with futures"
+		"title" : "Checking external links in the background"
 	},
 	"uid" : {
 		"__type" : "uuid",
