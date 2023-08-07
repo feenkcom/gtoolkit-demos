@@ -213,6 +213,23 @@ PillarWebsite >> root [
 	^ self pages detect: [ :page | page path = self rootPath ]
 ]
 
+{ #category : #accessing }
+PillarWebsite >> rootPages [
+	| badLine validJsonString json urls |
+	badLine := '#''Describing the sites menu as title,url pair'': #comment,'.
+	validJsonString := 'esug.github.io/pillar.conf' asFileReference contents
+			copyReplaceAll: badLine
+			with: ''.
+	json := NeoJSONReader fromString: validJsonString.
+
+	urls := (((json at: 'menu') collect: [ :menu | menu at: 'url' ]) asSet
+			union: (((json at: 'menu') flatCollect: [ :menu | menu at: 'submenu' ])
+					collect: [ :submenu | submenu at: 'url' ]))
+			collect: [ :html | html copyReplaceAll: '.html' with: '.pillar' ].
+
+	^ urls
+]
+
 { #category : #constant }
 PillarWebsite >> rootPath [
 	"Assume this is the root of any pillar website."

@@ -164,9 +164,14 @@ PillarWebPage >> printOn: aStream [
 
 { #category : #links }
 PillarWebPage >> reachable [
+	^ self reachableFrom: self
+]
+
+{ #category : #links }
+PillarWebPage >> reachableFrom: rootPages [
 	| reachable pagesToCheck |
 	reachable := OrderedCollection new.
-	pagesToCheck := OrderedCollection with: self.
+	pagesToCheck := OrderedCollection with: rootPages.
 	[ pagesToCheck notEmpty ]
 		whileTrue: [ | aPage |
 			aPage := pagesToCheck removeFirst.
