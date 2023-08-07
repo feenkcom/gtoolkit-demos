@@ -14,7 +14,7 @@ PillarWebsiteExamples >> esug2014 [
 	website
 		repoDir: self esug2014repoDir;
 		url: self esug2014url.
-	self assert: website pages size equals: 20.
+	self assert: website pages size equals: 21.
 	self assert: website rootPages size equals: 3.
 	^ website
 ]

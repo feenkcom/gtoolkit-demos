@@ -66,14 +66,14 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-08-07T14:51:37.010844+02:00"
+						"dateAndTimeString" : "2023-08-07T15:07:34.495039+02:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
 					"uidString" : "q873XLa+DQCdTcc7Dbcs3A=="
 				},
-				"code" : "website := PillarWebsiteExamples new esug2014.\rroots := website rootPages.\r\rm := GtMondrian new.\rm nodes\r\tstencil: [ :each | \r\t\tBlElement new\r\t\t\tsize: 5 @ 5;\r\t\t\tgeometry: BlCircleGeometry new;\r\t\t\tbackground: ((roots includes: each) ifTrue: [ Color blue ] ifFalse: [ Color red ]) ];\r\twith: (website pages select: [ :each | each reachable isNotEmpty ]).\r\rm edges\r\tstencil: [ :each | \r\t\tBlLineElement new\r\t\t\tzIndex: -1;\r\t\t\tborder: (BlBorder paint: (Color veryVeryLightGray alpha: 0.5)) ];\r\tconnectToAll: [ :each | each childrenPages asSet ].\rm layout force.\rm"
+				"code" : "website := PillarWebsiteExamples new esug2014.\rroots := website rootPages.\rreachable := \r\rm := GtMondrian new.\rm nodes\r\tstencil: [ :each | \r\t\tBlElement new\r\t\t\tsize: 5 @ 5;\r\t\t\tgeometry: BlCircleGeometry new;\r\t\t\tbackground: ((roots includes: each) ifTrue: [ Color blue ] ifFalse: [ Color red ]) ];\r\twith: (website pages select: [ :each | each reachable isNotEmpty ]).\r\rm edges\r\tstencil: [ :each | \r\t\tBlLineElement new\r\t\t\tzIndex: -1;\r\t\t\tborder: (BlBorder paint: (Color veryVeryLightGray alpha: 0.5)) ];\r\tconnectToAll: [ :each | each childrenPages asSet ].\rm layout force.\rm"
 			},
 			{
 				"__type" : "textSnippet",
@@ -113,7 +113,7 @@
 				"string" : "We extract this as a method."
 			},
 			{
-				"__type" : "pharoSnippet",
+				"__type" : "elementSnippet",
 				"children" : {
 					"__type" : "snippets",
 					"items" : [ ]
@@ -126,7 +126,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-08-07T14:58:39.892216+02:00"
+						"dateAndTimeString" : "2023-08-07T14:59:20.580961+02:00"
 					}
 				},
 				"editEmail" : {
@@ -137,14 +137,17 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-08-07T14:59:11.877496+02:00"
+						"dateAndTimeString" : "2023-08-07T14:59:21.146074+02:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
-					"uidString" : "UrfWira+DQChKNsvDbcs3A=="
+					"uidString" : "UZNDjba+DQChm7jQDbcs3A=="
 				},
-				"code" : "PillarWebsiteExamples new esug2014 mondrianMap"
+				"code" : "PillarWebsiteExamples new esug2014 mondrianMap",
+				"elementHeight" : 355,
+				"codeHeight" : 50,
+				"codeVisible" : false
 			}
 		]
 	},
