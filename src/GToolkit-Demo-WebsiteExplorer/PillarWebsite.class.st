@@ -13,15 +13,12 @@ Eventually this could be a subclass of a more generic website explorer for other
 "
 Class {
 	#name : #PillarWebsite,
-	#superclass : #Object,
-	#traits : 'TPillarWebLinkGroup',
-	#classTraits : 'TPillarWebLinkGroup classTrait',
+	#superclass : #APillarWebLinkGroup,
 	#instVars : [
 		'repoDir',
 		'url',
 		'pages',
 		'linkDict',
-		'announcer',
 		'process'
 	],
 	#category : #'GToolkit-Demo-WebsiteExplorer-Model'
@@ -62,16 +59,6 @@ PillarWebsite class >> initializeRepoDir: aRepoDir fromRepoUrl: aRepoUrl [
 			errorBlock: [ :theProc | self error: 'Git clone failed: ' , aRepoUrl printString ].
 	proc runAndWait.
 	^ aRepoDir
-]
-
-{ #category : #announcements }
-PillarWebsite >> announcer [
-	^ announcer
-]
-
-{ #category : #announcements }
-PillarWebsite >> announcer: anAnnouncement [
-	announcer := anAnnouncement
 ]
 
 { #category : #links }
@@ -145,27 +132,6 @@ PillarWebsite >> gtHttpLinksFor: aView [
 		column: 'Link'
 			text: [ :item | item path ]
 			width: 400;
-		column: '# Pages'
-			text: [ :item | item pages size ]
-			width: 60;
-		column: 'Status' text: [ :item | item status ];
-		actionUpdateButton;
-		updateWhen: PillarWebLinkStatusUpdated in: self announcer
-]
-
-{ #category : #view }
-PillarWebsite >> gtLinksFor: aView [
-	<gtView>
-	^ aView columnedList
-		title: 'Links';
-		priority: 30;
-		items: [ self links ];
-		column: 'Index'
-			text: [ :eachItem :eachIndex | eachIndex asRopedText foreground: Color gray ]
-			width: 45;
-		column: 'Link'
-			text: [ :item | item path ]
-			width: 300;
 		column: '# Pages'
 			text: [ :item | item pages size ]
 			width: 60;
@@ -280,11 +246,6 @@ PillarWebsite >> hasPageNamed: aString [
 { #category : #links }
 PillarWebsite >> httpLinks [
 	^  self links select: #isHttp
-]
-
-{ #category : #initializations }
-PillarWebsite >> initialize [
-	self announcer: Announcer new
 ]
 
 { #category : #initialization }

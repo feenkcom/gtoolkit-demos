@@ -1,28 +1,10 @@
 Class {
 	#name : #PillarWebLinkGroup,
-	#superclass : #Object,
-	#traits : 'TGtGroupWithItems + TPillarWebLinkGroup',
-	#classTraits : 'TGtGroupWithItems classTrait + TPillarWebLinkGroup classTrait',
-	#instVars : [
-		'announcer'
-	],
+	#superclass : #APillarWebLinkGroup,
+	#traits : 'TGtGroupWithItems',
+	#classTraits : 'TGtGroupWithItems classTrait',
 	#category : #'GToolkit-Demo-WebsiteExplorer-Model'
 }
-
-{ #category : #announcements }
-PillarWebLinkGroup >> announcer [
-]
-
-{ #category : #accessing }
-PillarWebLinkGroup >> announcer: anObject [
-	announcer := anObject
-]
-
-{ #category : #initialization }
-PillarWebLinkGroup >> initialize [
-	super initialize.
-	self announcer: Announcer new
-]
 
 { #category : #accessing }
 PillarWebLinkGroup >> initializeWith: aCollection [
@@ -38,8 +20,7 @@ PillarWebLinkGroup >> links [
 
 { #category : #announcements }
 PillarWebLinkGroup >> notifyStatusUpdate [
-	self announcer announce: PillarWebLinkStatusUpdated new.
-
+	self announcer announce: PillarWebLinkStatusUpdated new
 ]
 
 { #category : #announcements }
