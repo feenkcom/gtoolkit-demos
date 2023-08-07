@@ -1,7 +1,7 @@
 Class {
 	#name : #PillarLinkSeaParserExamples,
 	#superclass : #Object,
-	#category : #'GToolkit-Demo-EsugWebsite-Parser'
+	#category : #'GToolkit-Demo-WebsiteExplorer-Parser'
 }
 
 { #category : #accessing }

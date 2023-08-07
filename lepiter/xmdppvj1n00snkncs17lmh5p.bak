@@ -18,7 +18,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-08-07T08:54:17.671468+02:00"
+						"dateAndTimeString" : "2023-08-07T12:08:54.317155+02:00"
 					}
 				},
 				"editEmail" : {
@@ -29,128 +29,17 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-08-07T08:56:04.674475+02:00"
+						"dateAndTimeString" : "2023-08-07T12:10:44.911935+02:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
-					"uidString" : "czGHUaK+DQCauyWRB4kzKg=="
+					"uidString" : "ezC7K7S+DQCm6BjMCnrGDw=="
 				},
 				"paragraphStyle" : {
 					"__type" : "textStyle"
 				},
-				"string" : "We want to check external links in the background. The easiest way to do this is with plain Smalltalk processes."
-			},
-			{
-				"__type" : "textSnippet",
-				"children" : {
-					"__type" : "snippets",
-					"items" : [ ]
-				},
-				"createEmail" : {
-					"__type" : "email",
-					"emailString" : "<unknown>"
-				},
-				"createTime" : {
-					"__type" : "time",
-					"time" : {
-						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-08-07T08:56:00.120621+02:00"
-					}
-				},
-				"editEmail" : {
-					"__type" : "email",
-					"emailString" : "<unknown>"
-				},
-				"editTime" : {
-					"__type" : "time",
-					"time" : {
-						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-08-07T08:57:25.455836+02:00"
-					}
-				},
-				"uid" : {
-					"__type" : "uid",
-					"uidString" : "5/XaebG+DQCdtcYsD0s6MQ=="
-				},
-				"paragraphStyle" : {
-					"__type" : "textStyle"
-				},
-				"string" : "We introduce {{gtMethod:name=PillarWebsite>>#checkStatusWhereMissing}} to run a background process, and {{gtMethod:name=PillarWebsite>>#killBackgroundCheck}} to kill it, if necessary."
-			},
-			{
-				"__type" : "textSnippet",
-				"children" : {
-					"__type" : "snippets",
-					"items" : [ ]
-				},
-				"createEmail" : {
-					"__type" : "email",
-					"emailString" : "<unknown>"
-				},
-				"createTime" : {
-					"__type" : "time",
-					"time" : {
-						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-08-07T08:54:18.120084+02:00"
-					}
-				},
-				"editEmail" : {
-					"__type" : "email",
-					"emailString" : "<unknown>"
-				},
-				"editTime" : {
-					"__type" : "time",
-					"time" : {
-						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-08-07T08:54:18.120084+02:00"
-					}
-				},
-				"uid" : {
-					"__type" : "uid",
-					"uidString" : "i43Gc7G+DQCbSGVWD0s6MQ=="
-				},
-				"paragraphStyle" : {
-					"__type" : "textStyle"
-				},
-				"string" : ""
-			},
-			{
-				"__type" : "textSnippet",
-				"children" : {
-					"__type" : "snippets",
-					"items" : [ ]
-				},
-				"createEmail" : {
-					"__type" : "email",
-					"emailString" : "<unknown>"
-				},
-				"createTime" : {
-					"__type" : "time",
-					"time" : {
-						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-08-07T08:54:18.392556+02:00"
-					}
-				},
-				"editEmail" : {
-					"__type" : "email",
-					"emailString" : "<unknown>"
-				},
-				"editTime" : {
-					"__type" : "time",
-					"time" : {
-						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-08-07T08:54:18.392556+02:00"
-					}
-				},
-				"uid" : {
-					"__type" : "uid",
-					"uidString" : "aLXKc7G+DQCbTDtID0s6MQ=="
-				},
-				"paragraphStyle" : {
-					"__type" : "textStyle"
-				},
-				"string" : ""
+				"string" : "When we explore the ESUG website we see a large number of unreachable pages. When we view the actual website, we see that many of these pages these are actually accessible from the Navigation bar at the top of each page. After some sleuthing we discover that these additional navigation links are configured in a non-pillar file:"
 			},
 			{
 				"__type" : "pharoSnippet",
@@ -166,7 +55,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-08-07T08:54:32.137839+02:00"
+						"dateAndTimeString" : "2023-08-07T12:10:46.487221+02:00"
 					}
 				},
 				"editEmail" : {
@@ -177,14 +66,14 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-08-07T08:54:32.661836+02:00"
+						"dateAndTimeString" : "2023-08-07T12:11:14.239464+02:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
-					"uidString" : "9HCcdLG+DQCbUNlwD0s6MQ=="
+					"uidString" : "68BqMrS+DQCt6dZYCnrGDw=="
 				},
-				"code" : "PillarWebsiteExamples new esug2014"
+				"code" : "'esug.github.io/pillar.conf' asFileReference"
 			},
 			{
 				"__type" : "textSnippet",
@@ -200,7 +89,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-08-06T14:50:59.346722+02:00"
+						"dateAndTimeString" : "2023-08-07T12:12:50.580245+02:00"
 					}
 				},
 				"editEmail" : {
@@ -211,17 +100,85 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-08-06T14:50:59.346722+02:00"
+						"dateAndTimeString" : "2023-08-07T12:27:33.508024+02:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
-					"uidString" : "IveLUaK+DQCav1fwB4kzKg=="
+					"uidString" : "NETQObS+DQCuriL3CnrGDw=="
 				},
 				"paragraphStyle" : {
 					"__type" : "textStyle"
 				},
-				"string" : ""
+				"string" : "The file contains an error (non-JSON). We fix the error and extract all the urls."
+			},
+			{
+				"__type" : "pharoSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2023-08-07T12:13:07.672759+02:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2023-08-07T12:19:35.685036+02:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "EhPVOrS+DQCvj1gWCnrGDw=="
+				},
+				"code" : "badLine := '#''Describing the sites menu as title,url pair'': #comment,'.\rvalidJsonString := 'esug.github.io/pillar.conf' asFileReference contents\r\t\tcopyReplaceAll: badLine\r\t\twith: ''.\rjson := NeoJSONReader fromString: validJsonString."
+			},
+			{
+				"__type" : "pharoSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2023-08-07T12:23:35.325043+02:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2023-08-07T12:27:36.262191+02:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "8ks+YLS+DQC1bA6VCnrGDw=="
+				},
+				"code" : "urls := (((json at: 'menu') collect: [ :menu | menu at: 'url' ]) asSet\r\t\tunion: (((json at: 'menu') flatCollect: [ :menu | menu at: 'submenu' ])\r\t\t\t\tcollect: [ :submenu | submenu at: 'url' ]))\r\t\tcollect: [ :html | html copyReplaceAll: '.html' with: '.pillar' ]."
 			},
 			{
 				"__type" : "textSnippet",
@@ -237,7 +194,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-08-07T08:57:49.020408+02:00"
+						"dateAndTimeString" : "2023-08-07T12:30:59.464467+02:00"
 					}
 				},
 				"editEmail" : {
@@ -248,17 +205,88 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-08-07T08:58:21.930832+02:00"
+						"dateAndTimeString" : "2023-08-07T12:52:10.579102+02:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
-					"uidString" : "iKJYgLG+DQCfmyS2D0s6MQ=="
+					"uidString" : "B0+3erS+DQC7Jtp/CnrGDw=="
 				},
 				"paragraphStyle" : {
 					"__type" : "textStyle"
 				},
-				"string" : "See also: [[Checking external links with futures]]"
+				"string" : "We extract this as {{gtMethod:name=PillarWebsite>>#rootPages}}. "
+			},
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2023-08-07T12:27:43.156455+02:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2023-08-07T12:28:28.820872+02:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "neYDb7S+DQC5NW0sCnrGDw=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : "Now we can adapt the reachablility method to use a set of roots to start from."
+			},
+			{
+				"__type" : "pharoSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2023-08-07T12:28:41.58742+02:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2023-08-07T12:30:56.406327+02:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "6Xp/crS+DQC645QcCnrGDw=="
+				},
+				"code" : "PillarWebsiteExamples new esug2014 "
 			}
 		]
 	},
@@ -270,7 +298,7 @@
 		"__type" : "time",
 		"time" : {
 			"__type" : "dateAndTime",
-			"dateAndTimeString" : "2023-08-06T14:51:19.664935+02:00"
+			"dateAndTimeString" : "2023-08-07T12:08:54.288842+02:00"
 		}
 	},
 	"editEmail" : {
@@ -281,15 +309,15 @@
 		"__type" : "time",
 		"time" : {
 			"__type" : "dateAndTime",
-			"dateAndTimeString" : "2023-08-07T08:54:14.124837+02:00"
+			"dateAndTimeString" : "2023-08-07T12:08:54.288842+02:00"
 		}
 	},
 	"pageType" : {
 		"__type" : "namedPage",
-		"title" : "Checking external links in the background"
+		"title" : "Finding more reachable pages"
 	},
 	"uid" : {
 		"__type" : "uuid",
-		"uuid" : "7004c252-a2be-0d00-9b31-3d610789332a"
+		"uuid" : "5dc1ba2b-b4be-0d00-a6e7-70bb0a7ac60f"
 	}
 }

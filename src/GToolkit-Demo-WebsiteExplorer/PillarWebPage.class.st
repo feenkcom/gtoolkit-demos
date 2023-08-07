@@ -5,7 +5,7 @@ Class {
 		'website',
 		'pillarFile'
 	],
-	#category : #'GToolkit-Demo-EsugWebsite-Model'
+	#category : #'GToolkit-Demo-WebsiteExplorer-Model'
 }
 
 { #category : #path }
@@ -53,12 +53,25 @@ PillarWebPage >> gtContentsFor: aView [
 ]
 
 { #category : #links }
+PillarWebPage >> gtLinksFor: aView [
+	<gtView>
+	^ aView forward
+		title: 'Links';
+		priority: 30;
+		object: [ PillarWebLinkGroup withAll: self links ];
+		view: #gtLinksFor:
+]
+
+{ #category : #links }
 PillarWebPage >> gtPillarlinksFor: aView [
 	<gtView>
 	^ aView columnedList
 		title: 'Pillar links';
 		priority: 20;
 		items: [ self pillarLinks ];
+		column: 'Index'
+			text: [ :eachItem :eachIndex | eachIndex asRopedText foreground: Color gray ]
+			width: 45;
 		column: '# Pages'
 			text: [ :item | (self linkForPath: item  value) pages size ]
 			width: 60;
@@ -70,6 +83,16 @@ PillarWebPage >> gtPillarlinksFor: aView [
 			width: 400;
 		send: [ :item | self linkForPath: item value ];
 		actionUpdateButton
+]
+
+{ #category : #links }
+PillarWebPage >> gtReachablePagesFor: aView [
+	<gtView>
+	^ aView forward
+		title: 'Reachable pages';
+		priority: 40;
+		object: [ self reachable ];
+		view: #gtPagesFor:
 ]
 
 { #category : #links }
@@ -141,9 +164,14 @@ PillarWebPage >> printOn: aStream [
 
 { #category : #links }
 PillarWebPage >> reachable [
+	^ PillarWebPageGroup withAll: (self reachableFrom: {self})
+]
+
+{ #category : #links }
+PillarWebPage >> reachableFrom: rootPages [
 	| reachable pagesToCheck |
 	reachable := OrderedCollection new.
-	pagesToCheck := OrderedCollection with: self.
+	pagesToCheck := OrderedCollection withAll: rootPages.
 	[ pagesToCheck notEmpty ]
 		whileTrue: [ | aPage |
 			aPage := pagesToCheck removeFirst.

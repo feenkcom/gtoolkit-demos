@@ -18,7 +18,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-08-07T08:54:17.671468+02:00"
+						"dateAndTimeString" : "2023-08-07T09:48:20.033527+02:00"
 					}
 				},
 				"editEmail" : {
@@ -29,128 +29,17 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-08-07T08:56:04.674475+02:00"
+						"dateAndTimeString" : "2023-08-07T09:49:40.356061+02:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
-					"uidString" : "czGHUaK+DQCauyWRB4kzKg=="
+					"uidString" : "CTwCNbK+DQC8lbhuDP1WWw=="
 				},
 				"paragraphStyle" : {
 					"__type" : "textStyle"
 				},
-				"string" : "We want to check external links in the background. The easiest way to do this is with plain Smalltalk processes."
-			},
-			{
-				"__type" : "textSnippet",
-				"children" : {
-					"__type" : "snippets",
-					"items" : [ ]
-				},
-				"createEmail" : {
-					"__type" : "email",
-					"emailString" : "<unknown>"
-				},
-				"createTime" : {
-					"__type" : "time",
-					"time" : {
-						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-08-07T08:56:00.120621+02:00"
-					}
-				},
-				"editEmail" : {
-					"__type" : "email",
-					"emailString" : "<unknown>"
-				},
-				"editTime" : {
-					"__type" : "time",
-					"time" : {
-						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-08-07T08:57:25.455836+02:00"
-					}
-				},
-				"uid" : {
-					"__type" : "uid",
-					"uidString" : "5/XaebG+DQCdtcYsD0s6MQ=="
-				},
-				"paragraphStyle" : {
-					"__type" : "textStyle"
-				},
-				"string" : "We introduce {{gtMethod:name=PillarWebsite>>#checkStatusWhereMissing}} to run a background process, and {{gtMethod:name=PillarWebsite>>#killBackgroundCheck}} to kill it, if necessary."
-			},
-			{
-				"__type" : "textSnippet",
-				"children" : {
-					"__type" : "snippets",
-					"items" : [ ]
-				},
-				"createEmail" : {
-					"__type" : "email",
-					"emailString" : "<unknown>"
-				},
-				"createTime" : {
-					"__type" : "time",
-					"time" : {
-						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-08-07T08:54:18.120084+02:00"
-					}
-				},
-				"editEmail" : {
-					"__type" : "email",
-					"emailString" : "<unknown>"
-				},
-				"editTime" : {
-					"__type" : "time",
-					"time" : {
-						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-08-07T08:54:18.120084+02:00"
-					}
-				},
-				"uid" : {
-					"__type" : "uid",
-					"uidString" : "i43Gc7G+DQCbSGVWD0s6MQ=="
-				},
-				"paragraphStyle" : {
-					"__type" : "textStyle"
-				},
-				"string" : ""
-			},
-			{
-				"__type" : "textSnippet",
-				"children" : {
-					"__type" : "snippets",
-					"items" : [ ]
-				},
-				"createEmail" : {
-					"__type" : "email",
-					"emailString" : "<unknown>"
-				},
-				"createTime" : {
-					"__type" : "time",
-					"time" : {
-						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-08-07T08:54:18.392556+02:00"
-					}
-				},
-				"editEmail" : {
-					"__type" : "email",
-					"emailString" : "<unknown>"
-				},
-				"editTime" : {
-					"__type" : "time",
-					"time" : {
-						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-08-07T08:54:18.392556+02:00"
-					}
-				},
-				"uid" : {
-					"__type" : "uid",
-					"uidString" : "aLXKc7G+DQCbTDtID0s6MQ=="
-				},
-				"paragraphStyle" : {
-					"__type" : "textStyle"
-				},
-				"string" : ""
+				"string" : "There are many cases where we want to extract a collection of pages or links, sit would be good to wrap them as domain objects with their own views. They should also use the {{gtClass:name=TGtGroupWithItems}} traits to make collection methods available."
 			},
 			{
 				"__type" : "pharoSnippet",
@@ -166,7 +55,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-08-07T08:54:32.137839+02:00"
+						"dateAndTimeString" : "2023-08-07T09:50:12.758662+02:00"
 					}
 				},
 				"editEmail" : {
@@ -177,14 +66,14 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-08-07T08:54:32.661836+02:00"
+						"dateAndTimeString" : "2023-08-07T09:53:10.347348+02:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
-					"uidString" : "9HCcdLG+DQCbUNlwD0s6MQ=="
+					"uidString" : "R0S6O7K+DQCBh6c8DP1WWw=="
 				},
-				"code" : "PillarWebsiteExamples new esug2014"
+				"code" : "PillarWebPageGroup withAll: PillarWebsiteExamples new esug2014 reachable"
 			},
 			{
 				"__type" : "textSnippet",
@@ -200,7 +89,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-08-06T14:50:59.346722+02:00"
+						"dateAndTimeString" : "2023-08-07T09:54:19.556852+02:00"
 					}
 				},
 				"editEmail" : {
@@ -211,17 +100,17 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-08-06T14:50:59.346722+02:00"
+						"dateAndTimeString" : "2023-08-07T09:54:39.945309+02:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
-					"uidString" : "IveLUaK+DQCav1fwB4kzKg=="
+					"uidString" : "VB1wSrK+DQCCY5pNDP1WWw=="
 				},
 				"paragraphStyle" : {
 					"__type" : "textStyle"
 				},
-				"string" : ""
+				"string" : "We only have to copy the {{gtMethod:name=PillarWebPageGroup>>#gtPagesFor:}} view."
 			},
 			{
 				"__type" : "textSnippet",
@@ -237,7 +126,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-08-07T08:57:49.020408+02:00"
+						"dateAndTimeString" : "2023-08-07T11:05:53.428572+02:00"
 					}
 				},
 				"editEmail" : {
@@ -248,17 +137,122 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-08-07T08:58:21.930832+02:00"
+						"dateAndTimeString" : "2023-08-07T11:06:37.369906+02:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
-					"uidString" : "iKJYgLG+DQCfmyS2D0s6MQ=="
+					"uidString" : "R8epVbK+DQCEolBeDP1WWw=="
 				},
 				"paragraphStyle" : {
 					"__type" : "textStyle"
 				},
-				"string" : "See also: [[Checking external links with futures]]"
+				"string" : "We create a common superclass {{gtClass:name=APillarWebLinkGroup}}  for the website and groups of links."
+			},
+			{
+				"__type" : "pharoSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2023-08-07T09:54:48.018449+02:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2023-08-07T09:55:10.092316+02:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "tWUiTLK+DQCD2gFBDP1WWw=="
+				},
+				"code" : "PillarWebLinkGroup withAll: PillarWebsiteExamples new esug2014 links"
+			},
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2023-08-07T10:15:09.897525+02:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2023-08-07T11:24:17.93433+02:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "GaolV7K+DQCGWMeNDP1WWw=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : "Now we can add a *Reachable links* view to the website and to a given page."
+			},
+			{
+				"__type" : "pharoSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2023-08-07T11:24:36.372624+02:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2023-08-07T11:29:28.077092+02:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "nyhOjbO+DQCd5xoVBLfEEA=="
+				},
+				"code" : "PillarWebsiteExamples new esug2014 "
 			}
 		]
 	},
@@ -270,7 +264,7 @@
 		"__type" : "time",
 		"time" : {
 			"__type" : "dateAndTime",
-			"dateAndTimeString" : "2023-08-06T14:51:19.664935+02:00"
+			"dateAndTimeString" : "2023-08-07T09:48:20.002276+02:00"
 		}
 	},
 	"editEmail" : {
@@ -281,15 +275,15 @@
 		"__type" : "time",
 		"time" : {
 			"__type" : "dateAndTime",
-			"dateAndTimeString" : "2023-08-07T08:54:14.124837+02:00"
+			"dateAndTimeString" : "2023-08-07T09:48:20.002276+02:00"
 		}
 	},
 	"pageType" : {
 		"__type" : "namedPage",
-		"title" : "Checking external links in the background"
+		"title" : "Groups of Pages and Links"
 	},
 	"uid" : {
 		"__type" : "uuid",
-		"uuid" : "7004c252-a2be-0d00-9b31-3d610789332a"
+		"uuid" : "39c10135-b2be-0d00-bc94-00e80cfd565b"
 	}
 }

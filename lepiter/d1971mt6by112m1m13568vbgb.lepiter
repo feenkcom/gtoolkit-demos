@@ -18,7 +18,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-08-07T08:54:17.671468+02:00"
+						"dateAndTimeString" : "2023-08-07T14:45:53.356567+02:00"
 					}
 				},
 				"editEmail" : {
@@ -29,128 +29,17 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-08-07T08:56:04.674475+02:00"
+						"dateAndTimeString" : "2023-08-07T14:46:01.940251+02:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
-					"uidString" : "czGHUaK+DQCauyWRB4kzKg=="
+					"uidString" : "Y1AmXba+DQCdVzmqDbcs3A=="
 				},
 				"paragraphStyle" : {
 					"__type" : "textStyle"
 				},
-				"string" : "We want to check external links in the background. The easiest way to do this is with plain Smalltalk processes."
-			},
-			{
-				"__type" : "textSnippet",
-				"children" : {
-					"__type" : "snippets",
-					"items" : [ ]
-				},
-				"createEmail" : {
-					"__type" : "email",
-					"emailString" : "<unknown>"
-				},
-				"createTime" : {
-					"__type" : "time",
-					"time" : {
-						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-08-07T08:56:00.120621+02:00"
-					}
-				},
-				"editEmail" : {
-					"__type" : "email",
-					"emailString" : "<unknown>"
-				},
-				"editTime" : {
-					"__type" : "time",
-					"time" : {
-						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-08-07T08:57:25.455836+02:00"
-					}
-				},
-				"uid" : {
-					"__type" : "uid",
-					"uidString" : "5/XaebG+DQCdtcYsD0s6MQ=="
-				},
-				"paragraphStyle" : {
-					"__type" : "textStyle"
-				},
-				"string" : "We introduce {{gtMethod:name=PillarWebsite>>#checkStatusWhereMissing}} to run a background process, and {{gtMethod:name=PillarWebsite>>#killBackgroundCheck}} to kill it, if necessary."
-			},
-			{
-				"__type" : "textSnippet",
-				"children" : {
-					"__type" : "snippets",
-					"items" : [ ]
-				},
-				"createEmail" : {
-					"__type" : "email",
-					"emailString" : "<unknown>"
-				},
-				"createTime" : {
-					"__type" : "time",
-					"time" : {
-						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-08-07T08:54:18.120084+02:00"
-					}
-				},
-				"editEmail" : {
-					"__type" : "email",
-					"emailString" : "<unknown>"
-				},
-				"editTime" : {
-					"__type" : "time",
-					"time" : {
-						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-08-07T08:54:18.120084+02:00"
-					}
-				},
-				"uid" : {
-					"__type" : "uid",
-					"uidString" : "i43Gc7G+DQCbSGVWD0s6MQ=="
-				},
-				"paragraphStyle" : {
-					"__type" : "textStyle"
-				},
-				"string" : ""
-			},
-			{
-				"__type" : "textSnippet",
-				"children" : {
-					"__type" : "snippets",
-					"items" : [ ]
-				},
-				"createEmail" : {
-					"__type" : "email",
-					"emailString" : "<unknown>"
-				},
-				"createTime" : {
-					"__type" : "time",
-					"time" : {
-						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-08-07T08:54:18.392556+02:00"
-					}
-				},
-				"editEmail" : {
-					"__type" : "email",
-					"emailString" : "<unknown>"
-				},
-				"editTime" : {
-					"__type" : "time",
-					"time" : {
-						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-08-07T08:54:18.392556+02:00"
-					}
-				},
-				"uid" : {
-					"__type" : "uid",
-					"uidString" : "aLXKc7G+DQCbTDtID0s6MQ=="
-				},
-				"paragraphStyle" : {
-					"__type" : "textStyle"
-				},
-				"string" : ""
+				"string" : "Maybe we can adapt the lepiter visualization"
 			},
 			{
 				"__type" : "pharoSnippet",
@@ -166,7 +55,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-08-07T08:54:32.137839+02:00"
+						"dateAndTimeString" : "2023-08-07T14:45:50.309025+02:00"
 					}
 				},
 				"editEmail" : {
@@ -177,14 +66,14 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-08-07T08:54:32.661836+02:00"
+						"dateAndTimeString" : "2023-08-07T15:14:37.612791+02:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
-					"uidString" : "9HCcdLG+DQCbUNlwD0s6MQ=="
+					"uidString" : "q873XLa+DQCdTcc7Dbcs3A=="
 				},
-				"code" : "PillarWebsiteExamples new esug2014"
+				"code" : "website := PillarWebsiteExamples new esug2014.\rpages := website pages.\rroots := website rootPages.\rreachable := website reachable.\r\rm := GtMondrian new.\rm nodes\r\tstencil: [ :each | \r\t\tBlElement new\r\t\t\tsize: 5 @ 5;\r\t\t\tgeometry: BlCircleGeometry new;\r\t\t\tbackground: ((roots includes: each)\r\t\t\t\t\tifTrue: [ Color blue ]\r\t\t\t\t\tifFalse: [ (reachable includes: each) ifTrue: [ Color green ] ifFalse: [ Color red ] ]) ];\r\twith: website pages.\r\rm edges\r\tstencil: [ :each | \r\t\tBlLineElement new\r\t\t\tzIndex: -1;\r\t\t\tborder: (BlBorder paint: (Color veryVeryLightGray alpha: 0.5)) ];\r\tconnectToAll: [ :each | each childrenPages asSet ].\rm layout force.\rm"
 			},
 			{
 				"__type" : "textSnippet",
@@ -200,7 +89,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-08-06T14:50:59.346722+02:00"
+						"dateAndTimeString" : "2023-08-07T14:58:24.638309+02:00"
 					}
 				},
 				"editEmail" : {
@@ -211,17 +100,17 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-08-06T14:50:59.346722+02:00"
+						"dateAndTimeString" : "2023-08-07T14:58:38.430385+02:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
-					"uidString" : "IveLUaK+DQCav1fwB4kzKg=="
+					"uidString" : "1vPtiba+DQCged8KDbcs3A=="
 				},
 				"paragraphStyle" : {
 					"__type" : "textStyle"
 				},
-				"string" : ""
+				"string" : "We extract this as a method."
 			},
 			{
 				"__type" : "textSnippet",
@@ -237,7 +126,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-08-07T08:57:49.020408+02:00"
+						"dateAndTimeString" : "2023-08-07T15:28:18.667185+02:00"
 					}
 				},
 				"editEmail" : {
@@ -248,17 +137,51 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-08-07T08:58:21.930832+02:00"
+						"dateAndTimeString" : "2023-08-07T15:29:17.383968+02:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
-					"uidString" : "iKJYgLG+DQCfmyS2D0s6MQ=="
+					"uidString" : "+qjc9La+DQCcOsZnCPQnlg=="
 				},
 				"paragraphStyle" : {
 					"__type" : "textStyle"
 				},
-				"string" : "See also: [[Checking external links with futures]]"
+				"string" : "We  can now explore the vislization "
+			},
+			{
+				"__type" : "pharoSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2023-08-07T15:30:22.369659+02:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2023-08-07T15:30:38.531046+02:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "BTM8/La+DQCfZtv1CPQnlg=="
+				},
+				"code" : "PillarWebsite esug "
 			}
 		]
 	},
@@ -270,7 +193,7 @@
 		"__type" : "time",
 		"time" : {
 			"__type" : "dateAndTime",
-			"dateAndTimeString" : "2023-08-06T14:51:19.664935+02:00"
+			"dateAndTimeString" : "2023-08-07T14:45:46.79722+02:00"
 		}
 	},
 	"editEmail" : {
@@ -281,15 +204,15 @@
 		"__type" : "time",
 		"time" : {
 			"__type" : "dateAndTime",
-			"dateAndTimeString" : "2023-08-07T08:54:14.124837+02:00"
+			"dateAndTimeString" : "2023-08-07T14:45:46.79722+02:00"
 		}
 	},
 	"pageType" : {
 		"__type" : "namedPage",
-		"title" : "Checking external links in the background"
+		"title" : "Generating some visualizations ..."
 	},
 	"uid" : {
 		"__type" : "uuid",
-		"uuid" : "7004c252-a2be-0d00-9b31-3d610789332a"
+		"uuid" : "bb3bc25c-b6be-0d00-9d49-6afb0db72cdc"
 	}
 }
