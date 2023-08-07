@@ -7,13 +7,15 @@ Class {
 { #category : #accessing }
 PillarWebsiteExamples >> esug2014 [
 	"A small website for testing"
+
 	<gtExample>
 	| website |
 	website := PillarWebsite new.
 	website
 		repoDir: self esug2014repoDir;
 		url: self esug2014url.
-	self assert: website pages size equals: 18.
+	self assert: website pages size equals: 20.
+	self assert: website rootPages size equals: 3.
 	^ website
 ]
 

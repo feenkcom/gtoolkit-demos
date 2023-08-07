@@ -60,6 +60,13 @@ PillarWebsite class >> initializeRepoDir: aRepoDir fromRepoUrl: aRepoUrl [
 	^ aRepoDir
 ]
 
+{ #category : #links }
+PillarWebsite >> cleanJson: anJsonString [
+	| badLine |
+	badLine := '#''Describing the sites menu as title,url pair'': #comment,'.
+	^ anJsonString copyReplaceAll: badLine with: ''
+]
+
 { #category : #view }
 PillarWebsite >> gtPagesFor: aView [
 	<gtView>
@@ -193,7 +200,7 @@ PillarWebsite >> pages [
 
 { #category : #links }
 PillarWebsite >> reachable [
-	^ self root reachable
+	^ self root reachableFrom: self rootPages
 ]
 
 { #category : #accessing }
@@ -211,6 +218,24 @@ PillarWebsite >> repoDir: aFileReference [
 { #category : #accessing }
 PillarWebsite >> root [
 	^ self pages detect: [ :page | page path = self rootPath ]
+]
+
+{ #category : #links }
+PillarWebsite >> rootPages [
+	"Extract additional root pages from the URLs in the pillar configuration of the navigation menu."
+
+	| json urls rootPages |
+	rootPages := {self root} asOrderedCollection.
+	json := NeoJSONReader
+			fromString: (self cleanJson: (self repoDir / 'pillar.conf') contents).
+	urls := (((json at: 'menu') collect: [ :menu | menu at: 'url' ]) asSet
+			union: (((json at: 'menu') flatCollect: [ :menu | menu at: 'submenu' ])
+					collect: [ :submenu | submenu at: 'url' ]))
+			collect: [ :html | html copyReplaceAll: '.html' with: '.pillar' ].
+	rootPages
+		addAll: ((urls select: [ :each | self hasPageNamed: each ])
+				collect: [ :each | self pageNamed: each ]).
+	^ rootPages
 ]
 
 { #category : #constant }

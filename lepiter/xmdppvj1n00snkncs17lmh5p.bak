@@ -194,6 +194,43 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2023-08-07T12:30:59.464467+02:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2023-08-07T12:52:10.579102+02:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "B0+3erS+DQC7Jtp/CnrGDw=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : "We extract this as {{gtMethod:name=PillarWebsite>>#rootPages}}. "
+			},
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
 						"dateAndTimeString" : "2023-08-07T12:27:43.156455+02:00"
 					}
 				},
@@ -216,43 +253,6 @@
 					"__type" : "textStyle"
 				},
 				"string" : "Now we can adapt the reachablility method to use a set of roots to start from."
-			},
-			{
-				"__type" : "textSnippet",
-				"children" : {
-					"__type" : "snippets",
-					"items" : [ ]
-				},
-				"createEmail" : {
-					"__type" : "email",
-					"emailString" : "<unknown>"
-				},
-				"createTime" : {
-					"__type" : "time",
-					"time" : {
-						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-08-07T12:28:29.144477+02:00"
-					}
-				},
-				"editEmail" : {
-					"__type" : "email",
-					"emailString" : "<unknown>"
-				},
-				"editTime" : {
-					"__type" : "time",
-					"time" : {
-						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-08-07T12:28:29.144477+02:00"
-					}
-				},
-				"uid" : {
-					"__type" : "uid",
-					"uidString" : "/p/BcbS+DQC63kmvCnrGDw=="
-				},
-				"paragraphStyle" : {
-					"__type" : "textStyle"
-				},
-				"string" : ""
 			},
 			{
 				"__type" : "pharoSnippet",
@@ -279,14 +279,14 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-08-07T12:28:42.039277+02:00"
+						"dateAndTimeString" : "2023-08-07T12:30:56.406327+02:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
 					"uidString" : "6Xp/crS+DQC645QcCnrGDw=="
 				},
-				"code" : "PillarWebsiteExamples new esug2014"
+				"code" : "PillarWebsiteExamples new esug2014 "
 			}
 		]
 	},
