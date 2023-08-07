@@ -36,6 +36,6 @@ BaselineOfGToolkitDemos >> baseline: spec [
 					with: [ spec repository: 'github://feenkcom/gtoolkit-demos:main/src' ];
 				baseline: 'GToolkitDemoStackMachine'
 					with: [ spec repository: 'github://feenkcom/gtoolkit-demos:main/src' ];
-				baseline: 'GToolkit-Demo-WebsiteExplorer'
+				baseline: 'GToolkitDemoWebsiteExplorer'
 					with: [ spec repository: 'github://feenkcom/gtoolkit-demos:main/src' ] ]
 ]
