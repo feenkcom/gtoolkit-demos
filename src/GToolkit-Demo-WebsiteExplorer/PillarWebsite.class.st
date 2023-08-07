@@ -24,15 +24,29 @@ Class {
 		'reachable',
 		'rootPages'
 	],
+	#classInstVars : [
+		'esug'
+	],
 	#category : #'GToolkit-Demo-WebsiteExplorer-Model'
 }
 
 { #category : #creation }
 PillarWebsite class >> esug [
-	^ self new
-		repoDir: self esugRepoDir;
-		url: self esugUrl;
-		yourself
+	"Cache the website for demos."
+
+	^ esug
+		ifNil: [ esug := self new
+					repoDir: self esugRepoDir;
+					url: self esugUrl;
+					yourself ]
+]
+
+{ #category : #creation }
+PillarWebsite class >> esugReload [
+	"Clear the cache and reload the website."
+
+	esug := nil.
+	^ self esug
 ]
 
 { #category : #creation }
@@ -71,7 +85,7 @@ PillarWebsite >> cleanJson: anJsonString [
 	^ anJsonString copyReplaceAll: badLine with: ''
 ]
 
-{ #category : #accessing }
+{ #category : #view }
 PillarWebsite >> gtMapFor: aView [
 	<gtView>
 	^ aView mondrian
@@ -172,7 +186,7 @@ PillarWebsite >> links [
 						and: [ a path < b path ] ] ]
 ]
 
-{ #category : #accessing }
+{ #category : #links }
 PillarWebsite >> mapFor: aMondrian [
 	aMondrian nodes
 		stencil: [ :each | 
@@ -194,7 +208,7 @@ PillarWebsite >> mapFor: aMondrian [
 	^ aMondrian
 ]
 
-{ #category : #accessing }
+{ #category : #links }
 PillarWebsite >> mondrianMap [
 	^ self mapFor: GtMondrian new
 ]

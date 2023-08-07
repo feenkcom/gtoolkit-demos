@@ -62,6 +62,15 @@ PillarWebPage >> gtLinksFor: aView [
 		view: #gtLinksFor:
 ]
 
+{ #category : #view }
+PillarWebPage >> gtMapFor: aView [
+	<gtView>
+	^ aView mondrian
+		title: 'Map';
+		priority: 42;
+		painting: [ :aMondrian | self mapFor: aMondrian ]
+]
+
 { #category : #links }
 PillarWebPage >> gtPillarlinksFor: aView [
 	<gtView>
@@ -107,11 +116,42 @@ PillarWebPage >> links [
 	^ self pillarLinks collect: [ :assoc | self linkForPath: assoc value ]
 ]
 
+{ #category : #links }
+PillarWebPage >> mapFor: aMondrian [
+	aMondrian nodes
+		stencil: [ :each | 
+			BlElement new
+				size: 5 @ 5;
+				geometry: BlCircleGeometry new;
+				background: (each = self
+						ifTrue: [ Color orange ]
+						ifFalse: [ (self website rootPages includes: each)
+								ifTrue: [ Color blue ]
+								ifFalse: [ (self website reachable includes: each)
+										ifTrue: [ Color green ]
+										ifFalse: [ Color red ] ] ]) ];
+		with: self reachable.
+
+	aMondrian edges
+		stencil: [ :each | 
+			BlLineElement new
+				zIndex: -1;
+				border: (BlBorder paint: (Color veryVeryLightGray alpha: 0.5)) ];
+		connectToAll: [ :each | each childrenPages asSet ].
+	aMondrian layout force.
+	^ aMondrian
+]
+
 { #category : #accessing }
 PillarWebPage >> markdownLinks [
 	^ (MicLinkVisitor new
 		visit: (MicrodownParser parse: self contents);
 		yourself) links
+]
+
+{ #category : #links }
+PillarWebPage >> mondrianMap [
+	^ self mapFor: GtMondrian new
 ]
 
 { #category : #path }
