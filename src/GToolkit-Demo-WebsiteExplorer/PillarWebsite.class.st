@@ -21,7 +21,8 @@ Class {
 		'url',
 		'pages',
 		'linkDict',
-		'reachable'
+		'reachable',
+		'rootPages'
 	],
 	#category : #'GToolkit-Demo-WebsiteExplorer-Model'
 }
@@ -75,7 +76,7 @@ PillarWebsite >> gtMapFor: aView [
 	<gtView>
 	^ aView mondrian
 		title: 'Map';
-		priority: 15;
+		priority: 62;
 		painting: [ :aMondrian | self mapFor: aMondrian ]
 ]
 
@@ -178,8 +179,10 @@ PillarWebsite >> mapFor: aMondrian [
 			BlElement new
 				size: 5 @ 5;
 				geometry: BlCircleGeometry new;
-				background: ((self rootPages includes: each) ifTrue: [ Color blue ] ifFalse: [ Color red ]) ];
-		with: (self pages select: [ :each | each reachable isNotEmpty ]).
+				background: ((self rootPages includes: each)
+						ifTrue: [ Color blue ]
+						ifFalse: [ (self reachable includes: each) ifTrue: [ Color green ] ifFalse: [ Color red ] ]) ];
+		with: self pages.
 
 	aMondrian edges
 		stencil: [ :each | 
@@ -216,7 +219,8 @@ PillarWebsite >> reachable [
 	"Expensive to compute and won't change, so we cache it."
 
 	^ reachable
-		ifNil: [ PillarWebPageGroup withAll: (self root reachableFrom: self rootPages) ]
+		ifNil: [ reachable := PillarWebPageGroup
+					withAll: (self root reachableFrom: self rootPages) ]
 ]
 
 { #category : #accessing }
@@ -240,18 +244,19 @@ PillarWebsite >> root [
 PillarWebsite >> rootPages [
 	"Extract additional root pages from the URLs in the pillar configuration of the navigation menu."
 
-	| json urls rootPages |
-	rootPages := {self root} asOrderedCollection.
-	json := NeoJSONReader
-			fromString: (self cleanJson: (self repoDir / 'pillar.conf') contents).
-	urls := (((json at: 'menu') collect: [ :menu | menu at: 'url' ]) asSet
-			union: (((json at: 'menu') flatCollect: [ :menu | menu at: 'submenu' ])
-					collect: [ :submenu | submenu at: 'url' ]))
-			collect: [ :html | html copyReplaceAll: '.html' with: '.pillar' ].
-	rootPages
-		addAll: ((urls select: [ :each | self hasPageNamed: each ])
-				collect: [ :each | self pageNamed: each ]).
 	^ rootPages
+		ifNil: [ | json urls |
+			rootPages := {self root} asOrderedCollection.
+			json := NeoJSONReader
+					fromString: (self cleanJson: (self repoDir / 'pillar.conf') contents).
+			urls := (((json at: 'menu') collect: [ :menu | menu at: 'url' ]) asSet
+					union: (((json at: 'menu') flatCollect: [ :menu | menu at: 'submenu' ])
+							collect: [ :submenu | submenu at: 'url' ]))
+					collect: [ :html | html copyReplaceAll: '.html' with: '.pillar' ].
+			rootPages
+				addAll: ((urls select: [ :each | self hasPageNamed: each ])
+						collect: [ :each | self pageNamed: each ]).
+			rootPages ]
 ]
 
 { #category : #constant }

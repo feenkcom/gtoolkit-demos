@@ -66,14 +66,14 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-08-07T15:08:21.805215+02:00"
+						"dateAndTimeString" : "2023-08-07T15:14:37.612791+02:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
 					"uidString" : "q873XLa+DQCdTcc7Dbcs3A=="
 				},
-				"code" : "website := PillarWebsiteExamples new esug2014.\rroots := website rootPages.\rreachable := website reachable.\r\runreachable := website unreachable.\r\rm := GtMondrian new.\rm nodes\r\tstencil: [ :each | \r\t\tBlElement new\r\t\t\tsize: 5 @ 5;\r\t\t\tgeometry: BlCircleGeometry new;\r\t\t\tbackground: ((roots includes: each) ifTrue: [ Color blue ] ifFalse: [ Color red ]) ];\r\twith: (website pages select: [ :each | each reachable isNotEmpty ]).\r\rm edges\r\tstencil: [ :each | \r\t\tBlLineElement new\r\t\t\tzIndex: -1;\r\t\t\tborder: (BlBorder paint: (Color veryVeryLightGray alpha: 0.5)) ];\r\tconnectToAll: [ :each | each childrenPages asSet ].\rm layout force.\rm"
+				"code" : "website := PillarWebsiteExamples new esug2014.\rpages := website pages.\rroots := website rootPages.\rreachable := website reachable.\r\rm := GtMondrian new.\rm nodes\r\tstencil: [ :each | \r\t\tBlElement new\r\t\t\tsize: 5 @ 5;\r\t\t\tgeometry: BlCircleGeometry new;\r\t\t\tbackground: ((roots includes: each)\r\t\t\t\t\tifTrue: [ Color blue ]\r\t\t\t\t\tifFalse: [ (reachable includes: each) ifTrue: [ Color green ] ifFalse: [ Color red ] ]) ];\r\twith: website pages.\r\rm edges\r\tstencil: [ :each | \r\t\tBlLineElement new\r\t\t\tzIndex: -1;\r\t\t\tborder: (BlBorder paint: (Color veryVeryLightGray alpha: 0.5)) ];\r\tconnectToAll: [ :each | each childrenPages asSet ].\rm layout force.\rm"
 			},
 			{
 				"__type" : "textSnippet",
@@ -111,6 +111,77 @@
 					"__type" : "textStyle"
 				},
 				"string" : "We extract this as a method."
+			},
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2023-08-07T15:28:18.667185+02:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2023-08-07T15:29:17.383968+02:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "+qjc9La+DQCcOsZnCPQnlg=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : "We  can now explore the vislization "
+			},
+			{
+				"__type" : "pharoSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2023-08-07T15:30:22.369659+02:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2023-08-07T15:30:38.531046+02:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "BTM8/La+DQCfZtv1CPQnlg=="
+				},
+				"code" : "PillarWebsite esug "
 			}
 		]
 	},
