@@ -1,0 +1,618 @@
+{
+	"__schema" : "4.1",
+	"__type" : "page",
+	"children" : {
+		"__type" : "snippets",
+		"items" : [
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2023-08-07T08:57:49.394456+02:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2023-08-07T08:58:46.737613+02:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "A1RegLG+DQCfox4HD0s6MQ=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : "We tried also to check links with futures, but this is cumbersome."
+			},
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [
+						{
+							"__type" : "textSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2023-07-21T17:57:15.547557+02:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2023-08-06T14:30:23.538492+02:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "f0Y9DmO9DQCcrIJ8Cb0M7w=="
+							},
+							"paragraphStyle" : {
+								"__type" : "textStyle"
+							},
+							"string" : "Checking external links takes some time. See {{gtMethod:name=PillarWebLink>>#checkHttpStatus}}. "
+						},
+						{
+							"__type" : "textSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2023-07-21T17:57:30.100991+02:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2023-07-21T18:42:41.046618+02:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "o1cbD2O9DQCdfQ2YCb0M7w=="
+							},
+							"paragraphStyle" : {
+								"__type" : "textStyle"
+							},
+							"string" : "Let's try to schedule a bunch of processes. We partition the links into a pool of 20 groups, and assign them to 20 processes checking the links in one of the groups."
+						},
+						{
+							"__type" : "pharoSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2023-07-21T18:35:47.790981+02:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2023-08-06T14:30:39.506613+02:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "TksPmGO9DQCYH/3DAGOulw=="
+							},
+							"code" : "linkPool := (1 to: 20) collect: [ :each | OrderedCollection new ].\r(PillarWebsiteExamples new esug2014 httpLinks select: #statusMissing )\r\tdoWithIndex: [ :link :index | (linkPool at: 1 + (index \\\\ 20)) add: link ].\rtasks := linkPool\r\t\tcollect: [ :links | \r\t\t\t[ | budget lastTime |\r\t\t\tbudget := 1 milliseconds.\r\t\t\tlastTime := Time now asDuration.\r\t\t\tlinks\r\t\t\t\tdo: [ :each | \r\t\t\t\t\tTime now asDuration - lastTime > budget\r\t\t\t\t\t\tifTrue: [ Processor yield.\r\t\t\t\t\t\t\tlastTime := Time now asDuration ].\r\t\t\t\t\teach checkHttpStatus ] ] ].\rprocesses := OrderedCollection new.\rtasks do: [ :task | processes add: [ task value ] fork ].\rprocesses."
+						},
+						{
+							"__type" : "pharoSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2023-08-07T09:02:57.890132+02:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2023-08-07T09:04:24.600847+02:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "fJ3BkrG+DQClKSI4D0s6MQ=="
+							},
+							"code" : "PillarWebsiteExamples new esug2014 missingStatusLinks"
+						}
+					]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2023-07-21T17:56:52.381377+02:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2023-08-07T08:59:28.259305+02:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "f8jbDGO9DQCbpF2/Cb0M7w=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : "#Attempt with pool"
+			},
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [
+						{
+							"__type" : "textSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2023-08-07T08:59:36.366805+02:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2023-08-07T09:01:50.78945+02:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "R52+hrG+DQCikXAhD0s6MQ=="
+							},
+							"paragraphStyle" : {
+								"__type" : "textStyle"
+							},
+							"string" : "AC suggested various ways to do this on [Slack](https://feenk.slack.com/archives/C01K7HGJ2N4/p1689956365042619)."
+						},
+						{
+							"__type" : "pharoSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2023-08-07T09:02:01.65614+02:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2023-08-07T09:02:02.121973+02:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "dYpnj7G+DQCjus41D0s6MQ=="
+							},
+							"code" : "{\n\t'https://www.google.com' . \n\t'https://www.feenk.com'. \n\t'https://www.github.com'\n} asAsyncStream collect: [ :anUrl |\n\tZnEasy get: anUrl ]"
+						},
+						{
+							"__type" : "textSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2023-08-07T09:01:51.505893+02:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2023-08-07T09:02:30.983425+02:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "NKzMjrG+DQCjtjXqD0s6MQ=="
+							},
+							"paragraphStyle" : {
+								"__type" : "textStyle"
+							},
+							"string" : "This works, but requires you to observe the resulting stream."
+						},
+						{
+							"__type" : "pharoSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2023-08-07T09:02:32.51334+02:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2023-08-07T09:05:48.952838+02:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "imM+kbG+DQClH0r6D0s6MQ=="
+							},
+							"code" : "(PillarWebsiteExamples new esug2014 missingStatusLinks asAsyncStream\r\tcollect: [ :aWebsite | [ aWebsite checkHttpStatus ] asAsyncFuture asAsyncStream for: 1 second ])\r\tflatten"
+						},
+						{
+							"__type" : "textSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2023-08-07T09:05:34.25961+02:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2023-08-07T09:06:05.804709+02:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "m54TnLG+DQCmpjx4D0s6MQ=="
+							},
+							"paragraphStyle" : {
+								"__type" : "textStyle"
+							},
+							"string" : "You can also leave out the `for: 1 second` since the check has a built-in time limit."
+						},
+						{
+							"__type" : "textSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2023-08-07T08:59:38.503635+02:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2023-08-07T09:06:36.07651+02:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "6jbfhrG+DQCimn+MD0s6MQ=="
+							},
+							"paragraphStyle" : {
+								"__type" : "textStyle"
+							},
+							"string" : "And there's this one that just shows a count."
+						},
+						{
+							"__type" : "pharoSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2023-08-07T09:05:29.905602+02:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2023-08-07T09:06:25.434849+02:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "wy3Rm7G+DQCmnVuoD0s6MQ=="
+							},
+							"code" : "stream := (PillarWebsiteExamples new esug2014 missingStatusLinks first: 10)\r\t\tasAsyncStream collect: [ :aWebsite | aWebsite checkHttpStatus ].\r\rBrLabel new\r\taptitude: BrGlamorousLabelAptitude;\r\twithAsyncSinkDo: [ :anElementSink | \r\t\tanElementSink\r\t\t\tsink: AsyncCounterSink new;\r\t\t\twhenUpdate: [ :aLabel :aCounterSink | aLabel text: aCounterSink count ];\r\t\t\tforwardStream: stream ]"
+						},
+						{
+							"__type" : "textSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2023-08-07T08:59:39.112816+02:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2023-08-07T09:06:46.959087+02:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "yYLohrG+DQCiqE84D0s6MQ=="
+							},
+							"paragraphStyle" : {
+								"__type" : "textStyle"
+							},
+							"string" : "All of these solutions require you to "
+						}
+					]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2023-07-21T11:25:54.314945+02:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2023-08-07T08:59:35.198584+02:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "KRemll29DQCUppC+CzmFhg=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : "# AC proposals"
+			},
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2023-07-21T11:50:15.537066+02:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2023-07-21T11:50:15.537066+02:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "wdnRMDm9DQCB6EdhBmm2vw=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : ""
+			}
+		]
+	},
+	"createEmail" : {
+		"__type" : "email",
+		"emailString" : "<unknown>"
+	},
+	"createTime" : {
+		"__type" : "time",
+		"time" : {
+			"__type" : "dateAndTime",
+			"dateAndTimeString" : "2023-08-07T08:57:59.260091+02:00"
+		}
+	},
+	"editEmail" : {
+		"__type" : "email",
+		"emailString" : "<unknown>"
+	},
+	"editTime" : {
+		"__type" : "time",
+		"time" : {
+			"__type" : "dateAndTime",
+			"dateAndTimeString" : "2023-08-07T08:57:59.260091+02:00"
+		}
+	},
+	"pageType" : {
+		"__type" : "namedPage",
+		"title" : "Checking external links with futures"
+	},
+	"uid" : {
+		"__type" : "uuid",
+		"uuid" : "f4e2f480-b1be-0d00-9fbc-4a750f4b3a31"
+	}
+}

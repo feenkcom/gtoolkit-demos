@@ -1022,12 +1022,12 @@
 		"__type" : "time",
 		"time" : {
 			"__type" : "dateAndTime",
-			"dateAndTimeString" : "2023-08-06T13:47:03.452893+02:00"
+			"dateAndTimeString" : "2023-08-07T08:48:56.910386+02:00"
 		}
 	},
 	"pageType" : {
 		"__type" : "namedPage",
-		"title" : "*** Checking links"
+		"title" : "Checking links"
 	},
 	"uid" : {
 		"__type" : "uuid",
