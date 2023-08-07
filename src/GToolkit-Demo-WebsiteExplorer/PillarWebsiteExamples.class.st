@@ -9,6 +9,7 @@ PillarWebsiteExamples >> esug2014 [
 	"A small website for testing"
 
 	<gtExample>
+	<noTest>
 	| website |
 	website := PillarWebsite new.
 	website
