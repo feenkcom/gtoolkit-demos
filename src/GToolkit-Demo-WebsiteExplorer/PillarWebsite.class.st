@@ -14,6 +14,8 @@ Eventually this could be a subclass of a more generic website explorer for other
 Class {
 	#name : #PillarWebsite,
 	#superclass : #Object,
+	#traits : 'TPillarWebLinkGroup',
+	#classTraits : 'TPillarWebLinkGroup classTrait',
 	#instVars : [
 		'repoDir',
 		'url',
