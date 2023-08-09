@@ -77,6 +77,10 @@ APillarWebLinkGroup >> gtBrokenLinksFor: aView [
 		column: '# Pages' text: [ :item | item pages size ] width: 60;
 		column: 'Status' text: [ :item | item status ];
 		actionUpdateButton;
+		updateWhen: PillarWebLinkStatusUpdated in: self announcer;
+		actionButtonIcon: BrGlamorousVectorIcons inspect
+			tooltip: 'Inspect  value'
+			action: [ :aButton :aTab | aButton phlow spawnObject: (PillarWebLinkGroup withAll: self missingLinks) ];
 		updateWhen: PillarWebLinkStatusUpdated in: self announcer
 ]
 
@@ -132,9 +136,6 @@ APillarWebLinkGroup >> gtLinksFor: aView [
 
 { #category : #view }
 APillarWebLinkGroup >> gtMissingLinksFor: aView [
-
-"ADDING AN INSPECT BUTTON BREAKS AND FREEZES THE IMAGE"
-
 	<gtView>
 	self missingLinks ifEmpty: [ ^ aView empty ].
 	^ aView columnedList
@@ -179,6 +180,10 @@ APillarWebLinkGroup >> gtMissingStatusLinksFor: aView [
 			width: 60;
 		column: 'Status' text: [ :item | item status ];
 		actionUpdateButton;
+		updateWhen: PillarWebLinkStatusUpdated in: self announcer;
+		actionButtonIcon: BrGlamorousVectorIcons inspect
+			tooltip: 'Inspect  value'
+			action: [ :aButton :aTab | aButton phlow spawnObject: (PillarWebLinkGroup withAll: self missingLinks) ];
 		updateWhen: PillarWebLinkStatusUpdated in: self announcer
 ]
 
