@@ -201,7 +201,8 @@ PillarWebsite >> mapFor: aMondrian [
 				geometry: BlCircleGeometry new;
 				background: ((self rootPages includes: each)
 						ifTrue: [ Color blue ]
-						ifFalse: [ (self reachable includes: each) ifTrue: [ Color green ] ifFalse: [ Color red ] ]) ];
+						ifFalse: [ (self reachable includes: each) ifTrue: [ Color green ] ifFalse: [ Color red ] ]);
+				aptitude: (BrGlamorousWithTooltipAptitude content: each tooltip) ];
 		with: self pages.
 
 	aMondrian edges

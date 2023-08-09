@@ -150,7 +150,7 @@
 											"__type" : "time",
 											"time" : {
 												"__type" : "dateAndTime",
-												"dateAndTimeString" : "2023-08-07T20:31:03.042496+02:00"
+												"dateAndTimeString" : "2023-08-07T20:31:19.312077+02:00"
 											}
 										},
 										"uid" : {
@@ -160,7 +160,7 @@
 										"paragraphStyle" : {
 											"__type" : "textStyle"
 										},
-										"string" : ""
+										"string" : "We notice a flaw in the logic and fix the {{gtMethod:name=APillarWebLinkGroup>>#missingLinks}} method."
 									},
 									{
 										"__type" : "textSnippet",
@@ -176,7 +176,7 @@
 											"__type" : "time",
 											"time" : {
 												"__type" : "dateAndTime",
-												"dateAndTimeString" : "2023-08-07T20:00:23.59653+02:00"
+												"dateAndTimeString" : "2023-08-07T20:31:19.558019+02:00"
 											}
 										},
 										"editEmail" : {
@@ -187,17 +187,17 @@
 											"__type" : "time",
 											"time" : {
 												"__type" : "dateAndTime",
-												"dateAndTimeString" : "2023-08-07T20:00:23.59653+02:00"
+												"dateAndTimeString" : "2023-08-07T20:31:27.510464+02:00"
 											}
 										},
 										"uid" : {
 											"__type" : "uid",
-											"uidString" : "Z1Tnwbq+DQCszyQvAh4jmw=="
+											"uidString" : "KQ2HMLu+DQCUIGxMBilaEw=="
 										},
 										"paragraphStyle" : {
 											"__type" : "textStyle"
 										},
-										"string" : ""
+										"string" : "Now the inspect button seems to work."
 									}
 								]
 							},
