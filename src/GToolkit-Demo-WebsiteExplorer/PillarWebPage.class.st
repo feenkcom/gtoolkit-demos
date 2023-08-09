@@ -176,12 +176,20 @@ PillarWebPage >> normalize: aPath [
 { #category : #accessing }
 PillarWebPage >> path [
 	"My path relative to the root of the repo."
-	path
-		ifNil: [ path := pillarFile pathString withoutPrefix: website repoDir pathString ].
+
+	<return: #String>
+	path ifNil: [ 
+		| relativePath |
+		relativePath := pillarFile relativeTo: website repoDir.
+		path := '/', relativePath fullName ].
+		
 	self 
 		assert: (path beginsWith: '/')
 		description: [ 'Path must begins with the slash character (/): {1}' format: { path } ].
-		
+	self 
+		assert: (path includes: $\) not
+		description: [ 'Path must NOT include backslash characters (\): {1}' format: { path } ].
+
 	^ path
 ]
 
