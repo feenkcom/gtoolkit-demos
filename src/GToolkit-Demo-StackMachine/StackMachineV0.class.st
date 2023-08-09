@@ -5,7 +5,7 @@ They are used to demonstrate various moldable development patterns.
 StackMachine just has a stack slot and initializes it.
 "
 Class {
-	#name : #StackMachine,
+	#name : #StackMachineV0,
 	#superclass : #Object,
 	#instVars : [
 		'stack'
@@ -14,6 +14,6 @@ Class {
 }
 
 { #category : #accessing }
-StackMachine >> initialize [
+StackMachineV0 >> initialize [
 	stack := OrderedCollection new
 ]
