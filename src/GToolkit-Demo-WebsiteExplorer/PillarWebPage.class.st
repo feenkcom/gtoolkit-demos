@@ -178,7 +178,10 @@ PillarWebPage >> path [
 	"My path relative to the root of the repo."
 	path
 		ifNil: [ path := pillarFile pathString withoutPrefix: website repoDir pathString ].
-	self assert: (path beginsWith: '/').
+	self 
+		assert: (path beginsWith: '/')
+		description: [ 'Path must begins with the slash character (/): {1}' format: { path } ].
+		
 	^ path
 ]
 
