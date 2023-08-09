@@ -241,7 +241,7 @@ PillarWebsite >> mapFor: aMondrian [
 				zIndex: -1;
 				border: (BlBorder paint: (Color veryVeryLightGray alpha: 0.5)) ];
 		connectToAll: [ :each | each childrenPages asSet ].
-	aMondrian layout "force".
+	aMondrian layout force.
 	^ aMondrian
 ]
 
