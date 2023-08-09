@@ -3,7 +3,10 @@ Class {
 	#superclass : #Object,
 	#instVars : [
 		'website',
-		'pillarFile'
+		'pillarFile',
+		'pillarLinks',
+		'path',
+		'childrenPages'
 	],
 	#category : #'GToolkit-Demo-WebsiteExplorer-Model'
 }
@@ -24,7 +27,9 @@ PillarWebPage class >> for: aFileReference in: aPillarWebsite [
 { #category : #accessing }
 PillarWebPage >> childrenPages [
 	"Pages that can be reached directly from links on this page."
-	^ (self links select: #isPage) collect: #page
+
+	^ childrenPages
+		ifNil: [ childrenPages := (self links select: #isPage) collect: #page ]
 ]
 
 { #category : #accessing }
@@ -171,9 +176,8 @@ PillarWebPage >> normalize: aPath [
 { #category : #accessing }
 PillarWebPage >> path [
 	"My path relative to the root of the repo."
-
-	| path |
-	path := pillarFile pathString withoutPrefix: website repoDir pathString.
+	path
+		ifNil: [ path := pillarFile pathString withoutPrefix: website repoDir pathString ].
 	self assert: (path beginsWith: '/').
 	^ path
 ]
@@ -195,7 +199,8 @@ PillarWebPage >> pillarFile: anObject [
 
 { #category : #accessing }
 PillarWebPage >> pillarLinks [
-	^ PillarLinkSeaParser parse: self contents
+	^ pillarLinks
+		ifNil: [ pillarLinks := PillarLinkSeaParser parse: self contents ]
 ]
 
 { #category : #printing }

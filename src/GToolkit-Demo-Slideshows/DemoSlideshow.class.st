@@ -16,6 +16,7 @@ DemoSlideshow class >> show [
 { #category : #slides }
 DemoSlideshow >> coderExampleSlideFor: aSlide [
 	<gtSlide>
+	<text: 'A live Coder tool'>
 	^ aSlide labelAndElement
 		priority: (self priorityFor: #coderExampleSlideFor:);
 		newFadedText: ('Feel free to explore.' asRopedText);
@@ -39,6 +40,7 @@ DemoSlideshow >> dynamicLePage [
 { #category : #slides }
 DemoSlideshow >> dynamicLepiterPage: aSlide [
 	<gtSlide>
+	<text: 'A dynamic page from the internal database.'>
 	^ aSlide lepiterPage
 		priority: (self priorityFor: #dynamicLepiterPage:);
 		startPage:  (self db pageNamed: 'A dynamic Lepiter page')
@@ -47,12 +49,14 @@ DemoSlideshow >> dynamicLepiterPage: aSlide [
 { #category : #slides }
 DemoSlideshow >> gtWorld: aSlide [
 	<gtSlide>
+	<text: 'A live embedded GT world'>
 	^ aSlide world priority: (self priorityFor: #gtWorld:)
 ]
 
 { #category : #slides }
 DemoSlideshow >> headingAndCode: aSlide [
 	<gtSlide>
+	<text: 'Slide with a heading and code snippets to evaluate'>
 	^ aSlide headingAndCode
 		priority: (self priorityFor: #headingAndCode:);
 		heading: 'Heading';
@@ -69,16 +73,21 @@ DemoSlideshow >> initializeDb [
 ]
 
 { #category : #slides }
-DemoSlideshow >> inspector: aSlide [
+DemoSlideshow >> inspectorInPager: aSlide [
 	<gtSlide>
+	<text: 'An Inspector on an object.
+NB: the pager is needed so we can navigate to new pages.'>
 	^ aSlide element
 		priority: (self priorityFor: #inspector:);
-		element: [ GtInspector forObject: GtABCartoonAddressBookExample new bugsBunnyContact ]
+		element: [ (GtPager
+				createWrappedOn: (GtInspector forObject: GtLudoRecordingGameExamples new gameShowingAllMoves2))
+				maximized ]
 ]
 
 { #category : #slides }
 DemoSlideshow >> lepiterPage: aSlide [
 	<gtSlide>
+	<text: 'A lepiter page from the GT Book'>
 	^ aSlide lepiterPage
 		priority: (self priorityFor: #lepiterPage:);
 		pageNamed: 'Lepiter' from: 'Glamorous Toolkit Book';
@@ -88,6 +97,7 @@ DemoSlideshow >> lepiterPage: aSlide [
 { #category : #slides }
 DemoSlideshow >> maximizedPage: aSlide [
 	<gtSlide>
+	<text: 'A maximed lepiter page that can still be browsed.'>
 	^ aSlide element
 		priority: (self priorityFor: #maximizedPage:);
 		element: [ (GtPager
@@ -98,7 +108,7 @@ DemoSlideshow >> maximizedPage: aSlide [
 { #category : #slides }
 DemoSlideshow >> paragraph: aSlide [
 	<gtSlide>
-	
+	<text: 'Text with a paragraph'>
 	^ (aSlide paragraph)
 		priority: (self priorityFor: #paragraph:);
 		subtitleWithFormat: (self asSubtitle: 'Outline');
@@ -124,7 +134,7 @@ DemoSlideshow >> slidePriorities [
 		maximizedPage:
 		gtWorld:
 		coderExampleSlideFor:
-		inspector:
+		inspectorInPager:
 		spotterExampleSlideFor:
 	)
 ]
@@ -132,12 +142,14 @@ DemoSlideshow >> slidePriorities [
 { #category : #slides }
 DemoSlideshow >> spotterExampleSlideFor: aSlide [
 	<gtSlide>
+	<text: 'A spotter search'>
 	^ aSlide spotter priority: (self priorityFor: #spotterExampleSlideFor:)
 ]
 
 { #category : #slides }
 DemoSlideshow >> textAndElement: aSlide [
 	<gtSlide>
+	<text: 'Text with an element'>
 	^ aSlide textAndElement
 		elementWeight: 0.5;
 		priority: (self priorityFor: #textAndElement:);
@@ -151,7 +163,7 @@ DemoSlideshow >> textAndElement: aSlide [
 { #category : #slides }
 DemoSlideshow >> titleSlideFor: aSlide [
 	<gtSlide>
-	
+	<text: 'A title slide'>
 	^ (aSlide title)
 		priority: (self priorityFor: #titleSlideFor:);
 		titleBottomPadding: 30;
