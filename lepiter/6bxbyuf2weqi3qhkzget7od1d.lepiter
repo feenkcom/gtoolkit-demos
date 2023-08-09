@@ -786,7 +786,45 @@
 							"__type" : "textSnippet",
 							"children" : {
 								"__type" : "snippets",
-								"items" : [ ]
+								"items" : [
+									{
+										"__type" : "textSnippet",
+										"children" : {
+											"__type" : "snippets",
+											"items" : [ ]
+										},
+										"createEmail" : {
+											"__type" : "email",
+											"emailString" : "<unknown>"
+										},
+										"createTime" : {
+											"__type" : "time",
+											"time" : {
+												"__type" : "dateAndTime",
+												"dateAndTimeString" : "2023-08-09T09:18:01.043974+02:00"
+											}
+										},
+										"editEmail" : {
+											"__type" : "email",
+											"emailString" : "<unknown>"
+										},
+										"editTime" : {
+											"__type" : "time",
+											"time" : {
+												"__type" : "dateAndTime",
+												"dateAndTimeString" : "2023-08-09T09:18:39.007982+02:00"
+											}
+										},
+										"uid" : {
+											"__type" : "uid",
+											"uidString" : "eGBFBNq+DQCJwrp7DPflfQ=="
+										},
+										"paragraphStyle" : {
+											"__type" : "textStyle"
+										},
+										"string" : "[[Add tooltips for the maps]]"
+									}
+								]
 							},
 							"createEmail" : {
 								"__type" : "email",
@@ -897,82 +935,7 @@
 							"__type" : "textSnippet",
 							"children" : {
 								"__type" : "snippets",
-								"items" : [
-									{
-										"__type" : "textSnippet",
-										"children" : {
-											"__type" : "snippets",
-											"items" : [ ]
-										},
-										"createEmail" : {
-											"__type" : "email",
-											"emailString" : "<unknown>"
-										},
-										"createTime" : {
-											"__type" : "time",
-											"time" : {
-												"__type" : "dateAndTime",
-												"dateAndTimeString" : "2023-08-07T18:37:43.278743+02:00"
-											}
-										},
-										"editEmail" : {
-											"__type" : "email",
-											"emailString" : "<unknown>"
-										},
-										"editTime" : {
-											"__type" : "time",
-											"time" : {
-												"__type" : "dateAndTime",
-												"dateAndTimeString" : "2023-08-07T18:37:53.413777+02:00"
-											}
-										},
-										"uid" : {
-											"__type" : "uid",
-											"uidString" : "jt0+mrm+DQCQomW1B2jWnA=="
-										},
-										"paragraphStyle" : {
-											"__type" : "textStyle"
-										},
-										"string" : "Make sure the category searches spawn correctly."
-									},
-									{
-										"__type" : "textSnippet",
-										"children" : {
-											"__type" : "snippets",
-											"items" : [ ]
-										},
-										"createEmail" : {
-											"__type" : "email",
-											"emailString" : "<unknown>"
-										},
-										"createTime" : {
-											"__type" : "time",
-											"time" : {
-												"__type" : "dateAndTime",
-												"dateAndTimeString" : "2023-08-07T18:37:54.289442+02:00"
-											}
-										},
-										"editEmail" : {
-											"__type" : "email",
-											"emailString" : "<unknown>"
-										},
-										"editTime" : {
-											"__type" : "time",
-											"time" : {
-												"__type" : "dateAndTime",
-												"dateAndTimeString" : "2023-08-07T18:37:54.289442+02:00"
-											}
-										},
-										"uid" : {
-											"__type" : "uid",
-											"uidString" : "5eXmmrm+DQCRmVQYB2jWnA=="
-										},
-										"paragraphStyle" : {
-											"__type" : "textStyle"
-										},
-										"string" : ""
-									}
-								]
+								"items" : [ ]
 							},
 							"createEmail" : {
 								"__type" : "email",
@@ -982,7 +945,7 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-08-07T18:35:56.252609+02:00"
+									"dateAndTimeString" : "2023-08-09T09:17:47.117955+02:00"
 								}
 							},
 							"editEmail" : {
@@ -993,7 +956,7 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-08-07T18:37:42.356384+02:00"
+									"dateAndTimeString" : "2023-08-09T09:17:47.117955+02:00"
 								}
 							},
 							"uid" : {
@@ -1003,7 +966,7 @@
 							"paragraphStyle" : {
 								"__type" : "textStyle"
 							},
-							"string" : "Add searches for both Link and Page groups"
+							"string" : ""
 						},
 						{
 							"__type" : "textSnippet",

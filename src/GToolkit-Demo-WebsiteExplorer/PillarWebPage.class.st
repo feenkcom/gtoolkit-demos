@@ -67,7 +67,7 @@ PillarWebPage >> gtMapFor: aView [
 	<gtView>
 	^ aView mondrian
 		title: 'Map';
-		priority: 42;
+		priority: 43;
 		painting: [ :aMondrian | self mapFor: aMondrian ]
 ]
 
@@ -129,7 +129,8 @@ PillarWebPage >> mapFor: aMondrian [
 								ifTrue: [ Color blue ]
 								ifFalse: [ (self website reachable includes: each)
 										ifTrue: [ Color green ]
-										ifFalse: [ Color red ] ] ]) ];
+										ifFalse: [ Color red ] ] ]);
+				aptitude: (BrGlamorousWithTooltipAptitude content: each tooltip) ];
 		with: self reachable.
 
 	aMondrian edges
@@ -226,6 +227,15 @@ PillarWebPage >> reachableFrom: rootPages [
 { #category : #links }
 PillarWebPage >> registerLinks [
 	^ self links do: [ :link | link addPage: self ]
+]
+
+{ #category : #links }
+PillarWebPage >> tooltip [
+	^ [ BrLabel new
+		aptitude: BrGlamorousLabelAptitude new glamorousRegularFontAndSize;
+		padding: (BlInsets all: 2);
+		text: self path;
+		alignCenter ] asStencil
 ]
 
 { #category : #accessing }

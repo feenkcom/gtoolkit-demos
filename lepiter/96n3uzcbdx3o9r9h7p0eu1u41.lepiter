@@ -437,43 +437,6 @@
 											"__type" : "time",
 											"time" : {
 												"__type" : "dateAndTime",
-												"dateAndTimeString" : "2023-08-07T20:23:21.707376+02:00"
-											}
-										},
-										"editEmail" : {
-											"__type" : "email",
-											"emailString" : "<unknown>"
-										},
-										"editTime" : {
-											"__type" : "time",
-											"time" : {
-												"__type" : "dateAndTime",
-												"dateAndTimeString" : "2023-08-07T20:23:21.710249+02:00"
-											}
-										},
-										"uid" : {
-											"__type" : "uid",
-											"uidString" : "yv7qB7u+DQC/KHqeAsgVIw=="
-										},
-										"paragraphStyle" : {
-											"__type" : "textStyle"
-										},
-										"string" : "gtSpotterForLinkNames: aSearch\r\t<gtSearch>\r\t^ aSearch list\r\t\ttitle: 'Link names';\r\t\tpriority: 30;\r\t\titems: [ self links ];\r\t\titemsLimit: Float infinity;\r\t\titemName: #path;\r\t\tsendCategory: [ :aCategory :aStep :thisSearch | PillarWebLinkGroup withAll: aCategory items contents ];\r\t\tfilterBySubstring"
-									},
-									{
-										"__type" : "textSnippet",
-										"children" : {
-											"__type" : "snippets",
-											"items" : [ ]
-										},
-										"createEmail" : {
-											"__type" : "email",
-											"emailString" : "<unknown>"
-										},
-										"createTime" : {
-											"__type" : "time",
-											"time" : {
-												"__type" : "dateAndTime",
 												"dateAndTimeString" : "2023-08-07T20:19:01.361337+02:00"
 											}
 										},
@@ -496,43 +459,6 @@
 											"__type" : "textStyle"
 										},
 										"string" : "For some reason we need to explicitly ask for the `contents` or else we get an AsyncStream. Not sure why this is different from the case with pages."
-									},
-									{
-										"__type" : "textSnippet",
-										"children" : {
-											"__type" : "snippets",
-											"items" : [ ]
-										},
-										"createEmail" : {
-											"__type" : "email",
-											"emailString" : "<unknown>"
-										},
-										"createTime" : {
-											"__type" : "time",
-											"time" : {
-												"__type" : "dateAndTime",
-												"dateAndTimeString" : "2023-08-07T20:26:46.05881+02:00"
-											}
-										},
-										"editEmail" : {
-											"__type" : "email",
-											"emailString" : "<unknown>"
-										},
-										"editTime" : {
-											"__type" : "time",
-											"time" : {
-												"__type" : "dateAndTime",
-												"dateAndTimeString" : "2023-08-07T20:26:46.05881+02:00"
-											}
-										},
-										"uid" : {
-											"__type" : "uid",
-											"uidString" : "WT26H7u+DQCR/RU6BilaEw=="
-										},
-										"paragraphStyle" : {
-											"__type" : "textStyle"
-										},
-										"string" : ""
 									}
 								]
 							},
