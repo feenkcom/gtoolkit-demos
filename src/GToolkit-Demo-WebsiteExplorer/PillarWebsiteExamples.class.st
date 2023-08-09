@@ -22,8 +22,15 @@ PillarWebsiteExamples >> esug2014 [
 
 { #category : #constant }
 PillarWebsiteExamples >> esug2014repoDir [
-	^ FileLocator imageDirectory
-		/ 'pharo-local/iceberg/feenkcom/gtoolkit-demos/data/esug.github.io'
+	| aDirectory |
+	aDirectory := FileLocator gtResource
+			/ 'feenkcom/gtoolkit-demos/data/esug.github.io'.
+
+	self 
+		assert: [ aDirectory exists ] 
+		description: [ 'ESUG Directory must exist' ].
+
+	^ aDirectory
 ]
 
 { #category : #constant }

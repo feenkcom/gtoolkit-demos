@@ -22,7 +22,8 @@ Class {
 		'pages',
 		'linkDict',
 		'reachable',
-		'rootPages'
+		'rootPages',
+		'links'
 	],
 	#classInstVars : [
 		'esug'
@@ -134,6 +135,32 @@ PillarWebsite >> gtReachablePagesFor: aView [
 			action: [ :aButton :aTab | aButton phlow spawnObject: self reachable ]
 ]
 
+{ #category : #searching }
+PillarWebsite >> gtSpotterForPageContents: aSearch [
+	<gtSearch>
+	^ aSearch list
+		title: 'Page content';
+		priority: 20;
+		items: [ self pages ];
+		itemsLimit: Float infinity;
+		itemName: #contents;
+		sendCategory: [ :aCategory :aStep :thisSearch | PillarWebPageGroup withAll: aCategory items ];
+		filterBySubstring
+]
+
+{ #category : #searching }
+PillarWebsite >> gtSpotterForPageNames: aSearch [
+	<gtSearch>
+	^ aSearch list
+		title: 'Page names';
+		priority: 10;
+		items: [ self pages ];
+		itemsLimit: Float infinity;
+		itemName: #path;
+		sendCategory: [ :aCategory :aStep :thisSearch | PillarWebPageGroup withAll: aCategory items ];
+		filterBySubstring
+]
+
 { #category : #accessing }
 PillarWebsite >> gtUnreachablePagesFor: aView [
 	<gtView>
@@ -185,11 +212,14 @@ PillarWebsite >> linkForPath: aPath [
 
 { #category : #links }
 PillarWebsite >> links [
-	^ self linkDict values
-		sort: [ :a :b | 
-			(a path occurrencesOf: $/) < (b path occurrencesOf: $/)
-				or: [ (a path occurrencesOf: $/) = (b path occurrencesOf: $/)
-						and: [ a path < b path ] ] ]
+	"Cache it"
+
+	^ links
+		ifNil: [ links := self linkDict values
+					sort: [ :a :b | 
+						(a path occurrencesOf: $/) < (b path occurrencesOf: $/)
+							or: [ (a path occurrencesOf: $/) = (b path occurrencesOf: $/)
+									and: [ a path < b path ] ] ] ]
 ]
 
 { #category : #links }
@@ -233,6 +263,15 @@ PillarWebsite >> pageNamed: aString [
 { #category : #accessing }
 PillarWebsite >> pages [
 	^ pages
+]
+
+{ #category : #printing }
+PillarWebsite >> printOn: aStream [
+	super printOn: aStream.
+	aStream
+		nextPutAll: ' (';
+		nextPutAll: self url;
+		nextPut: $)
 ]
 
 { #category : #links }

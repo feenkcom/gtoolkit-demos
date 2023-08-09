@@ -3,7 +3,10 @@ Class {
 	#superclass : #Object,
 	#instVars : [
 		'website',
-		'pillarFile'
+		'pillarFile',
+		'pillarLinks',
+		'path',
+		'childrenPages'
 	],
 	#category : #'GToolkit-Demo-WebsiteExplorer-Model'
 }
@@ -24,7 +27,9 @@ PillarWebPage class >> for: aFileReference in: aPillarWebsite [
 { #category : #accessing }
 PillarWebPage >> childrenPages [
 	"Pages that can be reached directly from links on this page."
-	^ (self links select: #isPage) collect: #page
+
+	^ childrenPages
+		ifNil: [ childrenPages := (self links select: #isPage) collect: #page ]
 ]
 
 { #category : #accessing }
@@ -172,9 +177,19 @@ PillarWebPage >> normalize: aPath [
 PillarWebPage >> path [
 	"My path relative to the root of the repo."
 
-	| path |
-	path := pillarFile pathString withoutPrefix: website repoDir pathString.
-	self assert: (path beginsWith: '/').
+	<return: #String>
+	path ifNil: [ 
+		| relativePath |
+		relativePath := pillarFile relativeTo: website repoDir.
+		path := '/', relativePath fullName ].
+		
+	self 
+		assert: (path beginsWith: '/')
+		description: [ 'Path must begins with the slash character (/): {1}' format: { path } ].
+	self 
+		assert: (path includes: $\) not
+		description: [ 'Path must NOT include backslash characters (\): {1}' format: { path } ].
+
 	^ path
 ]
 
@@ -195,7 +210,8 @@ PillarWebPage >> pillarFile: anObject [
 
 { #category : #accessing }
 PillarWebPage >> pillarLinks [
-	^ PillarLinkSeaParser parse: self contents
+	^ pillarLinks
+		ifNil: [ pillarLinks := PillarLinkSeaParser parse: self contents ]
 ]
 
 { #category : #printing }

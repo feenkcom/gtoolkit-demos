@@ -68,6 +68,26 @@ ESUG2023Slideshow >> conclusions: aSlide [
 ')
 ]
 
+{ #category : #slides }
+ESUG2023Slideshow >> esugWebsite [
+	"^ PillarWebsite esug"
+	^ PillarWebsiteExamples new esug2014
+]
+
+{ #category : #slides }
+ESUG2023Slideshow >> exploringESUGWebsite: aSlide [
+	<gtSlide>
+	<text:
+'## Exploring the ESUG website
+
+
+'>
+	^ aSlide element
+		priority: (self priorityFor: #exploringESUGWebsite:);
+		element: [ (GtPager createWrappedOn: (GtInspector forObject: self esugWebsite))
+				maximized ]
+]
+
 { #category : #initialization }
 ESUG2023Slideshow >> initializeDb [
 	db := nil.
@@ -81,17 +101,12 @@ ESUG2023Slideshow >> slidePriorities [
 	<gtExample>
 	^ #( 
 		titleSlide:
-		
 		whatIsMD:
-		
+			exploringESUGWebsite:
 		challenges:
-		
 		communityBuilding:
-		
 		bestPracticePatterns:
-		
 		conclusions:
-			
 		)
 ]
 
