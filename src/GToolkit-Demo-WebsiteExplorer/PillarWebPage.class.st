@@ -6,7 +6,8 @@ Class {
 		'pillarFile',
 		'pillarLinks',
 		'path',
-		'childrenPages'
+		'childrenPages',
+		'title'
 	],
 	#category : #'GToolkit-Demo-WebsiteExplorer-Model'
 }
@@ -155,6 +156,11 @@ PillarWebPage >> markdownLinks [
 		yourself) links
 ]
 
+{ #category : #constant }
+PillarWebPage >> missingTitle [
+	^ '<no title>'
+]
+
 { #category : #links }
 PillarWebPage >> mondrianMap [
 	^ self mapFor: GtMondrian new
@@ -243,6 +249,18 @@ PillarWebPage >> reachableFrom: rootPages [
 { #category : #links }
 PillarWebPage >> registerLinks [
 	^ self links do: [ :link | link addPage: self ]
+]
+
+{ #category : #accessing }
+PillarWebPage >> title [
+	^ title ifNil: [ title := self titleParser parse: self contents ]
+]
+
+{ #category : #parsing }
+PillarWebPage >> titleParser [
+	^ ((${ asPParser trim , '"title"' asPParser trim , $: asPParser trim
+	, $" asPParser , $" asPParser negate plus flatten , $" asPParser
+	, $} asPParser trim) ==> #fifth) / (#any asPParser ==> [ :node | self missingTitle ])
 ]
 
 { #category : #links }

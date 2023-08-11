@@ -5,22 +5,6 @@ Class {
 }
 
 { #category : #slides }
-ESUG2023Slideshow >> bestPracticePatterns: aSlide [
-	<gtSlide>
-	<text:
-''>
-
-	^ aSlide paragraph
-		priority: (self priorityFor: #bestPracticePatterns:);
-		subtitleWithFormat: (self asTitle: 'Moldable Development Patterns');
-		paragraphWithFormat: (self
-				asBigText: '
-
-
-')
-]
-
-{ #category : #slides }
 ESUG2023Slideshow >> challenges: aSlide [
 	<gtSlide>
 	<text:
@@ -36,22 +20,6 @@ It''s hard to break habits (coding from the editor)
 	^ aSlide paragraph
 		priority: (self priorityFor: #challenges:);
 		subtitleWithFormat: (self asTitle: 'Challenges');
-		paragraphWithFormat: (self
-				asBigText: '
-
-
-')
-]
-
-{ #category : #slides }
-ESUG2023Slideshow >> communityBuilding: aSlide [
-	<gtSlide>
-	<text:
-''>
-
-	^ aSlide paragraph
-		priority: (self priorityFor: #communityBuilding:);
-		subtitleWithFormat: (self asTitle: 'Community building');
 		paragraphWithFormat: (self
 				asBigText: '
 
@@ -99,14 +67,52 @@ ESUG2023Slideshow >> exploringESUGWebsite: aSlide [
 	<text:
 '## Exploring the ESUG website
 
-Stuff to look at:
+Let''s take an easy domain that we are all familiar with, namely the ESUG website.
 
-• Wrapping the website and files
-• Creating simple views, searches and actions
-• Island parser to extract pillar links
-• Example class
-• Using Lepiter to document the process.
-'>
+Here we are inspecting the cloned repo of the ESUG website.
+
+We can browse the pages of the website, see the contents of a page, the list of links, and the pages that are reachable from this page, as well as a map of the reachable pages.
+
+*(Click on a few pages, then go to Conference 2014. Look at Contents, etc. Show the map, hover over a reachable page, and open it.)*
+
+We can also open the page in a web browser.
+
+From the website we also see all the links, possibly missing internal links, and the reachable pages, as well as an overall map.
+
+In red we see the pages that seemingly are unreachable from the root.
+
+We can also check the status of links.
+
+*(Go the missing status and click on the check status button. NB: click on Inspect object to get a new view with Broken HTTP links.)*
+
+Here we can see which links may be broken.
+
+Let''s stop the background check.
+
+Finally, we can search for pages or links by title or content.
+
+*(Enter a query for "hotel".)*
+
+## Recap
+
+So what have we seen?
+
+We have domain objects representing a website, the web pages and the links.
+
+We have custom views for each domain object allowing us to explore the information that interests us, and to navigate to other objects.
+
+We also have custom actions to open a web browser or to start an analysis, and we have a custom search to query lists of pages and links.
+
+Each of these custom tools is implemented in just a few lines of code in a method of the domain object concerned annotated with a dedicated pragma.
+
+For example, here is a view, an action, and a search.
+
+*(Show each of these.)*
+
+Now we get the key question:
+
+How hard is it to teach people to build their own explainable system for their domain of interest?'>
+
 	^ aSlide element
 		priority: (self priorityFor: #exploringESUGWebsite:);
 		element: [ (GtPager createWrappedOn: (GtInspector forObject: self esugWebsite))
@@ -156,8 +162,7 @@ ESUG2023Slideshow >> slidePriorities [
 		titleSlide:
 		
 		whatIsMD:
-			exploringESUGWebsite:
-
+		exploringESUGWebsite:
 
 		patterns:
 
@@ -192,19 +197,11 @@ ESUG2023Slideshow >> whatIsMD: aSlide [
 	<text:
 '## What is Moldable Development?
 
+Moldable development is a way of developing software in which you mold the development environment itself with custom tools to support your application domain.
 
-Moldable Development is a way to *support decision-making* by developing software in a way that makes it *explainable*. 
+In this way the system becomes *explainable*, and thus supports decision making for a range of stakeholders.
 
-This is done by *molding the tools and environment* to your domain. 
-
-In essence, you create *custom tools* for every problem you encounter. 
-
-This makes the domain objects visible and explorable by means of custom views, actions, searches, advices, and other tools.
-
-
-
-
-'>
+Let''s look at a simple example.'>
 
 	^ aSlide paragraph
 		priority: (self priorityFor: #whatIsMD:);
@@ -212,6 +209,5 @@ This makes the domain objects visible and explorable by means of custom views, a
 		paragraphWithFormat: (self
 				asBigText: '
 
-
-')
+Moldable development supports decision making by making domain concepts visible, explorable and explainable.')
 ]
