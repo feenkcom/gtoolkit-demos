@@ -8,7 +8,7 @@ Class {
 ESUG2023Slideshow >> challenges: aSlide [
 	<gtSlide>
 	<text:
-'# Challenges
+'TODO # Challenges
 
 People hate change
 People focus on the first things they see
@@ -29,9 +29,9 @@ People focus on the first things they see
 ESUG2023Slideshow >> codeFromALiveObject: aSlide [
 	<gtSlide>
 	<text:
-'## Pattern: Start coding from a live object, not its class
+'TODO ## Pattern: Start coding from a live object, not its class
 
-
+TODO ADD EXPLANATION
 
 '>
 
@@ -44,7 +44,22 @@ ESUG2023Slideshow >> codeFromALiveObject: aSlide [
 ESUG2023Slideshow >> codeFromALiveObjectPage [
 	^ (LePage named: 'Pattern: Start coding from a live object, not its class')
 		addSnippet: (LeTextSnippet new
-				string: '';
+				string: 'Would you rather be here:';
+				yourself);
+		addSnippet: (LeElementSnippet new
+				code: 'GtCoder forClass: PillarWebsite';
+				codeVisible: false;
+				elementHeight: 318;
+				codeHeight: 50;
+				yourself);
+		addSnippet: (LeTextSnippet new
+				string: 'or here?';
+				yourself);
+		addSnippet: (LeElementSnippet new
+				code: 'GtInspector newOn: PillarWebsite esug';
+				codeVisible: false;
+				elementHeight: 302;
+				codeHeight: 50;
 				yourself);
 		yourself
 ]
@@ -53,7 +68,7 @@ ESUG2023Slideshow >> codeFromALiveObjectPage [
 ESUG2023Slideshow >> conclusions: aSlide [
 	<gtSlide>
 	<text:
-'# Conclusions 
+'TODO # Conclusions 
 
 ?
 
@@ -149,23 +164,9 @@ ESUG2023Slideshow >> patterns: aSlide [
 	<text:
 '# Moldable Development Patterns
 
+Since Moldable Development is a *way* to develop explainable systems, rather than focusing on technology, it makes sense to start from the *patterns* that we observe when building such systems.
 
-
-
-
-
-
-Which of these to cover?
-
-Start coding from a live object, not its class
-Wrap data to create an explorable model
-Prototype new behavior in an Inspector Playground
-Replace navigation by view
-Replace repeated tasks by custom actions
-
-
-
-'>
+Let''s have a look a few of these patterns.'>
 
 	^ aSlide paragraph
 		priority: (self priorityFor: #patterns:);
@@ -173,15 +174,14 @@ Replace repeated tasks by custom actions
 		paragraphWithFormat: (self
 				asBigText: '
 
-
-')
+express  best practices in the process of molding software to make it explainable.')
 ]
 
 { #category : #slides }
 ESUG2023Slideshow >> peopleFocusOnWhatTheySeeFirst: aSlide [
 	<gtSlide>
 	<text:
-'## People focus on what they see first
+'TODO ## People focus on what they see first
 
 
 '>
@@ -200,7 +200,7 @@ ESUG2023Slideshow >> peopleFocusOnWhatTheySeeFirst: aSlide [
 ESUG2023Slideshow >> peopleHateChange: aSlide [
 	<gtSlide>
 	<text:
-'## People hate change
+'TODO ## People hate change
 
 It''s hard to break habits (coding from the editor)
 
@@ -222,7 +222,7 @@ It''s hard to break habits (coding from the editor)
 ESUG2023Slideshow >> prototypeInAPlayground: aSlide [
 	<gtSlide>
 	<text:
-'## Pattern: Prototype new behavior in an Inspector Playground
+'TODO ## Pattern: Prototype new behavior in an Inspector Playground
 
 
 
@@ -237,7 +237,25 @@ ESUG2023Slideshow >> prototypeInAPlayground: aSlide [
 ESUG2023Slideshow >> prototypeInAPlaygroundPage [
 	^ (LePage named: 'Pattern: Prototype new behavior in an Inspector Playground')
 		addSnippet: (LeTextSnippet new
-				string: '';
+				string: 'Start by inspecting an instance.';
+				yourself);
+		addSnippet: (LePharoSnippet new
+				code: 'EsugWebsite new repoDir: (FileLocator imageDirectory / ''esug.github.io'')';
+				yourself);
+		addSnippet: (LeTextSnippet new
+				string: 'Then code directly in the Playground, for example:';
+				yourself);
+		addSnippet: (LeElementSnippet new
+				code: '(GtInspectorScripterExamples new
+	scriptedInspectorOn: (EsugWebsite new repoDir: FileLocator imageDirectory / ''esug.github.io'')
+	WithPlaygroundText: ''repoDir allChildrenMatching: ''''*.pillar'''''')
+	elementWithoutParent';
+				codeVisible: false;
+				elementHeight: 437;
+				codeHeight: 50;
+				yourself);
+		addSnippet: (LeTextSnippet new
+				string: 'Extract useful code as methods, examples or tests.';
 				yourself);
 		yourself
 ]
@@ -246,7 +264,7 @@ ESUG2023Slideshow >> prototypeInAPlaygroundPage [
 ESUG2023Slideshow >> replaceNavigationByView: aSlide [
 	<gtSlide>
 	<text:
-'## Pattern: Replace navigation by view
+'TODO ## Pattern: Replace navigation by view
 
 
 
@@ -270,7 +288,7 @@ ESUG2023Slideshow >> replaceNavigationByViewPage [
 ESUG2023Slideshow >> replaceTasksByActions: aSlide [
 	<gtSlide>
 	<text:
-'## Pattern: Replace repeated tasks by custom actions
+'TODO ## Pattern: Replace repeated tasks by custom actions
 
 
 
@@ -362,7 +380,7 @@ Moldable development supports decision making by making domain concepts visible,
 ESUG2023Slideshow >> whatWorks: aSlide [
 	<gtSlide>
 	<text:
-'# What works 
+'TODO # What works 
 
 
 Or "Lessons"?
@@ -394,7 +412,7 @@ Save one or two of these for the conclusion slide?
 ESUG2023Slideshow >> wrapData: aSlide [
 	<gtSlide>
 	<text:
-'## Pattern: Wrap data to create an explorable model
+'TODO ## Pattern: Wrap data to create an explorable model
 
 
 
@@ -408,8 +426,26 @@ ESUG2023Slideshow >> wrapData: aSlide [
 { #category : #page }
 ESUG2023Slideshow >> wrapDataPage [
 	^ (LePage named: 'Pattern: Wrap data to create an explorable model')
-		addSnippet: (LeTextSnippet new
-				string: '';
-				yourself);
-		yourself
+	addSnippet: (LeTextSnippet new
+			string: 'Start by grabbing your data.';
+			yourself);
+	addSnippet: (LePharoSnippet new
+			code: 'repoDir := FileLocator imageDirectory / ''esug.github.io''.
+
+"Clone the repo if we haven''t already done so."
+repoDir exists
+	ifFalse: [ repo := ''git@github.com:ESUG/esug.github.io.git''.
+		repository := IceRepositoryCreator fromUrl: repo to: repoDir ].
+repoDir';
+			yourself);
+	addSnippet: (LeTextSnippet new
+			string: 'Wrap it in a new class.';
+			yourself);
+	addSnippet: (LePharoSnippet new
+			code: 'EsugWebsite new repoDir: repoDir';
+			yourself);
+	addSnippet: (LeTextSnippet new
+			string: '';
+			yourself);
+	yourself
 ]
