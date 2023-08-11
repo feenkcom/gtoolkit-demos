@@ -105,9 +105,12 @@ PillarWebsite >> gtPagesFor: aView [
 		column: 'Index'
 			text: [ :eachItem :eachIndex | eachIndex asRopedText foreground: Color gray ]
 			width: 45;
-		column: 'Page'
+		column: 'Title'
+			text: [ :item | item title ]
+			width: 150;
+		column: 'Path'
 			text: [ :item | item path ]
-			width: 400;
+			width: 300;
 		column: 'Pillar links'
 			text: [ :item | 
 				| size |
