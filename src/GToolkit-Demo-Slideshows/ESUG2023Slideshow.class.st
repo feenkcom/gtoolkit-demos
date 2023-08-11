@@ -149,6 +149,22 @@ How hard is it to teach people to build their own explainable system for their d
 				maximized ]
 ]
 
+{ #category : #slides }
+ESUG2023Slideshow >> gtBookPatternsPage: aSlide [
+	<gtSlide>
+	<text:
+'TODO ## GT Book: Moldable Development patterns
+
+TODO ADD EXPLANATION
+
+'>
+
+	^ aSlide lepiterPage
+		priority: (self priorityFor: #gtBookPatternsPage:);
+		pageNamed: 'Moldable Development patterns' from: 'Glamorous Toolkit Book';
+		yourself
+]
+
 { #category : #initialization }
 ESUG2023Slideshow >> initializeDb [
 	self db addPage: self codeFromALiveObjectPage.
@@ -240,14 +256,14 @@ ESUG2023Slideshow >> prototypeInAPlaygroundPage [
 				string: 'Start by inspecting an instance.';
 				yourself);
 		addSnippet: (LePharoSnippet new
-				code: 'EsugWebsite new repoDir: (FileLocator imageDirectory / ''esug.github.io'')';
+				code: 'EsugWebsiteWrapper new repoDir: (FileLocator imageDirectory / ''esug.github.io'')';
 				yourself);
 		addSnippet: (LeTextSnippet new
 				string: 'Then code directly in the Playground, for example:';
 				yourself);
 		addSnippet: (LeElementSnippet new
 				code: '(GtInspectorScripterExamples new
-	scriptedInspectorOn: (EsugWebsite new repoDir: FileLocator imageDirectory / ''esug.github.io'')
+	scriptedInspectorOn: (EsugWebsiteWrapper new repoDir: FileLocator imageDirectory / ''esug.github.io'')
 	WithPlaygroundText: ''repoDir allChildrenMatching: ''''*.pillar'''''')
 	elementWithoutParent';
 				codeVisible: false;
@@ -279,14 +295,40 @@ ESUG2023Slideshow >> replaceNavigationByView: aSlide [
 ESUG2023Slideshow >> replaceNavigationByViewPage [
 	^ (LePage named: 'Pattern: Replace navigation by view')
 		addSnippet: (LeTextSnippet new
-				string: '';
+				string: 'We are inspecting a version of the ESUG website and navigate to the pages.';
+				yourself);
+		addSnippet: (LeElementSnippet new
+				code: '(GtInspectorScripterExamples new
+	scriptedInspectorOn: EsugWebsite esug
+	WithPlaygroundText: ''self pages first'')
+	elementWithoutParent';
+				codeVisible: false;
+				elementHeight: 530;
+				codeHeight: 50;
+				yourself);
+		addSnippet: (LeTextSnippet new
+				string: 'We like this and want to add this as a custom view.';
+				addSnippet: (LeElementSnippet new
+						code: '''gtPagesFor: aView
+	<gtView>
+	^ aView forward
+		title: ''''Pages'''';
+		priority: 10;
+		object: [ self pages ];
+		view: #gtItemsFor:'' gtStringFor: GtPhlowView new';
+						codeVisible: false;
+						elementHeight: 166;
+						codeHeight: 50;
+						yourself);
 				yourself);
 		yourself
 ]
 
 { #category : #slides }
 ESUG2023Slideshow >> replaceTasksByActions: aSlide [
-	<gtSlide>
+	"LEAVE THIS OUT FOR NOW
+	
+	<gtSlide>"
 	<text:
 'TODO ## Pattern: Replace repeated tasks by custom actions
 
@@ -324,13 +366,15 @@ ESUG2023Slideshow >> slidePriorities [
 			wrapData:
 			prototypeInAPlayground:
 			replaceNavigationByView:
-			replaceTasksByActions:
+			"replaceTasksByActions:"
+			gtBookPatternsPage:
 
+		whatWorks:
+		
 		challenges:
 			peopleHateChange:
 			peopleFocusOnWhatTheySeeFirst:
 		
-		whatWorks:
 		
 		conclusions:
 	
@@ -442,7 +486,7 @@ repoDir';
 			string: 'Wrap it in a new class.';
 			yourself);
 	addSnippet: (LePharoSnippet new
-			code: 'EsugWebsite new repoDir: repoDir';
+			code: 'EsugWebsiteWrapper new repoDir: repoDir';
 			yourself);
 	addSnippet: (LeTextSnippet new
 			string: '';
