@@ -8,12 +8,10 @@ Class {
 ESUG2023Slideshow >> challenges: aSlide [
 	<gtSlide>
 	<text:
-'## Challenges
+'# Challenges
 
 People hate change
 People focus on the first things they see
-It''s hard to break habits (coding from the editor)
-
 
 '>
 
@@ -28,20 +26,36 @@ It''s hard to break habits (coding from the editor)
 ]
 
 { #category : #slides }
+ESUG2023Slideshow >> codeFromALiveObject: aSlide [
+	<gtSlide>
+	<text:
+'## Pattern: Start coding from a live object, not its class
+
+
+
+'>
+
+	^ aSlide lepiterPage
+		priority: (self priorityFor: #codeFromALiveObject:);
+		startPage:  (self db pageNamed: 'Pattern: Start coding from a live object, not its class')
+]
+
+{ #category : #page }
+ESUG2023Slideshow >> codeFromALiveObjectPage [
+	^ (LePage named: 'Pattern: Start coding from a live object, not its class')
+		addSnippet: (LeTextSnippet new
+				string: '';
+				yourself);
+		yourself
+]
+
+{ #category : #slides }
 ESUG2023Slideshow >> conclusions: aSlide [
 	<gtSlide>
 	<text:
-'## Conclusions 
+'# Conclusions 
 
-
-Or "What works", or "Lessons"?
-
-Discord is a great platform.
-Make it easy for people to ask questions and get answers fast.
-Build live documentation into the system. (Not just class comments.)
-Make the system explorable. 
-Short, dense videos are appreciated (but a lot of work).
-Exploration is a skill that can be learned.
+?
 
 '>
 
@@ -57,8 +71,9 @@ Exploration is a skill that can be learned.
 
 { #category : #slides }
 ESUG2023Slideshow >> esugWebsite [
-	"^ PillarWebsite esug"
-	^ PillarWebsiteExamples new esug2014
+	<gtExample>
+	<noTest>
+	^ PillarWebsite esug
 ]
 
 { #category : #slides }
@@ -121,15 +136,18 @@ How hard is it to teach people to build their own explainable system for their d
 
 { #category : #initialization }
 ESUG2023Slideshow >> initializeDb [
-	db := nil.
-
+	self db addPage: self codeFromALiveObjectPage.
+	self db addPage: self wrapDataPage.
+	self db addPage: self prototypeInAPlaygroundPage.
+	self db addPage: self replaceNavigationByViewPage.
+	self db addPage: self replaceTasksByActionsPage.
 ]
 
 { #category : #slides }
 ESUG2023Slideshow >> patterns: aSlide [
 	<gtSlide>
 	<text:
-'## Moldable Development Patterns
+'# Moldable Development Patterns
 
 
 
@@ -160,25 +178,115 @@ Replace repeated tasks by custom actions
 ]
 
 { #category : #slides }
-ESUG2023Slideshow >> patternsPage: aSlide [
+ESUG2023Slideshow >> peopleFocusOnWhatTheySeeFirst: aSlide [
 	<gtSlide>
 	<text:
-'## Moldable Development Patterns
+'## People focus on what they see first
 
-Which of these to cover?
 
-Start coding from a live object, not its class
-Wrap data to create an explorable model
-Prototype new behavior in an Inspector Playground
-Replace navigation by view
-Replace repeated tasks by custom actions
+'>
+
+	^ aSlide paragraph
+		priority: (self priorityFor: #peopleFocusOnWhatTheySeeFirst:);
+		subtitleWithFormat: (self asTitle: 'People focus on what they see first');
+		paragraphWithFormat: (self
+				asBigText: '
+
+
+')
+]
+
+{ #category : #slides }
+ESUG2023Slideshow >> peopleHateChange: aSlide [
+	<gtSlide>
+	<text:
+'## People hate change
+
+It''s hard to break habits (coding from the editor)
 
 
 
 '>
+
+	^ aSlide paragraph
+		priority: (self priorityFor: #peopleHateChange:);
+		subtitleWithFormat: (self asTitle: 'People hate change');
+		paragraphWithFormat: (self
+				asBigText: '
+
+
+')
+]
+
+{ #category : #slides }
+ESUG2023Slideshow >> prototypeInAPlayground: aSlide [
+	<gtSlide>
+	<text:
+'## Pattern: Prototype new behavior in an Inspector Playground
+
+
+
+'>
+
 	^ aSlide lepiterPage
-		priority: (self priorityFor: #lepiterPage:);
-		pageNamed: 'Moldable Development patterns' from: 'Glamorous Toolkit Book';
+		priority: (self priorityFor: #prototypeInAPlayground:);
+		startPage:  (self db pageNamed: 'Pattern: Prototype new behavior in an Inspector Playground')
+]
+
+{ #category : #page }
+ESUG2023Slideshow >> prototypeInAPlaygroundPage [
+	^ (LePage named: 'Pattern: Prototype new behavior in an Inspector Playground')
+		addSnippet: (LeTextSnippet new
+				string: '';
+				yourself);
+		yourself
+]
+
+{ #category : #slides }
+ESUG2023Slideshow >> replaceNavigationByView: aSlide [
+	<gtSlide>
+	<text:
+'## Pattern: Replace navigation by view
+
+
+
+'>
+
+	^ aSlide lepiterPage
+		priority: (self priorityFor: #replaceNavigationByView:);
+		startPage:  (self db pageNamed: 'Pattern: Replace navigation by view')
+]
+
+{ #category : #page }
+ESUG2023Slideshow >> replaceNavigationByViewPage [
+	^ (LePage named: 'Pattern: Replace navigation by view')
+		addSnippet: (LeTextSnippet new
+				string: '';
+				yourself);
+		yourself
+]
+
+{ #category : #slides }
+ESUG2023Slideshow >> replaceTasksByActions: aSlide [
+	<gtSlide>
+	<text:
+'## Pattern: Replace repeated tasks by custom actions
+
+
+
+'>
+
+	^ aSlide lepiterPage
+		priority: (self priorityFor: #replaceTasksByActions:);
+		startPage:  (self db pageNamed: 'Pattern: Replace repeated tasks by custom actions')
+]
+
+{ #category : #page }
+ESUG2023Slideshow >> replaceTasksByActionsPage [
+	^ (LePage named: 'Pattern: Replace repeated tasks by custom actions')
+		addSnippet: (LeTextSnippet new
+				string: '';
+				yourself);
 		yourself
 ]
 
@@ -194,12 +302,20 @@ ESUG2023Slideshow >> slidePriorities [
 			exploringESUGWebsite:
 
 		patterns:
-			patternsPage:
+			codeFromALiveObject:
+			wrapData:
+			prototypeInAPlayground:
+			replaceNavigationByView:
+			replaceTasksByActions:
 
 		challenges:
+			peopleHateChange:
+			peopleFocusOnWhatTheySeeFirst:
+		
+		whatWorks:
 		
 		conclusions:
-		
+	
 	)
 ]
 
@@ -225,7 +341,7 @@ Today I''d like to report on the challenges and and insights we have experienced
 ESUG2023Slideshow >> whatIsMD: aSlide [
 	<gtSlide>
 	<text:
-'## What is Moldable Development?
+'# What is Moldable Development?
 
 Moldable development is a way of developing software in which you mold the development environment itself with custom tools to support your application domain.
 
@@ -240,4 +356,60 @@ Let''s look at a simple example.'>
 				asBigText: '
 
 Moldable development supports decision making by making domain concepts visible, explorable and explainable.')
+]
+
+{ #category : #slides }
+ESUG2023Slideshow >> whatWorks: aSlide [
+	<gtSlide>
+	<text:
+'# What works 
+
+
+Or "Lessons"?
+
+
+Discord is a great platform.
+Make it easy for people to ask questions and get answers fast.
+Build live documentation into the system. (Not just class comments.)
+Make the system explorable. 
+Short, dense videos are appreciated (but a lot of work).
+Exploration is a skill that can be learned.
+
+Save one or two of these for the conclusion slide?
+
+
+'>
+
+	^ aSlide paragraph
+		priority: (self priorityFor: #whatWorks:);
+		subtitleWithFormat: (self asTitle: 'What works');
+		paragraphWithFormat: (self
+				asBigText: '
+
+
+')
+]
+
+{ #category : #slides }
+ESUG2023Slideshow >> wrapData: aSlide [
+	<gtSlide>
+	<text:
+'## Pattern: Wrap data to create an explorable model
+
+
+
+'>
+
+	^ aSlide lepiterPage
+		priority: (self priorityFor: #wrapData:);
+		startPage:  (self db pageNamed: 'Pattern: Wrap data to create an explorable model')
+]
+
+{ #category : #page }
+ESUG2023Slideshow >> wrapDataPage [
+	^ (LePage named: 'Pattern: Wrap data to create an explorable model')
+		addSnippet: (LeTextSnippet new
+				string: '';
+				yourself);
+		yourself
 ]

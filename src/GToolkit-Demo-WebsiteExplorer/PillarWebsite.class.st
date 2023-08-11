@@ -35,6 +35,8 @@ Class {
 PillarWebsite class >> esug [
 	"Cache the website for demos."
 
+	<gtExample>
+	<noTest>
 	^ esug
 		ifNil: [ esug := self new
 					repoDir: self esugRepoDir;
@@ -46,6 +48,8 @@ PillarWebsite class >> esug [
 PillarWebsite class >> esugReload [
 	"Clear the cache and reload the website."
 
+	<gtExample>
+	<noTest>
 	esug := nil.
 	^ self esug
 ]
@@ -53,7 +57,7 @@ PillarWebsite class >> esugReload [
 { #category : #creation }
 PillarWebsite class >> esugRepoDir [
 	^ self
-		initializeRepoDir: 'esug.github.io' asFileReference
+		initializeRepoDir: (FileLocator imageDirectory / 'esug.github.io') asFileReference
 		fromRepoUrl: 'https://github.com/ESUG/esug.github.io'
 ]
 

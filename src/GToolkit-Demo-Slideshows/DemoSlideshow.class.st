@@ -78,7 +78,7 @@ DemoSlideshow >> inspectorInPager: aSlide [
 	<text: 'An Inspector on an object.
 NB: the pager is needed so we can navigate to new pages.'>
 	^ aSlide element
-		priority: (self priorityFor: #inspector:);
+		priority: (self priorityFor: #inspectorInPager:);
 		element: [ (GtPager
 				createWrappedOn: (GtInspector forObject: GtLudoRecordingGameExamples new gameShowingAllMoves2))
 				maximized ]
