@@ -131,6 +131,12 @@ ESUG2023Slideshow >> patterns: aSlide [
 	<text:
 '## Moldable Development Patterns
 
+
+
+
+
+
+
 Which of these to cover?
 
 Start coding from a live object, not its class
@@ -153,6 +159,29 @@ Replace repeated tasks by custom actions
 ')
 ]
 
+{ #category : #slides }
+ESUG2023Slideshow >> patternsPage: aSlide [
+	<gtSlide>
+	<text:
+'## Moldable Development Patterns
+
+Which of these to cover?
+
+Start coding from a live object, not its class
+Wrap data to create an explorable model
+Prototype new behavior in an Inspector Playground
+Replace navigation by view
+Replace repeated tasks by custom actions
+
+
+
+'>
+	^ aSlide lepiterPage
+		priority: (self priorityFor: #lepiterPage:);
+		pageNamed: 'Moldable Development patterns' from: 'Glamorous Toolkit Book';
+		yourself
+]
+
 { #category : #accessing }
 ESUG2023Slideshow >> slidePriorities [
 	"This method defines the slide priorities implicitly by their order instead of by fixed numbers.
@@ -162,9 +191,10 @@ ESUG2023Slideshow >> slidePriorities [
 		titleSlide:
 		
 		whatIsMD:
-		exploringESUGWebsite:
+			exploringESUGWebsite:
 
 		patterns:
+			patternsPage:
 
 		challenges:
 		
