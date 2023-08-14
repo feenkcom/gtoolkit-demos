@@ -28,6 +28,7 @@ People focus on the first things they see
 { #category : #slides }
 ESUG2023Slideshow >> codeFromALiveObject: aSlide [
 	<gtSlide>
+	<noTest>
 	<text:
 'TODO ## Pattern: Start coding from a live object, not its class
 
@@ -94,6 +95,7 @@ ESUG2023Slideshow >> esugWebsite [
 { #category : #slides }
 ESUG2023Slideshow >> exploringESUGWebsite: aSlide [
 	<gtSlide>
+	<noTest>
 	<text:
 '## Exploring the ESUG website
 
@@ -196,6 +198,7 @@ express  best practices in the process of molding software to make it explainabl
 { #category : #slides }
 ESUG2023Slideshow >> peopleFocusOnWhatTheySeeFirst: aSlide [
 	<gtSlide>
+	<noTest>
 	<text:
 'TODO ## People focus on what they see first
 
@@ -237,6 +240,7 @@ It''s hard to break habits (coding from the editor)
 { #category : #slides }
 ESUG2023Slideshow >> prototypeInAPlayground: aSlide [
 	<gtSlide>
+	<noTest>
 	<text:
 'TODO ## Pattern: Prototype new behavior in an Inspector Playground
 
@@ -279,6 +283,7 @@ ESUG2023Slideshow >> prototypeInAPlaygroundPage [
 { #category : #slides }
 ESUG2023Slideshow >> replaceNavigationByView: aSlide [
 	<gtSlide>
+	<noTest>
 	<text:
 'TODO ## Pattern: Replace navigation by view
 
