@@ -28,13 +28,36 @@ People focus on the first things they see
 { #category : #slides }
 ESUG2023Slideshow >> codeFromALiveObject: aSlide [
 	<gtSlide>
-	<noTest>
 	<text:
-'TODO ## Pattern: Start coding from a live object, not its class
+'## Pattern: Start coding from a live object, not its class
 
-TODO ADD EXPLANATION
+This is perhaps the hardest pattern to learn.
 
-'>
+Where would you rather be when you are developing code?
+
+Staring at the source code, or viewing the live object that you are working on?
+
+Here we see at the top a typical Coder view of a class where we can browse and edit the methods.
+
+But this is actually the least interesting view we can have because each method is seen divorced from the context in which it is used and interacts with other methods.
+
+From the very first day that we start to program, we learn to write some code in a text editor, and we compile it and run it.
+
+It always takes a few steps to see the end result.
+
+But why not reverse this?
+
+Below here we see a live instance of the PillarWebsite object that we can interact with.
+
+While it can be cumbersome to navigate from the code view to see its effect, it is usually easy to navigate from the live object to its code.
+
+Suppose for, for example, that we don''t like the way the *Links* are displayed.
+
+We can directly go to the code and change, for example, the width of the *Link* column.
+
+*(Opt-click on the Links tab and change the `300` width to `200`.)*
+
+From the live object view we can experiment with new features, extract methods and examples or tests, and immediately see the effect.'>
 
 	^ aSlide lepiterPage
 		priority: (self priorityFor: #codeFromALiveObject:);
@@ -43,9 +66,11 @@ TODO ADD EXPLANATION
 
 { #category : #page }
 ESUG2023Slideshow >> codeFromALiveObjectPage [
+	<gtExample>
+	<noTest>
 	^ (LePage named: 'Pattern: Start coding from a live object, not its class')
 		addSnippet: (LeTextSnippet new
-				string: 'Would you rather be here:';
+				string: '## Would you rather be here?';
 				yourself);
 		addSnippet: (LeElementSnippet new
 				code: 'GtCoder forClass: PillarWebsite';
@@ -54,7 +79,7 @@ ESUG2023Slideshow >> codeFromALiveObjectPage [
 				codeHeight: 50;
 				yourself);
 		addSnippet: (LeTextSnippet new
-				string: 'or here?';
+				string: '## or here?';
 				yourself);
 		addSnippet: (LeElementSnippet new
 				code: 'GtInspector newOn: PillarWebsite esug';
@@ -95,7 +120,6 @@ ESUG2023Slideshow >> esugWebsite [
 { #category : #slides }
 ESUG2023Slideshow >> exploringESUGWebsite: aSlide [
 	<gtSlide>
-	<noTest>
 	<text:
 '## Exploring the ESUG website
 
@@ -198,7 +222,6 @@ express  best practices in the process of molding software to make it explainabl
 { #category : #slides }
 ESUG2023Slideshow >> peopleFocusOnWhatTheySeeFirst: aSlide [
 	<gtSlide>
-	<noTest>
 	<text:
 'TODO ## People focus on what they see first
 
@@ -240,7 +263,6 @@ It''s hard to break habits (coding from the editor)
 { #category : #slides }
 ESUG2023Slideshow >> prototypeInAPlayground: aSlide [
 	<gtSlide>
-	<noTest>
 	<text:
 'TODO ## Pattern: Prototype new behavior in an Inspector Playground
 
@@ -255,15 +277,17 @@ ESUG2023Slideshow >> prototypeInAPlayground: aSlide [
 
 { #category : #page }
 ESUG2023Slideshow >> prototypeInAPlaygroundPage [
+	<gtExample>
+	<noTest>
 	^ (LePage named: 'Pattern: Prototype new behavior in an Inspector Playground')
 		addSnippet: (LeTextSnippet new
-				string: 'Start by inspecting an instance.';
+				string: '## Start by inspecting an instance.';
 				yourself);
 		addSnippet: (LePharoSnippet new
 				code: 'EsugWebsiteWrapper new repoDir: (FileLocator imageDirectory / ''esug.github.io'')';
 				yourself);
 		addSnippet: (LeTextSnippet new
-				string: 'Then code directly in the Playground, for example:';
+				string: '## Code directly in the Playground:';
 				yourself);
 		addSnippet: (LeElementSnippet new
 				code: '(GtInspectorScripterExamples new
@@ -275,7 +299,7 @@ ESUG2023Slideshow >> prototypeInAPlaygroundPage [
 				codeHeight: 50;
 				yourself);
 		addSnippet: (LeTextSnippet new
-				string: 'Extract useful code as methods, examples or tests.';
+				string: '## Extract useful code as methods, examples or tests.';
 				yourself);
 		yourself
 ]
@@ -298,9 +322,11 @@ ESUG2023Slideshow >> replaceNavigationByView: aSlide [
 
 { #category : #page }
 ESUG2023Slideshow >> replaceNavigationByViewPage [
+	<gtExample>
+	<noTest>
 	^ (LePage named: 'Pattern: Replace navigation by view')
 		addSnippet: (LeTextSnippet new
-				string: 'We are inspecting a version of the ESUG website and navigate to the pages.';
+				string: '## We are inspecting the ESUG website and navigate to the pages.';
 				yourself);
 		addSnippet: (LeElementSnippet new
 				code: '(GtInspectorScripterExamples new
@@ -312,7 +338,7 @@ ESUG2023Slideshow >> replaceNavigationByViewPage [
 				codeHeight: 50;
 				yourself);
 		addSnippet: (LeTextSnippet new
-				string: 'We like this and want to add this as a custom view.';
+				string: '## We like this and want to make it a custom view.';
 				addSnippet: (LeElementSnippet new
 						code: '''gtPagesFor: aView
 	<gtView>
@@ -348,6 +374,8 @@ ESUG2023Slideshow >> replaceTasksByActions: aSlide [
 
 { #category : #page }
 ESUG2023Slideshow >> replaceTasksByActionsPage [
+	<gtExample>
+	<noTest>
 	^ (LePage named: 'Pattern: Replace repeated tasks by custom actions')
 		addSnippet: (LeTextSnippet new
 				string: '';
@@ -461,11 +489,31 @@ Save one or two of these for the conclusion slide?
 ESUG2023Slideshow >> wrapData: aSlide [
 	<gtSlide>
 	<text:
-'TODO ## Pattern: Wrap data to create an explorable model
+'## Pattern: Wrap data to create an explorable model
 
+Although sometimes you may have the luxury to work on a greenfield project, most projects start from some existing data and code.
 
+When we load the data into our environment, we will obtain the default views for that data.
 
-'>
+Here, for example, we have loaded the cloned ESUG website repo and are inspecting the contents.
+
+We obtain a completely generic view of the folders and files that tells us nothing about the domain.
+
+*(Evaluate the first snippet showing the FileLocator views.)*
+
+We would like to turn this into a proper domain object that tells us interesting things about itself.
+
+As a first step, then, we can *wrap* the data into a dedicated object.
+
+When we do this, at first glance the result appears to be even worse, as now we just get a generic *Raw* view of the new object.
+
+*(Inspect the first EsugWebsiteWrapper.)* 
+
+But now we have the possibility to explore it, add behavior, and add new views.
+
+After some iterations we obtain the view we have seen earlier.
+
+*(Inspect the last snippet.)*'>
 
 	^ aSlide lepiterPage
 		priority: (self priorityFor: #wrapData:);
@@ -474,27 +522,32 @@ ESUG2023Slideshow >> wrapData: aSlide [
 
 { #category : #page }
 ESUG2023Slideshow >> wrapDataPage [
+	<gtExample>
+	<noTest>
 	^ (LePage named: 'Pattern: Wrap data to create an explorable model')
-	addSnippet: (LeTextSnippet new
-			string: 'Start by grabbing your data.';
-			yourself);
-	addSnippet: (LePharoSnippet new
-			code: 'repoDir := FileLocator imageDirectory / ''esug.github.io''.
+		addSnippet: (LeTextSnippet new
+				string: '## Start by grabbing your data.';
+				yourself);
+		addSnippet: (LePharoSnippet new
+				code: 'repoDir := FileLocator imageDirectory / ''esug.github.io''.
 
 "Clone the repo if we haven''t already done so."
 repoDir exists
 	ifFalse: [ repo := ''git@github.com:ESUG/esug.github.io.git''.
 		repository := IceRepositoryCreator fromUrl: repo to: repoDir ].
 repoDir';
-			yourself);
-	addSnippet: (LeTextSnippet new
-			string: 'Wrap it in a new class.';
-			yourself);
-	addSnippet: (LePharoSnippet new
-			code: 'EsugWebsiteWrapper new repoDir: repoDir';
-			yourself);
-	addSnippet: (LeTextSnippet new
-			string: '';
-			yourself);
-	yourself
+				yourself);
+		addSnippet: (LeTextSnippet new
+				string: '## Wrap it in a new class.';
+				yourself);
+		addSnippet: (LePharoSnippet new
+				code: 'EsugWebsiteWrapper new repoDir: repoDir';
+				yourself);
+		addSnippet: (LeTextSnippet new
+				string: '## Add views to answer questions about the data.';
+				yourself);
+		addSnippet: (LePharoSnippet new
+				code: 'EsugWebsiteWrapper esug';
+				yourself);
+		yourself
 ]
