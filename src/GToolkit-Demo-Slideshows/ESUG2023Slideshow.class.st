@@ -116,18 +116,19 @@ Exploration is a skill that can be learned.
 ESUG2023Slideshow >> discord: aSlide [
 	<gtSlide>
 	<text:
-'TODO # Discord
+'## Discord
 
 Discord can be a great platform for community building, however it must be well-curated.
 
 It''s critical not only to make people feel welcome and encouraged to ask any kind of questions, but their questions need to be taken seriously answered reasonably quickly.
 
+One interesting pattern in community building is to teach people when they share screenshots to capture an entire window showing the flows between snippets of code and views of interest.
 
+A well-designed screenshot goes a long way to telling a story or explaining an issue.'>
 
-'>
 	^ aSlide labelAndElement
 		priority: (self priorityFor: #discord:);
-		newFadedText: 'Discord';
+		newTextWithFormat: (self asSubtitle: 'Building a community with Discord');
 		element: [ GtFilePictureLiveSlide new
 				fileReference: (GtResourcesUtility
 						resourceAtPath: self picturesDirectoryPath / 'discord.png') ]
@@ -266,42 +267,32 @@ express  best practices in the process of molding software to make it explainabl
 { #category : #slides }
 ESUG2023Slideshow >> peopleFocusOnWhatTheySeeFirst: aSlide [
 	<gtSlide>
-	<text:
-'TODO ## People focus on what they see first
+	<text: 'TODO ## People focus on what they see first
 
 
 '>
-
-	^ aSlide paragraph
+	^ aSlide labelAndElement
 		priority: (self priorityFor: #peopleFocusOnWhatTheySeeFirst:);
-		subtitleWithFormat: (self asTitle: 'People focus on what they see first');
-		paragraphWithFormat: (self
-				asBigText: '
-
-
-')
+		newTextWithFormat: (self asSubtitle: 'People focus on what they see first');
+		element: [ (GtPager createWrappedOn: GtTour new treemapWithBook) maximized ]
 ]
 
 { #category : #slides }
 ESUG2023Slideshow >> peopleHateChange: aSlide [
 	<gtSlide>
-	<text:
-'TODO ## People hate change
+	<text: 'TODO ## People hate change
 
 It''s hard to break habits (coding from the editor)
 
 
 
 '>
-
-	^ aSlide paragraph
+	^ aSlide elementAndElement
 		priority: (self priorityFor: #peopleHateChange:);
-		subtitleWithFormat: (self asTitle: 'People hate change');
-		paragraphWithFormat: (self
-				asBigText: '
-
-
-')
+		newTextWithFormat: (self asSubtitle: 'People hate change');
+		leftElement: [ (GtPager createWrappedOn: (GtCoder forClass: PillarWebsite)) maximized ];
+		rightElement: [ (GtPager createWrappedOn: (GtInspector forObject: PillarWebsite esug))
+				maximized ]
 ]
 
 { #category : #slides }
@@ -513,17 +504,16 @@ Today I''d like to report on the challenges and and insights we have experienced
 ESUG2023Slideshow >> videos: aSlide [
 	<gtSlide>
 	<text:
-'TODO # Videos
+'## Videos
 
+Some people love to watch long, meandering videos at double speed, but I''m not one of them.
 
+A short, compact video can be a very effective way to explain and demonstrate a complex topic, but it also requires considerable planning.
 
-Short, dense videos are appreciated (but a lot of work).
-
-
-'>
+It can take more time to prepare a seven minute video than one that runs over an hour.'>
 	^ aSlide labelAndElement
 		priority: (self priorityFor: #videos:);
-		newFadedText: 'Short videos';
+		newTextWithFormat: (self asSubtitle: 'Short videos on specific topics');
 		element: [ (GtPager
 				createWrappedOn: (LePagePhlowTool page: (self gtBook pageNamed: 'Getting started with GT in 7''')))
 				maximized ]
