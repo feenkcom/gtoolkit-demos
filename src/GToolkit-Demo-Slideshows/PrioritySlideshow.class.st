@@ -132,6 +132,13 @@ PrioritySlideshow >> gtActionShowFor: anAction [
 ]
 
 { #category : #constants }
+PrioritySlideshow >> gtBook [
+	<gtExample>
+	<noTest>
+	^ LeDatabasesRegistry getDatabaseByName: self gtBookName
+]
+
+{ #category : #constants }
 PrioritySlideshow >> gtBookName [
 	^ 'Glamorous Toolkit Book'
 ]
@@ -320,6 +327,13 @@ PrioritySlideshow >> metrics [
 PrioritySlideshow >> pages [
 	self error: 'Use self slidePriorities instead'.
 	^ self slidePriorities
+]
+
+{ #category : #constants }
+PrioritySlideshow >> picturesDirectoryPath [
+	"Default path may be overridden"
+
+	^ Path * 'feenkcom' / 'gtoolkit-demos' / 'data' / 'images'
 ]
 
 { #category : #accessing }

@@ -11,6 +11,13 @@ Class {
 }
 
 { #category : #accessing }
+EsugWebsiteWrapper class >> esug [
+	"This is what we will eventually see after some moldable development iterations."
+
+	^ PillarWebsite esug
+]
+
+{ #category : #accessing }
 EsugWebsiteWrapper >> repoDir: repo [
 	repoDir := repo
 ]

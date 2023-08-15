@@ -90,14 +90,25 @@ DemoSlideshow >> lepiterPage: aSlide [
 	<text: 'A lepiter page from the GT Book'>
 	^ aSlide lepiterPage
 		priority: (self priorityFor: #lepiterPage:);
-		pageNamed: 'Lepiter' from: 'Glamorous Toolkit Book';
+		pageNamed: 'Lepiter' from: self gtBookName;
 		yourself
+]
+
+{ #category : #slides }
+DemoSlideshow >> maximizedGtBookPage: aSlide [
+	<gtSlide>
+	<text: 'A maximized GT book page.'>
+	^ aSlide element
+		priority: (self priorityFor: #maximizedPage:);
+		element: [ (GtPager
+				createWrappedOn: (LePagePhlowTool page: (self gtBook pageNamed: 'Working with a REST API: the GitHub case study')))
+				maximized ]
 ]
 
 { #category : #slides }
 DemoSlideshow >> maximizedPage: aSlide [
 	<gtSlide>
-	<text: 'A maximed lepiter page that can still be browsed.'>
+	<text: 'A maximized lepiter page that can still be browsed.'>
 	^ aSlide element
 		priority: (self priorityFor: #maximizedPage:);
 		element: [ (GtPager
@@ -127,6 +138,7 @@ DemoSlideshow >> slidePriorities [
 	^ #( 
 		titleSlideFor:
 		textAndElement:
+		textAndImage:
 		paragraph:
 		headingAndCode:
 		lepiterPage:
@@ -158,6 +170,19 @@ DemoSlideshow >> textAndElement: aSlide [
 			self cr , 
 			(self asText: 'description');
 		element: [ GtLudoGame new asElement asScalableElement ]
+]
+
+{ #category : #slides }
+DemoSlideshow >> textAndImage: aSlide [
+	<gtSlide>
+	^ aSlide textAndElement
+		elementWeight: 0.60;
+		priority: (self priorityFor: #textAndImage:);
+		newTextWithFormat: (self
+				asText: 'This will also with with any XandElement slide');
+		element: [ GtFilePictureLiveSlide new
+				fileReference: (GtResourcesUtility
+						resourceAtPath: self picturesDirectoryPath / 'smalltalk-80.png') ]
 ]
 
 { #category : #slides }

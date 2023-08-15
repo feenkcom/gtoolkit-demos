@@ -915,11 +915,6 @@ SmalltalkIntroSlideshow >> outline: aSlide [
 ')
 ]
 
-{ #category : #accessing }
-SmalltalkIntroSlideshow >> picturesDirectoryPath [
-	^ Path * 'feenkcom' / 'gtoolkit-demos' / 'data' / 'images'
-]
-
 { #category : #slides }
 SmalltalkIntroSlideshow >> recordingMoves: aSlide [
 	<gtSlide>

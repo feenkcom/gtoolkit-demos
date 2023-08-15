@@ -15,6 +15,16 @@ EsugWebsite class >> esugRepoDir [
 ]
 
 { #category : #accessing }
+EsugWebsite >> gtPagesFor: aView [
+	<gtView>
+	^ aView forward
+		title: 'Pages';
+		priority: 10;
+		object: [ self pages ];
+		view: #gtItemsFor:
+]
+
+{ #category : #accessing }
 EsugWebsite >> pages [
 	^ (repoDir allChildrenMatching: '*.pillar')
 		collect: [ :each | EsugPage for: each ]

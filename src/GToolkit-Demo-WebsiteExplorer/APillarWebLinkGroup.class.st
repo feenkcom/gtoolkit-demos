@@ -122,7 +122,7 @@ APillarWebLinkGroup >> gtLinksFor: aView [
 			width: 45;
 		column: 'Link'
 			text: [ :item | item path ]
-			width: 300;
+			width: 200;
 		column: '# Pages'
 			text: [ :item | item pages size ]
 			width: 60;
