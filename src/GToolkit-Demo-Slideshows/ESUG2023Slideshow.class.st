@@ -25,6 +25,7 @@ Let me round up with a couple of the biggest challenges we have encountered in t
 { #category : #slides }
 ESUG2023Slideshow >> codeFromALiveObject: aSlide [
 	<gtSlide>
+	<noTest>
 	<text:
 '## Pattern: Start coding from a live object, not its class
 
@@ -139,6 +140,7 @@ ESUG2023Slideshow >> esugWebsite [
 { #category : #slides }
 ESUG2023Slideshow >> exploringESUGWebsite: aSlide [
 	<gtSlide>
+	<noTest>
 	<text:
 '## Exploring the ESUG website
 
@@ -285,6 +287,7 @@ The same can be said for the live notebooks, the language workbench, or the perv
 { #category : #slides }
 ESUG2023Slideshow >> peopleHateChange: aSlide [
 	<gtSlide>
+	<noTest>
 	<text:
 '## People hate change
 
@@ -311,6 +314,7 @@ Demos and videos also help, but they are not as effective as the first-hand expe
 { #category : #slides }
 ESUG2023Slideshow >> prototypeInAPlayground: aSlide [
 	<gtSlide>
+	<noTest>
 	<text:
 '## Pattern: Prototype new behavior in an Inspector Playground
 
@@ -575,6 +579,7 @@ Here are a few things that ease the learning process.'>
 { #category : #slides }
 ESUG2023Slideshow >> wrapData: aSlide [
 	<gtSlide>
+	<noTest>
 	<text:
 '## Pattern: Wrap data to create an explorable model
 
