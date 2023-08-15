@@ -329,6 +329,13 @@ PrioritySlideshow >> pages [
 	^ self slidePriorities
 ]
 
+{ #category : #constants }
+PrioritySlideshow >> picturesDirectoryPath [
+	"Default path may be overridden"
+
+	^ Path * 'feenkcom' / 'gtoolkit-demos' / 'data' / 'images'
+]
+
 { #category : #accessing }
 PrioritySlideshow >> priorityFor: aSlideMethodSelector [
 	^ self slidePriorities indexOf: aSlideMethodSelector

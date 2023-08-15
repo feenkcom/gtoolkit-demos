@@ -115,8 +115,7 @@ Exploration is a skill that can be learned.
 { #category : #slides }
 ESUG2023Slideshow >> discord: aSlide [
 	<gtSlide>
-	<text:
-'TODO # What works?
+	<text: 'TODO # What works?
 
 
 
@@ -126,18 +125,12 @@ Make it easy for people to ask questions and get answers fast.
 
 
 '>
-
-	^ aSlide paragraph
-		priority: (self priorityFor: #discord:);
-		subtitleWithFormat: (self asTitle: 'What works?');
-		paragraphWithFormat: (self
-				asBigText: '
-
-• Live documentation
-• Discord
-
-
-')
+	^ aSlide labelAndElement
+		priority: (self priorityFor: #liveDocumentation:);
+		newFadedText: 'Discord';
+		element: [ GtFilePictureLiveSlide new
+				fileReference: (GtResourcesUtility
+						resourceAtPath: self picturesDirectoryPath / 'discord.png') ]
 ]
 
 { #category : #slides }
@@ -243,8 +236,9 @@ Make the system explorable.
 
 '>
 
-	^ aSlide element
+	^ aSlide labelAndElement
 		priority: (self priorityFor: #liveDocumentation:);
+		newFadedText: 'Live documentation';
 		element: [ (GtPager
 				createWrappedOn: (LePagePhlowTool page: (self gtBook pageNamed: 'Working with a REST API: the GitHub case study')))
 				maximized ]
@@ -518,8 +512,7 @@ Today I''d like to report on the challenges and and insights we have experienced
 { #category : #slides }
 ESUG2023Slideshow >> videos: aSlide [
 	<gtSlide>
-	<text:
-'TODO # What works?
+	<text: 'TODO # What works?
 
 
 
@@ -528,17 +521,11 @@ Short, dense videos are appreciated (but a lot of work).
 
 
 '>
-
-	^ aSlide paragraph
-		priority: (self priorityFor: #videos:);
-		subtitleWithFormat: (self asTitle: 'What works?');
-		paragraphWithFormat: (self
-				asBigText: '
-
-• Live documentation
-• Discord
-• Short videos
-')
+	^ aSlide element
+		priority: (self priorityFor: #liveDocumentation:);
+		element: [ (GtPager
+				createWrappedOn: (LePagePhlowTool page: (self gtBook pageNamed: 'Getting started with GT in 7''')))
+				maximized ]
 ]
 
 { #category : #slides }

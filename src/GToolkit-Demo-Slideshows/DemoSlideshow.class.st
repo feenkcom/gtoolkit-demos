@@ -138,6 +138,7 @@ DemoSlideshow >> slidePriorities [
 	^ #( 
 		titleSlideFor:
 		textAndElement:
+		textAndImage:
 		paragraph:
 		headingAndCode:
 		lepiterPage:
@@ -169,6 +170,19 @@ DemoSlideshow >> textAndElement: aSlide [
 			self cr , 
 			(self asText: 'description');
 		element: [ GtLudoGame new asElement asScalableElement ]
+]
+
+{ #category : #slides }
+DemoSlideshow >> textAndImage: aSlide [
+	<gtSlide>
+	^ aSlide textAndElement
+		elementWeight: 0.60;
+		priority: (self priorityFor: #textAndImage:);
+		newTextWithFormat: (self
+				asText: 'This will also with with any XandElement slide');
+		element: [ GtFilePictureLiveSlide new
+				fileReference: (GtResourcesUtility
+						resourceAtPath: self picturesDirectoryPath / 'smalltalk-80.png') ]
 ]
 
 { #category : #slides }
