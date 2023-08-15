@@ -8,12 +8,9 @@ Class {
 ESUG2023Slideshow >> challenges: aSlide [
 	<gtSlide>
 	<text:
-'TODO # Challenges
+'# Challenges
 
-People hate change
-People focus on the first things they see
-
-'>
+Let me round up with a couple of the biggest challenges we have encountered in trying to explain moldable development.'>
 
 	^ aSlide paragraph
 		priority: (self priorityFor: #challenges:);
@@ -94,21 +91,19 @@ ESUG2023Slideshow >> codeFromALiveObjectPage [
 ESUG2023Slideshow >> conclusions: aSlide [
 	<gtSlide>
 	<text:
-'TODO # Conclusions 
+'# Conclusions 
 
-?
+In the end, what is important to convey is that Moldable Development is a process in which you ask questions about a software system, exploring it, and building lots of small, custom tools to answer those questions and make the system explainable.
 
-Exploration is a skill that can be learned.
-
-'>
+Thanks for listening.'>
 
 	^ aSlide paragraph
 		priority: (self priorityFor: #conclusions:);
-		subtitleWithFormat: (self asTitle: 'Conclusions');
+		subtitleWithFormat: (self asTitle: 'Conclusion');
 		paragraphWithFormat: (self
 				asBigText: '
 
-
+Exploration is a skill that can be learned.
 ')
 ]
 
@@ -267,10 +262,17 @@ express  best practices in the process of molding software to make it explainabl
 { #category : #slides }
 ESUG2023Slideshow >> peopleFocusOnWhatTheySeeFirst: aSlide [
 	<gtSlide>
-	<text: 'TODO ## People focus on what they see first
+	<text:
+'## People focus on what they see first
 
+The Glamorous Toolkit contains many pieces of technology that fit together to support moldable development.
 
-'>
+People like to put things into boxes, so they tend to focus on the first bit of technology that captures their imagination, and so risk to lose the big picture.
+
+For example, visualization is an important component, but it is a mistake to equate moldable development with visualization.
+
+The same can be said for the live notebooks, the language workbench, or the pervasive use of examples.'>
+
 	^ aSlide labelAndElement
 		priority: (self priorityFor: #peopleFocusOnWhatTheySeeFirst:);
 		newTextWithFormat: (self asSubtitle: 'People focus on what they see first');
@@ -280,13 +282,21 @@ ESUG2023Slideshow >> peopleFocusOnWhatTheySeeFirst: aSlide [
 { #category : #slides }
 ESUG2023Slideshow >> peopleHateChange: aSlide [
 	<gtSlide>
-	<text: 'TODO ## People hate change
+	<text:
+'## People hate change
 
-It''s hard to break habits (coding from the editor)
+It''s a fact that people hate change, or perhaps rather it''s the case that it''s extremely hard for people to change habits once they have become ingrained.
 
+I personally took a long time to get into the habit of starting to code from live objects rather than heading to a code editor first.
 
+The code editor is a comfortable place to start from, even if it is not very useful for exploring implementation options or understanding existing code.
 
-'>
+What helps here best is live mentoring on a real project.
+
+When you see over and over again the benefits of coding from live objects, you begin to build up a Pavlovian instinct to stay away from the code editor as your starting point.
+
+Demos and videos also help, but they are not as effective as the first-hand experience.'>
+
 	^ aSlide elementAndElement
 		priority: (self priorityFor: #peopleHateChange:);
 		newTextWithFormat: (self asSubtitle: 'People hate change');
