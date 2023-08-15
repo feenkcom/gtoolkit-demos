@@ -115,18 +115,18 @@ Exploration is a skill that can be learned.
 { #category : #slides }
 ESUG2023Slideshow >> discord: aSlide [
 	<gtSlide>
-	<text: 'TODO # What works?
+	<text:
+'TODO # Discord
 
+Discord can be a great platform for community building, however it must be well-curated.
 
-
-Discord is a great platform.
-Make it easy for people to ask questions and get answers fast.
+It''s critical not only to make people feel welcome and encouraged to ask any kind of questions, but their questions need to be taken seriously answered reasonably quickly.
 
 
 
 '>
 	^ aSlide labelAndElement
-		priority: (self priorityFor: #liveDocumentation:);
+		priority: (self priorityFor: #discord:);
 		newFadedText: 'Discord';
 		element: [ GtFilePictureLiveSlide new
 				fileReference: (GtResourcesUtility
@@ -227,20 +227,20 @@ ESUG2023Slideshow >> initializeDb [
 ESUG2023Slideshow >> liveDocumentation: aSlide [
 	<gtSlide>
 	<text:
-'TODO ## Live documentation
+'## Live documentation
 
+GT comes with a live knowledge base of notebook pages documenting the system itself as well as numerous case studies.
 
+Here is a page describing how to interact with the GitHub REST API as a case study in Moldable Development.
 
-Build live documentation into the system. (Not just class comments.)
-Make the system explorable. 
-
-'>
+The GT book not only offers users documentation to read and live tutorials to try out, but also serves as examples for users to start their own projects from their personal database of notes.'>
 
 	^ aSlide labelAndElement
 		priority: (self priorityFor: #liveDocumentation:);
-		newFadedText: 'Live documentation';
+		newTextWithFormat: (self asSubtitle: 'Live documentation');
 		element: [ (GtPager
-				createWrappedOn: (LePagePhlowTool page: (self gtBook pageNamed: 'Working with a REST API: the GitHub case study')))
+				createWrappedOn: (LePagePhlowTool
+						page: (self gtBook pageNamed: 'Working with a REST API: the GitHub case study')))
 				maximized ]
 ]
 
@@ -512,8 +512,8 @@ Today I''d like to report on the challenges and and insights we have experienced
 { #category : #slides }
 ESUG2023Slideshow >> videos: aSlide [
 	<gtSlide>
-	<text: 'TODO # What works?
-
+	<text:
+'TODO # Videos
 
 
 
@@ -521,8 +521,9 @@ Short, dense videos are appreciated (but a lot of work).
 
 
 '>
-	^ aSlide element
-		priority: (self priorityFor: #liveDocumentation:);
+	^ aSlide labelAndElement
+		priority: (self priorityFor: #videos:);
+		newFadedText: 'Short videos';
 		element: [ (GtPager
 				createWrappedOn: (LePagePhlowTool page: (self gtBook pageNamed: 'Getting started with GT in 7''')))
 				maximized ]
@@ -553,27 +554,11 @@ Moldable development supports decision making by making domain concepts visible,
 ESUG2023Slideshow >> whatWorks: aSlide [
 	<gtSlide>
 	<text:
-'TODO # What works?
+'# What works?
 
+Teaching Moldable Development is challenging not only because there are the patterns to learn and a fair bit of technology to get acquainted with.
 
-Or "Lessons"?
-
-
-Build live documentation into the system. (Not just class comments.)
-Make the system explorable. 
-
-
-Discord is a great platform.
-Make it easy for people to ask questions and get answers fast.
-
-
-Short, dense videos are appreciated (but a lot of work).
-
-
-Save one or two of these for the conclusion slide?
-
-
-'>
+Here are a few things that ease the learning process.'>
 
 	^ aSlide paragraph
 		priority: (self priorityFor: #whatWorks:);
