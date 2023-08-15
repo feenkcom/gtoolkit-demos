@@ -98,6 +98,8 @@ ESUG2023Slideshow >> conclusions: aSlide [
 
 ?
 
+Exploration is a skill that can be learned.
+
 '>
 
 	^ aSlide paragraph
@@ -105,6 +107,34 @@ ESUG2023Slideshow >> conclusions: aSlide [
 		subtitleWithFormat: (self asTitle: 'Conclusions');
 		paragraphWithFormat: (self
 				asBigText: '
+
+
+')
+]
+
+{ #category : #slides }
+ESUG2023Slideshow >> discord: aSlide [
+	<gtSlide>
+	<text:
+'TODO # What works?
+
+
+
+Discord is a great platform.
+Make it easy for people to ask questions and get answers fast.
+
+
+
+'>
+
+	^ aSlide paragraph
+		priority: (self priorityFor: #discord:);
+		subtitleWithFormat: (self asTitle: 'What works?');
+		paragraphWithFormat: (self
+				asBigText: '
+
+• Live documentation
+• Discord
 
 
 ')
@@ -179,11 +209,11 @@ How hard is it to teach people to build their own explainable system for their d
 ESUG2023Slideshow >> gtBookPatternsPage: aSlide [
 	<gtSlide>
 	<text:
-'TODO ## GT Book: Moldable Development patterns
+'## GT Book: Moldable Development patterns
 
-TODO ADD EXPLANATION
+These are some of the most basic moldable development patterns, which are described in further detail in the GT Book.
 
-'>
+*(Maximize the page to show the page in context.)*'>
 
 	^ aSlide lepiterPage
 		priority: (self priorityFor: #gtBookPatternsPage:);
@@ -198,6 +228,26 @@ ESUG2023Slideshow >> initializeDb [
 	self db addPage: self prototypeInAPlaygroundPage.
 	self db addPage: self replaceNavigationByViewPage.
 	self db addPage: self replaceTasksByActionsPage.
+]
+
+{ #category : #accessing }
+ESUG2023Slideshow >> liveDocumentation: aSlide [
+	<gtSlide>
+	<text:
+'TODO ## Live documentation
+
+
+
+Build live documentation into the system. (Not just class comments.)
+Make the system explorable. 
+
+'>
+
+	^ aSlide element
+		priority: (self priorityFor: #liveDocumentation:);
+		element: [ (GtPager
+				createWrappedOn: (LePagePhlowTool page: (self gtBook pageNamed: 'Working with a REST API: the GitHub case study')))
+				maximized ]
 ]
 
 { #category : #slides }
@@ -264,11 +314,27 @@ It''s hard to break habits (coding from the editor)
 ESUG2023Slideshow >> prototypeInAPlayground: aSlide [
 	<gtSlide>
 	<text:
-'TODO ## Pattern: Prototype new behavior in an Inspector Playground
+'## Pattern: Prototype new behavior in an Inspector Playground
 
+When you program in a conventional IDE, the code is strictly disconnected from any live instance.
 
+Experimenting and exploring the state of the running program is only possible by setting breakpoints and running the code in the debugger,  or by writing additional dedicated test code.
 
-'>
+Another way is to start coding from an Inspector on a live instance.
+
+This should remind you of the Smalltalk practice of coding in the debugger, but the difference is that you can code in an inspector without having to get a debugger instance..
+
+Here we see a live instance of our simple EsugWebsiteWrapper with a Playground opened at the bottom.
+
+Why is this interesting?
+
+Because the playground is bound to the environment of the object, unlike code that we write in a normal code editor.
+
+For instance, the variable `repoDir` is bound to that slot of the live instance.
+
+We can experiment with code in the playground, and when we see something we like, we can copy the code to a method, or even directly apply an extract method refactoring.
+
+*(Extract the sample code as a `pillarFiles` method.)*'>
 
 	^ aSlide lepiterPage
 		priority: (self priorityFor: #prototypeInAPlayground:);
@@ -309,11 +375,25 @@ ESUG2023Slideshow >> replaceNavigationByView: aSlide [
 	<gtSlide>
 	<noTest>
 	<text:
-'TODO ## Pattern: Replace navigation by view
+'## Pattern: Replace navigation by view
 
+How  do you know when to create a custom view?
 
+This is another fundamental pattern.
 
-'>
+The idea is that, whenever you find yourself navigating to get to some interesting objects, you should turn that navigation path into a custom view so you can get to that information directly.
+
+Let''s look at a trivial example: as we explore the Esug website model, we navigate to the pages using a Playground snippet, and then we can navigate to individual pages.
+
+Instead we''d like the list of pages view to be visible directly in the website object.
+
+We can inspect that view to see that it is implemented as a `#gtItemsFor:` method in the class `SequenceableCollection`.
+
+We could copy-paste the code and later dapt it, but as a fuirst quick step we can simply define a *forwarding* view from the website to the collection.
+
+We just open a Coder view and add the view that forwards to the exist view of the pages collection.
+
+The new view is instantly available.'>
 
 	^ aSlide lepiterPage
 		priority: (self priorityFor: #replaceNavigationByView:);
@@ -331,7 +411,7 @@ ESUG2023Slideshow >> replaceNavigationByViewPage [
 		addSnippet: (LeElementSnippet new
 				code: '(GtInspectorScripterExamples new
 	scriptedInspectorOn: EsugWebsite esug
-	WithPlaygroundText: ''self pages first'')
+	WithPlaygroundText: ''self pages'')
 	elementWithoutParent';
 				codeVisible: false;
 				elementHeight: 530;
@@ -403,6 +483,9 @@ ESUG2023Slideshow >> slidePriorities [
 			gtBookPatternsPage:
 
 		whatWorks:
+			#liveDocumentation:
+			#discord:
+			#videos:
 		
 		challenges:
 			peopleHateChange:
@@ -433,6 +516,32 @@ Today I''d like to report on the challenges and and insights we have experienced
 ]
 
 { #category : #slides }
+ESUG2023Slideshow >> videos: aSlide [
+	<gtSlide>
+	<text:
+'TODO # What works?
+
+
+
+
+Short, dense videos are appreciated (but a lot of work).
+
+
+'>
+
+	^ aSlide paragraph
+		priority: (self priorityFor: #videos:);
+		subtitleWithFormat: (self asTitle: 'What works?');
+		paragraphWithFormat: (self
+				asBigText: '
+
+• Live documentation
+• Discord
+• Short videos
+')
+]
+
+{ #category : #slides }
 ESUG2023Slideshow >> whatIsMD: aSlide [
 	<gtSlide>
 	<text:
@@ -457,18 +566,22 @@ Moldable development supports decision making by making domain concepts visible,
 ESUG2023Slideshow >> whatWorks: aSlide [
 	<gtSlide>
 	<text:
-'TODO # What works 
+'TODO # What works?
 
 
 Or "Lessons"?
 
 
-Discord is a great platform.
-Make it easy for people to ask questions and get answers fast.
 Build live documentation into the system. (Not just class comments.)
 Make the system explorable. 
+
+
+Discord is a great platform.
+Make it easy for people to ask questions and get answers fast.
+
+
 Short, dense videos are appreciated (but a lot of work).
-Exploration is a skill that can be learned.
+
 
 Save one or two of these for the conclusion slide?
 
@@ -477,10 +590,9 @@ Save one or two of these for the conclusion slide?
 
 	^ aSlide paragraph
 		priority: (self priorityFor: #whatWorks:);
-		subtitleWithFormat: (self asTitle: 'What works');
+		subtitleWithFormat: (self asTitle: 'What works?');
 		paragraphWithFormat: (self
 				asBigText: '
-
 
 ')
 ]

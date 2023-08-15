@@ -90,14 +90,25 @@ DemoSlideshow >> lepiterPage: aSlide [
 	<text: 'A lepiter page from the GT Book'>
 	^ aSlide lepiterPage
 		priority: (self priorityFor: #lepiterPage:);
-		pageNamed: 'Lepiter' from: 'Glamorous Toolkit Book';
+		pageNamed: 'Lepiter' from: self gtBookName;
 		yourself
+]
+
+{ #category : #slides }
+DemoSlideshow >> maximizedGtBookPage: aSlide [
+	<gtSlide>
+	<text: 'A maximized GT book page.'>
+	^ aSlide element
+		priority: (self priorityFor: #maximizedPage:);
+		element: [ (GtPager
+				createWrappedOn: (LePagePhlowTool page: (self gtBook pageNamed: 'Working with a REST API: the GitHub case study')))
+				maximized ]
 ]
 
 { #category : #slides }
 DemoSlideshow >> maximizedPage: aSlide [
 	<gtSlide>
-	<text: 'A maximed lepiter page that can still be browsed.'>
+	<text: 'A maximized lepiter page that can still be browsed.'>
 	^ aSlide element
 		priority: (self priorityFor: #maximizedPage:);
 		element: [ (GtPager

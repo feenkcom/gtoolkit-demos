@@ -132,6 +132,13 @@ PrioritySlideshow >> gtActionShowFor: anAction [
 ]
 
 { #category : #constants }
+PrioritySlideshow >> gtBook [
+	<gtExample>
+	<noTest>
+	^ LeDatabasesRegistry getDatabaseByName: self gtBookName
+]
+
+{ #category : #constants }
 PrioritySlideshow >> gtBookName [
 	^ 'Glamorous Toolkit Book'
 ]
