@@ -93,7 +93,7 @@ ESUG2023Slideshow >> conclusions: aSlide [
 	<text:
 '# Conclusions 
 
-In the end, what is important to convey is that Moldable Development is a process in which you ask questions about a software system, exploring it, and building lots of small, custom tools to answer those questions and make the system explainable.
+In the end, what is important to convey is that Moldable Development is a *process* in which you ask questions about a software system, explore it, and build lots of small, custom tools to answer those questions and make the system explainable.
 
 Thanks for listening.'>
 
@@ -115,7 +115,7 @@ ESUG2023Slideshow >> discord: aSlide [
 
 Discord can be a great platform for community building, however it must be well-curated.
 
-It''s critical not only to make people feel welcome and encouraged to ask any kind of questions, but their questions need to be taken seriously answered reasonably quickly.
+It''s critical not only to make people feel welcome and encouraged to ask any kind of questions, but their questions need to be taken seriously, and answered reasonably quickly.
 
 One interesting pattern in community building is to teach people when they share screenshots to capture an entire window showing the flows between snippets of code and views of interest.
 
@@ -188,8 +188,9 @@ Now we get the key question:
 
 How hard is it to teach people to build their own explainable system for their domain of interest?'>
 
-	^ aSlide element
+	^ aSlide labelAndElement
 		priority: (self priorityFor: #exploringESUGWebsite:);
+		newTextWithFormat: (self asSubtitle: 'Exploring the ESUG website');
 		element: [ (GtPager createWrappedOn: (GtInspector forObject: self esugWebsite))
 				maximized ]
 ]
@@ -200,14 +201,14 @@ ESUG2023Slideshow >> gtBookPatternsPage: aSlide [
 	<text:
 '## GT Book: Moldable Development patterns
 
-These are some of the most basic moldable development patterns, which are described in further detail in the GT Book.
-
-*(Maximize the page to show the page in context.)*'>
-
-	^ aSlide lepiterPage
+These are some of the most basic moldable development patterns, which are described in further detail in the GT Book.'>
+		
+	^ aSlide element
 		priority: (self priorityFor: #gtBookPatternsPage:);
-		pageNamed: 'Moldable Development patterns' from: 'Glamorous Toolkit Book';
-		yourself
+		element: [ (GtPager
+				createWrappedOn: (LePagePhlowTool
+						page: (self gtBook pageNamed: 'Moldable Development patterns')))
+				maximized ]
 ]
 
 { #category : #initialization }
@@ -271,6 +272,8 @@ People like to put things into boxes, so they tend to focus on the first bit of 
 
 For example, visualization is an important component, but it is a mistake to equate moldable development with visualization.
 
+*(Click around the visualization, and navigate to some pages.)*
+
 The same can be said for the live notebooks, the language workbench, or the pervasive use of examples.'>
 
 	^ aSlide labelAndElement
@@ -285,7 +288,7 @@ ESUG2023Slideshow >> peopleHateChange: aSlide [
 	<text:
 '## People hate change
 
-It''s a fact that people hate change, or perhaps rather it''s the case that it''s extremely hard for people to change habits once they have become ingrained.
+People hate change, or perhaps rather it''s the case that it''s extremely hard for people to change habits once they have become ingrained.
 
 I personally took a long time to get into the habit of starting to code from live objects rather than heading to a code editor first.
 
@@ -384,9 +387,9 @@ Instead we''d like the list of pages view to be visible directly in the website 
 
 We can inspect that view to see that it is implemented as a `#gtItemsFor:` method in the class `SequenceableCollection`.
 
-We could copy-paste the code and later dapt it, but as a fuirst quick step we can simply define a *forwarding* view from the website to the collection.
+We could copy-paste the code and later adapt it, but as a first quick step we can simply define a *forwarding* view from the website to the collection.
 
-We just open a Coder view and add the view that forwards to the exist view of the pages collection.
+We just open a Coder view and add the view that forwards to the existing view of the pages collection.
 
 The new view is instantly available.'>
 
@@ -401,7 +404,7 @@ ESUG2023Slideshow >> replaceNavigationByViewPage [
 	<noTest>
 	^ (LePage named: 'Pattern: Replace navigation by view')
 		addSnippet: (LeTextSnippet new
-				string: '## We are inspecting the ESUG website and navigate to the pages.';
+				string: '## We inspect the ESUG website and navigate to the pages ...';
 				yourself);
 		addSnippet: (LeElementSnippet new
 				code: '(GtInspectorScripterExamples new
@@ -540,14 +543,14 @@ Moldable development is a way of developing software in which you mold the devel
 In this way the system becomes *explainable*, and thus supports decision making for a range of stakeholders.
 
 Let''s look at a simple example.'>
-
 	^ aSlide paragraph
 		priority: (self priorityFor: #whatIsMD:);
 		subtitleWithFormat: (self asTitle: 'What is Moldable Development?');
 		paragraphWithFormat: (self
 				asBigText: '
 
-Moldable development supports decision making by making domain concepts visible, explorable and explainable.')
+Moldable development supports decision making by making domain concepts ')
+				, (self asBigText: 'explainable.') italic
 ]
 
 { #category : #slides }
