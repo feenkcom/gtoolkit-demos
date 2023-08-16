@@ -3,7 +3,7 @@ Trait {
 	#category : #'GToolkit-Demo-WebsiteExplorer-Model'
 }
 
-{ #category : #serarching }
+{ #category : #searching }
 TPillarWebPageGroup >> gtSpotterForPageContents: aSearch [
 	<gtSearch>
 	^ aSearch list
@@ -16,7 +16,7 @@ TPillarWebPageGroup >> gtSpotterForPageContents: aSearch [
 		filterBySubstring
 ]
 
-{ #category : #serarching }
+{ #category : #searching }
 TPillarWebPageGroup >> gtSpotterForPageNames: aSearch [
 	<gtSearch>
 	^ aSearch list
