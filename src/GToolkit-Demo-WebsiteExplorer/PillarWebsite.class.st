@@ -142,32 +142,6 @@ PillarWebsite >> gtReachablePagesFor: aView [
 			action: [ :aButton :aTab | aButton phlow spawnObject: self reachable ]
 ]
 
-{ #category : #searching }
-PillarWebsite >> gtSpotterForPageContents: aSearch [
-	<gtSearch>
-	^ aSearch list
-		title: 'Page content';
-		priority: 20;
-		items: [ self pages ];
-		itemsLimit: Float infinity;
-		itemName: #contents;
-		sendCategory: [ :aCategory :aStep :thisSearch | PillarWebPageGroup withAll: aCategory items ];
-		filterBySubstring
-]
-
-{ #category : #searching }
-PillarWebsite >> gtSpotterForPageNames: aSearch [
-	<gtSearch>
-	^ aSearch list
-		title: 'Page names';
-		priority: 10;
-		items: [ self pages ];
-		itemsLimit: Float infinity;
-		itemName: #path;
-		sendCategory: [ :aCategory :aStep :thisSearch | PillarWebPageGroup withAll: aCategory items ];
-		filterBySubstring
-]
-
 { #category : #accessing }
 PillarWebsite >> gtUnreachablePagesFor: aView [
 	<gtView>

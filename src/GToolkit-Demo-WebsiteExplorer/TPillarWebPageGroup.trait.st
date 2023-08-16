@@ -12,7 +12,7 @@ TPillarWebPageGroup >> gtSpotterForPageContents: aSearch [
 		items: [ self pages ];
 		itemsLimit: Float infinity;
 		itemName: #contents;
-		sendCategory: [ :aCategory :aStep :thisSearch | PillarWebPageGroup withAll: aCategory items ];
+		sendCategory: [ :aCategory :aStep :thisSearch | PillarWebPageGroup withAll: aCategory items contents ];
 		filterBySubstring
 ]
 
@@ -25,7 +25,7 @@ TPillarWebPageGroup >> gtSpotterForPageNames: aSearch [
 		items: [ self pages ];
 		itemsLimit: Float infinity;
 		itemName: #path;
-		sendCategory: [ :aCategory :aStep :thisSearch | PillarWebPageGroup withAll: aCategory items ];
+		sendCategory: [ :aCategory :aStep :thisSearch | PillarWebPageGroup withAll: aCategory items contents ];
 		filterBySubstring
 ]
 
