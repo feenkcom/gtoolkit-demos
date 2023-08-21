@@ -23,72 +23,6 @@ Let me round up with a couple of the biggest challenges we have encountered in t
 ]
 
 { #category : #slides }
-ESUG2023Slideshow >> codeFromALiveObject: aSlide [
-	<gtSlide>
-	<noTest>
-	<text:
-'## Pattern: Start coding from a live object, not its class
-
-This is perhaps the hardest pattern to learn.
-
-Where would you rather be when you are developing code?
-
-Staring at the source code, or viewing the live object that you are working on?
-
-Here we see at the top a typical Coder view of a class where we can browse and edit the methods.
-
-But this is actually the least interesting view we can have because each method is seen divorced from the context in which it is used and interacts with other methods.
-
-From the very first day that we start to program, we learn to write some code in a text editor, and we compile it and run it.
-
-It always takes a few steps to see the end result.
-
-But why not reverse this?
-
-Below here we see a live instance of the PillarWebsite object that we can interact with.
-
-While it can be cumbersome to navigate from the code view to see its effect, it is usually easy to navigate from the live object to its code.
-
-Suppose for, for example, that we don''t like the way the *Links* are displayed.
-
-We can directly go to the code and change, for example, the width of the *Link* column.
-
-*(Opt-click on the Links tab and change the `300` width to `200`.)*
-
-From the live object view we can experiment with new features, extract methods and examples or tests, and immediately see the effect.'>
-
-	^ aSlide lepiterPage
-		priority: (self priorityFor: #codeFromALiveObject:);
-		startPage:  (self db pageNamed: 'Pattern: Start coding from a live object, not its class')
-]
-
-{ #category : #page }
-ESUG2023Slideshow >> codeFromALiveObjectPage [
-	<gtExample>
-	<noTest>
-	^ (LePage named: 'Pattern: Start coding from a live object, not its class')
-		addSnippet: (LeTextSnippet new
-				string: '## Would you rather be here?';
-				yourself);
-		addSnippet: (LeElementSnippet new
-				code: 'GtCoder forClass: PillarWebsite';
-				codeVisible: false;
-				elementHeight: 318;
-				codeHeight: 50;
-				yourself);
-		addSnippet: (LeTextSnippet new
-				string: '## or here?';
-				yourself);
-		addSnippet: (LeElementSnippet new
-				code: 'GtInspector newOn: PillarWebsite esug';
-				codeVisible: false;
-				elementHeight: 302;
-				codeHeight: 50;
-				yourself);
-		yourself
-]
-
-{ #category : #slides }
 ESUG2023Slideshow >> conclusions: aSlide [
 	<gtSlide>
 	<text:
@@ -106,6 +40,98 @@ Thanks for listening.'>
 
 Exploration is a skill that can be learned.
 ')
+]
+
+{ #category : #slides }
+ESUG2023Slideshow >> contextualPlayground: aSlide [
+	<gtSlide>
+	<noTest>
+	<text:
+'## Pattern: Contextual playground
+
+When you program in a conventional IDE, the code is strictly disconnected from any live instance.
+
+Experimenting and exploring the state of the running program is only possible by setting breakpoints and running the code in the debugger,  or by writing additional dedicated test code.
+
+Another way is to start coding from an Inspector on a live, moldable object.
+
+This should remind you of the Smalltalk practice of coding in the debugger, but the difference is that you can code in an inspector without having to get a debugger instance..
+
+Here we see a live instance of our simple EsugWebsiteWrapper with a Playground opened at the bottom.
+
+Why is this interesting?
+
+Because the playground is bound to the context of the object, unlike code that we write in a normal code editor.
+
+For instance, the variable `repoDir` is bound to that slot of the live instance.
+
+We can experiment with code in the playground, and when we see something we like, we can copy the code to a method, or even directly apply an extract method refactoring.
+
+*(Extract the sample code as a `pillarFiles` method.)*'>
+
+	^ aSlide lepiterPage
+		priority: (self priorityFor: #contextualPlayground:);
+		startPage:  (self db pageNamed: 'Pattern: Contextual playground')
+]
+
+{ #category : #page }
+ESUG2023Slideshow >> contextualPlaygroundPage [
+	<gtExample>
+	<noTest>
+	^ (LePage named: 'Pattern: Contextual playground')
+		addSnippet: (LeTextSnippet new
+				string: '## Start by inspecting an instance.';
+				yourself);
+		addSnippet: (LePharoSnippet new
+				code: 'EsugWebsiteWrapper new repoDir: (FileLocator imageDirectory / ''esug.github.io'')';
+				yourself);
+		addSnippet: (LeTextSnippet new
+				string: '## Code directly in the Playground:';
+				yourself);
+		addSnippet: (LeElementSnippet new
+				code: '(GtInspectorScripterExamples new
+	scriptedInspectorOn: (EsugWebsiteWrapper new repoDir: FileLocator imageDirectory / ''esug.github.io'')
+	WithPlaygroundText: ''repoDir allChildrenMatching: ''''*.pillar'''''')
+	elementWithoutParent';
+				codeVisible: false;
+				elementHeight: 437;
+				codeHeight: 50;
+				yourself);
+		addSnippet: (LeTextSnippet new
+				string: '## Extract useful code as methods, examples or tests.';
+				yourself);
+		yourself
+]
+
+{ #category : #slides }
+ESUG2023Slideshow >> customAction: aSlide [
+	"LEAVE THIS OUT FOR NOW
+	
+	<gtSlide>"
+	<text:
+'TODO ## Pattern: Custom action
+
+
+
+'>
+
+	^ aSlide lepiterPage
+		priority: (self priorityFor: #customAction:);
+		startPage:  (self db pageNamed: 'Pattern: Custom action')
+]
+
+{ #category : #page }
+ESUG2023Slideshow >> customActionPage [
+	<gtExample>
+	<noTest>
+	^ (LePage named: 'Pattern: Custom action')
+	addSnippet: (LeTextSnippet new
+			string: '# PLACEHOLDER';
+			yourself);
+	addSnippet: (LeTextSnippet new
+			string: 'to do for a later version ...';
+			yourself);
+	yourself
 ]
 
 { #category : #slides }
@@ -215,11 +241,11 @@ These are some of the most basic moldable development patterns, which are descri
 
 { #category : #initialization }
 ESUG2023Slideshow >> initializeDb [
-	self db addPage: self codeFromALiveObjectPage.
-	self db addPage: self wrapDataPage.
-	self db addPage: self prototypeInAPlaygroundPage.
-	self db addPage: self replaceNavigationByViewPage.
-	self db addPage: self replaceTasksByActionsPage.
+	self db addPage: self moldableObjectPage.
+	self db addPage: self viewableDataWrapperPage.
+	self db addPage: self contextualPlaygroundPage.
+	self db addPage: self viewableEntityPage.
+	self db addPage: self customActionPage.
 ]
 
 { #category : #accessing }
@@ -241,6 +267,197 @@ The GT book not only offers users documentation to read and live tutorials to tr
 				createWrappedOn: (LePagePhlowTool
 						page: (self gtBook pageNamed: 'Working with a REST API: the GitHub case study')))
 				maximized ]
+]
+
+{ #category : #slides }
+ESUG2023Slideshow >> moldableObject: aSlide [
+	<gtSlide>
+	<noTest>
+	<text:
+'## Pattern: Moldable object
+
+This is perhaps the hardest pattern to learn.
+
+Where would you rather be when you are developing code?
+
+Staring at the source code, or viewing the live object that you are working on?
+
+Here we see at the top a typical Coder view of a class where we can browse and edit the methods.
+
+But this is actually the least interesting view we can have because each method is seen divorced from the context in which it is used and interacts with other methods.
+
+From the very first day that we start to program, we learn to write some code in a text editor, and we compile it and run it.
+
+It always takes a few steps to see the end result.
+
+But why not reverse this?
+
+Below here we see a *moldable object*, that is, a live instance of the PillarWebsite object that we can interact with.
+
+While it can be cumbersome to navigate from the code view to see its effect, it is usually easy to navigate from the live object to its code.
+
+Suppose for, for example, that we don''t like the way the *Links* are displayed.
+
+We can directly go to the code and change, for example, the width of the *Link* column.
+
+*(Opt-click on the Links tab and change the `300` width to `200`.)*
+
+From the moldable object we can experiment with new features, extract methods and examples or tests, and immediately see the effect.'>
+
+	^ aSlide lepiterPage
+		priority: (self priorityFor: #moldableObject:);
+		startPage:  (self db pageNamed: 'Pattern: Moldable object')
+]
+
+{ #category : #page }
+ESUG2023Slideshow >> moldableObjectPage [
+	<gtExample>
+	<noTest>
+	^ (LePage named: 'Pattern: Moldable object')
+		addSnippet: (LeTextSnippet new
+				string: '## Would you rather be here?';
+				yourself);
+		addSnippet: (LeElementSnippet new
+				code: 'GtCoder forClass: PillarWebsite';
+				codeVisible: false;
+				elementHeight: 318;
+				codeHeight: 50;
+				yourself);
+		addSnippet: (LeTextSnippet new
+				string: '## or here?';
+				yourself);
+		addSnippet: (LeElementSnippet new
+				code: 'GtInspector newOn: PillarWebsite esug';
+				codeVisible: false;
+				elementHeight: 302;
+				codeHeight: 50;
+				yourself);
+		yourself
+]
+
+{ #category : #accessing }
+ESUG2023Slideshow >> patternMapScenery [
+	<gtExample>
+	<noTest>
+	| scenery item1 item2 item3 item4 item5 |
+	scenery := GtScenery new.
+	item1 := scenery
+			addItem: (GtSceneryItem new
+					stencil: (GtSceneryTextStencil new
+							text: ((BlRunRopedText string: 'Start coding from a live object, not its class')
+									attributeRuns: (BlRunTree basicNew
+											instVarAt: 1
+												put: (BlRunTreeLeafNode basicNew
+														instVarAt: 1 put: 47;
+														instVarAt: 2
+															put: ((Array new: 3)
+																	at: 1 put: (BlFontSizeAttribute new size: 20);
+																	at: 2 put: BlFontWeightAttribute new;
+																	at: 3
+																		put: (BlFontFamilyDefaultAttribute new beNotOverwritableByStyler
+																				name: 'Source Sans Pro');
+																	yourself);
+														yourself);
+											yourself)))).
+	item1 position: 265 @ 43.
+	item1 extent: 250.0 @ 70.0.
+	item2 := scenery
+			addItem: (GtSceneryItem new
+					stencil: (GtSceneryTextStencil new
+							text: ((BlRunRopedText string: 'Wrap data to create an explorable model')
+									attributeRuns: (BlRunTree basicNew
+											instVarAt: 1
+												put: (BlRunTreeLeafNode basicNew
+														instVarAt: 1 put: 40;
+														instVarAt: 2
+															put: ((Array new: 3)
+																	at: 1 put: (BlFontSizeAttribute new size: 20);
+																	at: 2 put: BlFontWeightAttribute new;
+																	at: 3
+																		put: (BlFontFamilyDefaultAttribute new beNotOverwritableByStyler
+																				name: 'Source Sans Pro');
+																	yourself);
+														yourself);
+											yourself)))).
+	item2 position: 163 @ 168.
+	item2 extent: 250.0 @ 70.0.
+	item3 := scenery
+			addItem: (GtSceneryItem new
+					stencil: (GtSceneryTextStencil new
+							text: ((BlRunRopedText string: 'Prototype new behavior in an Inspector Playground')
+									attributeRuns: (BlRunTree basicNew
+											instVarAt: 1
+												put: (BlRunTreeLeafNode basicNew
+														instVarAt: 1 put: 50;
+														instVarAt: 2
+															put: ((Array new: 3)
+																	at: 1 put: (BlFontSizeAttribute new size: 20);
+																	at: 2 put: BlFontWeightAttribute new;
+																	at: 3
+																		put: (BlFontFamilyDefaultAttribute new beNotOverwritableByStyler
+																				name: 'Source Sans Pro');
+																	yourself);
+														yourself);
+											yourself)))).
+	item3 position: 430 @ 171.
+	item3 extent: 250.0 @ 70.0.
+	item4 := scenery
+			addItem: (GtSceneryItem new
+					stencil: (GtSceneryTextStencil new
+							text: ((BlRunRopedText string: 'Replace navigation by view')
+									attributeRuns: (BlRunTree basicNew
+											instVarAt: 1
+												put: (BlRunTreeLeafNode basicNew
+														instVarAt: 1 put: 27;
+														instVarAt: 2
+															put: ((Array new: 3)
+																	at: 1 put: (BlFontSizeAttribute new size: 20);
+																	at: 2 put: BlFontWeightAttribute new;
+																	at: 3
+																		put: (BlFontFamilyDefaultAttribute new beNotOverwritableByStyler
+																				name: 'Source Sans Pro');
+																	yourself);
+														yourself);
+											yourself)))).
+	item4 position: 214 @ 338.
+	item4 extent: 187.83315022786485 @ 70.0.
+	item5 := scenery
+			addItem: (GtSceneryItem new
+					stencil: (GtSceneryTextStencil new
+							text: ((BlRunRopedText string: 'Replace repeated tasks by custom actions')
+									attributeRuns: (BlRunTree basicNew
+											instVarAt: 1
+												put: (BlRunTreeLeafNode basicNew
+														instVarAt: 1 put: 41;
+														instVarAt: 2
+															put: ((Array new: 3)
+																	at: 1 put: (BlFontSizeAttribute new size: 20);
+																	at: 2 put: BlFontWeightAttribute new;
+																	at: 3
+																		put: (BlFontFamilyDefaultAttribute new beNotOverwritableByStyler
+																				name: 'Source Sans Pro');
+																	yourself);
+														yourself);
+											yourself)))).
+	item5 position: 479 @ 340.
+	item5 extent: 231.83639526367182 @ 70.0.
+	scenery
+		addConnectionWithStencil: GtSceneryLineStencil new
+		from: item1
+		to: item2.
+	scenery
+		addConnectionWithStencil: GtSceneryLineStencil new
+		from: item1
+		to: item3.
+	scenery
+		addConnectionWithStencil: GtSceneryLineStencil new
+		from: item3
+		to: item4.
+	scenery
+		addConnectionWithStencil: GtSceneryLineStencil new
+		from: item3
+		to: item5.
+	^ scenery
 ]
 
 { #category : #slides }
@@ -311,160 +528,6 @@ Demos and videos also help, but they are not as effective as the first-hand expe
 				maximized ]
 ]
 
-{ #category : #slides }
-ESUG2023Slideshow >> prototypeInAPlayground: aSlide [
-	<gtSlide>
-	<noTest>
-	<text:
-'## Pattern: Prototype new behavior in an Inspector Playground
-
-When you program in a conventional IDE, the code is strictly disconnected from any live instance.
-
-Experimenting and exploring the state of the running program is only possible by setting breakpoints and running the code in the debugger,  or by writing additional dedicated test code.
-
-Another way is to start coding from an Inspector on a live instance.
-
-This should remind you of the Smalltalk practice of coding in the debugger, but the difference is that you can code in an inspector without having to get a debugger instance..
-
-Here we see a live instance of our simple EsugWebsiteWrapper with a Playground opened at the bottom.
-
-Why is this interesting?
-
-Because the playground is bound to the environment of the object, unlike code that we write in a normal code editor.
-
-For instance, the variable `repoDir` is bound to that slot of the live instance.
-
-We can experiment with code in the playground, and when we see something we like, we can copy the code to a method, or even directly apply an extract method refactoring.
-
-*(Extract the sample code as a `pillarFiles` method.)*'>
-
-	^ aSlide lepiterPage
-		priority: (self priorityFor: #prototypeInAPlayground:);
-		startPage:  (self db pageNamed: 'Pattern: Prototype new behavior in an Inspector Playground')
-]
-
-{ #category : #page }
-ESUG2023Slideshow >> prototypeInAPlaygroundPage [
-	<gtExample>
-	<noTest>
-	^ (LePage named: 'Pattern: Prototype new behavior in an Inspector Playground')
-		addSnippet: (LeTextSnippet new
-				string: '## Start by inspecting an instance.';
-				yourself);
-		addSnippet: (LePharoSnippet new
-				code: 'EsugWebsiteWrapper new repoDir: (FileLocator imageDirectory / ''esug.github.io'')';
-				yourself);
-		addSnippet: (LeTextSnippet new
-				string: '## Code directly in the Playground:';
-				yourself);
-		addSnippet: (LeElementSnippet new
-				code: '(GtInspectorScripterExamples new
-	scriptedInspectorOn: (EsugWebsiteWrapper new repoDir: FileLocator imageDirectory / ''esug.github.io'')
-	WithPlaygroundText: ''repoDir allChildrenMatching: ''''*.pillar'''''')
-	elementWithoutParent';
-				codeVisible: false;
-				elementHeight: 437;
-				codeHeight: 50;
-				yourself);
-		addSnippet: (LeTextSnippet new
-				string: '## Extract useful code as methods, examples or tests.';
-				yourself);
-		yourself
-]
-
-{ #category : #slides }
-ESUG2023Slideshow >> replaceNavigationByView: aSlide [
-	<gtSlide>
-	<noTest>
-	<text:
-'## Pattern: Replace navigation by view
-
-How  do you know when to create a custom view?
-
-This is another fundamental pattern.
-
-The idea is that, whenever you find yourself navigating to get to some interesting objects, you should turn that navigation path into a custom view so you can get to that information directly.
-
-Let''s look at a trivial example: as we explore the Esug website model, we navigate to the pages using a Playground snippet, and then we can navigate to individual pages.
-
-Instead we''d like the list of pages view to be visible directly in the website object.
-
-We can inspect that view to see that it is implemented as a `#gtItemsFor:` method in the class `SequenceableCollection`.
-
-We could copy-paste the code and later adapt it, but as a first quick step we can simply define a *forwarding* view from the website to the collection.
-
-We just open a Coder view and add the view that forwards to the existing view of the pages collection.
-
-The new view is instantly available.'>
-
-	^ aSlide lepiterPage
-		priority: (self priorityFor: #replaceNavigationByView:);
-		startPage:  (self db pageNamed: 'Pattern: Replace navigation by view')
-]
-
-{ #category : #page }
-ESUG2023Slideshow >> replaceNavigationByViewPage [
-	<gtExample>
-	<noTest>
-	^ (LePage named: 'Pattern: Replace navigation by view')
-		addSnippet: (LeTextSnippet new
-				string: '## We inspect the ESUG website and navigate to the pages ...';
-				yourself);
-		addSnippet: (LeElementSnippet new
-				code: '(GtInspectorScripterExamples new
-	scriptedInspectorOn: EsugWebsite esug
-	WithPlaygroundText: ''self pages'')
-	elementWithoutParent';
-				codeVisible: false;
-				elementHeight: 530;
-				codeHeight: 50;
-				yourself);
-		addSnippet: (LeTextSnippet new
-				string: '## We like this and want to make it a custom view.';
-				addSnippet: (LeElementSnippet new
-						code: '''gtPagesFor: aView
-	<gtView>
-	^ aView forward
-		title: ''''Pages'''';
-		priority: 10;
-		object: [ self pages ];
-		view: #gtItemsFor:'' gtStringFor: GtPhlowView new';
-						codeVisible: false;
-						elementHeight: 166;
-						codeHeight: 50;
-						yourself);
-				yourself);
-		yourself
-]
-
-{ #category : #slides }
-ESUG2023Slideshow >> replaceTasksByActions: aSlide [
-	"LEAVE THIS OUT FOR NOW
-	
-	<gtSlide>"
-	<text:
-'TODO ## Pattern: Replace repeated tasks by custom actions
-
-
-
-'>
-
-	^ aSlide lepiterPage
-		priority: (self priorityFor: #replaceTasksByActions:);
-		startPage:  (self db pageNamed: 'Pattern: Replace repeated tasks by custom actions')
-]
-
-{ #category : #page }
-ESUG2023Slideshow >> replaceTasksByActionsPage [
-	<gtExample>
-	<noTest>
-	^ (LePage named: 'Pattern: Replace repeated tasks by custom actions')
-		addSnippet: (LeTextSnippet new
-				string: '';
-				yourself);
-		yourself
-]
-
 { #category : #accessing }
 ESUG2023Slideshow >> slidePriorities [
 	"This method defines the slide priorities implicitly by their order instead of by fixed numbers.
@@ -477,10 +540,10 @@ ESUG2023Slideshow >> slidePriorities [
 			exploringESUGWebsite:
 
 		patterns:
-			codeFromALiveObject:
-			wrapData:
-			prototypeInAPlayground:
-			replaceNavigationByView:
+			#moldableObject:
+			#viewableDataWrapper:
+			#contextualPlayground:
+			#viewableEntity:
 			"replaceTasksByActions:"
 			gtBookPatternsPage:
 
@@ -507,7 +570,11 @@ ESUG2023Slideshow >> titleSlide: aSlide [
 
 Hi. My name is Oscar Nierstrasz.
 
-Today I''d like to report on the challenges and and insights we have experienced in teaching moldable development to newcomers.'>
+Today I''d like to report on the challenges and and insights we have experienced in teaching moldable development to newcomers.
+
+Moldable development is a *new* way of programming.
+
+In many ways it looks like programming as we are used to it, but it actually entails fundamentally different ways of thinking about programming, and new *patterns* of programming.'>
 
 	^ aSlide titleWithFooter
 		priority: (self priorityFor: #titleSlide:);
@@ -537,12 +604,147 @@ It can take more time to prepare a seven minute video than one that runs over an
 ]
 
 { #category : #slides }
+ESUG2023Slideshow >> viewableDataWrapper: aSlide [
+	<gtSlide>
+	<noTest>
+	<text:
+'## Pattern: Viewable data wrapper
+
+Although sometimes you may have the luxury to work on a greenfield project, most projects start from some existing data and code.
+
+When we load the data into our environment, we will obtain the default views for that data.
+
+Here, for example, we have loaded the cloned ESUG website repo and are inspecting the contents.
+
+We obtain a completely generic view of the folders and files that tells us nothing about the domain.
+
+*(Evaluate the first snippet showing the FileLocator views.)*
+
+We would like to turn this into a proper domain object that tells us interesting things about itself.
+
+As a first step, then, we can *wrap* the data into a dedicated object.
+
+When we do this, at first glance the result appears to be even worse, as now we just get a generic *Raw* view of the new object.
+
+*(Inspect the first EsugWebsiteWrapper.)* 
+
+But now we have the possibility to explore it, add behavior, and add new views.
+
+After some iterations we obtain the view we have seen earlier.
+
+*(Inspect the last snippet.)*'>
+
+	^ aSlide lepiterPage
+		priority: (self priorityFor: #viewableDataWrapper:);
+		startPage:  (self db pageNamed: 'Pattern: Viewable data wrapper')
+]
+
+{ #category : #page }
+ESUG2023Slideshow >> viewableDataWrapperPage [
+	<gtExample>
+	<noTest>
+	^ (LePage named: 'Pattern: Viewable data wrapper')
+		addSnippet: (LeTextSnippet new
+				string: '## Start by grabbing your data.';
+				yourself);
+		addSnippet: (LePharoSnippet new
+				code: 'repoDir := FileLocator imageDirectory / ''esug.github.io''.
+
+"Clone the repo if we haven''t already done so."
+repoDir exists
+	ifFalse: [ repo := ''git@github.com:ESUG/esug.github.io.git''.
+		repository := IceRepositoryCreator fromUrl: repo to: repoDir ].
+repoDir';
+				yourself);
+		addSnippet: (LeTextSnippet new
+				string: '## Wrap it in a new class.';
+				yourself);
+		addSnippet: (LePharoSnippet new
+				code: 'EsugWebsiteWrapper new repoDir: repoDir';
+				yourself);
+		addSnippet: (LeTextSnippet new
+				string: '## Add views to answer questions about the data.';
+				yourself);
+		addSnippet: (LePharoSnippet new
+				code: 'EsugWebsite new
+	repoDir: repoDir;
+	url: ''https://esug.github.io''';
+				yourself);
+		yourself
+]
+
+{ #category : #slides }
+ESUG2023Slideshow >> viewableEntity: aSlide [
+	<gtSlide>
+	<noTest>
+	<text:
+'## Pattern: Viewable Entity
+
+How  do you know when to create a custom view?
+
+This is another fundamental pattern.
+
+The idea is that, whenever you find yourself navigating to get to some interesting objects, you should turn that navigation path into a custom view so you can get to that information directly.
+
+Let''s look at a trivial example: as we explore the Esug website model, we navigate to the pages using a Playground snippet, and then we can navigate to individual pages.
+
+Instead we''d like the list of pages view to be visible directly in the website object.
+
+We can inspect that view to see that it is implemented as a `#gtItemsFor:` method in the class `SequenceableCollection`.
+
+We could copy-paste the code and later adapt it, but as a first quick step we can simply define a *forwarding* view from the website to the collection.
+
+We just open a Coder view and add the view that forwards to the existing view of the pages collection.
+
+The new view is instantly available.'>
+
+	^ aSlide lepiterPage
+		priority: (self priorityFor: #viewableEntity:);
+		startPage:  (self db pageNamed: 'Pattern: Viewable Entity')
+]
+
+{ #category : #page }
+ESUG2023Slideshow >> viewableEntityPage [
+	<gtExample>
+	<noTest>
+	^ (LePage named: 'Pattern: Viewable Entity')
+		addSnippet: (LeTextSnippet new
+				string: '## We inspect the ESUG website and navigate to the pages ...';
+				yourself);
+		addSnippet: (LeElementSnippet new
+				code: '(GtInspectorScripterExamples new
+	scriptedInspectorOn: EsugWebsiteWrapperWithPages esug
+	WithPlaygroundText: ''self pages'')
+	elementWithoutParent';
+				codeVisible: false;
+				elementHeight: 530;
+				codeHeight: 50;
+				yourself);
+		addSnippet: (LeTextSnippet new
+				string: '## We like this and want to make it a custom view.';
+				addSnippet: (LeElementSnippet new
+						code: '''gtPagesFor: aView
+	<gtView>
+	^ aView forward
+		title: ''''Pages'''';
+		priority: 10;
+		object: [ self pages ];
+		view: #gtItemsFor:'' gtStringFor: GtPhlowView new';
+						codeVisible: false;
+						elementHeight: 166;
+						codeHeight: 50;
+						yourself);
+				yourself);
+		yourself
+]
+
+{ #category : #slides }
 ESUG2023Slideshow >> whatIsMD: aSlide [
 	<gtSlide>
 	<text:
 '# What is Moldable Development?
 
-Moldable development is a way of developing software in which you mold the development environment itself with custom tools to support your application domain.
+Moldable Development is a way of programming in which you build custom tools for each problem.
 
 In this way the system becomes *explainable*, and thus supports decision making for a range of stakeholders.
 
@@ -574,72 +776,4 @@ Here are a few things that ease the learning process.'>
 				asBigText: '
 
 ')
-]
-
-{ #category : #slides }
-ESUG2023Slideshow >> wrapData: aSlide [
-	<gtSlide>
-	<noTest>
-	<text:
-'## Pattern: Wrap data to create an explorable model
-
-Although sometimes you may have the luxury to work on a greenfield project, most projects start from some existing data and code.
-
-When we load the data into our environment, we will obtain the default views for that data.
-
-Here, for example, we have loaded the cloned ESUG website repo and are inspecting the contents.
-
-We obtain a completely generic view of the folders and files that tells us nothing about the domain.
-
-*(Evaluate the first snippet showing the FileLocator views.)*
-
-We would like to turn this into a proper domain object that tells us interesting things about itself.
-
-As a first step, then, we can *wrap* the data into a dedicated object.
-
-When we do this, at first glance the result appears to be even worse, as now we just get a generic *Raw* view of the new object.
-
-*(Inspect the first EsugWebsiteWrapper.)* 
-
-But now we have the possibility to explore it, add behavior, and add new views.
-
-After some iterations we obtain the view we have seen earlier.
-
-*(Inspect the last snippet.)*'>
-
-	^ aSlide lepiterPage
-		priority: (self priorityFor: #wrapData:);
-		startPage:  (self db pageNamed: 'Pattern: Wrap data to create an explorable model')
-]
-
-{ #category : #page }
-ESUG2023Slideshow >> wrapDataPage [
-	<gtExample>
-	<noTest>
-	^ (LePage named: 'Pattern: Wrap data to create an explorable model')
-		addSnippet: (LeTextSnippet new
-				string: '## Start by grabbing your data.';
-				yourself);
-		addSnippet: (LePharoSnippet new
-				code: 'repoDir := FileLocator imageDirectory / ''esug.github.io''.
-
-"Clone the repo if we haven''t already done so."
-repoDir exists
-	ifFalse: [ repo := ''git@github.com:ESUG/esug.github.io.git''.
-		repository := IceRepositoryCreator fromUrl: repo to: repoDir ].
-repoDir';
-				yourself);
-		addSnippet: (LeTextSnippet new
-				string: '## Wrap it in a new class.';
-				yourself);
-		addSnippet: (LePharoSnippet new
-				code: 'EsugWebsiteWrapper new repoDir: repoDir';
-				yourself);
-		addSnippet: (LeTextSnippet new
-				string: '## Add views to answer questions about the data.';
-				yourself);
-		addSnippet: (LePharoSnippet new
-				code: 'EsugWebsiteWrapper esug';
-				yourself);
-		yourself
 ]
