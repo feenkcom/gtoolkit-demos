@@ -1,11 +1,13 @@
 Class {
-	#name : #PillarWebPageGroup,
-	#superclass : #WebPageGroup,
+	#name : #WebPageGroup,
+	#superclass : #Object,
+	#traits : 'TGtGroupWithItems + TWebPageGroup',
+	#classTraits : 'TGtGroupWithItems classTrait + TWebPageGroup classTrait',
 	#category : #'GToolkit-Demo-WebsiteExplorer-Model'
 }
 
-{ #category : #accessing }
-PillarWebPageGroup >> gtPagesFor: aView [
+{ #category : #view }
+WebPageGroup >> gtPagesFor: aView [
 	<gtView>
 	^ aView columnedList
 		title: 'Pages';
@@ -17,16 +19,15 @@ PillarWebPageGroup >> gtPagesFor: aView [
 		column: 'Page'
 			text: [ :item | item path ]
 			width: 400;
-		column: 'Pillar links'
-			text: [ :item | 
-				| size |
-				size := item pillarLinks size.
-				size = 0 ifTrue: [ '' ] ifFalse: [ size ] ]
-			width: 80;
-		column: 'Markdown links'
+		column: 'Links'
 			text: [ :item | 
 				| size |
 				size := item markdownLinks size.
 				size = 0 ifTrue: [ '' ] ifFalse: [ size ] ]
 			width: 80
+]
+
+{ #category : #accessing }
+WebPageGroup >> pages [
+	^ self items
 ]

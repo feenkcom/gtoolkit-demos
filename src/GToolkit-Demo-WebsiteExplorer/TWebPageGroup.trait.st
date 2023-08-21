@@ -1,10 +1,10 @@
 Trait {
-	#name : #TPillarWebPageGroup,
+	#name : #TWebPageGroup,
 	#category : #'GToolkit-Demo-WebsiteExplorer-Model'
 }
 
 { #category : #searching }
-TPillarWebPageGroup >> gtSpotterForPageContents: aSearch [
+TWebPageGroup >> gtSpotterForPageContents: aSearch [
 	<gtSearch>
 	^ aSearch list
 		title: 'Page content';
@@ -17,7 +17,7 @@ TPillarWebPageGroup >> gtSpotterForPageContents: aSearch [
 ]
 
 { #category : #searching }
-TPillarWebPageGroup >> gtSpotterForPageNames: aSearch [
+TWebPageGroup >> gtSpotterForPageNames: aSearch [
 	<gtSearch>
 	^ aSearch list
 		title: 'Page names';
@@ -30,6 +30,6 @@ TPillarWebPageGroup >> gtSpotterForPageNames: aSearch [
 ]
 
 { #category : #accessing }
-TPillarWebPageGroup >> pages [
+TWebPageGroup >> pages [
 	^ self explicitRequirement
 ]
