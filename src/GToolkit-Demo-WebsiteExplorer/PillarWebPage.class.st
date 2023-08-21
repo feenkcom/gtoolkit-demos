@@ -253,7 +253,10 @@ PillarWebPage >> registerLinks [
 
 { #category : #accessing }
 PillarWebPage >> title [
-	^ title ifNil: [ title := self titleParser parse: self contents ]
+	^ title
+		ifNil: [ | dict |
+			dict := self titleParser parse: self contents.
+			(dict at: #title) ifNil: [ 'MISSING TITLE' ] ]
 ]
 
 { #category : #parsing }
