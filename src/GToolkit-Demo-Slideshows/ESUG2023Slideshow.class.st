@@ -336,7 +336,7 @@ ESUG2023Slideshow >> moldableObjectPage [
 ]
 
 { #category : #accessing }
-ESUG2023Slideshow >> patternMapScenery [
+ESUG2023Slideshow >> patternBasicMapScenery [
 	<gtExample>
 	<noTest>
 	| scenery item1 item2 item3 item4 item5 |
@@ -458,6 +458,61 @@ ESUG2023Slideshow >> patternMapScenery [
 		from: item3
 		to: item5.
 	^ scenery
+]
+
+{ #category : #accessing }
+ESUG2023Slideshow >> patternMapScenery [
+	<gtExample>
+	<noTest>
+	| scenery item1 item2 item3 item4 item5 item6 item7 item8 item9 |
+scenery := GtScenery new.
+item1 := scenery addItem: (GtSceneryItem new stencil: (GtSceneryTextStencil new text: (((BlRunRopedText string: 'Moldable Object')
+attributeRuns: ((BlRunTree basicNew instVarAt: 1 put: (BlRunTreeLeafNode basicNew instVarAt: 1 put: 16; instVarAt: 2 put: ((Array new: 3) at: 1 put: (BlFontSizeAttribute new size: 20); at: 2 put: BlFontWeightAttribute new; at: 3 put: (BlFontFamilyDefaultAttribute new beNotOverwritableByStyler name: 'Source Sans Pro'); yourself); yourself); yourself)))))).
+item1 position: (355.0@135.0).
+item1 extent: (165.20070393880204@40.0).
+item2 := scenery addItem: (GtSceneryItem new stencil: (GtSceneryTextStencil new text: (((BlRunRopedText string: 'Viewable Data Wrapper')
+attributeRuns: ((BlRunTree basicNew instVarAt: 1 put: (BlRunTreeLeafNode basicNew instVarAt: 1 put: 22; instVarAt: 2 put: ((Array new: 3) at: 1 put: (BlFontSizeAttribute new size: 20); at: 2 put: BlFontWeightAttribute new; at: 3 put: (BlFontFamilyDefaultAttribute new beNotOverwritableByStyler name: 'Source Sans Pro'); yourself); yourself); yourself)))))).
+item2 position: (640@137).
+item2 extent: (218.0911763509116@40.0).
+item3 := scenery addItem: (GtSceneryItem new stencil: (GtSceneryTextStencil new text: (((BlRunRopedText string: 'Contextual Playground')
+attributeRuns: ((BlRunTree basicNew instVarAt: 1 put: (BlRunTreeLeafNode basicNew instVarAt: 1 put: 22; instVarAt: 2 put: ((Array new: 3) at: 1 put: (BlFontSizeAttribute new size: 20); at: 2 put: BlFontWeightAttribute new; at: 3 put: (BlFontFamilyDefaultAttribute new beNotOverwritableByStyler name: 'Source Sans Pro'); yourself); yourself); yourself)))))).
+item3 position: (241@284).
+item3 extent: (219.20257568359375@40.0).
+item4 := scenery addItem: (GtSceneryItem new stencil: (GtSceneryTextStencil new text: (((BlRunRopedText string: 'Viewable Entity')
+attributeRuns: ((BlRunTree basicNew instVarAt: 1 put: (BlRunTreeLeafNode basicNew instVarAt: 1 put: 16; instVarAt: 2 put: ((Array new: 3) at: 1 put: (BlFontSizeAttribute new size: 20); at: 2 put: BlFontWeightAttribute new; at: 3 put: (BlFontFamilyDefaultAttribute new beNotOverwritableByStyler name: 'Source Sans Pro'); yourself); yourself); yourself)))))).
+item4 position: (226@381).
+item4 extent: (151.39353434244777@40.0).
+item5 := scenery addItem: (GtSceneryItem new stencil: (GtSceneryTextStencil new text: (((BlRunRopedText string: 'Custom Action')
+attributeRuns: ((BlRunTree basicNew instVarAt: 1 put: (BlRunTreeLeafNode basicNew instVarAt: 1 put: 14; instVarAt: 2 put: ((Array new: 3) at: 1 put: (BlFontSizeAttribute new size: 20); at: 2 put: BlFontWeightAttribute new; at: 3 put: (BlFontFamilyDefaultAttribute new beNotOverwritableByStyler name: 'Source Sans Pro'); yourself); yourself); yourself)))))).
+item5 position: (424@380).
+item5 extent: (168.6454264322914@40.0).
+item6 := scenery addItem: (GtSceneryItem new stencil: (GtSceneryTextStencil new text: (((BlRunRopedText string: 'Simple View')
+attributeRuns: ((BlRunTree basicNew instVarAt: 1 put: (BlRunTreeLeafNode basicNew instVarAt: 1 put: 12; instVarAt: 2 put: ((Array new: 3) at: 1 put: (BlFontSizeAttribute new size: 20); at: 2 put: BlFontWeightAttribute new; at: 3 put: (BlFontFamilyDefaultAttribute new beNotOverwritableByStyler name: 'Source Sans Pro'); yourself); yourself); yourself)))))).
+item6 position: (183@504).
+item6 extent: (119.8990885416668@40.0).
+item7 := scenery addItem: (GtSceneryItem new stencil: (GtSceneryTextStencil new text: (((BlRunRopedText string: 'Collection Wrapper')
+attributeRuns: ((BlRunTree basicNew instVarAt: 1 put: (BlRunTreeLeafNode basicNew instVarAt: 1 put: 19; instVarAt: 2 put: ((Array new: 3) at: 1 put: (BlFontSizeAttribute new size: 20); at: 2 put: BlFontWeightAttribute new; at: 3 put: (BlFontFamilyDefaultAttribute new beNotOverwritableByStyler name: 'Source Sans Pro'); yourself); yourself); yourself)))))).
+item7 position: (337@504).
+item7 extent: (187.15799967447913@40.0).
+item8 := scenery addItem: (GtSceneryItem new stencil: (GtSceneryTextStencil new text: (((BlRunRopedText string: 'Project Diary')
+attributeRuns: ((BlRunTree basicNew instVarAt: 1 put: (BlRunTreeLeafNode basicNew instVarAt: 1 put: 14; instVarAt: 2 put: ((Array new: 3) at: 1 put: (BlFontSizeAttribute new size: 20); at: 2 put: BlFontWeightAttribute new; at: 3 put: (BlFontFamilyDefaultAttribute new beNotOverwritableByStyler name: 'Source Sans Pro'); yourself); yourself); yourself)))))).
+item8 position: (647.0@215.99999999999994).
+item8 extent: (131.74072265625@40.0).
+item9 := scenery addItem: (GtSceneryItem new stencil: (GtSceneryTextStencil new text: (((BlRunRopedText string: 'Example Object')
+attributeRuns: ((BlRunTree basicNew instVarAt: 1 put: (BlRunTreeLeafNode basicNew instVarAt: 1 put: 15; instVarAt: 2 put: ((Array new: 3) at: 1 put: (BlFontSizeAttribute new size: 20); at: 2 put: BlFontWeightAttribute new; at: 3 put: (BlFontFamilyDefaultAttribute new beNotOverwritableByStyler name: 'Source Sans Pro'); yourself); yourself); yourself)))))).
+item9 position: (639@284).
+item9 extent: (152.4237060546875@40.0).
+scenery addConnectionWithStencil: (GtSceneryLineStencil new) from: item1 to: item2.
+scenery addConnectionWithStencil: (GtSceneryLineStencil new) from: item2 to: item1.
+scenery addConnectionWithStencil: (GtSceneryLineStencil new) from: item1 to: item3.
+scenery addConnectionWithStencil: (GtSceneryLineStencil new) from: item3 to: item4.
+scenery addConnectionWithStencil: (GtSceneryLineStencil new) from: item3 to: item5.
+scenery addConnectionWithStencil: (GtSceneryLineStencil new) from: item4 to: item6.
+scenery addConnectionWithStencil: (GtSceneryLineStencil new) from: item4 to: item7.
+scenery addConnectionWithStencil: (GtSceneryLineStencil new) from: item1 to: item8.
+scenery addConnectionWithStencil: (GtSceneryLineStencil new) from: item3 to: item9.
+scenery addConnectionWithStencil: (GtSceneryLineStencil new) from: item8 to: item9.
+^ scenery
 ]
 
 { #category : #slides }
