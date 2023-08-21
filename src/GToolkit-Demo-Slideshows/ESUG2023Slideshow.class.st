@@ -30,16 +30,16 @@ ESUG2023Slideshow >> conclusions: aSlide [
 
 In the end, what is important to convey is that Moldable Development is a *process* in which you ask questions about a software system, explore it, and build lots of small, custom tools to answer those questions and make the system explainable.
 
+Moldable Development is a new way of programming that takes time to learn, but that in the end boils down to a set of learnable patterns.
+
 Thanks for listening.'>
 
-	^ aSlide paragraph
+	^ aSlide labelAndElement
 		priority: (self priorityFor: #conclusions:);
-		subtitleWithFormat: (self asTitle: 'Conclusion');
-		paragraphWithFormat: (self
-				asBigText: '
-
-Exploration is a skill that can be learned.
-')
+		newTextWithFormat: (self asSubtitle: 'Conclusion');
+		newFadedText: '';
+		newFadedText: 'Moldable Development boils down to a set of learnable patterns.';
+		element: [ self patternMapScenery ]
 ]
 
 { #category : #slides }
@@ -358,23 +358,23 @@ attributeRuns: ((BlRunTree basicNew instVarAt: 1 put: (BlRunTreeLeafNode basicNe
 item4 position: (190.0@359.99999999999994).
 item4 extent: (152.59155273437494@40.0).
 item5 := scenery addItem: (GtSceneryItem new stencil: (GtSceneryTextStencil new text: (((BlRunRopedText string: 'Custom Action')
-attributeRuns: ((BlRunTree basicNew instVarAt: 1 put: (BlRunTreeLeafNode basicNew instVarAt: 1 put: 14; instVarAt: 2 put: ((Array new: 3) at: 1 put: (BlFontSizeAttribute new size: 20); at: 2 put: (BlFontWeightAttribute new weight: 700); at: 3 put: (BlFontFamilyDefaultAttribute new beNotOverwritableByStyler name: 'Source Sans Pro'); yourself); yourself); yourself)))))).
+attributeRuns: ((BlRunTree basicNew instVarAt: 1 put: (BlRunTreeLeafNode basicNew instVarAt: 1 put: 14; instVarAt: 2 put: ((Array new: 4) at: 1 put: (BlFontSizeAttribute new size: 20); at: 2 put: (BlFontItalicAttribute new); at: 3 put: (BlFontWeightAttribute new weight: 700); at: 4 put: (BlFontFamilyDefaultAttribute new beNotOverwritableByStyler name: 'Source Sans Pro'); yourself); yourself); yourself)))))).
 item5 position: (400.99999999999994@357.99999999999994).
 item5 extent: (144.4384256998697@40.0).
 item6 := scenery addItem: (GtSceneryItem new stencil: (GtSceneryTextStencil new text: (((BlRunRopedText string: 'Simple View')
-attributeRuns: ((BlRunTree basicNew instVarAt: 1 put: (BlRunTreeLeafNode basicNew instVarAt: 1 put: 12; instVarAt: 2 put: ((Array new: 3) at: 1 put: (BlFontSizeAttribute new size: 20); at: 2 put: (BlFontWeightAttribute new weight: 700); at: 3 put: (BlFontFamilyDefaultAttribute new beNotOverwritableByStyler name: 'Source Sans Pro'); yourself); yourself); yourself)))))).
+attributeRuns: ((BlRunTree basicNew instVarAt: 1 put: (BlRunTreeLeafNode basicNew instVarAt: 1 put: 12; instVarAt: 2 put: ((Array new: 4) at: 1 put: (BlFontSizeAttribute new size: 20); at: 2 put: (BlFontItalicAttribute new); at: 3 put: (BlFontWeightAttribute new weight: 700); at: 4 put: (BlFontFamilyDefaultAttribute new beNotOverwritableByStyler name: 'Source Sans Pro'); yourself); yourself); yourself)))))).
 item6 position: (119.99999999999997@475.9999999999999).
 item6 extent: (119.12862141927079@40.0).
 item7 := scenery addItem: (GtSceneryItem new stencil: (GtSceneryTextStencil new text: (((BlRunRopedText string: 'Collection Wrapper')
-attributeRuns: ((BlRunTree basicNew instVarAt: 1 put: (BlRunTreeLeafNode basicNew instVarAt: 1 put: 19; instVarAt: 2 put: ((Array new: 3) at: 1 put: (BlFontSizeAttribute new size: 20); at: 2 put: (BlFontWeightAttribute new weight: 700); at: 3 put: (BlFontFamilyDefaultAttribute new beNotOverwritableByStyler name: 'Source Sans Pro'); yourself); yourself); yourself)))))).
+attributeRuns: ((BlRunTree basicNew instVarAt: 1 put: (BlRunTreeLeafNode basicNew instVarAt: 1 put: 19; instVarAt: 2 put: ((Array new: 4) at: 1 put: (BlFontSizeAttribute new size: 20); at: 2 put: (BlFontItalicAttribute new); at: 3 put: (BlFontWeightAttribute new weight: 700); at: 4 put: (BlFontFamilyDefaultAttribute new beNotOverwritableByStyler name: 'Source Sans Pro'); yourself); yourself); yourself)))))).
 item7 position: (281.0@475.9999999999999).
 item7 extent: (189.85839843749994@40.0).
 item8 := scenery addItem: (GtSceneryItem new stencil: (GtSceneryTextStencil new text: (((BlRunRopedText string: 'Project Diary')
-attributeRuns: ((BlRunTree basicNew instVarAt: 1 put: (BlRunTreeLeafNode basicNew instVarAt: 1 put: 14; instVarAt: 2 put: ((Array new: 3) at: 1 put: (BlFontSizeAttribute new size: 20); at: 2 put: (BlFontWeightAttribute new weight: 700); at: 3 put: (BlFontFamilyDefaultAttribute new beNotOverwritableByStyler name: 'Source Sans Pro'); yourself); yourself); yourself)))))).
+attributeRuns: ((BlRunTree basicNew instVarAt: 1 put: (BlRunTreeLeafNode basicNew instVarAt: 1 put: 14; instVarAt: 2 put: ((Array new: 4) at: 1 put: (BlFontSizeAttribute new size: 20); at: 2 put: (BlFontItalicAttribute new); at: 3 put: (BlFontWeightAttribute new weight: 700); at: 4 put: (BlFontFamilyDefaultAttribute new beNotOverwritableByStyler name: 'Source Sans Pro'); yourself); yourself); yourself)))))).
 item8 position: (636@151).
 item8 extent: (131.41372680664063@40.0).
 item9 := scenery addItem: (GtSceneryItem new stencil: (GtSceneryTextStencil new text: (((BlRunRopedText string: 'Example Object')
-attributeRuns: ((BlRunTree basicNew instVarAt: 1 put: (BlRunTreeLeafNode basicNew instVarAt: 1 put: 15; instVarAt: 2 put: ((Array new: 3) at: 1 put: (BlFontSizeAttribute new size: 20); at: 2 put: (BlFontWeightAttribute new weight: 700); at: 3 put: (BlFontFamilyDefaultAttribute new beNotOverwritableByStyler name: 'Source Sans Pro'); yourself); yourself); yourself)))))).
+attributeRuns: ((BlRunTree basicNew instVarAt: 1 put: (BlRunTreeLeafNode basicNew instVarAt: 1 put: 15; instVarAt: 2 put: ((Array new: 4) at: 1 put: (BlFontSizeAttribute new size: 20); at: 2 put: (BlFontItalicAttribute new); at: 3 put: (BlFontWeightAttribute new weight: 700); at: 4 put: (BlFontFamilyDefaultAttribute new beNotOverwritableByStyler name: 'Source Sans Pro'); yourself); yourself); yourself)))))).
 item9 position: (624@237).
 item9 extent: (156.98435465494777@40.0).
 scenery addConnectionWithStencil: (GtSceneryLineStencil new) from: item1 to: item2.
