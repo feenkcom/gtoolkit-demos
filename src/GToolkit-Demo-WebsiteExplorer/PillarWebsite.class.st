@@ -5,11 +5,8 @@ To load a demo, inspect
 
 {{gtMethod:name=PillarWebsiteExamples>>#esug2014}}
 
-To explore the full ESUG website (repo will be cloned), inspect
+To explore the full ESUG website (repo will be cloned), inspect the subclass  method: {{gtMethod:name=EsugWebsite class>>#instance}}  
 
-{{gtMethod:name=PillarWebsite class>>#esug}}
-
-Eventually this could be a subclass of a more generic website explorer for other formats than Pillar (eg markdown-based websites like Pico and GitHub Pages).
 "
 Class {
 	#name : #PillarWebsite,
