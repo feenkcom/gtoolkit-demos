@@ -3,7 +3,7 @@ I am an abstract superclass of WebPage objects.
 
 Subclasses should implement `rawLinks`, `title`.
 
-Subclasses may want to override: `webPageGroupClass` `url` 
+Subclasses may want to override: `webPageGroupClass`, `url`, `overview`
 "
 Class {
 	#name : #AWebPage,
@@ -62,7 +62,7 @@ AWebPage >> gtContentsFor: aView [
 	<gtView>
 	^ aView forward
 		title: 'Contents';
-		priority: 10;
+		priority: 15;
 		object: [ self webPageFile ];
 		view: #gtContentsFor:
 ]
@@ -83,7 +83,27 @@ AWebPage >> gtMapFor: aView [
 	^ aView mondrian
 		title: 'Map';
 		priority: 43;
-		painting: [ :aMondrian | self mapFor: aMondrian ]
+		painting: [ :aMondrian | 
+			self website
+				mapFor: aMondrian
+				from: self
+				with: self reachable ]
+]
+
+{ #category : #view }
+AWebPage >> gtOverviewFor: aView [
+	<gtView>
+	^ aView columnedList
+		title: 'Overview';
+		priority: 10;
+		items: [ self overview ];
+		column: 'Attribute'
+			text: [ :item | item key ]
+			width: 200;
+		column: 'Value'
+			text: [ :item | item value ]
+			width: 400;
+		actionUpdateButton
 ]
 
 { #category : #links }
@@ -131,33 +151,6 @@ AWebPage >> links [
 	^ self rawLinks collect: [ :assoc | self linkForPath: assoc value ]
 ]
 
-{ #category : #links }
-AWebPage >> mapFor: aMondrian [
-	aMondrian nodes
-		stencil: [ :each | 
-			BlElement new
-				size: 5 @ 5;
-				geometry: BlCircleGeometry new;
-				background: (each = self
-						ifTrue: [ Color orange ]
-						ifFalse: [ (self website rootPages includes: each)
-								ifTrue: [ Color blue ]
-								ifFalse: [ (self website reachable includes: each)
-										ifTrue: [ Color green ]
-										ifFalse: [ Color red ] ] ]);
-				aptitude: (BrGlamorousWithTooltipAptitude content: each tooltip) ];
-		with: self reachable.
-
-	aMondrian edges
-		stencil: [ :each | 
-			BlLineElement new
-				zIndex: -1;
-				border: (BlBorder paint: (Color veryVeryLightGray alpha: 0.5)) ];
-		connectToAll: [ :each | each childrenPages asSet ].
-	aMondrian layout force.
-	^ aMondrian
-]
-
 { #category : #accessing }
 AWebPage >> markdownLinks [
 	"Useful for various subclasses."
@@ -172,11 +165,6 @@ AWebPage >> missingTitle [
 	^ '<no title>'
 ]
 
-{ #category : #links }
-AWebPage >> mondrianMap [
-	^ self mapFor: GtMondrian new
-]
-
 { #category : #path }
 AWebPage >> normalize: aPath [
 	| path |
@@ -188,6 +176,17 @@ AWebPage >> normalize: aPath [
 	[ path matchesRegex: '.*/[^/]+/\.\./.*' ]
 		whileTrue: [ path := path copyWithRegex: '/[^/]+/\.\./' matchesReplacedWith: '/' ].
 	^ path
+]
+
+{ #category : #view }
+AWebPage >> overview [
+	"For the gtOverviewFor: view. Subclasse may want to extend or replace this."
+
+	^ {'Title' -> self title.
+		'Path' -> self path.
+		'Url' -> self url.
+		'# Links' -> self links size.
+		'# Reachable pages' -> self reachable size}
 ]
 
 { #category : #accessing }

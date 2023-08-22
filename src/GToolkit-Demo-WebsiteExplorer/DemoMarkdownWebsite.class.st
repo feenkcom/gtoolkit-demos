@@ -72,14 +72,49 @@ DemoMarkdownWebsite class >> nierstraszFamily [
 	key := 'nierstraszFamily'.
 	webUrl := 'https://www.family.nierstrasz.org'.
 	repoUrl := 'https://github.com/onierstrasz/nierstrasz.org'.
-	repoDir := (FileLocator imageDirectory / 'nierstrasz.org')
-			asFileReference.
-	navMenuLinks := {'/cv/'.
-			'/low-road-blog/'.
-			'/oddsAndEnds/'.
-			'/publications/'.
-			'/talks/'.
-			'/teaching/'}.
+	repoDir := (FileLocator imageDirectory / 'nierstrasz.org') asFileReference.
+	navMenuLinks := {'/HahnAarsse-en/'.
+			'/HahnAarsse-en/Aarsse-Fritz'.
+			'/HahnAarsse-en/DoEnHuug'.
+			'/HahnAarsse-en/DoNaarBoekarest'.
+			'/HahnAarsse-en/Elspeet'.
+			'/HahnAarsse-en/Hahn-Aarsse'.
+			'/HahnAarsse-en/HenrietteDeRidder'.
+			'/HahnAarsse-en/JetAarsse'.
+			'/HahnAarsse-en/JetHahn'.
+			'/HahnAarsse-en/LettersFromGeorg'.
+			'/HahnAarsse-en/LydiaDeRidder'.
+			'/HahnAarsse-en/NaDeOorlog'.
+			'/HahnAarsse-en/OomLouis'.
+			'/HahnAarsse-en/Speelzolder'.
+			'/HahnAarsse-en/TanteVictoire'.
+			'/HahnAarsse-en/catalog'.
+			'/HahnAarsse-en/deGrauw'.
+			'/HahnAarsse-en/index'.
+			'/HahnAarsse/'.
+			'/HahnAarsse/Aarsse-Fritz'.
+			'/HahnAarsse/DoEnHuug'.
+			'/HahnAarsse/DoNaarBoekarest'.
+			'/HahnAarsse/Elspeet'.
+			'/HahnAarsse/Hahn-Aarsse'.
+			'/HahnAarsse/HenrietteDeRidder'.
+			'/HahnAarsse/JetAarsse'.
+			'/HahnAarsse/JetHahn'.
+			'/HahnAarsse/LettersFromGeorg'.
+			'/HahnAarsse/LydiaDeRidder'.
+			'/HahnAarsse/NaDeOorlog'.
+			'/HahnAarsse/OomLouis'.
+			'/HahnAarsse/Speelzolder'.
+			'/HahnAarsse/TanteVictoire'.
+			'/HahnAarsse/catalog'.
+			'/HahnAarsse/deGrauw'.
+			'/HahnAarsse/index'.
+			'/crest'.
+			'/nierstrass'.
+			'/origin'.
+			'/sitemap/'.
+			'/sources'.
+			'/tree'}.
 	^ cache
 		at: key
 		ifAbsentPut: [ MarkdownWebsite new

@@ -7,6 +7,19 @@ Trait {
 }
 
 { #category : #searching }
+TWebPageGroup >> gtSpotterForLinkNames: aSearch [
+	<gtSearch>
+	^ aSearch list
+		title: 'Link names';
+		priority: 10;
+		items: [ self links ];
+		itemsLimit: Float infinity;
+		itemName: #path;
+		sendCategory: [ :aCategory :aStep :thisSearch | self webPageGroupClass withAll: aCategory items contents ];
+		filterBySubstring
+]
+
+{ #category : #searching }
 TWebPageGroup >> gtSpotterForPageContents: aSearch [
 	<gtSearch>
 	^ aSearch list
