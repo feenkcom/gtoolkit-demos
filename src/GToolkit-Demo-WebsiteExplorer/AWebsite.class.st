@@ -31,7 +31,11 @@ AWebsite >> gtMapFor: aView [
 	^ aView mondrian
 		title: 'Map';
 		priority: 62;
-		painting: [ :aMondrian | self mapFor: aMondrian ]
+		painting: [ :aMondrian | 
+			self
+				mapFor: aMondrian
+				from: self root
+				with: self pages ]
 ]
 
 { #category : #view }
@@ -50,10 +54,10 @@ AWebsite >> gtPagesFor: aView [
 		column: 'Path'
 			text: [ :item | item path ]
 			width: 300;
-		column: 'Markdown links'
+		column: 'Links'
 			text: [ :item | 
 				| size |
-				size := item markdownLinks size.
+				size := item links size.
 				size = 0 ifTrue: [ '' ] ifFalse: [ size ] ]
 			width: 80
 ]
@@ -145,19 +149,19 @@ AWebsite >> links [
 ]
 
 { #category : #links }
-AWebsite >> mapFor: aMondrian [
+AWebsite >> mapFor: aMondrian from: aRootNode with: aPageCollection [
 	aMondrian nodes
 		stencil: [ :each | 
 			BlElement new
 				size: 5 @ 5;
 				geometry: BlCircleGeometry new;
-				background: (each = self root
+				background: (each = aRootNode
 						ifTrue: [ Color orange ]
 						ifFalse: [ (self rootPages includes: each)
 								ifTrue: [ Color blue ]
 								ifFalse: [ (self reachable includes: each) ifTrue: [ Color green ] ifFalse: [ Color red ] ] ]);
 				aptitude: (BrGlamorousWithTooltipAptitude content: each tooltip) ];
-		with: self pages.
+		with: aPageCollection.
 
 	aMondrian edges
 		stencil: [ :each | 
@@ -167,11 +171,6 @@ AWebsite >> mapFor: aMondrian [
 		connectToAll: [ :each | each childrenPages asSet ].
 	aMondrian layout force.
 	^ aMondrian
-]
-
-{ #category : #links }
-AWebsite >> mondrianMap [
-	^ self mapFor: GtMondrian new
 ]
 
 { #category : #links }

@@ -83,7 +83,11 @@ AWebPage >> gtMapFor: aView [
 	^ aView mondrian
 		title: 'Map';
 		priority: 43;
-		painting: [ :aMondrian | self mapFor: aMondrian ]
+		painting: [ :aMondrian | 
+			self website
+				mapFor: aMondrian
+				from: self
+				with: self reachable ]
 ]
 
 { #category : #links }
@@ -131,33 +135,6 @@ AWebPage >> links [
 	^ self rawLinks collect: [ :assoc | self linkForPath: assoc value ]
 ]
 
-{ #category : #links }
-AWebPage >> mapFor: aMondrian [
-	aMondrian nodes
-		stencil: [ :each | 
-			BlElement new
-				size: 5 @ 5;
-				geometry: BlCircleGeometry new;
-				background: (each = self
-						ifTrue: [ Color orange ]
-						ifFalse: [ (self website rootPages includes: each)
-								ifTrue: [ Color blue ]
-								ifFalse: [ (self website reachable includes: each)
-										ifTrue: [ Color green ]
-										ifFalse: [ Color red ] ] ]);
-				aptitude: (BrGlamorousWithTooltipAptitude content: each tooltip) ];
-		with: self reachable.
-
-	aMondrian edges
-		stencil: [ :each | 
-			BlLineElement new
-				zIndex: -1;
-				border: (BlBorder paint: (Color veryVeryLightGray alpha: 0.5)) ];
-		connectToAll: [ :each | each childrenPages asSet ].
-	aMondrian layout force.
-	^ aMondrian
-]
-
 { #category : #accessing }
 AWebPage >> markdownLinks [
 	"Useful for various subclasses."
@@ -170,11 +147,6 @@ AWebPage >> markdownLinks [
 { #category : #constant }
 AWebPage >> missingTitle [
 	^ '<no title>'
-]
-
-{ #category : #links }
-AWebPage >> mondrianMap [
-	^ self mapFor: GtMondrian new
 ]
 
 { #category : #path }
