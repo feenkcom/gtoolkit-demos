@@ -35,5 +35,5 @@ PillarWebsiteExamples >> esug2014repoDir [
 
 { #category : #constant }
 PillarWebsiteExamples >> esug2014url [
-	^ PillarWebsite esugUrl
+	^ EsugWebsite esugUrl
 ]

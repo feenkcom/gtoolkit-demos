@@ -3,31 +3,27 @@ To be refactored as a peer instead of a subclass of PillarWebPage.
 "
 Class {
 	#name : #MarkdownWebPage,
-	#superclass : #PillarWebPage,
+	#superclass : #AWebPage,
 	#category : #'GToolkit-Demo-WebsiteExplorer-Model'
 }
 
-{ #category : #forbidden }
-MarkdownWebPage >> gtPillarlinksFor: aView [
-	<gtView>
-	^ aView empty
-]
-
 { #category : #accessing }
-MarkdownWebPage >> links [
-	"Lookup the PillarWebLink instances for each link."
-
-	^ self markdownLinks collect: [ :assoc | self linkForPath: assoc value ]
-]
-
-{ #category : #forbidden }
-MarkdownWebPage >> pillarLinks [
-	self shouldNotImplement
+MarkdownWebPage >> rawLinks [
+	^ rawLinks ifNil: [ rawLinks := self markdownLinks ]
 ]
 
 { #category : #links }
 MarkdownWebPage >> reachable [
 	^ WebPageGroup withAll: (self reachableFrom: {self})
+]
+
+{ #category : #accessing }
+MarkdownWebPage >> title [
+	^ title
+		ifNil: [ | dict |
+			dict := self titleParser parse: self contents.
+			title := dict at: 'title' ifAbsent: ['MISSING TITLE']
+			 ]
 ]
 
 { #category : #parsing }

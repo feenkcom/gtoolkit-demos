@@ -73,7 +73,7 @@ PillarWebPageExamples >> esug2014homePage [
 	| website page |
 	website := self esug2014Website.
 	page := website pageNamed: '/2014-Conference/conf2014.pillar'.
-	self assert: page pillarLinks size equals: 21.
+	self assert: page rawLinks size equals: 21.
 	self assert: page markdownLinks size equals: 0.
 	^ page
 ]

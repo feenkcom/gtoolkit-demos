@@ -1,12 +1,12 @@
 Class {
-	#name : #PillarWebLink,
+	#name : #MarkdownWebLink,
 	#superclass : #WebLink,
 	#category : #'GToolkit-Demo-WebsiteExplorer-Model'
 }
 
 { #category : #constant }
-PillarWebLink >> suffix [
+MarkdownWebLink >> suffix [
 	"File suffix to be removed when generated the URL"
 
-	^ '.pillar'
+	^ '.md'
 ]

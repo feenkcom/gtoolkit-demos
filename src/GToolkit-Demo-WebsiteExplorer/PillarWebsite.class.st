@@ -13,90 +13,15 @@ Eventually this could be a subclass of a more generic website explorer for other
 "
 Class {
 	#name : #PillarWebsite,
-	#superclass : #APillarWebLinkGroup,
-	#traits : 'TWebPageGroup',
-	#classTraits : 'TWebPageGroup classTrait',
-	#instVars : [
-		'repoDir',
-		'url',
-		'pages',
-		'linkDict',
-		'reachable',
-		'rootPages',
-		'links'
-	],
-	#classInstVars : [
-		'esug'
-	],
+	#superclass : #AWebsite,
 	#category : #'GToolkit-Demo-WebsiteExplorer-Model'
 }
-
-{ #category : #creation }
-PillarWebsite class >> esug [
-	"Cache the website for demos."
-
-	<gtExample>
-	<noTest>
-	^ esug
-		ifNil: [ esug := self new
-					repoDir: self esugRepoDir;
-					url: self esugUrl;
-					yourself ]
-]
-
-{ #category : #creation }
-PillarWebsite class >> esugReload [
-	"Clear the cache and reload the website."
-
-	<gtExample>
-	<noTest>
-	esug := nil.
-	^ self esug
-]
-
-{ #category : #creation }
-PillarWebsite class >> esugRepoDir [
-	^ self
-		initializeRepoDir: (FileLocator imageDirectory / 'esug.github.io') asFileReference
-		fromRepoUrl: 'https://github.com/ESUG/esug.github.io'
-]
-
-{ #category : #constant }
-PillarWebsite class >> esugUrl [
-	^ 'https://esug.github.io'
-]
-
-{ #category : #initialization }
-PillarWebsite class >> initializeRepoDir: aRepoDir fromRepoUrl: aRepoUrl [
-	"Clone the repo unless it already exists."
-
-	| proc |
-	aRepoDir exists ifTrue: [ ^ aRepoDir ].
-	self inform: 'Cloning ' , aRepoUrl , ' into ' , aRepoDir basename.
-	proc := GtSubprocessWithInMemoryOutput new
-			workingDirectory: FileLocator imageDirectory;
-			command: 'git';
-			arguments: {'clone'.
-					aRepoUrl};
-			errorBlock: [ :theProc | self error: 'Git clone failed: ' , aRepoUrl printString ].
-	proc runAndWait.
-	^ aRepoDir
-]
 
 { #category : #links }
 PillarWebsite >> cleanJson: anJsonString [
 	| badLine |
 	badLine := '#''Describing the sites menu as title,url pair'': #comment,'.
 	^ anJsonString copyReplaceAll: badLine with: ''
-]
-
-{ #category : #view }
-PillarWebsite >> gtMapFor: aView [
-	<gtView>
-	^ aView mondrian
-		title: 'Map';
-		priority: 62;
-		painting: [ :aMondrian | self mapFor: aMondrian ]
 ]
 
 { #category : #view }
@@ -118,7 +43,7 @@ PillarWebsite >> gtPagesFor: aView [
 		column: 'Pillar links'
 			text: [ :item | 
 				| size |
-				size := item pillarLinks size.
+				size := item rawLinks size.
 				size = 0 ifTrue: [ '' ] ifFalse: [ size ] ]
 			width: 80;
 		column: 'Markdown links'
@@ -129,49 +54,7 @@ PillarWebsite >> gtPagesFor: aView [
 			width: 80
 ]
 
-{ #category : #accessing }
-PillarWebsite >> gtReachablePagesFor: aView [
-	<gtView>
-	^ aView forward
-		title: 'Reachable pages';
-		priority: 60;
-		object: [ self reachable ];
-		view: #gtPagesFor:;
-		actionButtonIcon: BrGlamorousVectorIcons inspect
-			tooltip: 'Inspect  value'
-			action: [ :aButton :aTab | aButton phlow spawnObject: self reachable ]
-]
-
-{ #category : #accessing }
-PillarWebsite >> gtUnreachablePagesFor: aView [
-	<gtView>
-	self unreachable ifEmpty: [ ^ aView empty ].
-	^ aView forward
-		title: 'Unreachable pages';
-		priority: 61;
-		object: [ self unreachable ];
-		view: #gtPagesFor:;
-		actionButtonIcon: BrGlamorousVectorIcons inspect
-			tooltip: 'Inspect  value'
-			action: [ :aButton :aTab | aButton phlow spawnObject: self unreachable ]
-]
-
-{ #category : #testing }
-PillarWebsite >> hasPageNamed: aString [
-	^ self pages
-		detect: [ :page | page path = aString ]
-		ifFound: [ true ]
-		ifNone: [ false ]
-]
-
 { #category : #initialization }
-PillarWebsite >> initializeLinkDict [
-	linkDict := Dictionary new.
-	self pages do: [ :each | each registerLinks ].
-	^ linkDict
-]
-
-{ #category : #accessing }
 PillarWebsite >> initializePages [
 	^ pages := ((self repoDir allChildrenMatching: '*.pillar')
 			collect: [ :each | PillarWebPage for: each in: self ])
@@ -181,123 +64,19 @@ PillarWebsite >> initializePages [
 							and: [ a path < b path ] ] ]
 ]
 
-{ #category : #links }
-PillarWebsite >> linkDict [
-	^ linkDict
-]
-
-{ #category : #links }
-PillarWebsite >> linkForPath: aPath [
-	^ linkDict at: aPath ifAbsentPut: [ PillarWebLink for: aPath in: self ]
-]
-
-{ #category : #links }
-PillarWebsite >> links [
-	"Cache it"
-
-	^ links
-		ifNil: [ links := self linkDict values
-					sort: [ :a :b | 
-						(a path occurrencesOf: $/) < (b path occurrencesOf: $/)
-							or: [ (a path occurrencesOf: $/) = (b path occurrencesOf: $/)
-									and: [ a path < b path ] ] ] ]
-]
-
-{ #category : #links }
-PillarWebsite >> mapFor: aMondrian [
-	aMondrian nodes
-		stencil: [ :each | 
-			BlElement new
-				size: 5 @ 5;
-				geometry: BlCircleGeometry new;
-				background: ((self rootPages includes: each)
-						ifTrue: [ Color blue ]
-						ifFalse: [ (self reachable includes: each) ifTrue: [ Color green ] ifFalse: [ Color red ] ]);
-				aptitude: (BrGlamorousWithTooltipAptitude content: each tooltip) ];
-		with: self pages.
-
-	aMondrian edges
-		stencil: [ :each | 
-			BlLineElement new
-				zIndex: -1;
-				border: (BlBorder paint: (Color veryVeryLightGray alpha: 0.5)) ];
-		connectToAll: [ :each | each childrenPages asSet ].
-	aMondrian layout force.
-	^ aMondrian
-]
-
-{ #category : #links }
-PillarWebsite >> mondrianMap [
-	^ self mapFor: GtMondrian new
-]
-
-{ #category : #announcements }
-PillarWebsite >> notifyStatusUpdate [
-	self announcer announce: PillarWebLinkStatusUpdated new
-]
-
 { #category : #accessing }
-PillarWebsite >> pageNamed: aString [
-	^ self pages detect: [ :page | page path = aString ]
-]
+PillarWebsite >> navigationRoots [
+	"Extract addition root pages from the navigation menu."
 
-{ #category : #accessing }
-PillarWebsite >> pages [
-	^ pages
-]
-
-{ #category : #printing }
-PillarWebsite >> printOn: aStream [
-	super printOn: aStream.
-	aStream
-		nextPutAll: ' (';
-		nextPutAll: self url;
-		nextPut: $)
-]
-
-{ #category : #links }
-PillarWebsite >> reachable [
-	"Expensive to compute and won't change, so we cache it."
-
-	^ reachable
-		ifNil: [ reachable := PillarWebPageGroup
-					withAll: (self root reachableFrom: self rootPages) ]
-]
-
-{ #category : #accessing }
-PillarWebsite >> repoDir [
-	^ repoDir
-]
-
-{ #category : #accessing }
-PillarWebsite >> repoDir: aFileReference [
-	repoDir := aFileReference.
-	self initializePages.
-	self initializeLinkDict
-]
-
-{ #category : #accessing }
-PillarWebsite >> root [
-	^ self pages detect: [ :page | page path = self rootPath ]
-]
-
-{ #category : #links }
-PillarWebsite >> rootPages [
-	"Extract additional root pages from the URLs in the pillar configuration of the navigation menu."
-
-	^ rootPages
-		ifNil: [ | json urls |
-			rootPages := {self root} asOrderedCollection.
-			json := NeoJSONReader
-					fromString: (self cleanJson: (self repoDir / 'pillar.conf') contents).
-			urls := (((json at: 'menu') collect: [ :menu | menu at: 'url' ]) asSet
-					union: (((json at: 'menu') flatCollect: [ :menu | menu at: 'submenu' ])
-							collect: [ :submenu | submenu at: 'url' ]))
-					collect: [ :html | html copyReplaceAll: '.html' with: '.pillar' ].
-			rootPages
-				addAll: ((urls select: [ :each | self hasPageNamed: each ])
-						collect: [ :each | self pageNamed: each ]).
-			rootPages ]
+	| json urls |
+	json := NeoJSONReader
+			fromString: (self cleanJson: (self repoDir / 'pillar.conf') contents).
+	urls := (((json at: 'menu') collect: [ :menu | menu at: 'url' ]) asSet
+			union: (((json at: 'menu') flatCollect: [ :menu | menu at: 'submenu' ])
+					collect: [ :submenu | submenu at: 'url' ]))
+			collect: [ :html | html copyReplaceAll: '.html' with: '.pillar' ].
+	^ (urls select: [ :each | self hasPageNamed: each ])
+		collect: [ :each | self pageNamed: each ]
 ]
 
 { #category : #constant }
@@ -307,19 +86,7 @@ PillarWebsite >> rootPath [
 	^ '/index.pillar'
 ]
 
-{ #category : #links }
-PillarWebsite >> unreachable [
-	^ PillarWebPageGroup withAll: (self pages difference: self reachable items)
-]
-
-{ #category : #accessing }
-PillarWebsite >> url [
-	"The actual URL of the website"
-
-	^ url
-]
-
-{ #category : #accessing }
-PillarWebsite >> url: anObject [
-	url := anObject
+{ #category : #constant }
+PillarWebsite >> webLinkClass [
+	^ PillarWebLink
 ]

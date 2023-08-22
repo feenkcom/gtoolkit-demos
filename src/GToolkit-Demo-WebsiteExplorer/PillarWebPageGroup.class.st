@@ -20,7 +20,7 @@ PillarWebPageGroup >> gtPagesFor: aView [
 		column: 'Pillar links'
 			text: [ :item | 
 				| size |
-				size := item pillarLinks size.
+				size := item rawLinks size.
 				size = 0 ifTrue: [ '' ] ifFalse: [ size ] ]
 			width: 80;
 		column: 'Markdown links'
