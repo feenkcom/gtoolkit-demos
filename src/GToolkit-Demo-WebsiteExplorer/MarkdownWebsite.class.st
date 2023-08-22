@@ -8,6 +8,14 @@ Class {
 	#category : #'GToolkit-Demo-WebsiteExplorer-Model'
 }
 
+{ #category : #testing }
+MarkdownWebsite >> hasPageNamed: aString [
+	^ self pages
+		detect: [ :page | page path = aString or: [ page permalink = aString ] ]
+		ifFound: [ true ]
+		ifNone: [ false ]
+]
+
 { #category : #initialization }
 MarkdownWebsite >> initializePages [
 	"Probably we just want to search in specific directories.
@@ -22,10 +30,16 @@ MarkdownWebsite >> initializePages [
 ]
 
 { #category : #accessing }
-MarkdownWebsite >> rootPath [
-	"This needs to be configured ..."
+MarkdownWebsite >> pageNamed: aString [
+	^ self pages
+		detect: [ :page | page path = aString or: [ page permalink = aString ] ]
+]
 
-	^ '/index.md'
+{ #category : #accessing }
+MarkdownWebsite >> rootPath [
+	"Possibly needs to be configured ..."
+
+	^ '/'
 ]
 
 { #category : #constant }

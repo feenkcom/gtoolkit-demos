@@ -26,8 +26,11 @@ MDWebPageParser >> body [
 					ifNotEmpty: [ (node third collect: #second) asOrderedCollection
 							addFirst: node second;
 							yourself ].
-			{#title -> node first.
-				#body -> paragraphs} asDictionary ]
+			node first
+				ifNil: [ {#body -> paragraphs} asDictionary ]
+				ifNotNil: [ node first
+						at: #body put: paragraphs;
+						yourself ] ]
 ]
 
 { #category : #grammar }
@@ -40,7 +43,7 @@ MDWebPageParser >> header [
 	^ ('---' asPParser , newline 
 		, ('---' asPParser not , #any asPParser) star
 		, '---' asPParser , newline) flatten
-		==> [ :node | (YAMLParser parse: node) object at: 'title' ]
+		==> [ :node | (YAMLParser parse: node) object "at: 'title'" ]
 ]
 
 { #category : #grammar }

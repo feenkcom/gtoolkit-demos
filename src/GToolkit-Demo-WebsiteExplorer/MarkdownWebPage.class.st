@@ -4,8 +4,22 @@ To be refactored as a peer instead of a subclass of PillarWebPage.
 Class {
 	#name : #MarkdownWebPage,
 	#superclass : #AWebPage,
+	#instVars : [
+		'yaml'
+	],
 	#category : #'GToolkit-Demo-WebsiteExplorer-Model'
 }
+
+{ #category : #testing }
+MarkdownWebPage >> isRoot [
+"If the page's file has a YAML header, we can tell which page is the root."
+	^ self permalink = '/'
+]
+
+{ #category : #accessing }
+MarkdownWebPage >> permalink [
+	^ self yaml at: 'permalink' ifAbsent: [ self path ]
+]
 
 { #category : #accessing }
 MarkdownWebPage >> rawLinks [
@@ -19,14 +33,12 @@ MarkdownWebPage >> reachable [
 
 { #category : #accessing }
 MarkdownWebPage >> title [
-	^ title
-		ifNil: [ | dict |
-			dict := self titleParser parse: self contents.
-			title := dict at: 'title' ifAbsent: ['MISSING TITLE']
-			 ]
+	^ title ifNil: [ self yaml at: 'title' ifAbsent: [ 'MISSING TITLE' ] ]
 ]
 
 { #category : #parsing }
-MarkdownWebPage >> titleParser [
-	^ MDWebPageParser
+MarkdownWebPage >> yaml [
+	"I return the YAML header (if any) extended with a binding for the Markdown body."
+
+	^ yaml ifNil: [ yaml := MDWebPageParser parse: self contents ]
 ]

@@ -225,7 +225,7 @@ AWebsite >> repoDir: aFileReference [
 
 { #category : #accessing }
 AWebsite >> root [
-	^ self pages detect: [ :page | page path = self rootPath ]
+	^ self pageNamed: self rootPath
 ]
 
 { #category : #links }
