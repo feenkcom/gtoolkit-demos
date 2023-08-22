@@ -3,7 +3,7 @@ I am an abstract superclass of WebPage objects.
 
 Subclasses should implement `rawLinks`, `title`.
 
-Subclasses may want to override: `webPageGroupClass` `url` 
+Subclasses may want to override: `webPageGroupClass`, `url`, `overview`
 "
 Class {
 	#name : #AWebPage,
@@ -62,7 +62,7 @@ AWebPage >> gtContentsFor: aView [
 	<gtView>
 	^ aView forward
 		title: 'Contents';
-		priority: 10;
+		priority: 15;
 		object: [ self webPageFile ];
 		view: #gtContentsFor:
 ]
@@ -88,6 +88,22 @@ AWebPage >> gtMapFor: aView [
 				mapFor: aMondrian
 				from: self
 				with: self reachable ]
+]
+
+{ #category : #view }
+AWebPage >> gtOverviewFor: aView [
+	<gtView>
+	^ aView columnedList
+		title: 'Overview';
+		priority: 10;
+		items: [ self overview ];
+		column: 'Attribute'
+			text: [ :item | item key ]
+			width: 200;
+		column: 'Value'
+			text: [ :item | item value ]
+			width: 400;
+		actionUpdateButton
 ]
 
 { #category : #links }
@@ -160,6 +176,17 @@ AWebPage >> normalize: aPath [
 	[ path matchesRegex: '.*/[^/]+/\.\./.*' ]
 		whileTrue: [ path := path copyWithRegex: '/[^/]+/\.\./' matchesReplacedWith: '/' ].
 	^ path
+]
+
+{ #category : #view }
+AWebPage >> overview [
+	"For the gtOverviewFor: view. Subclasse may want to extend or replace this."
+
+	^ {'Title' -> self title.
+		'Path' -> self path.
+		'Url' -> self url.
+		'# Links' -> self links size.
+		'# Reachable pages' -> self reachable size}
 ]
 
 { #category : #accessing }

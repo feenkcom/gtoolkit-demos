@@ -16,9 +16,22 @@ MarkdownWebPage >> isRoot [
 	^ self permalink = '/'
 ]
 
+{ #category : #view }
+MarkdownWebPage >> overview [
+	"For the gtOverviewFor: view. Subclasse may want to extend or replace this."
+
+	^ {'Title' -> self title.
+		'File path' -> self path.
+		'Permalink' -> self permalink.
+		'Url' -> self url.
+		'# Links' -> self links size.
+		'# Reachable pages' -> self reachable size}
+]
+
 { #category : #accessing }
 MarkdownWebPage >> permalink [
-	^ self yaml at: 'permalink' ifAbsent: [ self path removeSuffix: '.md' ]
+	^ (self yaml at: 'permalink' ifAbsent: [ self path removeSuffix: '.md' ])
+		removeSuffix: '/'
 ]
 
 { #category : #accessing }

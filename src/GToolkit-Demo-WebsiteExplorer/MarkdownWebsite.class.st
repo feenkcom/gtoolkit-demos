@@ -14,7 +14,7 @@ Class {
 { #category : #testing }
 MarkdownWebsite >> hasPageNamed: aString [
 	^ self pages
-		detect: [ :page | page path = aString or: [ page permalink = aString ] ]
+		detect: [ :page | page path = aString or: [ page permalink = (aString removeSuffix: '/') ] ]
 		ifFound: [ true ]
 		ifNone: [ false ]
 ]
@@ -54,7 +54,7 @@ MarkdownWebsite >> navigationRoots [
 { #category : #accessing }
 MarkdownWebsite >> pageNamed: aString [
 	^ self pages
-		detect: [ :page | page path = aString or: [ page permalink = aString ] ]
+		detect: [ :page | page path = aString or: [ page permalink = (aString removeSuffix: '/') ] ]
 ]
 
 { #category : #accessing }
