@@ -1,8 +1,13 @@
 "
-I am an abstract parent of classes  with a collection of web links, namely Pillar WebLinkGroupand PillarWebsite.
+I am an abstract parent of classes  holding a collection of web links.
+
+Subclasses should implement `links`, returning `WebLink` instances.
+
+I offer a number of views, and actions to start or stop a process to check the status of links whose status is missing.
+
 "
 Class {
-	#name : #APillarWebLinkGroup,
+	#name : #AWebLinkGroup,
 	#superclass : #Object,
 	#instVars : [
 		'announcer',
@@ -12,22 +17,22 @@ Class {
 }
 
 { #category : #announcements }
-APillarWebLinkGroup >> announcer [
+AWebLinkGroup >> announcer [
 	^ announcer
 ]
 
 { #category : #announcements }
-APillarWebLinkGroup >> announcer: anAnnouncement [
+AWebLinkGroup >> announcer: anAnnouncement [
 	announcer := anAnnouncement
 ]
 
 { #category : #links }
-APillarWebLinkGroup >> brokenLinks [
+AWebLinkGroup >> brokenLinks [
 	^ self links select: #isBroken
 ]
 
 { #category : #links }
-APillarWebLinkGroup >> checkStatusWhereMissing [
+AWebLinkGroup >> checkStatusWhereMissing [
 	process
 		ifNotNil: [ process isTerminated
 				ifFalse: [ ^ self inform: 'There is already a background check running.' ] ].
@@ -39,7 +44,7 @@ APillarWebLinkGroup >> checkStatusWhereMissing [
 ]
 
 { #category : #action }
-APillarWebLinkGroup >> gtActionCheckStatusFor: anAction [
+AWebLinkGroup >> gtActionCheckStatusFor: anAction [
 	<gtAction>
 	self missingStatusLinks ifEmpty: [ ^ anAction noAction ].
 	^ anAction button
@@ -50,7 +55,7 @@ APillarWebLinkGroup >> gtActionCheckStatusFor: anAction [
 ]
 
 { #category : #action }
-APillarWebLinkGroup >> gtActionStopCheckStatusFor: anAction [
+AWebLinkGroup >> gtActionStopCheckStatusFor: anAction [
 	<gtAction>
 	self missingStatusLinks ifEmpty: [ ^ anAction noAction ].
 	^ anAction button
@@ -61,7 +66,7 @@ APillarWebLinkGroup >> gtActionStopCheckStatusFor: anAction [
 ]
 
 { #category : #view }
-APillarWebLinkGroup >> gtBrokenLinksFor: aView [
+AWebLinkGroup >> gtBrokenLinksFor: aView [
 	<gtView>
 	self brokenLinks ifEmpty: [ ^ aView empty ].
 	^ aView columnedList
@@ -77,15 +82,15 @@ APillarWebLinkGroup >> gtBrokenLinksFor: aView [
 		column: '# Pages' text: [ :item | item pages size ] width: 60;
 		column: 'Status' text: [ :item | item status ];
 		actionUpdateButton;
-		updateWhen: PillarWebLinkStatusUpdated in: self announcer;
+		updateWhen: WebLinkStatusUpdated in: self announcer;
 		actionButtonIcon: BrGlamorousVectorIcons inspect
 			tooltip: 'Inspect  value'
-			action: [ :aButton :aTab | aButton phlow spawnObject: (PillarWebLinkGroup withAll: self missingLinks) ];
-		updateWhen: PillarWebLinkStatusUpdated in: self announcer
+			action: [ :aButton :aTab | aButton phlow spawnObject: (WebLinkGroup withAll: self missingLinks) ];
+		updateWhen: WebLinkStatusUpdated in: self announcer
 ]
 
 { #category : #view }
-APillarWebLinkGroup >> gtHttpLinksFor: aView [
+AWebLinkGroup >> gtHttpLinksFor: aView [
 	<gtView>
 	self httpLinks ifEmpty: [ ^ aView empty ].
 	^ aView columnedList
@@ -105,12 +110,12 @@ APillarWebLinkGroup >> gtHttpLinksFor: aView [
 		actionUpdateButton;
 		actionButtonIcon: BrGlamorousVectorIcons inspect
 			tooltip: 'Inspect  value'
-			action: [ :aButton :aTab | aButton phlow spawnObject: (PillarWebLinkGroup withAll: self httpLinks) ];
-		updateWhen: PillarWebLinkStatusUpdated in: self announcer
+			action: [ :aButton :aTab | aButton phlow spawnObject: (WebLinkGroup withAll: self httpLinks) ];
+		updateWhen: WebLinkStatusUpdated in: self announcer
 ]
 
 { #category : #view }
-APillarWebLinkGroup >> gtLinksFor: aView [
+AWebLinkGroup >> gtLinksFor: aView [
 	<gtView>
 	self links ifEmpty: [ ^ aView empty ].
 	^ aView columnedList
@@ -130,12 +135,12 @@ APillarWebLinkGroup >> gtLinksFor: aView [
 		actionUpdateButton;
 		actionButtonIcon: BrGlamorousVectorIcons inspect
 			tooltip: 'Inspect  value'
-			action: [ :aButton :aTab | aButton phlow spawnObject: (PillarWebLinkGroup withAll: self links) ];
-		updateWhen: PillarWebLinkStatusUpdated in: self announcer
+			action: [ :aButton :aTab | aButton phlow spawnObject: (WebLinkGroup withAll: self links) ];
+		updateWhen: WebLinkStatusUpdated in: self announcer
 ]
 
 { #category : #view }
-APillarWebLinkGroup >> gtMissingLinksFor: aView [
+AWebLinkGroup >> gtMissingLinksFor: aView [
 	<gtView>
 	self missingLinks ifEmpty: [ ^ aView empty ].
 	^ aView columnedList
@@ -157,12 +162,12 @@ APillarWebLinkGroup >> gtMissingLinksFor: aView [
 		actionUpdateButton;
 		actionButtonIcon: BrGlamorousVectorIcons inspect
 			tooltip: 'Inspect  value'
-			action: [ :aButton :aTab | aButton phlow spawnObject: (PillarWebLinkGroup withAll: self missingLinks) ];
-		updateWhen: PillarWebLinkStatusUpdated in: self announcer
+			action: [ :aButton :aTab | aButton phlow spawnObject: (WebLinkGroup withAll: self missingLinks) ];
+		updateWhen: WebLinkStatusUpdated in: self announcer
 ]
 
 { #category : #view }
-APillarWebLinkGroup >> gtMissingStatusLinksFor: aView [
+AWebLinkGroup >> gtMissingStatusLinksFor: aView [
 	<gtView>
 	self missingStatusLinks ifEmpty: [ ^ aView empty ].
 	^ aView columnedList
@@ -180,15 +185,15 @@ APillarWebLinkGroup >> gtMissingStatusLinksFor: aView [
 			width: 60;
 		column: 'Status' text: [ :item | item status ];
 		actionUpdateButton;
-		updateWhen: PillarWebLinkStatusUpdated in: self announcer;
+		updateWhen: WebLinkStatusUpdated in: self announcer;
 		actionButtonIcon: BrGlamorousVectorIcons inspect
 			tooltip: 'Inspect  value'
-			action: [ :aButton :aTab | aButton phlow spawnObject: (PillarWebLinkGroup withAll: self missingLinks) ];
-		updateWhen: PillarWebLinkStatusUpdated in: self announcer
+			action: [ :aButton :aTab | aButton phlow spawnObject: (WebLinkGroup withAll: self missingLinks) ];
+		updateWhen: WebLinkStatusUpdated in: self announcer
 ]
 
 { #category : #accessing }
-APillarWebLinkGroup >> gtSpotterForLinkNames: aSearch [
+AWebLinkGroup >> gtSpotterForLinkNames: aSearch [
 	<gtSearch>
 	^ aSearch list
 		title: 'Link names';
@@ -196,23 +201,23 @@ APillarWebLinkGroup >> gtSpotterForLinkNames: aSearch [
 		items: [ self links ];
 		itemsLimit: Float infinity;
 		itemName: #path;
-		sendCategory: [ :aCategory :aStep :thisSearch | PillarWebLinkGroup withAll: aCategory items contents ];
+		sendCategory: [ :aCategory :aStep :thisSearch | WebLinkGroup withAll: aCategory items contents ];
 		filterBySubstring
 ]
 
 { #category : #links }
-APillarWebLinkGroup >> httpLinks [
+AWebLinkGroup >> httpLinks [
 	^  self links select: #isHttp
 ]
 
 { #category : #initialization }
-APillarWebLinkGroup >> initialize [
+AWebLinkGroup >> initialize [
 	super initialize.
 	self announcer: Announcer new 
 ]
 
 { #category : #links }
-APillarWebLinkGroup >> killBackgroundCheck [
+AWebLinkGroup >> killBackgroundCheck [
 	process
 		ifNil: [ self inform: 'Nothing to do' ]
 		ifNotNil: [ process terminate.
@@ -221,17 +226,17 @@ APillarWebLinkGroup >> killBackgroundCheck [
 ]
 
 { #category : #abstract }
-APillarWebLinkGroup >> links [
+AWebLinkGroup >> links [
 	self subclassResponsibility
 ]
 
 { #category : #links }
-APillarWebLinkGroup >> missingLinks [
+AWebLinkGroup >> missingLinks [
 	((self links select: #isInternal) select: #statusMissing) do: #checkStatus.
 	^ self links select: [ :link | link isInternal and: [ link isMissing ] ]
 ]
 
 { #category : #links }
-APillarWebLinkGroup >> missingStatusLinks [
+AWebLinkGroup >> missingStatusLinks [
 	^ self links select: #statusMissing
 ]

@@ -18,16 +18,19 @@ Class {
 
 { #category : #grammar }
 MDWebPageParser >> body [
-	^ (header optional , paragraph , (newline plus , paragraph) star , newline star)
+	^ (header optional , newline star, paragraph , (newline plus , paragraph) star , newline star)
 		==> [ :node | 
 			| paragraphs |
-			paragraphs := node third
-					ifEmpty: [ {node second} asOrderedCollection ]
-					ifNotEmpty: [ (node third collect: #second) asOrderedCollection
-							addFirst: node second;
+			paragraphs := node fourth
+					ifEmpty: [ {node third} asOrderedCollection ]
+					ifNotEmpty: [ (node fourth collect: #second) asOrderedCollection
+							addFirst: node third;
 							yourself ].
-			{#title -> node first.
-				#body -> paragraphs} asDictionary ]
+			node first
+				ifNil: [ {#body -> paragraphs} asDictionary ]
+				ifNotNil: [ node first
+						at: #body put: paragraphs;
+						yourself ] ]
 ]
 
 { #category : #grammar }
@@ -37,10 +40,9 @@ MDWebPageParser >> file [
 
 { #category : #grammar }
 MDWebPageParser >> header [
-	^ ('---' asPParser , newline 
-		, ('---' asPParser not , #any asPParser) star
+	^ ('---' asPParser , newline , ('---' asPParser not , #any asPParser) star
 		, '---' asPParser , newline) flatten
-		==> [ :node | (YAMLParser parse: node) object at: 'title' ]
+		==> [ :node | (YAMLParser parse: node) object	"at: 'title'" ]
 ]
 
 { #category : #grammar }

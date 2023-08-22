@@ -1,34 +1,38 @@
+"
+I am a group of WebLink objects. I exist mainly to serve as a container for Spotter results.
+I implement `links` with the help of the {{gtClass:name=TGtGroupWithItems}} trait.
+"
 Class {
-	#name : #PillarWebLinkGroup,
-	#superclass : #APillarWebLinkGroup,
+	#name : #WebLinkGroup,
+	#superclass : #AWebLinkGroup,
 	#traits : 'TGtGroupWithItems',
 	#classTraits : 'TGtGroupWithItems classTrait',
 	#category : #'GToolkit-Demo-WebsiteExplorer-Model'
 }
 
 { #category : #accessing }
-PillarWebLinkGroup >> initializeWith: aCollection [
+WebLinkGroup >> initializeWith: aCollection [
 	"Override trait method to subscribe to link updates."
 	items := aCollection.
 	self subscribeToLinkStatusUpdates
 ]
 
 { #category : #accessing }
-PillarWebLinkGroup >> links [
+WebLinkGroup >> links [
 	^ self items
 ]
 
 { #category : #announcements }
-PillarWebLinkGroup >> notifyStatusUpdate [
-	self announcer announce: PillarWebLinkStatusUpdated new
+WebLinkGroup >> notifyStatusUpdate [
+	self announcer announce: WebLinkStatusUpdated new
 ]
 
 { #category : #announcements }
-PillarWebLinkGroup >> subscribeToLinkStatusUpdates [
+WebLinkGroup >> subscribeToLinkStatusUpdates [
 	self links
 		do: [ :link | 
 			link announcer
-				when: PillarWebLinkStatusUpdated
+				when: WebLinkStatusUpdated
 				send: #notifyStatusUpdate 
 				to: self ]
 ]

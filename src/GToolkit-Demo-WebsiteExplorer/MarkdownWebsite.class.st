@@ -4,38 +4,25 @@ We start as a subclass of {{gtClass:name=PillarWebsite}} and later will make it 
 "
 Class {
 	#name : #MarkdownWebsite,
-	#superclass : #PillarWebsite,
+	#superclass : #AWebsite,
+	#instVars : [
+		'navigationMenuLinks'
+	],
 	#category : #'GToolkit-Demo-WebsiteExplorer-Model'
 }
 
-{ #category : #view }
-MarkdownWebsite >> gtPagesFor: aView [
-	<gtView>
-	^ aView columnedList
-		title: 'Pages';
-		priority: 10;
-		items: [ self pages ];
-		column: 'Index'
-			text: [ :eachItem :eachIndex | eachIndex asRopedText foreground: Color gray ]
-			width: 45;
-		column: 'Title'
-			text: [ :item | item title ]
-			width: 150;
-		column: 'Path'
-			text: [ :item | item path ]
-			width: 300;
-		column: 'Markdown links'
-			text: [ :item | 
-				| size |
-				size := item markdownLinks size.
-				size = 0 ifTrue: [ '' ] ifFalse: [ size ] ]
-			width: 80
+{ #category : #testing }
+MarkdownWebsite >> hasPageNamed: aString [
+	^ self pages
+		detect: [ :page | page path = aString or: [ page permalink = aString ] ]
+		ifFound: [ true ]
+		ifNone: [ false ]
 ]
 
 { #category : #initialization }
 MarkdownWebsite >> initializePages [
 	"Probably we just want to search in specific directories.
-The file suffix should be a parameter."
+	The file suffix should be a parameter."
 
 	^ pages := ((self repoDir allChildrenMatching: '*.md')
 			collect: [ :each | MarkdownWebPage for: each in: self ])
@@ -43,4 +30,41 @@ The file suffix should be a parameter."
 				(a path occurrencesOf: $/) < (b path occurrencesOf: $/)
 					or: [ (a path occurrencesOf: $/) = (b path occurrencesOf: $/)
 							and: [ a path < b path ] ] ]
+]
+
+{ #category : #accessing }
+MarkdownWebsite >> navigationMenuLinks [
+	^ navigationMenuLinks
+]
+
+{ #category : #accessing }
+MarkdownWebsite >> navigationMenuLinks: aLinkNameCollection [
+	"Can be configured when the website is instantiated."
+
+	navigationMenuLinks := aLinkNameCollection
+]
+
+{ #category : #accessing }
+MarkdownWebsite >> navigationRoots [
+	"Extract addition root pages from the navigation menu."
+	^ (self navigationMenuLinks select: [ :each | self hasPageNamed: each ])
+		collect: [ :each | self pageNamed: each ]
+]
+
+{ #category : #accessing }
+MarkdownWebsite >> pageNamed: aString [
+	^ self pages
+		detect: [ :page | page path = aString or: [ page permalink = aString ] ]
+]
+
+{ #category : #accessing }
+MarkdownWebsite >> rootPath [
+	"Possibly needs to be configured ..."
+
+	^ '/'
+]
+
+{ #category : #constant }
+MarkdownWebsite >> webLinkClass [
+	^ MarkdownWebLink
 ]

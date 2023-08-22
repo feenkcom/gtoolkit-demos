@@ -26,7 +26,7 @@ PillarWebsiteExamples >> esug2014repoDir [
 	<noTest>
 	| aDirectory |
 	aDirectory := FileLocator gtResource
-			/ 'feenkcom/gtoolkit-demos/data/esug.github.io'.
+			/ 'feenkcom' / 'gtoolkit-demos' / 'data' / 'esug.github.io'.
 
 	self assert: [ aDirectory exists ] description: [ 'ESUG Directory must exist' ].
 
@@ -35,5 +35,5 @@ PillarWebsiteExamples >> esug2014repoDir [
 
 { #category : #constant }
 PillarWebsiteExamples >> esug2014url [
-	^ PillarWebsite esugUrl
+	^ EsugWebsite esugUrl
 ]

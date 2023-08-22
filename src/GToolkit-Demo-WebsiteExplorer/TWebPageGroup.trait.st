@@ -1,3 +1,6 @@
+"
+I provide spotter searchers for classes that hold a collection of web pages.
+"
 Trait {
 	#name : #TWebPageGroup,
 	#category : #'GToolkit-Demo-WebsiteExplorer-Model'
@@ -12,7 +15,7 @@ TWebPageGroup >> gtSpotterForPageContents: aSearch [
 		items: [ self pages ];
 		itemsLimit: Float infinity;
 		itemName: #contents;
-		sendCategory: [ :aCategory :aStep :thisSearch | PillarWebPageGroup withAll: aCategory items contents ];
+		sendCategory: [ :aCategory :aStep :thisSearch | self webPageGroupClass withAll: aCategory items contents ];
 		filterBySubstring
 ]
 
@@ -25,11 +28,18 @@ TWebPageGroup >> gtSpotterForPageNames: aSearch [
 		items: [ self pages ];
 		itemsLimit: Float infinity;
 		itemName: #path;
-		sendCategory: [ :aCategory :aStep :thisSearch | PillarWebPageGroup withAll: aCategory items contents ];
+		sendCategory: [ :aCategory :aStep :thisSearch | self webPageGroupClass withAll: aCategory items contents ];
 		filterBySubstring
 ]
 
 { #category : #accessing }
 TWebPageGroup >> pages [
 	^ self explicitRequirement
+]
+
+{ #category : #constant }
+TWebPageGroup >> webPageGroupClass [
+	"Which class should be used to instantiate groups of web pages."
+
+	^ PillarWebPageGroup
 ]

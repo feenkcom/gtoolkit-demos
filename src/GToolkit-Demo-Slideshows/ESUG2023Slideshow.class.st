@@ -160,7 +160,7 @@ A well-designed screenshot goes a long way to telling a story or explaining an i
 ESUG2023Slideshow >> esugWebsite [
 	<gtExample>
 	<noTest>
-	^ PillarWebsite esug
+	^ EsugWebsite instance 
 ]
 
 { #category : #slides }
@@ -327,7 +327,7 @@ ESUG2023Slideshow >> moldableObjectPage [
 				string: '## or here?';
 				yourself);
 		addSnippet: (LeElementSnippet new
-				code: 'GtInspector newOn: PillarWebsite esug';
+				code: 'GtInspector newOn: EsugWebsite instance';
 				codeVisible: false;
 				elementHeight: 302;
 				codeHeight: 50;
@@ -456,7 +456,7 @@ Demos and videos also help, but they are not as effective as the first-hand expe
 		priority: (self priorityFor: #peopleHateChange:);
 		newTextWithFormat: (self asSubtitle: 'People hate change');
 		leftElement: [ (GtPager createWrappedOn: (GtCoder forClass: PillarWebsite)) maximized ];
-		rightElement: [ (GtPager createWrappedOn: (GtInspector forObject: PillarWebsite esug))
+		rightElement: [ (GtPager createWrappedOn: (GtInspector forObject: EsugWebsite instance ))
 				maximized ]
 ]
 
@@ -598,9 +598,7 @@ repoDir';
 				string: '## Add views to answer questions about the data.';
 				yourself);
 		addSnippet: (LePharoSnippet new
-				code: 'EsugWebsite new
-	repoDir: repoDir;
-	url: ''https://esug.github.io''';
+				code: 'EsugWebsite instance';
 				yourself);
 		yourself
 ]
