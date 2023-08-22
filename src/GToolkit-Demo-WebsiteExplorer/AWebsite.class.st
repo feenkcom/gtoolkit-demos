@@ -151,9 +151,11 @@ AWebsite >> mapFor: aMondrian [
 			BlElement new
 				size: 5 @ 5;
 				geometry: BlCircleGeometry new;
-				background: ((self rootPages includes: each)
-						ifTrue: [ Color blue ]
-						ifFalse: [ (self reachable includes: each) ifTrue: [ Color green ] ifFalse: [ Color red ] ]);
+				background: (each = self root
+						ifTrue: [ Color orange ]
+						ifFalse: [ (self rootPages includes: each)
+								ifTrue: [ Color blue ]
+								ifFalse: [ (self reachable includes: each) ifTrue: [ Color green ] ifFalse: [ Color red ] ] ]);
 				aptitude: (BrGlamorousWithTooltipAptitude content: each tooltip) ];
 		with: self pages.
 
