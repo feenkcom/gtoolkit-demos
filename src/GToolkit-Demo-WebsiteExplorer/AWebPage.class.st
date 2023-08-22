@@ -3,7 +3,7 @@ I am an abstract superclass of WebPage objects.
 
 Subclasses should implement `rawLinks`, `title`.
 
-Subclasses may want to override: `webPageGroupClass`
+Subclasses may want to override: `webPageGroupClass` `url` 
 "
 Class {
 	#name : #AWebPage,
@@ -272,7 +272,9 @@ AWebPage >> tooltip [
 
 { #category : #accessing }
 AWebPage >> url [
-	^ self website url , self path removeSuffix: '.pillar'
+	"Probably should be refined by subclasses."
+
+	^ self website url , self path
 ]
 
 { #category : #accessing }

@@ -28,6 +28,11 @@ PillarWebPage >> titleParser [
 		/ (#any asPParser ==> [ :node | self missingTitle ])
 ]
 
+{ #category : #accessing }
+PillarWebPage >> url [
+	^ self website url , self path removeSuffix: '.pillar'
+]
+
 { #category : #constant }
 PillarWebPage >> webPageGroupClass [
 	"Which class should be used to instantiate groups of web pages."

@@ -18,7 +18,7 @@ MarkdownWebPage >> isRoot [
 
 { #category : #accessing }
 MarkdownWebPage >> permalink [
-	^ self yaml at: 'permalink' ifAbsent: [ self path ]
+	^ self yaml at: 'permalink' ifAbsent: [ self path removeSuffix: '.md' ]
 ]
 
 { #category : #accessing }
@@ -34,6 +34,11 @@ MarkdownWebPage >> reachable [
 { #category : #accessing }
 MarkdownWebPage >> title [
 	^ title ifNil: [ self yaml at: 'title' ifAbsent: [ 'MISSING TITLE' ] ]
+]
+
+{ #category : #accessing }
+MarkdownWebPage >> url [
+	^ self website url , self permalink 
 ]
 
 { #category : #parsing }

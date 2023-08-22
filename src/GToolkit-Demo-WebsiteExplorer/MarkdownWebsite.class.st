@@ -5,6 +5,9 @@ We start as a subclass of {{gtClass:name=PillarWebsite}} and later will make it 
 Class {
 	#name : #MarkdownWebsite,
 	#superclass : #AWebsite,
+	#instVars : [
+		'navigationMenuLinks'
+	],
 	#category : #'GToolkit-Demo-WebsiteExplorer-Model'
 }
 
@@ -27,6 +30,25 @@ MarkdownWebsite >> initializePages [
 				(a path occurrencesOf: $/) < (b path occurrencesOf: $/)
 					or: [ (a path occurrencesOf: $/) = (b path occurrencesOf: $/)
 							and: [ a path < b path ] ] ]
+]
+
+{ #category : #accessing }
+MarkdownWebsite >> navigationMenuLinks [
+	^ navigationMenuLinks
+]
+
+{ #category : #accessing }
+MarkdownWebsite >> navigationMenuLinks: aLinkNameCollection [
+	"Can be configured when the website is instantiated."
+
+	navigationMenuLinks := aLinkNameCollection
+]
+
+{ #category : #accessing }
+MarkdownWebsite >> navigationRoots [
+	"Extract addition root pages from the navigation menu."
+	^ (self navigationMenuLinks select: [ :each | self hasPageNamed: each ])
+		collect: [ :each | self pageNamed: each ]
 ]
 
 { #category : #accessing }
