@@ -58,5 +58,5 @@ MarkdownWebPage >> url [
 MarkdownWebPage >> yaml [
 	"I return the YAML header (if any) extended with a binding for the Markdown body."
 
-	^ yaml ifNil: [ yaml := MDWebPageParser parse: self contents ]
+	^ yaml ifNil: [ yaml := YamlHeaderParser parse: self contents ]
 ]
