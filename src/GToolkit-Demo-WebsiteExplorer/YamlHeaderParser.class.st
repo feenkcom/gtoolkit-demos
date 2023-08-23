@@ -3,7 +3,7 @@ I am a simple PP parser for Markdown web pages.
 I just recognize the YAML header and the body, and I extract the title from the header using the YAMLParser.
 "
 Class {
-	#name : #MDWebPageParser,
+	#name : #YamlHeaderParser,
 	#superclass : #PP2CompositeNode,
 	#instVars : [
 		'title',
@@ -17,7 +17,7 @@ Class {
 }
 
 { #category : #grammar }
-MDWebPageParser >> body [
+YamlHeaderParser >> body [
 	^ (header optional , newline star, paragraph , (newline plus , paragraph) star , newline star)
 		==> [ :node | 
 			| paragraphs |
@@ -34,33 +34,33 @@ MDWebPageParser >> body [
 ]
 
 { #category : #grammar }
-MDWebPageParser >> file [
+YamlHeaderParser >> file [
 	^ body end
 ]
 
 { #category : #grammar }
-MDWebPageParser >> header [
+YamlHeaderParser >> header [
 	^ ('---' asPParser , newline , ('---' asPParser not , #any asPParser) star
 		, '---' asPParser , newline) flatten
 		==> [ :node | (YAMLParser parse: node) object	"at: 'title'" ]
 ]
 
 { #category : #grammar }
-MDWebPageParser >> newline [
+YamlHeaderParser >> newline [
 	^ #newline asPParser
 ]
 
 { #category : #grammar }
-MDWebPageParser >> paragraph [
+YamlHeaderParser >> paragraph [
 	^ (newline negate plus / (newline , newline not)) plus token flatten
 ]
 
 { #category : #accessing }
-MDWebPageParser >> start [
+YamlHeaderParser >> start [
 	^ file
 ]
 
 { #category : #grammar }
-MDWebPageParser >> title [
+YamlHeaderParser >> title [
 	^ newline negate plus token
 ]

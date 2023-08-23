@@ -11,7 +11,7 @@ TWebPageGroup >> gtSpotterForLinkNames: aSearch [
 	<gtSearch>
 	^ aSearch list
 		title: 'Link names';
-		priority: 10;
+		priority: 30;
 		items: [ self links ];
 		itemsLimit: Float infinity;
 		itemName: #path;

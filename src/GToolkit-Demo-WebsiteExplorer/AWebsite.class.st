@@ -25,6 +25,13 @@ Class {
 	#category : #'GToolkit-Demo-WebsiteExplorer-Model'
 }
 
+{ #category : #accessing }
+AWebsite >> contentDir [
+	"Could be different, so subclasses can override this."
+
+	^ self repoDir
+]
+
 { #category : #view }
 AWebsite >> gtMapFor: aView [
 	<gtView>

@@ -1,6 +1,6 @@
 "
-We start as a subclass of {{gtClass:name=PillarWebsite}} and later will make it a peer with a common superclass.
-
+I am an explorer for Markdown websites. I work with GitHup pages sites.
+For some examples, see {{gtClass:name=DemoMarkdownWebsite}}. 
 "
 Class {
 	#name : #MarkdownWebsite,
@@ -24,8 +24,8 @@ MarkdownWebsite >> initializePages [
 	"Probably we just want to search in specific directories.
 	The file suffix should be a parameter."
 
-	^ pages := ((self repoDir allChildrenMatching: '*.md')
-			collect: [ :each | MarkdownWebPage for: each in: self ])
+	^ pages := ((self contentDir allChildrenMatching: '*.md')
+			collect: [ :each | self webPageClass for: each in: self ])
 			sort: [ :a :b | 
 				(a path occurrencesOf: $/) < (b path occurrencesOf: $/)
 					or: [ (a path occurrencesOf: $/) = (b path occurrencesOf: $/)
@@ -67,4 +67,9 @@ MarkdownWebsite >> rootPath [
 { #category : #constant }
 MarkdownWebsite >> webLinkClass [
 	^ MarkdownWebLink
+]
+
+{ #category : #constant }
+MarkdownWebsite >> webPageClass [
+	^ MarkdownWebPage
 ]
