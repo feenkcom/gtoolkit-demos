@@ -53,7 +53,7 @@ PillarWebsite >> gtPagesFor: aView [
 
 { #category : #initialization }
 PillarWebsite >> initializePages [
-	^ pages := ((self repoDir allChildrenMatching: '*.pillar')
+	^ pages := ((self contentDir allChildrenMatching: '*.pillar')
 			collect: [ :each | PillarWebPage for: each in: self ])
 			sort: [ :a :b | 
 				(a path occurrencesOf: $/) < (b path occurrencesOf: $/)

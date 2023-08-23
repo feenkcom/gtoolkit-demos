@@ -196,7 +196,7 @@ AWebPage >> path [
 	<return: #String>
 	path ifNil: [ 
 		| relativePath |
-		relativePath := self webPageFile relativeTo: website repoDir.
+		relativePath := self webPageFile relativeTo: website contentDir.
 		path := '/', relativePath fullName ].
 		
 	self 

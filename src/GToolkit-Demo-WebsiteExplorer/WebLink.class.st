@@ -56,7 +56,7 @@ WebLink >> checkPageStatus [
 	self isEmail ifTrue: [ ^ self status: self okEmailStatus ].
 	(self website hasPageNamed: self path)
 		ifTrue: [ ^ self status: self okPageStatus ].
-	(self website repoDir / (self path copyWithRegex: '^/' matchesReplacedWith: ''))
+	(self website contentDir / (self path copyWithRegex: '^/' matchesReplacedWith: ''))
 		exists ifTrue: [ ^ self status: self okFileStatus ].
 	^ self status: self missingStatus
 ]
