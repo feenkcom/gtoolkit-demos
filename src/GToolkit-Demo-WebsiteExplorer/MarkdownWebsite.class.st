@@ -1,6 +1,6 @@
 "
-We start as a subclass of {{gtClass:name=PillarWebsite}} and later will make it a peer with a common superclass.
-
+I am an explorer for Markdown websites. I work with GitHup pages sites.
+For some examples, see {{gtClass:name=DemoMarkdownWebsite}}. 
 "
 Class {
 	#name : #MarkdownWebsite,

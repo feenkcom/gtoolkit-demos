@@ -1,6 +1,14 @@
+"
+I am a convenience class to explore various GitHub pages websites.
+Try to inspectm for example:
+```
+DemoMarkdownWebsite oscarHomePage
+```
+
+"
 Class {
 	#name : #DemoMarkdownWebsite,
-	#superclass : #Object,
+	#superclass : #MarkdownWebsite,
 	#classInstVars : [
 		'cache'
 	],
@@ -32,7 +40,7 @@ DemoMarkdownWebsite class >> canadaClub [
 			'/websiteinfo-fr'}.
 	^ cache
 		at: key
-		ifAbsentPut: [ MarkdownWebsite new
+		ifAbsentPut: [ self new
 				initializeRepoDir: repoDir fromRepoUrl: repoUrl;
 				repoDir: repoDir;
 				url: webUrl;
@@ -53,7 +61,7 @@ DemoMarkdownWebsite class >> iceberne [
 			'/contact-2/'}.
 	^ cache
 		at: key
-		ifAbsentPut: [ MarkdownWebsite new
+		ifAbsentPut: [ self new
 				initializeRepoDir: repoDir fromRepoUrl: repoUrl;
 				repoDir: repoDir;
 				url: webUrl;
@@ -117,7 +125,7 @@ DemoMarkdownWebsite class >> nierstraszFamily [
 			'/tree'}.
 	^ cache
 		at: key
-		ifAbsentPut: [ MarkdownWebsite new
+		ifAbsentPut: [ self new
 				initializeRepoDir: repoDir fromRepoUrl: repoUrl;
 				repoDir: repoDir;
 				url: webUrl;
@@ -140,31 +148,7 @@ DemoMarkdownWebsite class >> oscarHomePage [
 			'/teaching/'}.
 	^ cache
 		at: key
-		ifAbsentPut: [ MarkdownWebsite new
-				initializeRepoDir: repoDir fromRepoUrl: repoUrl;
-				repoDir: repoDir;
-				url: webUrl;
-				navigationMenuLinks: navMenuLinks ]
-]
-
-{ #category : #'instance creation' }
-DemoMarkdownWebsite class >> scg [
-	<todo: 'This needs some work as there are no permalinks in the YAML headers, and links are of a special form with %base_url% etc. We will need a subclass of MarkdownWebsite'>
-
-	| key repoUrl webUrl repoDir navMenuLinks |
-	key := 'scg'.
-	webUrl := 'https://scg.unibe.ch'.
-	repoUrl := 'https://github.com/scgbern/scgpico'.
-	repoDir := (FileLocator imageDirectory / 'scgpico') asFileReference.
-	navMenuLinks := {'/research'.
-			'/teaching'.
-			'/publications'.
-			'/staff'.
-			'/wiki'.
-			'scgbib'}.
-	^ cache
-		at: key
-		ifAbsentPut: [ MarkdownWebsite new
+		ifAbsentPut: [ self new
 				initializeRepoDir: repoDir fromRepoUrl: repoUrl;
 				repoDir: repoDir;
 				url: webUrl;
