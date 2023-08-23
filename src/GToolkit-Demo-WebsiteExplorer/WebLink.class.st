@@ -94,6 +94,7 @@ WebLink >> gtOverviewFor: aView [
 		title: 'Overview';
 		priority: 10;
 		items: [ {'Path' -> self path.
+				'URL' -> self url.
 				'# Pages' -> self pages size.
 				'Status' -> self status} ];
 		column: 'Attribute'
