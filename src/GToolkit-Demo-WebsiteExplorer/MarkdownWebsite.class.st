@@ -25,7 +25,7 @@ MarkdownWebsite >> initializePages [
 	The file suffix should be a parameter."
 
 	^ pages := ((self repoDir allChildrenMatching: '*.md')
-			collect: [ :each | MarkdownWebPage for: each in: self ])
+			collect: [ :each | self webPageClass for: each in: self ])
 			sort: [ :a :b | 
 				(a path occurrencesOf: $/) < (b path occurrencesOf: $/)
 					or: [ (a path occurrencesOf: $/) = (b path occurrencesOf: $/)
@@ -67,4 +67,9 @@ MarkdownWebsite >> rootPath [
 { #category : #constant }
 MarkdownWebsite >> webLinkClass [
 	^ MarkdownWebLink
+]
+
+{ #category : #constant }
+MarkdownWebsite >> webPageClass [
+	^ MarkdownWebPage
 ]
