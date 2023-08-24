@@ -192,6 +192,23 @@ AWebLinkGroup >> gtMissingStatusLinksFor: aView [
 		updateWhen: WebLinkStatusUpdated in: self announcer
 ]
 
+{ #category : #view }
+AWebLinkGroup >> gtOverviewFor: aView [
+	<gtView>
+	^ aView columnedList
+		title: 'Overview';
+		priority: 5;
+		items: [ self overview ];
+		column: 'Attribute'
+			text: [ :item | item key ]
+			width: 200;
+		column: 'Value'
+			text: [ :item | item value ]
+			width: 400;
+		send: [ :item | self overviewSend at: item key ];
+		actionUpdateButton
+]
+
 { #category : #accessing }
 AWebLinkGroup >> gtSpotterForLinkNames: aSearch [
 	<gtSearch>
@@ -217,6 +234,11 @@ AWebLinkGroup >> initialize [
 ]
 
 { #category : #links }
+AWebLinkGroup >> internalLinks [
+	^ self links select: #isInternal
+]
+
+{ #category : #links }
 AWebLinkGroup >> killBackgroundCheck [
 	process
 		ifNil: [ self inform: 'Nothing to do' ]
@@ -239,4 +261,24 @@ AWebLinkGroup >> missingLinks [
 { #category : #links }
 AWebLinkGroup >> missingStatusLinks [
 	^ self links select: #statusMissing
+]
+
+{ #category : #view }
+AWebLinkGroup >> overview [
+	^ {'# Links' -> self links size.
+		'# External (HTTP) links' -> self httpLinks size.
+		'# Internal links' -> self internalLinks size.
+		'# Email links' -> (self links select: #isEmail) size.
+		'# Missing links' -> self missingLinks size}
+]
+
+{ #category : #accessing }
+AWebLinkGroup >> overviewSend [
+	"Used by the view to send clicks to the right group."
+
+	^ {'# Links' -> self links asWebLinkGroup.
+		'# External (HTTP) links' -> self httpLinks asWebLinkGroup.
+		'# Internal links' -> self internalLinks asWebLinkGroup.
+		'# Email links' -> (self links select: #isEmail) asWebLinkGroup.
+		'# Missing links' -> self missingLinks asWebLinkGroup} asDictionary
 ]

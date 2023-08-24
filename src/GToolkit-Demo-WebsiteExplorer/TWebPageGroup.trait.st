@@ -6,6 +6,30 @@ Trait {
 	#category : #'GToolkit-Demo-WebsiteExplorer-Model'
 }
 
+{ #category : #view }
+TWebPageGroup >> gtPagesFor: aView [
+	<gtView>
+	^ aView columnedList
+		title: 'Pages';
+		priority: 10;
+		items: [ self pages ];
+		column: 'Index'
+			text: [ :eachItem :eachIndex | eachIndex asRopedText foreground: Color gray ]
+			width: 45;
+		column: 'Title'
+			text: [ :item | item title ]
+			width: 150;
+		column: 'Path'
+			text: [ :item | item path ]
+			width: 300;
+		column: 'Links'
+			text: [ :item | 
+				| size |
+				size := item links size.
+				size = 0 ifTrue: [ '' ] ifFalse: [ size ] ]
+			width: 80
+]
+
 { #category : #searching }
 TWebPageGroup >> gtSpotterForLinkNames: aSearch [
 	<gtSearch>
