@@ -41,7 +41,7 @@ MarkdownWebPage >> rawLinks [
 
 { #category : #links }
 MarkdownWebPage >> reachable [
-	^ WebPageGroup withAll: (self reachableFrom: {self})
+	^ self webPageGroupClass withAll: (self reachableFrom: {self})
 ]
 
 { #category : #accessing }

@@ -177,7 +177,7 @@ AWebsite >> overview [
 { #category : #view }
 AWebsite >> overviewSend [
 	^ super overviewSend
-		at: '# Pages' put: (self webPageGroupClass withAll: self pages);
+		at: '# Pages' put: self pages;
 		at: '# Reachable pages' put: ([ self reachable ] onErrorDo: [ '?' ]);
 		at: '# Unreachable pages' put: ([ self unreachable ] onErrorDo: [ '?' ]);
 		yourself
@@ -245,7 +245,8 @@ AWebsite >> rootPath [
 
 { #category : #links }
 AWebsite >> unreachable [
-	^ self webPageGroupClass withAll: (self pages difference: self reachable items)
+	^ self webPageGroupClass
+		withAll: (self pages items difference: self reachable items)
 ]
 
 { #category : #accessing }
