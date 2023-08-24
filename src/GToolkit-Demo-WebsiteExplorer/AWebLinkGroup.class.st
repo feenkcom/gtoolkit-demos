@@ -79,13 +79,15 @@ AWebLinkGroup >> gtBrokenLinksFor: aView [
 		column: 'Link'
 			text: [ :item | item path ]
 			width: 400;
-		column: '# Pages' text: [ :item | item pages size ] width: 60;
+		column: '# Pages'
+			text: [ :item | item pages size ]
+			width: 60;
 		column: 'Status' text: [ :item | item status ];
 		actionUpdateButton;
 		updateWhen: WebLinkStatusUpdated in: self announcer;
 		actionButtonIcon: BrGlamorousVectorIcons inspect
 			tooltip: 'Inspect  value'
-			action: [ :aButton :aTab | aButton phlow spawnObject: (WebLinkGroup withAll: self missingLinks) ];
+			action: [ :aButton :aTab | aButton phlow spawnObject: self missingLinks ];
 		updateWhen: WebLinkStatusUpdated in: self announcer
 ]
 
@@ -110,7 +112,7 @@ AWebLinkGroup >> gtHttpLinksFor: aView [
 		actionUpdateButton;
 		actionButtonIcon: BrGlamorousVectorIcons inspect
 			tooltip: 'Inspect  value'
-			action: [ :aButton :aTab | aButton phlow spawnObject: (WebLinkGroup withAll: self httpLinks) ];
+			action: [ :aButton :aTab | aButton phlow spawnObject: self httpLinks ];
 		updateWhen: WebLinkStatusUpdated in: self announcer
 ]
 
@@ -127,7 +129,7 @@ AWebLinkGroup >> gtLinksFor: aView [
 			width: 45;
 		column: 'Link'
 			text: [ :item | item path ]
-			width: 200;
+			width: 300;
 		column: '# Pages'
 			text: [ :item | item pages size ]
 			width: 60;
@@ -135,7 +137,7 @@ AWebLinkGroup >> gtLinksFor: aView [
 		actionUpdateButton;
 		actionButtonIcon: BrGlamorousVectorIcons inspect
 			tooltip: 'Inspect  value'
-			action: [ :aButton :aTab | aButton phlow spawnObject: (WebLinkGroup withAll: self links) ];
+			action: [ :aButton :aTab | aButton phlow spawnObject: self links ];
 		updateWhen: WebLinkStatusUpdated in: self announcer
 ]
 
@@ -162,7 +164,7 @@ AWebLinkGroup >> gtMissingLinksFor: aView [
 		actionUpdateButton;
 		actionButtonIcon: BrGlamorousVectorIcons inspect
 			tooltip: 'Inspect  value'
-			action: [ :aButton :aTab | aButton phlow spawnObject: (WebLinkGroup withAll: self missingLinks) ];
+			action: [ :aButton :aTab | aButton phlow spawnObject: self missingLinks ];
 		updateWhen: WebLinkStatusUpdated in: self announcer
 ]
 
@@ -188,7 +190,7 @@ AWebLinkGroup >> gtMissingStatusLinksFor: aView [
 		updateWhen: WebLinkStatusUpdated in: self announcer;
 		actionButtonIcon: BrGlamorousVectorIcons inspect
 			tooltip: 'Inspect  value'
-			action: [ :aButton :aTab | aButton phlow spawnObject: (WebLinkGroup withAll: self missingLinks) ];
+			action: [ :aButton :aTab | aButton phlow spawnObject: self missingLinks ];
 		updateWhen: WebLinkStatusUpdated in: self announcer
 ]
 
@@ -215,10 +217,10 @@ AWebLinkGroup >> gtSpotterForLinkNames: aSearch [
 	^ aSearch list
 		title: 'Link names';
 		priority: 30;
-		items: [ self links ];
+		items: [ self links items ];
 		itemsLimit: Float infinity;
 		itemName: #path;
-		sendCategory: [ :aCategory :aStep :thisSearch | WebLinkGroup withAll: aCategory items contents ];
+		sendCategory: [ :aCategory :aStep :thisSearch | aCategory items contents asWebLinkGroup ];
 		filterBySubstring
 ]
 
@@ -276,9 +278,9 @@ AWebLinkGroup >> overview [
 AWebLinkGroup >> overviewSend [
 	"Used by the view to send clicks to the right group."
 
-	^ {'# Links' -> self links asWebLinkGroup.
-		'# External (HTTP) links' -> self httpLinks asWebLinkGroup.
-		'# Internal links' -> self internalLinks asWebLinkGroup.
-		'# Email links' -> (self links select: #isEmail) asWebLinkGroup.
-		'# Missing links' -> self missingLinks asWebLinkGroup} asDictionary
+	^ {'# Links' -> self links.
+		'# External (HTTP) links' -> self httpLinks.
+		'# Internal links' -> self internalLinks.
+		'# Email links' -> (self links select: #isEmail).
+		'# Missing links' -> self missingLinks} asDictionary
 ]

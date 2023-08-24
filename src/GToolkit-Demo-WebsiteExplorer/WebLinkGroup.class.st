@@ -19,7 +19,7 @@ WebLinkGroup >> initializeWith: aCollection [
 
 { #category : #accessing }
 WebLinkGroup >> links [
-	^ self items
+	^ self
 ]
 
 { #category : #announcements }

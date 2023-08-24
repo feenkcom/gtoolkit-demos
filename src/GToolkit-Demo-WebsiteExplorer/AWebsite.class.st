@@ -124,11 +124,11 @@ AWebsite >> links [
 	"Cache it"
 
 	^ links
-		ifNil: [ links := self linkDict values
+		ifNil: [ links := (self linkDict values
 					sort: [ :a :b | 
 						(a path occurrencesOf: $/) < (b path occurrencesOf: $/)
 							or: [ (a path occurrencesOf: $/) = (b path occurrencesOf: $/)
-									and: [ a path < b path ] ] ] ]
+									and: [ a path < b path ] ] ]) asWebLinkGroup ]
 ]
 
 { #category : #links }
@@ -264,6 +264,13 @@ AWebsite >> url: anObject [
 { #category : #links }
 AWebsite >> webLinkClass [
 	self subclassResponsibility
+]
+
+{ #category : #constant }
+AWebsite >> webLinkGroup [
+	"Which class should be used to instantiate groups of web pages."
+
+	^ WebLinkGroup
 ]
 
 { #category : #constant }

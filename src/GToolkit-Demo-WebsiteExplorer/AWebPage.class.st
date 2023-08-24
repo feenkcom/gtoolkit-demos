@@ -73,7 +73,7 @@ AWebPage >> gtLinksFor: aView [
 	^ aView forward
 		title: 'Links';
 		priority: 30;
-		object: [ WebLinkGroup withAll: self links ];
+		object: [ self links ];
 		view: #gtLinksFor:
 ]
 
@@ -148,7 +148,8 @@ AWebPage >> linkForPath: aPath [
 AWebPage >> links [
 	"Lookup the WebLink instances for each link."
 
-	^ self rawLinks collect: [ :assoc | self linkForPath: assoc value ]
+	^ (self rawLinks collect: [ :assoc | self linkForPath: assoc value ])
+		asWebLinkGroup
 ]
 
 { #category : #accessing }
@@ -221,7 +222,7 @@ AWebPage >> printOn: aStream [
 
 { #category : #links }
 AWebPage >> rawLinks [
-	"These are the raw String links on this page, to be converted to link objects.
+	"These are the raw String links on this page, as Associations, to be converted to link objects.
 	The result can be cached in the rawLinks slot."
 
 	self subclassResponsibility
