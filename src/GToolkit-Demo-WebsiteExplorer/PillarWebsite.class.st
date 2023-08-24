@@ -53,12 +53,13 @@ PillarWebsite >> gtPagesFor: aView [
 
 { #category : #initialization }
 PillarWebsite >> initializePages [
-	^ pages := ((self contentDir allChildrenMatching: '*.pillar')
-			collect: [ :each | PillarWebPage for: each in: self ])
-			sort: [ :a :b | 
-				(a path occurrencesOf: $/) < (b path occurrencesOf: $/)
-					or: [ (a path occurrencesOf: $/) = (b path occurrencesOf: $/)
-							and: [ a path < b path ] ] ]
+	^ pages := self webPageGroupClass
+			withAll: (((self contentDir allChildrenMatching: '*.pillar')
+					collect: [ :each | PillarWebPage for: each in: self ])
+					sort: [ :a :b | 
+						(a path occurrencesOf: $/) < (b path occurrencesOf: $/)
+							or: [ (a path occurrencesOf: $/) = (b path occurrencesOf: $/)
+									and: [ a path < b path ] ] ])
 ]
 
 { #category : #accessing }
