@@ -45,30 +45,6 @@ AWebsite >> gtMapFor: aView [
 				with: self pages ]
 ]
 
-{ #category : #view }
-AWebsite >> gtPagesFor: aView [
-	<gtView>
-	^ aView columnedList
-		title: 'Pages';
-		priority: 10;
-		items: [ self pages ];
-		column: 'Index'
-			text: [ :eachItem :eachIndex | eachIndex asRopedText foreground: Color gray ]
-			width: 45;
-		column: 'Title'
-			text: [ :item | item title ]
-			width: 150;
-		column: 'Path'
-			text: [ :item | item path ]
-			width: 300;
-		column: 'Links'
-			text: [ :item | 
-				| size |
-				size := item links size.
-				size = 0 ifTrue: [ '' ] ifFalse: [ size ] ]
-			width: 80
-]
-
 { #category : #accessing }
 AWebsite >> gtReachablePagesFor: aView [
 	<gtView>
@@ -189,6 +165,22 @@ AWebsite >> navigationRoots [
 { #category : #announcements }
 AWebsite >> notifyStatusUpdate [
 	self announcer announce: WebLinkStatusUpdated new
+]
+
+{ #category : #view }
+AWebsite >> overview [
+	^ {'# Pages' -> self pages size} , super overview
+		, {'# Reachable pages' -> ([ self reachable size ] onErrorDo: [ '?' ]).
+				'# Unreachable pages' -> ([ self unreachable size ] onErrorDo: [ '?' ])}
+]
+
+{ #category : #view }
+AWebsite >> overviewSend [
+	^ super overviewSend
+		at: '# Pages' put: (self webPageGroupClass withAll: self pages);
+		at: '# Reachable pages' put: ([ self reachable ] onErrorDo: [ '?' ]);
+		at: '# Unreachable pages' put: ([ self unreachable ] onErrorDo: [ '?' ]);
+		yourself
 ]
 
 { #category : #accessing }
