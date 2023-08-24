@@ -31,25 +31,12 @@ TWebPageGroup >> gtPagesFor: aView [
 ]
 
 { #category : #searching }
-TWebPageGroup >> gtSpotterForLinkNames: aSearch [
-	<gtSearch>
-	^ aSearch list
-		title: 'Link names';
-		priority: 30;
-		items: [ self links ];
-		itemsLimit: Float infinity;
-		itemName: #path;
-		sendCategory: [ :aCategory :aStep :thisSearch | self webPageGroupClass withAll: aCategory items contents ];
-		filterBySubstring
-]
-
-{ #category : #searching }
 TWebPageGroup >> gtSpotterForPageContents: aSearch [
 	<gtSearch>
 	^ aSearch list
 		title: 'Page content';
 		priority: 20;
-		items: [ self pages ];
+		items: [ self pages items ];
 		itemsLimit: Float infinity;
 		itemName: #contents;
 		sendCategory: [ :aCategory :aStep :thisSearch | self webPageGroupClass withAll: aCategory items contents ];
@@ -62,7 +49,7 @@ TWebPageGroup >> gtSpotterForPageNames: aSearch [
 	^ aSearch list
 		title: 'Page names';
 		priority: 10;
-		items: [ self pages ];
+		items: [ self pages items ];
 		itemsLimit: Float infinity;
 		itemName: #path;
 		sendCategory: [ :aCategory :aStep :thisSearch | self webPageGroupClass withAll: aCategory items contents ];

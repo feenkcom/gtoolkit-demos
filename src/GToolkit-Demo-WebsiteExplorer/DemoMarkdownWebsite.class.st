@@ -48,7 +48,7 @@ DemoMarkdownWebsite class >> canadaClub [
 ]
 
 { #category : #'instance creation' }
-DemoMarkdownWebsite class >> iceberne [
+DemoMarkdownWebsite class >> icberne [
 	| key repoUrl webUrl repoDir navMenuLinks |
 	key := 'icberne'.
 	webUrl := 'https://icberne.github.io'.

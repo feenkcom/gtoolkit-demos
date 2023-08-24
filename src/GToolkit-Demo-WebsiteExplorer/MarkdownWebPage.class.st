@@ -36,6 +36,8 @@ MarkdownWebPage >> permalink [
 
 { #category : #accessing }
 MarkdownWebPage >> rawLinks [
+	"Returns a collection of TitleString -> LinkString Associations"
+
 	^ rawLinks ifNil: [ rawLinks := self markdownLinks ]
 ]
 
