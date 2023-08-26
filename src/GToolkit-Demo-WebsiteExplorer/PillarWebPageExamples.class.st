@@ -7,7 +7,6 @@ Class {
 { #category : #accessing }
 PillarWebPageExamples >> esug2014NormalizeAbsoluteLink [
 	<gtExample>
-	<noTest>
 	| result url |
 	url := '/index.pillar'.
 	result := self esug2014homePage normalize: url.
@@ -18,7 +17,6 @@ PillarWebPageExamples >> esug2014NormalizeAbsoluteLink [
 { #category : #accessing }
 PillarWebPageExamples >> esug2014NormalizeHttpLink [
 	<gtExample>
-	<noTest>
 	| result url |
 	url := 'https://esug.github.io'.
 	result := self esug2014homePage normalize: url.
@@ -29,7 +27,6 @@ PillarWebPageExamples >> esug2014NormalizeHttpLink [
 { #category : #accessing }
 PillarWebPageExamples >> esug2014NormalizeNestedLink [
 	<gtExample>
-	<noTest>
 	| result url |
 	url := 'foo/bar.pillar'.
 	result := self esug2014homePage normalize: url.
@@ -40,7 +37,6 @@ PillarWebPageExamples >> esug2014NormalizeNestedLink [
 { #category : #accessing }
 PillarWebPageExamples >> esug2014NormalizeParentLink [
 	<gtExample>
-	<noTest>
 	| result url |
 	url := '../foo.pillar'.
 	result := self esug2014homePage normalize: url.
@@ -51,7 +47,6 @@ PillarWebPageExamples >> esug2014NormalizeParentLink [
 { #category : #accessing }
 PillarWebPageExamples >> esug2014NormalizeRelativeLink [
 	<gtExample>
-	<noTest>
 	| result url |
 	url := 'foo.pillar'.
 	result := self esug2014homePage normalize: url.
@@ -62,14 +57,12 @@ PillarWebPageExamples >> esug2014NormalizeRelativeLink [
 { #category : #accessing }
 PillarWebPageExamples >> esug2014Website [
 	<gtExample>
-	<noTest>
 	^ PillarWebsiteExamples new esug2014
 ]
 
 { #category : #accessing }
 PillarWebPageExamples >> esug2014homePage [
 	<gtExample>
-	<noTest>
 	| website page |
 	website := self esug2014Website.
 	page := website pageNamed: '/2014-Conference/conf2014.pillar'.

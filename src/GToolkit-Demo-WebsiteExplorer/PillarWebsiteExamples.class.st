@@ -9,7 +9,6 @@ PillarWebsiteExamples >> esug2014 [
 	"A small website for testing"
 
 	<gtExample>
-	<noTest>
 	| website |
 	website := PillarWebsite new.
 	website
@@ -23,7 +22,6 @@ PillarWebsiteExamples >> esug2014 [
 { #category : #constant }
 PillarWebsiteExamples >> esug2014repoDir [
 	<gtExample>
-	<noTest>
 	| aDirectory |
 	aDirectory := FileLocator gtResource
 			/ 'feenkcom' / 'gtoolkit-demos' / 'data' / 'esug.github.io'.
