@@ -48,7 +48,10 @@ PillarWebsite >> gtPagesFor: aView [
 				| size |
 				size := item markdownLinks size.
 				size = 0 ifTrue: [ '' ] ifFalse: [ size ] ]
-			width: 80
+			width: 80;
+		actionButtonIcon: BrGlamorousVectorIcons inspect
+			tooltip: 'Inspect  value'
+			action: [ :aButton :aTab | aButton phlow spawnObject: self pages ]
 ]
 
 { #category : #initialization }

@@ -45,33 +45,6 @@ AWebsite >> gtMapFor: aView [
 				with: self pages ]
 ]
 
-{ #category : #accessing }
-AWebsite >> gtReachablePagesFor: aView [
-	<gtView>
-	^ aView forward
-		title: 'Reachable pages';
-		priority: 60;
-		object: [ self reachable ];
-		view: #gtPagesFor:;
-		actionButtonIcon: BrGlamorousVectorIcons inspect
-			tooltip: 'Inspect  value'
-			action: [ :aButton :aTab | aButton phlow spawnObject: self reachable ]
-]
-
-{ #category : #accessing }
-AWebsite >> gtUnreachablePagesFor: aView [
-	<gtView>
-	self unreachable ifEmpty: [ ^ aView empty ].
-	^ aView forward
-		title: 'Unreachable pages';
-		priority: 61;
-		object: [ self unreachable ];
-		view: #gtPagesFor:;
-		actionButtonIcon: BrGlamorousVectorIcons inspect
-			tooltip: 'Inspect  value'
-			action: [ :aButton :aTab | aButton phlow spawnObject: self unreachable ]
-]
-
 { #category : #testing }
 AWebsite >> hasPageNamed: aString [
 	^ self pages
@@ -188,7 +161,7 @@ AWebsite >> pageNamed: aString [
 	^ self pages detect: [ :page | page path = aString ]
 ]
 
-{ #category : #accessing }
+{ #category : #requirement }
 AWebsite >> pages [
 	^ pages
 ]
