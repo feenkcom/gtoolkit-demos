@@ -27,7 +27,23 @@ TWebPageGroup >> gtPagesFor: aView [
 				| size |
 				size := item links size.
 				size = 0 ifTrue: [ '' ] ifFalse: [ size ] ]
-			width: 80
+			width: 80;
+		actionButtonIcon: BrGlamorousVectorIcons inspect
+			tooltip: 'Inspect  value'
+			action: [ :aButton :aTab | aButton phlow spawnObject: self pages ]
+]
+
+{ #category : #view }
+TWebPageGroup >> gtReachablePagesFor: aView [
+	<gtView>
+	^ aView forward
+		title: 'Reachable pages';
+		priority: 60;
+		object: [ self reachable ];
+		view: #gtPagesFor:;
+		actionButtonIcon: BrGlamorousVectorIcons inspect
+			tooltip: 'Inspect  value'
+			action: [ :aButton :aTab | aButton phlow spawnObject: self reachable ]
 ]
 
 { #category : #searching }
@@ -56,8 +72,32 @@ TWebPageGroup >> gtSpotterForPageNames: aSearch [
 		filterBySubstring
 ]
 
-{ #category : #accessing }
+{ #category : #view }
+TWebPageGroup >> gtUnreachablePagesFor: aView [
+	<gtView>
+	self unreachable ifEmpty: [ ^ aView empty ].
+	^ aView forward
+		title: 'Unreachable pages';
+		priority: 61;
+		object: [ self unreachable ];
+		view: #gtPagesFor:;
+		actionButtonIcon: BrGlamorousVectorIcons inspect
+			tooltip: 'Inspect  value'
+			action: [ :aButton :aTab | aButton phlow spawnObject: self unreachable ]
+]
+
+{ #category : #requirement }
 TWebPageGroup >> pages [
+	^ self explicitRequirement
+]
+
+{ #category : #requirement }
+TWebPageGroup >> reachable [
+	^ self explicitRequirement
+]
+
+{ #category : #requirement }
+TWebPageGroup >> unreachable [
 	^ self explicitRequirement
 ]
 
