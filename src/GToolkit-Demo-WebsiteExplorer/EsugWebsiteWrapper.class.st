@@ -18,6 +18,15 @@ EsugWebsiteWrapper class >> esug [
 ]
 
 { #category : #accessing }
+EsugWebsiteWrapper >> example [
+	<gtExample>
+	<noTest>
+	^ self
+		repoDir: EsugWebsite esugRepoDir;
+		yourself
+]
+
+{ #category : #accessing }
 EsugWebsiteWrapper >> repoDir: repo [
 	repoDir := repo
 ]
