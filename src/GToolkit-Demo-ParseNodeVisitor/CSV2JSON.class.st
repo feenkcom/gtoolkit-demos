@@ -1,5 +1,6 @@
 "
 I flatten a CSV AST produced by the CSVParser into a collection of lines each of which is a collection of values.
+For an example, see {{gtMethod:name=CSV2JSONExamples>>#kurosawaJson}}. 
 "
 Class {
 	#name : #CSV2JSON,
