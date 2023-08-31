@@ -7,7 +7,7 @@ Class {
 	#instVars : [
 		'csvFile'
 	],
-	#category : #'GToolkit-Demo-ParseNodeVisitor-CSV'
+	#category : #'GToolkit-Demo-ParseNodeVisitor-Visitor'
 }
 
 { #category : #accessing }
