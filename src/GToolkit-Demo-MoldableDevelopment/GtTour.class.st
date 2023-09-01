@@ -57,8 +57,8 @@ GtTour >> coderExplanationWithLinks [
 		aptitude: BrShadowAptitude.
 	
 	scripter := BlScripter new.
-	scripter element: ((GtCoderElement forClass: GtABAddressBook) createInPager maximized) asElement.
-	scripter syncContinue.
+	scripter element: ((GtCoderElement forClass: GtABAddressBook) createInPager maximized) asElement;
+			play.
 	
 	coderElement := scripter elementWithoutParent.
 	
@@ -241,7 +241,8 @@ GtTour >> coderWithComment [
 		do: [ :aStep | 
 			aStep set
 				label: 'Coder';
-				element: [ (GtCoderElement forClass: GtCSPicture) createInPager maximized ] ].
+				element: [ (GtCoderElement forClass: GtCSPicture) createInPager maximized ];
+			play ].
 	aScripter
 		substep: 'Evaluate first snippet and inspect'
 		do: [ :aStep | 
@@ -252,9 +253,10 @@ GtTour >> coderWithComment [
 				id: #header;
 				onChildAt: 1;
 				onChildAt: 1;
-				onChildAt: 2.
-			aStep wait forEmptySpaceTaskQueue ].
-	aScripter syncContinue.
+				onChildAt: 2;
+			play.
+			aStep wait forEmptySpaceTaskQueue;
+			play ].
 	^ aScripter elementWithoutParent
 ]
 
@@ -744,15 +746,18 @@ GtTour >> playgroundExplanationWithLinks [
 		background: Color white;
 		aptitude: BrShadowAptitude.
 	scripter := BlScripter new.
-	scripter element: (GtPlaygroundLiveSlide new snippets: {'a := 40' . 'a + 2'}) asElement.
+	scripter element: (GtPlaygroundLiveSlide new snippets: {'a := 40' . 'a + 2'}) asElement;
+			play.
 	scripter
 		substep: 'Selecting snippet'
 		do: [ :aStep | 
 			aStep click
 				label: 'Click on snippet';
-				onBreadthFirstChildOfClass: LePharoSnippetElement.
-			aStep wait forEmptySpaceTaskQueue ].
-	scripter syncContinue.
+				onBreadthFirstChildOfClass: LePharoSnippetElement;
+			play.
+			aStep wait forEmptySpaceTaskQueue;
+			play ].
+
 	playgroundElement := scripter elementWithoutParent.
 	(playgroundElement query // LePharoSnippetElement) all do: [:snippet | 
 		snippet addChild: (self yellowExplanationTargetCircleFor: #snippets).

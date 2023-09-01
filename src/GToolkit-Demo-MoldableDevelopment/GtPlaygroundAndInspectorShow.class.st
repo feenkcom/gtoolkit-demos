@@ -71,9 +71,10 @@ GtPlaygroundAndInspectorShow >> fixItAdornmentForClassExplanation [
 		do: [ :aStep | 
 			aStep set
 				label: 'Playground';
-				element: [ playgroundElement ].
-			aStep wait forEmptySpaceTaskQueue ].
-	aScripter syncContinue.
+				element: [ playgroundElement ];
+			play.
+			aStep wait forEmptySpaceTaskQueue;
+			play ].
 
 	playgroundElement := aScripter elementWithoutParent.	
 	
@@ -83,9 +84,11 @@ GtPlaygroundAndInspectorShow >> fixItAdornmentForClassExplanation [
 		do: [ :aStep | 
 			aStep set
 				label: 'Playground';
-				element: [ defaultPlaygroundElement ].
-			aStep wait forEmptySpaceTaskQueue ].
-	aScripter syncContinue.
+				element: [ defaultPlaygroundElement];
+			play.
+			aStep wait forEmptySpaceTaskQueue;
+			play ].
+
 	defaultPlaygroundElement := aScripter elementWithoutParent.
 	
 	adornmentButtonTarget := defaultPlaygroundElement
@@ -137,9 +140,11 @@ GtPlaygroundAndInspectorShow >> fixItAdornmentForMethodExplanation [
 		do: [ :aStep | 
 			aStep set
 				label: 'Playground';
-				element: [ defaultPlaygroundElement ].
-			aStep wait forEmptySpaceTaskQueue ].
-	aScripter syncContinue.
+				element: [ defaultPlaygroundElement ];
+			play.
+			aStep wait forEmptySpaceTaskQueue;
+			play ].
+
 	defaultPlaygroundElement := aScripter elementWithoutParent.
 	defaultPlaygroundElement
 		allChildrenBreadthFirstDetect: [ :aChild | aChild isKindOf: BrTextEditorSegmentElement ]

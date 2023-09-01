@@ -507,9 +507,11 @@ a - b'};
 		do: [ :aStep | 
 			aStep click
 				label: 'Click on snippet';
-				onBreadthFirstChildOfClass: LePharoSnippetElement.
-			aStep wait forEmptySpaceTaskQueue ].
-	aScripter syncContinue.
+				onBreadthFirstChildOfClass: LePharoSnippetElement;
+			play.
+			aStep wait forEmptySpaceTaskQueue;
+			play ].
+
 	snippets := (aScripter elementWithoutParent query // LePharoSnippetElement) all.
 	snippets first
 		addChild:
