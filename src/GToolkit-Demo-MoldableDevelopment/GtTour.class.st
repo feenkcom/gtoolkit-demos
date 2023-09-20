@@ -893,7 +893,8 @@ GtTour >> timelineElement [
 			(Date year: 2019 month: 04 day: 19) -> 'Glamorous Toolkit 0.6.42 alpha'.
 			(Date year: 2019 month: 07 day: 16) -> 'First public Moldable Development talk'.
 			(Date year: 2020 month: 07 day: 23) -> 'Glamorous Toolkit v0.7.1214 beta'.
-			(Date year: 2021 month: 06 day: 04) -> 'Lepiter'
+			(Date year: 2021 month: 06 day: 04) -> 'Lepiter'.
+			(Date year: 2023 month: 08 day: 29) -> 'Glamorous Toolkit v1.0'
 		}.
 	^ plotter asElement
 ]
