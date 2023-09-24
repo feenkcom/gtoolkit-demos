@@ -141,6 +141,7 @@ DemoSlideshow >> slidePriorities [
 		lepiterPage:
 		dynamicLepiterPage:
 		maximizedPage:
+		maximizedGtBookPage:
 		gtWorld:
 		coderExampleSlideFor:
 		inspectorInPager:
