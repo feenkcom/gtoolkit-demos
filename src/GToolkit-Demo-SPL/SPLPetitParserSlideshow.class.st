@@ -24,7 +24,7 @@ SPLPetitParserSlideshow >> asSmallCode: aString [
 SPLPetitParserSlideshow >> buildingTheAST: aSlide [
 	<gtSlide>
 	^ aSlide lepiterPage
-		priority: (self priorityFor: #buildingTheAST:);
+		setPriority;
 		startPage: (self db pageNamed: 'Building the AST with parser actions')
 ]
 
@@ -58,9 +58,8 @@ SPLPetitParserSlideshow >> buildingTheASTPage [
 SPLPetitParserSlideshow >> classExtraction: aSlide [
 	<gtSlide>
 	^ aSlide lepiterPage
-		priority: (self priorityFor: #classExtraction:);
+		setPriority;
 		startPage: (self db pageNamed: 'Extracting a parser class')
-
 ]
 
 { #category : #page }
@@ -111,7 +110,7 @@ SPLPetitParserSlideshow >> coda: aSlide [
 	<gtSlide>
 	^ aSlide textAndElement
 		elementWeight: 0.5;
-		priority: (self priorityFor: #coda:);
+		setPriority;
 		newTextWithFormat: (self asHeader: 'Explore on your own ...') bold , self cr
 				, (self
 						asText: 'You can find the details by downloading GT from gtoolkit.com and visiting the “PetitParser SPL case study” page.');
@@ -121,16 +120,15 @@ SPLPetitParserSlideshow >> coda: aSlide [
 			database := LeDatabasesRegistry default currentLoadedDefaultLogicalDatabase
 					databaseNamed: aLepiterBaseName.
 			startPage := database pageNamed: aPageName.
-			startPage asPreviewElement  ]
+			startPage asPreviewElement ]
 ]
 
 { #category : #slides }
 SPLPetitParserSlideshow >> debuggingParsers: aSlide [
 	<gtSlide>
 	^ aSlide lepiterPage
-		priority: (self priorityFor: #debuggingParsers:);
+		setPriority;
 		startPage: (self db pageNamed: 'Debugging parsers')
-
 ]
 
 { #category : #page }
@@ -161,9 +159,8 @@ printStmt end parse: ''print "hello";''.';
 SPLPetitParserSlideshow >> fibonacci: aSlide [
 	<gtSlide>
 	^ aSlide lepiterPage
-		priority: (self priorityFor: #fibonacci:);
+		setPriority;
 		startPage: (self db pageNamed: 'Fibonacci in SPL')
-
 ]
 
 { #category : #page }
@@ -199,7 +196,7 @@ SPLPetitParserSlideshow >> initializeDb [
 SPLPetitParserSlideshow >> parsingBooleans: aSlide [
 	<gtSlide>
 	^ aSlide headingAndCode
-		priority: (self priorityFor: #parsingBooleans:);
+		setPriority;
 		heading: 'Parsing Booleans';
 		snippetPadding: 5;
 		addTextSnippet: 'To create a parser for a string, just send it `asParser`.';
@@ -215,7 +212,7 @@ boolean parse: ''true''.'
 SPLPetitParserSlideshow >> parsingGrammarRules: aSlide [
 	<gtSlide>
 	^ aSlide headingAndCode
-		priority: (self priorityFor: #parsingGrammarRules:);
+		setPriority;
 		heading: 'Parsing grammar rules';
 		elementWeight: 0.3;
 		snippetPadding: 5;
@@ -233,7 +230,7 @@ printStmt end parse: ''print "hello";'''
 SPLPetitParserSlideshow >> parsingIntegersAndFloats: aSlide [
 	<gtSlide>
 	^ aSlide headingAndCode
-		priority: (self priorityFor: #parsingIntegersAndFloats:);
+		setPriority;
 		heading: 'Parsing Integers and Floats';
 		snippetPadding: 5;
 		addTextSnippet: 'Note the use of the `optional`  and `plus` operators.';
@@ -254,12 +251,11 @@ float parse: ''3.14''.'
 SPLPetitParserSlideshow >> parsingKeywords: aSlide [
 	<gtSlide>
 	^ aSlide headingAndCode
-		priority: (self priorityFor: #parsingKeywords:);
+		setPriority;
 		heading: 'Parsing Keywords and Identifiers';
 		snippetPadding: 5;
 		elementWeight: 0.4;
 		addTextSnippet: 'We want to distinguish keywords and identifiers, so we use the `not` operator to ensure that a keyword is not followed by another letter.';
-		
 		addCodeSnippet: 'keyword := (''var'' asPParser , #letter asPParser not)
 		/ (''if'' asPParser , #letter asPParser not)
 		/ (''else'' asPParser , #letter asPParser not)
@@ -278,11 +274,10 @@ identifier end parse: ''andy''.'
 SPLPetitParserSlideshow >> parsingNumbers: aSlide [
 	<gtSlide>
 	^ aSlide headingAndCode
-		priority: (self priorityFor: #parsingNumbers:);
+		setPriority;
 		heading: 'Parsing Numbers';
 		snippetPadding: 5;
 		addTextSnippet: 'Numbers are an ordered choice of integers and floats.';
-		
 		addCodeSnippet: 'integer := $- asPParser optional , 
 	#digit asPParser plus , $. asPParser not.
 	
@@ -299,17 +294,18 @@ number parse: ''-3.14''.'
 SPLPetitParserSlideshow >> parsingTokens: aSlide [
 	<gtSlide>
 	^ aSlide text
-		priority: (self priorityFor: #parsingTokens:);
+		setPriority;
 		textMargin: 10;
 		newTextWithFormat: (self asHeader: 'Parsing tokens');
-		newTextWithFormat: (self asText: 'PetitParser is a scannerless parser, so we introduce parsing expressions also for tokens.')
+		newTextWithFormat: (self
+				asText: 'PetitParser is a scannerless parser, so we introduce parsing expressions also for tokens.')
 ]
 
 { #category : #slides }
 SPLPetitParserSlideshow >> partialGrammarScript: aSlide [
 	<gtSlide>
 	^ aSlide lepiterPage
-		priority: (self priorityFor: #partialGrammarScript:);
+		setPriority;
 		startPage: (self db pageNamed: 'Prototyping the SPL grammar parser as a script')
 ]
 
@@ -355,9 +351,8 @@ program parse: ''6 * (3 + 4);''.';
 SPLPetitParserSlideshow >> runningAnSPLProgram: aSlide [
 	<gtSlide>
 	^ aSlide lepiterPage
-		priority: (self priorityFor: #runningAnSPLProgram:);
+		setPriority;
 		startPage: (self db pageNamed: 'Running an SPL program')
-
 ]
 
 { #category : #page }
@@ -386,7 +381,7 @@ SPLPetitParserSlideshow >> semanticsOfSPL: aSlide [
 	^ aSlide text
 		horizontalWeight: 0.6;
 		textMargin: 5;
-		priority: (self priorityFor: #semanticsOfSPL:);
+		setPriority;
 		newTextWithFormat: (self asHeader: 'SPL Semantics');
 		newTextWithFormat: (self asText: 'We use “small-step” ')
 				, (self asText: 'Structural Operational Semantics') italic
@@ -443,7 +438,7 @@ SPLPetitParserSlideshow >> splExample: aSlide [
 	^ aSlide text
 		horizontalWeight: 0.75;
 		textMargin: 10;
-		priority: (self priorityFor: #splExample:);
+		setPriority;
 		newTextWithFormat: (self asHeader: 'An SPL example');
 		newTextWithFormat: (self asText: 'SPL is a minimal language with variables, expressions, ')
 				, (self asCode: 'if') , (self asText: ', ') , (self asCode: 'while')
@@ -468,7 +463,7 @@ SPLPetitParserSlideshow >> splGrammar: aSlide [
 	^ aSlide text
 		horizontalWeight: 1;
 		textMargin: 10;
-		priority: (self priorityFor: #splGrammar:);
+		setPriority;
 		newTextWithFormat: (self asHeader: 'SPL Grammar');
 		newTextWithFormat: (self
 				asSmallCode: 'program        := declaration* EOF ;
@@ -506,9 +501,8 @@ primary        := "true" | "false" | NUMBER | STRING
 SPLPetitParserSlideshow >> theASThierarchy: aSlide [
 	<gtSlide>
 	^ aSlide lepiterPage
-		priority: (self priorityFor: #theASThierarchy:);
+		setPriority;
 		startPage: (self db pageNamed: 'The SPL AST hierarchy')
-
 ]
 
 { #category : #page }
@@ -534,9 +528,8 @@ SPLPetitParserSlideshow >> theASThierarchyPage [
 { #category : #slides }
 SPLPetitParserSlideshow >> titleSlideFor: aSlide [
 	<gtSlide>
-	
-	^ (aSlide title)
-		priority: (self priorityFor: #titleSlideFor:);
+	^ aSlide title
+		setPriority;
 		titleBottomPadding: 30;
 		titleWithFormat: (self asTitle: 'Building composable parsers');
 		subtitleWithFormat: (self asTitle: 'with PetitParser')
@@ -546,7 +539,7 @@ SPLPetitParserSlideshow >> titleSlideFor: aSlide [
 SPLPetitParserSlideshow >> whatIsPP: aSlide [
 	<gtSlide>
 	^ aSlide headingAndCode
-		priority: (self priorityFor: #whatIsPP:);
+		setPriority;
 		heading: 'What is PetitParser?';
 		addTextSnippet: 'PetitParser models parsers as *composable* objects.';
 		addCodeSnippet: 'number := #digit asPParser plus  token
@@ -562,7 +555,7 @@ addition parse: ''3+4'''
 SPLPetitParserSlideshow >> writingTests: aSlide [
 	<gtSlide>
 	^ aSlide lepiterPage
-		priority: (self priorityFor: #writingTests:);
+		setPriority;
 		startPage: (self db pageNamed: 'Writing parser tests')
 ]
 

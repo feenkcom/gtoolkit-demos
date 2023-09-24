@@ -1,7 +1,7 @@
 "
 A convenience class for creating slideshows.
 
-Instead of explicitly setting the priority for a given page, just list the names of the pages in a `pages` method, and then lookup the priority in that list.
+Instead of explicitly setting the priority for a given page, just list the names of the pages in a `pages` method, and then lookup the priority in that list by sending `setPriority`.
 
 See, for example, {{gtMethod:name=SmalltalkIntroSlideshow>>#titleSlideFor:}}.
 
@@ -12,6 +12,18 @@ Methods that you should configure:
 - `initializeDb` — create and add all the internal Lepiter pages you use in the slideshow (if any)
 - `myLepiterDB` — database of any external pages you might refer to (you should prefer the internal one)
 - `show` — do a `super show` for convenience
+
+**NB:** if you have slides that set the priority ""manually"" by sending `priority: (self priorityFor: aSelector)`, you can now send `setPriority` instead. You can use a rewrite snippet to refactor this.
+
+Search for:
+```language=text
+	``@slide priority: (self priorityFor: ``@selector)
+```
+
+and replace by: 
+```language=text
+	``@slide setPriority
+```
 
 
 "
@@ -338,7 +350,9 @@ PrioritySlideshow >> picturesDirectoryPath [
 
 { #category : #accessing }
 PrioritySlideshow >> priorityFor: aSlideMethodSelector [
-	^ self slidePriorities indexOf: aSlideMethodSelector
+	^ self slidePriorities
+		indexOf: aSlideMethodSelector
+		ifAbsent: [ self error: 'Missing slide priority for ' , aSlideMethodSelector printString ]
 ]
 
 { #category : #utility }

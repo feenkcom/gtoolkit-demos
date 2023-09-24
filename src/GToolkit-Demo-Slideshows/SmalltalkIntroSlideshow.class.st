@@ -22,7 +22,7 @@ SmalltalkIntroSlideshow class >> show [
 SmalltalkIntroSlideshow >> addingAutoPlay: aSlide [
 	<gtSlide>
 	^ aSlide lepiterPage
-		priority: (self priorityFor: #addingAutoPlay:);
+		setPriority;
 		startPage: (self db pageNamed: 'Changing a running system')
 ]
 
@@ -130,9 +130,9 @@ game playerToMove ifTrue: [
 { #category : #slides }
 SmalltalkIntroSlideshow >> bouncingAtoms: aSlide [
 	"<gtSlide>"
-	
-	^ (aSlide lepiterPage)
-		priority: (self priorityFor: #bouncingAtoms:);
+
+	^ aSlide lepiterPage
+		setPriority;
 		startPage: self bouncingAtomsPage
 ]
 
@@ -259,7 +259,7 @@ bounced ifTrue: [self velocity: vx @ vy].
 SmalltalkIntroSlideshow >> composingExamples: aSlide [
 	<gtSlide>
 	^ aSlide lepiterPage
-		priority: (self priorityFor: #composingExamples:);
+		setPriority;
 		startPage: (self db pageNamed: 'Composing (Test) Examples')
 ]
 
@@ -359,8 +359,8 @@ SmalltalkIntroSlideshow >> dbName [
 SmalltalkIntroSlideshow >> everythingHappensBySendingMessages: aSlide [
 	<gtSlide>
 	^ aSlide lepiterPage
-		priority: (self priorityFor: #everythingHappensBySendingMessages:);
-		startPage:  (self db pageNamed:  'Everything happens by sending messages')
+		setPriority;
+		startPage: (self db pageNamed: 'Everything happens by sending messages')
 ]
 
 { #category : #page }
@@ -466,7 +466,7 @@ SmalltalkIntroSlideshow >> everythingHappensBySendingMessagesPage [
 SmalltalkIntroSlideshow >> everythingIsAnObject: aSlide [
 	<gtSlide>
 	^ aSlide lepiterPage
-		priority: (self priorityFor: #everythingIsAnObject:);
+		setPriority;
 		startPage: (self db pageNamed: 'Everything is an object')
 ]
 
@@ -575,8 +575,8 @@ SmalltalkIntroSlideshow >> everythingIsAnObjectPage [
 SmalltalkIntroSlideshow >> exploringLudo: aSlide [
 	<gtSlide>
 	^ aSlide lepiterPage
-		priority: (self priorityFor: #exploringLudo:);
-		startPage:  (self db pageNamed: 'Exploring a live system')
+		setPriority;
+		startPage: (self db pageNamed: 'Exploring a live system')
 ]
 
 { #category : #page }
@@ -666,16 +666,12 @@ SmalltalkIntroSlideshow >> findTargetWithText: aText in: expandedMethodElement [
 { #category : #slides }
 SmalltalkIntroSlideshow >> gtWorld: aSlide [
 	<gtSlide>
-	
-	^ (aSlide textAndElement)
+	^ aSlide textAndElement
 		elementWeight: 0.6;
-		priority: (self priorityFor: #gtWorld:);
-		newTextWithFormat:
-				(self asText: 'Glamorous Toolkit is a ') , (self asText: 'moldable') italic
-						,
-							(self
-								asText:
-									' development environment with native windows, software analysis tools, and a visualization engine. 
+		setPriority;
+		newTextWithFormat: (self asText: 'Glamorous Toolkit is a ') , (self asText: 'moldable') italic
+				, (self
+						asText: ' development environment with native windows, software analysis tools, and a visualization engine. 
 Gt is built on top of Pharo, a modern, open-source Smalltalk.');
 		element: [ aSlide world ]
 ]
@@ -683,21 +679,17 @@ Gt is built on top of Pharo, a modern, open-source Smalltalk.');
 { #category : #slides }
 SmalltalkIntroSlideshow >> imageChanges: aSlide [
 	<gtSlide>
-	
-	^ (aSlide textAndElement)
+	^ aSlide textAndElement
 		elementWeight: 0.50;
-		priority: (self priorityFor: #imageChanges:);
-		newTextWithFormat:
-				(self asText: 'Smalltalk is a ') , (self asText: 'live') italic
-						,
-							(self
-								asText:
-									' programming system.
+		setPriority;
+		newTextWithFormat: (self asText: 'Smalltalk is a ') , (self asText: 'live') italic
+				, (self
+						asText: ' programming system.
 Objects live inside an image running on a VM. 
 Changes to classes and methods are logged as you program.');
-		element:
-				[ GtFilePictureLiveSlide new
-						fileReference: (GtResourcesUtility resourceAtPath: self picturesDirectoryPath / 'image+changes.png') ]
+		element: [ GtFilePictureLiveSlide new
+				fileReference: (GtResourcesUtility
+						resourceAtPath: self picturesDirectoryPath / 'image+changes.png') ]
 ]
 
 { #category : #initialization }
@@ -719,8 +711,8 @@ SmalltalkIntroSlideshow >> initializeDb [
 SmalltalkIntroSlideshow >> liveDocumentationLogic: aSlide [
 	<gtSlide>
 	^ aSlide lepiterPage
-		priority: (self priorityFor: #liveDocumentationLogic:);
-		startPage: (self db pageNamed:  'Live documentation of the game logic')
+		setPriority;
+		startPage: (self db pageNamed: 'Live documentation of the game logic')
 ]
 
 { #category : #page }
@@ -819,7 +811,7 @@ SmalltalkIntroSlideshow >> liveDocumentationLogicPage [
 SmalltalkIntroSlideshow >> liveDocumentationUML: aSlide [
 	<gtSlide>
 	^ aSlide lepiterPage
-		priority: (self priorityFor: #liveDocumentationUML:);
+		setPriority;
 		startPage: (self db pageNamed: 'Live documentation of the technical solution')
 ]
 
@@ -867,11 +859,12 @@ SmalltalkIntroSlideshow >> liveDocumentationUMLPage [
 { #category : #slides }
 SmalltalkIntroSlideshow >> ludoAppetizer: aSlide [
 	<gtSlide>
-	
-	^ (aSlide textAndElement)
+	^ aSlide textAndElement
 		elementWeight: 0.5;
-		priority: (self priorityFor: #ludoAppetizer:);
-		newTextWithFormat: (self asHeader: 'Appetizer') bold,(self asText: '
+		setPriority;
+		newTextWithFormat: (self asHeader: 'Appetizer') bold
+				, (self
+						asText: '
 Ludo as a running example of a live system');
 		element: [ GtLudoGame new asElement asScalableElement ]
 ]
@@ -881,31 +874,25 @@ SmalltalkIntroSlideshow >> methodSyntax: aSlide [
 	"Methods start with a declaration of the message selector and arguments. Temporaries must be declared. Statements are separate by periods. The caret (^) is special syntax for returning a result."
 
 	<gtSlide>
-	
-	^ (aSlide textAndElement)
-		priority: (self priorityFor: #methodSyntax:);
-		newTextWithFormat:
-				(self
-						asHeader:
-							'Method syntax
+	^ aSlide textAndElement
+		setPriority;
+		newTextWithFormat: (self
+				asHeader: 'Method syntax
 ')
-						,
-							(self asText: 'Note the special syntax for variable declarations (|...|), statement separators (period) and returns (^).');
-		element: [ GtPharoSyntaxExplainer new forMethod: GtLudoGame>>#computeTargetFor: ];
+				, (self
+						asText: 'Note the special syntax for variable declarations (|...|), statement separators (period) and returns (^).');
+		element: [ GtPharoSyntaxExplainer new forMethod: GtLudoGame >> #computeTargetFor: ];
 		elementWeight: 0.6
 ]
 
 { #category : #slides }
 SmalltalkIntroSlideshow >> outline: aSlide [
 	<gtSlide>
-	
-	^ (aSlide paragraph)
-		priority: (self priorityFor: #outline:);
+	^ aSlide paragraph
+		setPriority;
 		subtitleWithFormat: (self asSubtitle: 'Outline');
-		paragraphWithFormat:
-				(self
-						asText:
-							'
+		paragraphWithFormat: (self
+				asText: '
 • What is Smalltalk?
 • Smalltalk basics — syntax, sending messages
 • Live programming with interactive views
@@ -919,8 +906,8 @@ SmalltalkIntroSlideshow >> outline: aSlide [
 SmalltalkIntroSlideshow >> recordingMoves: aSlide [
 	<gtSlide>
 	^ aSlide lepiterPage
-		priority: (self priorityFor: #recordingMoves:);
-		startPage:(self db pageNamed: 'Recording and visualizing token moves')
+		setPriority;
+		startPage: (self db pageNamed: 'Recording and visualizing token moves')
 ]
 
 { #category : #page }
@@ -1047,24 +1034,21 @@ SmalltalkIntroSlideshow >> smalltalk80: aSlide [
 He reasoned that such systems would need to be based on object from the ground up, so he set up a lab at the Xerox Palo Alto Research Center (PARC) to develop such a fully object-oriented system, including both software and hardware. They developed the first graphical workstations with windowing system and mouse."
 
 	<gtSlide>
-	
-	^ (aSlide textAndElement)
+	^ aSlide textAndElement
 		elementWeight: 0.60;
-		priority: (self priorityFor: #smalltalk80:);
-		newTextWithFormat:
-				(self
-						asText:
-							'Smalltalk was the first purely object-oriented language and environment, with the first interactive, graphical IDE.');
-		element:
-				[ GtFilePictureLiveSlide new
-						fileReference: (GtResourcesUtility resourceAtPath: self picturesDirectoryPath / 'smalltalk-80.png') ]
+		setPriority;
+		newTextWithFormat: (self
+				asText: 'Smalltalk was the first purely object-oriented language and environment, with the first interactive, graphical IDE.');
+		element: [ GtFilePictureLiveSlide new
+				fileReference: (GtResourcesUtility
+						resourceAtPath: self picturesDirectoryPath / 'smalltalk-80.png') ]
 ]
 
 { #category : #slides }
 SmalltalkIntroSlideshow >> syntax: aSlide [
 	<gtSlide>
 	^ aSlide lepiterPage
-		priority: (self priorityFor: #syntax:);
+		setPriority;
 		startPage: (self db pageNamed: 'Smalltalk Syntax (the funny bits)')
 ]
 
@@ -1197,22 +1181,24 @@ SmalltalkIntroSlideshow >> syntaxPage [
 
 { #category : #slides }
 SmalltalkIntroSlideshow >> takeHome: aSlide [
-
 	<gtSlide>
-	
-	^ (aSlide paragraph)
-		priority: (self priorityFor: #takeHome:);
+	^ aSlide paragraph
+		setPriority;
 		subtitleWithFormat: (self asSubtitle: 'Take home messages');
-		paragraphWithFormat:
-				(self
-						asText:
-							'
+		paragraphWithFormat: (self
+				asText: '
 
-• Smalltalk enables '), (self asText: 'live programming') italic, (self asText: '
+• Smalltalk enables ') , (self asText: 'live programming') italic
+				, (self
+						asText: '
 
-• Example methods enable '), (self asText: 'composable tests') italic, (self asText: ' and live interaction with test results
+• Example methods enable ') , (self asText: 'composable tests') italic
+				, (self
+						asText: ' and live interaction with test results
 
-• '), (self asText: 'Moldable development') italic, (self asText: ' brings together coding and exploration of live systems 
+• ') , (self asText: 'Moldable development') italic
+				, (self
+						asText: ' brings together coding and exploration of live systems 
 ')
 ]
 
@@ -1220,8 +1206,8 @@ SmalltalkIntroSlideshow >> takeHome: aSlide [
 SmalltalkIntroSlideshow >> threeKindsOfMessages: aSlide [
 	<gtSlide>
 	^ aSlide lepiterPage
-		priority: (self priorityFor: #threeKindsOfMessages:);
-		startPage:  (self db pageNamed: 'Three kinds of messages')
+		setPriority;
+		startPage: (self db pageNamed: 'Three kinds of messages')
 ]
 
 { #category : #page }
@@ -1337,9 +1323,8 @@ SmalltalkIntroSlideshow >> threeKindsOfMessagesPage [
 { #category : #slides }
 SmalltalkIntroSlideshow >> titleSlideFor: aSlide [
 	<gtSlide>
-	
-	^ (aSlide title)
-		priority: (self priorityFor: #titleSlideFor:);
+	^ aSlide title
+		setPriority;
 		titleBottomPadding: 30;
 		titleWithFormat: (self asTitle: 'A bit of Smalltalk');
 		subtitleWithFormat: (self asBigText: '@onierstrasz')
@@ -1348,14 +1333,11 @@ SmalltalkIntroSlideshow >> titleSlideFor: aSlide [
 { #category : #slides }
 SmalltalkIntroSlideshow >> twoRules: aSlide [
 	<gtSlide>
-	
-	^ (aSlide paragraph)
-		priority: (self priorityFor: #twoRules:);
+	^ aSlide paragraph
+		setPriority;
 		subtitleWithFormat: (self asSubtitle: 'Two rules');
-		paragraphWithFormat:
-				(self
-						asBigText:
-							'
+		paragraphWithFormat: (self
+				asBigText: '
 
 1. Everything is an object
 
@@ -1366,14 +1348,11 @@ SmalltalkIntroSlideshow >> twoRules: aSlide [
 { #category : #slides }
 SmalltalkIntroSlideshow >> whatsNext: aSlide [
 	<gtSlide>
-	
-	^ (aSlide paragraph)
-		priority: (self priorityFor: #whatsNext:);
+	^ aSlide paragraph
+		setPriority;
 		subtitleWithFormat: (self asSubtitle: 'What''s next?');
-		paragraphWithFormat:
-				(self
-						asText:
-							'
+		paragraphWithFormat: (self
+				asText: '
 
 • Download GT from gtoolkit.com
 
@@ -1388,6 +1367,6 @@ SmalltalkIntroSlideshow >> whatsNext: aSlide [
 { #category : #slides }
 SmalltalkIntroSlideshow >> worldExampleSlideFor: aSlide [
 	"<gtSlide>"
-	^ aSlide world
-		  priority: (self priorityFor: #worldExampleSlideFor:)
+
+	^ aSlide world setPriority
 ]

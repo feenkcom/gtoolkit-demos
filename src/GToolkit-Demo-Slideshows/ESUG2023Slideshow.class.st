@@ -7,13 +7,11 @@ Class {
 { #category : #slides }
 ESUG2023Slideshow >> challenges: aSlide [
 	<gtSlide>
-	<text:
-'# Challenges
+	<text: '# Challenges
 
 Let me round up with a couple of the biggest challenges we have encountered in trying to explain moldable development.'>
-
 	^ aSlide paragraph
-		priority: (self priorityFor: #challenges:);
+		setPriority;
 		subtitleWithFormat: (self asTitle: 'Challenges');
 		paragraphWithFormat: (self
 				asBigText: '
@@ -25,17 +23,15 @@ Let me round up with a couple of the biggest challenges we have encountered in t
 { #category : #slides }
 ESUG2023Slideshow >> conclusions: aSlide [
 	<gtSlide>
-	<text:
-'# Conclusions 
+	<text: '# Conclusions 
 
 In the end, what is important to convey is that Moldable Development is a *process* in which you ask questions about a software system, explore it, and build lots of small, custom tools to answer those questions and make the system explainable.
 
 Moldable Development is a new way of programming that takes time to learn, but that in the end boils down to a set of learnable patterns.
 
 Thanks for listening.'>
-
 	^ aSlide labelAndElement
-		priority: (self priorityFor: #conclusions:);
+		setPriority;
 		newTextWithFormat: (self asSubtitle: 'Conclusion');
 		newFadedText: '';
 		newFadedText: 'Moldable Development boils down to a set of learnable patterns.';
@@ -46,8 +42,7 @@ Thanks for listening.'>
 ESUG2023Slideshow >> contextualPlayground: aSlide [
 	<gtSlide>
 	<noTest>
-	<text:
-'## Pattern: Contextual playground
+	<text: '## Pattern: Contextual playground
 
 When you program in a conventional IDE, the code is strictly disconnected from any live instance.
 
@@ -68,10 +63,9 @@ For instance, the variable `repoDir` is bound to that slot of the live instance.
 We can experiment with code in the playground, and when we see something we like, we can copy the code to a method, or even directly apply an extract method refactoring.
 
 *(Extract the sample code as a `pillarFiles` method.)*'>
-
 	^ aSlide lepiterPage
-		priority: (self priorityFor: #contextualPlayground:);
-		startPage:  (self db pageNamed: 'Pattern: Contextual playground')
+		setPriority;
+		startPage: (self db pageNamed: 'Pattern: Contextual playground')
 ]
 
 { #category : #page }
@@ -108,16 +102,15 @@ ESUG2023Slideshow >> customAction: aSlide [
 	"LEAVE THIS OUT FOR NOW
 	
 	<gtSlide>"
-	<text:
-'TODO ## Pattern: Custom action
+
+	<text: 'TODO ## Pattern: Custom action
 
 
 
 '>
-
 	^ aSlide lepiterPage
-		priority: (self priorityFor: #customAction:);
-		startPage:  (self db pageNamed: 'Pattern: Custom action')
+		setPriority;
+		startPage: (self db pageNamed: 'Pattern: Custom action')
 ]
 
 { #category : #page }
@@ -137,8 +130,7 @@ ESUG2023Slideshow >> customActionPage [
 { #category : #slides }
 ESUG2023Slideshow >> discord: aSlide [
 	<gtSlide>
-	<text:
-'## Discord
+	<text: '## Discord
 
 Discord can be a great platform for community building, however it must be well-curated.
 
@@ -147,13 +139,11 @@ It''s critical not only to make people feel welcome and encouraged to ask any ki
 One interesting pattern in community building is to teach people when they share screenshots to capture an entire window showing the flows between snippets of code and views of interest.
 
 A well-designed screenshot goes a long way to telling a story or explaining an issue.'>
-
 	^ aSlide labelAndElement
-		priority: (self priorityFor: #discord:);
+		setPriority;
 		newTextWithFormat: (self asSubtitle: 'Building a community with Discord');
 		element: [ GtFilePictureLiveSlide new
-				fileReference: (GtResourcesUtility
-						resourceAtPath: self picturesDirectoryPath / 'discord.png') ]
+				fileReference: (GtResourcesUtility resourceAtPath: self picturesDirectoryPath / 'discord.png') ]
 ]
 
 { #category : #slides }
@@ -167,8 +157,7 @@ ESUG2023Slideshow >> esugWebsite [
 ESUG2023Slideshow >> exploringESUGWebsite: aSlide [
 	<gtSlide>
 	<noTest>
-	<text:
-'## Exploring the ESUG website
+	<text: '## Exploring the ESUG website
 
 Let''s take an easy domain that we are all familiar with, namely the ESUG website.
 
@@ -215,27 +204,22 @@ For example, here is a view, an action, and a search.
 Now we get the key question:
 
 How hard is it to teach people to build their own explainable system for their domain of interest?'>
-
 	^ aSlide labelAndElement
-		priority: (self priorityFor: #exploringESUGWebsite:);
+		setPriority;
 		newTextWithFormat: (self asSubtitle: 'Exploring the ESUG website');
-		element: [ (GtPager createWrappedOn: (GtInspector forObject: self esugWebsite))
-				maximized ]
+		element: [ (GtPager createWrappedOn: (GtInspector forObject: self esugWebsite)) maximized ]
 ]
 
 { #category : #slides }
 ESUG2023Slideshow >> gtBookPatternsPage: aSlide [
 	<gtSlide>
-	<text:
-'## GT Book: Moldable Development patterns
+	<text: '## GT Book: Moldable Development patterns
 
 These are some of the most basic moldable development patterns, which are described in further detail in the GT Book.'>
-		
 	^ aSlide element
-		priority: (self priorityFor: #gtBookPatternsPage:);
+		setPriority;
 		element: [ (GtPager
-				createWrappedOn: (LePagePhlowTool
-						page: (self gtBook pageNamed: 'Moldable Development patterns')))
+				createWrappedOn: (LePagePhlowTool page: (self gtBook pageNamed: 'Moldable Development patterns')))
 				maximized ]
 ]
 
@@ -251,17 +235,15 @@ ESUG2023Slideshow >> initializeDb [
 { #category : #accessing }
 ESUG2023Slideshow >> liveDocumentation: aSlide [
 	<gtSlide>
-	<text:
-'## Live documentation
+	<text: '## Live documentation
 
 GT comes with a live knowledge base of notebook pages documenting the system itself as well as numerous case studies.
 
 Here is a page describing how to interact with the GitHub REST API as a case study in Moldable Development.
 
 The GT book not only offers users documentation to read and live tutorials to try out, but also serves as examples for users to start their own projects from their personal database of notes.'>
-
 	^ aSlide labelAndElement
-		priority: (self priorityFor: #liveDocumentation:);
+		setPriority;
 		newTextWithFormat: (self asSubtitle: 'Live documentation');
 		element: [ (GtPager
 				createWrappedOn: (LePagePhlowTool
@@ -273,8 +255,7 @@ The GT book not only offers users documentation to read and live tutorials to tr
 ESUG2023Slideshow >> moldableObject: aSlide [
 	<gtSlide>
 	<noTest>
-	<text:
-'## Pattern: Moldable object
+	<text: '## Pattern: Moldable object
 
 This is perhaps the hardest pattern to learn.
 
@@ -303,10 +284,9 @@ We can directly go to the code and change, for example, the width of the *Link* 
 *(Opt-click on the Links tab and change the `300` width to `200`.)*
 
 From the moldable object we can experiment with new features, extract methods and examples or tests, and immediately see the effect.'>
-
 	^ aSlide lepiterPage
-		priority: (self priorityFor: #moldableObject:);
-		startPage:  (self db pageNamed: 'Pattern: Moldable object')
+		setPriority;
+		startPage: (self db pageNamed: 'Pattern: Moldable object')
 ]
 
 { #category : #page }
@@ -395,15 +375,13 @@ scenery addConnectionWithStencil: (GtSceneryLineStencil new) from: item8 to: ite
 { #category : #slides }
 ESUG2023Slideshow >> patterns: aSlide [
 	<gtSlide>
-	<text:
-'# Moldable Development Patterns
+	<text: '# Moldable Development Patterns
 
 Since Moldable Development is a *way* to develop explainable systems, rather than focusing on technology, it makes sense to start from the *patterns* that we observe when building such systems.
 
 Let''s have a look a few of these patterns.'>
-
 	^ aSlide paragraph
-		priority: (self priorityFor: #patterns:);
+		setPriority;
 		subtitleWithFormat: (self asTitle: 'Moldable Development Patterns');
 		paragraphWithFormat: (self
 				asBigText: '
@@ -414,8 +392,7 @@ express  best practices in the process of molding software to make it explainabl
 { #category : #slides }
 ESUG2023Slideshow >> peopleFocusOnWhatTheySeeFirst: aSlide [
 	<gtSlide>
-	<text:
-'## People focus on what they see first
+	<text: '## People focus on what they see first
 
 The Glamorous Toolkit contains many pieces of technology that fit together to support moldable development.
 
@@ -426,9 +403,8 @@ For example, visualization is an important component, but it is a mistake to equ
 *(Click around the visualization, and navigate to some pages.)*
 
 The same can be said for the live notebooks, the language workbench, or the pervasive use of examples.'>
-
 	^ aSlide labelAndElement
-		priority: (self priorityFor: #peopleFocusOnWhatTheySeeFirst:);
+		setPriority;
 		newTextWithFormat: (self asSubtitle: 'People focus on what they see first');
 		element: [ (GtPager createWrappedOn: GtTour new treemapWithBook) maximized ]
 ]
@@ -437,8 +413,7 @@ The same can be said for the live notebooks, the language workbench, or the perv
 ESUG2023Slideshow >> peopleHateChange: aSlide [
 	<gtSlide>
 	<noTest>
-	<text:
-'## People hate change
+	<text: '## People hate change
 
 People hate change, or perhaps rather it''s the case that it''s extremely hard for people to change habits once they have become ingrained.
 
@@ -451,12 +426,11 @@ What helps here best is live mentoring on a real project.
 When you see over and over again the benefits of coding from live objects, you begin to build up a Pavlovian instinct to stay away from the code editor as your starting point.
 
 Demos and videos also help, but they are not as effective as the first-hand experience.'>
-
 	^ aSlide elementAndElement
-		priority: (self priorityFor: #peopleHateChange:);
+		setPriority;
 		newTextWithFormat: (self asSubtitle: 'People hate change');
 		leftElement: [ (GtPager createWrappedOn: (GtCoder forClass: PillarWebsite)) maximized ];
-		rightElement: [ (GtPager createWrappedOn: (GtInspector forObject: EsugWebsite instance ))
+		rightElement: [ (GtPager createWrappedOn: (GtInspector forObject: EsugWebsite instance))
 				maximized ]
 ]
 
@@ -497,8 +471,7 @@ ESUG2023Slideshow >> slidePriorities [
 { #category : #slides }
 ESUG2023Slideshow >> titleSlide: aSlide [
 	<gtSlide>
-	<text: 
-'# Teaching Moldable Development
+	<text: '# Teaching Moldable Development
 
 Hi. My name is Oscar Nierstrasz.
 
@@ -507,9 +480,8 @@ Today I''d like to report on the challenges and and insights we have experienced
 Moldable development is a *new* way of programming.
 
 In many ways it looks like programming as we are used to it, but it actually entails fundamentally different ways of thinking about programming, and new *patterns* of programming.'>
-
 	^ aSlide titleWithFooter
-		priority: (self priorityFor: #titleSlide:);
+		setPriority;
 		titleBottomPadding: 20;
 		subtitleBottomPadding: 40;
 		titleWithFormat: (self asTitle: 'Teaching Moldable Development');
@@ -519,8 +491,7 @@ In many ways it looks like programming as we are used to it, but it actually ent
 { #category : #slides }
 ESUG2023Slideshow >> videos: aSlide [
 	<gtSlide>
-	<text:
-'## Videos
+	<text: '## Videos
 
 Some people love to watch long, meandering videos at double speed, but I''m not one of them.
 
@@ -528,7 +499,7 @@ A short, compact video can be a very effective way to explain and demonstrate a 
 
 It can take more time to prepare a seven minute video than one that runs over an hour.'>
 	^ aSlide labelAndElement
-		priority: (self priorityFor: #videos:);
+		setPriority;
 		newTextWithFormat: (self asSubtitle: 'Short videos on specific topics');
 		element: [ (GtPager
 				createWrappedOn: (LePagePhlowTool page: (self gtBook pageNamed: 'Getting started with GT in 7''')))
@@ -539,8 +510,7 @@ It can take more time to prepare a seven minute video than one that runs over an
 ESUG2023Slideshow >> viewableDataWrapper: aSlide [
 	<gtSlide>
 	<noTest>
-	<text:
-'## Pattern: Viewable data wrapper
+	<text: '## Pattern: Viewable data wrapper
 
 Although sometimes you may have the luxury to work on a greenfield project, most projects start from some existing data and code.
 
@@ -565,10 +535,9 @@ But now we have the possibility to explore it, add behavior, and add new views.
 After some iterations we obtain the view we have seen earlier.
 
 *(Inspect the last snippet.)*'>
-
 	^ aSlide lepiterPage
-		priority: (self priorityFor: #viewableDataWrapper:);
-		startPage:  (self db pageNamed: 'Pattern: Viewable data wrapper')
+		setPriority;
+		startPage: (self db pageNamed: 'Pattern: Viewable data wrapper')
 ]
 
 { #category : #page }
@@ -607,8 +576,7 @@ repoDir';
 ESUG2023Slideshow >> viewableEntity: aSlide [
 	<gtSlide>
 	<noTest>
-	<text:
-'## Pattern: Viewable Entity
+	<text: '## Pattern: Viewable Entity
 
 How  do you know when to create a custom view?
 
@@ -627,10 +595,9 @@ We could copy-paste the code and later adapt it, but as a first quick step we ca
 We just open a Coder view and add the view that forwards to the existing view of the pages collection.
 
 The new view is instantly available.'>
-
 	^ aSlide lepiterPage
-		priority: (self priorityFor: #viewableEntity:);
-		startPage:  (self db pageNamed: 'Pattern: Viewable Entity')
+		setPriority;
+		startPage: (self db pageNamed: 'Pattern: Viewable Entity')
 ]
 
 { #category : #page }
@@ -671,8 +638,7 @@ ESUG2023Slideshow >> viewableEntityPage [
 { #category : #slides }
 ESUG2023Slideshow >> whatIsMD: aSlide [
 	<gtSlide>
-	<text:
-'# What is Moldable Development?
+	<text: '# What is Moldable Development?
 
 Moldable Development is a way of programming in which you build custom tools for each problem.
 
@@ -680,7 +646,7 @@ In this way the system becomes *explainable*, and thus supports decision making 
 
 Let''s look at a simple example.'>
 	^ aSlide paragraph
-		priority: (self priorityFor: #whatIsMD:);
+		setPriority;
 		subtitleWithFormat: (self asTitle: 'What is Moldable Development?');
 		paragraphWithFormat: (self
 				asBigText: '
@@ -692,15 +658,13 @@ Moldable development supports decision making by making domain concepts ')
 { #category : #slides }
 ESUG2023Slideshow >> whatWorks: aSlide [
 	<gtSlide>
-	<text:
-'# What works?
+	<text: '# What works?
 
 Teaching Moldable Development is challenging not only because there are the patterns to learn and a fair bit of technology to get acquainted with.
 
 Here are a few things that ease the learning process.'>
-
 	^ aSlide paragraph
-		priority: (self priorityFor: #whatWorks:);
+		setPriority;
 		subtitleWithFormat: (self asTitle: 'What works?');
 		paragraphWithFormat: (self
 				asBigText: '

@@ -18,9 +18,9 @@ DemoSlideshow >> coderExampleSlideFor: aSlide [
 	<gtSlide>
 	<text: 'A live Coder tool'>
 	^ aSlide labelAndElement
-		priority: (self priorityFor: #coderExampleSlideFor:);
-		newFadedText: ('Feel free to explore.' asRopedText);
-		element: [GtCoderElement new createInPager maximized].
+		setPriority;
+		newFadedText: 'Feel free to explore.' asRopedText;
+		element: [ GtCoderElement new createInPager maximized ]
 ]
 
 { #category : #page }
@@ -42,15 +42,15 @@ DemoSlideshow >> dynamicLepiterPage: aSlide [
 	<gtSlide>
 	<text: 'A dynamic page from the internal database.'>
 	^ aSlide lepiterPage
-		priority: (self priorityFor: #dynamicLepiterPage:);
-		startPage:  (self db pageNamed: 'A dynamic Lepiter page')
+		setPriority;
+		startPage: (self db pageNamed: 'A dynamic Lepiter page')
 ]
 
 { #category : #slides }
 DemoSlideshow >> gtWorld: aSlide [
 	<gtSlide>
 	<text: 'A live embedded GT world'>
-	^ aSlide world priority: (self priorityFor: #gtWorld:)
+	^ aSlide world setPriority
 ]
 
 { #category : #slides }
@@ -58,11 +58,9 @@ DemoSlideshow >> headingAndCode: aSlide [
 	<gtSlide>
 	<text: 'Slide with a heading and code snippets to evaluate'>
 	^ aSlide headingAndCode
-		priority: (self priorityFor: #headingAndCode:);
+		setPriority;
 		heading: 'Heading';
-		
 		addTextSnippet: 'Text snippet';
-		
 		addCodeSnippet: '"Code to evaluate."
 3+4.'
 ]
@@ -78,7 +76,7 @@ DemoSlideshow >> inspectorInPager: aSlide [
 	<text: 'An Inspector on an object.
 NB: the pager is needed so we can navigate to new pages.'>
 	^ aSlide element
-		priority: (self priorityFor: #inspectorInPager:);
+		setPriority;
 		element: [ (GtPager
 				createWrappedOn: (GtInspector forObject: GtLudoRecordingGameExamples new gameShowingAllMoves2))
 				maximized ]
@@ -89,7 +87,7 @@ DemoSlideshow >> lepiterPage: aSlide [
 	<gtSlide>
 	<text: 'A lepiter page from the GT Book'>
 	^ aSlide lepiterPage
-		priority: (self priorityFor: #lepiterPage:);
+		setPriority;
 		pageNamed: 'Lepiter' from: self gtBookName;
 		yourself
 ]
@@ -99,9 +97,10 @@ DemoSlideshow >> maximizedGtBookPage: aSlide [
 	<gtSlide>
 	<text: 'A maximized GT book page.'>
 	^ aSlide element
-		priority: (self priorityFor: #maximizedPage:);
+		setPriority;
 		element: [ (GtPager
-				createWrappedOn: (LePagePhlowTool page: (self gtBook pageNamed: 'Working with a REST API: the GitHub case study')))
+				createWrappedOn: (LePagePhlowTool
+						page: (self gtBook pageNamed: 'Working with a REST API: the GitHub case study')))
 				maximized ]
 ]
 
@@ -110,7 +109,7 @@ DemoSlideshow >> maximizedPage: aSlide [
 	<gtSlide>
 	<text: 'A maximized lepiter page that can still be browsed.'>
 	^ aSlide element
-		priority: (self priorityFor: #maximizedPage:);
+		setPriority;
 		element: [ (GtPager
 				createWrappedOn: (LePagePhlowTool page: (self db pageNamed: 'A dynamic Lepiter page')))
 				maximized ]
@@ -120,13 +119,11 @@ DemoSlideshow >> maximizedPage: aSlide [
 DemoSlideshow >> paragraph: aSlide [
 	<gtSlide>
 	<text: 'Text with a paragraph'>
-	^ (aSlide paragraph)
-		priority: (self priorityFor: #paragraph:);
+	^ aSlide paragraph
+		setPriority;
 		subtitleWithFormat: (self asSubtitle: 'Outline');
-		paragraphWithFormat:
-				(self
-						asText:
-							'Paragraph body.
+		paragraphWithFormat: (self
+				asText: 'Paragraph body.
 Possibly over multiple lines.
 ')
 ]
@@ -155,7 +152,7 @@ DemoSlideshow >> slidePriorities [
 DemoSlideshow >> spotterExampleSlideFor: aSlide [
 	<gtSlide>
 	<text: 'A spotter search'>
-	^ aSlide spotter priority: (self priorityFor: #spotterExampleSlideFor:)
+	^ aSlide spotter setPriority
 ]
 
 { #category : #slides }
@@ -164,11 +161,8 @@ DemoSlideshow >> textAndElement: aSlide [
 	<text: 'Text with an element'>
 	^ aSlide textAndElement
 		elementWeight: 0.5;
-		priority: (self priorityFor: #textAndElement:);
-		newTextWithFormat: 
-			(self asHeader: 'Header') bold , 
-			self cr , 
-			(self asText: 'description');
+		setPriority;
+		newTextWithFormat: (self asHeader: 'Header') bold , self cr , (self asText: 'description');
 		element: [ GtLudoGame new asElement asScalableElement ]
 ]
 
@@ -177,9 +171,8 @@ DemoSlideshow >> textAndImage: aSlide [
 	<gtSlide>
 	^ aSlide textAndElement
 		elementWeight: 0.60;
-		priority: (self priorityFor: #textAndImage:);
-		newTextWithFormat: (self
-				asText: 'This will also with with any XandElement slide');
+		setPriority;
+		newTextWithFormat: (self asText: 'This will also with with any XandElement slide');
 		element: [ GtFilePictureLiveSlide new
 				fileReference: (GtResourcesUtility
 						resourceAtPath: self picturesDirectoryPath / 'smalltalk-80.png') ]
@@ -190,7 +183,8 @@ DemoSlideshow >> titleSlideFor: aSlide [
 	<gtSlide>
 	<text: 'A title slide'>
 	^ (aSlide title)
-		priority: (self priorityFor: #titleSlideFor:);
+		"priority: (self priorityFor: #titleSlideFor:);"
+		setPriority;
 		titleBottomPadding: 30;
 		titleWithFormat: (self asTitle: 'Title');
 		subtitleWithFormat: (self asBigText: 'subtitle')
