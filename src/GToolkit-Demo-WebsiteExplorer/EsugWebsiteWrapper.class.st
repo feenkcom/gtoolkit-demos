@@ -1,5 +1,5 @@
 "
-I am a basic wrapper for the ESUG website, used to demonstrate the Moldable Development pattern *Wrap data to create an explorable model* in {{gtClass:name=ESUG2023Slideshow}}. 
+I am a basic wrapper for the ESUG website, used to demonstrate the Moldable Development pattern *Wrap data to create an explorable model* in {{gtClass:name=TeachingMoldableDevelopmentSlideshow}}. 
 "
 Class {
 	#name : #EsugWebsiteWrapper,
