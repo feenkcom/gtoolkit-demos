@@ -1,11 +1,14 @@
+"
+Slideshow for ESUG 2023 talk on “Teaching Moldable Development”.
+"
 Class {
-	#name : #ESUG2023Slideshow,
+	#name : #TeachingMoldableDevelopmentSlideshow,
 	#superclass : #PrioritySlideshow,
 	#category : #'GToolkit-Demo-Slideshows-Slideshows'
 }
 
 { #category : #slides }
-ESUG2023Slideshow >> challenges: aSlide [
+TeachingMoldableDevelopmentSlideshow >> challenges: aSlide [
 	<gtSlide>
 	<text: '# Challenges
 
@@ -21,7 +24,7 @@ Let me round up with a couple of the biggest challenges we have encountered in t
 ]
 
 { #category : #slides }
-ESUG2023Slideshow >> conclusions: aSlide [
+TeachingMoldableDevelopmentSlideshow >> conclusions: aSlide [
 	<gtSlide>
 	<text: '# Conclusions 
 
@@ -39,7 +42,7 @@ Thanks for listening.'>
 ]
 
 { #category : #slides }
-ESUG2023Slideshow >> contextualPlayground: aSlide [
+TeachingMoldableDevelopmentSlideshow >> contextualPlayground: aSlide [
 	<gtSlide>
 	<noTest>
 	<text: '## Pattern: Contextual playground
@@ -69,7 +72,7 @@ We can experiment with code in the playground, and when we see something we like
 ]
 
 { #category : #page }
-ESUG2023Slideshow >> contextualPlaygroundPage [
+TeachingMoldableDevelopmentSlideshow >> contextualPlaygroundPage [
 	<gtExample>
 	<noTest>
 	^ (LePage named: 'Pattern: Contextual playground')
@@ -98,7 +101,7 @@ ESUG2023Slideshow >> contextualPlaygroundPage [
 ]
 
 { #category : #slides }
-ESUG2023Slideshow >> customAction: aSlide [
+TeachingMoldableDevelopmentSlideshow >> customAction: aSlide [
 	"LEAVE THIS OUT FOR NOW
 	
 	<gtSlide>"
@@ -114,7 +117,7 @@ ESUG2023Slideshow >> customAction: aSlide [
 ]
 
 { #category : #page }
-ESUG2023Slideshow >> customActionPage [
+TeachingMoldableDevelopmentSlideshow >> customActionPage [
 	<gtExample>
 	<noTest>
 	^ (LePage named: 'Pattern: Custom action')
@@ -128,7 +131,7 @@ ESUG2023Slideshow >> customActionPage [
 ]
 
 { #category : #slides }
-ESUG2023Slideshow >> discord: aSlide [
+TeachingMoldableDevelopmentSlideshow >> discord: aSlide [
 	<gtSlide>
 	<text: '## Discord
 
@@ -147,14 +150,14 @@ A well-designed screenshot goes a long way to telling a story or explaining an i
 ]
 
 { #category : #slides }
-ESUG2023Slideshow >> esugWebsite [
+TeachingMoldableDevelopmentSlideshow >> esugWebsite [
 	<gtExample>
 	<noTest>
 	^ EsugWebsite instance 
 ]
 
 { #category : #slides }
-ESUG2023Slideshow >> exploringESUGWebsite: aSlide [
+TeachingMoldableDevelopmentSlideshow >> exploringESUGWebsite: aSlide [
 	<gtSlide>
 	<noTest>
 	<text: '## Exploring the ESUG website
@@ -211,7 +214,7 @@ How hard is it to teach people to build their own explainable system for their d
 ]
 
 { #category : #slides }
-ESUG2023Slideshow >> gtBookPatternsPage: aSlide [
+TeachingMoldableDevelopmentSlideshow >> gtBookPatternsPage: aSlide [
 	<gtSlide>
 	<text: '## GT Book: Moldable Development patterns
 
@@ -224,7 +227,7 @@ These are some of the most basic moldable development patterns, which are descri
 ]
 
 { #category : #initialization }
-ESUG2023Slideshow >> initializeDb [
+TeachingMoldableDevelopmentSlideshow >> initializeDb [
 	self db addPage: self moldableObjectPage.
 	self db addPage: self viewableDataWrapperPage.
 	self db addPage: self contextualPlaygroundPage.
@@ -233,7 +236,7 @@ ESUG2023Slideshow >> initializeDb [
 ]
 
 { #category : #accessing }
-ESUG2023Slideshow >> liveDocumentation: aSlide [
+TeachingMoldableDevelopmentSlideshow >> liveDocumentation: aSlide [
 	<gtSlide>
 	<text: '## Live documentation
 
@@ -252,7 +255,7 @@ The GT book not only offers users documentation to read and live tutorials to tr
 ]
 
 { #category : #slides }
-ESUG2023Slideshow >> moldableObject: aSlide [
+TeachingMoldableDevelopmentSlideshow >> moldableObject: aSlide [
 	<gtSlide>
 	<noTest>
 	<text: '## Pattern: Moldable object
@@ -290,7 +293,7 @@ From the moldable object we can experiment with new features, extract methods an
 ]
 
 { #category : #page }
-ESUG2023Slideshow >> moldableObjectPage [
+TeachingMoldableDevelopmentSlideshow >> moldableObjectPage [
 	<gtExample>
 	<noTest>
 	^ (LePage named: 'Pattern: Moldable object')
@@ -316,7 +319,7 @@ ESUG2023Slideshow >> moldableObjectPage [
 ]
 
 { #category : #accessing }
-ESUG2023Slideshow >> patternMapScenery [
+TeachingMoldableDevelopmentSlideshow >> patternMapScenery [
 	<gtExample>
 	<noTest>
 	| scenery item1 item2 item3 item4 item5 item6 item7 item8 item9 |
@@ -373,7 +376,7 @@ scenery addConnectionWithStencil: (GtSceneryLineStencil new) from: item8 to: ite
 ]
 
 { #category : #slides }
-ESUG2023Slideshow >> patterns: aSlide [
+TeachingMoldableDevelopmentSlideshow >> patterns: aSlide [
 	<gtSlide>
 	<text: '# Moldable Development Patterns
 
@@ -390,7 +393,7 @@ express  best practices in the process of molding software to make it explainabl
 ]
 
 { #category : #slides }
-ESUG2023Slideshow >> peopleFocusOnWhatTheySeeFirst: aSlide [
+TeachingMoldableDevelopmentSlideshow >> peopleFocusOnWhatTheySeeFirst: aSlide [
 	<gtSlide>
 	<text: '## People focus on what they see first
 
@@ -410,7 +413,7 @@ The same can be said for the live notebooks, the language workbench, or the perv
 ]
 
 { #category : #slides }
-ESUG2023Slideshow >> peopleHateChange: aSlide [
+TeachingMoldableDevelopmentSlideshow >> peopleHateChange: aSlide [
 	<gtSlide>
 	<noTest>
 	<text: '## People hate change
@@ -435,7 +438,7 @@ Demos and videos also help, but they are not as effective as the first-hand expe
 ]
 
 { #category : #accessing }
-ESUG2023Slideshow >> slidePriorities [
+TeachingMoldableDevelopmentSlideshow >> slidePriorities [
 	"This method defines the slide priorities implicitly by their order instead of by fixed numbers.
 	See also: PrioritySlideshow>>#priorityFor:"
 	<gtExample>
@@ -469,7 +472,7 @@ ESUG2023Slideshow >> slidePriorities [
 ]
 
 { #category : #slides }
-ESUG2023Slideshow >> titleSlide: aSlide [
+TeachingMoldableDevelopmentSlideshow >> titleSlide: aSlide [
 	<gtSlide>
 	<text: '# Teaching Moldable Development
 
@@ -489,7 +492,7 @@ In many ways it looks like programming as we are used to it, but it actually ent
 ]
 
 { #category : #slides }
-ESUG2023Slideshow >> videos: aSlide [
+TeachingMoldableDevelopmentSlideshow >> videos: aSlide [
 	<gtSlide>
 	<text: '## Videos
 
@@ -507,7 +510,7 @@ It can take more time to prepare a seven minute video than one that runs over an
 ]
 
 { #category : #slides }
-ESUG2023Slideshow >> viewableDataWrapper: aSlide [
+TeachingMoldableDevelopmentSlideshow >> viewableDataWrapper: aSlide [
 	<gtSlide>
 	<noTest>
 	<text: '## Pattern: Viewable data wrapper
@@ -541,7 +544,7 @@ After some iterations we obtain the view we have seen earlier.
 ]
 
 { #category : #page }
-ESUG2023Slideshow >> viewableDataWrapperPage [
+TeachingMoldableDevelopmentSlideshow >> viewableDataWrapperPage [
 	<gtExample>
 	<noTest>
 	^ (LePage named: 'Pattern: Viewable data wrapper')
@@ -573,7 +576,7 @@ repoDir';
 ]
 
 { #category : #slides }
-ESUG2023Slideshow >> viewableEntity: aSlide [
+TeachingMoldableDevelopmentSlideshow >> viewableEntity: aSlide [
 	<gtSlide>
 	<noTest>
 	<text: '## Pattern: Viewable Entity
@@ -601,7 +604,7 @@ The new view is instantly available.'>
 ]
 
 { #category : #page }
-ESUG2023Slideshow >> viewableEntityPage [
+TeachingMoldableDevelopmentSlideshow >> viewableEntityPage [
 	<gtExample>
 	<noTest>
 	^ (LePage named: 'Pattern: Viewable Entity')
@@ -636,7 +639,7 @@ ESUG2023Slideshow >> viewableEntityPage [
 ]
 
 { #category : #slides }
-ESUG2023Slideshow >> whatIsMD: aSlide [
+TeachingMoldableDevelopmentSlideshow >> whatIsMD: aSlide [
 	<gtSlide>
 	<text: '# What is Moldable Development?
 
@@ -656,7 +659,7 @@ Moldable development supports decision making by making domain concepts ')
 ]
 
 { #category : #slides }
-ESUG2023Slideshow >> whatWorks: aSlide [
+TeachingMoldableDevelopmentSlideshow >> whatWorks: aSlide [
 	<gtSlide>
 	<text: '# What works?
 
