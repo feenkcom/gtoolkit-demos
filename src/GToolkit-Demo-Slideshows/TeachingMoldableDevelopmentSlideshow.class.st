@@ -318,7 +318,7 @@ TeachingMoldableDevelopmentSlideshow >> moldableObjectPage [
 		yourself
 ]
 
-{ #category : #accessing }
+{ #category : #figures }
 TeachingMoldableDevelopmentSlideshow >> patternMapScenery [
 	<gtExample>
 	<noTest>
