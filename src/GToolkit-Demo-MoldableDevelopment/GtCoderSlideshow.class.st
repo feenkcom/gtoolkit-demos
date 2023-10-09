@@ -100,60 +100,57 @@ GtCoderSlideshow >> baselineMethodsExplanationText [
 { #category : #accessing }
 GtCoderSlideshow >> baselineMethodsExplanationWithLinks [
 	<gtExample>
-	| classCoderElement aScripter baselineTarget expandBaselineTarget pragmaTarget expandedMethodElement |		
-		
+	| classCoderElement aScripter baselineTarget expandBaselineTarget pragmaTarget expandedMethodElement |
 	classCoderElement := BlScripter new
-		element: (GtClassCoderLiveSlide new class: BaselineOfGToolkit; expandMethodAt: 1) asElement;
-		elementWithoutParent.
-	
+			element: (GtClassCoderLiveSlide new
+					class: BaselineOfGToolkit;
+					expandMethodAt: 1) asElement;
+			elementWithoutParent.
+
 	expandedMethodElement := classCoderElement
-		allChildrenBreadthFirstDetect: [:aChild |
-			aChild isKindOf: BrInfiniteListElement]
-		ifFound: [:aChild | aChild childAt: 1].
+			allChildrenBreadthFirstDetect: [ :aChild | aChild isKindOf: BrInfiniteListElement ]
+			ifFound: [ :aChild | aChild childAt: 1 ].
 	pragmaTarget := expandedMethodElement
-		allChildrenBreadthFirstDetect: [:aChild |
-			(aChild isKindOf: BrTextElementWithCursors) and: [aChild text asString includesSubstring: '<baseline>']]
-		ifFound: [:aChild | aChild].
+			allChildrenBreadthFirstDetect: [ :aChild | 
+				(aChild isKindOf: BrTextElementWithCursors)
+					and: [ aChild text asString includesSubstring: '<baseline>' ] ]
+			ifFound: [ :aChild | aChild ].
 	baselineTarget := expandedMethodElement
-		allChildrenBreadthFirstDetect: [:aChild |
-			(aChild isKindOf: BrTextElementWithCursors) and: [aChild text asString includesSubstring: '''GToolkitClipboard''' ]]
-		ifFound: [:aChild | aChild].
+			allChildrenBreadthFirstDetect: [ :aChild | 
+				(aChild isKindOf: BrTextElementWithCursors)
+					and: [ aChild text asString includesSubstring: '''GToolkitClipboard''' ] ]
+			ifFound: [ :aChild | aChild ].
 	expandBaselineTarget := baselineTarget parent
-		allChildrenBreadthFirstDetect: [:aChild | aChild isKindOf: BrTriangle ]
-		ifFound: [:aChild | aChild].
-	
+			allChildrenBreadthFirstDetect: [ :aChild | aChild isKindOf: BrTriangle ]
+			ifFound: [ :aChild | aChild ].
+
 	pragmaTarget
-		addChild:
-			((self yellowExplanationTargetCircleFor: #baseline)
-					relocate:
-						(2 @ pragmaTarget extent y / 2)).
+		addChild: ((self yellowExplanationTargetCircleFor: #baseline)
+				relocate: 2 @ pragmaTarget extent y / 2).
 	baselineTarget
-		addChild:
-			((self yellowExplanationTargetCircleFor: #string)
-					relocate:
-						(2 @ baselineTarget extent y / 2)).
+		addChild: ((self yellowExplanationTargetCircleFor: #string)
+				relocate: 2 @ baselineTarget extent y / 2).
 	expandBaselineTarget
-		addChild:
-			((self yellowExplanationTargetCircleFor: #expandButton)
-					relocate:
-						(2 @ expandBaselineTarget extent y / 2)).
-	
+		addChild: ((self yellowExplanationTargetCircleFor: #expandButton)
+				relocate: 2 @ expandBaselineTarget extent y / 2).
+
 	aScripter := BlScripter new.
 	aScripter element: classCoderElement.
 
-	aScripter click
-		label: 'Expand baseline in place';
-		id: GtSourceCoderEmbeddedExpanderToggleId index: 1;
-		play.
+	aScripter
+		clickStep: [ :s | 
+			s
+				label: 'Expand baseline in place';
+				id: GtSourceCoderEmbeddedExpanderToggleId index: 1 ].
 
 	^ BlElement new
-		constraintsDo: [:c |
+		constraintsDo: [ :c | 
 			c vertical matchParent.
-			c horizontal matchParent];
+			c horizontal matchParent ];
 		aptitude: BrShadowAptitude;
 		background: Color white;
 		margin: (BlInsets all: 5);
-		addChild: aScripter elementWithoutParent.
+		addChild: aScripter elementWithoutParent
 ]
 
 { #category : #accessing }
@@ -587,58 +584,49 @@ GtCoderSlideshow >> createMethodExplanationText [
 GtCoderSlideshow >> createMethodExplanationWithLinks [
 	<gtExample>
 	| classCoderElement addMethodButton aScripter newFrameTarget saveButtonTarget removeButtonTarget |
-		
 	aScripter := BlScripter new.
 	aScripter element: (GtClassCoderLiveSlide new class: GtABAddressBook) asElement.
 
-	aScripter click
-		label: 'Click add method button';
-		id: GtPharoAddNewMethodButtonId;
-		play.
+	aScripter
+		clickStep: [ :s | 
+			s
+				label: 'Click add method button';
+				id: GtPharoAddNewMethodButtonId ].
 
 	classCoderElement := aScripter rootWithoutParent.
 
-	newFrameTarget := (classCoderElement query // GtSourceCoderExpandedContentElement) anyOne.
+	newFrameTarget := (classCoderElement query
+			// GtSourceCoderExpandedContentElement) anyOne.
 
 	newFrameTarget
-		allChildrenBreadthFirstDetect: [:aChild |
-			aChild isKindOf: BrToolbar]
-		ifFound: [:aChild |
+		allChildrenBreadthFirstDetect: [ :aChild | aChild isKindOf: BrToolbar ]
+		ifFound: [ :aChild | 
 			saveButtonTarget := aChild childAt: 1.
-			removeButtonTarget := aChild childAt: 2].
+			removeButtonTarget := aChild childAt: 2 ].
 
-	addMethodButton := classCoderElement
-		childWithId: GtPharoAddNewMethodButtonId.
-	
+	addMethodButton := classCoderElement childWithId: GtPharoAddNewMethodButtonId.
+
 	addMethodButton
-		addChild:
-			((self yellowExplanationTargetCircleFor: #addMethodButton)
-					relocate:
-						(2 @ addMethodButton extent y / 2)).
+		addChild: ((self yellowExplanationTargetCircleFor: #addMethodButton)
+				relocate: 2 @ addMethodButton extent y / 2).
 	newFrameTarget
-		addChild:
-			((self yellowExplanationTargetCircleFor: #method)
-					relocate:
-						(2 @ newFrameTarget extent y / 2)).
+		addChild: ((self yellowExplanationTargetCircleFor: #method)
+				relocate: 2 @ newFrameTarget extent y / 2).
 	saveButtonTarget
-		addChild:
-			((self yellowExplanationTargetCircleFor: #saveMethodButton)
-					relocate:
-						(2 @ saveButtonTarget extent y / 2)).
+		addChild: ((self yellowExplanationTargetCircleFor: #saveMethodButton)
+				relocate: 2 @ saveButtonTarget extent y / 2).
 	removeButtonTarget
-		addChild:
-			((self yellowExplanationTargetCircleFor: #deleteMethodButton)
-					relocate:
-						(2 @ removeButtonTarget extent y / 2)).
-			
+		addChild: ((self yellowExplanationTargetCircleFor: #deleteMethodButton)
+				relocate: 2 @ removeButtonTarget extent y / 2).
+
 	^ BlElement new
-		constraintsDo: [:c |
+		constraintsDo: [ :c | 
 			c vertical matchParent.
-			c horizontal matchParent];
+			c horizontal matchParent ];
 		aptitude: BrShadowAptitude;
 		background: Color white;
 		margin: (BlInsets all: 5);
-		addChild: classCoderElement.
+		addChild: classCoderElement
 ]
 
 { #category : #accessing }
@@ -673,56 +661,52 @@ GtCoderSlideshow >> exampleMethodsExplanationText [
 GtCoderSlideshow >> exampleMethodsExplanationWithLinks [
 	<gtExample>
 	| classCoderElement pragmaTarget inspectTarget evaluateTarget debugTarget aScripter expandedMethodElement buttonsList |
-	
-	classCoderElement := (GtInspector createOn:(GtPharoBehaviorCoder forClass: GtABAddressBookExample)) maximized.
-	
+	classCoderElement := (GtInspector
+			createOn: (GtPharoBehaviorCoder forClass: GtABAddressBookExample)) maximized.
+
 	aScripter := BlScripter new.
 	aScripter element: classCoderElement.
 
-	aScripter click
-		label: 'Expand first method';
-		// (GtSourceCoderId indexed: 1);
-		play.
+	aScripter
+		clickStep: [ :s | 
+			s
+				label: 'Expand first method';
+				// (GtSourceCoderId indexed: 1) ].
 
 	classCoderElement := aScripter elementWithoutParent.
 
 	expandedMethodElement := classCoderElement
-		allChildrenBreadthFirstDetect: [:aChild |
-			aChild isKindOf: BrInfiniteListElement]
-		ifFound: [:aChild | aChild childAt: 1].
+			allChildrenBreadthFirstDetect: [ :aChild | aChild isKindOf: BrInfiniteListElement ]
+			ifFound: [ :aChild | aChild childAt: 1 ].
 	pragmaTarget := expandedMethodElement
-		allChildrenBreadthFirstDetect: [:aChild |
-			(aChild isKindOf: BrTextElementWithCursors) and: [aChild text asString includesSubstring: '<gtExample>' ]]
-		ifFound: [:aChild | aChild].
+			allChildrenBreadthFirstDetect: [ :aChild | 
+				(aChild isKindOf: BrTextElementWithCursors)
+					and: [ aChild text asString includesSubstring: '<gtExample>' ] ]
+			ifFound: [ :aChild | aChild ].
 	buttonsList := expandedMethodElement
-		allChildrenBreadthFirstSelect: [:aChild | aChild isKindOf: BrButton].
+			allChildrenBreadthFirstSelect: [ :aChild | aChild isKindOf: BrButton ].
 
-	evaluateTarget := expandedMethodElement childNamed: GtMethodCoderPlayExampleActionId.
-	inspectTarget := expandedMethodElement childNamed: GtMethodCoderPlayAndInspectExampleActionId.
-	debugTarget := expandedMethodElement childNamed: GtMethodCoderDebugExampleActionId.
+	evaluateTarget := expandedMethodElement
+			childNamed: GtMethodCoderPlayExampleActionId.
+	inspectTarget := expandedMethodElement
+			childNamed: GtMethodCoderPlayAndInspectExampleActionId.
+	debugTarget := expandedMethodElement
+			childNamed: GtMethodCoderDebugExampleActionId.
 
 	pragmaTarget
-		addChild:
-			((self yellowExplanationTargetCircleFor: #gtView)
-					relocate:
-						(2 @ pragmaTarget extent y / 2)).
+		addChild: ((self yellowExplanationTargetCircleFor: #gtView)
+				relocate: 2 @ pragmaTarget extent y / 2).
 	evaluateTarget
-		addChild:
-			((self yellowExplanationTargetCircleFor: #evaluateButton)
-					relocate:
-						(2 @ evaluateTarget extent y / 2)).
+		addChild: ((self yellowExplanationTargetCircleFor: #evaluateButton)
+				relocate: 2 @ evaluateTarget extent y / 2).
 	inspectTarget
-		addChild:
-			((self yellowExplanationTargetCircleFor: #inspectButton)
-					relocate:
-						(2 @ inspectTarget extent y / 2)).
+		addChild: ((self yellowExplanationTargetCircleFor: #inspectButton)
+				relocate: 2 @ inspectTarget extent y / 2).
 	debugTarget
-		addChild:
-			((self yellowExplanationTargetCircleFor: #debugButton)
-					relocate:
-						(2 @ debugTarget extent y / 2)).
-	
-	^ classCoderElement.
+		addChild: ((self yellowExplanationTargetCircleFor: #debugButton)
+				relocate: 2 @ debugTarget extent y / 2).
+
+	^ classCoderElement
 ]
 
 { #category : #accessing }

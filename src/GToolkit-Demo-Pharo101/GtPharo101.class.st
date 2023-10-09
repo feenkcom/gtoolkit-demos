@@ -485,41 +485,39 @@ GtPharo101 >> shortPlaygroundExplanation [
 	<gtExample>
 	| container playgroundElement newSnippetButtons inspectButtons aScripter snippets |
 	container := BlElement new
-		constraintsDo: [ :c | 
-			c vertical matchParent.
-			c horizontal matchParent ];
-		layout: BlLinearLayout horizontal;
-		margin: (BlInsets all: 5);
-		background: Color white;
-		aptitude: BrShadowAptitude.
+			constraintsDo: [ :c | 
+				c vertical matchParent.
+				c horizontal matchParent ];
+			layout: BlLinearLayout horizontal;
+			margin: (BlInsets all: 5);
+			background: Color white;
+			aptitude: BrShadowAptitude.
 	newSnippetButtons := OrderedCollection new.
 	inspectButtons := OrderedCollection new.
 	playgroundElement := GtPlaygroundLiveSlide new
-		snippets:
-			{'a := 2.
-a + 5' . 'b := 1.
+			snippets: {'a := 2.
+a + 5'.
+					'b := 1.
 a - b'};
-		asElement.
+			asElement.
 	aScripter := BlScripter new.
 	aScripter element: playgroundElement.
 	aScripter
 		substep: 'Selecting snippets'
 		do: [ :aStep | 
-			aStep click
-				label: 'Click on snippet';
-				onBreadthFirstChildOfClass: LePharoSnippetElement;
-			play.
-			aStep wait forEmptySpaceTaskQueue;
-			play ].
+			aStep
+				clickStep: [ :s | 
+					s
+						label: 'Click on snippet';
+						onBreadthFirstChildOfClass: LePharoSnippetElement ].
+			aStep wait
+				forEmptySpaceTaskQueue;
+				play ].
 
 	snippets := (aScripter elementWithoutParent query // LePharoSnippetElement) all.
-	snippets first
-		addChild:
-			(self yellowExplanationTargetCircleFor: #firstSnippet).
+	snippets first addChild: (self yellowExplanationTargetCircleFor: #firstSnippet).
 	snippets second
-		addChild:
-			(self yellowExplanationTargetCircleFor: #secondSnippet).
-	"((snippets first query // LePharoSnippetElement) all first query // GtSourceCoderDoItAndGoActionId) anyOne
+		addChild: (self yellowExplanationTargetCircleFor: #secondSnippet).	"((snippets first query // LePharoSnippetElement) all first query // GtSourceCoderDoItAndGoActionId) anyOne
 		addChild: (self yellowExplanationTargetCircleFor: #inspectButton)."
 	^ container addChild: playgroundElement
 ]
