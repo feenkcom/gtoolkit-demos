@@ -242,21 +242,23 @@ GtTour >> coderWithComment [
 			aStep set
 				label: 'Coder';
 				element: [ (GtCoderElement forClass: GtCSPicture) createInPager maximized ];
-			play ].
+				play ].
 	aScripter
 		substep: 'Evaluate first snippet and inspect'
 		do: [ :aStep | 
-			aStep click
-				label: 'Click on evaluate and inspect button';
-				onBreadthFirstChildOfClass: GtPharoBehaviorCoderElement;
-				onBreadthFirstChildOfClass: BrTabGroup;
-				id: #header;
-				onChildAt: 1;
-				onChildAt: 1;
-				onChildAt: 2;
-			play.
-			aStep wait forEmptySpaceTaskQueue;
-			play ].
+			aStep
+				clickStep: [ :s | 
+					s
+						label: 'Click on evaluate and inspect button';
+						onBreadthFirstChildOfClass: GtPharoBehaviorCoderElement;
+						onBreadthFirstChildOfClass: BrTabGroup;
+						id: #header;
+						onChildAt: 1;
+						onChildAt: 1;
+						onChildAt: 2 ].
+			aStep wait
+				forEmptySpaceTaskQueue;
+				play ].
 	^ aScripter elementWithoutParent
 ]
 
@@ -738,37 +740,43 @@ GtTour >> playgroundExplanationWithLinks [
 	<gtExample>
 	| container playgroundElement scripter |
 	container := BlElement new
-		constraintsDo: [ :c | 
-			c vertical matchParent.
-			c horizontal matchParent ];
-		layout: BlLinearLayout horizontal;
-		margin: (BlInsets all: 5);
-		background: Color white;
-		aptitude: BrShadowAptitude.
+			constraintsDo: [ :c | 
+				c vertical matchParent.
+				c horizontal matchParent ];
+			layout: BlLinearLayout horizontal;
+			margin: (BlInsets all: 5);
+			background: Color white;
+			aptitude: BrShadowAptitude.
 	scripter := BlScripter new.
-	scripter element: (GtPlaygroundLiveSlide new snippets: {'a := 40' . 'a + 2'}) asElement;
-			play.
+	scripter
+		element: (GtPlaygroundLiveSlide new
+				snippets: {'a := 40'.
+						'a + 2'}) asElement;
+		play.
 	scripter
 		substep: 'Selecting snippet'
 		do: [ :aStep | 
-			aStep click
-				label: 'Click on snippet';
-				onBreadthFirstChildOfClass: LePharoSnippetElement;
-			play.
-			aStep wait forEmptySpaceTaskQueue;
-			play ].
+			aStep
+				clickStep: [ :s | 
+					s
+						label: 'Click on snippet';
+						onBreadthFirstChildOfClass: LePharoSnippetElement ].
+			aStep wait
+				forEmptySpaceTaskQueue;
+				play ].
 
 	playgroundElement := scripter elementWithoutParent.
-	(playgroundElement query // LePharoSnippetElement) all do: [:snippet | 
-		snippet addChild: (self yellowExplanationTargetCircleFor: #snippets).
-		(snippet query // #bottomToolbar) all do: [:toolbar | 
-			toolbar addChild: (self yellowExplanationTargetCircleFor: #plusButton) ].
-		(snippet query // GtSourceCoderDoItActionId) all do: [:toolbar | 
-			toolbar addChild: (self yellowExplanationTargetCircleFor: #evaluateButton) ].
-		(snippet query // GtSourceCoderDoItAndGoActionId) all do: [:toolbar | 
-			toolbar addChild: (self yellowExplanationTargetCircleFor: #inspectButton) ].
-		(snippet query // GtSourceCoderDebugActionId) all do: [:toolbar | 
-			toolbar addChild: (self yellowExplanationTargetCircleFor: #debugButton) ]. ].
+	(playgroundElement query // LePharoSnippetElement) all
+		do: [ :snippet | 
+			snippet addChild: (self yellowExplanationTargetCircleFor: #snippets).
+			(snippet query // #bottomToolbar) all
+				do: [ :toolbar | toolbar addChild: (self yellowExplanationTargetCircleFor: #plusButton) ].
+			(snippet query // GtSourceCoderDoItActionId) all
+				do: [ :toolbar | toolbar addChild: (self yellowExplanationTargetCircleFor: #evaluateButton) ].
+			(snippet query // GtSourceCoderDoItAndGoActionId) all
+				do: [ :toolbar | toolbar addChild: (self yellowExplanationTargetCircleFor: #inspectButton) ].
+			(snippet query // GtSourceCoderDebugActionId) all
+				do: [ :toolbar | toolbar addChild: (self yellowExplanationTargetCircleFor: #debugButton) ] ].
 	^ container addChild: playgroundElement
 ]
 

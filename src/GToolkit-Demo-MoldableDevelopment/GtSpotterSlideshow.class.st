@@ -133,13 +133,13 @@ There is also a dive out action, similar to a back button. It can be action by p
 { #category : #'private - scripting' }
 GtSpotterSlideshow >> spotterElement: aSpotterElement withSelectedPosition: aNumber [
 	| aScripter |
-	
 	aScripter := BlScripter new.
 	aScripter element: aSpotterElement.
-	
-	aScripter click
-		id: GtSpotterCandidateElementId index: aNumber;
-		play.
+
+	aScripter
+		clickStep: [ :s | 
+			s
+				id: GtSpotterCandidateElementId index: aNumber ].
 
 	^ aScripter elementWithoutParent
 ]

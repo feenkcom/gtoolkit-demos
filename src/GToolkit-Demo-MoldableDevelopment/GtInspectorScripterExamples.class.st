@@ -35,20 +35,22 @@ GtInspectorScripterExamples >> scriptedInspectorOn: anObject WithPlaygroundText:
 	scripter mouseUp.
 	scripter play.
 
-	scripter click
-		id: GtPagerPageElementId index: 1;
-		id: GtSourceCoderEditorId;
-		play.
+	scripter
+		clickStep: [ :s | 
+			s
+				id: GtPagerPageElementId index: 1;
+				id: GtSourceCoderEditorId ].
 	scripter shortcut
 		combination: BlKeyCombination primaryA;
 		id: GtPagerPageElementId index: 1;
 		id: GtSourceCoderEditorId;
 		play.
-	scripter type
-		text: aText;
-		id: GtPagerPageElementId index: 1;
-		id: GtSourceCoderEditorId;
-		play.
+	scripter
+		typeStep: [ :s | 
+			s
+				text: aText;
+				id: GtPagerPageElementId index: 1;
+				id: GtSourceCoderEditorId ].
 	^ scripter
 ]
 
