@@ -20,7 +20,8 @@ Class {
 		'linkDict',
 		'reachable',
 		'rootPages',
-		'links'
+		'links',
+		'cloneReady'
 	],
 	#category : #'GToolkit-Demo-WebsiteExplorer-Model'
 }
@@ -54,13 +55,18 @@ AWebsite >> hasPageNamed: aString [
 ]
 
 { #category : #initialization }
+AWebsite >> initialize [
+	cloneReady := Latch new
+]
+
+{ #category : #initialization }
 AWebsite >> initializeLinkDict [
 	linkDict := Dictionary new.
 	self pages do: [ :each | each registerLinks ].
 	^ linkDict
 ]
 
-{ #category : #accessing }
+{ #category : #initialization }
 AWebsite >> initializePages [
 	self subclassResponsibility
 ]
@@ -70,15 +76,19 @@ AWebsite >> initializeRepoDir: aRepoDir fromRepoUrl: aRepoUrl [
 	"Clone the repo unless it already exists."
 
 	| proc |
-	aRepoDir exists ifTrue: [ ^ aRepoDir ].
-	self inform: 'Cloning ' , aRepoUrl , ' into ' , aRepoDir basename.
+	aRepoDir exists
+		ifTrue: [ cloneReady open.
+			^ aRepoDir ].
 	proc := GtSubprocessWithInMemoryOutput new
 			workingDirectory: FileLocator imageDirectory;
 			command: 'git';
 			arguments: {'clone'.
 					aRepoUrl};
 			errorBlock: [ :theProc | self error: 'Git clone failed: ' , aRepoUrl printString ].
-	proc runAndWait.
+	[ UIManager default
+		informUser: 'Cloning ' , aRepoUrl , ' into ' , aRepoDir basename
+		during: [ proc runAndWait.
+			cloneReady open ] ] fork.
 	^ aRepoDir
 ]
 
@@ -164,6 +174,9 @@ AWebsite >> pageNamed: aString [
 { #category : #requirement }
 AWebsite >> pages [
 	^ pages
+		ifNil: [ "cloneReady waitOpen."
+			self initializePages.
+			self initializeLinkDict ]
 ]
 
 { #category : #printing }
@@ -189,11 +202,11 @@ AWebsite >> repoDir [
 	^ repoDir
 ]
 
-{ #category : #accessing }
+{ #category : #initialization }
 AWebsite >> repoDir: aFileReference [
 	repoDir := aFileReference.
-	self initializePages.
-	self initializeLinkDict
+	"self initializePages.
+	self initializeLinkDict"
 ]
 
 { #category : #accessing }
