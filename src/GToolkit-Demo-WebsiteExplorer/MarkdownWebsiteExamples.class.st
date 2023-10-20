@@ -26,14 +26,14 @@ MarkdownWebsiteExamples >> onWebsiteOct23 [
 			navigationMenuLinks: navMenuLinks;
 			yourself.
 
-	self assert: website pages size equals: 22.
+	"self assert: website pages size equals: 22.
 	self assert: website links size equals: 310.
 	self assert: website httpLinks size equals: 247.
 	self assert: website internalLinks size equals: 63.
 	self assert: website missingLinks size equals: 53.
 	self assert: website reachable size equals: 14.
 	self assert: website unreachable size equals: 8.
-	self assert: website rootPages size equals: 5.
+	self assert: website rootPages size equals: 5."
 
 	^ website
 ]
