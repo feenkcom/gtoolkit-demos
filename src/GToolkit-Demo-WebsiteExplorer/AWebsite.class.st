@@ -258,7 +258,8 @@ AWebsite >> pages [
 	^ pages
 		ifNil: [
 			self initializePages.
-			self initializeLinkDict ]
+			self initializeLinkDict.
+			pages ]
 ]
 
 { #category : #printing }
