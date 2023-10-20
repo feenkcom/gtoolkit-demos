@@ -50,8 +50,9 @@ AWebLinkGroup >> checkStatusWhereMissing [
 				ifFalse: [ ^ self inform: 'There is already a background check running.' ] ].
 	self missingStatusLinks
 		ifEmpty: [ self inform: 'Nothing to do' ]
-		ifNotEmpty: [ self inform: 'Starting background checks'.
-			process := [ self missingStatusLinks do: [ :aWebsite | aWebsite checkStatus ] ]
+		ifNotEmpty: [ process := [ UIManager default
+					informUser: 'Running HTTP checks'
+					during: [ self missingStatusLinks do: [ :aWebsite | aWebsite checkStatus ] ] ]
 					fork ]
 ]
 
@@ -274,8 +275,7 @@ AWebLinkGroup >> killBackgroundCheck [
 	process
 		ifNil: [ self inform: 'Nothing to do' ]
 		ifNotNil: [ process terminate.
-			process := nil.
-			self inform: 'Background check terminated' ]
+			process := nil ]
 ]
 
 { #category : #abstract }

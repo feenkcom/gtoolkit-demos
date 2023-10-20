@@ -53,26 +53,6 @@ AWebsite >> basicOverviewSend [
 ]
 
 { #category : #initialization }
-AWebsite >> cloneRepoDir [
-	"Clone the repo unless it already exists."
-
-	| proc |
-	self assert: self repoDir notNil.
-	self assert: self repoUrl notNil.
-	self repoDir exists ifTrue: [ ^ self repoDir ].
-	proc := GtSubprocessWithInMemoryOutput new
-			workingDirectory: FileLocator imageDirectory;
-			command: 'git';
-			arguments: {'clone'.
-					self repoUrl};
-			errorBlock: [ :theProc | self error: 'Git clone failed: ' , self repoUrl printString ].
-	[ UIManager default
-		informUser: 'Cloning ' , self repoUrl , ' into ' , self repoDir basename
-		during: [ proc runAndWait ] ] fork.
-	^ self repoDir
-]
-
-{ #category : #initialization }
 AWebsite >> cloneRepoDirAndRefresh: aButton [
 	"Clone the repo unless it already exists."
 
@@ -150,27 +130,6 @@ AWebsite >> initializeLinkDict [
 { #category : #initialization }
 AWebsite >> initializePages [
 	self subclassResponsibility
-]
-
-{ #category : #initialization }
-AWebsite >> initializeRepoDir: aRepoDir fromRepoUrl: aRepoUrl [
-
-	"OBSOLETE -- use cloneRepoDir instead"
-
-	"Clone the repo unless it already exists."
-
-	| proc |
-	aRepoDir exists ifTrue: [ ^ aRepoDir ].
-	proc := GtSubprocessWithInMemoryOutput new
-			workingDirectory: FileLocator imageDirectory;
-			command: 'git';
-			arguments: {'clone'.
-					aRepoUrl};
-			errorBlock: [ :theProc | self error: 'Git clone failed: ' , aRepoUrl printString ].
-	[ UIManager default
-		informUser: 'Cloning ' , aRepoUrl , ' into ' , aRepoDir basename
-		during: [ proc runAndWait ] ] fork.
-	^ aRepoDir
 ]
 
 { #category : #links }
