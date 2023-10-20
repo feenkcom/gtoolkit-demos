@@ -6,6 +6,11 @@ Class {
 	#category : #'GToolkit-Demo-WebsiteExplorer-Model'
 }
 
+{ #category : #accessing }
+WebPageGroup >> contentAvailable [
+	^ true
+]
+
 { #category : #view }
 WebPageGroup >> gtMapFor: aView [
 	"I have to ask the website of one of the pages to generate the map. A group does not have a root page, so we use nil (only needed for coloring the root)."

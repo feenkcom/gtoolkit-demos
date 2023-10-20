@@ -11,6 +11,16 @@ Class {
 }
 
 { #category : #accessing }
+WebLinkGroup >> asBrItemsProvider [
+	^ BrSequenceableCollectionItemsProvider forCollection: self
+]
+
+{ #category : #accessing }
+WebLinkGroup >> contentAvailable [
+	^ true
+]
+
+{ #category : #accessing }
 WebLinkGroup >> initializeWith: aCollection [
 	"Override trait method to subscribe to link updates."
 	items := aCollection.
