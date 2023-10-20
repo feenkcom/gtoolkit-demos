@@ -26,6 +26,18 @@ AWebLinkGroup >> announcer: anAnnouncement [
 	announcer := anAnnouncement
 ]
 
+{ #category : #view }
+AWebLinkGroup >> basicOverview [
+	"Fallback in case the content is not yet available."
+
+	^ self overview
+]
+
+{ #category : #view }
+AWebLinkGroup >> basicOverviewSend [
+	^ self overviewSend
+]
+
 { #category : #links }
 AWebLinkGroup >> brokenLinks [
 	^ self links select: #isBroken
@@ -43,9 +55,15 @@ AWebLinkGroup >> checkStatusWhereMissing [
 					fork ]
 ]
 
+{ #category : #testing }
+AWebLinkGroup >> contentAvailable [
+	^ self subclassResponsibility
+]
+
 { #category : #action }
 AWebLinkGroup >> gtActionCheckStatusFor: anAction [
 	<gtAction>
+	self contentAvailable ifFalse: [ ^ anAction noAction ].
 	self missingStatusLinks ifEmpty: [ ^ anAction noAction ].
 	^ anAction button
 		tooltip: 'Check status';
@@ -57,6 +75,7 @@ AWebLinkGroup >> gtActionCheckStatusFor: anAction [
 { #category : #action }
 AWebLinkGroup >> gtActionStopCheckStatusFor: anAction [
 	<gtAction>
+	self contentAvailable ifFalse: [ ^ anAction noAction ].
 	self missingStatusLinks ifEmpty: [ ^ anAction noAction ].
 	^ anAction button
 		tooltip: 'Stop background status check';
@@ -68,6 +87,7 @@ AWebLinkGroup >> gtActionStopCheckStatusFor: anAction [
 { #category : #view }
 AWebLinkGroup >> gtBrokenLinksFor: aView [
 	<gtView>
+	self contentAvailable ifFalse: [ ^ aView empty ].
 	self brokenLinks ifEmpty: [ ^ aView empty ].
 	^ aView columnedList
 		title: 'Broken HTTP links';
@@ -94,6 +114,7 @@ AWebLinkGroup >> gtBrokenLinksFor: aView [
 { #category : #view }
 AWebLinkGroup >> gtHttpLinksFor: aView [
 	<gtView>
+	self contentAvailable ifFalse: [ ^ aView empty ].
 	self httpLinks ifEmpty: [ ^ aView empty ].
 	^ aView columnedList
 		title: 'HTTP links';
@@ -119,6 +140,7 @@ AWebLinkGroup >> gtHttpLinksFor: aView [
 { #category : #view }
 AWebLinkGroup >> gtLinksFor: aView [
 	<gtView>
+	self contentAvailable ifFalse: [ ^ aView empty ].
 	self links ifEmpty: [ ^ aView empty ].
 	^ aView columnedList
 		title: 'Links';
@@ -144,6 +166,7 @@ AWebLinkGroup >> gtLinksFor: aView [
 { #category : #view }
 AWebLinkGroup >> gtMissingLinksFor: aView [
 	<gtView>
+	self contentAvailable ifFalse: [ ^ aView empty ].
 	self missingLinks ifEmpty: [ ^ aView empty ].
 	^ aView columnedList
 		title: 'Missing links';
@@ -171,6 +194,7 @@ AWebLinkGroup >> gtMissingLinksFor: aView [
 { #category : #view }
 AWebLinkGroup >> gtMissingStatusLinksFor: aView [
 	<gtView>
+	self contentAvailable ifFalse: [ ^ aView empty ].
 	self missingStatusLinks ifEmpty: [ ^ aView empty ].
 	^ aView columnedList
 		title: 'Missing status';
@@ -200,14 +224,19 @@ AWebLinkGroup >> gtOverviewFor: aView [
 	^ aView columnedList
 		title: 'Overview';
 		priority: 5;
-		items: [ self overview ];
+		items: [ self contentAvailable
+				ifTrue: [ self overview ]
+				ifFalse: [ self basicOverview ] ];
 		column: 'Attribute'
 			text: [ :item | item key ]
 			width: 200;
 		column: 'Value'
 			text: [ :item | item value ]
 			width: 400;
-		send: [ :item | self overviewSend at: item key ];
+		send: [ :item | 
+			self contentAvailable
+				ifTrue: [ self overviewSend at: item key ]
+				ifFalse: [ self basicOverviewSend at: item key ] ];
 		actionUpdateButton
 ]
 

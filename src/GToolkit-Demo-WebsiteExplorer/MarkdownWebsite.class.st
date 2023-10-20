@@ -40,7 +40,7 @@ MarkdownWebsite >> navigationMenuLinks [
 
 { #category : #accessing }
 MarkdownWebsite >> navigationMenuLinks: aLinkNameCollection [
-	"Can be configured when the website is instantiated."
+	"These can be used to identify additional roots for reachability analysis. Can be configured when the website is instantiated."
 
 	navigationMenuLinks := aLinkNameCollection
 ]

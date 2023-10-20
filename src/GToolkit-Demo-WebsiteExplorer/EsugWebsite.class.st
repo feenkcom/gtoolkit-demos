@@ -41,7 +41,7 @@ EsugWebsite class >> instance [
 	<noTest>
 	^ esug
 		ifNil: [ esug := self new
-					initializeRepoDir: self esugRepoDir fromRepoUrl: self esugRepoUrl;
+					repoUrl: self esugRepoUrl;
 					repoDir: self esugRepoDir;
 					url: self esugUrl;
 					yourself ]

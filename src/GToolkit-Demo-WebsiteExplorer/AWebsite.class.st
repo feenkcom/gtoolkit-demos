@@ -4,9 +4,19 @@ I serve as an abstract superclass of website classes.
 My subclasses may have different notions of which files in the website represent pages (i.e., files ending with `.md` or `.pillar`), and where to find these files.
 They may also use different classes to instantiate the page objects.
 
-Concrete subclasses should implement: `initializePages`  `rootPath` `webLinkClass`
+Concrete subclasses should implement: `initializePages`  `rootPath` `webLinkClass`.
 
-Subclasses may want to override: `webPageGroupClass` `navigationRoots`
+Subclasses may want to override: `webPageGroupClass` `navigationRoots`.
+
+A website instance can be in various states.
+Uninitialized: new instance with no slots defined.
+Defined: slots such as `url` and `repoDir` are defined.
+Content available: the repoDir is populated, possibly by cloning repoUrl.
+Initialized: `pages` are initialized from the files, but not yet analyzed.
+Analyzed: `links` are initialized by extracting links from the pages, and reachability has been determined.
+Checked: `links` have been checked by http.
+
+Views are only possible once the repoDir exists and content is available. Then the rest can be computed lazily.
 "
 Class {
 	#name : #AWebsite,
@@ -20,10 +30,73 @@ Class {
 		'linkDict',
 		'reachable',
 		'rootPages',
-		'links'
+		'links',
+		'repoUrl'
 	],
 	#category : #'GToolkit-Demo-WebsiteExplorer-Model'
 }
+
+{ #category : #view }
+AWebsite >> basicOverview [
+	^ {'NB:' -> 'Content repo not yet cloned. (Click the down button.)'.
+		'URL' -> self url printString.
+		'Repo URL' -> self repoUrl printString.
+		'Repo dir' -> self repoDir printString}
+]
+
+{ #category : #view }
+AWebsite >> basicOverviewSend [
+	^ {'NB:' -> 'Content repo not yet cloned. (Click the down button.)'.
+		'URL' -> self url.
+		'Repo URL' -> self repoUrl.
+		'Repo dir' -> self repoDir} asDictionary
+]
+
+{ #category : #initialization }
+AWebsite >> cloneRepoDir [
+	"Clone the repo unless it already exists."
+
+	| proc |
+	self assert: self repoDir notNil.
+	self assert: self repoUrl notNil.
+	self repoDir exists ifTrue: [ ^ self repoDir ].
+	proc := GtSubprocessWithInMemoryOutput new
+			workingDirectory: FileLocator imageDirectory;
+			command: 'git';
+			arguments: {'clone'.
+					self repoUrl};
+			errorBlock: [ :theProc | self error: 'Git clone failed: ' , self repoUrl printString ].
+	[ UIManager default
+		informUser: 'Cloning ' , self repoUrl , ' into ' , self repoDir basename
+		during: [ proc runAndWait ] ] fork.
+	^ self repoDir
+]
+
+{ #category : #initialization }
+AWebsite >> cloneRepoDirAndRefresh: aButton [
+	"Clone the repo unless it already exists."
+
+	| proc |
+	self assert: self repoDir notNil.
+	self assert: self repoUrl notNil.
+	self repoDir exists ifTrue: [ ^ self repoDir ].
+	proc := GtSubprocessWithInMemoryOutput new
+			workingDirectory: FileLocator imageDirectory;
+			command: 'git';
+			arguments: {'clone'.
+					self repoUrl};
+			errorBlock: [ :theProc | self error: 'Git clone failed: ' , self repoUrl printString ].
+	[ UIManager default
+		informUser: 'Cloning ' , self repoUrl , ' into ' , self repoDir basename
+		during: [ proc runAndWait.
+			aButton phlow fireUpdateWish ] ] fork.
+	^ self repoDir
+]
+
+{ #category : #testing }
+AWebsite >> contentAvailable [
+	^ self contentDir exists
+]
 
 { #category : #accessing }
 AWebsite >> contentDir [
@@ -32,9 +105,23 @@ AWebsite >> contentDir [
 	^ self repoDir
 ]
 
+{ #category : #accessing }
+AWebsite >> gtCloneRepoFor: anAction [
+	<gtAction>
+	self contentAvailable ifTrue: [ ^ anAction noAction ].
+	self repoUrl ifNil: [ ^ anAction noAction ].
+	self repoDir ifNil: [ ^ anAction noAction ].
+	^ anAction button
+		tooltip: 'Clone content repo';
+		priority: 10;
+		icon: BrGlamorousIcons down;
+		action: [ :aButton | self cloneRepoDirAndRefresh: aButton ]
+]
+
 { #category : #view }
 AWebsite >> gtMapFor: aView [
 	<gtView>
+	self contentAvailable ifFalse: [ ^ aView empty ].
 	^ aView mondrian
 		title: 'Map';
 		priority: 62;
@@ -60,25 +147,29 @@ AWebsite >> initializeLinkDict [
 	^ linkDict
 ]
 
-{ #category : #accessing }
+{ #category : #initialization }
 AWebsite >> initializePages [
 	self subclassResponsibility
 ]
 
 { #category : #initialization }
 AWebsite >> initializeRepoDir: aRepoDir fromRepoUrl: aRepoUrl [
+
+	"OBSOLETE -- use cloneRepoDir instead"
+
 	"Clone the repo unless it already exists."
 
 	| proc |
 	aRepoDir exists ifTrue: [ ^ aRepoDir ].
-	self inform: 'Cloning ' , aRepoUrl , ' into ' , aRepoDir basename.
 	proc := GtSubprocessWithInMemoryOutput new
 			workingDirectory: FileLocator imageDirectory;
 			command: 'git';
 			arguments: {'clone'.
 					aRepoUrl};
 			errorBlock: [ :theProc | self error: 'Git clone failed: ' , aRepoUrl printString ].
-	proc runAndWait.
+	[ UIManager default
+		informUser: 'Cloning ' , aRepoUrl , ' into ' , aRepoDir basename
+		during: [ proc runAndWait ] ] fork.
 	^ aRepoDir
 ]
 
@@ -142,9 +233,10 @@ AWebsite >> notifyStatusUpdate [
 
 { #category : #view }
 AWebsite >> overview [
-	^ {'# Pages' -> self pages size} , super overview
+	^ {'# Pages' -> self pages size} ,
+		super overview
 		, {'# Reachable pages' -> ([ self reachable size ] onErrorDo: [ '?' ]).
-				'# Unreachable pages' -> ([ self unreachable size ] onErrorDo: [ '?' ])}
+		'# Unreachable pages' -> ([ self unreachable size ] onErrorDo: [ '?' ])}
 ]
 
 { #category : #view }
@@ -164,6 +256,10 @@ AWebsite >> pageNamed: aString [
 { #category : #requirement }
 AWebsite >> pages [
 	^ pages
+		ifNil: [
+			self initializePages.
+			self initializeLinkDict.
+			pages ]
 ]
 
 { #category : #printing }
@@ -189,11 +285,22 @@ AWebsite >> repoDir [
 	^ repoDir
 ]
 
-{ #category : #accessing }
+{ #category : #initialization }
 AWebsite >> repoDir: aFileReference [
 	repoDir := aFileReference.
-	self initializePages.
-	self initializeLinkDict
+	"self initializePages.
+	self initializeLinkDict"
+]
+
+{ #category : #accessing }
+AWebsite >> repoUrl [
+	"Optional. Only needed if the repoDir needs to be loaded dynamically."
+	^ repoUrl
+]
+
+{ #category : #accessing }
+AWebsite >> repoUrl: aGitRepoUrl [
+	repoUrl := aGitRepoUrl
 ]
 
 { #category : #accessing }

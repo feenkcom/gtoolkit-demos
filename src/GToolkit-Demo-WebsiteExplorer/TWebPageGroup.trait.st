@@ -6,9 +6,15 @@ Trait {
 	#category : #'GToolkit-Demo-WebsiteExplorer-Model'
 }
 
+{ #category : #requirement }
+TWebPageGroup >> contentAvailable [
+	^ self explicitRequirement
+]
+
 { #category : #view }
 TWebPageGroup >> gtPagesFor: aView [
 	<gtView>
+	self contentAvailable ifFalse: [ ^ aView empty ].
 	^ aView columnedList
 		title: 'Pages';
 		priority: 10;
@@ -36,6 +42,7 @@ TWebPageGroup >> gtPagesFor: aView [
 { #category : #view }
 TWebPageGroup >> gtReachablePagesFor: aView [
 	<gtView>
+	self contentAvailable ifFalse: [ ^ aView empty ].
 	^ aView forward
 		title: 'Reachable pages';
 		priority: 60;
@@ -72,6 +79,7 @@ TWebPageGroup >> gtSpotterForPageNames: aSearch [
 { #category : #view }
 TWebPageGroup >> gtUnreachablePagesFor: aView [
 	<gtView>
+	self contentAvailable ifFalse: [ ^ aView empty ].
 	self unreachable ifEmpty: [ ^ aView empty ].
 	^ aView forward
 		title: 'Unreachable pages';

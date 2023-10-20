@@ -41,7 +41,7 @@ DemoMarkdownWebsite class >> canadaClub [
 	^ cache
 		at: key
 		ifAbsentPut: [ self new
-				initializeRepoDir: repoDir fromRepoUrl: repoUrl;
+				repoUrl: repoUrl;
 				repoDir: repoDir;
 				url: webUrl;
 				navigationMenuLinks: navMenuLinks ]
@@ -62,7 +62,7 @@ DemoMarkdownWebsite class >> icberne [
 	^ cache
 		at: key
 		ifAbsentPut: [ self new
-				initializeRepoDir: repoDir fromRepoUrl: repoUrl;
+				repoUrl: repoUrl;
 				repoDir: repoDir;
 				url: webUrl;
 				navigationMenuLinks: navMenuLinks ]
@@ -126,7 +126,7 @@ DemoMarkdownWebsite class >> nierstraszFamily [
 	^ cache
 		at: key
 		ifAbsentPut: [ self new
-				initializeRepoDir: repoDir fromRepoUrl: repoUrl;
+				repoUrl: repoUrl;
 				repoDir: repoDir;
 				url: webUrl;
 				navigationMenuLinks: navMenuLinks ]
@@ -149,7 +149,7 @@ DemoMarkdownWebsite class >> oscarHomePage [
 	^ cache
 		at: key
 		ifAbsentPut: [ self new
-				initializeRepoDir: repoDir fromRepoUrl: repoUrl;
+				repoUrl: repoUrl;
 				repoDir: repoDir;
 				url: webUrl;
 				navigationMenuLinks: navMenuLinks ]
