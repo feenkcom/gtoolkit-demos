@@ -156,7 +156,7 @@ AWebPage >> links [
 AWebPage >> markdownLinks [
 	"Useful for various subclasses."
 	
-	^ MarkdownLinkParser parse: self contents
+	^ MarkdownLinkParser new optimize parse: self contents
 
 	"^ (MicLinkVisitor new
 		visit: (MicrodownParser parse: self contents);
