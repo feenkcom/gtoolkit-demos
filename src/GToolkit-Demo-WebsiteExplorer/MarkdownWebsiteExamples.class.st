@@ -11,8 +11,8 @@ MarkdownWebsiteExamples >> onWebsiteOct23 [
 	<gtExample>
 	| webUrl repoDir navMenuLinks website |
 	webUrl := 'https://www.oscar.nierstrasz.org'.
-	repoDir := (FileLocator imageDirectory / 'pharo-local' / 'iceberg' / 'feenkcom'
-			/ 'gtoolkit-demos' / 'data' / 'onierstrasz.github.io') asFileReference.
+	"NB: Use this instead of FileLocator ..., which apparently only works in a development image."
+	repoDir := GtResourcesUtility resourceAtPath: (Path * 'feenkcom'/ 'gtoolkit-demos' / 'data' / 'onierstrasz.github.io').
 	navMenuLinks := {'/cv/'.
 			'/low-road-blog/'.
 			'/oddsAndEnds/'.
