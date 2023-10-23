@@ -10,9 +10,9 @@ MarkdownWebsiteExamples >> onWebsiteOct23 [
 
 	<gtExample>
 	| webUrl repoDir navMenuLinks website |
-	webUrl := 'https://www.oscar.nierstrasz.org'.
-	"NB: Use this instead of FileLocator ..., which apparently only works in a development image."
-	repoDir := GtResourcesUtility resourceAtPath: (Path * 'feenkcom'/ 'gtoolkit-demos' / 'data' / 'onierstrasz.github.io').
+	webUrl := 'https://www.oscar.nierstrasz.org'.	"NB: Use this instead of FileLocator ..., which apparently only works in a development image."
+	repoDir := (FileLocator gtResource / 'feenkcom' / 'gtoolkit-demos' / 'data'
+			/ 'onierstrasz.github.io') asFileReference.
 	navMenuLinks := {'/cv/'.
 			'/low-road-blog/'.
 			'/oddsAndEnds/'.
