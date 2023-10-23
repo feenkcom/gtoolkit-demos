@@ -8,7 +8,8 @@ Class {
 PillarWebPage >> rawLinks [
 	"Returns a collection of TitleString -> LinkString Associations"
 
-	^ rawLinks ifNil: [ rawLinks := PillarLinkSeaParser parse: self contents ]
+	^ rawLinks
+		ifNil: [ rawLinks := PillarLinkSeaParser new optimize parse: self contents ]
 ]
 
 { #category : #accessing }

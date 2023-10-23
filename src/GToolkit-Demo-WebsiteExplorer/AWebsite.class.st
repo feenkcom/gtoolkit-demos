@@ -38,18 +38,11 @@ Class {
 
 { #category : #view }
 AWebsite >> basicOverview [
-	^ {'NB:' -> 'Content repo not yet cloned. (Click the down button.)'.
-		'URL' -> self url printString.
+	"These are the basic bits of information that can be shown if the content is not yet available."
+
+	^ {'URL' -> self url printString.
 		'Repo URL' -> self repoUrl printString.
 		'Repo dir' -> self repoDir printString}
-]
-
-{ #category : #view }
-AWebsite >> basicOverviewSend [
-	^ {'NB:' -> 'Content repo not yet cloned. (Click the down button.)'.
-		'URL' -> self url.
-		'Repo URL' -> self repoUrl.
-		'Repo dir' -> self repoDir} asDictionary
 ]
 
 { #category : #initialization }
@@ -83,6 +76,12 @@ AWebsite >> contentDir [
 	"Could be different, so subclasses can override this."
 
 	^ self repoDir
+]
+
+{ #category : #view }
+AWebsite >> contentUnavailableOverview [
+	^ {'NB:' -> 'Content repo not yet cloned. (Click the down button.)'}
+		, self basicOverview
 ]
 
 { #category : #accessing }
@@ -192,19 +191,23 @@ AWebsite >> notifyStatusUpdate [
 
 { #category : #view }
 AWebsite >> overview [
-	^ {'# Pages' -> self pages size} ,
+	^ self basicOverview ,
+		{'# Pages' -> self pages size} ,
 		super overview
 		, {'# Reachable pages' -> ([ self reachable size ] onErrorDo: [ '?' ]).
-		'# Unreachable pages' -> ([ self unreachable size ] onErrorDo: [ '?' ])}
+			'# Unreachable pages' -> ([ self unreachable size ] onErrorDo: [ '?' ])}
 ]
 
 { #category : #view }
 AWebsite >> overviewSend [
-	^ super overviewSend
-		at: '# Pages' put: self pages;
-		at: '# Reachable pages' put: ([ self reachable ] onErrorDo: [ '?' ]);
-		at: '# Unreachable pages' put: ([ self unreachable ] onErrorDo: [ '?' ]);
-		yourself
+	^ (super overviewSend associations
+		, {'NB:' -> [ 'Content repo not yet cloned. (Click the down button.)' ].
+				'URL' -> [ self url ].
+				'Repo URL' -> [ self repoUrl ].
+				'Repo dir' -> [ self repoDir ]}
+		, {'# Pages' -> [ self pages ].
+				'# Reachable pages' -> [ self reachable ].
+				'# Unreachable pages' -> [ self unreachable ]}) asDictionary
 ]
 
 { #category : #accessing }

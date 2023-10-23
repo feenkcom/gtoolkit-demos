@@ -154,13 +154,7 @@ AWebPage >> links [
 
 { #category : #accessing }
 AWebPage >> markdownLinks [
-	"Useful for various subclasses."
-	
-	^ MarkdownLinkParser parse: self contents
-
-	"^ (MicLinkVisitor new
-		visit: (MicrodownParser parse: self contents);
-		yourself) links"
+	^ MarkdownLinkParser new optimize parse: self contents
 ]
 
 { #category : #constant }
