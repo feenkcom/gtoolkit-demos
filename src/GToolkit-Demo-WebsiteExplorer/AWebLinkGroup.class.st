@@ -89,7 +89,7 @@ AWebLinkGroup >> gtActionStopCheckStatusFor: anAction [
 
 { #category : #view }
 AWebLinkGroup >> gtBrokenLinksFor: aView [
-	<gtView>
+	"<gtView>"
 	self contentAvailable ifFalse: [ ^ aView empty ].
 	self brokenLinks ifEmpty: [ ^ aView empty ].
 	^ aView columnedList
@@ -116,7 +116,7 @@ AWebLinkGroup >> gtBrokenLinksFor: aView [
 
 { #category : #view }
 AWebLinkGroup >> gtHttpLinksFor: aView [
-	<gtView>
+	"<gtView>"
 	self contentAvailable ifFalse: [ ^ aView empty ].
 	self httpLinks ifEmpty: [ ^ aView empty ].
 	^ aView columnedList
@@ -168,7 +168,7 @@ AWebLinkGroup >> gtLinksFor: aView [
 
 { #category : #view }
 AWebLinkGroup >> gtMissingLinksFor: aView [
-	<gtView>
+	"<gtView>"
 	self contentAvailable ifFalse: [ ^ aView empty ].
 	self missingLinks ifEmpty: [ ^ aView empty ].
 	^ aView columnedList
@@ -196,7 +196,7 @@ AWebLinkGroup >> gtMissingLinksFor: aView [
 
 { #category : #view }
 AWebLinkGroup >> gtMissingStatusLinksFor: aView [
-	<gtView>
+	"<gtView>"
 	self contentAvailable ifFalse: [ ^ aView empty ].
 	self missingStatusLinks ifEmpty: [ ^ aView empty ].
 	^ aView columnedList
@@ -237,7 +237,8 @@ AWebLinkGroup >> gtOverviewFor: aView [
 			text: [ :item | item value ]
 			width: 400;
 		send: [ :item | (self overviewSend at: item key) onErrorDo: [ '?' ] ];
-		actionUpdateButton
+		actionUpdateButton;
+		updateWhen: WebLinkStatusUpdated in: self announcer
 ]
 
 { #category : #accessing }
@@ -302,7 +303,9 @@ AWebLinkGroup >> overview [
 		'# External (HTTP) links' -> self httpLinks size.
 		'# Internal links' -> self internalLinks size.
 		'# Email links' -> (self links select: #isEmail) size.
-		'# Missing links' -> self missingLinks size}
+		'# Missing links' -> self missingLinks size.
+		'# Broken links' -> self brokenLinks size.
+		'# Missing status' -> self missingStatusLinks size}
 ]
 
 { #category : #accessing }
@@ -310,9 +313,11 @@ AWebLinkGroup >> overviewSend [
 	"Used by the view to send clicks to the right group.
 	NB: This is a Dictionary, not an Association list."
 
-	^ {'# Links' -> [self links].
-		'# External (HTTP) links' -> [self httpLinks].
-		'# Internal links' -> [self internalLinks].
-		'# Email links' -> [(self links select: #isEmail)].
-		'# Missing links' -> [self missingLinks]} asDictionary
+	^ {'# Links' -> [ self links ].
+		'# External (HTTP) links' -> [ self httpLinks ].
+		'# Internal links' -> [ self internalLinks ].
+		'# Email links' -> [ self links select: #isEmail ].
+		'# Missing links' -> [ self missingLinks ].
+		'# Broken links' -> [ self brokenLinks ].
+		'# Missing status' -> [ self missingStatusLinks ]} asDictionary
 ]

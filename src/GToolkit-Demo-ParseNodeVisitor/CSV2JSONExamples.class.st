@@ -10,12 +10,29 @@ Class {
 { #category : #accessing }
 CSV2JSONExamples >> kurosawaCSV [
 	<gtExample>
-	^ FileLocator gtResource / 'feenkcom' / 'gtoolkit-demos' / 'data' / 'imdb'
-		/ 'Akira Kurosawa Movies.csv'
+	^ (FileLocator gtResource / 'feenkcom' / 'gtoolkit-demos' / 'data' / 'imdb'
+		/ 'Akira Kurosawa Movies.csv') contents
 ]
 
 { #category : #accessing }
 CSV2JSONExamples >> kurosawaJson [
 	<gtExample>
-	^ (CSV2JSON for: self kurosawaCSV) json
+	| json |
+	json := (CSV2JSON for: self kurosawaCSV) json.
+	self assert: (json isKindOf: GtJson).
+	^ json
+]
+
+{ #category : #accessing }
+CSV2JSONExamples >> kurosawaJsonObject [
+	<gtExample>
+	| json |
+	json := (CSV2JSON for: self kurosawaCSV) jsonObject.
+	self assert: (json isKindOf: Array).
+	self assert: json size equals: 32.
+	self assert: (json first at: 'Title') equals: 'Uma'.
+	self
+		assert: (json collect: [ :each | each at: 'Directors' ]) asSet size
+		equals: 4.
+	^ json
 ]

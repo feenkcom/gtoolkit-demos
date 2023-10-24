@@ -41,7 +41,7 @@ TWebPageGroup >> gtPagesFor: aView [
 
 { #category : #view }
 TWebPageGroup >> gtReachablePagesFor: aView [
-	<gtView>
+	"<gtView>"
 	self contentAvailable ifFalse: [ ^ aView empty ].
 	^ aView forward
 		title: 'Reachable pages';
@@ -78,7 +78,7 @@ TWebPageGroup >> gtSpotterForPageNames: aSearch [
 
 { #category : #view }
 TWebPageGroup >> gtUnreachablePagesFor: aView [
-	<gtView>
+	"<gtView>"
 	self contentAvailable ifFalse: [ ^ aView empty ].
 	self unreachable ifEmpty: [ ^ aView empty ].
 	^ aView forward

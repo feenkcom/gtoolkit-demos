@@ -6,31 +6,29 @@ Class {
 	#name : #CSV2JSON,
 	#superclass : #CSVParseNodeVisitor,
 	#instVars : [
-		'csvFile'
+		'ast'
 	],
 	#category : #'GToolkit-Demo-ParseNodeVisitor-Visitor'
 }
 
 { #category : #accessing }
-CSV2JSON class >> for: aCsvFile [
+CSV2JSON class >> for: aCsvString [
 	^ self new
-		csvFile: aCsvFile;
+		csv: aCsvString;
 		yourself
 ]
 
 { #category : #accessing }
 CSV2JSON >> ast [
-	^ CSVParser parse: self csvFile contents
+	"Should be initialized with CSV2JSON class>>#for: or CSV2JSON>>#csv:"
+
+	self assert: ast notNil.
+	^ ast
 ]
 
-{ #category : #accessing }
-CSV2JSON >> csvFile [
-	^ csvFile
-]
-
-{ #category : #accessing }
-CSV2JSON >> csvFile: aCsvFile [
-	csvFile := aCsvFile
+{ #category : #initalization }
+CSV2JSON >> csv: aCsvString [
+	ast := CSVParser parse: (aCsvString trimRight: #isSeparator)
 ]
 
 { #category : #accessing }
@@ -66,7 +64,16 @@ CSV2JSON >> entryForLine: currentLine withHeader: headerLine [
 
 { #category : #accessing }
 CSV2JSON >> json [
+	"The nicely formatted GtJson entity."
+
 	^ self entries asJson
+]
+
+{ #category : #accessing }
+CSV2JSON >> jsonObject [
+	"The underlying tree of Dictionaries and Arrays."
+
+	^ self json jsonObject
 ]
 
 { #category : #visiting }
