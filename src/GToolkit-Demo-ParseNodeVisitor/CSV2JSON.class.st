@@ -27,8 +27,8 @@ CSV2JSON >> ast [
 ]
 
 { #category : #initalization }
-CSV2JSON >> csv: aCsvString [ 
-	ast := CSVParser parse: aCsvString
+CSV2JSON >> csv: aCsvString [
+	ast := CSVParser parse: (aCsvString trimRight: #isSeparator)
 ]
 
 { #category : #accessing }
@@ -64,7 +64,16 @@ CSV2JSON >> entryForLine: currentLine withHeader: headerLine [
 
 { #category : #accessing }
 CSV2JSON >> json [
+	"The nicely formatted GtJson entity."
+
 	^ self entries asJson
+]
+
+{ #category : #accessing }
+CSV2JSON >> jsonObject [
+	"The underlying tree of Dictionaries and Arrays."
+
+	^ self json jsonObject
 ]
 
 { #category : #visiting }
