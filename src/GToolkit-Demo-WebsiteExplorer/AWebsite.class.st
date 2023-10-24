@@ -68,7 +68,7 @@ AWebsite >> cloneRepoDirAndRefresh: aButton [
 
 { #category : #testing }
 AWebsite >> contentAvailable [
-	^ self contentDir exists
+	^ self contentDir exists and: [ self pages notNil ]
 ]
 
 { #category : #accessing }
