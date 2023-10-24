@@ -10,8 +10,8 @@ Class {
 { #category : #accessing }
 CSV2JSONExamples >> kurosawaCSV [
 	<gtExample>
-	^ FileLocator gtResource / 'feenkcom' / 'gtoolkit-demos' / 'data' / 'imdb'
-		/ 'Akira Kurosawa Movies.csv'
+	^ (FileLocator gtResource / 'feenkcom' / 'gtoolkit-demos' / 'data' / 'imdb'
+		/ 'Akira Kurosawa Movies.csv') contents
 ]
 
 { #category : #accessing }
