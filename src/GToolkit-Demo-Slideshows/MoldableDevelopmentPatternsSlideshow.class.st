@@ -160,6 +160,26 @@ MoldableDevelopmentPatternsSlideshow >> exampleObject: aSlide [
 
 TODO -- Ludo; stack machine
 
+
+
+
+
+
+
+
+
+
+# FOR THE PAGE:
+
+Intent
+Wrap examples as (instance) methods that optionally evaluate some tests (assertions), and return the example instance.
+Examples can be run just like classical unit tests.
+When an example fails, its dependent examples do not need to be run.
+When an example succeeds, it can be inspected, used as a moldable object to start coding, or embedded as a live example snippet within a notebook page to illustrate some point.
+
+
+
+
 '>
 	^ aSlide lepiterPage
 		setPriority;
@@ -186,9 +206,7 @@ MoldableDevelopmentPatternsSlideshow >> exampleObjectScenery: aSlide [
 
 <text: '# Example Object
 
-TODO
-
-'>
+An Example method is just like a test method, except that it returns an object. This may seem like a trivial point, but it opens up a world of possibilities.'>
 
 	^ aSlide element
 		setPriority;
