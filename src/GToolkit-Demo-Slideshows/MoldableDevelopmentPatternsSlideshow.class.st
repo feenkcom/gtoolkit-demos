@@ -568,11 +568,21 @@ MoldableDevelopmentPatternsSlideshow >> projectDiaryPage [
 MoldableDevelopmentPatternsSlideshow >> simpleView: aSlide [
 	<gtSlide>
 	
-<text: '## Pattern: ...
+<text: '## Pattern: Simple View
 
-TODO -- Ludo game Players etc; Stack machine state
+In this demo example of an address book we can see columned lists, an even simpler list view, a fancier mondrian graph layout view, and a text editor view.
 
-'>
+*(Click through them and show the code.)*
+
+Any kind of graphical element can also be reused within an `explicit` view. This is the case for the Ludo game, which reuses its graphical UI as a view.
+
+Finally we see some statistics calculated on the current image. The greatest number of views are the `empty` view, which is is used to suppress a view if it contains no useful information. Next are forwarding views, which just reuse other existing views. The next bunch we have all seen already.
+
+Interestingly, most of the views are under 12 lines of code.
+Here we retrieve all the `gtView` methods, and in the inspector view we can see some metrics.
+
+*(Evalaute the snippet, switch the Inspector Metrics view.'>
+
 	^ aSlide lepiterPage
 		setPriority;
 		startPage: (self db pageNamed: 'Pattern: Simple View')
@@ -610,11 +620,48 @@ MoldableDevelopmentPatternsSlideshow >> simpleViewPage [
 						exampleSelector: #playerAsecondTokenCloseToSecondOccupiedGoal;
 						noCode: true;
 						previewHeight: 500);
+				yourself);
+		addSnippet: (LeTextSnippet new
+				string: '# Statistics';
 				addSnippet: (LeTextSnippet new
-						string: '';
+						string: 'Here are some statistics of the most popular views in this image. We''ve already seen most of the important ones.';
+						yourself);
+				addSnippet: (LeElementSnippet new
+						code: 'apiSelectors := ((GtPhlowProtoView methods
+		select: [ :each | each protocol = ''decorating'' ]) collect: #selector) asSet
+		, {#mondrian}.
+
+popularity := ((Object withAllSubclasses
+		flatCollect: [ :class | class methods select: [ :each | each hasPragmaNamed: #gtView ] ])
+		flatCollect: [ :method | method ast sentMessages intersection: apiSelectors ])
+		asBag sortedCounts.
+popularity gtItemsFor: GtPhlowView new';
+						codeVisible: false;
+						elementHeight: 475;
+						codeHeight: 50;
+						yourself);
+				addSnippet: (LeTextSnippet new
+						string: 'Most of these are under 12 lines of code.';
+						yourself);
+				addSnippet: (LePharoSnippet new
+						code: '#gtView gtPragmas ';
 						yourself);
 				yourself);
 		yourself
+]
+
+{ #category : #slides }
+MoldableDevelopmentPatternsSlideshow >> simpleViewScenery: aSlide [
+	<gtSlide>
+
+<text: '# Simple View
+
+A view does not have to be complex or rich to be useful.
+Most views are very simple.'>
+
+	^ aSlide element
+		setPriority;
+		element: [ self patternSceneryHighlighting: 'Simple View' ]
 ]
 
 { #category : #accessing }
@@ -636,15 +683,13 @@ MoldableDevelopmentPatternsSlideshow >> slidePriorities [
 				moldableObject:
 			contextualPlaygroundScenery:
 				contextualPlayground:
-				
 			exampleObjectScenery:
 				exampleObject:
-			
-
 			viewableEntityScenery:
 				viewableEntity:
 		
-			simpleView:
+			simpleViewScenery:
+				simpleView:
 			
 			viewableDataWrapper:
 			customAction:
@@ -709,7 +754,7 @@ MoldableDevelopmentPatternsSlideshow >> viewableDataWrapper: aSlide [
 
 <text: '## Pattern: Viewable Data Wrapper
 
-REDO -- website, IMDB movie list
+***REDO -- website, IMDB movie list
 
 Although sometimes you may have the luxury to work on a greenfield project, most projects start from some existing data and code.
 
