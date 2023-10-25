@@ -156,31 +156,20 @@ MoldableDevelopmentPatternsSlideshow >> customActionPage [
 MoldableDevelopmentPatternsSlideshow >> exampleObject: aSlide [
 	<gtSlide>
 
-<text: '## Pattern: ...
+<text: '## Pattern: Example Object
 
-TODO -- Ludo; stack machine
+Here we have a fresh stack machine, to which we want to push 3 and 4.
 
+This works nicely, but we would like to turn this into an example.
 
+First we extract the code as a method called stackWith3and4. Then we add the `<gtExample>` pragma. This turns it into an example method that can be run from the coder to create a new instance.
 
+*(Extract the code, open a coder, and add the pragma. Run the example from the coder.)*
 
+Finally we add a few obvious assertions to let the example also serve as a test case.
 
+Note that the class is now decorated with an example runner action.'>
 
-
-
-
-
-# FOR THE PAGE:
-
-Intent
-Wrap examples as (instance) methods that optionally evaluate some tests (assertions), and return the example instance.
-Examples can be run just like classical unit tests.
-When an example fails, its dependent examples do not need to be run.
-When an example succeeds, it can be inspected, used as a moldable object to start coding, or embedded as a live example snippet within a notebook page to illustrate some point.
-
-
-
-
-'>
 	^ aSlide lepiterPage
 		setPriority;
 		startPage: (self db pageNamed: 'Pattern: Example Object')
@@ -192,10 +181,41 @@ MoldableDevelopmentPatternsSlideshow >> exampleObjectPage [
 	<noTest>
 	^ (LePage named: 'Pattern: Example Object')
 	addSnippet: (LeTextSnippet new
-			string: '# PLACEHOLDER';
+			string: '# Intent';
+			addSnippet: (LeTextSnippet new
+					string: 'Wrap examples as methods that optionally perform some tests, and return an example instance.';
+					yourself);
+			addSnippet: (LeTextSnippet new
+					string: 'Examples work just like classical unit tests, but they can be composed. This eliminates code duplication, and reduces cascades of failing tests due to shared fixtures.';
+					yourself);
+			addSnippet: (LeTextSnippet new
+					string: 'Examples can be used as a starting point for moldable development, or can be embedded in notebook pages for documentation.';
+					yourself);
 			yourself);
 	addSnippet: (LeTextSnippet new
-			string: 'to do for a later version ...';
+			string: '# Example';
+			addSnippet: (LeTextSnippet new
+					string: 'Here is a code snippet that we would like to extract as an example.';
+					yourself);
+			addSnippet: (LeElementSnippet new
+					code: 'scripter := GtInspectorScripterExamples new
+		scriptedInspectorOn: StackMachineV1 new
+		WithPlaygroundText: ''example := self class new.
+example ! 3.
+example ! 4.
+example.''.
+pager := scripter elementWithoutParent.
+(pager query // GtInspector) result anyOne removeFromParent.';
+					codeVisible: false;
+					elementHeight: 418;
+					codeHeight: 420;
+					yourself);
+			addSnippet: (LeTextSnippet new
+					string: '';
+					yourself);
+			addSnippet: (LeTextSnippet new
+					string: '';
+					yourself);
 			yourself);
 	yourself
 ]
@@ -563,13 +583,38 @@ MoldableDevelopmentPatternsSlideshow >> simpleViewPage [
 	<gtExample>
 	<noTest>
 	^ (LePage named: 'Pattern: Simple View')
-	addSnippet: (LeTextSnippet new
-			string: '# PLACEHOLDER';
-			yourself);
-	addSnippet: (LeTextSnippet new
-			string: 'to do for a later version ...';
-			yourself);
-	yourself
+		addSnippet: (LeTextSnippet new
+				string: '## Intent';
+				addSnippet: (LeTextSnippet new
+						string: 'Pick the simplest view that answers questions about your domain object. Only refine the view if this will answer more questions.';
+						yourself);
+				addSnippet: (LeTextSnippet new
+						string: 'In this way, views are cheap and quick to create.';
+						yourself);
+				yourself);
+		addSnippet: (LeTextSnippet new
+				string: '# Examples';
+				addSnippet: (LeTextSnippet new
+						string: 'Here we can find a `columnedList` view, a plain `list` view, and a fancier `mondrian` view. The Print view is a `textEditor` view.';
+						yourself);
+				addSnippet: (LeExampleSnippet new
+						exampleBehaviorName: #GtABCartoonAddressBookExample;
+						exampleSelector: #cartoonAddressBook;
+						noCode: true;
+						previewHeight: 300);
+				addSnippet: (LeTextSnippet new
+						string: 'Any element can be embedded as an `explicit` view';
+						yourself);
+				addSnippet: (LeExampleSnippet new
+						exampleBehaviorName: #GtLudoGameExamples;
+						exampleSelector: #playerAsecondTokenCloseToSecondOccupiedGoal;
+						noCode: true;
+						previewHeight: 500);
+				addSnippet: (LeTextSnippet new
+						string: '';
+						yourself);
+				yourself);
+		yourself
 ]
 
 { #category : #accessing }
@@ -730,11 +775,28 @@ repoDir';
 MoldableDevelopmentPatternsSlideshow >> viewableEntity: aSlide [
 	<gtSlide>
 	
-<text: '## Pattern: ...
+<text: '## Pattern: Viewable Entity
 
-TODO -- Ludo game, IMDB JSON view
+As you explore your moldable domain objects you will discover interesting facts that you would like to make explicitly visible.
 
-'>
+In this example we are exploring or stack machine example. The default "raw" view is a rather poor way of understanding the machine. If we navigate from there to the stack instance, we find a better way to see the state of the stack in the Items view of the collection. We can Alt-click on the view to see its source code.
+
+This is a classical example of a view method, in this case defined for SequenceableCollections. Let''s have a look at how it is defined.
+
+The name is `gtSomethingFor:` by convention (it could be anything). It takes `aView` as its single argument. The important part is the `<gtView>` pragma in the first line, which flags it as a view method. We then construct the view by asking it for a columnedList view. There is a title for the view, a priority to define the order in which it will appear, and then a number of messages to configure the items of the columned list.
+
+We can reuse this view for our Stack Machine.
+
+*(Open a second, meta view, of the stack machine, next to the initial inspector view.)*
+
+We define a `gtStackFor:` method with a `<gtView>` pragma, and we construct a `forward` view that forwards to the `stack` object, and reuses the `#gtItemsFor:` view. There it is!
+
+*(Define the method.)*
+
+Now we can give it a better title, and set the priority to 10 so we see it first.
+
+*(Do that and see the view update.)*'>
+
 	^ aSlide lepiterPage
 		setPriority;
 		startPage: (self db pageNamed: 'Pattern: Viewable Entity')
@@ -757,13 +819,13 @@ MoldableDevelopmentPatternsSlideshow >> viewableEntityPage [
 		addSnippet: (LeTextSnippet new
 				string: '#Example';
 				addSnippet: (LeTextSnippet new
-						string: 'We explore an instance of our stack machine with two values pushed on it.';
+						string: 'We explore the example stack machine with twovalues on it.';
 						yourself);
-				addSnippet: (LePharoSnippet new
-						code: 'StackMachineV1 new
-	! 3;
-	! 4;
-	yourself';
+				addSnippet: (LeElementSnippet new
+						code: 'GtInspector newOn: StackMachineV2 new stackWith3and4';
+						codeVisible: false;
+						elementHeight: 368;
+						codeHeight: 50;
 						yourself);
 				addSnippet: (LeTextSnippet new
 						string: 'We find a view that we like and add it to the stack machine.';
@@ -778,7 +840,7 @@ MoldableDevelopmentPatternsSlideshow >> viewableEntityScenery: aSlide [
 
 <text: '# Viewable Entity
 
-As you discover interesting facts about your moldable domain objects, you want to turn these facts into Vieable Entities. In other words, these will then become views of your moldable object.'>
+As you discover interesting facts about your moldable domain objects, you want to turn these facts into Viewable Entities. In other words, these will then become views of your moldable object.'>
 
 	^ aSlide element
 		setPriority;
