@@ -10,6 +10,21 @@ Class {
 	#category : #'GToolkit-Demo-WebsiteExplorer-Model'
 }
 
+{ #category : #accessing }
+MarkdownWebPage >> gtMarkdownFor: aView [
+	<gtView>
+	| snippet snippetViewModel |
+	^ aView explicit
+		title: 'Markdown';
+		stencil: [ snippet := LeTextSnippet string: self contents.
+			snippetViewModel := snippet asSnippetViewModel.
+			snippetViewModel coderViewModel
+				addShortcut: (BrEditorShortcut lineEnding
+						combination: (LeSnippetElement keyboardShortcut: #NewLine)).
+			((snippetViewModel snippetView needsEmbellishments: false) asElement
+				snippetViewModel: snippetViewModel) vMatchParent ]
+]
+
 { #category : #testing }
 MarkdownWebPage >> isRoot [
 "If the page's file has a YAML header, we can tell which page is the root."
