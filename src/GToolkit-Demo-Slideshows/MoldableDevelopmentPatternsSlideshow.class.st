@@ -270,7 +270,7 @@ MoldableDevelopmentPatternsSlideshow >> initializeDb [
 	self db addPage: self exampleObjectPage.
 	self db addPage: self customActionPage.
 	
-	self db addPage: self placeholderPage.
+	"self db addPage: self placeholderPage."
 ]
 
 { #category : #slides }
@@ -686,11 +686,12 @@ MoldableDevelopmentPatternsSlideshow >> slidePriorities [
 				exampleObject:
 			viewableEntityScenery:
 				viewableEntity:
-		
 			simpleViewScenery:
 				simpleView:
 			
-			viewableDataWrapper:
+			viewableDataWrapperScenery:
+				viewableDataWrapper:
+			
 			customAction:
 			collectionWrapper:
 			projectDiary:
@@ -813,6 +814,19 @@ repoDir';
 				code: 'EsugWebsite instance';
 				yourself);
 		yourself
+]
+
+{ #category : #slides }
+MoldableDevelopmentPatternsSlideshow >> viewableDataWrapperScenery: aSlide [
+	<gtSlide>
+
+<text: '# Viewable Data Wrapper
+
+Many projects start with existing data. In this case a good strategy is to wrap the data to turn it into a Moldable Object.'>
+
+	^ aSlide element
+		setPriority;
+		element: [ self patternSceneryHighlighting: 'Viewable Data Wrapper' ]
 ]
 
 { #category : #slides }
