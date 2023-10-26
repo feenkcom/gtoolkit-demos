@@ -634,11 +634,10 @@ MoldableDevelopmentPatternsSlideshow >> placeholderPage [
 MoldableDevelopmentPatternsSlideshow >> projectDiary: aSlide [
 	<gtSlide>
 
-<text: '## Pattern: ...
+<text: '## Pattern: Project Diary
 
-TODO -- GT book case studies; Ludo Game, SPL
+All through this presentation we have been using notebook pages to document our progress. There are many further examples inthe GT book. By curating these pages, they turn into a searchable knowledge base of documentation and live examples.'>
 
-'>
 	^ aSlide lepiterPage
 		setPriority;
 		startPage: (self db pageNamed: 'Pattern: Project Diary')
@@ -649,13 +648,27 @@ MoldableDevelopmentPatternsSlideshow >> projectDiaryPage [
 	<gtExample>
 	<noTest>
 	^ (LePage named: 'Pattern: Project Diary')
-	addSnippet: (LeTextSnippet new
-			string: '# PLACEHOLDER';
-			yourself);
-	addSnippet: (LeTextSnippet new
-			string: 'to do for a later version ...';
-			yourself);
-	yourself
+		addSnippet: (LeTextSnippet new
+				string: '# Intent';
+				addSnippet: (LeTextSnippet new
+						string: 'Use a notebook as the starting point for your project and all of its tasks. Use the notebook to keep a diary of your progress. As the project matures, use the notebook as a draft for the documentation.';
+						yourself);
+				yourself);
+		addSnippet: (LeTextSnippet new
+				string: '# Example';
+				addSnippet: (LeTextSnippet new
+						string: 'There are numerous examples in the Glamorous Toolkit book. See, for example, the pages documenting the Ludo game.';
+						yourself);
+				addSnippet: (LeElementSnippet new
+						code: 'page := LeStorageExamples new gtBook
+		pageNamed: ''Implementing a Ludo Game as a moldable development exercise''.
+(GtPager createWrappedOn: (LePagePhlowTool page: page)) maximized';
+						codeVisible: false;
+						elementHeight: 598;
+						codeHeight: 50;
+						yourself);
+				yourself);
+		yourself
 ]
 
 { #category : #slides }
@@ -663,7 +676,9 @@ MoldableDevelopmentPatternsSlideshow >> projectDiaryScenery: aSlide [
 	<gtSlide>
 
 <text: '# Project Diary
-TODO'>
+
+We have been using notebook pages to work from.
+Also this is a pattern, as these pages can be used to document and manage your Moldable Development projects.'>
 
 	^ aSlide element
 		setPriority;
