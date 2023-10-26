@@ -811,7 +811,8 @@ MoldableDevelopmentPatternsSlideshow >> slidePriorities [
 			simpleViewScenery:
 				simpleView:
 			viewableDataWrapperScenery:
-				viewableDataWrapper:	
+				viewableDataWrapper:
+				markdownWebsiteExample:
 			customActionScenery:
 				customAction:
 			
