@@ -200,9 +200,7 @@ PrioritySlideshow >> gtLiveFor: aView [
 { #category : #views }
 PrioritySlideshow >> gtMetricsFor: aView [
 	<gtView>
-	| wordsPerMinutes |
 	self hasTextPragmas ifFalse: [ ^ aView empty ].
-	wordsPerMinutes := 140.
 	^ aView columnedList
 		title: 'Metrics';
 		priority: 75;
@@ -327,12 +325,11 @@ PrioritySlideshow >> initializeDb [
 
 { #category : #utility }
 PrioritySlideshow >> metrics [
-	| words wordsPerMinutes |
-	wordsPerMinutes := 140.
+	| words |
 	words := self scriptText substrings.
 	^ {'Number of words' -> words size.
 		'Estimated duration'
-			-> ((Duration minutes: words size / wordsPerMinutes) roundTo: 1 second)}
+			-> ((Duration minutes: words size / self wordsPerMinute) roundTo: 1 second)}
 ]
 
 { #category : #accessing }
@@ -499,4 +496,11 @@ PrioritySlideshow >> textForSlide: aSelector [
 { #category : #constant }
 PrioritySlideshow >> titleSize [
 	^ 60
+]
+
+{ #category : #accessing }
+PrioritySlideshow >> wordsPerMinute [
+	"Override in subclasses, if desired."
+
+	^ 140
 ]
