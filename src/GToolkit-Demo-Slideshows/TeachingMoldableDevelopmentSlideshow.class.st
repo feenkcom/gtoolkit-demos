@@ -24,24 +24,6 @@ Let me round up with a couple of the biggest challenges we have encountered in t
 ]
 
 { #category : #slides }
-TeachingMoldableDevelopmentSlideshow >> conclusions: aSlide [
-	<gtSlide>
-	<text: '# Conclusions 
-
-In the end, what is important to convey is that Moldable Development is a *process* in which you ask questions about a software system, explore it, and build lots of small, custom tools to answer those questions and make the system explainable.
-
-Moldable Development is a new way of programming that takes time to learn, but that in the end boils down to a set of learnable patterns.
-
-Thanks for listening.'>
-	^ aSlide labelAndElement
-		setPriority;
-		newTextWithFormat: (self asSubtitle: 'Conclusion');
-		newFadedText: '';
-		newFadedText: 'Moldable Development boils down to a set of learnable patterns.';
-		element: [ self patternMapScenery ]
-]
-
-{ #category : #slides }
 TeachingMoldableDevelopmentSlideshow >> contextualPlayground: aSlide [
 	<gtSlide>
 	<noTest>
@@ -466,9 +448,27 @@ TeachingMoldableDevelopmentSlideshow >> slidePriorities [
 			peopleFocusOnWhatTheySeeFirst:
 		
 		
-		conclusions:
+		#takeaways:
 	
 	)
+]
+
+{ #category : #slides }
+TeachingMoldableDevelopmentSlideshow >> takeaways: aSlide [
+	<gtSlide>
+	<text: '# Conclusions 
+
+In the end, what is important to convey is that Moldable Development is a *process* in which you ask questions about a software system, explore it, and build lots of small, custom tools to answer those questions and make the system explainable.
+
+Moldable Development is a new way of programming that takes time to learn, but that in the end boils down to a set of learnable patterns.
+
+Thanks for listening.'>
+	^ aSlide labelAndElement
+		setPriority;
+		newTextWithFormat: (self asSubtitle: 'Conclusion');
+		newFadedText: '';
+		newFadedText: 'Moldable Development boils down to a set of learnable patterns.';
+		element: [ self patternMapScenery ]
 ]
 
 { #category : #slides }

@@ -40,7 +40,7 @@ MoldableDevelopmentPatternsSlideshow >> collectionWrapperPage [
 	addSnippet: (LeTextSnippet new
 			string: '# Intent';
 			addSnippet: (LeTextSnippet new
-					string: 'Wrap collections of domain objects in a dedicated group wrapper, so that the results of queries can also have dedicated views, actions and searches.';
+					string: 'Wrap collections of domain objects in a dedicated collection wrapper, so that the results of queries can also have dedicated views, actions and searches.';
 					yourself);
 			yourself);
 	addSnippet: (LeTextSnippet new
@@ -74,31 +74,6 @@ Just as raw data needs to be wrapped to make it moldable, the results of queries
 	^ aSlide element
 		setPriority;
 		element: [ self patternSceneryHighlighting: 'Collection Wrapper' ]
-]
-
-{ #category : #slides }
-MoldableDevelopmentPatternsSlideshow >> conclusions: aSlide [
-	<gtSlide>
-	
-<text: '# Conclusions 
-
-TODO
-
-Takeaway messages:
-
-- The system is the source of knowledge. The goal of MD is to make that knowledge accessible.
-
-- Every problem is different and requires custom tools. GT is an environment that makes it cheap to build such tools by making the platform itself moldable.
-
-- MD can be applied to any problem. Just make the domain concepts first-class, and mold them to make them explainable. (Example of this slideshow.)
-
-- MD requires a paradigm shift, that puts moldable objects rather than source code in focus, but it can be learned with the help of patterns.
-
-'>
-	^ aSlide paragraph
-		setPriority;
-		subtitleWithFormat: (self asTitle: 'Conclusions')
-
 ]
 
 { #category : #slides }
@@ -715,7 +690,7 @@ MoldableDevelopmentPatternsSlideshow >> simpleViewPage [
 	<noTest>
 	^ (LePage named: 'Pattern: Simple View')
 		addSnippet: (LeTextSnippet new
-				string: '## Intent';
+				string: '# Intent';
 				addSnippet: (LeTextSnippet new
 						string: 'Pick the simplest view that answers questions about your domain object. Only refine the view if this will answer more questions.';
 						yourself);
@@ -815,16 +790,16 @@ MoldableDevelopmentPatternsSlideshow >> slidePriorities [
 				markdownWebsiteExample:
 			customActionScenery:
 				customAction:
-			
 			collectionWrapperScenery:
 				collectionWrapper:
-			
-			
 			projectDiaryScenery:
 				projectDiary:
-	
-		conclusions:
-	
+				
+		takeaways:
+			takeawayKnowledge:
+			takeawayCustomTools:
+			takeawayUniversal:
+			takeawayPatterns:
 	)
 ]
 
@@ -851,6 +826,86 @@ Another view allows us to explore the history of the execution, thus allowing us
 		setPriority;
 		newFadedText: 'SPL';
 		element: [ (GtPager createWrappedOn: (GtInspector forObject: SPL factorial)) maximized ]
+]
+
+{ #category : #slides }
+MoldableDevelopmentPatternsSlideshow >> takeawayCustomTools: aSlide [
+	<gtSlide>
+
+<text: '## Takeaway: Every problem requires different custom tools
+
+Every problem is different and requires custom tools. GT is an environment that makes it cheap to build such tools by making the platform itself moldable.'>
+
+	^ aSlide labelAndElement
+		setPriority;
+		newTextWithFormat: (self asText: 'Every problem needs custom tools');
+		element: [ (GtPager
+				createWrappedOn: (GtInspector forObject: MarkdownWebsiteExamples new onWebsiteOct23))
+				maximized ]
+]
+
+{ #category : #slides }
+MoldableDevelopmentPatternsSlideshow >> takeawayKnowledge: aSlide [
+	<gtSlide>
+	
+<text: '## Takeaway: Moldable Development reveals system knowledge
+
+The system is the source of knowledge. The goal of moldable development is to make that knowledge explicit and accessible.
+'>
+
+	^ aSlide labelAndElement
+		setPriority;
+		newTextWithFormat: (self asText: 'Moldable Development makes system knowledge explicit and accessible');
+		element: [ (GtPager
+				createWrappedOn: (LePagePhlowTool page: LeStorageExamples new gtBook tableOfContents))
+				maximized ]
+]
+
+{ #category : #slides }
+MoldableDevelopmentPatternsSlideshow >> takeawayPatterns: aSlide [
+	<gtSlide>
+
+<text: '## Takeaway: Moldable Development requires a paradigm shift
+
+Moldable Development puts moldable objects rather than source code in focus, but it can be learned with the help of patterns.
+
+Thanks for  listening.'>
+
+	^ aSlide labelAndElement
+		setPriority;
+		newTextWithFormat: (self asText: 'Moldable Development requires a paradigm shift');
+		element: [ self patternMapScenery ]
+]
+
+{ #category : #slides }
+MoldableDevelopmentPatternsSlideshow >> takeawayUniversal: aSlide [
+	<gtSlide>
+	
+<text: '## Takeaway: Moldable Development can be applied to any problem
+
+The approach is always the same.
+Make the domain concepts first-class, and mold them to make them explainable.'>
+	 
+	^ aSlide labelAndElement
+		setPriority;
+		newTextWithFormat: (self asText: 'Moldable Development can be applied to any problem');
+		element: [ (GtPager
+				createWrappedOn: (GtInspector forObject: MoldableDevelopmentPatternsSlideshow new))
+				maximized ]
+]
+
+{ #category : #slides }
+MoldableDevelopmentPatternsSlideshow >> takeaways: aSlide [
+	<gtSlide>
+	
+<text: '# Takeaways 
+
+Let me conclude with a few takeaway messages.'>
+
+	^ aSlide paragraph
+		setPriority;
+		subtitleWithFormat: (self asTitle: 'Takeaways')
+
 ]
 
 { #category : #slides }
@@ -906,7 +961,7 @@ MoldableDevelopmentPatternsSlideshow >> viewableDataWrapperPage [
 	addSnippet: (LeTextSnippet new
 			string: '# Intent';
 			addSnippet: (LeTextSnippet new
-					string: 'Wrap data to obtain a moldable object towhich you can add custom views.';
+					string: 'Wrap data to obtain a moldable object to which you can add custom views.';
 					yourself);
 			yourself);
 	addSnippet: (LeTextSnippet new
@@ -1038,7 +1093,7 @@ This can be done by experimenting with the running system, reading the code, or 
 
 Unfortunately none of these approaches scales very well, least of all generic analysis tools that are not tailored to your specific application.
 
-Instead, moldable development takes the approach that domain-specific tools are needed make any given system explainable, so building custom tools must be cheap and fast.
+Instead, moldable development takes the approach that domain-specific tools are needed to make any given system explainable, so building custom tools must be cheap and fast.
 '>
 
 	^ aSlide paragraph
@@ -1049,4 +1104,9 @@ Instead, moldable development takes the approach that domain-specific tools are 
 
 Moldable development supports decision making by making domain concepts ')
 				, (self asBigText: 'explainable.') italic
+]
+
+{ #category : #accessing }
+MoldableDevelopmentPatternsSlideshow >> wordsPerMinute [
+	^ 100
 ]
