@@ -204,11 +204,10 @@ MoldableDevelopmentPatternsSlideshow >> exampleObjectPage [
 example ! 3.
 example ! 4.
 example.''.
-pager := scripter elementWithoutParent.
-(pager query // GtInspector) result anyOne removeFromParent.';
+scripter elementWithoutParent.';
 					codeVisible: false;
-					elementHeight: 418;
-					codeHeight: 420;
+					elementHeight: 455;
+					codeHeight: 190;
 					yourself);
 			addSnippet: (LeTextSnippet new
 					string: '';
