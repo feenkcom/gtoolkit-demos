@@ -40,7 +40,7 @@ MoldableDevelopmentPatternsSlideshow >> collectionWrapperPage [
 	addSnippet: (LeTextSnippet new
 			string: '# Intent';
 			addSnippet: (LeTextSnippet new
-					string: 'Wrap collections of domain objects in a dedicated group wrapper, so that the results of queries can also have dedicated views, actions and searches.';
+					string: 'Wrap collections of domain objects in a dedicated collection wrapper, so that the results of queries can also have dedicated views, actions and searches.';
 					yourself);
 			yourself);
 	addSnippet: (LeTextSnippet new
@@ -690,7 +690,7 @@ MoldableDevelopmentPatternsSlideshow >> simpleViewPage [
 	<noTest>
 	^ (LePage named: 'Pattern: Simple View')
 		addSnippet: (LeTextSnippet new
-				string: '## Intent';
+				string: '# Intent';
 				addSnippet: (LeTextSnippet new
 						string: 'Pick the simplest view that answers questions about your domain object. Only refine the view if this will answer more questions.';
 						yourself);
@@ -855,7 +855,7 @@ The system is the source of knowledge. The goal of moldable development is to ma
 
 	^ aSlide labelAndElement
 		setPriority;
-		newTextWithFormat: (self asText: 'Moldable Development makes system knowledge explicit and accessible.');
+		newTextWithFormat: (self asText: 'Moldable Development makes system knowledge explicit and accessible');
 		element: [ (GtPager
 				createWrappedOn: (LePagePhlowTool page: LeStorageExamples new gtBook tableOfContents))
 				maximized ]
@@ -961,7 +961,7 @@ MoldableDevelopmentPatternsSlideshow >> viewableDataWrapperPage [
 	addSnippet: (LeTextSnippet new
 			string: '# Intent';
 			addSnippet: (LeTextSnippet new
-					string: 'Wrap data to obtain a moldable object towhich you can add custom views.';
+					string: 'Wrap data to obtain a moldable object to which you can add custom views.';
 					yourself);
 			yourself);
 	addSnippet: (LeTextSnippet new
@@ -1093,7 +1093,7 @@ This can be done by experimenting with the running system, reading the code, or 
 
 Unfortunately none of these approaches scales very well, least of all generic analysis tools that are not tailored to your specific application.
 
-Instead, moldable development takes the approach that domain-specific tools are needed make any given system explainable, so building custom tools must be cheap and fast.
+Instead, moldable development takes the approach that domain-specific tools are needed to make any given system explainable, so building custom tools must be cheap and fast.
 '>
 
 	^ aSlide paragraph
