@@ -11,11 +11,22 @@ Class {
 MoldableDevelopmentPatternsSlideshow >> collectionWrapper: aSlide [
 	<gtSlide>
 	
-<text: '## Pattern: ...
+<text: '## Pattern: Collection Wrapper
 
-TODO -- Website; IMDB
+Here again is our website inspector. If we dive into the list of links in a website, the result is a WebLinkGroup and not just a collection. This way we obtain more useful views for the result.
 
-'>
+If we explore the class hierarchy, we see that the website and the query result are in the same hierarchy and inherit the same views and actions.
+
+*(Maximize the Meta view of the group to see the class hierarchy starting from AWebLinkGroup.)*
+
+Furthermore the WebLinkGroup uses the TGtGroupWithItems trait so that it is mostly polymorphic with Collections. Only a few methods are actually implemented by this class.
+
+*(Show the non-trait methods.)*
+
+Similarly, if we perform a Spotter search for, say "Smalltalk", we will get a wrapped Page group with a useful overview.
+
+*(Minimize the Coder view to see the Inspector again, perform the query and view the result set.)*'>
+
 	^ aSlide lepiterPage
 		setPriority;
 		startPage: (self db pageNamed: 'Pattern: Collection Wrapper')
@@ -27,12 +38,42 @@ MoldableDevelopmentPatternsSlideshow >> collectionWrapperPage [
 	<noTest>
 	^ (LePage named: 'Pattern: Collection Wrapper')
 	addSnippet: (LeTextSnippet new
-			string: '# PLACEHOLDER';
+			string: '# Intent';
+			addSnippet: (LeTextSnippet new
+					string: 'Wrap collections of domain objects in a dedicated group wrapper, so that the results of queries can also have dedicated views, actions and searches.';
+					yourself);
 			yourself);
 	addSnippet: (LeTextSnippet new
-			string: 'to do for a later version ...';
+			string: '# Example';
+			addSnippet: (LeTextSnippet new
+					string: 'If we dive into a collection of links, or perform a Spotter search, the result should not be a raw collection, but a wrapped WebPageGroup or WebLinkGroup.';
+					yourself);
+			addSnippet: (LeExampleSnippet new
+					exampleBehaviorName: #MarkdownWebsiteExamples;
+					exampleSelector: #onWebsiteOct23;
+					noCode: true;
+					previewHeight: 450);
+			addSnippet: (LeTextSnippet new
+					string: '';
+					yourself);
+			addSnippet: (LeTextSnippet new
+					string: '';
+					yourself);
 			yourself);
 	yourself
+]
+
+{ #category : #slides }
+MoldableDevelopmentPatternsSlideshow >> collectionWrapperScenery: aSlide [
+	<gtSlide>
+
+<text: '# Collection Wrapper
+
+Just as raw data needs to be wrapped to make it moldable, the results of queries should be wrapped to make them moldable as well.'>
+
+	^ aSlide element
+		setPriority;
+		element: [ self patternSceneryHighlighting: 'Collection Wrapper' ]
 ]
 
 { #category : #slides }
@@ -128,11 +169,24 @@ A Contextual Playground offers a way to experiment with a moldable object and ex
 MoldableDevelopmentPatternsSlideshow >> customAction: aSlide [
 	<gtSlide>
 
-<text: '## Pattern: ...
+<text: '## Pattern: Custom Action
 
-TODO -- SPL; stack machine
+Whereas a custom view presents information in a useful and reproducible way, a custom action encapsulates a repeated task and makes it available in a concenvient way.
 
-'>
+Here we see our website inspector again. We see there are some unreachable pages. If we navigate to some of these pages, we might like to check the page online.
+
+*(Navigate to the unreachable pages and open one of them.)*
+
+A custom action will open the page online in a web browser.
+
+Note that the code for an action is similar in style to that of a view.
+
+*(Option click on the web browser button.)*
+
+We can also see that many links are missing an HTTP status. Again we can use a custom action to check these linkl,and another one to stop checking.
+
+*(Open the missing links view. Start and stop link checking.)*'>
+
 	^ aSlide lepiterPage
 		setPriority;
 		startPage: (self db pageNamed: 'Pattern: Custom Action')
@@ -144,12 +198,38 @@ MoldableDevelopmentPatternsSlideshow >> customActionPage [
 	<noTest>
 	^ (LePage named: 'Pattern: Custom Action')
 	addSnippet: (LeTextSnippet new
-			string: '# PLACEHOLDER';
+			string: '# Intent';
+			addSnippet: (LeTextSnippet new
+					string: 'Add a *custom action* button to the key objects involved in the repeated tasks, encapsulating the boilerplate code to perfom them.';
+					yourself);
 			yourself);
 	addSnippet: (LeTextSnippet new
-			string: 'to do for a later version ...';
+			string: '# Example';
+			addSnippet: (LeTextSnippet new
+					string: 'The Markdown website includes custom actions to check links, and open a page in a web browser.';
+					yourself);
+			addSnippet: (LeExampleSnippet new
+					exampleBehaviorName: #MarkdownWebsiteExamples;
+					exampleSelector: #onWebsiteOct23;
+					noCode: true;
+					previewHeight: 450);
 			yourself);
 	yourself
+]
+
+{ #category : #slides }
+MoldableDevelopmentPatternsSlideshow >> customActionScenery: aSlide [
+	<gtSlide>
+
+<text: '# Custom Action
+
+Views are just one way of adding cheap, custom tools to moldable domain objects.
+
+Another way is by introducing custom actions.'>
+
+	^ aSlide element
+		setPriority;
+		element: [ self patternSceneryHighlighting: 'Custom Action' ]
 ]
 
 { #category : #slides }
@@ -259,15 +339,14 @@ Moldable development works by applying a number of learnable patterns.');
 { #category : #initalization }
 MoldableDevelopmentPatternsSlideshow >> initializeDb [
 	self db addPage: self moldableObjectPage.
-
 	self db addPage: self contextualPlaygroundPage.
-
-	self db addPage: self viewableDataWrapperPage.
+	self db addPage: self exampleObjectPage.
 	self db addPage: self viewableEntityPage.
 	self db addPage: self simpleViewPage.
+	self db addPage: self viewableDataWrapperPage.
+	
 	self db addPage: self projectDiaryPage.
 	self db addPage: self collectionWrapperPage.
-	self db addPage: self exampleObjectPage.
 	self db addPage: self customActionPage.
 	
 	"self db addPage: self placeholderPage."
@@ -364,6 +443,22 @@ Again, just reading source code does not scale very well, whether we want to get
 		setPriority;
 		newFadedText: 'Browsing the code is slow and tedious';
 		element: [ (GtCoderElement forClass: GtLudoGame) createInPager maximized ]
+]
+
+{ #category : #slides }
+MoldableDevelopmentPatternsSlideshow >> markdownWebsiteExample: aSlide [
+	<gtSlide>
+
+<text: '## Markdown Website Explorer
+
+After a few iterations, we have a collection of domain objects with custom views that allow us to explore the pages, links, missing links, reachable and unreachable pages, and even a map showing the connections between pages.'>
+
+	^ aSlide labelAndElement
+		setPriority;
+		newFadedText: 'A Markdown Website Explorer';
+		element: [ (GtPager
+				createWrappedOn: (GtInspector forObject: MarkdownWebsiteExamples new onWebsiteOct23))
+				maximized ]
 ]
 
 { #category : #accessing }
@@ -564,6 +659,18 @@ MoldableDevelopmentPatternsSlideshow >> projectDiaryPage [
 ]
 
 { #category : #slides }
+MoldableDevelopmentPatternsSlideshow >> projectDiaryScenery: aSlide [
+	<gtSlide>
+
+<text: '# Project Diary
+TODO'>
+
+	^ aSlide element
+		setPriority;
+		element: [ self patternSceneryHighlighting: 'Project Diary' ]
+]
+
+{ #category : #slides }
 MoldableDevelopmentPatternsSlideshow >> simpleView: aSlide [
 	<gtSlide>
 	
@@ -688,13 +795,17 @@ MoldableDevelopmentPatternsSlideshow >> slidePriorities [
 				viewableEntity:
 			simpleViewScenery:
 				simpleView:
-			
 			viewableDataWrapperScenery:
-				viewableDataWrapper:
+				viewableDataWrapper:	
+			customActionScenery:
+				customAction:
 			
-			customAction:
-			collectionWrapper:
-			projectDiary:
+			collectionWrapperScenery:
+				collectionWrapper:
+			
+			
+			projectDiaryScenery:
+				projectDiary:
 	
 		conclusions:
 	
@@ -754,31 +865,18 @@ MoldableDevelopmentPatternsSlideshow >> viewableDataWrapper: aSlide [
 
 <text: '## Pattern: Viewable Data Wrapper
 
-***REDO -- website, IMDB movie list
+In this example, we want to be able to explore and analyze a GitHub Pages website consisting of markdown pages.
 
-Although sometimes you may have the luxury to work on a greenfield project, most projects start from some existing data and code.
+In this case I have a local snapshot of my own website, though I could also clone the current version.
 
-When we load the data into our environment, we will obtain the default views for that data.
+If I explore this folder I can navigate to the individual files, but I can only do so using the generic views for files and directories.
 
-Here, for example, we have loaded the cloned ESUG website repo and are inspecting the contents.
+What we can do now is wrap the data in a dedicated domain class to obtain a moldable object.
 
-We obtain a completely generic view of the folders and files that tells us nothing about the domain.
+*(Apply the fixits to create the class and the setter.)*
 
-*(Evaluate the first snippet showing the FileLocator views.)*
+Now we can find all the markdown files in the cntextual playground, extract this as a lazy initializer, and slowly introducing interesting views.'>
 
-We would like to turn this into a proper domain object that tells us interesting things about itself.
-
-As a first step, then, we can *wrap* the data into a dedicated object.
-
-When we do this, at first glance the result appears to be even worse, as now we just get a generic *Raw* view of the new object.
-
-*(Inspect the first EsugWebsiteWrapper.)* 
-
-But now we have the possibility to explore it, add behavior, and add new views.
-
-After some iterations we obtain the view we have seen earlier.
-
-*(Inspect the last snippet.)*'>
 	^ aSlide lepiterPage
 		setPriority;
 		startPage: (self db pageNamed: 'Pattern: Viewable Data Wrapper')
@@ -789,31 +887,38 @@ MoldableDevelopmentPatternsSlideshow >> viewableDataWrapperPage [
 	<gtExample>
 	<noTest>
 	^ (LePage named: 'Pattern: Viewable Data Wrapper')
-		addSnippet: (LeTextSnippet new
-				string: '## Start by grabbing your data.';
-				yourself);
-		addSnippet: (LePharoSnippet new
-				code: 'repoDir := FileLocator imageDirectory / ''esug.github.io''.
-
-"Clone the repo if we haven''t already done so."
-repoDir exists
-	ifFalse: [ repo := ''git@github.com:ESUG/esug.github.io.git''.
-		repository := IceRepositoryCreator fromUrl: repo to: repoDir ].
-repoDir';
-				yourself);
-		addSnippet: (LeTextSnippet new
-				string: '## Wrap it in a new class.';
-				yourself);
-		addSnippet: (LePharoSnippet new
-				code: 'EsugWebsiteWrapper new repoDir: repoDir';
-				yourself);
-		addSnippet: (LeTextSnippet new
-				string: '## Add views to answer questions about the data.';
-				yourself);
-		addSnippet: (LePharoSnippet new
-				code: 'EsugWebsite instance';
-				yourself);
-		yourself
+	addSnippet: (LeTextSnippet new
+			string: '# Intent';
+			addSnippet: (LeTextSnippet new
+					string: 'Wrap data to obtain a moldable object towhich you can add custom views.';
+					yourself);
+			yourself);
+	addSnippet: (LeTextSnippet new
+			string: '# Example';
+			addSnippet: (LeTextSnippet new
+					string: 'We can explore the files of a GitHub pages website.';
+					yourself);
+			addSnippet: (LePharoSnippet new
+					code: 'websiteFolder := (FileLocator gtResource / ''feenkcom'' / ''gtoolkit-demos''
+		/ ''data'' / ''onierstrasz.github.io'') asFileReference';
+					yourself);
+			addSnippet: (LeTextSnippet new
+					string: 'But to mold the data we need to wrap it. We create th class and start to explore.';
+					yourself);
+			addSnippet: (LePharoSnippet new
+					code: 'MyWebsite new data: websiteFolder';
+					yourself);
+			addSnippet: (LeTextSnippet new
+					string: 'We find all the markdown files corresponding to pages.';
+					yourself);
+			addSnippet: (LeTextSnippet new
+					string: 'We slowly introduce views, and after some iterations we have an explainable domain object ...';
+					yourself);
+			addSnippet: (LeTextSnippet new
+					string: '';
+					yourself);
+			yourself);
+	yourself
 ]
 
 { #category : #slides }
