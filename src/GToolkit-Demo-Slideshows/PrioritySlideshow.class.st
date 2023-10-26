@@ -324,6 +324,12 @@ PrioritySlideshow >> initializeDb [
 ]
 
 { #category : #utility }
+PrioritySlideshow >> killList [
+"Used by scriptText to remove text lines starting with any of these prefixes. Can be overridden by subclasses."
+	^ #('#' '*(' '```')
+]
+
+{ #category : #utility }
 PrioritySlideshow >> metrics [
 	| words |
 	words := self scriptText substrings.
@@ -389,8 +395,7 @@ PrioritySlideshow >> scriptText [
 			'\*\*([^*]+)\*\*'.
 			'\*\*\*([^*]+)\*\*\*'}.
 	script := String new writeStream.
-	separator := String cr repeat: 2.
-	"Collect all the <text: ...> strings"
+	separator := String cr repeat: 2.	"Collect all the <text: ...> strings"
 	self slideDictionary
 		do: [ :assoc | 
 			| text |
@@ -400,12 +405,9 @@ PrioritySlideshow >> scriptText [
 					ifNone: [ '' ].
 			text := separator
 					join: ((separator split: text)
-							reject: [ :each | 
-								(each beginsWith: '#')
-									or: [ (each beginsWith: '*(') or: [ each beginsWith: '```' ] ] ]).
+							reject: [ :each | (self killList detect: [ :kill | each beginsWith: kill ] ifNone: [ nil ]) notNil ]).
 			script nextPutAll: text ].
-	scriptText := script contents.
-	"Strip out formatting using * and `"
+	scriptText := script contents.	"Strip out formatting using * and `"
 	regexStrings
 		do: [ :re | 
 			| regex |

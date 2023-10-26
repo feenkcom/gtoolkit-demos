@@ -13,7 +13,7 @@ MoldableDevelopmentPatternsSlideshow >> collectionWrapper: aSlide [
 	
 <text: '## Pattern: Collection Wrapper
 
-Here again is our website inspector. If we dive into the list of links in a website, the result is a WebLinkGroup and not just a collection. This way we obtain more useful views for the result.
+Here again is our website inspector. If we dive into the list of links in a website, the result is a `WebLinkGroup` and not just a collection. This way we obtain more useful views for the result.
 
 If we explore the class hierarchy, we see that the website and the query result are in the same hierarchy and inherit the same views and actions.
 
@@ -23,7 +23,7 @@ Furthermore the WebLinkGroup uses the TGtGroupWithItems trait so that it is most
 
 *(Show the non-trait methods.)*
 
-Similarly, if we perform a Spotter search for, say "Smalltalk", we will get a wrapped Page group with a useful overview.
+Similarly, if we perform a Spotter search for, say “Smalltalk”, we will get a wrapped Page group with a useful overview.
 
 *(Minimize the Coder view to see the Inspector again, perform the query and view the result set.)*'>
 
@@ -84,7 +84,7 @@ MoldableDevelopmentPatternsSlideshow >> contextualPlayground: aSlide [
 
 In a conventional development process, you must constantly switch context between writing code, and running or testing it. By starting instead from a moldable object, you can stay within the context of a live object to explore and experiment with new features.
 
-Here we inspect our current version of the state machine, and ask how to add a number to the top of the stack. We navigate to the stack instance, and query its Meta view for "add" methods. We find the `addLast:` message, and try it out in the contexual playground of the  moldable object.
+Here we inspect our current version of the state machine, and ask how to add a number to the top of the stack. We navigate to the stack instance, and query its Meta view for “add” methods. We find the `addLast:` message, and try it out in the contexual playground of the  moldable object.
 
 We like what we see, so we extract the code as a method called `!`.
 
@@ -158,7 +158,7 @@ Note that the code for an action is similar in style to that of a view.
 
 *(Option click on the web browser button.)*
 
-We can also see that many links are missing an HTTP status. Again we can use a custom action to check these linkl,and another one to stop checking.
+We can also see that many links are missing an HTTP status. Again we can use a custom action to check these links,and another one to stop checking.
 
 *(Open the missing links view. Start and stop link checking.)*'>
 
@@ -217,7 +217,7 @@ Here we have a fresh stack machine, to which we want to push 3 and 4.
 
 This works nicely, but we would like to turn this into an example.
 
-First we extract the code as a method called stackWith3and4. Then we add the `<gtExample>` pragma. This turns it into an example method that can be run from the coder to create a new instance.
+First we extract the code as a method called `stackWith3and4`. Then we add the `<gtExample>` pragma. This turns it into an example method that can be run from the coder to create a new instance.
 
 *(Extract the code, open a coder, and add the pragma. Run the example from the coder.)*
 
@@ -351,7 +351,7 @@ For example, Players have a view showing the positions of their tokens.
 
 We can also explore the history of past views, and thus obtain an explanation of how the game has evolved.
 
-*(Go to the Moves view, and replay several moves.)
+*(Go to the Moves view, and replay several moves.)*
 
 The object is also live, so we can can interact with it programmatically, by opening a playground, and, for example, autoplaying it to the end.
 
@@ -361,7 +361,7 @@ The views are cheap to create. The Moves view, for example, consists of just a f
 
 *(OPT-Click on the Moves view.)*
 
-We can also program with the live object, for example, to make the `Moves` view the default one.
+We can also update the live object, for example, to make the `Moves` view the default one.
 
 *(Change the  Moves priority to 5.)*'>
 
@@ -371,6 +371,13 @@ We can also program with the live object, for example, to make the `Moves` view 
 		element: [ (GtPager
 				createWrappedOn: (GtInspector forObject: GtLudoRecordingGameExamples new gameShowingAllMoves3))
 				maximized ]
+]
+
+{ #category : #accessing }
+MoldableDevelopmentPatternsSlideshow >> killList [
+"Used by scriptText to remove text lines starting with any of these prefixes. Can be overridden by subclasses."
+	"^ #('#' '*(' '```')"
+	^ #()
 ]
 
 { #category : #slides }
@@ -611,7 +618,7 @@ MoldableDevelopmentPatternsSlideshow >> projectDiary: aSlide [
 
 <text: '## Pattern: Project Diary
 
-All through this presentation we have been using notebook pages to document our progress. There are many further examples inthe GT book. By curating these pages, they turn into a searchable knowledge base of documentation and live examples.'>
+All through this presentation we have been using notebook pages to document our progress. There are many further examples in the GT book. By curating these pages, they turn into a searchable knowledge base of documentation and live examples.'>
 
 	^ aSlide lepiterPage
 		setPriority;
@@ -677,7 +684,7 @@ Finally we see some statistics calculated on the current image. The greatest num
 Interestingly, most of the views are under 12 lines of code.
 Here we retrieve all the `gtView` methods, and in the inspector view we can see some metrics.
 
-*(Evalaute the snippet, switch the Inspector Metrics view.'>
+*(Evaluate the snippet, and switch to the Inspector Metrics view.)*'>
 
 	^ aSlide lepiterPage
 		setPriority;
@@ -813,7 +820,7 @@ Moldable development can apply to any kind of project.
 
 Here is a very different example of an interpreter for a Simple Programming Language for a compiler course.
 
-The default view is actually a composition of three views, of the current continuation, in this case a factorial program, the current environment bindings, and the program output.
+The default view is actually a composition of three views, of the current continuation -- in this case a factorial program -- the current environment bindings, and the program output.
 
 This inspector also has custom actions to perform a single interpretation step, or to run the program to the end.
 
@@ -822,6 +829,7 @@ This inspector also has custom actions to perform a single interpretation step, 
 We see the three views update with each step.
 
 Another view allows us to explore the history of the execution, thus allowing us to replay and understand the semantic steps.'>
+
 	^ aSlide labelAndElement
 		setPriority;
 		newFadedText: 'SPL';
@@ -851,7 +859,8 @@ MoldableDevelopmentPatternsSlideshow >> takeawayKnowledge: aSlide [
 <text: '## Takeaway: Moldable Development reveals system knowledge
 
 The system is the source of knowledge. The goal of moldable development is to make that knowledge explicit and accessible.
-'>
+
+The GT Book is an example of such a knowledge base, but every project should have one.'>
 
 	^ aSlide labelAndElement
 		setPriority;
@@ -867,7 +876,9 @@ MoldableDevelopmentPatternsSlideshow >> takeawayPatterns: aSlide [
 
 <text: '## Takeaway: Moldable Development requires a paradigm shift
 
-Moldable Development puts moldable objects rather than source code in focus, but it can be learned with the help of patterns.
+Moldable Development puts moldable objects rather than source code in focus.
+
+This requires a different way of thinking about and developing software, but it can be learned with the help of these patterns.
 
 Thanks for  listening.'>
 
@@ -883,8 +894,9 @@ MoldableDevelopmentPatternsSlideshow >> takeawayUniversal: aSlide [
 	
 <text: '## Takeaway: Moldable Development can be applied to any problem
 
-The approach is always the same.
-Make the domain concepts first-class, and mold them to make them explainable.'>
+The approach is always the same. Make the domain concepts first-class, and mold them to make them explainable.
+
+Here we see that Moldable Development has also been applied to prepare this presentation.'>
 	 
 	^ aSlide labelAndElement
 		setPriority;
@@ -946,7 +958,7 @@ What we can do now is wrap the data in a dedicated domain class to obtain a mold
 
 *(Apply the fixits to create the class and the setter.)*
 
-Now we can find all the markdown files in the cntextual playground, extract this as a lazy initializer, and slowly introducing interesting views.'>
+Now we can find all the markdown files in the cntextual playground, extract this as a lazy initializer, and slowly introduce interesting views.'>
 
 	^ aSlide lepiterPage
 		setPriority;
@@ -1013,7 +1025,7 @@ MoldableDevelopmentPatternsSlideshow >> viewableEntity: aSlide [
 
 As you explore your moldable domain objects you will discover interesting facts that you would like to make explicitly visible.
 
-In this example we are exploring or stack machine example. The default "raw" view is a rather poor way of understanding the machine. If we navigate from there to the stack instance, we find a better way to see the state of the stack in the Items view of the collection. We can Alt-click on the view to see its source code.
+In this example we are exploring our stack machine example. The default “raw” view is a rather poor way of understanding the machine. If we navigate from there to the stack instance, we find a better way to see the state of the stack in the Items view of the collection. We can Alt-click on the view to see its source code.
 
 This is a classical example of a view method, in this case defined for SequenceableCollections. Let''s have a look at how it is defined.
 
