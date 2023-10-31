@@ -986,7 +986,7 @@ MoldableDevelopmentPatternsSlideshow >> viewableDataWrapperPage [
 		/ ''data'' / ''onierstrasz.github.io'') asFileReference';
 					yourself);
 			addSnippet: (LeTextSnippet new
-					string: 'But to mold the data we need to wrap it. We create th class and start to explore.';
+					string: 'But to mold the data we need to wrap it. We create the class and start to explore.';
 					yourself);
 			addSnippet: (LePharoSnippet new
 					code: 'MyWebsite new data: websiteFolder';
