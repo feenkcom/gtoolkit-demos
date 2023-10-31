@@ -441,3 +441,31 @@ BibtexPParserExamples >> rawFieldYear [
 	self assert: result equals: '1984'.
 	^ result
 ]
+
+{ #category : #accessing }
+BibtexPParserExamples >> scgPub [
+	"SCG publications, extracted from scg.bib in https://github.com/scgbern/scgbib"
+
+	<gtExample>
+	<noTest>
+	| result |
+	result := parser parse: self scgPubFile contents.
+	self assert: result size equals: 571.
+	"Check that all entries are tagged with an scg-pub keyword"
+	self
+		assert: (result
+				reject: [ :each | 
+					(each at: 'Keywords' ifAbsent: [ each at: 'keywords' ])
+						includesSubstring: 'scg-pub' ]) isEmpty.
+
+	^ result
+]
+
+{ #category : #accessing }
+BibtexPParserExamples >> scgPubFile [
+	"SCG publications, extracted from scg.bib in https://github.com/scgbern/scgbib"
+	<gtExample>
+	<noTest>
+	^ FileLocator gtResource / 'feenkcom' / 'gtoolkit-demos' / 'data' / 'bibtex'
+		/ 'scg-pub.bib'
+]
