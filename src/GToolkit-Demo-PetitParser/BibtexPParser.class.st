@@ -1,3 +1,7 @@
+"
+A demo of a parser for BibTex files useing PetitParser.
+See {{gtMethod:name=BibtexPParserExamples>>#scgPub}} for a full example.
+"
 Class {
 	#name : #BibtexPParser,
 	#superclass : #PP2CompositeNode,
