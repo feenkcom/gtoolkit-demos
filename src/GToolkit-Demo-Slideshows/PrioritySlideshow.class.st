@@ -128,6 +128,33 @@ PrioritySlideshow >> db [
 	^ db
 ]
 
+{ #category : #utility }
+PrioritySlideshow >> demoPage [
+	"Extract the demo notes, if there are any."
+
+	| page |
+	page := LePage named: 'Demo notes'.
+	LeDatabase new addPage: page.
+	page
+		addSnippet: (LeTextSnippet new
+				string: self demoText; 
+				yourself).
+	^ page
+]
+
+{ #category : #accessing }
+PrioritySlideshow >> demoText [
+	"Glue together any text in <demo: ''> pragmas."
+
+	^ String cr , String cr
+		join: ((self slideDictionary associations
+				collect: [ :assoc | 
+					assoc value pragmas
+						detect: [ :p | p selector = #demo: ]
+						ifFound: [ :pragma | pragma arguments first ]
+						ifNone: [ '' ] ]) select: #notEmpty)
+]
+
 { #category : #accessing }
 PrioritySlideshow >> gtActionShowFor: anAction [
 	<gtAction>
@@ -163,6 +190,18 @@ PrioritySlideshow >> gtDatabaseFor: aView [
 		title: 'Database';
 		priority: 80;
 		object: [ self db ];
+		view: #gtLiveFor:;
+		actionUpdateButton
+]
+
+{ #category : #views }
+PrioritySlideshow >> gtDemoNotesFor: aView [
+	<gtView>
+	self hasDemoPragmas ifFalse: [ ^ aView empty ].
+	^ aView forward
+		title: 'Demo notes';
+		priority: 71;
+		object: [ self demoPage asContentUIModel ];
 		view: #gtLiveFor:;
 		actionUpdateButton
 ]
@@ -297,6 +336,14 @@ PrioritySlideshow >> gtSpotterForSourceCodeFor: aSearch [
 		itemName: #sourceCode;
 		filterBySubstring;
 		wantsToDisplayOnEmptyQuery: true
+]
+
+{ #category : #views }
+PrioritySlideshow >> hasDemoPragmas [
+	^ self class methods
+		detect: [ :m | m hasPragmaNamed: 'demo:' ]
+		ifFound: [ true ]
+		ifNone: [ false ]
 ]
 
 { #category : #views }
