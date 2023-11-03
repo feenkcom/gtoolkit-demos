@@ -27,6 +27,15 @@ Similarly, if we perform a Spotter search for, say “Smalltalk”, we will get 
 
 *(Minimize the Coder view to see the Inspector again, perform the query and view the result set.)*'>
 
+<demo: '## Pattern: Collection Wrapper
+
+Inspect the Links from the Overview.
+Open a Coder on the Link group.
+Maximize the veiw and show the hierarchy.
+Show the classes uses the trait TGtGroupWithItems.
+Show the non-trait methods.
+Optionally go back to the overview and search for Smalltalk.'>
+
 	^ aSlide lepiterPage
 		setPriority;
 		startPage: (self db pageNamed: 'Pattern: Collection Wrapper')
@@ -89,6 +98,13 @@ Here we inspect our current version of the state machine, and ask how to add a n
 We like what we see, so we extract the code as a method called `!`.
 
 We similarly experiment with and extract methods `stack`, `top`, and `isEmpty`.'>
+
+<demo: '## Pattern: Contextual Playground
+
+Inspect the stack instance.
+In the Meta view, search for add methods.
+Try addLast: in the playground and refresh to see the result.
+Extract as a `!` method.'>
 
 	^ aSlide lepiterPage
 		setPriority;
@@ -160,7 +176,16 @@ Note that the code for an action is similar in style to that of a view.
 
 We can also see that many links are missing an HTTP status. Again we can use a custom action to check these links,and another one to stop checking.
 
-*(Open the missing links view. Start and stop link checking.)*'>
+*(Open the missing status view. Start and stop link checking.)*'>
+
+<demo: '## Pattern: Custom Action
+
+Navigate to an unreachable page.
+Open it in a web browser with the custom action.
+Show the custom code.
+Inspect the Missing status group from the Overview.
+Start and stop link checking.
+Possibly inspect a bad link and open it in a web browser.'>
 
 	^ aSlide lepiterPage
 		setPriority;
@@ -224,6 +249,14 @@ First we extract the code as a method called `stackWith3and4`. Then we add the `
 Finally we add a few obvious assertions to let the example also serve as a test case.
 
 Note that the class is now decorated with an example runner action.'>
+
+<demo: '## Pattern: Example Object
+
+Run the example.
+Extract the code as stackWith3and4.
+Add the pragma.
+Run the code from the coder.
+Add some assertions.'>
 
 	^ aSlide lepiterPage
 		setPriority;
@@ -365,6 +398,20 @@ We can also update the live object, for example, to make the `Moves` view the de
 
 *(Change the  Moves priority to 5.)*'>
 
+<demo: '## Inspecting a live game
+
+Show some views.
+Navigate to a Player. Inspect its views.
+Show more views.
+Show the the Moves view. Replay several moves.
+
+Open a playground. Do: self autoPlay: 10
+Open a second inspector, and autoplay some more.
+Play to the end.
+
+Show the Moves view code.
+Change the priority to 5.'>
+
 	^ aSlide labelAndElement
 		setPriority;
 		newFadedText: 'Inspecting a live Ludo game';
@@ -398,6 +445,10 @@ Also, experimenting with the application in this way is slow and tedious.
 
 Clearly this approach does not scale.'>
 
+<demo: '## Understanding the Ludo game
+
+Click on the die and try to play.'>
+
 	^ aSlide textAndElement
 		elementWeight: 0.5;
 		setPriority;
@@ -421,6 +472,10 @@ We see many domain concepts implemented as classes, and we see methods whose nam
 
 Again, just reading source code does not scale very well, whether we want to get a general idea of the design, or if we want to answer a more specific question about how to further develop the system.'>
 
+<demo: '## Browsing the Ludo source code
+
+Browse the classes and methods. Look at some class comments.'>
+
 	^ aSlide labelAndElement
 		setPriority;
 		newFadedText: 'Browsing the code is slow and tedious';
@@ -434,6 +489,10 @@ MoldableDevelopmentPatternsSlideshow >> markdownWebsiteExample: aSlide [
 <text: '## Markdown Website Explorer
 
 After a few iterations, we have a collection of domain objects with custom views that allow us to explore the pages, links, missing links, reachable and unreachable pages, and even a map showing the connections between pages.'>
+
+<demo: '## Markdown Website Explorer
+
+Explore the pages, the unreachable pages and the map.'>
 
 	^ aSlide labelAndElement
 		setPriority;
@@ -487,6 +546,15 @@ We add a stack slot and initialize it as an OrderedCollection.
 We run `self initialize` in the playground, and refresh the Raw view to see the new state.
 
 From here we can navigate to inspect the empty stack state.'>
+
+
+<demo: '## Pattern: Moldable object
+
+Fix the class and inspect the result.
+Add an initialize method with a `stack` slot in the Meta view.
+Run it in the Playground.
+See it in the Raw view.
+Inspect the stack slot state.'>
 
 	^ aSlide lepiterPage
 		setPriority;
@@ -620,6 +688,10 @@ MoldableDevelopmentPatternsSlideshow >> projectDiary: aSlide [
 
 All through this presentation we have been using notebook pages to document our progress. There are many further examples in the GT book. By curating these pages, they turn into a searchable knowledge base of documentation and live examples.'>
 
+<demo: '## Pattern: Project Diary
+
+Browse some of the Ludo pages.'>
+
 	^ aSlide lepiterPage
 		setPriority;
 		startPage: (self db pageNamed: 'Pattern: Project Diary')
@@ -685,6 +757,15 @@ Interestingly, most of the views are under 12 lines of code.
 Here we retrieve all the `gtView` methods, and in the inspector view we can see some metrics.
 
 *(Evaluate the snippet, and switch to the Inspector Metrics view.)*'>
+
+<demo: '## Pattern: Simple View
+
+Open the example in a new column.
+Explore the views and show the code.
+Go back to the page.
+Show the explicit view.
+Show the statistics.
+Explore the pragmas and show the metrics view.'>
 
 	^ aSlide lepiterPage
 		setPriority;
@@ -830,6 +911,13 @@ We see the three views update with each step.
 
 Another view allows us to explore the history of the execution, thus allowing us to replay and understand the semantic steps.'>
 
+<demo: '## Inspecting an interpreter
+
+Show some views.
+Perform some steps.
+Play to the end.
+Explore the History.'>
+
 	^ aSlide labelAndElement
 		setPriority;
 		newFadedText: 'SPL';
@@ -958,7 +1046,14 @@ What we can do now is wrap the data in a dedicated domain class to obtain a mold
 
 *(Apply the fixits to create the class and the setter.)*
 
-Now we can find all the markdown files in the cntextual playground, extract this as a lazy initializer, and slowly introduce interesting views.'>
+Now we can find all the markdown files in the contextual playground, extract this as a lazy initializer, and slowly introduce interesting views.'>
+
+<demo: '## Pattern: Viewable Data Wrapper
+
+Explore the website folder.
+Show the basic views of the markdown pages.
+Fix the wrapper and the data initializer.
+Show how we access the data from the playground.'>
 
 	^ aSlide lepiterPage
 		setPriority;
@@ -1042,6 +1137,15 @@ We define a `gtStackFor:` method with a `<gtView>` pragma, and we construct a `f
 Now we can give it a better title, and set the priority to 10 so we see it first.
 
 *(Do that and see the view update.)*'>
+
+<demo: '## Pattern: Viewable Entity
+
+Inspect the stack machine in a new column.
+Inspect the stack state.
+View the Items code and explain it.
+Copy the selector.
+Open a second inspector on the stack machine.
+Go the StackMachine Meta view and add a forward view.'>
 
 	^ aSlide lepiterPage
 		setPriority;
