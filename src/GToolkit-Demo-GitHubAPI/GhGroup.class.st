@@ -1,9 +1,9 @@
 Class {
 	#name : #GhGroup,
 	#superclass : #GhObject,
-	#traits : 'TGtGroup',
-	#classTraits : 'TGtGroup classTrait',
-	#category : 'GToolkit-Demo-GitHubAPI-Model'
+	#traits : 'TGtGroupWithItems',
+	#classTraits : 'TGtGroupWithItems classTrait',
+	#category : #'GToolkit-Demo-GitHubAPI-Model'
 }
 
 { #category : #accessing }
