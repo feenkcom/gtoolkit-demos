@@ -1065,7 +1065,7 @@ MoldableDevelopmentPatternsSlideshow >> viewableEntityPage [
 		addSnippet: (LeTextSnippet new
 				string: '#Example';
 				addSnippet: (LeTextSnippet new
-						string: 'We explore the example stack machine with twovalues on it.';
+						string: 'We explore the example stack machine with two values on it.';
 						yourself);
 				addSnippet: (LeElementSnippet new
 						code: 'GtInspector newOn: StackMachineV2 new stackWith3and4';
