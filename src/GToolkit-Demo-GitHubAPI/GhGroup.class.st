@@ -1,8 +1,8 @@
 Class {
 	#name : #GhGroup,
 	#superclass : #GhObject,
-	#traits : 'TGtGroupWithItems',
-	#classTraits : 'TGtGroupWithItems classTrait',
+	#traits : 'TGtGroup',
+	#classTraits : 'TGtGroup classTrait',
 	#category : #'GToolkit-Demo-GitHubAPI-Model'
 }
 
