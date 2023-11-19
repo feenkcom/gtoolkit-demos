@@ -13,7 +13,7 @@ GtDConcretePrice >> asOverviewChildrenIn: containerElement [
 ]
 
 { #category : #operations }
-GtDConcretePrice >> dividingPrice: aPrice [
+GtDConcretePrice >> gtDividingPrice: aPrice [
 	self assert: [ aPrice isKindOf: GtDPrice ].
 	^ self money / aPrice money
 ]

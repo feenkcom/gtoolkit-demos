@@ -37,7 +37,7 @@ GtDPriceExamples >> concretePriceDiscountedByMoneyAndDiscountedByPercentage [
 GtDPriceExamples >> concretePriceDiscountedByPercentage [
 	<gtExample>
 	| price |
-	price := UPriceDiscountedByPercentage new price: self concretePrice; discountPercentage: 10 percent.
+	price := GtDPriceDiscountedByPercentage new price: self concretePrice; discountPercentage: 10 percent.
 	self assert: price money = 90 gtEUR.
 	^ price
 ]

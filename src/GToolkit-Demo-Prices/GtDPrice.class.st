@@ -52,7 +52,7 @@ GtDPrice >> - anotherPrice [
 
 { #category : #operations }
 GtDPrice >> / aDivisor [
-	^ aDivisor dividingPrice: self
+	^ aDivisor gtDividingPrice: self
 
 ]
 
@@ -173,14 +173,14 @@ GtDPrice >> discountedBy: aMoneyOrPercentage [
 	^ aMoneyOrPercentage gtDiscountFrom: self
 ]
 
-{ #category : #operations }
-GtDPrice >> dividingPrice: aPrice [
-	^ aPrice money / self money
-]
-
 { #category : #printing }
 GtDPrice >> gtDisplayOn: stream [
 	self moneyDisplayOn: stream
+]
+
+{ #category : #operations }
+GtDPrice >> gtDividingPrice: aPrice [
+	^ aPrice money / self money
 ]
 
 { #category : #ui }

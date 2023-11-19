@@ -21,7 +21,7 @@ GtDMoney >> - aMoney [
 
 { #category : #operations }
 GtDMoney >> / aDivisor [
-	^ aDivisor dividingMoney: self
+	^ aDivisor gtDividingMoney: self
 ]
 
 { #category : #testing }
@@ -59,13 +59,6 @@ GtDMoney >> divideBy: aNumber [
 	^ self subclassResponsibility
 ]
 
-{ #category : #operations }
-GtDMoney >> dividingMoney: aMoney [
-	<return: #Number>
-	"this means that we divide aMoney by self"
-	self subclassResponsibility
-]
-
 { #category : #ui }
 GtDMoney >> gtDetailsFor: aView [
 	<gtView>
@@ -81,6 +74,13 @@ GtDMoney >> gtDetailsFor: aView [
 { #category : #operations }
 GtDMoney >> gtDiscountFrom: aPrice [
 	^ GtDPriceDiscountedByMoney new price: aPrice; discountMoney: self
+]
+
+{ #category : #operations }
+GtDMoney >> gtDividingMoney: aMoney [
+	<return: #Number>
+	"this means that we divide aMoney by self"
+	self subclassResponsibility
 ]
 
 { #category : #testing }

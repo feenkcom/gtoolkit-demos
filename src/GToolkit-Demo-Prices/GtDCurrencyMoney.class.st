@@ -75,20 +75,20 @@ GtDCurrencyMoney >> divideBy: aNumber [
 		currency: self currency
 ]
 
-{ #category : #operations }
-GtDCurrencyMoney >> dividingMoney: aMoney [
-	<return: #Number>
-	aMoney isZero ifTrue: [ ^ 0 ].
-	self assert: [ aMoney currency = self currency ].
-	^ aMoney amount / self amount
-]
-
 { #category : #ui }
 GtDCurrencyMoney >> gtDisplayOn: stream [
 	stream 
 		nextPutAll: (self amount printShowingDecimalPlaces: 2);
 		space;
 		nextPutAll: self currency name
+]
+
+{ #category : #operations }
+GtDCurrencyMoney >> gtDividingMoney: aMoney [
+	<return: #Number>
+	aMoney isZero ifTrue: [ ^ 0 ].
+	self assert: [ aMoney currency = self currency ].
+	^ aMoney amount / self amount
 ]
 
 { #category : #testing }
