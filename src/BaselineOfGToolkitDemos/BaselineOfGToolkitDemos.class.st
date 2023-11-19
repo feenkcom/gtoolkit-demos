@@ -41,5 +41,7 @@ BaselineOfGToolkitDemos >> baseline: spec [
 				baseline: 'GToolkitDemoParseNodeVisitor'
 					with: [ spec repository: 'github://feenkcom/gtoolkit-demos:main/src' ];
 				baseline: 'GToolkitDemoPetitParser'
-					with: [ spec repository: 'github://feenkcom/gtoolkit-demos:main/src' ] ]
+					with: [ spec repository: 'github://feenkcom/gtoolkit-demos:main/src' ];
+				baseline: 'GToolkitDemoPrices'
+					with: [ spec repository: 'github://feenkcom/gtoolkit-demos:main/src' ]  ]
 ]
