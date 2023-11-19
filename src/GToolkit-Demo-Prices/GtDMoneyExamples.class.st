@@ -184,7 +184,7 @@ GtDMoneyExamples >> zeroEurosPlusFourtyTwoEuros [
 { #category : #examples }
 GtDMoneyExamples >> zeroMoney [
 	<gtExample>
-	^ UZeroMoney new
+	^ GtDZeroMoney new
 ]
 
 { #category : #examples }
