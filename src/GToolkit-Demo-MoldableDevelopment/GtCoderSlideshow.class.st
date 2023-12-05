@@ -565,15 +565,15 @@ GtCoderSlideshow >> createClassExplanationWithLinks [
 { #category : #accessing }
 GtCoderSlideshow >> createMethodExplanationText [
 	| text |
-	text := 'Similar, if you want to create a new method you simply click on the other ' asRopedText,
+	text := 'Similarly, if you want to create a new method you simply click on the other ' asRopedText,
 ('+' asRopedText glamorousExplanationFor: #addMethodButton),
 ' button, right and above the list of methods. This opens a new ' asRopedText,
 ('method frame' asRopedText glamorousExplanationFor: #method),
-' where you can write the name and the code of your method. Finally you can ' asRopedText,
+' where you can write the name and the code of your method. Finally, you can ' asRopedText,
 ('save' asRopedText glamorousExplanationFor: #saveMethodButton),
 ' the code or ' asRopedText,
 ('delete' asRopedText glamorousExplanationFor: #deleteMethodButton),
-' it, if you don''t like it' asRopedText.
+' it if you don''t like it.' asRopedText.
 		
 	^ text asRopedText
 		glamorousRegularFont;
