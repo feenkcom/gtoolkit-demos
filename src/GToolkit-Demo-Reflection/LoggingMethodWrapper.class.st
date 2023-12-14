@@ -16,8 +16,14 @@ LoggingMethodWrapper class >> on: aCompiledMethod [
 	^ self new initializeOn: aCompiledMethod
 ]
 
-{ #category : #private }
+{ #category : #dummy }
+LoggingMethodWrapper >> cachePragmas [
+	"Dummy method to be compatible with CompiledMethod"
+]
+
+{ #category : #dummy }
 LoggingMethodWrapper >> flushCache [
+	"Dummy method to be compatible with CompiledMethod"
 ]
 
 { #category : #accessing }
@@ -33,8 +39,8 @@ LoggingMethodWrapper >> initializeOn: aCompiledMethod [
 
 { #category : #actions }
 LoggingMethodWrapper >> install [
-	method methodClass methodDictionary at: method selector put: self
-
+	method methodClass methodDictionary
+		at: method selector put: self
 ]
 
 { #category : #accessing }
@@ -42,8 +48,9 @@ LoggingMethodWrapper >> invocationCount [
 	^ invocationCount
 ]
 
-{ #category : #private }
+{ #category : #dummy }
 LoggingMethodWrapper >> methodClass: aMethodClass [
+	"Dummy method to be compatible with CompiledMethod"
 ]
 
 { #category : #evaluation }
@@ -52,14 +59,13 @@ LoggingMethodWrapper >> run: aSelector with: anArray in: aReceiver [
 	^ aReceiver withArgs: anArray executeMethod: method
 ]
 
-{ #category : #private }
+{ #category : #dummy }
 LoggingMethodWrapper >> selector: aSymbol [
+	"Dummy method to be compatible with CompiledMethod"
 ]
 
 { #category : #actions }
 LoggingMethodWrapper >> uninstall [
-	method methodClass methodDictionary
-		at: method selector
-		put: method
-
+	method methodClass methodDictionary 
+		at: method selector put: method
 ]
