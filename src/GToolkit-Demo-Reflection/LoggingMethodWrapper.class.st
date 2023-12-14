@@ -1,5 +1,5 @@
 "
-In this approach we replace a CompiledMethod in a method dictionary with a ""Method Wrapper"", an object that implements #run:with:in: and remembers to original compiled method instance. When the method wrapper is uninstalled, the original compiled method is restored.
+In this approach we replace a CompiledMethod in a method dictionary with a Method Wrapper, an object that implements #run:with:in: and remembers to original compiled method instance. When the method wrapper is uninstalled, the original compiled method is restored.
 "
 Class {
 	#name : #LoggingMethodWrapper,
@@ -8,7 +8,7 @@ Class {
 		'invocationCount',
 		'method'
 	],
-	#category : #'GToolkit-Demo-Reflection'
+	#category : #'GToolkit-Demo-Reflection-Intercession'
 }
 
 { #category : #'instance creation' }
