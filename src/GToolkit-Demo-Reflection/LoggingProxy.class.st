@@ -8,7 +8,7 @@ Class {
 		'subject',
 		'invocationCount'
 	],
-	#category : #'GToolkit-Demo-Reflection'
+	#category : #'GToolkit-Demo-Reflection-Intercession'
 }
 
 { #category : #'instance creation' }

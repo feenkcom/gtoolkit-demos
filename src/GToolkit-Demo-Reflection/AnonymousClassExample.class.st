@@ -1,3 +1,6 @@
+"
+Illustrates the use of an anonymous class to change the behavior of a single instance.
+"
 Class {
 	#name : #AnonymousClassExample,
 	#superclass : #TestCase,
@@ -6,6 +9,8 @@ Class {
 
 { #category : #accessing }
 AnonymousClassExample >> anonymousClassInstance [
+	"We create an anonymous subclass of Set with a logging #add: method. We dynamically change the class of an instance of Set to be of the new anonymous class and back again."
+
 	<gtExample>
 	| anonClass set |
 	anonClass := Set newAnonymousSubclass.
