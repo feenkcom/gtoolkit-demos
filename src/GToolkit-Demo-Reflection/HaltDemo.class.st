@@ -7,16 +7,23 @@ Only the second halts within foo.
 Class {
 	#name : #HaltDemo,
 	#superclass : #Object,
-	#category : #'GToolkit-Demo-Reflection'
+	#category : #'GToolkit-Demo-Reflection-Examples'
 }
 
-{ #category : #'as yet unclassified' }
+{ #category : #accessing }
 HaltDemo >> bar [
-	^ (self foo), 'bar'
+	"Will halt"
+
+	<gtExample>
+	<noTest>
+	^ self foo , 'bar'
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #accessing }
 HaltDemo >> foo [
+	"Does not halt"
+
+	<gtExample>
 	self haltIfCalledFrom: #bar.
 	^ 'foo'
 ]
