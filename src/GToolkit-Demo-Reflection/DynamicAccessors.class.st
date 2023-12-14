@@ -7,7 +7,7 @@ Class {
 	#instVars : [
 		'x'
 	],
-	#category : #'GToolkit-Demo-Reflection-DNU'
+	#category : #'GToolkit-Demo-Reflection-Intercession'
 }
 
 { #category : #'error-handling' }

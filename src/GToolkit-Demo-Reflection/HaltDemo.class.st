@@ -1,4 +1,6 @@
 "
+Demonstrate a conditional halt that looks up the stack to halt only if the caller is a particular method.
+
 HaltDemo new foo.
 HaltDemo new bar. 
 
