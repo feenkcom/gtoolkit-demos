@@ -96,8 +96,6 @@ ReflectionSceneryExample >> rectangle [
 
 { #category : #accessing }
 ReflectionSceneryExample >> reflectionScenery [
-	"Needs to be split into smaller pieces."
-
 	<gtExample>
 	| scenery items meta reified eyecon |
 	scenery := GtScenery new.
