@@ -66,6 +66,7 @@ ReflectionSceneryExample >> eyecon [
 { #category : #accessing }
 ReflectionSceneryExample >> eyeconFile [
 	<gtExample>
+	<noTest>
 	^ FileLocator gtResource / 'feenkcom/gtoolkit-demos/doc/reflection/eyecon.png'
 ]
 
@@ -96,7 +97,9 @@ ReflectionSceneryExample >> rectangle [
 
 { #category : #accessing }
 ReflectionSceneryExample >> reflectionScenery [
+	"Something wrong here ... for some reason we can't embed this into an example snippet."
 	<gtExample>
+	<noTest>
 	| scenery items meta reified eyecon |
 	scenery := GtScenery new.
 	items := Dictionary new.
@@ -150,7 +153,7 @@ ReflectionSceneryExample >> reflectionScenery [
 		addConnectionWithStencil: (self arcLabeled: 'reflection')
 		from: reified
 		to: meta.
-
+		
 	eyecon := scenery addItem: self eyecon.
 	eyecon
 		position: 140 @ 140;
