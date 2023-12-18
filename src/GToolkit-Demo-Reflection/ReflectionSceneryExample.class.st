@@ -46,10 +46,10 @@ ReflectionSceneryExample >> bigLabel: label [
 { #category : #accessing }
 ReflectionSceneryExample >> circle [
 	^ GtSceneryItem new
-		stencil: (BlElement new
+		stencil: [ BlElement new
 				geometry: BlCircleGeometry new;
 				border: (BlBorder paint: Color black width: 1);
-				yourself)
+				yourself ] asStencil
 ]
 
 { #category : #accessing }
@@ -60,7 +60,7 @@ ReflectionSceneryExample >> curvature [
 { #category : #accessing }
 ReflectionSceneryExample >> eyecon [
 	^ GtSceneryItem new
-		stencil: (GtFileUtility imageElementFromFileReference: self eyeconFile)
+		stencil: [ GtFileUtility imageElementFromFileReference: self eyeconFile ] asStencil
 ]
 
 { #category : #accessing }
@@ -72,34 +72,32 @@ ReflectionSceneryExample >> eyeconFile [
 
 { #category : #accessing }
 ReflectionSceneryExample >> fatLine [
-	^ (BlLineElement new
+	^ [ BlLineElement new
 		border: (BlBorder paint: Color black width: 2);
 		zIndex: -100;
-		toHead: BlArrowheadNone new) asStencil
+		toHead: BlArrowheadNone new ] asStencil
 ]
 
 { #category : #accessing }
-ReflectionSceneryExample >> lineEndpoint [
+ReflectionSceneryExample >> lineEndPoint [
 	^ GtSceneryItem new
-		stencil: (BlElement new
+		stencil: [ BlElement new
 				size: 10 @ 10;
 				background: Color white;
-				border: Color white)
+				border: Color white ] asStencil
 ]
 
 { #category : #accessing }
 ReflectionSceneryExample >> rectangle [
 	^ GtSceneryItem new
-		stencil: (BlElement new
+		stencil: [ BlElement new
 				border: (BlBorder paint: Color black width: 1);
-				yourself)
+				yourself ] asStencil
 ]
 
 { #category : #accessing }
 ReflectionSceneryExample >> reflectionScenery [
-	"Something wrong here ... for some reason we can't embed this into an example snippet."
 	<gtExample>
-	<noTest>
 	| scenery items meta reified eyecon |
 	scenery := GtScenery new.
 	items := Dictionary new.
@@ -116,14 +114,13 @@ ReflectionSceneryExample >> reflectionScenery [
 				extent: 100 @ 30.
 			items at: label first put: item ].
 
-
 	{{'start'.
 			40 @ 100}.
 		{'end'.
 			300 @ 100}}
 		do: [ :label | 
 			| item |
-			item := scenery addItem: self lineEndpoint.
+			item := scenery addItem: self lineEndPoint.
 			item
 				position: label second;
 				extent: 10 @ 10.
@@ -153,7 +150,7 @@ ReflectionSceneryExample >> reflectionScenery [
 		addConnectionWithStencil: (self arcLabeled: 'reflection')
 		from: reified
 		to: meta.
-		
+
 	eyecon := scenery addItem: self eyecon.
 	eyecon
 		position: 140 @ 140;
