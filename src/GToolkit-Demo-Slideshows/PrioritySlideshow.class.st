@@ -172,6 +172,8 @@ PrioritySlideshow >> gtActionShowFor: anAction [
 
 { #category : #constants }
 PrioritySlideshow >> gtBook [
+	"Should deprecate this? Use instead: LeDatabase gtBook"
+
 	<gtExample>
 	<noTest>
 	^ LeDatabase gtBook
