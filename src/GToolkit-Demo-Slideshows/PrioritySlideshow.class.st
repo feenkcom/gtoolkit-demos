@@ -172,14 +172,11 @@ PrioritySlideshow >> gtActionShowFor: anAction [
 
 { #category : #constants }
 PrioritySlideshow >> gtBook [
+	"Should deprecate this? Use instead: LeDatabase gtBook"
+
 	<gtExample>
 	<noTest>
-	^ LeDatabasesRegistry getDatabaseByName: self gtBookName
-]
-
-{ #category : #constants }
-PrioritySlideshow >> gtBookName [
-	^ 'Glamorous Toolkit Book'
+	^ LeDatabase gtBook
 ]
 
 { #category : #views }
