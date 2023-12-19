@@ -88,7 +88,7 @@ DemoSlideshow >> lepiterPage: aSlide [
 	<text: 'A lepiter page from the GT Book'>
 	^ aSlide lepiterPage
 		setPriority;
-		pageNamed: 'Lepiter' from: self gtBookName;
+		pageNamed: 'Lepiter' from: 'Glamorous Toolkit Book';
 		yourself
 ]
 
