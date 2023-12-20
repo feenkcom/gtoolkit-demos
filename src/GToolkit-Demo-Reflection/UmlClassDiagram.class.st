@@ -13,8 +13,44 @@ UmlClassDiagram >> associationArrowStencil [
 	BlParabollaArcElement new
 		zIndex: -1;
 		curvatureFraction: 0.2;
-		border: (BlBorder paint: (Color orange alpha: 0.4));
-		toHead: (BlArrowheadSimpleArrow new border: (BlBorder paint: (Color orange alpha: 0.4))) ]
+		border: (BlBorder paint: self associationColor);
+		toHead: (BlArrowheadSimpleArrow new border: (BlBorder paint: self associationColor)) ]
+]
+
+{ #category : #accessing }
+UmlClassDiagram >> associationArrowStencilWithLabel: labelText [
+	"This is not working yet -- the labels get clipped by the boundary of the line they are added to."
+
+	^ [ :class | 
+	| line |
+	line := BlParabollaArcElement new
+			zIndex: 0;
+			curvatureFraction: 0.2;
+			border: (BlBorder paint: self associationColor).
+
+	labelText notNil
+		ifTrue: [ line
+				addChild: (BrLabel new
+						text: labelText;
+						zIndex: 0;
+						background: Color white;
+						aptitude: (BrGlamorousLabelAptitude new fontSize: self labelFontSize);
+						margin: (BlInsets top: 10);
+						constraintsDo: [ :c | 
+							c ignored vertical alignCenterAt: 0.3.
+							c ignored horizontal alignCenter.
+							c ignoreByLayout ]) ].
+
+	line := line
+			toHead: (BlArrowheadSimpleArrow new border: (BlBorder paint: self associationColor)).
+
+
+	line ]
+]
+
+{ #category : #accessing }
+UmlClassDiagram >> associationColor [
+	^ Color orange alpha: 0.4
 ]
 
 { #category : #accessing }
@@ -52,7 +88,7 @@ UmlClassDiagram >> classHierarchyFor: classes withAssociations: associations [
 			assoc value
 				do: [ :target | 
 					m edges
-						stencil: self associationArrowStencil;
+						stencil: (self associationArrowStencilWithLabel: 'labelText');
 						connectFrom: [ :each | assoc key ] to: [ :each | target ] ] ].
 
 	^ m
@@ -105,6 +141,11 @@ UmlClassDiagram >> inheritanceArrowStencil [
 		fromHead: (BlArrowheadTriangle new
 				scale: 4;
 				border: (BlBorder paint: Color gray)) ]
+]
+
+{ #category : #accessing }
+UmlClassDiagram >> labelFontSize [
+	^ 12
 ]
 
 { #category : #accessing }
