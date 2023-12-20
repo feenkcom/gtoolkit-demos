@@ -19,8 +19,6 @@ UmlClassDiagram >> associationArrowStencil [
 
 { #category : #accessing }
 UmlClassDiagram >> associationArrowStencilWithLabel: labelText [
-	"This is not working yet -- the labels get clipped by the boundary of the line they are added to."
-
 	^ [ :class | 
 	| line |
 	line := BlParabollaArcElement new
@@ -30,6 +28,7 @@ UmlClassDiagram >> associationArrowStencilWithLabel: labelText [
 
 	labelText notNil
 		ifTrue: [ line
+				clipChildren: false;
 				addChild: (BrLabel new
 						text: labelText;
 						zIndex: 0;
@@ -113,6 +112,29 @@ UmlClassDiagram >> classHierarchyFor: classes withAssociations: associations and
 					m edges
 						stencil: self associationArrowStencil;
 						connectFrom: [ :each | assoc key ] to: [ :each | target ] ] ].
+
+	^ m
+]
+
+{ #category : #accessing }
+UmlClassDiagram >> classHierarchyFor: classes withAssociationsAndLabels: associationsWithLabels [
+	"Each association should look like:
+		CompiledMethod -> { 
+			{ 'methodClass' . Behavior } .
+			{ 'ast' . RBMethodNode } }
+	"
+
+	<gtExample>
+	| m |
+	m := self classHierarchyFor: classes.
+
+	associationsWithLabels
+		do: [ :assoc | 
+			assoc value
+				do: [ :labelClassPair | 
+					m edges
+						stencil: (self associationArrowStencilWithLabel: labelClassPair first);
+						connectFrom: [ :each | assoc key ] to: [ :each | labelClassPair second ] ] ].
 
 	^ m
 ]
