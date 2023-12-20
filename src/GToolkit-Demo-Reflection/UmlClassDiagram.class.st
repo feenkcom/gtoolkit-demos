@@ -88,7 +88,7 @@ UmlClassDiagram >> classHierarchyFor: classes withAssociations: associations [
 			assoc value
 				do: [ :target | 
 					m edges
-						stencil: (self associationArrowStencilWithLabel: 'labelText');
+						stencil: self associationArrowStencil;
 						connectFrom: [ :each | assoc key ] to: [ :each | target ] ] ].
 
 	^ m
@@ -125,7 +125,7 @@ UmlClassDiagram >> classStencil [
 		text: class name;
 		aptitude: BrGlamorousLabelAptitude new
 				+ (BrStyleCommonAptitude new
-						hovered: [ :aStyle | aStyle background: (Color blue alpha: 0.5) ]);
+						hovered: [ :aStyle | aStyle background: (Color blue alpha: 0.2) ]);
 		when: BlClickEvent
 			do: [ :e | 
 				e target phlow spawnTool: (GtClassCoderTool forClass: class).
