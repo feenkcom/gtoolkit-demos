@@ -6,12 +6,7 @@ Class {
 
 { #category : #accessing }
 ReflectionSceneryExample >> arcLabeled: aString [
-	^ GtSceneryParabollaArcStencil new
-		labelText: aString;
-		fontSize: self smallFont;
-		arrowLengthFraction: self arrowHeadSize;
-		curvatureFraction: self curvature;
-		yourself
+	^ self arcLabeled: aString curvature: self curvature
 ]
 
 { #category : #accessing }
