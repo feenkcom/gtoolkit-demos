@@ -96,7 +96,7 @@ UmlClassDiagramExamples >> navigationAssociationsWithLabels [
 			-> {{'methodDict'.
 						MethodDictionary}}.
 		MethodDictionary
-			-> {{'>>'.
+			-> {{'at:'.
 						CompiledMethod}}}
 ]
 
