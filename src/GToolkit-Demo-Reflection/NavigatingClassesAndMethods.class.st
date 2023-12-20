@@ -8,6 +8,15 @@ Class {
 }
 
 { #category : #accessing }
+NavigatingClassesAndMethods >> associations [
+	^ {CompiledMethod
+			-> {Behavior.
+					RBMethodNode}.
+		Behavior -> {MethodDictionary}.
+		MethodDictionary -> {CompiledMethod}}
+]
+
+{ #category : #accessing }
 NavigatingClassesAndMethods >> classes [
 	^ {Behavior.
 		ClassDescription.
@@ -24,65 +33,15 @@ NavigatingClassesAndMethods >> classes [
 { #category : #accessing }
 NavigatingClassesAndMethods >> mondrian [
 	<gtExample>
-	| m roots |
-	roots := {}.
-	m := GtMondrian new.
-
-	m nodes
-		stencil: [ :class | 
-			GtMondrianUMLClassElement new
-				label: ((class name withoutPrefix: 'GtLudo') asRopedText
-						glamorousRegularFont;
-						fontSize: 18;
-						bold);
-				when: BlClickEvent
-					do: [ :e | 
-						e consumed: true.
-						e target phlow spawnTool: (GtClassCoderTool forClass: class) ] ];
-		with: self classes.
-
-
-	m nodes
-		stencil: [ :c | 
-			BlElement new
-				geometry: BlCircleGeometry new;
-				border: (BlBorder paint: Color black);
-				background: Color white;
-				size: 5 @ 5;
-				aptitude: (BrGlamorousWithLabelTooltipAptitude new text: [ c name ]);
-				when: BlClickEvent
-					do: [ :e | 
-						e consumed: true.
-						e target phlow spawnTool: (GtClassCoderTool forClass: c) ] ];
-		with: roots.
-
-	m edges
-		stencil: [ :class | 
-			BlLineElement new
-				border: (BlBorder paint: (Color black alpha: 0.4));
-				fromHead: (BlArrowheadTriangle new
-						scale: 5;
-						border: (BlBorder paint: (Color black alpha: 0.4))) ];
-		connectFrom: [ :c | c superclass ].
-
-	m edges
-		stencil: [ :c | 
-			BlParabollaArcElement new
-				zIndex: -1;
-				curvatureFraction: 0.2;
-				border: (BlBorder paint: (Color orange alpha: 0.4));
-				toHead: (BlArrowheadSimpleArrow new border: (BlBorder paint: (Color orange alpha: 0.4))) ];
-		connectFrom: [ :each | CompiledMethod ] to: [ :each | Behavior ];
-		connectFrom: [ :each | CompiledMethod ] to: [ :each | RBMethodNode ];
-		connectFrom: [ :each | Behavior ] to: [ :each | MethodDictionary ];
-		connectFrom: [ :each | MethodDictionary ] to: [ :each | CompiledMethod ].	"m layout tree levelDistance: 20."
+	| m |
+	m := UmlClassDiagram new
+			classHierarchyFor: self classes
+			withAssociations: self associations.
 
 	m layout custom: BlBasicLayout new.
 
-
 	m root children
 		withIndexDo: [ :child :n | child relocate: (self positions at: n) ].
-
 
 	^ m
 ]
