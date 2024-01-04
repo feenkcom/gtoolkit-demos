@@ -23,11 +23,11 @@ GtP3F1Collection >> collection: aCollection [
 ]
 
 { #category : #accessing }
-GtP3F1Collection >> gtViewCollectionFor: composite [
+GtP3F1Collection >> gtViewRowsFor: composite [
 	<gtView>
 	^ composite forward
-		title: 'Collection';
-		priority: 30;
+		title: 'Rows';
+		priority: 90;
 		object: [ self collection ]
 ]
 

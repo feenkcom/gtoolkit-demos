@@ -30,11 +30,11 @@ GtP3F1Object >> gtViewDetailsFor: composite [
 ]
 
 { #category : #accessing }
-GtP3F1Object >> gtViewObjectFor: composite [
+GtP3F1Object >> gtViewRowFor: composite [
 	<gtView>
 	^ composite forward
-		title: 'Object';
-		priority: 30;
+		title: 'Row';
+		priority: 90;
 		object: [ self object ]
 ]
 
