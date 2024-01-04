@@ -1,30 +1,12 @@
 Class {
 	#name : #GtP3F1Races,
-	#superclass : #Object,
-	#instVars : [
-		'collection',
-		'p3Client'
-	],
+	#superclass : #GtP3F1Collection,
 	#category : #'GToolkit-Demo-P3-F1'
 }
 
 { #category : #accessing }
-GtP3F1Races >> collection [
-	^ collection
-]
-
-{ #category : #accessing }
-GtP3F1Races >> collection: anObject [
-	collection := anObject
-]
-
-{ #category : #accessing }
-GtP3F1Races >> gtViewCollectionFor: composite [
-	<gtView>
-	^ composite forward
-		title: 'Collection';
-		priority: 30;
-		object: [ self collection ]
+GtP3F1Races class >> tableName [
+	^ 'races'
 ]
 
 { #category : #accessing }
@@ -38,14 +20,4 @@ GtP3F1Races >> gtViewRacesIn: composite [
 		column: 'Date' text: [ :each | each at: #date ];
 		column: 'Round' text: [ :each | each at: #round ];
 		send: [ :each | GtP3F1Race new p3Client: self p3Client; object: each; yourself ]
-]
-
-{ #category : #accessing }
-GtP3F1Races >> p3Client [
-	^ p3Client
-]
-
-{ #category : #accessing }
-GtP3F1Races >> p3Client: anObject [
-	p3Client := anObject
 ]

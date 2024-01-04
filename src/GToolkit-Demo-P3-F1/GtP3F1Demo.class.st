@@ -1,9 +1,6 @@
 Class {
 	#name : #GtP3F1Demo,
-	#superclass : #Object,
-	#instVars : [
-		'p3Client'
-	],
+	#superclass : #GtP3F1ClientObject,
 	#category : #'GToolkit-Demo-P3-F1'
 }
 
@@ -35,19 +32,4 @@ GtP3F1Demo >> gtViewF1SeasonsFor: composite [
 		column: 'Year' text: [ :each | each at: #year ];
 		column: 'URL' text: [ :each | each at: #url ];
 		send: [ :each | self f1RacesInSeason: (each at: #year) ]
-]
-
-{ #category : #accessing }
-GtP3F1Demo >> p3Client [
-	^ p3Client
-]
-
-{ #category : #accessing }
-GtP3F1Demo >> p3Client: anObject [
-	p3Client := anObject
-]
-
-{ #category : #'as yet unclassified' }
-GtP3F1Demo >> url: urlString [
-	p3Client := P3Client url: urlString.
 ]
