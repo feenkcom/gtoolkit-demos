@@ -49,7 +49,7 @@ GtP3F1Race >> gtViewConstructorStandingsFor: composite [
 		priority: 40;
 		items: [ self constructorStandings ];
 		column: 'Position' text: [ :each | (each at: #position) ifNil: [ each at: #positiontext ] ];
-		column: 'Driver' text: [ :each | each at: #constructorref ];
+		column: 'Constructor' text: [ :each | each at: #constructorref ];
 		column: 'Points' text: [ :each | (each at: #points) asInteger ];
 		column: 'Wins' text: [ :each | each at: #wins ]
 ]

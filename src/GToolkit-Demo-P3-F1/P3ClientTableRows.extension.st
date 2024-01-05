@@ -8,9 +8,9 @@ P3ClientTableRows >> gtViewRacesIn: composite [
 		title: 'Races';
 		priority: 20;
 		items: [ self rows ];
+		column: 'Round' text: [ :each | each at: #round ];
 		column: 'Name' text: [ :each | each at: #name ];
 		column: 'Date' text: [ :each | each at: #date ];
-		column: 'Round' text: [ :each | each at: #round ];
 		send: [ :row | 
 			P3ClientTableRow new 
 				table: self table; 
