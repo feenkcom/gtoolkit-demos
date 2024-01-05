@@ -29,7 +29,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2024-01-05T09:26:21.566982+01:00"
+						"dateAndTimeString" : "2024-01-05T09:47:12.802529+01:00"
 					}
 				},
 				"uid" : {
@@ -39,10 +39,10 @@
 				"paragraphStyle" : {
 					"__type" : "textStyle"
 				},
-				"string" : "This lepiter database is not intended to be loaded by into the default image, but is rather meant for demos still under development. Eventually some of these pages can migrate to the GT Book."
+				"string" : "This lepiter database is not intended to be loaded by into the default image, but is rather meant for demos still under development. Eventually some of these pages can migrate to the GT Book. This database can be loaded as follows:"
 			},
 			{
-				"__type" : "textSnippet",
+				"__type" : "pharoSnippet",
 				"children" : {
 					"__type" : "snippets",
 					"items" : [ ]
@@ -55,7 +55,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2024-01-05T09:26:26.251236+01:00"
+						"dateAndTimeString" : "2024-01-05T09:47:14.657783+01:00"
 					}
 				},
 				"editEmail" : {
@@ -66,61 +66,20 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2024-01-05T09:26:26.251236+01:00"
+						"dateAndTimeString" : "2024-01-05T09:47:15.053251+01:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
-					"uidString" : "JsBQV5DKDQCtNWP9D/wptA=="
+					"uidString" : "fe65oZDKDQCKsuzHAAmVVA=="
 				},
-				"paragraphStyle" : {
-					"__type" : "textStyle"
-				},
-				"string" : ""
+				"code" : "#BaselineOfGToolkitDemos asClass loadLepiter."
 			},
 			{
 				"__type" : "textSnippet",
 				"children" : {
 					"__type" : "snippets",
-					"items" : [
-						{
-							"__type" : "textSnippet",
-							"children" : {
-								"__type" : "snippets",
-								"items" : [ ]
-							},
-							"createEmail" : {
-								"__type" : "email",
-								"emailString" : "<unknown>"
-							},
-							"createTime" : {
-								"__type" : "time",
-								"time" : {
-									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-07-20T16:02:20.675887+02:00"
-								}
-							},
-							"editEmail" : {
-								"__type" : "email",
-								"emailString" : "<unknown>"
-							},
-							"editTime" : {
-								"__type" : "time",
-								"time" : {
-									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-07-20T16:02:23.220929+02:00"
-								}
-							},
-							"uid" : {
-								"__type" : "uid",
-								"uidString" : "fIBuVU29DQC9TQECBIENOA=="
-							},
-							"paragraphStyle" : {
-								"__type" : "textStyle"
-							},
-							"string" : "[[Tags]] "
-						}
-					]
+					"items" : [ ]
 				},
 				"createEmail" : {
 					"__type" : "email",
@@ -152,6 +111,43 @@
 					"__type" : "textStyle"
 				},
 				"string" : "[[GToolkit Draft Demos]] "
+			},
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2023-07-20T16:02:20.675887+02:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2023-07-20T16:02:23.220929+02:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "fIBuVU29DQC9TQECBIENOA=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : "[[Tags]] "
 			},
 			{
 				"__type" : "textSnippet",
