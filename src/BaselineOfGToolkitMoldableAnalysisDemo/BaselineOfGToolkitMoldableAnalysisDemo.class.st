@@ -4,6 +4,21 @@ Class {
 	#category : #BaselineOfGToolkitMoldableAnalysisDemo
 }
 
+{ #category : #loading }
+BaselineOfGToolkitMoldableAnalysisDemo class >> loadLepiter [
+	IceRepository registry  
+		detect: [ :aRepository |
+			aRepository name = 'gtoolkit-demos' ]
+		ifFound: [ :aRepository | 
+			| defaultDatabase currentProperties |
+			defaultDatabase := LeDatabasesRegistry defaultLogicalDatabase.
+			currentProperties := defaultDatabase properties.
+			currentProperties addRegisteredDirectory: aRepository repositoryDirectory / 'lepiter'.
+			defaultDatabase reload ]
+		ifNone: [
+			self inform: 'Repository not found.' ]
+]
+
 { #category : #baseline }
 BaselineOfGToolkitMoldableAnalysisDemo >> baseline: spec [
 	<baseline>
