@@ -66,51 +66,14 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-07-20T16:23:14.567196+02:00"
+						"dateAndTimeString" : "2024-01-05T09:47:52.007218+01:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
 					"uidString" : "ii13n029DQCMWFtdBIENOA=="
 				},
-				"code" : "GtGitPhlowTool new repository: (GtGitRepository forRepoNamed: 'gtoolkit-demos')"
-			},
-			{
-				"__type" : "textSnippet",
-				"children" : {
-					"__type" : "snippets",
-					"items" : [ ]
-				},
-				"createEmail" : {
-					"__type" : "email",
-					"emailString" : "<unknown>"
-				},
-				"createTime" : {
-					"__type" : "time",
-					"time" : {
-						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-07-20T16:20:46.90924+02:00"
-					}
-				},
-				"editEmail" : {
-					"__type" : "email",
-					"emailString" : "<unknown>"
-				},
-				"editTime" : {
-					"__type" : "time",
-					"time" : {
-						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-07-20T16:21:17.48672+02:00"
-					}
-				},
-				"uid" : {
-					"__type" : "uid",
-					"uidString" : "31nTlE29DQCI88VBBIENOA=="
-				},
-				"paragraphStyle" : {
-					"__type" : "textStyle"
-				},
-				"string" : "The baseline class for loading the database and the packages is {{gtClass:name=BaselineOfGToolkitDraftDemos}}."
+				"code" : "GtGitPhlowTool new repository: (GtGitRepository forRepoNamed: 'gtoolkit-demos')."
 			},
 			{
 				"__type" : "textSnippet",
@@ -163,7 +126,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2024-01-05T09:30:51.156684+01:00"
+						"dateAndTimeString" : "2024-01-05T09:46:14.068417+01:00"
 					}
 				},
 				"editEmail" : {
@@ -174,48 +137,14 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2024-01-05T09:31:38.864523+01:00"
+						"dateAndTimeString" : "2024-01-05T09:53:02.976083+01:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
-					"uidString" : "wd8aZ5DKDQCv5pgLD/wptA=="
+					"uidString" : "F2gdnpDKDQCENsevAAmVVA=="
 				},
-				"code" : "gtDemosRepo := BaselineOfGToolkitDemos repository.\nbaselineName := 'BaselineOfGToolkitDraftDemos'.\n(IcePackage named: baselineName repository: gtDemosRepo) load.\n#BaselineOfGToolkitDraftDemos asClass loadLepiter."
-			},
-			{
-				"__type" : "pharoSnippet",
-				"children" : {
-					"__type" : "snippets",
-					"items" : [ ]
-				},
-				"createEmail" : {
-					"__type" : "email",
-					"emailString" : "<unknown>"
-				},
-				"createTime" : {
-					"__type" : "time",
-					"time" : {
-						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-07-20T16:21:40.794646+02:00"
-					}
-				},
-				"editEmail" : {
-					"__type" : "email",
-					"emailString" : "<unknown>"
-				},
-				"editTime" : {
-					"__type" : "time",
-					"time" : {
-						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2024-01-05T09:30:52.177693+01:00"
-					}
-				},
-				"uid" : {
-					"__type" : "uid",
-					"uidString" : "74CUmk29DQCLahnkBIENOA=="
-				},
-				"code" : "draftDemosToLoad := {\n\t'GToolkit-Demo-EsugWebsite'\n\t. 'GToolkit-Demo-PetitParser'\n\t. 'GToolkit-Demo-YAML2JSON'\n\t}.\n\n\ndraftDemosToLoad do: [ :each | (IcePackage named: each repository: gtDemosRepo) load ]."
+				"code" : "gtDemosRepo := BaselineOfGToolkitDemos repository.\r\rdraftDemosToLoad := {\r\t\t'GToolkit-Demo-PetitParser'\r\t\t}.\r\r\rdraftDemosToLoad\r\tdo: [ :each | (IcePackage named: each repository: gtDemosRepo) load ]."
 			},
 			{
 				"__type" : "textSnippet",
@@ -275,12 +204,12 @@
 		"__type" : "time",
 		"time" : {
 			"__type" : "dateAndTime",
-			"dateAndTimeString" : "2023-01-26T13:39:44.619986+01:00"
+			"dateAndTimeString" : "2024-01-05T09:55:18.969228+01:00"
 		}
 	},
 	"pageType" : {
 		"__type" : "namedPage",
-		"title" : "GToolkit Draft Demos"
+		"title" : "Loading demo repos"
 	},
 	"uid" : {
 		"__type" : "uuid",
