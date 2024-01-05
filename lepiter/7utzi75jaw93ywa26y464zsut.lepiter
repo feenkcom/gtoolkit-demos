@@ -18,80 +18,6 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-01-26T09:40:48.542663+01:00"
-					}
-				},
-				"editEmail" : {
-					"__type" : "email",
-					"emailString" : "<unknown>"
-				},
-				"editTime" : {
-					"__type" : "time",
-					"time" : {
-						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-01-26T09:42:22.938441+01:00"
-					}
-				},
-				"uid" : {
-					"__type" : "uid",
-					"uidString" : "uG0ncYivDQCZjyvSDYq0hA=="
-				},
-				"paragraphStyle" : {
-					"__type" : "textStyle"
-				},
-				"string" : "This lepiter database is not intended to be loaded by into the default image, but is rather meant for demos still under development. Eventually some of these pages can migrate to the GT Book."
-			},
-			{
-				"__type" : "textSnippet",
-				"children" : {
-					"__type" : "snippets",
-					"items" : [ ]
-				},
-				"createEmail" : {
-					"__type" : "email",
-					"emailString" : "<unknown>"
-				},
-				"createTime" : {
-					"__type" : "time",
-					"time" : {
-						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-01-26T09:44:52.603957+01:00"
-					}
-				},
-				"editEmail" : {
-					"__type" : "email",
-					"emailString" : "<unknown>"
-				},
-				"editTime" : {
-					"__type" : "time",
-					"time" : {
-						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-01-26T09:44:57.083437+01:00"
-					}
-				},
-				"uid" : {
-					"__type" : "uid",
-					"uidString" : "uxoPbYivDQCZhZGYDYq0hA=="
-				},
-				"paragraphStyle" : {
-					"__type" : "textStyle"
-				},
-				"string" : "[[GToolkitDemos TOC]] "
-			},
-			{
-				"__type" : "textSnippet",
-				"children" : {
-					"__type" : "snippets",
-					"items" : [ ]
-				},
-				"createEmail" : {
-					"__type" : "email",
-					"emailString" : "<unknown>"
-				},
-				"createTime" : {
-					"__type" : "time",
-					"time" : {
-						"__type" : "dateAndTime",
 						"dateAndTimeString" : "2023-07-20T16:22:53.6249+02:00"
 					}
 				},
@@ -140,51 +66,14 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-07-20T16:23:14.567196+02:00"
+						"dateAndTimeString" : "2024-01-05T09:47:52.007218+01:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
 					"uidString" : "ii13n029DQCMWFtdBIENOA=="
 				},
-				"code" : "GtGitPhlowTool new repository: (GtGitRepository forRepoNamed: 'gtoolkit-demos')"
-			},
-			{
-				"__type" : "textSnippet",
-				"children" : {
-					"__type" : "snippets",
-					"items" : [ ]
-				},
-				"createEmail" : {
-					"__type" : "email",
-					"emailString" : "<unknown>"
-				},
-				"createTime" : {
-					"__type" : "time",
-					"time" : {
-						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-07-20T16:20:46.90924+02:00"
-					}
-				},
-				"editEmail" : {
-					"__type" : "email",
-					"emailString" : "<unknown>"
-				},
-				"editTime" : {
-					"__type" : "time",
-					"time" : {
-						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-07-20T16:21:17.48672+02:00"
-					}
-				},
-				"uid" : {
-					"__type" : "uid",
-					"uidString" : "31nTlE29DQCI88VBBIENOA=="
-				},
-				"paragraphStyle" : {
-					"__type" : "textStyle"
-				},
-				"string" : "The baseline class for loading the database and the packages is {{gtClass:name=BaselineOfGToolkitDraftDemos}}."
+				"code" : "GtGitPhlowTool new repository: (GtGitRepository forRepoNamed: 'gtoolkit-demos')."
 			},
 			{
 				"__type" : "textSnippet",
@@ -237,7 +126,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-07-20T16:21:40.794646+02:00"
+						"dateAndTimeString" : "2024-01-05T09:46:14.068417+01:00"
 					}
 				},
 				"editEmail" : {
@@ -248,14 +137,14 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-07-20T16:42:15.762143+02:00"
+						"dateAndTimeString" : "2024-01-05T09:53:02.976083+01:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
-					"uidString" : "74CUmk29DQCLahnkBIENOA=="
+					"uidString" : "F2gdnpDKDQCENsevAAmVVA=="
 				},
-				"code" : "Smalltalk saveAs: 'gtoolkit-demos'. \"optional\"\n\ngtDemosRepo := BaselineOfGToolkitDemos repository.\nbaselineName := 'BaselineOfGToolkitDraftDemos'.\ndraftDemosToLoad := {\n\t'GToolkit-Demo-EsugWebsite'\n\t. 'GToolkit-Demo-PetitParser'\n\t. 'GToolkit-Demo-YAML2JSON'\n\t}.\n\n(IcePackage named: baselineName repository: gtDemosRepo) load.\n#BaselineOfGToolkitDraftDemos asClass loadLepiter.\n\ndraftDemosToLoad do: [ :each | (IcePackage named: each repository: gtDemosRepo) load ]."
+				"code" : "gtDemosRepo := BaselineOfGToolkitDemos repository.\r\rdraftDemosToLoad := {\r\t\t'GToolkit-Demo-PetitParser'\r\t\t}.\r\r\rdraftDemosToLoad\r\tdo: [ :each | (IcePackage named: each repository: gtDemosRepo) load ]."
 			},
 			{
 				"__type" : "textSnippet",
@@ -315,12 +204,12 @@
 		"__type" : "time",
 		"time" : {
 			"__type" : "dateAndTime",
-			"dateAndTimeString" : "2023-01-26T13:39:44.619986+01:00"
+			"dateAndTimeString" : "2024-01-05T09:55:18.969228+01:00"
 		}
 	},
 	"pageType" : {
 		"__type" : "namedPage",
-		"title" : "GToolkit Draft Demos"
+		"title" : "Loading demo repos"
 	},
 	"uid" : {
 		"__type" : "uuid",
