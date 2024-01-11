@@ -49,7 +49,7 @@ PrioritySlideshow class >> show: aSelector [
 	^ self new perform: aSelector with: GtLiveSlide new
 ]
 
-{ #category : #accessing }
+{ #category : #utility }
 PrioritySlideshow >> addItem: label inScenery: scenery [
 	"Utility for rewriting Sceneries."
 	^ scenery
