@@ -49,6 +49,17 @@ PrioritySlideshow class >> show: aSelector [
 	^ self new perform: aSelector with: GtLiveSlide new
 ]
 
+{ #category : #accessing }
+PrioritySlideshow >> addItem: label inScenery: scenery [
+	"Utility for rewriting Sceneries."
+	^ scenery
+		addItem: (GtSceneryItem new
+				stencil: (GtSceneryTextStencil new
+						text: (label asRopedText
+								fontSize: 20;
+								bold)))
+]
+
 { #category : #text }
 PrioritySlideshow >> asBigCode: aString [
 	^ (aString asRopedText)
