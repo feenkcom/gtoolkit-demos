@@ -1120,12 +1120,12 @@
 		"__type" : "time",
 		"time" : {
 			"__type" : "dateAndTime",
-			"dateAndTimeString" : "2023-07-03T16:45:35.469105+02:00"
+			"dateAndTimeString" : "2024-01-17T13:10:19.340824+01:00"
 		}
 	},
 	"pageType" : {
 		"__type" : "namedPage",
-		"title" : "* YAML to JSON translator — page for GT book"
+		"title" : "YAML to JSON translator — page for GT book"
 	},
 	"uid" : {
 		"__type" : "uuid",

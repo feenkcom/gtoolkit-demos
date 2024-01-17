@@ -502,7 +502,7 @@ GtPlaygroundAndInspectorShow >> slideshowLinkSlideFor: aSlide [
 ]
 
 { #category : #accessing }
-GtPlaygroundAndInspectorShow >> titleSlideFor: aSlide [
+GtPlaygroundAndInspectorShow >> title: aSlide [
 	<gtSlide>
 	^ aSlide title
 		priority: 1;

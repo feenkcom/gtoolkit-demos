@@ -14,13 +14,25 @@ DemoSlideshow class >> show [
 ]
 
 { #category : #slides }
-DemoSlideshow >> coderExampleSlideFor: aSlide [
+DemoSlideshow >> coder: aSlide [
 	<gtSlide>
 	<text: 'A live Coder tool'>
 	^ aSlide labelAndElement
 		setPriority;
 		newFadedText: 'Feel free to explore.' asRopedText;
 		element: [ GtCoderElement new createInPager maximized ]
+]
+
+{ #category : #slides }
+DemoSlideshow >> coderOnClass: aSlide [
+	<gtSlide>
+
+<text: 'A coder on a class'>
+
+	^ aSlide labelAndElement
+		setPriority;
+		newFadedText: 'The LudoGame class';
+		element: [ (GtCoderElement forClass: GtLudoGame) createInPager maximized ]
 ]
 
 { #category : #page }
@@ -83,6 +95,38 @@ NB: the pager is needed so we can navigate to new pages.'>
 ]
 
 { #category : #slides }
+DemoSlideshow >> inspectorOnObject: aSlide [
+	<gtSlide>
+	<text: 'Text with an Inspector'>
+	"NB: This will work for any object."
+	^ aSlide labelAndElement
+		setPriority;
+		newFadedText: 'An inspector on the image directory';
+		element: [ GtInspector newOn: FileLocator imageDirectory ]
+]
+
+{ #category : #slides }
+DemoSlideshow >> inspectorView: aSlide [
+	<gtSlide>
+	<text: 'Text with a specific Inspector view'>
+	^ aSlide labelAndElement
+		setPriority;
+		newFadedText: 'A specific Inspector view of the LudoGame';
+		element: [ GtLudoGame new gtPlayersFor: GtPhlowProtoView new ]
+]
+
+{ #category : #slides }
+DemoSlideshow >> inspectorViewInPager: aSlide [
+	<gtSlide>
+	<text: 'An Inspector view in a Pager'>
+	^ aSlide element
+		setPriority;
+		element: [ (GtPager
+				createWrappedOn: (GtLudoGame new gtPlayersFor: GtPhlowProtoView new))
+				maximized ]
+]
+
+{ #category : #slides }
 DemoSlideshow >> lepiterPage: aSlide [
 	<gtSlide>
 	<text: 'A lepiter page from the GT Book'>
@@ -133,7 +177,8 @@ DemoSlideshow >> slidePriorities [
 	"Instead of manually setting priorities, just list the slides in order here."
 	<gtExample>
 	^ #( 
-		titleSlideFor:
+		title:
+		titleWithFooter:
 		textAndElement:
 		textAndImage:
 		paragraph:
@@ -142,15 +187,21 @@ DemoSlideshow >> slidePriorities [
 		dynamicLepiterPage:
 		maximizedPage:
 		maximizedGtBookPage:
-		gtWorld:
-		coderExampleSlideFor:
+		inspectorOnObject:
 		inspectorInPager:
-		spotterExampleSlideFor:
+		inspectorView:
+		inspectorViewInPager:
+		gtWorld:
+		coder:
+		coderOnClass:
+		spotterExampleSlide:
+		gitRepo:
+		gitRepoInPager:
 	)
 ]
 
 { #category : #slides }
-DemoSlideshow >> spotterExampleSlideFor: aSlide [
+DemoSlideshow >> spotterExampleSlide: aSlide [
 	<gtSlide>
 	<text: 'A spotter search'>
 	^ aSlide spotter setPriority
@@ -170,6 +221,7 @@ DemoSlideshow >> textAndElement: aSlide [
 { #category : #slides }
 DemoSlideshow >> textAndImage: aSlide [
 	<gtSlide>
+	<text: 'Text with an image'>
 	^ aSlide textAndElement
 		elementWeight: 0.60;
 		setPriority;
@@ -180,13 +232,26 @@ DemoSlideshow >> textAndImage: aSlide [
 ]
 
 { #category : #slides }
-DemoSlideshow >> titleSlideFor: aSlide [
+DemoSlideshow >> title: aSlide [ 
 	<gtSlide>
-	<text: 'A title slide'>
+	<text: 'A title or header slide'>
 	^ (aSlide title)
 		"priority: (self priorityFor: #titleSlideFor:);"
 		setPriority;
 		titleBottomPadding: 30;
 		titleWithFormat: (self asTitle: 'Title');
 		subtitleWithFormat: (self asBigText: 'subtitle')
+]
+
+{ #category : #slides }
+DemoSlideshow >> titleWithFooter: aSlide [
+	<gtSlide>
+	<text: 'A title slide with a footer'>
+	^ (aSlide titleWithFooter)
+		setPriority;
+		titleBottomPadding: 30;
+		subtitleBottomPadding: 40;
+		titleWithFormat: (self asTitle: 'Title');
+		subtitleWithFormat: (self asBigText: 'subtitle');
+		footerWithFormat: (self asBigText: 'someone@feenk.com')
 ]

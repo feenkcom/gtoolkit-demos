@@ -401,7 +401,7 @@ SPLPetitParserSlideshow >> slidePriorities [
 	"Instead of manually setting priorities, just list the slides in order here."
 	<gtExample>
 	^ #( 
-		titleSlideFor:
+		#title:
 
 		whatIsPP:
 			splGrammar:
@@ -526,7 +526,7 @@ SPLPetitParserSlideshow >> theASThierarchyPage [
 ]
 
 { #category : #slides }
-SPLPetitParserSlideshow >> titleSlideFor: aSlide [
+SPLPetitParserSlideshow >> title: aSlide [
 	<gtSlide>
 	^ aSlide title
 		setPriority;

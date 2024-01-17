@@ -232,7 +232,7 @@ GtOneRenderingTree >> textEditorIntroductionSlideFor: aSlide [
 ]
 
 { #category : #accessing }
-GtOneRenderingTree >> titleSlideFor: aSlide [
+GtOneRenderingTree >> title: aSlide [
 	<gtSlide>
 	^ aSlide title
 		priority: 1;

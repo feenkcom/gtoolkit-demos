@@ -842,7 +842,7 @@ The view gets a ' asRopedText,
 ]
 
 { #category : #slides }
-GtInspectorViews >> titleSlideFor: aSlide [
+GtInspectorViews >> title: aSlide [
 	<gtSlide>
 	^ aSlide title
 		priority: 1;

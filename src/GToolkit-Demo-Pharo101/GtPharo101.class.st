@@ -592,7 +592,7 @@ GtPharo101 >> syntaxExplanationWithLinksSlideFor: aSlide [
 ]
 
 { #category : #accessing }
-GtPharo101 >> titleSlideFor: aSlide [
+GtPharo101 >> title: aSlide [
 	<gtSlide>
 	^ aSlide title
 		priority: 1;

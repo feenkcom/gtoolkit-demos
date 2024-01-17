@@ -408,7 +408,7 @@ GtQueryingCodeShow >> slideshowLinkSlideFor: aSlide [
 ]
 
 { #category : #accessing }
-GtQueryingCodeShow >> titleSlideFor: aSlide [
+GtQueryingCodeShow >> title: aSlide [
 	<gtSlide>
 	^ aSlide title
 		priority: 1;

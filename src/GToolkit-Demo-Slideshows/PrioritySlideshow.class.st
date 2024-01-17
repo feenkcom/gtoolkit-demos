@@ -3,7 +3,7 @@ A convenience class for creating slideshows.
 
 Instead of explicitly setting the priority for a given page, just list the names of the pages in a `pages` method, and then lookup the priority in that list by sending `setPriority`.
 
-See, for example, {{gtMethod:name=SmalltalkIntroSlideshow>>#titleSlideFor:}}.
+See, for example, {{gtMethod:name=SmalltalkIntroSlideshow>>#title:|expanded=true}}
 
 There are also numerous convenience methods, such as `asTitle:`.
 
