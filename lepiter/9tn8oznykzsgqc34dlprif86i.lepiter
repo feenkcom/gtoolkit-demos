@@ -219,7 +219,7 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-07-20T16:06:43.995206+02:00"
+									"dateAndTimeString" : "2024-01-17T13:10:05.70991+01:00"
 								}
 							},
 							"uid" : {
@@ -229,7 +229,7 @@
 							"paragraphStyle" : {
 								"__type" : "textStyle"
 							},
-							"string" : "See also: [[* Parsing Bibtex files]] "
+							"string" : "See also: [[Parsing Bibtex files]] "
 						}
 					]
 				},
@@ -331,7 +331,7 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-07-03T17:06:02.679703+02:00"
+									"dateAndTimeString" : "2024-01-17T13:10:07.703463+01:00"
 								}
 							},
 							"uid" : {
@@ -341,7 +341,7 @@
 							"paragraphStyle" : {
 								"__type" : "textStyle"
 							},
-							"string" : "Add a page and demo on [[* Parsing Bibtex files]] "
+							"string" : "Add a page and demo on [[Parsing Bibtex files]] "
 						}
 					]
 				},

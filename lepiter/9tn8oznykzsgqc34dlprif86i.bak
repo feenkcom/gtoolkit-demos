@@ -29,7 +29,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-07-20T16:05:22.458786+02:00"
+						"dateAndTimeString" : "2023-07-20T16:12:53.777625+02:00"
 					}
 				},
 				"uid" : {
@@ -39,7 +39,7 @@
 				"paragraphStyle" : {
 					"__type" : "textStyle"
 				},
-				"string" : "[[PetitParserTutorial]] "
+				"string" : "[[PetitParserTutorial]]  [[Done]] "
 			},
 			{
 				"__type" : "textSnippet",

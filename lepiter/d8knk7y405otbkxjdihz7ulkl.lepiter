@@ -4110,12 +4110,12 @@
 		"__type" : "time",
 		"time" : {
 			"__type" : "dateAndTime",
-			"dateAndTimeString" : "2023-07-03T17:02:50.151656+02:00"
+			"dateAndTimeString" : "2024-01-17T13:10:02.038848+01:00"
 		}
 	},
 	"pageType" : {
 		"__type" : "namedPage",
-		"title" : "* Parsing Bibtex files"
+		"title" : "Parsing Bibtex files"
 	},
 	"uid" : {
 		"__type" : "uuid",

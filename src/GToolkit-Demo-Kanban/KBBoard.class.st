@@ -13,7 +13,8 @@ Class {
 	#superclass : #Object,
 	#instVars : [
 		'database',
-		'name'
+		'name',
+		'cards'
 	],
 	#category : #'GToolkit-Demo-Kanban'
 }
@@ -42,6 +43,21 @@ KBBoard >> addListNamed: aString withCardsTagged: anObject [
 ]
 
 { #category : #accessing }
+KBBoard >> cards [
+	^ cards
+]
+
+{ #category : #accessing }
+KBBoard >> cards: aCardCollection [
+	cards := aCardCollection
+]
+
+{ #category : #accessing }
+KBBoard >> database [
+	^ database
+]
+
+{ #category : #accessing }
 KBBoard >> database: aDatabaseName [
 	database := LeDatabasesRegistry getDatabaseByName: aDatabaseName
 ]
@@ -56,5 +72,6 @@ KBBoard >> withCardsNamed: anObject [
 ]
 
 { #category : #accessing }
-KBBoard >> withCardsTagged: aString [ 
+KBBoard >> withCardsTagged: aString [
+	self cards: (self database pages select: [ :p | p hasTagNamed: aString ])
 ]
