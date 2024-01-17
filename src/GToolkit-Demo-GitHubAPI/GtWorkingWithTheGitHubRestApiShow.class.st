@@ -185,7 +185,7 @@ GtWorkingWithTheGitHubRestApiShow >> responseForGToolkitRepo [
 ]
 
 { #category : #slides }
-GtWorkingWithTheGitHubRestApiShow >> titleSlideFor: aSlide [
+GtWorkingWithTheGitHubRestApiShow >> title: aSlide [
 	<gtSlide>
 	^ aSlide title
 		priority: 1;

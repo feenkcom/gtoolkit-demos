@@ -382,7 +382,7 @@ GtCoderSlideshow >> classCreationExplanationSlideFor: aSlide [
 ]
 
 { #category : #accessing }
-GtCoderSlideshow >> coderExampleSlideFor: aSlide [
+GtCoderSlideshow >> coder: aSlide [
 	<gtSlide>
 	^ aSlide labelAndElement
 		priority: 13;
@@ -721,7 +721,7 @@ GtCoderSlideshow >> methodCreationExplanationSlideFor: aSlide [
 ]
 
 { #category : #accessing }
-GtCoderSlideshow >> titleSlideFor: aSlide [
+GtCoderSlideshow >> title: aSlide [
 	<gtSlide>
 	^ aSlide title
 		priority: 1;

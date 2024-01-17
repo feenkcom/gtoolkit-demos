@@ -182,7 +182,7 @@ GtSpotterSlideshow >> spotterElementOn: aSearchString [
 ]
 
 { #category : #slides }
-GtSpotterSlideshow >> spotterExampleSlideFor: aSlide [
+GtSpotterSlideshow >> spotterExampleSlide: aSlide [
 	"<gtSlide>"
 	^ aSlide labelAndElement
 		priority: 17;
@@ -642,7 +642,7 @@ GtSpotterSlideshow >> spottersMashExample [
 ]
 
 { #category : #slides }
-GtSpotterSlideshow >> titleSlideFor: aSlide [
+GtSpotterSlideshow >> title: aSlide [
 	<gtSlide>
 	^ aSlide title
 		priority: 1;

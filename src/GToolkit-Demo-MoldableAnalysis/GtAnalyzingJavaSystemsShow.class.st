@@ -235,7 +235,7 @@ GtAnalyzingJavaSystemsShow >> saveTheModel: model [
 ]
 
 { #category : #slides }
-GtAnalyzingJavaSystemsShow >> titleSlideFor: aSlide [
+GtAnalyzingJavaSystemsShow >> title: aSlide [
 	<gtSlide>
 	^ aSlide title
 		priority: 1;
