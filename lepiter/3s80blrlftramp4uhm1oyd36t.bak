@@ -34,7 +34,7 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2024-01-17T14:58:05.09175+01:00"
+									"dateAndTimeString" : "2024-01-17T18:11:34.353186+01:00"
 								}
 							},
 							"uid" : {
@@ -44,7 +44,7 @@
 							"paragraphStyle" : {
 								"__type" : "textStyle"
 							},
-							"string" : "Kanban prototype feenkcom/gtoolkit#3554"
+							"string" : "feenkcom/gtoolkit#3554"
 						},
 						{
 							"__type" : "pharoSnippet",

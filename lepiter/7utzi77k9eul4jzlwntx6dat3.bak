@@ -221,7 +221,7 @@
 											"__type" : "time",
 											"time" : {
 												"__type" : "dateAndTime",
-												"dateAndTimeString" : "2024-01-17T13:13:28.376903+01:00"
+												"dateAndTimeString" : "2024-01-17T13:50:57.878609+01:00"
 											}
 										},
 										"uid" : {
@@ -231,7 +231,44 @@
 										"paragraphStyle" : {
 											"__type" : "textStyle"
 										},
-										"string" : "[[Kanban Board prototype]]"
+										"string" : "[[* Kanban Board prototype]]"
+									},
+									{
+										"__type" : "textSnippet",
+										"children" : {
+											"__type" : "snippets",
+											"items" : [ ]
+										},
+										"createEmail" : {
+											"__type" : "email",
+											"emailString" : "<unknown>"
+										},
+										"createTime" : {
+											"__type" : "time",
+											"time" : {
+												"__type" : "dateAndTime",
+												"dateAndTimeString" : "2024-01-17T18:15:55.326307+01:00"
+											}
+										},
+										"editEmail" : {
+											"__type" : "email",
+											"emailString" : "<unknown>"
+										},
+										"editTime" : {
+											"__type" : "time",
+											"time" : {
+												"__type" : "dateAndTime",
+												"dateAndTimeString" : "2024-01-17T18:15:55.326307+01:00"
+											}
+										},
+										"uid" : {
+											"__type" : "uid",
+											"uidString" : "eOD+IonLDQC00j1MCx5K9w=="
+										},
+										"paragraphStyle" : {
+											"__type" : "textStyle"
+										},
+										"string" : ""
 									}
 								]
 							},
@@ -254,7 +291,7 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2024-01-17T13:07:55.443549+01:00"
+									"dateAndTimeString" : "2024-01-17T13:50:52.182032+01:00"
 								}
 							},
 							"uid" : {
@@ -264,7 +301,7 @@
 							"paragraphStyle" : {
 								"__type" : "textStyle"
 							},
-							"string" : "[[* Kanban in Lepiter]]"
+							"string" : "[[Kanban in Lepiter]]"
 						},
 						{
 							"__type" : "textSnippet",

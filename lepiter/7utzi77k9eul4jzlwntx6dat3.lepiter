@@ -232,6 +232,43 @@
 											"__type" : "textStyle"
 										},
 										"string" : "[[* Kanban Board prototype]]"
+									},
+									{
+										"__type" : "textSnippet",
+										"children" : {
+											"__type" : "snippets",
+											"items" : [ ]
+										},
+										"createEmail" : {
+											"__type" : "email",
+											"emailString" : "<unknown>"
+										},
+										"createTime" : {
+											"__type" : "time",
+											"time" : {
+												"__type" : "dateAndTime",
+												"dateAndTimeString" : "2024-01-17T18:16:10.673859+01:00"
+											}
+										},
+										"editEmail" : {
+											"__type" : "email",
+											"emailString" : "<unknown>"
+										},
+										"editTime" : {
+											"__type" : "time",
+											"time" : {
+												"__type" : "dateAndTime",
+												"dateAndTimeString" : "2024-01-17T18:16:16.344123+01:00"
+											}
+										},
+										"uid" : {
+											"__type" : "uid",
+											"uidString" : "eOD+IonLDQC00j1MCx5K9w=="
+										},
+										"paragraphStyle" : {
+											"__type" : "textStyle"
+										},
+										"string" : "[[Creating a dummy lepiter database for testing]]"
 									}
 								]
 							},
