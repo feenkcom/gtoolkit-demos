@@ -312,7 +312,7 @@ GtModelDescription >> telephoneClassExampleSlideFor: aSlide [
 ]
 
 { #category : #accesing }
-GtModelDescription >> titleSlideFor: aSlide [
+GtModelDescription >> title: aSlide [
 	<gtSlide>
 	^ aSlide title
 		priority: 1;

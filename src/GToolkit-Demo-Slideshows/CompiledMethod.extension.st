@@ -9,7 +9,8 @@ CompiledMethod >> gtSlideWithTextFor: aView [
 		title: 'Slide with text';
 		priority: 6;
 		object: [ self slidePage asContentUIModel ];
-		view: #gtLiveFor:
+		view: #gtLiveFor:;
+		actionUpdateButton
 ]
 
 { #category : #'*GToolkit-Demo-Slideshows' }

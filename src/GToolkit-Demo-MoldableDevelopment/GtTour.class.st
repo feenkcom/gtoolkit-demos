@@ -852,7 +852,7 @@ GtTour >> rawViewsExampleSlideFor: aSlide [
 ]
 
 { #category : #accessing }
-GtTour >> spotterExampleSlideFor: aSlide [
+GtTour >> spotterExampleSlide: aSlide [
 	<gtSlide>
 	^ aSlide labelAndElement
 		priority: 24;
@@ -921,7 +921,7 @@ GtTour >> timelineExplanationSlideFor: aSlide [
 ]
 
 { #category : #accessing }
-GtTour >> titleSlideFor: aSlide [
+GtTour >> title: aSlide [
 	<gtSlide>
 	^ aSlide title
 		priority: 1;

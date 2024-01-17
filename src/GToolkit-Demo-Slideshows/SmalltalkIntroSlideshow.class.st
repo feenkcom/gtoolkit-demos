@@ -1005,7 +1005,7 @@ SmalltalkIntroSlideshow >> slidePriorities [
 	<gtExample>
 	<noTest>
 	^ #( 
-		titleSlideFor:
+		#title:
 		ludoAppetizer:
 		outline:
 		smalltalk80:
@@ -1321,7 +1321,7 @@ SmalltalkIntroSlideshow >> threeKindsOfMessagesPage [
 ]
 
 { #category : #slides }
-SmalltalkIntroSlideshow >> titleSlideFor: aSlide [
+SmalltalkIntroSlideshow >> title: aSlide [
 	<gtSlide>
 	^ aSlide title
 		setPriority;
