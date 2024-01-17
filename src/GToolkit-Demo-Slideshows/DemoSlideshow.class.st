@@ -59,25 +59,6 @@ DemoSlideshow >> dynamicLepiterPage: aSlide [
 ]
 
 { #category : #slides }
-DemoSlideshow >> gitRepo: aSlide [
-	<gtSlide>
-	<text: 'A git repository'>
-	^ aSlide labelAndElement
-		setPriority;
-		newFadedText: 'A git repo (ust be loaded)';
-		element: [ GtGitPhlowTool new repository: (GtGitRepository forRepoNamed: 'gtoolkit-demos') ]
-]
-
-{ #category : #slides }
-DemoSlideshow >> gitRepoInPager: aSlide [
-	<gtSlide>
-	<text: 'A git repo in a pager'>
-	^ aSlide element
-		setPriority;
-		element: [ (GtPager createWrappedOn: (GtGitPhlowTool new repository: (GtGitRepository forRepoNamed: 'gt-startup'))) maximized  ]
-]
-
-{ #category : #slides }
 DemoSlideshow >> gtWorld: aSlide [
 	<gtSlide>
 	<text: 'A live embedded GT world'>
