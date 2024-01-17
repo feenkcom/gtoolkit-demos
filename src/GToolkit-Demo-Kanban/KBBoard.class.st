@@ -14,7 +14,8 @@ Class {
 	#instVars : [
 		'database',
 		'name',
-		'cards'
+		'uncategorized',
+		'lists'
 	],
 	#category : #'GToolkit-Demo-Kanban'
 }
@@ -27,29 +28,42 @@ KBBoard class >> named: aBoardName forDatabase: aDatabaseName [
 ]
 
 { #category : #accessing }
-KBBoard >> addDefaultListNamed: aString [ 
+KBBoard >> addDefaultListNamed: aListName [
+	| list |
+	list := KBList named: aListName.
+	list addAll: uncategorized.
+	uncategorized := OrderedCollection new.
+	lists addLast: list
 ]
 
 { #category : #accessing }
 KBBoard >> addDefaultListNamed: aString withCardsNamed: anObject [ 
+	self notYetImplemented
 ]
 
 { #category : #accessing }
 KBBoard >> addListNamed: aString withCardsNamed: anObject [ 
+	self notYetImplemented
 ]
 
 { #category : #accessing }
-KBBoard >> addListNamed: aString withCardsTagged: anObject [ 
+KBBoard >> addListNamed: aListName withCardsTagged: aTagNameCollection [
+	| list matchingCards oldsize |
+	oldsize := uncategorized size.
+
+	list := KBList named: aListName.
+	matchingCards := self cards: uncategorized matchingTags: aTagNameCollection.
+	list addAll: matchingCards.
+	uncategorized removeAll: matchingCards.
+	lists addLast: list.
+
+	self assert: oldsize equals: matchingCards size + uncategorized size.
 ]
 
 { #category : #accessing }
-KBBoard >> cards [
+KBBoard >> cards: cards matchingTags: aTagNameCollection [
 	^ cards
-]
-
-{ #category : #accessing }
-KBBoard >> cards: aCardCollection [
-	cards := aCardCollection
+		select: [ :c | (c page tags collect: #title) includesAll: aTagNameCollection ]
 ]
 
 { #category : #accessing }
@@ -62,16 +76,63 @@ KBBoard >> database: aDatabaseName [
 	database := LeDatabasesRegistry getDatabaseByName: aDatabaseName
 ]
 
+{ #category : #view }
+KBBoard >> gtListsFor: aView [
+<gtView>
+^ aView forward
+	title: 'Lists';
+	priority: 10;
+	object: lists;
+	view: #gtItemsFor:
+]
+
+{ #category : #initalization }
+KBBoard >> initialize [
+	uncategorized := OrderedCollection new.
+	lists := OrderedCollection new.
+	
+]
+
+{ #category : #testing }
+KBBoard >> invariant [
+	name ifNil: [ ^ false ].
+	database ifNil: [ ^ false ].
+	^ true
+]
+
+{ #category : #accessing }
+KBBoard >> lists [
+	^ lists
+]
+
+{ #category : #accessing }
+KBBoard >> lists: anObject [
+	lists := anObject
+]
+
 { #category : #accessing }
 KBBoard >> named: aBoardName [
 	name := aBoardName
 ]
 
 { #category : #accessing }
+KBBoard >> uncategorized [
+	^ uncategorized
+]
+
+{ #category : #accessing }
+KBBoard >> uncategorized: aCardCollection [
+	uncategorized := aCardCollection
+]
+
+{ #category : #accessing }
 KBBoard >> withCardsNamed: anObject [ 
+	self notYetImplemented
 ]
 
 { #category : #accessing }
 KBBoard >> withCardsTagged: aString [
-	self cards: (self database pages select: [ :p | p hasTagNamed: aString ])
+	self
+		uncategorized: ((self database pages select: [ :p | p hasTagNamed: aString ])
+				collect: [ :p | KBCard forPage: p ])
 ]

@@ -221,7 +221,7 @@
 											"__type" : "time",
 											"time" : {
 												"__type" : "dateAndTime",
-												"dateAndTimeString" : "2024-01-17T13:13:28.376903+01:00"
+												"dateAndTimeString" : "2024-01-17T13:50:57.878609+01:00"
 											}
 										},
 										"uid" : {
@@ -231,7 +231,7 @@
 										"paragraphStyle" : {
 											"__type" : "textStyle"
 										},
-										"string" : "[[Kanban Board prototype]]"
+										"string" : "[[* Kanban Board prototype]]"
 									}
 								]
 							},
@@ -254,7 +254,7 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2024-01-17T13:07:55.443549+01:00"
+									"dateAndTimeString" : "2024-01-17T13:50:52.182032+01:00"
 								}
 							},
 							"uid" : {
@@ -264,7 +264,7 @@
 							"paragraphStyle" : {
 								"__type" : "textStyle"
 							},
-							"string" : "[[* Kanban in Lepiter]]"
+							"string" : "[[Kanban in Lepiter]]"
 						},
 						{
 							"__type" : "textSnippet",

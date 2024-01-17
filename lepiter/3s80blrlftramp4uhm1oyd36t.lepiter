@@ -34,7 +34,7 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2024-01-17T13:08:46.18101+01:00"
+									"dateAndTimeString" : "2024-01-17T14:58:05.09175+01:00"
 								}
 							},
 							"uid" : {
@@ -44,7 +44,7 @@
 							"paragraphStyle" : {
 								"__type" : "textStyle"
 							},
-							"string" : "feenkcom/gtoolkit#3554"
+							"string" : "Kanban prototype feenkcom/gtoolkit#3554"
 						}
 					]
 				},
@@ -332,7 +332,7 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2024-01-17T13:12:26.596763+01:00"
+									"dateAndTimeString" : "2024-01-17T13:50:57.889456+01:00"
 								}
 							},
 							"uid" : {
@@ -342,7 +342,7 @@
 							"paragraphStyle" : {
 								"__type" : "textStyle"
 							},
-							"string" : "[[Kanban Board prototype]] "
+							"string" : "[[* Kanban Board prototype]] "
 						}
 					]
 				},
@@ -435,12 +435,12 @@
 		"__type" : "time",
 		"time" : {
 			"__type" : "dateAndTime",
-			"dateAndTimeString" : "2024-01-17T13:08:17.423523+01:00"
+			"dateAndTimeString" : "2024-01-17T13:50:52.156956+01:00"
 		}
 	},
 	"pageType" : {
 		"__type" : "namedPage",
-		"title" : "* Kanban in Lepiter"
+		"title" : "Kanban in Lepiter"
 	},
 	"uid" : {
 		"__type" : "uuid",
