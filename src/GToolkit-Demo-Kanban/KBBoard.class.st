@@ -21,7 +21,7 @@ Class {
 }
 
 { #category : #accessing }
-KBBoard class >> named: aBoardName forDatabase: aDatabaseName [
+KBBoard class >> named: aBoardName forDatabaseNamed: aDatabaseName [
 	^ self new
 		named: aBoardName;
 		database: aDatabaseName

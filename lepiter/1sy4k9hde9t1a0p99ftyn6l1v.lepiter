@@ -8,6 +8,81 @@
 				"__type" : "textSnippet",
 				"children" : {
 					"__type" : "snippets",
+					"items" : [
+						{
+							"__type" : "textSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2024-01-17T18:17:53.439327+01:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2024-01-17T18:20:06.294084+01:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "SSDCKInLDQCEzX07Cx5K9w=="
+							},
+							"paragraphStyle" : {
+								"__type" : "textStyle"
+							},
+							"string" : "Probably I need instead a dedicated lepiter db for testing rather than a dynamically created one ..."
+						}
+					]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2024-01-17T18:17:00.001089+01:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2024-01-17T18:17:07.729024+01:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "5rzZJonLDQCAivzNCx5K9w=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : "# Caveat"
+			},
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
 					"items" : [ ]
 				},
 				"createEmail" : {
@@ -29,7 +104,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2024-01-17T16:15:19.643472+01:00"
+						"dateAndTimeString" : "2024-01-17T18:16:58.789194+01:00"
 					}
 				},
 				"uid" : {
@@ -39,10 +114,10 @@
 				"paragraphStyle" : {
 					"__type" : "textStyle"
 				},
-				"string" : "Can we create a registered {{gtClass:name=LeDatabase}}   with a name that we can look uo in the registry?"
+				"string" : "Can we create a registered {{gtClass:name=LeDatabase}}   with a name that we can look up in the registry?"
 			},
 			{
-				"__type" : "pharoSnippet",
+				"__type" : "textSnippet",
 				"children" : {
 					"__type" : "snippets",
 					"items" : [ ]
@@ -55,7 +130,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2024-01-17T16:15:21.465279+01:00"
+						"dateAndTimeString" : "2024-01-17T16:30:15.285106+01:00"
 					}
 				},
 				"editEmail" : {
@@ -66,20 +141,58 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2024-01-17T16:16:38.885015+01:00"
+						"dateAndTimeString" : "2024-01-17T17:11:13.117261+01:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
-					"uidString" : "iOrSc4fLDQCrTfqICj15Hg=="
+					"uidString" : "cIcZqYfLDQCBicwbCj15Hg=="
 				},
-				"code" : "LeDatabase new "
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : "The code we want is something like this: {{gtMethod:name=LeRegisterDbDropdown>>#registerDb}}. "
 			},
 			{
-				"__type" : "pharoSnippet",
+				"__type" : "textSnippet",
 				"children" : {
 					"__type" : "snippets",
-					"items" : [ ]
+					"items" : [
+						{
+							"__type" : "pharoSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2024-01-17T16:15:21.465279+01:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2024-01-17T17:28:54.779252+01:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "iOrSc4fLDQCrTfqICj15Hg=="
+							},
+							"code" : "dbDirName := 'lepiterTest'.\rregistry := LeDatabasesRegistry uniqueInstance defaultLogicalDatabase.\r\rdirectory := dbDirName asFileReference\r\t\tensureDeleteAll;\r\t\tensureCreateDirectory;\r\t\tyourself.\r\rdb := LeLocalStoreLoad current loadAndMonitorFrom: directory.\r\rregistry\r\taddDB: db;\r\tsaveProperties.\r\rdb databaseName: dbDirName.\r\rpageSpecs := {\r\t\t{#title -> 'Work on Kanban prototype'.\r\t\t\t#tags -> '[[ToDo]] [[ASAP]]'.\r\t\t\t#text -> 'We want Kanbans generated from Lepiter databases'}.\r\t\t{#title -> 'ToDo'.\r\t\t\t#tags -> ''.\r\t\t\t#text -> ''}.\r\t\t{#title -> 'ASAP'.\r\t\t\t#tags -> ''.\r\t\t\t#text -> ''}\r\t\t} collect: #asDictionary.\r\rpageSpecs\r\tdo: [ :dict | \r\t\tdb\r\t\t\taddPage: ((LePage named: (dict at: #title))\r\t\t\t\t\taddSnippet: (LeTextSnippet new\r\t\t\t\t\t\t\tstring: (dict at: #tags);\r\t\t\t\t\t\t\tyourself);\r\t\t\t\t\taddSnippet: (LeTextSnippet new\r\t\t\t\t\t\t\tstring: (dict at: #text);\r\t\t\t\t\t\t\tyourself);\r\t\t\t\t\tyourself) ].\r\rdb"
+						}
+					]
 				},
 				"createEmail" : {
 					"__type" : "email",
@@ -89,7 +202,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2024-01-17T16:16:39.861908+01:00"
+						"dateAndTimeString" : "2024-01-17T16:31:32.040751+01:00"
 					}
 				},
 				"editEmail" : {
@@ -100,14 +213,372 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2024-01-17T16:16:39.861908+01:00"
+						"dateAndTimeString" : "2024-01-17T17:11:30.680449+01:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
-					"uidString" : "0SV/eIfLDQCsH4ekCj15Hg=="
+					"uidString" : "Q7msrYfLDQCCsE8KCj15Hg=="
 				},
-				"code" : ""
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : "# Create and populate a database."
+			},
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [
+						{
+							"__type" : "pharoSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2024-01-17T16:52:19.123907+01:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2024-01-17T17:30:58.572295+01:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "HLUB+IfLDQCNN/VhCj15Hg=="
+							},
+							"code" : "dbDirName := 'kanbanLepiterDemo'.\rdbDirName asFileReference ensureDeleteAll.\rregistry removeDB: db.\rregistry databases."
+						},
+						{
+							"__type" : "pharoSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2024-01-17T16:16:39.861908+01:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2024-01-17T16:59:32.095098+01:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "0SV/eIfLDQCsH4ekCj15Hg=="
+							},
+							"code" : "registry databases."
+						},
+						{
+							"__type" : "textSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2024-01-17T16:45:27.082579+01:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2024-01-17T16:45:39.602517+01:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "5XNy34fLDQCKE6eaCj15Hg=="
+							},
+							"paragraphStyle" : {
+								"__type" : "textStyle"
+							},
+							"string" : "Remove the databases matching the name."
+						},
+						{
+							"__type" : "pharoSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2024-01-17T16:44:02.429367+01:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2024-01-17T17:30:32.528688+01:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "4bxm2ofLDQCILGNHCj15Hg=="
+							},
+							"code" : "dbDirName := 'kanbanLepiterDemo'.\rdbDirName asFileReference ensureDeleteAll.\rregistry := LeDatabasesRegistry uniqueInstance defaultLogicalDatabase.\r(registry databases\r\tselect: [ :db | db databaseName includesSubstring: dbDirName ])\r\tdo: [ :db | registry removeDB: db ].\rregistry databases."
+						}
+					]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2024-01-17T17:11:46.339677+01:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2024-01-17T17:11:49.72591+01:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "kACUPYjLDQCX4CWsCj15Hg=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : "# Clean up"
+			},
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [
+						{
+							"__type" : "pharoSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2024-01-17T17:12:14.203059+01:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2024-01-17T17:39:43.377442+01:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "Uik9P4jLDQCYrCVCCj15Hg=="
+							},
+							"code" : "KanbanDatabaseExample new databaseWithPages"
+						},
+						{
+							"__type" : "pharoSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2024-01-17T17:39:21.686233+01:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2024-01-17T17:39:38.383538+01:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "SZc+oIjLDQCFyE75BCHznw=="
+							},
+							"code" : "KanbanDatabaseExample cleanup"
+						}
+					]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2024-01-17T16:30:10.043844+01:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2024-01-17T17:12:12.282948+01:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "XI3JqIfLDQCBenlNCj15Hg=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : "# Creating a test example"
+			},
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [
+						{
+							"__type" : "pharoSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2024-01-17T17:53:52.603881+01:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2024-01-17T17:56:00.786697+01:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "Xb0n1IjLDQCPXcuOBCHznw=="
+							},
+							"code" : "KanbanDatabaseExample new board "
+						}
+					]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2024-01-17T17:51:22.0477+01:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2024-01-17T17:51:41.343603+01:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "a24uy4jLDQCN9uJ9BCHznw=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : "# Creating a Kanban for the test database"
 			}
 		]
 	},

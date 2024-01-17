@@ -195,8 +195,6 @@ DemoSlideshow >> slidePriorities [
 		coder:
 		coderOnClass:
 		spotterExampleSlide:
-		gitRepo:
-		gitRepoInPager:
 	)
 ]
 
