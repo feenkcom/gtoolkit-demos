@@ -140,14 +140,14 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2024-01-18T09:18:57.819023+01:00"
+						"dateAndTimeString" : "2024-01-18T09:53:12.275774+01:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
 					"uidString" : "ByIhvpXLDQCEzmvcBML4qQ=="
 				},
-				"code" : "KBBoardExample new database "
+				"code" : "KBBoardExample new board  "
 			},
 			{
 				"__type" : "textSnippet",
@@ -163,7 +163,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2024-01-18T09:41:54.914308+01:00"
+						"dateAndTimeString" : "2024-01-18T09:52:58.010214+01:00"
 					}
 				},
 				"editEmail" : {
@@ -174,7 +174,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2024-01-18T09:42:01.798389+01:00"
+						"dateAndTimeString" : "2024-01-18T09:52:58.010214+01:00"
 					}
 				},
 				"uid" : {
@@ -184,7 +184,7 @@
 				"paragraphStyle" : {
 					"__type" : "textStyle"
 				},
-				"string" : "db\r\t\"Transient Lepiter database for the dynamically created pages.\r\tNB: We need to create a transient registry as well, so that links will work within the database.\"\r\r\tdb\r\t\tifNil: [ db := LeDatabase new.\r\t\t\tLeBasicDatabasesRegistry new\r\t\t\t\tdefaultLogicalDatabase: (LeLogicalDatabase new primaryDB: db).\r\t\t\tdb ].\r\t^ db"
+				"string" : ""
 			},
 			{
 				"__type" : "textSnippet",
