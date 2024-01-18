@@ -46,6 +46,14 @@ DemoSlideshow >> coderOnClass: aSlide [
 		element: [ (GtCoderElement forClass: GtLudoGame) createInPager maximized ]
 ]
 
+{ #category : #accessing }
+DemoSlideshow >> demoDatabase [
+	"A transient database with links."
+
+	<gtExample>
+	^ self db
+]
+
 { #category : #page }
 DemoSlideshow >> dynamicLePage [
 	<gtExample>
