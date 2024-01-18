@@ -5,7 +5,7 @@ Class {
 		'name',
 		'cards'
 	],
-	#category : #'GToolkit-Demo-Kanban'
+	#category : #'GToolkit-Demo-Kanban-Model'
 }
 
 { #category : #'instance creation' }

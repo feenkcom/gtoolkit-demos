@@ -4,7 +4,7 @@ Class {
 	#instVars : [
 		'page'
 	],
-	#category : #'GToolkit-Demo-Kanban'
+	#category : #'GToolkit-Demo-Kanban-Model'
 }
 
 { #category : #'instance creation' }
