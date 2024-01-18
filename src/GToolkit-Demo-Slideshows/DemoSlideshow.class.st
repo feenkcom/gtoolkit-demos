@@ -13,6 +13,17 @@ DemoSlideshow class >> show [
 	super show
 ]
 
+{ #category : #page }
+DemoSlideshow >> anotherLePage [
+	<gtExample>
+	<noTest>
+	^ (LePage named: 'Another dynamic page')
+		addSnippet: (LeTextSnippet new
+				string: 'This page is linked to from [[A dynamic Lepiter page]].';
+				yourself);
+		yourself
+]
+
 { #category : #slides }
 DemoSlideshow >> coder: aSlide [
 	<gtSlide>
@@ -42,6 +53,9 @@ DemoSlideshow >> dynamicLePage [
 	^ (LePage named: 'A dynamic Lepiter page')
 		addSnippet: (LeTextSnippet new
 				string: 'This page is dynamically created and stored in a transient Lepiter database.';
+				yourself);
+		addSnippet: (LeTextSnippet new
+				string: 'A link to [[Another dynamic page]].';
 				yourself);
 		addSnippet: (LePharoSnippet new
 				code: '''hello''';
@@ -79,7 +93,8 @@ DemoSlideshow >> headingAndCode: aSlide [
 
 { #category : #initialization }
 DemoSlideshow >> initializeDb [
-	self db addPage: self dynamicLePage
+	self db addPage: self dynamicLePage.
+	self db addPage: self anotherLePage
 ]
 
 { #category : #slides }
