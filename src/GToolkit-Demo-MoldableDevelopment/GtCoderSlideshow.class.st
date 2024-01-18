@@ -437,8 +437,9 @@ GtCoderSlideshow >> coderInterfaceExplanationWithLinks [
 	<gtExample>
 	| coderElement packageHierarchyTarget classHierarchyTarget classCoderTarget addClassButtonTarget spotterButtonTarget buttons |
 	
-	coderElement := BlUseAsyncFeatures
-		disableDuring: [ (GtCoderElement forClass: GtABAddressBook) createInPager maximized ].
+	coderElement := BlScripter new
+		element: (GtCoderElement forClass: GtABAddressBook) createInPager maximized;
+		elementWithoutParent.
 	
 	packageHierarchyTarget := coderElement
 		allChildrenBreadthFirstDetect: [:aChild |
