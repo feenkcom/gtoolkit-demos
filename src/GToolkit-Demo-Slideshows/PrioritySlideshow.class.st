@@ -131,11 +131,14 @@ PrioritySlideshow >> cr [
 
 { #category : #accessing }
 PrioritySlideshow >> db [
-	"Transient Lepiter database for the dynamically created pages."
+	"Transient Lepiter database for the dynamically created pages.
+	NB: We need to create a transient registry as well, so that links will work within the database."
 
 	db
 		ifNil: [ db := LeDatabase new.
-			db parent: LeDatabasesRegistry uniqueInstance defaultLogicalDatabase ].
+			LeBasicDatabasesRegistry new
+				defaultLogicalDatabase: (LeLogicalDatabase new primaryDB: db).
+			db ].
 	^ db
 ]
 

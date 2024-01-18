@@ -1,28 +1,14 @@
 Class {
-	#name : #KanbanDatabaseExample,
+	#name : #KBBoardExample,
 	#superclass : #Object,
 	#category : #'GToolkit-Demo-Kanban-Examples'
 }
 
-{ #category : #'tear down' }
-KanbanDatabaseExample class >> cleanup [
-	| dbDirName registry |
-	dbDirName := self new dbDirName.
-	registry := self new registry.
-	dbDirName asFileReference ensureDeleteAll.
-	(registry databases
-		select: [ :db | db databaseName includesSubstring: dbDirName ])
-		do: [ :db | registry removeDB: db ].
-	^ registry databases
-]
-
 { #category : #example }
-KanbanDatabaseExample >> board [
+KBBoardExample >> board [
 	<gtExample>
 	| board |
-	board := (KBBoard
-			named: 'Test Kanban'
-			forDatabaseNamed: self databaseWithPages databaseName)
+	board := (KBBoard named: 'Test Kanban' forDatabase: self databaseWithPages)
 			withCardsTagged: 'ToDo';
 			addListNamed: 'ASAP' withCardsTagged: {'ASAP'};
 			addListNamed: 'Soon' withCardsTagged: {'Soon'};
@@ -38,21 +24,18 @@ KanbanDatabaseExample >> board [
 ]
 
 { #category : #example }
-KanbanDatabaseExample >> database [
+KBBoardExample >> database [
 	<gtExample>
 	| db |
-	^ self registry
-		databaseNamed: self dbDirName
-		ifNone: [ db := LeLocalStoreLoad current loadAndMonitorFrom: self directory.
-			self registry
-				addDB: db;
-				saveProperties.
-			db databaseName: self dbDirName.
-			db ]
+	db := LeDatabase new.
+	LeBasicDatabasesRegistry new
+		defaultLogicalDatabase: (LeLogicalDatabase new primaryDB: db).
+	db.
+	^ db
 ]
 
 { #category : #example }
-KanbanDatabaseExample >> databaseWithPages [
+KBBoardExample >> databaseWithPages [
 	<gtExample>
 	| db |
 	db := self database.
@@ -73,30 +56,8 @@ KanbanDatabaseExample >> databaseWithPages [
 	^ db
 ]
 
-{ #category : #constant }
-KanbanDatabaseExample >> dbDirName [
-	<gtExample>
-	^ 'kanbanLepiterDemo'
-]
-
 { #category : #example }
-KanbanDatabaseExample >> directory [
-	<gtExample>
-	^ self directoryDeleteAll
-		ensureCreateDirectory;
-		yourself
-]
-
-{ #category : #example }
-KanbanDatabaseExample >> directoryDeleteAll [
-	<gtExample>
-	^ (FileLocator imageDirectory / self dbDirName) asFileReference
-		ensureDeleteAll;
-		yourself
-]
-
-{ #category : #example }
-KanbanDatabaseExample >> pageSpecs [
+KBBoardExample >> pageSpecs [
 	<gtExample>
 	^ {{#title -> 'Work on Kanban prototype'.
 			#tags -> '[[ToDo]] [[ASAP]]'.
@@ -135,10 +96,4 @@ KanbanDatabaseExample >> pageSpecs [
 			#tags -> ''.
 			#text -> ''}
 		} collect: #asDictionary
-]
-
-{ #category : #constant }
-KanbanDatabaseExample >> registry [
-	<gtExample>
-	^ LeDatabasesRegistry uniqueInstance defaultLogicalDatabase
 ]

@@ -17,14 +17,21 @@ Class {
 		'uncategorized',
 		'lists'
 	],
-	#category : #'GToolkit-Demo-Kanban'
+	#category : #'GToolkit-Demo-Kanban-Model'
 }
+
+{ #category : #accessing }
+KBBoard class >> named: aBoardName forDatabase: aDatabase [
+	^ self new
+		named: aBoardName;
+		database: aDatabase
+]
 
 { #category : #accessing }
 KBBoard class >> named: aBoardName forDatabaseNamed: aDatabaseName [
 	^ self new
 		named: aBoardName;
-		database: aDatabaseName
+		database: (LeDatabasesRegistry getDatabaseByName: aDatabaseName)
 ]
 
 { #category : #accessing }
@@ -72,8 +79,8 @@ KBBoard >> database [
 ]
 
 { #category : #accessing }
-KBBoard >> database: aDatabaseName [
-	database := LeDatabasesRegistry getDatabaseByName: aDatabaseName
+KBBoard >> database: aDatabase [
+	database := aDatabase
 ]
 
 { #category : #view }
