@@ -43,6 +43,7 @@ Optionally go back to the overview and search for Smalltalk.'>
 
 { #category : #page }
 MoldableDevelopmentPatternsSlideshow >> collectionWrapperPage [
+	<lePage>
 	<gtExample>
 	<noTest>
 	^ (LePage named: 'Pattern: Collection Wrapper')
@@ -113,6 +114,7 @@ Extract as a `!` method.'>
 
 { #category : #page }
 MoldableDevelopmentPatternsSlideshow >> contextualPlaygroundPage [
+	<lePage>
 	<gtExample>
 	<noTest>
 	^ (LePage named: 'Pattern: Contextual Playground')
@@ -194,6 +196,7 @@ Possibly inspect a bad link and open it in a web browser.'>
 
 { #category : #page }
 MoldableDevelopmentPatternsSlideshow >> customActionPage [
+	<lePage>
 	<gtExample>
 	<noTest>
 	^ (LePage named: 'Pattern: Custom Action')
@@ -265,6 +268,7 @@ Add some assertions.'>
 
 { #category : #page }
 MoldableDevelopmentPatternsSlideshow >> exampleObjectPage [
+	<lePage>
 	<gtExample>
 	<noTest>
 	^ (LePage named: 'Pattern: Example Object')
@@ -342,22 +346,6 @@ I''ll now try to illustrate most of the patterns in this diagram with the help o
 
 Moldable development works by applying a number of learnable patterns.');
 		element: [ self patternMapScenery ]
-]
-
-{ #category : #initalization }
-MoldableDevelopmentPatternsSlideshow >> initializeDb [
-	self db addPage: self moldableObjectPage.
-	self db addPage: self contextualPlaygroundPage.
-	self db addPage: self exampleObjectPage.
-	self db addPage: self viewableEntityPage.
-	self db addPage: self simpleViewPage.
-	self db addPage: self viewableDataWrapperPage.
-	
-	self db addPage: self projectDiaryPage.
-	self db addPage: self collectionWrapperPage.
-	self db addPage: self customActionPage.
-	
-	"self db addPage: self placeholderPage."
 ]
 
 { #category : #slides }
@@ -563,6 +551,7 @@ Inspect the stack slot state.'>
 
 { #category : #page }
 MoldableDevelopmentPatternsSlideshow >> moldableObjectPage [
+	<lePage>
 	<gtExample>
 	<noTest>
 	^ (LePage named: 'Pattern: Moldable object')
@@ -689,6 +678,7 @@ MoldableDevelopmentPatternsSlideshow >> patternSceneryHighlighting: patternName 
 { #category : #page }
 MoldableDevelopmentPatternsSlideshow >> placeholderPage [
 	"Use this page as a template."
+	<lePage>
 	<gtExample>
 	<noTest>
 	^ (LePage named: 'Placeholder page')
@@ -720,6 +710,7 @@ Browse some of the Ludo pages.'>
 
 { #category : #page }
 MoldableDevelopmentPatternsSlideshow >> projectDiaryPage [
+	<lePage>
 	<gtExample>
 	<noTest>
 	^ (LePage named: 'Pattern: Project Diary')
@@ -795,6 +786,7 @@ Explore the pragmas and show the metrics view.'>
 
 { #category : #page }
 MoldableDevelopmentPatternsSlideshow >> simpleViewPage [
+	<lePage>
 	<gtExample>
 	<noTest>
 	^ (LePage named: 'Pattern: Simple View')
@@ -1083,6 +1075,7 @@ Show how we access the data from the playground.'>
 
 { #category : #page }
 MoldableDevelopmentPatternsSlideshow >> viewableDataWrapperPage [
+	<lePage>
 	<gtExample>
 	<noTest>
 	^ (LePage named: 'Pattern: Viewable Data Wrapper')
@@ -1175,6 +1168,7 @@ Go the StackMachine Meta view and add a forward view.'>
 
 { #category : #page }
 MoldableDevelopmentPatternsSlideshow >> viewableEntityPage [
+	<lePage>
 	<gtExample>
 	<noTest>
 	^ (LePage named: 'Pattern: Viewable Entity')

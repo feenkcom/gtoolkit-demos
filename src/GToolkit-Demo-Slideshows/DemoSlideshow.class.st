@@ -15,6 +15,7 @@ DemoSlideshow class >> show [
 
 { #category : #page }
 DemoSlideshow >> anotherLePage [
+	<lePage>
 	<gtExample>
 	<noTest>
 	^ (LePage named: 'Another dynamic page')
@@ -56,6 +57,7 @@ DemoSlideshow >> demoDatabase [
 
 { #category : #page }
 DemoSlideshow >> dynamicLePage [
+	<lePage>
 	<gtExample>
 	<noTest>
 	^ (LePage named: 'A dynamic Lepiter page')
@@ -97,12 +99,6 @@ DemoSlideshow >> headingAndCode: aSlide [
 		addTextSnippet: 'Text snippet';
 		addCodeSnippet: '"Code to evaluate."
 3+4.'
-]
-
-{ #category : #initialization }
-DemoSlideshow >> initializeDb [
-	self db addPage: self dynamicLePage.
-	self db addPage: self anotherLePage
 ]
 
 { #category : #slides }

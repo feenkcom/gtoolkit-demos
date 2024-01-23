@@ -28,6 +28,7 @@ SmalltalkIntroSlideshow >> addingAutoPlay: aSlide [
 
 { #category : #page }
 SmalltalkIntroSlideshow >> addingAutoPlayPage [
+	<lePage>
 	<gtExample>
 	<noTest>
 	^ (LePage named: 'Changing a running system')
@@ -138,6 +139,7 @@ SmalltalkIntroSlideshow >> bouncingAtoms: aSlide [
 
 { #category : #page }
 SmalltalkIntroSlideshow >> bouncingAtomsPage [
+	<lePage>
 	<gtExample>
 	<noTest>
 	^ (LePage named: 'Changing a running system on the fly')
@@ -265,6 +267,7 @@ SmalltalkIntroSlideshow >> composingExamples: aSlide [
 
 { #category : #page }
 SmalltalkIntroSlideshow >> composingExamplesPage [
+	<lePage>
 	<gtExample>
 	<noTest>
 	^ (LePage named: 'Composing (Test) Examples')
@@ -365,6 +368,7 @@ SmalltalkIntroSlideshow >> everythingHappensBySendingMessages: aSlide [
 
 { #category : #page }
 SmalltalkIntroSlideshow >> everythingHappensBySendingMessagesPage [
+	<lePage>
 	<gtExample>
 	<noTest>
 	^ (LePage named: 'Everything happens by sending messages')
@@ -472,6 +476,7 @@ SmalltalkIntroSlideshow >> everythingIsAnObject: aSlide [
 
 { #category : #page }
 SmalltalkIntroSlideshow >> everythingIsAnObjectPage [
+	<lePage>
 	<gtExample>
 	<noTest>
 	^ (LePage named: 'Everything is an object')
@@ -581,6 +586,7 @@ SmalltalkIntroSlideshow >> exploringLudo: aSlide [
 
 { #category : #page }
 SmalltalkIntroSlideshow >> exploringLudoPage [
+	<lePage>
 	<gtExample>
 	<noTest>
 	^ (LePage named: 'Exploring a live system')
@@ -692,21 +698,6 @@ Changes to classes and methods are logged as you program.');
 						resourceAtPath: self picturesDirectoryPath / 'image+changes.png') ]
 ]
 
-{ #category : #initialization }
-SmalltalkIntroSlideshow >> initializeDb [
-	self db addPage: self everythingIsAnObjectPage.
-	self db addPage: self addingAutoPlayPage.
-	self db addPage: self composingExamplesPage.
-	self db addPage: self everythingHappensBySendingMessagesPage.
-	self db addPage: self exploringLudoPage.
-	self db addPage: self liveDocumentationLogicPage.
-	self db addPage: self liveDocumentationUMLPage.
-	self db addPage: self recordingMovesPage.
-	self db addPage: self syntaxPage.
-	self db addPage: self threeKindsOfMessagesPage.
-	self db addPage: self bouncingAtomsPage.
-]
-
 { #category : #slides }
 SmalltalkIntroSlideshow >> liveDocumentationLogic: aSlide [
 	<gtSlide>
@@ -717,6 +708,7 @@ SmalltalkIntroSlideshow >> liveDocumentationLogic: aSlide [
 
 { #category : #page }
 SmalltalkIntroSlideshow >> liveDocumentationLogicPage [
+	<lePage>
 	<gtExample>
 	<noTest>
 	^ (LePage named: 'Live documentation of the game logic')
@@ -817,6 +809,7 @@ SmalltalkIntroSlideshow >> liveDocumentationUML: aSlide [
 
 { #category : #page }
 SmalltalkIntroSlideshow >> liveDocumentationUMLPage [
+	<lePage>
 	<gtExample>
 	<noTest>
 	^ (LePage named: 'Live documentation of the technical solution')
@@ -912,6 +905,7 @@ SmalltalkIntroSlideshow >> recordingMoves: aSlide [
 
 { #category : #page }
 SmalltalkIntroSlideshow >> recordingMovesPage [
+	<lePage>
 	<gtExample>
 	<noTest>
 	^ (LePage named: 'Recording and visualizing token moves')
@@ -1054,6 +1048,7 @@ SmalltalkIntroSlideshow >> syntax: aSlide [
 
 { #category : #page }
 SmalltalkIntroSlideshow >> syntaxPage [
+	<lePage>
 	<gtExample>
 	<noTest>
 	^ (LePage named: 'Smalltalk Syntax (the funny bits)')
@@ -1212,6 +1207,7 @@ SmalltalkIntroSlideshow >> threeKindsOfMessages: aSlide [
 
 { #category : #page }
 SmalltalkIntroSlideshow >> threeKindsOfMessagesPage [
+	<lePage>
 	<gtExample>
 	<noTest>
 	^ (LePage named: 'Three kinds of messages')

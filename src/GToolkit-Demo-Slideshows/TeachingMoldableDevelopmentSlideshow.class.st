@@ -68,6 +68,7 @@ We can experiment with code in the playground, and when we see something we like
 
 { #category : #page }
 TeachingMoldableDevelopmentSlideshow >> contextualPlaygroundPage [
+	<lePage>
 	<gtExample>
 	<noTest>
 	^ (LePage named: 'Pattern: Contextual playground')
@@ -113,6 +114,7 @@ TeachingMoldableDevelopmentSlideshow >> customAction: aSlide [
 
 { #category : #page }
 TeachingMoldableDevelopmentSlideshow >> customActionPage [
+	<lePage>
 	<gtExample>
 	<noTest>
 	^ (LePage named: 'Pattern: Custom action')
@@ -221,15 +223,6 @@ These are some of the most basic moldable development patterns, which are descri
 				maximized ]
 ]
 
-{ #category : #initialization }
-TeachingMoldableDevelopmentSlideshow >> initializeDb [
-	self db addPage: self moldableObjectPage.
-	self db addPage: self viewableDataWrapperPage.
-	self db addPage: self contextualPlaygroundPage.
-	self db addPage: self viewableEntityPage.
-	self db addPage: self customActionPage.
-]
-
 { #category : #accessing }
 TeachingMoldableDevelopmentSlideshow >> liveDocumentation: aSlide [
 	<gtSlide>
@@ -289,6 +282,7 @@ From the moldable object we can experiment with new features, extract methods an
 
 { #category : #page }
 TeachingMoldableDevelopmentSlideshow >> moldableObjectPage [
+	<lePage>
 	<gtExample>
 	<noTest>
 	^ (LePage named: 'Pattern: Moldable object')
@@ -579,6 +573,7 @@ After some iterations we obtain the view we have seen earlier.
 
 { #category : #page }
 TeachingMoldableDevelopmentSlideshow >> viewableDataWrapperPage [
+	<lePage>
 	<gtExample>
 	<noTest>
 	^ (LePage named: 'Pattern: Viewable data wrapper')
@@ -639,6 +634,7 @@ The new view is instantly available.'>
 
 { #category : #page }
 TeachingMoldableDevelopmentSlideshow >> viewableEntityPage [
+	<lePage>
 	<gtExample>
 	<noTest>
 	^ (LePage named: 'Pattern: Viewable Entity')

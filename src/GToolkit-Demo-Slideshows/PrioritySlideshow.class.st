@@ -378,7 +378,10 @@ PrioritySlideshow >> initialize [
 
 { #category : #initialization }
 PrioritySlideshow >> initializeDb [
-	"Add pages to db, if needed."
+	"Automatically load all pages defined in methods with a <lePage> pragma.
+	Alternatively, overwrite this method to explicitly add pages."
+
+	self pageMethods do: [ :m | self db addPage: (self perform: m selector) ]
 ]
 
 { #category : #utility }
@@ -394,6 +397,11 @@ PrioritySlideshow >> metrics [
 	^ {'Number of words' -> words size.
 		'Estimated duration'
 			-> ((Duration minutes: words size / self wordsPerMinute) roundTo: 1 second)}
+]
+
+{ #category : #accessing }
+PrioritySlideshow >> pageMethods [
+	^ self class methods select: [ :m | m hasPragmaNamed: #lePage ]
 ]
 
 { #category : #accessing }
