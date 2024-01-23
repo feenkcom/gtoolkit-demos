@@ -421,7 +421,8 @@ PrioritySlideshow >> picturesDirectoryPath [
 PrioritySlideshow >> priorityFor: aSlideMethodSelector [
 	^ self slidePriorities
 		indexOf: aSlideMethodSelector
-		ifAbsent: [ self error: 'Missing slide priority for ' , aSlideMethodSelector printString ]
+		ifAbsent: [ self inform: 'Warning: Missing slide priority for ' , aSlideMethodSelector printString, ' in ', self class name, '#>>slidePriorities'.
+			self slidePriorities size + 1 ]
 ]
 
 { #category : #utility }
