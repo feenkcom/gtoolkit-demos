@@ -30,6 +30,7 @@ SPLPetitParserSlideshow >> buildingTheAST: aSlide [
 
 { #category : #page }
 SPLPetitParserSlideshow >> buildingTheASTPage [
+	<lePage>
 	<gtExample>
 	<noTest>
 	^ (LePage named: 'Building the AST with parser actions')
@@ -64,6 +65,7 @@ SPLPetitParserSlideshow >> classExtraction: aSlide [
 
 { #category : #page }
 SPLPetitParserSlideshow >> classExtractionPage [
+	<lePage>
 	<gtExample>
 	<noTest>
 	^ (LePage named: 'Extracting a parser class')
@@ -133,6 +135,7 @@ SPLPetitParserSlideshow >> debuggingParsers: aSlide [
 
 { #category : #page }
 SPLPetitParserSlideshow >> debuggingParsersPage [
+	<lePage>
 	<gtExample>
 	<noTest>
 	^ (LePage named: 'Debugging parsers')
@@ -165,6 +168,7 @@ SPLPetitParserSlideshow >> fibonacci: aSlide [
 
 { #category : #page }
 SPLPetitParserSlideshow >> fibonacciPage [
+	<lePage>
 	<gtExample>
 	<noTest>
 	^ (LePage named: 'Fibonacci in SPL')
@@ -178,18 +182,6 @@ SPLPetitParserSlideshow >> fibonacciPage [
 				string: 'Look at the history view to explore the reductions in detail.';
 				yourself);
 		yourself
-]
-
-{ #category : #initialization }
-SPLPetitParserSlideshow >> initializeDb [
-	self db addPage: self buildingTheASTPage.
-	self db addPage: self classExtractionPage.
-	self db addPage: self debuggingParsersPage.
-	self db addPage: self fibonacciPage.
-	self db addPage: self partialGrammarScriptPage.
-	self db addPage: self runningAnSPLProgramPage.
-	self db addPage: self theASThierarchyPage.
-	self db addPage: self writingTestsPage
 ]
 
 { #category : #slides }
@@ -311,6 +303,7 @@ SPLPetitParserSlideshow >> partialGrammarScript: aSlide [
 
 { #category : #page }
 SPLPetitParserSlideshow >> partialGrammarScriptPage [
+	<lePage>
 	<gtExample>
 	<noTest>
 	^ (LePage named: 'Prototyping the SPL grammar parser as a script')
@@ -357,6 +350,7 @@ SPLPetitParserSlideshow >> runningAnSPLProgram: aSlide [
 
 { #category : #page }
 SPLPetitParserSlideshow >> runningAnSPLProgramPage [
+	<lePage>
 	<gtExample>
 	<noTest>
 	^ (LePage named: 'Running an SPL program')
@@ -507,6 +501,7 @@ SPLPetitParserSlideshow >> theASThierarchy: aSlide [
 
 { #category : #page }
 SPLPetitParserSlideshow >> theASThierarchyPage [
+	<lePage>
 	<gtExample>
 	<noTest>
 	^ (LePage named: 'The SPL AST hierarchy')
@@ -561,6 +556,7 @@ SPLPetitParserSlideshow >> writingTests: aSlide [
 
 { #category : #page }
 SPLPetitParserSlideshow >> writingTestsPage [
+	<lePage>
 	<gtExample>
 	<noTest>
 	^ (LePage named: 'Writing parser tests')
