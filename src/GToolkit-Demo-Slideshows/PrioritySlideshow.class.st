@@ -260,6 +260,21 @@ PrioritySlideshow >> gtMetricsFor: aView [
 		actionUpdateButton
 ]
 
+{ #category : #accessing }
+PrioritySlideshow >> gtRenewDbActionFor: anAction [
+	<gtAction>
+	^ anAction explicit
+		priority: 3;
+		stencil: [ | button |
+			button := BrButton new
+					id: GtInspectorInspectButtonId;
+					aptitude: BrGlamorousButtonWithIconAptitude;
+					icon: BrGlamorousIcons refresh;
+					label: 'Refresh database';
+					action: [ :aButton :aModel :anEvent | aButton phlow spawnObject: self renewDb ].
+			button ]
+]
+
 { #category : #views }
 PrioritySlideshow >> gtScriptFor: aView [
 	<gtView>
@@ -423,6 +438,16 @@ PrioritySlideshow >> priorityFor: aSlideMethodSelector [
 		indexOf: aSlideMethodSelector
 		ifAbsent: [ self inform: 'Warning: Missing slide priority for ' , aSlideMethodSelector printString, ' in ', self class name, '#>>slidePriorities'.
 			self slidePriorities size + 1 ]
+]
+
+{ #category : #accessing }
+PrioritySlideshow >> renewDb [
+	"Recreate the db from scratch, eg after adding new pages."
+	db := LeDatabase new.
+	LeBasicDatabasesRegistry new
+		defaultLogicalDatabase: (LeLogicalDatabase new primaryDB: db).
+	self initializeDb.
+	^ db
 ]
 
 { #category : #utility }
