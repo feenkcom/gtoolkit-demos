@@ -41,6 +41,16 @@ GtLudoMove >> game [
 ]
 
 { #category : #accessing }
+GtLudoMove >> gtReplayAction: anAction [
+	<gtAction>
+	^ anAction button
+	tooltip: 'Replay to here';
+		priority: 20;
+		icon: BrGlamorousIcons tohere;
+		action: [ :aButton | aButton phlow spawnObject: self replayGameToHere ]
+]
+
+{ #category : #accessing }
 GtLudoMove >> gtReplayedMoveFor: aView [
 	<gtView>
 	
