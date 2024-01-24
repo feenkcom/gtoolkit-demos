@@ -61,7 +61,7 @@ PrioritySlideshow >> addItem: label inScenery: scenery [
 								bold)))
 ]
 
-{ #category : #accessing }
+{ #category : #'as yet unclassified' }
 PrioritySlideshow >> announcer [
 	^ announcer
 ]
@@ -213,7 +213,8 @@ PrioritySlideshow >> gtDatabaseFor: aView [
 		priority: 80;
 		object: [ self db ];
 		view: #gtLiveFor:;
-		actionUpdateButton
+		actionUpdateButton;
+		updateWhen: SlideshowMethodUpdated in: self announcer
 ]
 
 { #category : #views }
@@ -225,7 +226,8 @@ PrioritySlideshow >> gtDemoNotesFor: aView [
 		priority: 71;
 		object: [ self demoPage asContentUIModel ];
 		view: #gtLiveFor:;
-		actionUpdateButton
+		actionUpdateButton;
+		updateWhen: SlideshowMethodUpdated in: self announcer
 ]
 
 { #category : #accessing }
@@ -258,6 +260,17 @@ PrioritySlideshow >> gtLiveFor: aView [
 		actionUpdateButton"
 ]
 
+{ #category : #accessing }
+PrioritySlideshow >> gtLiveSlideshowFor: aView [
+	<gtView>
+	<gtClassView>
+	^ aView explicit 
+		title: 'Slideshow';
+		stencil: [ GtPresenterSlideShow create: self ];
+		actionUpdateButton;
+		updateWhen: SlideshowMethodUpdated in: self announcer
+]
+
 { #category : #views }
 PrioritySlideshow >> gtMetricsFor: aView [
 	<gtView>
@@ -268,7 +281,8 @@ PrioritySlideshow >> gtMetricsFor: aView [
 		items: [ self metrics ];
 		column: 'Metric' text: #key;
 		column: 'Value' text: [ :assoc | assoc value asString ];
-		actionUpdateButton
+		actionUpdateButton;
+		updateWhen: SlideshowMethodUpdated in: self announcer
 ]
 
 { #category : #accessing }
@@ -295,7 +309,8 @@ PrioritySlideshow >> gtScriptFor: aView [
 		priority: 70;
 		object: [ self scriptPage asContentUIModel ];
 		view: #gtLiveFor:;
-		actionUpdateButton
+		actionUpdateButton;
+		updateWhen: SlideshowMethodUpdated in: self announcer
 ]
 
 { #category : #views }
@@ -308,7 +323,8 @@ PrioritySlideshow >> gtSlideDeckFor: aView [
 		priority: 60;
 		object: [ self slideDeckPage asContentUIModel ];
 		view: #gtLiveFor:;
-		actionUpdateButton
+		actionUpdateButton;
+		updateWhen: SlideshowMethodUpdated in: self announcer
 ]
 
 { #category : #views }
@@ -337,7 +353,8 @@ PrioritySlideshow >> gtSlidePrioritiesFor: aView [
 		priority: 40;
 		object: [ self class >> #slidePriorities ];
 		view: #gtSourceFor:;
-		actionUpdateButton
+		actionUpdateButton;
+		updateWhen: SlideshowMethodUpdated in: self announcer
 ]
 
 { #category : #views }
@@ -567,7 +584,11 @@ PrioritySlideshow >> slideFor: selector [
 { #category : #accessing }
 PrioritySlideshow >> slideMethods [
 	^ self slidePriorities
-		collect: [ :each | self class methodDict at: each ifAbsent: [ each -> nil ] ]
+		collect: [ :each | 
+			self class methodDict
+				at: each
+				ifPresent: #asRingDefinition
+				ifAbsent: [ each -> nil ] ]
 ]
 
 { #category : #utility }
