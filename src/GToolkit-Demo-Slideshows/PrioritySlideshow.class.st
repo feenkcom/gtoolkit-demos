@@ -33,7 +33,8 @@ Class {
 	#traits : 'TGtSlideShow',
 	#classTraits : 'TGtSlideShow classTrait',
 	#instVars : [
-		'db'
+		'db',
+		'announcer'
 	],
 	#category : #'GToolkit-Demo-Slideshows-Slideshows'
 }
@@ -58,6 +59,16 @@ PrioritySlideshow >> addItem: label inScenery: scenery [
 						text: (label asRopedText
 								fontSize: 20;
 								bold)))
+]
+
+{ #category : #'as yet unclassified' }
+PrioritySlideshow >> announcer [
+	^ announcer
+]
+
+{ #category : #accessing }
+PrioritySlideshow >> announcer: anObject [
+	announcer := anObject
 ]
 
 { #category : #text }
@@ -202,7 +213,8 @@ PrioritySlideshow >> gtDatabaseFor: aView [
 		priority: 80;
 		object: [ self db ];
 		view: #gtLiveFor:;
-		actionUpdateButton
+		actionUpdateButton;
+		updateWhen: SlideshowMethodUpdated in: self announcer
 ]
 
 { #category : #views }
@@ -214,7 +226,8 @@ PrioritySlideshow >> gtDemoNotesFor: aView [
 		priority: 71;
 		object: [ self demoPage asContentUIModel ];
 		view: #gtLiveFor:;
-		actionUpdateButton
+		actionUpdateButton;
+		updateWhen: SlideshowMethodUpdated in: self announcer
 ]
 
 { #category : #accessing }
@@ -247,6 +260,17 @@ PrioritySlideshow >> gtLiveFor: aView [
 		actionUpdateButton"
 ]
 
+{ #category : #accessing }
+PrioritySlideshow >> gtLiveSlideshowFor: aView [
+	<gtView>
+	<gtClassView>
+	^ aView explicit 
+		title: 'Slideshow';
+		stencil: [ GtPresenterSlideShow create: self ];
+		actionUpdateButton;
+		updateWhen: SlideshowMethodUpdated in: self announcer
+]
+
 { #category : #views }
 PrioritySlideshow >> gtMetricsFor: aView [
 	<gtView>
@@ -257,7 +281,8 @@ PrioritySlideshow >> gtMetricsFor: aView [
 		items: [ self metrics ];
 		column: 'Metric' text: #key;
 		column: 'Value' text: [ :assoc | assoc value asString ];
-		actionUpdateButton
+		actionUpdateButton;
+		updateWhen: SlideshowMethodUpdated in: self announcer
 ]
 
 { #category : #accessing }
@@ -284,7 +309,8 @@ PrioritySlideshow >> gtScriptFor: aView [
 		priority: 70;
 		object: [ self scriptPage asContentUIModel ];
 		view: #gtLiveFor:;
-		actionUpdateButton
+		actionUpdateButton;
+		updateWhen: SlideshowMethodUpdated in: self announcer
 ]
 
 { #category : #views }
@@ -297,7 +323,8 @@ PrioritySlideshow >> gtSlideDeckFor: aView [
 		priority: 60;
 		object: [ self slideDeckPage asContentUIModel ];
 		view: #gtLiveFor:;
-		actionUpdateButton
+		actionUpdateButton;
+		updateWhen: SlideshowMethodUpdated in: self announcer
 ]
 
 { #category : #views }
@@ -314,7 +341,8 @@ PrioritySlideshow >> gtSlideMethodsListViewFor: aView [
 			text: [ :each | each selector ]
 			width: 200;
 		column: 'Text' text: [ :each | self textForSlide: each selector ];
-		actionUpdateButton
+		actionUpdateButton;
+		updateWhen: SlideshowMethodUpdated in: self announcer
 ]
 
 { #category : #accessing }
@@ -325,7 +353,8 @@ PrioritySlideshow >> gtSlidePrioritiesFor: aView [
 		priority: 40;
 		object: [ self class >> #slidePriorities ];
 		view: #gtSourceFor:;
-		actionUpdateButton
+		actionUpdateButton;
+		updateWhen: SlideshowMethodUpdated in: self announcer
 ]
 
 { #category : #views }
@@ -388,7 +417,9 @@ PrioritySlideshow >> headerSize [
 { #category : #initialization }
 PrioritySlideshow >> initialize [
 	super initialize.
-	self initializeDb
+	self initializeDb.
+	announcer := Announcer new.
+	"self subscribeToSystem."
 ]
 
 { #category : #initialization }
@@ -412,6 +443,16 @@ PrioritySlideshow >> metrics [
 	^ {'Number of words' -> words size.
 		'Estimated duration'
 			-> ((Duration minutes: words size / self wordsPerMinute) roundTo: 1 second)}
+]
+
+{ #category : #subscriptions }
+PrioritySlideshow >> notifyMethodsUpdated [
+	self announcer announce: SlideshowMethodUpdated new
+]
+
+{ #category : #subscriptions }
+PrioritySlideshow >> onMethodAdded: aMethodAdded [
+	self notifyMethodsUpdated
 ]
 
 { #category : #accessing }
@@ -543,7 +584,11 @@ PrioritySlideshow >> slideFor: selector [
 { #category : #accessing }
 PrioritySlideshow >> slideMethods [
 	^ self slidePriorities
-		collect: [ :each | self class methodDict at: each ifAbsent: [ each -> nil ] ]
+		collect: [ :each | 
+			self class methodDict
+				at: each
+				ifPresent: #asRingDefinition
+				ifAbsent: [ each -> nil ] ]
 ]
 
 { #category : #utility }
@@ -572,6 +617,19 @@ PrioritySlideshow >> slides [
 	^ self slideDictionary keys
 ]
 
+{ #category : #subscriptions }
+PrioritySlideshow >> subscribeToSystem [
+	"Not yet used -- when working, push up to PrioritySlideshow
+	See also: GtLiveShow>>#subscribeToSystem"
+
+	self unsubscribeFromSystem.
+
+	SystemAnnouncer uniqueInstance weak
+		when: MethodAdded
+		send: #onMethodAdded:
+		to: self
+]
+
 { #category : #text }
 PrioritySlideshow >> subtitleSize [
 	^ 40
@@ -590,6 +648,11 @@ PrioritySlideshow >> textForSlide: aSelector [
 { #category : #constant }
 PrioritySlideshow >> titleSize [
 	^ 60
+]
+
+{ #category : #subscriptions }
+PrioritySlideshow >> unsubscribeFromSystem [
+	SystemAnnouncer uniqueInstance unsubscribe: self
 ]
 
 { #category : #accessing }
