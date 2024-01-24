@@ -33,7 +33,8 @@ Class {
 	#traits : 'TGtSlideShow',
 	#classTraits : 'TGtSlideShow classTrait',
 	#instVars : [
-		'db'
+		'db',
+		'announcer'
 	],
 	#category : #'GToolkit-Demo-Slideshows-Slideshows'
 }
@@ -58,6 +59,16 @@ PrioritySlideshow >> addItem: label inScenery: scenery [
 						text: (label asRopedText
 								fontSize: 20;
 								bold)))
+]
+
+{ #category : #accessing }
+PrioritySlideshow >> announcer [
+	^ announcer
+]
+
+{ #category : #accessing }
+PrioritySlideshow >> announcer: anObject [
+	announcer := anObject
 ]
 
 { #category : #text }
@@ -314,7 +325,8 @@ PrioritySlideshow >> gtSlideMethodsListViewFor: aView [
 			text: [ :each | each selector ]
 			width: 200;
 		column: 'Text' text: [ :each | self textForSlide: each selector ];
-		actionUpdateButton
+		actionUpdateButton;
+		updateWhen: SlideshowMethodUpdated in: self announcer
 ]
 
 { #category : #accessing }
@@ -388,7 +400,9 @@ PrioritySlideshow >> headerSize [
 { #category : #initialization }
 PrioritySlideshow >> initialize [
 	super initialize.
-	self initializeDb
+	self initializeDb.
+	announcer := Announcer new.
+	"self subscribeToSystem."
 ]
 
 { #category : #initialization }
@@ -412,6 +426,16 @@ PrioritySlideshow >> metrics [
 	^ {'Number of words' -> words size.
 		'Estimated duration'
 			-> ((Duration minutes: words size / self wordsPerMinute) roundTo: 1 second)}
+]
+
+{ #category : #subscriptions }
+PrioritySlideshow >> notifyMethodsUpdated [
+	self announcer announce: SlideshowMethodUpdated new
+]
+
+{ #category : #subscriptions }
+PrioritySlideshow >> onMethodAdded: aMethodAdded [
+	self notifyMethodsUpdated
 ]
 
 { #category : #accessing }
@@ -572,6 +596,19 @@ PrioritySlideshow >> slides [
 	^ self slideDictionary keys
 ]
 
+{ #category : #subscriptions }
+PrioritySlideshow >> subscribeToSystem [
+	"Not yet used -- when working, push up to PrioritySlideshow
+	See also: GtLiveShow>>#subscribeToSystem"
+
+	self unsubscribeFromSystem.
+
+	SystemAnnouncer uniqueInstance weak
+		when: MethodAdded
+		send: #onMethodAdded:
+		to: self
+]
+
 { #category : #text }
 PrioritySlideshow >> subtitleSize [
 	^ 40
@@ -590,6 +627,11 @@ PrioritySlideshow >> textForSlide: aSelector [
 { #category : #constant }
 PrioritySlideshow >> titleSize [
 	^ 60
+]
+
+{ #category : #subscriptions }
+PrioritySlideshow >> unsubscribeFromSystem [
+	SystemAnnouncer uniqueInstance unsubscribe: self
 ]
 
 { #category : #accessing }
