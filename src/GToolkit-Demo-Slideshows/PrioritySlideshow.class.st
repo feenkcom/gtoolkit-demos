@@ -9,7 +9,6 @@ There are also numerous convenience methods, such as `asTitle:`.
 
 Methods that you should configure:
 - `slidePriorities` — the list of slide pages in the order you want them to appear
-- `initializeDb` — create and add all the internal Lepiter pages you use in the slideshow (if any)
 - `myLepiterDB` — database of any external pages you might refer to (you should prefer the internal one)
 - `show` — do a `super show` for convenience
 
@@ -333,7 +332,7 @@ PrioritySlideshow >> gtSlideMethodsListViewFor: aView [
 	^ aView columnedList
 		priority: 30;
 		title: 'Slides';
-		items: [ self slideMethods ];
+		items: [ self slideMethods collect: #asRingDefinition ];
 		column: 'Index'
 			text: [ :eachItem :eachIndex | eachIndex asRopedText foreground: Color gray ]
 			width: 45;
@@ -351,7 +350,7 @@ PrioritySlideshow >> gtSlidePrioritiesFor: aView [
 	^ aView forward
 		title: 'Slide priorities';
 		priority: 40;
-		object: [ self class >> #slidePriorities ];
+		object: [ (self class >> #slidePriorities) asRingDefinition ];
 		view: #gtSourceFor:;
 		actionUpdateButton;
 		updateWhen: SlideshowMethodUpdated in: self announcer
@@ -419,7 +418,7 @@ PrioritySlideshow >> initialize [
 	super initialize.
 	self initializeDb.
 	announcer := Announcer new.
-	"self subscribeToSystem."
+	self subscribeToSystem.
 ]
 
 { #category : #initialization }
@@ -452,6 +451,16 @@ PrioritySlideshow >> notifyMethodsUpdated [
 
 { #category : #subscriptions }
 PrioritySlideshow >> onMethodAdded: aMethodAdded [
+	self notifyMethodsUpdated
+]
+
+{ #category : #subscriptions }
+PrioritySlideshow >> onMethodModified: aMethodModified [
+	self notifyMethodsUpdated
+]
+
+{ #category : #subscriptions }
+PrioritySlideshow >> onMethodRemoved: aMethodRemoved [
 	self notifyMethodsUpdated
 ]
 
@@ -583,12 +592,35 @@ PrioritySlideshow >> slideFor: selector [
 
 { #category : #accessing }
 PrioritySlideshow >> slideMethods [
-	^ self slidePriorities
-		collect: [ :each | 
-			self class methodDict
-				at: each
-				ifPresent: #asRingDefinition
-				ifAbsent: [ each -> nil ] ]
+	"Return the <gtSlide> methods flagging those that are missing priorities, and those listed in priorities but not implemented."
+
+	| methodDict slideMethods missingSlides missingPriority |
+	methodDict := ((self class allMethods
+			select: [ :m | m hasPragmaNamed: 'gtSlide' ])
+			collect: [ :m | m selector -> m ]) asDictionary.
+	slideMethods := OrderedCollection new.
+	missingSlides := OrderedCollection new.
+
+	self slidePriorities
+		do: [ :selector | 
+			methodDict
+				at: selector
+				ifPresent: [ :m | slideMethods addLast: m ]
+				ifAbsent: [ missingSlides addLast: selector ] ].
+	missingPriority := methodDict keys copyWithoutAll: self slidePriorities.
+
+	missingPriority
+		do: [ :selector | slideMethods addLast: (methodDict at: selector) ].
+
+	missingSlides
+		ifNotEmpty: [ self
+				inform: 'Missing <gtSlide> methods in ' , self class name , ' for: '
+						, (' ' join: missingSlides) ].
+	missingPriority
+		ifNotEmpty: [ self
+				inform: 'Missing slide priorities in ' , self class name , '>>#slidePriorities for: '
+						, (' ' join: missingPriority) ].
+	^ slideMethods
 ]
 
 { #category : #utility }
@@ -619,15 +651,12 @@ PrioritySlideshow >> slides [
 
 { #category : #subscriptions }
 PrioritySlideshow >> subscribeToSystem [
-	"Not yet used -- when working, push up to PrioritySlideshow
-	See also: GtLiveShow>>#subscribeToSystem"
-
+	"Subscribe to method updates"
 	self unsubscribeFromSystem.
-
 	SystemAnnouncer uniqueInstance weak
-		when: MethodAdded
-		send: #onMethodAdded:
-		to: self
+		when: MethodAdded send: #onMethodAdded: to: self;
+		when: MethodRemoved send: #onMethodRemoved: to: self;
+		when: MethodModified send: #onMethodModified: to: self
 ]
 
 { #category : #text }
