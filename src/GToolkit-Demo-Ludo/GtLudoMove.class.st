@@ -30,6 +30,15 @@ GtLudoMove >> asMoveAndBoardElement [
 	^ container
 ]
 
+{ #category : #asserting }
+GtLudoMove >> assert: aBlock description: aStringOrBlock inGame: aLudoGame [
+	"Demo of moldable exceptions."
+
+	<debuggerCompleteToSender>
+	aBlock value
+		ifFalse: [ (LudoGameAssertionFailure forGame: self game) signal: aStringOrBlock value ]
+]
+
 { #category : #testing }
 GtLudoMove >> canMove [
 	^ tokenMoves notEmpty
@@ -90,54 +99,50 @@ GtLudoMove >> initialize [
 
 { #category : #accessing }
 GtLudoMove >> move [
-
 	| targetSquare fromSquare fromSquare1 targetSquare1 capturedToken |
 	self
 		assert: self game playerToMove
-		description: 'Roll the die first!'.
+		description: 'Roll the die first!'
+		inGame: self game.
 	self
 		assert: self token player = self game currentPlayer
-		description:
-			'Token ' , self token name , ' does not belong to current player '
-			, self game currentPlayer name.
-	"We first compute the target square, and then decide what to do."
+		description: 'Token ' , self token name
+				, ' does not belong to current player ' , self game currentPlayer name
+		inGame: self game.	"We first compute the target square, and then decide what to do."
 	fromSquare := self token square.
 	targetSquare := self game computeTargetFor: self token.
-	tokenMoves add: (GtLudoTokenMove new
-			 token: self token;
-			 fromSquare: fromSquare;
-			 toSquare: targetSquare).
-	"If the target square is occupied, either:
+	tokenMoves
+		add: (GtLudoTokenMove new
+				token: self token;
+				fromSquare: fromSquare;
+				toSquare: targetSquare).	"If the target square is occupied, either:
 	(a) if the token belongs to another player, that token is sent back to its start state and we land there
 	(b) if the token belongs to the same player, then we try to land on the next square (again two cases).
 	In case (b) we must iterate, and if no squares are left, we fall back to the current square."
-	[ targetSquare notEmpty and: [ targetSquare ~= self token square ] ] 
-		whileTrue: [ 
-			fromSquare := targetSquare.
+	[ targetSquare notEmpty and: [ targetSquare ~= self token square ] ]
+		whileTrue: [ fromSquare := targetSquare.
 			targetSquare token player = self token player
-				ifTrue: [ 
-					| route targetIndex |
+				ifTrue: [ | route targetIndex |
 					route := self game currentRoute.
 					targetIndex := (route indexOf: targetSquare) + 1.
 					targetIndex <= route size
 						ifTrue: [ targetSquare := route at: targetIndex ]
 						ifFalse: [ targetSquare := self token square ].
-					tokenMoves add: (GtLudoTokenMove new
-							 token: self token;
-							 fromSquare: fromSquare;
-							 toSquare: targetSquare). ]
-				ifFalse: [ 
-					fromSquare1 := targetSquare.
+					tokenMoves
+						add: (GtLudoTokenMove new
+								token: self token;
+								fromSquare: fromSquare;
+								toSquare: targetSquare) ]
+				ifFalse: [ fromSquare1 := targetSquare.
 					capturedToken := targetSquare token.
 					targetSquare1 := self game sendToStart: capturedToken.
-					tokenMoves add: (GtLudoTokenMove new
-							 token: capturedToken;
-							 fromSquare: fromSquare1;
-							 toSquare: targetSquare1) ] ].
+					tokenMoves
+						add: (GtLudoTokenMove new
+								token: capturedToken;
+								fromSquare: fromSquare1;
+								toSquare: targetSquare1) ] ].
 
-	self token goToSquare: targetSquare.
-
-	"At the end, we switch to the next player unless we rolled a 6."
+	self token goToSquare: targetSquare.	"At the end, we switch to the next player unless we rolled a 6."
 
 	self game die topFace = 6 ifFalse: [ self game nextPlayer ].
 	self game requireDieRoll.
