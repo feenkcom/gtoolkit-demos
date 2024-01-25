@@ -1,5 +1,6 @@
 "
 I treat moves as first class entities, and record them as they occur for playback and animation.
+See {{gtClass:name=GtLudoRecordingGameExamples}}. 
 "
 Class {
 	#name : #GtLudoRecordingGame,

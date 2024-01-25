@@ -40,7 +40,12 @@ SPLContext class >> forProgram: anSPLProgramSource [
 
 { #category : #parsing }
 SPLContext class >> parse: anSPLProgramSource [
-	^ self parserClass parse: anSPLProgramSource
+	| parseNode |
+	parseNode := self parserClass parse: anSPLProgramSource.
+	parseNode isPetit2Failure
+		ifTrue: [ (SPLParseError forFailure: parseNode andSource: anSPLProgramSource)
+				signal: 'SPL Parse error' ].
+	^ parseNode
 ]
 
 { #category : #parsing }
