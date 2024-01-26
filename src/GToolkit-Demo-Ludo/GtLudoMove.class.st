@@ -49,7 +49,7 @@ GtLudoMove >> game [
 	^ self player game
 ]
 
-{ #category : #accessing }
+{ #category : #action }
 GtLudoMove >> gtReplayAction: anAction [
 	<gtAction>
 	^ anAction button
@@ -59,7 +59,7 @@ GtLudoMove >> gtReplayAction: anAction [
 		action: [ :aButton | aButton phlow spawnObject: self replayGameToHere ]
 ]
 
-{ #category : #accessing }
+{ #category : #view }
 GtLudoMove >> gtReplayedMoveFor: aView [
 	<gtView>
 	
@@ -69,7 +69,7 @@ GtLudoMove >> gtReplayedMoveFor: aView [
 		stencil: [ self replayGameToHere ]
 ]
 
-{ #category : #accessing }
+{ #category : #view }
 GtLudoMove >> gtTokenMovesFor: aView [
 
 	<gtView>
