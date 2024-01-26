@@ -38,6 +38,26 @@ Class {
 	#category : #'GToolkit-Demo-Slideshows-Slideshows'
 }
 
+{ #category : #viewing }
+PrioritySlideshow class >> gtSlideDeckFor: aView [
+	<gtClassView>
+	^ aView forward
+	title: 'Slide deck';
+	priority: 32;
+		object: [ self new ];
+		view: #gtSlideDeckFor:
+]
+
+{ #category : #viewing }
+PrioritySlideshow class >> gtSlideMethodsListViewFor: aView [
+	<gtClassView>
+	^ aView forward
+	title: 'Slides';
+	priority: 31;
+		object: [ self new ];
+		view: #gtSlideMethodsListViewFor:
+]
+
 { #category : #utility }
 PrioritySlideshow class >> show [
 	"NB: this is a class-side method."
@@ -262,7 +282,6 @@ PrioritySlideshow >> gtLiveFor: aView [
 { #category : #accessing }
 PrioritySlideshow >> gtLiveSlideshowFor: aView [
 	<gtView>
-	<gtClassView>
 	^ aView explicit 
 		title: 'Slideshow';
 		stencil: [ GtPresenterSlideShow create: self ];
@@ -315,7 +334,6 @@ PrioritySlideshow >> gtScriptFor: aView [
 { #category : #views }
 PrioritySlideshow >> gtSlideDeckFor: aView [
 	"Eventually push this method up."
-
 	<gtView>
 	^ aView forward
 		title: 'Slide deck';

@@ -7,7 +7,7 @@ RGMethodDefinition >> gtSlideWithTextFor: aView [
 	(self method hasPragmaNamed: #text:) ifFalse: [ ^ aView empty ].
 	^ aView forward
 		title: 'Slide with text';
-		priority: 6;
+		priority: 7;
 		object: [ self method slidePage asContentUIModel ];
 		view: #gtLiveFor:;
 		actionUpdateButton
