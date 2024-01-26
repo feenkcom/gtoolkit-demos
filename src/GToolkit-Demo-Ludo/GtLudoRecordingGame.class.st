@@ -24,9 +24,20 @@ GtLudoRecordingGame >> autoPlay: numberOfMoves [
 			ifFalse: [ self moveTokenNamed: self tokensToMove atRandom name ] ]
 ]
 
-{ #category : #accessing }
-GtLudoRecordingGame >> gtHistoryFor: aView [
+{ #category : #action }
+GtLudoRecordingGame >> gtAutoplayAction: anAction [
+	<gtAction>
+	^ anAction button
+		tooltip: 'Autoplay one move';
+		priority: 20;
+		icon: BrGlamorousIcons go;
+		action: [ :aButton | 
+			self autoPlay: 1.
+			aButton phlow spawnObject: self moves last ]
+]
 
+{ #category : #action }
+GtLudoRecordingGame >> gtHistoryFor: aView [
 	<gtView>
 	^ aView list
 		  title: 'History';
@@ -44,7 +55,7 @@ GtLudoRecordingGame >> gtHistoryFor: aView [
 		  items: self moves
 ]
 
-{ #category : #accessing }
+{ #category : #view }
 GtLudoRecordingGame >> gtMovesFor: aView [
 	<gtView>
 	
@@ -61,7 +72,7 @@ GtLudoRecordingGame >> gtMovesFor: aView [
 		updateWhen: GtLudoMoveRecorded in: self announcer
 ]
 
-{ #category : #accessing }
+{ #category : #view }
 GtLudoRecordingGame >> gtStoreStringFor: aView [ 
 	<gtView>
 	^ aView explicit 
@@ -72,7 +83,7 @@ GtLudoRecordingGame >> gtStoreStringFor: aView [
 				matchParent  ] 
 ]
 
-{ #category : #accessing }
+{ #category : #view }
 GtLudoRecordingGame >> gtTokensFor: aView [
 	<gtView>
 	^ aView columnedList 

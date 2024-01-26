@@ -31,12 +31,12 @@ GtLudoMove >> asMoveAndBoardElement [
 ]
 
 { #category : #asserting }
-GtLudoMove >> assert: aBlock description: aStringOrBlock inGame: aLudoGame [
+GtLudoMove >> assert: aBlock description: aStringOrBlock [
 	"Demo of moldable exceptions."
 
 	<debuggerCompleteToSender>
 	aBlock value
-		ifFalse: [ (LudoGameAssertionFailure forGame: self game) signal: aStringOrBlock value ]
+		ifFalse: [ (LudoMoveAssertionFailure forMove: self) signal: aStringOrBlock value ]
 ]
 
 { #category : #testing }
@@ -49,7 +49,7 @@ GtLudoMove >> game [
 	^ self player game
 ]
 
-{ #category : #accessing }
+{ #category : #action }
 GtLudoMove >> gtReplayAction: anAction [
 	<gtAction>
 	^ anAction button
@@ -59,7 +59,7 @@ GtLudoMove >> gtReplayAction: anAction [
 		action: [ :aButton | aButton phlow spawnObject: self replayGameToHere ]
 ]
 
-{ #category : #accessing }
+{ #category : #view }
 GtLudoMove >> gtReplayedMoveFor: aView [
 	<gtView>
 	
@@ -69,7 +69,7 @@ GtLudoMove >> gtReplayedMoveFor: aView [
 		stencil: [ self replayGameToHere ]
 ]
 
-{ #category : #accessing }
+{ #category : #view }
 GtLudoMove >> gtTokenMovesFor: aView [
 
 	<gtView>
@@ -102,13 +102,12 @@ GtLudoMove >> move [
 	| targetSquare fromSquare fromSquare1 targetSquare1 capturedToken |
 	self
 		assert: self game playerToMove
-		description: 'Roll the die first!'
-		inGame: self game.
+		description: 'Roll the die first!'.
 	self
 		assert: self token player = self game currentPlayer
 		description: 'Token ' , self token name
 				, ' does not belong to current player ' , self game currentPlayer name
-		inGame: self game.	"We first compute the target square, and then decide what to do."
+		.	"We first compute the target square, and then decide what to do."
 	fromSquare := self token square.
 	targetSquare := self game computeTargetFor: self token.
 	tokenMoves
