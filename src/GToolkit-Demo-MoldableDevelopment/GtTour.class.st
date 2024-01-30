@@ -1013,6 +1013,7 @@ GtTour >> treemapWithViewsAndExamples [
 			isGtView := aLeafContext model item itOrItsSuperclassesDefineGTViews.
 			isGtExample := aLeafContext model item methods anySatisfy: [ :aMethod | 
 				aMethod isGTExampleMethod ].
+			anElement when: BlClickEvent do: [ :e | e target phlow spawnTool: (GtClassCoderTool forClass: aLeafContext model item) ].
 			anElement border: (BlBorder 
 				paint: (Color gray alpha: 0.5 / aLeafContext level) 
 				width: 1).
