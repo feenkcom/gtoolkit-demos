@@ -83,6 +83,16 @@ DemoSlideshow >> dynamicLepiterPage: aSlide [
 ]
 
 { #category : #slides }
+DemoSlideshow >> fileLocatorInPager: aSlide [
+	<gtSlide>
+	<text: 'A File Locator in a Pager'>
+	^ aSlide element
+		setPriority;
+		element: [ (GtPager createWrappedOn: (GtInspector newOn: FileLocator gtResource))
+				maximized ]
+]
+
+{ #category : #slides }
 DemoSlideshow >> gtWorld: aSlide [
 	<gtSlide>
 	<text: 'A live embedded GT world'>
@@ -220,6 +230,7 @@ DemoSlideshow >> slidePriorities [
 		inspectorInPager:
 		inspectorView:
 		inspectorViewInPager:
+		fileLocatorInPager:
 		scenery:
 		gtWorld:
 		coder:
