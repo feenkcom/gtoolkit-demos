@@ -937,6 +937,15 @@ GtTour >> title: aSlide [
 ]
 
 { #category : #accessing }
+GtTour >> tooltip: aString [
+	^ [ BrLabel new
+		aptitude: BrGlamorousLabelAptitude new glamorousRegularFontAndSize;
+		padding: (BlInsets all: 2);
+		text: aString;
+		alignCenter ] asStencil
+]
+
+{ #category : #accessing }
 GtTour >> treemapWithBook [
 	<gtExample>
 	| database tocPage topTocSnippets |
@@ -1009,11 +1018,13 @@ GtTour >> treemapWithViewsAndExamples [
 				width: 1).
 			anElement padding: (BlInsets all: 1) ];
 		leafElement: [ :anElement :aLeafContext | 
-			| isGtView isGtExample |
-			isGtView := aLeafContext model item itOrItsSuperclassesDefineGTViews.
-			isGtExample := aLeafContext model item methods anySatisfy: [ :aMethod | 
+			| isGtView isGtExample class |
+			class := aLeafContext model item.
+			isGtView := class itOrItsSuperclassesDefineGTViews.
+			isGtExample := class methods anySatisfy: [ :aMethod | 
 				aMethod isGTExampleMethod ].
-			anElement when: BlClickEvent do: [ :e | e target phlow spawnTool: (GtClassCoderTool forClass: aLeafContext model item) ].
+			anElement when: BlClickEvent do: [ :e | e target phlow spawnTool: (GtClassCoderTool forClass: class) ].
+			anElement aptitude: (BrGlamorousWithTooltipAptitude content: (self tooltip: class name)) .
 			anElement border: (BlBorder 
 				paint: (Color gray alpha: 0.5 / aLeafContext level) 
 				width: 1).
