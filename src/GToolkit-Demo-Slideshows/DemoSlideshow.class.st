@@ -191,6 +191,16 @@ Possibly over multiple lines.
 ')
 ]
 
+{ #category : #slides }
+DemoSlideshow >> scenery: aSlide [
+	<gtSlide>
+	<text: 'Scenery'>
+	^ aSlide labelAndElement
+		setPriority;
+		newFadedText: 'A scenery';
+		element: [ GtSceneryExamples new sceneryWithOneInspectorAndOneRectangleAndOneConnection ]
+]
+
 { #category : #accessing }
 DemoSlideshow >> slidePriorities [
 	"Instead of manually setting priorities, just list the slides in order here."
@@ -210,6 +220,7 @@ DemoSlideshow >> slidePriorities [
 		inspectorInPager:
 		inspectorView:
 		inspectorViewInPager:
+		scenery:
 		gtWorld:
 		coder:
 		coderOnClass:
