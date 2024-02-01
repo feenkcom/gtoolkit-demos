@@ -60,5 +60,7 @@ BaselineOfGToolkitDemos >> baseline: spec [
 				baseline: 'GToolkitDemoPrices'
 					with: [ spec repository: 'github://feenkcom/gtoolkit-demos:main/src' ];
 				baseline: 'GToolkitDemoReflection'
-					with: [ spec repository: 'github://feenkcom/gtoolkit-demos:main/src' ]  ]
+					with: [ spec repository: 'github://feenkcom/gtoolkit-demos:main/src' ];
+				baseline: 'GToolkitDemoSubtitles'
+					with: [ spec repository: 'github://feenkcom/gtoolkit-demos:main/src' ] ]
 ]
