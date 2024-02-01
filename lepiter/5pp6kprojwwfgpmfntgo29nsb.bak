@@ -327,48 +327,14 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2024-02-01T14:46:37.077595+01:00"
+						"dateAndTimeString" : "2024-02-01T14:51:08.816003+01:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
 					"uidString" : "WW7p9LPMDQCgLtTLBUltLw=="
 				},
-				"code" : "subdir := FileLocator gtResource"
-			},
-			{
-				"__type" : "pharoSnippet",
-				"children" : {
-					"__type" : "snippets",
-					"items" : [ ]
-				},
-				"createEmail" : {
-					"__type" : "email",
-					"emailString" : "<unknown>"
-				},
-				"createTime" : {
-					"__type" : "time",
-					"time" : {
-						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2022-11-28T18:43:45.360483+01:00"
-					}
-				},
-				"editEmail" : {
-					"__type" : "email",
-					"emailString" : "<unknown>"
-				},
-				"editTime" : {
-					"__type" : "time",
-					"time" : {
-						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-01-15T08:47:41.280326+01:00"
-					}
-				},
-				"uid" : {
-					"__type" : "uid",
-					"uidString" : "f/ZkJu2qDQCFrY3yBqSDYA=="
-				},
-				"code" : "subdir := './pharo-local/iceberg/onierstrasz/gt-demos/doc/Subs' asFileReference.\r\rahb := subdir / 'Au hasard Balthazar (1966) en.srt'.\rsubs := Subtitles for: ahb ."
+				"code" : "subdir := FileLocator gtResource / 'feenkcom' / 'gtoolkit-demos' / 'data'\r\t\t/ 'subtitles'.\rahb := subdir / 'Au hasard Balthazar (1966) en.srt'.\rsubs := Subtitles for: ahb ."
 			},
 			{
 				"__type" : "textSnippet",
