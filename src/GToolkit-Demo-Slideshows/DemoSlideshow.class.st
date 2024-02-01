@@ -86,8 +86,9 @@ DemoSlideshow >> dynamicLepiterPage: aSlide [
 DemoSlideshow >> fileLocatorInPager: aSlide [
 	<gtSlide>
 	<text: 'A File Locator in a Pager'>
-	^ aSlide element
+	^ aSlide labelAndElement
 		setPriority;
+		newFadedText: 'A File Locator in a Pager';
 		element: [ (GtPager createWrappedOn: (GtInspector newOn: FileLocator gtResource))
 				maximized ]
 ]
@@ -116,8 +117,9 @@ DemoSlideshow >> inspectorInPager: aSlide [
 	<gtSlide>
 	<text: 'An Inspector on an object.
 NB: the pager is needed so we can navigate to new pages.'>
-	^ aSlide element
+	^ aSlide labelAndElement
 		setPriority;
+		newFadedText: 'An Inspector on an object';
 		element: [ (GtPager
 				createWrappedOn: (GtInspector forObject: GtLudoRecordingGameExamples new gameShowingAllMoves2))
 				maximized ]
@@ -148,8 +150,9 @@ DemoSlideshow >> inspectorView: aSlide [
 DemoSlideshow >> inspectorViewInPager: aSlide [
 	<gtSlide>
 	<text: 'An Inspector view in a Pager'>
-	^ aSlide element
+	^ aSlide labelAndElement
 		setPriority;
+		newFadedText: 'An Inspector view in a Pager';
 		element: [ (GtPager
 				createWrappedOn: (GtLudoGame new gtPlayersFor: GtPhlowProtoView new))
 				maximized ]
@@ -169,8 +172,9 @@ DemoSlideshow >> lepiterPage: aSlide [
 DemoSlideshow >> maximizedGtBookPage: aSlide [
 	<gtSlide>
 	<text: 'A maximized GT book page.'>
-	^ aSlide element
+	^ aSlide labelAndElement
 		setPriority;
+		newFadedText: 'A maximized GT book page.';
 		element: [ (GtPager
 				createWrappedOn: (LePagePhlowTool
 						page: (self gtBook pageNamed: 'Working with a REST API: the GitHub case study')))
@@ -181,8 +185,9 @@ DemoSlideshow >> maximizedGtBookPage: aSlide [
 DemoSlideshow >> maximizedPage: aSlide [
 	<gtSlide>
 	<text: 'A maximized lepiter page that can still be browsed.'>
-	^ aSlide element
+	^ aSlide labelAndElement
 		setPriority;
+		newFadedText: 'A maximized lepiter page.';
 		element: [ (GtPager
 				createWrappedOn: (LePagePhlowTool page: (self db pageNamed: 'A dynamic Lepiter page')))
 				maximized ]
