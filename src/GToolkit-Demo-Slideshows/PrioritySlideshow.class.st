@@ -237,6 +237,12 @@ PrioritySlideshow >> exportSlide: slide toFile: aFileReference [
 
 { #category : #exporting }
 PrioritySlideshow >> exportSlidePNGs [
+	"This method will export a PNG for each slide. To change the
+	default slide dimensions, set PrioritySlideshow>>#slideDimensions:
+	To create a PDF from the slides, on a Mac, open the first image in
+	Preview with thumbnails, and drag all the other files to the first
+	thumbnail. Then simply print to PDF."
+
 	| slides file |
 	slides := self slides.
 	self initSlideDir.
