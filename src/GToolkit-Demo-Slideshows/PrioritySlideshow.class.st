@@ -33,10 +33,24 @@ Class {
 	#classTraits : 'TGtSlideShow classTrait',
 	#instVars : [
 		'db',
-		'announcer'
+		'announcer',
+		'slideDimensions'
 	],
 	#category : #'GToolkit-Demo-Slideshows-Slideshows'
 }
+
+{ #category : #actions }
+PrioritySlideshow class >> gtOpenSlideshowActionFor: anAction [
+	<gtAction>
+	<gtClassAction>
+	(self methods select: [ :m | m hasPragmaNamed: #gtSlide ]) isEmpty
+		ifTrue: [ ^ anAction noAction ].
+	^ anAction button
+		priority: 11;
+		tooltip: 'Play slideshow in new window';
+		icon: BrGlamorousVectorIcons play;
+		action: [ :aButton | GtPresenterSlideShow openInSpace: self ]
+]
 
 { #category : #viewing }
 PrioritySlideshow class >> gtSlideDeckFor: aView [
@@ -172,6 +186,13 @@ PrioritySlideshow >> db [
 	^ db
 ]
 
+{ #category : #exporting }
+PrioritySlideshow >> defaultSlideDimensions [
+	"Dimensions for exporting slide PNGs"
+
+	^ 1600 @ 1200
+]
+
 { #category : #utility }
 PrioritySlideshow >> demoPage [
 	"Extract the demo notes, if there are any."
@@ -199,19 +220,42 @@ PrioritySlideshow >> demoText [
 						ifNone: [ '' ] ]) select: #notEmpty)
 ]
 
-{ #category : #accessing }
-PrioritySlideshow >> gtActionShowFor: anAction [
-	<gtAction>
-	^ anAction explicit
-		priority: 2;
-		stencil: [ | button |
-			button := BrButton new
-					id: GtInspectorInspectButtonId;
-					aptitude: BrGlamorousButtonWithIconAptitude;
-					icon: BrGlamorousVectorIcons play;
-					label: 'Play slideshow';
-					action: [ :aButton :aModel :anEvent | self class show ].
-			button ]
+{ #category : #exporting }
+PrioritySlideshow >> exportSlide: slide toFile: aFileReference [
+	"NB: BlFileExporter>>#fileName: also  works
+	with a FileReference instread of a String"
+
+	| element |
+	element := (BlScripter new element: slide asElement) element
+			size: self slideDimensions.
+	BlExporter png
+		element: element;
+		fileName: aFileReference;
+		export.
+	^ aFileReference
+]
+
+{ #category : #exporting }
+PrioritySlideshow >> exportSlidePNGs [
+	"This method will export a PNG for each slide. To change the
+	default slide dimensions, set PrioritySlideshow>>#slideDimensions:
+	To create a PDF from the slides, on a Mac, open the first image in
+	Preview with thumbnails, and drag all the other files to the first
+	thumbnail. Then simply print to PDF."
+
+	| slides file |
+	slides := self slides.
+	self initSlideDir.
+	[ [ :job | 
+	job title: 'Generating slide PNGs ...'.
+	slides
+		withIndexDo: [ :slide :index | 
+			job
+				progress: index / slides size;
+				title: 'Slide ' , index printString.
+			file := self slideDir / ('slide' , (index printStringPadded: 3) , '.png').
+			self exportSlide: slide toFile: file ] ] asJob run ] fork.
+	^ self slideDir
 ]
 
 { #category : #constants }
@@ -249,12 +293,30 @@ PrioritySlideshow >> gtDemoNotesFor: aView [
 		updateWhen: SlideshowMethodUpdated in: self announcer
 ]
 
-{ #category : #accessing }
-PrioritySlideshow >> gtGitButtonFor: anAction [
+{ #category : #actions }
+PrioritySlideshow >> gtExportPngAction: anAction [
+	<gtAction>
+	self slides ifEmpty: [ ^ anAction empty ].
+	^ anAction explicit
+		priority: 20;
+		stencil: [ | button |
+			button := BrButton new
+					id: GtInspectorInspectButtonId;
+					aptitude: BrGlamorousButtonWithIconAptitude;
+					icon: BrGlamorousIcons savetodisk;
+					action: [ :aButton :aModel :anEvent | 
+						aButton phlow spawnObject: 
+							self exportSlidePNGs ];
+					label: 'Save PNGs to disk'.
+			button ]
+]
+
+{ #category : #actions }
+PrioritySlideshow >> gtGitAction: anAction [
 	<gtAction>
 	^ anAction button
 		tooltip: 'Go to repository';
-		priority: 4;
+		priority: 25;
 		icon: BrGlamorousVectorIcons branching;
 		id: GtCoderGitButtonId;
 		action: [ :aButton | 
@@ -279,7 +341,7 @@ PrioritySlideshow >> gtLiveFor: aView [
 		actionUpdateButton"
 ]
 
-{ #category : #accessing }
+{ #category : #views }
 PrioritySlideshow >> gtLiveSlideshowFor: aView [
 	<gtView>
 	^ aView explicit 
@@ -303,11 +365,26 @@ PrioritySlideshow >> gtMetricsFor: aView [
 		updateWhen: SlideshowMethodUpdated in: self announcer
 ]
 
-{ #category : #accessing }
-PrioritySlideshow >> gtRenewDbActionFor: anAction [
+{ #category : #actions }
+PrioritySlideshow >> gtPlaySlideshowAction: anAction [
 	<gtAction>
 	^ anAction explicit
-		priority: 3;
+		priority: 10;
+		stencil: [ | button |
+			button := BrButton new
+					id: GtInspectorInspectButtonId;
+					aptitude: BrGlamorousButtonWithIconAptitude;
+					icon: BrGlamorousVectorIcons play;
+					label: 'Play slideshow';
+					action: [ :aButton :aModel :anEvent | self class show ].
+			button ]
+]
+
+{ #category : #actions }
+PrioritySlideshow >> gtRefreshDbActionFor: anAction [
+	<gtAction>
+	^ anAction explicit
+		priority: 15;
 		stencil: [ | button |
 			button := BrButton new
 					id: GtInspectorInspectButtonId;
@@ -362,7 +439,7 @@ PrioritySlideshow >> gtSlideMethodsListViewFor: aView [
 		updateWhen: SlideshowMethodUpdated in: self announcer
 ]
 
-{ #category : #accessing }
+{ #category : #views }
 PrioritySlideshow >> gtSlidePrioritiesFor: aView [
 	<gtView>
 	^ aView forward
@@ -429,6 +506,13 @@ PrioritySlideshow >> hasTextPragmas [
 { #category : #constant }
 PrioritySlideshow >> headerSize [
 	^ 60
+]
+
+{ #category : #accessing }
+PrioritySlideshow >> initSlideDir [
+	^ self slideDir
+		ensureDeleteAll;
+		ensureCreateDirectory
 ]
 
 { #category : #initialization }
@@ -508,7 +592,7 @@ PrioritySlideshow >> priorityFor: aSlideMethodSelector [
 			self slidePriorities size + 1 ]
 ]
 
-{ #category : #accessing }
+{ #category : #actions }
 PrioritySlideshow >> renewDb [
 	"Recreate the db from scratch, eg after adding new pages."
 	db := LeDatabase new.
@@ -600,6 +684,23 @@ PrioritySlideshow >> slideDictionary [
 			-> each 
 		])
 		asOrderedDictionary
+]
+
+{ #category : #accessing }
+PrioritySlideshow >> slideDimensions [
+	^ slideDimensions ifNil: [ self defaultSlideDimensions ]
+]
+
+{ #category : #accessing }
+PrioritySlideshow >> slideDimensions: aPoint [
+	slideDimensions := aPoint
+]
+
+{ #category : #exporting }
+PrioritySlideshow >> slideDir [
+	"Where to save the PNG files."
+
+	^ FileLocator imageDirectory / self class name
 ]
 
 { #category : #utility }
