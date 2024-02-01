@@ -327,14 +327,14 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2024-02-01T14:51:08.816003+01:00"
+						"dateAndTimeString" : "2024-02-01T14:52:54.531286+01:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
 					"uidString" : "WW7p9LPMDQCgLtTLBUltLw=="
 				},
-				"code" : "subdir := FileLocator gtResource / 'feenkcom' / 'gtoolkit-demos' / 'data'\r\t\t/ 'subtitles'.\rahb := subdir / 'Au hasard Balthazar (1966) en.srt'.\rsubs := Subtitles for: ahb ."
+				"code" : "subdir := FileLocator gtResource / 'feenkcom' / 'gtoolkit-demos' / 'data'\r\t\t/ 'subtitles'.\rahb := subdir / 'Au hasard Balthazar (1966) en.srt'.\rsubs := Subtitles for: ahb . "
 			},
 			{
 				"__type" : "textSnippet",
@@ -398,14 +398,14 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-01-15T16:51:14.809131+01:00"
+						"dateAndTimeString" : "2024-02-01T14:53:03.654897+01:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
 					"uidString" : "y+yKG42rDQCBiTUvDOWwgw=="
 				},
-				"code" : "subs scaleAll: 1 to: 2 minutes + 30 seconds and: 415 to: 1 hour + 33 minutes"
+				"code" : "subs scaleAll: 1 to: 2 minutes + 30 seconds and: 415 to: 1 hour + 33 minutes."
 			},
 			{
 				"__type" : "textSnippet",
@@ -469,14 +469,14 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2022-12-06T17:36:06.40544+01:00"
+						"dateAndTimeString" : "2024-02-01T14:53:12.349284+01:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
 					"uidString" : "C1xXIo2rDQCBi22eDOWwgw=="
 				},
-				"code" : "subs writeNewContents "
+				"code" : "subs writeNewContents ."
 			},
 			{
 				"__type" : "textSnippet",
