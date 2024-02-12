@@ -103,14 +103,14 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2024-02-12T13:50:17.945723+01:00"
+						"dateAndTimeString" : "2024-02-12T15:03:15.991951+01:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
 					"uidString" : "tnS0P5DNDQC8DJmjALtLaA=="
 				},
-				"code" : "classesToClone := GtDMoney withAllSubclasses reversed\r\t\tcopyWithAll: {GtDCurrency.\r\t\t\t\tGtDMoneyExamples}.\rcloneClassPackage := 'GToolkit-Tutorial-Prices-Model'.\rclassesToClone\r\tdo: [ :class | \r\t\tclassToClone := class.\r\t\tcloneClassSymbol := ('GtT' , (class name withoutPrefix: 'GtD')) asSymbol.\r\t\tsuperclassName := classToClone superclass name.\r\t\tsuperClass := ((superclassName beginsWith: 'GtD')\r\t\t\t\tifTrue: [ 'GtT' , (superclassName withoutPrefix: 'GtD') ]\r\t\t\t\tifFalse: [ superclassName ]) asClass.\r\t\tsuperClass\r\t\t\tsubclass: cloneClassSymbol\r\t\t\tinstanceVariableNames: (' ' join: classToClone instVarNames)\r\t\t\tclassVariableNames: (' ' join: classToClone classVarNames)\r\t\t\tpackage: cloneClassPackage.\r\r\t\tcloneClass := cloneClassSymbol asClass.\r\t\tclassToClone methods\r\t\t\tdo: [ :m | \r\t\t\t\tcloneClass compile: m sourceCode.\r\t\t\t\tcloneClass >> m selector protocol: m protocol ] .\r\t\tclassToClone class methods\r\t\t\t\tdo: [ :m | \r\t\t\t\tcloneClass class compile: m sourceCode.\r\t\t\t\tcloneClass >> m selector protocol: m protocol ] \r\t\t\t\t].\r#GtTMoney asClass"
+				"code" : "classesToClone := GtDMoney withAllSubclasses reversed\r\t\tcopyWithAll: {GtDCurrency.\r\t\t\t\tGtDMoneyExamples}.\rcloneClassPackage := 'GToolkit-Tutorial-Prices-Model'.\rclassesToClone\r\tdo: [ :class | \r\t\tclassToClone := class.\r\t\tcloneClassSymbol := ('GtT' , (class name withoutPrefix: 'GtD')) asSymbol.\r\t\tsuperclassName := classToClone superclass name.\r\t\tsuperClass := ((superclassName beginsWith: 'GtD')\r\t\t\t\tifTrue: [ 'GtT' , (superclassName withoutPrefix: 'GtD') ]\r\t\t\t\tifFalse: [ superclassName ]) asClass.\r\t\tsuperClass\r\t\t\tsubclass: cloneClassSymbol\r\t\t\tinstanceVariableNames: (' ' join: classToClone instVarNames)\r\t\t\tclassVariableNames: (' ' join: classToClone classVarNames)\r\t\t\tpackage: cloneClassPackage.\r\r\t\tcloneClass := cloneClassSymbol asClass.\r\t\t\r\t\t\r\t\tclassToClone methods\r\t\t\tdo: [ :m | \r\t\t\t\tcloneClass compile: m sourceCode.\r\t\t\t\tcloneClass >> m selector protocol: m protocol ].\r\t\tclassToClone class methods\r\t\t\tdo: [ :m | \r\t\t\t\tcloneClass class compile: m sourceCode.\r\t\t\t\tcloneClass class >> m selector protocol: m protocol ] ].\r#GtTMoney asClass"
 			},
 			{
 				"__type" : "pharoSnippet",
