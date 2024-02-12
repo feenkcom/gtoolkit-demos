@@ -17,7 +17,7 @@ GtTCurrencyMoney >> < aMoney [
 { #category : #testing }
 GtTCurrencyMoney >> = aMoney [
 	^ (self isZero and: [ aMoney isZero ]) or: [
-		(aMoney class = GtDCurrencyMoney) and: [ 
+		(aMoney class = GtTCurrencyMoney) and: [ 
 			 aMoney amount = self amount and: [ 
 				aMoney currency = self currency ] ] ]
 ]
@@ -40,7 +40,7 @@ GtTCurrencyMoney >> addCurrencyMoney: aMoney [
 		ifTrue: [ self class new 	
 				amount: self amount + aMoney amount; 
 				currency: self currency ]
-		ifFalse: [ GtDMoneyBag new addCurrencyMoney: self; addCurrencyMoney: aMoney ]
+		ifFalse: [ GtTMoneyBag new addCurrencyMoney: self; addCurrencyMoney: aMoney ]
 ]
 
 { #category : #operations }

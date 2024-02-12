@@ -67,11 +67,6 @@ GtTMoney >> gtDetailsFor: aView [
 ]
 
 { #category : #operations }
-GtTMoney >> gtDiscountFrom: aPrice [
-	^ GtDPriceDiscountedByMoney new price: aPrice; discountMoney: self
-]
-
-{ #category : #operations }
 GtTMoney >> gtDividingMoney: aMoney [
 	<return: #Number>
 	"this means that we divide aMoney by self"
