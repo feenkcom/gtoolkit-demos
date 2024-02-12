@@ -1,7 +1,7 @@
 Class {
 	#name : #GtDMoney,
 	#superclass : #Object,
-	#category : #'GToolkit-Demo-Prices'
+	#category : #'GToolkit-Demo-Prices-Model'
 }
 
 { #category : #operations }

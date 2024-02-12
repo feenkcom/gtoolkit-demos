@@ -7,7 +7,7 @@ Class {
 	#classVars : [
 		'Currencies'
 	],
-	#category : #'GToolkit-Demo-Prices'
+	#category : #'GToolkit-Demo-Prices-Model'
 }
 
 { #category : #accessing }

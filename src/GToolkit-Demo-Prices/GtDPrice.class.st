@@ -1,7 +1,7 @@
 Class {
 	#name : #GtDPrice,
 	#superclass : #Object,
-	#category : #'GToolkit-Demo-Prices'
+	#category : #'GToolkit-Demo-Prices-Model'
 }
 
 { #category : #'as yet unclassified' }
