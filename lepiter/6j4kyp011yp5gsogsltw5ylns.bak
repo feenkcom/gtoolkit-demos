@@ -141,7 +141,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2024-02-12T13:31:48.67389+01:00"
+						"dateAndTimeString" : "2024-02-12T13:31:52.431324+01:00"
 					}
 				},
 				"uid" : {
@@ -151,7 +151,7 @@
 				"paragraphStyle" : {
 					"__type" : "textStyle"
 				},
-				"string" : "Load the r"
+				"string" : "Load the package"
 			},
 			{
 				"__type" : "pharoSnippet",
@@ -178,20 +178,95 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2024-02-12T13:31:44.470822+01:00"
+						"dateAndTimeString" : "2024-02-12T13:32:04.885253+01:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
 					"uidString" : "cZ6IMpDNDQC5mveBALtLaA=="
 				},
-				"code" : "((IceRepository registry detect: [ :repo | repo name = 'gtoolkit-demos' ]) packageNamed: 'GToolkit-Tutorial-Prices') load"
+				"code" : "((IceRepository registry \r\tdetect: [ :repo | repo name = 'gtoolkit-demos' ])\r\tpackageNamed: 'GToolkit-Tutorial-Prices') load"
 			},
 			{
 				"__type" : "textSnippet",
 				"children" : {
 					"__type" : "snippets",
-					"items" : [ ]
+					"items" : [
+						{
+							"__type" : "textSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2024-02-12T14:35:24.068456+01:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2024-02-12T14:35:50.594595+01:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "kac5FpHNDQCgVsfHBkNlBw=="
+							},
+							"paragraphStyle" : {
+								"__type" : "textStyle"
+							},
+							"string" : "[[Clone the Money classes]]"
+						},
+						{
+							"__type" : "textSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2024-02-12T14:36:02.665691+01:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2024-02-12T14:36:06.51755+01:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "CZqGGJHNDQCm9UuhBkNlBw=="
+							},
+							"paragraphStyle" : {
+								"__type" : "textStyle"
+							},
+							"string" : "[[Clean the Money classes]] "
+						}
+					]
 				},
 				"createEmail" : {
 					"__type" : "email",
@@ -212,7 +287,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2024-02-12T11:35:21.655916+01:00"
+						"dateAndTimeString" : "2024-02-12T14:35:29.33213+01:00"
 					}
 				},
 				"uid" : {
@@ -222,7 +297,7 @@
 				"paragraphStyle" : {
 					"__type" : "textStyle"
 				},
-				"string" : "[[EDD — getting started]]"
+				"string" : "[[EDD — getting started]]]"
 			},
 			{
 				"__type" : "textSnippet",
