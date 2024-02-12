@@ -1,0 +1,147 @@
+{
+	"__schema" : "4.1",
+	"__type" : "page",
+	"children" : {
+		"__type" : "snippets",
+		"items" : [
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2024-02-12T11:33:23.667163+01:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2024-02-12T11:33:34.638463+01:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "fDeIfY7NDQC+dNpYA11Sbg=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : "For the [[* EDD tutorial]]."
+			},
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2024-02-12T10:31:05.340174+01:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2024-02-12T11:45:27.359445+01:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "Mjl/rI3NDQC2tsJsA11Sbg=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : "We clone the GtDMoney classes as GtTMoney etc."
+			},
+			{
+				"__type" : "pharoSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2024-02-12T10:31:14.229425+01:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2024-02-12T11:43:44.289898+01:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "SNkGrY3NDQC2w177A11Sbg=="
+				},
+				"code" : "cloneClassPackage := 'GToolkit-Tutorial-Prices-Model'.\rGtDMoney withAllSubclasses reversed\r\tdo: [ :class | \r\t\tclassToClone := class.\r\t\tcloneClassSymbol := ('GtT' , (class name withoutPrefix: 'GtD')) asSymbol.\r\t\tsuperclassName := classToClone superclass name.\r\t\tsuperClass := ((superclassName beginsWith: 'GtD')\r\t\t\t\tifTrue: [ 'GtT' , (superclassName withoutPrefix: 'GtD') ]\r\t\t\t\tifFalse: [ superclassName ]) asClass.\r\t\tsuperClass\r\t\t\tsubclass: cloneClassSymbol\r\t\t\tinstanceVariableNames: (' ' join: classToClone instVarNames)\r\t\t\tclassVariableNames: (' ' join: classToClone classVarNames)\r\t\t\tpackage: cloneClassPackage.\r\r\t\tcloneClass := cloneClassSymbol asClass.\r\t\tclassToClone methods\r\t\t\tdo: [ :m | \r\t\t\t\tcloneClass compile: m sourceCode.\r\t\t\t\tcloneClass >> m selector protocol: m protocol ] ].\r#GtTMoney asClass"
+			}
+		]
+	},
+	"createEmail" : {
+		"__type" : "email",
+		"emailString" : "<unknown>"
+	},
+	"createTime" : {
+		"__type" : "time",
+		"time" : {
+			"__type" : "dateAndTime",
+			"dateAndTimeString" : "2024-02-12T10:31:05.31189+01:00"
+		}
+	},
+	"editEmail" : {
+		"__type" : "email",
+		"emailString" : "<unknown>"
+	},
+	"editTime" : {
+		"__type" : "time",
+		"time" : {
+			"__type" : "dateAndTime",
+			"dateAndTimeString" : "2024-02-12T10:31:05.31189+01:00"
+		}
+	},
+	"pageType" : {
+		"__type" : "namedPage",
+		"title" : "Clone the Money classes"
+	},
+	"uid" : {
+		"__type" : "uuid",
+		"uuid" : "35ca7eac-8dcd-0d00-b6b5-250a035d526e"
+	}
+}
