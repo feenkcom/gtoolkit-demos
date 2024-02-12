@@ -1,3 +1,6 @@
+"
+I represent a currency for a kind of Money.
+"
 Class {
 	#name : #GtTCurrency,
 	#superclass : #Object,

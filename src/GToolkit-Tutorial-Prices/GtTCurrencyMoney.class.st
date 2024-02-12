@@ -1,3 +1,10 @@
+"
+I am a quantity of money in a specific currency. I am usually instantiated by sending a factory message to a number, eg:
+```
+42 euros
+```
+
+"
 Class {
 	#name : #GtTCurrencyMoney,
 	#superclass : #GtTMoney,

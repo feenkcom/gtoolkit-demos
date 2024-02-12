@@ -1,3 +1,6 @@
+"
+I am an abstract superclass for different kinds of Money or bags of Money.
+"
 Class {
 	#name : #GtTMoney,
 	#superclass : #Object,
