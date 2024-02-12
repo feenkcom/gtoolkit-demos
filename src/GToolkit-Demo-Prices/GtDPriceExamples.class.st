@@ -1,7 +1,7 @@
 Class {
 	#name : #GtDPriceExamples,
 	#superclass : #Object,
-	#category : #'GToolkit-Demo-Prices'
+	#category : #'GToolkit-Demo-Prices-Examples'
 }
 
 { #category : #examples }

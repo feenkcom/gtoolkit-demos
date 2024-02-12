@@ -1,7 +1,7 @@
 Class {
 	#name : #GtDZeroMoney,
 	#superclass : #GtDMoney,
-	#category : #'GToolkit-Demo-Prices'
+	#category : #'GToolkit-Demo-Prices-Model'
 }
 
 { #category : #testing }

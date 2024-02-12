@@ -1,3 +1,10 @@
+"
+I am a bag of monies in various currencies.
+```
+10 usd + 42 euros
+```
+
+"
 Class {
 	#name : #GtTMoneyBag,
 	#superclass : #GtTMoney,

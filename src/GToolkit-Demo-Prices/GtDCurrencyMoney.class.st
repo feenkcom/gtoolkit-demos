@@ -5,7 +5,7 @@ Class {
 		'amount',
 		'currency'
 	],
-	#category : #'GToolkit-Demo-Prices'
+	#category : #'GToolkit-Demo-Prices-Model'
 }
 
 { #category : #testing }

@@ -1,5 +1,8 @@
+"
+I represent a currency for a kind of Money.
+"
 Class {
-	#name : #GtDCurrency,
+	#name : #GtTCurrency,
 	#superclass : #Object,
 	#instVars : [
 		'name'
@@ -7,35 +10,35 @@ Class {
 	#classVars : [
 		'Currencies'
 	],
-	#category : #'GToolkit-Demo-Prices-Model'
+	#category : #'GToolkit-Tutorial-Prices-Model'
 }
 
 { #category : #accessing }
-GtDCurrency class >> currencies [
+GtTCurrency class >> currencies [
 	^ Currencies ifNil: [ Currencies := Dictionary new ]
 ]
 
 { #category : #accessing }
-GtDCurrency class >> gtEUR [
+GtTCurrency class >> euros [
 	^ self currencies at: #EUR ifAbsentPut: [ self new name: #EUR ]
 ]
 
 { #category : #accessing }
-GtDCurrency class >> gtUSD [
-	^ self currencies at: #USD ifAbsentPut: [ self new name: #USD ]
-]
-
-{ #category : #accessing }
-GtDCurrency class >> reset [
+GtTCurrency class >> reset [
 	Currencies := nil
 ]
 
 { #category : #accessing }
-GtDCurrency >> name [
+GtTCurrency class >> usd [
+	^ self currencies at: #USD ifAbsentPut: [ self new name: #USD ]
+]
+
+{ #category : #accessing }
+GtTCurrency >> name [
 	^ name
 ]
 
 { #category : #accessing }
-GtDCurrency >> name: anObject [
+GtTCurrency >> name: anObject [
 	name := anObject
 ]

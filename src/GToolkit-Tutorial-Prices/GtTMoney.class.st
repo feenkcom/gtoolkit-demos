@@ -1,3 +1,6 @@
+"
+I am an abstract superclass for different kinds of Money or bags of Money.
+"
 Class {
 	#name : #GtTMoney,
 	#superclass : #Object,
@@ -64,11 +67,6 @@ GtTMoney >> gtDetailsFor: aView [
 				text: self gtDisplayString asRopedText;
 				padding: (BlInsets all: 10);
 				asScalableElement ]
-]
-
-{ #category : #operations }
-GtTMoney >> gtDiscountFrom: aPrice [
-	^ GtDPriceDiscountedByMoney new price: aPrice; discountMoney: self
 ]
 
 { #category : #operations }

@@ -66,7 +66,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2024-02-12T11:56:59.739033+01:00"
+						"dateAndTimeString" : "2024-02-12T12:00:02.01413+01:00"
 					}
 				},
 				"uid" : {
@@ -76,7 +76,7 @@
 				"paragraphStyle" : {
 					"__type" : "textStyle"
 				},
-				"string" : "Created GToolkit-Tutorial-Prices and cloned Money classes."
+				"string" : "Created GToolkit-Tutorial-Prices and cloned Money classes feenkcom/gtoolkit#3618"
 			},
 			{
 				"__type" : "textSnippet",

@@ -1,3 +1,10 @@
+"
+I am a quantity of money in a specific currency. I am usually instantiated by sending a factory message to a number, eg:
+```
+42 euros
+```
+
+"
 Class {
 	#name : #GtTCurrencyMoney,
 	#superclass : #GtTMoney,
@@ -17,7 +24,7 @@ GtTCurrencyMoney >> < aMoney [
 { #category : #testing }
 GtTCurrencyMoney >> = aMoney [
 	^ (self isZero and: [ aMoney isZero ]) or: [
-		(aMoney class = GtDCurrencyMoney) and: [ 
+		(aMoney class = GtTCurrencyMoney) and: [ 
 			 aMoney amount = self amount and: [ 
 				aMoney currency = self currency ] ] ]
 ]
@@ -40,7 +47,7 @@ GtTCurrencyMoney >> addCurrencyMoney: aMoney [
 		ifTrue: [ self class new 	
 				amount: self amount + aMoney amount; 
 				currency: self currency ]
-		ifFalse: [ GtDMoneyBag new addCurrencyMoney: self; addCurrencyMoney: aMoney ]
+		ifFalse: [ GtTMoneyBag new addCurrencyMoney: self; addCurrencyMoney: aMoney ]
 ]
 
 { #category : #operations }
