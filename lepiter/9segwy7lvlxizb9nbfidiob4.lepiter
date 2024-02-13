@@ -655,14 +655,14 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2024-02-13T11:05:02.196938+01:00"
+									"dateAndTimeString" : "2024-02-13T11:15:42.971103+01:00"
 								}
 							},
 							"uid" : {
 								"__type" : "uid",
 								"uidString" : "uUXX16HNDQCRvURwCM2XBA=="
 							},
-							"code" : "priceExamples := PricesExamples new."
+							"code" : "PricesExamples new."
 						},
 						{
 							"__type" : "textSnippet",
@@ -1309,12 +1309,12 @@
 		"__type" : "time",
 		"time" : {
 			"__type" : "dateAndTime",
-			"dateAndTimeString" : "2024-02-13T09:46:07.163656+01:00"
+			"dateAndTimeString" : "2024-02-13T11:19:15.664572+01:00"
 		}
 	},
 	"pageType" : {
 		"__type" : "namedPage",
-		"title" : "The EDD approach"
+		"title" : "Introducing ConcretePrice"
 	},
 	"uid" : {
 		"__type" : "uuid",

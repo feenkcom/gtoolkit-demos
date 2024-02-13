@@ -655,82 +655,14 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2024-02-13T11:02:15.06819+01:00"
+									"dateAndTimeString" : "2024-02-13T11:15:42.971103+01:00"
 								}
 							},
 							"uid" : {
 								"__type" : "uid",
 								"uidString" : "uUXX16HNDQCRvURwCM2XBA=="
 							},
-							"code" : "priceExamples := PricesExamples new."
-						},
-						{
-							"__type" : "pharoSnippet",
-							"children" : {
-								"__type" : "snippets",
-								"items" : [ ]
-							},
-							"createEmail" : {
-								"__type" : "email",
-								"emailString" : "<unknown>"
-							},
-							"createTime" : {
-								"__type" : "time",
-								"time" : {
-									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2024-02-13T11:03:24.364063+01:00"
-								}
-							},
-							"editEmail" : {
-								"__type" : "email",
-								"emailString" : "<unknown>"
-							},
-							"editTime" : {
-								"__type" : "time",
-								"time" : {
-									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2024-02-13T11:03:35.974604+01:00"
-								}
-							},
-							"uid" : {
-								"__type" : "uid",
-								"uidString" : "lL/pPaLNDQCtNnhrDCgECQ=="
-							},
-							"code" : ""
-						},
-						{
-							"__type" : "pharoSnippet",
-							"children" : {
-								"__type" : "snippets",
-								"items" : [ ]
-							},
-							"createEmail" : {
-								"__type" : "email",
-								"emailString" : "<unknown>"
-							},
-							"createTime" : {
-								"__type" : "time",
-								"time" : {
-									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2024-02-13T11:02:29.363519+01:00"
-								}
-							},
-							"editEmail" : {
-								"__type" : "email",
-								"emailString" : "<unknown>"
-							},
-							"editTime" : {
-								"__type" : "time",
-								"time" : {
-									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2024-02-13T11:03:17.835131+01:00"
-								}
-							},
-							"uid" : {
-								"__type" : "uid",
-								"uidString" : "nIGiOqLNDQCsp7HiDCgECQ=="
-							},
-							"code" : "aPrice := 100 euros asPrice."
+							"code" : "PricesExamples new."
 						},
 						{
 							"__type" : "textSnippet",
@@ -1377,12 +1309,12 @@
 		"__type" : "time",
 		"time" : {
 			"__type" : "dateAndTime",
-			"dateAndTimeString" : "2024-02-13T09:46:07.163656+01:00"
+			"dateAndTimeString" : "2024-02-13T11:16:47.329167+01:00"
 		}
 	},
 	"pageType" : {
 		"__type" : "namedPage",
-		"title" : "The EDD approach"
+		"title" : "Starting EDD"
 	},
 	"uid" : {
 		"__type" : "uuid",

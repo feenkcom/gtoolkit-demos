@@ -295,7 +295,7 @@
 											"__type" : "time",
 											"time" : {
 												"__type" : "dateAndTime",
-												"dateAndTimeString" : "2024-02-13T09:47:27.787568+01:00"
+												"dateAndTimeString" : "2024-02-13T11:19:20.444938+01:00"
 											}
 										},
 										"uid" : {
@@ -305,7 +305,7 @@
 										"paragraphStyle" : {
 											"__type" : "textStyle"
 										},
-										"string" : "[[The EDD approach]]"
+										"string" : "[[Introducing ConcretePrice]]"
 									}
 								]
 							},

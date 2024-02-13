@@ -8,45 +8,7 @@
 				"__type" : "textSnippet",
 				"children" : {
 					"__type" : "snippets",
-					"items" : [
-						{
-							"__type" : "textSnippet",
-							"children" : {
-								"__type" : "snippets",
-								"items" : [ ]
-							},
-							"createEmail" : {
-								"__type" : "email",
-								"emailString" : "<unknown>"
-							},
-							"createTime" : {
-								"__type" : "time",
-								"time" : {
-									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2024-02-12T11:32:39.115648+01:00"
-								}
-							},
-							"editEmail" : {
-								"__type" : "email",
-								"emailString" : "<unknown>"
-							},
-							"editTime" : {
-								"__type" : "time",
-								"time" : {
-									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2024-02-12T12:00:07.769921+01:00"
-								}
-							},
-							"uid" : {
-								"__type" : "uid",
-								"uidString" : "l8OpiI7NDQC/ULDRA11Sbg=="
-							},
-							"paragraphStyle" : {
-								"__type" : "textStyle"
-							},
-							"string" : "feenkcom/gtoolkit#3618"
-						}
-					]
+					"items" : [ ]
 				},
 				"createEmail" : {
 					"__type" : "email",
@@ -56,7 +18,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2024-02-12T12:00:11.874918+01:00"
+						"dateAndTimeString" : "2024-02-13T11:21:43.897738+01:00"
 					}
 				},
 				"editEmail" : {
@@ -67,17 +29,17 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2024-02-12T12:00:32.870166+01:00"
+						"dateAndTimeString" : "2024-02-13T11:22:25.418029+01:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
-					"uidString" : "Xdws647NDQCXtVXQA11Sbg=="
+					"uidString" : "2ktzf6LNDQC+12O9BW8Ojw=="
 				},
 				"paragraphStyle" : {
 					"__type" : "textStyle"
 				},
-				"string" : "[Issue #3618](https://github.com/feenkcom/gtoolkit/issues/3618)"
+				"string" : "Sometimes we want to start with a more complex scenario"
 			},
 			{
 				"__type" : "textSnippet",
@@ -93,7 +55,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2024-02-12T14:39:32.871023+01:00"
+						"dateAndTimeString" : "2024-02-13T11:22:26.242016+01:00"
 					}
 				},
 				"editEmail" : {
@@ -104,17 +66,17 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2024-02-12T14:39:48.994912+01:00"
+						"dateAndTimeString" : "2024-02-13T11:22:26.242016+01:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
-					"uidString" : "lxQOJZHNDQCIehexAmv7uw=="
+					"uidString" : "V2z5gaLNDQCiqKMgBW8Ojw=="
 				},
 				"paragraphStyle" : {
 					"__type" : "textStyle"
 				},
-				"string" : "Inspired by the [EDD article](https://medium.com/feenk/an-example-of-example-driven-development-4dea0d995920) "
+				"string" : ""
 			},
 			{
 				"__type" : "textSnippet",
@@ -130,7 +92,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2024-02-12T13:31:42.294672+01:00"
+						"dateAndTimeString" : "2024-02-13T11:22:41.757206+01:00"
 					}
 				},
 				"editEmail" : {
@@ -141,17 +103,17 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2024-02-12T14:39:19.074691+01:00"
+						"dateAndTimeString" : "2024-02-13T11:38:39.32219+01:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
-					"uidString" : "eQNuMpDNDQC5lXgjALtLaA=="
+					"uidString" : "iSfmgqLNDQCk4+uWBW8Ojw=="
 				},
 				"paragraphStyle" : {
 					"__type" : "textStyle"
 				},
-				"string" : "Load the package."
+				"string" : "This is inlined from {{gtMethod:name=GtDPriceExamples>>#concretePriceDiscountedByMoneyAndDiscountedByPercentage}}"
 			},
 			{
 				"__type" : "pharoSnippet",
@@ -167,7 +129,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2024-02-12T13:31:44.038332+01:00"
+						"dateAndTimeString" : "2024-02-13T11:22:43.999669+01:00"
 					}
 				},
 				"editEmail" : {
@@ -178,126 +140,14 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2024-02-12T13:32:04.885253+01:00"
+						"dateAndTimeString" : "2024-02-13T11:38:09.970175+01:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
-					"uidString" : "cZ6IMpDNDQC5mveBALtLaA=="
+					"uidString" : "81wIg6LNDQCmBOhVBW8Ojw=="
 				},
-				"code" : "((IceRepository registry \r\tdetect: [ :repo | repo name = 'gtoolkit-demos' ])\r\tpackageNamed: 'GToolkit-Tutorial-Prices') load"
-			},
-			{
-				"__type" : "textSnippet",
-				"children" : {
-					"__type" : "snippets",
-					"items" : [
-						{
-							"__type" : "textSnippet",
-							"children" : {
-								"__type" : "snippets",
-								"items" : [ ]
-							},
-							"createEmail" : {
-								"__type" : "email",
-								"emailString" : "<unknown>"
-							},
-							"createTime" : {
-								"__type" : "time",
-								"time" : {
-									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2024-02-12T14:35:24.068456+01:00"
-								}
-							},
-							"editEmail" : {
-								"__type" : "email",
-								"emailString" : "<unknown>"
-							},
-							"editTime" : {
-								"__type" : "time",
-								"time" : {
-									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2024-02-12T14:35:50.594595+01:00"
-								}
-							},
-							"uid" : {
-								"__type" : "uid",
-								"uidString" : "kac5FpHNDQCgVsfHBkNlBw=="
-							},
-							"paragraphStyle" : {
-								"__type" : "textStyle"
-							},
-							"string" : "[[Clone the Money classes]]"
-						},
-						{
-							"__type" : "textSnippet",
-							"children" : {
-								"__type" : "snippets",
-								"items" : [ ]
-							},
-							"createEmail" : {
-								"__type" : "email",
-								"emailString" : "<unknown>"
-							},
-							"createTime" : {
-								"__type" : "time",
-								"time" : {
-									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2024-02-12T14:36:02.665691+01:00"
-								}
-							},
-							"editEmail" : {
-								"__type" : "email",
-								"emailString" : "<unknown>"
-							},
-							"editTime" : {
-								"__type" : "time",
-								"time" : {
-									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2024-02-12T14:36:06.51755+01:00"
-								}
-							},
-							"uid" : {
-								"__type" : "uid",
-								"uidString" : "CZqGGJHNDQCm9UuhBkNlBw=="
-							},
-							"paragraphStyle" : {
-								"__type" : "textStyle"
-							},
-							"string" : "[[Clean the Money classes]] "
-						}
-					]
-				},
-				"createEmail" : {
-					"__type" : "email",
-					"emailString" : "<unknown>"
-				},
-				"createTime" : {
-					"__type" : "time",
-					"time" : {
-						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2024-02-12T11:35:12.102946+01:00"
-					}
-				},
-				"editEmail" : {
-					"__type" : "email",
-					"emailString" : "<unknown>"
-				},
-				"editTime" : {
-					"__type" : "time",
-					"time" : {
-						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2024-02-12T14:36:58.905809+01:00"
-					}
-				},
-				"uid" : {
-					"__type" : "uid",
-					"uidString" : "TyjIkY7NDQCACF2nA11Sbg=="
-				},
-				"paragraphStyle" : {
-					"__type" : "textStyle"
-				},
-				"string" : "[[EDD — getting started]] "
+				"code" : "price := (100 gtEUR asPrice discountedBy: 10 gtEUR) discountedBy: 10 percent.\rnil assert: price = 81 gtEUR asPrice.\rprice"
 			},
 			{
 				"__type" : "textSnippet",
@@ -313,7 +163,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2024-02-12T11:35:25.863315+01:00"
+						"dateAndTimeString" : "2024-02-13T11:38:45.348339+01:00"
 					}
 				},
 				"editEmail" : {
@@ -324,17 +174,17 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2024-02-12T14:40:21.415888+01:00"
+						"dateAndTimeString" : "2024-02-13T11:39:40.023391+01:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
-					"uidString" : "y5pXio7NDQC/VePiA11Sbg=="
+					"uidString" : "cGVVvKLNDQCeC3cyDVFHPA=="
 				},
 				"paragraphStyle" : {
 					"__type" : "textStyle"
 				},
-				"string" : "[[The TDD approach]] "
+				"string" : "Need to adapt this."
 			},
 			{
 				"__type" : "textSnippet",
@@ -350,7 +200,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2024-02-12T11:35:30.051944+01:00"
+						"dateAndTimeString" : "2024-02-13T11:39:40.911073+01:00"
 					}
 				},
 				"editEmail" : {
@@ -361,17 +211,17 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2024-02-13T11:19:17.020397+01:00"
+						"dateAndTimeString" : "2024-02-13T11:39:40.911073+01:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
-					"uidString" : "ld1aio7NDQC/Wph5A11Sbg=="
+					"uidString" : "zjOlv6LNDQCr0U2rDVFHPA=="
 				},
 				"paragraphStyle" : {
 					"__type" : "textStyle"
 				},
-				"string" : "[[Introducing ConcretePrice]]"
+				"string" : ""
 			},
 			{
 				"__type" : "textSnippet",
@@ -387,7 +237,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2024-02-13T11:16:58.696713+01:00"
+						"dateAndTimeString" : "2024-02-13T11:39:41.170364+01:00"
 					}
 				},
 				"editEmail" : {
@@ -398,17 +248,91 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2024-02-13T11:21:14.816415+01:00"
+						"dateAndTimeString" : "2024-02-13T11:39:41.170364+01:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
-					"uidString" : "hHlzbqLNDQCapkSwBW8Ojw=="
+					"uidString" : "Siypv6LNDQCr1pzdDVFHPA=="
 				},
 				"paragraphStyle" : {
 					"__type" : "textStyle"
 				},
-				"string" : "[[Working with a complex scenario]] "
+				"string" : ""
+			},
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2024-02-13T11:39:41.373809+01:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2024-02-13T11:39:41.373809+01:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "uEGsv6LNDQCr2zhhDVFHPA=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : ""
+			},
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2024-02-13T11:39:01.365321+01:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2024-02-13T11:39:01.365321+01:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "38tJvaLNDQCpfaysDVFHPA=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : ""
 			}
 		]
 	},
@@ -420,7 +344,7 @@
 		"__type" : "time",
 		"time" : {
 			"__type" : "dateAndTime",
-			"dateAndTimeString" : "2024-02-12T11:32:39.08802+01:00"
+			"dateAndTimeString" : "2024-02-13T11:21:16.884407+01:00"
 		}
 	},
 	"editEmail" : {
@@ -431,15 +355,15 @@
 		"__type" : "time",
 		"time" : {
 			"__type" : "dateAndTime",
-			"dateAndTimeString" : "2024-02-12T11:32:43.674047+01:00"
+			"dateAndTimeString" : "2024-02-13T11:21:16.884407+01:00"
 		}
 	},
 	"pageType" : {
 		"__type" : "namedPage",
-		"title" : "* EDD tutorial"
+		"title" : "Working with a complex scenario"
 	},
 	"uid" : {
 		"__type" : "uuid",
-		"uuid" : "2857a988-8ecd-0d00-bf4f-f81a035d526e"
+		"uuid" : "ff1cd77d-a2cd-0d00-ba71-e45a056f0e8f"
 	}
 }
