@@ -1786,14 +1786,14 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2024-02-13T17:59:26.141611+01:00"
+									"dateAndTimeString" : "2024-02-13T17:59:35.500797+01:00"
 								}
 							},
 							"uid" : {
 								"__type" : "uid",
 								"uidString" : "IO5bCKjNDQC3aCR3C2kkMw=="
 							},
-							"code" : "PricesExamples>>#priceDiscountedByPercent"
+							"code" : "PricesExamples new priceDiscountedByPercent."
 						},
 						{
 							"__type" : "textSnippet",
