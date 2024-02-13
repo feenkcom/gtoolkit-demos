@@ -18,7 +18,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2024-02-13T09:46:07.191144+01:00"
+						"dateAndTimeString" : "2024-02-13T15:02:20.895935+01:00"
 					}
 				},
 				"editEmail" : {
@@ -29,7 +29,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2024-02-13T09:46:09.164+01:00"
+						"dateAndTimeString" : "2024-02-13T15:03:54.028766+01:00"
 					}
 				},
 				"uid" : {
@@ -39,7 +39,7 @@
 				"paragraphStyle" : {
 					"__type" : "textStyle"
 				},
-				"string" : "• start from a playground\n• create a small object increment\n• see it\n• assert it\n• extract to example"
+				"string" : "This is a first small EDD example in which we create just a `ConcretePrice` object using our existing `Money` classes. Instead of writing a test first, we "
 			},
 			{
 				"__type" : "textSnippet",
@@ -607,6 +607,43 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2024-02-13T14:49:02.366523+01:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2024-02-13T14:49:02.366523+01:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "IUHXZKXNDQCx+PTGAx5eCA=="
+							},
+							"paragraphStyle" : {
+								"__type" : "textStyle"
+							},
+							"string" : "This looks like a useful example. "
+						},
+						{
+							"__type" : "textSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
 									"dateAndTimeString" : "2024-02-13T10:29:14.081658+01:00"
 								}
 							},
@@ -618,7 +655,7 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2024-02-13T10:41:00.777893+01:00"
+									"dateAndTimeString" : "2024-02-13T14:49:02.368434+01:00"
 								}
 							},
 							"uid" : {
@@ -628,7 +665,7 @@
 							"paragraphStyle" : {
 								"__type" : "textStyle"
 							},
-							"string" : "This looks like a useful example. Let's extract it to an example class. We'll create one as a fixit:"
+							"string" : "Let's extract it to an example class. We'll create one as a fixit:"
 						},
 						{
 							"__type" : "pharoSnippet",
@@ -1209,14 +1246,14 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2024-02-13T11:00:01.7704+01:00"
+									"dateAndTimeString" : "2024-02-13T14:52:26.60458+01:00"
 								}
 							},
 							"uid" : {
 								"__type" : "uid",
 								"uidString" : "dcFpMaLNDQCnJAKsCM2XBA=="
 							},
-							"code" : "(FileLocator gtResource\r\t/ 'feenkcom/gtoolkit-demos/data/prices/EDDPrices-1.st') fileIn.\r#PriceTests asClass."
+							"code" : "(FileLocator gtResource\r\t/ 'feenkcom/gtoolkit-demos/data/prices/EDDPrices-1.st') fileIn.\r#PricesExamples asClass."
 						},
 						{
 							"__type" : "textSnippet",
@@ -1309,12 +1346,12 @@
 		"__type" : "time",
 		"time" : {
 			"__type" : "dateAndTime",
-			"dateAndTimeString" : "2024-02-13T11:16:47.329167+01:00"
+			"dateAndTimeString" : "2024-02-13T15:03:00.478065+01:00"
 		}
 	},
 	"pageType" : {
 		"__type" : "namedPage",
-		"title" : "Starting EDD"
+		"title" : "Introducing ConcretePrice"
 	},
 	"uid" : {
 		"__type" : "uuid",
