@@ -361,7 +361,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2024-02-12T11:35:30.051944+01:00"
+						"dateAndTimeString" : "2024-02-13T15:03:00.486467+01:00"
 					}
 				},
 				"uid" : {
@@ -371,10 +371,10 @@
 				"paragraphStyle" : {
 					"__type" : "textStyle"
 				},
-				"string" : ""
+				"string" : "[[Introducing ConcretePrice]]"
 			},
 			{
-				"__type" : "pharoSnippet",
+				"__type" : "textSnippet",
 				"children" : {
 					"__type" : "snippets",
 					"items" : [ ]
@@ -387,7 +387,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2024-02-12T14:47:05.393831+01:00"
+						"dateAndTimeString" : "2024-02-13T11:16:58.696713+01:00"
 					}
 				},
 				"editEmail" : {
@@ -398,14 +398,17 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2024-02-12T14:47:10.366374+01:00"
+						"dateAndTimeString" : "2024-02-13T11:21:14.816415+01:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
-					"uidString" : "vgYHQJHNDQCL2NEBAmv7uw=="
+					"uidString" : "hHlzbqLNDQCapkSwBW8Ojw=="
 				},
-				"code" : "#tagWith: gtImplementors"
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : "[[Working with a complex scenario]] "
 			}
 		]
 	},
