@@ -361,7 +361,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2024-02-12T11:35:30.051944+01:00"
+						"dateAndTimeString" : "2024-02-13T09:46:05.627943+01:00"
 					}
 				},
 				"uid" : {
@@ -371,7 +371,7 @@
 				"paragraphStyle" : {
 					"__type" : "textStyle"
 				},
-				"string" : ""
+				"string" : "[[The EDD approach]]"
 			}
 		]
 	},
