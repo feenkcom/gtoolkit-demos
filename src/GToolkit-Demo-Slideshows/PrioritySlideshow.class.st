@@ -567,6 +567,26 @@ PrioritySlideshow >> onMethodRemoved: aMethodRemoved [
 ]
 
 { #category : #accessing }
+PrioritySlideshow >> overviewElementFor: slideSelectors [
+	| slides container |
+	slides := slideSelectors
+			collect: [ :selector | 
+				| method slide |
+				method := self class methodNamed: selector.
+				slide := method asSlide asScalableSlideWithBorder asElement
+						margin: (BlInsets all: 10);
+						yourself ].
+	container := BlElement new
+			layout: (BlGridLayout new columnCount: 2);
+			constraintsDo: [ :c | 
+				c horizontal matchParent.
+				c vertical matchParent ];
+			addChildren: slides;
+			yourself.
+	^ container
+]
+
+{ #category : #accessing }
 PrioritySlideshow >> pageMethods [
 	^ self class methods select: [ :m | m hasPragmaNamed: #lePage ]
 ]

@@ -194,6 +194,19 @@ DemoSlideshow >> maximizedPage: aSlide [
 ]
 
 { #category : #slides }
+DemoSlideshow >> overviewSlide: aSlide [
+	<gtSlide>
+	<text: 'An overview slide'>
+	| slideSelectors |
+	"slideSelectors := #(textAndElement: lepiterPage: inspectorOnObject: gtWorld:)."
+	slideSelectors := #(textAndElement: textAndImage: inspectorOnObject: gtWorld:).
+	^ aSlide labelAndElement
+		setPriority;
+		newFadedText: 'An overview slide';
+		element: [ self overviewElementFor: slideSelectors ]
+]
+
+{ #category : #slides }
 DemoSlideshow >> paragraph: aSlide [
 	<gtSlide>
 	<text: 'Text with a paragraph'>
@@ -241,6 +254,7 @@ DemoSlideshow >> slidePriorities [
 		coder:
 		coderOnClass:
 		spotterExampleSlide:
+		overviewSlide:
 	)
 ]
 
