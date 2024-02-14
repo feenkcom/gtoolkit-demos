@@ -586,22 +586,6 @@ PrioritySlideshow >> overviewElementFor: slideSelectors [
 	^ container
 ]
 
-{ #category : #slides }
-PrioritySlideshow >> overviewSlide: aSlide [
-	"For some reason the slide content disappears when we apply the shadows to a lepiterPage.
-	To do: a version with an additional label for each slide."
-
-	<gtSlide>
-	<text: 'An overview slide'>
-	| slideSelectors |
-	"slideSelectors := #(textAndElement: lepiterPage: inspectorOnObject: gtWorld:)."
-	slideSelectors := #(textAndElement: textAndImage: inspectorOnObject: gtWorld:).
-	^ aSlide labelAndElement
-		setPriority;
-		newFadedText: 'An overview slide';
-		element: [ self overviewElementFor: slideSelectors ]
-]
-
 { #category : #accessing }
 PrioritySlideshow >> pageMethods [
 	^ self class methods select: [ :m | m hasPragmaNamed: #lePage ]
