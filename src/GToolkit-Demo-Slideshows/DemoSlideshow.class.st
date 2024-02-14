@@ -195,9 +195,6 @@ DemoSlideshow >> maximizedPage: aSlide [
 
 { #category : #slides }
 DemoSlideshow >> overviewSlide: aSlide [
-	"For some reason the slide content disappears when we apply the shadows to a lepiterPage.
-	To do: a version with an additional label for each slide."
-
 	<gtSlide>
 	<text: 'An overview slide'>
 	| slideSelectors |
