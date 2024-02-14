@@ -604,14 +604,8 @@ PrioritySlideshow >> renewDb [
 
 { #category : #utility }
 PrioritySlideshow >> scalableSlide: aSlide [
-	"Not all gtSlides are scalable, so we wrap them for displaying in the Slides and Slide deck views.
-	If this is fixed, we can remove the wrappers."
-	<todo: 'remove this once slides become scalable.'>
-
-	| scalableSlide |
-	scalableSlide := GtProtoLiveSlide new element
-			element: [ (aSlide asElement size: 1200 @ 900) asScalableElement ].
-	^ scalableSlide
+	"No longer needed?"
+	^ aSlide asScalableSlide
 ]
 
 { #category : #utility }
@@ -678,12 +672,7 @@ PrioritySlideshow >> slideDictionary [
 
 	| methods |
 	methods := self slideMethods select: [ :each | each isCompiledMethod ].
-	^ (methods
-		collect: [ :each |
-		(self scalableSlide:(self perform: each selector withArguments: {GtProtoLiveSlide new}) )
-			-> each 
-		])
-		asOrderedDictionary
+	^ (methods collect: [ :each | each asSlide -> each ]) asOrderedDictionary
 ]
 
 { #category : #accessing }
@@ -705,8 +694,7 @@ PrioritySlideshow >> slideDir [
 
 { #category : #utility }
 PrioritySlideshow >> slideFor: selector [
-	^ self
-		scalableSlide: (self perform: selector withArguments: {GtProtoLiveSlide new})
+	^ (self class >> selector) asScalableSlide
 ]
 
 { #category : #accessing }
