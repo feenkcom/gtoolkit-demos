@@ -241,6 +241,7 @@ DemoSlideshow >> slidePriorities [
 		coder:
 		coderOnClass:
 		spotterExampleSlide:
+		overviewSlide:
 	)
 ]
 

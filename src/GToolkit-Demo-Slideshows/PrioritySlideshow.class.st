@@ -567,6 +567,42 @@ PrioritySlideshow >> onMethodRemoved: aMethodRemoved [
 ]
 
 { #category : #accessing }
+PrioritySlideshow >> overviewElementFor: slideSelectors [
+	| slides container |
+	slides := slideSelectors
+			collect: [ :selector | 
+				| method slide |
+				method := self class methodNamed: selector.
+				slide := method asSlide asScalableSlideWithBorder asElement
+						margin: (BlInsets all: 10);
+						yourself ].
+	container := BlElement new
+			layout: (BlGridLayout new columnCount: 2);
+			constraintsDo: [ :c | 
+				c horizontal matchParent.
+				c vertical matchParent ];
+			addChildren: slides;
+			yourself.
+	^ container
+]
+
+{ #category : #slides }
+PrioritySlideshow >> overviewSlide: aSlide [
+	"For some reason the slide content disappears when we apply the shadows to a lepiterPage.
+	To do: a version with an additional label for each slide."
+
+	<gtSlide>
+	<text: 'An overview slide'>
+	| slideSelectors |
+	"slideSelectors := #(textAndElement: lepiterPage: inspectorOnObject: gtWorld:)."
+	slideSelectors := #(textAndElement: textAndImage: inspectorOnObject: gtWorld:).
+	^ aSlide labelAndElement
+		setPriority;
+		newFadedText: 'An overview slide';
+		element: [ self overviewElementFor: slideSelectors ]
+]
+
+{ #category : #accessing }
 PrioritySlideshow >> pageMethods [
 	^ self class methods select: [ :m | m hasPragmaNamed: #lePage ]
 ]
