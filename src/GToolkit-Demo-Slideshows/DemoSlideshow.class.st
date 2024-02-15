@@ -194,19 +194,6 @@ DemoSlideshow >> maximizedPage: aSlide [
 ]
 
 { #category : #slides }
-DemoSlideshow >> overviewSlide: aSlide [
-	<gtSlide>
-	<text: 'An overview slide'>
-	| slideSelectors |
-	"slideSelectors := #(textAndElement: lepiterPage: inspectorOnObject: gtWorld:)."
-	slideSelectors := #(textAndElement: textAndImage: inspectorOnObject: gtWorld:).
-	^ aSlide labelAndElement
-		setPriority;
-		newFadedText: 'An overview slide';
-		element: [ self overviewElementFor: slideSelectors ]
-]
-
-{ #category : #slides }
 DemoSlideshow >> paragraph: aSlide [
 	<gtSlide>
 	<text: 'Text with a paragraph'>
@@ -254,7 +241,7 @@ DemoSlideshow >> slidePriorities [
 		coder:
 		coderOnClass:
 		spotterExampleSlide:
-		overviewSlide:
+		#summarySlide:
 	)
 ]
 
@@ -263,6 +250,19 @@ DemoSlideshow >> spotterExampleSlide: aSlide [
 	<gtSlide>
 	<text: 'A spotter search'>
 	^ aSlide spotter setPriority
+]
+
+{ #category : #slides }
+DemoSlideshow >> summarySlide: aSlide [
+	<gtSlide>
+	<text: 'A summary slide'>
+	| slideSelectors |
+	"slideSelectors := #(textAndElement: lepiterPage: inspectorOnObject: gtWorld:)."
+	slideSelectors := #(textAndElement: textAndImage: inspectorOnObject: gtWorld:).
+	^ aSlide labelAndElement
+		setPriority;
+		newFadedText: 'A summary slide';
+		element: [ self summaryElementFor: slideSelectors ]
 ]
 
 { #category : #slides }
@@ -283,7 +283,7 @@ DemoSlideshow >> textAndImage: aSlide [
 	^ aSlide textAndElement
 		elementWeight: 0.60;
 		setPriority;
-		newTextWithFormat: (self asText: 'This will also with with any XandElement slide');
+		newTextWithFormat: (self asText: 'This will also work with with any XandElement slide');
 		element: [ GtFilePictureLiveSlide new
 				fileReference: (GtResourcesUtility
 						resourceAtPath: self picturesDirectoryPath / 'smalltalk-80.png') ]

@@ -567,26 +567,6 @@ PrioritySlideshow >> onMethodRemoved: aMethodRemoved [
 ]
 
 { #category : #accessing }
-PrioritySlideshow >> overviewElementFor: slideSelectors [
-	| slides container |
-	slides := slideSelectors
-			collect: [ :selector | 
-				| method slide |
-				method := self class methodNamed: selector.
-				slide := method asSlide asScalableSlideWithBorder asElement
-						margin: (BlInsets all: 10);
-						yourself ].
-	container := BlElement new
-			layout: (BlGridLayout new columnCount: 2);
-			constraintsDo: [ :c | 
-				c horizontal matchParent.
-				c vertical matchParent ];
-			addChildren: slides;
-			yourself.
-	^ container
-]
-
-{ #category : #accessing }
 PrioritySlideshow >> pageMethods [
 	^ self class methods select: [ :m | m hasPragmaNamed: #lePage ]
 ]
@@ -678,6 +658,9 @@ PrioritySlideshow >> scriptText [
 
 { #category : #utility }
 PrioritySlideshow >> slideDeckPage [
+	"NB: this uses PrioritySlideshow>>#slideFor: in Element
+	snippets to embed slides in a page."
+
 	| page |
 	page := LePage named: self class name.
 	LeDatabase new addPage: page.
@@ -714,7 +697,9 @@ PrioritySlideshow >> slideDir [
 
 { #category : #utility }
 PrioritySlideshow >> slideFor: selector [
-	^ (self class >> selector) asScalableSlide
+	"Used in PrioritySlideshow>>#slideDeckPage to embed slides in a Lepiter page."
+
+	^ (self class >> selector) asScalableSlideWithBorder
 ]
 
 { #category : #accessing }
@@ -789,6 +774,28 @@ PrioritySlideshow >> subscribeToSystem [
 { #category : #text }
 PrioritySlideshow >> subtitleSize [
 	^ 40
+]
+
+{ #category : #accessing }
+PrioritySlideshow >> summaryElementFor: slideSelectors [
+	"Create an element holding 4 (more or less) slides in a grid to be used in a summary slide."
+
+	| slides container |
+	slides := slideSelectors
+			collect: [ :selector | 
+				| method slide |
+				method := self class methodNamed: selector.
+				slide := method asSlide asScalableSlideWithBorder asElement
+						margin: (BlInsets all: 10);
+						yourself ].
+	container := BlElement new
+			layout: (BlGridLayout new columnCount: 2);
+			constraintsDo: [ :c | 
+				c horizontal matchParent.
+				c vertical matchParent ];
+			addChildren: slides;
+			yourself.
+	^ container
 ]
 
 { #category : #utility }
