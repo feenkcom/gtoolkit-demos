@@ -10,7 +10,7 @@ Class {
 
 { #category : #example }
 ContextExamples >> findExampleInStack [
-	"walk up the stack looking for a method  with a gtExample pragma"
+	"Walk up the stack looking for a method  with a gtExample pragma."
 
 	| context |
 	context := thisContext.
