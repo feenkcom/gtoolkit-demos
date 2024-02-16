@@ -178,14 +178,14 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2024-02-12T13:32:04.885253+01:00"
+						"dateAndTimeString" : "2024-02-16T18:31:53.93105+01:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
 					"uidString" : "cZ6IMpDNDQC5mveBALtLaA=="
 				},
-				"code" : "((IceRepository registry \r\tdetect: [ :repo | repo name = 'gtoolkit-demos' ])\r\tpackageNamed: 'GToolkit-Tutorial-Prices') load"
+				"code" : "((IceRepository registry \r\tdetect: [ :repo | repo name = 'gtoolkit-demos' ])\r\tpackageNamed: 'GToolkit-Tutorial-Prices') load."
 			},
 			{
 				"__type" : "textSnippet",
