@@ -12,7 +12,7 @@ Class {
 	#category : #'GToolkit-Demo-Reflection-Examples'
 }
 
-{ #category : #accessing }
+{ #category : #'failing example' }
 HaltDemo >> bar [
 	"Will halt"
 
@@ -21,7 +21,7 @@ HaltDemo >> bar [
 	^ self foo , 'bar'
 ]
 
-{ #category : #accessing }
+{ #category : #example }
 HaltDemo >> foo [
 	"Does not halt"
 
