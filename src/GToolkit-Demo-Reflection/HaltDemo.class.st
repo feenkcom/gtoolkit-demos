@@ -5,6 +5,8 @@ HaltDemo new foo.
 HaltDemo new bar. 
 
 Only the second halts within foo.
+
+See also ContextExamples.s
 "
 Class {
 	#name : #HaltDemo,
@@ -12,7 +14,7 @@ Class {
 	#category : #'GToolkit-Demo-Reflection-Examples'
 }
 
-{ #category : #accessing }
+{ #category : #'failing example' }
 HaltDemo >> bar [
 	"Will halt"
 
@@ -21,7 +23,7 @@ HaltDemo >> bar [
 	^ self foo , 'bar'
 ]
 
-{ #category : #accessing }
+{ #category : #example }
 HaltDemo >> foo [
 	"Does not halt"
 
