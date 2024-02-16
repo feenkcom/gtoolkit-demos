@@ -1,11 +1,15 @@
+"
+Various examples of querying `thisContext`.
+See also HaltDemo.
+"
 Class {
-	#name : #ContextDemo,
+	#name : #ContextExamples,
 	#superclass : #Object,
 	#category : #'GToolkit-Demo-Reflection-Examples'
 }
 
 { #category : #example }
-ContextDemo >> findExampleInStack [
+ContextExamples >> findExampleInStack [
 	"walk up the stack looking for a method  with a gtExample pragma"
 
 	| context |
@@ -17,22 +21,22 @@ ContextDemo >> findExampleInStack [
 ]
 
 { #category : #example }
-ContextDemo >> returnMySender [
+ContextExamples >> returnMySender [
 	^ thisContext sender method
 ]
 
 { #category : #example }
-ContextDemo >> searchIndirectly [
+ContextExamples >> searchIndirectly [
 	^ self searchIndirectly2
 ]
 
 { #category : #example }
-ContextDemo >> searchIndirectly2 [
+ContextExamples >> searchIndirectly2 [
 	^ self findExampleInStack
 ]
 
 { #category : #example }
-ContextDemo >> stackUpToExample [
+ContextExamples >> stackUpToExample [
 	| stack exampleIndex |
 	stack := thisContext stack.
 	exampleIndex := stack
@@ -42,7 +46,7 @@ ContextDemo >> stackUpToExample [
 ]
 
 { #category : #example }
-ContextDemo >> stackUpToHere [
+ContextExamples >> stackUpToHere [
 	<gtExample>
 	| stack |
 	stack := self stackUpToExample.
@@ -51,21 +55,55 @@ ContextDemo >> stackUpToHere [
 ]
 
 { #category : #accessing }
-ContextDemo >> thisContext [
-	"NB: once we return, the context will be  dead, so to keep the values of temporaries, we return a *copy* ofthe context."
+ContextExamples >> thisContext [
+	"NB: as soon as we return the context, it will be dead, so the values of variables will no longer be visible."
 
 	<gtExample>
 	| context foo |
 	foo := 42.
 	context := thisContext.
 	self assert: context isDead not.
-	self assert: context method selector equals: #thisContext.
+	self assert: context method selector 
+			equals: #thisContext.
+	self assert: (context tempNamed: #foo) equals: 42.
+	^ context
+]
+
+{ #category : #accessing }
+ContextExamples >> thisContextCopy [
+	"Here we return a copy of the context, which will contain all the temporary variables with their values at the point of return."
+
+	<gtExample>
+	| context foo |
+	foo := 42.
+	context := thisContext.
+	self assert: context isDead not.
+	self assert: context method selector 
+			equals: #thisContextCopy.
 	self assert: (context tempNamed: #foo) equals: 42.
 	^ context copy
 ]
 
+{ #category : #accessing }
+ContextExamples >> thisContextCopyIsNotDead [
+	<gtExample>
+	| context |
+	context := self thisContextCopy.
+	self assert: context isDead not.
+	^ context
+]
+
+{ #category : #accessing }
+ContextExamples >> thisContextIsDead [
+	<gtExample>
+	| context |
+	context := self thisContext.
+	self assert: context isDead.
+	^ context
+]
+
 { #category : #example }
-ContextDemo >> thisMethodFoundDeeplyInStack [
+ContextExamples >> thisMethodFoundDeeplyInStack [
 	<gtExample>
 	| method |
 	method := self searchIndirectly.
@@ -74,7 +112,7 @@ ContextDemo >> thisMethodFoundDeeplyInStack [
 ]
 
 { #category : #example }
-ContextDemo >> thisMethodFoundInStack [
+ContextExamples >> thisMethodFoundInStack [
 	<gtExample>
 	| method |
 	method := self findExampleInStack.
@@ -83,7 +121,7 @@ ContextDemo >> thisMethodFoundInStack [
 ]
 
 { #category : #example }
-ContextDemo >> thisMethodFromCalledMethod [
+ContextExamples >> thisMethodFromCalledMethod [
 	<gtExample>
 	| method |
 	method := self returnMySender.
@@ -92,16 +130,17 @@ ContextDemo >> thisMethodFromCalledMethod [
 ]
 
 { #category : #example }
-ContextDemo >> thisMethodFromContext [
+ContextExamples >> thisMethodFromContext [
 	<gtExample>
 	| method |
 	method := thisContext method.
-	self assert: method selector equals: #thisMethodFromContext.
+	self assert: method selector 
+			equals: #thisMethodFromContext.
 	^ method
 ]
 
 { #category : #accessing }
-ContextDemo >> thisStack [
+ContextExamples >> thisStack [
 	<gtExample>
 	<noTest>
 	| stack |
@@ -109,4 +148,17 @@ ContextDemo >> thisStack [
 	self assert: stack size equals: 10.
 	self assert: stack first method selector equals: #thisStack.
 	^ stack
+]
+
+{ #category : #accessing }
+ContextExamples >> thisStackCopy [
+	"Return a copied stack of live contexts."
+	<gtExample>
+	<noTest>
+	| stack |
+	stack := thisContext stackOfSize: 10.
+	self assert: stack size equals: 10.
+	self assert: stack first method selector 
+			equals: #thisStackCopy.
+	^ stack collect: #copy
 ]

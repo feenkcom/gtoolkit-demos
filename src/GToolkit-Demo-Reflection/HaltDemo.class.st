@@ -5,6 +5,8 @@ HaltDemo new foo.
 HaltDemo new bar. 
 
 Only the second halts within foo.
+
+See also ContextExamples.s
 "
 Class {
 	#name : #HaltDemo,
