@@ -17,7 +17,7 @@ ContextDemo >> findExampleInStack [
 ]
 
 { #category : #example }
-ContextDemo >> returnSender [
+ContextDemo >> returnMySender [
 	^ thisContext sender method
 ]
 
@@ -50,6 +50,20 @@ ContextDemo >> stackUpToHere [
 	^ stack
 ]
 
+{ #category : #accessing }
+ContextDemo >> thisContext [
+	"NB: once we return, the context will be  dead, so to keep the values of temporaries, we return a *copy* ofthe context."
+
+	<gtExample>
+	| context foo |
+	foo := 42.
+	context := thisContext.
+	self assert: context isDead not.
+	self assert: context method selector equals: #thisContext.
+	self assert: (context tempNamed: #foo) equals: 42.
+	^ context copy
+]
+
 { #category : #example }
 ContextDemo >> thisMethodFoundDeeplyInStack [
 	<gtExample>
@@ -72,7 +86,7 @@ ContextDemo >> thisMethodFoundInStack [
 ContextDemo >> thisMethodFromCalledMethod [
 	<gtExample>
 	| method |
-	method := self returnSender.
+	method := self returnMySender.
 	self assert: method selector equals: #thisMethodFromCalledMethod.
 	^ method
 ]
@@ -84,4 +98,15 @@ ContextDemo >> thisMethodFromContext [
 	method := thisContext method.
 	self assert: method selector equals: #thisMethodFromContext.
 	^ method
+]
+
+{ #category : #accessing }
+ContextDemo >> thisStack [
+	<gtExample>
+	<noTest>
+	| stack |
+	stack := thisContext stackOfSize: 10.
+	self assert: stack size equals: 10.
+	self assert: stack first method selector equals: #thisStack.
+	^ stack
 ]
