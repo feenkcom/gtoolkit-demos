@@ -440,7 +440,7 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2024-02-17T09:40:12.67085+01:00"
+									"dateAndTimeString" : "2024-02-17T10:31:31.040228+01:00"
 								}
 							},
 							"uid" : {
@@ -450,7 +450,7 @@
 							"paragraphStyle" : {
 								"__type" : "textStyle"
 							},
-							"string" : "[[*** Working with a complex scenario (redux)]] "
+							"string" : "[[Working with a complex scenario (redux)]] "
 						}
 					]
 				},
