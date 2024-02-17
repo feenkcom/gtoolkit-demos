@@ -71,14 +71,14 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2024-02-16T18:30:40.740828+01:00"
+									"dateAndTimeString" : "2024-02-17T09:52:45.563474+01:00"
 								}
 							},
 							"uid" : {
 								"__type" : "uid",
 								"uidString" : "L17G1uTNDQCiDoVTC2KC0w=="
 							},
-							"code" : "(FileLocator gtResource\r\t/ 'feenkcom/gtoolkit-demos/data/prices/EDDPrices-1.st') fileIn.\r#PricesExamples asClass."
+							"code" : "[ #EDDPrices asPackage removeFromSystem ] onErrorDo: [  ].\r(FileLocator gtResource\r\t/ 'feenkcom/gtoolkit-demos/data/prices/EDDPrices-1.st') fileIn.\r#EDDPrices asPackage."
 						}
 					]
 				},
@@ -326,48 +326,14 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2024-02-16T18:32:42.28189+01:00"
+									"dateAndTimeString" : "2024-02-17T09:53:08.635196+01:00"
 								}
 							},
 							"uid" : {
 								"__type" : "uid",
 								"uidString" : "pA9B3uTNDQCiWCrgC2KC0w=="
 							},
-							"code" : "price := PricesExamples new concretePrice."
-						},
-						{
-							"__type" : "pharoSnippet",
-							"children" : {
-								"__type" : "snippets",
-								"items" : [ ]
-							},
-							"createEmail" : {
-								"__type" : "email",
-								"emailString" : "<unknown>"
-							},
-							"createTime" : {
-								"__type" : "time",
-								"time" : {
-									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2024-02-16T18:32:42.281895+01:00"
-								}
-							},
-							"editEmail" : {
-								"__type" : "email",
-								"emailString" : "<unknown>"
-							},
-							"editTime" : {
-								"__type" : "time",
-								"time" : {
-									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2024-02-16T18:40:53.145976+01:00"
-								}
-							},
-							"uid" : {
-								"__type" : "uid",
-								"uidString" : "qQ9B3uTNDQCiWfAgC2KC0w=="
-							},
-							"code" : "price discountedBy: 10 euros."
+							"code" : "price := PricesExamples new concretePrice.\rprice discountedBy: 10 euros."
 						},
 						{
 							"__type" : "textSnippet",
@@ -463,7 +429,7 @@
 											"__type" : "time",
 											"time" : {
 												"__type" : "dateAndTime",
-												"dateAndTimeString" : "2024-02-16T18:43:37.805406+01:00"
+												"dateAndTimeString" : "2024-02-17T09:58:48.966526+01:00"
 											}
 										},
 										"editEmail" : {
@@ -474,17 +440,129 @@
 											"__type" : "time",
 											"time" : {
 												"__type" : "dateAndTime",
-												"dateAndTimeString" : "2024-02-16T18:44:20.512044+01:00"
+												"dateAndTimeString" : "2024-02-17T09:58:56.115417+01:00"
 											}
 										},
 										"uid" : {
 											"__type" : "uid",
-											"uidString" : "loxTBeXNDQCovKm6C2KC0w=="
+											"uidString" : "gMNKzfHNDQCnDufoAm0Euw=="
 										},
 										"paragraphStyle" : {
 											"__type" : "textStyle"
 										},
-										"string" : "This is not quite right. Before extracting the example, we want to make sure that the `money` is the right value."
+										"string" : "PriceDiscountedByMoney>>#money\r\t^ price money - discountMoney"
+									}
+								]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2024-02-17T09:54:15.997411+01:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2024-02-17T09:58:29.779511+01:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "Yy0EvvHNDQCkOg9AAm0Euw=="
+							},
+							"paragraphStyle" : {
+								"__type" : "textStyle"
+							},
+							"string" : "We see that the `Money` view is broken. We change it to refer to `self money` and we implement `PriceDiscountedByMoney>>#money`"
+						},
+						{
+							"__type" : "textSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2024-02-17T09:59:07.842699+01:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2024-02-17T09:59:44.053036+01:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "YrgLvvHNDQCkPjhYAm0Euw=="
+							},
+							"paragraphStyle" : {
+								"__type" : "textStyle"
+							},
+							"string" : "Since the `money` slot is not used in the discounted proce, we realize we need a new abstract `Price` class as a common parent, with `money` being abstract."
+						},
+						{
+							"__type" : "textSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [
+									{
+										"__type" : "textSnippet",
+										"children" : {
+											"__type" : "snippets",
+											"items" : [ ]
+										},
+										"createEmail" : {
+											"__type" : "email",
+											"emailString" : "<unknown>"
+										},
+										"createTime" : {
+											"__type" : "time",
+											"time" : {
+												"__type" : "dateAndTime",
+												"dateAndTimeString" : "2024-02-17T10:00:27.847402+01:00"
+											}
+										},
+										"editEmail" : {
+											"__type" : "email",
+											"emailString" : "<unknown>"
+										},
+										"editTime" : {
+											"__type" : "time",
+											"time" : {
+												"__type" : "dateAndTime",
+												"dateAndTimeString" : "2024-02-17T10:02:06.866954+01:00"
+											}
+										},
+										"uid" : {
+											"__type" : "uid",
+											"uidString" : "lC0u1PHNDQCripTLAm0Euw=="
+										},
+										"paragraphStyle" : {
+											"__type" : "textStyle"
+										},
+										"string" : "NB: This refactoring can only be carried out from the Coder."
 									},
 									{
 										"__type" : "textSnippet",
@@ -500,7 +578,7 @@
 											"__type" : "time",
 											"time" : {
 												"__type" : "dateAndTime",
-												"dateAndTimeString" : "2024-02-16T18:44:21.039608+01:00"
+												"dateAndTimeString" : "2024-02-17T10:03:32.42839+01:00"
 											}
 										},
 										"editEmail" : {
@@ -511,17 +589,54 @@
 											"__type" : "time",
 											"time" : {
 												"__type" : "dateAndTime",
-												"dateAndTimeString" : "2024-02-16T18:46:07.3268+01:00"
+												"dateAndTimeString" : "2024-02-17T10:03:47.14622+01:00"
 											}
 										},
 										"uid" : {
 											"__type" : "uid",
-											"uidString" : "Tz/nB+XNDQCq/JRpC2KC0w=="
+											"uidString" : "XKcu3/HNDQCvE9CDAm0Euw=="
 										},
 										"paragraphStyle" : {
 											"__type" : "textStyle"
 										},
-										"string" : "Then there are some issues to extract the example without any argument!"
+										"string" : "We fix the direct references to the `money` slot to `self money`."
+									},
+									{
+										"__type" : "textSnippet",
+										"children" : {
+											"__type" : "snippets",
+											"items" : [ ]
+										},
+										"createEmail" : {
+											"__type" : "email",
+											"emailString" : "<unknown>"
+										},
+										"createTime" : {
+											"__type" : "time",
+											"time" : {
+												"__type" : "dateAndTime",
+												"dateAndTimeString" : "2024-02-17T10:02:07.291986+01:00"
+											}
+										},
+										"editEmail" : {
+											"__type" : "email",
+											"emailString" : "<unknown>"
+										},
+										"editTime" : {
+											"__type" : "time",
+											"time" : {
+												"__type" : "dateAndTime",
+												"dateAndTimeString" : "2024-02-17T10:02:42.143428+01:00"
+											}
+										},
+										"uid" : {
+											"__type" : "uid",
+											"uidString" : "6ZQb2vHNDQCs0/BIAm0Euw=="
+										},
+										"paragraphStyle" : {
+											"__type" : "textStyle"
+										},
+										"string" : "We push the `money` slot down from `Price` and remove it from `PriceDiscountedByMoney`"
 									}
 								]
 							},
@@ -533,7 +648,7 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2024-02-16T18:43:29.772166+01:00"
+									"dateAndTimeString" : "2024-02-17T10:00:14.315715+01:00"
 								}
 							},
 							"editEmail" : {
@@ -544,17 +659,17 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2024-02-16T18:43:37.323834+01:00"
+									"dateAndTimeString" : "2024-02-17T10:00:27.567699+01:00"
 								}
 							},
 							"uid" : {
 								"__type" : "uid",
-								"uidString" : "CfjYBOXNDQCoVeuaC2KC0w=="
+								"uidString" : "9K1f0/HNDQCqvgncAm0Euw=="
 							},
 							"paragraphStyle" : {
 								"__type" : "textStyle"
 							},
-							"string" : "***CONTINUE HERE***"
+							"string" : "We convert `ConcretePrice` to a sibling."
 						},
 						{
 							"__type" : "textSnippet",
@@ -570,7 +685,7 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2024-02-16T18:43:30.031267+01:00"
+									"dateAndTimeString" : "2024-02-17T10:06:16.48818+01:00"
 								}
 							},
 							"editEmail" : {
@@ -581,54 +696,17 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2024-02-16T18:43:30.031267+01:00"
+									"dateAndTimeString" : "2024-02-17T10:06:21.465694+01:00"
 								}
 							},
 							"uid" : {
 								"__type" : "uid",
-								"uidString" : "P+zcBOXNDQCoWaYkC2KC0w=="
+								"uidString" : "i7ZA3PHNDQCu7gAMAm0Euw=="
 							},
 							"paragraphStyle" : {
 								"__type" : "textStyle"
 							},
-							"string" : ""
-						},
-						{
-							"__type" : "textSnippet",
-							"children" : {
-								"__type" : "snippets",
-								"items" : [ ]
-							},
-							"createEmail" : {
-								"__type" : "email",
-								"emailString" : "<unknown>"
-							},
-							"createTime" : {
-								"__type" : "time",
-								"time" : {
-									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2024-02-16T18:37:51.841462+01:00"
-								}
-							},
-							"editEmail" : {
-								"__type" : "email",
-								"emailString" : "<unknown>"
-							},
-							"editTime" : {
-								"__type" : "time",
-								"time" : {
-									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2024-02-16T18:39:18.926841+01:00"
-								}
-							},
-							"uid" : {
-								"__type" : "uid",
-								"uidString" : "uY208OTNDQCmX1e7C2KC0w=="
-							},
-							"paragraphStyle" : {
-								"__type" : "textStyle"
-							},
-							"string" : "We take the snippet above and perform an *Extract example* refactoring."
+							"string" : "The example is working."
 						},
 						{
 							"__type" : "pharoSnippet",
@@ -644,7 +722,7 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2024-02-16T18:38:03.328132+01:00"
+									"dateAndTimeString" : "2024-02-17T10:05:58.588787+01:00"
 								}
 							},
 							"editEmail" : {
@@ -655,14 +733,14 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2024-02-16T18:41:22.379492+01:00"
+									"dateAndTimeString" : "2024-02-17T10:05:59.116257+01:00"
 								}
 							},
 							"uid" : {
 								"__type" : "uid",
-								"uidString" : "PNJj8eTNDQCmb9RWC2KC0w=="
+								"uidString" : "DMvk5/HNDQCweou/Am0Euw=="
 							},
-							"code" : "PricesExamples new discountedByMoney: price"
+							"code" : "price := PricesExamples new concretePrice.\rprice discountedBy: 10 euros."
 						},
 						{
 							"__type" : "textSnippet",
@@ -678,7 +756,7 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2024-02-16T18:37:52.065976+01:00"
+									"dateAndTimeString" : "2024-02-17T10:06:29.012536+01:00"
 								}
 							},
 							"editEmail" : {
@@ -689,128 +767,17 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2024-02-16T18:37:52.065976+01:00"
+									"dateAndTimeString" : "2024-02-17T10:06:41.162872+01:00"
 								}
 							},
 							"uid" : {
 								"__type" : "uid",
-								"uidString" : "Cvi38OTNDQCmY5gfC2KC0w=="
+								"uidString" : "vR216fHNDQCxY1JCAm0Euw=="
 							},
 							"paragraphStyle" : {
 								"__type" : "textStyle"
 							},
-							"string" : ""
-						},
-						{
-							"__type" : "textSnippet",
-							"children" : {
-								"__type" : "snippets",
-								"items" : [ ]
-							},
-							"createEmail" : {
-								"__type" : "email",
-								"emailString" : "<unknown>"
-							},
-							"createTime" : {
-								"__type" : "time",
-								"time" : {
-									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2024-02-16T18:37:52.257017+01:00"
-								}
-							},
-							"editEmail" : {
-								"__type" : "email",
-								"emailString" : "<unknown>"
-							},
-							"editTime" : {
-								"__type" : "time",
-								"time" : {
-									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2024-02-16T18:37:52.257017+01:00"
-								}
-							},
-							"uid" : {
-								"__type" : "uid",
-								"uidString" : "muK68OTNDQCmZ/GgC2KC0w=="
-							},
-							"paragraphStyle" : {
-								"__type" : "textStyle"
-							},
-							"string" : ""
-						},
-						{
-							"__type" : "textSnippet",
-							"children" : {
-								"__type" : "snippets",
-								"items" : [ ]
-							},
-							"createEmail" : {
-								"__type" : "email",
-								"emailString" : "<unknown>"
-							},
-							"createTime" : {
-								"__type" : "time",
-								"time" : {
-									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2024-02-16T18:37:52.471913+01:00"
-								}
-							},
-							"editEmail" : {
-								"__type" : "email",
-								"emailString" : "<unknown>"
-							},
-							"editTime" : {
-								"__type" : "time",
-								"time" : {
-									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2024-02-16T18:37:52.471913+01:00"
-								}
-							},
-							"uid" : {
-								"__type" : "uid",
-								"uidString" : "nSy+8OTNDQCma3BiC2KC0w=="
-							},
-							"paragraphStyle" : {
-								"__type" : "textStyle"
-							},
-							"string" : ""
-						},
-						{
-							"__type" : "textSnippet",
-							"children" : {
-								"__type" : "snippets",
-								"items" : [ ]
-							},
-							"createEmail" : {
-								"__type" : "email",
-								"emailString" : "<unknown>"
-							},
-							"createTime" : {
-								"__type" : "time",
-								"time" : {
-									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2024-02-16T18:32:42.281913+01:00"
-								}
-							},
-							"editEmail" : {
-								"__type" : "email",
-								"emailString" : "<unknown>"
-							},
-							"editTime" : {
-								"__type" : "time",
-								"time" : {
-									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2024-02-16T18:32:42.281913+01:00"
-								}
-							},
-							"uid" : {
-								"__type" : "uid",
-								"uidString" : "ug9B3uTNDQCiXD1UC2KC0w=="
-							},
-							"paragraphStyle" : {
-								"__type" : "textStyle"
-							},
-							"string" : "We inspect our examples."
+							"string" : "We perform an *Extract example* refactoring."
 						},
 						{
 							"__type" : "pharoSnippet",
@@ -826,7 +793,7 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2024-02-16T18:32:42.281918+01:00"
+									"dateAndTimeString" : "2024-02-17T10:06:24.725147+01:00"
 								}
 							},
 							"editEmail" : {
@@ -837,531 +804,12 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2024-02-16T18:32:42.281918+01:00"
+									"dateAndTimeString" : "2024-02-17T10:14:46.902065+01:00"
 								}
 							},
 							"uid" : {
 								"__type" : "uid",
-								"uidString" : "wA9B3uTNDQCiXYnHC2KC0w=="
-							},
-							"code" : "PricesExamples new."
-						},
-						{
-							"__type" : "textSnippet",
-							"children" : {
-								"__type" : "snippets",
-								"items" : [
-									{
-										"__type" : "textSnippet",
-										"children" : {
-											"__type" : "snippets",
-											"items" : [ ]
-										},
-										"createEmail" : {
-											"__type" : "email",
-											"emailString" : "<unknown>"
-										},
-										"createTime" : {
-											"__type" : "time",
-											"time" : {
-												"__type" : "dateAndTime",
-												"dateAndTimeString" : "2024-02-16T18:32:42.281925+01:00"
-											}
-										},
-										"editEmail" : {
-											"__type" : "email",
-											"emailString" : "<unknown>"
-										},
-										"editTime" : {
-											"__type" : "time",
-											"time" : {
-												"__type" : "dateAndTime",
-												"dateAndTimeString" : "2024-02-16T18:32:42.281925+01:00"
-											}
-										},
-										"uid" : {
-											"__type" : "uid",
-											"uidString" : "xg9B3uTNDQCiXwc1C2KC0w=="
-										},
-										"paragraphStyle" : {
-											"__type" : "textStyle"
-										},
-										"string" : "price := self concretePrice.\rpriceDiscountedByMoney := price discountedBy: 10 euros.\rpriceDiscountedByMoney"
-									}
-								]
-							},
-							"createEmail" : {
-								"__type" : "email",
-								"emailString" : "<unknown>"
-							},
-							"createTime" : {
-								"__type" : "time",
-								"time" : {
-									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2024-02-16T18:32:42.281922+01:00"
-								}
-							},
-							"editEmail" : {
-								"__type" : "email",
-								"emailString" : "<unknown>"
-							},
-							"editTime" : {
-								"__type" : "time",
-								"time" : {
-									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2024-02-16T18:32:42.281922+01:00"
-								}
-							},
-							"uid" : {
-								"__type" : "uid",
-								"uidString" : "ww9B3uTNDQCiXmnvC2KC0w=="
-							},
-							"paragraphStyle" : {
-								"__type" : "textStyle"
-							},
-							"string" : "We evaluate and inspect this:"
-						},
-						{
-							"__type" : "textSnippet",
-							"children" : {
-								"__type" : "snippets",
-								"items" : [
-									{
-										"__type" : "textSnippet",
-										"children" : {
-											"__type" : "snippets",
-											"items" : [ ]
-										},
-										"createEmail" : {
-											"__type" : "email",
-											"emailString" : "<unknown>"
-										},
-										"createTime" : {
-											"__type" : "time",
-											"time" : {
-												"__type" : "dateAndTime",
-												"dateAndTimeString" : "2024-02-16T18:32:42.28194+01:00"
-											}
-										},
-										"editEmail" : {
-											"__type" : "email",
-											"emailString" : "<unknown>"
-										},
-										"editTime" : {
-											"__type" : "time",
-											"time" : {
-												"__type" : "dateAndTime",
-												"dateAndTimeString" : "2024-02-16T18:32:42.28194+01:00"
-											}
-										},
-										"uid" : {
-											"__type" : "uid",
-											"uidString" : "1g9B3uTNDQCiYW5PC2KC0w=="
-										},
-										"paragraphStyle" : {
-											"__type" : "textStyle"
-										},
-										"string" : "self = 90 euros asPrice"
-									}
-								]
-							},
-							"createEmail" : {
-								"__type" : "email",
-								"emailString" : "<unknown>"
-							},
-							"createTime" : {
-								"__type" : "time",
-								"time" : {
-									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2024-02-16T18:32:42.28193+01:00"
-								}
-							},
-							"editEmail" : {
-								"__type" : "email",
-								"emailString" : "<unknown>"
-							},
-							"editTime" : {
-								"__type" : "time",
-								"time" : {
-									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2024-02-16T18:32:42.28193+01:00"
-								}
-							},
-							"uid" : {
-								"__type" : "uid",
-								"uidString" : "zA9B3uTNDQCiYFP6C2KC0w=="
-							},
-							"paragraphStyle" : {
-								"__type" : "textStyle"
-							},
-							"string" : "Now we want to test if this is equal to 90 euros."
-						},
-						{
-							"__type" : "textSnippet",
-							"children" : {
-								"__type" : "snippets",
-								"items" : [ ]
-							},
-							"createEmail" : {
-								"__type" : "email",
-								"emailString" : "<unknown>"
-							},
-							"createTime" : {
-								"__type" : "time",
-								"time" : {
-									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2024-02-16T18:32:42.281947+01:00"
-								}
-							},
-							"editEmail" : {
-								"__type" : "email",
-								"emailString" : "<unknown>"
-							},
-							"editTime" : {
-								"__type" : "time",
-								"time" : {
-									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2024-02-16T18:32:42.281947+01:00"
-								}
-							},
-							"uid" : {
-								"__type" : "uid",
-								"uidString" : "3Q9B3uTNDQCiYixmC2KC0w=="
-							},
-							"paragraphStyle" : {
-								"__type" : "textStyle"
-							},
-							"string" : "This fails, because we need concrete and discounted prices to be in a common hierarchy."
-						},
-						{
-							"__type" : "textSnippet",
-							"children" : {
-								"__type" : "snippets",
-								"items" : [ ]
-							},
-							"createEmail" : {
-								"__type" : "email",
-								"emailString" : "<unknown>"
-							},
-							"createTime" : {
-								"__type" : "time",
-								"time" : {
-									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2024-02-16T18:32:42.28195+01:00"
-								}
-							},
-							"editEmail" : {
-								"__type" : "email",
-								"emailString" : "<unknown>"
-							},
-							"editTime" : {
-								"__type" : "time",
-								"time" : {
-									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2024-02-16T18:32:42.28195+01:00"
-								}
-							},
-							"uid" : {
-								"__type" : "uid",
-								"uidString" : "3w9B3uTNDQCiY+BLC2KC0w=="
-							},
-							"paragraphStyle" : {
-								"__type" : "textStyle"
-							},
-							"string" : "So we introduce an abstract superclass `Price` for both our existing price classes. "
-						},
-						{
-							"__type" : "textSnippet",
-							"children" : {
-								"__type" : "snippets",
-								"items" : [ ]
-							},
-							"createEmail" : {
-								"__type" : "email",
-								"emailString" : "<unknown>"
-							},
-							"createTime" : {
-								"__type" : "time",
-								"time" : {
-									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2024-02-16T18:32:42.281953+01:00"
-								}
-							},
-							"editEmail" : {
-								"__type" : "email",
-								"emailString" : "<unknown>"
-							},
-							"editTime" : {
-								"__type" : "time",
-								"time" : {
-									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2024-02-16T18:32:42.281953+01:00"
-								}
-							},
-							"uid" : {
-								"__type" : "uid",
-								"uidString" : "4g9B3uTNDQCiZG5UC2KC0w=="
-							},
-							"paragraphStyle" : {
-								"__type" : "textStyle"
-							},
-							"string" : "We introduce an abstract `money` method in `Price` and move the `=` method to `Price`."
-						},
-						{
-							"__type" : "textSnippet",
-							"children" : {
-								"__type" : "snippets",
-								"items" : [
-									{
-										"__type" : "textSnippet",
-										"children" : {
-											"__type" : "snippets",
-											"items" : [ ]
-										},
-										"createEmail" : {
-											"__type" : "email",
-											"emailString" : "<unknown>"
-										},
-										"createTime" : {
-											"__type" : "time",
-											"time" : {
-												"__type" : "dateAndTime",
-												"dateAndTimeString" : "2024-02-16T18:32:42.281964+01:00"
-											}
-										},
-										"editEmail" : {
-											"__type" : "email",
-											"emailString" : "<unknown>"
-										},
-										"editTime" : {
-											"__type" : "time",
-											"time" : {
-												"__type" : "dateAndTime",
-												"dateAndTimeString" : "2024-02-16T18:32:42.281964+01:00"
-											}
-										},
-										"uid" : {
-											"__type" : "uid",
-											"uidString" : "7g9B3uTNDQCiZqe/C2KC0w=="
-										},
-										"paragraphStyle" : {
-											"__type" : "textStyle"
-										},
-										"string" : "PriceDiscountedByMoney>>#money\r\t^ self price money - self discountMoney"
-									}
-								]
-							},
-							"createEmail" : {
-								"__type" : "email",
-								"emailString" : "<unknown>"
-							},
-							"createTime" : {
-								"__type" : "time",
-								"time" : {
-									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2024-02-16T18:32:42.281959+01:00"
-								}
-							},
-							"editEmail" : {
-								"__type" : "email",
-								"emailString" : "<unknown>"
-							},
-							"editTime" : {
-								"__type" : "time",
-								"time" : {
-									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2024-02-16T18:32:42.281959+01:00"
-								}
-							},
-							"uid" : {
-								"__type" : "uid",
-								"uidString" : "6A9B3uTNDQCiZU0gC2KC0w=="
-							},
-							"paragraphStyle" : {
-								"__type" : "textStyle"
-							},
-							"string" : "We implement:"
-						},
-						{
-							"__type" : "textSnippet",
-							"children" : {
-								"__type" : "snippets",
-								"items" : [
-									{
-										"__type" : "textSnippet",
-										"children" : {
-											"__type" : "snippets",
-											"items" : [ ]
-										},
-										"createEmail" : {
-											"__type" : "email",
-											"emailString" : "<unknown>"
-										},
-										"createTime" : {
-											"__type" : "time",
-											"time" : {
-												"__type" : "dateAndTime",
-												"dateAndTimeString" : "2024-02-16T18:32:42.281974+01:00"
-											}
-										},
-										"editEmail" : {
-											"__type" : "email",
-											"emailString" : "<unknown>"
-										},
-										"editTime" : {
-											"__type" : "time",
-											"time" : {
-												"__type" : "dateAndTime",
-												"dateAndTimeString" : "2024-02-16T18:32:42.281974+01:00"
-											}
-										},
-										"uid" : {
-											"__type" : "uid",
-											"uidString" : "9w9B3uTNDQCiaOnDC2KC0w=="
-										},
-										"paragraphStyle" : {
-											"__type" : "textStyle"
-										},
-										"string" : "price := self concretePrice.\rpriceDiscountedByMoney := price discountedBy: 10 euros.\rself assert: priceDiscountedByMoney equals: 90 euros asPrice.\rpriceDiscountedByMoney "
-									}
-								]
-							},
-							"createEmail" : {
-								"__type" : "email",
-								"emailString" : "<unknown>"
-							},
-							"createTime" : {
-								"__type" : "time",
-								"time" : {
-									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2024-02-16T18:32:42.281971+01:00"
-								}
-							},
-							"editEmail" : {
-								"__type" : "email",
-								"emailString" : "<unknown>"
-							},
-							"editTime" : {
-								"__type" : "time",
-								"time" : {
-									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2024-02-16T18:32:42.281971+01:00"
-								}
-							},
-							"uid" : {
-								"__type" : "uid",
-								"uidString" : "9A9B3uTNDQCiZ/VWC2KC0w=="
-							},
-							"paragraphStyle" : {
-								"__type" : "textStyle"
-							},
-							"string" : "Now the comparison is true. We rewrite:"
-						},
-						{
-							"__type" : "textSnippet",
-							"children" : {
-								"__type" : "snippets",
-								"items" : [ ]
-							},
-							"createEmail" : {
-								"__type" : "email",
-								"emailString" : "<unknown>"
-							},
-							"createTime" : {
-								"__type" : "time",
-								"time" : {
-									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2024-02-16T18:32:42.281978+01:00"
-								}
-							},
-							"editEmail" : {
-								"__type" : "email",
-								"emailString" : "<unknown>"
-							},
-							"editTime" : {
-								"__type" : "time",
-								"time" : {
-									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2024-02-16T18:32:42.281978+01:00"
-								}
-							},
-							"uid" : {
-								"__type" : "uid",
-								"uidString" : "/A9B3uTNDQCiaTWGC2KC0w=="
-							},
-							"paragraphStyle" : {
-								"__type" : "textStyle"
-							},
-							"string" : "And we extract it as a method (and add the missing `<gtExample>` pragma)."
-						},
-						{
-							"__type" : "textSnippet",
-							"children" : {
-								"__type" : "snippets",
-								"items" : [ ]
-							},
-							"createEmail" : {
-								"__type" : "email",
-								"emailString" : "<unknown>"
-							},
-							"createTime" : {
-								"__type" : "time",
-								"time" : {
-									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2024-02-16T18:32:42.281981+01:00"
-								}
-							},
-							"editEmail" : {
-								"__type" : "email",
-								"emailString" : "<unknown>"
-							},
-							"editTime" : {
-								"__type" : "time",
-								"time" : {
-									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2024-02-16T18:32:42.281981+01:00"
-								}
-							},
-							"uid" : {
-								"__type" : "uid",
-								"uidString" : "/w9B3uTNDQCiavKeC2KC0w=="
-							},
-							"paragraphStyle" : {
-								"__type" : "textStyle"
-							},
-							"string" : "We inspect th enew example:"
-						},
-						{
-							"__type" : "pharoSnippet",
-							"children" : {
-								"__type" : "snippets",
-								"items" : [ ]
-							},
-							"createEmail" : {
-								"__type" : "email",
-								"emailString" : "<unknown>"
-							},
-							"createTime" : {
-								"__type" : "time",
-								"time" : {
-									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2024-02-16T18:32:42.281984+01:00"
-								}
-							},
-							"editEmail" : {
-								"__type" : "email",
-								"emailString" : "<unknown>"
-							},
-							"editTime" : {
-								"__type" : "time",
-								"time" : {
-									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2024-02-16T18:32:42.281984+01:00"
-								}
-							},
-							"uid" : {
-								"__type" : "uid",
-								"uidString" : "AhBB3uTNDQCia3c6C2KC0w=="
+								"uidString" : "ALNz6fHNDQCxWnGuAm0Euw=="
 							},
 							"code" : "PricesExamples new priceDiscountedByMoney."
 						},
@@ -1379,7 +827,7 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2024-02-16T18:32:42.281989+01:00"
+									"dateAndTimeString" : "2024-02-17T10:08:04.013934+01:00"
 								}
 							},
 							"editEmail" : {
@@ -1390,17 +838,122 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2024-02-16T18:32:42.281989+01:00"
+									"dateAndTimeString" : "2024-02-17T10:10:08.794667+01:00"
 								}
 							},
 							"uid" : {
 								"__type" : "uid",
-								"uidString" : "BhBB3uTNDQCibLl8C2KC0w=="
+								"uidString" : "F7le7/HNDQCycGhDAm0Euw=="
 							},
 							"paragraphStyle" : {
 								"__type" : "textStyle"
 							},
-							"string" : "We would like the Money view, so we push up the `gtMoneyFor:` method. (We have to change the object from `money` to `self money`.)"
+							"string" : "Now we wangt to check if the price is what we expect."
+						},
+						{
+							"__type" : "pharoSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2024-02-17T10:08:05.578375+01:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2024-02-17T10:14:52.459866+01:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "4JZ27/HNDQCydAbyAm0Euw=="
+							},
+							"code" : "PricesExamples new priceDiscountedByMoney = 90 euros asPrice."
+						},
+						{
+							"__type" : "textSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2024-02-17T09:54:16.705571+01:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2024-02-17T10:10:24.351235+01:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "NP8OvvHNDQCkQtCwAm0Euw=="
+							},
+							"paragraphStyle" : {
+								"__type" : "textStyle"
+							},
+							"string" : "We add this as an assertion to the example."
+						},
+						{
+							"__type" : "pharoSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2024-02-17T10:10:26.129698+01:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2024-02-17T10:14:54.284635+01:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "lzvX9/HNDQC1mK7DAm0Euw=="
+							},
+							"code" : "PricesExamples new priceDiscountedByMoney."
 						},
 						{
 							"__type" : "textSnippet",
@@ -1464,14 +1017,14 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2024-02-16T18:32:42.282001+01:00"
+									"dateAndTimeString" : "2024-02-17T10:16:29.013886+01:00"
 								}
 							},
 							"uid" : {
 								"__type" : "uid",
 								"uidString" : "ExBB3uTNDQCibh/RC2KC0w=="
 							},
-							"code" : "priceDiscountedByMoney := PricesExamples new priceDiscountedByMoney.\rprice := priceDiscountedByMoney discountedBy: 10 percent. "
+							"code" : "priceDiscountedByMoney := PricesExamples new priceDiscountedByMoney. \rprice := priceDiscountedByMoney discountedBy: 10 percent. "
 						},
 						{
 							"__type" : "textSnippet",
@@ -1498,7 +1051,7 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2024-02-16T18:32:42.282005+01:00"
+									"dateAndTimeString" : "2024-02-17T10:17:11.821573+01:00"
 								}
 							},
 							"uid" : {
@@ -1508,7 +1061,7 @@
 							"paragraphStyle" : {
 								"__type" : "textStyle"
 							},
-							"string" : "We see now that `discountedBy:`needs to double dispatch on the argument, which may be either a money or a `Fraction`. We push up `discountedBy:` to `Price`."
+							"string" : "We see now that `discountedBy:`needs to double dispatch on the argument, which may be either a money or a `Fraction`. "
 						},
 						{
 							"__type" : "textSnippet",
@@ -1756,7 +1309,7 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2024-02-16T18:32:42.282039+01:00"
+									"dateAndTimeString" : "2024-02-17T10:20:28.644945+01:00"
 								}
 							},
 							"uid" : {
@@ -1766,44 +1319,7 @@
 							"paragraphStyle" : {
 								"__type" : "textStyle"
 							},
-							"string" : "We need a new class `PriceDiscountedByPercent`. It would be similar to `PriceDiscountedByMoney` so let's first create a new subclass `DecoratedPrice` of Price that will be a parent of the discount classes."
-						},
-						{
-							"__type" : "textSnippet",
-							"children" : {
-								"__type" : "snippets",
-								"items" : [ ]
-							},
-							"createEmail" : {
-								"__type" : "email",
-								"emailString" : "<unknown>"
-							},
-							"createTime" : {
-								"__type" : "time",
-								"time" : {
-									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2024-02-16T18:32:42.282045+01:00"
-								}
-							},
-							"editEmail" : {
-								"__type" : "email",
-								"emailString" : "<unknown>"
-							},
-							"editTime" : {
-								"__type" : "time",
-								"time" : {
-									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2024-02-16T18:32:42.282045+01:00"
-								}
-							},
-							"uid" : {
-								"__type" : "uid",
-								"uidString" : "PxBB3uTNDQCid+unC2KC0w=="
-							},
-							"paragraphStyle" : {
-								"__type" : "textStyle"
-							},
-							"string" : "We make it a parent of `PriceDiscountedByMoney` and push up the `price` slot and accessors."
+							"string" : "We need a new class `PriceDiscountedByPercent`. It would be similar to `PriceDiscountedByMoney` so let's first create ait as a subclass `PriceDiscountedByMoney`."
 						},
 						{
 							"__type" : "textSnippet",
@@ -1867,14 +1383,14 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2024-02-16T18:32:42.282053+01:00"
+									"dateAndTimeString" : "2024-02-17T10:21:35.682955+01:00"
 								}
 							},
 							"uid" : {
 								"__type" : "uid",
 								"uidString" : "RxBB3uTNDQCieWoXC2KC0w=="
 							},
-							"code" : "PriceDiscountedByPercent new\r\tprice: 100 euros asPrice;\r\tdiscountPercent: 10 percent "
+							"code" : "PriceDiscountedByPercent new\r\tprice: 100 euros asPrice;\r\tdiscountPercent: 10 percent."
 						},
 						{
 							"__type" : "textSnippet",
@@ -1901,7 +1417,7 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2024-02-16T18:32:42.282058+01:00"
+									"dateAndTimeString" : "2024-02-17T10:24:22.807519+01:00"
 								}
 							},
 							"uid" : {
@@ -1911,7 +1427,7 @@
 							"paragraphStyle" : {
 								"__type" : "textStyle"
 							},
-							"string" : "If we inspect this we see that we need to implement `money`."
+							"string" : "If we inspect this we see that we need to implement `money`. We test the code in the playground and extract it as a method."
 						},
 						{
 							"__type" : "textSnippet",
@@ -2014,7 +1530,7 @@
 											"__type" : "time",
 											"time" : {
 												"__type" : "dateAndTime",
-												"dateAndTimeString" : "2024-02-16T18:32:42.282071+01:00"
+												"dateAndTimeString" : "2024-02-17T10:25:04.321417+01:00"
 											}
 										},
 										"uid" : {
@@ -2073,7 +1589,7 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2024-02-16T18:32:42.282076+01:00"
+									"dateAndTimeString" : "2024-02-17T10:26:23.25219+01:00"
 								}
 							},
 							"editEmail" : {
@@ -2084,7 +1600,7 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2024-02-16T18:32:42.282076+01:00"
+									"dateAndTimeString" : "2024-02-17T10:26:33.311676+01:00"
 								}
 							},
 							"uid" : {
@@ -2094,7 +1610,7 @@
 							"paragraphStyle" : {
 								"__type" : "textStyle"
 							},
-							"string" : "We now expand our snippet with the assertion we want."
+							"string" : "The snippet now works, so we extract it as an example."
 						},
 						{
 							"__type" : "pharoSnippet",
@@ -2121,117 +1637,12 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2024-02-16T18:32:42.282079+01:00"
+									"dateAndTimeString" : "2024-02-17T10:27:04.993393+01:00"
 								}
 							},
 							"uid" : {
 								"__type" : "uid",
 								"uidString" : "YRBB3uTNDQCigOvmC2KC0w=="
-							},
-							"code" : "examples := PricesExamples new."
-						},
-						{
-							"__type" : "pharoSnippet",
-							"children" : {
-								"__type" : "snippets",
-								"items" : [ ]
-							},
-							"createEmail" : {
-								"__type" : "email",
-								"emailString" : "<unknown>"
-							},
-							"createTime" : {
-								"__type" : "time",
-								"time" : {
-									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2024-02-16T18:32:42.282083+01:00"
-								}
-							},
-							"editEmail" : {
-								"__type" : "email",
-								"emailString" : "<unknown>"
-							},
-							"editTime" : {
-								"__type" : "time",
-								"time" : {
-									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2024-02-16T18:32:42.282083+01:00"
-								}
-							},
-							"uid" : {
-								"__type" : "uid",
-								"uidString" : "ZRBB3uTNDQCigXpVC2KC0w=="
-							},
-							"code" : "priceDiscountedByMoney := examples priceDiscountedByMoney.\rprice := priceDiscountedByMoney discountedBy: 10 percent. \rself assert: price equals: 81 euros asPrice.\rprice"
-						},
-						{
-							"__type" : "textSnippet",
-							"children" : {
-								"__type" : "snippets",
-								"items" : [ ]
-							},
-							"createEmail" : {
-								"__type" : "email",
-								"emailString" : "<unknown>"
-							},
-							"createTime" : {
-								"__type" : "time",
-								"time" : {
-									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2024-02-16T18:32:42.282086+01:00"
-								}
-							},
-							"editEmail" : {
-								"__type" : "email",
-								"emailString" : "<unknown>"
-							},
-							"editTime" : {
-								"__type" : "time",
-								"time" : {
-									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2024-02-16T18:32:42.282086+01:00"
-								}
-							},
-							"uid" : {
-								"__type" : "uid",
-								"uidString" : "aBBB3uTNDQCigofyC2KC0w=="
-							},
-							"paragraphStyle" : {
-								"__type" : "textStyle"
-							},
-							"string" : "Finally we extract it as an example."
-						},
-						{
-							"__type" : "pharoSnippet",
-							"children" : {
-								"__type" : "snippets",
-								"items" : [ ]
-							},
-							"createEmail" : {
-								"__type" : "email",
-								"emailString" : "<unknown>"
-							},
-							"createTime" : {
-								"__type" : "time",
-								"time" : {
-									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2024-02-16T18:32:42.282089+01:00"
-								}
-							},
-							"editEmail" : {
-								"__type" : "email",
-								"emailString" : "<unknown>"
-							},
-							"editTime" : {
-								"__type" : "time",
-								"time" : {
-									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2024-02-16T18:32:42.282089+01:00"
-								}
-							},
-							"uid" : {
-								"__type" : "uid",
-								"uidString" : "axBB3uTNDQCig1iWC2KC0w=="
 							},
 							"code" : "PricesExamples new priceDiscountedByPercent."
 						},
@@ -2249,7 +1660,7 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2024-02-16T18:32:42.282092+01:00"
+									"dateAndTimeString" : "2024-02-17T10:27:22.541814+01:00"
 								}
 							},
 							"editEmail" : {
@@ -2260,17 +1671,17 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2024-02-16T18:32:42.282092+01:00"
+									"dateAndTimeString" : "2024-02-17T10:27:37.065349+01:00"
 								}
 							},
 							"uid" : {
 								"__type" : "uid",
-								"uidString" : "cRBB3uTNDQCihBM+C2KC0w=="
+								"uidString" : "wNzFL/LNDQC5oolvAm0Euw=="
 							},
 							"paragraphStyle" : {
 								"__type" : "textStyle"
 							},
-							"string" : ""
+							"string" : "We add an assertion."
 						}
 					]
 				},
@@ -2335,14 +1746,14 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2024-02-16T18:32:42.282912+01:00"
+									"dateAndTimeString" : "2024-02-17T10:29:50.519905+01:00"
 								}
 							},
 							"uid" : {
 								"__type" : "uid",
 								"uidString" : "oxNB3uTNDQCihmjfC2KC0w=="
 							},
-							"code" : "(FileLocator gtResource\r\t/ 'feenkcom/gtoolkit-demos/data/prices/EDDPrices-2.st') fileIn.\r#PricesExamples asClass."
+							"code" : "[ #EDDPrices asPackage removeFromSystem ] onErrorDo: [  ].\r(FileLocator gtResource\r\t/ 'feenkcom/gtoolkit-demos/data/prices/EDDPrices-3.st') fileIn.\r#EDDPrices asPackage."
 						},
 						{
 							"__type" : "pharoSnippet",

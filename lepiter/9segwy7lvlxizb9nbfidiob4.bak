@@ -29,7 +29,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2024-02-13T15:03:54.028766+01:00"
+						"dateAndTimeString" : "2024-02-13T15:04:09.408131+01:00"
 					}
 				},
 				"uid" : {
@@ -39,7 +39,7 @@
 				"paragraphStyle" : {
 					"__type" : "textStyle"
 				},
-				"string" : "This is a first small EDD example in which we create just a `ConcretePrice` object using our existing `Money` classes. Instead of writing a test first, we "
+				"string" : "This is a first small EDD example in which we create just a `ConcretePrice` object using our existing `Money` classes. Instead of writing a test first, we create objects, explore them, and extract examples."
 			},
 			{
 				"__type" : "textSnippet",
@@ -1246,14 +1246,48 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2024-02-13T14:52:26.60458+01:00"
+									"dateAndTimeString" : "2024-02-17T09:46:37.424045+01:00"
 								}
 							},
 							"uid" : {
 								"__type" : "uid",
 								"uidString" : "dcFpMaLNDQCnJAKsCM2XBA=="
 							},
-							"code" : "(FileLocator gtResource\r\t/ 'feenkcom/gtoolkit-demos/data/prices/EDDPrices-1.st') fileIn.\r#PricesExamples asClass."
+							"code" : "[ #EDDPrices asPackage removeFromSystem ] onErrorDo: [  ].\r(FileLocator gtResource\r\t/ 'feenkcom/gtoolkit-demos/data/prices/EDDPrices-1.st') fileIn.\r#PricesExamples asClass.\r"
+						},
+						{
+							"__type" : "pharoSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2024-02-17T09:46:37.520879+01:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2024-02-17T09:46:37.707815+01:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "f2awovHNDQCjf8YTAm0Euw=="
+							},
+							"code" : "#EDDPrices asPackage"
 						},
 						{
 							"__type" : "textSnippet",
