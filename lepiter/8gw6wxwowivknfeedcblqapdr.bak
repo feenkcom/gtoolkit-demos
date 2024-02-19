@@ -8,7 +8,42 @@
 				"__type" : "textSnippet",
 				"children" : {
 					"__type" : "snippets",
-					"items" : [ ]
+					"items" : [
+						{
+							"__type" : "pharoSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2024-02-16T16:33:39.809322+01:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2024-02-16T16:33:40.433132+01:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "e5CHNOPNDQCqu3qsCnxFsA=="
+							},
+							"code" : "(FileLocator gtResource\r\t/ 'feenkcom/gtoolkit-demos/data/prices/EDDPrices-1.st') fileIn.\r#PricesExamples asClass."
+						}
+					]
 				},
 				"createEmail" : {
 					"__type" : "email",
@@ -29,7 +64,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2024-02-16T16:33:35.611813+01:00"
+						"dateAndTimeString" : "2024-02-16T16:33:53.815912+01:00"
 					}
 				},
 				"uid" : {
@@ -39,7 +74,7 @@
 				"paragraphStyle" : {
 					"__type" : "textStyle"
 				},
-				"string" : "We continue from this state:"
+				"string" : "We continue from this state, following [[Introducing ConcretePrice]]: "
 			},
 			{
 				"__type" : "textSnippet",

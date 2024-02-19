@@ -628,7 +628,7 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2024-02-12T15:39:34.986265+01:00"
+									"dateAndTimeString" : "2024-02-12T15:40:35.731891+01:00"
 								}
 							},
 							"uid" : {
@@ -638,7 +638,7 @@
 							"paragraphStyle" : {
 								"__type" : "textStyle"
 							},
-							"string" : "To see the "
+							"string" : "To see the progress so far, file this in:"
 						},
 						{
 							"__type" : "pharoSnippet",
@@ -665,14 +665,48 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2024-02-12T15:40:14.932318+01:00"
+									"dateAndTimeString" : "2024-02-12T15:40:40.650065+01:00"
 								}
 							},
 							"uid" : {
 								"__type" : "uid",
 								"uidString" : "IwRA8pHNDQCRJEJvByM8jQ=="
 							},
-							"code" : "(FileLocator gtResource / 'feenkcom/gtoolkit-demos/data/prices/TDDPrices.st') fileIn.\r#PriceTests asClass."
+							"code" : "(FileLocator gtResource\r\t/ 'feenkcom/gtoolkit-demos/data/prices/TDDPrices.st') fileIn.\r#PriceTests asClass."
+						},
+						{
+							"__type" : "pharoSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2024-02-17T09:40:51.748102+01:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2024-02-17T09:44:23.286338+01:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "CFMUjvHNDQCg9odxAm0Euw=="
+							},
+							"code" : "[ #TDDPrices asPackage removeFromSystem ]\r\tonErrorDo: [ ]."
 						}
 					]
 				},

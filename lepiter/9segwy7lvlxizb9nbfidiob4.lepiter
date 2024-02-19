@@ -1246,14 +1246,14 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2024-02-13T14:52:26.60458+01:00"
+									"dateAndTimeString" : "2024-02-17T09:46:50.990279+01:00"
 								}
 							},
 							"uid" : {
 								"__type" : "uid",
 								"uidString" : "dcFpMaLNDQCnJAKsCM2XBA=="
 							},
-							"code" : "(FileLocator gtResource\r\t/ 'feenkcom/gtoolkit-demos/data/prices/EDDPrices-1.st') fileIn.\r#PricesExamples asClass."
+							"code" : "[ #EDDPrices asPackage removeFromSystem ] onErrorDo: [  ].\r(FileLocator gtResource\r\t/ 'feenkcom/gtoolkit-demos/data/prices/EDDPrices-1.st') fileIn.\r#EDDPrices asPackage."
 						},
 						{
 							"__type" : "textSnippet",
