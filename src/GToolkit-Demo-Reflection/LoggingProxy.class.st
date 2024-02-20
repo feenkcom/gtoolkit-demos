@@ -6,33 +6,46 @@ Class {
 	#superclass : #ProtoObject,
 	#instVars : [
 		'subject',
-		'invocationCount'
+		'messageLog'
 	],
 	#category : #'GToolkit-Demo-Reflection-Intercession'
 }
 
 { #category : #'instance creation' }
 LoggingProxy class >> for: aSubject [
-	^ self new become: aSubject
+	self new become: aSubject.
+	^ aSubject
 ]
 
 { #category : #'error-handling' }
 LoggingProxy >> doesNotUnderstand: aMessage [
-	Transcript
-		show: 'performing ' , aMessage printString;
-		cr.
-	invocationCount := invocationCount + 1.
+	messageLog addLast: aMessage.
 	^ aMessage sendTo: subject
 	
 ]
 
+{ #category : #view }
+LoggingProxy >> gtLogFor: aView [
+	<gtView>
+	^ aView list
+		title: 'Log';
+		priority: 10;
+		items: [ self messageLog ];
+		actionUpdateButton
+]
+
 { #category : #'initialize-release' }
 LoggingProxy >> initialize [
-	invocationCount := 0.
+	messageLog := OrderedCollection new.
 	subject := self.
 ]
 
 { #category : #accessing }
-LoggingProxy >> invocationCount [
-	^ invocationCount
+LoggingProxy >> messageLog [
+	^ messageLog
+]
+
+{ #category : #accessing }
+LoggingProxy >> subject [
+	^ subject
 ]

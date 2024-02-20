@@ -13,12 +13,12 @@ ReflectionExamples >> anonymousClassInstance [
 	<gtExample>
 	| anon anObject |
 	anon := Object newAnonymousSubclass.
-
 	anObject := Object new.
 	anObject primitiveChangeClassTo: anon new.
 	anon compile: 'thisIsATest ^ 2'.
 	self assert: anObject thisIsATest equals: 2.
-	self should: [ Object new thisIsATest ] raise: MessageNotUnderstood.
+	self should: [ Object new thisIsATest ] 
+		raise: MessageNotUnderstood.
 	^ anObject
 ]
 
