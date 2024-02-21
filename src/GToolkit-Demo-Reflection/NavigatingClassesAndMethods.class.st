@@ -1,6 +1,8 @@
 "
 A diagram showing how to navigate from classes to compiled methods and their ASTs.
-Just points to UmlClassDiagramExamples
+Just points to UmlClassDiagramExamples.
+
+NB: This is used in the GT Book pages on “Understanding Reflection”, particularly “Querying classes and methods.”
 "
 Class {
 	#name : #NavigatingClassesAndMethods,

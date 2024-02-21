@@ -28,11 +28,10 @@ and replace by:
 "
 Class {
 	#name : #PrioritySlideshow,
-	#superclass : #Object,
+	#superclass : #DatabaseHolder,
 	#traits : 'TGtSlideShow',
 	#classTraits : 'TGtSlideShow classTrait',
 	#instVars : [
-		'db',
 		'announcer',
 		'slideDimensions'
 	],
@@ -171,19 +170,6 @@ PrioritySlideshow >> cr [
 	"Useful when gluing together text snippets with asHeader and asText."
 
 	^ String cr asRopedText
-]
-
-{ #category : #accessing }
-PrioritySlideshow >> db [
-	"Transient Lepiter database for the dynamically created pages.
-	NB: We need to create a transient registry as well, so that links will work within the database."
-
-	db
-		ifNil: [ db := LeDatabase new.
-			LeBasicDatabasesRegistry new
-				defaultLogicalDatabase: (LeLogicalDatabase new primaryDB: db).
-			db ].
-	^ db
 ]
 
 { #category : #exporting }
@@ -380,21 +366,6 @@ PrioritySlideshow >> gtPlaySlideshowAction: anAction [
 			button ]
 ]
 
-{ #category : #actions }
-PrioritySlideshow >> gtRefreshDbActionFor: anAction [
-	<gtAction>
-	^ anAction explicit
-		priority: 15;
-		stencil: [ | button |
-			button := BrButton new
-					id: GtInspectorInspectButtonId;
-					aptitude: BrGlamorousButtonWithIconAptitude;
-					icon: BrGlamorousIcons refresh;
-					label: 'Refresh database';
-					action: [ :aButton :aModel :anEvent | aButton phlow spawnObject: self renewDb ].
-			button ]
-]
-
 { #category : #views }
 PrioritySlideshow >> gtScriptFor: aView [
 	<gtView>
@@ -518,17 +489,8 @@ PrioritySlideshow >> initSlideDir [
 { #category : #initialization }
 PrioritySlideshow >> initialize [
 	super initialize.
-	self initializeDb.
 	announcer := Announcer new.
 	self subscribeToSystem.
-]
-
-{ #category : #initialization }
-PrioritySlideshow >> initializeDb [
-	"Automatically load all pages defined in methods with a <lePage> pragma.
-	Alternatively, overwrite this method to explicitly add pages."
-
-	self pageMethods do: [ :m | self db addPage: (self perform: m selector) ]
 ]
 
 { #category : #utility }
@@ -567,11 +529,6 @@ PrioritySlideshow >> onMethodRemoved: aMethodRemoved [
 ]
 
 { #category : #accessing }
-PrioritySlideshow >> pageMethods [
-	^ self class methods select: [ :m | m hasPragmaNamed: #lePage ]
-]
-
-{ #category : #accessing }
 PrioritySlideshow >> pages [
 	self error: 'Use self slidePriorities instead'.
 	^ self slidePriorities
@@ -590,16 +547,6 @@ PrioritySlideshow >> priorityFor: aSlideMethodSelector [
 		indexOf: aSlideMethodSelector
 		ifAbsent: [ self inform: 'Warning: Missing slide priority for ' , aSlideMethodSelector printString, ' in ', self class name, '#>>slidePriorities'.
 			self slidePriorities size + 1 ]
-]
-
-{ #category : #actions }
-PrioritySlideshow >> renewDb [
-	"Recreate the db from scratch, eg after adding new pages."
-	db := LeDatabase new.
-	LeBasicDatabasesRegistry new
-		defaultLogicalDatabase: (LeLogicalDatabase new primaryDB: db).
-	self initializeDb.
-	^ db
 ]
 
 { #category : #utility }
