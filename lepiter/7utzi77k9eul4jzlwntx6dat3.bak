@@ -253,7 +253,7 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2024-02-21T11:46:43.595126+01:00"
+									"dateAndTimeString" : "2024-02-21T14:52:28.263405+01:00"
 								}
 							},
 							"uid" : {
@@ -263,7 +263,7 @@
 							"paragraphStyle" : {
 								"__type" : "textStyle"
 							},
-							"string" : "[[Modeling a concrete price]]"
+							"string" : "[[Modeling a Concrete Price]]"
 						},
 						{
 							"__type" : "textSnippet",
@@ -279,7 +279,7 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2024-02-21T11:46:37.459068+01:00"
+									"dateAndTimeString" : "2024-02-21T11:46:49.546942+01:00"
 								}
 							},
 							"editEmail" : {
@@ -290,7 +290,7 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2024-02-21T11:46:37.459068+01:00"
+									"dateAndTimeString" : "2024-02-21T11:46:50.054372+01:00"
 								}
 							},
 							"uid" : {
@@ -300,7 +300,7 @@
 							"paragraphStyle" : {
 								"__type" : "textStyle"
 							},
-							"string" : ""
+							"string" : "[[Modeling discounted prices]]"
 						}
 					]
 				},

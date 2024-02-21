@@ -2203,7 +2203,7 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2024-02-21T16:59:24.967878+01:00"
+									"dateAndTimeString" : "2024-02-21T16:59:19.049625+01:00"
 								}
 							},
 							"uid" : {
@@ -2213,7 +2213,7 @@
 							"paragraphStyle" : {
 								"__type" : "textStyle"
 							},
-							"string" : "*Task:* Provide a view that shows how discounts are composed."
+							"string" : "*Task:* provide a view that shows how discounts are composed."
 						}
 					]
 				},
