@@ -10,7 +10,7 @@ GtTMoneyExamples >> bagWithEurosAndDollars [
 	| bag |
 	bag := self fourtyTwoEuros + self fourtyTwoDollars.
 	self assert: (bag isKindOf: GtTMoneyBag).
-	self assert: (bag monies size = 2).
+	self assert: bag monies size equals: 2.
 	^ bag
 ]
 
@@ -20,7 +20,7 @@ GtTMoneyExamples >> bagWithEurosAndDollarsMinusEuros [
 	| money |
 	money := self bagWithEurosAndDollars - self fourtyTwoEuros.
 	self assert: (money isKindOf: GtTCurrencyMoney).
-	self assert: (money = self fourtyTwoDollars).
+	self assert: money equals: self fourtyTwoDollars.
 	^ money
 ]
 
@@ -48,7 +48,7 @@ GtTMoneyExamples >> fourtyTwoDollarsPlusZeroDollars [
 	<gtExample>
 	| money |
 	money := self fourtyTwoDollars + self zeroEuros.
-	self assert: money = 42 usd.
+	self assert: money equals: 42 usd.
 	self assert: (money isKindOf: GtTCurrencyMoney).
 	^ money
 ]
@@ -59,7 +59,7 @@ GtTMoneyExamples >> fourtyTwoEuros [
 	| money |
 	money := 42 euros.
 	self assert: money isZero not.
-	self assert: money = 42 euros.
+	self assert: money equals: 42 euros.
 	^ money
 ]
 
@@ -68,7 +68,7 @@ GtTMoneyExamples >> fourtyTwoEurosDividedByTwo [
 	<gtExample>
 	| money |
 	money := self fourtyTwoEuros / 2.
-	self assert: money = 21 euros.
+	self assert: money equals: 21 euros.
 	^ money
 ]
 
@@ -77,7 +77,7 @@ GtTMoneyExamples >> fourtyTwoEurosDividedByTwoEuros [
 	<gtExample>
 	| money |
 	money := 42 euros.
-	self assert: (money / 2 euros) = 21.
+	self assert: money / 2 euros equals: 21.
 	^ money
 ]
 
@@ -104,7 +104,7 @@ GtTMoneyExamples >> fourtyTwoEurosMultipledByTwo [
 	<gtExample>
 	| money |
 	money := self fourtyTwoEuros * 3.
-	self assert: money = 126 euros.
+	self assert: money equals: 126 euros.
 	^ money
 ]
 
@@ -113,7 +113,7 @@ GtTMoneyExamples >> fourtyTwoEurosPlusFourtyTwoEuros [
 	<gtExample>
 	| money |
 	money := self fourtyTwoEuros + self fourtyTwoEuros.
-	self assert: money = 84 euros.
+	self assert: money equals: 84 euros.
 	^ money
 ]
 
@@ -122,7 +122,7 @@ GtTMoneyExamples >> fourtyTwoEurosPlusFourtyTwoEurosMinusFourtyTwoEuros [
 	<gtExample>
 	| money |
 	money := self fourtyTwoEuros + self fourtyTwoEuros - self fourtyTwoEuros.
-	self assert: money = 42 euros.
+	self assert: money equals: 42 euros.
 	^ money
 ]
 
@@ -131,7 +131,7 @@ GtTMoneyExamples >> fourtyTwoEurosPlusZeroMoney [
 	<gtExample>
 	| money |
 	money := self fourtyTwoEuros + self zeroMoney.
-	self assert: money = self fourtyTwoEuros.
+	self assert: money equals: self fourtyTwoEuros.
 	^ money
 ]
 
@@ -159,7 +159,7 @@ GtTMoneyExamples >> zeroEuros [
 	| money |
 	money := 0 euros.
 	self assert: money isZero.
-	self assert: money = self zeroMoney.
+	self assert: money equals: self zeroMoney.
 	^ money
 ]
 
@@ -177,7 +177,7 @@ GtTMoneyExamples >> zeroEurosPlusFourtyTwoEuros [
 	<gtExample>
 	| money |
 	money := self zeroEuros + self fourtyTwoEuros.
-	self assert: money = self fourtyTwoEuros.
+	self assert: money equals: self fourtyTwoEuros.
 	^ money
 ]
 
@@ -201,6 +201,6 @@ GtTMoneyExamples >> zeroMoneyPlusFourtyTwoEuros [
 	<gtExample>
 	| money |
 	money := self zeroMoney + self fourtyTwoEuros.
-	self assert: money = self fourtyTwoEuros.
+	self assert: money equals: self fourtyTwoEuros.
 	^ money
 ]
