@@ -617,12 +617,12 @@
 		"__type" : "time",
 		"time" : {
 			"__type" : "dateAndTime",
-			"dateAndTimeString" : "2024-02-12T11:32:43.674047+01:00"
+			"dateAndTimeString" : "2024-02-21T10:28:22.044475+01:00"
 		}
 	},
 	"pageType" : {
 		"__type" : "namedPage",
-		"title" : "* EDD tutorial"
+		"title" : "* EDD tutorial tasks"
 	},
 	"uid" : {
 		"__type" : "uuid",

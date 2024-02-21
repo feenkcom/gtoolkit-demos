@@ -190,6 +190,43 @@
 				"__type" : "textSnippet",
 				"children" : {
 					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2024-02-21T10:29:08.08294+01:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2024-02-21T10:35:08.485995+01:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "B1wUskLODQCqmbReCYwxVA=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : "[[Example-Driven Development Tutorial]] "
+			},
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
 					"items" : [
 						{
 							"__type" : "textSnippet",
@@ -374,7 +411,7 @@
 														"__type" : "time",
 														"time" : {
 															"__type" : "dateAndTime",
-															"dateAndTimeString" : "2024-02-16T18:46:12.771138+01:00"
+															"dateAndTimeString" : "2024-02-17T10:31:29.657648+01:00"
 														}
 													},
 													"uid" : {
@@ -384,7 +421,7 @@
 													"paragraphStyle" : {
 														"__type" : "textStyle"
 													},
-													"string" : "[[*** Working with a complex scenario (redux)]]"
+													"string" : "[[Working with a complex scenario (redux)]]"
 												}
 											]
 										},
@@ -440,7 +477,7 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2024-02-12T11:32:43.681254+01:00"
+									"dateAndTimeString" : "2024-02-21T10:28:22.064238+01:00"
 								}
 							},
 							"uid" : {
@@ -450,7 +487,7 @@
 							"paragraphStyle" : {
 								"__type" : "textStyle"
 							},
-							"string" : "[[* EDD tutorial]]"
+							"string" : "[[* EDD tutorial tasks]]"
 						},
 						{
 							"__type" : "textSnippet",
