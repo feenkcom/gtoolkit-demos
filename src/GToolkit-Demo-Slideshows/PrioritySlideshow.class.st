@@ -212,7 +212,8 @@ PrioritySlideshow >> exportSlide: slideMethod toFile: aFileReference [
 	with a FileReference instread of a String"
 
 	| element |
-	element := (BlScripter new element: slideMethod asScalableSlide asElement) element.
+	element := (BlScripter new element: slideMethod asScalableSlide asElement)
+			element size: self slideDimensions.
 	BlExporter png
 		element: element;
 		fileName: aFileReference;
