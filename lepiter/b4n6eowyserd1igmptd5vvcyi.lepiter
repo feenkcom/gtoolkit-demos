@@ -673,6 +673,40 @@
 								"uidString" : "IwRA8pHNDQCRJEJvByM8jQ=="
 							},
 							"code" : "(FileLocator gtResource\r\t/ 'feenkcom/gtoolkit-demos/data/prices/TDDPrices.st') fileIn.\r#PriceTests asClass."
+						},
+						{
+							"__type" : "pharoSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2024-02-17T09:40:51.748102+01:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2024-02-17T09:45:00.026728+01:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "CFMUjvHNDQCg9odxAm0Euw=="
+							},
+							"code" : "[ #TDDPrices asPackage removeFromSystem ] onErrorDo: [ ]."
 						}
 					]
 				},

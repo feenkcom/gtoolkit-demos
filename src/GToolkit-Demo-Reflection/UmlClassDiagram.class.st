@@ -1,5 +1,6 @@
 "
 An attempt to unify the various ways to draw UML diagrams from numerous random examples.
+Used in NavigatingClassesAndMethods.
 "
 Class {
 	#name : #UmlClassDiagram,

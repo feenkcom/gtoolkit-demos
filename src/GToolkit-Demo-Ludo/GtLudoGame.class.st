@@ -21,6 +21,24 @@ Class {
 	#category : #'GToolkit-Demo-Ludo-Model'
 }
 
+{ #category : #playing }
+GtLudoGame class >> gtOpenInWorldActionFor: anAction [
+	<gtAction>
+	<gtClassAction>
+	^ anAction button
+		priority: 11;
+		tooltip: 'Play slideshow in new window';
+		icon: BrGlamorousVectorIcons play;
+		action: [ :aButton | self openInWorld ]
+]
+
+{ #category : #playing }
+GtLudoGame class >> openInWorld [
+	BlSpace new
+		addChild: self new asElement asScalableElement;
+		show
+]
+
 { #category : #announcements }
 GtLudoGame >> announcer [
 	^ announcer

@@ -22,6 +22,8 @@ DemoMarkdownWebsite class >> cache [
 
 { #category : #'instance creation' }
 DemoMarkdownWebsite class >> canadaClub [
+	<gtExample>
+	<noTest>
 	| key repoUrl webUrl repoDir navMenuLinks |
 	key := 'canadaClub'.
 	webUrl := 'https://canadaclub.ch'.
@@ -49,6 +51,8 @@ DemoMarkdownWebsite class >> canadaClub [
 
 { #category : #'instance creation' }
 DemoMarkdownWebsite class >> icberne [
+	<gtExample>
+	<noTest>
 	| key repoUrl webUrl repoDir navMenuLinks |
 	key := 'icberne'.
 	webUrl := 'https://icberne.github.io'.
@@ -76,6 +80,8 @@ DemoMarkdownWebsite class >> initialize [
 
 { #category : #'instance creation' }
 DemoMarkdownWebsite class >> nierstraszFamily [
+	<gtExample>
+	<noTest>
 	| key repoUrl webUrl repoDir navMenuLinks |
 	key := 'nierstraszFamily'.
 	webUrl := 'https://www.family.nierstrasz.org'.
@@ -134,6 +140,8 @@ DemoMarkdownWebsite class >> nierstraszFamily [
 
 { #category : #'instance creation' }
 DemoMarkdownWebsite class >> oscarHomePage [
+	<gtExample>
+	<noTest>
 	| key repoUrl webUrl repoDir navMenuLinks |
 	key := 'oscar'.
 	webUrl := 'https://www.oscar.nierstrasz.org'.

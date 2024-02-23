@@ -28,11 +28,10 @@ and replace by:
 "
 Class {
 	#name : #PrioritySlideshow,
-	#superclass : #Object,
+	#superclass : #DatabaseHolder,
 	#traits : 'TGtSlideShow',
 	#classTraits : 'TGtSlideShow classTrait',
 	#instVars : [
-		'db',
 		'announcer',
 		'slideDimensions'
 	],
@@ -173,19 +172,6 @@ PrioritySlideshow >> cr [
 	^ String cr asRopedText
 ]
 
-{ #category : #accessing }
-PrioritySlideshow >> db [
-	"Transient Lepiter database for the dynamically created pages.
-	NB: We need to create a transient registry as well, so that links will work within the database."
-
-	db
-		ifNil: [ db := LeDatabase new.
-			LeBasicDatabasesRegistry new
-				defaultLogicalDatabase: (LeLogicalDatabase new primaryDB: db).
-			db ].
-	^ db
-]
-
 { #category : #exporting }
 PrioritySlideshow >> defaultSlideDimensions [
 	"Dimensions for exporting slide PNGs"
@@ -221,13 +207,13 @@ PrioritySlideshow >> demoText [
 ]
 
 { #category : #exporting }
-PrioritySlideshow >> exportSlide: slide toFile: aFileReference [
+PrioritySlideshow >> exportSlide: slideMethod toFile: aFileReference [
 	"NB: BlFileExporter>>#fileName: also  works
 	with a FileReference instread of a String"
 
 	| element |
-	element := (BlScripter new element: slide asElement) element
-			size: self slideDimensions.
+	element := (BlScripter new element: slideMethod asScalableSlide asElement)
+			element size: self slideDimensions.
 	BlExporter png
 		element: element;
 		fileName: aFileReference;
@@ -237,24 +223,22 @@ PrioritySlideshow >> exportSlide: slide toFile: aFileReference [
 
 { #category : #exporting }
 PrioritySlideshow >> exportSlidePNGs [
-	"This method will export a PNG for each slide. To change the
-	default slide dimensions, set PrioritySlideshow>>#slideDimensions:
-	To create a PDF from the slides, on a Mac, open the first image in
-	Preview with thumbnails, and drag all the other files to the first
-	thumbnail. Then simply print to PDF."
+	"This method will export a PNG for each slide. 
+	To create a PDF from the slides, on a Mac,
+	open all the images with Preview, and then simply print to PDF."
 
-	| slides file |
-	slides := self slides.
+	| slideMethods file |
+	slideMethods := self slideMethods.
 	self initSlideDir.
 	[ [ :job | 
 	job title: 'Generating slide PNGs ...'.
-	slides
-		withIndexDo: [ :slide :index | 
+	slideMethods
+		withIndexDo: [ :slideMethod :index | 
 			job
-				progress: index / slides size;
+				progress: index / slideMethods size;
 				title: 'Slide ' , index printString.
 			file := self slideDir / ('slide' , (index printStringPadded: 3) , '.png').
-			self exportSlide: slide toFile: file ] ] asJob run ] fork.
+			self exportSlide: slideMethod toFile: file ] ] asJob run ] fork.
 	^ self slideDir
 ]
 
@@ -377,21 +361,6 @@ PrioritySlideshow >> gtPlaySlideshowAction: anAction [
 					icon: BrGlamorousVectorIcons play;
 					label: 'Play slideshow';
 					action: [ :aButton :aModel :anEvent | self class show ].
-			button ]
-]
-
-{ #category : #actions }
-PrioritySlideshow >> gtRefreshDbActionFor: anAction [
-	<gtAction>
-	^ anAction explicit
-		priority: 15;
-		stencil: [ | button |
-			button := BrButton new
-					id: GtInspectorInspectButtonId;
-					aptitude: BrGlamorousButtonWithIconAptitude;
-					icon: BrGlamorousIcons refresh;
-					label: 'Refresh database';
-					action: [ :aButton :aModel :anEvent | aButton phlow spawnObject: self renewDb ].
 			button ]
 ]
 
@@ -518,17 +487,8 @@ PrioritySlideshow >> initSlideDir [
 { #category : #initialization }
 PrioritySlideshow >> initialize [
 	super initialize.
-	self initializeDb.
 	announcer := Announcer new.
 	self subscribeToSystem.
-]
-
-{ #category : #initialization }
-PrioritySlideshow >> initializeDb [
-	"Automatically load all pages defined in methods with a <lePage> pragma.
-	Alternatively, overwrite this method to explicitly add pages."
-
-	self pageMethods do: [ :m | self db addPage: (self perform: m selector) ]
 ]
 
 { #category : #utility }
@@ -567,11 +527,6 @@ PrioritySlideshow >> onMethodRemoved: aMethodRemoved [
 ]
 
 { #category : #accessing }
-PrioritySlideshow >> pageMethods [
-	^ self class methods select: [ :m | m hasPragmaNamed: #lePage ]
-]
-
-{ #category : #accessing }
 PrioritySlideshow >> pages [
 	self error: 'Use self slidePriorities instead'.
 	^ self slidePriorities
@@ -592,26 +547,10 @@ PrioritySlideshow >> priorityFor: aSlideMethodSelector [
 			self slidePriorities size + 1 ]
 ]
 
-{ #category : #actions }
-PrioritySlideshow >> renewDb [
-	"Recreate the db from scratch, eg after adding new pages."
-	db := LeDatabase new.
-	LeBasicDatabasesRegistry new
-		defaultLogicalDatabase: (LeLogicalDatabase new primaryDB: db).
-	self initializeDb.
-	^ db
-]
-
 { #category : #utility }
 PrioritySlideshow >> scalableSlide: aSlide [
-	"Not all gtSlides are scalable, so we wrap them for displaying in the Slides and Slide deck views.
-	If this is fixed, we can remove the wrappers."
-	<todo: 'remove this once slides become scalable.'>
-
-	| scalableSlide |
-	scalableSlide := GtProtoLiveSlide new element
-			element: [ (aSlide asElement size: 1200 @ 900) asScalableElement ].
-	^ scalableSlide
+	"No longer needed?"
+	^ aSlide asScalableSlide
 ]
 
 { #category : #utility }
@@ -664,6 +603,9 @@ PrioritySlideshow >> scriptText [
 
 { #category : #utility }
 PrioritySlideshow >> slideDeckPage [
+	"NB: this uses PrioritySlideshow>>#slideFor: in Element
+	snippets to embed slides in a page."
+
 	| page |
 	page := LePage named: self class name.
 	LeDatabase new addPage: page.
@@ -678,12 +620,7 @@ PrioritySlideshow >> slideDictionary [
 
 	| methods |
 	methods := self slideMethods select: [ :each | each isCompiledMethod ].
-	^ (methods
-		collect: [ :each |
-		(self scalableSlide:(self perform: each selector withArguments: {GtProtoLiveSlide new}) )
-			-> each 
-		])
-		asOrderedDictionary
+	^ (methods collect: [ :each | each asSlide -> each ]) asOrderedDictionary
 ]
 
 { #category : #accessing }
@@ -705,8 +642,9 @@ PrioritySlideshow >> slideDir [
 
 { #category : #utility }
 PrioritySlideshow >> slideFor: selector [
-	^ self
-		scalableSlide: (self perform: selector withArguments: {GtProtoLiveSlide new})
+	"Used in PrioritySlideshow>>#slideDeckPage to embed slides in a Lepiter page."
+
+	^ (self class >> selector) asScalableSlideWithBorder
 ]
 
 { #category : #accessing }
@@ -781,6 +719,28 @@ PrioritySlideshow >> subscribeToSystem [
 { #category : #text }
 PrioritySlideshow >> subtitleSize [
 	^ 40
+]
+
+{ #category : #accessing }
+PrioritySlideshow >> summaryElementFor: slideSelectors [
+	"Create an element holding 4 (more or less) slides in a grid to be used in a summary slide."
+
+	| slides container |
+	slides := slideSelectors
+			collect: [ :selector | 
+				| method slide |
+				method := self class methodNamed: selector.
+				slide := method asSlide asScalableSlideWithBorder asElement
+						margin: (BlInsets all: 10);
+						yourself ].
+	container := BlElement new
+			layout: (BlGridLayout new columnCount: 2);
+			constraintsDo: [ :c | 
+				c horizontal matchParent.
+				c vertical matchParent ];
+			addChildren: slides;
+			yourself.
+	^ container
 ]
 
 { #category : #utility }

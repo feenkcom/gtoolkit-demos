@@ -7,12 +7,16 @@ Class {
 { #category : #running }
 LoggingProxyExamples >> freshLoggingProxy [
 	"NB: The point and the proxy swap object ids."
+
 	<gtExample>
 	| point proxy |
 	point := 1 @ 2.
+	self assert: point class equals: Point.
 	LoggingProxy for: point.
-	proxy := point. "Alias"
-	self assert: proxy invocationCount equals: 0.
+	self assert: point class equals: LoggingProxy.
+	proxy := point.	"Alias"
+	self assert: proxy subject class equals: Point.
+	self assert: proxy messageLog isEmpty.
 	^ proxy
 ]
 
@@ -23,10 +27,10 @@ LoggingProxyExamples >> loggingProxyWithSelfSends [
 	<gtExample>
 	| proxy |
 	proxy := self freshLoggingProxy.
-	self assert: proxy invocationCount equals: 0.
+	self assert: proxy messageLog isEmpty.
 	self assert: (proxy rectangle: 3 @ 4) area equals: 4.
-	self deny: proxy invocationCount = 4.
-	self assert: proxy invocationCount equals: 1.
+	self deny: proxy messageLog size equals: 4.
+	self assert: proxy messageLog size equals: 1.
 	^ proxy
 ]
 
@@ -35,8 +39,9 @@ LoggingProxyExamples >> usedLoggingProxy [
 	<gtExample>
 	| proxy |
 	proxy := self freshLoggingProxy.
-	self assert: proxy invocationCount equals: 0.
+	self assert: proxy messageLog isEmpty.
 	self assert: proxy + (3 @ 4) equals: 4 @ 6.
-	self assert: proxy invocationCount equals: 1.
+	self assert: proxy printString equals: '(1@2)'.
+	self assert: proxy messageLog size equals: 2.
 	^ proxy
 ]
