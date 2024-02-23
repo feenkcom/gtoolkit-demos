@@ -207,13 +207,13 @@ PrioritySlideshow >> demoText [
 ]
 
 { #category : #exporting }
-PrioritySlideshow >> exportSlide: slide toFile: aFileReference [
+PrioritySlideshow >> exportSlide: slideMethod toFile: aFileReference [
 	"NB: BlFileExporter>>#fileName: also  works
 	with a FileReference instread of a String"
 
 	| element |
-	element := (BlScripter new element: slide asElement) element
-			size: self slideDimensions.
+	element := (BlScripter new element: slideMethod asScalableSlide asElement)
+			element size: self slideDimensions.
 	BlExporter png
 		element: element;
 		fileName: aFileReference;
@@ -223,24 +223,22 @@ PrioritySlideshow >> exportSlide: slide toFile: aFileReference [
 
 { #category : #exporting }
 PrioritySlideshow >> exportSlidePNGs [
-	"This method will export a PNG for each slide. To change the
-	default slide dimensions, set PrioritySlideshow>>#slideDimensions:
-	To create a PDF from the slides, on a Mac, open the first image in
-	Preview with thumbnails, and drag all the other files to the first
-	thumbnail. Then simply print to PDF."
+	"This method will export a PNG for each slide. 
+	To create a PDF from the slides, on a Mac,
+	open all the images with Preview, and then simply print to PDF."
 
-	| slides file |
-	slides := self slides.
+	| slideMethods file |
+	slideMethods := self slideMethods.
 	self initSlideDir.
 	[ [ :job | 
 	job title: 'Generating slide PNGs ...'.
-	slides
-		withIndexDo: [ :slide :index | 
+	slideMethods
+		withIndexDo: [ :slideMethod :index | 
 			job
-				progress: index / slides size;
+				progress: index / slideMethods size;
 				title: 'Slide ' , index printString.
 			file := self slideDir / ('slide' , (index printStringPadded: 3) , '.png').
-			self exportSlide: slide toFile: file ] ] asJob run ] fork.
+			self exportSlide: slideMethod toFile: file ] ] asJob run ] fork.
 	^ self slideDir
 ]
 
