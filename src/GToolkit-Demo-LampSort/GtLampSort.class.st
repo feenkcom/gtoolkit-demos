@@ -9,7 +9,7 @@ Class {
 	#instVars : [
 		'elements'
 	],
-	#category : #'GToolkit-Demo-LampSort'
+	#category : #'GToolkit-Demo-LampSort-Core'
 }
 
 { #category : #steps }
@@ -104,5 +104,5 @@ GtLampSort >> splitInterval: interval around: index [
 
 { #category : #steps }
 GtLampSort >> swap: oneIndex with: anotherIndex [
-	elements swap: oneIndex with: anotherIndex 
+	elements swap: oneIndex with: anotherIndex
 ]
