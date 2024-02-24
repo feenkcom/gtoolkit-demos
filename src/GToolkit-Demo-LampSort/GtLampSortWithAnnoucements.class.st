@@ -13,6 +13,15 @@ GtLampSortWithAnnoucements >> addIntervals: newIntervals to: intervals [
 	super addIntervals: newIntervals to: intervals
 ]
 
+{ #category : #examples }
+GtLampSortWithAnnoucements >> gtExampleSortSpecificWithAnnoucements [
+	<gtExample>
+	^ MemoryLogger new
+		name: 'LampSort';
+		beacon: GtLampSortAnnouncement announcer;
+		runFor: GtLampSortAnnouncement during: [ self gtExampleSortSpecific ]
+]
+
 { #category : #private }
 GtLampSortWithAnnoucements >> logEvent: aGtLampSortAnnouncement [
 	^ aGtLampSortAnnouncement new
