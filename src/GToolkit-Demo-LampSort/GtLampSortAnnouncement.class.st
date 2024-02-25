@@ -35,6 +35,33 @@ GtLampSortAnnouncement >> emit [
 	^ self announcer announce: self
 ]
 
+{ #category : #'gt - extensions' }
+GtLampSortAnnouncement >> gtViewElementsIn: composite [
+	<gtView>
+	^ composite forward
+		title: 'Elements';
+		priority: 60;
+		object: [ self elements ];
+		view: #gtItemsFor:
+]
+
+{ #category : #'gt - extensions' }
+GtLampSortAnnouncement >> gtViewVisualisationIn: composite [
+	<gtView>
+	^ composite explicit
+		title: 'Visualisation';
+		priority: 30;
+		stencil: [ | dataPoints dataGroup scale |
+			dataPoints := elements withIndexCollect: [ :each :index | index -> each ].
+			dataGroup := GtPlotterDataGroup new values: dataPoints.
+			dataGroup := dataGroup labelled: [ :each | each key ].
+			scale := GtPlotterLinearScale new domainFrom: 0 to: (dataPoints collect: #value) max.
+			GtPlotterVerticalBarChart new
+				with: dataGroup;
+				barHeightData: [ :each | each value ];
+				barHeightScale: scale ]
+]
+
 { #category : #accessing }
 GtLampSortAnnouncement >> name [
 	^ self class name
