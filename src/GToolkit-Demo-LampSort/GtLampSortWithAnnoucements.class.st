@@ -14,6 +14,15 @@ GtLampSortWithAnnoucements >> addIntervals: newIntervals to: intervals [
 ]
 
 { #category : #examples }
+GtLampSortWithAnnoucements >> gtExampleSortRandomWithAnnoucements [
+	<gtExample>
+	^ MemoryLogger new
+		name: 'LampSort';
+		beacon: GtLampSortAnnouncement announcer;
+		runFor: GtLampSortAnnouncement during: [ self gtExampleSortRandom ]
+]
+
+{ #category : #examples }
 GtLampSortWithAnnoucements >> gtExampleSortSpecificWithAnnoucements [
 	<gtExample>
 	^ MemoryLogger new
@@ -78,9 +87,9 @@ GtLampSortWithAnnoucements >> splitInterval: interval around: index [
 
 { #category : #steps }
 GtLampSortWithAnnoucements >> swap: oneIndex with: anotherIndex [
+	super swap: oneIndex with: anotherIndex.
 	(self logEvent: GtLampSortSwapped)
 		oneIndex: oneIndex;
 		anotherIndex: anotherIndex;
-		emit.
-	super swap: oneIndex with: anotherIndex
+		emit
 ]

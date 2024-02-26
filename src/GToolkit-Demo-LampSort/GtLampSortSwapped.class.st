@@ -44,9 +44,9 @@ GtLampSortSwapped >> printOn: stream [
 		nextPutAll: ('Swapped {1} @ {2} with {3} @ {4}'
 				format: {
 					self oneElement.
-					self oneIndex.
+					self anotherIndex.
 					self anotherElement.
-					self anotherIndex })
+					self oneIndex })
 ]
 
 { #category : #testing }
