@@ -2,7 +2,9 @@ Class {
 	#name : #GtLampSortAnnouncement,
 	#superclass : #Announcement,
 	#instVars : [
-		'elements'
+		'elements',
+		'timestamp',
+		'processId'
 	],
 	#classVars : [
 		'LampSortAnnouncer'
@@ -55,11 +57,21 @@ GtLampSortAnnouncement >> gtViewVisualisationIn: composite [
 			dataPoints := elements withIndexCollect: [ :each :index | index -> each ].
 			dataGroup := GtPlotterDataGroup new values: dataPoints.
 			dataGroup := dataGroup labelled: [ :each | each key ].
+			dataGroup := dataGroup colored: [ :each | 
+				(self shouldHighlightIndex: each key)
+					ifTrue: [ Color black ] ifFalse: [ Color veryLightGray ] ].
 			scale := GtPlotterLinearScale new domainFrom: 0 to: (dataPoints collect: #value) max.
 			GtPlotterVerticalBarChart new
 				with: dataGroup;
 				barHeightData: [ :each | each value ];
 				barHeightScale: scale ]
+]
+
+{ #category : #initialization }
+GtLampSortAnnouncement >> initialize [
+	super initialize.
+	timestamp := DateAndTime now.
+	processId := Processor activeProcess name.
 ]
 
 { #category : #accessing }
@@ -74,10 +86,15 @@ GtLampSortAnnouncement >> printOneLineContentsOn: stream [
 
 { #category : #accessing }
 GtLampSortAnnouncement >> processId [
-	^ 0
+	^ processId
+]
+
+{ #category : #testing }
+GtLampSortAnnouncement >> shouldHighlightIndex: index [
+	^ false
 ]
 
 { #category : #accessing }
 GtLampSortAnnouncement >> timestamp [
-	^ 0
+	^ timestamp
 ]

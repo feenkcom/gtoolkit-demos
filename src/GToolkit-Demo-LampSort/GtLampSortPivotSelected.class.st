@@ -42,3 +42,8 @@ GtLampSortPivotSelected >> printOn: stream [
 					self pivotIndex.
 					self interval })
 ]
+
+{ #category : #testing }
+GtLampSortPivotSelected >> shouldHighlightIndex: index [
+	^ index = pivotIndex
+]
