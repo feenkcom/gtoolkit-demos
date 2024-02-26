@@ -22,6 +22,38 @@ GtLampSortAnnouncement >> announcer [
 	^ self class announcer
 ]
 
+{ #category : #'gt - extensions' }
+GtLampSortAnnouncement >> asVisualisationElement [
+	| dataGroup scale container chart dataPoints |
+	dataPoints := elements withIndexCollect: [ :each :index | index -> each ].
+	dataGroup := GtPlotterDataGroup new values: dataPoints.
+	dataGroup := dataGroup labelled: [ :each | each key ].
+	dataGroup := dataGroup
+			colored: [ :each | 
+				(self shouldHighlightIndex: each key)
+					ifTrue: [ Color black ]
+					ifFalse: [ Color veryLightGray ] ].
+	scale := GtPlotterLinearScale new
+			domainFrom: 0
+			to: (dataPoints collect: #value) max.
+	chart := GtPlotterVerticalBarChart new
+			with: dataGroup;
+			barHeightData: [ :each | each value ];
+			barHeightScale: scale.
+	container := BrVerticalPane new fitContent.
+	container
+		addChild: (chart asElement
+				margin: (BlInsets all: 10);
+				size: 400 @ 250);
+		addChild: (BrLabel new
+				aptitude: BrGlamorousLabelAptitude new;
+				text: self printString).
+	container
+		vFitContent;
+		hFitContent.
+	^ container
+]
+
 { #category : #accessing }
 GtLampSortAnnouncement >> elements [
 	^ elements
@@ -53,18 +85,7 @@ GtLampSortAnnouncement >> gtViewVisualisationIn: composite [
 	^ composite explicit
 		title: 'Visualisation';
 		priority: 30;
-		stencil: [ | dataPoints dataGroup scale |
-			dataPoints := elements withIndexCollect: [ :each :index | index -> each ].
-			dataGroup := GtPlotterDataGroup new values: dataPoints.
-			dataGroup := dataGroup labelled: [ :each | each key ].
-			dataGroup := dataGroup colored: [ :each | 
-				(self shouldHighlightIndex: each key)
-					ifTrue: [ Color black ] ifFalse: [ Color veryLightGray ] ].
-			scale := GtPlotterLinearScale new domainFrom: 0 to: (dataPoints collect: #value) max.
-			GtPlotterVerticalBarChart new
-				with: dataGroup;
-				barHeightData: [ :each | each value ];
-				barHeightScale: scale ]
+		stencil: [ self asVisualisationElement ]
 ]
 
 { #category : #initialization }
