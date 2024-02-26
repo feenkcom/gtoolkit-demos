@@ -36,3 +36,8 @@ GtLampSortIntervalSelected >> selectedInterval [
 GtLampSortIntervalSelected >> selectedInterval: anInterval [
 	selectedInterval := anInterval
 ]
+
+{ #category : #testing }
+GtLampSortIntervalSelected >> shouldHighlightIndex: index [
+	^ self selectedInterval includes: index
+]

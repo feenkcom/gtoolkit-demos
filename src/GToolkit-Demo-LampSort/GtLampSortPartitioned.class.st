@@ -36,3 +36,9 @@ GtLampSortPartitioned >> rightInterval [
 GtLampSortPartitioned >> rightInterval: anInterval [
 	rightInterval := anInterval
 ]
+
+{ #category : #testing }
+GtLampSortPartitioned >> shouldHighlightIndex: index [
+	^ (leftInterval includes: index)
+		or: [ rightInterval includes: index ]
+]

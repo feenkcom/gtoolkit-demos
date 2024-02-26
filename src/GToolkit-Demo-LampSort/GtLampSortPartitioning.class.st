@@ -24,3 +24,8 @@ GtLampSortPartitioning >> printOn: stream [
 		space;
 		print: self interval
 ]
+
+{ #category : #testing }
+GtLampSortPartitioning >> shouldHighlightIndex: index [
+	^ self interval includes: index
+]

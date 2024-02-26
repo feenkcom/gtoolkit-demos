@@ -36,3 +36,8 @@ GtLampSortIntervalsAdded >> printOn: stream [
 		separatedBy: [ stream << ' and ' ].
 	stream << ' to '; print: self intervals
 ]
+
+{ #category : #testing }
+GtLampSortIntervalsAdded >> shouldHighlightIndex: index [
+	^ newIntervals anySatisfy: [ :each | each includes: index ]
+]

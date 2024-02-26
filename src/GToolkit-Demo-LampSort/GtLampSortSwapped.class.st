@@ -48,3 +48,8 @@ GtLampSortSwapped >> printOn: stream [
 					self anotherElement.
 					self anotherIndex })
 ]
+
+{ #category : #testing }
+GtLampSortSwapped >> shouldHighlightIndex: index [
+	^ index = oneIndex or: [ index = anotherIndex ]
+]
