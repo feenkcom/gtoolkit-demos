@@ -1796,7 +1796,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2024-02-21T14:57:36.873781+01:00"
+						"dateAndTimeString" : "2024-02-21T14:58:31.024257+01:00"
 					}
 				},
 				"uid" : {
@@ -1806,7 +1806,7 @@
 				"paragraphStyle" : {
 					"__type" : "textStyle"
 				},
-				"string" : "Next: [[[[Modeling discounted prices]]]]."
+				"string" : "Next: [[Modeling discounted prices]]."
 			}
 		]
 	},
