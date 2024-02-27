@@ -25,6 +25,21 @@ MarkdownWebPage >> gtMarkdownFor: aView [
 				snippetViewModel: snippetViewModel) vMatchParent ]
 ]
 
+{ #category : #accessing }
+MarkdownWebPage >> headerLinks [
+	^ self headers
+		collect: [ :header | 
+			(header asLowercase
+				trimBoth: [ :char | char = $# or: [ char isSeparator or: [ char = $` ] ] ])
+				copyReplaceAll: ' '
+				with: '-' ]
+]
+
+{ #category : #accessing }
+MarkdownWebPage >> headers [
+	^ (LeTextSnippet string: self contents) headers
+]
+
 { #category : #testing }
 MarkdownWebPage >> isRoot [
 "If the page's file has a YAML header, we can tell which page is the root."
