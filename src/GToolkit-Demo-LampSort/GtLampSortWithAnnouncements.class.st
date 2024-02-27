@@ -1,11 +1,11 @@
 Class {
-	#name : #GtLampSortWithAnnoucements,
+	#name : #GtLampSortWithAnnouncements,
 	#superclass : #GtLampSort,
 	#category : #'GToolkit-Demo-LampSort-Announcements'
 }
 
 { #category : #steps }
-GtLampSortWithAnnoucements >> addIntervals: newIntervals to: intervals [
+GtLampSortWithAnnouncements >> addIntervals: newIntervals to: intervals [
 	(self logEvent: GtLampSortIntervalsAdded)
 		newIntervals: newIntervals;
 		intervals: intervals;
@@ -14,7 +14,7 @@ GtLampSortWithAnnoucements >> addIntervals: newIntervals to: intervals [
 ]
 
 { #category : #examples }
-GtLampSortWithAnnoucements >> gtExampleSortRandomWithAnnoucements [
+GtLampSortWithAnnouncements >> gtExampleSortRandomWithAnnoucements [
 	<gtExample>
 	^ MemoryLogger new
 		name: 'LampSort';
@@ -23,7 +23,7 @@ GtLampSortWithAnnoucements >> gtExampleSortRandomWithAnnoucements [
 ]
 
 { #category : #examples }
-GtLampSortWithAnnoucements >> gtExampleSortSpecificWithAnnoucements [
+GtLampSortWithAnnouncements >> gtExampleSortSpecificWithAnnouncements [
 	<gtExample>
 	^ MemoryLogger new
 		name: 'LampSort';
@@ -32,14 +32,14 @@ GtLampSortWithAnnoucements >> gtExampleSortSpecificWithAnnoucements [
 ]
 
 { #category : #private }
-GtLampSortWithAnnoucements >> logEvent: aGtLampSortAnnouncement [
+GtLampSortWithAnnouncements >> logEvent: aGtLampSortAnnouncement [
 	^ aGtLampSortAnnouncement new
 		elements: self elements;
 		yourself
 ]
 
 { #category : #steps }
-GtLampSortWithAnnoucements >> partition: interval [
+GtLampSortWithAnnouncements >> partition: interval [
 	(self logEvent: GtLampSortPartitioning)
 		interval: interval;
 		emit.
@@ -47,7 +47,7 @@ GtLampSortWithAnnoucements >> partition: interval [
 ]
 
 { #category : #steps }
-GtLampSortWithAnnoucements >> selectFirstElementAsPivot: interval [
+GtLampSortWithAnnouncements >> selectFirstElementAsPivot: interval [
 	(self logEvent: GtLampSortPivotSelected)
 		pivotIndex: interval first;
 		interval: interval;
@@ -56,7 +56,7 @@ GtLampSortWithAnnoucements >> selectFirstElementAsPivot: interval [
 ]
 
 { #category : #steps }
-GtLampSortWithAnnoucements >> selectIntervalFrom: intervals [
+GtLampSortWithAnnouncements >> selectIntervalFrom: intervals [
 	| interval event |
 	event := (self logEvent: GtLampSortIntervalSelected) 
 		intervals: intervals.
@@ -68,14 +68,14 @@ GtLampSortWithAnnoucements >> selectIntervalFrom: intervals [
 ]
 
 { #category : #steps }
-GtLampSortWithAnnoucements >> sort [
+GtLampSortWithAnnouncements >> sort [
 	(self logEvent: GtLampSortSorting) emit.
 	super sort.
 	(self logEvent: GtLampSortSorted) emit
 ]
 
 { #category : #steps }
-GtLampSortWithAnnoucements >> splitInterval: interval around: index [
+GtLampSortWithAnnouncements >> splitInterval: interval around: index [
 	| leftAndRight |
 	leftAndRight := super splitInterval: interval around: index.
 	(self logEvent: GtLampSortPartitioned)
@@ -86,7 +86,7 @@ GtLampSortWithAnnoucements >> splitInterval: interval around: index [
 ]
 
 { #category : #steps }
-GtLampSortWithAnnoucements >> swap: oneIndex with: anotherIndex [
+GtLampSortWithAnnouncements >> swap: oneIndex with: anotherIndex [
 	super swap: oneIndex with: anotherIndex.
 	(self logEvent: GtLampSortSwapped)
 		oneIndex: oneIndex;

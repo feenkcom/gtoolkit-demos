@@ -23,6 +23,43 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2024-02-27T17:43:33.212209+01:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2024-02-27T17:43:33.212209+01:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "xeu6dsHODQCZO07pA4xavA=="
+							},
+							"paragraphStyle" : {
+								"__type" : "textStyle"
+							},
+							"string" : "We motivate the need for Example-Driven Development (EDD) as a means to eliminate guesswork in classical TDD, by focusing on exploring *examples* rather than writing tests that must turn green. "
+						},
+						{
+							"__type" : "textSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
 									"dateAndTimeString" : "2024-02-21T11:17:25.128746+01:00"
 								}
 							},
@@ -34,7 +71,7 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2024-02-21T11:20:22.974322+01:00"
+									"dateAndTimeString" : "2024-02-27T17:43:39.178058+01:00"
 								}
 							},
 							"uid" : {
@@ -44,7 +81,7 @@
 							"paragraphStyle" : {
 								"__type" : "textStyle"
 							},
-							"string" : "We motivate the need for Example-Driven Development (EDD) as a means to eliminate guesswork in classical TDD, by focusing on exploring *examples* rather than writing tests that must turn green. We then introduce a design problem of modeling *prices* for goods, and then embark on a series of exercises to develop the price domain model classes using EDD."
+							"string" : "We introduce a design problem of modeling *prices* for goods, and then embark on a series of exercises to develop the price domain model classes using EDD."
 						}
 					]
 				},
@@ -642,156 +679,7 @@
 				"__type" : "textSnippet",
 				"children" : {
 					"__type" : "snippets",
-					"items" : [
-						{
-							"__type" : "textSnippet",
-							"children" : {
-								"__type" : "snippets",
-								"items" : [ ]
-							},
-							"createEmail" : {
-								"__type" : "email",
-								"emailString" : "<unknown>"
-							},
-							"createTime" : {
-								"__type" : "time",
-								"time" : {
-									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2024-02-21T10:30:45.462662+01:00"
-								}
-							},
-							"editEmail" : {
-								"__type" : "email",
-								"emailString" : "<unknown>"
-							},
-							"editTime" : {
-								"__type" : "time",
-								"time" : {
-									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2024-02-21T11:20:57.008027+01:00"
-								}
-							},
-							"uid" : {
-								"__type" : "uid",
-								"uidString" : "SEbit0LODQCtzhtwCYwxVA=="
-							},
-							"paragraphStyle" : {
-								"__type" : "textStyle"
-							},
-							"string" : "***NEXT:*** [[Warmup: understanding the Money classes]]"
-						},
-						{
-							"__type" : "textSnippet",
-							"children" : {
-								"__type" : "snippets",
-								"items" : [ ]
-							},
-							"createEmail" : {
-								"__type" : "email",
-								"emailString" : "<unknown>"
-							},
-							"createTime" : {
-								"__type" : "time",
-								"time" : {
-									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2024-02-21T10:31:49.946508+01:00"
-								}
-							},
-							"editEmail" : {
-								"__type" : "email",
-								"emailString" : "<unknown>"
-							},
-							"editTime" : {
-								"__type" : "time",
-								"time" : {
-									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2024-02-21T14:52:28.255751+01:00"
-								}
-							},
-							"uid" : {
-								"__type" : "uid",
-								"uidString" : "yzi6u0LODQCu/2/UCYwxVA=="
-							},
-							"paragraphStyle" : {
-								"__type" : "textStyle"
-							},
-							"string" : "[[Modeling a Concrete Price]]"
-						},
-						{
-							"__type" : "textSnippet",
-							"children" : {
-								"__type" : "snippets",
-								"items" : [ ]
-							},
-							"createEmail" : {
-								"__type" : "email",
-								"emailString" : "<unknown>"
-							},
-							"createTime" : {
-								"__type" : "time",
-								"time" : {
-									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2024-02-21T10:38:15.975622+01:00"
-								}
-							},
-							"editEmail" : {
-								"__type" : "email",
-								"emailString" : "<unknown>"
-							},
-							"editTime" : {
-								"__type" : "time",
-								"time" : {
-									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2024-02-21T14:57:36.864136+01:00"
-								}
-							},
-							"uid" : {
-								"__type" : "uid",
-								"uidString" : "1Y680kLODQCxu8edCYwxVA=="
-							},
-							"paragraphStyle" : {
-								"__type" : "textStyle"
-							},
-							"string" : "[[[[Modeling discounted prices]]]]"
-						},
-						{
-							"__type" : "textSnippet",
-							"children" : {
-								"__type" : "snippets",
-								"items" : [ ]
-							},
-							"createEmail" : {
-								"__type" : "email",
-								"emailString" : "<unknown>"
-							},
-							"createTime" : {
-								"__type" : "time",
-								"time" : {
-									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2024-02-21T10:38:38.361498+01:00"
-								}
-							},
-							"editEmail" : {
-								"__type" : "email",
-								"emailString" : "<unknown>"
-							},
-							"editTime" : {
-								"__type" : "time",
-								"time" : {
-									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2024-02-21T10:38:38.361498+01:00"
-								}
-							},
-							"uid" : {
-								"__type" : "uid",
-								"uidString" : "ayAS1ELODQCyhIdvCYwxVA=="
-							},
-							"paragraphStyle" : {
-								"__type" : "textStyle"
-							},
-							"string" : ""
-						}
-					]
+					"items" : [ ]
 				},
 				"createEmail" : {
 					"__type" : "email",
@@ -801,7 +689,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2024-02-21T10:30:37.025654+01:00"
+						"dateAndTimeString" : "2024-02-21T10:30:45.462662+01:00"
 					}
 				},
 				"editEmail" : {
@@ -812,17 +700,17 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2024-02-21T10:30:44.977216+01:00"
+						"dateAndTimeString" : "2024-02-27T17:42:21.226721+01:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
-					"uidString" : "tYRht0LODQCtX54wCYwxVA=="
+					"uidString" : "SEbit0LODQCtzhtwCYwxVA=="
 				},
 				"paragraphStyle" : {
 					"__type" : "textStyle"
 				},
-				"string" : "# Exercises"
+				"string" : "***Next:*** [[Warmup: understanding the Money classes]]"
 			}
 		]
 	},

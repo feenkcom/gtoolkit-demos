@@ -8,6 +8,43 @@
 				"__type" : "textSnippet",
 				"children" : {
 					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2024-02-27T17:45:57.38607+01:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2024-02-27T17:47:06.757875+01:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "NabOfsHODQCcWTXaA4xavA=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : "{{gtTodo:label=Move the Money classes to the release image, so they don't have to be manually loaded. Fix the relevantparagraph.|completed=}}"
+			},
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
 					"items" : [
 						{
 							"__type" : "textSnippet",
@@ -127,10 +164,45 @@
 								"__type" : "snippets",
 								"items" : [
 									{
-										"__type" : "pharoSnippet",
+										"__type" : "textSnippet",
 										"children" : {
 											"__type" : "snippets",
-											"items" : [ ]
+											"items" : [
+												{
+													"__type" : "pharoSnippet",
+													"children" : {
+														"__type" : "snippets",
+														"items" : [ ]
+													},
+													"createEmail" : {
+														"__type" : "email",
+														"emailString" : "<unknown>"
+													},
+													"createTime" : {
+														"__type" : "time",
+														"time" : {
+															"__type" : "dateAndTime",
+															"dateAndTimeString" : "2024-02-21T11:21:44.466591+01:00"
+														}
+													},
+													"editEmail" : {
+														"__type" : "email",
+														"emailString" : "<unknown>"
+													},
+													"editTime" : {
+														"__type" : "time",
+														"time" : {
+															"__type" : "dateAndTime",
+															"dateAndTimeString" : "2024-02-21T11:21:44.84362+01:00"
+														}
+													},
+													"uid" : {
+														"__type" : "uid",
+														"uidString" : "D+s2bkPODQCsAVwuCYwxVA=="
+													},
+													"code" : "Smalltalk globals\r\tat: #GtTMoney\r\tifAbsent: [ ((IceRepository registry detect: [ :repo | repo name = 'gtoolkit-demos' ])\r\t\t\tpackageNamed: 'GToolkit-Tutorial-Prices') load ]."
+												}
+											]
 										},
 										"createEmail" : {
 											"__type" : "email",
@@ -140,7 +212,7 @@
 											"__type" : "time",
 											"time" : {
 												"__type" : "dateAndTime",
-												"dateAndTimeString" : "2024-02-21T11:21:44.466591+01:00"
+												"dateAndTimeString" : "2024-02-21T11:24:59.825344+01:00"
 											}
 										},
 										"editEmail" : {
@@ -151,14 +223,17 @@
 											"__type" : "time",
 											"time" : {
 												"__type" : "dateAndTime",
-												"dateAndTimeString" : "2024-02-21T11:21:44.84362+01:00"
+												"dateAndTimeString" : "2024-02-21T11:27:02.588162+01:00"
 											}
 										},
 										"uid" : {
 											"__type" : "uid",
-											"uidString" : "D+s2bkPODQCsAVwuCYwxVA=="
+											"uidString" : "o+XbeUPODQCsjKx4CYwxVA=="
 										},
-										"code" : "Smalltalk globals\r\tat: #GtTMoney\r\tifAbsent: [ ((IceRepository registry detect: [ :repo | repo name = 'gtoolkit-demos' ])\r\t\t\tpackageNamed: 'GToolkit-Tutorial-Prices') load ]."
+										"paragraphStyle" : {
+											"__type" : "textStyle"
+										},
+										"string" : "Please evaluate the following snippet to ensure that the Money classes are loaded."
 									}
 								]
 							},
@@ -170,7 +245,7 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2024-02-21T11:24:59.825344+01:00"
+									"dateAndTimeString" : "2024-02-27T17:47:18.43262+01:00"
 								}
 							},
 							"editEmail" : {
@@ -181,17 +256,17 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2024-02-21T11:27:02.588162+01:00"
+									"dateAndTimeString" : "2024-02-27T17:47:27.025407+01:00"
 								}
 							},
 							"uid" : {
 								"__type" : "uid",
-								"uidString" : "o+XbeUPODQCsjKx4CYwxVA=="
+								"uidString" : "yoMnhMHODQCfAiMBA4xavA=="
 							},
 							"paragraphStyle" : {
 								"__type" : "textStyle"
 							},
-							"string" : "Please evaluate the following snippet to ensure that the Money classes are loaded."
+							"string" : "# Load the Money classes"
 						}
 					]
 				},
@@ -214,7 +289,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2024-02-21T13:46:07.507594+01:00"
+						"dateAndTimeString" : "2024-02-27T17:48:16.566745+01:00"
 					}
 				},
 				"uid" : {
@@ -224,7 +299,7 @@
 				"paragraphStyle" : {
 					"__type" : "textStyle"
 				},
-				"string" : "# Load the Money package"
+				"string" : "# Building on the Money classes"
 			},
 			{
 				"__type" : "textSnippet",
@@ -327,7 +402,7 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2024-02-21T12:08:33.146212+01:00"
+									"dateAndTimeString" : "2024-02-27T17:49:01.704644+01:00"
 								}
 							},
 							"uid" : {
@@ -337,7 +412,7 @@
 							"paragraphStyle" : {
 								"__type" : "textStyle"
 							},
-							"string" : "`#euros` is just a factory method that constructs an instance of {{gtClass:name=GtTCurrencyMoney}} with `euros` as the currency."
+							"string" : "`#euros` is just a factory method that constructs an instance of {{gtClass:name=GtTCurrencyMoney}} with `euros` as the currency, like this:"
 						},
 						{
 							"__type" : "pharoSnippet",
@@ -377,7 +452,82 @@
 							"__type" : "textSnippet",
 							"children" : {
 								"__type" : "snippets",
-								"items" : [ ]
+								"items" : [
+									{
+										"__type" : "textSnippet",
+										"children" : {
+											"__type" : "snippets",
+											"items" : [ ]
+										},
+										"createEmail" : {
+											"__type" : "email",
+											"emailString" : "<unknown>"
+										},
+										"createTime" : {
+											"__type" : "time",
+											"time" : {
+												"__type" : "dateAndTime",
+												"dateAndTimeString" : "2024-02-27T17:50:03.3987+01:00"
+											}
+										},
+										"editEmail" : {
+											"__type" : "email",
+											"emailString" : "<unknown>"
+										},
+										"editTime" : {
+											"__type" : "time",
+											"time" : {
+												"__type" : "dateAndTime",
+												"dateAndTimeString" : "2024-02-27T17:51:25.302999+01:00"
+											}
+										},
+										"uid" : {
+											"__type" : "uid",
+											"uidString" : "drH8jcHODQCg5wY+A4xavA=="
+										},
+										"paragraphStyle" : {
+											"__type" : "textStyle"
+										},
+										"string" : "*NB:* The “category” of a method can be found in the first of two buttons at the bottom right of the method Coder window. The other button distinguishes instance methods from class methods."
+									},
+									{
+										"__type" : "textSnippet",
+										"children" : {
+											"__type" : "snippets",
+											"items" : [ ]
+										},
+										"createEmail" : {
+											"__type" : "email",
+											"emailString" : "<unknown>"
+										},
+										"createTime" : {
+											"__type" : "time",
+											"time" : {
+												"__type" : "dateAndTime",
+												"dateAndTimeString" : "2024-02-21T13:40:53.522199+01:00"
+											}
+										},
+										"editEmail" : {
+											"__type" : "email",
+											"emailString" : "<unknown>"
+										},
+										"editTime" : {
+											"__type" : "time",
+											"time" : {
+												"__type" : "dateAndTime",
+												"dateAndTimeString" : "2024-02-27T17:52:39.520926+01:00"
+											}
+										},
+										"uid" : {
+											"__type" : "uid",
+											"uidString" : "ZnXbX0XODQC+7zmCAr4sVw=="
+										},
+										"paragraphStyle" : {
+											"__type" : "textStyle"
+										},
+										"string" : "Categories starting with `*` are *extension methods* that are defined in a *different package* from the class. In this case the package {{gtPackage:name=GToolkit-Tutorial-Prices}} extends the {{gtClass:name=Number}} class with the `euros` method, without touching its original {{gtPackage:name=Kernel}} package."
+									}
+								]
 							},
 							"createEmail" : {
 								"__type" : "email",
@@ -387,7 +537,7 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2024-02-21T13:40:53.522199+01:00"
+									"dateAndTimeString" : "2024-02-27T17:51:15.977119+01:00"
 								}
 							},
 							"editEmail" : {
@@ -398,17 +548,17 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2024-02-21T13:42:49.553358+01:00"
+									"dateAndTimeString" : "2024-02-27T17:51:15.977119+01:00"
 								}
 							},
 							"uid" : {
 								"__type" : "uid",
-								"uidString" : "ZnXbX0XODQC+7zmCAr4sVw=="
+								"uidString" : "yChQksHODQCk0bvcA4xavA=="
 							},
 							"paragraphStyle" : {
 								"__type" : "textStyle"
 							},
-							"string" : "*Task:* Have a closer look at the method {{gtMethod:name=Number>>#euros}}. See that its category is `*GToolkit-Tutorial-Prices`. Categories starting with `*` are *extension methods*. In this case the package {{gtPackage:name=GToolkit-Tutorial-Prices}} extends the {{gtClass:name=Number}} with the `euros` method, without touching its original package."
+							"string" : "***Task:*** Have a closer look at the method {{gtMethod:name=Number>>#euros}}. See that its category is “`*GToolkit-Tutorial-Prices`”. "
 						}
 					]
 				},
@@ -526,7 +676,82 @@
 							"__type" : "textSnippet",
 							"children" : {
 								"__type" : "snippets",
-								"items" : [ ]
+								"items" : [
+									{
+										"__type" : "textSnippet",
+										"children" : {
+											"__type" : "snippets",
+											"items" : [ ]
+										},
+										"createEmail" : {
+											"__type" : "email",
+											"emailString" : "<unknown>"
+										},
+										"createTime" : {
+											"__type" : "time",
+											"time" : {
+												"__type" : "dateAndTime",
+												"dateAndTimeString" : "2024-02-27T18:02:36.265954+01:00"
+											}
+										},
+										"editEmail" : {
+											"__type" : "email",
+											"emailString" : "<unknown>"
+										},
+										"editTime" : {
+											"__type" : "time",
+											"time" : {
+												"__type" : "dateAndTime",
+												"dateAndTimeString" : "2024-02-27T18:03:45.071783+01:00"
+											}
+										},
+										"uid" : {
+											"__type" : "uid",
+											"uidString" : "+oncusHODQC1vJgtA4xavA=="
+										},
+										"paragraphStyle" : {
+											"__type" : "textStyle"
+										},
+										"string" : "See that the result has a dedicated `Details` view. See how the view is implemented by ALT-clicking on the *Details* label. Don't worry too much about the details of the implementation for now, but note that it is just a few lines of code."
+									},
+									{
+										"__type" : "textSnippet",
+										"children" : {
+											"__type" : "snippets",
+											"items" : [ ]
+										},
+										"createEmail" : {
+											"__type" : "email",
+											"emailString" : "<unknown>"
+										},
+										"createTime" : {
+											"__type" : "time",
+											"time" : {
+												"__type" : "dateAndTime",
+												"dateAndTimeString" : "2024-02-21T12:21:31.677718+01:00"
+											}
+										},
+										"editEmail" : {
+											"__type" : "email",
+											"emailString" : "<unknown>"
+										},
+										"editTime" : {
+											"__type" : "time",
+											"time" : {
+												"__type" : "dateAndTime",
+												"dateAndTimeString" : "2024-02-27T18:04:52.966647+01:00"
+											}
+										},
+										"uid" : {
+											"__type" : "uid",
+											"uidString" : "ZHYHRETODQCIhsLNAZlVMQ=="
+										},
+										"paragraphStyle" : {
+											"__type" : "textStyle"
+										},
+										"string" : " Open a contextual playground at the bottom of the inspector (pull up the handle with the two grey bars) and evaluate (inspect) `self isZero`. Click on the grey triangle next to `isZero` to open the code bubble and see how it is implemented."
+									}
+								]
 							},
 							"createEmail" : {
 								"__type" : "email",
@@ -536,7 +761,7 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2024-02-21T12:21:31.677718+01:00"
+									"dateAndTimeString" : "2024-02-27T17:57:13.168813+01:00"
 								}
 							},
 							"editEmail" : {
@@ -547,17 +772,54 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2024-02-21T12:23:37.818599+01:00"
+									"dateAndTimeString" : "2024-02-27T17:57:52.699338+01:00"
 								}
 							},
 							"uid" : {
 								"__type" : "uid",
-								"uidString" : "ZHYHRETODQCIhsLNAZlVMQ=="
+								"uidString" : "5Heap8HODQCqz1rcA4xavA=="
 							},
 							"paragraphStyle" : {
 								"__type" : "textStyle"
 							},
-							"string" : "*Task:* Inspect the `fourtyTwoEuros` example. See that it has a dedicated `Details` view. See how the view is implemented. Open a contextual playground at the bottom of the inspector and evaluate (inspect) `self isZero`."
+							"string" : "***Task:*** Inspect the `fourtyTwoEuros` example by clicking on the *Play and Inspect Example* button. (Black triangle + i.)"
+						},
+						{
+							"__type" : "textSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2024-02-27T18:01:38.685789+01:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2024-02-27T18:01:47.594147+01:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "J/Ftt8HODQC1fmHcA4xavA=="
+							},
+							"paragraphStyle" : {
+								"__type" : "textStyle"
+							},
+							"string" : "Note that this example is an instance of a {{gtClass:name=GtTCurrencyMoney}}, but the example is defined in the classs {{gtClass:name=GtTMoneyExamples}}. It is common practice to defined examples in a separate class from the class that they exemplify, just like unit tests for a class `X` will be defined in a separate class `TestX`. In this case there is a hierarchy of Money classes with {{gtClass:name=GtTMoney}} at the root, and we put all the examples in {{gtClass:name=GtTMoneyExamples}}. "
 						}
 					]
 				},
@@ -891,6 +1153,43 @@
 					"__type" : "textStyle"
 				},
 				"string" : "# The Money hierarchy"
+			},
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2024-02-27T17:41:58.127118+01:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2024-02-27T17:42:05.372314+01:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "MwkQccHODQCYfefbA4xavA=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : "***Next:*** [[Modeling a Concrete Price]]"
 			}
 		]
 	},
