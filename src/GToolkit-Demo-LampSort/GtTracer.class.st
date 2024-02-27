@@ -105,7 +105,7 @@ GtTracer >> gtExampleAddNumbers [
 	recordings := memoryLogger recordings.
 	self disable.
 	self assert: recordings isNotEmpty.
-	self assert: recordings first receiver equals: self.
+	self assert: recordings first receiver class equals: self class.
 	self assert: recordings first method methodClass equals: self class.
 	self assert: recordings first method selector equals: #addNumbers:.
 	self assert: recordings first args first equals: (1 to: 10) asArray.
