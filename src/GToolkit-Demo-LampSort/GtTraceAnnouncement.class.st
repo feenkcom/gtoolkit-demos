@@ -40,6 +40,23 @@ GtTraceAnnouncement >> duration: aDuration [
 	duration := aDuration
 ]
 
+{ #category : #'gt extensions' }
+GtTraceAnnouncement >> gtViewTraceDetailsIn: composite [
+	<gtView>
+	^ composite columnedList
+		title: 'Trace';
+		priority: 30;
+		items: [ {
+			{ #receiver . receiver }.
+			{ #method . method }.
+			{ #args . args printString . args }.
+			{ #result . result printString. result }.
+			{ #duration . duration asString , 'ms'. duration } } ];
+		column: #key text: #first weight: 0.5;
+		column: #value text: #second;
+		send: #last
+]
+
 { #category : #initialization }
 GtTraceAnnouncement >> initialize [
 	super initialize.
@@ -67,14 +84,11 @@ GtTraceAnnouncement >> printOn: stream [
 	stream
 		print: self receiver;
 		space;
-		print: self method;
+		print: self method selector;
 		space;
 		print: self args;
 		space;
-		print: self result;
-		space;
-		print: self duration;
-		nextPutAll: 'ms'
+		print: self result
 ]
 
 { #category : #printing }

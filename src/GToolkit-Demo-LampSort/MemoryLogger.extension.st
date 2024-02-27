@@ -4,7 +4,7 @@ Extension { #name : #MemoryLogger }
 MemoryLogger >> gtViewLampSortHistoryFor: composite [
 	<gtView>
 	(interestingAnnouncements handlesAnnouncement: GtLampSortAnnouncement new)
-		ifFalse: [ ^ composite emptyView ].
+		ifFalse: [ ^ composite empty].
 	^ composite list
 		title: 'LampSort history';
 		priority: 90;

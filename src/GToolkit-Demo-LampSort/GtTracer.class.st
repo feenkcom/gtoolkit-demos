@@ -71,7 +71,11 @@ GtTracer >> disableAll [
 	"Remove all MetaLinks from all methods marked with <gtTrace>,
 	independent of package or class"
 
-	#gtTrace gtPragmas contents do: [ :eachMethod | self removeMyMetaLinksFrom: eachMethod ]
+	| count |
+	count := 0.
+	#gtTrace gtPragmas contents
+		do: [ :eachMethod | count := count + (self removeMyMetaLinksFrom: eachMethod) ].
+	^ count
 ]
 
 { #category : #public }
@@ -88,7 +92,7 @@ GtTracer >> enable [
 { #category : #examples }
 GtTracer >> gtExampleAddNumbers [
 	<gtExample>
-	| memoryLogger result recordings|
+	| memoryLogger result recordings |
 	self addClass: self class name.
 	self assert: self tracedMethods equals: { self class >> #addNumbers: }.
 	self enable.
@@ -109,6 +113,22 @@ GtTracer >> gtExampleAddNumbers [
 	^ memoryLogger
 ]
 
+{ #category : #examples }
+GtTracer >> gtExampleSortRandom [
+	<gtExample>
+	self addClass: #GtLampSort.
+	^ self traceDuring: [
+		GtLampSort new gtExampleSortRandom ]
+]
+
+{ #category : #examples }
+GtTracer >> gtExampleSortSpecific [
+	<gtExample>
+	self addClass: #GtLampSort.
+	^ self traceDuring: [
+		GtLampSort new gtExampleSortSpecific ]
+]
+
 { #category : #testing }
 GtTracer >> isMyMetaLink: aMetaLink [
 	^ aMetaLink metaObject class = self class
@@ -118,16 +138,17 @@ GtTracer >> isMyMetaLink: aMetaLink [
 { #category : #'meta actions' }
 GtTracer >> method: aMethod sendTo: aReceiver withArguments: arguments [
 	| time duration result traceAnnouncement |
+	traceAnnouncement := GtTraceAnnouncement new
+			receiver: aReceiver copy;
+			method: aMethod;
+			args: (arguments collect: #copy);
+			yourself.
 	time := Time millisecondClockValue.
 	result := aMethod valueWithReceiver: aReceiver arguments: arguments.
 	duration := Time millisecondsSince: time.
-	traceAnnouncement := GtTraceAnnouncement new
-			receiver: aReceiver;
-			method: aMethod;
-			args: arguments;
-			result: result;
-			duration: duration;
-			yourself.
+	traceAnnouncement
+		result: result copy;
+		duration: duration.
 	self announcer announce: traceAnnouncement.
 	^ result
 ]
@@ -144,10 +165,28 @@ GtTracer >> packages [
 
 { #category : #public }
 GtTracer >> removeMyMetaLinksFrom: aMethod [
-	| methodNode |
+	| methodNode count |
+	count := 0.
 	methodNode := aMethod ast.
-	^ methodNode links copy
-		do: [ :eachLink | (self isMyMetaLink: eachLink) ifTrue: [ methodNode removeLink: eachLink ] ]
+	methodNode links copy
+		do: [ :eachLink | 
+			(self isMyMetaLink: eachLink)
+				ifTrue: [ 
+					methodNode removeLink: eachLink.
+					count := count + 1 ] ].
+	^ count
+]
+
+{ #category : #public }
+GtTracer >> traceDuring: block [
+	| memoryLogger |
+	self enable.
+	memoryLogger := MemoryLogger new
+		name: 'Trace';
+		beacon: self announcer;
+		runFor: GtTraceAnnouncement during: block.
+	self disable.
+	^ memoryLogger
 ]
 
 { #category : #public }
