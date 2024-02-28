@@ -23,6 +23,43 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2024-02-28T10:34:07.961653+01:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2024-02-28T10:34:07.961653+01:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "qcDXlM/ODQC4hd3LDxKdIw=="
+							},
+							"paragraphStyle" : {
+								"__type" : "textStyle"
+							},
+							"string" : "In this exercise, we model a concrete price using EDD. "
+						},
+						{
+							"__type" : "textSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
 									"dateAndTimeString" : "2024-02-21T13:44:37.321712+01:00"
 								}
 							},
@@ -34,7 +71,7 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2024-02-21T13:45:15.014295+01:00"
+									"dateAndTimeString" : "2024-02-28T10:34:52.628626+01:00"
 								}
 							},
 							"uid" : {
@@ -44,7 +81,7 @@
 							"paragraphStyle" : {
 								"__type" : "textStyle"
 							},
-							"string" : "In this exercise, we model a concrete price using EDD."
+							"string" : "Eventually we will have other kinds of discounted prices, and probably an abstract `Price` class as a common parent, but we will start by simply implementing this concrete case."
 						}
 					]
 				},
@@ -184,7 +221,7 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2024-02-21T13:52:47.636758+01:00"
+									"dateAndTimeString" : "2024-02-28T10:33:25.191865+01:00"
 								}
 							},
 							"uid" : {
@@ -194,7 +231,7 @@
 							"paragraphStyle" : {
 								"__type" : "textStyle"
 							},
-							"string" : "We assume that we already have classes to model different kinds of Money"
+							"string" : "We assume that we already have classes to model different kinds of Money."
 						}
 					]
 				},
@@ -333,7 +370,7 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2024-02-21T13:57:09.989815+01:00"
+									"dateAndTimeString" : "2024-02-28T10:09:42.50644+01:00"
 								}
 							},
 							"uid" : {
@@ -343,7 +380,7 @@
 							"paragraphStyle" : {
 								"__type" : "textStyle"
 							},
-							"string" : "We start with our requirement, `A price can be something like 100 EUR.` and code it up:"
+							"string" : "We start with our requirement, `A price can be something like 100 EUR.` and code it up. Of course this code won't run because we haven't implemented anything yet."
 						},
 						{
 							"__type" : "pharoSnippet",
@@ -398,7 +435,7 @@
 											"__type" : "time",
 											"time" : {
 												"__type" : "dateAndTime",
-												"dateAndTimeString" : "2024-02-21T13:57:53.143393+01:00"
+												"dateAndTimeString" : "2024-02-28T10:12:29.297796+01:00"
 											}
 										},
 										"editEmail" : {
@@ -409,17 +446,17 @@
 											"__type" : "time",
 											"time" : {
 												"__type" : "dateAndTime",
-												"dateAndTimeString" : "2024-02-21T14:13:25.267453+01:00"
+												"dateAndTimeString" : "2024-02-28T10:17:45.486654+01:00"
 											}
 										},
 										"uid" : {
 											"__type" : "uid",
-											"uidString" : "pTyyhkXODQCK9+wSAr4sVw=="
+											"uidString" : "tp9mQM/ODQCRMxJbDxKdIw=="
 										},
 										"paragraphStyle" : {
 											"__type" : "textStyle"
 										},
-										"string" : "*Tip:* Alternatively, instead of using the fixit to create the `money:` setter, you could open the `ConcretePrice` code bubble by clicking the grey triangle, add a `money` slot, and then apply the *create accessors* refactoring. "
+										"string" : "*Tip:* You will also have to create the `money:` setter. You also can do this with the fixit dialogue, but there is a better way, using a *Create accessors* refactoring. To do this: \n(1) open the code bubble for the the `ConcretePrice` class (grey triangle), \n(2) click on the grey back underneath the class name to show the class definition, and\n(3) right-click on the `money` slot to reveal the menu including the *Create accessors* refactoring.\n(4) Select it, and click the checkmark to accept it and generate the `money` and `money:` getter and setter."
 									}
 								]
 							},
@@ -442,7 +479,7 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2024-02-21T14:02:49.596493+01:00"
+									"dateAndTimeString" : "2024-02-28T10:18:38.930643+01:00"
 								}
 							},
 							"uid" : {
@@ -452,7 +489,7 @@
 							"paragraphStyle" : {
 								"__type" : "textStyle"
 							},
-							"string" : "*Task:* The class `ConcretePrice` does not exist. Create it using the fixit dialogue. Give it the package name `EDDPrices`. Also implement the `money:` setter using the fixit. You will also have to create a `money` slot."
+							"string" : "***Task:*** The class `ConcretePrice` does not exist. Create it using the fixit dialogue (click on the wrench icon). Give it the package name `EDDPrices` (or anything else you like). Also give it a `money` slot. When you have specified the new class, click on the checkmark at the bottom left of the dialogue."
 						},
 						{
 							"__type" : "textSnippet",
@@ -479,7 +516,7 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2024-02-21T14:04:41.765157+01:00"
+									"dateAndTimeString" : "2024-02-28T10:18:12.782062+01:00"
 								}
 							},
 							"uid" : {
@@ -489,7 +526,7 @@
 							"paragraphStyle" : {
 								"__type" : "textStyle"
 							},
-							"string" : "Now you can inspect the result."
+							"string" : "Now you can inspect the result. You should see a brand-new `ConcretePrice` instance."
 						}
 					]
 				},
@@ -554,7 +591,7 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2024-02-21T13:50:13.378131+01:00"
+									"dateAndTimeString" : "2024-02-28T10:19:27.632255+01:00"
 								}
 							},
 							"uid" : {
@@ -564,7 +601,7 @@
 							"paragraphStyle" : {
 								"__type" : "textStyle"
 							},
-							"string" : "We'd like to generate a Price from a Money. We start by inspecting a Money:"
+							"string" : "We'd like to generate a Price from a Money by sending it `asPrice`. We start by inspecting a Money:"
 						},
 						{
 							"__type" : "pharoSnippet",
@@ -591,7 +628,7 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2024-02-21T13:50:13.378134+01:00"
+									"dateAndTimeString" : "2024-02-28T11:45:35.099816+01:00"
 								}
 							},
 							"uid" : {
@@ -614,7 +651,7 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2024-02-21T14:07:35.659948+01:00"
+									"dateAndTimeString" : "2024-02-28T10:22:05.789696+01:00"
 								}
 							},
 							"editEmail" : {
@@ -625,17 +662,17 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2024-02-21T14:09:55.62903+01:00"
+									"dateAndTimeString" : "2024-02-28T10:23:06.654523+01:00"
 								}
 							},
 							"uid" : {
 								"__type" : "uid",
-								"uidString" : "6RNav0XODQCqxG/NAr4sVw=="
+								"uidString" : "X07Mac/ODQCmIiuxDxKdIw=="
 							},
 							"paragraphStyle" : {
 								"__type" : "textStyle"
 							},
-							"string" : "*Task:* In the playground of the Money instance, inspect `ConcretePrice new money: self`. Now apply an *extract method* refactoring to the snippet, and call it `asPrice`. (Right-click inside the code snippet to see the menu with the refactoring.)"
+							"string" : "***Task:*** In the playground of the Money instance, inspect `ConcretePrice new money: self`. This is what the money instance should create when we send it `asPrice`. We could implement this method directly, or we could apply an *Extract method* refactoring to the snippet. To do this, select the entire code snippet, and right-click to see the menu with the refactoring. Do this and call the new method `asPrice`."
 						},
 						{
 							"__type" : "textSnippet",
@@ -699,7 +736,7 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2024-02-21T14:12:39.075029+01:00"
+									"dateAndTimeString" : "2024-02-28T10:24:22.440634+01:00"
 								}
 							},
 							"uid" : {
@@ -709,13 +746,51 @@
 							"paragraphStyle" : {
 								"__type" : "textStyle"
 							},
-							"string" : "The new `asPrice` method should be an extension method of our package, not a change to the {{gtPackage:name=GToolkit-Tutorial-Prices}} package."
+							"string" : "The new `asPrice` method should be an extension method of our package, not a change to the {{gtPackage:name=GToolkit-Tutorial-Prices}} package. To do this, we simply change the method category of the new method to our package."
 						},
 						{
 							"__type" : "textSnippet",
 							"children" : {
 								"__type" : "snippets",
-								"items" : [ ]
+								"items" : [
+									{
+										"__type" : "textSnippet",
+										"children" : {
+											"__type" : "snippets",
+											"items" : [ ]
+										},
+										"createEmail" : {
+											"__type" : "email",
+											"emailString" : "<unknown>"
+										},
+										"createTime" : {
+											"__type" : "time",
+											"time" : {
+												"__type" : "dateAndTime",
+												"dateAndTimeString" : "2024-02-28T10:24:39.998024+01:00"
+											}
+										},
+										"editEmail" : {
+											"__type" : "email",
+											"emailString" : "<unknown>"
+										},
+										"editTime" : {
+											"__type" : "time",
+											"time" : {
+												"__type" : "dateAndTime",
+												"dateAndTimeString" : "2024-02-28T11:52:44.433958+01:00"
+											}
+										},
+										"uid" : {
+											"__type" : "uid",
+											"uidString" : "KVb9cs/ODQCqpk3XDxKdIw=="
+										},
+										"paragraphStyle" : {
+											"__type" : "textStyle"
+										},
+										"string" : "*Hint:* at  the bottom right of the method coder are two buttons, one for the method category and the other for the instance vs class methods. Click on the first button that says `accessing” and edit it to say `*EDDPrices`."
+									}
+								]
 							},
 							"createEmail" : {
 								"__type" : "email",
@@ -736,7 +811,7 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2024-02-21T14:13:43.225754+01:00"
+									"dateAndTimeString" : "2024-02-28T10:24:28.714782+01:00"
 								}
 							},
 							"uid" : {
@@ -746,7 +821,7 @@
 							"paragraphStyle" : {
 								"__type" : "textStyle"
 							},
-							"string" : "*Task:* Open the `asPrice` code bubble and change the category to `*EDDPrices`."
+							"string" : "***Task:*** Open the `asPrice` code bubble and change the category to `*EDDPrices`."
 						}
 					]
 				},
@@ -950,7 +1025,7 @@
 											"__type" : "time",
 											"time" : {
 												"__type" : "dateAndTime",
-												"dateAndTimeString" : "2024-02-21T14:19:48.252308+01:00"
+												"dateAndTimeString" : "2024-02-28T10:26:45.780538+01:00"
 											}
 										},
 										"editEmail" : {
@@ -961,7 +1036,193 @@
 											"__type" : "time",
 											"time" : {
 												"__type" : "dateAndTime",
-												"dateAndTimeString" : "2024-02-21T14:24:33.573449+01:00"
+												"dateAndTimeString" : "2024-02-28T10:28:21.247698+01:00"
+											}
+										},
+										"uid" : {
+											"__type" : "uid",
+											"uidString" : "H6B8es/ODQCvK4lzDxKdIw=="
+										},
+										"paragraphStyle" : {
+											"__type" : "textStyle"
+										},
+										"string" : "*Hint:* Alt-click on the *Details* view to see its source code in the *Source* view of the method. Select and copy this code. Now go back to the *Meta* view of the `ConcretePrice` object and click on the **+** to add a new method."
+									},
+									{
+										"__type" : "textSnippet",
+										"children" : {
+											"__type" : "snippets",
+											"items" : [
+												{
+													"__type" : "textSnippet",
+													"children" : {
+														"__type" : "snippets",
+														"items" : [ ]
+													},
+													"createEmail" : {
+														"__type" : "email",
+														"emailString" : "<unknown>"
+													},
+													"createTime" : {
+														"__type" : "time",
+														"time" : {
+															"__type" : "dateAndTime",
+															"dateAndTimeString" : "2024-02-28T10:29:36.200631+01:00"
+														}
+													},
+													"editEmail" : {
+														"__type" : "email",
+														"emailString" : "<unknown>"
+													},
+													"editTime" : {
+														"__type" : "time",
+														"time" : {
+															"__type" : "dateAndTime",
+															"dateAndTimeString" : "2024-02-28T10:29:54.383241+01:00"
+														}
+													},
+													"uid" : {
+														"__type" : "uid",
+														"uidString" : "TwulhM/ODQC0MO56DxKdIw=="
+													},
+													"paragraphStyle" : {
+														"__type" : "textStyle"
+													},
+													"string" : "`text: self gtDisplayString asRopedText;`"
+												},
+												{
+													"__type" : "textSnippet",
+													"children" : {
+														"__type" : "snippets",
+														"items" : [ ]
+													},
+													"createEmail" : {
+														"__type" : "email",
+														"emailString" : "<unknown>"
+													},
+													"createTime" : {
+														"__type" : "time",
+														"time" : {
+															"__type" : "dateAndTime",
+															"dateAndTimeString" : "2024-02-28T10:29:41.416255+01:00"
+														}
+													},
+													"editEmail" : {
+														"__type" : "email",
+														"emailString" : "<unknown>"
+													},
+													"editTime" : {
+														"__type" : "time",
+														"time" : {
+															"__type" : "dateAndTime",
+															"dateAndTimeString" : "2024-02-28T10:29:48.323264+01:00"
+														}
+													},
+													"uid" : {
+														"__type" : "uid",
+														"uidString" : "l6D0hM/ODQC0RoPdDxKdIw=="
+													},
+													"paragraphStyle" : {
+														"__type" : "textStyle"
+													},
+													"string" : "should instead be:"
+												},
+												{
+													"__type" : "textSnippet",
+													"children" : {
+														"__type" : "snippets",
+														"items" : [ ]
+													},
+													"createEmail" : {
+														"__type" : "email",
+														"emailString" : "<unknown>"
+													},
+													"createTime" : {
+														"__type" : "time",
+														"time" : {
+															"__type" : "dateAndTime",
+															"dateAndTimeString" : "2024-02-28T10:29:49.135502+01:00"
+														}
+													},
+													"editEmail" : {
+														"__type" : "email",
+														"emailString" : "<unknown>"
+													},
+													"editTime" : {
+														"__type" : "time",
+														"time" : {
+															"__type" : "dateAndTime",
+															"dateAndTimeString" : "2024-02-28T10:29:51.030911+01:00"
+														}
+													},
+													"uid" : {
+														"__type" : "uid",
+														"uidString" : "DGpqhc/ODQC0vaCODxKdIw=="
+													},
+													"paragraphStyle" : {
+														"__type" : "textStyle"
+													},
+													"string" : "`text: self money gtDisplayString asRopedText;`"
+												}
+											]
+										},
+										"createEmail" : {
+											"__type" : "email",
+											"emailString" : "<unknown>"
+										},
+										"createTime" : {
+											"__type" : "time",
+											"time" : {
+												"__type" : "dateAndTime",
+												"dateAndTimeString" : "2024-02-28T10:29:22.230764+01:00"
+											}
+										},
+										"editEmail" : {
+											"__type" : "email",
+											"emailString" : "<unknown>"
+										},
+										"editTime" : {
+											"__type" : "time",
+											"time" : {
+												"__type" : "dateAndTime",
+												"dateAndTimeString" : "2024-02-28T10:39:08.435111+01:00"
+											}
+										},
+										"uid" : {
+											"__type" : "uid",
+											"uidString" : "kqxdg8/ODQCydOgcDxKdIw=="
+										},
+										"paragraphStyle" : {
+											"__type" : "textStyle"
+										},
+										"string" : "Paste the code you copied. Change the method name to `gtMoneyFor:` and change the title to `'Money'`. Add a `priority: 10;` after the title. Also change this line:"
+									},
+									{
+										"__type" : "textSnippet",
+										"children" : {
+											"__type" : "snippets",
+											"items" : [ ]
+										},
+										"createEmail" : {
+											"__type" : "email",
+											"emailString" : "<unknown>"
+										},
+										"createTime" : {
+											"__type" : "time",
+											"time" : {
+												"__type" : "dateAndTime",
+												"dateAndTimeString" : "2024-02-28T10:30:09.971316+01:00"
+											}
+										},
+										"editEmail" : {
+											"__type" : "email",
+											"emailString" : "<unknown>"
+										},
+										"editTime" : {
+											"__type" : "time",
+											"time" : {
+												"__type" : "dateAndTime",
+												"dateAndTimeString" : "2024-02-28T10:30:14.972894+01:00"
 											}
 										},
 										"uid" : {
@@ -971,7 +1232,7 @@
 										"paragraphStyle" : {
 											"__type" : "textStyle"
 										},
-										"string" : "*Hint:* Alt-click on the *Details* view to see its source code. You can either copy-paste and adapt this code to the `ConcretePrice` class, or you can define a `forward` view that forwards to the *Details* view of the `money` slot. For an example, see {{gtMethod:name=GtAsyncSearchMethodGroupStream>>#gtMetricsFor:}}."
+										"string" : "Save and commit this."
 									}
 								]
 							},
@@ -994,7 +1255,7 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2024-02-21T14:19:23.057564+01:00"
+									"dateAndTimeString" : "2024-02-28T10:26:28.062612+01:00"
 								}
 							},
 							"uid" : {
@@ -1004,7 +1265,7 @@
 							"paragraphStyle" : {
 								"__type" : "textStyle"
 							},
-							"string" : "*Task:* Add a *Money* view to the concrete price that reuses the *Details* view from {{gtClass:name=GtTMoney}}."
+							"string" : "***Task:*** Add a *Money* view to the concrete price that reuses the *Details* view from {{gtClass:name=GtTMoney}}."
 						},
 						{
 							"__type" : "textSnippet",
@@ -1020,7 +1281,7 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2024-02-21T14:16:13.91792+01:00"
+									"dateAndTimeString" : "2024-02-28T10:32:29.634859+01:00"
 								}
 							},
 							"editEmail" : {
@@ -1031,17 +1292,17 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2024-02-21T14:26:52.390243+01:00"
+									"dateAndTimeString" : "2024-02-28T10:39:23.449496+01:00"
 								}
 							},
 							"uid" : {
 								"__type" : "uid",
-								"uidString" : "aRk+3kXODQC6BO4CAr4sVw=="
+								"uidString" : "5GT7js/ODQC1XD7ODxKdIw=="
 							},
 							"paragraphStyle" : {
 								"__type" : "textStyle"
 							},
-							"string" : "Now when you inspect the price you should see a nice *Money* view."
+							"string" : "Now you'll see a nice *Money* view for the price object."
 						}
 					]
 				},
@@ -1143,14 +1404,14 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2024-02-21T14:37:36.93169+01:00"
+									"dateAndTimeString" : "2024-02-28T10:41:38.064771+01:00"
 								}
 							},
 							"uid" : {
 								"__type" : "uid",
 								"uidString" : "ZDA6gUXODQCKSThgAr4sVw=="
 							},
-							"code" : "price := 100 euros asPrice.\rprice."
+							"code" : "PriceExamples new hundredEuros"
 						},
 						{
 							"__type" : "textSnippet",
@@ -1252,7 +1513,7 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2024-02-21T14:33:41.127216+01:00"
+									"dateAndTimeString" : "2024-02-28T10:40:57.103732+01:00"
 								}
 							},
 							"uid" : {
@@ -1262,7 +1523,7 @@
 							"paragraphStyle" : {
 								"__type" : "textStyle"
 							},
-							"string" : "*Task:* Apply the *Extract example* refactoring to the snippet above."
+							"string" : "***Task:*** Apply the *Extract example* refactoring to the snippet above."
 						},
 						{
 							"__type" : "pharoSnippet",
@@ -1323,7 +1584,7 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2024-02-21T14:39:07.872795+01:00"
+									"dateAndTimeString" : "2024-02-28T10:42:10.729223+01:00"
 								}
 							},
 							"uid" : {
@@ -1333,7 +1594,44 @@
 							"paragraphStyle" : {
 								"__type" : "textStyle"
 							},
-							"string" : "*Task:* Open the `hundredEuros` code bubble and browse the extracted code. Inspect the example directly from the method coder. Notice that the `<gtExample>` pragmas has been added, and `price` has been defined as a temporary."
+							"string" : "***Task:*** Open the `hundredEuros` code bubble and browse the extracted code. Inspect the example directly from the method coder. Notice that the `<gtExample>` pragma has been added, and `price` has been defined as a temporary."
+						},
+						{
+							"__type" : "textSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2024-02-28T10:42:12.228354+01:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2024-02-28T10:44:21.652599+01:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "8BK1sc/ODQCDtbVaDxKdIw=="
+							},
+							"paragraphStyle" : {
+								"__type" : "textStyle"
+							},
+							"string" : "*NB:* As with {{gtClass:name=GtTMoneyExamples}}, we put examples in a separate class from that of the example instances. As we later add different kind of `Price` classes, we'll add all our examples to the `PriceExamples`, starting with examples of our `ConcretePrice` class and then our discounted prices."
 						}
 					]
 				},
@@ -1469,7 +1767,7 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2024-02-21T14:45:48.564609+01:00"
+									"dateAndTimeString" : "2024-02-28T10:44:46.145445+01:00"
 								}
 							},
 							"uid" : {
@@ -1479,7 +1777,82 @@
 							"paragraphStyle" : {
 								"__type" : "textStyle"
 							},
-							"string" : "We would expect our example to be equal to another 100 euroinstance."
+							"string" : "We would expect our example to be equal to another 100 euro instance."
+						},
+						{
+							"__type" : "textSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [
+									{
+										"__type" : "textSnippet",
+										"children" : {
+											"__type" : "snippets",
+											"items" : [ ]
+										},
+										"createEmail" : {
+											"__type" : "email",
+											"emailString" : "<unknown>"
+										},
+										"createTime" : {
+											"__type" : "time",
+											"time" : {
+												"__type" : "dateAndTime",
+												"dateAndTimeString" : "2024-02-21T14:45:49.421105+01:00"
+											}
+										},
+										"editEmail" : {
+											"__type" : "email",
+											"emailString" : "<unknown>"
+										},
+										"editTime" : {
+											"__type" : "time",
+											"time" : {
+												"__type" : "dateAndTime",
+												"dateAndTimeString" : "2024-02-28T10:48:07.898922+01:00"
+											}
+										},
+										"uid" : {
+											"__type" : "uid",
+											"uidString" : "xSYSSEbODQChdm3JAr4sVw=="
+										},
+										"paragraphStyle" : {
+											"__type" : "textStyle"
+										},
+										"string" : "*Hint:* Open the code bubble for `=`. Since we did not implement the method `=` for our `ConcretePrice` class, we inherit the *default* implementation from {{gtClass:name=Object}}, which tests for object identity, not equality of values. "
+									}
+								]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2024-02-28T10:45:31.748047+01:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2024-02-28T10:45:31.748047+01:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "s32Zvc/ODQCKWieKDxKdIw=="
+							},
+							"paragraphStyle" : {
+								"__type" : "textStyle"
+							},
+							"string" : "***Task:*** Inspect the example and then inspect `self = 100 euros asPrice` in its playground. Why is the answer `false`? "
 						},
 						{
 							"__type" : "textSnippet",
@@ -1495,7 +1868,7 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2024-02-21T14:45:49.421105+01:00"
+									"dateAndTimeString" : "2024-02-28T10:45:01.06286+01:00"
 								}
 							},
 							"editEmail" : {
@@ -1506,17 +1879,163 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2024-02-21T14:47:02.926977+01:00"
+									"dateAndTimeString" : "2024-02-28T10:49:24.356463+01:00"
 								}
 							},
 							"uid" : {
 								"__type" : "uid",
-								"uidString" : "xSYSSEbODQChdm3JAr4sVw=="
+								"uidString" : "nUvFu8/ODQCKNoL7DxKdIw=="
 							},
 							"paragraphStyle" : {
 								"__type" : "textStyle"
 							},
-							"string" : "*Task:* Inspect the example and then inspect `self = 100 euros asPrice` in its playground. Why is the answer `false`? Open the code bubble for `=`. "
+							"string" : "We will have to implement `=` for `ConcretePrice` instances so it does the right thing. Instead of directly implementing it, we'll first prototype it in the playground, and then extract the method."
+						},
+						{
+							"__type" : "textSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [
+									{
+										"__type" : "textSnippet",
+										"children" : {
+											"__type" : "snippets",
+											"items" : [ ]
+										},
+										"createEmail" : {
+											"__type" : "email",
+											"emailString" : "<unknown>"
+										},
+										"createTime" : {
+											"__type" : "time",
+											"time" : {
+												"__type" : "dateAndTime",
+												"dateAndTimeString" : "2024-02-28T10:50:48.890519+01:00"
+											}
+										},
+										"editEmail" : {
+											"__type" : "email",
+											"emailString" : "<unknown>"
+										},
+										"editTime" : {
+											"__type" : "time",
+											"time" : {
+												"__type" : "dateAndTime",
+												"dateAndTimeString" : "2024-02-28T10:52:02.595094+01:00"
+											}
+										},
+										"uid" : {
+											"__type" : "uid",
+											"uidString" : "mpaA0M/ODQCTfYoeDxKdIw=="
+										},
+										"paragraphStyle" : {
+											"__type" : "textStyle"
+										},
+										"string" : "*Hint:* Select the entire code `self money = other money`, and right-click to see the *Extract method* refactoring. Call the new method `=`. (Ignore the warning that the method is already defined in `Object`.)"
+									},
+									{
+										"__type" : "textSnippet",
+										"children" : {
+											"__type" : "snippets",
+											"items" : [ ]
+										},
+										"createEmail" : {
+											"__type" : "email",
+											"emailString" : "<unknown>"
+										},
+										"createTime" : {
+											"__type" : "time",
+											"time" : {
+												"__type" : "dateAndTime",
+												"dateAndTimeString" : "2024-02-21T14:47:10.73466+01:00"
+											}
+										},
+										"editEmail" : {
+											"__type" : "email",
+											"emailString" : "<unknown>"
+										},
+										"editTime" : {
+											"__type" : "time",
+											"time" : {
+												"__type" : "dateAndTime",
+												"dateAndTimeString" : "2024-02-28T10:53:31.515753+01:00"
+											}
+										},
+										"uid" : {
+											"__type" : "uid",
+											"uidString" : "jJe0TEbODQCkHT8zAr4sVw=="
+										},
+										"paragraphStyle" : {
+											"__type" : "textStyle"
+										},
+										"string" : "Verify that `self = 100 euros asPrice` is now true. Finally add the assertion `self assert: price equals: 100 euros asPrice.` to the `hundredEuros` example."
+									},
+									{
+										"__type" : "pharoSnippet",
+										"children" : {
+											"__type" : "snippets",
+											"items" : [ ]
+										},
+										"createEmail" : {
+											"__type" : "email",
+											"emailString" : "<unknown>"
+										},
+										"createTime" : {
+											"__type" : "time",
+											"time" : {
+												"__type" : "dateAndTime",
+												"dateAndTimeString" : "2024-02-28T10:54:02.394172+01:00"
+											}
+										},
+										"editEmail" : {
+											"__type" : "email",
+											"emailString" : "<unknown>"
+										},
+										"editTime" : {
+											"__type" : "time",
+											"time" : {
+												"__type" : "dateAndTime",
+												"dateAndTimeString" : "2024-02-28T10:54:03.008438+01:00"
+											}
+										},
+										"uid" : {
+											"__type" : "uid",
+											"uidString" : "JVkJ3M/ODQCXa720DxKdIw=="
+										},
+										"code" : "PriceExamples new hundredEuros."
+									}
+								]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2024-02-28T10:50:43.519792+01:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2024-02-28T10:53:07.979363+01:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "UMMu0M/ODQCTdGMNDxKdIw=="
+							},
+							"paragraphStyle" : {
+								"__type" : "textStyle"
+							},
+							"string" : "***Task:*** Evaluate `other := 100 euros asPrice.` in a playground snippet of our 100 euro price object. Now write `self money = other money.` in a *fresh* snippet and verify that it's true. Apply an *Extract method* refactoring to this to extract an `=` method for the `ConcretePrice` class. "
 						},
 						{
 							"__type" : "textSnippet",
@@ -1532,7 +2051,7 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2024-02-21T14:47:10.73466+01:00"
+									"dateAndTimeString" : "2024-02-28T10:55:14.945753+01:00"
 								}
 							},
 							"editEmail" : {
@@ -1543,17 +2062,17 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2024-02-21T14:54:09.086239+01:00"
+									"dateAndTimeString" : "2024-02-28T10:57:20.36623+01:00"
 								}
 							},
 							"uid" : {
 								"__type" : "uid",
-								"uidString" : "jJe0TEbODQCkHT8zAr4sVw=="
+								"uidString" : "U2xc4M/ODQCXeWz+DxKdIw=="
 							},
 							"paragraphStyle" : {
 								"__type" : "textStyle"
 							},
-							"string" : "*Task:* Evaluate `other := 100 euros asPrice.` in a playground snippet. Now write `self money = other money.` in a fresh snippet and verify that it's true. Apply an *Extract method* refactoring to this to extract an `=` method for the `ConcretePrice` class. Verify that `self = other` is true. Finally add the assertion `self assert: price equals: 100 euros asPrice.` to the `hundredEuros` example."
+							"string" : "***Extra task:*** Have a look at {{gtMethod:name=GtTCurrencyMoney>>#=}}. It's a bit more complex than the `=` method that we just defined, because it will work for *any* object as an argument, not just another money. Generalize `ConcretePrice>>#=` in the same way and verify that it works."
 						}
 					]
 				},
@@ -1655,7 +2174,7 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2024-02-21T14:55:48.215156+01:00"
+									"dateAndTimeString" : "2024-02-28T10:57:42.238735+01:00"
 								}
 							},
 							"uid" : {
@@ -1665,7 +2184,7 @@
 							"paragraphStyle" : {
 								"__type" : "textStyle"
 							},
-							"string" : "*Task:* Using the same EDD style, develop examples and code for addition and multiplication."
+							"string" : "***Extra Task:*** Using the same EDD style, develop examples and code for addition and multiplication."
 						},
 						{
 							"__type" : "textSnippet",
@@ -1775,6 +2294,155 @@
 				"__type" : "textSnippet",
 				"children" : {
 					"__type" : "snippets",
+					"items" : [
+						{
+							"__type" : "textSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2024-02-28T11:06:12.777701+01:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2024-02-28T11:06:24.834162+01:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "GCGSB9DODQCahUvKDKrshA=="
+							},
+							"paragraphStyle" : {
+								"__type" : "textStyle"
+							},
+							"string" : "If you'd like to save your work before continuing, of course you can just save the image and start it again later."
+						},
+						{
+							"__type" : "textSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2024-02-28T11:00:07.122022+01:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2024-02-28T11:06:14.511508+01:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "saXG8c/ODQCLfvcBDKrshA=="
+							},
+							"paragraphStyle" : {
+								"__type" : "textStyle"
+							},
+							"string" : "You can also *file out* your changes as source code that you can *file in* to another image later. To file out your changes, just send the message `fileOut` to the class or a package that you want to export. (To get the package of a class, send it the message `package`. So `ConcretePrice package fileOut` will create a file `EDDPrices.st` that you can later view with the *File System* tool and file back in with the `File In` button."
+						},
+						{
+							"__type" : "textSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2024-02-28T11:01:30.237948+01:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2024-02-28T11:02:40.70152+01:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "F+u69s/ODQCPv0ySDKrshA=="
+							},
+							"paragraphStyle" : {
+								"__type" : "textStyle"
+							},
+							"string" : "Finally, you could set up a GitHub repository and save your changes there. You can find instructions in the GT Book in {{gtPage:How to work with GitHub|db=2j9m7db2i4oz116bexd7wbdxo}}. "
+						}
+					]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2024-02-28T10:59:58.085716+01:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2024-02-28T11:00:05.551877+01:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "qMs88c/ODQCLEXTuDKrshA=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : "# Saving your work"
+			},
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
 					"items" : [ ]
 				},
 				"createEmail" : {
@@ -1796,7 +2464,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2024-02-21T14:57:36.873781+01:00"
+						"dateAndTimeString" : "2024-02-27T17:41:47.590232+01:00"
 					}
 				},
 				"uid" : {
@@ -1806,7 +2474,7 @@
 				"paragraphStyle" : {
 					"__type" : "textStyle"
 				},
-				"string" : "Next: [[[[Modeling discounted prices]]]]."
+				"string" : "***Next:*** [[Modeling discounted prices]]."
 			}
 		]
 	},

@@ -6,7 +6,7 @@ Class {
 
 { #category : #running }
 LoggingMethodWrapperExamples >> activeLogger [
-	"We install the logger on Integer>>#factorial and see that the invocation count is now updated."
+	"We install the logger on Integer>>#slowFactorial and see that the invocation count is now updated."
 
 	<gtExample>
 	| logger |
@@ -22,7 +22,7 @@ LoggingMethodWrapperExamples >> activeLogger [
 
 { #category : #running }
 LoggingMethodWrapperExamples >> inactiveLogger [
-	"We create a logger for Integer>>#factorial but do not install it."
+	"We create a logger for Integer>>#slowFactorial but do not install it."
 
 	<gtExample>
 	| logger |

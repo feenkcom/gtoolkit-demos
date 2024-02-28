@@ -14,6 +14,7 @@ Class {
 
 { #category : #steps }
 GtLampSort >> addIntervals: newIntervals to: intervals [
+	<gtTrace>
 	intervals addAll: newIntervals 
 ]
 
@@ -47,6 +48,7 @@ GtLampSort >> gtExampleSortSpecific [
 
 { #category : #steps }
 GtLampSort >> partition: interval [
+	<gtTrace>
 	| pivot index |
 	pivot := self selectFirstElementAsPivot: interval.
 	self swap: interval first with: interval last.
@@ -60,13 +62,21 @@ GtLampSort >> partition: interval [
 	^ self splitInterval: interval around: index
 ]
 
+{ #category : #copying }
+GtLampSort >> postCopy [
+	super postCopy.
+	elements := elements copy
+]
+
 { #category : #steps }
 GtLampSort >> selectFirstElementAsPivot: interval [
+	<gtTrace>
 	^ elements at: interval first
 ]
 
 { #category : #steps }
 GtLampSort >> selectIntervalFrom: intervals [
+	<gtTrace>
 	| interval |
 	interval := intervals anyOne.
 	intervals remove: interval.
@@ -75,6 +85,7 @@ GtLampSort >> selectIntervalFrom: intervals [
 
 { #category : #steps }
 GtLampSort >> sort [
+	<gtTrace>
 	| intervals selectedInterval partitions |
 	intervals := Set with: (1 to: elements size).
 	[ intervals isEmpty ]
@@ -96,6 +107,7 @@ GtLampSort >> sort: collection [
 
 { #category : #steps }
 GtLampSort >> splitInterval: interval around: index [
+	<gtTrace>
 	| left right |
 	left := interval first to: index - 1.
 	right := index + 1 to: interval last.
@@ -104,5 +116,6 @@ GtLampSort >> splitInterval: interval around: index [
 
 { #category : #steps }
 GtLampSort >> swap: oneIndex with: anotherIndex [
+	<gtTrace>
 	elements swap: oneIndex with: anotherIndex
 ]
