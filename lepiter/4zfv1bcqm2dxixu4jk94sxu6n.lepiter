@@ -8,43 +8,6 @@
 				"__type" : "textSnippet",
 				"children" : {
 					"__type" : "snippets",
-					"items" : [ ]
-				},
-				"createEmail" : {
-					"__type" : "email",
-					"emailString" : "<unknown>"
-				},
-				"createTime" : {
-					"__type" : "time",
-					"time" : {
-						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2024-02-27T17:45:57.38607+01:00"
-					}
-				},
-				"editEmail" : {
-					"__type" : "email",
-					"emailString" : "<unknown>"
-				},
-				"editTime" : {
-					"__type" : "time",
-					"time" : {
-						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2024-02-27T17:47:06.757875+01:00"
-					}
-				},
-				"uid" : {
-					"__type" : "uid",
-					"uidString" : "NabOfsHODQCcWTXaA4xavA=="
-				},
-				"paragraphStyle" : {
-					"__type" : "textStyle"
-				},
-				"string" : "{{gtTodo:label=Move the Money classes to the release image, so they don't have to be manually loaded. Fix the relevantparagraph.|completed=}}"
-			},
-			{
-				"__type" : "textSnippet",
-				"children" : {
-					"__type" : "snippets",
 					"items" : [
 						{
 							"__type" : "textSnippet",
@@ -158,154 +121,6 @@
 							},
 							"string" : "To simplify the Price modeling exercise somewhat, we assume that we already have classes to model money in different currencies."
 						},
-						{
-							"__type" : "textSnippet",
-							"children" : {
-								"__type" : "snippets",
-								"items" : [
-									{
-										"__type" : "textSnippet",
-										"children" : {
-											"__type" : "snippets",
-											"items" : [
-												{
-													"__type" : "pharoSnippet",
-													"children" : {
-														"__type" : "snippets",
-														"items" : [ ]
-													},
-													"createEmail" : {
-														"__type" : "email",
-														"emailString" : "<unknown>"
-													},
-													"createTime" : {
-														"__type" : "time",
-														"time" : {
-															"__type" : "dateAndTime",
-															"dateAndTimeString" : "2024-02-21T11:21:44.466591+01:00"
-														}
-													},
-													"editEmail" : {
-														"__type" : "email",
-														"emailString" : "<unknown>"
-													},
-													"editTime" : {
-														"__type" : "time",
-														"time" : {
-															"__type" : "dateAndTime",
-															"dateAndTimeString" : "2024-02-21T11:21:44.84362+01:00"
-														}
-													},
-													"uid" : {
-														"__type" : "uid",
-														"uidString" : "D+s2bkPODQCsAVwuCYwxVA=="
-													},
-													"code" : "Smalltalk globals\r\tat: #GtTMoney\r\tifAbsent: [ ((IceRepository registry detect: [ :repo | repo name = 'gtoolkit-demos' ])\r\t\t\tpackageNamed: 'GToolkit-Tutorial-Prices') load ]."
-												}
-											]
-										},
-										"createEmail" : {
-											"__type" : "email",
-											"emailString" : "<unknown>"
-										},
-										"createTime" : {
-											"__type" : "time",
-											"time" : {
-												"__type" : "dateAndTime",
-												"dateAndTimeString" : "2024-02-21T11:24:59.825344+01:00"
-											}
-										},
-										"editEmail" : {
-											"__type" : "email",
-											"emailString" : "<unknown>"
-										},
-										"editTime" : {
-											"__type" : "time",
-											"time" : {
-												"__type" : "dateAndTime",
-												"dateAndTimeString" : "2024-02-21T11:27:02.588162+01:00"
-											}
-										},
-										"uid" : {
-											"__type" : "uid",
-											"uidString" : "o+XbeUPODQCsjKx4CYwxVA=="
-										},
-										"paragraphStyle" : {
-											"__type" : "textStyle"
-										},
-										"string" : "Please evaluate the following snippet to ensure that the Money classes are loaded."
-									}
-								]
-							},
-							"createEmail" : {
-								"__type" : "email",
-								"emailString" : "<unknown>"
-							},
-							"createTime" : {
-								"__type" : "time",
-								"time" : {
-									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2024-02-27T17:47:18.43262+01:00"
-								}
-							},
-							"editEmail" : {
-								"__type" : "email",
-								"emailString" : "<unknown>"
-							},
-							"editTime" : {
-								"__type" : "time",
-								"time" : {
-									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2024-02-27T17:47:27.025407+01:00"
-								}
-							},
-							"uid" : {
-								"__type" : "uid",
-								"uidString" : "yoMnhMHODQCfAiMBA4xavA=="
-							},
-							"paragraphStyle" : {
-								"__type" : "textStyle"
-							},
-							"string" : "# Load the Money classes"
-						}
-					]
-				},
-				"createEmail" : {
-					"__type" : "email",
-					"emailString" : "<unknown>"
-				},
-				"createTime" : {
-					"__type" : "time",
-					"time" : {
-						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2024-02-21T13:45:59.673541+01:00"
-					}
-				},
-				"editEmail" : {
-					"__type" : "email",
-					"emailString" : "<unknown>"
-				},
-				"editTime" : {
-					"__type" : "time",
-					"time" : {
-						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2024-02-27T17:48:16.566745+01:00"
-					}
-				},
-				"uid" : {
-					"__type" : "uid",
-					"uidString" : "eegackXODQCGcUiZAr4sVw=="
-				},
-				"paragraphStyle" : {
-					"__type" : "textStyle"
-				},
-				"string" : "# Building on the Money classes"
-			},
-			{
-				"__type" : "textSnippet",
-				"children" : {
-					"__type" : "snippets",
-					"items" : [
 						{
 							"__type" : "textSnippet",
 							"children" : {
@@ -581,7 +396,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2024-02-21T13:45:49.767809+01:00"
+						"dateAndTimeString" : "2024-02-28T09:56:02.531461+01:00"
 					}
 				},
 				"uid" : {
@@ -591,7 +406,7 @@
 				"paragraphStyle" : {
 					"__type" : "textStyle"
 				},
-				"string" : "# Instantiating a sum of money"
+				"string" : "# Building on the Money classes"
 			},
 			{
 				"__type" : "textSnippet",
@@ -739,7 +554,7 @@
 											"__type" : "time",
 											"time" : {
 												"__type" : "dateAndTime",
-												"dateAndTimeString" : "2024-02-27T18:04:52.966647+01:00"
+												"dateAndTimeString" : "2024-02-28T09:57:05.578923+01:00"
 											}
 										},
 										"uid" : {
@@ -749,7 +564,7 @@
 										"paragraphStyle" : {
 											"__type" : "textStyle"
 										},
-										"string" : " Open a contextual playground at the bottom of the inspector (pull up the handle with the two grey bars) and evaluate (inspect) `self isZero`. Click on the grey triangle next to `isZero` to open the code bubble and see how it is implemented."
+										"string" : " Open a contextual playground at the bottom of the inspector on the `fourtyTwoEuros` instance (pull up the handle with the two grey bars) and evaluate (inspect) `self isZero`. Click on the grey triangle next to `isZero` to open the code bubble and see how it is implemented."
 									}
 								]
 							},
@@ -873,6 +688,43 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2024-02-28T09:58:32.666025+01:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2024-02-28T09:58:32.666025+01:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "+cSRFc/ODQCjOCGNBwTlnw=="
+							},
+							"paragraphStyle" : {
+								"__type" : "textStyle"
+							},
+							"string" : "A {{gtClass:name=GtTCurrency}} represents a specific sum of money in a given currency. Its superclass is {{gtClass:name=GtTMoney}}, which is the abstract root of the Money hierarchy. "
+						},
+						{
+							"__type" : "textSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
 									"dateAndTimeString" : "2024-02-21T12:14:49.441942+01:00"
 								}
 							},
@@ -884,7 +736,7 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2024-02-21T12:24:44.609037+01:00"
+									"dateAndTimeString" : "2024-02-28T09:58:47.508233+01:00"
 								}
 							},
 							"uid" : {
@@ -894,7 +746,7 @@
 							"paragraphStyle" : {
 								"__type" : "textStyle"
 							},
-							"string" : "A {{gtClass:name=GtTCurrency}} represents a specific sum of money in a given currency. Its superclass is {{gtClass:name=GtTMoney}}, which is the abstract root of the Money hierarchy."
+							"string" : "*NB:* The UML diagram below is live. Click on the classes to browse them."
 						},
 						{
 							"__type" : "elementSnippet",
@@ -1035,7 +887,7 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2024-02-21T12:31:01.442476+01:00"
+									"dateAndTimeString" : "2024-02-28T10:01:17.708705+01:00"
 								}
 							},
 							"uid" : {
@@ -1045,7 +897,7 @@
 							"paragraphStyle" : {
 								"__type" : "textStyle"
 							},
-							"string" : "*Task:* Inspect the example above and evaluate `self - 42 usd`. What is the class of the result? Is it {{gtClass:name=GtTCurrencyMoney}} or {{gtClass:name=GtTMoneyBag}}? Can you explain the result? In which method is the class of the result determined?"
+							"string" : "***Task:*** Inspect the example above and evaluate `self - 42 usd`. What is the class of the result? Is it {{gtClass:name=GtTCurrencyMoney}} or {{gtClass:name=GtTMoneyBag}}? Can you explain the result? In which method is the class of the result determined?"
 						},
 						{
 							"__type" : "textSnippet",
@@ -1072,7 +924,7 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2024-02-21T13:38:28.362391+01:00"
+									"dateAndTimeString" : "2024-02-28T10:03:28.385994+01:00"
 								}
 							},
 							"uid" : {
@@ -1082,13 +934,51 @@
 							"paragraphStyle" : {
 								"__type" : "textStyle"
 							},
-							"string" : "*Task:* Explore {{gtClass:name=GtTMoneyExamples}}. Can you find an example that tests the scenario above?"
+							"string" : "***Task:*** Explore {{gtClass:name=GtTMoneyExamples}}. Can you find an example that tests this scenario in which we remove the euros from a money bag with euros and dollars?"
 						},
 						{
 							"__type" : "textSnippet",
 							"children" : {
 								"__type" : "snippets",
-								"items" : [ ]
+								"items" : [
+									{
+										"__type" : "textSnippet",
+										"children" : {
+											"__type" : "snippets",
+											"items" : [ ]
+										},
+										"createEmail" : {
+											"__type" : "email",
+											"emailString" : "<unknown>"
+										},
+										"createTime" : {
+											"__type" : "time",
+											"time" : {
+												"__type" : "dateAndTime",
+												"dateAndTimeString" : "2024-02-28T10:04:09.530034+01:00"
+											}
+										},
+										"editEmail" : {
+											"__type" : "email",
+											"emailString" : "<unknown>"
+										},
+										"editTime" : {
+											"__type" : "time",
+											"time" : {
+												"__type" : "dateAndTime",
+												"dateAndTimeString" : "2024-02-28T10:06:03.241816+01:00"
+											}
+										},
+										"uid" : {
+											"__type" : "uid",
+											"uidString" : "39ulKc/ODQCuQHiDBwTlnw=="
+										},
+										"paragraphStyle" : {
+											"__type" : "textStyle"
+										},
+										"string" : "*Hint:* Browse the {{gtClass:name=GtTZeroMoney}} class and explore the *References* tab. Then look for *Senders* to see where these methods are used."
+									}
+								]
 							},
 							"createEmail" : {
 								"__type" : "email",
@@ -1109,7 +999,7 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2024-02-21T13:40:09.616803+01:00"
+									"dateAndTimeString" : "2024-02-28T10:04:05.215564+01:00"
 								}
 							},
 							"uid" : {
@@ -1119,7 +1009,7 @@
 							"paragraphStyle" : {
 								"__type" : "textStyle"
 							},
-							"string" : "*Task:* Are there examples for {{gtClass:name=GtTZeroMoney}}? What is it used for? Is this class really needed?"
+							"string" : "***Task:*** Are there examples for {{gtClass:name=GtTZeroMoney}}? What is it used for? "
 						}
 					]
 				},
