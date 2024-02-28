@@ -4,7 +4,7 @@ The only happens while the method wrapper is installed.
 "
 Class {
 	#name : #LoggingMethodWrapper,
-	#superclass : #SimpleMethodWrapper,
+	#superclass : #MinimalMethodWrapper,
 	#instVars : [
 		'invocationCount'
 	],
