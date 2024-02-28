@@ -1,5 +1,7 @@
 "
 I represent a currency for a kind of Money.
+
+I am a clone of GtDCurrency, but without any reference to Price classes, so that I can be used for a hands-on tutorial.
 "
 Class {
 	#name : #GtTCurrency,

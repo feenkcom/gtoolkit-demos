@@ -1,5 +1,7 @@
 "
 I am an abstract superclass for different kinds of Money or bags of Money.
+
+I am a clone of GtDMoney, but without any reference to Price classes, so that I can be used for a hands-on tutorial.
 "
 Class {
 	#name : #GtTMoney,
