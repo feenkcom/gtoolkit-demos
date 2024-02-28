@@ -1,46 +1,19 @@
 "
-In this approach we replace a CompiledMethod in a method dictionary with a Method Wrapper, an object that implements #run:with:in: and remembers to original compiled method instance. When the method wrapper is uninstalled, the original compiled method is restored.
+We extend the `#run:with:in:` method, keeping track of an invocation count.
+The only happens while the method wrapper is installed.
 "
 Class {
 	#name : #LoggingMethodWrapper,
-	#superclass : #Object,
+	#superclass : #SimpleMethodWrapper,
 	#instVars : [
-		'invocationCount',
-		'method'
+		'invocationCount'
 	],
 	#category : #'GToolkit-Demo-Reflection-Intercession'
 }
 
-{ #category : #'instance creation' }
-LoggingMethodWrapper class >> on: aCompiledMethod [
-	^ self new initializeOn: aCompiledMethod
-]
-
-{ #category : #dummy }
-LoggingMethodWrapper >> cachePragmas [
-	"Dummy method to be compatible with CompiledMethod"
-]
-
-{ #category : #dummy }
-LoggingMethodWrapper >> flushCache [
-	"Dummy method to be compatible with CompiledMethod"
-]
-
-{ #category : #accessing }
+{ #category : #initialization }
 LoggingMethodWrapper >> initialize [
 	invocationCount := 0
-]
-
-{ #category : #'initialize-release' }
-LoggingMethodWrapper >> initializeOn: aCompiledMethod [
-	method := aCompiledMethod.
-	invocationCount := 0
-]
-
-{ #category : #actions }
-LoggingMethodWrapper >> install [
-	method methodClass methodDictionary
-		at: method selector put: self
 ]
 
 { #category : #accessing }
@@ -48,24 +21,16 @@ LoggingMethodWrapper >> invocationCount [
 	^ invocationCount
 ]
 
-{ #category : #dummy }
-LoggingMethodWrapper >> methodClass: aMethodClass [
-	"Dummy method to be compatible with CompiledMethod"
+{ #category : #accessing }
+LoggingMethodWrapper >> invocationCount: anObject [
+	invocationCount := anObject
 ]
 
 { #category : #evaluation }
 LoggingMethodWrapper >> run: aSelector with: anArray in: aReceiver [
-	invocationCount := invocationCount + 1.
-	^ aReceiver withArgs: anArray executeMethod: method
-]
-
-{ #category : #dummy }
-LoggingMethodWrapper >> selector: aSymbol [
-	"Dummy method to be compatible with CompiledMethod"
-]
-
-{ #category : #actions }
-LoggingMethodWrapper >> uninstall [
-	method methodClass methodDictionary 
-		at: method selector put: method
+	invocationCount := 1 + invocationCount.
+	^ super
+		run: aSelector
+		with: anArray
+		in: aReceiver
 ]
