@@ -23,6 +23,43 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2024-02-28T11:07:26.849696+01:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2024-02-28T11:07:26.849696+01:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "rGH8C9DODQCcdLosDKrshA=="
+							},
+							"paragraphStyle" : {
+								"__type" : "textStyle"
+							},
+							"string" : "In this exercise, we work with a more complicated scenario involving discounted prices. "
+						},
+						{
+							"__type" : "textSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
 									"dateAndTimeString" : "2024-02-21T14:59:05.911107+01:00"
 								}
 							},
@@ -34,7 +71,7 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2024-02-21T14:59:26.52288+01:00"
+									"dateAndTimeString" : "2024-02-28T11:08:00.144413+01:00"
 								}
 							},
 							"uid" : {
@@ -44,7 +81,7 @@
 							"paragraphStyle" : {
 								"__type" : "textStyle"
 							},
-							"string" : "In this exercise, we work with a more complicated scenario involving discounted prices."
+							"string" : "We'll introduce additional classes to represent discounted prices, and also a common, abstract `Price` class at the root of the Price class hierarchy."
 						}
 					]
 				},
@@ -221,14 +258,51 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2024-02-21T15:01:42.127051+01:00"
+									"dateAndTimeString" : "2024-02-28T11:40:38.328902+01:00"
 								}
 							},
 							"uid" : {
 								"__type" : "uid",
 								"uidString" : "psLXcUbODQCzJjaRAr4sVw=="
 							},
-							"code" : "price := (100 euros asPrice discountedBy: 10 euros)\r\tdiscountedBy: 10 percent.\rself assert: price = 81 euros asPrice.\rprice"
+							"code" : "price := (100 euros asPrice discountedBy: 10 euros)\r\tdiscountedBy: 10 percent.\rself assert: price = 81 euros asPrice.\rprice."
+						},
+						{
+							"__type" : "textSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2024-02-28T11:41:26.569084+01:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2024-02-28T11:42:40.494152+01:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "3e/0gtDODQCIGQwNBCGiog=="
+							},
+							"paragraphStyle" : {
+								"__type" : "textStyle"
+							},
+							"string" : "In this (unimplemented) snippet, we create a concrete price of a 100 euros, and then discount it *twice*, first by a fixed amount of 10 euros, and then by 10%."
 						},
 						{
 							"__type" : "textSnippet",

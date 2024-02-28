@@ -628,7 +628,7 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2024-02-21T13:50:13.378134+01:00"
+									"dateAndTimeString" : "2024-02-28T11:45:35.099816+01:00"
 								}
 							},
 							"uid" : {
@@ -778,7 +778,7 @@
 											"__type" : "time",
 											"time" : {
 												"__type" : "dateAndTime",
-												"dateAndTimeString" : "2024-02-28T10:25:59.905407+01:00"
+												"dateAndTimeString" : "2024-02-28T11:52:44.433958+01:00"
 											}
 										},
 										"uid" : {
@@ -788,7 +788,7 @@
 										"paragraphStyle" : {
 											"__type" : "textStyle"
 										},
-										"string" : "*Hint:* at  the bottom right of the method coder are two buttons, one for the method category and the other for the instance vs class methods. Click on the first button the edit and change the category."
+										"string" : "*Hint:* at  the bottom right of the method coder are two buttons, one for the method category and the other for the instance vs class methods. Click on the first button that says `accessing” and edit it to say `*EDDPrices`."
 									}
 								]
 							},
@@ -2309,7 +2309,7 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2024-02-28T11:00:07.122022+01:00"
+									"dateAndTimeString" : "2024-02-28T11:06:12.777701+01:00"
 								}
 							},
 							"editEmail" : {
@@ -2320,17 +2320,17 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2024-02-28T11:01:24.766125+01:00"
+									"dateAndTimeString" : "2024-02-28T11:06:24.834162+01:00"
 								}
 							},
 							"uid" : {
 								"__type" : "uid",
-								"uidString" : "saXG8c/ODQCLfvcBDKrshA=="
+								"uidString" : "GCGSB9DODQCahUvKDKrshA=="
 							},
 							"paragraphStyle" : {
 								"__type" : "textStyle"
 							},
-							"string" : "If you'd like to save your work before continuing, of course you can just save the image and start again. You can also *file out* your changes as source code that you can *file in* to another image later."
+							"string" : "If you'd like to save your work before continuing, of course you can just save the image and start it again later."
 						},
 						{
 							"__type" : "textSnippet",
@@ -2346,7 +2346,7 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2024-02-28T11:02:45.023402+01:00"
+									"dateAndTimeString" : "2024-02-28T11:00:07.122022+01:00"
 								}
 							},
 							"editEmail" : {
@@ -2357,51 +2357,17 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2024-02-28T11:05:55.111771+01:00"
+									"dateAndTimeString" : "2024-02-28T11:06:14.511508+01:00"
 								}
 							},
 							"uid" : {
 								"__type" : "uid",
-								"uidString" : "qg4w+8/ODQCSSgFpDKrshA=="
+								"uidString" : "saXG8c/ODQCLfvcBDKrshA=="
 							},
 							"paragraphStyle" : {
 								"__type" : "textStyle"
 							},
-							"string" : "To file out your changes, just send the message `fileOut` to the class or a package that you want to export. (To get the package of a class, send it the message `package`. So `ConcretePrice package fileOut` will create a file `EDDPrices.st` that you can later view with the *File System* tool and file back in with "
-						},
-						{
-							"__type" : "pharoSnippet",
-							"children" : {
-								"__type" : "snippets",
-								"items" : [ ]
-							},
-							"createEmail" : {
-								"__type" : "email",
-								"emailString" : "<unknown>"
-							},
-							"createTime" : {
-								"__type" : "time",
-								"time" : {
-									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2024-02-28T11:04:21.67447+01:00"
-								}
-							},
-							"editEmail" : {
-								"__type" : "email",
-								"emailString" : "<unknown>"
-							},
-							"editTime" : {
-								"__type" : "time",
-								"time" : {
-									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2024-02-28T11:04:36.870909+01:00"
-								}
-							},
-							"uid" : {
-								"__type" : "uid",
-								"uidString" : "GtPyANDODQCXeCNNDKrshA=="
-							},
-							"code" : "ConcretePrice package fileOut."
+							"string" : "You can also *file out* your changes as source code that you can *file in* to another image later. To file out your changes, just send the message `fileOut` to the class or a package that you want to export. (To get the package of a class, send it the message `package`. So `ConcretePrice package fileOut` will create a file `EDDPrices.st` that you can later view with the *File System* tool and file back in with the `File In` button."
 						},
 						{
 							"__type" : "textSnippet",
