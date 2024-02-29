@@ -1,5 +1,6 @@
 "
-We replace a CompiledMethod in a method dictionary with a Method Wrapper, an object that implements #run:with:in: and forwards sends to the original compiled method instance. When the method wrapper is uninstalled, the original compiled method is restored.
+I replace a CompiledMethod in a method dictionary by implementing #run:with:in: and forwarding sends to the original compiled method instance. When I am uninstalled, the original compiled method is restored.
+I also implement `#doesNotUnderstand:` so all other messages are forwarded to my wrapped method.
 "
 Class {
 	#name : #MinimalMethodWrapper,
@@ -17,14 +18,10 @@ MinimalMethodWrapper class >> on: aCompiledMethod [
 		yourself
 ]
 
-{ #category : #dummy }
-MinimalMethodWrapper >> cachePragmas [
-	"Dummy method to be compatible with CompiledMethod"
-]
-
-{ #category : #dummy }
-MinimalMethodWrapper >> flushCache [
-	"Dummy method to be compatible with CompiledMethod"
+{ #category : #'gt - compatibility' }
+MinimalMethodWrapper >> doesNotUnderstand: aMessage [
+	"Forward all other messages to the compiled method."
+	^ aMessage sendTo: method
 ]
 
 { #category : #actions }
@@ -38,19 +35,9 @@ MinimalMethodWrapper >> method: anObject [
 	method := anObject
 ]
 
-{ #category : #dummy }
-MinimalMethodWrapper >> methodClass: aMethodClass [
-	"Dummy method to be compatible with CompiledMethod"
-]
-
 { #category : #evaluation }
 MinimalMethodWrapper >> run: aSelector with: anArray in: aReceiver [
 	^ aReceiver withArgs: anArray executeMethod: method
-]
-
-{ #category : #dummy }
-MinimalMethodWrapper >> selector: aSymbol [
-	"Dummy method to be compatible with CompiledMethod"
 ]
 
 { #category : #actions }
