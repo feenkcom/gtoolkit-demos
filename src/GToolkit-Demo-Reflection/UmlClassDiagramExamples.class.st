@@ -34,6 +34,59 @@ UmlClassDiagramExamples >> collectionHierarchyClasses [
 ]
 
 { #category : #accessing }
+UmlClassDiagramExamples >> compiledMethodAndMethodWrapper [
+	<gtExample>
+	| m classes associationsWithLabels positions |
+	classes := self compiledMethodClasses.
+	associationsWithLabels := self compiledMethodAssociationsWithLabels.
+	positions := self compiledMethodExplicitPositions.
+
+	m := UmlClassDiagram new
+			classHierarchyFor: classes
+			withAssociationsAndLabels: associationsWithLabels.
+
+	m layout custom: BlBasicLayout new.
+	m root children withIndexDo: [ :child :n | child relocate: (positions at: n) ].
+
+	^ m
+]
+
+{ #category : #accessing }
+UmlClassDiagramExamples >> compiledMethodAssociationsWithLabels [
+	^ {CompiledMethod
+			-> {{'methodClass'.
+						Behavior}}.
+		Behavior
+			-> {{'methodDict'.
+						MethodDictionary}}.
+		MethodDictionary
+			-> {{'at:'.
+						CompiledMethod}.
+					{'ast'.
+						MinimalMethodWrapper}}.
+		MinimalMethodWrapper
+			-> {{'method'.
+						CompiledMethod}}}
+]
+
+{ #category : #accessing }
+UmlClassDiagramExamples >> compiledMethodClasses [
+	^ {Behavior.
+		ClassDescription.
+		Class.
+		Metaclass.
+		MethodDictionary.
+		CompiledMethod.
+		MinimalMethodWrapper}
+]
+
+{ #category : #accessing }
+UmlClassDiagramExamples >> compiledMethodExplicitPositions [
+
+	^ {(97.29166666666669@349.90216064453125). (73.29166666666669@441.90216064453125). (57.291666666666686@524.9021606445313). (138.29166666666669@525.9021606445313). (289.2916666666667@310.90216064453125). (292.2916666666667@398.90216064453125). (496.2916666666667@359.90216064453125). (128.9827860961101@379.5). (88.31648798031176@471.5). (136.69751166249415@471.5). (162.70966974894208@371.9974438544482). (162.70966974894208@371.9974438544482). (162.70966974894208@371.9974438544482). (162.70966974894208@371.9974438544482). (162.70966974894208@371.9974438544482). (162.70966974894208@371.9974438544482). (162.70966974894208@371.9974438544482). (162.70966974894208@322.25688097864736). (162.70966974894208@322.25688097864736). (162.70966974894208@322.25688097864736). (162.70966974894208@322.25688097864736). (162.70966974894208@322.25688097864736). (162.70966974894208@322.25688097864736). (162.70966974894208@322.25688097864736). (348.772774789971@340.5000000000001). (348.772774789971@340.5000000000001). (348.772774789971@340.5000000000001). (348.772774789971@340.5000000000001). (348.772774789971@340.5000000000001). (348.772774789971@340.5000000000001). (348.772774789971@340.5000000000001). (407.8936640421549@329.6607540735696). (407.8936640421549@329.6607540735696). (407.8936640421549@329.6607540735696). (407.8936640421549@329.6607540735696). (407.8936640421549@329.6607540735696). (407.8936640421549@329.6607540735696). (407.8936640421549@329.6607540735696). (407.03566233317065@388.1972596958765). (407.03566233317065@388.1972596958765). (407.03566233317065@388.1972596958765). (407.03566233317065@388.1972596958765). (407.03566233317065@388.1972596958765). (407.03566233317065@388.1972596958765). (407.03566233317065@388.1972596958765)}
+]
+
+{ #category : #accessing }
 UmlClassDiagramExamples >> navigatingClassesAndMethods [
 	"NavigatingClassesAndMethods"
 
