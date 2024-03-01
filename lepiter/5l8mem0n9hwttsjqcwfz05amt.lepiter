@@ -1,0 +1,110 @@
+{
+	"__schema" : "4.1",
+	"__type" : "page",
+	"children" : {
+		"__type" : "snippets",
+		"items" : [
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2024-03-01T09:21:34.290586+01:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2024-03-01T09:22:14.29124+01:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "tM4GzfbODQCqgB8WDu1rXg=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : "Copied from my personal Lepiter database. This could be a start for a a possible FCA Concept view."
+			},
+			{
+				"__type" : "pharoSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2024-03-01T09:21:39.687986+01:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2024-03-01T09:21:44.155815+01:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "7SVZzfbODQCqhAu+Du1rXg=="
+				},
+				"code" : "nodes := #(#() #(a) #(b) #(c) #(d) #(a b) #(a c) #(a b c d)) asCollection\r\t\tcollect: #asSet.\r\redges := {#() -> #(a).\r\t\t#() -> #(b).\r\t\t#() -> #(c).\r\t\t#() -> #(d).\r\t\t#(a) -> #(a b).\r\t\t#(a) -> #(a c).\r\t\t#(b) -> #(a b).\r\t\t#(c) -> #(a c).\r\t\t#(a b) -> #(a b c d).\r\t\t#(a c) -> #(a b c d).\r\t\t#(d) -> #(a b c d)} asCollection\r\t\tcollect: [ :assoc | assoc key asSet -> assoc value asSet ].\r\rmondrian := GtMondrian new.\rmondrian nodes\r\tshape: [ :x | \r\t\tBlElement new\r\t\t\tsize: 10 @ 10;\r\t\t\tborder: Color black;\r\t\t\tbackground: Color white ];\r\twith: nodes.\rmondrian edges\r\tconnect: edges\r\tfrom: #key\r\tto: #value.\rmondrian layout tree.\rmondrian"
+			}
+		]
+	},
+	"createEmail" : {
+		"__type" : "email",
+		"emailString" : "<unknown>"
+	},
+	"createTime" : {
+		"__type" : "time",
+		"time" : {
+			"__type" : "dateAndTime",
+			"dateAndTimeString" : "2024-03-01T09:21:34.247146+01:00"
+		}
+	},
+	"editEmail" : {
+		"__type" : "email",
+		"emailString" : "<unknown>"
+	},
+	"editTime" : {
+		"__type" : "time",
+		"time" : {
+			"__type" : "dateAndTime",
+			"dateAndTimeString" : "2024-03-01T09:21:37.941526+01:00"
+		}
+	},
+	"pageType" : {
+		"__type" : "namedPage",
+		"title" : "Mondrian lattice layout example"
+	},
+	"uid" : {
+		"__type" : "uuid",
+		"uuid" : "152106cd-f6ce-0d00-aa7f-8f390eed6b5e"
+	}
+}
