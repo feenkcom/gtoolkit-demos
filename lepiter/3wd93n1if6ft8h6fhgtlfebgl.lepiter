@@ -271,6 +271,43 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2024-03-01T10:57:50.185675+01:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2024-03-01T10:58:22.85596+01:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "YxOXIPjODQCr1L2VCFncQQ=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : "We also  add some basic views."
+			},
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
 						"dateAndTimeString" : "2024-03-01T10:11:26.603762+01:00"
 					}
 				},
@@ -282,7 +319,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2024-03-01T10:11:26.603762+01:00"
+						"dateAndTimeString" : "2024-03-01T11:06:53.544647+01:00"
 					}
 				},
 				"uid" : {
@@ -292,7 +329,7 @@
 				"paragraphStyle" : {
 					"__type" : "textStyle"
 				},
-				"string" : ""
+				"string" : "We create a common superclass {{gtClass:name=FCAInContext}} for the elements and properties, so we can navigate from them to their properties, resp. elements."
 			},
 			{
 				"__type" : "textSnippet",
@@ -319,7 +356,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2024-03-01T10:11:27.074167+01:00"
+						"dateAndTimeString" : "2024-03-01T11:11:22.088661+01:00"
 					}
 				},
 				"uid" : {
@@ -329,7 +366,7 @@
 				"paragraphStyle" : {
 					"__type" : "textStyle"
 				},
-				"string" : ""
+				"string" : "We add views to show the properties of an element and vice versa."
 			},
 			{
 				"__type" : "textSnippet",

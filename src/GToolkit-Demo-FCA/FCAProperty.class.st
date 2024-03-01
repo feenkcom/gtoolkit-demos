@@ -3,7 +3,7 @@ I encapsulate aproperty of an element in an FCA Context.
 "
 Class {
 	#name : #FCAProperty,
-	#superclass : #Object,
+	#superclass : #FCAInContext,
 	#instVars : [
 		'property'
 	],
@@ -11,15 +11,31 @@ Class {
 }
 
 { #category : #accessing }
-FCAProperty class >> for: anObject [
+FCAProperty class >> for: anObject in: aContext [
 	^ self new
 		property: anObject;
+		context: aContext;
 		yourself
+]
+
+{ #category : #accessing }
+FCAProperty >> elements [
+	^ self context elements
+		select: [ :element | self context element: element value hasProperty: self value ]
 ]
 
 { #category : #printing }
 FCAProperty >> gtDisplayOn: stream [
 	stream nextPutAll: property printString
+]
+
+{ #category : #accessing }
+FCAProperty >> gtElementsFor: aView [
+	<gtView>
+	^ aView list
+		title: 'Elements';
+		priority: 10;
+		items: [ self elements ]
 ]
 
 { #category : #accessing }

@@ -35,7 +35,7 @@ FCAContext >> elements [
 
 { #category : #accessing }
 FCAContext >> elements: aCollection [
-	elements := aCollection collect: [ :each | FCAElement for: each ]
+	elements := aCollection collect: [ :each | FCAElement for: each in: self ]
 ]
 
 { #category : #view }
@@ -101,5 +101,5 @@ FCAContext >> properties [
 
 { #category : #accessing }
 FCAContext >> properties: aCollection [
-	properties := aCollection collect: [ :each | FCAProperty for: each ]
+	properties := aCollection collect: [ :each | FCAProperty for: each in: self ]
 ]
