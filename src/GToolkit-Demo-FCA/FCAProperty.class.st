@@ -17,6 +17,11 @@ FCAProperty class >> for: anObject [
 		yourself
 ]
 
+{ #category : #printing }
+FCAProperty >> gtDisplayOn: stream [
+	stream nextPutAll: property printString
+]
+
 { #category : #accessing }
 FCAProperty >> property [
 	^ property
@@ -25,4 +30,9 @@ FCAProperty >> property [
 { #category : #accessing }
 FCAProperty >> property: anObject [
 	property := anObject
+]
+
+{ #category : #accessing }
+FCAProperty >> value [
+	^ self property
 ]

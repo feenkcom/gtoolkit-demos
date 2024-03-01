@@ -26,3 +26,13 @@ FCAElement >> element [
 FCAElement >> element: anObject [
 	element := anObject
 ]
+
+{ #category : #printing }
+FCAElement >> gtDisplayOn: stream [
+	stream nextPutAll: element printString
+]
+
+{ #category : #accessing }
+FCAElement >> value [
+	^ self element
+]
