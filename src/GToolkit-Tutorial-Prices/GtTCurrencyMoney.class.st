@@ -66,6 +66,11 @@ GtTCurrencyMoney >> amount: anObject [
 ]
 
 { #category : #accessing }
+GtTCurrencyMoney >> asPrice [
+	^ ConcretePrice new money: self
+]
+
+{ #category : #accessing }
 GtTCurrencyMoney >> currency [
 	^ currency
 ]
@@ -73,6 +78,13 @@ GtTCurrencyMoney >> currency [
 { #category : #accessing }
 GtTCurrencyMoney >> currency: anObject [
 	currency := anObject
+]
+
+{ #category : #accessing }
+GtTCurrencyMoney >> discountFrom: aPrice [
+	^ PriceDiscountedByMoney new
+		price: aPrice;
+		discountMoney: self
 ]
 
 { #category : #operations }
