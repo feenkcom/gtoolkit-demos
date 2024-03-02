@@ -30,16 +30,34 @@ BitSetExamples >> foobarIntersectFoobaz [
 { #category : #accessing }
 BitSetExamples >> hello [
 	<gtExample>
-	| bitset |
-	bitset := BitSet newFrom: 'hello'.
-	self assert: bitset == bitset.
-	self assert: bitset equals: bitset.
-	self assert: bitset equals: (bitset newFrom: 'hello').
-	self assert: bitset equals: (bitset newFrom: 'helo').
-	self assert: bitset equals: (BitSet newFrom: 'hello').
-	
-	self assert:( bitset == (Set newFrom: 'foobar')) not.
-	self assert:( bitset == (BitSet newFrom: 'hello')) not.
+	| hello helo foo |
+	hello := 'hello' asBitSet.
+	helo := 'helo' asBitSet.
+	foo := 'foo' asBitSet.
 
-	^ bitset
+	self assert: (hello hasSameMapAs: helo).
+	self assert: (hello hasSameMapAs: foo).
+
+	self assert: hello == hello.
+	self assert: hello equals: hello.
+	self assert: hello equals: helo.
+	self assert: (hello = foo) not.
+
+	^ hello
+]
+
+{ #category : #accessing }
+BitSetExamples >> helloWithReset [
+	"For the comparison, helo will be converted to a BitSet with the same map."
+
+	<gtExample>
+	| hello helo |
+	hello := self hello.
+
+	BitSet reset.
+	helo := 'helo' asBitSet.
+	self assert: (hello hasSameMapAs: helo) not.
+	self assert: hello equals: helo.
+
+	^ hello
 ]

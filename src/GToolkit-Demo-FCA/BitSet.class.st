@@ -7,15 +7,39 @@ Class {
 	#superclass : #Collection,
 	#instVars : [
 		'bits',
-		'map',
-		'positions'
+		'map'
+	],
+	#classInstVars : [
+		'cachedMap'
 	],
 	#category : #'GToolkit-Demo-FCA-BitSets'
 }
 
+{ #category : #cache }
+BitSet class >> cachedMap [
+	"A map to share across all current instances.
+	Perhaps better to use WeakKeyDictionary?"
+
+	^ cachedMap ifNil: [ cachedMap := Dictionary new ]
+]
+
+{ #category : #cache }
+BitSet class >> cachedMap: aDictionary [
+	"Could be used to set the cache to a particular map to share amongst a number of BitSets."
+
+	cachedMap := aDictionary
+]
+
 { #category : #'instance creation' }
 BitSet class >> newFrom: aCollection [
 	^ self withAll: aCollection
+]
+
+{ #category : #cache }
+BitSet class >> reset [
+	"Clear the cache. Only needed if there are many BitSets with different maps."
+
+	^ cachedMap := nil
 ]
 
 { #category : #'instance creation' }
@@ -31,9 +55,9 @@ BitSet >> = other [
 	self == other ifTrue: [ ^ true ].
 
 	(other isKindOf: self class)
-		ifTrue: [ (self map == other map and: [ self positions == other positions ])
-				ifTrue: [ otherBitSet := other ]
-				ifFalse: [ otherBitSet := self newFrom: other ].
+		ifTrue: [ otherBitSet := self map == other map
+					ifTrue: [ other ]
+					ifFalse: [ self newFrom: other ].
 			^ self bits = otherBitSet bits ].
 
 	^ false
@@ -42,10 +66,7 @@ BitSet >> = other [
 { #category : #adding }
 BitSet >> add: anObject [
 	| index |
-	index := map
-			at: anObject
-			ifAbsentPut: [ positions addLast: anObject.
-				map size + 1 ].
+	index := map at: anObject ifAbsentPut: [ map size + 1 ].
 
 	bits := bits bitAt: index put: 1
 ]
@@ -77,17 +98,16 @@ BitSet >> empty [
 
 	^ self class new
 		map: self map;
-		positions: self positions;
 		yourself
 ]
 
 { #category : #accessing }
-BitSet >> gtPositionsFor: aView [
+BitSet >> gtMapFor: aView [
 	<gtView>
 	^ aView columnedList
-		title: 'Positions';
-		priority: 50;
-		items: [ self positions ];
+		title: 'Map';
+		priority: 60;
+		items: [ self map associations ];
 		actionUpdateButtonTooltip: 'Update item list';
 		column: 'Index' 
 			text: [ :eachItem :eachIndex | 
@@ -97,12 +117,25 @@ BitSet >> gtPositionsFor: aView [
 			text: [ :eachItem | eachItem gtDisplayText ].
 ]
 
+{ #category : #accessing }
+BitSet >> gtResetFor: anAction [
+	<gtAction>
+	^ anAction button
+		tooltip: 'Clear the cached map';
+		priority: 10;
+		icon: BrGlamorousIcons close;
+		action: [ self class reset ]
+]
+
+{ #category : #testing }
+BitSet >> hasSameMapAs: other [
+	^ (other isKindOf: self class) and: [ other map == self map ]
+]
+
 { #category : #initialization }
 BitSet >> initialize [
-	"Perhaps better to use WeakKeyDictionary?"
 	bits := 0.
-	map := Dictionary new.
-	positions := OrderedCollection new.
+	map := self class cachedMap.
 ]
 
 { #category : #accessing }
@@ -127,23 +160,11 @@ BitSet >> newFrom: other [
 
 	self assert: other isCollection.
 
-	((other isKindOf: self class)
-		and: [ other map == self map and: [ other positions == self positions ] ])
-		ifTrue: [ ^ other ].
+	(self hasSameMapAs: other) ifTrue: [ ^ other ].
 
 	^ self empty
 		addAll: other;
 		yourself
-]
-
-{ #category : #accessing }
-BitSet >> positions [
-	^ positions
-]
-
-{ #category : #accessing }
-BitSet >> positions: anObject [
-	positions := anObject
 ]
 
 { #category : #accessing }
