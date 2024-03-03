@@ -26,8 +26,8 @@ FCAContext class >> elements: anElementCollection properties: aPropertyCollectio
 			properties: wrappedProperties;
 			yourself.
 
-	propertyMap := (wrappedProperties asOrderedCollection collect: [ :p | p value -> p ])
-			asDictionary.
+	propertyMap := (wrappedProperties asOrderedCollection
+			collect: [ :p | p value -> p ]) asDictionary.
 	wrappedElements
 		do: [ :elt | 
 			| props |
@@ -37,6 +37,20 @@ FCAContext class >> elements: anElementCollection properties: aPropertyCollectio
 			props do: [ :prop | prop elements add: elt ] ].
 
 	^ context
+]
+
+{ #category : #contracts }
+FCAContext >> checkInvariant [
+	"NB: can be a bit slow to check"
+
+	self elements
+		do: [ :elt | 
+			self properties
+				do: [ :prop | 
+					self
+						assert: (elt properties includes: prop)
+						equals: (prop elements includes: elt) ] ].
+	^ self
 ]
 
 { #category : #accessing }
