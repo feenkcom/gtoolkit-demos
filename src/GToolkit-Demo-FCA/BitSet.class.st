@@ -129,6 +129,11 @@ BitSet >> hasSameMapAs: other [
 	^ (other isKindOf: self class) and: [ other map == self map ]
 ]
 
+{ #category : #comparing }
+BitSet >> hash [
+	^ bits hash
+]
+
 { #category : #initialization }
 BitSet >> initialize [
 	bits := 0.

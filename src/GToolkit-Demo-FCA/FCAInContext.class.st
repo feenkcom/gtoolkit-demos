@@ -10,6 +10,13 @@ Class {
 	#category : #'GToolkit-Demo-FCA-Model'
 }
 
+{ #category : #comparing }
+FCAInContext >> = anObject [
+	self == anObject ifTrue: [ ^ true ].
+	self class = anObject class ifFalse: [ ^ false ].
+	^ self value = anObject value
+]
+
 { #category : #accessing }
 FCAInContext >> context [
 	^ context
@@ -23,6 +30,11 @@ FCAInContext >> context: anObject [
 { #category : #printing }
 FCAInContext >> gtDisplayOn: stream [
 	stream nextPutAll: self value printString
+]
+
+{ #category : #comparing }
+FCAInContext >> hash [
+	^ self value hash
 ]
 
 { #category : #printing }

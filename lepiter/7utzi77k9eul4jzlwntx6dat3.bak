@@ -210,7 +210,7 @@
 											"__type" : "time",
 											"time" : {
 												"__type" : "dateAndTime",
-												"dateAndTimeString" : "2024-03-01T09:41:10.375298+01:00"
+												"dateAndTimeString" : "2024-03-03T11:00:33.875406+01:00"
 											}
 										},
 										"editEmail" : {
@@ -221,17 +221,17 @@
 											"__type" : "time",
 											"time" : {
 												"__type" : "dateAndTime",
-												"dateAndTimeString" : "2024-03-01T09:41:11.749126+01:00"
+												"dateAndTimeString" : "2024-03-03T11:00:47.47846+01:00"
 											}
 										},
 										"uid" : {
 											"__type" : "uid",
-											"uidString" : "BG0gE/fODQCVfgV9CFncQQ=="
+											"uidString" : "nWi8aiDPDQCj6jZHBhRRCw=="
 										},
 										"paragraphStyle" : {
 											"__type" : "textStyle"
 										},
-										"string" : "[[First FCA example]]"
+										"string" : "[[Revised FCA example]]"
 									},
 									{
 										"__type" : "textSnippet",
@@ -247,7 +247,7 @@
 											"__type" : "time",
 											"time" : {
 												"__type" : "dateAndTime",
-												"dateAndTimeString" : "2024-03-01T17:53:29.942207+01:00"
+												"dateAndTimeString" : "2024-03-03T14:11:40.524638+01:00"
 											}
 										},
 										"editEmail" : {
@@ -258,7 +258,7 @@
 											"__type" : "time",
 											"time" : {
 												"__type" : "dateAndTime",
-												"dateAndTimeString" : "2024-03-01T17:53:34.252543+01:00"
+												"dateAndTimeString" : "2024-03-03T14:12:16.404323+01:00"
 											}
 										},
 										"uid" : {
@@ -268,7 +268,7 @@
 										"paragraphStyle" : {
 											"__type" : "textStyle"
 										},
-										"string" : "[[BitSet implementation]]"
+										"string" : "[[Bottom-up Concept builder]]"
 									},
 									{
 										"__type" : "textSnippet",
@@ -284,7 +284,7 @@
 											"__type" : "time",
 											"time" : {
 												"__type" : "dateAndTime",
-												"dateAndTimeString" : "2024-03-01T17:53:31.126278+01:00"
+												"dateAndTimeString" : "2024-03-03T17:03:15.821527+01:00"
 											}
 										},
 										"editEmail" : {
@@ -295,17 +295,17 @@
 											"__type" : "time",
 											"time" : {
 												"__type" : "dateAndTime",
-												"dateAndTimeString" : "2024-03-01T17:53:31.126278+01:00"
+												"dateAndTimeString" : "2024-03-03T17:03:17.7803+01:00"
 											}
 										},
 										"uid" : {
 											"__type" : "uid",
-											"uidString" : "k4Pk8/3ODQCpiy2/AwAVtg=="
+											"uidString" : "A13ZeyXPDQC56R3uDyqgSA=="
 										},
 										"paragraphStyle" : {
 											"__type" : "textStyle"
 										},
-										"string" : ""
+										"string" : "2024-03-03"
 									}
 								]
 							},

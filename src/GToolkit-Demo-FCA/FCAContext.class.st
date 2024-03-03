@@ -16,18 +16,19 @@ Class {
 FCAContext class >> elements: anElementCollection properties: aPropertyCollection propertyMap: anElementToPropertiesBlock [
 	"Create wrapped elements and properties for the input data, and initialize their properties and elements slots with BitSets representing the incidence."
 
-	| context elements properties propertyMap |
-	elements := (anElementCollection
+	| context wrappedElements wrappedProperties propertyMap |
+	wrappedElements := (anElementCollection
 			collect: [ :each | FCAElement for: each in: context ]) asBitSet.
-	properties := (aPropertyCollection
+	wrappedProperties := (aPropertyCollection
 			collect: [ :each | FCAProperty for: each in: context ]) asBitSet.
 	context := self new
-			elements: elements;
-			properties: properties;
+			elements: wrappedElements;
+			properties: wrappedProperties;
 			yourself.
 
-	propertyMap := (properties collect: [ :p | p value -> p ]) asDictionary.
-	elements
+	propertyMap := (wrappedProperties asOrderedCollection
+			collect: [ :p | p value -> p ]) asDictionary.
+	wrappedElements
 		do: [ :elt | 
 			| props |
 			props := ((anElementToPropertiesBlock value: elt value)
@@ -36,6 +37,20 @@ FCAContext class >> elements: anElementCollection properties: aPropertyCollectio
 			props do: [ :prop | prop elements add: elt ] ].
 
 	^ context
+]
+
+{ #category : #contracts }
+FCAContext >> checkInvariant [
+	"NB: can be a bit slow to check"
+
+	self elements
+		do: [ :elt | 
+			self properties
+				do: [ :prop | 
+					self
+						assert: (elt properties includes: prop)
+						equals: (prop elements includes: elt) ] ].
+	^ self
 ]
 
 { #category : #accessing }
@@ -101,4 +116,22 @@ FCAContext >> properties [
 { #category : #accessing }
 FCAContext >> properties: aBitSet [
 	properties := aBitSet
+]
+
+{ #category : #computing }
+FCAContext >> sigma: anElementBitSet [
+	"Compute the common properties of the element set."
+
+	^ anElementBitSet
+		inject: self properties
+		into: [ :result :elt | result intersection: elt properties ]
+]
+
+{ #category : #computing }
+FCAContext >> tau: anPropertyBitSet [
+	"Compute the common elements of the property set."
+
+	^ anPropertyBitSet
+		inject: self elements
+		into: [ :result :prop | result intersection: prop elements ]
 ]
