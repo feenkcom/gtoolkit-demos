@@ -5,7 +5,8 @@ Class {
 	#name : #FCAProperty,
 	#superclass : #FCAInContext,
 	#instVars : [
-		'property'
+		'rawProperty',
+		'elements'
 	],
 	#category : #'GToolkit-Demo-FCA-Model'
 }
@@ -13,20 +14,19 @@ Class {
 { #category : #accessing }
 FCAProperty class >> for: anObject in: aContext [
 	^ self new
-		property: anObject;
+		rawProperty: anObject;
 		context: aContext;
 		yourself
 ]
 
 { #category : #accessing }
 FCAProperty >> elements [
-	^ self context elements
-		select: [ :element | self context element: element value hasProperty: self value ]
+	^ elements
 ]
 
-{ #category : #printing }
-FCAProperty >> gtDisplayOn: stream [
-	stream nextPutAll: property printString
+{ #category : #accessing }
+FCAProperty >> elements: anObject [
+	elements := anObject
 ]
 
 { #category : #accessing }
@@ -35,20 +35,25 @@ FCAProperty >> gtElementsFor: aView [
 	^ aView list
 		title: 'Elements';
 		priority: 10;
-		items: [ self elements ]
+		items: [ self elements asOrderedCollection ]
+]
+
+{ #category : #initialization }
+FCAProperty >> initialize [
+	self elements: BitSet empty
 ]
 
 { #category : #accessing }
-FCAProperty >> property [
-	^ property
+FCAProperty >> rawProperty [
+	^ rawProperty
 ]
 
 { #category : #accessing }
-FCAProperty >> property: anObject [
-	property := anObject
+FCAProperty >> rawProperty: anObject [
+	rawProperty := anObject
 ]
 
 { #category : #accessing }
 FCAProperty >> value [
-	^ self property
+	^ self rawProperty
 ]

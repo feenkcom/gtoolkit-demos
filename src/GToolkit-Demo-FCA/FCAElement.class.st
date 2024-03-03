@@ -5,7 +5,8 @@ Class {
 	#name : #FCAElement,
 	#superclass : #FCAInContext,
 	#instVars : [
-		'element'
+		'rawElement',
+		'properties'
 	],
 	#category : #'GToolkit-Demo-FCA-Model'
 }
@@ -13,24 +14,9 @@ Class {
 { #category : #accessing }
 FCAElement class >> for: anObject in: aContext [
 	^ self new
-		element: anObject;
+		rawElement: anObject;
 		context: aContext;
 		yourself
-]
-
-{ #category : #accessing }
-FCAElement >> element [
-	^ element
-]
-
-{ #category : #accessing }
-FCAElement >> element: anObject [
-	element := anObject
-]
-
-{ #category : #printing }
-FCAElement >> gtDisplayOn: stream [
-	stream nextPutAll: element printString
 ]
 
 { #category : #accessing }
@@ -39,16 +25,40 @@ FCAElement >> gtPropertiesFor: aView [
 	^ aView list
 		title: 'Properties';
 		priority: 10;
-		items: [ self properties ]
+		items: [ self properties asOrderedCollection ]
+]
+
+{ #category : #testing }
+FCAElement >> hasProperty: aProperty [
+	^ self properties includes: aProperty
+]
+
+{ #category : #initialization }
+FCAElement >> initialize [
+	self properties: BitSet empty
 ]
 
 { #category : #accessing }
 FCAElement >> properties [
-	^ self context properties
-		select: [ :property | self context element: self value hasProperty: property value ]
+	^ properties
+]
+
+{ #category : #accessing }
+FCAElement >> properties: anObject [
+	properties := anObject
+]
+
+{ #category : #accessing }
+FCAElement >> rawElement [
+	^ rawElement
+]
+
+{ #category : #accessing }
+FCAElement >> rawElement: anObject [
+	rawElement := anObject
 ]
 
 { #category : #accessing }
 FCAElement >> value [
-	^ self element
+	^ self rawElement
 ]
