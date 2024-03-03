@@ -49,7 +49,7 @@ BitSet class >> withAll: aCollection [
 		yourself
 ]
 
-{ #category : #accessing }
+{ #category : #comparing }
 BitSet >> = other [
 	| otherBitSet |
 	self == other ifTrue: [ ^ true ].
@@ -67,7 +67,6 @@ BitSet >> = other [
 BitSet >> add: anObject [
 	| index |
 	index := map at: anObject ifAbsentPut: [ map size + 1 ].
-
 	bits := bits bitAt: index put: 1
 ]
 
@@ -87,21 +86,19 @@ BitSet >> bits: anObject [
 ]
 
 { #category : #enumerating }
+BitSet >> difference: baz [
+	^ self class empty
+		bits: (self bits bitClear: baz bits);
+		yourself
+]
+
+{ #category : #enumerating }
 BitSet >> do: aBlock [
 	self map
 		keysAndValuesDo: [ :object :index | (self bits bitAt: index) == 1 ifTrue: [ aBlock value: object ] ]
 ]
 
-{ #category : #'instance creation' }
-BitSet >> empty [
-	"Return a new empty BitSet sharing my mutable map."
-
-	^ self class new
-		map: self map;
-		yourself
-]
-
-{ #category : #accessing }
+{ #category : #view }
 BitSet >> gtMapFor: aView [
 	<gtView>
 	^ aView columnedList
@@ -117,7 +114,7 @@ BitSet >> gtMapFor: aView [
 			text: [ :eachItem | eachItem gtDisplayText ].
 ]
 
-{ #category : #accessing }
+{ #category : #view }
 BitSet >> gtResetFor: anAction [
 	<gtAction>
 	^ anAction button
@@ -138,9 +135,11 @@ BitSet >> initialize [
 	map := self class cachedMap.
 ]
 
-{ #category : #accessing }
+{ #category : #enumerating }
 BitSet >> intersection: other [
-	^ self empty bits: ((self newFrom: other) bits bitAnd: self bits)
+	^ self class empty
+		bits: ((self newFrom: other) bits bitAnd: self bits);
+		yourself
 ]
 
 { #category : #accessing }
@@ -162,12 +161,22 @@ BitSet >> newFrom: other [
 
 	(self hasSameMapAs: other) ifTrue: [ ^ other ].
 
-	^ self empty
+	^ self class empty
 		addAll: other;
 		yourself
 ]
 
-{ #category : #accessing }
+{ #category : #removing }
+BitSet >> remove: oldObject ifAbsent: anExceptionBlock [
+	| index |
+	index := map at: oldObject ifAbsent: [ ^ anExceptionBlock value ].
+	self bits: (self bits bitAt: index put: 0).
+	^ oldObject
+]
+
+{ #category : #enumerating }
 BitSet >> union: other [
-	^ self empty bits: ((self newFrom: other) bits bitOr: self bits)
+	^ self class empty
+		bits: ((self newFrom: other) bits bitOr: self bits);
+		yourself
 ]
