@@ -103,3 +103,21 @@ FCAContext >> properties [
 FCAContext >> properties: aBitSet [
 	properties := aBitSet
 ]
+
+{ #category : #computing }
+FCAContext >> sigma: anElementBitSet [
+	"Compute the common properties of the element set."
+
+	^ anElementBitSet
+		inject: self properties
+		into: [ :result :elt | result intersection: elt properties ]
+]
+
+{ #category : #computing }
+FCAContext >> tau: anPropertyBitSet [
+	"Compute the common elements of the property set."
+
+	^ anPropertyBitSet
+		inject: self elements
+		into: [ :result :prop | result intersection: prop elements ]
+]
