@@ -12,20 +12,30 @@ Class {
 	#category : #'GToolkit-Demo-FCA-Model'
 }
 
-{ #category : #accessing }
-FCAContext class >> elements: elements properties: properties incidence: incidence [
-	^ self new
-		elements: elements;
-		properties: properties;
-		incidence: incidence;
-		yourself
-]
+{ #category : #'instance creation' }
+FCAContext class >> elements: anElementCollection properties: aPropertyCollection propertyMap: anElementToPropertiesBlock [
+	"Create wrapped elements and properties for the input data, and initialize their properties and elements slots with BitSets representing the incidence."
 
-{ #category : #accessing }
-FCAContext >> element: element hasProperty: property [
-	"NB: The arguments are the raw objects, not the wrapped ones."
+	| context elements properties propertyMap |
+	elements := (anElementCollection
+			collect: [ :each | FCAElement for: each in: context ]) asBitSet.
+	properties := (aPropertyCollection
+			collect: [ :each | FCAProperty for: each in: context ]) asBitSet.
+	context := self new
+			elements: elements;
+			properties: properties;
+			yourself.
 
-	^ self incidence value: element value: property
+	propertyMap := (properties collect: [ :p | p value -> p ]) asDictionary.
+	elements
+		do: [ :elt | 
+			| props |
+			props := ((anElementToPropertiesBlock value: elt value)
+					collect: [ :p | propertyMap at: p ]) asBitSet.
+			elt properties: props.
+			props do: [ :prop | prop elements add: elt ] ].
+
+	^ context
 ]
 
 { #category : #accessing }
@@ -34,8 +44,8 @@ FCAContext >> elements [
 ]
 
 { #category : #accessing }
-FCAContext >> elements: aCollection [
-	elements := aCollection collect: [ :each | FCAElement for: each in: self ]
+FCAContext >> elements: aBitSet [
+	elements := aBitSet
 ]
 
 { #category : #view }
@@ -44,7 +54,7 @@ FCAContext >> gtElementsFor: aView [
 	^ aView list
 		title: 'Elements';
 		priority: 10;
-		items: [ self elements ]
+		items: [ self elements asOrderedCollection ]
 ]
 
 { #category : #view }
@@ -56,7 +66,7 @@ FCAContext >> gtIncidenceFor: aView [
 	view := aView columnedList
 			title: 'Incidence';
 			priority: 30;
-			items: [ self elements ];
+			items: [ self elements asOrderedCollection ];
 			column: 'Index'
 				text: [ :eachItem :eachIndex | eachIndex asRopedText foreground: Color gray ]
 				width: 45;
@@ -67,10 +77,9 @@ FCAContext >> gtIncidenceFor: aView [
 	self properties
 		do: [ :property | 
 			view
-				column: property property printString
-				text: [ :element | (self element: element value hasProperty: property value ) ifTrue: [ 'x' ] ifFalse: [ '' ] ] 
-				width: 60]
-					.
+				column: property value printString
+				text: [ :element | (element hasProperty: property) ifTrue: [ 'x' ] ifFalse: [ '' ] ]
+				width: 60 ].
 
 	^ view actionUpdateButton
 ]
@@ -81,17 +90,7 @@ FCAContext >> gtPropertiesFor: aView [
 	^ aView list
 		title: 'Properties';
 		priority: 20;
-		items: [ self properties ]
-]
-
-{ #category : #accessing }
-FCAContext >> incidence [
-	^ incidence
-]
-
-{ #category : #accessing }
-FCAContext >> incidence: aTwoArgumentBlock [
-	incidence := aTwoArgumentBlock
+		items: [ self properties asOrderedCollection ]
 ]
 
 { #category : #accessing }
@@ -100,6 +99,6 @@ FCAContext >> properties [
 ]
 
 { #category : #accessing }
-FCAContext >> properties: aCollection [
-	properties := aCollection collect: [ :each | FCAProperty for: each in: self ]
+FCAContext >> properties: aBitSet [
+	properties := aBitSet
 ]

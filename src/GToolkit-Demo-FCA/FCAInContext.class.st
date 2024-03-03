@@ -19,3 +19,18 @@ FCAInContext >> context [
 FCAInContext >> context: anObject [
 	context := anObject
 ]
+
+{ #category : #printing }
+FCAInContext >> gtDisplayOn: stream [
+	stream nextPutAll: self value printString
+]
+
+{ #category : #printing }
+FCAInContext >> printOn: stream [
+	stream nextPutAll: self value printString
+]
+
+{ #category : #accessing }
+FCAInContext >> value [
+	^ self subclassResponsibility
+]

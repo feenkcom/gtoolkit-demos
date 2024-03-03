@@ -18,7 +18,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2024-03-03T11:01:30.216064+01:00"
+						"dateAndTimeString" : "2024-03-03T12:18:15.868899+01:00"
 					}
 				},
 				"editEmail" : {
@@ -29,20 +29,20 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2024-03-03T11:02:02.257412+01:00"
+						"dateAndTimeString" : "2024-03-03T12:18:16.760189+01:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
-					"uidString" : "tOCVbSDPDQCkpjlUBhRRCw=="
+					"uidString" : "7cqcgCHPDQCsfCfRAitG1A=="
 				},
 				"paragraphStyle" : {
 					"__type" : "textStyle"
 				},
-				"string" : "We revise the example to use a properties map ratherthan an incidence function."
+				"string" : "feenkcom/gtoolkit#3662"
 			},
 			{
-				"__type" : "pharoSnippet",
+				"__type" : "textSnippet",
 				"children" : {
 					"__type" : "snippets",
 					"items" : [ ]
@@ -55,7 +55,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2024-03-03T11:02:04.020224+01:00"
+						"dateAndTimeString" : "2024-03-03T11:01:30.216064+01:00"
 					}
 				},
 				"editEmail" : {
@@ -66,14 +66,17 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2024-03-03T11:04:49.816873+01:00"
+						"dateAndTimeString" : "2024-03-03T11:16:14.762226+01:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
-					"uidString" : "TOobcCDPDQCmkFCgBhRRCw=="
+					"uidString" : "tOCVbSDPDQCkpjlUBhRRCw=="
 				},
-				"code" : "rawData := FCAContextExamples new mammalsData."
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : "We revise the example to use a properties map rather than an incidence function."
 			},
 			{
 				"__type" : "textSnippet",
@@ -100,7 +103,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2024-03-03T11:05:32.35082+01:00"
+						"dateAndTimeString" : "2024-03-03T12:06:10.667567+01:00"
 					}
 				},
 				"uid" : {
@@ -110,81 +113,7 @@
 				"paragraphStyle" : {
 					"__type" : "textStyle"
 				},
-				"string" : "Before "
-			},
-			{
-				"__type" : "textSnippet",
-				"children" : {
-					"__type" : "snippets",
-					"items" : [ ]
-				},
-				"createEmail" : {
-					"__type" : "email",
-					"emailString" : "<unknown>"
-				},
-				"createTime" : {
-					"__type" : "time",
-					"time" : {
-						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2024-03-03T11:05:28.88645+01:00"
-					}
-				},
-				"editEmail" : {
-					"__type" : "email",
-					"emailString" : "<unknown>"
-				},
-				"editTime" : {
-					"__type" : "time",
-					"time" : {
-						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2024-03-03T11:05:28.88645+01:00"
-					}
-				},
-				"uid" : {
-					"__type" : "uid",
-					"uidString" : "4e1RfCDPDQCoAlwzBhRRCw=="
-				},
-				"paragraphStyle" : {
-					"__type" : "textStyle"
-				},
-				"string" : ""
-			},
-			{
-				"__type" : "textSnippet",
-				"children" : {
-					"__type" : "snippets",
-					"items" : [ ]
-				},
-				"createEmail" : {
-					"__type" : "email",
-					"emailString" : "<unknown>"
-				},
-				"createTime" : {
-					"__type" : "time",
-					"time" : {
-						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2024-03-03T11:05:29.134655+01:00"
-					}
-				},
-				"editEmail" : {
-					"__type" : "email",
-					"emailString" : "<unknown>"
-				},
-				"editTime" : {
-					"__type" : "time",
-					"time" : {
-						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2024-03-03T11:05:29.134655+01:00"
-					}
-				},
-				"uid" : {
-					"__type" : "uid",
-					"uidString" : "5rNVfCDPDQCoBx9dBhRRCw=="
-				},
-				"paragraphStyle" : {
-					"__type" : "textStyle"
-				},
-				"string" : ""
+				"string" : "Before updating the {{gtClass:name=FCAContext}} constructor, let's experiment with building the wrapped data sets and initializing the maps. Then we move this code to {{gtMethod:name=FCAContext class>>#elements:properties:propertyMap:}}. "
 			},
 			{
 				"__type" : "pharoSnippet",
@@ -211,14 +140,14 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2024-03-03T11:04:21.445927+01:00"
+						"dateAndTimeString" : "2024-03-03T12:06:13.23264+01:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
 					"uidString" : "tOyVbSDPDQCkqT6QBhRRCw=="
 				},
-				"code" : "FCAContext\r\telements: elements\r\tproperties: properties\r\tincidence: incidence."
+				"code" : "rawData := FCAContextExamples new mammalsData.\rFCAContext\r\telements: (rawData at: #elements)\r\tproperties: (rawData at: #properties)\r\tpropertyMap: (rawData at: #e2pMap)."
 			},
 			{
 				"__type" : "textSnippet",
@@ -234,7 +163,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2024-03-03T11:01:21.683921+01:00"
+						"dateAndTimeString" : "2024-03-03T12:07:30.505957+01:00"
 					}
 				},
 				"editEmail" : {
@@ -245,7 +174,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2024-03-03T11:01:21.683921+01:00"
+						"dateAndTimeString" : "2024-03-03T12:07:39.650653+01:00"
 					}
 				},
 				"uid" : {
@@ -255,7 +184,7 @@
 				"paragraphStyle" : {
 					"__type" : "textStyle"
 				},
-				"string" : "Let's make this an example."
+				"string" : "We update the example accordingly."
 			},
 			{
 				"__type" : "pharoSnippet",
@@ -290,6 +219,43 @@
 					"uidString" : "l+6VbSDPDQCkq3ZkBhRRCw=="
 				},
 				"code" : "FCAContextExamples new mammals."
+			},
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2024-03-03T12:07:41.764829+01:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2024-03-03T12:07:51.91385+01:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "6iHRWiHPDQCTpy+wA7ftBw=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : "We have to update the incidence map."
 			},
 			{
 				"__type" : "textSnippet",
@@ -364,80 +330,6 @@
 					"__type" : "textStyle"
 				},
 				"string" : "We also  add some basic views."
-			},
-			{
-				"__type" : "textSnippet",
-				"children" : {
-					"__type" : "snippets",
-					"items" : [ ]
-				},
-				"createEmail" : {
-					"__type" : "email",
-					"emailString" : "<unknown>"
-				},
-				"createTime" : {
-					"__type" : "time",
-					"time" : {
-						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2024-03-03T11:01:21.685373+01:00"
-					}
-				},
-				"editEmail" : {
-					"__type" : "email",
-					"emailString" : "<unknown>"
-				},
-				"editTime" : {
-					"__type" : "time",
-					"time" : {
-						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2024-03-03T11:01:21.685373+01:00"
-					}
-				},
-				"uid" : {
-					"__type" : "uid",
-					"uidString" : "hPOVbSDPDQCkrrRXBhRRCw=="
-				},
-				"paragraphStyle" : {
-					"__type" : "textStyle"
-				},
-				"string" : "We create a common superclass {{gtClass:name=FCAInContext}} for the elements and properties, so we can navigate from them to their properties, resp. elements."
-			},
-			{
-				"__type" : "textSnippet",
-				"children" : {
-					"__type" : "snippets",
-					"items" : [ ]
-				},
-				"createEmail" : {
-					"__type" : "email",
-					"emailString" : "<unknown>"
-				},
-				"createTime" : {
-					"__type" : "time",
-					"time" : {
-						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2024-03-03T11:01:21.685566+01:00"
-					}
-				},
-				"editEmail" : {
-					"__type" : "email",
-					"emailString" : "<unknown>"
-				},
-				"editTime" : {
-					"__type" : "time",
-					"time" : {
-						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2024-03-03T11:01:21.685566+01:00"
-					}
-				},
-				"uid" : {
-					"__type" : "uid",
-					"uidString" : "RfSVbSDPDQCkr9CkBhRRCw=="
-				},
-				"paragraphStyle" : {
-					"__type" : "textStyle"
-				},
-				"string" : "We add views to show the properties of an element and vice versa."
 			},
 			{
 				"__type" : "textSnippet",
