@@ -4,6 +4,22 @@ Class {
 	#category : #'GToolkit-Demo-FCA-Examples'
 }
 
+{ #category : #accessing }
+FCAContextExamples >> gibbonsClosureConcept [
+	<gtExample>
+	| mammals gibbons gibbonsClosure |
+	mammals := self mammals.
+
+	gibbons := mammals elements detect: [ :elt | elt value = #Gibbons ].
+	gibbonsClosure := mammals closureFor: {gibbons} asBitSet.
+
+	self
+		assert: (gibbonsClosure intent asSet collect: #value)
+		equals: #(hairCovered thumbed intelligent) asSet.
+
+	^ gibbonsClosure
+]
+
 { #category : #example }
 FCAContextExamples >> gtBook [
 	"NB: Will clutter the BitSet map, so noTest."
@@ -14,6 +30,22 @@ FCAContextExamples >> gtBook [
 		elements: LeDatabase gtBook pages
 		properties: (LeDatabase gtBook pages flatCollect: #tags) asSet
 		propertyMap: #tags
+]
+
+{ #category : #accessing }
+FCAContextExamples >> humansClosureConcept [
+	<gtExample>
+	| mammals humans humansClosure |
+	mammals := self mammals.
+
+	humans := mammals elements detect: [ :elt | elt value = #Humans ].
+	humansClosure := mammals closureFor: {humans} asBitSet.
+
+	self
+		assert: (humansClosure intent asSet collect: #value)
+		equals: #(thumbed intelligent) asSet.
+
+	^ humansClosure
 ]
 
 { #category : #example }

@@ -22,11 +22,10 @@ FCAConceptBuilder >> bottom [
 		ifNil: [ | bottomProps bottomElts |
 			bottomProps := self context sigma: BitSet empty.
 			bottomElts := self context tau: bottomProps.
-			bottom := FCAConcept new
-					context: self context;
-					extent: bottomElts;
-					intent: bottomProps;
-					yourself ]
+			bottom := FCAConcept
+					context: self context
+					extent: bottomElts
+					intent: bottomProps ]
 ]
 
 { #category : #accessing }

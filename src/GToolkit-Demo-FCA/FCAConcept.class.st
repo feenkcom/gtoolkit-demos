@@ -13,7 +13,23 @@ Class {
 	#category : #'GToolkit-Demo-FCA-Model'
 }
 
-{ #category : #accessing }
+{ #category : #'instance creation' }
+FCAConcept class >> context: anFCAContext extent: anFCAElementBitSet intent: anFCAPropertyBitSet [
+	^ FCAConcept new
+		context: anFCAContext;
+		extent: anFCAElementBitSet;
+		intent: anFCAPropertyBitSet;
+		yourself
+]
+
+{ #category : #comparing }
+FCAConcept >> = other [
+	self == other ifTrue: [ ^ true ].
+	(other isKindOf: self class) ifFalse: [ ^ false ].
+	^ self extent = other extent and: [ self intent = other intent ]
+]
+
+{ #category : #contracts }
 FCAConcept >> checkInvariant [
 	"Check that the definition of a context holds."
 	
@@ -63,6 +79,11 @@ FCAConcept >> gtIntentFor: aView [
 		view: #gtItemsFor:
 ]
 
+{ #category : #comparing }
+FCAConcept >> hash [
+	^ self extent hash bitXor: self intent hash
+]
+
 { #category : #accessing }
 FCAConcept >> intent [
 	^ intent
@@ -71,4 +92,9 @@ FCAConcept >> intent [
 { #category : #accessing }
 FCAConcept >> intent: anFCAPropertyBitSet [
 	intent := anFCAPropertyBitSet
+]
+
+{ #category : #accessing }
+FCAConcept >> printOn: aStream [
+	self intent printElementsOn: aStream
 ]
