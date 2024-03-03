@@ -16,18 +16,19 @@ Class {
 FCAContext class >> elements: anElementCollection properties: aPropertyCollection propertyMap: anElementToPropertiesBlock [
 	"Create wrapped elements and properties for the input data, and initialize their properties and elements slots with BitSets representing the incidence."
 
-	| context elements properties propertyMap |
-	elements := (anElementCollection
+	| context wrappedElements wrappedProperties propertyMap |
+	wrappedElements := (anElementCollection
 			collect: [ :each | FCAElement for: each in: context ]) asBitSet.
-	properties := (aPropertyCollection
+	wrappedProperties := (aPropertyCollection
 			collect: [ :each | FCAProperty for: each in: context ]) asBitSet.
 	context := self new
-			elements: elements;
-			properties: properties;
+			elements: wrappedElements;
+			properties: wrappedProperties;
 			yourself.
 
-	propertyMap := (properties collect: [ :p | p value -> p ]) asDictionary.
-	elements
+	propertyMap := (wrappedProperties asOrderedCollection collect: [ :p | p value -> p ])
+			asDictionary.
+	wrappedElements
 		do: [ :elt | 
 			| props |
 			props := ((anElementToPropertiesBlock value: elt value)
