@@ -5,6 +5,15 @@ Class {
 }
 
 { #category : #accessing }
+FCAContextExamples >> gtBook [
+	<gtExample>
+	^ FCAContext
+		elements: LeDatabase gtBook pages
+		properties: (LeDatabase gtBook pages flatCollect: #tags) asSet
+		propertyMap: #tags
+]
+
+{ #category : #accessing }
 FCAContextExamples >> mammals [
 	"This is the example from Appendix B of Gabriela Arévalo's PhD thesis, 
 	“High Level Views in Object-Oriented Systems using Formal Concept Analysis”, University of Bern, 2005."
