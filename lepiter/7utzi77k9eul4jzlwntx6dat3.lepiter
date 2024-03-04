@@ -200,7 +200,45 @@
 										"__type" : "textSnippet",
 										"children" : {
 											"__type" : "snippets",
-											"items" : [ ]
+											"items" : [
+												{
+													"__type" : "textSnippet",
+													"children" : {
+														"__type" : "snippets",
+														"items" : [ ]
+													},
+													"createEmail" : {
+														"__type" : "email",
+														"emailString" : "<unknown>"
+													},
+													"createTime" : {
+														"__type" : "time",
+														"time" : {
+															"__type" : "dateAndTime",
+															"dateAndTimeString" : "2024-03-03T17:03:29.71136+01:00"
+														}
+													},
+													"editEmail" : {
+														"__type" : "email",
+														"emailString" : "<unknown>"
+													},
+													"editTime" : {
+														"__type" : "time",
+														"time" : {
+															"__type" : "dateAndTime",
+															"dateAndTimeString" : "2024-03-03T17:03:30.601317+01:00"
+														}
+													},
+													"uid" : {
+														"__type" : "uid",
+														"uidString" : "A13ZeyXPDQC56R3uDyqgSA=="
+													},
+													"paragraphStyle" : {
+														"__type" : "textStyle"
+													},
+													"string" : "[[BitSet implementation]]"
+												}
+											]
 										},
 										"createEmail" : {
 											"__type" : "email",
@@ -284,7 +322,7 @@
 											"__type" : "time",
 											"time" : {
 												"__type" : "dateAndTime",
-												"dateAndTimeString" : "2024-03-03T17:03:29.71136+01:00"
+												"dateAndTimeString" : "2024-03-04T15:33:48.736441+01:00"
 											}
 										},
 										"editEmail" : {
@@ -295,17 +333,54 @@
 											"__type" : "time",
 											"time" : {
 												"__type" : "dateAndTime",
-												"dateAndTimeString" : "2024-03-03T17:03:30.601317+01:00"
+												"dateAndTimeString" : "2024-03-04T15:33:53.936268+01:00"
 											}
 										},
 										"uid" : {
 											"__type" : "uid",
-											"uidString" : "A13ZeyXPDQC56R3uDyqgSA=="
+											"uidString" : "OYXJWTjPDQCGjPEpCJ+VoA=="
 										},
 										"paragraphStyle" : {
 											"__type" : "textStyle"
 										},
-										"string" : "[[BitSet implementation]]"
+										"string" : "[[Lattice view]]"
+									},
+									{
+										"__type" : "textSnippet",
+										"children" : {
+											"__type" : "snippets",
+											"items" : [ ]
+										},
+										"createEmail" : {
+											"__type" : "email",
+											"emailString" : "<unknown>"
+										},
+										"createTime" : {
+											"__type" : "time",
+											"time" : {
+												"__type" : "dateAndTime",
+												"dateAndTimeString" : "2024-03-04T16:29:05.270077+01:00"
+											}
+										},
+										"editEmail" : {
+											"__type" : "email",
+											"emailString" : "<unknown>"
+										},
+										"editTime" : {
+											"__type" : "time",
+											"time" : {
+												"__type" : "dateAndTime",
+												"dateAndTimeString" : "2024-03-04T16:29:18.679667+01:00"
+											}
+										},
+										"uid" : {
+											"__type" : "uid",
+											"uidString" : "L8t3HznPDQCEyqSjAStnsA=="
+										},
+										"paragraphStyle" : {
+											"__type" : "textStyle"
+										},
+										"string" : "[[Experimenting with Lepiter pages and tags]]"
 									}
 								]
 							},

@@ -37,14 +37,20 @@ FCAInContext >> gtDisplayOn: stream [
 	stream nextPutAll: self value printString
 ]
 
+{ #category : #accessing }
+FCAInContext >> gtValueFor: aView [
+	<gtView>
+	^ aView forward
+		title: 'Value';
+		priority: 20;
+		object: [self value];
+		view: #gtLiveFor:;
+		actionUpdateButton
+]
+
 { #category : #comparing }
 FCAInContext >> hash [
 	^ self value hash
-]
-
-{ #category : #printing }
-FCAInContext >> printOn: stream [
-	stream nextPutAll: self value printString
 ]
 
 { #category : #accessing }

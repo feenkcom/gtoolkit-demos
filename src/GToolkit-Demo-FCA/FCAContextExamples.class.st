@@ -75,18 +75,6 @@ FCAContextExamples >> gibbonsClosureConcept [
 	^ gibbonsClosure
 ]
 
-{ #category : #example }
-FCAContextExamples >> gtBook [
-	"NB: Will clutter the BitSet map, so noTest."
-
-	<gtExample>
-	<noTest>
-	^ FCAContext
-		elements: LeDatabase gtBook pages
-		properties: (LeDatabase gtBook pages flatCollect: #tags) asSet
-		propertyMap: #tags
-]
-
 { #category : #accessing }
 FCAContextExamples >> hairCovered [
 	<gtExample>

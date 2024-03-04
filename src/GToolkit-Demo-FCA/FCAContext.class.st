@@ -7,7 +7,9 @@ Class {
 	#instVars : [
 		'elements',
 		'properties',
-		'incidence'
+		'concepts',
+		'elementPrintMessage',
+		'propertyPrintMessage'
 	],
 	#category : #'GToolkit-Demo-FCA-Model'
 }
@@ -18,13 +20,13 @@ FCAContext class >> elements: anElementCollection properties: aPropertyCollectio
 
 	| context wrappedElements wrappedProperties propertyMap |
 	wrappedElements := (anElementCollection
-			collect: [ :each | FCAElement for: each in: context ]) asBitSet.
+			collect: [ :each | FCAElement for: each ]) asBitSet.
 	wrappedProperties := (aPropertyCollection
-			collect: [ :each | FCAProperty for: each in: context ]) asBitSet.
+			collect: [ :each | FCAProperty for: each ]) asBitSet.
+
 	context := self new
 			elements: wrappedElements;
-			properties: wrappedProperties;
-			yourself.
+			properties: wrappedProperties.
 
 	propertyMap := (wrappedProperties asOrderedCollection
 			collect: [ :p | p value -> p ]) asDictionary.
@@ -44,6 +46,11 @@ FCAContext >> bottomUpBuilder [
 	^ FCABottomUpConceptBuilder new
 		context: self;
 		yourself
+]
+
+{ #category : #computing }
+FCAContext >> builder [
+	^ self bottomUpBuilder
 ]
 
 { #category : #contracts }
@@ -72,22 +79,76 @@ FCAContext >> closureFor: anFCAElementBitSet [
 ]
 
 { #category : #accessing }
+FCAContext >> concepts [
+	^ concepts
+		ifNil: [ concepts := self builder computeConcepts asOrderedCollection ]
+]
+
+{ #category : #printing }
+FCAContext >> defaultPrintMessage [
+	"The default message to send to a raw element or property to ge a printable String."
+	^ #printString
+]
+
+{ #category : #accessing }
+FCAContext >> edges [
+	^ self concepts flatCollect: [ :c1 | c1 smaller collect: [ :c2 | c1 -> c2 ] ]
+]
+
+{ #category : #printing }
+FCAContext >> elementPrintMessage [
+	^ elementPrintMessage ifNil: [ self defaultPrintMessage ]
+]
+
+{ #category : #printing }
+FCAContext >> elementPrintMessage: aSymbol [
+	elementPrintMessage := aSymbol
+]
+
+{ #category : #accessing }
 FCAContext >> elements [
 	^ elements
 ]
 
 { #category : #accessing }
 FCAContext >> elements: aBitSet [
-	elements := aBitSet
+	elements := aBitSet.
+	elements do: [ :each | each context: self ]
+]
+
+{ #category : #view }
+FCAContext >> gtConceptsFor: aView [
+	<gtView>
+	^ aView columnedList
+		title: 'Concepts';
+		priority: 30;
+		items: [ self concepts ];
+		column: 'Index'
+			text: [ :eachItem :eachIndex | eachIndex asRopedText foreground: Color gray ]
+			width: 45;
+		column: '#Elements'
+			text: [ :item | item extent size printString ]
+			width: 80;
+		column: '#Properties'
+			text: [ :item | item intent size printString ]
+			width: 80;
+		column: 'Properties'
+			text: [ :item | item printString ];
+		actionUpdateButton
 ]
 
 { #category : #view }
 FCAContext >> gtElementsFor: aView [
 	<gtView>
-	^ aView list
+	^ aView columnedList
 		title: 'Elements';
 		priority: 10;
-		items: [ self elements asOrderedCollection ]
+		items: [ self elements asOrderedCollection ];
+		column: 'Index'
+			text: [ :eachItem :eachIndex | eachIndex asRopedText foreground: Color gray ]
+			width: 45;
+		column: 'Elements' text: [ :item | item printString ];
+		actionUpdateButton
 ]
 
 { #category : #view }
@@ -98,7 +159,7 @@ FCAContext >> gtIncidenceFor: aView [
 	| view |
 	view := aView columnedList
 			title: 'Incidence';
-			priority: 30;
+			priority: 40;
 			items: [ self elements asOrderedCollection ];
 			column: 'Index'
 				text: [ :eachItem :eachIndex | eachIndex asRopedText foreground: Color gray ]
@@ -117,13 +178,50 @@ FCAContext >> gtIncidenceFor: aView [
 	^ view actionUpdateButton
 ]
 
+{ #category : #accessing }
+FCAContext >> gtLatticeFor: aView [
+	<gtView>
+	^ aView mondrian
+		title: 'Lattice';
+		priority: 50;
+		painting: [ :aMondrian | 
+			self latticeFor: aMondrian ];
+		actionUpdateButton
+]
+
 { #category : #view }
 FCAContext >> gtPropertiesFor: aView [
 	<gtView>
-	^ aView list
+	^ aView columnedList
 		title: 'Properties';
 		priority: 20;
-		items: [ self properties asOrderedCollection ]
+		items: [ self properties asOrderedCollection ];
+		column: 'Index'
+			text: [ :eachItem :eachIndex | eachIndex asRopedText foreground: Color gray ]
+			width: 45;
+		column: 'Properties' text: [ :item | item printString ];
+		actionUpdateButton
+]
+
+{ #category : #accessing }
+FCAContext >> latticeFor: aMondrian [
+	| nodes |
+	nodes := self concepts.
+	aMondrian nodes
+		shape: [ :each | each mondrianNodeElement ];
+		with: nodes.
+	aMondrian edges
+		connect: self edges
+		from: #key
+		to: #value.
+	aMondrian layout tree.
+	^ aMondrian
+]
+
+{ #category : #printing }
+FCAContext >> printMessage: aSymbol [
+	self elementPrintMessage: aSymbol.
+	self propertyPrintMessage: aSymbol
 ]
 
 { #category : #accessing }
@@ -133,7 +231,18 @@ FCAContext >> properties [
 
 { #category : #accessing }
 FCAContext >> properties: aBitSet [
-	properties := aBitSet
+	properties := aBitSet.
+	properties do: [ :each | each context: self ]
+]
+
+{ #category : #printing }
+FCAContext >> propertyPrintMessage [
+	^ propertyPrintMessage ifNil: [ self defaultPrintMessage ]
+]
+
+{ #category : #printing }
+FCAContext >> propertyPrintMessage: aSymbol [
+	propertyPrintMessage := aSymbol
 ]
 
 { #category : #computing }
@@ -143,6 +252,27 @@ FCAContext >> sigma: anElementBitSet [
 	^ anElementBitSet
 		inject: self properties
 		into: [ :result :elt | result intersection: elt properties ]
+]
+
+{ #category : #accessing }
+FCAContext >> simpleLatticeFor: aMondrian [
+	"Bare bones lattice without sizes, labels or tooltips."
+
+	| nodes |
+	nodes := self concepts.
+	aMondrian nodes
+		shape: [ :x | 
+			BlElement new
+				size: 10 @ 10;
+				border: Color black;
+				background: Color white ];
+		with: nodes.
+	aMondrian edges
+		connect: self edges
+		from: #key
+		to: #value.
+	aMondrian layout tree.
+	^ aMondrian
 ]
 
 { #category : #computing }

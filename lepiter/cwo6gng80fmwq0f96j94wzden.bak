@@ -1021,7 +1021,7 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2024-03-04T11:23:51.365642+01:00"
+									"dateAndTimeString" : "2024-03-04T11:24:02.356855+01:00"
 								}
 							},
 							"uid" : {
@@ -1031,7 +1031,7 @@
 							"paragraphStyle" : {
 								"__type" : "textStyle"
 							},
-							"string" : "Here we still need to ensure that there are no intermediate concep"
+							"string" : "Here we still need to ensure that there are no intermediate concepts, but only construct direct edges."
 						},
 						{
 							"__type" : "pharoSnippet",
@@ -1047,7 +1047,7 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2024-03-04T11:15:54.133746+01:00"
+									"dateAndTimeString" : "2024-03-04T15:11:56.898915+01:00"
 								}
 							},
 							"editEmail" : {
@@ -1058,14 +1058,48 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2024-03-04T11:23:27.810154+01:00"
+									"dateAndTimeString" : "2024-03-04T15:32:58.330888+01:00"
 								}
 							},
 							"uid" : {
 								"__type" : "uid",
-								"uidString" : "AdFtvzTPDQCHFRdLDwuJfA=="
+								"uidString" : "M3WYCzjPDQCBQuRUCJ+VoA=="
 							},
-							"code" : "builder := FCAContextExamples new mammals bottomUpBuilder.\rconcepts := builder computeConcepts asOrderedCollection.\r\redges := OrderedCollection new.\rendIndex := concepts size.\rconcepts\r\twithIndexDo: [ :c1 :i1 | \r\t\ti1 < endIndex\r\t\t\tifTrue: [ (concepts copyFrom: i1 + 1 to: endIndex)\r\t\t\t\t\tdo: [ :c2 | \r\t\t\t\t\t\tc1 < c2 ifTrue: [ edges addLast: c1 -> c2 ].\r\t\t\t\t\t\tc1 > c2 ifTrue: [ edges addLast: c2 -> c1 ]\r\t\t\t\t] ] ].\redges"
+							"code" : "builder := FCAContextExamples new mammals bottomUpBuilder.\rconcepts := builder computeConcepts asOrderedCollection.\rconcepts"
+						},
+						{
+							"__type" : "pharoSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2024-03-04T15:19:01.590571+01:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2024-03-04T15:30:15.836738+01:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "9MDoJDjPDQCEblK1CJ+VoA=="
+							},
+							"code" : "builder := FCAContextExamples new mammals bottomUpBuilder.\rconcepts := builder computeConcepts asOrderedCollection.\r"
 						}
 					]
 				},

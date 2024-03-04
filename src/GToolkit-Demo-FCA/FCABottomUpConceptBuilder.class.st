@@ -20,11 +20,28 @@ FCABottomUpConceptBuilder >> atomicConcepts [
 ]
 
 { #category : #computing }
+FCABottomUpConceptBuilder >> buildLattice [
+	"Simple, cubic algorithm. Encode the edges in the smaller and bigger sets.
+	NB: We assume that the concepts start with empty smaller and bigger sets."
+
+	concepts
+		do: [ :c1 | 
+			concepts
+				do: [ :c2 | 
+					c1 < c2
+						ifTrue: [ concepts
+								detect: [ :c3 | c1 < c3 and: [ c3 < c2 ] ]
+								ifNone: [ c1 bigger add: c2.
+									c2 smaller add: c1 ] ] ] ]
+]
+
+{ #category : #computing }
 FCABottomUpConceptBuilder >> computeConcepts [
 	concepts := {self bottom} asSet.
 	concepts addAll: self atomicConcepts.
 	self initializeWorklist.
 	self processWorklist.
+	self buildLattice.
 	^ self concepts
 ]
 

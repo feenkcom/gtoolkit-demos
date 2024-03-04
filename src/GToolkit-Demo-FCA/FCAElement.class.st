@@ -11,8 +11,16 @@ Class {
 	#category : #'GToolkit-Demo-FCA-Model'
 }
 
-{ #category : #accessing }
+{ #category : #'instance creation' }
+FCAElement class >> for: anObject [
+	^ self new
+		rawElement: anObject;
+		yourself
+]
+
+{ #category : #deprecated }
 FCAElement class >> for: anObject in: aContext [
+	self deprecated: 'Use for: and set context later from the context itself.'.
 	^ self new
 		rawElement: anObject;
 		context: aContext;
@@ -22,10 +30,15 @@ FCAElement class >> for: anObject in: aContext [
 { #category : #accessing }
 FCAElement >> gtPropertiesFor: aView [
 	<gtView>
-	^ aView list
+	^ aView columnedList
 		title: 'Properties';
 		priority: 10;
-		items: [ self properties asOrderedCollection ]
+		items: [ self properties asOrderedCollection ];
+		column: 'Index'
+			text: [ :eachItem :eachIndex | eachIndex asRopedText foreground: Color gray ]
+			width: 45;
+		column: 'Properties' text: [ :item | item printString ];
+		actionUpdateButton
 ]
 
 { #category : #testing }
@@ -36,6 +49,11 @@ FCAElement >> hasProperty: aProperty [
 { #category : #initialization }
 FCAElement >> initialize [
 	self properties: BitSet empty
+]
+
+{ #category : #printing }
+FCAElement >> printOn: stream [
+	stream nextPutAll: (self value perform: self context elementPrintMessage)
 ]
 
 { #category : #accessing }
