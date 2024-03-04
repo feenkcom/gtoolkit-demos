@@ -185,21 +185,17 @@ FCAContextExamples >> mammals [
 	“High Level Views in Object-Oriented Systems using Formal Concept Analysis”, University of Bern, 2005."
 
 	<gtExample>
-	| rawData context dolphins intelligent thumbed |
+	| rawData mammals |
 	rawData := FCAContextExamples new mammalsData.
 
-	context := FCAContext
+	mammals := FCAContext
 			elements: (rawData at: #elements)
 			properties: (rawData at: #properties)
 			propertyMap: (rawData at: #e2pMap).
 
-	dolphins := context elements detect: [ :elt | elt value = #Dolphins ].
-	intelligent := context properties detect: [ :prop | prop value = #intelligent ].
-	thumbed := context properties detect: [ :prop | prop value = #thumbed ].
-	self assert: (dolphins hasProperty: intelligent).
-	self assert: (dolphins hasProperty: thumbed) not.
+	self assert: mammals concepts size equals: 8.
 
-	^ context
+	^ mammals
 ]
 
 { #category : #data }

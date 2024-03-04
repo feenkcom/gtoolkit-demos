@@ -146,14 +146,14 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2024-03-03T14:34:46.978951+01:00"
+									"dateAndTimeString" : "2024-03-04T18:31:21.780486+01:00"
 								}
 							},
 							"uid" : {
 								"__type" : "uid",
 								"uidString" : "gQ0IQSPPDQCPV1r3A6IMfA=="
 							},
-							"code" : "FCAContextExamples new mammalsSigma."
+							"code" : "FCAContextExamples new sigmaCatsGibbons."
 						},
 						{
 							"__type" : "pharoSnippet",
@@ -180,14 +180,14 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2024-03-03T14:45:44.523182+01:00"
+									"dateAndTimeString" : "2024-03-04T18:31:27.520509+01:00"
 								}
 							},
 							"uid" : {
 								"__type" : "uid",
 								"uidString" : "b0P6gyPPDQCXaFeMA6IMfA=="
 							},
-							"code" : "FCAContextExamples new mammalsTau."
+							"code" : "FCAContextExamples new mamtauHairCoveredmalsTau."
 						}
 					]
 				},
@@ -1047,40 +1047,6 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2024-03-04T15:11:56.898915+01:00"
-								}
-							},
-							"editEmail" : {
-								"__type" : "email",
-								"emailString" : "<unknown>"
-							},
-							"editTime" : {
-								"__type" : "time",
-								"time" : {
-									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2024-03-04T15:32:58.330888+01:00"
-								}
-							},
-							"uid" : {
-								"__type" : "uid",
-								"uidString" : "M3WYCzjPDQCBQuRUCJ+VoA=="
-							},
-							"code" : "builder := FCAContextExamples new mammals bottomUpBuilder.\rconcepts := builder computeConcepts asOrderedCollection.\rconcepts"
-						},
-						{
-							"__type" : "pharoSnippet",
-							"children" : {
-								"__type" : "snippets",
-								"items" : [ ]
-							},
-							"createEmail" : {
-								"__type" : "email",
-								"emailString" : "<unknown>"
-							},
-							"createTime" : {
-								"__type" : "time",
-								"time" : {
-									"__type" : "dateAndTime",
 									"dateAndTimeString" : "2024-03-04T15:19:01.590571+01:00"
 								}
 							},
@@ -1092,14 +1058,14 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2024-03-04T15:30:15.836738+01:00"
+									"dateAndTimeString" : "2024-03-04T15:33:25.046774+01:00"
 								}
 							},
 							"uid" : {
 								"__type" : "uid",
 								"uidString" : "9MDoJDjPDQCEblK1CJ+VoA=="
 							},
-							"code" : "builder := FCAContextExamples new mammals bottomUpBuilder.\rconcepts := builder computeConcepts asOrderedCollection.\r"
+							"code" : "builder := FCAContextExamples new mammals bottomUpBuilder.\rconcepts := builder computeConcepts asOrderedCollection."
 						}
 					]
 				},
