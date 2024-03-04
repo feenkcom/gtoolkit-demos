@@ -18,6 +18,43 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2024-03-04T18:30:31.939681+01:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2024-03-04T18:30:41.66016+01:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "kozJ0TrPDQCefbTVA9izmg=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : "*Caveat:* This has been refactored already."
+			},
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
 						"dateAndTimeString" : "2024-03-01T09:41:05.148794+01:00"
 					}
 				},
@@ -114,40 +151,6 @@
 					"__type" : "textStyle"
 				},
 				"string" : "We can use the example from Appendix B in [Gabi's PhD thesis](https://scg.unibe.ch/assets/scgbib/?query=arevalo+phd&filter=Author)."
-			},
-			{
-				"__type" : "pharoSnippet",
-				"children" : {
-					"__type" : "snippets",
-					"items" : [ ]
-				},
-				"createEmail" : {
-					"__type" : "email",
-					"emailString" : "<unknown>"
-				},
-				"createTime" : {
-					"__type" : "time",
-					"time" : {
-						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2024-03-01T10:00:36.259305+01:00"
-					}
-				},
-				"editEmail" : {
-					"__type" : "email",
-					"emailString" : "<unknown>"
-				},
-				"editTime" : {
-					"__type" : "time",
-					"time" : {
-						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2024-03-01T10:10:23.359908+01:00"
-					}
-				},
-				"uid" : {
-					"__type" : "uid",
-					"uidString" : "3GSeWPfODQCeV+q2CFncQQ=="
-				},
-				"code" : "elements := #(Cats Dogs Dolphins Gibbons Humans Whales).\rproperties := #(#'four-legged' #'hair-covered' intelligent marine thumbed).\r\rmap := {#Cats -> #(#'four-legged' #'hair-covered' i).\r\t\t#Dogs -> #(#'four-legged' #'hair-covered').\r\t\t#Dolphins -> #(intelligent marine).\r\t\t#Gibbons -> #(#'hair-covered' intelligent thumbed).\r\t\t#Humans -> #(intelligent thumbed).\r\t\t#Whales -> #(intelligent marine)} asDictionary.\r\rincidence := [ :e :p | (map at: e) includes: p ].\rincidence value: #Humans value: #intelligent.\rFCAContext\r\telements: elements\r\tproperties: properties\r\tincidence: incidence."
 			},
 			{
 				"__type" : "textSnippet",
