@@ -6,9 +6,10 @@ Class {
 	#superclass : #Object,
 	#instVars : [
 		'context',
-		'bottom'
+		'bottom',
+		'concepts'
 	],
-	#category : #'GToolkit-Demo-FCA'
+	#category : #'GToolkit-Demo-FCA-Algoirthms'
 }
 
 { #category : #testing }
@@ -18,14 +19,12 @@ FCAConceptBuilder class >> isAbstract [
 
 { #category : #accessing }
 FCAConceptBuilder >> bottom [
-	^ bottom
-		ifNil: [ | bottomProps bottomElts |
-			bottomProps := self context sigma: BitSet empty.
-			bottomElts := self context tau: bottomProps.
-			bottom := FCAConcept
-					context: self context
-					extent: bottomElts
-					intent: bottomProps ]
+	^ bottom ifNil: [ self context closureFor: BitSet empty ]
+]
+
+{ #category : #accessing }
+FCAConceptBuilder >> concepts [
+	^ concepts ifNil: [ concepts := {self bottom} asSet ]
 ]
 
 { #category : #accessing }
@@ -34,6 +33,6 @@ FCAConceptBuilder >> context [
 ]
 
 { #category : #accessing }
-FCAConceptBuilder >> context: anObject [
-	context := anObject
+FCAConceptBuilder >> context: anFCAContext [
+	context := anFCAContext
 ]

@@ -23,10 +23,39 @@ FCAConcept class >> context: anFCAContext extent: anFCAElementBitSet intent: anF
 ]
 
 { #category : #comparing }
+FCAConcept >> < otherConcept [
+	^ self <= otherConcept and: [ self ~= otherConcept ]
+]
+
+{ #category : #comparing }
+FCAConcept >> <= otherConcept [
+	self == otherConcept ifTrue: [ ^ true ].
+	(otherConcept class == self class) ifFalse: [ ^ false ].
+	^ self extent <= otherConcept extent
+]
+
+{ #category : #comparing }
+FCAConcept >> <> otherConcept [
+	"self and other are incomparable"
+
+	^ (self < otherConcept) not and: [ (self > otherConcept) not ]
+]
+
+{ #category : #comparing }
 FCAConcept >> = other [
 	self == other ifTrue: [ ^ true ].
 	(other isKindOf: self class) ifFalse: [ ^ false ].
 	^ self extent = other extent and: [ self intent = other intent ]
+]
+
+{ #category : #comparing }
+FCAConcept >> > otherConcept [
+	^ otherConcept < self
+]
+
+{ #category : #comparing }
+FCAConcept >> >= otherConcept [
+	^ otherConcept <= self
 ]
 
 { #category : #contracts }
@@ -92,6 +121,26 @@ FCAConcept >> intent [
 { #category : #accessing }
 FCAConcept >> intent: anFCAPropertyBitSet [
 	intent := anFCAPropertyBitSet
+]
+
+{ #category : #combining }
+FCAConcept >> join: other [
+	| props |
+	props := self intent intersection: other intent.
+	^ FCAConcept
+		context: self context
+		extent: (self context tau: props)
+		intent: props
+]
+
+{ #category : #combining }
+FCAConcept >> meet: other [
+	| elts |
+	elts := self extent intersection: other extent.
+	^ FCAConcept
+		context: self context
+		extent: elts
+		intent: (self context sigma: elts)
 ]
 
 { #category : #accessing }

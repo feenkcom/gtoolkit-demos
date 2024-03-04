@@ -5,6 +5,12 @@ Class {
 }
 
 { #category : #accessing }
+BitSetExamples >> foo [
+	<gtExample>
+	^ 'foo' asBitSet
+]
+
+{ #category : #accessing }
 BitSetExamples >> fooRemoveF [
 	<gtExample>
 	| result |
@@ -15,36 +21,62 @@ BitSetExamples >> fooRemoveF [
 ]
 
 { #category : #accessing }
+BitSetExamples >> fooSubsetFoobar [
+	<gtExample>
+	| foo foobar |
+	foo := self foo.
+	foobar := self foobar.
+	self assert: foobar <= foobar.
+	self assert: foo <= foobar.
+	self assert: foo < foobar.
+	self assert: foobar >= foobar.
+	self assert: foobar >= foo.
+	self assert: foobar > foo.
+	self assert: (foo >= self hello) not.
+	
+	^ foobar
+]
+
+{ #category : #accessing }
 BitSetExamples >> fooUnionBar [
 	<gtExample>
-	| foo bar union |
-	foo := 'foo' asBitSet.
-	bar := 'bar' asBitSet.
-	union := foo union: bar.
-	self assert: union equals: 'foobar' asBitSet.
+	| union |
+	union := self foo union: 'bar'.
+	self assert: union equals: self foobar.
 	^ union
+]
+
+{ #category : #accessing }
+BitSetExamples >> foobar [
+	<gtExample>
+	^ 'foobar' asBitSet
 ]
 
 { #category : #accessing }
 BitSetExamples >> foobarDifferenceBaz [
 	<gtExample>
-
-	| foobar baz difference |
+	| foobar difference |
 	foobar := self fooUnionBar.
-	baz := foobar newFrom: 'baz'.
-	difference := foobar difference: baz.
+	difference := foobar difference: 'baz'.
 	self assert: difference equals: 'for' asBitSet.
+	^ difference
+]
+
+{ #category : #accessing }
+BitSetExamples >> foobarIncludesAllFoo [
+	<gtExample>
+	| foobar difference |
+	foobar := self fooUnionBar.
+	self assert: (foobar includesAll: 'foo').
 	^ difference
 ]
 
 { #category : #accessing }
 BitSetExamples >> foobarIntersectFoobaz [
 	<gtExample>
-
-	| foobar foobaz intersection |
+	| foobar intersection |
 	foobar := self fooUnionBar.
-	foobaz := foobar newFrom: 'foobaz'.
-	intersection := foobar intersection: foobaz.
+	intersection := foobar intersection: 'foobaz'.
 	self assert: intersection equals: 'foba' asBitSet.
 	^ intersection
 ]
@@ -54,7 +86,7 @@ BitSetExamples >> foobarRemoveAllBaz [
 	<gtExample>
 	| result |
 	result := 'foobar' asBitSet.
-	result removeAll: 'baz' asBitSet.
+	result removeAll: 'baz'.
 	self assert: result equals: 'for' asBitSet.
 	^ result
 ]

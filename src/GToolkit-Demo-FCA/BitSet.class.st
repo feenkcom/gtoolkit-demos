@@ -50,6 +50,16 @@ BitSet class >> withAll: aCollection [
 ]
 
 { #category : #comparing }
+BitSet >> < aBitSet [
+	^ aBitSet > self
+]
+
+{ #category : #comparing }
+BitSet >> <= aBitSet [
+	^ aBitSet >= self
+]
+
+{ #category : #comparing }
 BitSet >> = other [
 	| otherBitSet |
 	self == other ifTrue: [ ^ true ].
@@ -57,10 +67,20 @@ BitSet >> = other [
 	(other isKindOf: self class)
 		ifTrue: [ otherBitSet := self map == other map
 					ifTrue: [ other ]
-					ifFalse: [ self newFrom: other ].
+					ifFalse: [ self bitSetFor: other ].
 			^ self bits = otherBitSet bits ].
 
 	^ false
+]
+
+{ #category : #comparing }
+BitSet >> > aBitSet [
+	^ (self >= aBitSet) and: [ self ~= aBitSet ]
+]
+
+{ #category : #comparing }
+BitSet >> >= aBitSet [
+	^ self includesAll: aBitSet
 ]
 
 { #category : #adding }
@@ -75,6 +95,20 @@ BitSet >> asBitSet [
 	^ self
 ]
 
+{ #category : #'instance creation' }
+BitSet >> bitSetFor: other [
+	"I create a new BitSet that shares a (mutable) map with me.
+	Do nothing if the other collection already shares a map with me."
+
+	self assert: other isCollection.
+
+	(self hasSameMapAs: other) ifTrue: [ ^ other ].
+
+	^ self class empty
+		addAll: other;
+		yourself
+]
+
 { #category : #accessing }
 BitSet >> bits [
 	^ bits
@@ -86,9 +120,9 @@ BitSet >> bits: anObject [
 ]
 
 { #category : #enumerating }
-BitSet >> difference: baz [
+BitSet >> difference: other [
 	^ self class empty
-		bits: (self bits bitClear: baz bits);
+		bits: (self bits bitClear: (self bitSetFor: other) bits);
 		yourself
 ]
 
@@ -134,6 +168,13 @@ BitSet >> hash [
 	^ bits hash
 ]
 
+{ #category : #comparing }
+BitSet >> includesAll: aCollection [
+	| other |
+	other := self bitSetFor: aCollection.
+	^ (self bits bitAnd: other bits) = other bits
+]
+
 { #category : #initialization }
 BitSet >> initialize [
 	bits := 0.
@@ -143,7 +184,7 @@ BitSet >> initialize [
 { #category : #enumerating }
 BitSet >> intersection: other [
 	^ self class empty
-		bits: ((self newFrom: other) bits bitAnd: self bits);
+		bits: (self bits bitAnd: (self bitSetFor: other) bits);
 		yourself
 ]
 
@@ -159,16 +200,13 @@ BitSet >> map: aDictionary [
 
 { #category : #'instance creation' }
 BitSet >> newFrom: other [
-	"I create a new BitSet that shares a (mutable) map with me.
-	Do nothing if the other collection already shares a map with me."
+	self
+		deprecated: 'Use bitSetFor:'
+		transformWith: 
+			'`@receiver newFrom: `@args' 
+			-> '`@receiver bitSetFor: `@args'.
 
-	self assert: other isCollection.
-
-	(self hasSameMapAs: other) ifTrue: [ ^ other ].
-
-	^ self class empty
-		addAll: other;
-		yourself
+	^ self bitSetFor: other
 ]
 
 { #category : #removing }
@@ -182,6 +220,6 @@ BitSet >> remove: oldObject ifAbsent: anExceptionBlock [
 { #category : #enumerating }
 BitSet >> union: other [
 	^ self class empty
-		bits: ((self newFrom: other) bits bitOr: self bits);
+		bits: (self bits bitOr: (self bitSetFor: other) bits);
 		yourself
 ]

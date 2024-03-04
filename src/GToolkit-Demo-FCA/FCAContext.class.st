@@ -39,6 +39,13 @@ FCAContext class >> elements: anElementCollection properties: aPropertyCollectio
 	^ context
 ]
 
+{ #category : #computing }
+FCAContext >> bottomUpBuilder [
+	^ FCABottomUpConceptBuilder new
+		context: self;
+		yourself
+]
+
 { #category : #contracts }
 FCAContext >> checkInvariant [
 	"NB: can be a bit slow to check"
