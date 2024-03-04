@@ -53,6 +53,17 @@ FCAContext >> checkInvariant [
 	^ self
 ]
 
+{ #category : #computing }
+FCAContext >> closureFor: anFCAElementBitSet [
+	| props elts |
+	props := self sigma: anFCAElementBitSet.
+	elts := self tau: props.
+	^ FCAConcept
+		context: self
+		extent: elts
+		intent: props
+]
+
 { #category : #accessing }
 FCAContext >> elements [
 	^ elements

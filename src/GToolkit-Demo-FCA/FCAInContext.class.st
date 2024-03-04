@@ -10,6 +10,11 @@ Class {
 	#category : #'GToolkit-Demo-FCA-Model'
 }
 
+{ #category : #testing }
+FCAInContext class >> isAbstract [
+	^ self = FCAInContext
+]
+
 { #category : #comparing }
 FCAInContext >> = anObject [
 	self == anObject ifTrue: [ ^ true ].
