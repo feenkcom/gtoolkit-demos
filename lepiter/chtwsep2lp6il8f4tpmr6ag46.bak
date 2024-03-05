@@ -937,7 +937,7 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2024-03-05T17:12:18.646477+01:00"
+									"dateAndTimeString" : "2023-01-17T17:43:39.519501+01:00"
 								}
 							},
 							"uid" : {
@@ -947,7 +947,7 @@
 							"paragraphStyle" : {
 								"__type" : "textStyle"
 							},
-							"string" : "We turn the script into the {{gtMethod:name=Subtitles>>subPParser}} method."
+							"string" : "We turn the script into the {{gtMethod:name=Subtitles>>asPParser}} method."
 						},
 						{
 							"__type" : "textSnippet",

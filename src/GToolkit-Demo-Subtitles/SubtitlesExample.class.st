@@ -8,20 +8,28 @@ Class {
 SubtitlesExample >> auHasardEn [
 	<gtExample>
 	<noTest>
-	|  ahb subs |
-	ahb := self subsDir / 'Au hasard Balthazar (1966) en.srt'.
-	subs := Subtitles for: ahb.
-	^ subs
+	^ Subtitles for: self auHasardEnFile
+]
+
+{ #category : #accessing }
+SubtitlesExample >> auHasardEnFile [
+	<gtExample>
+	<noTest>
+	^ self subsDir / 'Au hasard Balthazar (1966) en.srt'
 ]
 
 { #category : #accessing }
 SubtitlesExample >> auHasardIt [
 	<gtExample>
 	<noTest>
-	|  ahb subs |
-	ahb := self subsDir / 'Au hasard Balthazar (1966) it.srt'.
-	subs := Subtitles for: ahb.
-	^ subs
+	^ Subtitles for: self auHasardItFile
+]
+
+{ #category : #accessing }
+SubtitlesExample >> auHasardItFile [
+	<gtExample>
+	<noTest>
+	^ self subsDir / 'Au hasard Balthazar (1966) it.srt'
 ]
 
 { #category : #accessing }

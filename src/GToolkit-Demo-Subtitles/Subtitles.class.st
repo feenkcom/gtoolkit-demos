@@ -37,46 +37,10 @@ Subtitles class >> for: aFileReference [
 	^ self new file: aFileReference
 ]
 
-{ #category : #'instance creation' }
-Subtitles class >> parseFrom: aFileReference [
-	^ self new
-		file: aFileReference;
-		parseFile
-]
-
 { #category : #conversion }
 Subtitles >> asDuration: aTime [
 	"Add a DAYS field and change the comma to a period."
 	^ ('00:' , aTime replaceAll: $, with: $.) asDuration
-]
-
-{ #category : #petitparser }
-Subtitles >> asPParser [
-	| crlf separator number digits time timestamp line linecrlf lines sub subcrlf subFile |
-	parser
-		ifNil: [ crlf := #newline asPParser.
-			separator := crlf plus.
-			number := (#digit asPParser plus flatten , crlf)
-					==> [ :node | node first asNumber ].
-			digits := #digit asPParser plus.
-			time := (digits , $: asPParser , digits , $: asPParser , digits
-					, $, asPParser , digits) flatten
-					==> [ :node | ('00:' , node replaceAll: $, with: $.) asDuration ].
-			timestamp := time , ' --> ' asPParser , time , crlf.
-			line := crlf negate plus flatten.
-			linecrlf := (line , crlf) ==> #first.
-			lines := (linecrlf / line) plus.
-			sub := (number , timestamp , lines)
-					==> [ :nodes | 
-						Subtitle new
-							number: nodes first;
-							start: nodes second first;
-							end: nodes second third;
-							lines: nodes third ].
-			subcrlf := (sub , separator) ==> #first.
-			subFile := (subcrlf / sub) star.
-			parser := subFile end ].
-	^ parser
 ]
 
 { #category : #conversion }
@@ -111,7 +75,8 @@ Subtitles >> durationAsTime: aDuration [
 
 { #category : #accessing }
 Subtitles >> entries [
-	entries ifNil: [ self initializeEntries ].
+	entries ifNil: [  "self initializeEntries"
+	self parseFile ].
 	^ entries
 ]
 
@@ -132,6 +97,17 @@ Subtitles >> file: aFileReference [
 	file := aFileReference
 ]
 
+{ #category : #accessing }
+Subtitles >> gtActionWebBrowseFor: anAction [
+	<gtAction>
+	self file exists ifFalse: [ ^ anAction noAction ].
+
+	^ anAction button
+		icon: BrGlamorousIcons go;
+		tooltip: 'Open in OS';
+		action: [ WebBrowser openOn: file fullName ]
+]
+
 { #category : #ui }
 Subtitles >> gtEntriesFor: aView [
 	<gtView>
@@ -144,6 +120,26 @@ Subtitles >> gtEntriesFor: aView [
 		column: 'Start' text: [ :entry | entry start ] width: 100;
 		column: 'End' text: [ :entry | entry end ] width: 100;
 		column: 'Lines' text: [ :entry | entry joinedLines ]
+]
+
+{ #category : #accessing }
+Subtitles >> gtFileContentsFor: aView [
+	<gtView>
+	^ aView forward
+		title: 'File Contents';
+		priority: 30;
+		object: [file];
+		view: #gtContentsFor:
+]
+
+{ #category : #accessing }
+Subtitles >> gtFilePathFor: aView [
+	<gtView>
+	^ aView forward
+		title: 'Path';
+		priority: 35;
+		object: [file];
+		view: #gtPathFor:
 ]
 
 { #category : #ui }
@@ -161,8 +157,9 @@ Subtitles >> gtNewEntriesFor: aView [
 		column: 'Lines' text: [ :entry | entry joinedLines ]
 ]
 
-{ #category : #initialization }
+{ #category : #deprecated }
 Subtitles >> initializeEntries [
+	self deprecated: 'Use parseFile instead'.
 	entries := ((String crlf repeat: 2) split: self file asFileReference contents)
 			collectWithIndex: [ :each :index | 
 				| lines times |
@@ -200,7 +197,17 @@ Subtitles >> newContents [
 
 { #category : #'instance creation' }
 Subtitles >> parseFile [
-	self entries: (self asPParser parse: self file contents)
+	self entries: (self parser parse: self file contents)
+]
+
+{ #category : #accessing }
+Subtitles >> parser [
+	^ parser ifNil: [ parser := self subPParser ]
+]
+
+{ #category : #accessing }
+Subtitles >> parser: anObject [
+	^ parser := anObject
 ]
 
 { #category : #printing }
@@ -267,6 +274,75 @@ Subtitles >> scaleAll: firstIndex to: newFirst and: lastIndex to: newLast [
 					milliseconds asDuration.
 			each newStart: newStart.
 			each newEnd: newEnd ]
+]
+
+{ #category : #petitparser }
+Subtitles >> subPParser [
+	| cr separator line crLine number digits time timestamp lines sub sepSub subFile |
+	cr := #newline asPParser.
+	separator := cr plus.
+	line := cr negate plus flatten.
+	crLine := (cr , line) ==> #second.
+
+
+	number := (#digit asPParser plus flatten , cr)
+			==> [ :node | node first asNumber ].
+	digits := #digit asPParser plus.
+	time := (digits , $: asPParser , digits , $: asPParser , digits , $, asPParser
+			, digits) flatten.
+	timestamp := time , ' --> ' asPParser , time , cr.
+
+	lines := (line , crLine star)
+			==> [ :node | 
+				node second
+					addFirst: node first;
+					yourself ].
+
+	sub := (number , timestamp , lines)
+			==> [ :nodes | 
+				Subtitle new
+					number: nodes first;
+					start: nodes second first;
+					end: nodes second third;
+					lines: nodes third ].
+
+	sepSub := (separator , sub) ==> #second.
+	subFile := (sub , sepSub star , cr star)
+			==> [ :node | 
+				node second
+					addFirst: node first;
+					yourself ].
+
+	^ subFile end
+]
+
+{ #category : #petitparser }
+Subtitles >> subPParserOLD [
+	| crlf separator number digits time timestamp line linecrlf lines sub subcrlf subFile |
+	parser
+		ifNil: [ crlf := #newline asPParser.
+			separator := crlf plus.
+			number := (#digit asPParser plus flatten , crlf)
+					==> [ :node | node first asNumber ].
+			digits := #digit asPParser plus.
+			time := (digits , $: asPParser , digits , $: asPParser , digits
+					, $, asPParser , digits) flatten
+					==> [ :node | ('00:' , node replaceAll: $, with: $.) asDuration ].
+			timestamp := time , ' --> ' asPParser , time , crlf.
+			line := crlf negate plus flatten.
+			linecrlf := (line , crlf) ==> #first.
+			lines := (linecrlf / line) plus.
+			sub := (number , timestamp , lines)
+					==> [ :nodes | 
+						Subtitle new
+							number: nodes first;
+							start: nodes second first;
+							end: nodes second third;
+							lines: nodes third ].
+			subcrlf := (sub , separator) ==> #first.
+			subFile := (subcrlf / sub) star.
+			parser := subFile end ].
+	^ parser
 ]
 
 { #category : #conversion }
