@@ -1,5 +1,18 @@
 "
 I am an implementation of Formal Concept Analysis for GT.
+I am instantiated with (1) a collection of elements, (2) a collection of properties, and (3) a mapping from elements to their properties.
+For example:
+```
+FCAContext
+	elements: #(a b c)
+	properties: #(x y)
+	propertyMap: [ :elt | 
+		{#a -> #(x).
+			#b -> #(y).
+			#c -> #(x y)} asDictionary at: elt ]
+```
+
+You can also send me `printMessage:` (respectively `propertyPrintMessage:` or `elementPrintMessage:`) to change the default printing of elements or properties from `printString`.
 "
 Class {
 	#name : #FCAContext,

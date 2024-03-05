@@ -1,6 +1,6 @@
 "
 I model an FCA concept. I hold the source concept, an extent and an intent.
-My extend is a BitSet of FCA Elements and my intent is a BitSet of FCA Properties.
+My extent is a BitSet of FCA Elements and my intent is a BitSet of FCA Properties.
 "
 Class {
 	#name : #FCAConcept,
