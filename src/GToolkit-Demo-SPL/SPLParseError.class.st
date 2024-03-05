@@ -8,7 +8,7 @@ Class {
 	#category : #'GToolkit-Demo-SPL-Exceptions'
 }
 
-{ #category : #accessing }
+{ #category : #'instance creation' }
 SPLParseError class >> forFailure: aParseNode andSource: anSPLProgramSource [
 	^ self new
 		failure: aParseNode;
