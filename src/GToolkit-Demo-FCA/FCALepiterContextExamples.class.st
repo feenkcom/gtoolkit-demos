@@ -18,14 +18,14 @@ FCALepiterContextExamples >> gtBook [
 
 { #category : #example }
 FCALepiterContextExamples >> gtBookTaggedPagesOnly [
-	"We take only pages with tags, and consider only the top 20 tags as properties."
+	"We take only pages with tags, and consider only the top 10 tags as properties."
 
 	<gtExample>
 	<noTest>
 	| gtBook pages tags |
 	gtBook := LeDatabase gtBook.
 	pages := gtBook pages reject: [ :each | each tags isEmpty ].
-	tags := ((pages flatCollect: #tags) asBag sortedCounts copyFrom: 1 to: 20)
+	tags := ((pages flatCollect: #tags) asBag sortedCounts copyFrom: 1 to: 10)
 			collect: #value.
 
 	^ (FCAContext

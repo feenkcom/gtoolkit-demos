@@ -84,6 +84,11 @@ FCAContext >> concepts [
 		ifNil: [ concepts := self builder computeConcepts asOrderedCollection ]
 ]
 
+{ #category : #accessing }
+FCAContext >> conceptsSortedBySize [
+	^ self concepts sorted: [ :c1 :c2 | c1 extent size > c2 extent size ]
+]
+
 { #category : #printing }
 FCAContext >> defaultPrintMessage [
 	"The default message to send to a raw element or property to ge a printable String."
@@ -122,7 +127,7 @@ FCAContext >> gtConceptsFor: aView [
 	^ aView columnedList
 		title: 'Concepts';
 		priority: 30;
-		items: [ self concepts ];
+		items: [ self conceptsSortedBySize ];
 		column: 'Index'
 			text: [ :eachItem :eachIndex | eachIndex asRopedText foreground: Color gray ]
 			width: 45;
