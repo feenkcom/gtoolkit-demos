@@ -1005,14 +1005,14 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2024-03-05T18:22:57.049802+01:00"
+									"dateAndTimeString" : "2024-03-05T18:22:19.997371+01:00"
 								}
 							},
 							"uid" : {
 								"__type" : "uid",
 								"uidString" : "cAbptE7PDQCVrL+EBkGV/w=="
 							},
-							"code" : "subs := SubtitleParser new."
+							"code" : "subs := SubtitleParser new optimize."
 						},
 						{
 							"__type" : "pharoSnippet",
