@@ -236,6 +236,25 @@ FCAContext >> latticeFor: aMondrian [
 	^ aMondrian
 ]
 
+{ #category : #accessing }
+FCAContext >> latticeFor: aMondrian withPositions: aPointCollection [
+	| nodes |
+	nodes := self concepts.
+	aMondrian nodes
+		shape: [ :each | each mondrianNodeElement ];
+		with: nodes.
+	aMondrian edges
+		connect: self edges
+		from: #key
+		to: #value.
+
+	aMondrian layout custom: BlBasicLayout new.
+	aMondrian root children
+		withIndexDo: [ :child :n | child relocate: (aPointCollection at: n) ].
+
+	^ aMondrian
+]
+
 { #category : #printing }
 FCAContext >> printMessage: aSymbol [
 	self elementPrintMessage: aSymbol.
