@@ -1,5 +1,18 @@
 "
 I am an implementation of Formal Concept Analysis for GT.
+I am instantiated with (1) a collection of elements, (2) a collection of properties, and (3) a mapping from elements to their properties.
+For example:
+```
+FCAContext
+	elements: #(a b c)
+	properties: #(x y)
+	propertyMap: [ :elt | 
+		{#a -> #(x).
+			#b -> #(y).
+			#c -> #(x y)} asDictionary at: elt ]
+```
+
+You can also send me `printMessage:` (respectively `propertyPrintMessage:` or `elementPrintMessage:`) to change the default printing of elements or properties from `printString`.
 "
 Class {
 	#name : #FCAContext,
@@ -84,6 +97,11 @@ FCAContext >> concepts [
 		ifNil: [ concepts := self builder computeConcepts asOrderedCollection ]
 ]
 
+{ #category : #accessing }
+FCAContext >> conceptsSortedBySize [
+	^ self concepts sorted: [ :c1 :c2 | c1 extent size > c2 extent size ]
+]
+
 { #category : #printing }
 FCAContext >> defaultPrintMessage [
 	"The default message to send to a raw element or property to ge a printable String."
@@ -122,7 +140,7 @@ FCAContext >> gtConceptsFor: aView [
 	^ aView columnedList
 		title: 'Concepts';
 		priority: 30;
-		items: [ self concepts ];
+		items: [ self conceptsSortedBySize ];
 		column: 'Index'
 			text: [ :eachItem :eachIndex | eachIndex asRopedText foreground: Color gray ]
 			width: 45;
@@ -215,6 +233,25 @@ FCAContext >> latticeFor: aMondrian [
 		from: #key
 		to: #value.
 	aMondrian layout tree.
+	^ aMondrian
+]
+
+{ #category : #accessing }
+FCAContext >> latticeFor: aMondrian withPositions: aPointCollection [
+	| nodes |
+	nodes := self concepts.
+	aMondrian nodes
+		shape: [ :each | each mondrianNodeElement ];
+		with: nodes.
+	aMondrian edges
+		connect: self edges
+		from: #key
+		to: #value.
+
+	aMondrian layout custom: BlBasicLayout new.
+	aMondrian root children
+		withIndexDo: [ :child :n | child relocate: (aPointCollection at: n) ].
+
 	^ aMondrian
 ]
 

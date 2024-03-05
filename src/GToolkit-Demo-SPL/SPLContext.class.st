@@ -395,7 +395,9 @@ SPLContext >> stateHolder [
 
 { #category : #evaluating }
 SPLContext >> step [
-	self continuation: (self continuation stepInContext: self).
+	self
+		continuation: ([ self continuation stepInContext: self ]
+				onErrorDo: [ :ex | (SPLEvaluationError forError: ex in: self) signal ]).
 	^ self continuation
 ]
 

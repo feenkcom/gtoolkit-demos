@@ -10,22 +10,25 @@ FCALepiterContextExamples >> gtBook [
 
 	<gtExample>
 	<noTest>
-	^ FCAContext
+	^ (FCAContext
 		elements: LeDatabase gtBook pages
 		properties: (LeDatabase gtBook pages flatCollect: #tags) asSet
-		propertyMap: #tags
+		propertyMap: #tags)
+		printMessage: #title;
+		yourself
 ]
 
 { #category : #example }
 FCALepiterContextExamples >> gtBookTaggedPagesOnly [
-	"We take only pages with tags, and consider only the top 20 tags as properties."
+	"We take only pages with tags, and consider only the top 10 tags as properties."
 
 	<gtExample>
 	<noTest>
-	| gtBook pages tags |
+	| gtBook pages tags toc |
 	gtBook := LeDatabase gtBook.
-	pages := gtBook pages reject: [ :each | each tags isEmpty ].
-	tags := ((pages flatCollect: #tags) asBag sortedCounts copyFrom: 1 to: 20)
+	toc := gtBook pageNamed: 'Glamorous Toolkit Book'.
+	pages := (gtBook pages reject: [ :each | each tags isEmpty ]) copyWithout: toc.
+	tags := ((pages flatCollect: #tags) asBag sortedCounts copyFrom: 1 to: 10)
 			collect: #value.
 
 	^ (FCAContext
