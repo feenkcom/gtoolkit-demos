@@ -174,14 +174,14 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2024-03-05T17:41:28.212819+01:00"
+						"dateAndTimeString" : "2024-03-05T17:59:06.801041+01:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
 					"uidString" : "aiTCD07PDQCupayUBJmCYg=="
 				},
-				"code" : "(subs copyFrom: 100 to: 150)\r\tdo: [ :each | [ each parseFile ] onErrorDo: [ WebBrowser openOn: each file fullName ] ]"
+				"code" : "startIndex := 600.\r(subs copyFrom: startIndex to: startIndex + 100)\r\tdo: [ :each | [ each parseFile ] onErrorDo: [ WebBrowser openOn: each file fullName ] ]."
 			}
 		]
 	},
