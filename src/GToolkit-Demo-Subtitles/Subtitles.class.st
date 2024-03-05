@@ -202,12 +202,9 @@ Subtitles >> parseFile [
 
 { #category : #accessing }
 Subtitles >> parser [
-	^ parser ifNil: [ parser := self subPParser ]
-]
+	"For some reason optimization breaks the parser."
 
-{ #category : #accessing }
-Subtitles >> parser: anObject [
-	^ parser := anObject
+	^ parser ifNil: [ parser := SubtitleParser new	"optimize" ]
 ]
 
 { #category : #printing }
@@ -274,75 +271,6 @@ Subtitles >> scaleAll: firstIndex to: newFirst and: lastIndex to: newLast [
 					milliseconds asDuration.
 			each newStart: newStart.
 			each newEnd: newEnd ]
-]
-
-{ #category : #petitparser }
-Subtitles >> subPParser [
-	| cr separator line crLine number digits time timestamp lines sub sepSub subFile |
-	cr := #newline asPParser.
-	separator := cr plus.
-	line := cr negate plus flatten.
-	crLine := (cr , line) ==> #second.
-
-
-	number := (#digit asPParser plus flatten , cr)
-			==> [ :node | node first asNumber ].
-	digits := #digit asPParser plus.
-	time := (digits , $: asPParser , digits , $: asPParser , digits , $, asPParser
-			, digits) flatten.
-	timestamp := time , ' --> ' asPParser , time , cr.
-
-	lines := (line , crLine star)
-			==> [ :node | 
-				node second
-					addFirst: node first;
-					yourself ].
-
-	sub := (number , timestamp , lines)
-			==> [ :nodes | 
-				Subtitle new
-					number: nodes first;
-					start: nodes second first;
-					end: nodes second third;
-					lines: nodes third ].
-
-	sepSub := (separator , sub) ==> #second.
-	subFile := (sub , sepSub star , cr star)
-			==> [ :node | 
-				node second
-					addFirst: node first;
-					yourself ].
-
-	^ subFile end
-]
-
-{ #category : #petitparser }
-Subtitles >> subPParserOLD [
-	| crlf separator number digits time timestamp line linecrlf lines sub subcrlf subFile |
-	parser
-		ifNil: [ crlf := #newline asPParser.
-			separator := crlf plus.
-			number := (#digit asPParser plus flatten , crlf)
-					==> [ :node | node first asNumber ].
-			digits := #digit asPParser plus.
-			time := (digits , $: asPParser , digits , $: asPParser , digits
-					, $, asPParser , digits) flatten
-					==> [ :node | ('00:' , node replaceAll: $, with: $.) asDuration ].
-			timestamp := time , ' --> ' asPParser , time , crlf.
-			line := crlf negate plus flatten.
-			linecrlf := (line , crlf) ==> #first.
-			lines := (linecrlf / line) plus.
-			sub := (number , timestamp , lines)
-					==> [ :nodes | 
-						Subtitle new
-							number: nodes first;
-							start: nodes second first;
-							end: nodes second third;
-							lines: nodes third ].
-			subcrlf := (sub , separator) ==> #first.
-			subFile := (subcrlf / sub) star.
-			parser := subFile end ].
-	^ parser
 ]
 
 { #category : #conversion }

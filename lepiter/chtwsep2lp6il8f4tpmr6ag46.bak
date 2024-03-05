@@ -865,14 +865,14 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2024-03-05T17:06:14.826525+01:00"
+									"dateAndTimeString" : "2024-03-05T18:22:14.137037+01:00"
 								}
 							},
 							"uid" : {
 								"__type" : "uid",
 								"uidString" : "TOsrwk3PDQCnsSy9BJmCYg=="
 							},
-							"code" : "cr := #newline asPParser.\rseparator := cr plus.\rline := cr negate plus flatten.\rcrLine := (cr , line) ==> #second.\r\r\rnumber := (#digit asPParser plus flatten , cr)\r\t\t==> [ :node | node first asNumber ].\rdigits := #digit asPParser plus.\rtime := (digits , $: asPParser , digits , $: asPParser , digits , $, asPParser\r\t\t, digits) flatten.\rtimestamp := time , ' --> ' asPParser , time , cr.\r\rlines := (line , crLine star)\r\t\t==> [ :node | \r\t\t\tnode second\r\t\t\t\taddFirst: node first;\r\t\t\t\tyourself ].\r\rsub := (number , timestamp , lines)\r\t\t==> [ :nodes | \r\t\t\tSubtitle new\r\t\t\t\tnumber: nodes first;\r\t\t\t\tstart: nodes second first;\r\t\t\t\tend: nodes second third;\r\t\t\t\tlines: nodes third ].\r\rsepSub := (separator , sub) ==> #second.\rsubFile := (sub , sepSub star , cr star)\r\t\t==> [ :node | \r\t\t\tnode second\r\t\t\t\taddFirst: node first;\r\t\t\t\tyourself ].\r\rsubFile end parse: ahb contents"
+							"code" : "cr := #newline asPParser.\rseparator := cr plus.\rline := cr negate plus flatten.\rcrLine := (cr , line) ==> #second.\r\r\rnumber := (#digit asPParser plus flatten , cr)\r\t\t==> [ :node | node first asNumber ].\rdigits := #digit asPParser plus.\rtime := (digits , $: asPParser , digits , $: asPParser , digits , $, asPParser\r\t\t, digits) flatten.\rtimestamp := time , ' --> ' asPParser , time , cr.\r\rlines := (line , crLine star)\r\t\t==> [ :node | \r\t\t\tnode second\r\t\t\t\taddFirst: node first;\r\t\t\t\tyourself ].\r\rsub := (number , timestamp , lines)\r\t\t==> [ :nodes | \r\t\t\tSubtitle new\r\t\t\t\tnumber: nodes first;\r\t\t\t\tstart: nodes second first;\r\t\t\t\tend: nodes second third;\r\t\t\t\tlines: nodes third ].\r\rsepSub := (separator , sub) ==> #second.\rsubFile := (sub , sepSub star , cr star)\r\t\t==> [ :node | \r\t\t\tnode second\r\t\t\t\taddFirst: node first;\r\t\t\t\tyourself ].\r\rsubFile end parse: ahb contents."
 						}
 					]
 				},
@@ -913,6 +913,180 @@
 					"__type" : "snippets",
 					"items" : [
 						{
+							"__type" : "pharoSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2024-03-05T18:20:35.619872+01:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2024-03-05T18:20:35.619872+01:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "H88VzE7PDQCXAYKqBkGV/w=="
+							},
+							"code" : "ahb := SubtitlesExample new auHasardEnFile."
+						},
+						{
+							"__type" : "pharoSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2024-03-05T18:12:27.066638+01:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2024-03-05T18:21:01.687308+01:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "yRH3rk7PDQCVneq8BkGV/w=="
+							},
+							"code" : "cr := #newline asPParser.\rseparator := cr plus.\rline := cr negate plus flatten.\rcrLine := (cr , line) ==> #second.\r\r\rnumber := (#digit asPParser plus flatten , cr)\r\t\t==> [ :node | node first asNumber ].\rdigits := #digit asPParser plus.\rtime := (digits , $: asPParser , digits , $: asPParser , digits , $, asPParser\r\t\t, digits) flatten.\rtimestamp := time , ' --> ' asPParser , time , cr.\r\rlines := (line , crLine star)\r\t\t==> [ :node | \r\t\t\tnode second\r\t\t\t\taddFirst: node first;\r\t\t\t\tyourself ].\r\rsub := (number , timestamp , lines)\r\t\t==> [ :nodes | \r\t\t\tSubtitle new\r\t\t\t\tnumber: nodes first;\r\t\t\t\tstart: nodes second first;\r\t\t\t\tend: nodes second third;\r\t\t\t\tlines: nodes third ].\r\rsepSub := (separator , sub) ==> #second.\rsubFile := (sub , sepSub star , cr star)\r\t\t==> [ :node | \r\t\t\tnode second\r\t\t\t\taddFirst: node first;\r\t\t\t\tyourself ].\r\rsubs := subFile end"
+						},
+						{
+							"__type" : "pharoSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2024-03-05T18:14:06.809069+01:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2024-03-05T18:22:19.997371+01:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "cAbptE7PDQCVrL+EBkGV/w=="
+							},
+							"code" : "subs := SubtitleParser new optimize."
+						},
+						{
+							"__type" : "pharoSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2024-03-05T18:11:43.042662+01:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2024-03-05T18:22:53.115731+01:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "JVdXrE7PDQCUoZXHBkGV/w=="
+							},
+							"code" : "subs parse: ahb contents."
+						}
+					]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2024-03-05T18:11:50.571952+01:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2024-03-05T18:12:04.793323+01:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "CznKrE7PDQCUtfTsBkGV/w=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : "# Generate a parser class from the script"
+			},
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [
+						{
 							"__type" : "textSnippet",
 							"children" : {
 								"__type" : "snippets",
@@ -937,7 +1111,7 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-01-17T17:43:39.519501+01:00"
+									"dateAndTimeString" : "2024-03-05T17:12:18.646477+01:00"
 								}
 							},
 							"uid" : {
@@ -947,7 +1121,7 @@
 							"paragraphStyle" : {
 								"__type" : "textStyle"
 							},
-							"string" : "We turn the script into the {{gtMethod:name=Subtitles>>asPParser}} method."
+							"string" : "We turn the script into the {{gtMethod:name=Subtitles>>subPParser}} method."
 						},
 						{
 							"__type" : "textSnippet",
