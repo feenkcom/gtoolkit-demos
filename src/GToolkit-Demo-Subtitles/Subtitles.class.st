@@ -202,9 +202,9 @@ Subtitles >> parseFile [
 
 { #category : #accessing }
 Subtitles >> parser [
-	"For some reason optimization breaks the parser."
+	"NB: optimizing the parser does not actually speed it up."
 
-	^ parser ifNil: [ parser := SubtitleParser new	"optimize" ]
+	^ parser ifNil: [ parser := SubtitleParser new ]
 ]
 
 { #category : #printing }
