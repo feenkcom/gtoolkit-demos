@@ -41,3 +41,21 @@ FCALepiterContextExamples >> gtBookTopTenTags [
 	<noTest>
 	^ FCAContext forDatabaseNamed: 'Glamorous Toolkit Book' topTags: 10
 ]
+
+{ #category : #example }
+FCALepiterContextExamples >> privateDatabase [
+	"The default database. Could be very large."
+
+	<gtExample>
+	<noTest>
+	^ FCAContext forDatabaseNamed: 'Documents/lepiter/default'
+]
+
+{ #category : #example }
+FCALepiterContextExamples >> privateDatabaseTop20 [
+	"The default database."
+
+	<gtExample>
+	<noTest>
+	^ FCAContext forDatabaseNamed: 'Documents/lepiter/default' topTags: 20
+]

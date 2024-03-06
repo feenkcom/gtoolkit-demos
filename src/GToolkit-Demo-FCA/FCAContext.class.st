@@ -75,7 +75,7 @@ FCAContext class >> forDatabaseNamed: databaseName [
 
 	| tags pages database |
 	database := LeDatabase databaseNamed: databaseName.
-	pages := database pages.
+	pages := database pages reject: #isUnnamedPage.
 	tags := pages flatCollect: #tags.
 
 	^ (FCAContext
@@ -91,10 +91,24 @@ FCAContext class >> forDatabaseNamed: databaseName topTags: aNumber [
 	"Generate an FCA context for all the pages and the top N tags of a Lepiter database."
 	| tags pages database |
 	database := LeDatabase databaseNamed: databaseName.
-	pages := database pages.
+	pages := database pages reject: #isUnnamedPage.
 	tags := ((pages flatCollect: #tags) asBag sortedCounts
 			copyFrom: 1
 			to: aNumber) collect: #value.
+	^ (FCAContext
+		elements: pages
+		properties: tags
+		propertyMap: [ :page | page tags intersection: tags ])
+		printMessage: #title;
+		yourself
+]
+
+{ #category : #accessing }
+FCAContext class >> forDatabaseNamed: databaseName withTagsNamed: aTagNameCollection [
+	| tags pages database |
+	database := LeDatabase databaseNamed: databaseName.
+	pages := database pages reject: #isUnnamedPage.
+	tags := aTagNameCollection collect: [ :title | database pageNamed: title ].
 	^ (FCAContext
 		elements: pages
 		properties: tags
