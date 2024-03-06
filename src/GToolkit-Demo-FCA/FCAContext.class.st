@@ -27,6 +27,21 @@ Class {
 	#category : #'GToolkit-Demo-FCA-Model'
 }
 
+{ #category : #accessing }
+FCAContext class >> contextForDatabaseNamed: databaseName [
+	| tags  pages database |
+	database := LeDatabase databaseNamed: databaseName.
+	pages := database pages.
+	tags := pages flatCollect: #tags.
+
+	^  (FCAContext
+			elements: pages
+			properties: tags
+			propertyMap: #tags)
+			printMessage: #title;
+			yourself
+]
+
 { #category : #'instance creation' }
 FCAContext class >> elements: anElementCollection properties: aPropertyCollection propertyMap: anElementToPropertiesBlock [
 	"Create wrapped elements and properties for the input data, and initialize their properties and elements slots with BitSets representing the incidence."
@@ -52,6 +67,40 @@ FCAContext class >> elements: anElementCollection properties: aPropertyCollectio
 			props do: [ :prop | prop elements add: elt ] ].
 
 	^ context
+]
+
+{ #category : #accessing }
+FCAContext class >> forDatabaseNamed: databaseName [
+	"Generate an FCA context for all the pages and tags of a Lepiter database."
+
+	| tags pages database |
+	database := LeDatabase databaseNamed: databaseName.
+	pages := database pages.
+	tags := pages flatCollect: #tags.
+
+	^ (FCAContext
+		elements: pages
+		properties: tags
+		propertyMap: #tags)
+		printMessage: #title;
+		yourself
+]
+
+{ #category : #accessing }
+FCAContext class >> forDatabaseNamed: databaseName topTags: aNumber [
+	"Generate an FCA context for all the pages and the top N tags of a Lepiter database."
+	| tags pages database |
+	database := LeDatabase databaseNamed: databaseName.
+	pages := database pages.
+	tags := ((pages flatCollect: #tags) asBag sortedCounts
+			copyFrom: 1
+			to: aNumber) collect: #value.
+	^ (FCAContext
+		elements: pages
+		properties: tags
+		propertyMap: [ :page | page tags intersection: tags ])
+		printMessage: #title;
+		yourself
 ]
 
 { #category : #computing }
@@ -150,6 +199,9 @@ FCAContext >> gtConceptsFor: aView [
 		column: '#Properties'
 			text: [ :item | item intent size printString ]
 			width: 80;
+		column: 'ΔProperties'
+			text: [ :item | item deltaLabel ]
+			width: 100;
 		column: 'Properties'
 			text: [ :item | item printString ];
 		actionUpdateButton

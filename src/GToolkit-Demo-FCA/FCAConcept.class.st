@@ -91,6 +91,12 @@ FCAConcept >> context: anFCAContext [
 	context := anFCAContext
 ]
 
+{ #category : #printing }
+FCAConcept >> deltaLabel [
+	self intentDelta ifEmpty: [ ^ '()' ].
+	^ '(' , (String cr join: (self intentDelta collect: #printString)) , ')'
+]
+
 { #category : #accessing }
 FCAConcept >> extent [
 	^ extent
@@ -132,9 +138,24 @@ FCAConcept >> gtDeltaExtentFor: aView [
 	<gtView>
 	self extentDelta isEmpty ifTrue: [ ^ aView empty ].
 	^ aView columnedList
-		title: 'Delta Extent';
+		title: 'Δ Extent';
 		priority: 11;
 		items: [ self extentDelta asOrderedCollection ];
+		column: 'Index'
+			text: [ :eachItem :eachIndex | eachIndex asRopedText foreground: Color gray ]
+			width: 45;
+		column: 'Elements' text: [ :item | item printString ];
+		actionUpdateButton
+]
+
+{ #category : #view }
+FCAConcept >> gtDeltaIntentFor: aView [
+	<gtView>
+	self intentDelta isEmpty ifTrue: [ ^ aView empty ].
+	^ aView columnedList
+		title: 'Δ Intent';
+		priority: 21;
+		items: [ self intentDelta asOrderedCollection ];
 		column: 'Index'
 			text: [ :eachItem :eachIndex | eachIndex asRopedText foreground: Color gray ]
 			width: 45;
@@ -196,6 +217,16 @@ FCAConcept >> intent [
 { #category : #accessing }
 FCAConcept >> intent: anFCAPropertyBitSet [
 	intent := anFCAPropertyBitSet
+]
+
+{ #category : #accessing }
+FCAConcept >> intentDelta [
+	"The new properties introduced by this concept (if any)."
+
+	^ self intent
+		difference: ((self bigger collect: #intent)
+				inject: BitSet empty
+				into: [ :union :each | union union: each ])
 ]
 
 { #category : #combining }
