@@ -125,42 +125,7 @@
 							"__type" : "textSnippet",
 							"children" : {
 								"__type" : "snippets",
-								"items" : [
-									{
-										"__type" : "pharoSnippet",
-										"children" : {
-											"__type" : "snippets",
-											"items" : [ ]
-										},
-										"createEmail" : {
-											"__type" : "email",
-											"emailString" : "<unknown>"
-										},
-										"createTime" : {
-											"__type" : "time",
-											"time" : {
-												"__type" : "dateAndTime",
-												"dateAndTimeString" : "2024-03-01T09:19:39.667962+01:00"
-											}
-										},
-										"editEmail" : {
-											"__type" : "email",
-											"emailString" : "<unknown>"
-										},
-										"editTime" : {
-											"__type" : "time",
-											"time" : {
-												"__type" : "dateAndTime",
-												"dateAndTimeString" : "2024-03-04T18:27:35.162616+01:00"
-											}
-										},
-										"uid" : {
-											"__type" : "uid",
-											"uidString" : "9skxxvbODQCpV/drDu1rXg=="
-										},
-										"code" : "scgbib := BibtexPParserExamples new scgPub.\r(scgbib flatCollect: #keys) asBag sortedCounts."
-									}
-								]
+								"items" : [ ]
 							},
 							"createEmail" : {
 								"__type" : "email",
@@ -170,7 +135,7 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2024-03-01T09:19:27.922503+01:00"
+									"dateAndTimeString" : "2024-03-06T10:20:08.773069+01:00"
 								}
 							},
 							"editEmail" : {
@@ -181,58 +146,23 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2024-03-01T09:19:34.995182+01:00"
+									"dateAndTimeString" : "2024-03-06T10:20:12.482072+01:00"
 								}
 							},
 							"uid" : {
 								"__type" : "uid",
-								"uidString" : "gZJ+xfbODQCpR4ubDu1rXg=="
+								"uidString" : "m7CiL1zPDQCgYVMKBEUtpA=="
 							},
 							"paragraphStyle" : {
 								"__type" : "textStyle"
 							},
-							"string" : "Bibtex entries with most popular selected fields. {{gtMethod:name=BibtexPParserExamples>>#scgPub}}. "
+							"string" : "[[* Prepare a GT Book page on FCA]]"
 						},
 						{
 							"__type" : "textSnippet",
 							"children" : {
 								"__type" : "snippets",
-								"items" : [
-									{
-										"__type" : "pharoSnippet",
-										"children" : {
-											"__type" : "snippets",
-											"items" : [ ]
-										},
-										"createEmail" : {
-											"__type" : "email",
-											"emailString" : "<unknown>"
-										},
-										"createTime" : {
-											"__type" : "time",
-											"time" : {
-												"__type" : "dateAndTime",
-												"dateAndTimeString" : "2024-03-01T09:20:04.650549+01:00"
-											}
-										},
-										"editEmail" : {
-											"__type" : "email",
-											"emailString" : "<unknown>"
-										},
-										"editTime" : {
-											"__type" : "time",
-											"time" : {
-												"__type" : "dateAndTime",
-												"dateAndTimeString" : "2024-03-01T09:20:09.748315+01:00"
-											}
-										},
-										"uid" : {
-											"__type" : "uid",
-											"uidString" : "pP6ux/bODQCpjLlZDu1rXg=="
-										},
-										"code" : "(LeDatabase gtBook pages flatCollect: #tags) asBag sortedCounts"
-									}
-								]
+								"items" : [ ]
 							},
 							"createEmail" : {
 								"__type" : "email",
@@ -242,7 +172,7 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2024-03-01T09:19:58.643729+01:00"
+									"dateAndTimeString" : "2024-03-06T10:37:57.697922+01:00"
 								}
 							},
 							"editEmail" : {
@@ -253,17 +183,17 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2024-03-01T09:20:01.020879+01:00"
+									"dateAndTimeString" : "2024-03-06T10:37:58.394601+01:00"
 								}
 							},
 							"uid" : {
 								"__type" : "uid",
-								"uidString" : "wldTx/bODQCpfHvaDu1rXg=="
+								"uidString" : "4dtsc1zPDQCfDHBrBEUtpA=="
 							},
 							"paragraphStyle" : {
 								"__type" : "textStyle"
 							},
-							"string" : "GT book tags"
+							"string" : "[[Improve FCA layout]]"
 						}
 					]
 				},
@@ -275,7 +205,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2024-03-01T09:19:21.197114+01:00"
+						"dateAndTimeString" : "2024-03-06T10:18:56.928729+01:00"
 					}
 				},
 				"editEmail" : {
@@ -286,17 +216,17 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2024-03-01T09:19:27.69818+01:00"
+						"dateAndTimeString" : "2024-03-06T10:18:59.850315+01:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
-					"uidString" : "hG/IxPbODQCooexZDu1rXg=="
+					"uidString" : "SyJuL1zPDQCgNVuoBEUtpA=="
 				},
 				"paragraphStyle" : {
 					"__type" : "textStyle"
 				},
-				"string" : "# Possible examples to use"
+				"string" : "# To do"
 			},
 			{
 				"__type" : "textSnippet",
@@ -596,6 +526,188 @@
 					"__type" : "textStyle"
 				},
 				"string" : "# Steps"
+			},
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [
+						{
+							"__type" : "textSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [
+									{
+										"__type" : "pharoSnippet",
+										"children" : {
+											"__type" : "snippets",
+											"items" : [ ]
+										},
+										"createEmail" : {
+											"__type" : "email",
+											"emailString" : "<unknown>"
+										},
+										"createTime" : {
+											"__type" : "time",
+											"time" : {
+												"__type" : "dateAndTime",
+												"dateAndTimeString" : "2024-03-01T09:19:39.667962+01:00"
+											}
+										},
+										"editEmail" : {
+											"__type" : "email",
+											"emailString" : "<unknown>"
+										},
+										"editTime" : {
+											"__type" : "time",
+											"time" : {
+												"__type" : "dateAndTime",
+												"dateAndTimeString" : "2024-03-04T18:27:35.162616+01:00"
+											}
+										},
+										"uid" : {
+											"__type" : "uid",
+											"uidString" : "9skxxvbODQCpV/drDu1rXg=="
+										},
+										"code" : "scgbib := BibtexPParserExamples new scgPub.\r(scgbib flatCollect: #keys) asBag sortedCounts."
+									}
+								]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2024-03-01T09:19:27.922503+01:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2024-03-01T09:19:34.995182+01:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "gZJ+xfbODQCpR4ubDu1rXg=="
+							},
+							"paragraphStyle" : {
+								"__type" : "textStyle"
+							},
+							"string" : "Bibtex entries with most popular selected fields. {{gtMethod:name=BibtexPParserExamples>>#scgPub}}. "
+						},
+						{
+							"__type" : "textSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [
+									{
+										"__type" : "pharoSnippet",
+										"children" : {
+											"__type" : "snippets",
+											"items" : [ ]
+										},
+										"createEmail" : {
+											"__type" : "email",
+											"emailString" : "<unknown>"
+										},
+										"createTime" : {
+											"__type" : "time",
+											"time" : {
+												"__type" : "dateAndTime",
+												"dateAndTimeString" : "2024-03-01T09:20:04.650549+01:00"
+											}
+										},
+										"editEmail" : {
+											"__type" : "email",
+											"emailString" : "<unknown>"
+										},
+										"editTime" : {
+											"__type" : "time",
+											"time" : {
+												"__type" : "dateAndTime",
+												"dateAndTimeString" : "2024-03-01T09:20:09.748315+01:00"
+											}
+										},
+										"uid" : {
+											"__type" : "uid",
+											"uidString" : "pP6ux/bODQCpjLlZDu1rXg=="
+										},
+										"code" : "(LeDatabase gtBook pages flatCollect: #tags) asBag sortedCounts"
+									}
+								]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2024-03-01T09:19:58.643729+01:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2024-03-01T09:20:01.020879+01:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "wldTx/bODQCpfHvaDu1rXg=="
+							},
+							"paragraphStyle" : {
+								"__type" : "textStyle"
+							},
+							"string" : "GT book tags"
+						}
+					]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2024-03-01T09:19:21.197114+01:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2024-03-01T09:19:27.69818+01:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "hG/IxPbODQCooexZDu1rXg=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : "# Possible examples to use"
 			}
 		]
 	},

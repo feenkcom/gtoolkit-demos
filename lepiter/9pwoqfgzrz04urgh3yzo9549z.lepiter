@@ -8,43 +8,6 @@
 				"__type" : "textSnippet",
 				"children" : {
 					"__type" : "snippets",
-					"items" : [ ]
-				},
-				"createEmail" : {
-					"__type" : "email",
-					"emailString" : "<unknown>"
-				},
-				"createTime" : {
-					"__type" : "time",
-					"time" : {
-						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2022-11-28T18:43:33.572536+01:00"
-					}
-				},
-				"editEmail" : {
-					"__type" : "email",
-					"emailString" : "<unknown>"
-				},
-				"editTime" : {
-					"__type" : "time",
-					"time" : {
-						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2022-11-28T18:43:34.181137+01:00"
-					}
-				},
-				"uid" : {
-					"__type" : "uid",
-					"uidString" : "mz1rJe2qDQCFpS5ZBqSDYA=="
-				},
-				"paragraphStyle" : {
-					"__type" : "textStyle"
-				},
-				"string" : "[[todo]] "
-			},
-			{
-				"__type" : "textSnippet",
-				"children" : {
-					"__type" : "snippets",
 					"items" : [
 						{
 							"__type" : "textSnippet",
@@ -60,7 +23,7 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2024-03-05T16:45:32.380774+01:00"
+									"dateAndTimeString" : "2024-03-06T10:38:32.661838+01:00"
 								}
 							},
 							"editEmail" : {
@@ -71,17 +34,17 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2024-03-06T10:59:25.572725+01:00"
+									"dateAndTimeString" : "2024-03-06T10:38:32.661838+01:00"
 								}
 							},
 							"uid" : {
 								"__type" : "uid",
-								"uidString" : "4ksleE3PDQCkKvHGBJmCYg=="
+								"uidString" : "Z16CdVzPDQCfU2NKBEUtpA=="
 							},
 							"paragraphStyle" : {
 								"__type" : "textStyle"
 							},
-							"string" : "[[Fix the subtitle parser]]"
+							"string" : "Write up idea on more efficient lattice construction by sorting concepts into layers. "
 						},
 						{
 							"__type" : "textSnippet",
@@ -97,7 +60,7 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2024-02-01T14:42:31.126378+01:00"
+									"dateAndTimeString" : "2024-03-06T10:38:34.845056+01:00"
 								}
 							},
 							"editEmail" : {
@@ -108,17 +71,54 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2024-02-01T14:42:40.149803+01:00"
+									"dateAndTimeString" : "2024-03-06T10:38:34.845056+01:00"
 								}
 							},
 							"uid" : {
 								"__type" : "uid",
-								"uidString" : "uets57PMDQCfpPNBBUltLw=="
+								"uidString" : "0q2jdVzPDQCfYGqGBEUtpA=="
 							},
 							"paragraphStyle" : {
 								"__type" : "textStyle"
 							},
-							"string" : "Turn this into a demo ...."
+							"string" : "Explore Mondrian lattice layout by layers. "
+						},
+						{
+							"__type" : "textSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2024-03-06T10:37:49.851322+01:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2024-03-06T10:38:34.849663+01:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "1jL1clzPDQCfB+X9BEUtpA=="
+							},
+							"paragraphStyle" : {
+								"__type" : "textStyle"
+							},
+							"string" : "Add optional positions to FCA concepts. "
 						}
 					]
 				},
@@ -130,7 +130,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2024-02-01T14:42:28.234465+01:00"
+						"dateAndTimeString" : "2024-03-06T10:38:24.918424+01:00"
 					}
 				},
 				"editEmail" : {
@@ -141,12 +141,12 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2024-02-01T14:42:30.607805+01:00"
+						"dateAndTimeString" : "2024-03-06T10:38:28.996372+01:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
-					"uidString" : "TspA57PMDQCffTQRBUltLw=="
+					"uidString" : "wD4MdVzPDQCfIWuiBEUtpA=="
 				},
 				"paragraphStyle" : {
 					"__type" : "textStyle"
@@ -172,7 +172,7 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2024-02-01T14:42:16.557761+01:00"
+									"dateAndTimeString" : "2024-03-06T10:38:51.603962+01:00"
 								}
 							},
 							"editEmail" : {
@@ -183,17 +183,17 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2024-02-01T14:42:20.64186+01:00"
+									"dateAndTimeString" : "2024-03-06T10:39:43.553184+01:00"
 								}
 							},
 							"uid" : {
 								"__type" : "uid",
-								"uidString" : "SZ+O5rPMDQCfVfnHBUltLw=="
+								"uidString" : "hnKjdlzPDQCgEKrTBEUtpA=="
 							},
 							"paragraphStyle" : {
 								"__type" : "textStyle"
 							},
-							"string" : "[[Parsing subtitles with PetitParser2]] "
+							"string" : "Instead of the cubic algorithm in {{gtMethod:name=FCABottomUpConceptBuilder>>#buildLattice}}, we can group the concepts into layers by the number of properties."
 						},
 						{
 							"__type" : "textSnippet",
@@ -209,7 +209,7 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2024-03-05T16:48:11.552717+01:00"
+									"dateAndTimeString" : "2024-03-06T10:40:04.507008+01:00"
 								}
 							},
 							"editEmail" : {
@@ -220,54 +220,17 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2024-03-05T16:48:13.062128+01:00"
+									"dateAndTimeString" : "2024-03-06T10:41:41.912069+01:00"
 								}
 							},
 							"uid" : {
 								"__type" : "uid",
-								"uidString" : "/RCigU3PDQCmIDlmBJmCYg=="
+								"uidString" : "opfIeVzPDQCiXsjSBEUtpA=="
 							},
 							"paragraphStyle" : {
 								"__type" : "textStyle"
 							},
-							"string" : "[[Prototyping the Subtitle editor]]"
-						},
-						{
-							"__type" : "textSnippet",
-							"children" : {
-								"__type" : "snippets",
-								"items" : [ ]
-							},
-							"createEmail" : {
-								"__type" : "email",
-								"emailString" : "<unknown>"
-							},
-							"createTime" : {
-								"__type" : "time",
-								"time" : {
-									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2024-02-01T14:42:09.394208+01:00"
-								}
-							},
-							"editEmail" : {
-								"__type" : "email",
-								"emailString" : "<unknown>"
-							},
-							"editTime" : {
-								"__type" : "time",
-								"time" : {
-									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2024-03-05T16:47:26.692928+01:00"
-								}
-							},
-							"uid" : {
-								"__type" : "uid",
-								"uidString" : "BlAh5rPMDQCfSIXhBUltLw=="
-							},
-							"paragraphStyle" : {
-								"__type" : "textStyle"
-							},
-							"string" : "[[Fixing the Taxi Tehran subtitles]]"
+							"string" : "Smaller concepts must have bigger intents, so we only compare with concepts in strictly lower layers. There can only be transitive edges to remove if there are 1 or more layers in between."
 						}
 					]
 				},
@@ -279,7 +242,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2024-03-05T16:46:49.082638+01:00"
+						"dateAndTimeString" : "2024-03-06T10:38:37.852688+01:00"
 					}
 				},
 				"editEmail" : {
@@ -290,23 +253,61 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2024-03-05T16:46:51.645323+01:00"
+						"dateAndTimeString" : "2024-03-06T10:38:51.229069+01:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
-					"uidString" : "vkPs5bPMDQCfF6FjBUltLw=="
+					"uidString" : "YlTRdVzPDQCfZ+9ABEUtpA=="
 				},
 				"paragraphStyle" : {
 					"__type" : "textStyle"
 				},
-				"string" : "# Pages"
+				"string" : "# Lattice construction by layers"
 			},
 			{
 				"__type" : "textSnippet",
 				"children" : {
 					"__type" : "snippets",
-					"items" : [ ]
+					"items" : [
+						{
+							"__type" : "textSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2024-03-06T10:41:49.982894+01:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2024-03-06T10:44:26.825696+01:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "TExFgVzPDQCnIWWJBEUtpA=="
+							},
+							"paragraphStyle" : {
+								"__type" : "textStyle"
+							},
+							"string" : "We can layout the lattive by layers. We sort the concepts into layers of concepts with the same size of intents, from smaller to larger. We sort the second layer form top by increasing extent, and then sort lower layers by iterating over the children of upper layers."
+						}
+					]
 				},
 				"createEmail" : {
 					"__type" : "email",
@@ -316,7 +317,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2022-11-28T18:43:34.64863+01:00"
+						"dateAndTimeString" : "2024-03-06T10:41:42.172738+01:00"
 					}
 				},
 				"editEmail" : {
@@ -327,54 +328,17 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2022-11-28T18:43:34.64863+01:00"
+						"dateAndTimeString" : "2024-03-06T10:41:49.151451+01:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
-					"uidString" : "UoPBJe2qDQCFqZ7PBqSDYA=="
+					"uidString" : "NSDOgFzPDQCmvtV+BEUtpA=="
 				},
 				"paragraphStyle" : {
 					"__type" : "textStyle"
 				},
-				"string" : ""
-			},
-			{
-				"__type" : "textSnippet",
-				"children" : {
-					"__type" : "snippets",
-					"items" : [ ]
-				},
-				"createEmail" : {
-					"__type" : "email",
-					"emailString" : "<unknown>"
-				},
-				"createTime" : {
-					"__type" : "time",
-					"time" : {
-						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2024-03-05T16:47:39.839024+01:00"
-					}
-				},
-				"editEmail" : {
-					"__type" : "email",
-					"emailString" : "<unknown>"
-				},
-				"editTime" : {
-					"__type" : "time",
-					"time" : {
-						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2024-03-05T16:47:39.839024+01:00"
-					}
-				},
-				"uid" : {
-					"__type" : "uid",
-					"uidString" : "Xye+f03PDQClITwUBJmCYg=="
-				},
-				"paragraphStyle" : {
-					"__type" : "textStyle"
-				},
-				"string" : ""
+				"string" : "# Layout by layers"
 			}
 		]
 	},
@@ -386,7 +350,7 @@
 		"__type" : "time",
 		"time" : {
 			"__type" : "dateAndTime",
-			"dateAndTimeString" : "2022-11-28T18:43:28.963343+01:00"
+			"dateAndTimeString" : "2024-03-06T10:37:49.797055+01:00"
 		}
 	},
 	"editEmail" : {
@@ -397,15 +361,15 @@
 		"__type" : "time",
 		"time" : {
 			"__type" : "dateAndTime",
-			"dateAndTimeString" : "2022-11-28T18:43:28.963343+01:00"
+			"dateAndTimeString" : "2024-03-06T10:44:34.697966+01:00"
 		}
 	},
 	"pageType" : {
 		"__type" : "namedPage",
-		"title" : "Subtitle editor"
+		"title" : "* Improve FCA layout"
 	},
 	"uid" : {
 		"__type" : "uuid",
-		"uuid" : "abc26a25-edaa-0d00-85a4-552906a48360"
+		"uuid" : "e75df472-5ccf-0d00-9f06-aff004452da4"
 	}
 }

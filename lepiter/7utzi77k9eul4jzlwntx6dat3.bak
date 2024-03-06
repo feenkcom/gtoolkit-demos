@@ -210,7 +210,7 @@
 											"__type" : "time",
 											"time" : {
 												"__type" : "dateAndTime",
-												"dateAndTimeString" : "2024-03-04T18:29:14.444344+01:00"
+												"dateAndTimeString" : "2024-03-06T10:49:18.090304+01:00"
 											}
 										},
 										"editEmail" : {
@@ -221,17 +221,92 @@
 											"__type" : "time",
 											"time" : {
 												"__type" : "dateAndTime",
-												"dateAndTimeString" : "2024-03-04T18:29:14.444344+01:00"
+												"dateAndTimeString" : "2024-03-06T10:59:25.577616+01:00"
 											}
 										},
 										"uid" : {
 											"__type" : "uid",
-											"uidString" : "J3LS8/3ODQCpARuRAwAVtg=="
+											"uidString" : "ztP6m1zPDQC02AT2DSYZ9w=="
 										},
 										"paragraphStyle" : {
 											"__type" : "textStyle"
 										},
-										"string" : ""
+										"string" : "[[Fix the subtitle parser]]"
+									}
+								]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2024-02-01T14:41:38.130536+01:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2024-02-01T14:41:39.167102+01:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "P/cA5LPMDQCeigWMBUltLw=="
+							},
+							"paragraphStyle" : {
+								"__type" : "textStyle"
+							},
+							"string" : "[[Subtitle editor]] "
+						},
+						{
+							"__type" : "textSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [
+									{
+										"__type" : "textSnippet",
+										"children" : {
+											"__type" : "snippets",
+											"items" : [ ]
+										},
+										"createEmail" : {
+											"__type" : "email",
+											"emailString" : "<unknown>"
+										},
+										"createTime" : {
+											"__type" : "time",
+											"time" : {
+												"__type" : "dateAndTime",
+												"dateAndTimeString" : "2024-03-06T10:23:45.671684+01:00"
+											}
+										},
+										"editEmail" : {
+											"__type" : "email",
+											"emailString" : "<unknown>"
+										},
+										"editTime" : {
+											"__type" : "time",
+											"time" : {
+												"__type" : "dateAndTime",
+												"dateAndTimeString" : "2024-03-06T10:23:46.456288+01:00"
+											}
+										},
+										"uid" : {
+											"__type" : "uid",
+											"uidString" : "BgOkQFzPDQCjCyXcBEUtpA=="
+										},
+										"paragraphStyle" : {
+											"__type" : "textStyle"
+										},
+										"string" : "[[* Prepare a GT Book page on FCA]]"
 									},
 									{
 										"__type" : "textSnippet",
@@ -247,7 +322,7 @@
 											"__type" : "time",
 											"time" : {
 												"__type" : "dateAndTime",
-												"dateAndTimeString" : "2024-03-04T18:29:26.963598+01:00"
+												"dateAndTimeString" : "2024-03-06T10:37:18.478687+01:00"
 											}
 										},
 										"editEmail" : {
@@ -258,54 +333,17 @@
 											"__type" : "time",
 											"time" : {
 												"__type" : "dateAndTime",
-												"dateAndTimeString" : "2024-03-04T18:29:26.963598+01:00"
+												"dateAndTimeString" : "2024-03-06T10:44:34.734482+01:00"
 											}
 										},
 										"uid" : {
 											"__type" : "uid",
-											"uidString" : "OYXJWTjPDQCGjPEpCJ+VoA=="
+											"uidString" : "ZHMWcVzPDQCek6spBEUtpA=="
 										},
 										"paragraphStyle" : {
 											"__type" : "textStyle"
 										},
-										"string" : ""
-									},
-									{
-										"__type" : "textSnippet",
-										"children" : {
-											"__type" : "snippets",
-											"items" : [ ]
-										},
-										"createEmail" : {
-											"__type" : "email",
-											"emailString" : "<unknown>"
-										},
-										"createTime" : {
-											"__type" : "time",
-											"time" : {
-												"__type" : "dateAndTime",
-												"dateAndTimeString" : "2024-03-04T16:29:05.270077+01:00"
-											}
-										},
-										"editEmail" : {
-											"__type" : "email",
-											"emailString" : "<unknown>"
-										},
-										"editTime" : {
-											"__type" : "time",
-											"time" : {
-												"__type" : "dateAndTime",
-												"dateAndTimeString" : "2024-03-04T16:29:18.679667+01:00"
-											}
-										},
-										"uid" : {
-											"__type" : "uid",
-											"uidString" : "L8t3HznPDQCEyqSjAStnsA=="
-										},
-										"paragraphStyle" : {
-											"__type" : "textStyle"
-										},
-										"string" : "[[Experimenting with Lepiter pages and tags]]"
+										"string" : "[[* Improve FCA layout]]"
 									}
 								]
 							},
@@ -339,43 +377,6 @@
 								"__type" : "textStyle"
 							},
 							"string" : "[[FCA for GT]]"
-						},
-						{
-							"__type" : "textSnippet",
-							"children" : {
-								"__type" : "snippets",
-								"items" : [ ]
-							},
-							"createEmail" : {
-								"__type" : "email",
-								"emailString" : "<unknown>"
-							},
-							"createTime" : {
-								"__type" : "time",
-								"time" : {
-									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2024-02-01T14:41:38.130536+01:00"
-								}
-							},
-							"editEmail" : {
-								"__type" : "email",
-								"emailString" : "<unknown>"
-							},
-							"editTime" : {
-								"__type" : "time",
-								"time" : {
-									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2024-02-01T14:41:39.167102+01:00"
-								}
-							},
-							"uid" : {
-								"__type" : "uid",
-								"uidString" : "P/cA5LPMDQCeigWMBUltLw=="
-							},
-							"paragraphStyle" : {
-								"__type" : "textStyle"
-							},
-							"string" : "[[Subtitle editor]] "
 						},
 						{
 							"__type" : "textSnippet",
@@ -679,43 +680,6 @@
 											"__type" : "textStyle"
 										},
 										"string" : "[[EDD — getting started]]"
-									},
-									{
-										"__type" : "textSnippet",
-										"children" : {
-											"__type" : "snippets",
-											"items" : [ ]
-										},
-										"createEmail" : {
-											"__type" : "email",
-											"emailString" : "<unknown>"
-										},
-										"createTime" : {
-											"__type" : "time",
-											"time" : {
-												"__type" : "dateAndTime",
-												"dateAndTimeString" : "2024-02-13T09:47:24.592488+01:00"
-											}
-										},
-										"editEmail" : {
-											"__type" : "email",
-											"emailString" : "<unknown>"
-										},
-										"editTime" : {
-											"__type" : "time",
-											"time" : {
-												"__type" : "dateAndTime",
-												"dateAndTimeString" : "2024-02-13T09:47:24.598603+01:00"
-											}
-										},
-										"uid" : {
-											"__type" : "uid",
-											"uidString" : "kgDqLaHNDQCAjKJ2CM2XBA=="
-										},
-										"paragraphStyle" : {
-											"__type" : "textStyle"
-										},
-										"string" : "[[The TDD approach]]"
 									},
 									{
 										"__type" : "textSnippet",

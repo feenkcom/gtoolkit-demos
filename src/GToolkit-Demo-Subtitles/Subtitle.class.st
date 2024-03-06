@@ -12,6 +12,15 @@ Class {
 	#category : #'GToolkit-Demo-Subtitles-Model'
 }
 
+{ #category : #comparing }
+Subtitle >> = other [
+	self == other ifTrue: [ ^ true ].
+	self class = other class ifFalse: [ ^ false ].
+	^ self number = other number
+		and: [ self start = other start
+				and: [ self end = other end and: [ self lines = other lines ] ] ]
+]
+
 { #category : #accessing }
 Subtitle >> end [
 	^ end
@@ -34,6 +43,11 @@ Subtitle >> gtItemsFor: aView [
 				'end' -> self end asString.
 				'lines' -> (' ' join: self lines)} asOrderedDictionary ];
 		view: #gtItemsFor:
+]
+
+{ #category : #comparing }
+Subtitle >> hash [
+	^ self lines hash
 ]
 
 { #category : #accessing }
