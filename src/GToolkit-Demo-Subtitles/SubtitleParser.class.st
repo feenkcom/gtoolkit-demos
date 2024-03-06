@@ -41,11 +41,7 @@ SubtitleParser >> line [
 
 { #category : #grammar }
 SubtitleParser >> lines [
-	^ (line , crLine star)
-		==> [ :node | 
-			node second
-				addFirst: node first;
-				yourself ]
+	^ (line , crLine star) ==> [ :node | node second copyWithFirst: node first ]
 ]
 
 { #category : #grammar }
