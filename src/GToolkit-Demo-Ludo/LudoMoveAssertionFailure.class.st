@@ -31,7 +31,7 @@ LudoMoveAssertionFailure class >> forMove: aLudoMove [
 		yourself
 ]
 
-{ #category : #accessing }
+{ #category : #view }
 LudoMoveAssertionFailure >> gtGameViewFor: aView [
 	<gtView>
 	<gtExceptionDebuggingView>
@@ -42,7 +42,7 @@ LudoMoveAssertionFailure >> gtGameViewFor: aView [
 		view: #gtPositionsFor:
 ]
 
-{ #category : #accessing }
+{ #category : #view }
 LudoMoveAssertionFailure >> gtMoveViewFor: aView [
 	<gtView>
 	<gtExceptionDebuggingView>
@@ -53,7 +53,7 @@ LudoMoveAssertionFailure >> gtMoveViewFor: aView [
 		view: #moveOnBoardFor:
 ]
 
-{ #category : #accessing }
+{ #category : #view }
 LudoMoveAssertionFailure >> gtMovesViewFor: aView [
 	<gtView>
 	<gtExceptionDebuggingView>
