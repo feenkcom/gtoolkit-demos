@@ -284,7 +284,7 @@ FCAContext >> latticeFor: aMondrian [
 		connect: self edges
 		from: #key
 		to: #value.
-	aMondrian layout tree.
+	aMondrian layout dominanceTree.
 	^ aMondrian
 ]
 
