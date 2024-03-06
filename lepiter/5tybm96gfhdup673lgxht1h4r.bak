@@ -279,14 +279,14 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2024-03-06T11:04:22.154062+01:00"
+						"dateAndTimeString" : "2024-03-06T11:04:39.944252+01:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
 					"uidString" : "jLwzzVzPDQCzLZE+AbAqRQ=="
 				},
-				"code" : "subs1 := (SubtitleParser new parse: input).\rsubs2 := (SubtitleParser new optimize parse: input).\r\rsub"
+				"code" : "subs1 := (SubtitleParser new parse: input).\rsubs2 := (SubtitleParser new optimize parse: input).\r\rsubs1 first = subs2 first"
 			},
 			{
 				"__type" : "textSnippet",

@@ -18,43 +18,6 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2024-03-06T10:59:26.893086+01:00"
-					}
-				},
-				"editEmail" : {
-					"__type" : "email",
-					"emailString" : "<unknown>"
-				},
-				"editTime" : {
-					"__type" : "time",
-					"time" : {
-						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2024-03-06T11:00:24.694557+01:00"
-					}
-				},
-				"uid" : {
-					"__type" : "uid",
-					"uidString" : "w3NEwFzPDQCw+979AbAqRQ=="
-				},
-				"paragraphStyle" : {
-					"__type" : "textStyle"
-				},
-				"string" : "Done. Patched {{gtMethod:name=SubtitleParser>>#lines}}"
-			},
-			{
-				"__type" : "textSnippet",
-				"children" : {
-					"__type" : "snippets",
-					"items" : [ ]
-				},
-				"createEmail" : {
-					"__type" : "email",
-					"emailString" : "<unknown>"
-				},
-				"createTime" : {
-					"__type" : "time",
-					"time" : {
-						"__type" : "dateAndTime",
 						"dateAndTimeString" : "2024-03-06T10:49:40.482661+01:00"
 					}
 				},
@@ -77,6 +40,43 @@
 					"__type" : "textStyle"
 				},
 				"string" : "The parser seems to broken when you optimize it."
+			},
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2024-03-06T10:59:26.893086+01:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2024-03-06T11:10:22.182716+01:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "w3NEwFzPDQCw+979AbAqRQ=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : "Done. Patched {{gtMethod:name=SubtitleParser>>#lines}}. Also added `=` for subtitles."
 			},
 			{
 				"__type" : "pharoSnippet",
@@ -174,14 +174,14 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2024-03-06T10:58:27.497269+01:00"
+						"dateAndTimeString" : "2024-03-06T11:12:26.967731+01:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
 					"uidString" : "q2aDpFzPDQCFSsriAbAqRQ=="
 				},
-				"code" : "input :=SubtitlesExample new auHasardEnFile contents .\r[SubtitleParser new parse: input] timeToRun"
+				"code" : "input := SubtitlesExample new auHasardEnFile contents .\r[SubtitleParser new parse: input] timeToRun"
 			},
 			{
 				"__type" : "textSnippet",
@@ -208,7 +208,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2024-03-06T10:53:29.438658+01:00"
+						"dateAndTimeString" : "2024-03-06T11:11:07.587718+01:00"
 					}
 				},
 				"uid" : {
@@ -218,7 +218,7 @@
 				"paragraphStyle" : {
 					"__type" : "textStyle"
 				},
-				"string" : "This breaks"
+				"string" : "This was breaking becuase we assumed `node second` was an OrderedCollection."
 			},
 			{
 				"__type" : "pharoSnippet",
@@ -279,14 +279,14 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2024-03-06T11:04:39.944252+01:00"
+						"dateAndTimeString" : "2024-03-06T11:09:59.928856+01:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
 					"uidString" : "jLwzzVzPDQCzLZE+AbAqRQ=="
 				},
-				"code" : "subs1 := (SubtitleParser new parse: input).\rsubs2 := (SubtitleParser new optimize parse: input).\r\rsubs1 first = subs2 first"
+				"code" : "subs1 := SubtitleParser new parse: input.\rsubs2 := SubtitleParser new optimize parse: input.\r\rsubs1 = subs2"
 			},
 			{
 				"__type" : "textSnippet",
@@ -302,7 +302,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2024-03-05T18:01:05.305682+01:00"
+						"dateAndTimeString" : "2024-03-06T11:11:12.939661+01:00"
 					}
 				},
 				"editEmail" : {
@@ -313,7 +313,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2024-03-06T10:59:18.118558+01:00"
+						"dateAndTimeString" : "2024-03-06T11:11:26.396012+01:00"
 					}
 				},
 				"uid" : {
@@ -323,7 +323,7 @@
 				"paragraphStyle" : {
 					"__type" : "textStyle"
 				},
-				"string" : "We fix it by adding an \"asOrderedCollection\", but now there is no speed improvement."
+				"string" : "We fix it by using `copyWithFirst:`."
 			},
 			{
 				"__type" : "pharoSnippet",

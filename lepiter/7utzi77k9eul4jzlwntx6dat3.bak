@@ -221,7 +221,7 @@
 											"__type" : "time",
 											"time" : {
 												"__type" : "dateAndTime",
-												"dateAndTimeString" : "2024-03-06T10:49:21.814662+01:00"
+												"dateAndTimeString" : "2024-03-06T10:59:25.577616+01:00"
 											}
 										},
 										"uid" : {
@@ -231,7 +231,7 @@
 										"paragraphStyle" : {
 											"__type" : "textStyle"
 										},
-										"string" : "[[* Fix the subtitle parser]]"
+										"string" : "[[Fix the subtitle parser]]"
 									}
 								]
 							},
