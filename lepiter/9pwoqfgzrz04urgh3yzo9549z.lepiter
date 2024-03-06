@@ -295,7 +295,7 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2024-03-06T10:44:26.825696+01:00"
+									"dateAndTimeString" : "2024-03-06T18:02:56.797803+01:00"
 								}
 							},
 							"uid" : {
@@ -305,7 +305,7 @@
 							"paragraphStyle" : {
 								"__type" : "textStyle"
 							},
-							"string" : "We can layout the lattive by layers. We sort the concepts into layers of concepts with the same size of intents, from smaller to larger. We sort the second layer form top by increasing extent, and then sort lower layers by iterating over the children of upper layers."
+							"string" : "We can layout the lattice by layers. We sort the concepts into layers of concepts with the same size of intents, from smaller to larger. We sort the second layer form top by increasing extent, and then sort lower layers by iterating over the children of upper layers."
 						}
 					]
 				},
