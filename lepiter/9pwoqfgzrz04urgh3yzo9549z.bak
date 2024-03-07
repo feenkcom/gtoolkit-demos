@@ -231,43 +231,6 @@
 								"__type" : "textStyle"
 							},
 							"string" : "Smaller concepts must have bigger intents, so we only compare with concepts in strictly lower layers. There can only be transitive edges to remove if there are 1 or more layers in between."
-						},
-						{
-							"__type" : "textSnippet",
-							"children" : {
-								"__type" : "snippets",
-								"items" : [ ]
-							},
-							"createEmail" : {
-								"__type" : "email",
-								"emailString" : "<unknown>"
-							},
-							"createTime" : {
-								"__type" : "time",
-								"time" : {
-									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2024-03-06T10:39:00.101044+01:00"
-								}
-							},
-							"editEmail" : {
-								"__type" : "email",
-								"emailString" : "<unknown>"
-							},
-							"editTime" : {
-								"__type" : "time",
-								"time" : {
-									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2024-03-06T10:39:00.101044+01:00"
-								}
-							},
-							"uid" : {
-								"__type" : "uid",
-								"uidString" : "oRMld1zPDQCgw4J9BEUtpA=="
-							},
-							"paragraphStyle" : {
-								"__type" : "textStyle"
-							},
-							"string" : ""
 						}
 					]
 				},
@@ -332,7 +295,7 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2024-03-06T10:44:03.110206+01:00"
+									"dateAndTimeString" : "2024-03-06T10:44:26.825696+01:00"
 								}
 							},
 							"uid" : {
@@ -342,7 +305,7 @@
 							"paragraphStyle" : {
 								"__type" : "textStyle"
 							},
-							"string" : "We can layout the lattive by layers. We sort the concepts into layers of concepts with the same size of intents, from smaller to larger. We sort the second layer form top by increasing extent, and then sort lower layers by iterating over the children"
+							"string" : "We can layout the lattive by layers. We sort the concepts into layers of concepts with the same size of intents, from smaller to larger. We sort the second layer form top by increasing extent, and then sort lower layers by iterating over the children of upper layers."
 						}
 					]
 				},
@@ -398,12 +361,12 @@
 		"__type" : "time",
 		"time" : {
 			"__type" : "dateAndTime",
-			"dateAndTimeString" : "2024-03-06T10:37:49.797055+01:00"
+			"dateAndTimeString" : "2024-03-06T10:44:34.697966+01:00"
 		}
 	},
 	"pageType" : {
 		"__type" : "namedPage",
-		"title" : "Improve FCA layout"
+		"title" : "* Improve FCA layout"
 	},
 	"uid" : {
 		"__type" : "uuid",
