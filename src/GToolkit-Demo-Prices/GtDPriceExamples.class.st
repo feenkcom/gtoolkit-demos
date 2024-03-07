@@ -93,7 +93,7 @@ GtDPriceExamples >> dividedPrice [
 ]
 
 { #category : #examples }
-GtDPriceExamples >> fourtyTwoEurosDividedByTwoEuros [
+GtDPriceExamples >> fortyTwoEurosDividedByTwoEuros [
 	<gtExample>
 	| price |
 	price := 42 gtEUR asPrice.
@@ -102,7 +102,7 @@ GtDPriceExamples >> fourtyTwoEurosDividedByTwoEuros [
 ]
 
 { #category : #examples }
-GtDPriceExamples >> fourtyTwoEurosLessThanHundredEuros [
+GtDPriceExamples >> fortyTwoEurosLessThanHundredEuros [
 	<gtExample>
 	| price |
 	price := 100 gtEUR asPrice.

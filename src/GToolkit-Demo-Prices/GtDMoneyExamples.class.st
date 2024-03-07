@@ -8,7 +8,7 @@ Class {
 GtDMoneyExamples >> bagWithEurosAndDollars [
 	<gtExample>
 	| bag |
-	bag := self fourtyTwoEuros + self fourtyTwoDollars.
+	bag := self fortyTwoEuros + self fortyTwoDollars.
 	self assert: (bag isKindOf: GtDMoneyBag).
 	self assert: (bag monies size = 2).
 	^ bag
@@ -18,9 +18,9 @@ GtDMoneyExamples >> bagWithEurosAndDollars [
 GtDMoneyExamples >> bagWithEurosAndDollarsMinusEuros [
 	<gtExample>
 	| money |
-	money := self bagWithEurosAndDollars - self fourtyTwoEuros.
+	money := self bagWithEurosAndDollars - self fortyTwoEuros.
 	self assert: (money isKindOf: GtDCurrencyMoney).
-	self assert: (money = self fourtyTwoDollars).
+	self assert: (money = self fortyTwoDollars).
 	^ money
 ]
 
@@ -28,14 +28,14 @@ GtDMoneyExamples >> bagWithEurosAndDollarsMinusEuros [
 GtDMoneyExamples >> derivedZeroEuros [
 	<gtExample>
 	| money |
-	money := self fourtyTwoEuros.
+	money := self fortyTwoEuros.
 	self assert: (money * 0) isZero.
 	self assert: (money - 42 gtEUR) isZero.
 	^ money
 ]
 
 { #category : #examples }
-GtDMoneyExamples >> fourtyTwoDollars [
+GtDMoneyExamples >> fortyTwoDollars [
 	<gtExample>
 	| money |
 	money := 42 gtUSD.
@@ -44,17 +44,17 @@ GtDMoneyExamples >> fourtyTwoDollars [
 ]
 
 { #category : #examples }
-GtDMoneyExamples >> fourtyTwoDollarsPlusZeroDollars [
+GtDMoneyExamples >> fortyTwoDollarsPlusZeroDollars [
 	<gtExample>
 	| money |
-	money := self fourtyTwoDollars + self zeroEuros.
+	money := self fortyTwoDollars + self zeroEuros.
 	self assert: money = 42 gtUSD.
 	self assert: (money isKindOf: GtDCurrencyMoney).
 	^ money
 ]
 
 { #category : #examples }
-GtDMoneyExamples >> fourtyTwoEuros [
+GtDMoneyExamples >> fortyTwoEuros [
 	<gtExample>
 	| money |
 	money := 42 gtEUR.
@@ -64,16 +64,16 @@ GtDMoneyExamples >> fourtyTwoEuros [
 ]
 
 { #category : #examples }
-GtDMoneyExamples >> fourtyTwoEurosDividedByTwo [
+GtDMoneyExamples >> fortyTwoEurosDividedByTwo [
 	<gtExample>
 	| money |
-	money := self fourtyTwoEuros / 2.
+	money := self fortyTwoEuros / 2.
 	self assert: money = 21 gtEUR.
 	^ money
 ]
 
 { #category : #examples }
-GtDMoneyExamples >> fourtyTwoEurosDividedByTwoEuros [
+GtDMoneyExamples >> fortyTwoEurosDividedByTwoEuros [
 	<gtExample>
 	| money |
 	money := 42 gtEUR.
@@ -82,56 +82,56 @@ GtDMoneyExamples >> fourtyTwoEurosDividedByTwoEuros [
 ]
 
 { #category : #examples }
-GtDMoneyExamples >> fourtyTwoEurosHigherThanZeroEuros [
+GtDMoneyExamples >> fortyTwoEurosHigherThanZeroEuros [
 	<gtExample>
 	| money |
 	money := self zeroEuros.
-	self assert: self fourtyTwoEuros > money.
+	self assert: self fortyTwoEuros > money.
 	^ money
 ]
 
 { #category : #examples }
-GtDMoneyExamples >> fourtyTwoEurosHigherThanZeroMoney [
+GtDMoneyExamples >> fortyTwoEurosHigherThanZeroMoney [
 	<gtExample>
 	| money |
 	money := self zeroMoney.
-	self assert: self fourtyTwoEuros > money.
+	self assert: self fortyTwoEuros > money.
 	^ money
 ]
 
 { #category : #examples }
-GtDMoneyExamples >> fourtyTwoEurosMultipledByTwo [
+GtDMoneyExamples >> fortyTwoEurosMultipledByTwo [
 	<gtExample>
 	| money |
-	money := self fourtyTwoEuros * 3.
+	money := self fortyTwoEuros * 3.
 	self assert: money = 126 gtEUR.
 	^ money
 ]
 
 { #category : #examples }
-GtDMoneyExamples >> fourtyTwoEurosPlusFourtyTwoEuros [
+GtDMoneyExamples >> fortyTwoEurosPlusFourtyTwoEuros [
 	<gtExample>
 	| money |
-	money := self fourtyTwoEuros + self fourtyTwoEuros.
+	money := self fortyTwoEuros + self fortyTwoEuros.
 	self assert: money = 84 gtEUR.
 	^ money
 ]
 
 { #category : #examples }
-GtDMoneyExamples >> fourtyTwoEurosPlusFourtyTwoEurosMinusFourtyTwoEuros [
+GtDMoneyExamples >> fortyTwoEurosPlusFourtyTwoEurosMinusFourtyTwoEuros [
 	<gtExample>
 	| money |
-	money := self fourtyTwoEuros + self fourtyTwoEuros - self fourtyTwoEuros.
+	money := self fortyTwoEuros + self fortyTwoEuros - self fortyTwoEuros.
 	self assert: money = 42 gtEUR.
 	^ money
 ]
 
 { #category : #examples }
-GtDMoneyExamples >> fourtyTwoEurosPlusZeroMoney [
+GtDMoneyExamples >> fortyTwoEurosPlusZeroMoney [
 	<gtExample>
 	| money |
-	money := self fourtyTwoEuros + self zeroMoney.
-	self assert: money = self fourtyTwoEuros.
+	money := self fortyTwoEuros + self zeroMoney.
+	self assert: money = self fortyTwoEuros.
 	^ money
 ]
 
@@ -139,8 +139,8 @@ GtDMoneyExamples >> fourtyTwoEurosPlusZeroMoney [
 GtDMoneyExamples >> higherThan [
 	<gtExample>
 	| money |
-	money := self fourtyTwoEuros.
-	self assert: self fourtyTwoEuros + self fourtyTwoEuros > money.
+	money := self fortyTwoEuros.
+	self assert: self fortyTwoEuros + self fortyTwoEuros > money.
 	^ money
 ]
 
@@ -148,8 +148,8 @@ GtDMoneyExamples >> higherThan [
 GtDMoneyExamples >> lessThan [
 	<gtExample>
 	| money |
-	money := self fourtyTwoEuros.
-	self assert: money < (self fourtyTwoEuros + self fourtyTwoEuros).
+	money := self fortyTwoEuros.
+	self assert: money < (self fortyTwoEuros + self fortyTwoEuros).
 	^ money
 ]
 
@@ -168,7 +168,7 @@ GtDMoneyExamples >> zeroEurosLessThanPositive [
 	<gtExample>
 	| money |
 	money := self zeroEuros.
-	self assert: money < (self fourtyTwoEuros + self fourtyTwoEuros).
+	self assert: money < (self fortyTwoEuros + self fortyTwoEuros).
 	^ money
 ]
 
@@ -176,8 +176,8 @@ GtDMoneyExamples >> zeroEurosLessThanPositive [
 GtDMoneyExamples >> zeroEurosPlusFourtyTwoEuros [
 	<gtExample>
 	| money |
-	money := self zeroEuros + self fourtyTwoEuros.
-	self assert: money = self fourtyTwoEuros.
+	money := self zeroEuros + self fortyTwoEuros.
+	self assert: money = self fortyTwoEuros.
 	^ money
 ]
 
@@ -192,7 +192,7 @@ GtDMoneyExamples >> zeroMoneyLessThanPositive [
 	<gtExample>
 	| money |
 	money := self zeroMoney.
-	self assert: money < (self fourtyTwoEuros + self fourtyTwoEuros).
+	self assert: money < (self fortyTwoEuros + self fortyTwoEuros).
 	^ money
 ]
 
@@ -200,7 +200,7 @@ GtDMoneyExamples >> zeroMoneyLessThanPositive [
 GtDMoneyExamples >> zeroMoneyPlusFourtyTwoEuros [
 	<gtExample>
 	| money |
-	money := self zeroMoney + self fourtyTwoEuros.
-	self assert: money = self fourtyTwoEuros.
+	money := self zeroMoney + self fortyTwoEuros.
+	self assert: money = self fortyTwoEuros.
 	^ money
 ]
