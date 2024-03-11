@@ -56,7 +56,8 @@ GtDPriceExamples >> displayOfConcretePriceDiscountedByMoneyAndDiscountedByPercen
 	<gtExample>
 	| price |
 	price := self concretePriceDiscountedByMoneyAndDiscountedByPercentage.
-	self assert: (price gtDisplayString = '81.00 EUR = 10% off (10.00 EUR off 100.00 EUR)')
+	self assert: (price gtDisplayString = '81.00 EUR = 10% off (10.00 EUR off 100.00 EUR)').
+	^ price
 ]
 
 { #category : #examples }
