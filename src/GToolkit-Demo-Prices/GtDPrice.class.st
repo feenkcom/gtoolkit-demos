@@ -188,7 +188,7 @@ GtDPrice >> gtOverviewFor: aView [
 	<gtView>
 	^ aView explicit
 		title: 'Overview';
-		priority: 104;
+		priority: 10;
 		stencil: [ 
 			| parentElement |
 			parentElement := BlElement new 
@@ -203,7 +203,7 @@ GtDPrice >> gtViewChildrenStructureIn: aView [
 	<gtView>
 	^ aView columnedTree
 		title: 'Children';
-		priority: 102;
+		priority: 20;
 		items: {self};
 		children: [ :aPrice | aPrice children ];
 		column: 'Total'
