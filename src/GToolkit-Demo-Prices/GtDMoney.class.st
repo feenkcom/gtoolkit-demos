@@ -97,3 +97,8 @@ GtDMoney >> multiplyBy: aNumber [
 GtDMoney >> negative [
 	^ self subclassResponsibility
 ]
+
+{ #category : #printing }
+GtDMoney >> printOn: aStream [
+	self gtDisplayOn: aStream
+]
