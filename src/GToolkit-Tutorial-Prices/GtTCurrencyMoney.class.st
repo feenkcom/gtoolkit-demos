@@ -66,11 +66,6 @@ GtTCurrencyMoney >> amount: anObject [
 ]
 
 { #category : #accessing }
-GtTCurrencyMoney >> asPrice [
-	^ ConcretePrice new money: self
-]
-
-{ #category : #accessing }
 GtTCurrencyMoney >> currency [
 	^ currency
 ]
