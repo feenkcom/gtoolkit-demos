@@ -77,8 +77,10 @@ GtDCurrencyMoney >> divideBy: aNumber [
 
 { #category : #ui }
 GtDCurrencyMoney >> gtDisplayOn: stream [
-	stream 
-		nextPutAll: (self amount printShowingDecimalPlaces: 2);
+	| digits |
+	digits := self amount fractionPart > 0 ifTrue: [ 2 ] ifFalse: [ 0 ].
+	stream
+		nextPutAll: (self amount printShowingDecimalPlaces: digits);
 		space;
 		nextPutAll: self currency name
 ]

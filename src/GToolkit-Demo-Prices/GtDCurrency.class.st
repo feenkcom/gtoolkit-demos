@@ -39,3 +39,8 @@ GtDCurrency >> name [
 GtDCurrency >> name: anObject [
 	name := anObject
 ]
+
+{ #category : #accessing }
+GtDCurrency >> printOn: aStream [
+aStream nextPutAll: self name
+]
