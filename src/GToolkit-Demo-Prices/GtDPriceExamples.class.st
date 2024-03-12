@@ -56,7 +56,7 @@ GtDPriceExamples >> displayOfConcretePriceDiscountedByMoneyAndDiscountedByPercen
 	<gtExample>
 	| price |
 	price := self concretePriceDiscountedByMoneyAndDiscountedByPercentage.
-	self assert: (price gtDisplayString = '81.00 EUR = 10% off (10.00 EUR off 100.00 EUR)').
+	self assert: (price gtDisplayString = '81 EUR = 10% off (10 EUR off 100 EUR)').
 	^ price
 ]
 
@@ -65,7 +65,7 @@ GtDPriceExamples >> displayOfDividedPrices [
 	<gtExample>
 	| price |
 	price := (20 gtEUR asPrice / 2) / 2.
-	self assert: (price gtDisplayString = '5.00 EUR = (20.00 EUR / 2) / 2')
+	self assert: (price gtDisplayString = '5 EUR = (20 EUR / 2) / 2')
 ]
 
 { #category : #examples }
@@ -73,7 +73,7 @@ GtDPriceExamples >> displayOfMultipliedPrices [
 	<gtExample>
 	| price |
 	price := (20 gtEUR asPrice * 2) * 2.
-	self assert: (price gtDisplayString = '80.00 EUR = (20.00 EUR * 2) * 2')
+	self assert: (price gtDisplayString = '80 EUR = (20 EUR * 2) * 2')
 ]
 
 { #category : #examples }
@@ -81,7 +81,7 @@ GtDPriceExamples >> displayOfMultiplySummedPrices [
 	<gtExample>
 	| price |
 	price := 10 gtEUR asPrice + 20 gtEUR asPrice + 30 gtEUR asPrice.
-	self assert: (price gtDisplayString = '60.00 EUR = (10.00 EUR + 20.00 EUR) + 30.00 EUR')
+	self assert: (price gtDisplayString = '60 EUR = (10 EUR + 20 EUR) + 30 EUR')
 ]
 
 { #category : #examples }
