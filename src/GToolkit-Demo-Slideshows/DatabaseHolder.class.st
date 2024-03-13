@@ -20,7 +20,7 @@ DatabaseHolder >> db [
 	^ db
 ]
 
-{ #category : #views }
+{ #category : #view }
 DatabaseHolder >> gtDatabaseFor: aView [
 	<gtView>
 	self db pages ifEmpty: [ ^ aView empty ].

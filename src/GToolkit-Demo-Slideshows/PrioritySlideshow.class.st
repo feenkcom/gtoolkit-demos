@@ -38,6 +38,33 @@ Class {
 	#category : #'GToolkit-Demo-Slideshows-Slideshows'
 }
 
+{ #category : #action }
+PrioritySlideshow class >> gtInspectSlideshowActionFor: anAction [
+	<gtAction>
+	<gtClassAction>
+	^ anAction button
+		tooltip: 'Inspect slideshow';
+		priority: 10;
+		id: GtPresenterPreviewShowButtonId;
+		icon: BrGlamorousVectorIcons playinspect;
+		action: [ :aButton | 
+			aButton phlow
+				spawnObject: ((self inheritsFrom: PrioritySlideshow)
+						ifTrue: [ self new ]
+						ifFalse: [ GtPresenterSlideShow create: self new ]) ]
+]
+
+{ #category : #view }
+PrioritySlideshow class >> gtLiveSlideshowFor: aView [
+	<gtView>
+	<gtClassView>
+	^ aView explicit 
+		title: 'Slideshow';
+		priority: 35;
+		stencil: [ GtPresenterSlideShow create: self new ];
+		actionUpdateButton
+]
+
 { #category : #actions }
 PrioritySlideshow class >> gtOpenSlideshowActionFor: anAction [
 	<gtAction>
@@ -51,7 +78,7 @@ PrioritySlideshow class >> gtOpenSlideshowActionFor: anAction [
 		action: [ :aButton | GtPresenterSlideShow openInSpace: self ]
 ]
 
-{ #category : #viewing }
+{ #category : #view }
 PrioritySlideshow class >> gtSlideDeckFor: aView [
 	<gtClassView>
 	^ aView forward
@@ -61,7 +88,7 @@ PrioritySlideshow class >> gtSlideDeckFor: aView [
 		view: #gtSlideDeckFor:
 ]
 
-{ #category : #viewing }
+{ #category : #view }
 PrioritySlideshow class >> gtSlideMethodsListViewFor: aView [
 	<gtClassView>
 	^ aView forward
@@ -251,7 +278,7 @@ PrioritySlideshow >> gtBook [
 	^ LeDatabase gtBook
 ]
 
-{ #category : #views }
+{ #category : #view }
 PrioritySlideshow >> gtDatabaseFor: aView [
 	<gtView>
 	self db pages ifEmpty: [ ^ aView empty ].
@@ -264,7 +291,7 @@ PrioritySlideshow >> gtDatabaseFor: aView [
 		updateWhen: SlideshowMethodUpdated in: self announcer
 ]
 
-{ #category : #views }
+{ #category : #view }
 PrioritySlideshow >> gtDemoNotesFor: aView [
 	<gtView>
 	self hasDemoPragmas ifFalse: [ ^ aView empty ].
@@ -314,7 +341,7 @@ PrioritySlideshow >> gtGitAction: anAction [
 						spawnTool: (GtGitPhlowTool new repository: repository) ] ]
 ]
 
-{ #category : #views }
+{ #category : #view }
 PrioritySlideshow >> gtLiveFor: aView [
 	<gtView>
 	^ aView empty
@@ -325,7 +352,7 @@ PrioritySlideshow >> gtLiveFor: aView [
 		actionUpdateButton"
 ]
 
-{ #category : #views }
+{ #category : #view }
 PrioritySlideshow >> gtLiveSlideshowFor: aView [
 	<gtView>
 	^ aView explicit 
@@ -335,7 +362,7 @@ PrioritySlideshow >> gtLiveSlideshowFor: aView [
 		updateWhen: SlideshowMethodUpdated in: self announcer
 ]
 
-{ #category : #views }
+{ #category : #view }
 PrioritySlideshow >> gtMetricsFor: aView [
 	<gtView>
 	self hasTextPragmas ifFalse: [ ^ aView empty ].
@@ -364,7 +391,7 @@ PrioritySlideshow >> gtPlaySlideshowAction: anAction [
 			button ]
 ]
 
-{ #category : #views }
+{ #category : #view }
 PrioritySlideshow >> gtScriptFor: aView [
 	<gtView>
 	self hasTextPragmas ifFalse: [ ^ aView empty ].
@@ -377,9 +404,8 @@ PrioritySlideshow >> gtScriptFor: aView [
 		updateWhen: SlideshowMethodUpdated in: self announcer
 ]
 
-{ #category : #views }
+{ #category : #view }
 PrioritySlideshow >> gtSlideDeckFor: aView [
-	"Eventually push this method up."
 	<gtView>
 	^ aView forward
 		title: 'Slide deck';
@@ -390,7 +416,7 @@ PrioritySlideshow >> gtSlideDeckFor: aView [
 		updateWhen: SlideshowMethodUpdated in: self announcer
 ]
 
-{ #category : #views }
+{ #category : #view }
 PrioritySlideshow >> gtSlideMethodsListViewFor: aView [
 	<gtView>
 	^ aView columnedList
@@ -408,7 +434,7 @@ PrioritySlideshow >> gtSlideMethodsListViewFor: aView [
 		updateWhen: SlideshowMethodUpdated in: self announcer
 ]
 
-{ #category : #views }
+{ #category : #view }
 PrioritySlideshow >> gtSlidePrioritiesFor: aView [
 	<gtView>
 	^ aView forward
@@ -418,30 +444,6 @@ PrioritySlideshow >> gtSlidePrioritiesFor: aView [
 		view: #gtSourceFor:;
 		actionUpdateButton;
 		updateWhen: SlideshowMethodUpdated in: self announcer
-]
-
-{ #category : #views }
-PrioritySlideshow >> gtSlidesListViewFor: aView [
-	"NB: the send: message wll transform the items to what we see in the next pane"
-
-	"<gtView>"
-	
-	"We don't really need this anymore since the slide methods view also shows the slides."
-	^ aView columnedList
-		priority: 20;
-		title: 'Slides';
-		items: [ self slideDictionary associations ];
-		column: 'Index'
-			text: [ :eachItem :eachIndex | eachIndex asRopedText foreground: Color gray ]
-			width: 45;
-		column: 'Slides'
-			text: [ :each | each value selector ]
-			width: 200;
-		column: 'Text'
-			text: [ :each | self textForSlide: each value selector ]
-			width: 300;
-		send: #key;
-		actionUpdateButton
 ]
 
 { #category : #searching }
@@ -456,7 +458,7 @@ PrioritySlideshow >> gtSpotterForSourceCodeFor: aSearch [
 		wantsToDisplayOnEmptyQuery: true
 ]
 
-{ #category : #views }
+{ #category : #testing }
 PrioritySlideshow >> hasDemoPragmas [
 	^ self class methods
 		detect: [ :m | m hasPragmaNamed: 'demo:' ]
@@ -464,7 +466,7 @@ PrioritySlideshow >> hasDemoPragmas [
 		ifNone: [ false ]
 ]
 
-{ #category : #views }
+{ #category : #testing }
 PrioritySlideshow >> hasTextPragmas [
 	^ self class methods
 		detect: [ :m | m hasPragmaNamed: 'text:' ]
