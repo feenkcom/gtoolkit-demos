@@ -21,7 +21,7 @@ GtTCurrencyMoney >> < aMoney [
 		self currency = aMoney currency and: [ self amount < aMoney amount ] ]
 ]
 
-{ #category : #testing }
+{ #category : #comparison }
 GtTCurrencyMoney >> = aMoney [
 	^ (self isZero and: [ aMoney isZero ]) or: [
 		(aMoney class = GtTCurrencyMoney) and: [ 
@@ -103,6 +103,11 @@ GtTCurrencyMoney >> gtDividingMoney: aMoney [
 	aMoney isZero ifTrue: [ ^ 0 ].
 	self assert: [ aMoney currency = self currency ].
 	^ aMoney amount / self amount
+]
+
+{ #category : #comparison }
+GtTCurrencyMoney >> hash [
+	^ self amount hash bitXor: self currency hash
 ]
 
 { #category : #testing }
