@@ -352,7 +352,7 @@ PrioritySlideshow >> gtHTMLLocalExportActionFor: anAction [
 		label: 'HTML';
 		tooltip: 'Export the slide deck to HTML and store locally';
 		priority: 21;
-		icon: BrGlamorousIcons savetodisk;
+		icon: BrGlamorousIcons spawn;
 		action: [ :aButton | 
 			| output |
 			output := self exportHTML.
