@@ -49,7 +49,7 @@ PrioritySlideshow class >> gtInspectSlideshowActionFor: anAction [
 		icon: BrGlamorousVectorIcons playinspect;
 		action: [ :aButton | 
 			aButton phlow
-				spawnObject: ((self inheritsFrom: PrioritySlideshow)
+				spawnObject: ((self = PrioritySlideshow or: [ self inheritsFrom: PrioritySlideshow ])
 						ifTrue: [ self new ]
 						ifFalse: [ GtPresenterSlideShow create: self new ]) ]
 ]
