@@ -23,6 +23,9 @@ SPLPetitParserSlideshow >> asSmallCode: aString [
 { #category : #slides }
 SPLPetitParserSlideshow >> buildingTheAST: aSlide [
 	<gtSlide>
+<text:
+'# TO DO
+'>
 	^ aSlide lepiterPage
 		setPriority;
 		startPage: (self db pageNamed: 'Building the AST with parser actions')
@@ -58,6 +61,9 @@ SPLPetitParserSlideshow >> buildingTheASTPage [
 { #category : #slides }
 SPLPetitParserSlideshow >> classExtraction: aSlide [
 	<gtSlide>
+<text:
+'# TO DO
+'>
 	^ aSlide lepiterPage
 		setPriority;
 		startPage: (self db pageNamed: 'Extracting a parser class')
@@ -110,6 +116,9 @@ program := exprStmt star end.';
 { #category : #slides }
 SPLPetitParserSlideshow >> coda: aSlide [
 	<gtSlide>
+<text:
+'# TO DO
+'>
 	^ aSlide textAndElement
 		elementWeight: 0.5;
 		setPriority;
@@ -128,6 +137,13 @@ SPLPetitParserSlideshow >> coda: aSlide [
 { #category : #slides }
 SPLPetitParserSlideshow >> debuggingParsers: aSlide [
 	<gtSlide>
+	<text: '## Debugging parsers
+
+Here''s a slightly buggy version of our `print` statement parser that fails with this input.
+
+The result is a PetitParser “Failure” object that shows us the execution trace of the parser at the point where it failed. If we inspect this, we can walk through the tree to see how far it got.
+
+We discover that after recognizing the “print” string, it expects a quotation mark for the start of a string, instead of whitespace. We fix this by adding the missing `trim` to the `print` parser.'>
 	^ aSlide lepiterPage
 		setPriority;
 		startPage: (self db pageNamed: 'Debugging parsers')
@@ -161,6 +177,9 @@ printStmt end parse: ''print "hello";''.';
 { #category : #slides }
 SPLPetitParserSlideshow >> fibonacci: aSlide [
 	<gtSlide>
+<text:
+'# TO DO
+'>
 	^ aSlide lepiterPage
 		setPriority;
 		startPage: (self db pageNamed: 'Fibonacci in SPL')
@@ -187,6 +206,13 @@ SPLPetitParserSlideshow >> fibonacciPage [
 { #category : #slides }
 SPLPetitParserSlideshow >> parsingBooleans: aSlide [
 	<gtSlide>
+	<text: '## Parsing Booleans
+
+To parse a character or a string, we just send it the message `asParser`.
+
+Here we create two parsers, one which will parse the string `''true''`, and the other `''false''`.
+
+We compose them with the *ordered choice* operator, `/`, to parse either `true` or `false`.'>
 	^ aSlide headingAndCode
 		setPriority;
 		heading: 'Parsing Booleans';
@@ -203,6 +229,12 @@ boolean parse: ''true''.'
 { #category : #slides }
 SPLPetitParserSlideshow >> parsingGrammarRules: aSlide [
 	<gtSlide>
+<text:
+'# Parsing grammar rules
+
+Now we have parsing expressions for all the SPL tokens except strings. We can proceed to the actual grammar rules.
+
+The `trim` operator makes it easy to get rid of whitespace following a token. The `end` operator will match the end of input, making sure that everything is parsed.'>
 	^ aSlide headingAndCode
 		setPriority;
 		heading: 'Parsing grammar rules';
@@ -221,6 +253,15 @@ printStmt end parse: ''print "hello";'''
 { #category : #slides }
 SPLPetitParserSlideshow >> parsingIntegersAndFloats: aSlide [
 	<gtSlide>
+	<text: '## Parsing Integers and Floats
+
+PetitParser makes use of numerous operators, or *combinators* to compose parsing expressions.
+
+The `optional` operator creates a new parser that will parser either zero or one token. The `plus` operators will parse ` or more tokens.
+
+The `not` operator does not consume a token, but simply fails if it sees the token, otherwise it succeeds. Here we make sure that an integer will only be recognized if there is no trailing period. If we add a period, the parse will fail.
+
+Parsing floats is similar, but in this case we *do* want the dot to be parsed.'>
 	^ aSlide headingAndCode
 		setPriority;
 		heading: 'Parsing Integers and Floats';
@@ -242,6 +283,10 @@ float parse: ''3.14''.'
 { #category : #slides }
 SPLPetitParserSlideshow >> parsingKeywords: aSlide [
 	<gtSlide>
+<text:
+'## Parsing Keywords and Identifiers
+
+Here we use the `not` combinator to make sure we don''t accidentally recognize the token `and` in identifiers such as `android` or `andy`.'>
 	^ aSlide headingAndCode
 		setPriority;
 		heading: 'Parsing Keywords and Identifiers';
@@ -265,6 +310,11 @@ identifier end parse: ''andy''.'
 { #category : #slides }
 SPLPetitParserSlideshow >> parsingNumbers: aSlide [
 	<gtSlide>
+	<text: '## Parsing Numbers
+
+We can now combine the parsing expressions to recognize numbers as either integers or floats.
+
+Note that the choice operator is strictly ordered. It will *first* attempt to parse an integer, and *only if that fails* will it try to parse a float.'>
 	^ aSlide headingAndCode
 		setPriority;
 		heading: 'Parsing Numbers';
@@ -285,6 +335,13 @@ number parse: ''-3.14''.'
 { #category : #slides }
 SPLPetitParserSlideshow >> parsingTokens: aSlide [
 	<gtSlide>
+	<text: '# Parsing tokens
+
+PetitParser is a *scannerless* parser.
+
+This means we do not have a separate scanner for individual tokens based on regular expressions, but instead we use parsing expressions for tokens as well.
+
+We''ll introduce parsing expressions for all of the SPL tokens, namely Boolens, integers, floats, strings, keywords and identifiers.'>
 	^ aSlide text
 		setPriority;
 		textMargin: 10;
@@ -296,6 +353,11 @@ SPLPetitParserSlideshow >> parsingTokens: aSlide [
 { #category : #slides }
 SPLPetitParserSlideshow >> partialGrammarScript: aSlide [
 	<gtSlide>
+<text:
+'# Prototyping the SPL grammar parser as a script
+
+
+'>
 	^ aSlide lepiterPage
 		setPriority;
 		startPage: (self db pageNamed: 'Prototyping the SPL grammar parser as a script')
@@ -343,6 +405,9 @@ program parse: ''6 * (3 + 4);''.';
 { #category : #slides }
 SPLPetitParserSlideshow >> runningAnSPLProgram: aSlide [
 	<gtSlide>
+<text:
+'# TO DO
+'>
 	^ aSlide lepiterPage
 		setPriority;
 		startPage: (self db pageNamed: 'Running an SPL program')
@@ -372,6 +437,9 @@ SPLPetitParserSlideshow >> runningAnSPLProgramPage [
 { #category : #slides }
 SPLPetitParserSlideshow >> semanticsOfSPL: aSlide [
 	<gtSlide>
+<text:
+'# TO DO
+'>
 	^ aSlide text
 		horizontalWeight: 0.6;
 		textMargin: 5;
@@ -429,6 +497,9 @@ SPLPetitParserSlideshow >> slidePriorities [
 { #category : #slides }
 SPLPetitParserSlideshow >> splExample: aSlide [
 	<gtSlide>
+	<text: '## An SPL example
+
+SPL does not have procedures or objects, but it has loops, however, so it is still Turing-complete.'>
 	^ aSlide text
 		horizontalWeight: 0.75;
 		textMargin: 10;
@@ -439,7 +510,8 @@ SPLPetitParserSlideshow >> splExample: aSlide [
 				, (self asText: ' and ') , (self asCode: 'print')
 				, (self asText: ' statements, but no procedures or classes.');
 		newTextWithFormat: (self
-				asCode: '// Factorial in SPL -- computes the factorial of arg
+				asCode: '// Compute the factorial of arg
+
 var arg=5;
 var x=arg;
 var fact=1;
@@ -454,6 +526,9 @@ print fact;
 { #category : #slides }
 SPLPetitParserSlideshow >> splGrammar: aSlide [
 	<gtSlide>
+	<text: '## SPL Grammar
+
+SPL is a simple, structured programming language with a compact grammar.'>
 	^ aSlide text
 		horizontalWeight: 1;
 		textMargin: 10;
@@ -494,6 +569,9 @@ primary        := "true" | "false" | NUMBER | STRING
 { #category : #slides }
 SPLPetitParserSlideshow >> theASThierarchy: aSlide [
 	<gtSlide>
+<text:
+'# TO DO
+'>
 	^ aSlide lepiterPage
 		setPriority;
 		startPage: (self db pageNamed: 'The SPL AST hierarchy')
@@ -523,6 +601,9 @@ SPLPetitParserSlideshow >> theASThierarchyPage [
 { #category : #slides }
 SPLPetitParserSlideshow >> title: aSlide [
 	<gtSlide>
+	<text: '# Building composable parsers with PetitParser
+
+This slideshow is for the PetitParser lecture of the [compiler construction course](https://seg.inf.unibe.ch/teaching/current/cc/) at UniBE.'>
 	^ aSlide title
 		setPriority;
 		titleBottomPadding: 30;
@@ -533,6 +614,13 @@ SPLPetitParserSlideshow >> title: aSlide [
 { #category : #slides }
 SPLPetitParserSlideshow >> whatIsPP: aSlide [
 	<gtSlide>
+	<text: '# What is PetitParser?
+
+[PetitParser](https://scg.unibe.ch/research/helvetia/petitparser) is a parsing framework that combines several related parsing technologies: scannerless parsers, parser combinators, parsing expression grammars and packrat parsers.
+
+The core idea is that parsers can be composed to form more complex parsers. That makes it convenient to develop and debug parsers.
+
+In this example the `number` parser is composed of a `#digit` parser, and converts the parsed string to a number. The `addition` parser is composed of `number` and `+` parsers and performs the addition.'>
 	^ aSlide headingAndCode
 		setPriority;
 		heading: 'What is PetitParser?';
@@ -549,6 +637,9 @@ addition parse: ''3+4'''
 { #category : #slides }
 SPLPetitParserSlideshow >> writingTests: aSlide [
 	<gtSlide>
+<text:
+'# TO DO
+'>
 	^ aSlide lepiterPage
 		setPriority;
 		startPage: (self db pageNamed: 'Writing parser tests')
