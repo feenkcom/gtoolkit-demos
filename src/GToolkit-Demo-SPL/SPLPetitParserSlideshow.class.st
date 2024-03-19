@@ -61,9 +61,13 @@ SPLPetitParserSlideshow >> buildingTheASTPage [
 { #category : #slides }
 SPLPetitParserSlideshow >> classExtraction: aSlide [
 	<gtSlide>
-<text:
-'# TO DO
-'>
+	<text: '## Extracting a parser class
+
+Once we have a working script, we can apply a refactoring transformation to turn it into a class.
+
+We initialize any recursive parsers, and then create a self-contained script that does not refer to any outside classe sor variables. We can right-click inside the script to `Extract PetitParser class`.
+
+This creates a class in which each parsing expression is defined as a method, and its value is cached as an instance variable.'>
 	^ aSlide lepiterPage
 		setPriority;
 		startPage: (self db pageNamed: 'Extracting a parser class')
@@ -79,7 +83,7 @@ SPLPetitParserSlideshow >> classExtractionPage [
 				string: 'At some point to continue developing the parser, it should be turned into a class, so we can write tests and deploy the parser.';
 				yourself);
 		addSnippet: (LeTextSnippet new
-				string: 'The class can be extracted automatically. First we initailiuze any recursive productions.';
+				string: 'The class can be extracted automatically. First we initialize any recursive productions.';
 				yourself);
 		addSnippet: (LePharoSnippet new
 				code: 'expression := PP2UnresolvedNode new.';
@@ -356,8 +360,13 @@ SPLPetitParserSlideshow >> partialGrammarScript: aSlide [
 <text:
 '# Prototyping the SPL grammar parser as a script
 
+We continue to iteratively prototype the various SPL grammar rules until we have a complete grammar implemented as PetitParser parsing expressions.
 
-'>
+Note that we must take special care with recursive grammar rules, as we cannot use parsers that have not yet been defined.
+
+To break the recursion, the first time we introduce a recursive parser, such as `expression`, we define it as an instance of `PP2UnresolvedNode`. Then, once we have defined the other parsers that it needs for its own definition (and that use it recurseively, we *redefine* it use `def:`.
+
+We can see that `expression` is later redefined as `term`.'>
 	^ aSlide lepiterPage
 		setPriority;
 		startPage: (self db pageNamed: 'Prototyping the SPL grammar parser as a script')
@@ -638,7 +647,7 @@ addition parse: ''3+4'''
 SPLPetitParserSlideshow >> writingTests: aSlide [
 	<gtSlide>
 <text:
-'# TO DO
+'## Writing parser tests
 '>
 	^ aSlide lepiterPage
 		setPriority;
