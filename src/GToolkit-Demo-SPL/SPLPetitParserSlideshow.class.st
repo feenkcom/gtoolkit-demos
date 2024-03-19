@@ -23,9 +23,15 @@ SPLPetitParserSlideshow >> asSmallCode: aString [
 { #category : #slides }
 SPLPetitParserSlideshow >> buildingTheAST: aSlide [
 	<gtSlide>
-<text:
-'# TO DO
-'>
+	<text: '# Building the AST with parser actions
+
+The parser we have created just recognizes SPL programs, but doesn''t perform any actions. Now we''d like to build an abstract syntax tree for the programs that are recognized.
+
+In our very first example we saw that actions can be specified with the `==>` double arrow operator, which points to a block (*i.e.,* an anonymous function) that can transform the parsed data into something useful. We''ll define a *subclass* of our basic grammar parser that decorates each parsing expression with an action. Note that the `SPLParser` `printStmt` method inherits `printStmt` from the superclass and adds the action.
+
+For each grammar rule we''ll create an instance of an `SPLNode` subclass that will store the interesting bits in the instance variables of the AST node. In this case we create an `SPLPrintStatement` node and store the second part that was parse, namely the expression to be printed.
+
+Now when we parse a bit of code with our refined parser expressions we get a proper AST node instead of an array of data.'>
 	^ aSlide lepiterPage
 		setPriority;
 		startPage: (self db pageNamed: 'Building the AST with parser actions')
@@ -47,7 +53,7 @@ SPLPetitParserSlideshow >> buildingTheASTPage [
 				string: 'Actions are specified with the `==>` operation, like this, where we build a {{gtClass:name=SPLPrintStatement}} node for a `print` statement in {{gtMethod:name=SPLParser>>#printStmt|expanded}}';
 				yourself);
 		addSnippet: (LeTextSnippet new
-				string: 'Note that we only want the second part ofthe node that has been parsed by the inherited production, namely the expression.';
+				string: 'Note that we only want the second part of the node that has been parsed by the inherited production, namely the expression.';
 				yourself);
 		addSnippet: (LeTextSnippet new
 				string: 'All the rules look like this.';
@@ -120,22 +126,16 @@ program := exprStmt star end.';
 { #category : #slides }
 SPLPetitParserSlideshow >> coda: aSlide [
 	<gtSlide>
-<text:
-'# TO DO
-'>
+	<text: '# Coda
+
+You can explore the SPL case study for yourself by downloading Glamorous Toolkit from [gtoolkit.com](https://gtoolkit.com) and going to the page “PetitParser SPL case study” in the GT Book.'>
 	^ aSlide textAndElement
 		elementWeight: 0.5;
 		setPriority;
 		newTextWithFormat: (self asHeader: 'Explore on your own ...') bold , self cr
 				, (self
 						asText: 'You can find the details by downloading GT from gtoolkit.com and visiting the “PetitParser SPL case study” page.');
-		element: [ | aLepiterBaseName aPageName database startPage |
-			aLepiterBaseName := 'Glamorous Toolkit Book'.
-			aPageName := 'PetitParser SPL case study'.
-			database := LeDatabasesRegistry default currentLoadedDefaultLogicalDatabase
-					databaseNamed: aLepiterBaseName.
-			startPage := database pageNamed: aPageName.
-			startPage asPreviewElement ]
+		element: [ (LeDatabase gtBook pageNamed: 'PetitParser SPL case study') asPreviewElement ]
 ]
 
 { #category : #slides }
@@ -182,7 +182,15 @@ printStmt end parse: ''print "hello";''.';
 SPLPetitParserSlideshow >> fibonacci: aSlide [
 	<gtSlide>
 <text:
-'# TO DO
+'## Fibonacci in SPL
+
+Here''s a Fibonacci program in SPL.
+
+Since SPL doesn''t have procedures, we cannot define a Fibonacci function, but we can make it into a program. Also SPL programs don''t take arguments, so we have to encode the argument as a variable in the first line.
+
+The algorithm simply keeps track of the last two Fibonacci values, printing out each new value computed, and terminating when we reach the required number of iterations.
+
+Notice how the semantics of the `while` statement has been implemented by *unfolding* the while into an if statement where the “then” part contains one iteration of the body followed by another copy of the while loop.
 '>
 	^ aSlide lepiterPage
 		setPriority;
@@ -414,9 +422,9 @@ program parse: ''6 * (3 + 4);''.';
 { #category : #slides }
 SPLPetitParserSlideshow >> runningAnSPLProgram: aSlide [
 	<gtSlide>
-<text:
-'# TO DO
-'>
+	<text: '## Running an SPL program
+
+To run an SPL program, we create a new context holding the AST of the program as its continuation, and an empty environment and output. If we inspect this object, we can then step through the execution, and also explore the history of all the reductions steps.'>
 	^ aSlide lepiterPage
 		setPriority;
 		startPage: (self db pageNamed: 'Running an SPL program')
@@ -444,11 +452,66 @@ SPLPetitParserSlideshow >> runningAnSPLProgramPage [
 ]
 
 { #category : #slides }
+SPLPetitParserSlideshow >> semanticsOfPrinting: aSlide [
+	<gtSlide>
+	<text: '## The semantics of printing
+
+Every SPL AST node has a `stepInContext:` method that allows it perform one reduction step, and return a new, reduced AST.
+
+Let''s just look at one of these, namely that of the `print` statement. A print statement prints the value of an expression. The reduction step, then, should check if the expressions value is already known, in which case we can just print it. If not, we have to perform a reduction step.
+
+In the first case we return the AST for the reduced expression, which will be discarded in the next step, and in the second case, we return a new print statement AST with the expression redcued by one step. In either case we make some small progress.'>
+	^ aSlide lepiterPage
+		setPriority;
+		startPage: (self db pageNamed: 'The semantics of printing')
+]
+
+{ #category : #slides }
+SPLPetitParserSlideshow >> semanticsOfPrintingPage [
+	<lePage>
+	<gtExample>
+	<noTest>
+	^ (LePage named: 'The semantics of printing')
+	addSnippet: (LeTextSnippet new
+			string: 'A print statement prints the value of an expression.';
+			yourself);
+	addSnippet: (LeTextSnippet new
+			string: 'If the expression has been *reduced* to a value, then we can just print it, and return the AST of the expression.';
+			yourself);
+	addSnippet: (LeTextSnippet new
+			string: 'If not, then we replace the expression by a new one that has been reduced by one step.';
+			yourself);
+	addSnippet: (LeElementSnippet new
+			code: '(SPLPrintStatement>>#stepInContext:) gtSourceFor:  GtPhlowProtoView new';
+			codeVisible: false;
+			elementHeight: 221;
+			codeHeight: 50;
+			yourself);
+	addSnippet: (LeTextSnippet new
+			string: '';
+			yourself);
+	yourself
+]
+
+{ #category : #slides }
 SPLPetitParserSlideshow >> semanticsOfSPL: aSlide [
 	<gtSlide>
-<text:
-'# TO DO
-'>
+	<text: '# SPL Semantics
+
+We don''t just want to parse SPL programs, but we also want to execute them.
+
+This can be done in numerous ways. We could generate bytecode for a virtual machine for an existing language, like Java, or we could directly compile SPL programs to machine code.
+
+Another approach is to *interpret* SPL programs by transforming them, step-by-step, to simpler programs. This approach is called *Structural Operational Semantics*. We''d like to see each step of the execution, so we use what is called “small step” semantics.
+
+SPL programs don''t take any input except what is specified in the source code itself. Programs have variables, so we need to track the bindings of variables to values, and we need to track any output that is produced. That means that the *context* of a running SPL program consists in three parts: 
+(1) the current “continuation”, *i.e.,* the “rest of the program” to be executed,
+(2) the environment of variables and their values, and
+(3) the output so far.
+
+When we start executing, the continuation is the full program, the environment is empty, and so is the output.
+
+When the program ends, the continuation is empty (the empty program), the environment contains the set of all variables and their final values, and the output is the final list of everything that has been printed.'>
 	^ aSlide text
 		horizontalWeight: 0.6;
 		textMargin: 5;
@@ -458,7 +521,8 @@ SPLPetitParserSlideshow >> semanticsOfSPL: aSlide [
 				, (self asText: 'Structural Operational Semantics') italic
 				, (self
 						asText: ' to model the execution of an SPL program as a sequence of steps from one program state to the next.');
-		newTextWithFormat: (self asText: 'Every program state consists of three parts:');
+		newTextWithFormat: (self asText: 'Every program state is a ') , (self asText: 'context') italic
+				, (self asText: ' consisting of three parts:');
 		newTextWithFormat: (self asText: '1.  The rest of the code') bold;
 		newTextWithFormat: (self asText: 'The list of statements left to be executed.');
 		newTextWithFormat: (self asText: '2. The environment') bold;
@@ -495,6 +559,7 @@ SPLPetitParserSlideshow >> slidePriorities [
 			theASThierarchy:
 		
 		semanticsOfSPL:
+			semanticsOfPrinting:
 			runningAnSPLProgram:
 			fibonacci:
 		
@@ -578,9 +643,9 @@ primary        := "true" | "false" | NUMBER | STRING
 { #category : #slides }
 SPLPetitParserSlideshow >> theASThierarchy: aSlide [
 	<gtSlide>
-<text:
-'# TO DO
-'>
+	<text: '## The SPL AST hierarchy
+
+We introduce an AST node class for every different syntactic element of the SPL  grammar. Each leaf node can pretty-print itself, and can also perform an interpretation step.'>
 	^ aSlide lepiterPage
 		setPriority;
 		startPage: (self db pageNamed: 'The SPL AST hierarchy')
@@ -646,9 +711,11 @@ addition parse: ''3+4'''
 { #category : #slides }
 SPLPetitParserSlideshow >> writingTests: aSlide [
 	<gtSlide>
-<text:
-'## Writing parser tests
-'>
+	<text: '## Writing parser tests
+
+We write tests to ensure that each parsing expression and every grammar rule works as expected.
+
+It''s good practice to subclass `PP2CompositeNodeExamples`, a class that offers some utilities for testing parsers. In this example we simply test that a small program source can be parsed by the `program` parser, but not by `declaration` or `statement`.'>
 	^ aSlide lepiterPage
 		setPriority;
 		startPage: (self db pageNamed: 'Writing parser tests')

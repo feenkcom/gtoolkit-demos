@@ -376,7 +376,7 @@ SPLGrammarExamples >> whileProgram [
 	input := self whileProgramSource.
 	self fail: input rule: #declaration.
 	self fail: input rule: #statement.
-	^ self parse: input rule: #program
+	^ self parse: input rule: #expression
 ]
 
 { #category : #example }
