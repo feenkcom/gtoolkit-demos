@@ -21,6 +21,9 @@ SmalltalkIntroSlideshow class >> show [
 { #category : #slides }
 SmalltalkIntroSlideshow >> addingAutoPlay: aSlide [
 	<gtSlide>
+<text: 
+'# TODO
+'>
 	^ aSlide lepiterPage
 		setPriority;
 		startPage: (self db pageNamed: 'Changing a running system')
@@ -260,6 +263,9 @@ bounced ifTrue: [self velocity: vx @ vy].
 { #category : #slides }
 SmalltalkIntroSlideshow >> composingExamples: aSlide [
 	<gtSlide>
+<text: 
+'# TODO
+'>
 	^ aSlide lepiterPage
 		setPriority;
 		startPage: (self db pageNamed: 'Composing (Test) Examples')
@@ -361,6 +367,9 @@ SmalltalkIntroSlideshow >> dbName [
 { #category : #slides }
 SmalltalkIntroSlideshow >> everythingHappensBySendingMessages: aSlide [
 	<gtSlide>
+<text: 
+'# TODO
+'>
 	^ aSlide lepiterPage
 		setPriority;
 		startPage: (self db pageNamed: 'Everything happens by sending messages')
@@ -469,6 +478,9 @@ SmalltalkIntroSlideshow >> everythingHappensBySendingMessagesPage [
 { #category : #slides }
 SmalltalkIntroSlideshow >> everythingIsAnObject: aSlide [
 	<gtSlide>
+<text: 
+'# TODO
+'>
 	^ aSlide lepiterPage
 		setPriority;
 		startPage: (self db pageNamed: 'Everything is an object')
@@ -579,6 +591,9 @@ SmalltalkIntroSlideshow >> everythingIsAnObjectPage [
 { #category : #slides }
 SmalltalkIntroSlideshow >> exploringLudo: aSlide [
 	<gtSlide>
+<text: 
+'# TODO
+'>
 	^ aSlide lepiterPage
 		setPriority;
 		startPage: (self db pageNamed: 'Exploring a live system')
@@ -672,6 +687,11 @@ SmalltalkIntroSlideshow >> findTargetWithText: aText in: expandedMethodElement [
 { #category : #slides }
 SmalltalkIntroSlideshow >> gtWorld: aSlide [
 	<gtSlide>
+	<text: '## Glamorous Toolkit
+
+GT is a moldable development environment, in which the development tools can be easily extended with application-specific behavior. We''ll see examples of this with the Ludo game implementation.
+
+GT is built on top of Pharo, a modern, open-source Smalltalk system.'>
 	^ aSlide textAndElement
 		elementWeight: 0.6;
 		setPriority;
@@ -685,6 +705,14 @@ Gt is built on top of Pharo, a modern, open-source Smalltalk.');
 { #category : #slides }
 SmalltalkIntroSlideshow >> imageChanges: aSlide [
 	<gtSlide>
+<text: 
+'## Smalltalk is a live programming system
+
+There are four parts to a running Smalltalk system.
+(1) The *image* is a snapshot of all the live objects in the system. When you start Smalltalk, all the objects are loaded from the saved snapshot into the live image.
+(2) The *changes* file logs all changes to the source code, namely classes and methods. This means that your source changes cannot be lost, and can be replayed in case of a system crash.
+(3) The *virtual machine* executes the bytecode of compiled methods.
+(4) The *sources* store the source code of the system itself, so you can access, and potentially change anything.'>
 	^ aSlide textAndElement
 		elementWeight: 0.50;
 		setPriority;
@@ -701,6 +729,9 @@ Changes to classes and methods are logged as you program.');
 { #category : #slides }
 SmalltalkIntroSlideshow >> liveDocumentationLogic: aSlide [
 	<gtSlide>
+<text: 
+'# TODO
+'>
 	^ aSlide lepiterPage
 		setPriority;
 		startPage: (self db pageNamed: 'Live documentation of the game logic')
@@ -802,6 +833,9 @@ SmalltalkIntroSlideshow >> liveDocumentationLogicPage [
 { #category : #slides }
 SmalltalkIntroSlideshow >> liveDocumentationUML: aSlide [
 	<gtSlide>
+<text: 
+'# TODO
+'>
 	^ aSlide lepiterPage
 		setPriority;
 		startPage: (self db pageNamed: 'Live documentation of the technical solution')
@@ -852,6 +886,9 @@ SmalltalkIntroSlideshow >> liveDocumentationUMLPage [
 { #category : #slides }
 SmalltalkIntroSlideshow >> ludoAppetizer: aSlide [
 	<gtSlide>
+	<text: '## Appetizer
+
+As an appetizer, here we see an instance of the Ludo game running in GT. We can play the game by clicking on the die and moving the pieces, but how is the game composed of objects? How can we understand how it works?'>
 	^ aSlide textAndElement
 		elementWeight: 0.5;
 		setPriority;
@@ -867,6 +904,9 @@ SmalltalkIntroSlideshow >> methodSyntax: aSlide [
 	"Methods start with a declaration of the message selector and arguments. Temporaries must be declared. Statements are separate by periods. The caret (^) is special syntax for returning a result."
 
 	<gtSlide>
+<text: 
+'# TODO
+'>
 	^ aSlide textAndElement
 		setPriority;
 		newTextWithFormat: (self
@@ -881,6 +921,14 @@ SmalltalkIntroSlideshow >> methodSyntax: aSlide [
 { #category : #slides }
 SmalltalkIntroSlideshow >> outline: aSlide [
 	<gtSlide>
+	<text: '# Outline
+
+• First we''ll have a quick look at what Smalltalk is, and how it differs from other object-oriented programming languages and systems.
+• Next we''ll have a quick look at the basics. Smalltalk is a tiny language, and you can learn the syntax in a few minutes, but it does take a bit of getting used to.
+• Then we''ll proceed with the development of the Ludo game. The key idea is to make the domain concepts visible as we program, so instead of just seeing source code, we see a live system that we can explore.
+• Testing is similar to classical Xunit testing, with the small difference that every test returns an example object.
+• This turns out to be very powerful, not just for building new tests, but also for exploring the system and building live documentation.
+• We''ll wrap up with some take home messages.'>
 	^ aSlide paragraph
 		setPriority;
 		subtitleWithFormat: (self asSubtitle: 'Outline');
@@ -898,6 +946,9 @@ SmalltalkIntroSlideshow >> outline: aSlide [
 { #category : #slides }
 SmalltalkIntroSlideshow >> recordingMoves: aSlide [
 	<gtSlide>
+<text: 
+'# TODO
+'>
 	^ aSlide lepiterPage
 		setPriority;
 		startPage: (self db pageNamed: 'Recording and visualizing token moves')
@@ -1000,23 +1051,27 @@ SmalltalkIntroSlideshow >> slidePriorities [
 	<noTest>
 	^ #( 
 		#title:
-		ludoAppetizer:
+			ludoAppetizer:
 		outline:
+		
 		smalltalk80:
-		gtWorld:
-		imageChanges:
+			gtWorld:
+			imageChanges:
+		
 		twoRules:
-		everythingIsAnObject:
-		everythingHappensBySendingMessages:
-		threeKindsOfMessages:
-		syntax:
-		methodSyntax:
+			everythingIsAnObject:
+			everythingHappensBySendingMessages:
+			threeKindsOfMessages:
+			syntax:
+			methodSyntax:
+	
 		exploringLudo:
 		addingAutoPlay:
 		composingExamples:
 		recordingMoves:
 		liveDocumentationLogic:
 		liveDocumentationUML:
+	
 		takeHome:
 		whatsNext:
 		)
@@ -1024,10 +1079,12 @@ SmalltalkIntroSlideshow >> slidePriorities [
 
 { #category : #slides }
 SmalltalkIntroSlideshow >> smalltalk80: aSlide [
-	"In the late 60s, Alan Kay predicted that in the foreseeable future handheld multimedia computers would become affordable. He called this a “Dynabook”. (The photo shows a mockup, not a real computer.)
-He reasoned that such systems would need to be based on object from the ground up, so he set up a lab at the Xerox Palo Alto Research Center (PARC) to develop such a fully object-oriented system, including both software and hardware. They developed the first graphical workstations with windowing system and mouse."
-
 	<gtSlide>
+	<text: '# Smalltalk''s origins
+
+In the late 60s, Alan Kay predicted that in the foreseeable future handheld multimedia computers would become affordable. He called this a “Dynabook”. (The photo shows a mockup, not a real computer.)
+
+He reasoned that such systems would need to be based on objects from the ground up, so he founded a lab at the Xerox Palo Alto Research Center (PARC) to develop such a fully object-oriented system, including both software and hardware. They developed the first graphical workstations with a windowing system and mouse.'>
 	^ aSlide textAndElement
 		elementWeight: 0.60;
 		setPriority;
@@ -1041,6 +1098,9 @@ He reasoned that such systems would need to be based on object from the ground u
 { #category : #slides }
 SmalltalkIntroSlideshow >> syntax: aSlide [
 	<gtSlide>
+<text: 
+'# TODO
+'>
 	^ aSlide lepiterPage
 		setPriority;
 		startPage: (self db pageNamed: 'Smalltalk Syntax (the funny bits)')
@@ -1177,6 +1237,9 @@ SmalltalkIntroSlideshow >> syntaxPage [
 { #category : #slides }
 SmalltalkIntroSlideshow >> takeHome: aSlide [
 	<gtSlide>
+<text: 
+'# TODO
+'>
 	^ aSlide paragraph
 		setPriority;
 		subtitleWithFormat: (self asSubtitle: 'Take home messages');
@@ -1200,6 +1263,9 @@ SmalltalkIntroSlideshow >> takeHome: aSlide [
 { #category : #slides }
 SmalltalkIntroSlideshow >> threeKindsOfMessages: aSlide [
 	<gtSlide>
+<text: 
+'# TODO
+'>
 	^ aSlide lepiterPage
 		setPriority;
 		startPage: (self db pageNamed: 'Three kinds of messages')
@@ -1319,16 +1385,24 @@ SmalltalkIntroSlideshow >> threeKindsOfMessagesPage [
 { #category : #slides }
 SmalltalkIntroSlideshow >> title: aSlide [
 	<gtSlide>
+	<text: '# A bit of Smalltalk
+
+Smalltalk is a fully object-oriented language and environment in which everything is an object. The system is live, which means that you are always developing a running system. Programming means making small incremental changes, by adding classes or methods to the live system.
+
+Today we''ll see how this impacts the sofware develpment process. As a running example, we''ll take the Ludo game that the students developed in P2, and as a platform, we''ll use GT, the Glamorous Toolkit, a moldable development environment built on top of Pharo Smalltalk.'>
 	^ aSlide title
 		setPriority;
 		titleBottomPadding: 30;
 		titleWithFormat: (self asTitle: 'A bit of Smalltalk');
-		subtitleWithFormat: (self asBigText: '@onierstrasz')
+		subtitleWithFormat: (self asBigText: 'oscar.nierstrasz@feenk.com')
 ]
 
 { #category : #slides }
 SmalltalkIntroSlideshow >> twoRules: aSlide [
 	<gtSlide>
+<text: 
+'# TODO
+'>
 	^ aSlide paragraph
 		setPriority;
 		subtitleWithFormat: (self asSubtitle: 'Two rules');
@@ -1344,6 +1418,9 @@ SmalltalkIntroSlideshow >> twoRules: aSlide [
 { #category : #slides }
 SmalltalkIntroSlideshow >> whatsNext: aSlide [
 	<gtSlide>
+<text: 
+'# TODO
+'>
 	^ aSlide paragraph
 		setPriority;
 		subtitleWithFormat: (self asSubtitle: 'What''s next?');
