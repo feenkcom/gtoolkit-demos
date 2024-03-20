@@ -514,11 +514,52 @@ SmalltalkIntroSlideshow >> everythingHappensBySendingMessagesPage5 [
 ]
 
 { #category : #slides }
+SmalltalkIntroSlideshow >> everythingIsAnObject2: aSlide [
+	<gtSlide>
+<text: 
+'## Everything is an object (2)
+
+Classes are objects too. A class is a global name that starts with an upper case letter, such as `SmallInteger`. We can browse the source code of a class by opening the code bubble, by using the context menu, or using a keyboard shortcut.
+
+We can send messages to classes, such as `SmallInteger maxVal`. What do you suppose will be the result of sending `+ 1` to this maximum value?'>
+	^ aSlide lepiterPage
+		setPriority;
+		startPage: (self db pageNamed: 'Everything is an object (2)')
+]
+
+{ #category : #slides }
+SmalltalkIntroSlideshow >> everythingIsAnObject3: aSlide [
+	<gtSlide>
+<text: 
+'## Everything is an object (3)
+
+A method is also an object. You can retrieve it by sending the message `>>` to the class with the method''s selector as an argument.
+
+If you inspect a method, you can see not just its source code, but also its bytecode and even the abstract syntax tree.'>
+	^ aSlide lepiterPage
+		setPriority;
+		startPage: (self db pageNamed: 'Everything is an object (3)')
+]
+
+{ #category : #slides }
+SmalltalkIntroSlideshow >> everythingIsAnObject4: aSlide [
+	<gtSlide>
+<text: 
+'## Everything is an object (4)
+
+A method is also an object. You can retrieve it by sending the message `>>` to the class with the method''s selector as an argument.
+
+If you inspect a method, you can see not just its source code, but also its bytecode and even the abstract syntax tree.'>
+	^ aSlide lepiterPage
+		setPriority;
+		startPage: (self db pageNamed: 'Everything is an object (4)')
+]
+
+{ #category : #slides }
 SmalltalkIntroSlideshow >> everythingIsAnObject: aSlide [
 	<gtSlide>
 <text: 
-'TODO
-## Everything is an object
+'# Everything is an object
 
 Here we see a Notebook page containing both text and code snippets.
 
@@ -528,14 +569,7 @@ Numbers are objects, not just primitive data types. We see that the number `1` i
 
 Even booleans are objects. `true` is an instance of the class `True`, which is a subclass of `Boolean`.
 
-Blocks, or anonymous functions, are delimited by square brackets. This one takes no arguments, so we can evaluate it by sending it the message `value`.
-
-Classes are objects too. A class is a global name that starts with an upper case letter, such as `SmallInteger`. We can browse the source code of a class by opening the code bubble, by using the context menu, or using a keyboard shortcut.
-
-We can send messages to classes, such as `SmallInteger maxVal`. What do you suppose will be the result of sending `+ 1` to this maximum value?
-
-
-'>
+Blocks, or anonymous functions, are delimited by square brackets. This one takes no arguments, so we can evaluate it by sending it the message `value`.'>
 	^ aSlide lepiterPage
 		setPriority;
 		startPage: (self db pageNamed: 'Everything is an object')
@@ -1144,9 +1178,15 @@ SmalltalkIntroSlideshow >> slidePriorities [
 			imageChanges:
 		
 		twoRules:
-			everythingIsAnObject:
-			everythingHappensBySendingMessages:
-			threeKindsOfMessages:
+		
+		everythingIsAnObject:
+			everythingIsAnObject2:
+			everythingIsAnObject3:
+			everythingIsAnObject4:
+
+		everythingHappensBySendingMessages:
+		
+		threeKindsOfMessages:
 			syntax:
 			methodSyntax:
 	

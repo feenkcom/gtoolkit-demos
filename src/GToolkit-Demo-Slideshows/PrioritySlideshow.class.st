@@ -577,7 +577,7 @@ PrioritySlideshow >> picturesDirectoryPath [
 PrioritySlideshow >> priorityFor: aSlideMethodSelector [
 	^ self slidePriorities
 		indexOf: aSlideMethodSelector
-		ifAbsent: [ self inform: 'Warning: Missing slide priority for ' , aSlideMethodSelector printString, ' in ', self class name, '#>>slidePriorities'.
+		ifAbsent: [ "self inform: 'Warning: Missing slide priority for ' , aSlideMethodSelector printString, ' in ', self class name, '#>>slidePriorities'."
 			self slidePriorities size + 1 ]
 ]
 
@@ -703,14 +703,14 @@ PrioritySlideshow >> slideMethods [
 	missingPriority
 		do: [ :selector | slideMethods addLast: (methodDict at: selector) ].
 
-	missingSlides
+	"missingSlides
 		ifNotEmpty: [ self
 				inform: 'Missing <gtSlide> methods in ' , self class name , ' for: '
 						, (' ' join: missingSlides) ].
 	missingPriority
 		ifNotEmpty: [ self
 				inform: 'Missing slide priorities in ' , self class name , '>>#slidePriorities for: '
-						, (' ' join: missingPriority) ].
+						, (' ' join: missingPriority) ]."
 	^ slideMethods
 ]
 
