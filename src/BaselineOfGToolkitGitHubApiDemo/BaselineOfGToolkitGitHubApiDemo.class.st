@@ -10,7 +10,7 @@ BaselineOfGToolkitGitHubApiDemo >> baseline: spec [
 	spec for: #'common' do: [
 		spec
 			baseline: 'GToolkit4GraphQL' with: [
-				spec repository: 'github://feenkcom/gt4graphql:v0.6.1179/src' ].
+				spec repository: 'github://feenkcom/gt4graphql:v0.6.1180/src' ].
 
 		spec package: 'GToolkit-Demo-GitHubAPI' with: [
 			spec requires: #('GToolkit4GraphQL') ].
