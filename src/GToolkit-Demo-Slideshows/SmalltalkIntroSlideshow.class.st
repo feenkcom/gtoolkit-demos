@@ -479,7 +479,24 @@ SmalltalkIntroSlideshow >> everythingHappensBySendingMessagesPage [
 SmalltalkIntroSlideshow >> everythingIsAnObject: aSlide [
 	<gtSlide>
 <text: 
-'# TODO
+'TODO
+## Everything is an object
+
+Here we see a Notebook page containing both text and code snippets.
+
+We can evaluate and inspect the results of the code snippets.
+
+Numbers are objects, not just primitive data types. We see that the number `1` is an instance of the `SmallInteger` class. Strings are delimited by single quotation marks. If we inspect a string, we see it is made of of characters, such as `$h`. The dollar sign preceeds a printable character.
+
+Even booleans are objects. `true` is an instance of the class `True`, which is a subclass of `Boolean`.
+
+Blocks, or anonymous functions, are delimited by square brackets. This one takes no arguments, so we can evaluate it by sending it the message `value`.
+
+Classes are objects too. A class is a global name that starts with an upper case letter, such as `SmallInteger`. We can browse the source code of a class by opening the code bubble, by using the context menu, or using a keyboard shortcut.
+
+We can send messages to classes, such as `SmallInteger maxVal`. What do you suppose will be the result of sending `+ 1` to this maximum value?
+
+
 '>
 	^ aSlide lepiterPage
 		setPriority;
@@ -1400,9 +1417,13 @@ Today we''ll see how this impacts the sofware develpment process. As a running e
 { #category : #slides }
 SmalltalkIntroSlideshow >> twoRules: aSlide [
 	<gtSlide>
-<text: 
-'# TODO
-'>
+	<text: '# Two rules
+
+To really understand Smalltalk, there are two important rules to remember.
+
+First, pretty much everything in the system is an object. There is no distinction between objects and primitive data types. Also everything in the environment is an object. This means that you can work with the system in a very consistent and uniform way.
+
+Second, everything happens by sending messages to objects. If you want an object to do something, you send it a message. The object then sees whether it has a *method* for handling that message, possibly inherited from a superclass.'>
 	^ aSlide paragraph
 		setPriority;
 		subtitleWithFormat: (self asSubtitle: 'Two rules');
