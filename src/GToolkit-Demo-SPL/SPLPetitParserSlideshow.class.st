@@ -678,11 +678,13 @@ SPLPetitParserSlideshow >> title: aSlide [
 	<text: '# Building composable parsers with PetitParser
 
 This slideshow is for the PetitParser lecture of the [compiler construction course](https://seg.inf.unibe.ch/teaching/current/cc/) at UniBE.'>
-	^ aSlide title
+	^ aSlide titleWithFooter
 		setPriority;
 		titleBottomPadding: 30;
+		subtitleBottomPadding: 40;
 		titleWithFormat: (self asTitle: 'Building composable parsers');
-		subtitleWithFormat: (self asTitle: 'with PetitParser')
+		subtitleWithFormat: (self asTitle: 'with PetitParser');
+		footerWithFormat: (self asBigText: 'oscar.nierstrasz@feenk.com')
 ]
 
 { #category : #slides }
