@@ -49,7 +49,7 @@ PrioritySlideshow class >> gtInspectSlideshowActionFor: anAction [
 		icon: BrGlamorousVectorIcons playinspect;
 		action: [ :aButton | 
 			aButton phlow
-				spawnObject: ((self inheritsFrom: PrioritySlideshow)
+				spawnObject: ((self = PrioritySlideshow or: [ self inheritsFrom: PrioritySlideshow ])
 						ifTrue: [ self new ]
 						ifFalse: [ GtPresenterSlideShow create: self new ]) ]
 ]
@@ -234,6 +234,16 @@ PrioritySlideshow >> demoText [
 ]
 
 { #category : #exporting }
+PrioritySlideshow >> exportHTML [
+	self initHTMLDir.
+	[ [ :job | 
+	job title: 'Generating slide HTML ...'.
+	LeHtmlPageExporter exportPage: self slideDeckPage to: self htmlDir ] asJob run ]
+		fork.
+	^ self htmlDir
+]
+
+{ #category : #exporting }
 PrioritySlideshow >> exportSlide: slideMethod toFile: aFileReference [
 	"NB: BlFileExporter>>#fileName: also  works
 	with a FileReference instread of a String"
@@ -308,18 +318,12 @@ PrioritySlideshow >> gtDemoNotesFor: aView [
 PrioritySlideshow >> gtExportPngAction: anAction [
 	<gtAction>
 	self slides ifEmpty: [ ^ anAction empty ].
-	^ anAction explicit
+	^ anAction button
+		label: ' PNG';
+		tooltip: 'Save PNGs to disk';
 		priority: 20;
-		stencil: [ | button |
-			button := BrButton new
-					id: GtInspectorInspectButtonId;
-					aptitude: BrGlamorousButtonWithIconAptitude;
-					icon: BrGlamorousIcons savetodisk;
-					action: [ :aButton :aModel :anEvent | 
-						aButton phlow spawnObject: 
-							self exportSlidePNGs ];
-					label: 'Save PNGs to disk'.
-			button ]
+		icon: BrGlamorousIcons spawn;
+		action: [ :aButton :aModel :anEvent | aButton phlow spawnObject: self exportSlidePNGs ]
 ]
 
 { #category : #actions }
@@ -339,6 +343,20 @@ PrioritySlideshow >> gtGitAction: anAction [
 								valuable: [ GtGitAddToRepositoryElement new package: self class package ]) ]
 				ifNotNil: [ aButton phlow
 						spawnTool: (GtGitPhlowTool new repository: repository) ] ]
+]
+
+{ #category : #actions }
+PrioritySlideshow >> gtHTMLLocalExportActionFor: anAction [
+	<gtAction>
+	^ anAction button
+		label: 'HTML';
+		tooltip: 'Export the slide deck to HTML and store locally';
+		priority: 21;
+		icon: BrGlamorousIcons spawn;
+		action: [ :aButton | 
+			| output |
+			output := self exportHTML.
+			aButton phlow spawnObject: output ]
 ]
 
 { #category : #view }
@@ -477,6 +495,20 @@ PrioritySlideshow >> hasTextPragmas [
 { #category : #constant }
 PrioritySlideshow >> headerSize [
 	^ 60
+]
+
+{ #category : #exporting }
+PrioritySlideshow >> htmlDir [
+	"Where to save the HTML files."
+
+	^ FileLocator imageDirectory / (self class name , '-HTML')
+]
+
+{ #category : #accessing }
+PrioritySlideshow >> initHTMLDir [
+	^ self htmlDir
+		ensureDeleteAll;
+		ensureCreateDirectory
 ]
 
 { #category : #accessing }
