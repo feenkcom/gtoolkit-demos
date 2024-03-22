@@ -19,119 +19,6 @@ SmalltalkIntroSlideshow class >> show [
 ]
 
 { #category : #slides }
-SmalltalkIntroSlideshow >> addingAutoPlay: aSlide [
-	<gtSlide>
-<text: 
-'# TODO
-'>
-	^ aSlide lepiterPage
-		setPriority;
-		startPage: (self db pageNamed: 'Changing a running system')
-]
-
-{ #category : #page }
-SmalltalkIntroSlideshow >> addingAutoPlayPage [
-	<lePage>
-	<gtExample>
-	<noTest>
-	^ (LePage named: 'Changing a running system')
-		addSnippet: (LeTextSnippet new
-				string: '#Introducing an autoplay feature to a running game';
-				addSnippet: (LeTextSnippet new
-						string: 'Since games may last a long time, an autoplay feature would be useful to exercise the game.';
-						yourself);
-				addSnippet: (LeTextSnippet new
-						string: 'We start by inspecting a live instance.';
-						yourself);
-				addSnippet: (LePharoSnippet new
-						code: 'game := GtLudoGame new';
-						yourself);
-				addSnippet: (LeTextSnippet new
-						string: 'We can interact with it programatically. *(NB: Just evaluate the snippet instead of inspecting the result, to see the effect on the game.)* ';
-						yourself);
-				addSnippet: (LePharoSnippet new
-						code: 'game roll: 6.
-game moveTokenNamed: ''a''';
-						yourself);
-				yourself);
-		addSnippet: (LeTextSnippet new
-				string: '#Automating one move.';
-				addSnippet: (LeTextSnippet new
-						string: 'By exploring the code, we see that the methods {{gtMethod:name=GtLudoGame>>playerToRoll}} and {{gtMethod:name=GtLudoGame>>playerToMove}} tell us what should happen next.';
-						yourself);
-				addSnippet: (LeTextSnippet new
-						string: 'Also {{gtMethod:name=GtLudoGame>>tokensToMove}} computes the set of tokens that can possibly move next. ';
-						yourself);
-				addSnippet: (LeTextSnippet new
-						string: 'We roll the die or move as required: *(again, just evaluate the snippets)* ';
-						yourself);
-				addSnippet: (LePharoSnippet new
-						code: 'game playerToRoll ifTrue: [ game die roll ]';
-						yourself);
-				addSnippet: (LePharoSnippet new
-						code: 'game playerToMove ifTrue: [ game moveTokenNamed: game tokensToMove atRandom name ]';
-						yourself);
-				addSnippet: (LeTextSnippet new
-						string: 'Let''s combine them. We can just repeatedly perform this snippet to play the game.';
-						yourself);
-				addSnippet: (LePharoSnippet new
-						code: 'game playerToRoll ifTrue: [ game die roll ].
-game playerToMove ifTrue: [ 
-	game moveTokenNamed: game tokensToMove atRandom name ]';
-						yourself);
-				yourself);
-		addSnippet: (LeTextSnippet new
-				string: '#Introducing an autoPlay:method';
-				addSnippet: (LeTextSnippet new
-						string: 'Let''s turn this into a method that repeatedly plays a number of moves.';
-						yourself);
-				addSnippet: (LeTextSnippet new
-						string: 'Normally we would program this directly in the Coder (i.e., use the + button to add a method), but we can also do it programmatically.';
-						yourself);
-				addSnippet: (LePharoSnippet new
-						code: 'GtLudoGame compile: ''autoPlay: numberOfMoves
-	(1 to: numberOfMoves) do: [ :n | 
-		self playerToRoll ifTrue: [ self die roll ].
-		self playerToMove ifTrue: [ 
-			self moveTokenNamed: self tokensToMove atRandom name ] ]''';
-						yourself);
-				addSnippet: (LeTextSnippet new
-						string: 'Now we can use it to play. Inspect this, and then evaluate the autoplay snippet:';
-						yourself);
-				addSnippet: (LePharoSnippet new
-						code: 'game := GtLudoGame new';
-						yourself);
-				addSnippet: (LePharoSnippet new
-						code: 'game autoPlay: 1000';
-						yourself);
-				addSnippet: (LeTextSnippet new
-						string: 'Note that we get an exception at the end, as we try to continue to play after the game is over.';
-						yourself);
-				addSnippet: (LeTextSnippet new
-						string: 'We can fix the autoPlay: method to immediately return if the game is over.';
-						yourself);
-				addSnippet: (LeTextSnippet new
-						string: '(We add `self isOver ifTrue: [ ^ self ].` at the start of the loop.)';
-						yourself);
-				addSnippet: (LePharoSnippet new
-						code: 'GtLudoGame compile: ''autoPlay: numberOfMoves
-	(1 to: numberOfMoves) do: [ :n | 
-		self isOver ifTrue: [ ^ self ].
-		self playerToRoll ifTrue: [ self die roll ].
-		self playerToMove ifTrue: [ 
-			self moveTokenNamed: self tokensToMove atRandom name ] ]''';
-						yourself);
-				addSnippet: (LeTextSnippet new
-						string: 'Now we can safely play without an exception.';
-						yourself);
-				yourself);
-		addSnippet: (LeTextSnippet new
-				string: '';
-				yourself);
-		yourself
-]
-
-{ #category : #slides }
 SmalltalkIntroSlideshow >> bouncingAtoms: aSlide [
 	"<gtSlide>"
 
@@ -261,6 +148,119 @@ bounced ifTrue: [self velocity: vx @ vy].
 ]
 
 { #category : #slides }
+SmalltalkIntroSlideshow >> changingARunningSystem: aSlide [
+	<gtSlide>
+<text: 
+'# TODO
+'>
+	^ aSlide lepiterPage
+		setPriority;
+		startPage: (self db pageNamed: 'Changing a running system')
+]
+
+{ #category : #page }
+SmalltalkIntroSlideshow >> changingARunningSystemPage [
+	<lePage>
+	<gtExample>
+	<noTest>
+	^ (LePage named: 'Changing a running system')
+		addSnippet: (LeTextSnippet new
+				string: '#Introducing an autoplay feature to a running game';
+				addSnippet: (LeTextSnippet new
+						string: 'Since games may last a long time, an autoplay feature would be useful to exercise the game.';
+						yourself);
+				addSnippet: (LeTextSnippet new
+						string: 'We start by inspecting a live instance.';
+						yourself);
+				addSnippet: (LePharoSnippet new
+						code: 'game := GtLudoGame new';
+						yourself);
+				addSnippet: (LeTextSnippet new
+						string: 'We can interact with it programatically. *(NB: Just evaluate the snippet instead of inspecting the result, to see the effect on the game.)* ';
+						yourself);
+				addSnippet: (LePharoSnippet new
+						code: 'game roll: 6.
+game moveTokenNamed: ''a''';
+						yourself);
+				yourself);
+		addSnippet: (LeTextSnippet new
+				string: '#Automating one move.';
+				addSnippet: (LeTextSnippet new
+						string: 'By exploring the code, we see that the methods {{gtMethod:name=GtLudoGame>>playerToRoll}} and {{gtMethod:name=GtLudoGame>>playerToMove}} tell us what should happen next.';
+						yourself);
+				addSnippet: (LeTextSnippet new
+						string: 'Also {{gtMethod:name=GtLudoGame>>tokensToMove}} computes the set of tokens that can possibly move next. ';
+						yourself);
+				addSnippet: (LeTextSnippet new
+						string: 'We roll the die or move as required: *(again, just evaluate the snippets)* ';
+						yourself);
+				addSnippet: (LePharoSnippet new
+						code: 'game playerToRoll ifTrue: [ game die roll ]';
+						yourself);
+				addSnippet: (LePharoSnippet new
+						code: 'game playerToMove ifTrue: [ game moveTokenNamed: game tokensToMove atRandom name ]';
+						yourself);
+				addSnippet: (LeTextSnippet new
+						string: 'Let''s combine them. We can just repeatedly perform this snippet to play the game.';
+						yourself);
+				addSnippet: (LePharoSnippet new
+						code: 'game playerToRoll ifTrue: [ game die roll ].
+game playerToMove ifTrue: [ 
+	game moveTokenNamed: game tokensToMove atRandom name ]';
+						yourself);
+				yourself);
+		addSnippet: (LeTextSnippet new
+				string: '#Introducing an autoPlay:method';
+				addSnippet: (LeTextSnippet new
+						string: 'Let''s turn this into a method that repeatedly plays a number of moves.';
+						yourself);
+				addSnippet: (LeTextSnippet new
+						string: 'Normally we would program this directly in the Coder (i.e., use the + button to add a method), but we can also do it programmatically.';
+						yourself);
+				addSnippet: (LePharoSnippet new
+						code: 'GtLudoGame compile: ''autoPlay: numberOfMoves
+	(1 to: numberOfMoves) do: [ :n | 
+		self playerToRoll ifTrue: [ self die roll ].
+		self playerToMove ifTrue: [ 
+			self moveTokenNamed: self tokensToMove atRandom name ] ]''';
+						yourself);
+				addSnippet: (LeTextSnippet new
+						string: 'Now we can use it to play. Inspect this, and then evaluate the autoplay snippet:';
+						yourself);
+				addSnippet: (LePharoSnippet new
+						code: 'game := GtLudoGame new';
+						yourself);
+				addSnippet: (LePharoSnippet new
+						code: 'game autoPlay: 1000';
+						yourself);
+				addSnippet: (LeTextSnippet new
+						string: 'Note that we get an exception at the end, as we try to continue to play after the game is over.';
+						yourself);
+				addSnippet: (LeTextSnippet new
+						string: 'We can fix the autoPlay: method to immediately return if the game is over.';
+						yourself);
+				addSnippet: (LeTextSnippet new
+						string: '(We add `self isOver ifTrue: [ ^ self ].` at the start of the loop.)';
+						yourself);
+				addSnippet: (LePharoSnippet new
+						code: 'GtLudoGame compile: ''autoPlay: numberOfMoves
+	(1 to: numberOfMoves) do: [ :n | 
+		self isOver ifTrue: [ ^ self ].
+		self playerToRoll ifTrue: [ self die roll ].
+		self playerToMove ifTrue: [ 
+			self moveTokenNamed: self tokensToMove atRandom name ] ]''';
+						yourself);
+				addSnippet: (LeTextSnippet new
+						string: 'Now we can safely play without an exception.';
+						yourself);
+				yourself);
+		addSnippet: (LeTextSnippet new
+				string: '';
+				yourself);
+		yourself
+]
+
+{ #category : #slides }
 SmalltalkIntroSlideshow >> composingExamples: aSlide [
 	<gtSlide>
 <text: 
@@ -362,6 +362,50 @@ SmalltalkIntroSlideshow >> database [
 SmalltalkIntroSlideshow >> dbName [
 	self deprecated: 'Don''t use this database anymore'.
 	^ 'feenkcom/gtoolkit-demos/lepiter'
+]
+
+{ #category : #slides }
+SmalltalkIntroSlideshow >> everythingHappensBySendingMessages2: aSlide [
+	<gtSlide>
+<text: 
+'# TODO
+'>
+	^ aSlide lepiterPage
+		setPriority;
+		startPage: (self db pageNamed: 'Everything happens by sending messages (2)')
+]
+
+{ #category : #slides }
+SmalltalkIntroSlideshow >> everythingHappensBySendingMessages3: aSlide [
+	<gtSlide>
+<text: 
+'# TODO
+'>
+	^ aSlide lepiterPage
+		setPriority;
+		startPage: (self db pageNamed: 'Everything happens by sending messages (3)')
+]
+
+{ #category : #slides }
+SmalltalkIntroSlideshow >> everythingHappensBySendingMessages4: aSlide [
+	<gtSlide>
+<text: 
+'# TODO
+'>
+	^ aSlide lepiterPage
+		setPriority;
+		startPage: (self db pageNamed: 'Everything happens by sending messages (4)')
+]
+
+{ #category : #slides }
+SmalltalkIntroSlideshow >> everythingHappensBySendingMessages5: aSlide [
+	<gtSlide>
+<text: 
+'# TODO
+'>
+	^ aSlide lepiterPage
+		setPriority;
+		startPage: (self db pageNamed: 'Everything happens by sending messages (5)')
 ]
 
 { #category : #slides }
@@ -708,7 +752,7 @@ SmalltalkIntroSlideshow >> everythingIsAnObjectPage4 [
 ]
 
 { #category : #slides }
-SmalltalkIntroSlideshow >> exploringLudo: aSlide [
+SmalltalkIntroSlideshow >> exploringALiveSystem: aSlide [
 	<gtSlide>
 <text: 
 '# TODO
@@ -719,7 +763,7 @@ SmalltalkIntroSlideshow >> exploringLudo: aSlide [
 ]
 
 { #category : #page }
-SmalltalkIntroSlideshow >> exploringLudoPage [
+SmalltalkIntroSlideshow >> exploringALiveSystemPage [
 	<lePage>
 	<gtExample>
 	<noTest>
@@ -1185,13 +1229,28 @@ SmalltalkIntroSlideshow >> slidePriorities [
 			everythingIsAnObject4:
 
 		everythingHappensBySendingMessages:
+			everythingHappensBySendingMessages2:
+			everythingHappensBySendingMessages3:
+			everythingHappensBySendingMessages4:
+			everythingHappensBySendingMessages5:
 		
 		threeKindsOfMessages:
-			syntax:
-			methodSyntax:
+			threeKindsOfMessages2:
+			threeKindsOfMessages3:
+			threeKindsOfMessages4:
+		
+		syntax:
+			syntax2:
+			syntax3:
+			syntax4:
+			syntax5:
+			syntax6:
+		
+		methodSyntax:
 	
-		exploringLudo:
-		addingAutoPlay:
+		#exploringALiveSystem:
+		#changingARunningSystem:
+		
 		composingExamples:
 		recordingMoves:
 		liveDocumentationLogic:
@@ -1218,6 +1277,61 @@ He reasoned that such systems would need to be based on objects from the ground 
 		element: [ GtFilePictureLiveSlide new
 				fileReference: (GtResourcesUtility
 						resourceAtPath: self picturesDirectoryPath / 'smalltalk-80.png') ]
+]
+
+{ #category : #slides }
+SmalltalkIntroSlideshow >> syntax2: aSlide [
+	<gtSlide>
+<text: 
+'# TODO
+'>
+	^ aSlide lepiterPage
+		setPriority;
+		startPage: (self db pageNamed: 'Smalltalk Syntax (2)')
+]
+
+{ #category : #slides }
+SmalltalkIntroSlideshow >> syntax3: aSlide [
+	<gtSlide>
+<text: 
+'# TODO
+'>
+	^ aSlide lepiterPage
+		setPriority;
+		startPage: (self db pageNamed: 'Smalltalk Syntax (3)')
+]
+
+{ #category : #slides }
+SmalltalkIntroSlideshow >> syntax4: aSlide [
+	<gtSlide>
+<text: 
+'# TODO
+'>
+	^ aSlide lepiterPage
+		setPriority;
+		startPage: (self db pageNamed: 'Smalltalk Syntax (4)')
+]
+
+{ #category : #slides }
+SmalltalkIntroSlideshow >> syntax5: aSlide [
+	<gtSlide>
+<text: 
+'# TODO
+'>
+	^ aSlide lepiterPage
+		setPriority;
+		startPage: (self db pageNamed: 'Smalltalk Syntax (5)')
+]
+
+{ #category : #slides }
+SmalltalkIntroSlideshow >> syntax6: aSlide [
+	<gtSlide>
+<text: 
+'# TODO
+'>
+	^ aSlide lepiterPage
+		setPriority;
+		startPage: (self db pageNamed: 'Smalltalk Syntax (6)')
 ]
 
 { #category : #slides }
@@ -1425,6 +1539,39 @@ SmalltalkIntroSlideshow >> takeHome: aSlide [
 				, (self
 						asText: ' brings together coding and exploration of live systems 
 ')
+]
+
+{ #category : #slides }
+SmalltalkIntroSlideshow >> threeKindsOfMessages2: aSlide [
+	<gtSlide>
+<text: 
+'# TODO
+'>
+	^ aSlide lepiterPage
+		setPriority;
+		startPage: (self db pageNamed: 'Three kinds of messages (2)')
+]
+
+{ #category : #slides }
+SmalltalkIntroSlideshow >> threeKindsOfMessages3: aSlide [
+	<gtSlide>
+<text: 
+'# TODO
+'>
+	^ aSlide lepiterPage
+		setPriority;
+		startPage: (self db pageNamed: 'Three kinds of messages (3)')
+]
+
+{ #category : #slides }
+SmalltalkIntroSlideshow >> threeKindsOfMessages4: aSlide [
+	<gtSlide>
+<text: 
+'# TODO
+'>
+	^ aSlide lepiterPage
+		setPriority;
+		startPage: (self db pageNamed: 'Three kinds of messages (4)')
 ]
 
 { #category : #slides }
