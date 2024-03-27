@@ -834,21 +834,19 @@ Ludo as a running example of a live system');
 
 { #category : #slides }
 SmalltalkIntroSlideshow >> methodSyntax: aSlide [
-	"Methods start with a declaration of the message selector and arguments. Temporaries must be declared. Statements are separate by periods. The caret (^) is special syntax for returning a result."
-
 	<gtSlide>
-<text: 
-'# TODO
-'>
-	^ aSlide textAndElement
+	<text: '# Method syntax
+
+Note the special syntax for variable declarations (|...|), statement separators (period) and returns (^).
+
+Methods start with a declaration of the message selector and arguments.
+Temporaries must be declared. Statements are separated by periods. 
+
+The caret (^) is special syntax for returning a result.'>
+	^ aSlide labelAndElement
 		setPriority;
-		newTextWithFormat: (self
-				asHeader: 'Method syntax
-')
-				, (self
-						asText: 'Note the special syntax for variable declarations (|...|), statement separators (period) and returns (^).');
-		element: [ GtPharoSyntaxExplainer new forMethod: GtLudoGame >> #computeTargetFor: ];
-		elementWeight: 0.6
+		newFadedText: 'Method Syntax';
+		element: [ GtPharoSyntaxExplainer new forMethod: GtLudoGame >> #computeTargetFor: ]
 ]
 
 { #category : #slides }
