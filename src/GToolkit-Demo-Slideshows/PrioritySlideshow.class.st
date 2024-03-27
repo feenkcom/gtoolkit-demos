@@ -768,8 +768,7 @@ PrioritySlideshow >> summaryElementFor: slideSelectors [
 			collect: [ :selector | 
 				| method slide |
 				method := self class methodNamed: selector.
-				slide := ((method asSlideIn: self) asScalableSlideWithBorderIn: self)
-						asElement
+				slide := (method asSlideIn: self) asScalableSlideWithBorder asElement
 						margin: (BlInsets all: 10);
 						yourself ].
 	container := BlElement new
