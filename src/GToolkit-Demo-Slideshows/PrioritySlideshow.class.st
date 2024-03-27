@@ -249,8 +249,9 @@ PrioritySlideshow >> exportSlide: slideMethod toFile: aFileReference [
 	with a FileReference instread of a String"
 
 	| element |
-	element := (BlScripter new element: slideMethod asScalableSlide asElement)
-			element size: self slideDimensions.
+	element := (BlScripter new
+			element: (slideMethod asScalableSlideIn: self) asElement) element
+			size: self slideDimensions.
 	BlExporter png
 		element: element;
 		fileName: aFileReference;
@@ -317,7 +318,7 @@ PrioritySlideshow >> gtDemoNotesFor: aView [
 { #category : #actions }
 PrioritySlideshow >> gtExportPngAction: anAction [
 	<gtAction>
-	self slides ifEmpty: [ ^ anAction empty ].
+	self slideMethods ifEmpty: [ ^ anAction empty ].
 	^ anAction button
 		label: ' PNG';
 		tooltip: 'Save PNGs to disk';
@@ -348,6 +349,7 @@ PrioritySlideshow >> gtGitAction: anAction [
 { #category : #actions }
 PrioritySlideshow >> gtHTMLLocalExportActionFor: anAction [
 	<gtAction>
+	self slideMethods ifEmpty: [ ^ anAction empty ].
 	^ anAction button
 		label: 'HTML';
 		tooltip: 'Export the slide deck to HTML and store locally';
@@ -584,7 +586,8 @@ PrioritySlideshow >> priorityFor: aSlideMethodSelector [
 { #category : #utility }
 PrioritySlideshow >> scalableSlide: aSlide [
 	"No longer needed?"
-	^ aSlide asScalableSlide
+
+	^ aSlide asScalableSlideIn: self
 ]
 
 { #category : #utility }
@@ -654,7 +657,8 @@ PrioritySlideshow >> slideDictionary [
 
 	| methods |
 	methods := self slideMethods select: [ :each | each isCompiledMethod ].
-	^ (methods collect: [ :each | each asSlide -> each ]) asOrderedDictionary
+	^ (methods collect: [ :each | (each asSlideIn: self) -> each ])
+		asOrderedDictionary
 ]
 
 { #category : #accessing }
@@ -678,7 +682,7 @@ PrioritySlideshow >> slideDir [
 PrioritySlideshow >> slideFor: selector [
 	"Used in PrioritySlideshow>>#slideDeckPage to embed slides in a Lepiter page."
 
-	^ (self class >> selector) asScalableSlideWithBorder
+	^ self class >> selector asScalableSlideWithBorderIn: self
 ]
 
 { #category : #accessing }
@@ -764,7 +768,7 @@ PrioritySlideshow >> summaryElementFor: slideSelectors [
 			collect: [ :selector | 
 				| method slide |
 				method := self class methodNamed: selector.
-				slide := method asSlide asScalableSlideWithBorder asElement
+				slide := (method asSlideIn: self) asScalableSlideWithBorder asElement
 						margin: (BlInsets all: 10);
 						yourself ].
 	container := BlElement new

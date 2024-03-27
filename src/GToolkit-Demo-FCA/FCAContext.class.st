@@ -299,7 +299,8 @@ FCAContext >> latticeFor: aMondrian [
 		from: #key
 		to: #value.
 	"aMondrian layout tree."
-	aMondrian layout dominanceTree.
+	"aMondrian layout dominanceTree."
+	aMondrian layout sugiyama.
 	^ aMondrian
 ]
 

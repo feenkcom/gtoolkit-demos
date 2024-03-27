@@ -261,6 +261,35 @@ game playerToMove ifTrue: [
 ]
 
 { #category : #slides }
+SmalltalkIntroSlideshow >> classesAreObjects: aSlide [
+	<gtSlide>
+<text: 
+'## Classes are objects
+
+Classes are objects too. A class is a global name that starts with an upper case letter, such as `SmallInteger`. We can browse the source code of a class by opening the code bubble, by using the context menu, or using a keyboard shortcut.
+
+We can send messages to classes, such as `SmallInteger maxVal`. What do you suppose will be the result of sending `+ 1` to this maximum value?'>
+	^ aSlide lepiterPage
+		setPriority;
+		startPage: (self db pageNamed: 'Classes are objects')
+]
+
+{ #category : #page }
+SmalltalkIntroSlideshow >> classesAreObjectsPage [
+	<lePage>
+	<gtExample>
+	<noTest>
+	^ (LePage named: 'Classes are objects')
+	addSnippet: (LeTextSnippet new
+			string: 'We can send messages to classes:';
+			yourself);
+	addSnippet: (LePharoSnippet new
+			code: 'SmallInteger maxVal';
+			yourself);
+	yourself
+]
+
+{ #category : #slides }
 SmalltalkIntroSlideshow >> composingExamples: aSlide [
 	<gtSlide>
 <text: 
@@ -349,6 +378,46 @@ SmalltalkIntroSlideshow >> composingExamplesPage [
 		yourself
 ]
 
+{ #category : #slides }
+SmalltalkIntroSlideshow >> computationsAreMessageSends: aSlide [
+	<gtSlide>
+<text: 
+'## All computations are message sends
+
+There are no built-in operators. These are all just message sends:
+
+Sending `/` to a number will invoke a factory method to create an instance of {{gtClass:name=Fraction}}. 
+
+As in other OO languages, `=` tests object equality while `==` tests for identity. (If a class does not implement a method for `=`, then by default they are the same.)
+
+You can evaluate a block by sending it a `value` message.
+'>
+	^ aSlide lepiterPage
+		setPriority;
+		startPage: (self db pageNamed: 'All computations are message sends')
+]
+
+{ #category : #page }
+SmalltalkIntroSlideshow >> computationsAreMessageSendsPage [
+	<lePage>
+	<gtExample>
+	<noTest>
+	^ (LePage named: 'All computations are message sends')
+	addSnippet: (LeTextSnippet new
+			string: 'Arithmetic operations, comparisons, and evaluating blocks are just message sends.';
+			yourself);
+	addSnippet: (LePharoSnippet new
+			code: '3 / 4';
+			yourself);
+	addSnippet: (LePharoSnippet new
+			code: '(3 = 4) not';
+			yourself);
+	addSnippet: (LePharoSnippet new
+			code: '[ 3 +  4 ] value ';
+			yourself);
+	yourself
+]
+
 { #category : #page }
 SmalltalkIntroSlideshow >> database [
 	"All the pages"
@@ -365,55 +434,17 @@ SmalltalkIntroSlideshow >> dbName [
 ]
 
 { #category : #slides }
-SmalltalkIntroSlideshow >> everythingHappensBySendingMessages2: aSlide [
-	<gtSlide>
-<text: 
-'# TODO
-'>
-	^ aSlide lepiterPage
-		setPriority;
-		startPage: (self db pageNamed: 'Everything happens by sending messages (2)')
-]
-
-{ #category : #slides }
-SmalltalkIntroSlideshow >> everythingHappensBySendingMessages3: aSlide [
-	<gtSlide>
-<text: 
-'# TODO
-'>
-	^ aSlide lepiterPage
-		setPriority;
-		startPage: (self db pageNamed: 'Everything happens by sending messages (3)')
-]
-
-{ #category : #slides }
-SmalltalkIntroSlideshow >> everythingHappensBySendingMessages4: aSlide [
-	<gtSlide>
-<text: 
-'# TODO
-'>
-	^ aSlide lepiterPage
-		setPriority;
-		startPage: (self db pageNamed: 'Everything happens by sending messages (4)')
-]
-
-{ #category : #slides }
-SmalltalkIntroSlideshow >> everythingHappensBySendingMessages5: aSlide [
-	<gtSlide>
-<text: 
-'# TODO
-'>
-	^ aSlide lepiterPage
-		setPriority;
-		startPage: (self db pageNamed: 'Everything happens by sending messages (5)')
-]
-
-{ #category : #slides }
 SmalltalkIntroSlideshow >> everythingHappensBySendingMessages: aSlide [
 	<gtSlide>
 <text: 
-'# TODO
-'>
+'# Everything happens by sending messages
+
+Smalltalk introduced the metaphor of “methods” — you do not “invoke a method” (which makes no sense linguistically), but rather you *“send a message to an object”*, and it determines whether it *“understands the message”* and has a “method” for responding to it.
+
+The expression `3+4` is a *message* “`+4`” with the *selector* “`+`” and argument `4` sent to the *receiver* `3`:
+
+The receiver `3` has a *method* (a chunk of code) to compute the result.'>
+
 	^ aSlide lepiterPage
 		setPriority;
 		startPage: (self db pageNamed: 'Everything happens by sending messages')
@@ -426,194 +457,26 @@ SmalltalkIntroSlideshow >> everythingHappensBySendingMessagesPage [
 	<noTest>
 	^ (LePage named: 'Everything happens by sending messages')
 	addSnippet: (LeTextSnippet new
-			string: 'Smalltalk introduced the metaphor of “methods” — you do not “invoke a method” (which makes no sense linguistically), but rather you *“send a message to an object”*, and it determines whether it *“understands the message”* and has a “method” for responding to it.';
+			string: 'A *message* is a request for a service. ';
 			yourself);
 	addSnippet: (LeTextSnippet new
-			string: '#A message is a request for a service. ';
+			string: 'A *method* is code to fulfil that request.';
 			yourself);
-	addSnippet: (LeTextSnippet new
-			string: '#A “method” is code to fulfil that request.';
-			addSnippet: (LeTextSnippet new
-					string: 'The expression `3+4` is a *message* “`+4`” with the *selector* “`+`” and argument `4` sent to the *receiver* `3`:';
-					yourself);
-			addSnippet: (LePharoSnippet new
-					code: '3 + 4';
-					yourself);
-			addSnippet: (LeTextSnippet new
-					string: 'The receiver `3` has a *method* (a chunk of code) to compute the result.';
-					yourself);
+	addSnippet: (LePharoSnippet new
+			code: '3 + 4';
 			yourself);
 	yourself
-]
-
-{ #category : #page }
-SmalltalkIntroSlideshow >> everythingHappensBySendingMessagesPage2 [
-	<lePage>
-	<gtExample>
-	<noTest>
-	^ (LePage named: 'Everything happens by sending messages (2)')
-	addSnippet: (LeTextSnippet new
-			string: '#All computations are message sends';
-			addSnippet: (LeTextSnippet new
-					string: 'There are no built-in operators. These are all just message sends:';
-					yourself);
-			addSnippet: (LeTextSnippet new
-					string: 'Sending `/` to a number will invoke a factory method to create an instance of {{gtClass:name=Fraction}}. ';
-					yourself);
-			addSnippet: (LePharoSnippet new
-					code: '3 / 4';
-					yourself);
-			addSnippet: (LeTextSnippet new
-					string: 'As in other OO languages, `=` tests object equality while `==` tests for identity. (If a class does not implement a method for `=`, then by default they are the same.)';
-					yourself);
-			addSnippet: (LePharoSnippet new
-					code: '(3 = 4) not';
-					yourself);
-			addSnippet: (LeTextSnippet new
-					string: 'You can evaluate a block by sending it a `value` message.';
-					yourself);
-			addSnippet: (LePharoSnippet new
-					code: '[ 3 +  4 ] value ';
-					yourself);
-			yourself);
-	yourself
-]
-
-{ #category : #page }
-SmalltalkIntroSlideshow >> everythingHappensBySendingMessagesPage3 [
-	<lePage>
-	<gtExample>
-	<noTest>
-	^ (LePage named: 'Everything happens by sending messages (3)')
-	addSnippet: (LeTextSnippet new
-			string: '#Objects are created by sending messages to classes';
-			addSnippet: (LePharoSnippet new
-					code: 'OrderedCollection new ';
-					yourself);
-			addSnippet: (LePharoSnippet new
-					code: 'Fraction numerator: 3 denominator: 4';
-					yourself);
-			addSnippet: (LePharoSnippet new
-					code: 'Set with: 3 with: 4';
-					yourself);
-			yourself);
-	yourself
-]
-
-{ #category : #page }
-SmalltalkIntroSlideshow >> everythingHappensBySendingMessagesPage4 [
-	<lePage>
-	<gtExample>
-	<noTest>
-	^ (LePage named: 'Everything happens by sending messages (4)')
-	addSnippet: (LeTextSnippet new
-			string: '#Changes to the system are message sends';
-			addSnippet: (LeTextSnippet new
-					string: '... although it is more convenient to use the dedicated tools.';
-					yourself);
-			addSnippet: (LeTextSnippet new
-					string: 'You create a class by sending a message to its superclass:';
-					yourself);
-			addSnippet: (LePharoSnippet new
-					code: 'Object subclass: #MyClass';
-					yourself);
-			addSnippet: (LeTextSnippet new
-					string: 'You can ask a class to compile a method:';
-					yourself);
-			addSnippet: (LePharoSnippet new
-					code: 'MyClass compile: ''foo ^ 42''';
-					yourself);
-			addSnippet: (LePharoSnippet new
-					code: 'MyClass new foo ';
-					yourself);
-			addSnippet: (LeTextSnippet new
-					string: 'We can remove the class by asking the `Smalltalk` object to do it:';
-					yourself);
-			addSnippet: (LePharoSnippet new
-					code: 'Smalltalk removeClassNamed: ''MyClass''';
-					yourself);
-			yourself);
-	yourself
-]
-
-{ #category : #page }
-SmalltalkIntroSlideshow >> everythingHappensBySendingMessagesPage5 [
-	<lePage>
-	<gtExample>
-	<noTest>
-	^ (LePage named: 'Everything happens by sending messages (5)')
-	addSnippet: (LeTextSnippet new
-			string: '#You can change anything!';
-			addSnippet: (LeTextSnippet new
-					string: '*Caveat:* you are allowed to shoot yourself in the foot!';
-					yourself);
-			addSnippet: (LePharoSnippet new
-					code: 'Smalltalk removeClassNamed: ''Object''.';
-					yourself);
-			addSnippet: (LeTextSnippet new
-					string: 'Luckily Smalltalk prevents you from doing this, but you can shoot yourself in the foot in many other ways!';
-					yourself);
-			yourself);
-	yourself
-]
-
-{ #category : #slides }
-SmalltalkIntroSlideshow >> everythingIsAnObject2: aSlide [
-	<gtSlide>
-<text: 
-'## Everything is an object (2)
-
-Classes are objects too. A class is a global name that starts with an upper case letter, such as `SmallInteger`. We can browse the source code of a class by opening the code bubble, by using the context menu, or using a keyboard shortcut.
-
-We can send messages to classes, such as `SmallInteger maxVal`. What do you suppose will be the result of sending `+ 1` to this maximum value?'>
-	^ aSlide lepiterPage
-		setPriority;
-		startPage: (self db pageNamed: 'Everything is an object (2)')
-]
-
-{ #category : #slides }
-SmalltalkIntroSlideshow >> everythingIsAnObject3: aSlide [
-	<gtSlide>
-<text: 
-'## Everything is an object (3)
-
-A method is also an object. You can retrieve it by sending the message `>>` to the class with the method''s selector as an argument.
-
-If you inspect a method, you can see not just its source code, but also its bytecode and even the abstract syntax tree.'>
-	^ aSlide lepiterPage
-		setPriority;
-		startPage: (self db pageNamed: 'Everything is an object (3)')
-]
-
-{ #category : #slides }
-SmalltalkIntroSlideshow >> everythingIsAnObject4: aSlide [
-	<gtSlide>
-<text: 
-'## Everything is an object (4)
-
-A method is also an object. You can retrieve it by sending the message `>>` to the class with the method''s selector as an argument.
-
-If you inspect a method, you can see not just its source code, but also its bytecode and even the abstract syntax tree.'>
-	^ aSlide lepiterPage
-		setPriority;
-		startPage: (self db pageNamed: 'Everything is an object (4)')
 ]
 
 { #category : #slides }
 SmalltalkIntroSlideshow >> everythingIsAnObject: aSlide [
 	<gtSlide>
 <text: 
-'# Everything is an object
+'## Everything is an object
 
-Here we see a Notebook page containing both text and code snippets.
+A method is also an object. You can retrieve it by sending the message `>>` to the class with the method''s selector as an argument.
 
-We can evaluate and inspect the results of the code snippets.
-
-Numbers are objects, not just primitive data types. We see that the number `1` is an instance of the `SmallInteger` class. Strings are delimited by single quotation marks. If we inspect a string, we see it is made of of characters, such as `$h`. The dollar sign preceeds a printable character.
-
-Even booleans are objects. `true` is an instance of the class `True`, which is a subclass of `Boolean`.
-
-Blocks, or anonymous functions, are delimited by square brackets. This one takes no arguments, so we can evaluate it by sending it the message `value`.'>
+If you inspect a method, you can see not just its source code, but also its bytecode and even the abstract syntax tree.'>
 	^ aSlide lepiterPage
 		setPriority;
 		startPage: (self db pageNamed: 'Everything is an object')
@@ -625,99 +488,6 @@ SmalltalkIntroSlideshow >> everythingIsAnObjectPage [
 	<gtExample>
 	<noTest>
 	^ (LePage named: 'Everything is an object')
-	addSnippet: (LeTextSnippet new
-			string: 'Every object is an instance of a class.';
-			yourself);
-	addSnippet: (LeTextSnippet new
-			string: '#Numbers, strings, booleans and blocks are objects';
-			addSnippet: (LeTextSnippet new
-					string: 'We can evaluate, inspect and interact with live objects.';
-					yourself);
-			addSnippet: (LePharoSnippet new
-					code: '1';
-					yourself);
-			addSnippet: (LePharoSnippet new
-					code: '''hello''';
-					yourself);
-			addSnippet: (LePharoSnippet new
-					code: 'true';
-					yourself);
-			addSnippet: (LePharoSnippet new
-					code: '[ 3 + 4 ]';
-					yourself);
-			addSnippet: (LeTextSnippet new
-					string: 'Note that the object Inspector offers us multiple views of each object, including a `Meta` (code) view.';
-					yourself);
-			yourself);
-	yourself
-]
-
-{ #category : #page }
-SmalltalkIntroSlideshow >> everythingIsAnObjectPage2 [
-	<lePage>
-	<gtExample>
-	<noTest>
-	^ (LePage named: 'Everything is an object (2)')
-	addSnippet: (LeTextSnippet new
-			string: '#Classes are objects';
-			addSnippet: (LeTextSnippet new
-					string: 'Since classes are objects, we can inspect them and interact with them too.';
-					yourself);
-			addSnippet: (LeTextSnippet new
-					string: 'We can also browse them in the Coder. (Select the class name and type Cmd-B.)';
-					yourself);
-			addSnippet: (LePharoSnippet new
-					code: 'SmallInteger';
-					yourself);
-			addSnippet: (LeTextSnippet new
-					string: 'We can send messages to classes.';
-					yourself);
-			addSnippet: (LePharoSnippet new
-					code: 'SmallInteger maxVal';
-					yourself);
-			addSnippet: (LeTextSnippet new
-					string: 'What do you  get if you add 1 to the biggest `SmallInteger`?';
-					yourself);
-			addSnippet: (LeTextSnippet new
-					string: '(Lift up the Playground at the bottom of the inspect to evaluate `self+1`.)';
-					yourself);
-			yourself);
-	yourself
-]
-
-{ #category : #page }
-SmalltalkIntroSlideshow >> everythingIsAnObjectPage3 [
-	<lePage>
-	<gtExample>
-	<noTest>
-	^ (LePage named: 'Everything is an object (3)')
-	addSnippet: (LeTextSnippet new
-			string: '#Methods are objects';
-			addSnippet: (LeTextSnippet new
-					string: 'We can ask a class to give us the compiled code of a method, which we can inspect and interact with.';
-					yourself);
-			addSnippet: (LeTextSnippet new
-					string: 'In particular, we can explore its source code, bytecode and even its abstract syntax tree.';
-					yourself);
-			addSnippet: (LePharoSnippet new
-					code: '4 even';
-					yourself);
-			addSnippet: (LePharoSnippet new
-					code: 'SmallInteger>>#even';
-					yourself);
-			yourself);
-	addSnippet: (LeTextSnippet new
-			string: '';
-			yourself);
-	yourself
-]
-
-{ #category : #page }
-SmalltalkIntroSlideshow >> everythingIsAnObjectPage4 [
-	<lePage>
-	<gtExample>
-	<noTest>
-	^ (LePage named: 'Everything is an object (4)')
 	addSnippet: (LeTextSnippet new
 			string: '#This page is an object';
 			addSnippet: (LePharoSnippet new
@@ -877,7 +647,7 @@ There are four parts to a running Smalltalk system.
 (3) The *virtual machine* executes the bytecode of compiled methods.
 (4) The *sources* store the source code of the system itself, so you can access, and potentially change anything.'>
 	^ aSlide textAndElement
-		elementWeight: 0.50;
+		elementWeight: 0.40;
 		setPriority;
 		newTextWithFormat: (self asText: 'Smalltalk is a ') , (self asText: 'live') italic
 				, (self
@@ -1064,21 +834,137 @@ Ludo as a running example of a live system');
 
 { #category : #slides }
 SmalltalkIntroSlideshow >> methodSyntax: aSlide [
-	"Methods start with a declaration of the message selector and arguments. Temporaries must be declared. Statements are separate by periods. The caret (^) is special syntax for returning a result."
+	<gtSlide>
+	<text: '# Method syntax
 
+Note the special syntax for variable declarations (|...|), statement separators (period) and returns (^).
+
+Methods start with a declaration of the message selector and arguments.
+Temporaries must be declared. Statements are separated by periods. 
+
+The caret (^) is special syntax for returning a result.'>
+	^ aSlide labelAndElement
+		setPriority;
+		newFadedText: 'Method Syntax';
+		element: [ GtPharoSyntaxExplainer new forMethod: GtLudoGame >> #computeTargetFor: ]
+]
+
+{ #category : #slides }
+SmalltalkIntroSlideshow >> methodsAreObjects: aSlide [
 	<gtSlide>
 <text: 
-'# TODO
-'>
-	^ aSlide textAndElement
+'## Methods are objects
+
+A method is also an object. You can retrieve it by sending the message `>>` to the class with the method''s selector as an argument.
+
+If you inspect a method, you can see not just its source code, but also its bytecode and even the abstract syntax tree.'>
+	^ aSlide lepiterPage
 		setPriority;
-		newTextWithFormat: (self
-				asHeader: 'Method syntax
-')
-				, (self
-						asText: 'Note the special syntax for variable declarations (|...|), statement separators (period) and returns (^).');
-		element: [ GtPharoSyntaxExplainer new forMethod: GtLudoGame >> #computeTargetFor: ];
-		elementWeight: 0.6
+		startPage: (self db pageNamed: 'Methods are objects')
+]
+
+{ #category : #page }
+SmalltalkIntroSlideshow >> methodsAreObjectsPage [
+	<lePage>
+	<gtExample>
+	<noTest>
+	^ (LePage named: 'Methods are objects')
+	addSnippet: (LeTextSnippet new
+			string: 'We can inspect methods and send them messages.';
+			yourself);
+	addSnippet: (LePharoSnippet new
+			code: '4 even';
+			yourself);
+	addSnippet: (LePharoSnippet new
+			code: 'SmallInteger>>#even';
+			yourself);
+	addSnippet: (LePharoSnippet new
+			code: '(SmallInteger>>#even) sourceCode';
+			yourself);
+	addSnippet: (LeTextSnippet new
+			string: '';
+			yourself);
+	yourself
+]
+
+{ #category : #slides }
+SmalltalkIntroSlideshow >> numbersAreObjects: aSlide [
+	<gtSlide>
+<text: 
+'# Numbers, strings, booleans and blocks are objects
+
+Here we see a Notebook page containing both text and code snippets.
+
+We can evaluate and inspect the results of the code snippets.
+
+Numbers are objects, not just primitive data types. We see that the number `1` is an instance of the `SmallInteger` class. Strings are delimited by single quotation marks. If we inspect a string, we see it is made of of characters, such as `$h`. The dollar sign preceeds a printable character.
+
+Even booleans are objects. `true` is an instance of the class `True`, which is a subclass of `Boolean`.
+
+Blocks, or anonymous functions, are delimited by square brackets. This one takes no arguments, so we can evaluate it by sending it the message `value`.'>
+	
+	^ aSlide lepiterPage
+		setPriority;
+		startPage: (self db pageNamed: 'Numbers, strings, booleans and blocks are objects')
+]
+
+{ #category : #page }
+SmalltalkIntroSlideshow >> numbersAreObjectsPage [
+	<lePage>
+	<gtExample>
+	<noTest>
+	^ (LePage named: 'Numbers, strings, booleans and blocks are objects')
+	addSnippet: (LeTextSnippet new
+			string: 'Primitive data types are full-fledged objects.';
+			addSnippet: (LePharoSnippet new
+					code: '1';
+					yourself);
+			addSnippet: (LePharoSnippet new
+					code: '''hello''';
+					yourself);
+			addSnippet: (LePharoSnippet new
+					code: 'true';
+					yourself);
+			addSnippet: (LePharoSnippet new
+					code: '[ 3 + 4 ]';
+					yourself);
+			yourself);
+	yourself
+]
+
+{ #category : #slides }
+SmalltalkIntroSlideshow >> objectCreationIsAMessageSend: aSlide [
+	<gtSlide>
+<text: 
+'## Object creation is a message send
+
+You can send the message `new` to create a new instance of a class.
+
+Many classes have constructors that take arguments to initialize instances.'>
+	^ aSlide lepiterPage
+		setPriority;
+		startPage: (self db pageNamed: 'Object creation is a message send')
+]
+
+{ #category : #page }
+SmalltalkIntroSlideshow >> objectCreationIsAMessageSendPage [
+	<lePage>
+	<gtExample>
+	<noTest>
+	^ (LePage named: 'Object creation is a message send')
+	addSnippet: (LeTextSnippet new
+			string: 'You create an object by sending a message to a class.';
+			yourself);
+	addSnippet: (LePharoSnippet new
+			code: 'OrderedCollection new ';
+			yourself);
+	addSnippet: (LePharoSnippet new
+			code: 'Fraction numerator: 3 denominator: 4';
+			yourself);
+	addSnippet: (LePharoSnippet new
+			code: 'Set with: 3 with: 4';
+			yourself);
+	yourself
 ]
 
 { #category : #slides }
@@ -1104,6 +990,62 @@ SmalltalkIntroSlideshow >> outline: aSlide [
 • Live documentation with Lepiter notebooks
 • Take home messages
 ')
+]
+
+{ #category : #slides }
+SmalltalkIntroSlideshow >> precedence: aSlide [
+	<gtSlide>
+<text: 
+'## Precedence
+
+In expressions that mix different kinds of message sends, first unary, then binary, and finally keyword messages are evaluated.
+Otherwise evaluation is strictly from left to right.
+
+The left-to-right rule applies also to binary messages, so  `1+2*3` is `9` and not `7`.
+In practice this is rarel an issue. Just use parentheses to get the order you want.
+'>
+	^ aSlide lepiterPage
+		setPriority;
+		startPage: (self db pageNamed: 'Precedence')
+]
+
+{ #category : #page }
+SmalltalkIntroSlideshow >> precedencePage [
+	<lePage>
+	<gtExample>
+	<noTest>
+	^ (LePage named: 'Precedence')
+	addSnippet: (LeTextSnippet new
+			string: '#First unary, then binary, then keyword';
+			yourself);
+	addSnippet: (LePharoSnippet new
+			code: '2 raisedTo: 1 + 3 factorial';
+			yourself);
+	addSnippet: (LeTextSnippet new
+			string: 'is the same as:';
+			yourself);
+	addSnippet: (LePharoSnippet new
+			code: '2 raisedTo:( 1 + (3 factorial))';
+			yourself);
+	addSnippet: (LeTextSnippet new
+			string: 'Warning! ';
+			yourself);
+	addSnippet: (LePharoSnippet new
+			code: '1 + 2 * 3';
+			yourself);
+	addSnippet: (LeTextSnippet new
+			string: 'is the same as:';
+			yourself);
+	addSnippet: (LePharoSnippet new
+			code: '(1 + 2) * 3';
+			yourself);
+	addSnippet: (LeTextSnippet new
+			string: 'Use parentheses to get the order you want.';
+			yourself);
+	addSnippet: (LePharoSnippet new
+			code: '1 + (2 * 3)';
+			yourself);
+	yourself
 ]
 
 { #category : #slides }
@@ -1214,37 +1156,35 @@ SmalltalkIntroSlideshow >> slidePriorities [
 	<noTest>
 	^ #( 
 		#title:
-			ludoAppetizer:
-		outline:
+			#ludoAppetizer:
+		#outline:
 		
-		smalltalk80:
-			gtWorld:
-			imageChanges:
+		#smalltalk80:
+			#gtWorld:
+			#imageChanges:
 		
-		twoRules:
+		#twoRules:
 		
-		everythingIsAnObject:
-			everythingIsAnObject2:
-			everythingIsAnObject3:
-			everythingIsAnObject4:
+		#numbersAreObjects:
+			#classesAreObjects:
+			#methodsAreObjects:
+			#everythingIsAnObject:
 
-		everythingHappensBySendingMessages:
-			everythingHappensBySendingMessages2:
-			everythingHappensBySendingMessages3:
-			everythingHappensBySendingMessages4:
-			everythingHappensBySendingMessages5:
+		#everythingHappensBySendingMessages:
+			#computationsAreMessageSends:
+			#objectCreationIsAMessageSend:
+			#systemChangesAreMessageSends:
+			#youCanChangeAnything:
 		
-		threeKindsOfMessages:
-			threeKindsOfMessages2:
-			threeKindsOfMessages3:
-			threeKindsOfMessages4:
+		#threeKindsOfMessages:
+			#precedence:
 		
-		syntax:
-			syntax2:
-			syntax3:
-			syntax4:
-			syntax5:
-			syntax6:
+		#syntaxNumbers:
+			#syntaxStrings:
+			#syntaxConstants:
+			#syntaxArrays:
+			#syntaxBlocks:
+			#syntaxSelfSuper:
 		
 		methodSyntax:
 	
@@ -1280,237 +1220,295 @@ He reasoned that such systems would need to be based on objects from the ground 
 ]
 
 { #category : #slides }
-SmalltalkIntroSlideshow >> syntax2: aSlide [
+SmalltalkIntroSlideshow >> syntaxArrays: aSlide [
 	<gtSlide>
 <text: 
-'# TODO
-'>
-	^ aSlide lepiterPage
-		setPriority;
-		startPage: (self db pageNamed: 'Smalltalk Syntax (2)')
-]
+'## Syntax — arrays
 
-{ #category : #slides }
-SmalltalkIntroSlideshow >> syntax3: aSlide [
-	<gtSlide>
-<text: 
-'# TODO
-'>
-	^ aSlide lepiterPage
-		setPriority;
-		startPage: (self db pageNamed: 'Smalltalk Syntax (3)')
-]
+A literal array is a compile-time sequence of literal values.
+It is specified by a hash followed by possibly nested literal values in parentheses.
 
-{ #category : #slides }
-SmalltalkIntroSlideshow >> syntax4: aSlide [
-	<gtSlide>
-<text: 
-'# TODO
-'>
-	^ aSlide lepiterPage
-		setPriority;
-		startPage: (self db pageNamed: 'Smalltalk Syntax (4)')
-]
+A dynamic array is specified by curly braces around a series of expressions separated by periods.
 
-{ #category : #slides }
-SmalltalkIntroSlideshow >> syntax5: aSlide [
-	<gtSlide>
-<text: 
-'# TODO
-'>
+You can embed literal arrays within dynamic arrays, but not the other way around.'>
 	^ aSlide lepiterPage
 		setPriority;
-		startPage: (self db pageNamed: 'Smalltalk Syntax (5)')
-]
-
-{ #category : #slides }
-SmalltalkIntroSlideshow >> syntax6: aSlide [
-	<gtSlide>
-<text: 
-'# TODO
-'>
-	^ aSlide lepiterPage
-		setPriority;
-		startPage: (self db pageNamed: 'Smalltalk Syntax (6)')
-]
-
-{ #category : #slides }
-SmalltalkIntroSlideshow >> syntax: aSlide [
-	<gtSlide>
-<text: 
-'# TODO
-'>
-	^ aSlide lepiterPage
-		setPriority;
-		startPage: (self db pageNamed: 'Smalltalk Syntax (the funny bits)')
+		startPage: (self db pageNamed: 'Syntax — Arrays')
 ]
 
 { #category : #page }
-SmalltalkIntroSlideshow >> syntaxPage [
+SmalltalkIntroSlideshow >> syntaxArraysPage [
 	<lePage>
 	<gtExample>
 	<noTest>
-	^ (LePage named: 'Smalltalk Syntax (the funny bits)')
+	^ (LePage named: 'Syntax — Arrays')
 	addSnippet: (LeTextSnippet new
-			string: 'Smalltalk has a tiny syntax, but there are some interesting differences with other languages.';
+			string: 'Literal arrays:';
+			yourself);
+	addSnippet: (LePharoSnippet new
+			code: '#( 1 $a #foo #( I am ''nested'' ) )';
 			yourself);
 	addSnippet: (LeTextSnippet new
-			string: '#Numbers';
-			addSnippet: (LeTextSnippet new
-					string: 'In addition to the usual integer and floating point numbers, there are also radix numbers, for example this is a binary representation:';
-					yourself);
-			addSnippet: (LePharoSnippet new
-					code: '2r101010';
-					yourself);
-			addSnippet: (LeTextSnippet new
-					string: 'and this is hex:';
-					yourself);
-			addSnippet: (LePharoSnippet new
-					code: '16r2A';
-					yourself);
+			string: 'Dynamic arrays:';
+			yourself);
+	addSnippet: (LePharoSnippet new
+			code: '{ 6 * 7 . #( ''hello'' ''there'' )}';
 			yourself);
 	yourself
 ]
 
+{ #category : #slides }
+SmalltalkIntroSlideshow >> syntaxBlocks: aSlide [
+	<gtSlide>
+<text: 
+'## Syntax — Blocks
+
+A *block* is an anonymous function, that can take arguments.
+You evaluate a block by sending it the unary message `value`, or a keyword message `value:` for as many arguments as you need.
+
+Blocks are first class values, so you can pass them around like any other object.
+In this example we send a block that increments its argument in as an argument to another block.'>
+	^ aSlide lepiterPage
+		setPriority;
+		startPage: (self db pageNamed: 'Syntax — Blocks')
+]
+
 { #category : #page }
-SmalltalkIntroSlideshow >> syntaxPage2 [
+SmalltalkIntroSlideshow >> syntaxBlocksPage [
 	<lePage>
 	<gtExample>
 	<noTest>
-	^ (LePage named: 'Smalltalk Syntax (2)')
+	^ (LePage named: 'Syntax — Blocks')
 	addSnippet: (LeTextSnippet new
-			string: '#Characters, strings and symbols';
-			addSnippet: (LeTextSnippet new
-					string: 'Printable characters start with a `$`.';
-					yourself);
+			string: 'Blocks can take any number of arguments.';
+			yourself);
+	addSnippet: (LePharoSnippet new
+			code: '[ 3 + 4 ] value';
+			yourself);
+	addSnippet: (LePharoSnippet new
+			code: '[ :x | x + 1 ] value: 10';
+			yourself);
+	addSnippet: (LePharoSnippet new
+			code: '[ :x :y | x ** y ] value: 3 value: 2';
+			yourself);
+	addSnippet: (LeTextSnippet new
+			string: 'Blocks are first class values.';
+			yourself);
+	addSnippet: (LePharoSnippet new
+			code: '[ :aBlock :anArg | aBlock value: anArg ]
+	value: [ :aNumber | aNumber + 1 ]
+	value: 1';
+			yourself);
+	yourself
+]
+
+{ #category : #slides }
+SmalltalkIntroSlideshow >> syntaxConstants: aSlide [
+	<gtSlide>
+<text: 
+'## Syntax — constants
+
+There are only 6 keywords in Smalltalk, and three of them are the constants `nil`, `true` and `false`.
+'>
+	^ aSlide lepiterPage
+		setPriority;
+		startPage: (self db pageNamed: 'Syntax — Constants')
+]
+
+{ #category : #page }
+SmalltalkIntroSlideshow >> syntaxConstantsPage [
+	<lePage>
+	<gtExample>
+	<noTest>
+	^ (LePage named: 'Syntax — Constants')
+	addSnippet: (LeTextSnippet new
+			string: '`true`, `false` and `nil` are built-in constants.';
+			yourself);
+	addSnippet: (LePharoSnippet new
+			code: '(nil = '''') == false | true';
+			yourself);
+	yourself
+]
+
+{ #category : #slides }
+SmalltalkIntroSlideshow >> syntaxNumbers: aSlide [
+	<gtSlide>
+<text: 
+'# Syntax — Numbers
+
+Smalltalk has a tiny syntax, but there are some interesting differences with other languages.
+
+In addition to the usual integer and floating point numbers, there are also radix numbers, for example this is a binary representation: `2r101010`
+
+And this is hex: `16r2A`
+'>
+	^ aSlide lepiterPage
+		setPriority;
+		startPage: (self db pageNamed: 'Syntax — Numbers')
+]
+
+{ #category : #page }
+SmalltalkIntroSlideshow >> syntaxNumbersPage [
+	<lePage>
+	<gtExample>
+	<noTest>
+	^ (LePage named: 'Syntax — Numbers')
+	addSnippet: (LeTextSnippet new
+			string: 'Radix numbers (binary):';
+			yourself);
+	addSnippet: (LePharoSnippet new
+			code: '2r101010';
+			yourself);
+	addSnippet: (LeTextSnippet new
+			string: 'Hex:';
+			yourself);
+	addSnippet: (LePharoSnippet new
+			code: '16r2A';
+			yourself);
+	yourself
+]
+
+{ #category : #slides }
+SmalltalkIntroSlideshow >> syntaxSelfSuper: aSlide [
+	<gtSlide>
+<text: 
+'## Syntax — Pseudo variables
+
+Two further keywords are the pseudo variables `self` and `super`.
+
+Both refer to the receiver of a message, but with different method lookup, as in other object-oriented languages.'>
+	^ aSlide lepiterPage
+		setPriority;
+		startPage: (self db pageNamed: 'Syntax — Pseudo variables')
+]
+
+{ #category : #page }
+SmalltalkIntroSlideshow >> syntaxSelfSuperPage [
+	<lePage>
+	<gtExample>
+	<noTest>
+	^ (LePage named: 'Syntax — Pseudo variables')
+	addSnippet: (LeTextSnippet new
+			string: '`self` and `super` both refer to the object itself.';
+			yourself);
+	addSnippet: (LePharoSnippet new
+			code: 'self == super';
+			yourself);
+	yourself
+]
+
+{ #category : #slides }
+SmalltalkIntroSlideshow >> syntaxStrings: aSlide [
+	<gtSlide>
+<text: 
+'## Syntax — Strings and Symbols
+
+Printable characters start with a `$`.
+Strings use *single quotes*.
+
+*NB:* Double quotes enclose comments, not strings.
+A comment is not an object, but you *can* ask a class for its comment and get a string back ...
+
+A *symbol* starts with a hash (`#`). It is like a string, but has a unique instance.
+
+A symbol is not identical to a string with the same characters, but they are considered equal as values.
+'>
+	^ aSlide lepiterPage
+		setPriority;
+		startPage: (self db pageNamed: 'Syntax — Strings and Symbols')
+]
+
+{ #category : #page }
+SmalltalkIntroSlideshow >> syntaxStringsPage [
+	<lePage>
+	<gtExample>
+	<noTest>
+	^ (LePage named: 'Syntax — Strings and Symbols')
+	addSnippet: (LeTextSnippet new
+			string: '# Characters:';
 			addSnippet: (LePharoSnippet new
 					code: '$a';
 					yourself);
-			addSnippet: (LeTextSnippet new
-					string: 'Strings use *single quotes*.';
-					yourself);
+			yourself);
+	addSnippet: (LeTextSnippet new
+			string: '# Strings:';
 			addSnippet: (LePharoSnippet new
 					code: '''hello world''';
 					yourself);
 			addSnippet: (LePharoSnippet new
 					code: '''hello world'' first = $h';
 					yourself);
-			addSnippet: (LeTextSnippet new
-					string: 'This is a comment, not a string!';
-					yourself);
+			yourself);
+	addSnippet: (LeTextSnippet new
+			string: '# Comments:';
 			addSnippet: (LePharoSnippet new
 					code: '"Ceci n''est pas un string"';
-					yourself);
-			addSnippet: (LeTextSnippet new
-					string: '**NB:** a comment is not an object, but you *can* ask a class for its comment and get a string back ...';
 					yourself);
 			addSnippet: (LePharoSnippet new
 					code: 'GtLudoGame comment ';
 					yourself);
-			addSnippet: (LeTextSnippet new
-					string: 'A *symbol* starts with a hash (`#`). It is like a string, but has a unique instance.';
-					yourself);
+			yourself);
+	addSnippet: (LeTextSnippet new
+			string: '# Symbols:';
 			addSnippet: (LePharoSnippet new
 					code: '#ThereIsOnlyOneOfMe';
 					yourself);
 			addSnippet: (LeTextSnippet new
-					string: 'A symbol is not identical to a string with the same characters';
-					yourself);
-			addSnippet: (LePharoSnippet new
-					code: '#ThereIsOnlyOneOfMe == ''ThereIsOnlyOneOfMe''';
-					yourself);
-			addSnippet: (LeTextSnippet new
-					string: 'but they are considered equal as values.';
-					yourself);
-			addSnippet: (LePharoSnippet new
-					code: '#ThereIsOnlyOneOfMe = ''ThereIsOnlyOneOfMe''';
+					string: 'True or false}';
+					addSnippet: (LePharoSnippet new
+							code: '#ThereIsOnlyOneOfMe == ''ThereIsOnlyOneOfMe''';
+							yourself);
+					addSnippet: (LePharoSnippet new
+							code: '#ThereIsOnlyOneOfMe = ''ThereIsOnlyOneOfMe''';
+							yourself);
 					yourself);
 			yourself);
 	yourself
 ]
 
-{ #category : #page }
-SmalltalkIntroSlideshow >> syntaxPage3 [
-	<lePage>
-	<gtExample>
-	<noTest>
-	^ (LePage named: 'Smalltalk Syntax (3)')
-	addSnippet: (LeTextSnippet new
-			string: '#Constants';
-			addSnippet: (LeTextSnippet new
-					string: '`true`, `false` and `nil` are built-in constants.';
-					yourself);
-			addSnippet: (LePharoSnippet new
-					code: '(nil = '''') == false | true';
-					yourself);
-			yourself);
-	yourself
+{ #category : #slides }
+SmalltalkIntroSlideshow >> systemChangesAreMessageSends: aSlide [
+	<gtSlide>
+<text: 
+'## Changes to the system are message sends
+
+You create a class by sending a message to its superclass.
+
+To create a method, you send a message to the class.
+
+You can also ask Smalltalk to remove a class from the system.'>
+
+	^ aSlide lepiterPage
+		setPriority;
+		startPage: (self db pageNamed: 'Changes to the system are message sends')
 ]
 
 { #category : #page }
-SmalltalkIntroSlideshow >> syntaxPage4 [
+SmalltalkIntroSlideshow >> systemChangesAreMessageSendsPage [
 	<lePage>
 	<gtExample>
 	<noTest>
-	^ (LePage named: 'Smalltalk Syntax (4)')
+	^ (LePage named: 'Changes to the system are message sends')
 	addSnippet: (LeTextSnippet new
-			string: '#Arrays';
-			addSnippet: (LeTextSnippet new
-					string: 'A literal array is a compile-time sequence of literal values';
-					yourself);
-			addSnippet: (LePharoSnippet new
-					code: '#( 1 $a #foo #( I am ''nested'' ) )';
-					yourself);
+			string: 'You create a class by sending a message to its superclass:';
 			yourself);
-	yourself
-]
-
-{ #category : #page }
-SmalltalkIntroSlideshow >> syntaxPage5 [
-	<lePage>
-	<gtExample>
-	<noTest>
-	^ (LePage named: 'Smalltalk Syntax (5)')
-	addSnippet: (LeTextSnippet new
-			string: '#Blocks';
-			addSnippet: (LeTextSnippet new
-					string: 'A *block* is an anonymous function, that can take arguments:';
-					yourself);
-			addSnippet: (LePharoSnippet new
-					code: '[ 3 + 4 ] value';
-					yourself);
-			addSnippet: (LePharoSnippet new
-					code: '[ :x | x + 1 ] value: 10';
-					yourself);
-			addSnippet: (LePharoSnippet new
-					code: '[ :x :y | x ** y ] value: 3 value: 2';
-					yourself);
-			addSnippet: (LeTextSnippet new
-					string: 'Blocks are first class values, so you can pass them around like any other object.';
-					yourself);
-			addSnippet: (LePharoSnippet new
-					code: '[ :aBlock :anArg | aBlock value: anArg ]
-	value: [ :aNumber | aNumber + 1 ]
-	value: 1';
-					yourself);
+	addSnippet: (LePharoSnippet new
+			code: 'Object subclass: #MyClass';
 			yourself);
-	yourself
-]
-
-{ #category : #page }
-SmalltalkIntroSlideshow >> syntaxPage6 [
-	<lePage>
-	<gtExample>
-	<noTest>
-	^ (LePage named: 'Smalltalk Syntax (6)')
 	addSnippet: (LeTextSnippet new
-			string: '#Pseudo variables';
-			addSnippet: (LeTextSnippet new
-					string: '`self` and `super` both refer to the receiver of a message, but with different method lookup, as usual.';
-					yourself);
-			addSnippet: (LePharoSnippet new
-					code: 'self == super';
-					yourself);
+			string: 'You can ask a class to compile a method:';
+			yourself);
+	addSnippet: (LePharoSnippet new
+			code: 'MyClass compile: ''foo ^ 42''';
+			yourself);
+	addSnippet: (LePharoSnippet new
+			code: 'MyClass new foo ';
+			yourself);
+	addSnippet: (LeTextSnippet new
+			string: 'We can remove the class by asking the `Smalltalk` object to do it:';
+			yourself);
+	addSnippet: (LePharoSnippet new
+			code: 'Smalltalk removeClassNamed: ''MyClass''';
 			yourself);
 	yourself
 ]
@@ -1542,43 +1540,30 @@ SmalltalkIntroSlideshow >> takeHome: aSlide [
 ]
 
 { #category : #slides }
-SmalltalkIntroSlideshow >> threeKindsOfMessages2: aSlide [
-	<gtSlide>
-<text: 
-'# TODO
-'>
-	^ aSlide lepiterPage
-		setPriority;
-		startPage: (self db pageNamed: 'Three kinds of messages (2)')
-]
-
-{ #category : #slides }
-SmalltalkIntroSlideshow >> threeKindsOfMessages3: aSlide [
-	<gtSlide>
-<text: 
-'# TODO
-'>
-	^ aSlide lepiterPage
-		setPriority;
-		startPage: (self db pageNamed: 'Three kinds of messages (3)')
-]
-
-{ #category : #slides }
-SmalltalkIntroSlideshow >> threeKindsOfMessages4: aSlide [
-	<gtSlide>
-<text: 
-'# TODO
-'>
-	^ aSlide lepiterPage
-		setPriority;
-		startPage: (self db pageNamed: 'Three kinds of messages (4)')
-]
-
-{ #category : #slides }
 SmalltalkIntroSlideshow >> threeKindsOfMessages: aSlide [
 	<gtSlide>
 <text: 
-'# TODO
+'# Three kinds of messages
+
+There are three kinds of messages you can send to a Smalltalk object, each taking a different number of arguments.
+
+The *receiver* is the object to which the message is sent.
+The *sender* is the method sending the message (if the code is in a method somewhere).
+The *selector* is the name of the message (without the arguments).
+
+*Unary* messages have no argument.
+`5 factorial` is a unary message with selector `#factorial` sent to the receiver `5`.
+`Float pi` is a unary message `#pi` sent to the class `Float`.
+You can also send unary messages to classes, as they are objects too.
+
+*Binary* messages are made up of operator symbols like `+` `-` `*` `/` `>` `<` `=` and others.
+They take exactly one argument.
+`3 + 4` is the message `#+` send to the receiver `3` with argument `4`.
+
+*Keyword& messages take one or more arguments.
+Each argument is preceded by a keyword, which ends with a colon (`:`).
+Here the receiver is `3`, the message is `raisedTo: 10 modulo: 5`, and the selector is `#raisedTo:modulo:`
+The Ludo game also accepts various keyword messages.
 '>
 	^ aSlide lepiterPage
 		setPriority;
@@ -1592,30 +1577,9 @@ SmalltalkIntroSlideshow >> threeKindsOfMessagesPage [
 	<noTest>
 	^ (LePage named: 'Three kinds of messages')
 	addSnippet: (LeTextSnippet new
-			string: 'There are three kinds of messages you can send to a Smalltalk object, each taking a different number of arguments.';
-			addSnippet: (LeTextSnippet new
-					string: 'The *receiver* is the object to which the message is sent.';
-					yourself);
-			addSnippet: (LeTextSnippet new
-					string: 'The *sender* is the method sending the message (if the code is in a method somewhere).';
-					yourself);
-			addSnippet: (LeTextSnippet new
-					string: 'The *selector* is the name of the message (without the arguments).';
-					yourself);
-			yourself);
-	addSnippet: (LeTextSnippet new
 			string: '#Unary messages';
-			addSnippet: (LeTextSnippet new
-					string: 'Unary messages have no argument.';
-					yourself);
 			addSnippet: (LePharoSnippet new
 					code: '5 factorial';
-					yourself);
-			addSnippet: (LeTextSnippet new
-					string: 'Note that you don''t need to include dot or any parentheses.';
-					yourself);
-			addSnippet: (LeTextSnippet new
-					string: 'You can also send unary messages to classes, as they are objects too.';
 					yourself);
 			addSnippet: (LePharoSnippet new
 					code: 'Float pi ';
@@ -1624,23 +1588,8 @@ SmalltalkIntroSlideshow >> threeKindsOfMessagesPage [
 					code: 'GtLudoGame new';
 					yourself);
 			yourself);
-	yourself
-]
-
-{ #category : #page }
-SmalltalkIntroSlideshow >> threeKindsOfMessagesPage2 [
-	<lePage>
-	<gtExample>
-	<noTest>
-	^ (LePage named: 'Three kinds of messages (2)')
 	addSnippet: (LeTextSnippet new
 			string: '#Binary messages';
-			addSnippet: (LeTextSnippet new
-					string: 'Binary messages are made up of operator symbols like `+` `-` `*` `/` `>` `<` `=` and others.';
-					yourself);
-			addSnippet: (LeTextSnippet new
-					string: 'They take exactly one argument.';
-					yourself);
 			addSnippet: (LePharoSnippet new
 					code: '3 + 4';
 					yourself);
@@ -1651,74 +1600,17 @@ SmalltalkIntroSlideshow >> threeKindsOfMessagesPage2 [
 					code: '1 << 10 ';
 					yourself);
 			yourself);
-	yourself
-]
-
-{ #category : #page }
-SmalltalkIntroSlideshow >> threeKindsOfMessagesPage3 [
-	<lePage>
-	<gtExample>
-	<noTest>
-	^ (LePage named: 'Three kinds of messages (3)')
 	addSnippet: (LeTextSnippet new
-			string: '#Keyword messages';
-			addSnippet: (LeTextSnippet new
-					string: 'If you have one or more arguments you can use a keyword message. Each argument is preceded by a keyword, which ends with a colon (`:`).';
-					yourself);
-			addSnippet: (LeTextSnippet new
-					string: 'Here the receiver is `3`, the message is `raisedTo: 10 modulo: 5`, and the selector is `#raisedTo:modulo:`';
-					yourself);
+			string: '# Keyword messages';
 			addSnippet: (LePharoSnippet new
 					code: '3 raisedTo: 10 modulo: 5';
 					yourself);
-			addSnippet: (LeTextSnippet new
-					string: 'The Ludo game also accepts various keyword messages.';
-					yourself);
 			addSnippet: (LePharoSnippet new
-					code: 'GtLudoGame new roll: 5.';
+					code: 'GtLudoGame new roll: 5';
 					yourself);
 			yourself);
-	yourself
-]
-
-{ #category : #page }
-SmalltalkIntroSlideshow >> threeKindsOfMessagesPage4 [
-	<lePage>
-	<gtExample>
-	<noTest>
-	^ (LePage named: 'Three kinds of messages (4)')
 	addSnippet: (LeTextSnippet new
-			string: '#Precedence: first unary, then binary, then keyword';
-			addSnippet: (LeTextSnippet new
-					string: 'In expressions that mix different kinds of message sends, first unary, then binary, and finally keyword messages are evaluated.';
-					yourself);
-			addSnippet: (LeTextSnippet new
-					string: 'Otherwise evaluation is strictly from left to right.';
-					yourself);
-			addSnippet: (LePharoSnippet new
-					code: '2 raisedTo: 1 + 3 factorial';
-					yourself);
-			addSnippet: (LeTextSnippet new
-					string: 'is the same as:';
-					yourself);
-			addSnippet: (LePharoSnippet new
-					code: '2 raisedTo:( 1 + (3 factorial))';
-					yourself);
-			addSnippet: (LeTextSnippet new
-					string: 'Warning! The left-to-right rule applies also to binary messages:';
-					yourself);
-			addSnippet: (LePharoSnippet new
-					code: '1 + 2 * 3';
-					yourself);
-			addSnippet: (LeTextSnippet new
-					string: 'The result is `9` and not `7`.';
-					yourself);
-			addSnippet: (LeTextSnippet new
-					string: 'In practice this is not an issue. Use parentheses to get the order you want.';
-					yourself);
-			addSnippet: (LePharoSnippet new
-					code: '1 + (2 * 3)';
-					yourself);
+			string: '';
 			yourself);
 	yourself
 ]
@@ -1745,60 +1637,54 @@ SmalltalkIntroSlideshow >> tocPage [
 	<noTest>
 	^ (LePage named: 'ToC')
 	addSnippet: (LeTextSnippet new
-			string: '[[Everything is an object]]';
+			string: '[[Numbers, strings, booleans and blocks are objects]]';
 			addSnippet: (LeTextSnippet new
-					string: '[[Everything is an object (2)]]';
+					string: '[[Classes are objects]]';
 					yourself);
 			addSnippet: (LeTextSnippet new
-					string: '[[Everything is an object (3)]]';
+					string: '[[Methods are objects]]';
 					yourself);
 			addSnippet: (LeTextSnippet new
-					string: '[[Everything is an object (4)]]';
+					string: '[[Everything is an object]]';
 					yourself);
 			yourself);
 	addSnippet: (LeTextSnippet new
 			string: '[[Everything happens by sending messages]]';
 			addSnippet: (LeTextSnippet new
-					string: '[[Everything happens by sending messages (2)]]';
+					string: '[[All computations are message sends]]';
 					yourself);
 			addSnippet: (LeTextSnippet new
-					string: '[[Everything happens by sending messages (3)]]';
+					string: '[[Object creation is a message send]]';
 					yourself);
 			addSnippet: (LeTextSnippet new
-					string: '[[Everything happens by sending messages (4)]]';
+					string: '[[Changes to the system are message sends]]';
 					yourself);
 			addSnippet: (LeTextSnippet new
-					string: '[[Everything happens by sending messages (5)]]';
+					string: '[[You can change (almost) anything!]]';
 					yourself);
 			yourself);
 	addSnippet: (LeTextSnippet new
 			string: '[[Three kinds of messages]]';
 			addSnippet: (LeTextSnippet new
-					string: '[[Three kinds of messages (2)]]';
-					yourself);
-			addSnippet: (LeTextSnippet new
-					string: '[[Three kinds of messages (3)]]';
-					yourself);
-			addSnippet: (LeTextSnippet new
-					string: '[[Three kinds of messages (4)]]';
+					string: '[[Precedence]]';
 					yourself);
 			yourself);
 	addSnippet: (LeTextSnippet new
-			string: '[[Smalltalk Syntax (the funny bits)]]';
+			string: '[[Syntax — Numbers]]';
 			addSnippet: (LeTextSnippet new
-					string: '[[Smalltalk Syntax (2)]]';
+					string: '[[Syntax — Strings and Symbols]]';
 					yourself);
 			addSnippet: (LeTextSnippet new
-					string: '[[Smalltalk Syntax (3)]]';
+					string: '[[Syntax — Constants]]';
 					yourself);
 			addSnippet: (LeTextSnippet new
-					string: '[[Smalltalk Syntax (4)]]';
+					string: '[[Syntax — Arrays]]';
 					yourself);
 			addSnippet: (LeTextSnippet new
-					string: '[[Smalltalk Syntax (5)]]';
+					string: '[[Syntax — Blocks]]';
 					yourself);
 			addSnippet: (LeTextSnippet new
-					string: '[[Smalltalk Syntax (6)]]';
+					string: '[[Syntax — Pseudo variables]]';
 					yourself);
 			yourself);
 	addSnippet: (LeTextSnippet new
@@ -1874,4 +1760,31 @@ SmalltalkIntroSlideshow >> worldExampleSlideFor: aSlide [
 	"<gtSlide>"
 
 	^ aSlide world setPriority
+]
+
+{ #category : #slides }
+SmalltalkIntroSlideshow >> youCanChangeAnything: aSlide [
+	<gtSlide>
+<text: 
+'## You can change (almost) anything!
+
+Smalltalk is designed so that you can change anything in the system. The consequence is that you are also allowed to shoot yourself in the foot.
+
+Luckily Smalltalk prevents you from removing the class `Object`, but you can still shoot yourself in the foot in many other ways!
+'>
+	^ aSlide lepiterPage
+		setPriority;
+		startPage: (self db pageNamed: 'You can change (almost) anything!')
+]
+
+{ #category : #page }
+SmalltalkIntroSlideshow >> youCanChangeAnythingPage [
+	<lePage>
+	<gtExample>
+	<noTest>
+	^ (LePage named: 'You can change (almost) anything!')
+	addSnippet: (LePharoSnippet new
+			code: 'Smalltalk removeClassNamed: ''Object''.';
+			yourself);
+	yourself
 ]
