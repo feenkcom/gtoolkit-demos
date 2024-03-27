@@ -317,7 +317,7 @@ PrioritySlideshow >> gtDemoNotesFor: aView [
 { #category : #actions }
 PrioritySlideshow >> gtExportPngAction: anAction [
 	<gtAction>
-	self slides ifEmpty: [ ^ anAction empty ].
+	self slideMethods ifEmpty: [ ^ anAction empty ].
 	^ anAction button
 		label: ' PNG';
 		tooltip: 'Save PNGs to disk';
@@ -348,6 +348,7 @@ PrioritySlideshow >> gtGitAction: anAction [
 { #category : #actions }
 PrioritySlideshow >> gtHTMLLocalExportActionFor: anAction [
 	<gtAction>
+	self slideMethods ifEmpty: [ ^ anAction empty ].
 	^ anAction button
 		label: 'HTML';
 		tooltip: 'Export the slide deck to HTML and store locally';

@@ -1235,7 +1235,7 @@ A dynamic array is specified by curly braces around a series of expressions sepa
 You can embed literal arrays within dynamic arrays, but not the other way around.'>
 	^ aSlide lepiterPage
 		setPriority;
-		startPage: (self db pageNamed: 'Syntax — arrays')
+		startPage: (self db pageNamed: 'Syntax — Arrays')
 ]
 
 { #category : #page }
@@ -1314,7 +1314,7 @@ There are only 6 keywords in Smalltalk, and three of them are the constants `nil
 '>
 	^ aSlide lepiterPage
 		setPriority;
-		startPage: (self db pageNamed: 'Syntax — constants')
+		startPage: (self db pageNamed: 'Syntax — Constants')
 ]
 
 { #category : #page }
