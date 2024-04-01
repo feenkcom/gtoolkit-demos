@@ -677,7 +677,13 @@ SPLPetitParserSlideshow >> title: aSlide [
 	<gtSlide>
 	<text: '# Building composable parsers with PetitParser
 
-This slideshow is for the PetitParser lecture of the [compiler construction course](https://seg.inf.unibe.ch/teaching/current/cc/) at UniBE.'>
+This slideshow is for the PetitParser lecture of the [compiler construction course](https://seg.inf.unibe.ch/teaching/current/cc/) at UniBE.
+
+The slideshow can be explored live by downloading [GToolkit](https://gtoolkit.com) and inspecting:
+```
+SPLPetitParserSlideshow new
+```
+'>
 	^ aSlide titleWithFooter
 		setPriority;
 		titleBottomPadding: 30;
