@@ -125,6 +125,9 @@ GtQueryingCodeShow >> filtersTreeExample [
 				asElementDo: [ :e | e ].
 	
 	^ BlElement new
+		constraintsDo: [ :c | 
+			c vertical matchParent. 
+			c horizontal matchParent ];
 		background: Color white;
 		aptitude: BrShadowAptitude;
 		margin: (BlInsets all: 5);
