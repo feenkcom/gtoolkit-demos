@@ -29,7 +29,7 @@ GtLampSortAnnouncement >> asVisualisationElement [
 	dataGroup := GtPlotterDataGroup new values: dataPoints.
 	dataGroup := dataGroup labelled: [ :each | each key ].
 	dataGroup := dataGroup
-			colored: [ :each | 
+			background: [ :each | 
 				(self shouldHighlightIndex: each key)
 					ifTrue: [ Color black ]
 					ifFalse: [ Color veryLightGray ] ].
