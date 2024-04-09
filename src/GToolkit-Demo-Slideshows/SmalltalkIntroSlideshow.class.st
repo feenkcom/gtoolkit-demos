@@ -1605,6 +1605,12 @@ SmalltalkIntroSlideshow >> tocPage [
 	<gtExample>
 	<noTest>
 	^ (LePage named: 'ToC')
+	addSnippet: (LePharoSnippet new
+			code: 'toc := thisSnippet page.
+(toc database pages collect: #title)
+	difference: (toc allChildrenTextSnippets
+			flatCollect: [ :s | s outgoingTextualLinks items collect: [ :l | l targetReference pageTitle ] ]).';
+			yourself);
 	addSnippet: (LeTextSnippet new
 			string: '[[Numbers, strings, booleans and blocks are objects]]';
 			addSnippet: (LeTextSnippet new
@@ -1678,7 +1684,10 @@ SmalltalkIntroSlideshow >> tocPage [
 					yourself);
 			yourself);
 	addSnippet: (LeTextSnippet new
-			string: '';
+			string: '# Not used';
+			addSnippet: (LeTextSnippet new
+					string: '[[Changing a running system on the fly]]';
+					yourself);
 			yourself);
 	yourself
 ]
