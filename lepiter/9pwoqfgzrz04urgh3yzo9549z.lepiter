@@ -8,6 +8,43 @@
 				"__type" : "textSnippet",
 				"children" : {
 					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2024-04-09T13:10:31.836518+02:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2024-04-09T13:10:32.791117+02:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "gBQVtQnSDQC6k7ukB1aaRA=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : "[[MM]] has implemented {{gtClass:name=GtGradSugiyamaTreeLayout}}. Now we use it in {{gtMethod:name=FCAContext>>#latticeFor:}}"
+			},
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
 					"items" : [
 						{
 							"__type" : "textSnippet",
@@ -141,7 +178,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2024-03-06T10:38:28.996372+01:00"
+						"dateAndTimeString" : "2024-04-09T13:11:27.93272+02:00"
 					}
 				},
 				"uid" : {
@@ -151,7 +188,7 @@
 				"paragraphStyle" : {
 					"__type" : "textStyle"
 				},
-				"string" : "# To do"
+				"string" : "# To do (old notes)"
 			},
 			{
 				"__type" : "textSnippet",
@@ -469,12 +506,12 @@
 		"__type" : "time",
 		"time" : {
 			"__type" : "dateAndTime",
-			"dateAndTimeString" : "2024-03-06T10:44:34.697966+01:00"
+			"dateAndTimeString" : "2024-04-09T13:11:22.944496+02:00"
 		}
 	},
 	"pageType" : {
 		"__type" : "namedPage",
-		"title" : "* Improve FCA layout"
+		"title" : "Improve FCA layout (done)"
 	},
 	"uid" : {
 		"__type" : "uuid",
