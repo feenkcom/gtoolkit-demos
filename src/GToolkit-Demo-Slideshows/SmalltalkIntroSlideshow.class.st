@@ -151,7 +151,32 @@ bounced ifTrue: [self velocity: vx @ vy].
 SmalltalkIntroSlideshow >> changingARunningSystem: aSlide [
 	<gtSlide>
 <text: 
-'# TODO
+'## Changing a running system
+
+Since games may last a long time, an autoplay feature would be useful to exercise the game.
+We start by inspecting a live instance.
+
+We can interact with it programatically.
+*(NB: Just evaluate the snippet instead of inspecting the result, to see the effect on the game.)*
+
+By exploring the *testing* protocol, we see that the methods {{gtMethod:name=GtLudoGame>>playerToRoll}} and {{gtMethod:name=GtLudoGame>>playerToMove}} tell us what should happen next.
+
+Also {{gtMethod:name=GtLudoGame>>tokensToMove}} computes the set of tokens that can possibly move next. 
+
+We roll the die or move as required.
+We can extract this as an `autoplay` method.
+
+If we run the `autoPlay` method to the end, we get an error.
+We add a test to do nothing if the game is over.
+'>
+<demo:
+'
+- Inspect the instance.
+- Introduce and execute the snippets.
+- Extract the autoplay method.
+- See that an error is raised at the end.
+- Add the line: `self isOver ifTrue: [ ^ self ].`
+
 '>
 	^ aSlide lepiterPage
 		setPriority;
@@ -164,100 +189,45 @@ SmalltalkIntroSlideshow >> changingARunningSystemPage [
 	<gtExample>
 	<noTest>
 	^ (LePage named: 'Changing a running system')
-		addSnippet: (LeTextSnippet new
-				string: '#Introducing an autoplay feature to a running game';
-				addSnippet: (LeTextSnippet new
-						string: 'Since games may last a long time, an autoplay feature would be useful to exercise the game.';
-						yourself);
-				addSnippet: (LeTextSnippet new
-						string: 'We start by inspecting a live instance.';
-						yourself);
-				addSnippet: (LePharoSnippet new
-						code: 'game := GtLudoGame new';
-						yourself);
-				addSnippet: (LeTextSnippet new
-						string: 'We can interact with it programatically. *(NB: Just evaluate the snippet instead of inspecting the result, to see the effect on the game.)* ';
-						yourself);
-				addSnippet: (LePharoSnippet new
-						code: 'game roll: 6.
-game moveTokenNamed: ''a''';
-						yourself);
-				yourself);
-		addSnippet: (LeTextSnippet new
-				string: '#Automating one move.';
-				addSnippet: (LeTextSnippet new
-						string: 'By exploring the code, we see that the methods {{gtMethod:name=GtLudoGame>>playerToRoll}} and {{gtMethod:name=GtLudoGame>>playerToMove}} tell us what should happen next.';
-						yourself);
-				addSnippet: (LeTextSnippet new
-						string: 'Also {{gtMethod:name=GtLudoGame>>tokensToMove}} computes the set of tokens that can possibly move next. ';
-						yourself);
-				addSnippet: (LeTextSnippet new
-						string: 'We roll the die or move as required: *(again, just evaluate the snippets)* ';
-						yourself);
-				addSnippet: (LePharoSnippet new
-						code: 'game playerToRoll ifTrue: [ game die roll ]';
-						yourself);
-				addSnippet: (LePharoSnippet new
-						code: 'game playerToMove ifTrue: [ game moveTokenNamed: game tokensToMove atRandom name ]';
-						yourself);
-				addSnippet: (LeTextSnippet new
-						string: 'Let''s combine them. We can just repeatedly perform this snippet to play the game.';
-						yourself);
-				addSnippet: (LePharoSnippet new
-						code: 'game playerToRoll ifTrue: [ game die roll ].
-game playerToMove ifTrue: [ 
-	game moveTokenNamed: game tokensToMove atRandom name ]';
-						yourself);
-				yourself);
-		addSnippet: (LeTextSnippet new
-				string: '#Introducing an autoPlay:method';
-				addSnippet: (LeTextSnippet new
-						string: 'Let''s turn this into a method that repeatedly plays a number of moves.';
-						yourself);
-				addSnippet: (LeTextSnippet new
-						string: 'Normally we would program this directly in the Coder (i.e., use the + button to add a method), but we can also do it programmatically.';
-						yourself);
-				addSnippet: (LePharoSnippet new
-						code: 'GtLudoGame compile: ''autoPlay: numberOfMoves
-	(1 to: numberOfMoves) do: [ :n | 
-		self playerToRoll ifTrue: [ self die roll ].
-		self playerToMove ifTrue: [ 
-			self moveTokenNamed: self tokensToMove atRandom name ] ]''';
-						yourself);
-				addSnippet: (LeTextSnippet new
-						string: 'Now we can use it to play. Inspect this, and then evaluate the autoplay snippet:';
-						yourself);
-				addSnippet: (LePharoSnippet new
-						code: 'game := GtLudoGame new';
-						yourself);
-				addSnippet: (LePharoSnippet new
-						code: 'game autoPlay: 1000';
-						yourself);
-				addSnippet: (LeTextSnippet new
-						string: 'Note that we get an exception at the end, as we try to continue to play after the game is over.';
-						yourself);
-				addSnippet: (LeTextSnippet new
-						string: 'We can fix the autoPlay: method to immediately return if the game is over.';
-						yourself);
-				addSnippet: (LeTextSnippet new
-						string: '(We add `self isOver ifTrue: [ ^ self ].` at the start of the loop.)';
-						yourself);
-				addSnippet: (LePharoSnippet new
-						code: 'GtLudoGame compile: ''autoPlay: numberOfMoves
-	(1 to: numberOfMoves) do: [ :n | 
-		self isOver ifTrue: [ ^ self ].
-		self playerToRoll ifTrue: [ self die roll ].
-		self playerToMove ifTrue: [ 
-			self moveTokenNamed: self tokensToMove atRandom name ] ]''';
-						yourself);
-				addSnippet: (LeTextSnippet new
-						string: 'Now we can safely play without an exception.';
-						yourself);
-				yourself);
-		addSnippet: (LeTextSnippet new
-				string: '';
-				yourself);
-		yourself
+	addSnippet: (LeTextSnippet new
+			string: 'We would like to add an *autoplay* feature to a running game.';
+			yourself);
+	addSnippet: (LePharoSnippet new
+			code: 'game := GtLudoGame new.';
+			yourself);
+	addSnippet: (LeTextSnippet new
+			string: 'We can control the game programmatically.';
+			yourself);
+	addSnippet: (LePharoSnippet new
+			code: 'game roll: 6.
+game moveTokenNamed: ''a''.';
+			yourself);
+	addSnippet: (LeTextSnippet new
+			string: 'We can automate a single move:';
+			yourself);
+	addSnippet: (LePharoSnippet new
+			code: 'game playerToRoll ifTrue: [ game die roll ].';
+			yourself);
+	addSnippet: (LePharoSnippet new
+			code: 'game playerToMove
+	ifTrue: [ game moveTokenNamed: 
+				game tokensToMove atRandom name ].';
+			yourself);
+	addSnippet: (LeTextSnippet new
+			string: 'And we can combine the actions.';
+			yourself);
+	addSnippet: (LePharoSnippet new
+			code: 'game playerToRoll ifTrue: [ game die roll ].
+game playerToMove
+	ifTrue: [ game moveTokenNamed: game tokensToMove atRandom name ].';
+			yourself);
+	addSnippet: (LeTextSnippet new
+			string: 'We can extract this now as a method.';
+			yourself);
+	addSnippet: (LePharoSnippet new
+			code: '1 to: 100 do: [ :n | game autoPlay ].';
+			yourself);
+	yourself
 ]
 
 { #category : #slides }
@@ -294,6 +264,11 @@ SmalltalkIntroSlideshow >> composingExamples: aSlide [
 	<gtSlide>
 <text: 
 '# TODO
+
+## Composing (Test) Examples
+
+
+
 '>
 	^ aSlide lepiterPage
 		setPriority;
@@ -489,6 +464,9 @@ SmalltalkIntroSlideshow >> everythingIsAnObjectPage [
 	<noTest>
 	^ (LePage named: 'Everything is an object')
 	addSnippet: (LeTextSnippet new
+			string: '';
+			yourself);
+	addSnippet: (LeTextSnippet new
 			string: '#This page is an object';
 			addSnippet: (LePharoSnippet new
 					code: 'thisSnippet page ';
@@ -525,7 +503,51 @@ SmalltalkIntroSlideshow >> everythingIsAnObjectPage [
 SmalltalkIntroSlideshow >> exploringALiveSystem: aSlide [
 	<gtSlide>
 <text: 
-'# TODO
+'# Exploring a live system
+
+Let''s inspect a running instance of a Ludo game.
+
+## Views
+
+Have a look at the various views (tabs).
+
+The `Raw` view is the one most IDEs will show you.
+
+The others are specialized views.
+The Board, Players and Squares views are custom-made for the Ludo game.
+
+Note how you can more easily navigate through the game entites (Players, Tokens, Squares) using the dedicated views than with the Raw view.
+
+You can OPT-click on the tabs to see the code creating each view.
+Most of these are quite simple. The Board view is the most complex one.
+
+## Exploring examples
+
+From the Meta tab you can explore not only the class definition and the source code of methods, but also find references. 
+This leads us to the classes that define test examples.
+
+Let''s explore {{gtClass:name=GtLudoGameExamples}}.
+From the Examples view we can run all the tests.
+
+Let''s have a closer look at {{gtMethod:name=GtLudoGameExamples>>playerAentersTokenA}}.
+It''s a simple scenario of a token entering the game after a 6 is rolled.
+
+Note that we can inspect and interact with the example that results from the test, and we can use the example to build further tests.
+(We''ll look more into this in a moment.)
+
+If we open a second view of the same object -- just click on the `(i)` (Inspect Object) button at the top right -- we see that they stay in sync.
+You can interact both through the GUI or programatically and the views will stay in sync.
+
+'>
+<demo:
+'
+- Inspect the game.
+- Show the Raw view, then the others.
+- OPT-click tio show the code.
+- From the Meta tab find the refences to `GtLudoGameExamples`
+- Explore `playerAentersAndLandsOnA` -- show how it composed.
+- Inspect the example and a second copy.
+- Evaluate the code: `game die roll: 5.` and `game moveTokenNamed: ''A''.`
 '>
 	^ aSlide lepiterPage
 		setPriority;
@@ -538,74 +560,13 @@ SmalltalkIntroSlideshow >> exploringALiveSystemPage [
 	<gtExample>
 	<noTest>
 	^ (LePage named: 'Exploring a live system')
-		addSnippet: (LeTextSnippet new
-				string: '#Exploring the Ludo Game';
-				addSnippet: (LeTextSnippet new
-						string: 'Let''s inspect a running instance of a Ludo game.';
-						yourself);
-				addSnippet: (LePharoSnippet new
-						code: 'GtLudoGame new';
-						yourself);
-				addSnippet: (LeTextSnippet new
-						string: 'Have a look at the various views (tabs).';
-						yourself);
-				addSnippet: (LeTextSnippet new
-						string: 'The `Raw` view is the one most IDEs will show you. The others are specialized views. The Board, Players and Squares views are custom-made for the Ludo game.';
-						yourself);
-				addSnippet: (LeTextSnippet new
-						string: 'Note how you can more easily navigate through the game entites (Players, Tokens, Squares) using the dedicated views than with the Raw view.';
-						yourself);
-				yourself);
-		addSnippet: (LeTextSnippet new
-				string: '#Exploring the view code';
-				addSnippet: (LeTextSnippet new
-						string: 'You can OPT-click on the tabs to see the code creating each view.';
-						yourself);
-				addSnippet: (LeTextSnippet new
-						string: 'Most of these are quite simple. The Board view is the most complex one.';
-						yourself);
-				yourself);
-		addSnippet: (LeTextSnippet new
-				string: '#Finding examples';
-				addSnippet: (LeTextSnippet new
-						string: 'From the Meta tab you can explore not only the class definition and the source code of methods, but also find references. This leads us to the classes that define test examples.';
-						yourself);
-				addSnippet: (LeTextSnippet new
-						string: 'Let''s explore {{gtClass:name=GtLudoGameExamples}}.  From the Examples view we can run all the tests.';
-						yourself);
-				addSnippet: (LeTextSnippet new
-						string: 'Let''s have a closer look at {{gtMethod:name=GtLudoGameExamples>>playerAentersTokenA}}. ';
-						yourself);
-				addSnippet: (LeTextSnippet new
-						string: 'It''s a simple scenario of a token entering the game after a 6 is rolled.';
-						yourself);
-				addSnippet: (LeTextSnippet new
-						string: 'Note that we can inspect and interact with the example that results from the test, and we can use the example to build further tests.';
-						yourself);
-				yourself);
-		addSnippet: (LeTextSnippet new
-				string: '#Interacting with Objects';
-				addSnippet: (LeTextSnippet new
-						string: 'Let''s open two (identical) views of the same example.';
-						yourself);
-				addSnippet: (LePharoSnippet new
-						code: 'game := GtLudoGameExamples new playerAentersTokenA';
-						yourself);
-				addSnippet: (LeTextSnippet new
-						string: 'Just click on the `(i)` (Inspect Object) button at the top right.';
-						yourself);
-				addSnippet: (LeTextSnippet new
-						string: 'You can interact both through the GUI or programatically and the views will stay in sync.';
-						yourself);
-				addSnippet: (LePharoSnippet new
-						code: 'game die roll: 5.
-game moveTokenNamed: ''A''';
-						yourself);
-				yourself);
-		addSnippet: (LeTextSnippet new
-				string: '';
-				yourself);
-		yourself
+	addSnippet: (LeTextSnippet new
+			string: 'Let''s inspect a running instance of a Ludo game.';
+			yourself);
+	addSnippet: (LePharoSnippet new
+			code: 'GtLudoGame new.';
+			yourself);
+	yourself
 ]
 
 { #category : #accessing }
@@ -1016,6 +977,9 @@ SmalltalkIntroSlideshow >> precedencePage [
 	<noTest>
 	^ (LePage named: 'Precedence')
 	addSnippet: (LeTextSnippet new
+			string: '';
+			yourself);
+	addSnippet: (LeTextSnippet new
 			string: '#First unary, then binary, then keyword';
 			yourself);
 	addSnippet: (LePharoSnippet new
@@ -1189,9 +1153,8 @@ SmalltalkIntroSlideshow >> slidePriorities [
 		methodSyntax:
 	
 		#exploringALiveSystem:
-		#changingARunningSystem:
-		
-		composingExamples:
+			#changingARunningSystem:
+			#composingExamples:
 		recordingMoves:
 		liveDocumentationLogic:
 		liveDocumentationUML:
@@ -1425,6 +1388,9 @@ SmalltalkIntroSlideshow >> syntaxStringsPage [
 	<noTest>
 	^ (LePage named: 'Syntax — Strings and Symbols')
 	addSnippet: (LeTextSnippet new
+			string: '';
+			yourself);
+	addSnippet: (LeTextSnippet new
 			string: '# Characters:';
 			addSnippet: (LePharoSnippet new
 					code: '$a';
@@ -1577,6 +1543,9 @@ SmalltalkIntroSlideshow >> threeKindsOfMessagesPage [
 	<noTest>
 	^ (LePage named: 'Three kinds of messages')
 	addSnippet: (LeTextSnippet new
+			string: '';
+			yourself);
+	addSnippet: (LeTextSnippet new
 			string: '#Unary messages';
 			addSnippet: (LePharoSnippet new
 					code: '5 factorial';
@@ -1689,21 +1658,24 @@ SmalltalkIntroSlideshow >> tocPage [
 			yourself);
 	addSnippet: (LeTextSnippet new
 			string: '[[Exploring a live system]]';
-			yourself);
-	addSnippet: (LeTextSnippet new
-			string: '[[Changing a running system]]';
-			yourself);
-	addSnippet: (LeTextSnippet new
-			string: '[[Composing (Test) Examples]]';
-			yourself);
-	addSnippet: (LeTextSnippet new
-			string: '[[Recording and visualizing token moves]]';
-			yourself);
-	addSnippet: (LeTextSnippet new
-			string: '[[Live documentation of the game logic]]';
-			yourself);
-	addSnippet: (LeTextSnippet new
-			string: '[[Live documentation of the technical solution]]';
+			addSnippet: (LeTextSnippet new
+					string: '[[Changing a running system]]';
+					yourself);
+			addSnippet: (LeTextSnippet new
+					string: '***CONTINUE HERE***';
+					yourself);
+			addSnippet: (LeTextSnippet new
+					string: '[[Composing (Test) Examples]]';
+					yourself);
+			addSnippet: (LeTextSnippet new
+					string: '[[Recording and visualizing token moves]]';
+					yourself);
+			addSnippet: (LeTextSnippet new
+					string: '[[Live documentation of the game logic]]';
+					yourself);
+			addSnippet: (LeTextSnippet new
+					string: '[[Live documentation of the technical solution]]';
+					yourself);
 			yourself);
 	addSnippet: (LeTextSnippet new
 			string: '';

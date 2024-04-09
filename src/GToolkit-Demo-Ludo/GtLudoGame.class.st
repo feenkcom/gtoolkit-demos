@@ -49,6 +49,14 @@ GtLudoGame >> asElement [
 	^ GtLudoGameElement for: self
 ]
 
+{ #category : #accessing }
+GtLudoGame >> autoPlay [
+	self isOver ifTrue: [ ^ self ].
+	self playerToRoll ifTrue: [ self die roll ].
+	^ self playerToMove
+		ifTrue: [ self moveTokenNamed: self tokensToMove atRandom name ]
+]
+
 { #category : #'gt - extensions' }
 GtLudoGame >> boardElement [
 	^ GtLudoBoardElement for: self
@@ -347,7 +355,7 @@ GtLudoGame >> playerQueue [
 	^ playerQueue
 ]
 
-{ #category : #accessing }
+{ #category : #testing }
 GtLudoGame >> playerToMove [
 	^ self playerToRoll not
 ]
