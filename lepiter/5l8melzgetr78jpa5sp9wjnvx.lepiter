@@ -183,7 +183,7 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2024-03-06T10:44:34.745708+01:00"
+									"dateAndTimeString" : "2024-04-09T13:11:22.964062+02:00"
 								}
 							},
 							"uid" : {
@@ -193,7 +193,7 @@
 							"paragraphStyle" : {
 								"__type" : "textStyle"
 							},
-							"string" : "[[* Improve FCA layout]]"
+							"string" : "[[Improve FCA layout (done)]]"
 						}
 					]
 				},
