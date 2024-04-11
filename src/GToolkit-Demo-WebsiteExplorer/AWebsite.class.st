@@ -62,7 +62,7 @@ AWebsite >> cloneRepoDirAndRefresh: aButton [
 	[ UIManager default
 		informUser: 'Cloning ' , self repoUrl , ' into ' , self repoDir basename
 		during: [ proc runAndWait.
-			aButton phlow fireUpdateWish ] ] fork.
+			aButton phlow fireToolUpdateWish ] ] fork.
 	^ self repoDir
 ]
 
