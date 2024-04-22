@@ -1581,7 +1581,10 @@ SmalltalkIntroSlideshow >> title: aSlide [
 
 Smalltalk is a fully object-oriented language and environment in which everything is an object. The system is live, which means that you are always developing a running system. Programming means making small incremental changes, by adding classes or methods to the live system.
 
-Today we''ll see how this impacts the sofware develpment process. As a running example, we''ll take the Ludo game that the students developed in P2, and as a platform, we''ll use GT, the Glamorous Toolkit, a moldable development environment built on top of Pharo Smalltalk.'>
+Today we''ll see how this impacts the sofware develpment process. As a running example, we''ll take the Ludo game that the students developed in P2, and as a platform, we''ll use GT, the Glamorous Toolkit, a moldable development environment built on top of Pharo Smalltalk.
+
+*NB:* This slideshow is available in the standard download of GT from [gtoolkit.com](https://gtoolkit.com) in the class {{gtClass:name=SmalltalkIntroSlideshow}}.
+'>
 	^ aSlide title
 		setPriority;
 		titleBottomPadding: 30;
