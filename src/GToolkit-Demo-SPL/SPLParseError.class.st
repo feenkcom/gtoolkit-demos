@@ -24,7 +24,7 @@ SPLParseError >> failure: aParseNode [
 { #category : #views }
 SPLParseError >> gtSourceFor: aView [
 	<gtView>
-	<gtExceptionDebuggingView>
+	<gtExceptionView>
 	^ aView textEditor
 		title: 'Source';
 		priority: 20;
@@ -36,7 +36,7 @@ SPLParseError >> gtSourceFor: aView [
 { #category : #views }
 SPLParseError >> gtTreeFor: aView [
 	<gtView>
-	<gtExceptionDebuggingView>
+	<gtExceptionView>
 	"self debugResult children isEmpty ifTrue: [ ^ aView empty ]."
 	^ aView columnedTree
 		title: 'Parse error';

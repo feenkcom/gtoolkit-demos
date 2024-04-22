@@ -44,7 +44,7 @@ SPLEvaluationError >> expression [
 { #category : #view }
 SPLEvaluationError >> gtContextFor: aView [
 	<gtView>
-	<gtExceptionDebuggingView>
+	<gtExceptionView>
 	^ aView forward
 		title: 'Context';
 		priority: 20;
@@ -55,7 +55,7 @@ SPLEvaluationError >> gtContextFor: aView [
 { #category : #view }
 SPLEvaluationError >> gtExpressionFor: aView [
 	<gtView>
-	<gtExceptionDebuggingView>
+	<gtExceptionView>
 	^ aView forward
 		title: 'Expression';
 		priority: 10;
@@ -66,7 +66,7 @@ SPLEvaluationError >> gtExpressionFor: aView [
 { #category : #view }
 SPLEvaluationError >> gtHistoryFor: aView [
 	<gtView>
-	<gtExceptionDebuggingView>
+	<gtExceptionView>
 	^ aView forward
 		title: 'History';
 		priority: 30;
