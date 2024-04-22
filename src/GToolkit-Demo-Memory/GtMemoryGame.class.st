@@ -100,6 +100,7 @@ GtMemoryGame >> gtAvailableCardsFor: aView [
 	
 	^ aView columnedList
 		  title: 'Cards';
+		  priority: 30;
 		  items: [ self availableCards ];
 		  column: 'Card' text: [ :aCard | 
 			  aCard isFlipped
@@ -108,10 +109,45 @@ GtMemoryGame >> gtAvailableCardsFor: aView [
 ]
 
 { #category : #accessing }
+GtMemoryGame >> gtDetailsFor: aView [
+	<gtView>
+	^ aView columnedList
+		title: 'Details';
+		priority: 20;
+		items: [ {{'Grid size'.
+					self gridSize}.
+				{'Card count'.
+					self cardsCount}.
+				{'Available cards'.
+					self availableCards size.
+					self availableCards}.
+				{'Visible cards'.
+					self visibleCards size.
+					self visibleCards}.
+				{'Chosen cards'.
+					self chosenCards size.
+					self chosenCards}.
+			
+				{'Matches count'.
+					self matchesCount}.
+				{'Should complete step'.
+					self shouldCompleteStep}.
+				{'Should reset step'.
+					self shouldResetStep}.
+						{'Game is over'.
+					self isOver}.} ];
+		column: 'Property' text: [ :detail | detail first ];
+		column: 'Value' text: [ :detail | detail second ];
+		send: [ :detail | detail last ];
+		actionUpdateButton
+]
+
+{ #category : #accessing }
 GtMemoryGame >> gtLiveFor: aView [
 	<gtView>
 	^ aView explicit
 		title: 'Live';
+		priority: 10;
 		stencil: [ self asElement ]
 ]
 
