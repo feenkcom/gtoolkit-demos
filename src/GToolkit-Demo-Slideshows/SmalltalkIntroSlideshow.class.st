@@ -239,6 +239,11 @@ SmalltalkIntroSlideshow >> classesAreObjects: aSlide [
 Classes are objects too. A class is a global name that starts with an upper case letter, such as `SmallInteger`. We can browse the source code of a class by opening the code bubble, by using the context menu, or using a keyboard shortcut.
 
 We can send messages to classes, such as `SmallInteger maxVal`. What do you suppose will be the result of sending `+ 1` to this maximum value?'>
+<demo:
+'- Inspect the snippet
+- Send `self + 1` in the integer''s playground
+- Note the result type
+- Send `self - 1` in the playground'>
 	^ aSlide lepiterPage
 		setPriority;
 		startPage: (self db pageNamed: 'Classes are objects')
@@ -263,13 +268,44 @@ SmalltalkIntroSlideshow >> classesAreObjectsPage [
 SmalltalkIntroSlideshow >> composingExamples: aSlide [
 	<gtSlide>
 <text: 
-'# TODO
+'## Composing (Test) Examples
 
-## Composing (Test) Examples
+In GT, unit tests are written as *example methods*.
 
+An example method is just like an ordinary test method that we know from the Xunit frameworks, except that an example method *returns an instance of the tested object*.
 
+This is useful for many reasons, but mainly these two:
 
-'>
+1. Instead of just ending with a passed (or failed) test, *you have an object that you can inspect and explore.*
+
+2. *The resulting example can be used as a starting point for composing further tests.*
+
+We see here a simple example method for the Ludo Game.
+
+It''s an ordinary method, except that it uses the `gtExample` pragma (annotation), it has assertions, and *it returns an example*.
+If you `Play and inspect` the method, you will obtain the example to explore.
+
+If we browse the *senders* of the `emptyGame` method, we see it is used to  build another example.
+The `GtLudoGameExamples>>playerArolls6` method builds on the emptyGame example and exercises the scenario where player A rolls a 6.
+
+The tests cover all the special corner cases of the game. 
+For example, what happens if a players rolls a 6 twice, and the second token lands on the square where there is already the first token?
+
+We split this into two examples. The first sets up the situation where there is already a token for player A on the initial square.
+
+The next example starts from this one, and check what happens when the next token enters play.
+
+From the *Examples* tab of the `GtLudoGameExamples` class we can both run all the tests, and explore individual examples.
+
+If we select the *Examples map* view, we see that the test examples form a hierarchy built up from the emptyGame example.'>
+<demo:
+'- Change some assertions to see what happens if they fail.
+- Browse the senders and explore `playerArolls6`
+- Browse senders of `playerArolls6` to find `playerAentersTokenA`
+- Again browse senders to find `playerAentersAndLandsOnTokenA`
+- Navigate to the class of the last method, and maximize the view to show the class coder
+- Show the `Examples` view to run the examples, and the `Examples map` to show the hierarchy'>
+
 	^ aSlide lepiterPage
 		setPriority;
 		startPage: (self db pageNamed: 'Composing (Test) Examples')
@@ -281,76 +317,16 @@ SmalltalkIntroSlideshow >> composingExamplesPage [
 	<gtExample>
 	<noTest>
 	^ (LePage named: 'Composing (Test) Examples')
-		addSnippet: (LeTextSnippet new
-				string: '#What are example methods?';
-				addSnippet: (LeTextSnippet new
-						string: 'In GT, unit tests are written as *example methods*.';
-						yourself);
-				addSnippet: (LeTextSnippet new
-						string: 'An example method is just like an ordinary test method that we know from the Xunit frameworks, except that an example method *returns an instance of the tested object*.';
-						yourself);
-				addSnippet: (LeTextSnippet new
-						string: 'This is useful for many reasons, but mainly these two:';
-						yourself);
-				addSnippet: (LeTextSnippet new
-						string: '**1.** Instead of just ending with a passed (or failed) test, ***you have an object that you can inspect and explore.***';
-						yourself);
-				addSnippet: (LeTextSnippet new
-						string: '**2.** ***The resulting example can be used as a starting point for composing further tests.***';
-						yourself);
-				addSnippet: (LeTextSnippet new
-						string: 'Here''s a simple example method for the Ludo Game: {{gtMethod:name=GtLudoGameExamples>>emptyGame|expanded}}';
-						yourself);
-				addSnippet: (LeTextSnippet new
-						string: 'It''s an ordinary method, except that it uses the `gtExample` pragma (annotation), it has assertions, and *it returns an example*.';
-						yourself);
-				addSnippet: (LeTextSnippet new
-						string: 'If you `Play and inspect` the method, you will obtain the example to explore.';
-						yourself);
-				addSnippet: (LeTextSnippet new
-						string: '(Change some assertions to see what happens if they fail.)';
-						yourself);
-				yourself);
-		addSnippet: (LeTextSnippet new
-				string: '#Composing examples';
-				addSnippet: (LeTextSnippet new
-						string: 'If we browse the *senders* of the `emptyGame` method, we see it is used to  build another example.';
-						yourself);
-				addSnippet: (LePharoSnippet new
-						code: '#emptyGame gtSenders';
-						yourself);
-				addSnippet: (LeTextSnippet new
-						string: 'The {{gtMethod:name=GtLudoGameExamples>>playerArolls6}}method builds on the emptyGame example and exercises the scenario where player A rolls a 6.';
-						yourself);
-				yourself);
-		addSnippet: (LeTextSnippet new
-				string: '#Before and After examples';
-				addSnippet: (LeTextSnippet new
-						string: 'The tests cover all the special corner cases of the game. For example, what happens if a players rolls a 6 twice, and the second token lands on the square where there is already the first token?';
-						yourself);
-				addSnippet: (LeTextSnippet new
-						string: 'We split this into two examples. The first sets up the situation where there is already a token for player A on the initial square.';
-						yourself);
-				addSnippet: (LePharoSnippet new
-						code: 'GtLudoGameExamples new playerAentersTokenA';
-						yourself);
-				addSnippet: (LeTextSnippet new
-						string: 'The next example starts from this one, and check what happens when the next token enters play.';
-						yourself);
-				addSnippet: (LePharoSnippet new
-						code: 'GtLudoGameExamples new playerAentersAndLandsOnTokenA';
-						yourself);
-				yourself);
-		addSnippet: (LeTextSnippet new
-				string: '#Running and exploring the examples';
-				addSnippet: (LeTextSnippet new
-						string: 'From the `Examples` tab of the {{gtClass:name=GtLudoGameExamples}} class we can both run all the tests, and explore individual examples.';
-						yourself);
-				addSnippet: (LeTextSnippet new
-						string: 'If we select the `Examples map` view, we see that the test examples form a tree built up from the emptyGame example.';
-						yourself);
-				yourself);
-		yourself
+	addSnippet: (LeTextSnippet new
+			string: 'An *example* is a test method that returns the object under test:';
+			yourself);
+	addSnippet: (LeElementSnippet new
+			code: 'GtPharoMethodCoder forMethod:GtLudoGameExamples>>#emptyGame';
+			codeVisible: false;
+			elementHeight: 286;
+			codeHeight: 50;
+			yourself);
+	yourself
 ]
 
 { #category : #slides }
@@ -419,7 +395,9 @@ Smalltalk introduced the metaphor of “methods” — you do not “invoke a me
 The expression `3+4` is a *message* “`+4`” with the *selector* “`+`” and argument `4` sent to the *receiver* `3`:
 
 The receiver `3` has a *method* (a chunk of code) to compute the result.'>
-
+<demo:
+'- Inspect the result
+- Open the code bubble for the `+` method'>
 	^ aSlide lepiterPage
 		setPriority;
 		startPage: (self db pageNamed: 'Everything happens by sending messages')
@@ -535,7 +513,7 @@ It''s a simple scenario of a token entering the game after a 6 is rolled.
 Note that we can inspect and interact with the example that results from the test, and we can use the example to build further tests.
 (We''ll look more into this in a moment.)
 
-If we open a second view of the same object -- just click on the `(i)` (Inspect Object) button at the top right -- we see that they stay in sync.
+If we open a second view of the same object — just click on the `(i)` (Inspect Object) button at the top right — we see that they stay in sync.
 You can interact both through the GUI or programatically and the views will stay in sync.
 
 '>
@@ -565,6 +543,15 @@ SmalltalkIntroSlideshow >> exploringALiveSystemPage [
 			yourself);
 	addSnippet: (LePharoSnippet new
 			code: 'GtLudoGame new.';
+			yourself);
+	addSnippet: (LeTextSnippet new
+			string: 'From the instance we can see various *views*, navigate to the *source code*, and explore *examples*.';
+			yourself);
+	addSnippet: (LeElementSnippet new
+			code: 'GtLudoGame new.';
+			codeVisible: false;
+			elementHeight: 460;
+			codeHeight: 50;
 			yourself);
 	yourself
 ]
@@ -624,8 +611,14 @@ Changes to classes and methods are logged as you program.');
 SmalltalkIntroSlideshow >> liveDocumentationLogic: aSlide [
 	<gtSlide>
 <text: 
-'# TODO
-'>
+'## Live documentation of the game logic
+
+Notebooks (such as this one) can serve as live documentation for the logic of the game (i.e., the *business domain*) as well as for the technical solution.
+
+Consider the example game {{gtMethod:name=GtLudoRecordingGameExamples >> #gameShowingAllMoves6}}, which shows a short, complete game.
+The examples can then be embedded into the notebook to form live documentation of the different cases of moves.'>
+<demo:
+'Show and explore the impossible move.'>
 	^ aSlide lepiterPage
 		setPriority;
 		startPage: (self db pageNamed: 'Live documentation of the game logic')
@@ -637,99 +630,71 @@ SmalltalkIntroSlideshow >> liveDocumentationLogicPage [
 	<gtExample>
 	<noTest>
 	^ (LePage named: 'Live documentation of the game logic')
-		addSnippet: (LeTextSnippet new
-				string: 'Notebooks (such as this one) can serve as live documentation for the logic of the game (i.e., the *business domain*) as well s for the technical solution.';
-				yourself);
-		addSnippet: (LeTextSnippet new
-				string: 'Consider the example game {{gtMethod:name=GtLudoRecordingGameExamples >> #gameShowingAllMoves6}}, which shows a short, complete game.';
-				yourself);
-		addSnippet: (LeTextSnippet new
-				string: '#Viewing the history';
-				addSnippet: (LeTextSnippet new
-						string: 'We can visualize the complete history:';
-						yourself);
-				addSnippet: (LeExampleSnippet new
-						exampleBehaviorName: 'GtLudoRecordingGameExamples';
-						exampleSelector: 'gameShowingAllMoves6';
-						noCode: true;
-						previewShowSelector: 'gtHistoryFor:';
-						previewHeight: 500);
-				yourself);
-		addSnippet: (LeTextSnippet new
-				string: '#The different cases of moves';
-				addSnippet: (LeTextSnippet new
-						string: 'We can use this example to illustrate the scenarios that the game must support';
-						yourself);
-				addSnippet: (LeTextSnippet new
-						string: '##The initial move';
-						addSnippet: (LeExampleSnippet new
-								exampleBehaviorName: 'GtLudoRecordingGameExamples';
-								exampleSelector: 'moveInitial';
-								noCode: true;
-								previewShowSelector: 'moveOnBoardFor:');
-						yourself);
-				addSnippet: (LeTextSnippet new
-						string: '##A regular move';
-						addSnippet: (LeExampleSnippet new
-								exampleBehaviorName: 'GtLudoRecordingGameExamples';
-								exampleSelector: 'moveSimple';
-								noCode: true;
-								previewShowSelector: 'moveOnBoardFor:');
-						yourself);
-				addSnippet: (LeTextSnippet new
-						string: '##A move to the end';
-						addSnippet: (LeExampleSnippet new
-								exampleBehaviorName: 'GtLudoRecordingGameExamples';
-								exampleSelector: 'moveToTheEnd';
-								noCode: true;
-								previewShowSelector: 'moveOnBoardFor:');
-						yourself);
-				addSnippet: (LeTextSnippet new
-						string: '##An impossible move';
-						addSnippet: (LeExampleSnippet new
-								exampleBehaviorName: 'GtLudoRecordingGameExamples';
-								exampleSelector: 'moveImpossible';
-								noCode: true;
-								previewShowSelector: 'moveOnBoardFor:');
-						yourself);
-				addSnippet: (LeTextSnippet new
-						string: '##Jumping over one''s own token';
-						addSnippet: (LeExampleSnippet new
-								exampleBehaviorName: 'GtLudoRecordingGameExamples';
-								exampleSelector: 'moveJumping';
-								noCode: true;
-								previewShowSelector: 'moveOnBoardFor:');
-						yourself);
-				addSnippet: (LeTextSnippet new
-						string: '##Capturing another player''s token';
-						addSnippet: (LeExampleSnippet new
-								exampleBehaviorName: 'GtLudoRecordingGameExamples';
-								exampleSelector: 'moveInitialJumpingAndCapturing';
-								noCode: true;
-								previewShowSelector: 'moveOnBoardFor:');
-						addSnippet: (LeTextSnippet new
-								string: 'This case is interesting because it consists of three steps, as token A first jumps over token a, then lands on and captures token D, sending it to the start.';
-								yourself);
-						addSnippet: (LeExampleSnippet new
-								exampleBehaviorName: 'GtLudoRecordingGameExamples';
-								exampleSelector: 'moveInitialJumpingAndCapturing';
-								noCode: true;
-								previewShowSelector: 'gtTokenMovesFor:';
-								previewHeight: 150);
-						yourself);
-				yourself);
-		addSnippet: (LeTextSnippet new
-				string: '';
-				yourself);
-		yourself
+	addSnippet: (LeTextSnippet new
+			string: 'We can use live examples to document the logic of an application.';
+			yourself);
+	addSnippet: (LeTextSnippet new
+			string: '##The initial move';
+			addSnippet: (LeExampleSnippet new
+					exampleBehaviorName: 'GtLudoRecordingGameExamples';
+					exampleSelector: 'moveInitial';
+					noCode: true;
+					previewShowSelector: 'moveOnBoardFor:');
+			yourself);
+	addSnippet: (LeTextSnippet new
+			string: '##A regular move';
+			addSnippet: (LeExampleSnippet new
+					exampleBehaviorName: 'GtLudoRecordingGameExamples';
+					exampleSelector: 'moveSimple';
+					noCode: true;
+					previewShowSelector: 'moveOnBoardFor:');
+			yourself);
+	addSnippet: (LeTextSnippet new
+			string: '##A move to the end';
+			addSnippet: (LeExampleSnippet new
+					exampleBehaviorName: 'GtLudoRecordingGameExamples';
+					exampleSelector: 'moveToTheEnd';
+					noCode: true;
+					previewShowSelector: 'moveOnBoardFor:');
+			yourself);
+	addSnippet: (LeTextSnippet new
+			string: '##An impossible move';
+			addSnippet: (LeExampleSnippet new
+					exampleBehaviorName: 'GtLudoRecordingGameExamples';
+					exampleSelector: 'moveImpossible';
+					noCode: true;
+					previewShowSelector: 'moveOnBoardFor:');
+			yourself);
+	addSnippet: (LeTextSnippet new
+			string: '##Jumping over one''s own token';
+			addSnippet: (LeExampleSnippet new
+					exampleBehaviorName: 'GtLudoRecordingGameExamples';
+					exampleSelector: 'moveJumping';
+					noCode: true;
+					previewShowSelector: 'moveOnBoardFor:');
+			yourself);
+	addSnippet: (LeTextSnippet new
+			string: '##Capturing another player''s token';
+			addSnippet: (LeExampleSnippet new
+					exampleBehaviorName: 'GtLudoRecordingGameExamples';
+					exampleSelector: 'moveInitialJumpingAndCapturing';
+					noCode: true;
+					previewShowSelector: 'moveOnBoardFor:');
+			yourself);
+	addSnippet: (LeTextSnippet new
+			string: '';
+			yourself);
+	yourself
 ]
 
 { #category : #slides }
 SmalltalkIntroSlideshow >> liveDocumentationUML: aSlide [
 	<gtSlide>
 <text: 
-'# TODO
-'>
+'## Live documentation of the technical solution
+
+We can generate live diagrams from the source code.
+A UML diagram showing all the details is rather cluttered and nit so useful.'>
 	^ aSlide lepiterPage
 		setPriority;
 		startPage: (self db pageNamed: 'Live documentation of the technical solution')
@@ -741,40 +706,16 @@ SmalltalkIntroSlideshow >> liveDocumentationUMLPage [
 	<gtExample>
 	<noTest>
 	^ (LePage named: 'Live documentation of the technical solution')
-		addSnippet: (LeTextSnippet new
-				string: '#UML class diagrams';
-				addSnippet: (LeTextSnippet new
-						string: 'We can easily obtain a UML diagram for the whole implementation, but it is a bit cluttered:';
-						yourself);
-				yourself);
-		addSnippet: (LeExampleSnippet new
-				exampleBehaviorName: 'GtLudoCodeDocumentationExamples';
-				exampleSelector: 'classHierarchy';
-				noCode: true;
-				previewShowSelector: 'gtLiveFor:';
-				previewHeight: 400);
-		addSnippet: (LeTextSnippet new
-				string: '#Model classes';
-				addSnippet: (LeTextSnippet new
-						string: 'It can be more useful to focus just on a subset of the implementation, such as just the model classes.';
-						yourself);
-				addSnippet: (LeExampleSnippet new
-						exampleBehaviorName: 'GtLudoCodeDocumentationExamples';
-						exampleSelector: 'modelClassHierarchy';
-						noCode: true;
-						previewShowSelector: 'gtLiveFor:';
-						previewHeight: 900);
-				addSnippet: (LeTextSnippet new
-						string: 'We can also visualize the relationships between classes.';
-						yourself);
-				addSnippet: (LeExampleSnippet new
-						exampleBehaviorName: 'GtLudoCodeDocumentationExamples';
-						exampleSelector: 'modelClassExplicitLabeledReferences';
-						noCode: true;
-						previewShowSelector: 'gtLiveFor:';
-						previewHeight: 600);
-				yourself);
-		yourself
+	addSnippet: (LeTextSnippet new
+			string: 'We can easily obtain a UML diagram for the whole implementation, but it is a bit cluttered:';
+			yourself);
+	addSnippet: (LeElementSnippet new
+			code: 'GtLudoCodeDocumentationExamples new classHierarchy';
+			codeVisible: false;
+			elementHeight: 385;
+			codeHeight: 50;
+			yourself);
+	yourself
 ]
 
 { #category : #slides }
@@ -819,6 +760,9 @@ SmalltalkIntroSlideshow >> methodsAreObjects: aSlide [
 A method is also an object. You can retrieve it by sending the message `>>` to the class with the method''s selector as an argument.
 
 If you inspect a method, you can see not just its source code, but also its bytecode and even the abstract syntax tree.'>
+<demo: 
+'- Inspect the snippets
+- Explore the views of a method'>
 	^ aSlide lepiterPage
 		setPriority;
 		startPage: (self db pageNamed: 'Methods are objects')
@@ -849,6 +793,36 @@ SmalltalkIntroSlideshow >> methodsAreObjectsPage [
 ]
 
 { #category : #slides }
+SmalltalkIntroSlideshow >> modelClasses: aSlide [
+	<gtSlide>
+<text: 
+'### Model classes
+
+If we just focus on the model classes, we get a better view, but it still contains more details than are useful.'>
+	^ aSlide lepiterPage
+		setPriority;
+		startPage: (self db pageNamed: 'Model classes')
+]
+
+{ #category : #page }
+SmalltalkIntroSlideshow >> modelClassesPage [
+	<lePage>
+	<gtExample>
+	<noTest>
+	^ (LePage named: 'Model classes')
+	addSnippet: (LeTextSnippet new
+			string: 'It can be more useful to focus just on a subset of the implementation, such as just the model classes.';
+			yourself);
+	addSnippet: (LeElementSnippet new
+			code: 'GtLudoCodeDocumentationExamples new modelClassHierarchy';
+			codeVisible: false;
+			elementHeight: 914;
+			codeHeight: 50;
+			yourself);
+	yourself
+]
+
+{ #category : #slides }
 SmalltalkIntroSlideshow >> numbersAreObjects: aSlide [
 	<gtSlide>
 <text: 
@@ -863,7 +837,9 @@ Numbers are objects, not just primitive data types. We see that the number `1` i
 Even booleans are objects. `true` is an instance of the class `True`, which is a subclass of `Boolean`.
 
 Blocks, or anonymous functions, are delimited by square brackets. This one takes no arguments, so we can evaluate it by sending it the message `value`.'>
-	
+<demo:
+'- Inspect the snippets.
+- Change the last snippet to send `value` to the block.'>
 	^ aSlide lepiterPage
 		setPriority;
 		startPage: (self db pageNamed: 'Numbers, strings, booleans and blocks are objects')
@@ -933,12 +909,17 @@ SmalltalkIntroSlideshow >> outline: aSlide [
 	<gtSlide>
 	<text: '# Outline
 
-• First we''ll have a quick look at what Smalltalk is, and how it differs from other object-oriented programming languages and systems.
-• Next we''ll have a quick look at the basics. Smalltalk is a tiny language, and you can learn the syntax in a few minutes, but it does take a bit of getting used to.
-• Then we''ll proceed with the development of the Ludo game. The key idea is to make the domain concepts visible as we program, so instead of just seeing source code, we see a live system that we can explore.
-• Testing is similar to classical Xunit testing, with the small difference that every test returns an example object.
-• This turns out to be very powerful, not just for building new tests, but also for exploring the system and building live documentation.
-• We''ll wrap up with some take home messages.'>
+First we''ll have a quick look at what Smalltalk is, and how it differs from other object-oriented programming languages and systems.
+
+Next we''ll have a quick look at the basics. Smalltalk is a tiny language, and you can learn the syntax in a few minutes, but it does take a bit of getting used to.
+
+Then we''ll proceed with the development of the Ludo game. The key idea is to make the domain concepts visible as we program, so instead of just seeing source code, we see a live system that we can explore.
+
+Testing is similar to classical Xunit testing, with the small difference that every test returns an example object.
+
+This turns out to be very powerful, not just for building new tests, but also for exploring the system and building live documentation.
+
+We''ll wrap up with some take home messages.'>
 	^ aSlide paragraph
 		setPriority;
 		subtitleWithFormat: (self asSubtitle: 'Outline');
@@ -963,7 +944,7 @@ In expressions that mix different kinds of message sends, first unary, then bina
 Otherwise evaluation is strictly from left to right.
 
 The left-to-right rule applies also to binary messages, so  `1+2*3` is `9` and not `7`.
-In practice this is rarel an issue. Just use parentheses to get the order you want.
+In practice this is rarely an issue. Just use parentheses to get the order you want.
 '>
 	^ aSlide lepiterPage
 		setPriority;
@@ -1016,8 +997,33 @@ SmalltalkIntroSlideshow >> precedencePage [
 SmalltalkIntroSlideshow >> recordingMoves: aSlide [
 	<gtSlide>
 <text: 
-'# TODO
-'>
+'## Recording and visualizing token moves
+
+A shortcoming of the game is that there is no history of the movement of the tokens.
+We only see snapshots of the board. If we could keep a history of the moves, then we could also visualize the actual transitions.
+
+We design {{gtClass:name=GtLudoRecordingGame}} as a subclass of {{gtClass:name=GtLudoGame}} that keeps a history of the moves.
+This compels us to turn the concept of a *Move* into a first-class object, an instance of {{gtClass:name=GtLudoMove}}. This class has the responsibility to track the actual move data (the die roll value, the token moved, and the list of tokens moved as a result).
+
+We subclass our examples, so we now have recording versions of them all.
+
+Let''s inspect the {{gtMethod:name=GtLudoGameExamples>>#playerAovershootsGoal}} example.
+Inspecting this still just shows a snapshot, but if we look at the *Moves* tab, have the history of the moves.
+More interesting, we can now visualize which tokens moved where by inspecting the individual Moves.
+
+Note in particular the second move, which required two hops.
+
+We can now track all the moves that are played with the autoplay feature.
+Let''s open up two side-side views of a new game, with the second one showing the list of moves.
+
+Now that we have first-class Move objects, we have a complete history of a game.
+We can also *replay* all the moves up to a certain point, and go back in time to see the state of the game at any point.'>
+<demo:
+'- Inspect the snippet
+- Go to the *Moves* view, and inspect individual moves
+- Inspect a new recording game, and open a second inspector to the *Moves* view
+- Evaluate `self autoPlay: 1.` in the playground to see the updates
+- Select a move and play the *Replay to here* action'>
 	^ aSlide lepiterPage
 		setPriority;
 		startPage: (self db pageNamed: 'Recording and visualizing token moves')
@@ -1029,88 +1035,62 @@ SmalltalkIntroSlideshow >> recordingMovesPage [
 	<gtExample>
 	<noTest>
 	^ (LePage named: 'Recording and visualizing token moves')
-		addSnippet: (LeTextSnippet new
-				string: '#How to visualize the movement of the tokens?';
-				addSnippet: (LeTextSnippet new
-						string: 'A shortcoming of the game is that there is no history of the movement of the tokens.';
-						yourself);
-				addSnippet: (LeTextSnippet new
-						string: 'We only see snapshots of the board. If we could keep a history of the moves, then we could also visualize the actual transitions.';
-						yourself);
-				yourself);
-		addSnippet: (LeTextSnippet new
-				string: '#A Recording Ludo Game';
-				addSnippet: (LeTextSnippet new
-						string: 'We design {{gtClass:name=GtLudoRecordingGame}} as a subclass of {{gtClass:name=GtLudoGame}} that keeps a history of the moves.';
-						yourself);
-				addSnippet: (LeTextSnippet new
-						string: 'This compels us to turn the concept of a **Move** into a first-class object, an instance of {{gtClass:name=GtLudoMove}}. This class has the responsibility to track the actual move data (the die roll value, the token moved, and the list of tokens moved as a result).';
-						yourself);
-				yourself);
-		addSnippet: (LeTextSnippet new
-				string: '#Tracking the moves';
-				addSnippet: (LeTextSnippet new
-						string: 'We subclass our examples, so we now have recording versions of them all.';
-						yourself);
-				addSnippet: (LeTextSnippet new
-						string: 'Let''s look at this one.';
-						yourself);
-				addSnippet: (LePharoSnippet new
-						code: 'GtLudoRecordingGameExamples new playerAovershootsGoal';
-						yourself);
-				addSnippet: (LeTextSnippet new
-						string: 'Inspecting this still just shows a snapshot, but if we look at the `Moves` tab, have the history of the moves.';
-						yourself);
-				addSnippet: (LeTextSnippet new
-						string: 'More interesting, we can now visualize which tokens moved where by inspecting the individual Moves.';
-						yourself);
-				addSnippet: (LeTextSnippet new
-						string: 'Note in particular the second move, which required two hops.';
-						yourself);
-				addSnippet: (LeExampleSnippet new
-						exampleBehaviorName: 'GtLudoRecordingGameExamples';
-						exampleSelector: 'landingOnOwnPlayerToken';
-						noCode: true;
-						previewShowSelector: 'moveOnBoardFor:';
-						previewHeight: 410);
-				yourself);
-		addSnippet: (LeTextSnippet new
-				string: '#Autoplaying a game with history';
-				addSnippet: (LeTextSnippet new
-						string: 'We can now track all the moves that are played with the autoplay feature.';
-						yourself);
-				addSnippet: (LeTextSnippet new
-						string: 'Let''s open up two side-side views of a new game, with the second one showing the list of moves.';
-						yourself);
-				addSnippet: (LePharoSnippet new
-						code: 'game := GtLudoRecordingGame new';
-						yourself);
-				addSnippet: (LeTextSnippet new
-						string: 'As we play moves, we see the history update.';
-						yourself);
-				addSnippet: (LePharoSnippet new
-						code: 'game autoPlay: 1';
-						yourself);
-				yourself);
-		addSnippet: (LeTextSnippet new
-				string: '#Going back in time in the game';
-				addSnippet: (LeTextSnippet new
-						string: 'Now that we have first-class Move objects, we have a complete history of a game.';
-						yourself);
-				addSnippet: (LeTextSnippet new
-						string: 'We can also *replay* all the moves up to a certain point, and go back in time to see the state of the game at any point.';
-						yourself);
-				addSnippet: (LeTextSnippet new
-						string: 'Have look at the `Replay` and `Highlight` views of any move.';
-						yourself);
-				addSnippet: (LeTextSnippet new
-						string: 'From the Replay view you can also explore alternative execution paths (also using the autoplay feature). ';
-						yourself);
-				addSnippet: (LePharoSnippet new
-						code: '(game moves at: 50) replayGameToHere autoPlay: 1000';
-						yourself);
-				yourself);
-		yourself
+	addSnippet: (LeTextSnippet new
+			string: '';
+			yourself);
+	addSnippet: (LeTextSnippet new
+			string: '#Tracking the moves';
+			addSnippet: (LePharoSnippet new
+					code: 'GtLudoRecordingGameExamples new playerAovershootsGoal.';
+					yourself);
+			yourself);
+	addSnippet: (LeTextSnippet new
+			string: '#Autoplaying a game with history';
+			addSnippet: (LePharoSnippet new
+					code: 'game := GtLudoRecordingGame new.';
+					yourself);
+			addSnippet: (LeTextSnippet new
+					string: 'As we play moves, we see the history update.';
+					yourself);
+			addSnippet: (LePharoSnippet new
+					code: 'game autoPlay: 1.';
+					yourself);
+			yourself);
+	yourself
+]
+
+{ #category : #slides }
+SmalltalkIntroSlideshow >> relationships: aSlide [
+	<gtSlide>
+<text: 
+'### Relationships between classes
+
+Instead a class diagram just showing the key inheritance and usage relationships gives us more insight into the design.
+
+A particular advantage is that such generated diagrams are live and integrated with the other tools.'>
+<demo:
+'Show that the diagram is live, and that we can navigate to the code and examples.'>
+	^ aSlide lepiterPage
+		setPriority;
+		startPage: (self db pageNamed: 'Relationships between classes')
+]
+
+{ #category : #page }
+SmalltalkIntroSlideshow >> relationshipsPage [
+	<lePage>
+	<gtExample>
+	<noTest>
+	^ (LePage named: 'Relationships between classes')
+	addSnippet: (LeTextSnippet new
+			string: 'We can also visualize the relationships between classes.';
+			yourself);
+	addSnippet: (LeElementSnippet new
+			code: 'GtLudoCodeDocumentationExamples  new modelClassExplicitLabeledReferences ';
+			codeVisible: false;
+			elementHeight: 599;
+			codeHeight: 50;
+			yourself);
+	yourself
 ]
 
 { #category : #accessing }
@@ -1150,17 +1130,19 @@ SmalltalkIntroSlideshow >> slidePriorities [
 			#syntaxBlocks:
 			#syntaxSelfSuper:
 		
-		methodSyntax:
+		#methodSyntax:
 	
 		#exploringALiveSystem:
 			#changingARunningSystem:
 			#composingExamples:
-		recordingMoves:
-		liveDocumentationLogic:
-		liveDocumentationUML:
+			#recordingMoves:
+			#liveDocumentationLogic:
+			#liveDocumentationUML:
+				#modelClasses:
+				#relationships:
 	
-		takeHome:
-		whatsNext:
+		#takeHome:
+	#whatsNext:
 		)
 ]
 
@@ -1206,16 +1188,19 @@ SmalltalkIntroSlideshow >> syntaxArraysPage [
 	<noTest>
 	^ (LePage named: 'Syntax — Arrays')
 	addSnippet: (LeTextSnippet new
-			string: 'Literal arrays:';
-			yourself);
-	addSnippet: (LePharoSnippet new
-			code: '#( 1 $a #foo #( I am ''nested'' ) )';
+			string: '';
 			yourself);
 	addSnippet: (LeTextSnippet new
-			string: 'Dynamic arrays:';
+			string: '# Literal arrays';
+			addSnippet: (LePharoSnippet new
+					code: '#( 1 $a #foo #( I am ''nested'' ) )';
+					yourself);
 			yourself);
-	addSnippet: (LePharoSnippet new
-			code: '{ 6 * 7 . #( ''hello'' ''there'' )}';
+	addSnippet: (LeTextSnippet new
+			string: '# Dynamic arrays';
+			addSnippet: (LePharoSnippet new
+					code: '{ 6 * 7 . #( ''hello'' ''there'' )}';
+					yourself);
 			yourself);
 	yourself
 ]
@@ -1285,7 +1270,7 @@ SmalltalkIntroSlideshow >> syntaxConstantsPage [
 	<noTest>
 	^ (LePage named: 'Syntax — Constants')
 	addSnippet: (LeTextSnippet new
-			string: '`true`, `false` and `nil` are built-in constants.';
+			string: ' `true`, `false` and `nil` are built-in constants.';
 			yourself);
 	addSnippet: (LePharoSnippet new
 			code: '(nil = '''') == false | true';
@@ -1352,7 +1337,7 @@ SmalltalkIntroSlideshow >> syntaxSelfSuperPage [
 	<noTest>
 	^ (LePage named: 'Syntax — Pseudo variables')
 	addSnippet: (LeTextSnippet new
-			string: '`self` and `super` both refer to the object itself.';
+			string: ' `self` and `super` both refer to the object itself.';
 			yourself);
 	addSnippet: (LePharoSnippet new
 			code: 'self == super';
@@ -1419,14 +1404,14 @@ SmalltalkIntroSlideshow >> syntaxStringsPage [
 			addSnippet: (LePharoSnippet new
 					code: '#ThereIsOnlyOneOfMe';
 					yourself);
-			addSnippet: (LeTextSnippet new
-					string: 'True or false}';
-					addSnippet: (LePharoSnippet new
-							code: '#ThereIsOnlyOneOfMe == ''ThereIsOnlyOneOfMe''';
-							yourself);
-					addSnippet: (LePharoSnippet new
-							code: '#ThereIsOnlyOneOfMe = ''ThereIsOnlyOneOfMe''';
-							yourself);
+			yourself);
+	addSnippet: (LeTextSnippet new
+			string: '# True or false';
+			addSnippet: (LePharoSnippet new
+					code: '#ThereIsOnlyOneOfMe == ''ThereIsOnlyOneOfMe''';
+					yourself);
+			addSnippet: (LePharoSnippet new
+					code: '#ThereIsOnlyOneOfMe = ''ThereIsOnlyOneOfMe''';
 					yourself);
 			yourself);
 	yourself
@@ -1483,8 +1468,13 @@ SmalltalkIntroSlideshow >> systemChangesAreMessageSendsPage [
 SmalltalkIntroSlideshow >> takeHome: aSlide [
 	<gtSlide>
 <text: 
-'# TODO
-'>
+'# Take home messages
+
+Summing up, Smalltalk is one of very few software systems which enables fully live programming, in which programming means changing a running system.
+
+We have also see how  live *examples* extend conventional unit tests to yield explorable objects that can not only  be composed to form hierarchies of tests, but they can also be used to form live documentation.
+
+Finally the ability to *mold* the development tools to the needs to the application being developed allows you create fully explorable and explainable applications.'>
 	^ aSlide paragraph
 		setPriority;
 		subtitleWithFormat: (self asSubtitle: 'Take home messages');
@@ -1526,7 +1516,7 @@ You can also send unary messages to classes, as they are objects too.
 They take exactly one argument.
 `3 + 4` is the message `#+` send to the receiver `3` with argument `4`.
 
-*Keyword& messages take one or more arguments.
+*Keyword* messages take one or more arguments.
 Each argument is preceded by a keyword, which ends with a colon (`:`).
 Here the receiver is `3`, the message is `raisedTo: 10 modulo: 5`, and the selector is `#raisedTo:modulo:`
 The Ludo game also accepts various keyword messages.
@@ -1668,9 +1658,6 @@ SmalltalkIntroSlideshow >> tocPage [
 					string: '[[Changing a running system]]';
 					yourself);
 			addSnippet: (LeTextSnippet new
-					string: '***CONTINUE HERE***';
-					yourself);
-			addSnippet: (LeTextSnippet new
 					string: '[[Composing (Test) Examples]]';
 					yourself);
 			addSnippet: (LeTextSnippet new
@@ -1681,6 +1668,12 @@ SmalltalkIntroSlideshow >> tocPage [
 					yourself);
 			addSnippet: (LeTextSnippet new
 					string: '[[Live documentation of the technical solution]]';
+					addSnippet: (LeTextSnippet new
+							string: '[[Model classes]]';
+							yourself);
+					addSnippet: (LeTextSnippet new
+							string: '[[Relationships between classes]]';
+							yourself);
 					yourself);
 			yourself);
 	addSnippet: (LeTextSnippet new
@@ -1718,7 +1711,11 @@ Second, everything happens by sending messages to objects. If you want an object
 SmalltalkIntroSlideshow >> whatsNext: aSlide [
 	<gtSlide>
 <text: 
-'# TODO
+'# What''s next?
+
+The Glamorous Toolkit is an open-source system that runs under Linux, Mac and Windows. All the examples we have seen, as well as this slideshow are part of the download.
+
+There is also a lively community around Smalltalk, Pharo and GT. I encourage you to try it out and explore.
 '>
 	^ aSlide paragraph
 		setPriority;
