@@ -584,6 +584,22 @@ PrioritySlideshow >> priorityFor: aSlideMethodSelector [
 ]
 
 { #category : #utility }
+PrioritySlideshow >> removeAllMethods: aClassSymbol [
+	[ aClassSymbol asClass selectors
+		do: [ :each | aClassSymbol asClass removeSelector: each ] ] onErrorDo: [  ]
+]
+
+{ #category : #utility }
+PrioritySlideshow >> removeClass: aClassSymbol [
+	[ aClassSymbol asClass removeFromSystem ] onErrorDo: [  ]
+]
+
+{ #category : #utility }
+PrioritySlideshow >> removePackage: aPackageSymbol [
+	[ aPackageSymbol asPackage removeFromSystem ] onErrorDo: [  ]
+]
+
+{ #category : #utility }
 PrioritySlideshow >> scalableSlide: aSlide [
 	"No longer needed?"
 
