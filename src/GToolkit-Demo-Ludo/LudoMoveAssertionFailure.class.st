@@ -34,7 +34,7 @@ LudoMoveAssertionFailure class >> forMove: aLudoMove [
 { #category : #view }
 LudoMoveAssertionFailure >> gtGameViewFor: aView [
 	<gtView>
-	<gtExceptionDebuggingView>
+	<gtExceptionView>
 	^ aView forward
 		title: 'Game';
 		priority: 10;
@@ -45,7 +45,7 @@ LudoMoveAssertionFailure >> gtGameViewFor: aView [
 { #category : #view }
 LudoMoveAssertionFailure >> gtMovesViewFor: aView [
 	<gtView>
-	<gtExceptionDebuggingView>
+	<gtExceptionView>
 	^ aView forward
 		title: 'Moves';
 		priority: 20;
