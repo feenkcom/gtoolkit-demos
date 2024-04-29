@@ -37,7 +37,7 @@ GtLudoDieElement >> die [
 { #category : #accessing }
 GtLudoDieElement >> die: aDie [
 	die := aDie.
-	self setUpAnnouncements
+	self initializeAnnouncements
 ]
 
 { #category : #constants }
@@ -95,6 +95,20 @@ GtLudoDieElement >> initialize [
 		geometry: (BlRoundedRectangleGeometry cornerRadius: 12)
 ]
 
+{ #category : #announcements }
+GtLudoDieElement >> initializeAnnouncements [
+	self die announcer
+		when: GtLudoDieRolled
+		send: #onRolled
+		to: self.
+	self
+		when: BlDoubleClickEvent
+		do: [ :anEvent | 
+			anEvent consumed: true.
+			self die roll ].
+	self onRolled
+]
+
 { #category : #displaying }
 GtLudoDieElement >> newDot [
 	^ (BlElement new)
@@ -118,20 +132,6 @@ GtLudoDieElement >> placeDotAt: aPosition [
 	self
 		addChild: (self newDot value relocate: location);
 		yourself
-]
-
-{ #category : #announcements }
-GtLudoDieElement >> setUpAnnouncements [
-	self die announcer
-		when: GtLudoDieRolled
-		send: #onRolled
-		to: self.
-	self
-		when: BlDoubleClickEvent
-		do: [ :anEvent | 
-			anEvent consumed: true.
-			self die roll ].
-	self onRolled
 ]
 
 { #category : #displaying }
