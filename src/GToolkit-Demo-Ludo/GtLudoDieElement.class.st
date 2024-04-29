@@ -2,14 +2,14 @@
 I am a visualization of a {{gtClass:name=GtLudoDie}} instance.
 
 ```
-GtLudoDie new asElement inspect
+GtLudoDie new asElement
 ```
 
 I am updated automatically when a die is rolled.
 When you double-click me, I ask the die to be rolled.
 
 ```
-GtLudoDie new inspect
+GtLudoDie new
 ```
 
 "

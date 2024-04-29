@@ -3,7 +3,7 @@ I am an ordinary 6-sided die with a graphical display.
 
 
 ```
-GtLudoDie new inspect
+GtLudoDie new
 ```
 
 
