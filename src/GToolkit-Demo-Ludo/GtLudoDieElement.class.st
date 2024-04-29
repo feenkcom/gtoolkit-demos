@@ -37,11 +37,7 @@ GtLudoDieElement >> die [
 { #category : #accessing }
 GtLudoDieElement >> die: aDie [
 	die := aDie.
-	self die announcer when: GtLudoDieRolled send: #onRolled to: self.
-	self when: BlDoubleClickEvent do: [ :anEvent | 
-		anEvent consumed: true.
-		self die roll ].
-	self onRolled
+	self setUpAnnouncements
 ]
 
 { #category : #constants }
@@ -122,6 +118,20 @@ GtLudoDieElement >> placeDotAt: aPosition [
 	self
 		addChild: (self newDot value relocate: location);
 		yourself
+]
+
+{ #category : #announcements }
+GtLudoDieElement >> setUpAnnouncements [
+	self die announcer
+		when: GtLudoDieRolled
+		send: #onRolled
+		to: self.
+	self
+		when: BlDoubleClickEvent
+		do: [ :anEvent | 
+			anEvent consumed: true.
+			self die roll ].
+	self onRolled
 ]
 
 { #category : #displaying }
