@@ -2,14 +2,14 @@
 I am a visualization of a {{gtClass:name=GtLudoDie}} instance.
 
 ```
-GtLudoDie new asElement inspect
+GtLudoDie new asElement
 ```
 
 I am updated automatically when a die is rolled.
 When you double-click me, I ask the die to be rolled.
 
 ```
-GtLudoDie new inspect
+GtLudoDie new
 ```
 
 "
@@ -37,11 +37,7 @@ GtLudoDieElement >> die [
 { #category : #accessing }
 GtLudoDieElement >> die: aDie [
 	die := aDie.
-	self die announcer when: GtLudoDieRolled send: #onRolled to: self.
-	self when: BlDoubleClickEvent do: [ :anEvent | 
-		anEvent consumed: true.
-		self die roll ].
-	self onRolled
+	self initializeAnnouncements
 ]
 
 { #category : #constants }
@@ -97,6 +93,20 @@ GtLudoDieElement >> initialize [
 		background: Color paleBuff;
 		border: (BlBorder paint: Color veryVeryLightGray width: 1);
 		geometry: (BlRoundedRectangleGeometry cornerRadius: 12)
+]
+
+{ #category : #announcements }
+GtLudoDieElement >> initializeAnnouncements [
+	self die announcer
+		when: GtLudoDieRolled
+		send: #onRolled
+		to: self.
+	self
+		when: BlDoubleClickEvent
+		do: [ :anEvent | 
+			anEvent consumed: true.
+			self die roll ].
+	self onRolled
 ]
 
 { #category : #displaying }
