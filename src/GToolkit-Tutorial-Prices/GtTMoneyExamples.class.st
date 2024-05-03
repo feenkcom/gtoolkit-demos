@@ -44,7 +44,7 @@ GtTMoneyExamples >> fortyTwoDollars [
 ]
 
 { #category : #examples }
-GtTMoneyExamples >> fortyTwoDollarsPlusZeroDollars [
+GtTMoneyExamples >> fortyTwoDollarsPlusZeroEuros [
 	<gtExample>
 	| money |
 	money := self fortyTwoDollars + self zeroEuros.
