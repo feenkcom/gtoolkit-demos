@@ -3,6 +3,7 @@ Extension { #name : #MemoryLogger }
 { #category : #'*GToolkit-Demo-LampSort' }
 MemoryLogger >> gtViewLampSortHistoryFor: composite [
 	<gtView>
+	interestingAnnouncements ifNil: [ ^ composite empty ].
 	(interestingAnnouncements handlesAnnouncement: GtLampSortAnnouncement new)
 		ifFalse: [ ^ composite empty].
 	^ composite list
