@@ -852,6 +852,91 @@ GtTour >> rawViewsExampleSlideFor: aSlide [
 ]
 
 { #category : #accessing }
+GtTour >> scripterWithElaborateScenario [
+	<gtExample>
+	| scripter pageWidth |
+	scripter := BlScripter new.
+	scripter do
+		block: [ :aSpace | aSpace extent: 1600 @ 870 ];
+		onSpace;
+		play.
+	scripter
+		element: (GtPager createWrappedOn: (GtCoder forMethod: GtLudoGame >> #moveTokenNamed:)).
+	pageWidth := scripter space width / 3.
+	scripter do
+		block: [ :aPage | aPage width: pageWidth ];
+		// (GtPagerPageElementId indexed: 1);
+		play.
+	scripter shortcut
+		combination: BlKeyCombination primaryN;
+		// (GtPagerPageElementId indexed: 1);
+		// (GtSourceCoderId indexed: 24);
+		// GtSourceCoderEditorId;
+		onChildAt: 1;
+		onChildAt: 1;
+		play.
+	scripter do
+		block: [ :aPage | aPage width: pageWidth ];
+		// (GtPagerPageElementId indexed: 2);
+		play.
+	scripter methodCoder
+		clickOnMethodCoderExpander: 1 insideDo: [ :aStep1 |  ];
+		// (GtPagerPageElementId indexed: 1);
+		// (GtSourceCoderId indexed: 24);
+		play.
+	scripter mouseWheel
+		downBy: 150;
+		// (GtPagerPageElementId indexed: 2);
+		// GtPharoStreamingMethodsCoderListId;
+		// BrInfiniteListElement;
+		play.
+	scripter mouseWheel
+		downBy: 150;
+		// (GtPagerPageElementId indexed: 2);
+		// GtPharoStreamingMethodsCoderListId;
+		// BrInfiniteListElement;
+		play.
+	scripter click
+		// (GtPagerPageElementId indexed: 2);
+		// (GtSourceCoderId indexed: 25);
+		// #sidebar;
+		play.
+	scripter mouseWheel
+		downBy: 42;
+		// (GtPagerPageElementId indexed: 2);
+		// GtPharoStreamingMethodsCoderListId;
+		// BrInfiniteListElement;
+		play.
+	scripter methodCoder
+		clickOnPlayAndInspectExampleButton;
+		// (GtPagerPageElementId indexed: 2);
+		// (GtSourceCoderId indexed: 25);
+		play.
+	scripter do
+		block: [ :aPage | aPage width: pageWidth ];
+		// (GtPagerPageElementId indexed: 3);
+		play.
+	scripter methodCoder
+		clickOnMethodCoderExpander: 1 insideDo: [ :aStep1 |  ];
+		// (GtPagerPageElementId indexed: 2);
+		// (GtSourceCoderId indexed: 25);
+		play.
+	scripter mouseWheel
+		downBy: 42;
+		// (GtPagerPageElementId indexed: 2);
+		// GtPharoStreamingMethodsCoderListId;
+		// BrInfiniteListElement;
+		play.
+	scripter mouseMoveOver
+		// (GtPagerPageElementId indexed: 2);
+		// (GtSourceCoderId indexed: 25);
+		// GtMethodCoderPlayAndInspectExampleActionId;
+		onTopMost;
+		play.
+	^ scripter
+]
+
+{ #category : #accessing }
 GtTour >> spotterExampleSlide: aSlide [
 	<gtSlide>
 	^ aSlide labelAndElement
