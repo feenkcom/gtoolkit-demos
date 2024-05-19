@@ -39,7 +39,10 @@ GhRepo >> gtContributorsFor: aView [
 			self contributors
 				do: [ :each | 
 					imageContainer := BrAsyncWidget new
-							aptitude: BrShadowAptitude new;
+							aptitude: BrShadowAptitude new
+									+ (BrGlamorousButtonExteriorAptitude new
+											backgroundPaint: Color white;
+											borderPaint: Color transparent);
 							background: Color white;
 							margin: (BlInsets all: 10);
 							constraintsDo: [ :c | 
