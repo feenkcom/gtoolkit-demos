@@ -40,14 +40,13 @@ GtLampSortAnnouncement >> asVisualisationElement [
 			with: dataGroup;
 			barHeightData: [ :each | each value ];
 			barHeightScale: scale.
-	container := BrVerticalPane new fitContent.
+	container := BrVerticalPane new fitContent cellSpacing: 10.
 	container
-		addChild: (chart asElement
-				margin: (BlInsets all: 10);
-				size: 400 @ 250);
 		addChild: (BrLabel new
+				margin: (BlInsets left: 10);
 				aptitude: BrGlamorousLabelAptitude new;
-				text: self printString).
+				text: self printString);
+		addChild: (chart asElement size: 400 @ 200).
 	container
 		vFitContent;
 		hFitContent.
