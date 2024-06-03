@@ -42,7 +42,7 @@ GtInspectorScripterExamples >> scriptedInspectorInPagerOn: anObject WithPlaygrou
 ]
 
 { #category : #accessing }
-GtInspectorScripterExamples >> scriptedInspectorInPagerOn: anObject WithPlaygroundTextAndDoit: aText [
+GtInspectorScripterExamples >> scriptedInspectorInPagerOn: anObject withPlaygroundTextAndDoit: aText [
 	| scripter |
 	scripter := self scriptedInspectorInPagerOn: anObject WithPlaygroundText: aText.
 	scripter shortcut
@@ -75,7 +75,7 @@ GtInspectorScripterExamples >> scriptedInspectorOn3plus4WithPlaygroundSmalltalkE
 	| scripter |
 	scripter := self
 			scriptedInspectorInPagerOn: '3+ 4'
-			WithPlaygroundTextAndDoit: 'Smalltalk compiler evaluate: self'.
+			withPlaygroundTextAndDoit: 'Smalltalk compiler evaluate: self'.
 	^ scripter elementWithoutParent
 ]
 
