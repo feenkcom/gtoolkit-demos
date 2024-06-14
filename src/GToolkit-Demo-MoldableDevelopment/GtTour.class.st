@@ -884,22 +884,20 @@ GtTour >> scripterWithElaborateScenario [
 		// (GtPagerPageElementId indexed: 1);
 		// (GtSourceCoderId indexed: 24);
 		play.
-	scripter mouseWheel
-		downBy: 150;
+	scripter methodCoders
+		scrollToCompiledMethod: GtLudoRecordingGameExamples >> #gameShowingAllMoves2;
 		// (GtPagerPageElementId indexed: 2);
-		// GtPharoStreamingMethodsCoderListId;
-		// BrInfiniteListElement;
-		play.
-	scripter mouseWheel
-		downBy: 150;
-		// (GtPagerPageElementId indexed: 2);
-		// GtPharoStreamingMethodsCoderListId;
-		// BrInfiniteListElement;
+		// GtPharoStreamingMethodsCoderElement;
 		play.
 	scripter click
 		// (GtPagerPageElementId indexed: 2);
 		// (GtSourceCoderId indexed: 25);
 		// #sidebar;
+		play.
+	scripter methodCoders
+		scrollToCompiledMethod: GtLudoRecordingGameExamples >> #gameShowingAllMoves2;
+		// (GtPagerPageElementId indexed: 2);
+		// GtPharoStreamingMethodsCoderElement;
 		play.
 	scripter mouseWheel
 		downBy: 42;
