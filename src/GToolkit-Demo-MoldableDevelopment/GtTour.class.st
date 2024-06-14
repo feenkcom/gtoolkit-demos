@@ -854,7 +854,7 @@ GtTour >> rawViewsExampleSlideFor: aSlide [
 { #category : #accessing }
 GtTour >> scripterWithElaborateScenario [
 	<gtExample>
-	| scripter pageWidth |
+	| scripter pageWidth aCompiledMethod |
 	scripter := BlScripter new.
 	scripter do
 		block: [ :aSpace | aSpace extent: 1600 @ 870 ];
@@ -884,46 +884,27 @@ GtTour >> scripterWithElaborateScenario [
 		// (GtPagerPageElementId indexed: 1);
 		// (GtSourceCoderId indexed: 24);
 		play.
+	aCompiledMethod := GtLudoRecordingGameExamples >> #gameShowingAllMoves2.
 	scripter methodCoders
-		scrollToCompiledMethod: GtLudoRecordingGameExamples >> #gameShowingAllMoves2;
+		expandAndFocusCompiledMethod: aCompiledMethod;
+		scrollToCompiledMethod: aCompiledMethod;
+		forCompiledMethod: aCompiledMethod do: [ :aMethodCoderStep |
+			aMethodCoderStep
+				clickOnPlayAndInspectExampleButton ];
 		// (GtPagerPageElementId indexed: 2);
 		// GtPharoStreamingMethodsCoderElement;
-		play.
-	scripter click
-		// (GtPagerPageElementId indexed: 2);
-		// (GtSourceCoderId indexed: 25);
-		// #sidebar;
-		play.
-	scripter methodCoders
-		scrollToCompiledMethod: GtLudoRecordingGameExamples >> #gameShowingAllMoves2;
-		// (GtPagerPageElementId indexed: 2);
-		// GtPharoStreamingMethodsCoderElement;
-		play.
-	scripter mouseWheel
-		downBy: 42;
-		// (GtPagerPageElementId indexed: 2);
-		// GtPharoStreamingMethodsCoderListId;
-		// BrInfiniteListElement;
-		play.
-	scripter methodCoder
-		clickOnPlayAndInspectExampleButton;
-		// (GtPagerPageElementId indexed: 2);
-		// (GtSourceCoderId indexed: 25);
 		play.
 	scripter do
 		block: [ :aPage | aPage width: pageWidth ];
 		// (GtPagerPageElementId indexed: 3);
 		play.
-	scripter methodCoder
-		clickOnMethodCoderExpander: 1 insideDo: [ :aStep1 |  ];
+	scripter methodCoders
+		forCompiledMethod: aCompiledMethod do: [ :aMethodCoderStep |
+			aMethodCoderStep
+				clickOnMethodCoderExpander: 1 insideDo: [ :aStep1 |  ] ];
+		scrollToCompiledMethod: aCompiledMethod;
 		// (GtPagerPageElementId indexed: 2);
-		// (GtSourceCoderId indexed: 25);
-		play.
-	scripter mouseWheel
-		downBy: 42;
-		// (GtPagerPageElementId indexed: 2);
-		// GtPharoStreamingMethodsCoderListId;
-		// BrInfiniteListElement;
+		// GtPharoStreamingMethodsCoderElement;
 		play.
 	scripter mouseMoveOver
 		// (GtPagerPageElementId indexed: 2);
