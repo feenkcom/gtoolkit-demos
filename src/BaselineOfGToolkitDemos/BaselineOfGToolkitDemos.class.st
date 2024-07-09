@@ -68,5 +68,7 @@ BaselineOfGToolkitDemos >> baseline: spec [
 				baseline: 'GToolkitDemoFCA'
 					with: [ spec repository: 'github://feenkcom/gtoolkit-demos:main/src' ];
 				baseline: 'GToolkitLampSortDemo'
+					with: [ spec repository: 'github://feenkcom/gtoolkit-demos:main/src' ];
+				baseline: 'GToolkitPythonDemo'
 					with: [ spec repository: 'github://feenkcom/gtoolkit-demos:main/src' ] ]
 ]
