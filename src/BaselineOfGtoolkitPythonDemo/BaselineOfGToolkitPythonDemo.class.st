@@ -1,7 +1,7 @@
 Class {
 	#name : #BaselineOfGToolkitPythonDemo,
 	#superclass : #BaselineOf,
-	#category : #BaselineOfGtoolkitPythonDemo
+	#category : #BaselineOfGToolkitPythonDemo
 }
 
 { #category : #accessing }

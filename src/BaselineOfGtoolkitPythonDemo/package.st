@@ -1,1 +1,1 @@
-Package { #name : #BaselineOfGtoolkitPythonDemo }
+Package { #name : #BaselineOfGToolkitPythonDemo }
