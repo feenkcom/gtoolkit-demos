@@ -19,24 +19,85 @@ Gt4PythonEsugSlideshow >> agenda: aSlide [
 ]
 
 { #category : #accessing }
+Gt4PythonEsugSlideshow >> caseStudy: aSlide [
+	<gtSlide>
+	^ aSlide lepiterPage
+		setPriority;
+		pageNamed: 'PythonBridge custom views for pandas DataFrame and Series'
+			from: 'Glamorous Toolkit Book'
+]
+
+{ #category : #accessing }
+Gt4PythonEsugSlideshow >> pythonDebuggerExample: aSlide [
+	<gtSlide>
+	^ aSlide lepiterPage
+		setPriority;
+		startPage: (self db pageNamed: 'Python Debugger')
+]
+
+{ #category : #accessing }
+Gt4PythonEsugSlideshow >> pythonDebuggerPage [
+	<lePage>
+	<gtExample>
+	<noTest>
+	^ (LePage named: 'Python Debugger')
+		addSnippet: (LePythonSnippet new
+				code: 'def i_recurse(n):
+	if n % 10 == 0:
+		pbbreak()
+	i_recurse(n+1)
+
+i_recurse(1)');
+		addSnippet: (LePythonSnippet new code: '');
+		yourself
+]
+
+{ #category : #accessing }
 Gt4PythonEsugSlideshow >> pythonExamples: aSlide [
 	<gtSlide>
 	^ aSlide lepiterPage
 		setPriority;
-		startPage: (self db pageNamed: 'Python Examples')
+		startPage: (self db pageNamed: 'Python Examples I')
 ]
 
 { #category : #accessing }
-Gt4PythonEsugSlideshow >> pythonExamplesPage [
+Gt4PythonEsugSlideshow >> pythonExamplesSecond: aSlide [
+	<gtSlide>
+	^ aSlide lepiterPage
+		setPriority;
+		startPage: (self db pageNamed: 'Python Examples II')
+]
+
+{ #category : #accessing }
+Gt4PythonEsugSlideshow >> pythonExamplesThird: aSlide [
+	<gtSlide>
+	^ aSlide lepiterPage
+		setPriority;
+		startPage: (self db pageNamed: 'Python Examples III')
+]
+
+{ #category : #accessing }
+Gt4PythonEsugSlideshow >> pythonFirstExamplesPage [
 	<lePage>
 	<gtExample>
 	<noTest>
-	^ (LePage named: 'Python Examples')
-		addSnippet: (LePharoSnippet new code: 'x := 2 ** 30');
+	^ (LePage named: 'Python Examples I')
+		addSnippet: (LePythonSnippet new code: 'x = 2 ** 30');
 		addSnippet: (LePythonSnippet new
 				code: 'import datetime
 
 datetime.datetime.fromtimestamp(x)');
+		addSnippet: (LePythonSnippet new
+				code: 'print("Where is this going?")');
+		yourself
+]
+
+{ #category : #accessing }
+Gt4PythonEsugSlideshow >> pythonSecondExamplesPage [
+	<lePage>
+	<gtExample>
+	<noTest>
+	^ (LePage named: 'Python Examples II')
 		addSnippet: (LePythonSnippet new
 				code: 'import random
 
@@ -53,6 +114,18 @@ counter');
 ]
 
 { #category : #accessing }
+Gt4PythonEsugSlideshow >> pythonThirdExamplesPage [
+	<lePage>
+	<gtExample>
+	<noTest>
+	^ (LePage named: 'Python Examples III')
+		addSnippet: (LePharoSnippet new code: 'filePath := FileLocator imageDirectory pathString');
+		addSnippet: (LePythonSnippet new
+				code: 'print(filePath');
+		yourself
+]
+
+{ #category : #accessing }
 Gt4PythonEsugSlideshow >> slidePriorities [
 	"Instead of manually setting priorities, just list the slides in order here."
 
@@ -60,6 +133,10 @@ Gt4PythonEsugSlideshow >> slidePriorities [
 	^ #(#title:
 		#agenda:
 		#pythonExamples:
+		#pythonExamplesSecond:
+		#pythonExamplesThird:
+		#pythonDebuggerExample:
+		#caseStudy:
 		#thankYou:
 		)
 ]

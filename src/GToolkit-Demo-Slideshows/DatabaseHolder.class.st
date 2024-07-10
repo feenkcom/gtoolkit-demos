@@ -13,7 +13,7 @@ DatabaseHolder >> db [
 	NB: We need to create a transient registry as well, so that links will work within the database."
 
 	db
-		ifNil: [ db := LeDatabase new.
+		ifNil: [ db := LeDatabase new monitor: LeVolatileMonitor new.
 			LeBasicDatabasesRegistry new
 				defaultLogicalDatabase: (LeLogicalDatabase new primaryDB: db).
 			db ].
