@@ -19,12 +19,47 @@ Gt4PythonEsugSlideshow >> agenda: aSlide [
 ]
 
 { #category : #accessing }
+Gt4PythonEsugSlideshow >> pythonExamples: aSlide [
+	<gtSlide>
+	^ aSlide lepiterPage
+		setPriority;
+		startPage: (self db pageNamed: 'Python Examples')
+]
+
+{ #category : #accessing }
+Gt4PythonEsugSlideshow >> pythonExamplesPage [
+	<lePage>
+	<gtExample>
+	<noTest>
+	^ (LePage named: 'Python Examples')
+		addSnippet: (LePharoSnippet new code: 'x := 2 ** 30');
+		addSnippet: (LePythonSnippet new
+				code: 'import datetime
+
+datetime.datetime.fromtimestamp(x)');
+		addSnippet: (LePythonSnippet new
+				code: 'import random
+
+from collections import Counter
+
+counter = Counter()
+
+for i in range(100):
+	counter[random.randint(0, 10)] += 1
+	
+counter');
+		addSnippet: (LePythonSnippet new code: '');
+		yourself
+]
+
+{ #category : #accessing }
 Gt4PythonEsugSlideshow >> slidePriorities [
 	"Instead of manually setting priorities, just list the slides in order here."
 
 	<gtExample>
 	^ #(#title:
 		#agenda:
+		#pythonExamples:
 		#thankYou:
 		)
 ]
