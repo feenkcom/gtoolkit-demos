@@ -39,9 +39,17 @@ Gt4PythonEsugSlideshow >> caseStudyThree: aSlide [
 { #category : #accessing }
 Gt4PythonEsugSlideshow >> caseStudyTwo: aSlide [
 	<gtSlide>
+	| aPage aDatabase |
+	"this slide is only rendered when gt4llm is loaded"
+	
+	aDatabase := LeDatabasesRegistry default currentLoadedDefaultLogicalDatabase
+			databaseNamed: 'gt4llm-lepiter'
+			ifNone: nil.
+	aDatabase ifNil: [ ^ aSlide empty ].
+	aPage := aDatabase pageNamed: 'Visualizing tokenization'.
 	^ aSlide lepiterPage
 		setPriority;
-		pageNamed: 'Visualizing tokenization' from: 'gt4llm-lepiter'
+		startPage: aPage
 ]
 
 { #category : #accessing }
