@@ -15,7 +15,7 @@ Gt4PythonEsugSlideshow >> agenda: aSlide [
 				, ' in GT
 ' asRopedText , '2.' asRopedText bold
 				, ' Inspecting and playing
-' asRopedText , '3.' asRopedText bold , ' A case study' asRopedText
+' asRopedText , '3.' asRopedText bold , ' Three case studies' asRopedText
 ]
 
 { #category : #accessing }
