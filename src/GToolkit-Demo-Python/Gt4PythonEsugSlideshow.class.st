@@ -121,7 +121,7 @@ Gt4PythonEsugSlideshow >> pythonThirdExamplesPage [
 	^ (LePage named: 'Python Examples III')
 		addSnippet: (LePharoSnippet new code: 'filePath := FileLocator imageDirectory pathString');
 		addSnippet: (LePythonSnippet new
-				code: 'print(filePath');
+				code: 'print(filePath)');
 		yourself
 ]
 
