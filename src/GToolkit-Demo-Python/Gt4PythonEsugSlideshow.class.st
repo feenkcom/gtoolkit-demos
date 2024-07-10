@@ -19,12 +19,29 @@ Gt4PythonEsugSlideshow >> agenda: aSlide [
 ]
 
 { #category : #accessing }
-Gt4PythonEsugSlideshow >> caseStudy: aSlide [
+Gt4PythonEsugSlideshow >> caseStudyOne: aSlide [
 	<gtSlide>
 	^ aSlide lepiterPage
 		setPriority;
 		pageNamed: 'PythonBridge custom views for pandas DataFrame and Series'
 			from: 'Glamorous Toolkit Book'
+]
+
+{ #category : #accessing }
+Gt4PythonEsugSlideshow >> caseStudyThree: aSlide [
+	<gtSlide>
+	^ aSlide lepiterPage
+		setPriority;
+		pageNamed: 'Exploring the execution of a Python LampSort algorithm'
+			from: 'Glamorous Toolkit Book'
+]
+
+{ #category : #accessing }
+Gt4PythonEsugSlideshow >> caseStudyTwo: aSlide [
+	<gtSlide>
+	^ aSlide lepiterPage
+		setPriority;
+		pageNamed: 'Visualizing tokenization' from: 'gt4llm-lepiter'
 ]
 
 { #category : #accessing }
@@ -136,7 +153,9 @@ Gt4PythonEsugSlideshow >> slidePriorities [
 		#pythonExamplesSecond:
 		#pythonExamplesThird:
 		#pythonDebuggerExample:
-		#caseStudy:
+		#caseStudyOne:
+		#caseStudyTwo:
+		#caseStudyThree:
 		#thankYou:
 		)
 ]
