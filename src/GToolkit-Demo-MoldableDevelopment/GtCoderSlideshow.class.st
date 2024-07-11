@@ -43,7 +43,7 @@ GtCoderSlideshow >> advancedMethodsFilteringExplanationWithLinks [
 		ifFound: [:filters |
 			categoryTarget := filters childAt: 1.
 			fieldTarget := filters childAt: 1.
-			addTarget := filters childAt: 1].
+			addTarget := filters childAt: 2].
 	
 	categoryTarget
 		addChild:
@@ -118,7 +118,7 @@ GtCoderSlideshow >> baselineMethodsExplanationWithLinks [
 	baselineTarget := expandedMethodElement
 			allChildrenBreadthFirstDetect: [ :aChild | 
 				(aChild isKindOf: BrTextElementWithCursors)
-					and: [ aChild text asString includesSubstring: '''GToolkitClipboard''' ] ]
+					and: [ aChild text asString includesSubstring: '''GToolkitVirtualMachine''' ] ]
 			ifFound: [ :aChild | aChild ].
 	expandBaselineTarget := baselineTarget parent
 			allChildrenBreadthFirstDetect: [ :aChild | aChild isKindOf: BrTriangle ]
@@ -368,17 +368,15 @@ GtCoderSlideshow >> classCreationExplanationSlideFor: aSlide [
 		newTextWithFormat: self createClassExplanationText;
 		element: [ self createClassExplanationWithLinks ];
 		elementWeight: 0.6;
-		onEveryAddToSceneGraphDo: 
-			[:anElement |
-				| coderElement button |
-				coderElement := anElement childAt: 2.
-				coderElement enqueueTask: (BlTaskAction new
-					action: [
-						button := coderElement
-							allChildrenBreadthFirstDetect: [:aChild |
-								(aChild isKindOf: BrToolbar) and: [aChild parent isKindOf: GtCoderToolbarElement]]
-							ifFound: [:aChild | aChild childAt: 3].
-						BlSpace simulateClickOn: button])].
+		onEveryAddToSceneGraphDo: [ :anElement | 
+			| coderElement button |
+			coderElement := anElement childAt: 2.
+			coderElement
+				enqueueTask: (BlTaskAction new
+						action: [ button := coderElement
+									allChildrenBreadthFirstDetect: [ :aChild | aChild id = GtNavigationNewDropdownId new ]
+									ifFound: [ :aChild | aChild ].
+							BlSpace simulateClickOn: button ]) ]
 ]
 
 { #category : #accessing }
@@ -436,57 +434,41 @@ On top of that there is an ' asRopedText,
 GtCoderSlideshow >> coderInterfaceExplanationWithLinks [
 	<gtExample>
 	| coderElement packageHierarchyTarget classHierarchyTarget classCoderTarget addClassButtonTarget spotterButtonTarget buttons |
-	
 	coderElement := BlScripter new
-		element: (GtCoderElement forClass: GtABAddressBook) createInPager maximized;
-		elementWithoutParent.
-	
+			element: (GtCoderElement forClass: GtABAddressBook) createInPager maximized;
+			elementWithoutParent.
+
 	packageHierarchyTarget := coderElement
-		allChildrenBreadthFirstDetect: [:aChild |
-			(aChild isKindOf: BlTextElement) and: [aChild text asString = 'Package Hierarchy' asString]] 
-		ifFound: [:aChild | aChild].
+			allChildrenBreadthFirstDetect: [ :aChild | 
+				(aChild isKindOf: BlTextElement)
+					and: [ aChild text asString = 'Package Hierarchy' asString ] ]
+			ifFound: [ :aChild | aChild ].
 	classHierarchyTarget := coderElement
-		allChildrenBreadthFirstDetect: [:aChild |
-			(aChild isKindOf: BlTextElement) and: [aChild text asString = 'Class Hierarchy' asString]] 
-		ifFound: [:aChild | aChild].
+			allChildrenBreadthFirstDetect: [ :aChild | 
+				(aChild isKindOf: BlTextElement)
+					and: [ aChild text asString = 'Class Hierarchy' asString ] ]
+			ifFound: [ :aChild | aChild ].
 	classCoderTarget := coderElement
-		allChildrenBreadthFirstDetect: [:aChild |
-			aChild isKindOf: GtPharoBehaviorCoderElement]
-		ifFound: [:aChild | aChild].
-	buttons := coderElement
-		allChildrenBreadthFirstDetect: [:aChild |
-			(aChild isKindOf: BrToolbar) and: [aChild parent isKindOf: GtCoderToolbarElement]] 
-		ifFound: [:aChild | aChild].
-	addClassButtonTarget := buttons childAt: 3.
+			allChildrenBreadthFirstDetect: [ :aChild | aChild isKindOf: GtPharoBehaviorCoderElement ]
+			ifFound: [ :aChild | aChild ].
+	buttons := (coderElement
+			allChildrenBreadthFirstDetect: [ :aChild | aChild id = GtNavigationNewDropdownId new ]
+			ifFound: [ :aChild | aChild ]) parent.
+	addClassButtonTarget := buttons childAt: 2.
 	spotterButtonTarget := buttons childAt: 1.
-	
+
 	packageHierarchyTarget
-		addChild:
-			((self yellowExplanationTargetCircleFor: #packageHierarchy)
-					relocate:
-						(2 @ 10)).
+		addChild: ((self yellowExplanationTargetCircleFor: #packageHierarchy) relocate: 2 @ 10).
 	classHierarchyTarget
-		addChild:
-			((self yellowExplanationTargetCircleFor: #classHierarchy)
-					relocate:
-						(2 @ 10)).
+		addChild: ((self yellowExplanationTargetCircleFor: #classHierarchy) relocate: 2 @ 10).
 	classCoderTarget
-		addChild:
-			((self yellowExplanationTargetCircleFor: #classCoder)
-					relocate:
-						(5 @ 20)).
+		addChild: ((self yellowExplanationTargetCircleFor: #classCoder) relocate: 5 @ 20).
 	addClassButtonTarget
-		addChild:
-			((self yellowExplanationTargetCircleFor: #addClassButton)
-					relocate:
-						(5 @ 10)).
+		addChild: ((self yellowExplanationTargetCircleFor: #addClassButton) relocate: 5 @ 10).
 	spotterButtonTarget
-		addChild:
-			((self yellowExplanationTargetCircleFor: #spotterButton)
-					relocate:
-						(5 @ 10)).	
-							
-	^ coderElement.
+		addChild: ((self yellowExplanationTargetCircleFor: #spotterButton) relocate: 5 @ 10).
+
+	^ coderElement
 ]
 
 { #category : #accessing }
@@ -530,7 +512,7 @@ GtCoderSlideshow >> createClassExplanationText [
 	| text |
 	text := 'To create a new class, you click on the ' asRopedText,
 ('+' asRopedText glamorousExplanationFor: #addClassButton),
-' button in the top right of the pane. That will open a pop-up similar to the expanded class header. There you can edit the name of the class, the superclass, the package, traits, instance and class variable.' asRopedText.
+' button in the top right of the pane. That will open a pop-up similar to the expanded class header. There you can edit the name of the class, the superclass, the package, traits, instance and class variables.' asRopedText.
 	
 	^ text asRopedText
 		glamorousRegularFont;
@@ -539,28 +521,28 @@ GtCoderSlideshow >> createClassExplanationText [
 
 { #category : #accessing }
 GtCoderSlideshow >> createClassExplanationWithLinks [
-	| coderElement buttonTarget |
+	<gtExample>
+	| coderElement buttonTarget aScripter |
 	coderElement := BlUseAsyncFeatures
-		disableDuring: [ (GtCoderElement forClass: GtABAddressBook) createInPager maximized ].
-		
+			disableDuring: [ (GtCoderElement forClass: GtABAddressBook) createInPager maximized ].
+	aScripter := BlScripter new.
+	aScripter element: coderElement.
+	coderElement := aScripter element.
+
 	buttonTarget := coderElement
-		allChildrenBreadthFirstDetect: [:aChild |
-			(aChild isKindOf: BrToolbar) and: [aChild parent isKindOf: GtCoderToolbarElement]]
-		ifFound: [:aChild | aChild childAt: 3].
+			allChildrenBreadthFirstDetect: [ :aChild | aChild id = GtNavigationNewDropdownId new ]
+			ifFound: [ :aChild | aChild ].
 	buttonTarget
-		addChild:
-			((self yellowExplanationTargetCircleFor: #addClassButton)
-				relocate:
-					(2 @ 10)).
-					
+		addChild: ((self yellowExplanationTargetCircleFor: #addClassButton) relocate: 2 @ 10).
+
 	^ BlElement new
-		constraintsDo: [:c |
+		constraintsDo: [ :c | 
 			c vertical matchParent.
-			c horizontal matchParent];
+			c horizontal matchParent ];
 		aptitude: BrShadowAptitude;
 		background: Color white;
 		margin: (BlInsets all: 5);
-		addChild: coderElement.
+		addChild: coderElement removeFromParent
 ]
 
 { #category : #accessing }
