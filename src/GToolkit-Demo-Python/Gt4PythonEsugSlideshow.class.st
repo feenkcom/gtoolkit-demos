@@ -208,5 +208,5 @@ Gt4PythonEsugSlideshow >> title: aSlide [
 		subtitleBottomPadding: 40;
 		titleWithFormat: (self asTitle: 'gt4python');
 		subtitleWithFormat: (self asSubtitle: 'Working with Python inside Glamorous Toolkit');
-		footerWithFormat: (self asBigText: 'veit.heller@feenk.com')
+		footerWithFormat: (self asBigText: 'Veit Heller (veit.heller@feenk.com), svenvc (in spirit)')
 ]
