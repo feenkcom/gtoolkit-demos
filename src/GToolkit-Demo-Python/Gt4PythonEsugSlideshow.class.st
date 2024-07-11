@@ -28,6 +28,15 @@ Gt4PythonEsugSlideshow >> caseStudyOne: aSlide [
 ]
 
 { #category : #accessing }
+Gt4PythonEsugSlideshow >> caseStudyOneOne: aSlide [
+	<gtSlide>
+	^ aSlide lepiterPage
+		setPriority;
+		pageNamed: 'Inspecting Python objects with custom inspectors'
+			from: 'Glamorous Toolkit Book'
+]
+
+{ #category : #accessing }
 Gt4PythonEsugSlideshow >> caseStudyThree: aSlide [
 	<gtSlide>
 	^ aSlide lepiterPage
@@ -66,6 +75,11 @@ Gt4PythonEsugSlideshow >> pythonDebuggerPage [
 	<gtExample>
 	<noTest>
 	^ (LePage named: 'Python Debugger')
+		addSnippet: (LePharoSnippet new
+				code: 'pbApplication := PBApplication new.
+pbApplication settings serverDebugMode: true.
+pbApplication start.
+PBApplication uniqueInstance: pbApplication');
 		addSnippet: (LePythonSnippet new
 				code: 'def i_recurse(n):
 	if n % 10 == 0:
@@ -73,7 +87,11 @@ Gt4PythonEsugSlideshow >> pythonDebuggerPage [
 	i_recurse(n+1)
 
 i_recurse(1)');
-		addSnippet: (LePythonSnippet new code: '');
+		addSnippet: (LePharoSnippet new
+				code: 'pbApplication := PBApplication new.
+pbApplication settings serverDebugMode: true.
+pbApplication start.
+PBApplication uniqueInstance: pbApplication');
 		yourself
 ]
 
@@ -162,6 +180,7 @@ Gt4PythonEsugSlideshow >> slidePriorities [
 		#pythonExamplesThird:
 		#pythonDebuggerExample:
 		#caseStudyOne:
+		#caseStudyOneOne:
 		#caseStudyTwo:
 		#caseStudyThree:
 		#thankYou:
