@@ -86,7 +86,7 @@ FCAContext class >> forDatabaseNamed: databaseName [
 		yourself
 ]
 
-{ #category : #accessing }
+{ #category : #'instance creation' }
 FCAContext class >> forDatabaseNamed: databaseName topTags: aNumber [
 	"Generate an FCA context for all the pages and the top N tags of a Lepiter database."
 	| tags pages database |
@@ -104,7 +104,46 @@ FCAContext class >> forDatabaseNamed: databaseName topTags: aNumber [
 ]
 
 { #category : #accessing }
+FCAContext class >> forDatabaseNamed: databaseName withOnlyTagsNamed: aTagNameCollection [
+	"Generate an FCA context for all the pages and the listed tags of a Lepiter database."
+
+	| tags pages database |
+	database := LeDatabase databaseNamed: databaseName.
+	pages := database pages reject: #isUnnamedPage.
+	tags := aTagNameCollection collect: [ :title | database pageNamed: title ].
+	pages := pages select: [ :each | (tags intersection: each tags) notEmpty ].
+	^ (FCAContext
+		elements: pages
+		properties: tags
+		propertyMap: [ :page | page tags intersection: tags ])
+		printMessage: #title;
+		yourself
+]
+
+{ #category : #'instance creation' }
+FCAContext class >> forDatabaseNamed: databaseName withOnlyTopTags: aNumber [
+	"Generate an FCA context for just the pages with the top N tags of a Lepiter database."
+
+	| tags pages database |
+	database := LeDatabase databaseNamed: databaseName.
+
+	pages := database pages reject: #isUnnamedPage.
+	pages := pages reject: [ :each | each tags isEmpty ].
+	tags := ((pages flatCollect: #tags) asBag sortedCounts copyFrom: 1 to: aNumber)
+			collect: #value.
+	pages := pages select: [ :each | (tags intersection: each tags) notEmpty ].
+
+	^ (FCAContext
+		elements: pages
+		properties: tags
+		propertyMap: [ :page | page tags intersection: tags ])
+		printMessage: #title;
+		yourself
+]
+
+{ #category : #'instance creation' }
 FCAContext class >> forDatabaseNamed: databaseName withTagsNamed: aTagNameCollection [
+	"Generate an FCA context for all the pages and the listed tags of a Lepiter database."
 	| tags pages database |
 	database := LeDatabase databaseNamed: databaseName.
 	pages := database pages reject: #isUnnamedPage.
@@ -387,4 +426,9 @@ FCAContext >> tau: anPropertyBitSet [
 	^ anPropertyBitSet
 		inject: self elements
 		into: [ :result :prop | result intersection: prop elements ]
+]
+
+{ #category : #accessing }
+FCAContext >> top [
+	^ self concepts detect: [ :c | c intent isEmpty ]
 ]
