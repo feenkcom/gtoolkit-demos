@@ -101,6 +101,17 @@ DemoSlideshow >> gtWorld: aSlide [
 ]
 
 { #category : #slides }
+DemoSlideshow >> gtWorldWithTitle: aSlide [
+	<gtSlide>
+	<text: 'A live Coder tool'>
+	^ aSlide labelAndElement
+		setPriority;
+		newFadedText: 'Glamorous Toolkit' asRopedText;
+		element: [ GtWorldElement new
+				knowledgeBase: LeDatabasesRegistry uniqueInstance currentLoadedDefaultLogicalDatabase ]
+]
+
+{ #category : #slides }
 DemoSlideshow >> headingAndCode: aSlide [
 	<gtSlide>
 	<text: 'Slide with a heading and code snippets to evaluate'>
@@ -238,6 +249,7 @@ DemoSlideshow >> slidePriorities [
 		fileLocatorInPager:
 		scenery:
 		gtWorld:
+		gtWorldWithTitle:
 		coder:
 		coderOnClass:
 		spotterExampleSlide:
