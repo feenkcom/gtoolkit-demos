@@ -214,7 +214,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2024-07-24T10:34:23.443783+02:00"
+						"dateAndTimeString" : "2024-07-24T10:59:43.921137+02:00"
 					}
 				},
 				"uid" : {
@@ -224,7 +224,7 @@
 				"paragraphStyle" : {
 					"__type" : "textStyle"
 				},
-				"string" : "Or we could select just the elements with the properties of that concept ..."
+				"string" : "Or we could select just the elements with the properties of that concept ... "
 			},
 			{
 				"__type" : "pharoSnippet",
@@ -251,14 +251,88 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2024-07-24T10:34:30.792334+02:00"
+						"dateAndTimeString" : "2024-07-24T10:59:09.916587+02:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
 					"uidString" : "vXnu4VvaDQCExRq8C7JymA=="
 				},
-				"code" : "context := FCALepiterContextExamples new gtBook.\rconcept := context conceptsSortedBySize second.\r"
+				"code" : "context := FCALepiterContextExamples new gtBook.\rconcept := context conceptsSortedBySize second.\rconcept subContext."
+			},
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2024-07-24T11:21:46.348308+02:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2024-07-24T11:22:23.943279+02:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "+LuXOlzaDQCLLSdnC7JymA=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : "Needed also to fix {{gtMethod:name=FCAContext class>>#elements:properties:propertyMap:}} to filter out the "
+			},
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2024-07-24T11:10:29.087704+02:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2024-07-24T11:10:29.087704+02:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "4pzxYlzaDQCI290nC4xehw=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : ""
 			}
 		]
 	},
@@ -281,12 +355,12 @@
 		"__type" : "time",
 		"time" : {
 			"__type" : "dateAndTime",
-			"dateAndTimeString" : "2024-07-24T09:56:43.363178+02:00"
+			"dateAndTimeString" : "2024-07-24T11:09:57.454236+02:00"
 		}
 	},
 	"pageType" : {
 		"__type" : "namedPage",
-		"title" : "Navigate from a concept to a derived context"
+		"title" : "Navigate from a concept to a subcontext"
 	},
 	"uid" : {
 		"__type" : "uuid",

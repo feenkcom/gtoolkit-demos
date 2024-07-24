@@ -61,8 +61,9 @@ FCAContext class >> elements: anElementCollection properties: aPropertyCollectio
 	wrappedElements
 		do: [ :elt | 
 			| props |
-			props := ((anElementToPropertiesBlock value: elt value)
-					collect: [ :p | propertyMap at: p ]) asBitSet.
+			props := (((anElementToPropertiesBlock value: elt value)
+					collect: [ :p | propertyMap at: p ifAbsent: nil ]) select: #notNil)
+					asBitSet.
 			elt properties: props.
 			props do: [ :prop | prop elements add: elt ] ].
 
