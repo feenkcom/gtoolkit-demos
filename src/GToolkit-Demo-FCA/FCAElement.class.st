@@ -42,6 +42,11 @@ FCAElement >> gtPropertiesFor: aView [
 ]
 
 { #category : #testing }
+FCAElement >> hasProperties: aPropertyBitSet [
+	^ self properties includesAll: aPropertyBitSet
+]
+
+{ #category : #testing }
 FCAElement >> hasProperty: aProperty [
 	^ self properties includes: aProperty
 ]
