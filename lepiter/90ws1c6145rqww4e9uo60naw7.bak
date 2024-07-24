@@ -251,14 +251,14 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2024-07-24T10:34:24.623262+02:00"
+						"dateAndTimeString" : "2024-07-24T10:34:30.792334+02:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
 					"uidString" : "vXnu4VvaDQCExRq8C7JymA=="
 				},
-				"code" : ""
+				"code" : "context := FCALepiterContextExamples new gtBook.\rconcept := context conceptsSortedBySize second.\r"
 			}
 		]
 	},

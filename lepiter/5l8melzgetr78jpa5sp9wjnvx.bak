@@ -183,7 +183,7 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2024-07-24T09:56:21.990283+02:00"
+									"dateAndTimeString" : "2024-07-24T09:56:42.585274+02:00"
 								}
 							},
 							"uid" : {
@@ -193,7 +193,7 @@
 							"paragraphStyle" : {
 								"__type" : "textStyle"
 							},
-							"string" : "[["
+							"string" : "[[Navigate from a concept to a derived context]] "
 						},
 						{
 							"__type" : "textSnippet",
