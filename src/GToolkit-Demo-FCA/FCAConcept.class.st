@@ -204,6 +204,17 @@ FCAConcept >> gtSmallerFor: aView [
 		view: #gtItemsFor:
 ]
 
+{ #category : #accessing }
+FCAConcept >> gtSubLatticeFor: aView [
+	<gtView>
+	^ aView mondrian
+		title: 'Sublattice';
+		priority: 50;
+		painting: [ :aMondrian | 
+			self subContext latticeFor: aMondrian ];
+		actionUpdateButton
+]
+
 { #category : #comparing }
 FCAConcept >> hash [
 	^ self extent hash bitXor: self intent hash
@@ -280,6 +291,23 @@ FCAConcept >> smaller [
 { #category : #accessing }
 FCAConcept >> smaller: anObject [
 	smaller := anObject
+]
+
+{ #category : #accessing }
+FCAConcept >> subContext [
+	"Build a subcontext whose elements only have the properties of this concept."
+
+	| properties elements |
+	elements := (self context elements
+			select: [ :each | each hasProperties: self intent ]) asOrderedCollection
+			collect: #value.
+	properties := self context properties asOrderedCollection collect: #value.
+	^ (FCAContext
+		elements: elements
+		properties: properties
+		propertyMap: #tags)
+		printMessage: #title;
+		yourself
 ]
 
 { #category : #mondrian }
