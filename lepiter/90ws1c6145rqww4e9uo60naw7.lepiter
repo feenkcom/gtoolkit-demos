@@ -355,12 +355,12 @@
 		"__type" : "time",
 		"time" : {
 			"__type" : "dateAndTime",
-			"dateAndTimeString" : "2024-07-24T11:09:57.454236+02:00"
+			"dateAndTimeString" : "2024-07-24T11:31:53.423783+02:00"
 		}
 	},
 	"pageType" : {
 		"__type" : "namedPage",
-		"title" : "Navigate from a concept to a subcontext"
+		"title" : "Navigate from a concept to a subcontext (done)"
 	},
 	"uid" : {
 		"__type" : "uuid",

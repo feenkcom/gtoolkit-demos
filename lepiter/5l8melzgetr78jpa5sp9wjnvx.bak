@@ -146,7 +146,7 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2024-07-24T09:56:42.585274+02:00"
+									"dateAndTimeString" : "2024-07-24T11:09:57.462498+02:00"
 								}
 							},
 							"uid" : {
@@ -156,7 +156,7 @@
 							"paragraphStyle" : {
 								"__type" : "textStyle"
 							},
-							"string" : "[[Navigate from a concept to a derived context]] "
+							"string" : "[[Navigate from a concept to a subcontext]] "
 						},
 						{
 							"__type" : "textSnippet",

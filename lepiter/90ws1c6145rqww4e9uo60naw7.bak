@@ -285,7 +285,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2024-07-24T11:22:23.943279+02:00"
+						"dateAndTimeString" : "2024-07-24T11:22:49.374327+02:00"
 					}
 				},
 				"uid" : {
@@ -295,7 +295,7 @@
 				"paragraphStyle" : {
 					"__type" : "textStyle"
 				},
-				"string" : "Needed also to fix {{gtMethod:name=FCAContext class>>#elements:properties:propertyMap:}} to filter out the "
+				"string" : "Needed also to fix {{gtMethod:name=FCAContext class>>#elements:properties:propertyMap:}} to filter out the properties missing from the peopertyMap."
 			},
 			{
 				"__type" : "textSnippet",
