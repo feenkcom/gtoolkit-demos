@@ -32,7 +32,7 @@ FCAElement >> gtPropertiesFor: aView [
 	<gtView>
 	^ aView columnedList
 		title: 'Properties';
-		priority: 10;
+		priority: 30;
 		items: [ self properties asOrderedCollection ];
 		column: 'Index'
 			text: [ :eachItem :eachIndex | eachIndex asRopedText foreground: Color gray ]

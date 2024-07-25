@@ -38,10 +38,10 @@ FCAInContext >> gtDisplayOn: stream [
 ]
 
 { #category : #accessing }
-FCAInContext >> gtValueFor: aView [
+FCAInContext >> gtLiveFor: aView [
 	<gtView>
 	^ aView forward
-		title: 'Value';
+		title: 'Live';
 		priority: 20;
 		object: [self value];
 		view: #gtLiveFor:;
