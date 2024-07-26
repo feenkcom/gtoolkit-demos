@@ -22,6 +22,20 @@ GtTour >> allViewsExampleSlideFor: aSlide [
 ]
 
 { #category : #accessing }
+GtTour >> beaconSignals [
+	true ifTrue: [ ^ BeaconSignal ].
+
+	^ BlDevScripterSignal 
+		, BlGotFocusSignal 
+		, BlLostFocusSignal
+		", BrAsyncElementFutureSignal" 
+		", BrAsyncElementPromiseSignal"
+		", BrElementUpdaterSignal" 
+		, GtPharoStreamingMethodsCoderElementSignal
+		, GtTextualCoderEditorElementSignal
+]
+
+{ #category : #accessing }
 GtTour >> classCommentAsLiveDocumentExampleSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide labelAndElement
@@ -861,8 +875,12 @@ GtTour >> scripterWithElaborateScenario [
 		onSpace;
 		play.
 	moveTokenMethod := GtLudoGame >> #moveTokenNamed:.
-	scripter
-		element: (GtPager createWrappedOn: (GtCoder forMethod: moveTokenMethod)).
+	
+	scripter memoryLogger
+		runFor: self beaconSignals 
+		during: [ :aStep |
+			aStep element: (GtPager createWrappedOn: (GtCoder forMethod: moveTokenMethod)) ].
+		
 	pageWidth := scripter space width / 3.
 	scripter do
 		block: [ :aPage | aPage width: pageWidth ];
