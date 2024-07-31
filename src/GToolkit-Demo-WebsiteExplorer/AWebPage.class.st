@@ -30,7 +30,7 @@ AWebPage class >> emailRegexString [
 AWebPage class >> for: aFileReference in: aWebsite [
 	^ self new
 		website: aWebsite;
-		webpageFile: aFileReference;
+		webPageFile: aFileReference;
 		yourself
 ]
 
@@ -278,16 +278,16 @@ AWebPage >> webPageFile [
 	^ webPageFile
 ]
 
+{ #category : #accessing }
+AWebPage >> webPageFile: aFileReference [
+	webPageFile := aFileReference
+]
+
 { #category : #constant }
 AWebPage >> webPageGroupClass [
 	"Which class should be used to instantiate groups of web pages."
 
 	^ WebPageGroup
-]
-
-{ #category : #accessing }
-AWebPage >> webpageFile: aFileReference [
-	webPageFile := aFileReference
 ]
 
 { #category : #accessing }
