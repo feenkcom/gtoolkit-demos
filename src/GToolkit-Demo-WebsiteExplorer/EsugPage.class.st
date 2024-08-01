@@ -10,7 +10,7 @@ Class {
 { #category : #accessing }
 EsugPage class >> for: aFileReference [
 	^ self new
-		webpageFile: aFileReference;
+		webPageFile: aFileReference;
 		yourself
 ]
 
@@ -20,6 +20,6 @@ EsugPage >> printOn: aStream [
 ]
 
 { #category : #accessing }
-EsugPage >> webpageFile: aFileReference [
+EsugPage >> webPageFile: aFileReference [
 	pillarFile := aFileReference
 ]
