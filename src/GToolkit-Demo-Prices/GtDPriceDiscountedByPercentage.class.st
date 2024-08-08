@@ -11,14 +11,14 @@ Class {
 GtDPriceDiscountedByPercentage >> asOverviewChildrenIn: childrenElement [
 	| percentageElement multiplyElement |
 	percentageElement := BrLabel new
-		aptitude: BrGlamorousLabelLook;
+		aptitude: BrGlamorousLabelAptitude;
 		text: (self discountPercentage * 100) asString , '%';
 		constraintsDo: [ :c | 
 			c vertical fitContent.
 			c horizontal fitContent.
 			c linear vertical alignCenter ].
 	multiplyElement := BrLabel new
-		aptitude: BrGlamorousLabelLook;
+		aptitude: BrGlamorousLabelAptitude;
 		text: ' off ';
 		constraintsDo: [ :c | 
 			c vertical fitContent.
