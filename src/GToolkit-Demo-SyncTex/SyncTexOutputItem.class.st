@@ -77,9 +77,10 @@ SyncTexOutputItem >> pictureFileReference [
 	file := self pictureFileName asFileReference.
 	file exists
 		ifFalse: [ GtSubprocessWithInMemoryOutput new
-				shellCommand: 'magick -density 72 -depth 8 -quality 85 ' , self fileName , ' '
-						, (self fileReference withoutExtension, 'png') fullName;
-				runAndWait	"/Users/girba/Work/Writings/paper-moldable-exceptions/moldableExceptions.pdf"	"/Users/girba/Work/Writings/paper-moldable-exceptions/moldableExceptions.png" ].
+				shellCommand: 'magick -density 72 -depth 8 -quality 85 ' , 
+				self fileName , ' ', 
+				(self fileReference withoutExtension, 'png') fullName;
+				runAndWait].
 	^ file
 ]
 
