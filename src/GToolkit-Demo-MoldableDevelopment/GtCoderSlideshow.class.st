@@ -546,6 +546,20 @@ GtCoderSlideshow >> createClassExplanationWithLinks [
 ]
 
 { #category : #accessing }
+GtCoderSlideshow >> createClassScripter [
+	<gtExample>
+	| coderElement aScripter |
+	coderElement := (GtCoderElement forClass: GtABAddressBook) createInPager
+			maximized.
+	aScripter := BlScripter new.
+	aScripter element: coderElement.
+	aScripter click
+		// GtNavigationNewDropdownId new;
+		play.
+	^ aScripter
+]
+
+{ #category : #accessing }
 GtCoderSlideshow >> createMethodExplanationText [
 	| text |
 	text := 'Similarly, if you want to create a new method you simply click on the other ' asRopedText,
@@ -610,6 +624,20 @@ GtCoderSlideshow >> createMethodExplanationWithLinks [
 		background: Color white;
 		margin: (BlInsets all: 5);
 		addChild: classCoderElement
+]
+
+{ #category : #accessing }
+GtCoderSlideshow >> createMethodScripter [
+	<gtExample>
+	| aScripter |
+	aScripter := BlScripter new.
+	aScripter element: (GtClassCoderLiveSlide new class: GtABAddressBook) asElement.
+	aScripter
+		clickStep: [ :s | 
+			s
+				label: 'Click add method button';
+				id: GtPharoAddNewMethodButtonId ].
+	^ aScripter
 ]
 
 { #category : #accessing }
