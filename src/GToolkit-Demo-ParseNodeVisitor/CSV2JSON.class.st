@@ -66,7 +66,7 @@ CSV2JSON >> entryForLine: currentLine withHeader: headerLine [
 CSV2JSON >> json [
 	"The nicely formatted GtJson entity."
 
-	^ self entries asJson
+	^ self entries asGtJson
 ]
 
 { #category : #accessing }

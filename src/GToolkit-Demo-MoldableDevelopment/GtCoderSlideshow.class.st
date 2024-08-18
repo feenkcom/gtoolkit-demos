@@ -731,6 +731,20 @@ GtCoderSlideshow >> methodCreationExplanationSlideFor: aSlide [
 ]
 
 { #category : #accessing }
+GtCoderSlideshow >> searchMethodScripter [
+	<gtExample>
+	| aScripter |
+	aScripter := BlScripter new.
+	aScripter element: (GtClassCoderLiveSlide new class: GtABAddressBook) asElement.
+	aScripter
+		clickStep: [ :s | 
+			s
+				label: 'Click search method button';
+				id: GtPharoSearchCodeButtonId ].
+	^ aScripter
+]
+
+{ #category : #accessing }
 GtCoderSlideshow >> title: aSlide [
 	<gtSlide>
 	^ aSlide title
