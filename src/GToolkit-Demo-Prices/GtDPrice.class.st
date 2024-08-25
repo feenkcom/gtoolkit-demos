@@ -95,66 +95,64 @@ GtDPrice >> asOverviewChildrenIn: containerElement [
 
 { #category : #ui }
 GtDPrice >> asOverviewElementIn: aParentElement [
-	| containerElement contentElement labelElement className |
+	| containerElement contentElement labelElement instanceName className |
 	containerElement := BlElement new
-		constraintsDo: [ :c | 
-			c vertical fitContent.
-			c horizontal fitContent ];
-		background: Color white;
-		aptitude: BrShadowAptitude;
-		margin: (BlInsets all: 10);
-		layout: BlLinearLayout vertical.
+			constraintsDo: [ :c | 
+				c vertical fitContent.
+				c horizontal fitContent ];
+			background: Color white;
+			aptitude: BrShadowAptitude;
+			margin: (BlInsets all: 10);
+			layout: BlLinearLayout vertical.
 	aParentElement addChild: containerElement.
-	className := ((self class name first isVowel
-		ifTrue: [ 'an ' ]
-		ifFalse: [ 'a ' ]) , self class name) asRopedText
-		foreground: Color gray.
+	className := ' ' join: (self class name gtRemovePrefix: 'GtD') piecesCutWhereCamelCase.
+	instanceName := ((className first isVowel
+			ifTrue: [ 'an ' ]
+			ifFalse: [ 'a ' ]) , className) asRopedText foreground: Color gray.
 	containerElement
-		addChild:
-			(BrLabel new
+		addChild: (BrLabel new
 				aptitude: (BrGlamorousLabelAptitude new fontSize: 8);
-				text: className;
+				text: instanceName;
 				padding: (BlInsets all: 5);
 				constraintsDo: [ :c | 
 					c vertical exact: 10.
 					c horizontal fitContent ]).
 	contentElement := BlElement new
-		constraintsDo: [ :c | 
-			c vertical fitContent.
-			c horizontal fitContent.
-			c linear vertical alignCenter ];
-		layout: BlLinearLayout horizontal.
+			constraintsDo: [ :c | 
+				c vertical fitContent.
+				c horizontal fitContent.
+				c linear vertical alignCenter ];
+			layout: BlLinearLayout horizontal.
 	labelElement := BrLabel new
-		aptitude: BrGlamorousLabelAptitude;
-		constraintsDo: [ :c | 
-			c vertical fitContent.
-			c horizontal fitContent.
-			c linear vertical alignCenter ];
-		text: self money gtDisplayString;
-		padding: (BlInsets all: 10).
+			aptitude: BrGlamorousLabelAptitude;
+			constraintsDo: [ :c | 
+				c vertical fitContent.
+				c horizontal fitContent.
+				c linear vertical alignCenter ];
+			text: self money gtDisplayString;
+			padding: (BlInsets all: 10).
 	contentElement addChild: labelElement.
 	containerElement addChild: contentElement.
 	self children notEmpty
 		ifTrue: [ | equalElement childrenElement |
 			equalElement := BrLabel new
-				aptitude: BrGlamorousLabelAptitude;
-				text: '=';
-				constraintsDo: [ :c | 
-					c vertical fitContent.
-					c horizontal fitContent.
-					c linear vertical alignCenter ].
+					aptitude: BrGlamorousLabelAptitude;
+					text: '=';
+					constraintsDo: [ :c | 
+						c vertical fitContent.
+						c horizontal fitContent.
+						c linear vertical alignCenter ].
 			contentElement addChild: equalElement.
 			childrenElement := BlElement new
-				constraintsDo: [ :c | 
-					c vertical fitContent.
-					c horizontal fitContent ];
-				padding: (BlInsets all: 10);
-				layout: BlLinearLayout horizontal alignCenter.
+					constraintsDo: [ :c | 
+						c vertical fitContent.
+						c horizontal fitContent ];
+					padding: (BlInsets all: 10);
+					layout: BlLinearLayout horizontal alignCenter.
 			contentElement addChild: childrenElement.
 			self asOverviewChildrenIn: childrenElement ].
 	containerElement
-		addChild:
-			(BrLabel new
+		addChild: (BrLabel new
 				aptitude: BrGlamorousLabelAptitude;
 				text: ' ';
 				padding: (BlInsets all: 5);
