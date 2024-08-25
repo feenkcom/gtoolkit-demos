@@ -139,6 +139,16 @@ GtDPriceExamples >> multipliedPriceInDifferentCurrencies [
 ]
 
 { #category : #examples }
+GtDPriceExamples >> sumOfConcretePriceDiscountedByMoneyAndDiscountedByPercentage [
+	<gtExample>
+	| price totalPrice |
+	price := self concretePriceDiscountedByMoneyAndDiscountedByPercentage.
+	totalPrice := price + 10 gtEUR asPrice.
+	self assert: totalPrice = 91 gtEUR asPrice.
+	^ totalPrice
+]
+
+{ #category : #examples }
 GtDPriceExamples >> summedPriceInDifferentCurrencies [
 	<gtExample>
 	| price |
