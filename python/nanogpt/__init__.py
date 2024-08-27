@@ -222,8 +222,8 @@ def train(data, vocab_size):
 	return TrainingContext(model=model, context=context)
 
 
-def generate_tokens(training_context max):
-	return training_context.model.generate(training_context.context, max_new_tokens=max)[0].tolist()
+def generate_tokens(training_context, max_tokens):
+	return training_context.model.generate(training_context.context, max_new_tokens=max_tokens)[0].tolist()
 
 
 @gtView
