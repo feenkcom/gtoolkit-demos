@@ -159,13 +159,13 @@
 				},
 				"editEmail" : {
 					"__type" : "email",
-					"emailString" : "veit.heller@feenk.com"
+					"emailString" : "<unknown>"
 				},
 				"editTime" : {
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2024-08-26T18:56:33.62456+02:00"
+						"dateAndTimeString" : "2024-08-27T11:59:00.022317+02:00"
 					}
 				},
 				"uid" : {
@@ -173,6 +173,40 @@
 					"uidString" : "25r0MPncDQCCLkTUDabjBQ=="
 				},
 				"code" : "import tiktoken\rencoding = tiktoken.encoding_for_model(\"gpt-4\")\rvocab_size = encoding.n_vocab"
+			},
+			{
+				"__type" : "pythonSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2024-08-27T10:06:30.729518+02:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2024-08-27T10:06:30.729518+02:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "d6nDdAfdDQCOlFqWDabjBQ=="
+				},
+				"code" : "import sys\rsys.path.append(filePath)\r\rimport nanogpt\rnanogpt.train(tokens, vocab_size)"
 			},
 			{
 				"__type" : "pythonSnippet",
@@ -193,20 +227,20 @@
 				},
 				"editEmail" : {
 					"__type" : "email",
-					"emailString" : "veit.heller@feenk.com"
+					"emailString" : "<unknown>"
 				},
 				"editTime" : {
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2024-08-26T18:57:58.186499+02:00"
+						"dateAndTimeString" : "2024-08-27T10:06:30.730819+02:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
 					"uidString" : "4QG0u/rcDQCJ9ExJDabjBQ=="
 				},
-				"code" : "import sys\rsys.path.append(filePath)\r\rimport nanogpt\rnanogpt.train(tokens, vocab_size)\rnanogpt.m"
+				"code" : "nanogpt.model"
 			},
 			{
 				"__type" : "pythonSnippet",
@@ -241,6 +275,40 @@
 					"uidString" : "6CdMLvrcDQCGLLNgDabjBQ=="
 				},
 				"code" : "encoding.decode(nanogpt.generate_tokens(500))"
+			},
+			{
+				"__type" : "pythonSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2024-08-27T10:05:56.367322+02:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2024-08-27T12:52:34.899786+02:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "Xli3cgfdDQCOFt/NDabjBQ=="
+				},
+				"code" : "from gtoolkit_bridge import gtView\rimport torch.nn as nn\rimport torch\n\n@gtView\ndef nn_gt_view_children(self, builder):\n    tree = builder.columnedTree()\n    tree.title('Children')\n    tree.priority(10)\n    tree.items(lambda: self.named_children())\n    tree.children(lambda item: item[1].named_children())\n    tree.column('Name', lambda each: each[0])\r    tree.column('Parameters', lambda each: [e[0] for e in each[1].named_parameters()])\r    tree.set_accessor(lambda each: each[1])\n    return tree\n\nsetattr(nn.Module, 'gt_view_children', nn_gt_view_children)\n\r\n@gtView\ndef nn_gt_view_parameters(self, builder):\n    lst = builder.columnedList()\n    lst.title('Parameters')\n    lst.priority(15)\n    lst.items(lambda: self.named_parameters())\n    lst.column('Name', lambda each: each[0])\r    lst.column('Value', lambda each: each[1])\r    lst.set_accessor(lambda idx: list(self.named_parameters())[idx][1])\n    return lst\n\nsetattr(nn.Module, 'gt_view_parameters', nn_gt_view_parameters)\r\r\r@gtView\rdef tensor_gt_view_matrix(self, builder):\r\tif self.ndim == 0:\r\t\treturn builder.empty()\r\t\t\r\tlst = builder.list()\r\tlst.title('Data')\r\tlst.priority(5)\r\tlst.items(lambda: self)\r\treturn lst\r\t\r\rsetattr(torch.Tensor, 'gt_view_matrix',tensor_gt_view_matrix)\r\r\rdef tensor_flattened_list(self):\r\treturn [e.item() for e in torch.flatten(self)]\r\t\rsetattr(torch.Tensor, 'flattened_list', tensor_flattened_list)"
 			}
 		]
 	},
