@@ -179,7 +179,7 @@ class TrainingContext:
 		fwd = builder.forward()
 		fwd.title('Architecture')
 		fwd.priority(10)
-		fwd.object(self.model)
+		fwd.object(lambda: self.model)
 		fwd.view('gt_view_children')
 		return fwd
 
@@ -188,7 +188,7 @@ class TrainingContext:
 		fwd = builder.forward()
 		fwd.title('Context')
 		fwd.priority(10)
-		fwd.object(self.context)
+		fwd.object(lambda: self.context)
 		fwd.view('gt_view_matrix')
 		return fwd
 
