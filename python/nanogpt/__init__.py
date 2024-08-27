@@ -163,17 +163,16 @@ class BigramLanguageModel(nn.Module):
 		return idx
 
 context = None
-m = None
+model = None
 		
 def train(data, vocab_size):
-	global m
+	global model
 	global context
-	model = BigramLanguageModel(vocab_size)
-	m = model.to(device)
+	m = BigramLanguageModel(vocab_size)
+	model = m.to(device)
 
 	# create a PyTorch optimizer
 	optimizer = torch.optim.AdamW(model.parameters(), lr=learning_rate)
-
 
 	# Train and test splits
 	data = torch.tensor(data, dtype=torch.long)
@@ -186,7 +185,7 @@ def train(data, vocab_size):
 		xb, yb = get_batch(train_data)
 
 		# evaluate the loss
-		logits, loss = model(xb, yb)
+		logits, loss = m(xb, yb)
 		optimizer.zero_grad(set_to_none=True)
 		loss.backward()
 		optimizer.step()
@@ -195,4 +194,19 @@ def train(data, vocab_size):
 	context = torch.zeros((1, 1), dtype=torch.long, device=device)
 
 def generate_tokens(max):
-	return m.generate(context, max_new_tokens=max)[0].tolist()
+	return model.generate(context, max_new_tokens=max)[0].tolist()
+
+
+from gtoolkit_bridge import gtView
+
+@gtView
+def nn_gt_view_children(self, builder):
+    tree = builder.tree()
+    tree.title('Children')
+    tree.priority(10)
+    tree.items(lambda: self.named_children())
+    tree.children(lambda item: item[1].named_children())
+    tree.column('Name', lambda each: each[0])
+    return tree
+
+setattr(nn.Module, 'gt_view_children', nn_gt_view_children)
