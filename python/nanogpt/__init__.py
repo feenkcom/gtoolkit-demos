@@ -33,19 +33,6 @@ def get_batch(data):
 	x, y = x.to(device), y.to(device)
 	return x, y
 
-@torch.no_grad()
-def estimate_loss():
-	out = {}
-	model.eval()
-	for split in ['train', 'val']:
-		losses = torch.zeros(eval_iters)
-		for k in range(eval_iters):
-			X, Y = get_batch(split)
-			logits, loss = model(X, Y)
-			losses[k] = loss.item()
-		out[split] = losses.mean()
-	model.train()
-	return out
 
 class Head(nn.Module):
 	""" one head of self-attention """
@@ -202,13 +189,10 @@ def train(data, vocab_size):
 
 	# Train and test splits
 	data = torch.tensor(data, dtype=torch.long)
-	n = int(0.9*len(data)) # first 90% will be train, rest val
-	train_data = data[:n]
-	val_data = data[n:]
 
 	for iter in range(max_iters):
 		# sample a batch of data
-		xb, yb = get_batch(train_data)
+		xb, yb = get_batch(data)
 
 		# evaluate the loss
 		logits, loss = m(xb, yb)
