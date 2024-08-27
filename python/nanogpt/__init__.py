@@ -201,7 +201,7 @@ from gtoolkit_bridge import gtView
 
 @gtView
 def nn_gt_view_children(self, builder):
-    tree = builder.tree()
+    tree = builder.columned_tree()
     tree.title('Children')
     tree.priority(10)
     tree.items(lambda: self.named_children())
