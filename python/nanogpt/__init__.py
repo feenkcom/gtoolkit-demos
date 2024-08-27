@@ -171,8 +171,8 @@ class BigramLanguageModel(nn.Module):
 
 @dataclass
 class TrainingContext:
-	model = nn.Module
-	context = torch.Tensor
+	model: nn.Module
+	context: torch.Tensor
 
 	@gtView
 	def gt_view_children(self, builder):
