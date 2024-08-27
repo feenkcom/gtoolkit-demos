@@ -169,7 +169,7 @@ def train(data, vocab_size):
 	global model
 	global context
 	m = BigramLanguageModel(vocab_size)
-	model = model.to(device)
+	model = m.to(device)
 
 	# create a PyTorch optimizer
 	optimizer = torch.optim.AdamW(model.parameters(), lr=learning_rate)
