@@ -307,4 +307,4 @@ def gt_view_hyperparameters(self, builder):
     )
 
 
-setattr(nanogpt.TrainingContext, "gt_view_hyperparameters", gt_view_hyperparameters)
+setattr(TrainingContext, "gt_view_hyperparameters", gt_view_hyperparameters)
