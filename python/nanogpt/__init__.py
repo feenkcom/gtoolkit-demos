@@ -293,3 +293,18 @@ def tensor_flattened_list(self):
 
 
 setattr(torch.Tensor, "flattened_list", tensor_flattened_list)
+
+
+@gtView
+def gt_view_hyperparameters(self, builder):
+    return (
+        builder.columnedList()
+        .title("Hyperparameters")
+        .priority(10)
+        .items(lambda: self.hyperparameters.items())
+        .column("Key", lambda each: each[0])
+        .column("Value", lambda each: each[1])
+    )
+
+
+setattr(nanogpt.TrainingContext, "gt_view_hyperparameters", gt_view_hyperparameters)
