@@ -197,7 +197,7 @@ def generate_tokens(training_context, max_tokens, context=None):
 	if context is None:
 		context = torch.zeros((1, 1), dtype=torch.long, device=device)
 	else:
-		context = torch.tensor(data, dtype=torch.long, device=device)
+		context = torch.tensor(context, dtype=torch.long, device=device)
 
 	return training_context.model.generate(context, max_new_tokens=max_tokens)[0].tolist()
 
