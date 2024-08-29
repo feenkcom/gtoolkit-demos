@@ -159,7 +159,6 @@ class BigramLanguageModel(nn.Module):
 @dataclass
 class TrainingContext:
 	model: nn.Module
-	context: torch.Tensor
 
 	@gtView
 	def gt_view_children(self, builder):
@@ -168,15 +167,6 @@ class TrainingContext:
 		fwd.priority(10)
 		fwd.object(lambda: self.model)
 		fwd.view('gt_view_children')
-		return fwd
-
-	@gtView
-	def gt_view_matrix(self, builder):
-		fwd = builder.forward()
-		fwd.title('Context')
-		fwd.priority(10)
-		fwd.object(lambda: self.context)
-		fwd.view('gt_view_matrix')
 		return fwd
 
 
@@ -200,14 +190,16 @@ def train(data, vocab_size):
 		loss.backward()
 		optimizer.step()
 
-	# generate from the model
-	context = torch.zeros((1, 1), dtype=torch.long, device=device)
-
-	return TrainingContext(model=model, context=context)
+	return TrainingContext(model=model)
 
 
-def generate_tokens(training_context, max_tokens):
-	return training_context.model.generate(training_context.context, max_new_tokens=max_tokens)[0].tolist()
+def generate_tokens(training_context, max_tokens, context=None):
+	if context is None:
+		context = torch.zeros((1, 1), dtype=torch.long, device=device)
+	else:
+		context = torch.tensor(data, dtype=torch.long, device=device)
+
+	return training_context.model.generate(context, max_new_tokens=max_tokens)[0].tolist()
 
 
 @gtView
