@@ -228,11 +228,11 @@ def train(data, vocab_size, hyperparameters=None):
 def generate_tokens(training_context, max_tokens, context=None):
     if context is None:
         context = torch.zeros(
-            (1, 1), dtype=torch.long, device=context.hyperparameters["device"]
+            (1, 1), dtype=torch.long, device=training_context.hyperparameters["device"]
         )
     else:
         context = torch.tensor(
-            context, dtype=torch.long, device=context.hyperparameters["device"]
+            context, dtype=torch.long, device=training_context.hyperparameters["device"]
         )
         context = torch.reshape(context, (1, len(context)))
 
