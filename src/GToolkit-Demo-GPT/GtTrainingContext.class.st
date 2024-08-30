@@ -13,7 +13,7 @@ GtTrainingContext class >> pythonClass [
 GtTrainingContext >> gtDependenciesGraphFor: aView [
 	<gtView>
 	^ aView forward
-		title: 'Modules';
+		title: 'Architecture';
 		priority: 10;
 		object: [ self model name: 'Root' ];
 		view: #gtDependenciesGraphFor:
