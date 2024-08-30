@@ -178,7 +178,7 @@ class TrainingContext:
     @gtView
     def gt_view_children(self, builder):
         fwd = builder.forward()
-        fwd.title("Architecture")
+        fwd.title("Modules")
         fwd.priority(10)
         fwd.object(lambda: self.model)
         fwd.view("gt_view_children")
