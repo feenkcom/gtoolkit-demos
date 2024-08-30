@@ -91,13 +91,13 @@
 				},
 				"editEmail" : {
 					"__type" : "email",
-					"emailString" : "veit.heller@feenk.com"
+					"emailString" : "<unknown>"
 				},
 				"editTime" : {
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2024-08-26T17:07:18.412691+02:00"
+						"dateAndTimeString" : "2024-08-30T11:43:28.049825+02:00"
 					}
 				},
 				"uid" : {
@@ -267,7 +267,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2024-08-28T09:20:02.209108+02:00"
+						"dateAndTimeString" : "2024-08-30T15:41:18.177468+02:00"
 					}
 				},
 				"uid" : {
@@ -275,6 +275,40 @@
 					"uidString" : "6CdMLvrcDQCGLLNgDabjBQ=="
 				},
 				"code" : "encoding.decode(nanogpt.generate_tokens(context, 500))"
+			},
+			{
+				"__type" : "pythonSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2024-08-30T15:41:14.60152+02:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2024-08-30T15:41:15.183205+02:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "a11he0jdDQCDQ+VEBBwvug=="
+				},
+				"code" : "encoding.decode(nanogpt.generate_tokens(context, 500, encoding.encode('Glamorous Toolkit is ')))"
 			}
 		]
 	},
