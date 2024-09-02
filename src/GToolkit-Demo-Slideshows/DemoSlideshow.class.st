@@ -205,6 +205,22 @@ DemoSlideshow >> maximizedPage: aSlide [
 ]
 
 { #category : #slides }
+DemoSlideshow >> multiLineText: aSlide [
+	<gtSlide>
+	<text: 'Multiple lines with different formatting'>
+	^ aSlide text
+		setPriority;
+		textMargin: 5;
+		newTextWithFormat: (self asSubtitle: 'Outline');
+		newText: 'default sized text1';
+		newText: 'default sized text2';
+		newTextWithFormat: (self
+				asText: 'Paragraph body.
+Possibly over multiple lines.
+')
+]
+
+{ #category : #slides }
 DemoSlideshow >> paragraph: aSlide [
 	<gtSlide>
 	<text: 'Text with a paragraph'>
@@ -234,9 +250,11 @@ DemoSlideshow >> slidePriorities [
 	^ #( 
 		title:
 		titleWithFooter:
+		#titleWithCenteredTexts:
 		textAndElement:
 		textAndImage:
 		paragraph:
+		multiLineText:
 		headingAndCode:
 		lepiterPage:
 		dynamicLepiterPage:
@@ -311,6 +329,18 @@ DemoSlideshow >> title: aSlide [
 		titleBottomPadding: 30;
 		titleWithFormat: (self asTitle: 'Title');
 		subtitleWithFormat: (self asBigText: 'subtitle')
+]
+
+{ #category : #slides }
+DemoSlideshow >> titleWithCenteredTexts: aSlide [
+	<gtSlide>
+	<text: 'A title slide with multiple, centered texts.'>
+	^ (aSlide titleWithCenteredTexts)
+		setPriority;
+		titleWithFormat: (self asTitle: 'Title');
+		subtitleWithFormat: (self asSubtitle: 'subtitle');
+		newTextWithFormat: (self asBigText: 'someone@feenk.com');
+		newTextWithFormat: (self asBigText: 'someone.else@feenk.com')
 ]
 
 { #category : #slides }
