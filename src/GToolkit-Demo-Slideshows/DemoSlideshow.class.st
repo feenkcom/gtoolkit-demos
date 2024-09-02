@@ -339,7 +339,7 @@ DemoSlideshow >> titleWithCenteredTexts: aSlide [
 		setPriority;
 		titleWithFormat: (self asTitle: 'Title');
 		subtitleWithFormat: (self asSubtitle: 'subtitle');
-		newTextWithFormat: (self asBigText: 'someone@feenk.com');
+		newTextWithFormat: (self asBigText: 'someone@feenk.com') underline;
 		newTextWithFormat: (self asBigText: 'someone.else@feenk.com')
 ]
 
