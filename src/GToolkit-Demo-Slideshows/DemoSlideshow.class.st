@@ -249,8 +249,7 @@ DemoSlideshow >> slidePriorities [
 	<gtExample>
 	^ #( 
 		title:
-		titleWithFooter:
-		#titleWithCenteredTexts:
+		titleWithFooters:
 		textAndElement:
 		textAndImage:
 		paragraph:
@@ -332,26 +331,13 @@ DemoSlideshow >> title: aSlide [
 ]
 
 { #category : #slides }
-DemoSlideshow >> titleWithCenteredTexts: aSlide [
+DemoSlideshow >> titleWithFooters: aSlide [
 	<gtSlide>
 	<text: 'A title slide with multiple, centered texts.'>
-	^ (aSlide titleWithCenteredTexts)
+	^ (aSlide titleWithFooters)
 		setPriority;
 		titleWithFormat: (self asTitle: 'Title');
 		subtitleWithFormat: (self asSubtitle: 'subtitle');
-		newTextWithFormat: (self asBigText: 'someone@feenk.com') underline;
-		newTextWithFormat: (self asBigText: 'someone.else@feenk.com')
-]
-
-{ #category : #slides }
-DemoSlideshow >> titleWithFooter: aSlide [
-	<gtSlide>
-	<text: 'A title slide with a footer'>
-	^ (aSlide titleWithFooter)
-		setPriority;
-		titleBottomPadding: 30;
-		subtitleBottomPadding: 40;
-		titleWithFormat: (self asTitle: 'Title');
-		subtitleWithFormat: (self asBigText: 'subtitle');
-		footerWithFormat: (self asBigText: 'someone@feenk.com')
+		newFooterWithFormat: (self asBigText: 'someone@feenk.com') underline;
+		newFooterWithFormat: (self asBigText: 'someone.else@feenk.com')
 ]
