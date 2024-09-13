@@ -82,6 +82,28 @@ class BPEMerge:
 
     def __hash__(self):
         return hash(self.byte)
+        
+    @gtView
+    def gtViewBefore(self, builder):
+        clist = builder.columnedList()
+        clist.title("Before")
+        clist.priority(5)
+        clist.items(lambda: self.before_text.tokens)
+        clist.column(
+            "Byte", lambda each: chr(each.byte) if each.byte < 256 else each.byte
+        )
+        return clist
+        
+    @gtView
+    def gtViewAfter(self, builder):
+        clist = builder.columnedList()
+        clist.title("After")
+        clist.priority(6)
+        clist.items(lambda: self.after_text.tokens)
+        clist.column(
+            "Byte", lambda each: chr(each.byte) if each.byte < 256 else each.byte
+        )
+        return clist
 
 
 class BPEText:
