@@ -10,6 +10,9 @@ class EncoderByte:
 
     def name(self):
         return chr(self.byte)
+        
+    def encode_char(self):
+        return chr(self.byte)
 
     def __eq__(self, other):
         return self.byte == other.byte
@@ -40,7 +43,7 @@ class EncodingResult:
         clist.priority(1)
         clist.items(lambda: self.ids)
         clist.column(
-            "Byte", lambda each: chr(each.byte) if each.byte < 256 else each.byte
+            "Byte", lambda each: each.encode_char()
         )
         return clist
 
@@ -54,7 +57,7 @@ class EncodingResult:
         clist.column(
             "Pair",
             lambda each: [
-                chr(char.byte) if char.byte < 256 else char.byte for char in each.pair
+                char.encode_char() for char in each.pair
             ],
         )
         return clist
@@ -67,6 +70,9 @@ class BPEMerge:
         self.performed_merges = []
         self.before_text = ""
         self.after_text = ""
+
+    def encode_char(self):
+        return f"{self.pair[0].encode_char()}{self.pair[1].encode_char()}"
 
     def add_merge(self, idx, old):
         self.performed_merges.append((idx, old))
@@ -90,7 +96,7 @@ class BPEMerge:
         clist.priority(5)
         clist.items(lambda: self.before_text.tokens)
         clist.column(
-            "Byte", lambda each: chr(each.byte) if each.byte < 256 else each.byte
+            "Byte", lambda each: each.encode_char()
         )
         return clist
         
@@ -101,9 +107,21 @@ class BPEMerge:
         clist.priority(6)
         clist.items(lambda: self.after_text.tokens)
         clist.column(
-            "Byte", lambda each: chr(each.byte) if each.byte < 256 else each.byte
+            "Byte", lambda each: each.encode_char()
         )
         return clist
+        
+    @gtView
+    def gtViewMerge(self, builder):
+        editor = builder.textEditor()
+        editor.title("Merge")
+        editor.priority(10)
+        editor.setString(f"""{self.pair[0].byte}: "{self.pair[0].encode_char()}"
+{self.pair[1].byte}: "{self.pair[1].encode_char()}"
+==>
+{self.byte}: "{self.pair[0].encode_char()}{self.pair[1].encode_char()}"
+""")
+        return editor
 
 
 class BPEText:
