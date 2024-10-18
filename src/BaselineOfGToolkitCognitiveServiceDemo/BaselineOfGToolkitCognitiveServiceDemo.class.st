@@ -17,22 +17,22 @@ BaselineOfGToolkitCognitiveServiceDemo >> baseline: spec [
 	spec for: #'common' do: [
 		spec
 			baseline: 'GToolkitUtility' with: [
-				spec repository: 'github://feenkcom/gtoolkit-utility:v0.8.334/src' ].
+				spec repository: 'github://feenkcom/gtoolkit-utility:v0.8.335/src' ].
 		spec
 			baseline: 'Bloc' with: [
-				spec repository: 'github://feenkcom/Bloc:v0.8.720/src' ].
+				spec repository: 'github://feenkcom/Bloc:v0.8.721/src' ].
 
 		spec package: 'GToolkit-Demo-CognitiveServices-FaceAPI'.
 		spec package: 'GToolkit-Demo-CognitiveServices-FaceAPI-Examples' with: [
-			spec requires: #('GToolkitUtility' 'GToolkit-Demo-CognitiveServices-FaceAPI') ].
+			spec requires: #(#GToolkitUtility #'GToolkit-Demo-CognitiveServices-FaceAPI') ].
 		spec package: 'GToolkit-Demo-CognitiveServices-FaceAPI-BlocExtensions' with: [
-			spec requires: #('GToolkit-Demo-CognitiveServices-FaceAPI') ].
+			spec requires: #(#'GToolkit-Demo-CognitiveServices-FaceAPI') ].
 		spec package: 'GToolkit-Demo-CognitiveServices-FaceAPI-Extensions' with: [
-			spec requires: #('GToolkit-Demo-CognitiveServices-FaceAPI') ].
+			spec requires: #(#'GToolkit-Demo-CognitiveServices-FaceAPI') ].
 		spec package: 'GToolkit-Demo-CognitiveServices-FaceAPI-UI' with: [
-			spec requires: #('GToolkitUtility' 'GToolkit-Demo-CognitiveServices-FaceAPI' 'Bloc') ].
+			spec requires: #(#GToolkitUtility #'GToolkit-Demo-CognitiveServices-FaceAPI' #Bloc) ].
 		spec package: 'GToolkit-Demo-CognitiveServices-FaceAPI-Experiments' with: [
-			spec requires: #('GToolkit-Demo-CognitiveServices-FaceAPI') ].
+			spec requires: #(#'GToolkit-Demo-CognitiveServices-FaceAPI') ].
 		spec package: 'GToolkit-Demo-AddressBook'.
 	]
 ]

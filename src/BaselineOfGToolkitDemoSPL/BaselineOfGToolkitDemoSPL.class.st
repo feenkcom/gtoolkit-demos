@@ -20,6 +20,6 @@ BaselineOfGToolkitDemoSPL >> baseline: spec [
 
 		spec package: 'GToolkit-Demo-Slideshows'.
 		spec package: 'GToolkit-Demo-SPL' with: [
-			spec requires: #('GToolkit4PetitParser2' 'GToolkit-Demo-Slideshows') ].
+			spec requires: #(#GToolkit4PetitParser2 #'GToolkit-Demo-Slideshows') ].
 	]
 ]

@@ -13,6 +13,6 @@ BaselineOfGToolkitDemoPetitParser >> baseline: spec [
 				spec repository: 'github://feenkcom/gt4petitparser2:v0.8.41/src' ].
 
 		spec package: 'GToolkit-Demo-PetitParser' with: [
-			spec requires: #('GToolkit4PetitParser2') ].
+			spec requires: #(#GToolkit4PetitParser2) ].
 	]
 ]
