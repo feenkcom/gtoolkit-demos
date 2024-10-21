@@ -83,18 +83,22 @@ GtWhatMakesBlocSpecialExplanation >> classHierarchyWithEdges [
 	<gtExample>
 	| root |
 	root := self rootWithHierarchyElements.
-	ByteArray withAllSubclassesDo: [ :class | 
-		root children 
-			detect: [ :label | label text asString = class name ]
-			ifFound: [ :subclassLabel | 
-				root children 
-					detect: [ :label | label text asString = class superclass name ]
-					ifFound: [ :superclassLabel |
-						| edge |
-						edge := GtGraphEdge new from: superclassLabel to: subclassLabel.
-						superclassLabel constraints graph addConnectedEdge: edge.
-						subclassLabel constraints graph addConnectedEdge: edge ] ] ].
-	root layout: (GtGraphTreeLayout new verticalGap: 50; horizontalGap: 20).
+	ByteArray
+		withAllSubclassesDo: [ :class | 
+			root children
+				detect: [ :label | label text asString sameContentAs: class name ]
+				ifFound: [ :subclassLabel | 
+					root children
+						detect: [ :label | label text asString sameContentAs: class superclass name ]
+						ifFound: [ :superclassLabel | 
+							| edge |
+							edge := GtGraphEdge new from: superclassLabel to: subclassLabel.
+							superclassLabel constraints graph addConnectedEdge: edge.
+							subclassLabel constraints graph addConnectedEdge: edge ] ] ].
+	root
+		layout: (GtGraphTreeLayout new
+				verticalGap: 50;
+				horizontalGap: 20).
 	^ root asPannableElement
 ]
 
