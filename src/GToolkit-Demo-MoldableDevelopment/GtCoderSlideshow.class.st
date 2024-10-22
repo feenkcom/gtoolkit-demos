@@ -645,8 +645,11 @@ GtCoderSlideshow >> ensureOldFilterWidgetsDuring: aBlock [
 	| aStencilClass |
 	aStencilClass := GtPharoStreamingMethodsFiltersElementStencil
 			defaultStencilClassOrNil.
-	^ aBlock
-		ensure: [ GtPharoStreamingMethodsFiltersElementStencil
+	^ [ 
+		GtPharoStreamingMethodsFiltersElementStencil beDescriptorsStencilDefault.
+		aBlock value ]
+		ensure: [ 
+			GtPharoStreamingMethodsFiltersElementStencil
 				defaultStencilClass: aStencilClass ]
 ]
 
