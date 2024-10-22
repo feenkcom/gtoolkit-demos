@@ -35,7 +35,7 @@ GtCoderSlideshow >> advancedMethodsFilteringExplanationWithLinks [
 	<gtExample>
 	| coderElement categoryTarget fieldTarget addTarget |
 	coderElement := BlUseAsyncFeatures
-		disableDuring: [ (GtClassCoderLiveSlide new class: GtABAddressBook) asElement ].
+		disableDuring: [ self ensureOldFilterWidgetsDuring: [ (GtClassCoderLiveSlide new class: GtABAddressBook) asElement ] ].
 	
 	coderElement
 		allChildrenBreadthFirstDetect: [:aChild |
@@ -638,6 +638,19 @@ GtCoderSlideshow >> createMethodScripter [
 				label: 'Click add method button';
 				id: GtPharoAddNewMethodButtonId ].
 	^ aScripter
+]
+
+{ #category : #accessing }
+GtCoderSlideshow >> ensureOldFilterWidgetsDuring: aBlock [
+	| aStencilClass |
+	aStencilClass := GtPharoStreamingMethodsFiltersElementStencil
+			defaultStencilClassOrNil.
+	^ [ 
+		GtPharoStreamingMethodsFiltersElementStencil beDescriptorsStencilDefault.
+		aBlock value ]
+		ensure: [ 
+			GtPharoStreamingMethodsFiltersElementStencil
+				defaultStencilClass: aStencilClass ]
 ]
 
 { #category : #accessing }
