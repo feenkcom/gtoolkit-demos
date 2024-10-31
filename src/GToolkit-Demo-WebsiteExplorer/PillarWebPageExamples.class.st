@@ -61,6 +61,17 @@ PillarWebPageExamples >> esug2014Website [
 ]
 
 { #category : #accessing }
+PillarWebPageExamples >> esug2014bikesPage [
+	<gtExample>
+	| website page |
+	website := self esug2014Website.
+	page := website pageNamed: '/2014-Conference/bikes.pillar'.
+	self assert: page rawLinks size equals: 1.
+	self assert: page markdownLinks size equals: 0.
+	^ page
+]
+
+{ #category : #accessing }
 PillarWebPageExamples >> esug2014homePage [
 	<gtExample>
 	| website page |
