@@ -70,8 +70,8 @@ SubtitleParser >> sub [
 		==> [ :nodes | 
 			Subtitle new
 				number: nodes first;
-				start: nodes second first;
-				end: nodes second third;
+				startAsDuration: nodes second first;
+				endAsDuration: nodes second third;
 				lines: nodes third ]
 ]
 
