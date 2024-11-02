@@ -21,6 +21,12 @@ Subtitle >> = other [
 				and: [ self end = other end and: [ self lines = other lines ] ] ]
 ]
 
+{ #category : #conversion }
+Subtitle >> asDuration: aTime [
+	"Add a DAYS field and change the comma to a period."
+	^ ('00:' , aTime replaceAll: $, with: $.) asDuration
+]
+
 { #category : #accessing }
 Subtitle >> end [
 	^ end
@@ -30,6 +36,11 @@ Subtitle >> end [
 Subtitle >> end: aDuration [
 	end := aDuration.
 	self newEnd: end.
+]
+
+{ #category : #accessing }
+Subtitle >> endAsDuration: aDuration [
+	self end: (self asDuration: aDuration)
 ]
 
 { #category : #accessing }
@@ -123,4 +134,9 @@ Subtitle >> start [
 Subtitle >> start: aDuration [
 	start := aDuration.
 	self newStart: start.
+]
+
+{ #category : #accessing }
+Subtitle >> startAsDuration: aDuration [
+	self start: (self asDuration: aDuration)
 ]

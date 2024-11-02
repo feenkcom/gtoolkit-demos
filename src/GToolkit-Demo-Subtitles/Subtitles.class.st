@@ -39,6 +39,7 @@ Subtitles class >> for: aFileReference [
 
 { #category : #conversion }
 Subtitles >> asDuration: aTime [
+	self deprecated: 'Moved to Subtitle'.
 	"Add a DAYS field and change the comma to a period."
 	^ ('00:' , aTime replaceAll: $, with: $.) asDuration
 ]
@@ -75,20 +76,19 @@ Subtitles >> durationAsTime: aDuration [
 
 { #category : #accessing }
 Subtitles >> entries [
-	entries ifNil: [  "self initializeEntries"
-	self parseFile ].
+	entries ifNil: [
+		"self initializeEntries"
+		self parseFile ].
 	^ entries
 ]
 
 { #category : #accessing }
 Subtitles >> entries: anObject [
-
 	entries := anObject
 ]
 
 { #category : #accessing }
 Subtitles >> file [
-
 	^ file
 ]
 
@@ -167,8 +167,8 @@ Subtitles >> initializeEntries [
 				times := '--> ' split: lines second.
 				Subtitle new
 					number: index;
-					start: (self asDuration: times first);
-					end: (self asDuration: times second);
+					startAsDuration: times first;
+					endAsDuration: times second;
 					lines: (lines allButFirst: 2) ]
 ]
 
