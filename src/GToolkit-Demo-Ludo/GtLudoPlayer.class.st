@@ -42,6 +42,7 @@ GtLudoPlayer >> gtTokensFor: aView [
 	<gtView>
 	^ aView columnedList
 		title: 'Tokens';
+		priority: 20;
 		items: [ tokens ];
 		column: 'Token' text: #name;
 		column: 'Square' text: [:token | token square gtDisplayString]
