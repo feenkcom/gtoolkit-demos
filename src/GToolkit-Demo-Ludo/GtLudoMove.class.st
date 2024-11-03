@@ -71,14 +71,14 @@ GtLudoMove >> gtReplayedMoveFor: aView [
 
 { #category : #view }
 GtLudoMove >> gtTokenMovesFor: aView [
-
 	<gtView>
 	^ aView columnedList
-		  title: 'Token moves';
-		  items: [ tokenMoves ];
-		  column: 'Token' text: #token;
-		  column: 'From Square' text: #fromSquare;
-		  column: 'To Square' text: #toSquare
+		title: 'Token moves';
+		priority: 30;
+		items: [ tokenMoves ];
+		column: 'Token' text: #token;
+		column: 'From Square' text: #fromSquare;
+		column: 'To Square' text: #toSquare
 ]
 
 { #category : #accessing }

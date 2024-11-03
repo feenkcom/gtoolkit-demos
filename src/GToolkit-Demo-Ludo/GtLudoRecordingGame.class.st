@@ -41,6 +41,7 @@ GtLudoRecordingGame >> gtHistoryFor: aView [
 	<gtView>
 	^ aView list
 		  title: 'History';
+		  priority: 60;
 		  itemStencil: [ 
 			  BlScalableElement new
 				  size: 200 @ 200;
@@ -61,7 +62,7 @@ GtLudoRecordingGame >> gtMovesFor: aView [
 	
 	^ (aView columnedList)
 		title: 'Moves';
-		priority: 40;
+		priority: 50;
 		items: [ self moves ];
 		column: 'Index'
 			text: [ :eachItem :eachIndex | eachIndex asRopedText foreground: Color gray ]
@@ -77,6 +78,7 @@ GtLudoRecordingGame >> gtStoreStringFor: aView [
 	<gtView>
 	^ aView explicit 
 		title: 'Serialization';
+		  priority: 120;
 		stencil: [ 
 			LePageToolContentTreeElement new 
 				pageViewModel: (LePage unnamedPage addSnippet: (LePharoSnippet new code: self storeString; yourself);  yourself) asContentUIModel;
