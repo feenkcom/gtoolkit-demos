@@ -5,8 +5,30 @@ They can also be used as tutorial examples for Scripter scripts.
 Class {
 	#name : #PatternScripterExamples,
 	#superclass : #Object,
+	#classInstVars : [
+		'urlData'
+	],
 	#category : #'GToolkit-Demo-Scripter-Examples'
 }
+
+{ #category : #example }
+PatternScripterExamples class >> feenkGitHubUrl [
+	<gtExample>
+	^ 'https://api.github.com/orgs/feenkcom'
+]
+
+{ #category : #accessing }
+PatternScripterExamples class >> urlData [
+	| url |
+	^ urlData
+		ifNil: [ url := self feenkGitHubUrl.
+			urlData := ZnClient new get: url ]
+]
+
+{ #category : #accessing }
+PatternScripterExamples class >> urlData: anObject [
+	urlData := anObject
+]
 
 { #category : #example }
 PatternScripterExamples >> autoPlaySnippet [
@@ -76,7 +98,6 @@ PatternScripterExamples >> customLePageActionScript [
 PatternScripterExamples >> customViewCustomMovesViewScript [
 	"NB: It is not enough to double-click directly on the 6th row. 
 	We have to first click to select it, and then double-click."
-
 	<gtExample>
 	| scripter game |
 	game := GtLudoRecordingGameExamples new gameShowingAllMoves5.
@@ -127,7 +148,16 @@ PatternScripterExamples >> customViewRawViewScript [
 ]
 
 { #category : #example }
+PatternScripterExamples >> feenkGitHubOrgData [
+	"NB: We cache this data to avoid exceeding the API rate limit."
+	<gtExample>
+	<noTest>
+	^ self class urlData
+]
+
+{ #category : #example }
 PatternScripterExamples >> moldableLudoGamePlaygroundScript [
+	"NB: Note the use of `do` to replace the playground snippet code."
 	<gtExample>
 	| game scripter |
 	game := GtLudoRecordingGame new.
@@ -178,6 +208,46 @@ PatternScripterExamples >> moldableToolViewCodeScript [
 		label: 'Open the source view';
 		id: #bar index: 2;
 		modifiers: BlKeyModifiers alt;
+		play.
+	^ scripter	"elementWithoutParent"
+]
+
+{ #category : #example }
+PatternScripterExamples >> rawGitHubDictionary [
+	<gtExample>
+	<noTest>
+	^ STON fromString: self feenkGitHubOrgData
+]
+
+{ #category : #example }
+PatternScripterExamples >> wrappedGitHubOrganization [
+	<gtExample>
+	<noTest>
+	^ GhOrganization new rawData: self rawGitHubDictionary
+]
+
+{ #category : #example }
+PatternScripterExamples >> wrappedGitHubOrganizationDataScript [
+	<gtExample>
+	<noTest>
+	| scripter |
+	scripter := BlScripter new.
+	scripter element: (GtInspector createOn:  self wrappedGitHubOrganization) maximized.
+	scripter click
+		label: 'Select the 7th repo';
+		id: GtPhlowColumnedListId;
+		id: #scrollable;
+		onChildAt: 7;
+		// GtPhlowCellElement;
+		@ 1;
+		play.
+	scripter doubleClick
+		label: 'Double-click on the row';
+		play.
+	scripter click
+		label: 'Select the 2nd (Contributors) view';
+		id: GtPagerPageElementId index: 2;
+		id: #bar index: 2;
 		play.
 	^ scripter	"elementWithoutParent"
 ]
