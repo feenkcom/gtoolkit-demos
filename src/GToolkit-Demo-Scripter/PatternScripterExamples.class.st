@@ -12,22 +12,27 @@ Class {
 PatternScripterExamples >> customViewCustomMovesView [
 	"NB: It is not enough to double-click directly on the 6th row. 
 	We have to first click to select it, and then double-click."
+
 	<gtExample>
 	| scripter game |
 	game := GtLudoRecordingGameExamples new gameShowingAllMoves5.
 	scripter := BlScripter new.
 	scripter element: (GtInspector createOn: game) maximized.
 	scripter click
+		label: 'Select the Moves view';
 		id: #bar index: 5;
-		play.	"Select the Moves view."
+		play.
 	scripter click
+		label: 'Select the 6th move';
 		id: GtPhlowColumnedListId;
 		id: #scrollable;
 		onChildAt: 6;
 		// GtPhlowCellElement;
 		@ 1;
-		play.	"Select the 6th move."
-	scripter doubleClick play.	"Doubleclick."
+		play.
+	scripter doubleClick
+		label: 'Double-click on the row';
+		play.
 	^ scripter	"elementWithoutParent"
 ]
 
@@ -39,17 +44,21 @@ PatternScripterExamples >> customViewRawView [
 	game := GtLudoRecordingGameExamples new gameShowingAllMoves3.
 	scripter element: (GtInspector createOn: game) maximized.
 	scripter click
+		label: 'Select the Raw view';
 		id: #bar index: 7;
-		play.	"Select the Raw view."
+		play.
 	scripter click
+		label: 'Open the moves slot';
 		id: #triangle index: 8;
-		play.	"Open the moves slot."
+		play.
 	scripter click
+		label: 'Open the array slot';
 		id: #triangle index: 9;
-		play.	"Open the array slot."
+		play.
 	scripter click
+		label: 'Open the 6th move';
 		id: #triangle index: 15;
-		play.	"Open the 6th move."
+		play.
 	^ scripter	"elementWithoutParent"
 ]
 
@@ -61,11 +70,13 @@ PatternScripterExamples >> moldableToolViewCodeScript [
 	game := GtLudoRecordingGameExamples new gameShowingAllMoves6.
 	scripter element: (GtInspector createOn: game) maximized.
 	scripter click
+		label: 'Select the Moves view';
 		id: #bar index: 5;
-		play.	"Select the Moves view."
+		play.
 	scripter click
+		label: 'Open the source view';
 		id: #bar index: 2;
 		modifiers: BlKeyModifiers alt;
-		play.	"Open the source view."
+		play.
 	^ scripter	"elementWithoutParent"
 ]

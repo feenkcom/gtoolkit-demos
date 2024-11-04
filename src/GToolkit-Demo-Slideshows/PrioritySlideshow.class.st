@@ -45,7 +45,7 @@ PrioritySlideshow class >> gtInspectSlideshowActionFor: anAction [
 	^ anAction button
 		tooltip: 'Inspect slideshow';
 		priority: 10;
-		id: GtPresenterPreviewShowButtonId;
+		"id: GtPresenterPreviewShowButtonId;"
 		icon: BrGlamorousVectorIcons playinspect;
 		action: [ :aButton | 
 			aButton phlow
@@ -334,7 +334,7 @@ PrioritySlideshow >> gtGitAction: anAction [
 		tooltip: 'Go to repository';
 		priority: 25;
 		icon: BrGlamorousVectorIcons branching;
-		id: GtCoderGitButtonId;
+		"id: GtCoderGitButtonId;"
 		action: [ :aButton | 
 			| repository |
 			repository := self class repository.
@@ -403,7 +403,7 @@ PrioritySlideshow >> gtPlaySlideshowAction: anAction [
 		priority: 10;
 		stencil: [ | button |
 			button := BrButton new
-					id: GtInspectorInspectButtonId;
+					"id: GtInspectorInspectButtonId;"
 					aptitude: BrGlamorousButtonWithIconAptitude;
 					icon: BrGlamorousVectorIcons play;
 					label: 'Play slideshow';
