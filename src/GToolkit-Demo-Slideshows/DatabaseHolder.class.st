@@ -39,7 +39,7 @@ DatabaseHolder >> gtRefreshDbActionFor: anAction [
 		priority: 15;
 		stencil: [ | button |
 			button := BrButton new
-					id: GtInspectorInspectButtonId;
+					"id: GtInspectorInspectButtonId;"
 					aptitude: BrGlamorousButtonWithIconAptitude;
 					icon: BrGlamorousIcons refresh;
 					label: 'Refresh database';
