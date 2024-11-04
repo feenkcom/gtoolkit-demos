@@ -9,6 +9,18 @@ Class {
 }
 
 { #category : #example }
+PatternScripterExamples >> autoPlaySnippet [
+	<gtExample>
+	^ '1 to: 10 do: [ :n | 
+  self isOver ifTrue: [ ^ self ].
+  self playerToRoll
+    ifTrue: [ self die roll ]
+    ifFalse: [ self moveTokenNamed: 
+      self tokensToMove atRandom name ] ].
+self.'
+]
+
+{ #category : #example }
 PatternScripterExamples >> cartoonAddressBookScript [
 	<gtExample>
 	| addressBook scripter |
@@ -110,6 +122,43 @@ PatternScripterExamples >> customViewRawViewScript [
 	scripter click
 		label: 'Open the 6th move';
 		id: #triangle index: 15;
+		play.
+	^ scripter	"elementWithoutParent"
+]
+
+{ #category : #example }
+PatternScripterExamples >> moldableLudoGamePlaygroundScript [
+	<gtExample>
+	| game scripter |
+	game := GtLudoRecordingGame new.
+	scripter := BlScripter new.
+	scripter element: (GtInspector createOn: game) maximized.
+	scripter mouseMoveOver
+		label: 'Position mouse over playground handle';
+		id: LeInspectorPlaygroundResizerId.
+	scripter mouseDown.
+	scripter mouseMove
+		by: 0 @ -240;
+		label: 'Drag the playground handle up'.
+	scripter mouseUp.
+	scripter play.
+	scripter click
+		label: 'Activate the code snippet';
+		id: GtSourceCoderEditorId;
+		play.
+	scripter do
+		label: 'Replace the code in the playground snippet';
+		id: GtSourceCoderEditorId;
+		action: [ :aSnippetElement | aSnippetElement text: self autoPlaySnippet ];
+		play.
+	scripter click
+		label: 'Perform the snippet and go.';
+		id: GtSourceCoderDoItAndGoActionId;
+		play.
+	scripter click
+		label: 'Select the Moves view in the second pager';
+		id: GtPagerPageElementId index: 2;
+		id: #bar index: 5;
 		play.
 	^ scripter	"elementWithoutParent"
 ]
