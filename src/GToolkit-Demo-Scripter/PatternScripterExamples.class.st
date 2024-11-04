@@ -8,8 +8,60 @@ Class {
 	#category : #'GToolkit-Demo-Scripter-Examples'
 }
 
-{ #category : #'as yet unclassified' }
-PatternScripterExamples >> customViewCustomMovesView [
+{ #category : #example }
+PatternScripterExamples >> cartoonAddressBookScript [
+	<gtExample>
+	| addressBook scripter |
+	addressBook := GtABCartoonAddressBookExample new cartoonAddressBook.
+	scripter := BlScripter new.
+	scripter element: (GtInspector createOn: addressBook) maximized.
+	^ scripter	"elementWithoutParent"
+]
+
+{ #category : #example }
+PatternScripterExamples >> cartoonAddressBookSearchScript [
+	"NB: This does not work very well as an embedded example as the dropdown menu will disappear when you click anywhere on the page. The dropdown menu also obscure important text as you scroll."
+	<gtExample>
+	| scripter |
+	scripter := self cartoonAddressBookScript.
+	scripter click
+		label: 'Click on the Spotter button';
+		id: GtSpotterObjectActionSearchId;
+		play.
+	scripter click
+		label: 'Move to the text input field';
+		id: GtPhlowColumnedListHeaderId;
+		id: #label index: 2;
+		play.
+	scripter type
+		label: 'Enter some text in the text field';
+		text: 'u';
+		play.
+
+	^ scripter	"elementWithoutParent"
+]
+
+{ #category : #example }
+PatternScripterExamples >> customLePageActionScript [
+	"NB: Hovering the mouse is obviously ephemeral."
+	<gtExample>
+	| scripter page |
+	page := LeDatabase gtBook pageNamed: 'Custom Action'.
+	scripter := BlScripter new.
+	scripter element: (GtInspector createOn: page) maximized.
+	scripter click
+		label: 'Click on the Database button';
+		id: LePageDatabaseActionId;
+		play.
+	scripter mouseMoveOver
+		label: 'Hover over the Database button';
+		id: LePageDatabaseActionId;
+		play.
+	^ scripter	"elementWithoutParent"
+]
+
+{ #category : #example }
+PatternScripterExamples >> customViewCustomMovesViewScript [
 	"NB: It is not enough to double-click directly on the 6th row. 
 	We have to first click to select it, and then double-click."
 
@@ -36,8 +88,8 @@ PatternScripterExamples >> customViewCustomMovesView [
 	^ scripter	"elementWithoutParent"
 ]
 
-{ #category : #'as yet unclassified' }
-PatternScripterExamples >> customViewRawView [
+{ #category : #example }
+PatternScripterExamples >> customViewRawViewScript [
 	<gtExample>
 	| scripter game |
 	scripter := BlScripter new.
@@ -62,7 +114,7 @@ PatternScripterExamples >> customViewRawView [
 	^ scripter	"elementWithoutParent"
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #example }
 PatternScripterExamples >> moldableToolViewCodeScript [
 	<gtExample>
 	| scripter game |
