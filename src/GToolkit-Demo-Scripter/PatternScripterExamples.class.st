@@ -154,6 +154,21 @@ PatternScripterExamples >> customViewRawViewScript [
 ]
 
 { #category : #example }
+PatternScripterExamples >> explicitMoveViewScript [
+	<gtExample>
+	| move scripter |
+	move := GtLudoRecordingGameExamples new gameShowingAllMoves6 moves fifth.
+	scripter := BlScripter new.
+	scripter element: (GtInspector createOn: move) maximized.
+	scripter click
+		label: 'Open the source view';
+		id: #bar index: 1;
+		modifiers: BlKeyModifiers alt;
+		play.
+	^ scripter	"elementWithoutParent"
+]
+
+{ #category : #example }
 PatternScripterExamples >> feenkGitHubOrgData [
 	"NB: We cache this data to avoid exceeding the API rate limit."
 	<gtExample>
@@ -203,8 +218,8 @@ PatternScripterExamples >> moldableLudoGamePlaygroundScript [
 PatternScripterExamples >> moldableToolViewCodeScript [
 	<gtExample>
 	| scripter game |
-	scripter := BlScripter new.
 	game := GtLudoRecordingGameExamples new gameShowingAllMoves6.
+	scripter := BlScripter new.
 	scripter element: (GtInspector createOn: game) maximized.
 	scripter click
 		label: 'Select the Moves view';
@@ -219,10 +234,184 @@ PatternScripterExamples >> moldableToolViewCodeScript [
 ]
 
 { #category : #example }
+PatternScripterExamples >> projectDiaryExample [
+	"Nothing to script, but better display"
+	<gtExample>
+	^ (GtPager
+		createWrappedOn: (LePagePhlowTool
+				page: (LeDatabase gtBook
+						pageNamed: 'Adding simple list views for Ludo Players and Squares')))
+		maximized
+]
+
+{ #category : #example }
 PatternScripterExamples >> rawGitHubDictionary [
 	<gtExample>
 	<noTest>
 	^ STON fromString: self feenkGitHubOrgData
+]
+
+{ #category : #example }
+PatternScripterExamples >> simpleColumnedListViewScript [
+	<gtExample>
+	^ self moldableToolViewCodeScript
+]
+
+{ #category : #example }
+PatternScripterExamples >> simpleForwardViewScript [
+	<gtExample>
+	| pillarWebpage scripter |
+	pillarWebpage := PillarWebPageExamples new esug2014bikesPage.
+	scripter := BlScripter new.
+	scripter element: (GtInspector createOn: pillarWebpage) maximized.
+	scripter click
+		label: 'Select the 2nd (Contents) view';
+		id: #bar index: 2;
+		play.
+	scripter click
+		label: 'Open the source view';
+		id: #bar index: 2;
+		modifiers: BlKeyModifiers alt;
+		play.
+	^ scripter	"elementWithoutParent"
+]
+
+{ #category : #example }
+PatternScripterExamples >> simpleListViewScript [
+	<gtExample>
+	| addressBook scripter |
+	addressBook := GtABCartoonAddressBookExample new cartoonAddressBook.
+		scripter := BlScripter new.
+	scripter element: (GtInspector createOn: addressBook) maximized.
+		scripter click
+		label: 'Select the Contacts list view';
+		id: #bar index: 2;
+		play.
+	scripter click
+		label: 'Open the source view';
+		id: #bar index: 2;
+		modifiers: BlKeyModifiers alt;
+		play.
+	^ scripter	"elementWithoutParent"
+]
+
+{ #category : #example }
+PatternScripterExamples >> throwawayLinkTool [
+	<gtExample>
+	^ (LePage named: 'Reachable links')
+	addSnippet: (LePharoSnippet new
+			code: 'pages := thisSnippet database pages
+		reject: [ :each | each title = ''Glamorous Toolkit Book'' ].
+getStartedPage := pages detect: [ :each | each title = ''Glamorous Toolkit'' ].
+allReachedPages := getStartedPage
+		deepCollect: [ :each | 
+			each allChildOutgoingTextualLinks
+				collectAsSet: [ :x | x target ifNotNil: #page ] ].
+m := GtMondrian new.
+m nodes
+	stencil: [ :each | 
+		| color size |
+		color := (allReachedPages includes: each)
+				ifTrue: [ Color red ]
+				ifFalse: [ Color black ].
+		size := 5 @ 5.
+		each = getStartedPage
+			ifTrue: [ color := Color blue.
+				size := 10 @ 10 ].
+		BlElement new
+			background: color;
+			size: size;
+			when: BlClickEvent
+				do: [ :e | e currentTarget phlow spawnTool: each asPhlowTool ] ];
+	with: pages.
+m edges
+	stencil: [ BlLineElement new
+			border: Color veryLightGray;
+			toHead: (BlArrowheadSimpleArrow new border: Color veryLightGray);
+			zIndex: -1 ];
+	connectToAll: [ :page | page allOutgoingTextualLinks collectAsSet: #target ].
+m layout force
+	nbIterations: 30;
+	charge: -50.
+m';
+			yourself);
+	addSnippet: (LeTextSnippet new
+			string: '';
+			yourself);
+	yourself
+]
+
+{ #category : #example }
+PatternScripterExamples >> throwawayLinkToolScript [
+	<gtExample>
+	| pager scripter |
+	pager := GtPager
+			createWrappedOn: (LePagePhlowTool page: self throwawayLinkTool).
+	scripter := BlScripter new.
+	scripter element: pager.
+	scripter click
+		label: 'Perform the snippet and go.';
+		id: GtSourceCoderDoItAndGoActionId;
+		play.
+	^ scripter "elementWithoutParent"
+]
+
+{ #category : #example }
+PatternScripterExamples >> throwawayQueryTool [
+	<gtExample>
+	^ (LePage named: 'Find Ludo examples')
+		addSnippet: (LePharoSnippet new
+				code: '(LeDatabase gtBook pages
+	select: [ :page | page asMarkdownString includesSubstring: ''Ludo'' ])
+	select: [ :page | 
+		exampleSnippets := page
+				deep: #children
+				select: [ :child | child isKindOf: LeExampleSnippet ].
+		exampleSnippets notEmpty ]';
+				yourself);
+		yourself
+]
+
+{ #category : #example }
+PatternScripterExamples >> throwawayQueryToolScript [
+	<gtExample>
+	| pager scripter |
+	pager := GtPager
+			createWrappedOn: (LePagePhlowTool page: self throwawayQueryTool).
+	scripter := BlScripter new.
+	scripter element: pager.
+	scripter click
+		label: 'Perform the snippet and go.';
+		id: GtSourceCoderDoItAndGoActionId;
+		play.
+	^ scripter "elementWithoutParent"
+]
+
+{ #category : #example }
+PatternScripterExamples >> wrappedEsugWebsitePageCollectionScript [
+	<gtExample>
+	<noTest>
+	| website scripter |
+	website := PillarWebsiteExamples new esug2014.
+	scripter := BlScripter new.
+	scripter element: (GtInspector createOn: website) maximized.
+	scripter click
+		label: 'Select the 4th row';
+		id: GtPhlowColumnedListId;
+		id: #scrollable;
+		onChildAt: 4;
+		// GtPhlowCellElement;
+		@ 1;
+		play.
+	scripter doubleClick
+		label: 'Double-click on the row';
+		play.
+	scripter click
+		label: 'Select the 2nd (Map) view';
+		id: GtPagerPageElementId index: 2;
+		id: #bar index: 2;
+		play.
+	^ scripter	"elementWithoutParent"
 ]
 
 { #category : #example }
