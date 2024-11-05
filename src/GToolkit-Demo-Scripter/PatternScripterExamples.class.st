@@ -78,7 +78,7 @@ PatternScripterExamples >> cartoonAddressBookSearchScript [
 		text: 'u';
 		play.
 
-	^ scripter	"elementWithoutParent"
+	^ scripter elementWithoutParent
 ]
 
 { #category : #example }
@@ -124,7 +124,7 @@ PatternScripterExamples >> customViewCustomMovesViewScript [
 	scripter doubleClick
 		label: 'Double-click on the row';
 		play.
-	^ scripter	"elementWithoutParent"
+	^ scripter elementWithoutParent
 ]
 
 { #category : #example }
@@ -150,7 +150,7 @@ PatternScripterExamples >> customViewRawViewScript [
 		label: 'Open the 6th move';
 		id: #triangle index: 15;
 		play.
-	^ scripter	"elementWithoutParent"
+	^ scripter elementWithoutParent
 ]
 
 { #category : #example }
@@ -230,7 +230,7 @@ PatternScripterExamples >> moldableToolViewCodeScript [
 		id: #bar index: 2;
 		modifiers: BlKeyModifiers alt;
 		play.
-	^ scripter	"elementWithoutParent"
+	^ scripter elementWithoutParent
 ]
 
 { #category : #example }
