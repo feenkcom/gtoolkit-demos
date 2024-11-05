@@ -97,7 +97,7 @@ PatternScripterExamples >> customLePageActionScript [
 		label: 'Hover over the Database button';
 		id: LePageDatabaseActionId;
 		play.
-	^ scripter	"elementWithoutParent"
+	^ scripter elementWithoutParent
 ]
 
 { #category : #example }
