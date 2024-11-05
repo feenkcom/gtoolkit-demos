@@ -200,7 +200,9 @@ PatternScripterExamples >> moldableLudoGamePlaygroundScript [
 	scripter do
 		label: 'Replace the code in the playground snippet';
 		id: GtSourceCoderEditorId;
-		action: [ :aSnippetElement | aSnippetElement text: self autoPlaySnippet ];
+		action: [ :aSnippetElement | 
+			aSnippetElement textualCoderViewModel coderModel
+				currentSourceString: self autoPlaySnippet ];
 		play.
 	scripter click
 		label: 'Perform the snippet and go.';
