@@ -4,6 +4,48 @@ Class {
 	#category : #'GToolkit-Demo-MoldableDevelopment-Examples'
 }
 
+{ #category : #example }
+GtInspectorScripterExamples >> emptyStackMachine [
+	<gtExample>
+	^ StackMachineV0 new
+]
+
+{ #category : #example }
+GtInspectorScripterExamples >> emptyStackMachineV1 [
+	<gtExample>
+	^ StackMachineV1 new
+]
+
+{ #category : #example }
+GtInspectorScripterExamples >> emptyStackMachineV1WithPlaygroundCode [
+	<gtExample>
+	| scripter |
+	scripter := GtInspectorScripterExamples new
+			scriptedInspectorOn: self emptyStackMachineV1
+			WithPlaygroundText: 'self ! 3. self ! 4.'.
+	^ scripter elementWithoutParent
+]
+
+{ #category : #example }
+GtInspectorScripterExamples >> emptyStackMachineWithGeneralizedPlaygroundCode [
+	<gtExample>
+	| scripter |
+	scripter := GtInspectorScripterExamples new
+			scriptedInspectorOn: self emptyStackMachine
+			WithPlaygroundText: 'stack addLast: aValue'.
+	^ scripter elementWithoutParent
+]
+
+{ #category : #example }
+GtInspectorScripterExamples >> emptyStackMachineWithPlaygroundCode [
+	<gtExample>
+	| scripter |
+	scripter := GtInspectorScripterExamples new
+			scriptedInspectorOn: self emptyStackMachine
+			WithPlaygroundText: 'stack addLast: 3'.
+	^ scripter elementWithoutParent
+]
+
 { #category : #accessing }
 GtInspectorScripterExamples >> pixelsToMove [
 	"Number of pixels to raise the playground handle."
@@ -53,7 +95,7 @@ GtInspectorScripterExamples >> scriptedInspectorInPagerOn: anObject withPlaygrou
 	^ scripter
 ]
 
-{ #category : #accessing }
+{ #category : #example }
 GtInspectorScripterExamples >> scriptedInspectorOn3plus4WithPlayground [
 	"Illustrates how to script an Inspector with an open playground."
 
@@ -66,7 +108,7 @@ GtInspectorScripterExamples >> scriptedInspectorOn3plus4WithPlayground [
 	^ scripter elementWithoutParent
 ]
 
-{ #category : #accessing }
+{ #category : #example }
 GtInspectorScripterExamples >> scriptedInspectorOn3plus4WithPlaygroundSmalltalkEvaluate [
 	"Illustrates how to script an Inspector with an open playground."
 
@@ -103,4 +145,17 @@ GtInspectorScripterExamples >> scriptedInspectorOn: anObject WithPlaygroundText:
 				id: GtSourceCoderEditorId ].
 
 	^ scripter
+]
+
+{ #category : #example }
+GtInspectorScripterExamples >> stackMachineV1WithCodeEvaluated [
+	<gtExample>
+	| scripter |
+	scripter := GtInspectorScripterExamples new
+			scriptedInspectorInPagerOn: (StackMachineV1 new
+					! 3;
+					! 4;
+					yourself)
+			withPlaygroundTextAndDoit: 'self top'.
+	^ scripter elementWithoutParent
 ]
