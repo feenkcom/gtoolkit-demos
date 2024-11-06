@@ -213,7 +213,7 @@ PatternScripterExamples >> moldableLudoGamePlaygroundScript [
 		id: GtPagerPageElementId index: 2;
 		id: #bar index: 5;
 		play.
-	^ scripter	"elementWithoutParent"
+	^ scripter elementWithoutParent
 ]
 
 { #category : #example }
@@ -446,5 +446,5 @@ PatternScripterExamples >> wrappedGitHubOrganizationDataScript [
 		id: GtPagerPageElementId index: 2;
 		id: #bar index: 2;
 		play.
-	^ scripter	"elementWithoutParent"
+	^ scripter elementWithoutParent
 ]
