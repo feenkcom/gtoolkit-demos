@@ -165,7 +165,7 @@ PatternScripterExamples >> explicitMoveViewScript [
 		id: #bar index: 1;
 		modifiers: BlKeyModifiers alt;
 		play.
-	^ scripter	"elementWithoutParent"
+	^ scripter elementWithoutParent
 ]
 
 { #category : #example }
@@ -174,6 +174,47 @@ PatternScripterExamples >> feenkGitHubOrgData [
 	<gtExample>
 	<noTest>
 	^ self class urlData
+]
+
+{ #category : #'as yet unclassified' }
+PatternScripterExamples >> gtBookLinksMondrian [
+	<gtExample>
+	<noTest>
+	| pages getStartedPage allReachedPages m |
+	pages := LeDatabase gtBook pages
+			reject: [ :each | each title = 'Glamorous Toolkit Book' ].
+	getStartedPage := pages detect: [ :each | each title = 'Glamorous Toolkit' ].
+	allReachedPages := getStartedPage
+			deepCollect: [ :each | 
+				each allChildOutgoingTextualLinks
+					collectAsSet: [ :x | x target ifNotNil: #page ] ].
+	m := GtMondrian new.
+	m nodes
+		stencil: [ :each | 
+			| color size |
+			color := (allReachedPages includes: each)
+					ifTrue: [ Color red ]
+					ifFalse: [ Color black ].
+			size := 5 @ 5.
+			each = getStartedPage
+				ifTrue: [ color := Color blue.
+					size := 10 @ 10 ].
+			BlElement new
+				background: color;
+				size: size;
+				when: BlClickEvent
+					do: [ :e | e currentTarget phlow spawnTool: each asPhlowTool ] ];
+		with: pages.
+	m edges
+		stencil: [ BlLineElement new
+				border: Color veryLightGray;
+				toHead: (BlArrowheadSimpleArrow new border: Color veryLightGray);
+				zIndex: -1 ];
+		connectToAll: [ :page | page allOutgoingTextualLinks collectAsSet: #target ].
+	m layout force
+		nbIterations: 30;
+		charge: -50.
+	^ m
 ]
 
 { #category : #example }
@@ -275,7 +316,7 @@ PatternScripterExamples >> simpleForwardViewScript [
 		id: #bar index: 2;
 		modifiers: BlKeyModifiers alt;
 		play.
-	^ scripter	"elementWithoutParent"
+	^ scripter elementWithoutParent
 ]
 
 { #category : #example }
@@ -294,7 +335,7 @@ PatternScripterExamples >> simpleListViewScript [
 		id: #bar index: 2;
 		modifiers: BlKeyModifiers alt;
 		play.
-	^ scripter	"elementWithoutParent"
+	^ scripter elementWithoutParent
 ]
 
 { #category : #example }
@@ -386,7 +427,7 @@ PatternScripterExamples >> throwawayQueryToolScript [
 		label: 'Perform the snippet and go.';
 		id: GtSourceCoderDoItAndGoActionId;
 		play.
-	^ scripter "elementWithoutParent"
+	^ scripter elementWithoutParent
 ]
 
 { #category : #example }
@@ -413,7 +454,7 @@ PatternScripterExamples >> wrappedEsugWebsitePageCollectionScript [
 		id: GtPagerPageElementId index: 2;
 		id: #bar index: 2;
 		play.
-	^ scripter	"elementWithoutParent"
+	^ scripter elementWithoutParent
 ]
 
 { #category : #example }
