@@ -11,7 +11,7 @@ GtTZeroMoney >> < aMoney [
 
 { #category : #testing }
 GtTZeroMoney >> = aMoney [
-	^ (aMoney isKindOf: UMoney) and: [ aMoney isZero ]
+	^ (aMoney isKindOf: GtTMoney) and: [ aMoney isZero ]
 ]
 
 { #category : #testing }
