@@ -277,6 +277,13 @@ PatternScripterExamples >> moldableToolViewCodeScript [
 ]
 
 { #category : #example }
+PatternScripterExamples >> prettyJsonGitHubDictionary [
+	<gtExample>
+	<noTest>
+	^ STON toJsonStringPretty: self rawGitHubDictionary
+]
+
+{ #category : #example }
 PatternScripterExamples >> projectDiaryExample [
 	"Nothing to script, but better display"
 	<gtExample>
