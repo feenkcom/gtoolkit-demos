@@ -340,8 +340,8 @@ PrioritySlideshow >> gtGitAction: anAction [
 			repository := self class repository.
 			repository
 				ifNil: [ aButton phlow
-						spawnTool: (GtPhlowValuableTool new
-								valuable: [ GtGitAddToRepositoryElement new package: self class package ]) ]
+						spawnTool: (GtPhlowExplicitTool new
+								stencil: [ GtGitAddToRepositoryElement new package: self class package ]) ]
 				ifNotNil: [ aButton phlow
 						spawnTool: (GtGitPhlowTool new repository: repository) ] ]
 ]
