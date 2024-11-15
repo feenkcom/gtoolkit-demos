@@ -331,8 +331,9 @@ GtPlaygroundAndInspectorShow >> inspectorMethodExplanationWithLinks [
 
 { #category : #accessing }
 GtPlaygroundAndInspectorShow >> inspectorWithExplanationLinks [
-	| resultInspectorContainer resultElement resultInspectorTree titleTab avatarLabel nameLabel phoneLabel itemsCollection |
+	| resultInspectorContainer resultElement resultInspectorTree titleTab avatarLabel nameLabel phoneLabel itemsCollection scripter |
 	
+	scripter := BlScripter new.
 	resultInspectorContainer := BlElement new
 		constraintsDo: [ :c | 
 			c horizontal matchParent.
@@ -342,15 +343,14 @@ GtPlaygroundAndInspectorShow >> inspectorWithExplanationLinks [
 		background: Color white;
 		margin: (BlInsets all: 10).
 	
-	resultElement := BlUseAsyncFeatures
-		disableDuring: [ (GtPhlowView empty composite
+	resultElement := (GtPhlowView empty composite
 				views:
 					{(GtABCartoonAddressBookExample new cartoonAddressBook
 						gtViewContactsOn: GtPhlowView empty)};
 				labelled: 'a GtABAddressBook (Cartoons)' asRopedText)
-				asElementDo: [ :e | e ] ].
-	resultElement forceLayout.
-	resultInspectorTree := resultElement phlow firstChildWithViewTitle.
+				asElementDo: [ :e | e ].
+	scripter element: resultElement.
+	resultInspectorTree := resultElement phlow firstChildWithViewContent.
 	
 	titleTab := resultInspectorTree
 		allChildrenBreadthFirstDetect: [ :aChild | 
@@ -396,6 +396,7 @@ GtPlaygroundAndInspectorShow >> inspectorWithExplanationLinks [
 					((self yellowExplanationTargetCircleFor: #items:)
 						relocate: 3 @ eachRow extent y / 2) ].
 
+	resultElement removeFromParent.
 	^ resultInspectorContainer
 		addChild: resultElement.
 ]
