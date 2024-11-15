@@ -146,7 +146,7 @@ GtQueryingCodeShow >> filtersTreeExampleSlideFor: aSlide [
 { #category : #examples }
 GtQueryingCodeShow >> inspectorResultOnPragmaAndReferenceExample [
 	<gtExample>
-	| inspectorContainer subject inspectorHeader inspectorView inspectorLabel verticalContainer |
+	| inspectorContainer subject inspectorHeader inspectorViewTitle inspectorLabel verticalContainer |
 	
 	verticalContainer := BlElement new
 		constraintsDo: [ :c | 
@@ -177,7 +177,7 @@ GtQueryingCodeShow >> inspectorResultOnPragmaAndReferenceExample [
 	inspectorContainer addChild: subject.
 	
 	inspectorHeader := subject phlow firstChildWithViewTitle.
-	inspectorView := subject phlow firstChildWithViewContent.
+	inspectorViewTitle := subject phlow firstChildWithViewContent phlow firstChildWithViewTitle.
 		
 	inspectorHeader
 		addChild:
@@ -190,7 +190,7 @@ GtQueryingCodeShow >> inspectorResultOnPragmaAndReferenceExample [
 				elevation: (BlRelativeElevation elevation: 10);
 				geometry: BlCircleGeometry new;
 				aptitude: (GtExplainerTargetAptitude new explanationModel: #inspector)). 
-	inspectorView
+	inspectorViewTitle
 		addChild:
 			(BrButton new
 				constraintsDo: [ :c | 
