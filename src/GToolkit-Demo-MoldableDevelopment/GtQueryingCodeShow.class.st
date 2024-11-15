@@ -169,38 +169,40 @@ GtQueryingCodeShow >> inspectorResultOnPragmaAndReferenceExample [
 		margin: (BlInsets all: 10);
 		aptitude: BrShadowAptitude.
 
-	subject := BlUseAsyncFeatures
-		disableDuring: [ (self pragmaAndReferenceQueryExample gtViewsFor: GtPhlowView empty) asElementDo: [ :e | e ] ].
-	subject forceLayout.
-	inspectorHeader := subject phlow firstChildWithViewTitle.
-	inspectorView := inspectorHeader phlow
-		firstChildWithViewTitle.
+	verticalContainer
+		addChild: inspectorLabel;
+		addChild: inspectorContainer.
+	
+	subject := (self pragmaAndReferenceQueryExample gtViewsFor: GtPhlowView empty) asElementDo: [ :e | e ].
 	inspectorContainer addChild: subject.
+	
+	inspectorHeader := subject phlow firstChildWithViewTitle.
+	inspectorView := subject phlow firstChildWithViewContent.
 		
 	inspectorHeader
 		addChild:
 			(BrButton new
-				constraintsDo: [ :c | c ignoreByLayout ];
+				constraintsDo: [ :c | 
+					c ignoreByLayout.
+					c ignored horizontal alignLeft.
+					c ignored vertical alignCenter ];
 				size: 5 @ 5;
 				elevation: (BlRelativeElevation elevation: 10);
 				geometry: BlCircleGeometry new;
-				aptitude: (GtExplainerTargetAptitude new explanationModel: #inspector);
-				relocate:
-					(5 @ inspectorHeader extent y / 2)). 
+				aptitude: (GtExplainerTargetAptitude new explanationModel: #inspector)). 
 	inspectorView
 		addChild:
 			(BrButton new
-				constraintsDo: [ :c | c ignoreByLayout ];
+				constraintsDo: [ :c | 
+					c ignoreByLayout.
+					c ignored horizontal alignLeft.
+					c ignored vertical alignCenter ];
 				size: 5 @ 5;
 				elevation: (BlRelativeElevation elevation: 10);
 				geometry: BlCircleGeometry new;
-				aptitude: (GtExplainerTargetAptitude new explanationModel: #view);
-				relocate:
-					(5 @ inspectorView extent y / 2)).
+				aptitude: (GtExplainerTargetAptitude new explanationModel: #view)).
 					
 	^ verticalContainer
-		addChild: inspectorLabel;
-		addChild: inspectorContainer.
 ]
 
 { #category : #accessing }
