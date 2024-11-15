@@ -27,7 +27,7 @@ FCAElement class >> for: anObject in: aContext [
 		yourself
 ]
 
-{ #category : #accessing }
+{ #category : #view }
 FCAElement >> gtPropertiesFor: aView [
 	<gtView>
 	^ aView columnedList
@@ -39,6 +39,16 @@ FCAElement >> gtPropertiesFor: aView [
 			width: 45;
 		column: 'Properties' text: [ :item | item printString ];
 		actionUpdateButton
+]
+
+{ #category : #action }
+FCAElement >> gtSpawnRawElementFor: anAction [
+	<gtAction>
+	^ anAction button
+		tooltip: 'Inspect raw element';
+		priority: 20;
+		icon: BrGlamorousIcons into;
+		action: [ :element | element phlow spawnObject: self rawElement ]
 ]
 
 { #category : #testing }
