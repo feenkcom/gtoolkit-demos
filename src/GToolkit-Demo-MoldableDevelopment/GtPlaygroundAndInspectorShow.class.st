@@ -220,7 +220,7 @@ GtPlaygroundAndInspectorShow >> inspectorInterfaceExplanationWithLinks [
 			asElementDo: [ :e | e ] ].
 	inspectorElement forceLayout.
 	
-	headerTarget := inspectorElement phlow firstChildWithView.
+	headerTarget := inspectorElement phlow firstChildWithViewTitle.
 	actionTargets := inspectorElement phlow allChildrenWithAction.
 	spotterButtonTarget := inspectorElement phlow allChildrenWithAction at: 3.
 	coderButtonTarget := inspectorElement phlow allChildrenWithAction at: 1.
@@ -350,7 +350,7 @@ GtPlaygroundAndInspectorShow >> inspectorWithExplanationLinks [
 				labelled: 'a GtABAddressBook (Cartoons)' asRopedText)
 				asElementDo: [ :e | e ] ].
 	resultElement forceLayout.
-	resultInspectorTree := resultElement phlow firstChildWithView.
+	resultInspectorTree := resultElement phlow firstChildWithViewTitle.
 	
 	titleTab := resultInspectorTree
 		allChildrenBreadthFirstDetect: [ :aChild | 

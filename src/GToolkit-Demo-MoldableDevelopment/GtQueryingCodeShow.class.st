@@ -172,9 +172,9 @@ GtQueryingCodeShow >> inspectorResultOnPragmaAndReferenceExample [
 	subject := BlUseAsyncFeatures
 		disableDuring: [ (self pragmaAndReferenceQueryExample gtViewsFor: GtPhlowView empty) asElementDo: [ :e | e ] ].
 	subject forceLayout.
-	inspectorHeader := subject phlow firstChildWithView.
+	inspectorHeader := subject phlow firstChildWithViewTitle.
 	inspectorView := inspectorHeader phlow
-		firstChildWithView.
+		firstChildWithViewTitle.
 	inspectorContainer addChild: subject.
 		
 	inspectorHeader
