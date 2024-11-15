@@ -9,7 +9,7 @@ Class {
 		'bottom',
 		'concepts'
 	],
-	#category : #'GToolkit-Demo-FCA-Algoirthms'
+	#category : #'GToolkit-Demo-FCA-Algorithms'
 }
 
 { #category : #testing }
