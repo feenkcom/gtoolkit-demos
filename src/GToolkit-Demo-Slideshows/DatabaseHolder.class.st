@@ -58,7 +58,11 @@ DatabaseHolder >> initializeDb [
 	"Automatically load all pages defined in methods with a <lePage> pragma.
 	Alternatively, overwrite this method to explicitly add pages."
 
-	self pageMethods do: [ :m | self db addPage: (self perform: m selector) ]
+	self pageMethods
+		do: [ :m | 
+			| page |
+			page := self perform: m selector.
+			(self db hasPageNamed: page title) ifFalse: [ self db addPage: page ] ]
 ]
 
 { #category : #accessing }
