@@ -496,3 +496,19 @@ PatternScripterExamples >> wrappedGitHubOrganizationDataScript [
 		play.
 	^ scripter elementWithoutParent
 ]
+
+{ #category : #example }
+PatternScripterExamples >> wrappedGitHubOrganizationReposSourceView [
+	<gtExample>
+	<noTest>
+	| scripter |
+	scripter := BlScripter new.
+	scripter
+		element: (GtInspector createOn: self wrappedGitHubOrganization) maximized.
+	scripter click
+		label: 'Open the source view';
+		id: #bar index: 1;
+		modifiers: BlKeyModifiers alt;
+		play.
+	^ scripter elementWithoutParent
+]

@@ -47,6 +47,20 @@ DemoSlideshow >> coderOnClass: aSlide [
 		element: [ (GtCoderElement forClass: GtLudoGame) createInPager maximized ]
 ]
 
+{ #category : #slides }
+DemoSlideshow >> coderOnMethod: aSlide [
+	<gtSlide>
+
+<text: 'A coder on a method'>
+
+	^ aSlide labelAndElement
+		setPriority;
+		newFadedText: 'A coder on an example method';
+		element: [ GtPager
+				createWrappedOn: (GtPharoMethodCoder forMethod: GtLudoGameExamples >> #playerArolls6)
+						asExpandedOnlyElement vFitContentLimited ]
+]
+
 { #category : #accessing }
 DemoSlideshow >> demoDatabase [
 	"A transient database with links."
@@ -243,6 +257,16 @@ DemoSlideshow >> scenery: aSlide [
 		element: [ GtSceneryExamples new sceneryWithOneInspectorAndOneRectangleAndOneConnection ]
 ]
 
+{ #category : #slides }
+DemoSlideshow >> scriptedExampleInPager: aSlide [
+	<gtSlide>
+	<text: 'A scripted example in a Pager'>
+	^ aSlide labelAndElement
+		setPriority;
+		newFadedText: 'A scripted example in a Pager';
+		element: [ PatternScripterExamples new customViewCustomMovesViewScript ]
+]
+
 { #category : #accessing }
 DemoSlideshow >> slidePriorities [
 	"Instead of manually setting priorities, just list the slides in order here."
@@ -263,12 +287,14 @@ DemoSlideshow >> slidePriorities [
 		inspectorInPager:
 		inspectorView:
 		inspectorViewInPager:
+		scriptedExampleInPager:
 		fileLocatorInPager:
 		scenery:
 		gtWorld:
 		gtWorldWithTitle:
 		coder:
 		coderOnClass:
+		coderOnMethod:
 		spotterExampleSlide:
 		#summarySlide:
 	)
