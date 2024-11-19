@@ -13,7 +13,7 @@ GhEntity >> createFrom: aKey with: aBlock onError: anErrorBlock [
 			trimmedUrl := url
 				copyWithRegex: '{.*}'
 				matchesTranslatedUsing: [ :each | ''].
-			ZnClient new 
+			self httpClient 
 				get: trimmedUrl
 				onSuccess: [ :result | 
 					[
@@ -46,6 +46,13 @@ GhEntity >> gtRawDataFor: aView [
 								ifAbsent: [ dictionary ]] 
 						onError: [each value] ]
 				ifFalse: [ each value ] ]
+]
+
+{ #category : #accessing }
+GhEntity >> httpClient [
+	^ ZnClient new
+		setBearerAuthentication: GtGitHubTokenHolder token;
+		yourself
 ]
 
 { #category : #accessing }
