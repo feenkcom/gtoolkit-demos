@@ -25,7 +25,7 @@ GhContributor >> asCardElement [
 { #category : #accessing }
 GhContributor >> avatarPicture [
 	| response |
-	response := ZnClient new url: (rawData at: 'avatar_url'); get; response.
+	response := self httpClient url: (rawData at: 'avatar_url'); get; response.
 	response contentType = ZnMimeType imageJpeg
 		ifTrue: [ ^ (JPEGReadWriter gtFromBuffer: response contents) asElement ].
 	response contentType = ZnMimeType imagePng
