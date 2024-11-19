@@ -1,7 +1,7 @@
 Class {
 	#name : #GhOrganization,
 	#superclass : #GhEntity,
-	#category : 'GToolkit-Demo-GitHubAPI-Model'
+	#category : #'GToolkit-Demo-GitHubAPI-Model'
 }
 
 { #category : #accessing }
@@ -34,6 +34,22 @@ GhOrganization >> gtReposFor: aView [
 		column: 'Repo' text: #name;
 		column: 'Description' text: #description;
 		column: 'Open issues' text: #numberOfOpenIssues
+]
+
+{ #category : #search }
+GhOrganization >> gtSpotterForRepoNames: aSearch [
+	<gtSearch>
+	^ aSearch list
+		title: 'Accounts';
+		priority: 5;
+		items: [ self repos ];
+		itemsLimit: Float infinity;
+		itemName: #name;
+		sendCategory: [ :aCategory :aStep :thisSearch | 
+			| result |
+			result := aCategory items contents.
+			GhRepos new rawData: (result collect: #rawData) ];
+		filterBySubstring
 ]
 
 { #category : #accessing }
