@@ -25,6 +25,16 @@ GhRepo >> events [
 		onError: [ GhEvents new ]
 ]
 
+{ #category : #action }
+GhRepo >> gtActionWebBrowseFor: anAction [
+	<gtAction>
+	^ anAction button
+		tooltip: 'Open in browser';
+		priority: 10;
+		icon: BrGlamorousIcons go;
+		action: [ WebBrowser openOn: self htmlUrl ]
+]
+
 { #category : #accessing }
 GhRepo >> gtContributorsFor: aView [
 	<gtView>
@@ -68,6 +78,24 @@ GhRepo >> gtEventsFor: aView [
 		column: 'Repository' text: #repoName;
 		column: 'Timestamp' text: [:each | each creationTimestamp asLocalStringYMDHM ];
 		column: 'Actor' text: #actorName
+]
+
+{ #category : #action }
+GhRepo >> gtGitAction: anAction [
+	<gtAction>
+	(GtGitRepository hasRepoNamed: self name) ifFalse: [ ^ anAction empty ].
+	^ anAction button
+		tooltip: 'Go to repository';
+		priority: 25;
+		icon: BrGlamorousVectorIcons branching;
+		action: [ :aButton | 
+			aButton phlow
+				spawnTool: (GtGitPhlowTool new repository: (GtGitRepository forRepoNamed: self name)) ]
+]
+
+{ #category : #accessing }
+GhRepo >> htmlUrl [
+	^ rawData at: 'html_url'
 ]
 
 { #category : #accessing }
