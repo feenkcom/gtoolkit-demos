@@ -21,6 +21,7 @@ Gt4PythonEsugSlideshow >> agenda: aSlide [
 { #category : #accessing }
 Gt4PythonEsugSlideshow >> caseStudyOne: aSlide [
 	<gtSlide>
+	<noTest>
 	^ aSlide lepiterPage
 		setPriority;
 		pageNamed: 'PythonBridge custom views for pandas DataFrame and Series'
@@ -30,6 +31,7 @@ Gt4PythonEsugSlideshow >> caseStudyOne: aSlide [
 { #category : #accessing }
 Gt4PythonEsugSlideshow >> caseStudyOneOne: aSlide [
 	<gtSlide>
+	<noTest>
 	^ aSlide lepiterPage
 		setPriority;
 		pageNamed: 'Inspecting Python objects with custom inspectors'
@@ -39,6 +41,7 @@ Gt4PythonEsugSlideshow >> caseStudyOneOne: aSlide [
 { #category : #accessing }
 Gt4PythonEsugSlideshow >> caseStudyThree: aSlide [
 	<gtSlide>
+	<noTest>
 	^ aSlide lepiterPage
 		setPriority;
 		pageNamed: 'Exploring the execution of a Python LampSort algorithm'
@@ -48,6 +51,7 @@ Gt4PythonEsugSlideshow >> caseStudyThree: aSlide [
 { #category : #accessing }
 Gt4PythonEsugSlideshow >> caseStudyTwo: aSlide [
 	<gtSlide>
+	<noTest>
 	| aPage aDatabase |
 	"this slide is only rendered when gt4llm is loaded"
 	
@@ -64,6 +68,7 @@ Gt4PythonEsugSlideshow >> caseStudyTwo: aSlide [
 { #category : #accessing }
 Gt4PythonEsugSlideshow >> pythonDebuggerExample: aSlide [
 	<gtSlide>
+	<noTest>
 	^ aSlide lepiterPage
 		setPriority;
 		startPage: (self db pageNamed: 'Python Debugger')
@@ -98,6 +103,7 @@ PBApplication uniqueInstance: pbApplication');
 { #category : #accessing }
 Gt4PythonEsugSlideshow >> pythonExamples: aSlide [
 	<gtSlide>
+	<noTest>
 	^ aSlide lepiterPage
 		setPriority;
 		startPage: (self db pageNamed: 'Python Examples I')
@@ -106,6 +112,7 @@ Gt4PythonEsugSlideshow >> pythonExamples: aSlide [
 { #category : #accessing }
 Gt4PythonEsugSlideshow >> pythonExamplesSecond: aSlide [
 	<gtSlide>
+	<noTest>
 	^ aSlide lepiterPage
 		setPriority;
 		startPage: (self db pageNamed: 'Python Examples II')
@@ -114,6 +121,7 @@ Gt4PythonEsugSlideshow >> pythonExamplesSecond: aSlide [
 { #category : #accessing }
 Gt4PythonEsugSlideshow >> pythonExamplesThird: aSlide [
 	<gtSlide>
+	<noTest>
 	^ aSlide lepiterPage
 		setPriority;
 		startPage: (self db pageNamed: 'Python Examples III')
