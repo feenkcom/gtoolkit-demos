@@ -40,15 +40,12 @@ GhOrganization >> gtReposFor: aView [
 GhOrganization >> gtSpotterForRepoNames: aSearch [
 	<gtSearch>
 	^ aSearch list
-		title: 'Accounts';
 		priority: 5;
 		items: [ self repos ];
 		itemsLimit: Float infinity;
 		itemName: #name;
 		sendCategory: [ :aCategory :aStep :thisSearch | 
-			| result |
-			result := aCategory items contents.
-			GhRepos new rawData: (result collect: #rawData) ];
+			GhRepos new repos: aCategory items contents ];
 		filterBySubstring
 ]
 
