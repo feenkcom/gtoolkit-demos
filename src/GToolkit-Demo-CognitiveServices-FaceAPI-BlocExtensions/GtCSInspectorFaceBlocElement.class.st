@@ -5,14 +5,14 @@ Class {
 		'face',
 		'scalableElement'
 	],
-	#category : 'GToolkit-Demo-CognitiveServices-FaceAPI-BlocExtensions'
+	#category : #'GToolkit-Demo-CognitiveServices-FaceAPI-BlocExtensions'
 }
 
 { #category : #drawing }
 GtCSInspectorFaceBlocElement >> drawConnectedLandmarks: points on: aCanvas [
 	| translatedPoints path |
 	translatedPoints := self translateLandmarks: points.
-	path := (BlPolygon vertices: translatedPoints) buildPathOnSpartaCanvas: aCanvas.
+	path := (BlPolygonGeometry vertices: translatedPoints) buildPathOnSpartaCanvas: aCanvas.
 	aCanvas stroke
 		paint: Color blue;
 		path: path;
