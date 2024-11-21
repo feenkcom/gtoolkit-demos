@@ -185,6 +185,11 @@ PatternScripterExamples >> feenkGitHubOrgData [
 
 { #category : #'as yet unclassified' }
 PatternScripterExamples >> gtBookLinksMondrian [
+	"Adapted from the GT Book page: 
+		Optimizing the links in the book for first time readers
+	Visualization of the pages in the book itself that are reachable 
+	by following links contrasted with standalone pages.
+	Used in: Throwaway Analysis Tool"
 	<gtExample>
 	<noTest>
 	| pages getStartedPage allReachedPages m |
