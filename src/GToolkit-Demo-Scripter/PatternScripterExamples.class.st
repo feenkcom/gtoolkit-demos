@@ -24,11 +24,18 @@ PatternScripterExamples class >> feenkGitHubUrl [
 ]
 
 { #category : #accessing }
+PatternScripterExamples class >> httpClient [
+	^ ZnClient new
+		setBearerAuthentication: GtGitHubTokenHolder token;
+		yourself
+]
+
+{ #category : #accessing }
 PatternScripterExamples class >> urlData [
 	| url |
 	^ urlData
 		ifNil: [ url := self feenkGitHubUrl.
-			urlData := ZnClient new get: url ]
+			urlData := self httpClient get: url ]
 ]
 
 { #category : #accessing }
