@@ -58,7 +58,7 @@ SPL class >> examples [
 
 { #category : #example }
 SPL class >> factorial [
-	^ SPL contextFor: SPLContextExamples new factorialSource
+	^ SPLContextExamples new factorial
 ]
 
 { #category : #example }
