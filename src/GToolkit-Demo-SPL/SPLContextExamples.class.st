@@ -198,10 +198,18 @@ SPLContextExamples >> expressionStatement [
 { #category : #example }
 SPLContextExamples >> factorial [
 	<gtExample>
-	| result context |
+	| context |
 	context := self context: self factorialSource.
-	result := context.
-	result := context reduce.
+	self assert: context output isEmpty.
+	^ context
+]
+
+{ #category : #example }
+SPLContextExamples >> factorialReduced [
+	<gtExample>
+	| context |
+	context := self factorial.
+	context reduce.
 	self assert: context output allButLast equals: '120'.
 	^ context
 ]

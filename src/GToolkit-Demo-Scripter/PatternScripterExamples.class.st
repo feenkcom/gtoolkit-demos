@@ -24,11 +24,18 @@ PatternScripterExamples class >> feenkGitHubUrl [
 ]
 
 { #category : #accessing }
+PatternScripterExamples class >> httpClient [
+	^ ZnClient new
+		setBearerAuthentication: GtGitHubTokenHolder token;
+		yourself
+]
+
+{ #category : #accessing }
 PatternScripterExamples class >> urlData [
 	| url |
 	^ urlData
 		ifNil: [ url := self feenkGitHubUrl.
-			urlData := ZnClient new get: url ]
+			urlData := self httpClient get: url ]
 ]
 
 { #category : #accessing }
@@ -178,6 +185,11 @@ PatternScripterExamples >> feenkGitHubOrgData [
 
 { #category : #'as yet unclassified' }
 PatternScripterExamples >> gtBookLinksMondrian [
+	"Adapted from the GT Book page: 
+		Optimizing the links in the book for first time readers
+	Visualization of the pages in the book itself that are reachable 
+	by following links contrasted with standalone pages.
+	Used in: Throwaway Analysis Tool"
 	<gtExample>
 	<noTest>
 	| pages getStartedPage allReachedPages m |
@@ -493,6 +505,22 @@ PatternScripterExamples >> wrappedGitHubOrganizationDataScript [
 		label: 'Select the 2nd (Contributors) view';
 		id: GtPagerPageElementId index: 2;
 		id: #bar index: 2;
+		play.
+	^ scripter elementWithoutParent
+]
+
+{ #category : #example }
+PatternScripterExamples >> wrappedGitHubOrganizationReposSourceView [
+	<gtExample>
+	<noTest>
+	| scripter |
+	scripter := BlScripter new.
+	scripter
+		element: (GtInspector createOn: self wrappedGitHubOrganization) maximized.
+	scripter click
+		label: 'Open the source view';
+		id: #bar index: 1;
+		modifiers: BlKeyModifiers alt;
 		play.
 	^ scripter elementWithoutParent
 ]
