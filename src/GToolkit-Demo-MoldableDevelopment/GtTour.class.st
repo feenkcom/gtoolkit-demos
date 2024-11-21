@@ -868,7 +868,7 @@ GtTour >> rawViewsExampleSlideFor: aSlide [
 { #category : #accessing }
 GtTour >> scripterWithElaborateScenario [
 	<gtExample>
-	| scripter pageWidth moveTokenMethod allMovesMethod |
+	| scripter moveTokenMethod allMovesMethod |
 	scripter := BlScripter new.
 	scripter do
 		block: [ :aSpace | aSpace extent: 1600 @ 870 ];
@@ -881,10 +881,8 @@ GtTour >> scripterWithElaborateScenario [
 		during: [ :aStep |
 			aStep element: (GtPager createWrappedOn: (GtCoder forMethod: moveTokenMethod)) ].
 		
-	pageWidth := scripter space width / 3.
-	scripter do
-		block: [ :aPage | aPage width: pageWidth ];
-		// (GtPagerPageElementId indexed: 1);
+	scripter pager
+		setPageAt: 1 widthInSpaceRatio: 1/3;
 		play.
 	scripter methodCoders
 		forCompiledMethod: moveTokenMethod do: [ :aMethodCoderStep |
@@ -898,9 +896,8 @@ GtTour >> scripterWithElaborateScenario [
 		// (GtPagerPageElementId indexed: 1);
 		// GtPharoStreamingMethodsCoderElement;
 		play.
-	scripter do
-		block: [ :aPage | aPage width: pageWidth ];
-		// (GtPagerPageElementId indexed: 2);
+	scripter pager
+		setPageAt: 2 widthInSpaceRatio: 1/3;
 		play.
 	allMovesMethod := GtLudoRecordingGameExamples >> #gameShowingAllMoves2.
 	scripter methodCoders
@@ -912,9 +909,8 @@ GtTour >> scripterWithElaborateScenario [
 		// (GtPagerPageElementId indexed: 2);
 		// GtPharoStreamingMethodsCoderElement;
 		play.
-	scripter do
-		block: [ :aPage | aPage width: pageWidth ];
-		// (GtPagerPageElementId indexed: 3);
+	scripter pager
+		setPageAt: 3 widthInSpaceRatio: 1/3;
 		play.
 	scripter methodCoders
 		forCompiledMethod: allMovesMethod do: [ :aMethodCoderStep |
