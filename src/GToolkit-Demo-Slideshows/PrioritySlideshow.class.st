@@ -449,6 +449,7 @@ PrioritySlideshow >> gtSlideMethodsListViewFor: aView [
 		column: 'Methods'
 			text: [ :each | each selector ]
 			width: 200;
+		column: 'Time' text: [ :each | self timeForSlide: each selector ] width: 45;
 		column: 'Text' text: [ :each | self textForSlide: each selector ];
 		actionUpdateButton;
 		updateWhen: SlideshowMethodUpdated in: self announcer
@@ -539,7 +540,9 @@ PrioritySlideshow >> metrics [
 	words := self scriptText substrings.
 	^ {'Number of words' -> words size.
 		'Estimated duration'
-			-> ((Duration minutes: words size / self wordsPerMinute) roundTo: 1 second)}
+			-> ((Duration minutes: words size / self wordsPerMinute) roundTo: 1 second).
+		'Sum of estimated times' -> self slideTimesSum
+			}
 ]
 
 { #category : #subscriptions }
@@ -756,6 +759,14 @@ PrioritySlideshow >> slidePriorities [
 ]
 
 { #category : #accessing }
+PrioritySlideshow >> slideTimesSum [
+	"Compute the sum of the <time: N> pragmas found in  slide methods (if any)."
+
+	^ ((self slideMethods collect: [ :m | self timeForSlide: m selector ])
+		select: #isNumber) ifEmpty: [ 0 ] ifNotEmpty: [ :list | list sum ]
+]
+
+{ #category : #accessing }
 PrioritySlideshow >> slides [
 	^ self slideDictionary keys
 ]
@@ -804,6 +815,16 @@ PrioritySlideshow >> textForSlide: aSelector [
 	(self class includesSelector: aSelector) ifFalse: [ ^ '' ].
 	pragmas := (self class compiledMethodAt: aSelector) pragmas
 			select: [ :p | p selector = #text: ].
+	^ pragmas ifEmpty: [ '' ] ifNotEmpty: [ pragmas first arguments first ]
+]
+
+{ #category : #utility }
+PrioritySlideshow >> timeForSlide: aSelector [
+	"Extract the argument to the <time: ..> pragma, if it exists."
+	| pragmas |
+	(self class includesSelector: aSelector) ifFalse: [ ^ '' ].
+	pragmas := (self class compiledMethodAt: aSelector) pragmas
+			select: [ :p | p selector = #time: ].
 	^ pragmas ifEmpty: [ '' ] ifNotEmpty: [ pragmas first arguments first ]
 ]
 
