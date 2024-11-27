@@ -27,6 +27,11 @@ FCAProperty class >> for: anObject in: aContext [
 		yourself
 ]
 
+{ #category : #mondrian }
+FCAProperty >> bigraphNodeColor [
+	^ Color blue
+]
+
 { #category : #accessing }
 FCAProperty >> elements [
 	^ elements
@@ -54,6 +59,11 @@ FCAProperty >> gtElementsFor: aView [
 { #category : #initialization }
 FCAProperty >> initialize [
 	self elements: BitSet empty
+]
+
+{ #category : #testing }
+FCAProperty >> isProperty [
+	^ true
 ]
 
 { #category : #printing }

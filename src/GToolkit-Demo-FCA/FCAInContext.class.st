@@ -22,6 +22,19 @@ FCAInContext >> = anObject [
 	^ self value = anObject value
 ]
 
+{ #category : #mondrian }
+FCAInContext >> bigraphNodeColor [
+	^ self subclassResponsibility
+]
+
+{ #category : #mondrian }
+FCAInContext >> bigraphNodeElement [
+	^ BlElement new
+		size: 2 @ 2;
+		background: (self isProperty ifTrue: [ Color blue ] ifFalse: [ Color red ]);
+		aptitude: (BrGlamorousWithTooltipAptitude content: self tooltip)
+]
+
 { #category : #accessing }
 FCAInContext >> context [
 	^ context
@@ -51,6 +64,25 @@ FCAInContext >> gtLiveFor: aView [
 { #category : #comparing }
 FCAInContext >> hash [
 	^ self value hash
+]
+
+{ #category : #testing }
+FCAInContext >> isElement [
+	^ false
+]
+
+{ #category : #testing }
+FCAInContext >> isProperty [
+	^ false
+]
+
+{ #category : #mondrian }
+FCAInContext >> tooltip [
+	^ [ BrLabel new
+		aptitude: BrGlamorousLabelAptitude new glamorousRegularFontAndSize;
+		padding: (BlInsets all: 2);
+		text: self printString;
+		alignCenter ] asStencil
 ]
 
 { #category : #accessing }

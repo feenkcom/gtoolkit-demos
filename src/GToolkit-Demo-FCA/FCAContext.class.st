@@ -157,6 +157,22 @@ FCAContext class >> forDatabaseNamed: databaseName withTagsNamed: aTagNameCollec
 		yourself
 ]
 
+{ #category : #accessing }
+FCAContext >> bigraphFor: mondrian [
+	| nodes |
+	nodes := self elements asOrderedCollection copyWithAll: self properties.
+
+	mondrian nodes
+		shape: [ :each | each bigraphNodeElement ];
+		with: nodes.
+	mondrian edges
+		stencil: [ BlLineElement new
+				border: (BlBorder paint: (Color lightGray alpha: 0.4) width: 0.2) ];
+		connectToAll: [ :node | node isProperty ifTrue: [ node elements ] ifFalse: [ node properties ] ].
+	mondrian layout force.
+	^ mondrian
+]
+
 { #category : #computing }
 FCAContext >> bottomUpBuilder [
 	^ FCABottomUpConceptBuilder new
@@ -235,6 +251,21 @@ FCAContext >> elements [
 FCAContext >> elements: aBitSet [
 	elements := aBitSet.
 	elements do: [ :each | each context: self ]
+]
+
+{ #category : #accessing }
+FCAContext >> gtBigraphFor: aView [
+	"This can be very slow to display so we suppress it if it's too big."
+
+	<gtView>
+	| maxSize |
+	maxSize := 200.
+	self elements size + self properties size > maxSize ifTrue: [ ^ aView empty ].
+	^ aView mondrian
+		title: 'Bigraph';
+		priority: 60;
+		painting: [ :aMondrian | self bigraphFor: aMondrian ];
+		actionUpdateButton
 ]
 
 { #category : #view }

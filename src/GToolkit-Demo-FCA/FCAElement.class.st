@@ -27,6 +27,11 @@ FCAElement class >> for: anObject in: aContext [
 		yourself
 ]
 
+{ #category : #mondrian }
+FCAElement >> bigraphNodeColor [
+	^ Color red
+]
+
 { #category : #view }
 FCAElement >> gtPropertiesFor: aView [
 	<gtView>
@@ -64,6 +69,11 @@ FCAElement >> hasProperty: aProperty [
 { #category : #initialization }
 FCAElement >> initialize [
 	self properties: BitSet empty
+]
+
+{ #category : #testing }
+FCAElement >> isElement [
+	^ true
 ]
 
 { #category : #printing }
