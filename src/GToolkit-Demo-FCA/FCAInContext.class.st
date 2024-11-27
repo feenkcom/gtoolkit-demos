@@ -61,6 +61,16 @@ FCAInContext >> gtLiveFor: aView [
 		actionUpdateButton
 ]
 
+{ #category : #action }
+FCAInContext >> gtSpawnRawValueFor: anAction [
+	<gtAction>
+	^ anAction button
+		tooltip: 'Inspect raw value';
+		priority: 20;
+		icon: BrGlamorousIcons into;
+		action: [ :element | element phlow spawnObject: self rawValue ]
+]
+
 { #category : #comparing }
 FCAInContext >> hash [
 	^ self value hash
@@ -74,6 +84,11 @@ FCAInContext >> isElement [
 { #category : #testing }
 FCAInContext >> isProperty [
 	^ false
+]
+
+{ #category : #action }
+FCAInContext >> rawValue [
+	^ self subclassResponsibility
 ]
 
 { #category : #mondrian }

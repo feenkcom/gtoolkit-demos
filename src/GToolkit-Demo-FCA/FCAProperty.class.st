@@ -82,6 +82,11 @@ FCAProperty >> rawProperty: anObject [
 ]
 
 { #category : #accessing }
+FCAProperty >> rawValue [
+	^ self rawProperty
+]
+
+{ #category : #accessing }
 FCAProperty >> value [
 	^ self rawProperty
 ]
