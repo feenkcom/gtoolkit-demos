@@ -29,9 +29,12 @@ FCAInContext >> bigraphNodeColor [
 
 { #category : #mondrian }
 FCAInContext >> bigraphNodeElement [
+	"We could override the default circle size in a data slot of the context."
+
 	^ BlElement new
+		geometry: BlCircleGeometry new;
 		size: 2 @ 2;
-		background: (self isProperty ifTrue: [ Color blue ] ifFalse: [ Color red ]);
+		background: self bigraphNodeColor;
 		aptitude: (BrGlamorousWithTooltipAptitude content: self tooltip)
 ]
 
