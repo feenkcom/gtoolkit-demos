@@ -46,16 +46,6 @@ FCAElement >> gtPropertiesFor: aView [
 		actionUpdateButton
 ]
 
-{ #category : #action }
-FCAElement >> gtSpawnRawElementFor: anAction [
-	<gtAction>
-	^ anAction button
-		tooltip: 'Inspect raw element';
-		priority: 20;
-		icon: BrGlamorousIcons into;
-		action: [ :element | element phlow spawnObject: self rawElement ]
-]
-
 { #category : #testing }
 FCAElement >> hasProperties: aPropertyBitSet [
 	^ self properties includesAll: aPropertyBitSet
@@ -99,6 +89,11 @@ FCAElement >> rawElement [
 { #category : #accessing }
 FCAElement >> rawElement: anObject [
 	rawElement := anObject
+]
+
+{ #category : #accessing }
+FCAElement >> rawValue [
+	^ self rawElement
 ]
 
 { #category : #accessing }

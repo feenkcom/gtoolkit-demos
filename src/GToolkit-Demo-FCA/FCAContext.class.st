@@ -255,15 +255,19 @@ FCAContext >> elements: aBitSet [
 
 { #category : #accessing }
 FCAContext >> gtBigraphFor: aView [
-	"This can be very slow to display so we suppress it if it's too big."
+	"This can be very slow to display so we move the view to the end if it's too big."
 
 	<gtView>
-	| maxSize |
+	| maxSize title priority |
 	maxSize := 200.
-	self elements size + self properties size > maxSize ifTrue: [ ^ aView empty ].
+	title := 'Bigraph'.
+	priority := 60.
+	self elements size + self properties size > maxSize
+		ifTrue: [ title := 'Bigraph (slow)'.
+			priority := 160 ].
 	^ aView mondrian
-		title: 'Bigraph';
-		priority: 60;
+		title: title;
+		priority: priority;
 		painting: [ :aMondrian | self bigraphFor: aMondrian ];
 		actionUpdateButton
 ]
