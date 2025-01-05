@@ -61,13 +61,11 @@ GtLudoGameElement >> initialize [
 GtLudoGameElement >> initializeFor: aGame [
 	game := aGame.
 	self
-		constraintsDo:
-			[ :c | 
+		constraintsDo: [ :c | 
 			c vertical fitContent.
 			c horizontal fitContent ].
 	self
-		addChild:
-			((aGame boardElement)
+		addChild: (aGame boardElement
 				addDieElement;
 				yourself).
 	self addChild: self feedbackElement.
@@ -75,7 +73,14 @@ GtLudoGameElement >> initializeFor: aGame [
 	game announcer
 		when: GtLudoBoardFeedbackUpdated
 		send: #onFeedbackUpdate
-		to: self
+		to: self.
+	game die announcer
+		when: GtLudoDieRolled
+		do: [ game playerToRoll ifFalse: [ (self query // GtLudoDieElement) anyOne disable ] ].
+	game announcer
+		when: GtLudoGameUpdated
+		do: [ (game isOver not and: [ game playerToRoll ])
+				ifTrue: [ (self query // GtLudoDieElement) anyOne enable ] ]
 ]
 
 { #category : #feedback }

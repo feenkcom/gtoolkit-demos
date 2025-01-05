@@ -17,7 +17,8 @@ Class {
 	#name : #GtLudoDieElement,
 	#superclass : #BlElement,
 	#instVars : [
-		'die'
+		'die',
+		'doubleClickHandler'
 	],
 	#category : #'GToolkit-Demo-Ludo-UI'
 }
@@ -46,6 +47,11 @@ GtLudoDieElement >> dieWidth [
 	^ 3 * self dotWidth + (4 * self dotSpace)
 ]
 
+{ #category : #'api - enablement' }
+GtLudoDieElement >> disable [
+	self removeEventHandler: doubleClickHandler
+]
+
 { #category : #constants }
 GtLudoDieElement >> dotSpace [
 	"Space between a dot and the edge of the die or another dot"
@@ -55,6 +61,11 @@ GtLudoDieElement >> dotSpace [
 { #category : #constants }
 GtLudoDieElement >> dotWidth [
 	^ 20
+]
+
+{ #category : #'api - enablement' }
+GtLudoDieElement >> enable [
+	self addEventHandler: doubleClickHandler
 ]
 
 { #category : #constants }
@@ -101,11 +112,12 @@ GtLudoDieElement >> initializeAnnouncements [
 		when: GtLudoDieRolled
 		send: #onRolled
 		to: self.
-	self
-		when: BlDoubleClickEvent
-		do: [ :anEvent | 
-			anEvent consumed: true.
-			self die roll ].
+	doubleClickHandler := BlEventHandler
+			on: BlDoubleClickEvent
+			do: [ :anEvent | 
+				anEvent consumed: true.
+				self die roll ].
+	self addEventHandler: doubleClickHandler.
 	self onRolled
 ]
 
