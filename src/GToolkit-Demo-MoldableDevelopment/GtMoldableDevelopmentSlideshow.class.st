@@ -44,7 +44,7 @@ GtMoldableDevelopmentSlideshow >> slide4For: aSlide [
 	^ aSlide textAndElement
 		elementWeight: 0.70;
 		priority: 56;
-		newText: 'Most of the figuring the system out time is spent reading. The reason people read code is to understand enough so that they figure out what to do next. That''s decision making.';
+		newText: 'Most of the time figuring the system out is spent reading. The reason people read code is to understand enough so that they figure out what to do next. That''s decision making.';
 		newText: 'From this perspective, reading is but a means to gather information out of data (everything about your system is data; ok, objects if you are lucky). It also happens to be the most manual way to extract information out of data. And this is where we spend most of our time.';
 		newText: 'The alternative is to treat this as a data problem.';
 		element: [ 
@@ -69,7 +69,7 @@ GtMoldableDevelopmentSlideshow >> slide6For: aSlide [
 	^ aSlide textAndElement
 		priority: 62;
 		elementWeight: 0.7;
-		newText: 'However, because software is highly contextual, for a given problem we likely do not have an appropriate tool available. This is the main reason why developer read code: reading can handle any context; the only problem is that it''s too slow and innacurate.';
+		newText: 'However, because software is highly contextual, for a given problem we likely do not have an appropriate tool available. This is the main reason why developers read code: reading can handle any context; the only problem is that it''s too slow and inaccurate.';
 		newText: ' That is why it is essential to ask this simple question: "do we have an appropriate tool?".';
 		element: [ 
 			GtFilePictureLiveSlide new fileReference: (GtResourcesUtility resourceAtPath: 'feenkcom/gtoolkit-demos/doc/moldable-development/craft-2.png') ].
