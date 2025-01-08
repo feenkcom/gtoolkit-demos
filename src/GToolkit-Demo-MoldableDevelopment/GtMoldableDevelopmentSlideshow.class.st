@@ -67,7 +67,7 @@ GtMoldableDevelopmentSlideshow >> slide6For: aSlide [
 	^ aSlide textAndElement
 		priority: 62;
 		elementWeight: 0.7;
-		newText: 'However, because software is highly contextual, for a given problem we likely do not have an appropriate tool available. This is the main reason why developer read code: reading can handle any context; the only problem is that it''s too slow and innacurate.';
+		newText: 'However, because software is highly contextual, for a given problem we likely do not have an appropriate tool available. This is the main reason why developers read code: reading can handle any context; the only problem is that it''s too slow and innacurate.';
 		newText: ' That is why it is essential to ask this simple question: "do we have an appropriate tool?".';
 		element: [ 
 			GtFilePictureLiveSlide new fileReference: (GtResourcesUtility resourceAtPath: 'feenkcom/gtoolkit-demos/doc/moldable-development/craft-2.png') ].
