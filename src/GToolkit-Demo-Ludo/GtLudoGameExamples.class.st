@@ -145,6 +145,7 @@ GtLudoGameExamples >> playerAentersAndLandsOnTokenA [
 { #category : #example }
 GtLudoGameExamples >> playerAentersTokenA [
 	"Setup for 2. Entering play when there is a token of the same player on the start square (ie after rolling a 6 twice)."
+
 	<gtExample>
 	| game |
 	game := self playerArolls6.
@@ -291,6 +292,22 @@ GtLudoGameExamples >> playerArolls6 [
 	self
 		assert: (game tokensToMove collect: #name) asSet
 		equals: { 'A'. 'a' } asSet.
+	^ game
+]
+
+{ #category : #example }
+GtLudoGameExamples >> playerArollsTwice [
+	"Roll twice but only the first roll has an effect."
+
+	<gtExample>
+	| game |
+	game := self playerAentersTokenA.
+
+	game rollDie: 4.
+	self assert: game die topFace equals: 4.
+	game rollDie: 5.
+	self assert: game die topFace equals: 4.
+
 	^ game
 ]
 

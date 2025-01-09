@@ -24,7 +24,10 @@ GtLudoBoardElement class >> for: aGame [
 GtLudoBoardElement >> addDieElement [
 	"By default the die is not added"
 
-	self addElement: self game die asElement asScalableElement at: 6 @ 6
+	| dieElement |
+	dieElement := self game die asElement.
+	dieElement doubleClickAction: [ self game rollDie ].
+	self addElement: dieElement asScalableElement at: 6 @ 6
 ]
 
 { #category : #accessing }

@@ -17,7 +17,8 @@ Class {
 	#name : #GtLudoDieElement,
 	#superclass : #BlElement,
 	#instVars : [
-		'die'
+		'die',
+		'doubleClickAction'
 	],
 	#category : #'GToolkit-Demo-Ludo-UI'
 }
@@ -57,6 +58,16 @@ GtLudoDieElement >> dotWidth [
 	^ 20
 ]
 
+{ #category : #accessing }
+GtLudoDieElement >> doubleClickAction [
+	^ doubleClickAction
+]
+
+{ #category : #accessing }
+GtLudoDieElement >> doubleClickAction: anObject [
+	doubleClickAction := anObject
+]
+
 { #category : #constants }
 GtLudoDieElement >> facePositions [
 	"These are the positions on the 3x3 grid of the dots for each face value from 1 to 6.
@@ -88,6 +99,7 @@ GtLudoDieElement >> facePositions [
 { #category : #initialization }
 GtLudoDieElement >> initialize [
 	super initialize.
+	self doubleClickAction: [ self die roll ].
 	self
 		size: self dieWidth @ self dieWidth;
 		background: Color paleBuff;
@@ -105,7 +117,7 @@ GtLudoDieElement >> initializeAnnouncements [
 		when: BlDoubleClickEvent
 		do: [ :anEvent | 
 			anEvent consumed: true.
-			self die roll ].
+			self doubleClickAction value ].
 	self onRolled
 ]
 

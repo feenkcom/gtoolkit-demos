@@ -393,6 +393,16 @@ GtLudoGame >> roll: aValue [
 ]
 
 { #category : #accessing }
+GtLudoGame >> rollDie [
+	^ self playerToRoll ifTrue: [ self die roll ]
+]
+
+{ #category : #accessing }
+GtLudoGame >> rollDie: roll [
+	^ self playerToRoll ifTrue: [ self die roll: roll ]
+]
+
+{ #category : #accessing }
 GtLudoGame >> routeFor: aPlayer [
 
 	"Each player's tokens take a differenr route through the board and goal squares.
