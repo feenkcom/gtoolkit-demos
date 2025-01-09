@@ -295,6 +295,22 @@ GtLudoGameExamples >> playerArolls6 [
 ]
 
 { #category : #example }
+GtLudoGameExamples >> playerArollsTwice [
+	"Roll twice but only the first roll has an effect."
+
+	<gtExample>
+	| game |
+	game := self playerAentersTokenA.
+
+	game rollDie: 4.
+	self assert: game die topFace equals: 4.
+	game rollDie: 5.
+	self assert: game die topFace equals: 4.
+
+	^ game
+]
+
+{ #category : #example }
 GtLudoGameExamples >> playerAsecondTokenCloseToGoal [
 
 	"Setup for 9. Landing on the first occupied goal square. (Land on next goal square.)"
