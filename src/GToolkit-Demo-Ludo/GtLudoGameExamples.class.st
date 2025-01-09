@@ -145,6 +145,7 @@ GtLudoGameExamples >> playerAentersAndLandsOnTokenA [
 { #category : #example }
 GtLudoGameExamples >> playerAentersTokenA [
 	"Setup for 2. Entering play when there is a token of the same player on the start square (ie after rolling a 6 twice)."
+
 	<gtExample>
 	| game |
 	game := self playerArolls6.
