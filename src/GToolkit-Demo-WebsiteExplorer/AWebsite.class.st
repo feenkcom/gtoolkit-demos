@@ -40,9 +40,12 @@ Class {
 AWebsite >> basicOverview [
 	"These are the basic bits of information that can be shown if the content is not yet available."
 
-	^ {'URL' -> self url printString.
-		'Repo URL' -> self repoUrl printString.
-		'Repo dir' -> self repoDir printString}
+	^ {{'URL'.
+			self url printString}.
+		{'Repo URL'.
+			self repoUrl printString}.
+		{'Repo dir'.
+			self repoDir printString}}
 ]
 
 { #category : #initialization }
@@ -80,7 +83,8 @@ AWebsite >> contentDir [
 
 { #category : #view }
 AWebsite >> contentUnavailableOverview [
-	^ {'NB:' -> 'Content repo not yet cloned. (Click the down button.)'}
+	^ {{'NB:'.
+			'Content repo not yet cloned. (Click the down button.)'}}
 		, self basicOverview
 ]
 
