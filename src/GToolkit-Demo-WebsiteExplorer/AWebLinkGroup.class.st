@@ -30,7 +30,7 @@ AWebLinkGroup >> announcer: anAnnouncement [
 AWebLinkGroup >> basicOverview [
 	"Fallback in case the content is not yet available."
 
-	^ self overview
+	^ self gtOverview
 ]
 
 { #category : #links }
@@ -60,7 +60,7 @@ AWebLinkGroup >> contentAvailable [
 AWebLinkGroup >> contentUnavailableOverview [
 	"Fallback in case the content is not yet available."
 
-	^ self overview
+	^ self gtOverview
 ]
 
 { #category : #action }
@@ -222,21 +222,49 @@ AWebLinkGroup >> gtMissingStatusLinksFor: aView [
 ]
 
 { #category : #view }
+AWebLinkGroup >> gtOverview [
+	"This is the list of values to show in the overview.
+	NB: An (ordered) Association list, not a Dictionary."
+
+	^ {{'# Links'.
+			self links size.
+			[ self links ]}.
+		{'# External (HTTP) links'.
+			self httpLinks size.
+			[ self httpLinks ]}.
+		{'# Internal links'.
+			self internalLinks size.
+			[ self internalLinks ]}.
+		{'# Email links'.
+			(self links select: #isEmail) size.
+			[ self links select: #isEmail ]}.
+		{'# Missing links'.
+			self missingLinks size.
+			[ self missingLinks ]}.
+		{'# Broken links'.
+			self brokenLinks size.
+			[ self brokenLinks ]}.
+		{'# Missing status'.
+			self missingStatusLinks size.
+			[ self missingStatusLinks ]}}
+]
+
+{ #category : #view }
 AWebLinkGroup >> gtOverviewFor: aView [
 	<gtView>
 	^ aView columnedList
 		title: 'Overview';
 		priority: 5;
 		items: [ self contentAvailable
-				ifTrue: [ self overview ]
+				ifTrue: [ self gtOverview ]
 				ifFalse: [ self contentUnavailableOverview ] ];
 		column: 'Attribute'
-			text: [ :item | item key ]
+			text: [ :item | item first ]
 			width: 200;
 		column: 'Value'
-			text: [ :item | item value ]
+			text: [ :item | item second ]
 			width: 400;
-		send: [ :item | (self overviewSend at: item key) onErrorDo: [ '?' ] ];
+		send: [ :item | "(self overviewSend at: item key)"item last onErrorDo: [ '?' ] ];
 		actionUpdateButton;
 		updateWhen: WebLinkStatusUpdated in: self announcer
 ]
@@ -299,6 +327,8 @@ AWebLinkGroup >> overview [
 	"This is the list of values to show in the overview.
 	NB: An (ordered) Association list, not a Dictionary."
 
+	self deprecated: 'Use gtOverview instead'.
+
 	^ {'# Links' -> self links size.
 		'# External (HTTP) links' -> self httpLinks size.
 		'# Internal links' -> self internalLinks size.
@@ -312,6 +342,8 @@ AWebLinkGroup >> overview [
 AWebLinkGroup >> overviewSend [
 	"Used by the view to send clicks to the right group.
 	NB: This is a Dictionary, not an Association list."
+	
+	self deprecated: 'Use gtOverview instead'.
 
 	^ {'# Links' -> [ self links ].
 		'# External (HTTP) links' -> [ self httpLinks ].

@@ -18,7 +18,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2024-03-06T10:20:37.489823+01:00"
+						"dateAndTimeString" : "2024-03-06T10:22:51.721169+01:00"
 					}
 				},
 				"editEmail" : {
@@ -29,7 +29,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2024-03-06T10:20:37.489823+01:00"
+						"dateAndTimeString" : "2024-03-06T10:22:51.721169+01:00"
 					}
 				},
 				"uid" : {
@@ -220,7 +220,7 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2024-03-06T10:20:37.493531+01:00"
+									"dateAndTimeString" : "2024-03-06T10:22:53.8517+01:00"
 								}
 							},
 							"uid" : {
@@ -230,7 +230,7 @@
 							"paragraphStyle" : {
 								"__type" : "textStyle"
 							},
-							"string" : "[[Formal Concept Analysis case study]] "
+							"string" : "[[Formal Concept Analysis case study]]  "
 						}
 					]
 				},
