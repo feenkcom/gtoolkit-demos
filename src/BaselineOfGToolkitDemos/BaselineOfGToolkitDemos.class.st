@@ -73,6 +73,8 @@ BaselineOfGToolkitDemos >> baseline: spec [
 					with: [ spec repository: 'github://feenkcom/gtoolkit-demos:main/src' ];
 				baseline: 'GToolkitDemoGPT'
 					with: [ spec repository: 'github://feenkcom/gtoolkit-demos:main/src' ];
+				baseline: 'GToolkitDemoSnippets'
+					with: [ spec repository: 'github://feenkcom/gtoolkit-demos:main/src' ];
 				baseline: 'GToolkitDemoScripter'
 					with: [ spec repository: 'github://feenkcom/gtoolkit-demos:main/src' ] ]
 ]
