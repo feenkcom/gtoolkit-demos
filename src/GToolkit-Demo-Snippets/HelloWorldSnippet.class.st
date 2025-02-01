@@ -14,7 +14,7 @@ My intent is to show all the steps needed to define a new kind of snippet, even 
 • Implement `canMoveToAnotherDatabase` to return `true` if there are no dependencies to files in the database.
 • Implement required factory method `empty` to return a basic instance.
 • Define the View Model class — in this case {{gtClass:name=HelloWorldSnippetViewModel}} — and use it to implement `asSnippetViewModel` to return an instance of the view model holding all the state needed to create the view.
-
+• Add an example page containing the snippet to {{gtClass:name=MovingPagesExamples}} for testing
 "
 Class {
 	#name : #HelloWorldSnippet,
