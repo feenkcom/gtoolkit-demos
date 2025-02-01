@@ -9,12 +9,12 @@ My intent is to show all the steps needed to define a new kind of snippet, even 
 • Define and initialize any needed state (in this case we define `contentString` and initialize it to “`Hello world!`”.
 • Override `storeOn:` to generate Smalltalk code which, when evaluated, creates a copy of this snippet.
 • Override the *class* methods `leJsonV4AttributeMapping` and `leJsonV4Name` to specify what state should be mapped to the JSON representation.
-*NB:* Be sure to run `LeJsonV4 cleanUniqueInstance ` to update the JSON writer to include the new mapping.
+*NB:* Be sure to run `LeJsonV4 cleanUniqueInstance` to update the JSON writer to include the new mapping.
 • Implement the boilerplate methods `contextMenuItemSpecification` and `description` to include this snippet type in the contextual menu for Lepiter pages.
 • Implement `canMoveToAnotherDatabase` to return `true` if there are no dependencies to files in the database.
 • Implement required factory method `empty` to return a basic instance.
 • Define the View Model class — in this case {{gtClass:name=HelloWorldSnippetViewModel}} — and use it to implement `asSnippetViewModel` to return an instance of the view model holding all the state needed to create the view.
-
+• Add an example page containing the snippet to {{gtClass:name=MovingPagesExamples}} for testing
 "
 Class {
 	#name : #HelloWorldSnippet,
@@ -47,7 +47,7 @@ HelloWorldSnippet class >> empty [
 	^ self new
 ]
 
-{ #category : #jsonV3 }
+{ #category : #jsonV4 }
 HelloWorldSnippet class >> leJsonV4AttributeMapping [
 	"Answer the Array of attribute to store keys.
 	Subclasses should override this with their attributes.
