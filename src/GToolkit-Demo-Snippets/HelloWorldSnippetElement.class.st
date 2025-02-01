@@ -41,7 +41,7 @@ HelloWorldSnippetElement >> snippetContent [
 	^ self textElement
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #'api - view' }
 HelloWorldSnippetElement >> snippetToolbar [
 	"Return an element that represents a toolbar of the snippet. A toolbar usually appears below the snippet content.
 	The embedder is responsible for placing #snippetToolbar in the right place within snippet element depending on the
