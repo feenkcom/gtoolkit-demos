@@ -22,7 +22,7 @@ Class {
 	#instVars : [
 		'contentString'
 	],
-	#category : #'GToolkit-Demo-Snippets-HellowWorld'
+	#category : #'GToolkit-Demo-Snippets-HelloWorld'
 }
 
 { #category : #'api - accessing' }

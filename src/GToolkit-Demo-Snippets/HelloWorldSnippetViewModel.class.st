@@ -10,7 +10,7 @@ I hold all the information needed to display the corresponding View (which in th
 Class {
 	#name : #HelloWorldSnippetViewModel,
 	#superclass : #LeSnippetViewModel,
-	#category : #'GToolkit-Demo-Snippets-HellowWorld'
+	#category : #'GToolkit-Demo-Snippets-HelloWorld'
 }
 
 { #category : #'api - snippet models' }
