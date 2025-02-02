@@ -2,7 +2,9 @@ Extension { #name : #MovingPagesExamples }
 
 { #category : #'*GToolkit-Demo-Snippets' }
 MovingPagesExamples >> blockQuoteSnippetPage [
-	<moveablePage>
+	"Not yet working ..."
+	
+	"<moveablePage>"
 	<gtExample>
 	^ (LePage named: 'A BlockQuote snippet page')
 		addSnippet: (LeBlockQuoteSnippet new
