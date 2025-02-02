@@ -1,22 +1,39 @@
 Class {
 	#name : #LeBlockQuoteSnippetElement,
-	#superclass : #LeStringSnippetElement,
+	#superclass : #LeTextualSnippetElement,
+	#instVars : [
+		'textElement'
+	],
 	#category : #'GToolkit-Demo-Snippets-BlockQuote'
 }
 
 { #category : #initialization }
-LeBlockQuoteSnippetElement >> initializeContentElement [
-	contentElement := BrFrame new
-			hMatchParent;
-			vFitContent;
-			addChild: editorElement
+LeBlockQuoteSnippetElement >> initialize [
+	super initialize.
+	self initializeTextElement
 ]
 
 { #category : #initialization }
-LeBlockQuoteSnippetElement >> initializeEditorElement [
-	super initializeEditorElement.
-	editorElement
+LeBlockQuoteSnippetElement >> initializeTextElement [
+	| aString |
+	aString := 'Hello World'.
+	textElement := BlTextElement new
+			constraintsDo: [ :c | 
+				c horizontal matchParent.
+				c vertical matchParent ];
+			yourself.
+	textElement text: aString asRopedText glamorousCodeFont.
+	textElement
 		background: Color veryVeryLightGray
+]
+
+{ #category : #'api - view' }
+LeBlockQuoteSnippetElement >> snippetContent [
+	"Return an element that represents a content of the snippet.
+	The embedder is responsible for placing #snippetContent in the right place
+	within snippet element depending on the View Model properties and derived look"
+	<return: #BlElement>
+	^ self textElement
 ]
 
 { #category : #'api - view' }
@@ -28,4 +45,9 @@ LeBlockQuoteSnippetElement >> snippetToolbar [
 	<return: #BlElement or: nil>
 
 	^ nil
+]
+
+{ #category : #accessing }
+LeBlockQuoteSnippetElement >> textElement [
+	^ textElement
 ]

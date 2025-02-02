@@ -1,12 +1,21 @@
+"
+I am a simple text snippet that displays literal text as a Markdown block quote.
+
+I am also a small demo of how to define a new Snippet class.
+
+"
 Class {
 	#name : #LeBlockQuoteSnippet,
-	#superclass : #LeStringSnippet,
+	#superclass : #LeTextualSnippet,
+	#instVars : [
+		'contentString'
+	],
 	#category : #'GToolkit-Demo-Snippets-BlockQuote'
 }
 
 { #category : #'api - accessing' }
 LeBlockQuoteSnippet class >> contextMenuItemSpecification [
-	<leSnippetSpecification>
+	"<leSnippetSpecification>"
 	^ LeContextMenuItemSpecification new
 		snippetClass: self;
 		title: self description
@@ -16,6 +25,23 @@ LeBlockQuoteSnippet class >> contextMenuItemSpecification [
 LeBlockQuoteSnippet class >> description [
 	"Text for the context menu"
 	^ 'Block Quote'
+]
+
+{ #category : #factory }
+LeBlockQuoteSnippet class >> empty [
+	"Return a content (page or block) with empty values (title or text).
+	Required by ${method:LeContent>>#addBlockOfClass:after:}$"
+	^ self new
+]
+
+{ #category : #'lepiter-store' }
+LeBlockQuoteSnippet class >> leJsonV4AttributeMapping [
+	"Answer the Array of attribute to store keys.
+	Subclasses should override this with their attributes.
+	This is an array as it is normally cached."
+	^ super leJsonV4AttributeMapping
+		add: #contentString -> #contentString;
+		yourself
 ]
 
 { #category : #'lepiter-store' }
@@ -38,18 +64,13 @@ LeBlockQuoteSnippet >> canMoveToAnotherDatabase [
 ]
 
 { #category : #accessing }
-LeBlockQuoteSnippet >> contentAsString [
-	^ self code
-]
-
-{ #category : #accessing }
 LeBlockQuoteSnippet >> contentString [
-	^ self code
+	^ contentString ifNil: [ contentString := '' ]
 ]
 
 { #category : #accessing }
 LeBlockQuoteSnippet >> contentString: aString [
-	self code: aString
+	contentString := aString
 ]
 
 { #category : #printing }
@@ -57,7 +78,7 @@ LeBlockQuoteSnippet >> storeOn: aStream [
 	aStream
 		nextPut: $(;
 		nextPutAll: self className;
-		nextPutAll: ' new code: '.
-	self code storeOn: aStream.
+		nextPutAll: ' new contentString: '.
+	self contentString storeOn: aStream.
 	aStream nextPutAll: '; yourself)'
 ]

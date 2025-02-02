@@ -6,7 +6,7 @@ MovingPagesExamples >> blockQuoteSnippetPage [
 	<gtExample>
 	^ (LePage named: 'A BlockQuote snippet page')
 		addSnippet: (LeBlockQuoteSnippet new
-				code: 'Literal text';
+				contentString: 'Literal text';
 				yourself);
 		yourself
 ]
