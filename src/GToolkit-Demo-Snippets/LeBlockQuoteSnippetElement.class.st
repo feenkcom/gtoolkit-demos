@@ -1,27 +1,20 @@
-"
-I define the View for the {{gtClass:name=HelloWorldSnippet}}.
-#Steps
-• Define a subclass of {{gtClass:name=LeSnippetElement}} (or one of its subclasses).
-• Define and initialize the snippet element. Implement `snippetContent` to return this element.
-• Implement the required method `snippetToolbar` to return the element representing the toolbar to appear below the content. Return `nil` if this is not needed.
-"
 Class {
-	#name : #HelloWorldSnippetElement,
-	#superclass : #LeSnippetElement,
+	#name : #LeBlockQuoteSnippetElement,
+	#superclass : #LeTextualSnippetElement,
 	#instVars : [
 		'textElement'
 	],
-	#category : #'GToolkit-Demo-Snippets-HelloWorld'
+	#category : #'GToolkit-Demo-Snippets-BlockQuote'
 }
 
-{ #category : #initalization }
-HelloWorldSnippetElement >> initialize [
+{ #category : #initialization }
+LeBlockQuoteSnippetElement >> initialize [
 	super initialize.
-	self initializeElement
+	self initializeTextElement
 ]
 
-{ #category : #initalization }
-HelloWorldSnippetElement >> initializeElement [
+{ #category : #initialization }
+LeBlockQuoteSnippetElement >> initializeTextElement [
 	| aString |
 	aString := 'Hello World'.
 	textElement := BlTextElement new
@@ -29,11 +22,13 @@ HelloWorldSnippetElement >> initializeElement [
 				c horizontal matchParent.
 				c vertical matchParent ];
 			yourself.
-	textElement text: aString asRopedText glamorousCodeFont
+	textElement text: aString asRopedText glamorousCodeFont.
+	textElement
+		background: Color veryVeryLightGray
 ]
 
 { #category : #'api - view' }
-HelloWorldSnippetElement >> snippetContent [
+LeBlockQuoteSnippetElement >> snippetContent [
 	"Return an element that represents a content of the snippet.
 	The embedder is responsible for placing #snippetContent in the right place
 	within snippet element depending on the View Model properties and derived look"
@@ -42,7 +37,7 @@ HelloWorldSnippetElement >> snippetContent [
 ]
 
 { #category : #'api - view' }
-HelloWorldSnippetElement >> snippetToolbar [
+LeBlockQuoteSnippetElement >> snippetToolbar [
 	"Return an element that represents a toolbar of the snippet. A toolbar usually appears below the snippet content.
 	The embedder is responsible for placing #snippetToolbar in the right place within snippet element depending on the
 	View Model properties and derived look.
@@ -53,6 +48,6 @@ HelloWorldSnippetElement >> snippetToolbar [
 ]
 
 { #category : #accessing }
-HelloWorldSnippetElement >> textElement [
+LeBlockQuoteSnippetElement >> textElement [
 	^ textElement
 ]
