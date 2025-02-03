@@ -52,9 +52,10 @@ LeBlockQuoteSnippet class >> leJsonV4Name [
 { #category : #accessing }
 LeBlockQuoteSnippet >> asElement [
 	"Not needed; just for  debugging."
-
-	^ (self asSnippetViewModel snippetView asElement
-		snippetViewModel: self asSnippetViewModel;
+	| snippetViewModel |
+	snippetViewModel := self asSnippetViewModel.
+	^ (snippetViewModel snippetView asElement
+		snippetViewModel: snippetViewModel;
 		yourself) children first
 ]
 

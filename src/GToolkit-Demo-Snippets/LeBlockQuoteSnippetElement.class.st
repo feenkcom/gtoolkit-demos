@@ -9,7 +9,6 @@ Class {
 
 { #category : #accessing }
 LeBlockQuoteSnippetElement >> editor [
-	"Do we need this?"
 	<return: #BrTextEditorModel>
 	^ self editorElement editor
 ]
@@ -33,13 +32,14 @@ LeBlockQuoteSnippetElement >> initializeEditorElement [
 			vFitContent;
 			aptitude: BrGlamorousCodeEditorAptitude new;
 			background: Color veryVeryLightGray;
-			when: BrTextEditorModifiedEvent
-				do: [ :anEvent | self onEditorChanged: anEvent ];
+			"when: BrTextEditorModifiedEvent
+				do: [ :anEvent | self onEditorChanged: anEvent ];"
 			yourself
 ]
 
 { #category : #initialization }
 LeBlockQuoteSnippetElement >> onEditorChanged: anEvent [
+	"Seems not to be necessary."
 	self snippet text: anEvent text
 ]
 
