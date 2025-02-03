@@ -24,7 +24,7 @@ LeBlockQuoteSnippet class >> contextMenuItemSpecification [
 { #category : #factory }
 LeBlockQuoteSnippet class >> description [
 	"Text for the context menu"
-	^ 'Block Quote'
+	^ 'Block quote'
 ]
 
 { #category : #factory }
