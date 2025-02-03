@@ -13,7 +13,7 @@ LeBlockQuoteSnippetViewModel >> snippetElementClass [
 	^ LeBlockQuoteSnippetElement
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #acccessing }
 LeBlockQuoteSnippetViewModel >> text [
 	^ self snippetModel text
 ]

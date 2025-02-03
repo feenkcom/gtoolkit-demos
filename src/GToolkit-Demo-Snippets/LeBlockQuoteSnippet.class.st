@@ -49,6 +49,15 @@ LeBlockQuoteSnippet class >> leJsonV4Name [
 	^ #blockQuoteSnippet
 ]
 
+{ #category : #accessing }
+LeBlockQuoteSnippet >> asElement [
+	"Not needed; just for  debugging."
+
+	^ (self asSnippetViewModel snippetView asElement
+		snippetViewModel: self asSnippetViewModel;
+		yourself) children first
+]
+
 { #category : #converting }
 LeBlockQuoteSnippet >> asSnippetViewModel [
 	"The view model for this class, holding all model state for the UI view."
@@ -61,6 +70,12 @@ LeBlockQuoteSnippet >> canMoveToAnotherDatabase [
 	"For the moment, if a snippet has links to attachments in the database or is somehow tied to other files, it cannot be moved.
 	Each snippet class should implement this as true or false, or implement the corresponding logic."
 	^ true
+]
+
+{ #category : #accessing }
+LeBlockQuoteSnippet >> contentAsString [
+	"Used by LeSnippets>>#gtSnippetsFor:"
+	^ self string
 ]
 
 { #category : #printing }

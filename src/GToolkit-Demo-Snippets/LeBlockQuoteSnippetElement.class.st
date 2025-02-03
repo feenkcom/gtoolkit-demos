@@ -28,21 +28,25 @@ LeBlockQuoteSnippetElement >> initialize [
 
 { #category : #initialization }
 LeBlockQuoteSnippetElement >> initializeEditorElement [
-	"Should we use a GtSourceCoderEditorElement?"
-
 	editorElement := BrEditor new
 			hMatchParent;
 			vFitContent;
 			aptitude: BrGlamorousCodeEditorAptitude new;
 			background: Color veryVeryLightGray;
+			when: BrTextEditorModifiedEvent
+				do: [ :anEvent | self onEditorChanged: anEvent ];
 			yourself
+]
+
+{ #category : #initialization }
+LeBlockQuoteSnippetElement >> onEditorChanged: anEvent [
+	self snippet text: anEvent text
 ]
 
 { #category : #'api - snippet view model' }
 LeBlockQuoteSnippetElement >> onSnippetViewModelChanged [
 	super onSnippetViewModelChanged.
-
-	self updateCoderViewModel
+	self updateEditorElement
 ]
 
 { #category : #'api - view' }
@@ -66,6 +70,6 @@ LeBlockQuoteSnippetElement >> snippetToolbar [
 ]
 
 { #category : #'api - snippet view model' }
-LeBlockQuoteSnippetElement >> updateCoderViewModel [
+LeBlockQuoteSnippetElement >> updateEditorElement [
 	editorElement text: self snippetViewModel text
 ]
