@@ -28,6 +28,8 @@ LeBlockQuoteSnippetElement >> initialize [
 
 { #category : #initialization }
 LeBlockQuoteSnippetElement >> initializeEditorElement [
+	"Should we use a GtSourceCoderEditorElement?"
+
 	editorElement := BrEditor new
 			hMatchParent;
 			vFitContent;
