@@ -32,15 +32,7 @@ LeBlockQuoteSnippetElement >> initializeEditorElement [
 			vFitContent;
 			aptitude: BrGlamorousCodeEditorAptitude new;
 			background: Color veryVeryLightGray;
-			"when: BrTextEditorModifiedEvent
-				do: [ :anEvent | self onEditorChanged: anEvent ];"
 			yourself
-]
-
-{ #category : #initialization }
-LeBlockQuoteSnippetElement >> onEditorChanged: anEvent [
-	"Seems not to be necessary."
-	self snippet text: anEvent text
 ]
 
 { #category : #'api - snippet view model' }
