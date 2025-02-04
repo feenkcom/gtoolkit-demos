@@ -2,29 +2,51 @@ Class {
 	#name : #LeBlockQuoteSnippetElement,
 	#superclass : #LeTextualSnippetElement,
 	#instVars : [
-		'textElement'
+		'editorElement'
 	],
 	#category : #'GToolkit-Demo-Snippets-BlockQuote'
 }
 
-{ #category : #initialization }
-LeBlockQuoteSnippetElement >> initialize [
-	super initialize.
-	self initializeTextElement
+{ #category : #accessing }
+LeBlockQuoteSnippetElement >> editor [
+	<return: #BrTextEditorModel>
+	^ self editorElement editor
+]
+
+{ #category : #accessing }
+LeBlockQuoteSnippetElement >> editorElement [
+	<return: #BrEditor>
+	^ editorElement
 ]
 
 { #category : #initialization }
-LeBlockQuoteSnippetElement >> initializeTextElement [
-	| aString |
-	aString := 'Hello World'.
-	textElement := BlTextElement new
-			constraintsDo: [ :c | 
-				c horizontal matchParent.
-				c vertical matchParent ];
-			yourself.
-	textElement text: aString asRopedText glamorousCodeFont.
-	textElement
-		background: Color veryVeryLightGray
+LeBlockQuoteSnippetElement >> initialize [
+	super initialize.
+	self initializeEditorElement
+]
+
+{ #category : #initialization }
+LeBlockQuoteSnippetElement >> initializeEditorElement [
+	editorElement := BrEditor new
+			hMatchParent;
+			vFitContent;
+			aptitude: BrGlamorousCodeEditorAptitude new;
+			background: Color veryVeryLightGray;
+			"when: BrTextEditorModifiedEvent
+				do: [ :anEvent | self onEditorChanged: anEvent ];"
+			yourself
+]
+
+{ #category : #initialization }
+LeBlockQuoteSnippetElement >> onEditorChanged: anEvent [
+	"Seems not to be necessary."
+	self snippet text: anEvent text
+]
+
+{ #category : #'api - snippet view model' }
+LeBlockQuoteSnippetElement >> onSnippetViewModelChanged [
+	super onSnippetViewModelChanged.
+	self updateEditorElement
 ]
 
 { #category : #'api - view' }
@@ -33,7 +55,7 @@ LeBlockQuoteSnippetElement >> snippetContent [
 	The embedder is responsible for placing #snippetContent in the right place
 	within snippet element depending on the View Model properties and derived look"
 	<return: #BlElement>
-	^ self textElement
+	^ editorElement
 ]
 
 { #category : #'api - view' }
@@ -47,7 +69,7 @@ LeBlockQuoteSnippetElement >> snippetToolbar [
 	^ nil
 ]
 
-{ #category : #accessing }
-LeBlockQuoteSnippetElement >> textElement [
-	^ textElement
+{ #category : #'api - snippet view model' }
+LeBlockQuoteSnippetElement >> updateEditorElement [
+	editorElement text: self snippetViewModel text
 ]

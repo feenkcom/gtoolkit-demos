@@ -8,14 +8,14 @@ Class {
 	#name : #LeBlockQuoteSnippet,
 	#superclass : #LeTextualSnippet,
 	#instVars : [
-		'contentString'
+		'text'
 	],
 	#category : #'GToolkit-Demo-Snippets-BlockQuote'
 }
 
 { #category : #'api - accessing' }
 LeBlockQuoteSnippet class >> contextMenuItemSpecification [
-	"<leSnippetSpecification>"
+	<leSnippetSpecification>
 	^ LeContextMenuItemSpecification new
 		snippetClass: self;
 		title: self description
@@ -24,7 +24,7 @@ LeBlockQuoteSnippet class >> contextMenuItemSpecification [
 { #category : #factory }
 LeBlockQuoteSnippet class >> description [
 	"Text for the context menu"
-	^ 'Block Quote'
+	^ 'Block quote'
 ]
 
 { #category : #factory }
@@ -40,13 +40,23 @@ LeBlockQuoteSnippet class >> leJsonV4AttributeMapping [
 	Subclasses should override this with their attributes.
 	This is an array as it is normally cached."
 	^ super leJsonV4AttributeMapping
-		add: #contentString -> #contentString;
+		add: #string -> #string;
 		yourself
 ]
 
 { #category : #'lepiter-store' }
 LeBlockQuoteSnippet class >> leJsonV4Name [
 	^ #blockQuoteSnippet
+]
+
+{ #category : #accessing }
+LeBlockQuoteSnippet >> asElement [
+	"Not needed; just for  debugging."
+	| snippetViewModel |
+	snippetViewModel := self asSnippetViewModel.
+	^ (snippetViewModel snippetView asElement
+		snippetViewModel: snippetViewModel;
+		yourself) children first
 ]
 
 { #category : #converting }
@@ -64,13 +74,9 @@ LeBlockQuoteSnippet >> canMoveToAnotherDatabase [
 ]
 
 { #category : #accessing }
-LeBlockQuoteSnippet >> contentString [
-	^ contentString ifNil: [ contentString := '' ]
-]
-
-{ #category : #accessing }
-LeBlockQuoteSnippet >> contentString: aString [
-	contentString := aString
+LeBlockQuoteSnippet >> contentAsString [
+	"Used by LeSnippets>>#gtSnippetsFor:"
+	^ self string
 ]
 
 { #category : #printing }
@@ -78,7 +84,23 @@ LeBlockQuoteSnippet >> storeOn: aStream [
 	aStream
 		nextPut: $(;
 		nextPutAll: self className;
-		nextPutAll: ' new contentString: '.
-	self contentString storeOn: aStream.
+		nextPutAll: ' new string: '.
+	self string storeOn: aStream.
 	aStream nextPutAll: '; yourself)'
+]
+
+{ #category : #accessing }
+LeBlockQuoteSnippet >> string: aString [
+	self text: aString asRopedText
+]
+
+{ #category : #accessing }
+LeBlockQuoteSnippet >> text [ 
+	<return: #BlText>
+	^ text ifNil: [ text := '' asRopedText ]
+]
+
+{ #category : #accessing }
+LeBlockQuoteSnippet >> text: aBlText [
+	text := aBlText
 ]

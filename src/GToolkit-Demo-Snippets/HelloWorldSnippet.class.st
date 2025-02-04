@@ -28,7 +28,7 @@ Class {
 { #category : #'api - accessing' }
 HelloWorldSnippet class >> contextMenuItemSpecification [
 	"Specify the menu text for creating this snippet within a page."
-	<leSnippetSpecification>
+	"<leSnippetSpecification>"
 	^ LeContextMenuItemSpecification new
 		snippetClass: self;
 		title: self description

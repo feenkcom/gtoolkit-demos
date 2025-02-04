@@ -8,25 +8,12 @@ Class {
 	#category : #'GToolkit-Demo-Snippets-BlockQuote'
 }
 
-{ #category : #'api - snippet models' }
-LeBlockQuoteSnippetViewModel >> contentString [
-	^ self snippetModel contentString 
-]
-
-{ #category : #'api - snippet models' }
-LeBlockQuoteSnippetViewModel >> contentString: aString [
-	^ self snippetModel contentString: aString
-]
-
 { #category : #'api - accessing' }
 LeBlockQuoteSnippetViewModel >> snippetElementClass [
 	^ LeBlockQuoteSnippetElement
 ]
 
-{ #category : #accessing }
-LeBlockQuoteSnippetViewModel >> snippetView [
-	<return: #LeSnippetView>
-	^ super snippetView
-		needsContentDecorationBar: false;
-		beFullWidth
+{ #category : #acccessing }
+LeBlockQuoteSnippetViewModel >> text [
+	^ self snippetModel text
 ]
