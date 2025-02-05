@@ -12,9 +12,22 @@ Class {
 }
 
 { #category : #initialization }
+LeBlockQuoteSnippetViewModel >> announceTextChanged [
+	self snippetModel announceContentChanged
+]
+
+{ #category : #initialization }
 LeBlockQuoteSnippetViewModel >> initialize [
 	super initialize.
-	textEditorModel := BrTextEditorModel new
+	self initializeTextEditorModel
+]
+
+{ #category : #initialization }
+LeBlockQuoteSnippetViewModel >> initializeTextEditorModel [
+	textEditorModel := BrTextEditorModel new.
+	textEditorModel
+		when: BrTextEditorTextReplacedEvent do: [ self announceTextChanged ];
+		when: BrTextEditorModifiedEvent do: [ self announceTextChanged ]
 ]
 
 { #category : #'api - snippet' }
