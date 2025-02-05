@@ -63,5 +63,6 @@ LeBlockQuoteSnippetElement >> snippetToolbar [
 
 { #category : #'api - snippet view model' }
 LeBlockQuoteSnippetElement >> updateEditorElement [
+	editorElement editor: self snippetViewModel textEditorModel.
 	editorElement text: self snippetViewModel text
 ]
