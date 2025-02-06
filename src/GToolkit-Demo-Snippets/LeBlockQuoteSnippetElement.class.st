@@ -7,6 +7,14 @@ Class {
 	#category : #'GToolkit-Demo-Snippets-BlockQuote'
 }
 
+{ #category : #initialization }
+LeBlockQuoteSnippetElement >> backgroundColor [
+	"A color even lighter than Color veryVeryLightGray"
+	| shade |
+	shade := 0.95.
+	^ Color r: shade g: shade b: shade alpha: 100.
+]
+
 { #category : #accessing }
 LeBlockQuoteSnippetElement >> editor [
 	<return: #BrTextEditorModel>
@@ -31,7 +39,7 @@ LeBlockQuoteSnippetElement >> initializeEditorElement [
 			hMatchParent;
 			vFitContent;
 			aptitude: BrGlamorousCodeEditorAptitude new;
-			background: Color veryVeryLightGray;
+			background: self backgroundColor;
 			yourself
 ]
 
