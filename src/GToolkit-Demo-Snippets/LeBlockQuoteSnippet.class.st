@@ -15,6 +15,7 @@ Class {
 
 { #category : #'api - accessing' }
 LeBlockQuoteSnippet class >> contextMenuItemSpecification [
+	"This method is required for every snippet class that should appear in the context menu of a page for adding new snippets."
 	<leSnippetSpecification>
 	^ LeContextMenuItemSpecification new
 		snippetClass: self;
@@ -46,17 +47,41 @@ LeBlockQuoteSnippet class >> leJsonV4AttributeMapping [
 
 { #category : #'lepiter-store' }
 LeBlockQuoteSnippet class >> leJsonV4Name [
+	"The name for this type of snippet in the JSON representation."
 	^ #blockQuoteSnippet
 ]
 
-{ #category : #accessing }
+{ #category : #'private - asserting' }
+LeBlockQuoteSnippet >> appendText: aText source: anObject [
+	"Adapted from LeTextSnippet>>#appendText:source:"
+	aText ifEmpty: [ ^ self ].
+	self assertText: aText.
+	self text append: aText.
+	self updateEditTimeAndEmail.
+	self announceTextChangedBy: anObject
+]
+
+{ #category : #'api - editing' }
 LeBlockQuoteSnippet >> asElement [
-	"Not needed; just for  debugging."
+	"Not strictly needed; just for  debugging."
+	^ self asPreviewElement children first
+]
+
+{ #category : #converting }
+LeBlockQuoteSnippet >> asPhlowTool [
+	^ GtPhlowCompositeTool new
+		addTool: (LeIsolatedSnippetPhlowTool snippet: self);
+		addTool: (GtPhlowTool default object: self)
+]
+
+{ #category : #converting }
+LeBlockQuoteSnippet >> asPreviewElement [
+	<return: #BlElement>
 	| snippetViewModel |
 	snippetViewModel := self asSnippetViewModel.
-	^ (snippetViewModel snippetView asElement
+	^ snippetViewModel snippetView asElement
 		snippetViewModel: snippetViewModel;
-		yourself) children first
+		yourself
 ]
 
 { #category : #converting }
@@ -64,6 +89,23 @@ LeBlockQuoteSnippet >> asSnippetViewModel [
 	"The view model for this class, holding all model state for the UI view."
 	<return: #LeSnippetViewModel>
 	^ LeBlockQuoteSnippetViewModel new snippetModel: self
+]
+
+{ #category : #converting }
+LeBlockQuoteSnippet >> asToolElement [
+	<return: #BlElement>
+	^ self asPreviewElement
+]
+
+{ #category : #'private - asserting' }
+LeBlockQuoteSnippet >> assertText: aText [
+	"From LeTextSnippet>>#assertText:"
+	self 
+		assert: [ aText isNotNil ] 
+		description: [ 'Block text must be non-nil' ]. 
+	self 
+		assert: [ aText isKindOf: BlText ] 
+		description: [ 'Block text must be a ', BlText name, ' instance' ]. 
 ]
 
 { #category : #testing }
@@ -81,6 +123,7 @@ LeBlockQuoteSnippet >> contentAsString [
 
 { #category : #printing }
 LeBlockQuoteSnippet >> storeOn: aStream [
+	"Generate Smalltalk code which, when evaluated, creates a copy of this snippet."
 	aStream
 		nextPut: $(;
 		nextPutAll: self className;
@@ -91,16 +134,27 @@ LeBlockQuoteSnippet >> storeOn: aStream [
 
 { #category : #accessing }
 LeBlockQuoteSnippet >> string: aString [
+	"Initialize text from a plain String."
 	self text: aString asRopedText
 ]
 
 { #category : #accessing }
 LeBlockQuoteSnippet >> text [ 
+	"Lazily initialized getter."
 	<return: #BlText>
 	^ text ifNil: [ text := '' asRopedText ]
 ]
 
 { #category : #accessing }
 LeBlockQuoteSnippet >> text: aBlText [
+	"Setter from a Roped text instance."
 	text := aBlText
+]
+
+{ #category : #'private - asserting' }
+LeBlockQuoteSnippet >> updateText: aText source: anObject [
+	"Adapted from LeTextSnippet>>#updateText:source:"
+	self assertText: aText.
+	self text characters = aText characters ifTrue: [ ^ self ].	"self updater string: aText."
+	self announceTextChangedBy: anObject
 ]
