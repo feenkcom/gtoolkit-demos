@@ -40,7 +40,9 @@ LeBlockQuoteSnippetElement >> initializeEditorElement [
 			vFitContent;
 			aptitude: BrGlamorousCodeEditorAptitude new;
 			background: self backgroundColor;
-			yourself
+			yourself.
+	editorElement editor
+		addEventHandler: (LeEditorReachedBorderEventHandler new snippetElement: self).
 ]
 
 { #category : #'api - snippet view model' }
