@@ -3,7 +3,7 @@ UML diagrams showing the main classes of the {{gtClass:name=LeBlockQuoteSnippet}
 "
 Class {
 	#name : #LeBlockQuoteSnippetUMLExamples,
-	#superclass : #LeBlockQuoteSnippet,
+	#superclass : #Object,
 	#category : #'GToolkit-Demo-Snippets-Examples'
 }
 
