@@ -15,5 +15,7 @@ LeBlockQuoteSnippetElement >> backgroundColor [
 { #category : #initialization }
 LeBlockQuoteSnippetElement >> initializeEditorElement [
 	super initializeEditorElement.
-	editorElement background: self backgroundColor
+	editorElement
+		background: self backgroundColor;
+		aptitude: BrGlamorousCodeEditorAptitude
 ]
