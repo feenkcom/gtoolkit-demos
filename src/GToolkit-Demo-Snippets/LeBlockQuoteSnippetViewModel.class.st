@@ -5,9 +5,6 @@ I hold the state needed to display the view.
 Class {
 	#name : #LeBlockQuoteSnippetViewModel,
 	#superclass : #LePlainTextCoderSnippetViewModel,
-	#instVars : [
-		'textEditorModel'
-	],
 	#category : #'GToolkit-Demo-Snippets-BlockQuote'
 }
 
