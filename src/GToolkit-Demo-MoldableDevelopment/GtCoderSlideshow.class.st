@@ -121,7 +121,7 @@ GtCoderSlideshow >> baselineMethodsExplanationWithLinks [
 					and: [ aChild text asString includesSubstring: '''GToolkitVirtualMachine''' ] ]
 			ifFound: [ :aChild | aChild ].
 	expandBaselineTarget := baselineTarget parent
-			allChildrenBreadthFirstDetect: [ :aChild | aChild isKindOf: BrTriangle ]
+			allChildrenBreadthFirstDetect: [ :aChild | aChild isKindOf: BrInlineExpanderElement ]
 			ifFound: [ :aChild | aChild ].
 
 	pragmaTarget
