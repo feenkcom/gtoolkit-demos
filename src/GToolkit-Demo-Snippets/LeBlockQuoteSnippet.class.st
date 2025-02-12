@@ -33,7 +33,8 @@ LeBlockQuoteSnippet class >> leJsonV4Name [
 
 { #category : #visiting }
 LeBlockQuoteSnippet >> acceptVisitor: aVisitor [
-
+	"NB: In case visitors need to do something special here, we need to introduce a new method visitBlockQuoteSnippet: and add it to TLeModelVisitor, the trait for all Lepiter model visitors."
+	
 	^ aVisitor visitTextSnippet: self
 ]
 

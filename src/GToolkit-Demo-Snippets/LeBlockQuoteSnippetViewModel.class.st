@@ -10,6 +10,9 @@ Class {
 
 { #category : #initialization }
 LeBlockQuoteSnippetViewModel >> initializeTextCoderViewModel [
+	"Initialize the state needed to keep the view and the model in sync.
+	My parent handles the subscriptions and the updates."
+	
 	textCoder := GtTextCoder new.
 	textCoderViewModel := textCoder asCoderViewModel.
 ]
