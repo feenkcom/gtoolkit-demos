@@ -6,7 +6,7 @@ Class {
 
 { #category : #initialization }
 LeBlockQuoteSnippetElement >> backgroundColor [
-	"A color even lighter than Color veryVeryLightGray"
+	"A color even lighter than Color veryVeryLightGray."
 	| shade |
 	shade := 0.95.
 	^ Color r: shade g: shade b: shade alpha: 100.
@@ -14,6 +14,8 @@ LeBlockQuoteSnippetElement >> backgroundColor [
 
 { #category : #initialization }
 LeBlockQuoteSnippetElement >> initializeEditorElement [
+	"Specialize the editor element to use a code font and a light grey background."
+	
 	super initializeEditorElement.
 	editorElement
 		background: self backgroundColor;
