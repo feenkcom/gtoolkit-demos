@@ -418,6 +418,17 @@ PrioritySlideshow >> gtPlaySlideshowAction: anAction [
 			button ]
 ]
 
+{ #category : #'as yet unclassified' }
+PrioritySlideshow >> gtPresenterSlideshow [
+	"Needed to extract a forwarding view for inherited slideshows."
+
+	| gtPresenterSlideshow |
+	gtPresenterSlideshow := GtPresenterSlideShow new.
+	gtPresenterSlideshow slides
+		slides: (self slides collect: [ :slide | GtPresenterSlide new stencil: slide ]).
+	^ gtPresenterSlideshow
+]
+
 { #category : #view }
 PrioritySlideshow >> gtScriptFor: aView [
 	<gtView>
@@ -472,6 +483,16 @@ PrioritySlideshow >> gtSlidePrioritiesFor: aView [
 		view: #gtSourceFor:;
 		actionUpdateButton;
 		updateWhen: SlideshowMethodUpdated in: self announcer
+]
+
+{ #category : #view }
+PrioritySlideshow >> gtSlidesFor: aView [
+	<gtView>
+	<gtClassView>
+	^ aView forward
+		title: 'Slides';
+		object: [ self gtPresenterSlideshow ];
+		view: #gtSlidesListViewFor:
 ]
 
 { #category : #searching }
