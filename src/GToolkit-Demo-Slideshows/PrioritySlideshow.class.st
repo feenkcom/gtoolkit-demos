@@ -69,13 +69,13 @@ PrioritySlideshow class >> gtLiveSlideshowFor: aView [
 PrioritySlideshow class >> gtOpenSlideshowActionFor: anAction [
 	<gtAction>
 	<gtClassAction>
-	(self methods select: [ :m | m hasPragmaNamed: #gtSlide ]) isEmpty
+	(self allMethods select: [ :m | m hasPragmaNamed: #gtSlide ]) isEmpty
 		ifTrue: [ ^ anAction noAction ].
 	^ anAction button
 		priority: 11;
 		tooltip: 'Play slideshow in new window';
 		icon: BrGlamorousVectorIcons play;
-		action: [ :aButton | GtPresenterSlideShow openInSpace: self ]
+		action: [ :aButton | self openInSpace ]
 ]
 
 { #category : #view }
@@ -99,9 +99,19 @@ PrioritySlideshow class >> gtSlideMethodsListViewFor: aView [
 ]
 
 { #category : #utility }
+PrioritySlideshow class >> openInSpace [
+	| slideshow slideshowViewModel |
+	slideshow := self new gtPresenterSlideshow.
+	slideshowViewModel := GtPresenterSlideShowViewModel new slideShow: slideshow.
+	^ BlSpace new
+		withSceneDriller;
+		addChild: (GtPresenterSlideShowElement new slideShowViewModel: slideshowViewModel);
+		show
+]
+
+{ #category : #utility }
 PrioritySlideshow class >> show [
-	"NB: this is a class-side method."
-	GtPresenterSlideShow openInSpace: self
+	self openInSpace
 ]
 
 { #category : #presentation }
