@@ -67,7 +67,7 @@ DatabaseHolder >> initializeDb [
 
 { #category : #accessing }
 DatabaseHolder >> pageMethods [
-	^ self class methods select: [ :m | m hasPragmaNamed: #lePage ]
+	^ self class allMethods select: [ :m | m hasPragmaNamed: #lePage ]
 ]
 
 { #category : #actions }

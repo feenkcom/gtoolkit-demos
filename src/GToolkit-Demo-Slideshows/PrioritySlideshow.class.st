@@ -375,9 +375,9 @@ PrioritySlideshow >> gtLiveFor: aView [
 { #category : #view }
 PrioritySlideshow >> gtLiveSlideshowFor: aView [
 	<gtView>
-	^ aView explicit 
+	^ aView explicit
 		title: 'Slideshow';
-		stencil: [ GtPresenterSlideShow create: self ];
+		stencil: [ self gtPresenterSlideshow ];
 		actionUpdateButton;
 		updateWhen: SlideshowMethodUpdated in: self announcer
 ]
@@ -461,7 +461,7 @@ PrioritySlideshow >> gtSlidePrioritiesFor: aView [
 	^ aView forward
 		title: 'Slide priorities';
 		priority: 40;
-		object: [ (self class >> #slidePriorities) asRingDefinition ];
+		object: [ (self class lookupSelector: #slidePriorities) asRingDefinition ];
 		view: #gtSourceFor:;
 		actionUpdateButton;
 		updateWhen: SlideshowMethodUpdated in: self announcer
