@@ -489,7 +489,7 @@ PrioritySlideshow >> hasDemoPragmas [
 
 { #category : #testing }
 PrioritySlideshow >> hasTextPragmas [
-	^ self class methods
+	^ self class allMethods
 		detect: [ :m | m hasPragmaNamed: 'text:' ]
 		ifFound: [ true ]
 		ifNone: [ false ]
