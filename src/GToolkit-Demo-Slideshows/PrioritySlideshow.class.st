@@ -45,13 +45,10 @@ PrioritySlideshow class >> gtInspectSlideshowActionFor: anAction [
 	^ anAction button
 		tooltip: 'Inspect slideshow';
 		priority: 10;
-		"id: GtPresenterPreviewShowButtonId;"
 		icon: BrGlamorousVectorIcons playinspect;
-		action: [ :aButton | 
-			aButton phlow
-				spawnObject: ((self = PrioritySlideshow or: [ self inheritsFrom: PrioritySlideshow ])
-						ifTrue: [ self new ]
-						ifFalse: [ GtPresenterSlideShow create: self new ]) ]
+		action: [ :aButton | aButton phlow spawnObject: self new ];
+		primaryModifierAction: [ :aButton | aButton phlow showObject: self new ]
+			mouseCursor: BlCopyCursor new
 ]
 
 { #category : #view }
