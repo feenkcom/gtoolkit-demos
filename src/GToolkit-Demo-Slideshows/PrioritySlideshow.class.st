@@ -45,13 +45,10 @@ PrioritySlideshow class >> gtInspectSlideshowActionFor: anAction [
 	^ anAction button
 		tooltip: 'Inspect slideshow';
 		priority: 10;
-		"id: GtPresenterPreviewShowButtonId;"
 		icon: BrGlamorousVectorIcons playinspect;
-		action: [ :aButton | 
-			aButton phlow
-				spawnObject: ((self = PrioritySlideshow or: [ self inheritsFrom: PrioritySlideshow ])
-						ifTrue: [ self new ]
-						ifFalse: [ GtPresenterSlideShow create: self new ]) ]
+		action: [ :aButton | aButton phlow spawnObject: self new ];
+		primaryModifierAction: [ :aButton | aButton phlow showObject: self new ]
+			mouseCursor: BlCopyCursor new
 ]
 
 { #category : #view }
@@ -69,13 +66,13 @@ PrioritySlideshow class >> gtLiveSlideshowFor: aView [
 PrioritySlideshow class >> gtOpenSlideshowActionFor: anAction [
 	<gtAction>
 	<gtClassAction>
-	(self methods select: [ :m | m hasPragmaNamed: #gtSlide ]) isEmpty
+	(self allMethods select: [ :m | m hasPragmaNamed: #gtSlide ]) isEmpty
 		ifTrue: [ ^ anAction noAction ].
 	^ anAction button
 		priority: 11;
 		tooltip: 'Play slideshow in new window';
 		icon: BrGlamorousVectorIcons play;
-		action: [ :aButton | GtPresenterSlideShow openInSpace: self ]
+		action: [ :aButton | self openInSpace ]
 ]
 
 { #category : #view }
@@ -99,9 +96,19 @@ PrioritySlideshow class >> gtSlideMethodsListViewFor: aView [
 ]
 
 { #category : #utility }
+PrioritySlideshow class >> openInSpace [
+	| slideshow slideshowViewModel |
+	slideshow := self new gtPresenterSlideshow.
+	slideshowViewModel := GtPresenterSlideShowViewModel new slideShow: slideshow.
+	^ BlSpace new
+		withSceneDriller;
+		addChild: (GtPresenterSlideShowElement new slideShowViewModel: slideshowViewModel);
+		show
+]
+
+{ #category : #utility }
 PrioritySlideshow class >> show [
-	"NB: this is a class-side method."
-	GtPresenterSlideShow openInSpace: self
+	self openInSpace
 ]
 
 { #category : #presentation }
@@ -375,9 +382,9 @@ PrioritySlideshow >> gtLiveFor: aView [
 { #category : #view }
 PrioritySlideshow >> gtLiveSlideshowFor: aView [
 	<gtView>
-	^ aView explicit 
+	^ aView explicit
 		title: 'Slideshow';
-		stencil: [ GtPresenterSlideShow create: self ];
+		stencil: [ self gtPresenterSlideshow ];
 		actionUpdateButton;
 		updateWhen: SlideshowMethodUpdated in: self announcer
 ]
@@ -461,7 +468,7 @@ PrioritySlideshow >> gtSlidePrioritiesFor: aView [
 	^ aView forward
 		title: 'Slide priorities';
 		priority: 40;
-		object: [ (self class >> #slidePriorities) asRingDefinition ];
+		object: [ (self class lookupSelector: #slidePriorities) asRingDefinition ];
 		view: #gtSourceFor:;
 		actionUpdateButton;
 		updateWhen: SlideshowMethodUpdated in: self announcer
@@ -489,7 +496,7 @@ PrioritySlideshow >> hasDemoPragmas [
 
 { #category : #testing }
 PrioritySlideshow >> hasTextPragmas [
-	^ self class methods
+	^ self class allMethods
 		detect: [ :m | m hasPragmaNamed: 'text:' ]
 		ifFound: [ true ]
 		ifNone: [ false ]
