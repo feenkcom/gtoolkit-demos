@@ -40,7 +40,7 @@ GhRepo >> gtContributorsFor: aView [
 	<gtView>
 	^ aView explicit
 		title: 'Contributors';
-		priority: 50;
+		priority: 30;
 		stencil: [ | container imageContainer |
 			container := BlElement new
 					layout: BlFlowLayout new;
