@@ -40,6 +40,7 @@ GhRepo >> gtContributorsFor: aView [
 	<gtView>
 	^ aView explicit
 		title: 'Contributors';
+		priority: 30;
 		stencil: [ | container imageContainer |
 			container := BlElement new
 					layout: BlFlowLayout new;
@@ -73,6 +74,7 @@ GhRepo >> gtEventsFor: aView [
 	<gtView>
 	^ aView columnedList
 		title: 'Events';
+		priority: 40;
 		items: [ self events ];
 		column: 'Type' text: #type;
 		column: 'Repository' text: #repoName;

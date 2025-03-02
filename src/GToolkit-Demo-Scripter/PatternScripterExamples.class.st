@@ -501,11 +501,11 @@ PatternScripterExamples >> wrappedGitHubOrganizationDataScript [
 	scripter doubleClick
 		label: 'Double-click on the row';
 		play.
-	scripter click
+	"scripter click
 		label: 'Select the 2nd (Contributors) view';
 		id: GtPagerPageElementId index: 2;
 		id: #bar index: 2;
-		play.
+		play."
 	^ scripter elementWithoutParent
 ]
 

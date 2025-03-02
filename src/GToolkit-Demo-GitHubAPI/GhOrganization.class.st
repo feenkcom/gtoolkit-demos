@@ -17,6 +17,7 @@ GhOrganization >> gtEventsFor: aView [
 	<gtView>
 	^ aView columnedList
 		title: 'Events';
+		priority: 50;
 		items: [ self events ];
 		column: 'Type' text: #type;
 		column: 'Repository' text: #repoName;
