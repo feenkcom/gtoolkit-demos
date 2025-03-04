@@ -97,12 +97,9 @@ PrioritySlideshow class >> gtSlideMethodsListViewFor: aView [
 
 { #category : #utility }
 PrioritySlideshow class >> openInSpace [
-	| slideshow slideshowViewModel |
-	slideshow := self new gtPresenterSlideshow.
-	slideshowViewModel := GtPresenterSlideShowViewModel new slideShow: slideshow.
 	^ BlSpace new
 		withSceneDriller;
-		addChild: (GtPresenterSlideShowElement new slideShowViewModel: slideshowViewModel);
+		addChild: self slideShowElement;
 		show
 ]
 
@@ -114,6 +111,14 @@ PrioritySlideshow class >> show [
 { #category : #presentation }
 PrioritySlideshow class >> show: aSelector [
 	^ self new perform: aSelector with: GtLiveSlide new
+]
+
+{ #category : #utility }
+PrioritySlideshow class >> slideShowElement [
+	| slideshow slideshowViewModel |
+	slideshow := self new gtPresenterSlideshow.
+	slideshowViewModel := GtPresenterSlideShowViewModel new slideShow: slideshow.
+	^ GtPresenterSlideShowElement new slideShowViewModel: slideshowViewModel
 ]
 
 { #category : #utility }
@@ -307,6 +312,18 @@ PrioritySlideshow >> gtDatabaseFor: aView [
 		view: #gtLiveFor:;
 		actionUpdateButton;
 		updateWhen: SlideshowMethodUpdated in: self announcer
+]
+
+{ #category : #'gt inspector' }
+PrioritySlideshow >> gtDefaultInspectorTool [
+	^ self slideMethods isEmpty
+		ifTrue: [ super gtDefaultInspectorTool ]
+		ifFalse: [ GtPhlowCompositeTool new
+				addTool: super gtDefaultInspectorTool;
+				addTool: (GtPhlowExplicitTool new
+						withIconAptitude;
+						icon: BrGlamorousVectorIcons play;
+						stencil: [ self gtPresenterSlideshow ]) ]
 ]
 
 { #category : #view }
