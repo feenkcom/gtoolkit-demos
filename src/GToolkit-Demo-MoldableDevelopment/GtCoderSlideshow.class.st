@@ -589,8 +589,16 @@ GtCoderSlideshow >> createMethodExplanationWithLinks [
 			s
 				label: 'Click add method button';
 				id: GtPharoAddNewMethodButtonId ].
+				
+	aScripter menuStep 
+		keepPermanentlyDropdownInScene;
+		// GtPharoAddNewMethodButtonId;
+		play.
 
 	classCoderElement := aScripter rootWithoutParent.
+	classCoderElement constraintsDo: [ :c | 
+		c horizontal matchParent.
+		c vertical matchParent ].
 
 	newFrameTarget := (classCoderElement query
 			// GtSourceCoderExpandedContentElement) anyOne.
