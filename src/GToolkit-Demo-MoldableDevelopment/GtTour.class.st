@@ -1073,7 +1073,7 @@ GtTour >> treemapWithViewsAndExamples [
 	| tree |
 	tree := GtNestedTreeBuilder new
 			data: (Smalltalk allClassesAndTraits select: [:c | 
-			{'Gt'.'Bl'.'Br'} anySatisfy: [:p |c name beginsWith: p]]);
+			({'Gt'.'Bl'.'Br'. 'Le'} anySatisfy: [:p |c name beginsWith: p]) "and: [ c methods noneSatisfy: [:m | m isGTExampleMethod ] ]"]);
 		groupBy: [ :aClass | aClass package ];
 		groupBy: [ :aClass | aClass package classTags detect: [ :e | e hasClass: aClass ] ];
 		weight: [ :aClass | aClass methods size max: 1];
