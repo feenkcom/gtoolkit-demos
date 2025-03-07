@@ -885,6 +885,7 @@ GtTour >> scripterWithElaborateScenario [
 		setPageAt: 1 widthInSpaceRatio: 1/3;
 		play.
 	scripter methodCoders
+		scrollToCompiledMethod: moveTokenMethod;
 		forCompiledMethod: moveTokenMethod do: [ :aMethodCoderStep |
 			aMethodCoderStep shortcut
 				combination: BlKeyCombination primaryN;
