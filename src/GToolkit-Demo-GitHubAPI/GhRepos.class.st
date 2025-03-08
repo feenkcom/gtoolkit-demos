@@ -35,9 +35,10 @@ GhRepos >> items [
 
 { #category : #accessing }
 GhRepos >> repos [
-	^ repos
-		ifNil: [ self assertInvariant.
-			self repos: (rawData collect: [ :each | GhRepo new rawData: each ]) ]
+	^ repos ifNil: [ 
+		self assertInvariant.
+		self repos: (rawData collect: [ :each | GhRepo new rawData: each ]).
+		repos ]
 ]
 
 { #category : #accessing }
