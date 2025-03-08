@@ -95,6 +95,18 @@ GhRepo >> gtGitAction: anAction [
 				spawnTool: (GtGitPhlowTool new repository: (GtGitRepository forRepoNamed: self name)) ]
 ]
 
+{ #category : #views }
+GhRepo >> gtReleasesFor: aView [
+	<gtView>
+	^ aView columnedList
+		title: 'Releases';
+		priority: 50;
+		items: [ self releases ];
+		column: 'Release' text: #tagName;
+		column: 'Published at' text: #publishedAt;
+		column: 'Created at' text: #createdAt
+]
+
 { #category : #accessing }
 GhRepo >> htmlUrl [
 	^ rawData at: 'html_url'
@@ -108,4 +120,12 @@ GhRepo >> name [
 { #category : #accessing }
 GhRepo >> numberOfOpenIssues [
 	^ rawData at: 'open_issues'
+]
+
+{ #category : #accessing }
+GhRepo >> releases [
+	^ self 
+		createFrom: 'releases_url'
+		with: [ :data | GhReleases new rawData: data ] 
+		onError: [ GhReleases new ]
 ]
