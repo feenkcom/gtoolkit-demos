@@ -107,9 +107,22 @@ GhRepo >> gtReleasesFor: aView [
 		column: 'Created at' text: #createdAt
 ]
 
+{ #category : #views }
+GhRepo >> gtWebViewFor: aView [
+	<gtView>
+	^ aView explicit
+		title: 'WebView';
+		stencil: [ GtWebViewElement new url: self htmlUrl ]
+]
+
 { #category : #accessing }
 GhRepo >> htmlUrl [
 	^ rawData at: 'html_url'
+]
+
+{ #category : #accessing }
+GhRepo >> licenseName [
+	^ rawData at: 'license' ifPresent: [:l | l ifNil: [ 'N/A' ] ifNotNil: [ l at: 'name' ] ]
 ]
 
 { #category : #accessing }
