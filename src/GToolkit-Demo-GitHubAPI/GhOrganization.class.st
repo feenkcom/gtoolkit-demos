@@ -34,7 +34,8 @@ GhOrganization >> gtReposFor: aView [
 		items: [ self repos ];
 		column: 'Repo' text: #name;
 		column: 'Description' text: #description;
-		column: 'Open issues' text: #numberOfOpenIssues
+		column: 'Open issues' text: #numberOfOpenIssues;
+		column: 'License' text: #licenseName
 ]
 
 { #category : #search }
