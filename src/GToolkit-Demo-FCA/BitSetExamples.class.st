@@ -7,11 +7,13 @@ Class {
 { #category : #accessing }
 BitSetExamples >> foo [
 	<gtExample>
+	<noTest>
 	^ 'foo' asBitSet
 ]
 
 { #category : #accessing }
 BitSetExamples >> fooRemoveF [
+	<noTest>
 	<gtExample>
 	| result |
 	result := 'foo' asBitSet.
@@ -23,6 +25,7 @@ BitSetExamples >> fooRemoveF [
 { #category : #accessing }
 BitSetExamples >> fooSubsetFoobar [
 	<gtExample>
+	<noTest>
 	| foo foobar |
 	foo := self foo.
 	foobar := self foobar.
@@ -40,6 +43,7 @@ BitSetExamples >> fooSubsetFoobar [
 { #category : #accessing }
 BitSetExamples >> fooUnionBar [
 	<gtExample>
+	<noTest>
 	| union |
 	union := self foo union: 'bar'.
 	self assert: union equals: self foobar.
@@ -49,12 +53,14 @@ BitSetExamples >> fooUnionBar [
 { #category : #accessing }
 BitSetExamples >> foobar [
 	<gtExample>
+	<noTest>
 	^ 'foobar' asBitSet
 ]
 
 { #category : #accessing }
 BitSetExamples >> foobarDifferenceBaz [
 	<gtExample>
+	<noTest>
 	| foobar difference |
 	foobar := self fooUnionBar.
 	difference := foobar difference: 'baz'.
@@ -65,6 +71,7 @@ BitSetExamples >> foobarDifferenceBaz [
 { #category : #accessing }
 BitSetExamples >> foobarIncludesAllFoo [
 	<gtExample>
+	<noTest>
 	| foobar difference |
 	foobar := self fooUnionBar.
 	self assert: (foobar includesAll: 'foo').
@@ -74,6 +81,7 @@ BitSetExamples >> foobarIncludesAllFoo [
 { #category : #accessing }
 BitSetExamples >> foobarIntersectFoobaz [
 	<gtExample>
+	<noTest>
 	| foobar intersection |
 	foobar := self fooUnionBar.
 	intersection := foobar intersection: 'foobaz'.
@@ -84,6 +92,7 @@ BitSetExamples >> foobarIntersectFoobaz [
 { #category : #accessing }
 BitSetExamples >> foobarRemoveAllBaz [
 	<gtExample>
+	<noTest>
 	| result |
 	result := 'foobar' asBitSet.
 	result removeAll: 'baz'.
@@ -94,12 +103,14 @@ BitSetExamples >> foobarRemoveAllBaz [
 { #category : #accessing }
 BitSetExamples >> hello [
 	<gtExample>
+	<noTest>
 	^ 'hello' asBitSet
 ]
 
 { #category : #accessing }
 BitSetExamples >> helloBasicSetOperations [
 	<gtExample>
+	<noTest>
 	| hello mapResult copy |
 	hello := self hello.
 
@@ -129,6 +140,7 @@ BitSetExamples >> helloBasicSetOperations [
 { #category : #accessing }
 BitSetExamples >> helloEquality [
 	<gtExample>
+	<noTest>
 	| hello helo foo |
 	hello := self hello.
 	helo := 'helo' asBitSet.
@@ -150,6 +162,7 @@ BitSetExamples >> helloWithReset [
 	"For the comparison, helo will be converted to a BitSet with the same map."
 
 	<gtExample>
+	<noTest>
 	| hello helo |
 	hello := self hello.
 
