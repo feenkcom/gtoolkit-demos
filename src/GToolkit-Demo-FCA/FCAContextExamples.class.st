@@ -221,7 +221,7 @@ FCAContextExamples >> mammalsData [
 { #category : #example }
 FCAContextExamples >> mammalsLatticeWithPositions [
 	"A manually laid-out version of the lattice.
-	We clear the BitSet map to esnure that we get the same order of nodes each time."
+	We clear the BitSet map to ensure that we get the same order of nodes each time."
 
 	<gtExample>
 	BitSet reset.

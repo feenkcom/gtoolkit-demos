@@ -1,6 +1,9 @@
 "
 I am a Set where each element is represented as a bit in my `bits` slot (a small or large integer).
 My `map` slot maps the bits to the objects in my set.
+
+*Caveat:* the map to be shared across instances of BitSet is stored as a class variable. 
+If the  map gets large, it won't get garbage-collected. Use {{gtMethod:name=BitSet class>>#reset}} to clear it.
 "
 Class {
 	#name : #BitSet,
@@ -37,7 +40,8 @@ BitSet class >> newFrom: aCollection [
 
 { #category : #cache }
 BitSet class >> reset [
-	"Clear the cache. Only needed if there are many BitSets with different maps."
+	"Clear the cache. Only needed if there is a need for many BitSets with different maps
+	(or to aid in garbage collection)."
 
 	^ cachedMap := nil
 ]
