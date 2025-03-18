@@ -22,7 +22,8 @@ Class {
 		'properties',
 		'concepts',
 		'elementPrintMessage',
-		'propertyPrintMessage'
+		'propertyPrintMessage',
+		'bitSetMap'
 	],
 	#category : #'GToolkit-Demo-FCA-Model'
 }
@@ -46,28 +47,10 @@ FCAContext class >> contextForDatabaseNamed: databaseName [
 FCAContext class >> elements: anElementCollection properties: aPropertyCollection propertyMap: anElementToPropertiesBlock [
 	"Create wrapped elements and properties for the input data, and initialize their properties and elements slots with BitSets representing the incidence."
 
-	| context wrappedElements wrappedProperties propertyMap |
-	wrappedElements := (anElementCollection
-			collect: [ :each | FCAElement for: each ]) asBitSet.
-	wrappedProperties := (aPropertyCollection
-			collect: [ :each | FCAProperty for: each ]) asBitSet.
-
-	context := self new
-			elements: wrappedElements;
-			properties: wrappedProperties.
-
-	propertyMap := (wrappedProperties asOrderedCollection
-			collect: [ :p | p value -> p ]) asDictionary.
-	wrappedElements
-		do: [ :elt | 
-			| props |
-			props := (((anElementToPropertiesBlock value: elt value)
-					collect: [ :p | propertyMap at: p ifAbsent: nil ]) select: #notNil)
-					asBitSet.
-			elt properties: props.
-			props do: [ :prop | prop elements add: elt ] ].
-
-	^ context
+	^ self new
+		initializeElements: anElementCollection
+		properties: aPropertyCollection
+		propertyMap: anElementToPropertiesBlock
 ]
 
 { #category : #accessing }
@@ -173,6 +156,20 @@ FCAContext >> bigraphFor: mondrian [
 	^ mondrian
 ]
 
+{ #category : #utility }
+FCAContext >> bitSetFor: aCollection [
+	"Use this instead of `aCollection asBitSet` to avoid using the global BitSet cachedMap"
+
+	^ self emptyBitSet withAll: aCollection
+]
+
+{ #category : #accessing }
+FCAContext >> bitSetMap [
+	"I am a private map for BitSet instances."
+
+	^ bitSetMap ifNil: [ bitSetMap := Dictionary new ]
+]
+
 { #category : #computing }
 FCAContext >> bottomUpBuilder [
 	^ FCABottomUpConceptBuilder new
@@ -251,6 +248,15 @@ FCAContext >> elements [
 FCAContext >> elements: aBitSet [
 	elements := aBitSet.
 	elements do: [ :each | each context: self ]
+]
+
+{ #category : #utility }
+FCAContext >> emptyBitSet [
+	"An empty BitSet with our private map."
+
+	^ BitSet new
+		map: self bitSetMap;
+		yourself
 ]
 
 { #category : #accessing }
@@ -360,6 +366,33 @@ FCAContext >> gtPropertiesFor: aView [
 			width: 45;
 		column: 'Properties' text: [ :item | item printString ];
 		actionUpdateButton
+]
+
+{ #category : #'as yet unclassified' }
+FCAContext >> initializeElements: anElementCollection properties: aPropertyCollection propertyMap: anElementToPropertiesBlock [
+	"Create wrapped elements and properties for the input data, and initialize their properties and elements slots with BitSets representing the incidence."
+
+	| wrappedElements wrappedProperties propertyMap |
+	wrappedElements := self
+			bitSetFor: (anElementCollection collect: [ :each | FCAElement for: each
+			in: self ]).
+	wrappedProperties := self
+			bitSetFor: (aPropertyCollection collect: [ :each | FCAProperty for: each in: self ]).
+
+	self
+		elements: wrappedElements;
+		properties: wrappedProperties.
+
+	propertyMap := (wrappedProperties asOrderedCollection
+			collect: [ :p | p value -> p ]) asDictionary.
+	wrappedElements
+		do: [ :elt | 
+			| props |
+			props := self
+					bitSetFor: (((anElementToPropertiesBlock value: elt value)
+							collect: [ :p | propertyMap at: p ifAbsent: nil ]) select: #notNil).
+			elt properties: props.
+			props do: [ :prop | prop elements add: elt ] ]
 ]
 
 { #category : #accessing }

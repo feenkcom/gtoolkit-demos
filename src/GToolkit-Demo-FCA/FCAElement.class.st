@@ -13,6 +13,8 @@ Class {
 
 { #category : #'instance creation' }
 FCAElement class >> for: anObject [
+	"NB: set context later"
+
 	^ self new
 		rawElement: anObject;
 		yourself
@@ -20,7 +22,6 @@ FCAElement class >> for: anObject [
 
 { #category : #deprecated }
 FCAElement class >> for: anObject in: aContext [
-	self deprecated: 'Use for: and set context later from the context itself.'.
 	^ self new
 		rawElement: anObject;
 		context: aContext;
@@ -56,11 +57,6 @@ FCAElement >> hasProperty: aProperty [
 	^ self properties includes: aProperty
 ]
 
-{ #category : #initialization }
-FCAElement >> initialize [
-	self properties: BitSet empty
-]
-
 { #category : #testing }
 FCAElement >> isElement [
 	^ true
@@ -73,12 +69,12 @@ FCAElement >> printOn: stream [
 
 { #category : #accessing }
 FCAElement >> properties [
-	^ properties
+	^ properties ifNil: [ properties := self context emptyBitSet ]
 ]
 
 { #category : #accessing }
-FCAElement >> properties: anObject [
-	properties := anObject
+FCAElement >> properties: aBitSet [
+	properties := aBitSet
 ]
 
 { #category : #accessing }

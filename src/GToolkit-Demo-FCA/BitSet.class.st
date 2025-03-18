@@ -4,6 +4,8 @@ My `map` slot maps the bits to the objects in my set.
 
 *Caveat:* the map to be shared across instances of BitSet is stored as a class variable. 
 If the  map gets large, it won't get garbage-collected. Use {{gtMethod:name=BitSet class>>#reset}} to clear it.
+
+It is also possible to avoid using the cached map. See {{gtClass:name=BitSetExamples}}. 
 "
 Class {
 	#name : #BitSet,

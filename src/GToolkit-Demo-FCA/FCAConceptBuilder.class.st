@@ -19,7 +19,7 @@ FCAConceptBuilder class >> isAbstract [
 
 { #category : #accessing }
 FCAConceptBuilder >> bottom [
-	^ bottom ifNil: [ self context closureFor: BitSet empty ]
+	^ bottom ifNil: [ self context closureFor: self context emptyBitSet ]
 ]
 
 { #category : #accessing }
