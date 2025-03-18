@@ -113,7 +113,7 @@ FCAConcept >> extentDelta [
 
 	^ self extent
 		difference: ((self smaller collect: #extent)
-				inject: BitSet empty
+				inject: self context emptyBitSet
 				into: [ :union :each | union union: each ])
 ]
 
@@ -236,7 +236,7 @@ FCAConcept >> intentDelta [
 
 	^ self intent
 		difference: ((self bigger collect: #intent)
-				inject: BitSet empty
+				inject: self context emptyBitSet
 				into: [ :union :each | union union: each ])
 ]
 

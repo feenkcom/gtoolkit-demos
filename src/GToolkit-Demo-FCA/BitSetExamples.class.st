@@ -1,3 +1,6 @@
+"
+NB: These examples avoid polluting the `cachedMap` class variable of {{gtClass:name=BitSet}} by always explicitly setting the map of each BitSet instance created.
+"
 Class {
 	#name : #BitSetExamples,
 	#superclass : #Object,

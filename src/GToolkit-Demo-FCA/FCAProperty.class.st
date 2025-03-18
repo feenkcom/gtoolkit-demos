@@ -12,7 +12,8 @@ Class {
 }
 
 { #category : #'instance creation' }
-FCAProperty class >> for: anObject [ 
+FCAProperty class >> for: anObject [
+	"NB: Set context later"
 	^ self new
 		rawProperty: anObject;
 		yourself
@@ -20,7 +21,6 @@ FCAProperty class >> for: anObject [
 
 { #category : #deprecated }
 FCAProperty class >> for: anObject in: aContext [
-	self deprecated: 'Use for: and set context later from the context itself.'.
 	^ self new
 		rawProperty: anObject;
 		context: aContext;
@@ -34,12 +34,12 @@ FCAProperty >> bigraphNodeColor [
 
 { #category : #accessing }
 FCAProperty >> elements [
-	^ elements
+	^ elements ifNil: [ elements := self context emptyBitSet ]
 ]
 
 { #category : #accessing }
-FCAProperty >> elements: anObject [
-	elements := anObject
+FCAProperty >> elements: aBitSet [
+	elements := aBitSet
 ]
 
 { #category : #accessing }
@@ -54,11 +54,6 @@ FCAProperty >> gtElementsFor: aView [
 			width: 45;
 		column: 'Elements' text: [ :item | item printString ];
 		actionUpdateButton
-]
-
-{ #category : #initialization }
-FCAProperty >> initialize [
-	self elements: BitSet empty
 ]
 
 { #category : #testing }

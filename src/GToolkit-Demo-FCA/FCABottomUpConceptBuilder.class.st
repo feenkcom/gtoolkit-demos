@@ -14,7 +14,7 @@ FCABottomUpConceptBuilder >> atomicConcepts [
 	self context elements
 		do: [ :anElement | 
 			| concept |
-			concept := self context closureFor: {anElement} asBitSet.
+			concept := self context closureFor: (self context bitSetFor: {anElement}).
 			atomic add: concept ].
 	^ atomic
 ]
