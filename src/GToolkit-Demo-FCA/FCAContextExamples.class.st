@@ -9,7 +9,7 @@ FCAContextExamples >> bottomConcept [
 	<gtExample>
 	| bottom mammals |
 	mammals := self mammals.
-	bottom := mammals closureFor: BitSet empty.
+	bottom := mammals closureFor: self emptyBitSet.
 	self assert: bottom intent = mammals properties.
 	^ bottom
 ]
@@ -42,11 +42,21 @@ FCAContextExamples >> dolphins [
 FCAContextExamples >> dolphinsClosureConcept [
 	<gtExample>
 	| dolphinsClosure |
-	dolphinsClosure := self mammals closureFor: {self dolphins} asBitSet.
+	dolphinsClosure := self mammals
+			closureFor: (self newBitSetWithAll: {self dolphins}).
 	self
 		assert: (dolphinsClosure intent asSet collect: #value)
 		equals: #(marine intelligent) asSet.
 	^ dolphinsClosure
+]
+
+{ #category : #'as yet unclassified' }
+FCAContextExamples >> emptyBitSet [
+	"Empty BitSet with a new, empty map to avoid polluting BitSet>>#cachedMap."
+	<gtExample>
+	| bitSet |
+	bitSet := BitSetExamples new emptyBitSet.
+	^ bitSet
 ]
 
 { #category : #accessing }
@@ -66,7 +76,8 @@ FCAContextExamples >> gibbons [
 FCAContextExamples >> gibbonsClosureConcept [
 	<gtExample>
 	| gibbonsClosure |
-	gibbonsClosure := self mammals closureFor: {self gibbons} asBitSet.
+	gibbonsClosure := self mammals
+			closureFor: (self newBitSetWithAll: {self gibbons}).
 
 	self
 		assert: (gibbonsClosure intent asSet collect: #value)
@@ -105,7 +116,8 @@ FCAContextExamples >> humans [
 FCAContextExamples >> humansClosureConcept [
 	<gtExample>
 	| humansClosure |
-	humansClosure := self mammals closureFor: {self humans} asBitSet.
+	humansClosure := self mammals
+			closureFor: (self newBitSetWithAll: {self humans}).
 	self
 		assert: (humansClosure intent asSet collect: #value)
 		equals: #(thumbed intelligent) asSet.
@@ -158,7 +170,9 @@ FCAContextExamples >> intelligentConcept [
 	| intelligentConcept |
 	intelligentConcept := self mammals closureFor: self intelligent elements.
 
-	self assert: intelligentConcept intent equals: {self intelligent} asBitSet.
+	self
+		assert: intelligentConcept intent
+		equals: (self newBitSetWithAll: {self intelligent}).
 
 	^ intelligentConcept
 ]
@@ -168,7 +182,7 @@ FCAContextExamples >> joinHumansDolphins [
 	<gtExample>
 	| humans dolphins bottom joinHumansDolphins |
 	humans := FCAContextExamples new humansClosureConcept.
-	dolphins := self mammals closureFor: {self dolphins} asBitSet.
+	dolphins := self mammals closureFor: (self newBitSetWithAll: {self dolphins}).
 	bottom := FCAContextExamples new bottomConcept.
 
 	joinHumansDolphins := humans join: dolphins.
@@ -220,11 +234,9 @@ FCAContextExamples >> mammalsData [
 
 { #category : #example }
 FCAContextExamples >> mammalsLatticeWithPositions [
-	"A manually laid-out version of the lattice.
-	We clear the BitSet map to esnure that we get the same order of nodes each time."
+	"A manually laid-out version of the lattice."
 
 	<gtExample>
-	BitSet reset.
 	^ self mammals
 		latticeFor: GtMondrian new
 		withPositions: {378.9166666666667 @ 453.318827311198.
@@ -265,13 +277,21 @@ FCAContextExamples >> meetHumansGibbons [
 	^ meetHumansGibbons
 ]
 
+{ #category : #utility }
+FCAContextExamples >> newBitSetWithAll: aCollection [
+	"Return a new BitSet with a new map.
+	NB: We use this instead of #asBitSet to avoid polluting BitSet>>#cachedMap."
+	^ self emptyBitSet withAll: aCollection
+]
+
 { #category : #accessing }
 FCAContextExamples >> sigmaCatsGibbons [
 	<gtExample>
 	| sigmaCatsGibbons |
 	sigmaCatsGibbons := self mammals
-			sigma: {self cats.
-					self gibbons} asBitSet.
+			sigma: (self
+					newBitSetWithAll: {self cats.
+							self gibbons}).
 	self
 		assert: (sigmaCatsGibbons asSet collect: #value)
 		equals: #(hairCovered) asSet.
@@ -282,7 +302,7 @@ FCAContextExamples >> sigmaCatsGibbons [
 FCAContextExamples >> sigmaDolphins [
 	<gtExample>
 	| sigmaDolphins |
-	sigmaDolphins := self mammals sigma: (BitSet with: self dolphins).
+	sigmaDolphins := self mammals sigma: (self newBitSetWithAll: {self dolphins}).
 	self
 		assert: (sigmaDolphins asSet collect: #value)
 		equals: #(marine intelligent) asSet.
@@ -294,7 +314,7 @@ FCAContextExamples >> sigmaEmpty [
 	<gtExample>
 	| sigmaEmpty mammals |
 	mammals := self mammals.
-	sigmaEmpty := mammals sigma: BitSet empty.
+	sigmaEmpty := mammals sigma: self emptyBitSet.
 	self
 		assert: (sigmaEmpty asSet collect: #value)
 		equals: (mammals properties asSet collect: #value).
@@ -306,7 +326,7 @@ FCAContextExamples >> tauEmpty [
 	<gtExample>
 	| tauEmpty mammals |
 	mammals := self mammals.
-	tauEmpty := mammals tau: BitSet empty.
+	tauEmpty := mammals tau: self emptyBitSet.
 	self assert: tauEmpty equals: mammals elements.
 	^ tauEmpty
 ]
@@ -315,7 +335,7 @@ FCAContextExamples >> tauEmpty [
 FCAContextExamples >> tauHairCovered [
 	<gtExample>
 	| tauHairCovered |
-	tauHairCovered := self mammals tau: {self hairCovered} asBitSet.
+	tauHairCovered := self mammals tau: (self newBitSetWithAll: {self hairCovered}).
 	self
 		assert: (tauHairCovered asSet collect: #value)
 		equals: #(Gibbons Dogs Cats) asSet.
