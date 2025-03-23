@@ -196,17 +196,17 @@ GtLudoCodeDocumentationExamples >> modelClassesV0 [
 
 { #category : #accessing }
 GtLudoCodeDocumentationExamples >> paintClassDependenciesWith: m [
-
 	m nodes
 		stencil: [ :c | 
 			BlElement new
 				geometry: BlCircleGeometry new;
 				background: Color black;
 				size: 5 @ 5;
-				aptitude: (BrGlamorousWithLabelTooltipAptitude new text: c name);
-				when: BlClickEvent do: [ :e | 
-					e consumed: true.
-					e target phlow spawnTool: (GtClassCoderTool forClass: c) ] ];
+				aptitude: (BrGlamorousWithExplicitTooltipAptitude text: c name);
+				when: BlClickEvent
+					do: [ :e | 
+						e consumed: true.
+						e target phlow spawnTool: (GtClassCoderTool forClass: c) ] ];
 		with: GtLudoRecordingGame package classes.
 	m nodes
 		stencil: [ :c | 
@@ -215,22 +215,21 @@ GtLudoCodeDocumentationExamples >> paintClassDependenciesWith: m [
 				border: (BlBorder paint: Color gray);
 				background: Color white;
 				size: 5 @ 5;
-				aptitude:
-					(BrGlamorousWithLabelTooltipAptitude new text: [ c name ]);
-				when: BlClickEvent do: [ :e | 
-					e consumed: true.
-					e target phlow spawnTool: (GtClassCoderTool forClass: c) ] ];
-		with: { 
-				BlElement.
-				Announcement }.
+				aptitude: (BrGlamorousWithExplicitTooltipAptitude text: [ c name ]);
+				when: BlClickEvent
+					do: [ :e | 
+						e consumed: true.
+						e target phlow spawnTool: (GtClassCoderTool forClass: c) ] ];
+		with: {BlElement.
+				Announcement}.
 	m edges
 		stencil: [ :c | 
 			BlLineElement new
 				zIndex: -1;
 				border: (BlBorder paint: (Color gray alpha: 0.4));
 				fromHead: (BlArrowheadTriangle new
-						 scale: 2;
-						 border: (BlBorder paint: (Color gray alpha: 0.4))) ];
+						scale: 2;
+						border: (BlBorder paint: (Color gray alpha: 0.4))) ];
 		connectFrom: [ :c | c superclass ].
 	m edges
 		stencil: [ :c | 
@@ -238,10 +237,8 @@ GtLudoCodeDocumentationExamples >> paintClassDependenciesWith: m [
 				zIndex: -1;
 				curvatureFraction: 0.2;
 				border: (BlBorder paint: (Color orange alpha: 0.4));
-				toHead: (BlArrowheadSimpleArrow new border:
-							 (BlBorder paint: (Color orange alpha: 0.4))) ];
-		connectToAll: [ :c | 
-		(c methods flatCollectAsSet: #gtReferencedClasses) \ { c } ].
+				toHead: (BlArrowheadSimpleArrow new border: (BlBorder paint: (Color orange alpha: 0.4))) ];
+		connectToAll: [ :c | (c methods flatCollectAsSet: #gtReferencedClasses) \ {c} ].
 	m layout force nbIterations: 100
 ]
 
@@ -269,7 +266,7 @@ GtLudoCodeDocumentationExamples >> paintClassHierarchyWith: mondrian forClasses:
 									(GtMethodCoderTool compiledMethod: method) ];
 						text: method selector;
 						aptitude: BrGlamorousLabelAptitude;
-						addAptitude: (BrGlamorousWithTooltipAptitude content: [ 
+						addAptitude: (BrGlamorousWithExplicitTooltipAptitude content: [ 
 									 BrLabel new
 										 text: method selector;
 										 aptitude: BrGlamorousLabelAptitude ]);
@@ -309,52 +306,44 @@ GtLudoCodeDocumentationExamples >> paintClassLabeledDependenciesWith: m forClass
 	"
 
 	m nodes
-		stencil:
-				[ :class | 
-					GtMondrianUMLClassElement new
-						label:
-								((class name withoutPrefix: 'GtLudo') asRopedText
-										glamorousRegularFont;
-										fontSize: 18;
-										bold);
-						when: BlClickEvent
-							do:
-								[ :e | 
-									e consumed: true.
-									e target phlow spawnTool: (GtClassCoderTool forClass: class) ] ];
+		stencil: [ :class | 
+			GtMondrianUMLClassElement new
+				label: ((class name withoutPrefix: 'GtLudo') asRopedText
+						glamorousRegularFont;
+						fontSize: 18;
+						bold);
+				when: BlClickEvent
+					do: [ :e | 
+						e consumed: true.
+						e target phlow spawnTool: (GtClassCoderTool forClass: class) ] ];
 		with: classes.
 	m nodes
-		stencil:
-				[ :c | 
-					BlElement new
-						geometry: BlCircleGeometry new;
-						border: (BlBorder paint: Color black);
-						background: Color white;
-						size: 5 @ 5;
-						aptitude: (BrGlamorousWithLabelTooltipAptitude new text: [ c name ]);
-						when: BlClickEvent
-							do:
-								[ :e | 
-									e consumed: true.
-									e target phlow spawnTool: (GtClassCoderTool forClass: c) ] ];
+		stencil: [ :c | 
+			BlElement new
+				geometry: BlCircleGeometry new;
+				border: (BlBorder paint: Color black);
+				background: Color white;
+				size: 5 @ 5;
+				aptitude: (BrGlamorousWithExplicitTooltipAptitude text: [ c name ]);
+				when: BlClickEvent
+					do: [ :e | 
+						e consumed: true.
+						e target phlow spawnTool: (GtClassCoderTool forClass: c) ] ];
 		with: roots.
 	m edges
-		stencil:
-				[ :class | 
-					BlLineElement new
-						border: (BlBorder paint: (Color black alpha: 0.4));
-						fromHead:
-								(BlArrowheadTriangle new
-										scale: 5;
-										border: (BlBorder paint: (Color black alpha: 0.4))) ];
+		stencil: [ :class | 
+			BlLineElement new
+				border: (BlBorder paint: (Color black alpha: 0.4));
+				fromHead: (BlArrowheadTriangle new
+						scale: 5;
+						border: (BlBorder paint: (Color black alpha: 0.4))) ];
 		connectFrom: [ :c | c superclass ].
 	m edges
-		stencil:
-				[ :c | 
-					BlParabollaArcElement new
-						zIndex: -1;
-						curvatureFraction: 0.2;
-						border: (BlBorder paint: (Color orange alpha: 0.4));
-						toHead: (BlArrowheadSimpleArrow new border: (BlBorder paint: (Color orange alpha: 0.4))) ];
+		stencil: [ :c | 
+			BlParabollaArcElement new
+				zIndex: -1;
+				curvatureFraction: 0.2;
+				border: (BlBorder paint: (Color orange alpha: 0.4));
+				toHead: (BlArrowheadSimpleArrow new border: (BlBorder paint: (Color orange alpha: 0.4))) ];
 		connectToAll: [ :c | (c methods flatCollectAsSet: #gtReferencedClasses) \ {c} ]
 ]

@@ -1047,7 +1047,7 @@ GtTour >> treemapWithBook [
 					anElement phlow
 						spawnTool: aLeafContext model allOutgoingExplicitLinks anyOne target asPhlowTool ].
 			anElement
-				aptitude: ((BrGlamorousWithTooltipAptitude
+				aptitude: ((BrGlamorousWithExplicitTooltipAptitude
 						content: [ BrLabel new
 								text: aLeafContext model allOutgoingExplicitLinks anyOne target title;
 								aptitude: BrGlamorousLabelAptitude ]) showDelay: 300 milliSeconds)
@@ -1101,7 +1101,7 @@ GtTour >> treemapWithViewsAndExamples [
 			isGtExample := class methods anySatisfy: [ :aMethod | 
 				aMethod isGTExampleMethod ].
 			anElement when: BlClickEvent do: [ :e | e target phlow spawnTool: (GtClassCoderTool forClass: class) ].
-			anElement aptitude: (BrGlamorousWithTooltipAptitude content: (self tooltip: class name)) .
+			anElement aptitude: (BrGlamorousWithExplicitTooltipAptitude content: (self tooltip: class name)) .
 			anElement border: (BlBorder 
 				paint: (Color gray alpha: 0.5 / aLeafContext level) 
 				width: 1).

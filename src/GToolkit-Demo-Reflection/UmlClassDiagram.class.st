@@ -181,7 +181,7 @@ UmlClassDiagram >> rootClassStencil [
 		border: (BlBorder paint: Color black);
 		background: Color white;
 		size: 5 @ 5;
-		aptitude: (BrGlamorousWithLabelTooltipAptitude new text: [ c name ]);
+		aptitude: (BrGlamorousWithExplicitTooltipAptitude text: [ c name ]);
 		when: BlClickEvent
 			do: [ :e | 
 				e consumed: true.
