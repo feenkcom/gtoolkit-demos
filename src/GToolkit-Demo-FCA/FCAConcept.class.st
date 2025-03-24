@@ -274,7 +274,7 @@ FCAConcept >> mondrianNodeElement [
 		size: size @ size;
 		border: (BlBorder paint: Color black width: 0.2);
 		background: background;
-		aptitude: (BrGlamorousWithTooltipAptitude content: self tooltip)
+		aptitude: (BrGlamorousWithExplicitTooltipAptitude content: self tooltip)
 ]
 
 { #category : #accessing }

@@ -169,7 +169,7 @@ AWebsite >> mapFor: aMondrian from: aRootNode with: aPageCollection [
 						ifFalse: [ (self rootPages includes: each)
 								ifTrue: [ Color blue ]
 								ifFalse: [ (self reachable includes: each) ifTrue: [ Color green ] ifFalse: [ Color red ] ] ]);
-				aptitude: (BrGlamorousWithTooltipAptitude content: each tooltip) ];
+				aptitude: (BrGlamorousWithExplicitTooltipAptitude content: each tooltip) ];
 		with: aPageCollection.
 
 	aMondrian edges

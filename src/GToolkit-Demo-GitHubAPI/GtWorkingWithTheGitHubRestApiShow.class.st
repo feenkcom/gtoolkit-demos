@@ -11,75 +11,84 @@ GtWorkingWithTheGitHubRestApiShow >> apiExamples [
 	<gtExample>
 	<noTest>
 	| firstExampleContainer secondExampleContainer thirdExampleContainer |
-
 	firstExampleContainer := BlElement new
-		layout: BlLinearLayout vertical;
-		constraintsDo: [ :c |
-			c vertical matchParent.
-			c horizontal matchParent];
-		margin: (BlInsets all: 5);
-		addChild: (BrButton new
-			margin: (BlInsets all: 5);
-			aptitude: (BrGlamorousLinkSquaredButtonWithLabelAptitude new fontSize: 16) + (BrGlamorousWithLabelTooltipAptitude new text: 'https://api.github.com/orgs/feenkcom');
-			label: 'https://api.github.com/orgs/feenkcom';
-			action: [ :aButton | WebBrowser openOn: 'https://api.github.com/orgs/feenkcom']);
-		addChild: (BlElement new
-			constraintsDo: [ :c |
+			layout: BlLinearLayout vertical;
+			constraintsDo: [ :c | 
 				c vertical matchParent.
-				c horizontal matchParent];
+				c horizontal matchParent ];
 			margin: (BlInsets all: 5);
-			aptitude: BrShadowAptitude;
-			background: Color white;
-			addChild: ((self responseForFeenkOrg gtJsonFor: GtPhlowView empty) asElementDo: [ :e | e ])).
-	
+			addChild: (BrButton new
+					margin: (BlInsets all: 5);
+					aptitude: (BrGlamorousLinkSquaredButtonWithLabelAptitude new fontSize: 16)
+							+ (BrGlamorousWithExplicitTooltipAptitude
+									text: 'https://api.github.com/orgs/feenkcom');
+					label: 'https://api.github.com/orgs/feenkcom';
+					action: [ :aButton | WebBrowser openOn: 'https://api.github.com/orgs/feenkcom' ]);
+			addChild: (BlElement new
+					constraintsDo: [ :c | 
+						c vertical matchParent.
+						c horizontal matchParent ];
+					margin: (BlInsets all: 5);
+					aptitude: BrShadowAptitude;
+					background: Color white;
+					addChild: ((self responseForFeenkOrg gtJsonFor: GtPhlowView empty) asElementDo: [ :e | e ])).
+
 	secondExampleContainer := BlElement new
-		layout: BlLinearLayout vertical;
-		constraintsDo: [ :c |
-			c vertical matchParent.
-			c horizontal matchParent];
-		margin: (BlInsets all: 5);
-		addChild: (BrButton new
-			margin: (BlInsets all: 5);
-			aptitude: (BrGlamorousLinkSquaredButtonWithLabelAptitude new fontSize: 16) + (BrGlamorousWithLabelTooltipAptitude new text: 'https://api.github.com/orgs/feenkcom/repos');
-			label: 'https://api.github.com/orgs/feenkcom/repos';
-			action: [ :aButton | WebBrowser openOn: 'https://api.github.com/orgs/feenkcom/repos']);
-		addChild: (BlElement new
-			constraintsDo: [ :c |
+			layout: BlLinearLayout vertical;
+			constraintsDo: [ :c | 
 				c vertical matchParent.
-				c horizontal matchParent];
+				c horizontal matchParent ];
 			margin: (BlInsets all: 5);
-			aptitude: BrShadowAptitude;
-			background: Color white;
-			addChild: ((self responseForFeenkRepos gtJsonFor: GtPhlowView empty) asElementDo: [ :e | e ])).
+			addChild: (BrButton new
+					margin: (BlInsets all: 5);
+					aptitude: (BrGlamorousLinkSquaredButtonWithLabelAptitude new fontSize: 16)
+							+ (BrGlamorousWithExplicitTooltipAptitude
+									text: 'https://api.github.com/orgs/feenkcom/repos');
+					label: 'https://api.github.com/orgs/feenkcom/repos';
+					action: [ :aButton | WebBrowser openOn: 'https://api.github.com/orgs/feenkcom/repos' ]);
+			addChild: (BlElement new
+					constraintsDo: [ :c | 
+						c vertical matchParent.
+						c horizontal matchParent ];
+					margin: (BlInsets all: 5);
+					aptitude: BrShadowAptitude;
+					background: Color white;
+					addChild: ((self responseForFeenkRepos gtJsonFor: GtPhlowView empty)
+							asElementDo: [ :e | e ])).
 
 	thirdExampleContainer := BlElement new
-		layout: BlLinearLayout vertical;
-		constraintsDo: [ :c |
-			c vertical matchParent.
-			c horizontal matchParent];
-		margin: (BlInsets all: 5);
-		addChild: (BrButton new
-			margin: (BlInsets all: 5);
-			aptitude: (BrGlamorousLinkSquaredButtonWithLabelAptitude new fontSize: 16) + (BrGlamorousWithLabelTooltipAptitude new text: 'https://api.github.com/repos/feenkcom/gtoolkit');
-			label: 'https://api.github.com/repos/feenkcom/gtoolkit';
-			action: [ :aButton | WebBrowser openOn: 'https://api.github.com/repos/feenkcom/gtoolkit']);
-		addChild: (BlElement new
-			constraintsDo: [ :c |
+			layout: BlLinearLayout vertical;
+			constraintsDo: [ :c | 
 				c vertical matchParent.
-				c horizontal matchParent];
+				c horizontal matchParent ];
 			margin: (BlInsets all: 5);
-			aptitude: BrShadowAptitude;
-			background: Color white;
-			addChild: ((self responseForGToolkitRepo gtJsonFor: GtPhlowView empty) asElementDo: [ :e | e ])).
+			addChild: (BrButton new
+					margin: (BlInsets all: 5);
+					aptitude: (BrGlamorousLinkSquaredButtonWithLabelAptitude new fontSize: 16)
+							+ (BrGlamorousWithExplicitTooltipAptitude
+									text: 'https://api.github.com/repos/feenkcom/gtoolkit');
+					label: 'https://api.github.com/repos/feenkcom/gtoolkit';
+					action: [ :aButton | WebBrowser openOn: 'https://api.github.com/repos/feenkcom/gtoolkit' ]);
+			addChild: (BlElement new
+					constraintsDo: [ :c | 
+						c vertical matchParent.
+						c horizontal matchParent ];
+					margin: (BlInsets all: 5);
+					aptitude: BrShadowAptitude;
+					background: Color white;
+					addChild: ((self responseForGToolkitRepo gtJsonFor: GtPhlowView empty)
+							asElementDo: [ :e | e ])).
 
-	
+
 	^ BlElement new
 		layout: BlLinearLayout horizontal;
-		constraintsDo: [ :c |
+		constraintsDo: [ :c | 
 			c vertical matchParent.
-			c horizontal matchParent];
+			c horizontal matchParent ];
 		margin: (BlInsets all: 5);
-		addChildren: { firstExampleContainer. secondExampleContainer. thirdExampleContainer }.
+		addChildren: {firstExampleContainer.
+				secondExampleContainer.
+				thirdExampleContainer}
 ]
 
 { #category : #slides }

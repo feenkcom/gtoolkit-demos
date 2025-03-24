@@ -35,7 +35,7 @@ FCAInContext >> bigraphNodeElement [
 		geometry: BlCircleGeometry new;
 		size: 2 @ 2;
 		background: self bigraphNodeColor;
-		aptitude: (BrGlamorousWithTooltipAptitude content: self tooltip)
+		aptitude: (BrGlamorousWithExplicitTooltipAptitude content: self tooltip)
 ]
 
 { #category : #accessing }
