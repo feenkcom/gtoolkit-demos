@@ -28,9 +28,9 @@ and replace by:
 "
 Class {
 	#name : #PrioritySlideshow,
-	#superclass : #DatabaseHolder,
-	#traits : 'TGtSlideShow',
-	#classTraits : 'TGtSlideShow classTrait',
+	#superclass : #Object,
+	#traits : 'TGtSlideShow + TDatabaseHolder',
+	#classTraits : 'TGtSlideShow classTrait + TDatabaseHolder classTrait',
 	#instVars : [
 		'announcer',
 		'slideDimensions'
@@ -569,6 +569,7 @@ PrioritySlideshow >> initSlideDir [
 { #category : #initialization }
 PrioritySlideshow >> initialize [
 	super initialize.
+	self initializeDatabase.
 	announcer := Announcer new.
 	self subscribeToSystem.
 ]
