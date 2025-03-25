@@ -66,7 +66,7 @@ DemoSlideshow >> demoDatabase [
 	"A transient database with links."
 
 	<gtExample>
-	^ self db
+	^ self database
 ]
 
 { #category : #page }
@@ -93,7 +93,7 @@ DemoSlideshow >> dynamicLepiterPage: aSlide [
 	<text: 'A dynamic page from the internal database.'>
 	^ aSlide lepiterPage
 		setPriority;
-		startPage: (self db pageNamed: 'A dynamic Lepiter page')
+		startPage: (self database pageNamed: 'A dynamic Lepiter page')
 ]
 
 { #category : #slides }
@@ -214,7 +214,7 @@ DemoSlideshow >> maximizedPage: aSlide [
 		setPriority;
 		newFadedText: 'A maximized lepiter page.';
 		element: [ (GtPager
-				createWrappedOn: (LePagePhlowTool page: (self db pageNamed: 'A dynamic Lepiter page')))
+				createWrappedOn: (LePagePhlowTool page: (self database pageNamed: 'A dynamic Lepiter page')))
 				maximized ]
 ]
 

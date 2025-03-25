@@ -34,7 +34,7 @@ For each grammar rule we''ll create an instance of an `SPLNode` subclass that wi
 Now when we parse a bit of code with our refined parser expressions we get a proper AST node instead of an array of data.'>
 	^ aSlide lepiterPage
 		setPriority;
-		startPage: (self db pageNamed: 'Building the AST with parser actions')
+		startPage: (self database pageNamed: 'Building the AST with parser actions')
 ]
 
 { #category : #page }
@@ -76,7 +76,7 @@ We initialize any recursive parsers, and then create a self-contained script tha
 This creates a class in which each parsing expression is defined as a method, and its value is cached as an instance variable.'>
 	^ aSlide lepiterPage
 		setPriority;
-		startPage: (self db pageNamed: 'Extracting a parser class')
+		startPage: (self database pageNamed: 'Extracting a parser class')
 ]
 
 { #category : #page }
@@ -150,7 +150,7 @@ The result is a PetitParser “Failure” object that shows us the execution tra
 We discover that after recognizing the “print” string, it expects a quotation mark for the start of a string, instead of whitespace. We fix this by adding the missing `trim` to the `print` parser.'>
 	^ aSlide lepiterPage
 		setPriority;
-		startPage: (self db pageNamed: 'Debugging parsers')
+		startPage: (self database pageNamed: 'Debugging parsers')
 ]
 
 { #category : #page }
@@ -181,8 +181,7 @@ printStmt end parse: ''print "hello";''.';
 { #category : #slides }
 SPLPetitParserSlideshow >> fibonacci: aSlide [
 	<gtSlide>
-<text:
-'## Fibonacci in SPL
+	<text: '## Fibonacci in SPL
 
 Here''s a Fibonacci program in SPL.
 
@@ -194,7 +193,7 @@ Notice how the semantics of the `while` statement has been implemented by *unfol
 '>
 	^ aSlide lepiterPage
 		setPriority;
-		startPage: (self db pageNamed: 'Fibonacci in SPL')
+		startPage: (self database pageNamed: 'Fibonacci in SPL')
 ]
 
 { #category : #page }
@@ -365,8 +364,7 @@ We''ll introduce parsing expressions for all of the SPL tokens, namely Boolens, 
 { #category : #slides }
 SPLPetitParserSlideshow >> partialGrammarScript: aSlide [
 	<gtSlide>
-<text:
-'# Prototyping the SPL grammar parser as a script
+	<text: '# Prototyping the SPL grammar parser as a script
 
 We continue to iteratively prototype the various SPL grammar rules until we have a complete grammar implemented as PetitParser parsing expressions.
 
@@ -377,7 +375,7 @@ To break the recursion, the first time we introduce a recursive parser, such as 
 We can see that `expression` is later redefined as `term`.'>
 	^ aSlide lepiterPage
 		setPriority;
-		startPage: (self db pageNamed: 'Prototyping the SPL grammar parser as a script')
+		startPage: (self database pageNamed: 'Prototyping the SPL grammar parser as a script')
 ]
 
 { #category : #page }
@@ -427,7 +425,7 @@ SPLPetitParserSlideshow >> runningAnSPLProgram: aSlide [
 To run an SPL program, we create a new context holding the AST of the program as its continuation, and an empty environment and output. If we inspect this object, we can then step through the execution, and also explore the history of all the reductions steps.'>
 	^ aSlide lepiterPage
 		setPriority;
-		startPage: (self db pageNamed: 'Running an SPL program')
+		startPage: (self database pageNamed: 'Running an SPL program')
 ]
 
 { #category : #page }
@@ -463,7 +461,7 @@ Let''s just look at one of these, namely that of the `print` statement. A print 
 In the first case we return the AST for the reduced expression, which will be discarded in the next step, and in the second case, we return a new print statement AST with the expression redcued by one step. In either case we make some small progress.'>
 	^ aSlide lepiterPage
 		setPriority;
-		startPage: (self db pageNamed: 'The semantics of printing')
+		startPage: (self database pageNamed: 'The semantics of printing')
 ]
 
 { #category : #slides }
@@ -648,7 +646,7 @@ SPLPetitParserSlideshow >> theASThierarchy: aSlide [
 We introduce an AST node class for every different syntactic element of the SPL  grammar. Each leaf node can pretty-print itself, and can also perform an interpretation step.'>
 	^ aSlide lepiterPage
 		setPriority;
-		startPage: (self db pageNamed: 'The SPL AST hierarchy')
+		startPage: (self database pageNamed: 'The SPL AST hierarchy')
 ]
 
 { #category : #page }
@@ -726,7 +724,7 @@ We write tests to ensure that each parsing expression and every grammar rule wor
 It''s good practice to subclass `PP2CompositeNodeExamples`, a class that offers some utilities for testing parsers. In this example we simply test that a small program source can be parsed by the `program` parser, but not by `declaration` or `statement`.'>
 	^ aSlide lepiterPage
 		setPriority;
-		startPage: (self db pageNamed: 'Writing parser tests')
+		startPage: (self database pageNamed: 'Writing parser tests')
 ]
 
 { #category : #page }

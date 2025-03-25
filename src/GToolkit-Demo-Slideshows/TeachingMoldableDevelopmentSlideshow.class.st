@@ -63,7 +63,7 @@ We can experiment with code in the playground, and when we see something we like
 *(Extract the sample code as a `pillarFiles` method.)*'>
 	^ aSlide lepiterPage
 		setPriority;
-		startPage: (self db pageNamed: 'Pattern: Contextual playground')
+		startPage: (self database pageNamed: 'Pattern: Contextual playground')
 ]
 
 { #category : #page }
@@ -109,7 +109,7 @@ TeachingMoldableDevelopmentSlideshow >> customAction: aSlide [
 '>
 	^ aSlide lepiterPage
 		setPriority;
-		startPage: (self db pageNamed: 'Pattern: Custom action')
+		startPage: (self database pageNamed: 'Pattern: Custom action')
 ]
 
 { #category : #page }
@@ -277,7 +277,7 @@ We can directly go to the code and change, for example, the width of the *Link* 
 From the moldable object we can experiment with new features, extract methods and examples or tests, and immediately see the effect.'>
 	^ aSlide lepiterPage
 		setPriority;
-		startPage: (self db pageNamed: 'Pattern: Moldable object')
+		startPage: (self database pageNamed: 'Pattern: Moldable object')
 ]
 
 { #category : #page }
@@ -568,7 +568,7 @@ After some iterations we obtain the view we have seen earlier.
 *(Inspect the last snippet.)*'>
 	^ aSlide lepiterPage
 		setPriority;
-		startPage: (self db pageNamed: 'Pattern: Viewable data wrapper')
+		startPage: (self database pageNamed: 'Pattern: Viewable data wrapper')
 ]
 
 { #category : #page }
@@ -629,7 +629,7 @@ We just open a Coder view and add the view that forwards to the existing view of
 The new view is instantly available.'>
 	^ aSlide lepiterPage
 		setPriority;
-		startPage: (self db pageNamed: 'Pattern: Viewable Entity')
+		startPage: (self database pageNamed: 'Pattern: Viewable Entity')
 ]
 
 { #category : #page }

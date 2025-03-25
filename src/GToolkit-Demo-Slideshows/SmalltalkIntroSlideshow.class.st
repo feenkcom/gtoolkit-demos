@@ -150,8 +150,7 @@ bounced ifTrue: [self velocity: vx @ vy].
 { #category : #slides }
 SmalltalkIntroSlideshow >> changingARunningSystem: aSlide [
 	<gtSlide>
-<text: 
-'## Changing a running system
+	<text: '## Changing a running system
 
 Since games may last a long time, an autoplay feature would be useful to exercise the game.
 We start by inspecting a live instance.
@@ -169,8 +168,7 @@ We can extract this as an `autoplay` method.
 If we run the `autoPlay` method to the end, we get an error.
 We add a test to do nothing if the game is over.
 '>
-<demo:
-'
+	<demo: '
 - Inspect the instance.
 - Introduce and execute the snippets.
 - Extract the autoplay method.
@@ -180,7 +178,7 @@ We add a test to do nothing if the game is over.
 '>
 	^ aSlide lepiterPage
 		setPriority;
-		startPage: (self db pageNamed: 'Changing a running system')
+		startPage: (self database pageNamed: 'Changing a running system')
 ]
 
 { #category : #page }
@@ -233,20 +231,18 @@ game playerToMove
 { #category : #slides }
 SmalltalkIntroSlideshow >> classesAreObjects: aSlide [
 	<gtSlide>
-<text: 
-'## Classes are objects
+	<text: '## Classes are objects
 
 Classes are objects too. A class is a global name that starts with an upper case letter, such as `SmallInteger`. We can browse the source code of a class by opening the code bubble, by using the context menu, or using a keyboard shortcut.
 
 We can send messages to classes, such as `SmallInteger maxVal`. What do you suppose will be the result of sending `+ 1` to this maximum value?'>
-<demo:
-'- Inspect the snippet
+	<demo: '- Inspect the snippet
 - Send `self + 1` in the integer''s playground
 - Note the result type
 - Send `self - 1` in the playground'>
 	^ aSlide lepiterPage
 		setPriority;
-		startPage: (self db pageNamed: 'Classes are objects')
+		startPage: (self database pageNamed: 'Classes are objects')
 ]
 
 { #category : #page }
@@ -267,8 +263,7 @@ SmalltalkIntroSlideshow >> classesAreObjectsPage [
 { #category : #slides }
 SmalltalkIntroSlideshow >> composingExamples: aSlide [
 	<gtSlide>
-<text: 
-'## Composing (Test) Examples
+	<text: '## Composing (Test) Examples
 
 In GT, unit tests are written as *example methods*.
 
@@ -298,17 +293,15 @@ The next example starts from this one, and check what happens when the next toke
 From the *Examples* tab of the `GtLudoGameExamples` class we can both run all the tests, and explore individual examples.
 
 If we select the *Examples map* view, we see that the test examples form a hierarchy built up from the emptyGame example.'>
-<demo:
-'- Change some assertions to see what happens if they fail.
+	<demo: '- Change some assertions to see what happens if they fail.
 - Browse the senders and explore `playerArolls6`
 - Browse senders of `playerArolls6` to find `playerAentersTokenA`
 - Again browse senders to find `playerAentersAndLandsOnTokenA`
 - Navigate to the class of the last method, and maximize the view to show the class coder
 - Show the `Examples` view to run the examples, and the `Examples map` to show the hierarchy'>
-
 	^ aSlide lepiterPage
 		setPriority;
-		startPage: (self db pageNamed: 'Composing (Test) Examples')
+		startPage: (self database pageNamed: 'Composing (Test) Examples')
 ]
 
 { #category : #page }
@@ -332,8 +325,7 @@ SmalltalkIntroSlideshow >> composingExamplesPage [
 { #category : #slides }
 SmalltalkIntroSlideshow >> computationsAreMessageSends: aSlide [
 	<gtSlide>
-<text: 
-'## All computations are message sends
+	<text: '## All computations are message sends
 
 There are no built-in operators. These are all just message sends:
 
@@ -345,7 +337,7 @@ You can evaluate a block by sending it a `value` message.
 '>
 	^ aSlide lepiterPage
 		setPriority;
-		startPage: (self db pageNamed: 'All computations are message sends')
+		startPage: (self database pageNamed: 'All computations are message sends')
 ]
 
 { #category : #page }
@@ -369,15 +361,6 @@ SmalltalkIntroSlideshow >> computationsAreMessageSendsPage [
 	yourself
 ]
 
-{ #category : #page }
-SmalltalkIntroSlideshow >> database [
-	"All the pages"
-
-	<gtExample>
-	<noTest>
-	^ self db
-]
-
 { #category : #accessing }
 SmalltalkIntroSlideshow >> dbName [
 	self deprecated: 'Don''t use this database anymore'.
@@ -387,20 +370,18 @@ SmalltalkIntroSlideshow >> dbName [
 { #category : #slides }
 SmalltalkIntroSlideshow >> everythingHappensBySendingMessages: aSlide [
 	<gtSlide>
-<text: 
-'# Everything happens by sending messages
+	<text: '# Everything happens by sending messages
 
 Smalltalk introduced the metaphor of “methods” — you do not “invoke a method” (which makes no sense linguistically), but rather you *“send a message to an object”*, and it determines whether it *“understands the message”* and has a “method” for responding to it.
 
 The expression `3+4` is a *message* “`+4`” with the *selector* “`+`” and argument `4` sent to the *receiver* `3`:
 
 The receiver `3` has a *method* (a chunk of code) to compute the result.'>
-<demo:
-'- Inspect the result
+	<demo: '- Inspect the result
 - Open the code bubble for the `+` method'>
 	^ aSlide lepiterPage
 		setPriority;
-		startPage: (self db pageNamed: 'Everything happens by sending messages')
+		startPage: (self database pageNamed: 'Everything happens by sending messages')
 ]
 
 { #category : #page }
@@ -424,15 +405,14 @@ SmalltalkIntroSlideshow >> everythingHappensBySendingMessagesPage [
 { #category : #slides }
 SmalltalkIntroSlideshow >> everythingIsAnObject: aSlide [
 	<gtSlide>
-<text: 
-'## Everything is an object
+	<text: '## Everything is an object
 
 A method is also an object. You can retrieve it by sending the message `>>` to the class with the method''s selector as an argument.
 
 If you inspect a method, you can see not just its source code, but also its bytecode and even the abstract syntax tree.'>
 	^ aSlide lepiterPage
 		setPriority;
-		startPage: (self db pageNamed: 'Everything is an object')
+		startPage: (self database pageNamed: 'Everything is an object')
 ]
 
 { #category : #page }
@@ -480,8 +460,7 @@ SmalltalkIntroSlideshow >> everythingIsAnObjectPage [
 { #category : #slides }
 SmalltalkIntroSlideshow >> exploringALiveSystem: aSlide [
 	<gtSlide>
-<text: 
-'# Exploring a live system
+	<text: '# Exploring a live system
 
 Let''s inspect a running instance of a Ludo game.
 
@@ -517,8 +496,7 @@ If we open a second view of the same object — just click on the `(i)` (Inspect
 You can interact both through the GUI or programatically and the views will stay in sync.
 
 '>
-<demo:
-'
+	<demo: '
 - Inspect the game.
 - Show the Raw view, then the others.
 - OPT-click tio show the code.
@@ -529,7 +507,7 @@ You can interact both through the GUI or programatically and the views will stay
 '>
 	^ aSlide lepiterPage
 		setPriority;
-		startPage: (self db pageNamed: 'Exploring a live system')
+		startPage: (self database pageNamed: 'Exploring a live system')
 ]
 
 { #category : #page }
@@ -610,18 +588,16 @@ Changes to classes and methods are logged as you program.');
 { #category : #slides }
 SmalltalkIntroSlideshow >> liveDocumentationLogic: aSlide [
 	<gtSlide>
-<text: 
-'## Live documentation of the game logic
+	<text: '## Live documentation of the game logic
 
 Notebooks (such as this one) can serve as live documentation for the logic of the game (i.e., the *business domain*) as well as for the technical solution.
 
 Consider the example game {{gtMethod:name=GtLudoRecordingGameExamples >> #gameShowingAllMoves6}}, which shows a short, complete game.
 The examples can then be embedded into the notebook to form live documentation of the different cases of moves.'>
-<demo:
-'Show and explore the impossible move.'>
+	<demo: 'Show and explore the impossible move.'>
 	^ aSlide lepiterPage
 		setPriority;
-		startPage: (self db pageNamed: 'Live documentation of the game logic')
+		startPage: (self database pageNamed: 'Live documentation of the game logic')
 ]
 
 { #category : #page }
@@ -690,14 +666,13 @@ SmalltalkIntroSlideshow >> liveDocumentationLogicPage [
 { #category : #slides }
 SmalltalkIntroSlideshow >> liveDocumentationUML: aSlide [
 	<gtSlide>
-<text: 
-'## Live documentation of the technical solution
+	<text: '## Live documentation of the technical solution
 
 We can generate live diagrams from the source code.
 A UML diagram showing all the details is rather cluttered and nit so useful.'>
 	^ aSlide lepiterPage
 		setPriority;
-		startPage: (self db pageNamed: 'Live documentation of the technical solution')
+		startPage: (self database pageNamed: 'Live documentation of the technical solution')
 ]
 
 { #category : #page }
@@ -754,18 +729,16 @@ The caret (^) is special syntax for returning a result.'>
 { #category : #slides }
 SmalltalkIntroSlideshow >> methodsAreObjects: aSlide [
 	<gtSlide>
-<text: 
-'## Methods are objects
+	<text: '## Methods are objects
 
 A method is also an object. You can retrieve it by sending the message `>>` to the class with the method''s selector as an argument.
 
 If you inspect a method, you can see not just its source code, but also its bytecode and even the abstract syntax tree.'>
-<demo: 
-'- Inspect the snippets
+	<demo: '- Inspect the snippets
 - Explore the views of a method'>
 	^ aSlide lepiterPage
 		setPriority;
-		startPage: (self db pageNamed: 'Methods are objects')
+		startPage: (self database pageNamed: 'Methods are objects')
 ]
 
 { #category : #page }
@@ -795,13 +768,12 @@ SmalltalkIntroSlideshow >> methodsAreObjectsPage [
 { #category : #slides }
 SmalltalkIntroSlideshow >> modelClasses: aSlide [
 	<gtSlide>
-<text: 
-'### Model classes
+	<text: '### Model classes
 
 If we just focus on the model classes, we get a better view, but it still contains more details than are useful.'>
 	^ aSlide lepiterPage
 		setPriority;
-		startPage: (self db pageNamed: 'Model classes')
+		startPage: (self database pageNamed: 'Model classes')
 ]
 
 { #category : #page }
@@ -825,8 +797,7 @@ SmalltalkIntroSlideshow >> modelClassesPage [
 { #category : #slides }
 SmalltalkIntroSlideshow >> numbersAreObjects: aSlide [
 	<gtSlide>
-<text: 
-'# Numbers, strings, booleans and blocks are objects
+	<text: '# Numbers, strings, booleans and blocks are objects
 
 Here we see a Notebook page containing both text and code snippets.
 
@@ -837,12 +808,11 @@ Numbers are objects, not just primitive data types. We see that the number `1` i
 Even booleans are objects. `true` is an instance of the class `True`, which is a subclass of `Boolean`.
 
 Blocks, or anonymous functions, are delimited by square brackets. This one takes no arguments, so we can evaluate it by sending it the message `value`.'>
-<demo:
-'- Inspect the snippets.
+	<demo: '- Inspect the snippets.
 - Change the last snippet to send `value` to the block.'>
 	^ aSlide lepiterPage
 		setPriority;
-		startPage: (self db pageNamed: 'Numbers, strings, booleans and blocks are objects')
+		startPage: (self database pageNamed: 'Numbers, strings, booleans and blocks are objects')
 ]
 
 { #category : #page }
@@ -872,15 +842,14 @@ SmalltalkIntroSlideshow >> numbersAreObjectsPage [
 { #category : #slides }
 SmalltalkIntroSlideshow >> objectCreationIsAMessageSend: aSlide [
 	<gtSlide>
-<text: 
-'## Object creation is a message send
+	<text: '## Object creation is a message send
 
 You can send the message `new` to create a new instance of a class.
 
 Many classes have constructors that take arguments to initialize instances.'>
 	^ aSlide lepiterPage
 		setPriority;
-		startPage: (self db pageNamed: 'Object creation is a message send')
+		startPage: (self database pageNamed: 'Object creation is a message send')
 ]
 
 { #category : #page }
@@ -937,8 +906,7 @@ We''ll wrap up with some take home messages.'>
 { #category : #slides }
 SmalltalkIntroSlideshow >> precedence: aSlide [
 	<gtSlide>
-<text: 
-'## Precedence
+	<text: '## Precedence
 
 In expressions that mix different kinds of message sends, first unary, then binary, and finally keyword messages are evaluated.
 Otherwise evaluation is strictly from left to right.
@@ -948,7 +916,7 @@ In practice this is rarely an issue. Just use parentheses to get the order you w
 '>
 	^ aSlide lepiterPage
 		setPriority;
-		startPage: (self db pageNamed: 'Precedence')
+		startPage: (self database pageNamed: 'Precedence')
 ]
 
 { #category : #page }
@@ -996,8 +964,7 @@ SmalltalkIntroSlideshow >> precedencePage [
 { #category : #slides }
 SmalltalkIntroSlideshow >> recordingMoves: aSlide [
 	<gtSlide>
-<text: 
-'## Recording and visualizing token moves
+	<text: '## Recording and visualizing token moves
 
 A shortcoming of the game is that there is no history of the movement of the tokens.
 We only see snapshots of the board. If we could keep a history of the moves, then we could also visualize the actual transitions.
@@ -1018,15 +985,14 @@ Let''s open up two side-side views of a new game, with the second one showing th
 
 Now that we have first-class Move objects, we have a complete history of a game.
 We can also *replay* all the moves up to a certain point, and go back in time to see the state of the game at any point.'>
-<demo:
-'- Inspect the snippet
+	<demo: '- Inspect the snippet
 - Go to the *Moves* view, and inspect individual moves
 - Inspect a new recording game, and open a second inspector to the *Moves* view
 - Evaluate `self autoPlay: 1.` in the playground to see the updates
 - Select a move and play the *Replay to here* action'>
 	^ aSlide lepiterPage
 		setPriority;
-		startPage: (self db pageNamed: 'Recording and visualizing token moves')
+		startPage: (self database pageNamed: 'Recording and visualizing token moves')
 ]
 
 { #category : #page }
@@ -1062,17 +1028,15 @@ SmalltalkIntroSlideshow >> recordingMovesPage [
 { #category : #slides }
 SmalltalkIntroSlideshow >> relationships: aSlide [
 	<gtSlide>
-<text: 
-'### Relationships between classes
+	<text: '### Relationships between classes
 
 Instead a class diagram just showing the key inheritance and usage relationships gives us more insight into the design.
 
 A particular advantage is that such generated diagrams are live and integrated with the other tools.'>
-<demo:
-'Show that the diagram is live, and that we can navigate to the code and examples.'>
+	<demo: 'Show that the diagram is live, and that we can navigate to the code and examples.'>
 	^ aSlide lepiterPage
 		setPriority;
-		startPage: (self db pageNamed: 'Relationships between classes')
+		startPage: (self database pageNamed: 'Relationships between classes')
 ]
 
 { #category : #page }
@@ -1167,8 +1131,7 @@ He reasoned that such systems would need to be based on objects from the ground 
 { #category : #slides }
 SmalltalkIntroSlideshow >> syntaxArrays: aSlide [
 	<gtSlide>
-<text: 
-'## Syntax — arrays
+	<text: '## Syntax — arrays
 
 A literal array is a compile-time sequence of literal values.
 It is specified by a hash followed by possibly nested literal values in parentheses.
@@ -1178,7 +1141,7 @@ A dynamic array is specified by curly braces around a series of expressions sepa
 You can embed literal arrays within dynamic arrays, but not the other way around.'>
 	^ aSlide lepiterPage
 		setPriority;
-		startPage: (self db pageNamed: 'Syntax — Arrays')
+		startPage: (self database pageNamed: 'Syntax — Arrays')
 ]
 
 { #category : #page }
@@ -1208,8 +1171,7 @@ SmalltalkIntroSlideshow >> syntaxArraysPage [
 { #category : #slides }
 SmalltalkIntroSlideshow >> syntaxBlocks: aSlide [
 	<gtSlide>
-<text: 
-'## Syntax — Blocks
+	<text: '## Syntax — Blocks
 
 A *block* is an anonymous function, that can take arguments.
 You evaluate a block by sending it the unary message `value`, or a keyword message `value:` for as many arguments as you need.
@@ -1218,7 +1180,7 @@ Blocks are first class values, so you can pass them around like any other object
 In this example we send a block that increments its argument in as an argument to another block.'>
 	^ aSlide lepiterPage
 		setPriority;
-		startPage: (self db pageNamed: 'Syntax — Blocks')
+		startPage: (self database pageNamed: 'Syntax — Blocks')
 ]
 
 { #category : #page }
@@ -1253,14 +1215,13 @@ SmalltalkIntroSlideshow >> syntaxBlocksPage [
 { #category : #slides }
 SmalltalkIntroSlideshow >> syntaxConstants: aSlide [
 	<gtSlide>
-<text: 
-'## Syntax — constants
+	<text: '## Syntax — constants
 
 There are only 6 keywords in Smalltalk, and three of them are the constants `nil`, `true` and `false`.
 '>
 	^ aSlide lepiterPage
 		setPriority;
-		startPage: (self db pageNamed: 'Syntax — Constants')
+		startPage: (self database pageNamed: 'Syntax — Constants')
 ]
 
 { #category : #page }
@@ -1281,8 +1242,7 @@ SmalltalkIntroSlideshow >> syntaxConstantsPage [
 { #category : #slides }
 SmalltalkIntroSlideshow >> syntaxNumbers: aSlide [
 	<gtSlide>
-<text: 
-'# Syntax — Numbers
+	<text: '# Syntax — Numbers
 
 Smalltalk has a tiny syntax, but there are some interesting differences with other languages.
 
@@ -1292,7 +1252,7 @@ And this is hex: `16r2A`
 '>
 	^ aSlide lepiterPage
 		setPriority;
-		startPage: (self db pageNamed: 'Syntax — Numbers')
+		startPage: (self database pageNamed: 'Syntax — Numbers')
 ]
 
 { #category : #page }
@@ -1319,15 +1279,14 @@ SmalltalkIntroSlideshow >> syntaxNumbersPage [
 { #category : #slides }
 SmalltalkIntroSlideshow >> syntaxSelfSuper: aSlide [
 	<gtSlide>
-<text: 
-'## Syntax — Pseudo variables
+	<text: '## Syntax — Pseudo variables
 
 Two further keywords are the pseudo variables `self` and `super`.
 
 Both refer to the receiver of a message, but with different method lookup, as in other object-oriented languages.'>
 	^ aSlide lepiterPage
 		setPriority;
-		startPage: (self db pageNamed: 'Syntax — Pseudo variables')
+		startPage: (self database pageNamed: 'Syntax — Pseudo variables')
 ]
 
 { #category : #page }
@@ -1348,8 +1307,7 @@ SmalltalkIntroSlideshow >> syntaxSelfSuperPage [
 { #category : #slides }
 SmalltalkIntroSlideshow >> syntaxStrings: aSlide [
 	<gtSlide>
-<text: 
-'## Syntax — Strings and Symbols
+	<text: '## Syntax — Strings and Symbols
 
 Printable characters start with a `$`.
 Strings use *single quotes*.
@@ -1363,7 +1321,7 @@ A symbol is not identical to a string with the same characters, but they are con
 '>
 	^ aSlide lepiterPage
 		setPriority;
-		startPage: (self db pageNamed: 'Syntax — Strings and Symbols')
+		startPage: (self database pageNamed: 'Syntax — Strings and Symbols')
 ]
 
 { #category : #page }
@@ -1420,18 +1378,16 @@ SmalltalkIntroSlideshow >> syntaxStringsPage [
 { #category : #slides }
 SmalltalkIntroSlideshow >> systemChangesAreMessageSends: aSlide [
 	<gtSlide>
-<text: 
-'## Changes to the system are message sends
+	<text: '## Changes to the system are message sends
 
 You create a class by sending a message to its superclass.
 
 To create a method, you send a message to the class.
 
 You can also ask Smalltalk to remove a class from the system.'>
-
 	^ aSlide lepiterPage
 		setPriority;
-		startPage: (self db pageNamed: 'Changes to the system are message sends')
+		startPage: (self database pageNamed: 'Changes to the system are message sends')
 ]
 
 { #category : #page }
@@ -1498,8 +1454,7 @@ Finally the ability to *mold* the development tools to the needs to the applicat
 { #category : #slides }
 SmalltalkIntroSlideshow >> threeKindsOfMessages: aSlide [
 	<gtSlide>
-<text: 
-'# Three kinds of messages
+	<text: '# Three kinds of messages
 
 There are three kinds of messages you can send to a Smalltalk object, each taking a different number of arguments.
 
@@ -1523,7 +1478,7 @@ The Ludo game also accepts various keyword messages.
 '>
 	^ aSlide lepiterPage
 		setPriority;
-		startPage: (self db pageNamed: 'Three kinds of messages')
+		startPage: (self database pageNamed: 'Three kinds of messages')
 ]
 
 { #category : #page }
@@ -1755,7 +1710,7 @@ Luckily Smalltalk prevents you from removing the class `Object`, but you can sti
 '>
 	^ aSlide lepiterPage
 		setPriority;
-		startPage: (self db pageNamed: 'You can change (almost) anything!')
+		startPage: (self database pageNamed: 'You can change (almost) anything!')
 ]
 
 { #category : #page }

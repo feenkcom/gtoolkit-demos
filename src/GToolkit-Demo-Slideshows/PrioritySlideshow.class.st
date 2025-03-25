@@ -211,6 +211,13 @@ PrioritySlideshow >> cr [
 	^ String cr asRopedText
 ]
 
+{ #category : #'as yet unclassified' }
+PrioritySlideshow >> db [
+	"Convenience method for backward compatibility."
+	self deprecated: 'Send #database instead 'transformWith: '`@receiver db' -> '`@receiver database'.
+	^ self database
+]
+
 { #category : #exporting }
 PrioritySlideshow >> defaultSlideDimensions [
 	"Dimensions for exporting slide PNGs"
@@ -299,19 +306,6 @@ PrioritySlideshow >> gtBook [
 	<gtExample>
 	<noTest>
 	^ LeDatabase gtBook
-]
-
-{ #category : #view }
-PrioritySlideshow >> gtDatabaseFor: aView [
-	<gtView>
-	self db pages ifEmpty: [ ^ aView empty ].
-	^ aView forward
-		title: 'Database';
-		priority: 80;
-		object: [ self db ];
-		view: #gtLiveFor:;
-		actionUpdateButton;
-		updateWhen: SlideshowMethodUpdated in: self announcer
 ]
 
 { #category : #'gt inspector' }

@@ -54,7 +54,7 @@ Gt4PythonEsugSlideshow >> pythonDebuggerExample: aSlide [
 	<noTest>
 	^ aSlide lepiterPage
 		setPriority;
-		startPage: (self db pageNamed: 'Python Debugger')
+		startPage: (self database pageNamed: 'Python Debugger')
 ]
 
 { #category : #accessing }
@@ -89,7 +89,7 @@ Gt4PythonEsugSlideshow >> pythonExamples: aSlide [
 	<noTest>
 	^ aSlide lepiterPage
 		setPriority;
-		startPage: (self db pageNamed: 'Python Examples I')
+		startPage: (self database pageNamed: 'Python Examples I')
 ]
 
 { #category : #accessing }
@@ -98,7 +98,7 @@ Gt4PythonEsugSlideshow >> pythonExamplesSecond: aSlide [
 	<noTest>
 	^ aSlide lepiterPage
 		setPriority;
-		startPage: (self db pageNamed: 'Python Examples II')
+		startPage: (self database pageNamed: 'Python Examples II')
 ]
 
 { #category : #accessing }
@@ -107,7 +107,7 @@ Gt4PythonEsugSlideshow >> pythonExamplesThird: aSlide [
 	<noTest>
 	^ aSlide lepiterPage
 		setPriority;
-		startPage: (self db pageNamed: 'Python Examples III')
+		startPage: (self database pageNamed: 'Python Examples III')
 ]
 
 { #category : #accessing }
