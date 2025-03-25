@@ -10,8 +10,7 @@ Class {
 { #category : #slides }
 MoldableDevelopmentPatternsSlideshow >> collectionWrapper: aSlide [
 	<gtSlide>
-	
-<text: '## Pattern: Collection Wrapper
+	<text: '## Pattern: Collection Wrapper
 
 Here again is our website inspector. If we dive into the list of links in a website, the result is a `WebLinkGroup` and not just a collection. This way we obtain more useful views for the result.
 
@@ -26,8 +25,7 @@ Furthermore the WebLinkGroup uses the TGtGroupWithItems trait so that it is most
 Similarly, if we perform a Spotter search for, say “Smalltalk”, we will get a wrapped Page group with a useful overview.
 
 *(Minimize the Coder view to see the Inspector again, perform the query and view the result set.)*'>
-
-<demo: '## Pattern: Collection Wrapper
+	<demo: '## Pattern: Collection Wrapper
 
 Inspect the Links from the Overview.
 Open a Coder on the Link group.
@@ -35,10 +33,9 @@ Maximize the veiw and show the hierarchy.
 Show the classes uses the trait TGtGroupWithItems.
 Show the non-trait methods.
 Optionally go back to the overview and search for Smalltalk.'>
-
 	^ aSlide lepiterPage
 		setPriority;
-		startPage: (self db pageNamed: 'Pattern: Collection Wrapper')
+		startPage: (self database pageNamed: 'Pattern: Collection Wrapper')
 ]
 
 { #category : #page }
@@ -89,8 +86,7 @@ Just as raw data needs to be wrapped to make it moldable, the results of queries
 { #category : #slides }
 MoldableDevelopmentPatternsSlideshow >> contextualPlayground: aSlide [
 	<gtSlide>
-
-<text: '## Pattern: Contextual Playground
+	<text: '## Pattern: Contextual Playground
 
 In a conventional development process, you must constantly switch context between writing code, and running or testing it. By starting instead from a moldable object, you can stay within the context of a live object to explore and experiment with new features.
 
@@ -99,17 +95,15 @@ Here we inspect our current version of the state machine, and ask how to add a n
 We like what we see, so we extract the code as a method called `!`.
 
 We similarly experiment with and extract methods `stack`, `top`, and `isEmpty`.'>
-
-<demo: '## Pattern: Contextual Playground
+	<demo: '## Pattern: Contextual Playground
 
 Inspect the stack instance.
 In the Meta view, search for add methods.
 Try addLast: in the playground and refresh to see the result.
 Extract as a `!` method.'>
-
 	^ aSlide lepiterPage
 		setPriority;
-		startPage: (self db pageNamed: 'Pattern: Contextual Playground')
+		startPage: (self database pageNamed: 'Pattern: Contextual Playground')
 ]
 
 { #category : #page }
@@ -161,8 +155,7 @@ A Contextual Playground offers a way to experiment with a moldable object and ex
 { #category : #slides }
 MoldableDevelopmentPatternsSlideshow >> customAction: aSlide [
 	<gtSlide>
-
-<text: '## Pattern: Custom Action
+	<text: '## Pattern: Custom Action
 
 Whereas a custom view presents information in a useful and reproducible way, a custom action encapsulates a repeated task and makes it available in a concenvient way.
 
@@ -179,8 +172,7 @@ Note that the code for an action is similar in style to that of a view.
 We can also see that many links are missing an HTTP status. Again we can use a custom action to check these links,and another one to stop checking.
 
 *(Open the missing status view. Start and stop link checking.)*'>
-
-<demo: '## Pattern: Custom Action
+	<demo: '## Pattern: Custom Action
 
 Navigate to an unreachable page.
 Open it in a web browser with the custom action.
@@ -188,10 +180,9 @@ Show the custom code.
 Inspect the Missing status group from the Overview.
 Start and stop link checking.
 Possibly inspect a bad link and open it in a web browser.'>
-
 	^ aSlide lepiterPage
 		setPriority;
-		startPage: (self db pageNamed: 'Pattern: Custom Action')
+		startPage: (self database pageNamed: 'Pattern: Custom Action')
 ]
 
 { #category : #page }
@@ -238,8 +229,7 @@ Another way is by introducing custom actions.'>
 { #category : #slides }
 MoldableDevelopmentPatternsSlideshow >> exampleObject: aSlide [
 	<gtSlide>
-
-<text: '## Pattern: Example Object
+	<text: '## Pattern: Example Object
 
 Here we have a fresh stack machine, to which we want to push 3 and 4.
 
@@ -252,18 +242,16 @@ First we extract the code as a method called `stackWith3and4`. Then we add the `
 Finally we add a few obvious assertions to let the example also serve as a test case.
 
 Note that the class is now decorated with an example runner action.'>
-
-<demo: '## Pattern: Example Object
+	<demo: '## Pattern: Example Object
 
 Run the example.
 Extract the code as stackWith3and4.
 Add the pragma.
 Run the code from the coder.
 Add some assertions.'>
-
 	^ aSlide lepiterPage
 		setPriority;
-		startPage: (self db pageNamed: 'Pattern: Example Object')
+		startPage: (self database pageNamed: 'Pattern: Example Object')
 ]
 
 { #category : #page }
@@ -508,8 +496,7 @@ NOT USED'>
 { #category : #slides }
 MoldableDevelopmentPatternsSlideshow >> moldableObject: aSlide [
 	<gtSlide>
-
-<text: '## Pattern: Moldable object
+	<text: '## Pattern: Moldable object
 
 In moldable development, we focus on molding live objects to iteratively answer questions.
 
@@ -534,19 +521,16 @@ We add a stack slot and initialize it as an OrderedCollection.
 We run `self initialize` in the playground, and refresh the Raw view to see the new state.
 
 From here we can navigate to inspect the empty stack state.'>
-
-
-<demo: '## Pattern: Moldable object
+	<demo: '## Pattern: Moldable object
 
 Fix the class and inspect the result.
 Add an initialize method with a `stack` slot in the Meta view.
 Run it in the Playground.
 See it in the Raw view.
 Inspect the stack slot state.'>
-
 	^ aSlide lepiterPage
 		setPriority;
-		startPage: (self db pageNamed: 'Pattern: Moldable object')
+		startPage: (self database pageNamed: 'Pattern: Moldable object')
 ]
 
 { #category : #page }
@@ -694,18 +678,15 @@ MoldableDevelopmentPatternsSlideshow >> placeholderPage [
 { #category : #slides }
 MoldableDevelopmentPatternsSlideshow >> projectDiary: aSlide [
 	<gtSlide>
-
-<text: '## Pattern: Project Diary
+	<text: '## Pattern: Project Diary
 
 All through this presentation we have been using notebook pages to document our progress. There are many further examples in the GT book. By curating these pages, they turn into a searchable knowledge base of documentation and live examples.'>
-
-<demo: '## Pattern: Project Diary
+	<demo: '## Pattern: Project Diary
 
 Browse some of the Ludo pages.'>
-
 	^ aSlide lepiterPage
 		setPriority;
-		startPage: (self db pageNamed: 'Pattern: Project Diary')
+		startPage: (self database pageNamed: 'Pattern: Project Diary')
 ]
 
 { #category : #page }
@@ -754,8 +735,7 @@ Also this is a pattern, as these pages can be used to document and manage your M
 { #category : #slides }
 MoldableDevelopmentPatternsSlideshow >> simpleView: aSlide [
 	<gtSlide>
-	
-<text: '## Pattern: Simple View
+	<text: '## Pattern: Simple View
 
 In this demo example of an address book we can see columned lists, an even simpler list view, a fancier mondrian graph layout view, and a text editor view.
 
@@ -769,8 +749,7 @@ Interestingly, most of the views are under 12 lines of code.
 Here we retrieve all the `gtView` methods, and in the inspector view we can see some metrics.
 
 *(Evaluate the snippet, and switch to the Inspector Metrics view.)*'>
-
-<demo: '## Pattern: Simple View
+	<demo: '## Pattern: Simple View
 
 Open the example in a new column.
 Explore the views and show the code.
@@ -778,10 +757,9 @@ Go back to the page.
 Show the explicit view.
 Show the statistics.
 Explore the pragmas and show the metrics view.'>
-
 	^ aSlide lepiterPage
 		setPriority;
-		startPage: (self db pageNamed: 'Pattern: Simple View')
+		startPage: (self database pageNamed: 'Pattern: Simple View')
 ]
 
 { #category : #page }
@@ -1046,8 +1024,7 @@ First I''ll show you a couple of examples to illustrate what I mean by explainab
 { #category : #slides }
 MoldableDevelopmentPatternsSlideshow >> viewableDataWrapper: aSlide [
 	<gtSlide>
-
-<text: '## Pattern: Viewable Data Wrapper
+	<text: '## Pattern: Viewable Data Wrapper
 
 In this example, we want to be able to explore and analyze a GitHub Pages website consisting of markdown pages.
 
@@ -1060,17 +1037,15 @@ What we can do now is wrap the data in a dedicated domain class to obtain a mold
 *(Apply the fixits to create the class and the setter.)*
 
 Now we can find all the markdown files in the contextual playground, extract this as a lazy initializer, and slowly introduce interesting views.'>
-
-<demo: '## Pattern: Viewable Data Wrapper
+	<demo: '## Pattern: Viewable Data Wrapper
 
 Explore the website folder.
 Show the basic views of the markdown pages.
 Fix the wrapper and the data initializer.
 Show how we access the data from the playground.'>
-
 	^ aSlide lepiterPage
 		setPriority;
-		startPage: (self db pageNamed: 'Pattern: Viewable Data Wrapper')
+		startPage: (self database pageNamed: 'Pattern: Viewable Data Wrapper')
 ]
 
 { #category : #page }
@@ -1129,8 +1104,7 @@ Many projects start with existing data. In this case a good strategy is to wrap 
 { #category : #slides }
 MoldableDevelopmentPatternsSlideshow >> viewableEntity: aSlide [
 	<gtSlide>
-	
-<text: '## Pattern: Viewable Entity
+	<text: '## Pattern: Viewable Entity
 
 As you explore your moldable domain objects you will discover interesting facts that you would like to make explicitly visible.
 
@@ -1151,8 +1125,7 @@ We define a `gtStackFor:` method with a `<gtView>` pragma, and we construct a `f
 Now we can give it a better title, and set the priority to 10 so we see it first.
 
 *(Do that and see the view update.)*'>
-
-<demo: '## Pattern: Viewable Entity
+	<demo: '## Pattern: Viewable Entity
 
 Inspect the stack machine in a new column.
 Inspect the stack state.
@@ -1160,10 +1133,9 @@ View the Items code and explain it.
 Copy the selector.
 Open a second inspector on the stack machine.
 Go the StackMachine Meta view and add a forward view.'>
-
 	^ aSlide lepiterPage
 		setPriority;
-		startPage: (self db pageNamed: 'Pattern: Viewable Entity')
+		startPage: (self database pageNamed: 'Pattern: Viewable Entity')
 ]
 
 { #category : #page }
