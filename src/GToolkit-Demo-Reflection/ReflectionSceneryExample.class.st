@@ -93,6 +93,14 @@ ReflectionSceneryExample >> rectangle [
 { #category : #accessing }
 ReflectionSceneryExample >> reflectionScenery [
 	<gtExample>
+	| scenery |
+	scenery := GtSceneryEditedExamples new reflectionScenery.
+	^ scenery
+]
+
+{ #category : #accessing }
+ReflectionSceneryExample >> reflectionSceneryOLD [
+	<gtExample>
 	| scenery items meta reified eyecon |
 	scenery := GtScenery new.
 	items := Dictionary new.
