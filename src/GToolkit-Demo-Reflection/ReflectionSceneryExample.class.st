@@ -54,6 +54,7 @@ ReflectionSceneryExample >> curvature [
 
 { #category : #accessing }
 ReflectionSceneryExample >> eyecon [
+	<gtExample>
 	^ GtSceneryItem new
 		stencil: [ GtFileUtility imageElementFromFileReference: self eyeconFile ] asStencil
 ]
