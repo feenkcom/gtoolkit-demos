@@ -1,6 +1,8 @@
 "
 These Scripter examples are used to illustrate Moldable Development Patterns.
 They can also be used as tutorial examples for Scripter scripts.
+
+These examples don't actually test anything, so they are flagges a `<noTest>`.
 "
 Class {
 	#name : #PatternScripterExamples,
@@ -20,6 +22,7 @@ PatternScripterExamples class >> cachedUrlData [
 { #category : #example }
 PatternScripterExamples class >> feenkGitHubUrl [
 	<gtExample>
+	<noTest>
 	^ 'https://api.github.com/orgs/feenkcom'
 ]
 
@@ -46,6 +49,7 @@ PatternScripterExamples class >> urlData: anObject [
 { #category : #example }
 PatternScripterExamples >> autoPlaySnippet [
 	<gtExample>
+	<noTest>
 	^ '1 to: 10 do: [ :n | 
   self isOver ifTrue: [ ^ self ].
   self playerToRoll
@@ -58,6 +62,7 @@ self.'
 { #category : #example }
 PatternScripterExamples >> cartoonAddressBookScript [
 	<gtExample>
+	<noTest>
 	| addressBook scripter |
 	addressBook := GtABCartoonAddressBookExample new cartoonAddressBook.
 	scripter := BlScripter new.
@@ -69,6 +74,7 @@ PatternScripterExamples >> cartoonAddressBookScript [
 PatternScripterExamples >> cartoonAddressBookSearchScript [
 	"NB: This does not work very well as an embedded example as the dropdown menu will disappear when you click anywhere on the page. The dropdown menu also obscure important text as you scroll."
 	<gtExample>
+	<noTest>
 	| scripter |
 	scripter := self cartoonAddressBookScript.
 	scripter click
@@ -92,6 +98,7 @@ PatternScripterExamples >> cartoonAddressBookSearchScript [
 PatternScripterExamples >> customLePageActionScript [
 	"NB: Hovering the mouse is obviously ephemeral."
 	<gtExample>
+	<noTest>
 	| scripter page |
 	page := LeDatabase gtBook pageNamed: 'Custom Action'.
 	scripter := BlScripter new.
@@ -112,6 +119,7 @@ PatternScripterExamples >> customViewCustomMovesViewScript [
 	"NB: It is not enough to double-click directly on the 6th row. 
 	We have to first click to select it, and then double-click."
 	<gtExample>
+	<noTest>
 	| scripter game |
 	game := GtLudoRecordingGameExamples new gameShowingAllMoves5.
 	scripter := BlScripter new.
@@ -137,6 +145,7 @@ PatternScripterExamples >> customViewCustomMovesViewScript [
 { #category : #example }
 PatternScripterExamples >> customViewRawViewScript [
 	<gtExample>
+	<noTest>
 	| scripter game |
 	scripter := BlScripter new.
 	game := GtLudoRecordingGameExamples new gameShowingAllMoves3.
@@ -163,6 +172,7 @@ PatternScripterExamples >> customViewRawViewScript [
 { #category : #example }
 PatternScripterExamples >> explicitMoveViewScript [
 	<gtExample>
+	<noTest>
 	| move scripter |
 	move := GtLudoRecordingGameExamples new gameShowingAllMoves6 moves fifth.
 	scripter := BlScripter new.
@@ -233,6 +243,7 @@ PatternScripterExamples >> gtBookLinksMondrian [
 PatternScripterExamples >> moldableLudoGamePlaygroundScript [
 	"NB: Note the use of `do` to replace the playground snippet code."
 	<gtExample>
+	<noTest>
 	| game scripter |
 	game := GtLudoRecordingGame new.
 	scripter := BlScripter new.
@@ -272,6 +283,7 @@ PatternScripterExamples >> moldableLudoGamePlaygroundScript [
 { #category : #example }
 PatternScripterExamples >> moldableToolViewCodeScript [
 	<gtExample>
+	<noTest>
 	| scripter game |
 	game := GtLudoRecordingGameExamples new gameShowingAllMoves6.
 	scripter := BlScripter new.
@@ -299,6 +311,7 @@ PatternScripterExamples >> prettyJsonGitHubDictionary [
 PatternScripterExamples >> projectDiaryExample [
 	"Nothing to script, but better display"
 	<gtExample>
+	<noTest>
 	^ (GtPager
 		createWrappedOn: (LePagePhlowTool
 				page: (LeDatabase gtBook
@@ -316,12 +329,14 @@ PatternScripterExamples >> rawGitHubDictionary [
 { #category : #example }
 PatternScripterExamples >> simpleColumnedListViewScript [
 	<gtExample>
+	<noTest>
 	^ self moldableToolViewCodeScript
 ]
 
 { #category : #example }
 PatternScripterExamples >> simpleForwardViewScript [
 	<gtExample>
+	<noTest>
 	| pillarWebpage scripter |
 	pillarWebpage := PillarWebPageExamples new esug2014bikesPage.
 	scripter := BlScripter new.
@@ -341,6 +356,7 @@ PatternScripterExamples >> simpleForwardViewScript [
 { #category : #example }
 PatternScripterExamples >> simpleListViewScript [
 	<gtExample>
+	<noTest>
 	| addressBook scripter |
 	addressBook := GtABCartoonAddressBookExample new cartoonAddressBook.
 		scripter := BlScripter new.
@@ -360,6 +376,7 @@ PatternScripterExamples >> simpleListViewScript [
 { #category : #example }
 PatternScripterExamples >> throwawayLinkTool [
 	<gtExample>
+	<noTest>
 	^ (LePage named: 'Reachable links')
 	addSnippet: (LePharoSnippet new
 			code: 'pages := LeDatabase gtBook pages
@@ -406,6 +423,7 @@ m';
 { #category : #example }
 PatternScripterExamples >> throwawayLinkToolScript [
 	<gtExample>
+	<noTest>
 	| pager scripter |
 	pager := GtPager
 			createWrappedOn: (LePagePhlowTool page: self throwawayLinkTool).
@@ -421,6 +439,7 @@ PatternScripterExamples >> throwawayLinkToolScript [
 { #category : #example }
 PatternScripterExamples >> throwawayQueryTool [
 	<gtExample>
+	<noTest>
 	^ (LePage named: 'Find Ludo examples')
 		addSnippet: (LePharoSnippet new
 				code: '(LeDatabase gtBook pages
@@ -437,6 +456,7 @@ PatternScripterExamples >> throwawayQueryTool [
 { #category : #example }
 PatternScripterExamples >> throwawayQueryToolScript [
 	<gtExample>
+	<noTest>
 	| pager scripter |
 	pager := GtPager
 			createWrappedOn: (LePagePhlowTool page: self throwawayQueryTool).
