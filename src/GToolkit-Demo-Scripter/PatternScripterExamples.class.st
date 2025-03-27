@@ -362,7 +362,7 @@ PatternScripterExamples >> throwawayLinkTool [
 	<gtExample>
 	^ (LePage named: 'Reachable links')
 	addSnippet: (LePharoSnippet new
-			code: 'pages := thisSnippet database pages
+			code: 'pages := LeDatabase gtBook pages
 		reject: [ :each | each title = ''Glamorous Toolkit Book'' ].
 getStartedPage := pages detect: [ :each | each title = ''Glamorous Toolkit'' ].
 allReachedPages := getStartedPage
