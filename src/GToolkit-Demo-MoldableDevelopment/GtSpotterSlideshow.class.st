@@ -337,7 +337,6 @@ GtSpotterSlideshow >> spotterInLocalContextInInspectorExampleSlideFor: aSlide [
 { #category : #slides }
 GtSpotterSlideshow >> spotterInterfaceExplanationSlideFor: aSlide [
 	<gtSlide>
-	<noTest>
 	^ aSlide textAndElement
 		priority: 6;
 		newTextWithFormat: self spotterInterfaceExplanationText;
@@ -367,7 +366,6 @@ GtSpotterSlideshow >> spotterInterfaceExplanationText [
 { #category : #examples }
 GtSpotterSlideshow >> spotterInterfaceExplanationWithLinks [
 	<gtExample>
-	<noTest>
 	| spotterElement searchBarTarget resultsTarget previewTarget classesTarget implementorsTarget |
 
 	spotterElement := self spotterElementOn: 'GtCoder'.
