@@ -11,7 +11,7 @@ Class {
 { #category : #initalization }
 Latch >> initialize [
 	open := false.
-	mutex := Monitor new
+	mutex := Mutex new
 ]
 
 { #category : #accessing }
