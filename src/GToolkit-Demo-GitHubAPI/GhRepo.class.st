@@ -96,6 +96,15 @@ GhRepo >> gtGitAction: anAction [
 ]
 
 { #category : #views }
+GhRepo >> gtIssuesFor: aView [
+	<gtView>
+	^ aView forward
+		title: 'Issues';
+		object: [ self issues ];
+		view: #gtItemsFor:
+]
+
+{ #category : #views }
 GhRepo >> gtReleasesFor: aView [
 	<gtView>
 	^ aView columnedList
@@ -118,6 +127,14 @@ GhRepo >> gtWebViewFor: aView [
 { #category : #accessing }
 GhRepo >> htmlUrl [
 	^ rawData at: 'html_url'
+]
+
+{ #category : #accessing }
+GhRepo >> issues [
+	^ self
+		createFrom: 'issues_url'
+		with: [ :data | GhIssues new rawData: data ]
+		onError: [ GhIssues new ]
 ]
 
 { #category : #accessing }
