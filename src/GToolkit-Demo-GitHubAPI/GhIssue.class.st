@@ -6,12 +6,12 @@ Class {
 
 { #category : #accessing }
 GhIssue >> closedAt [
-	^ rawData at: 'closed_at'
+	^ (rawData at: 'closed_at') asDateAndTime
 ]
 
 { #category : #accessing }
 GhIssue >> createdAt [
-	^ rawData at: 'created_at'
+	^ (rawData at: 'created_at') asDateAndTime
 ]
 
 { #category : #accessing }

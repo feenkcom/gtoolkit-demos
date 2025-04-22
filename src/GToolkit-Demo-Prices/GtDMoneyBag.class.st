@@ -57,6 +57,17 @@ GtDMoneyBag >> gtDisplayOn: stream [
 		separatedBy: [ stream nextPutAll: ' + ' ] 
 ]
 
+{ #category : #'as yet unclassified' }
+GtDMoneyBag >> gtMoniesListFor: aView [
+	<gtView>
+	^ aView columnedList
+		title: 'Contained Monies';
+		priority: 10;
+		items: [ self monies ];
+		column: 'Amount' text: [ :each | each amount ];
+		column: 'Currency' text: [ :each | each currency ]
+]
+
 { #category : #initialization }
 GtDMoneyBag >> initialize [
 	super initialize.
