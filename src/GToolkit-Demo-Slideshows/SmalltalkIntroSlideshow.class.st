@@ -445,7 +445,7 @@ SmalltalkIntroSlideshow >> everythingIsAnObjectPage [
 	addSnippet: (LeTextSnippet new
 			string: '#This slideshow is an object';
 			addSnippet: (LePharoSnippet new
-					code: 'GtPresenterSlideShow create: SmalltalkIntroSlideshow new';
+					code: 'SmalltalkIntroSlideshow new';
 					yourself);
 			yourself);
 	addSnippet: (LeTextSnippet new
