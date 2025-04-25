@@ -432,7 +432,7 @@ Instead of formally writing down all the transformation rules, instead we direct
 	^ aSlide labelAndElement
 		setPriority;
 		newFadedText: 'Semantic rules for reducing a print statement';
-		element: [ SPLPetitParserSlideshow new splReductionScenery gtLiveFor: GtPhlowView new ]
+		element: [ SPLPetitParserSlideshow new splReductionScenery ]
 ]
 
 { #category : #slides }
@@ -575,7 +575,6 @@ SPLPetitParserSlideshow >> slidePriorities [
 			theASThierarchy:
 		
 		semanticsOfSPL:
-			reductionStepsScenery:
 			semanticsOfPrinting:
 			runningAnSPLProgram:
 			fibonacci:
