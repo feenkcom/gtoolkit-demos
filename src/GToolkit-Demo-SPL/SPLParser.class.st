@@ -146,7 +146,8 @@ SPLParser >> primary [
 
 { #category : #accessing }
 SPLParser >> printStmt [
-	^ super printStmt ==> [ :node | SPLPrintStatement for: node second ]
+	^ super printStmt 
+		==> [ :node | SPLPrintStatement for: node second ]
 ]
 
 { #category : #accessing }
