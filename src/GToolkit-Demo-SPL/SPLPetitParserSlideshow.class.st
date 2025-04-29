@@ -575,6 +575,7 @@ SPLPetitParserSlideshow >> slidePriorities [
 			theASThierarchy:
 		
 		semanticsOfSPL:
+			reductionStepsScenery:
 			semanticsOfPrinting:
 			runningAnSPLProgram:
 			fibonacci:
