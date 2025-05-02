@@ -403,8 +403,8 @@ DemoSlideshow >> title: aSlide [
 		"priority: (self priorityFor: #titleSlideFor:);"
 		setPriority;
 		titleBottomPadding: 30;
-		titleWithFormat: (self asTitle: 'Title');
-		subtitleWithFormat: (self asBigText: 'subtitle')
+		titleWithFormat: (self asTitle: 'Demo Slideshow Title');
+		subtitleWithFormat: (self asBigText: 'with a subtitle')
 ]
 
 { #category : #slides }
