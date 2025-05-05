@@ -141,10 +141,10 @@ DemoSlideshow >> embeddedScenery [
 DemoSlideshow >> embeddedScenery: aSlide [
 	<gtSlide>
 	<text: 'Embedded Scenery slide'>
-	^ aSlide labelAndElement
+	^ aSlide labelAndScenery
 		setPriority;
 		newFadedText: 'An embedded scenery';
-		element: [ DemoSlideshow new embeddedScenery ]
+		scenery: DemoSlideshow >> #embeddedScenery
 ]
 
 { #category : #slides }
@@ -302,10 +302,19 @@ Possibly over multiple lines.
 DemoSlideshow >> scenery: aSlide [
 	<gtSlide>
 	<text: 'Scenery'>
-	^ aSlide labelAndElement
+	^ aSlide scenery
+		setPriority;
+		scenery: GtSceneryEditedExamples >> #reflectionScenery
+]
+
+{ #category : #slides }
+DemoSlideshow >> sceneryWithLabel: aSlide [
+	<gtSlide>
+	<text: 'Scenery'>
+	^ aSlide labelAndScenery
 		setPriority;
 		newFadedText: 'A scenery';
-		element: [ GtSceneryExamples new sceneryWithOneInspectorAndOneRectangleAndOneConnection ]
+		scenery: GtSceneryEditedExamples >> #reflectionScenery
 ]
 
 { #category : #slides }
@@ -324,7 +333,7 @@ DemoSlideshow >> slidePriorities [
 
 	<gtExample>
 	<return: #Array>
-	^ #(title: titleWithFooters: textAndElement: textAndImage: paragraph: multiLineText: headingAndCode: lepiterPage: dynamicLepiterPage: maximizedPage: maximizedGtBookPage: inspectorOnObject: inspectorInPager: inspectorView: inspectorViewInPager: scriptedExampleInPager: fileLocatorInPager: scenery: embeddedScenery: gtWorld: gtWorldWithTitle: coder: coderOnClass: coderOnMethod: spotterExampleSlide: #summarySlide:)
+	^ #(title: titleWithFooters: textAndElement: textAndImage: paragraph: multiLineText: headingAndCode: lepiterPage: dynamicLepiterPage: maximizedPage: maximizedGtBookPage: inspectorOnObject: inspectorInPager: inspectorView: inspectorViewInPager: scriptedExampleInPager: fileLocatorInPager: scenery: sceneryWithLabel: embeddedScenery: gtWorld: gtWorldWithTitle: coder: coderOnClass: coderOnMethod: spotterExampleSlide: #summarySlide:)
 ]
 
 { #category : #slides }
