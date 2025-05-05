@@ -7,6 +7,7 @@ Class {
 { #category : #accessing }
 MarkdownLinkParserExamples >> emailLink [
 	<gtExample>
+	<return: #OrderedCollection>
 	| links |
 	links := self parse: 'Email: [](Roel.Wuyts@ulb.ac.be)'.
 	self assert: links size equals: 1.
@@ -18,6 +19,7 @@ MarkdownLinkParserExamples >> emailLink [
 { #category : #accessing }
 MarkdownLinkParserExamples >> linkWithSpaces [
 	<gtExample>
+	<return: #OrderedCollection>
 	| links |
 	links := self parse: '[ foo ]( bar )'.
 	self assert: links size equals: 1.
@@ -29,8 +31,10 @@ MarkdownLinkParserExamples >> linkWithSpaces [
 { #category : #accessing }
 MarkdownLinkParserExamples >> multiLineNoLinks [
 	<gtExample>
+	<return: #OrderedCollection>
 	| links |
-	links := self parse: '[
+	links := self
+			parse: '[
 foo](bar)'.
 	self assert: links isEmpty.
 	^ links
@@ -39,6 +43,7 @@ foo](bar)'.
 { #category : #accessing }
 MarkdownLinkParserExamples >> noLinks [
 	<gtExample>
+	<return: #OrderedCollection>
 	| links |
 	links := self parse: '... (someLink) '.
 	self assert: links size equals: 0.
@@ -48,6 +53,7 @@ MarkdownLinkParserExamples >> noLinks [
 { #category : #accessing }
 MarkdownLinkParserExamples >> noTextLink [
 	<gtExample>
+	<return: #OrderedCollection>
 	| links |
 	links := self parse: '... [](someLink) '.
 	self assert: links size equals: 1.
@@ -59,6 +65,7 @@ MarkdownLinkParserExamples >> noTextLink [
 { #category : #accessing }
 MarkdownLinkParserExamples >> oneLink [
 	<gtExample>
+	<return: #OrderedCollection>
 	| links |
 	links := self parse: '[foo](bar)'.
 	self assert: links size equals: 1.
@@ -80,8 +87,10 @@ MarkdownLinkParserExamples >> parserClass [
 { #category : #accessing }
 MarkdownLinkParserExamples >> twoLinks [
 	<gtExample>
+	<return: #OrderedCollection>
 	| links |
-	links := self parse: '
+	links := self
+			parse: '
 ""stuff to ignore""
 [foo](bar)
 [fuzz](baz)
@@ -97,6 +106,7 @@ MarkdownLinkParserExamples >> twoLinks [
 { #category : #accessing }
 MarkdownLinkParserExamples >> twoStarsNoLinks [
 	<gtExample>
+	<return: #OrderedCollection>
 	| links |
 	links := self parse: '[]()'.
 	self assert: links isEmpty.

@@ -34,6 +34,7 @@ GhOrganizationExamples >> gtoolkitRepo [
 { #category : #accessing }
 GhOrganizationExamples >> httpClient [
 	<gtExample>
+	<return: #ZnClient>
 	^ ZnClient new
 		setBearerAuthentication: GtGitHubTokenHolder token;
 		yourself

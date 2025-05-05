@@ -25,6 +25,7 @@ ReflectionExamples >> anonymousClassInstance [
 { #category : #running }
 ReflectionExamples >> becomeForwardPoints [
 	<gtExample>
+	<return: #Array>
 	| pt1 pt2 pt3 |
 	pt1 := 0 @ 0.
 	pt2 := pt1.
@@ -41,6 +42,7 @@ ReflectionExamples >> becomeForwardPoints [
 { #category : #running }
 ReflectionExamples >> becomePoints [
 	<gtExample>
+	<return: #Array>
 	| pt1 pt2 pt3 |
 	pt1 := 0 @ 0.
 	pt2 := pt1.

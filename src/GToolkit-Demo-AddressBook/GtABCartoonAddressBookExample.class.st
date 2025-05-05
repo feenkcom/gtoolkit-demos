@@ -7,32 +7,33 @@
 Class {
 	#name : #GtABCartoonAddressBookExample,
 	#superclass : #GtExampleProvider,
-	#category : 'GToolkit-Demo-AddressBook-Examples'
+	#category : #'GToolkit-Demo-AddressBook-Examples'
 }
 
 { #category : #'examples - contacts' }
 GtABCartoonAddressBookExample >> bugsBunnyContact [
 	<gtExample>
 	<label: 'Bugs Bunny contact'>
+	<return: #GtABContact>
 	| contact |
 	contact := GtABContact new
-		firstName: 'Bugs';
-		lastName: 'Bunny';
-		description: self bugsBunnyDescription;
-		avatar: (self readAvatarWithId: 'bugs-bunny');
-		addTelephone: (GtABTelephone new 
-				prefix: '+1202'; 
-				number: '5550146');
-		addAddress: (GtABAddress new
-			city: 'Universal City';
-			country: 'USA').
+			firstName: 'Bugs';
+			lastName: 'Bunny';
+			description: self bugsBunnyDescription;
+			avatar: (self readAvatarWithId: 'bugs-bunny');
+			addTelephone: (GtABTelephone new
+					prefix: '+1202';
+					number: '5550146');
+			addAddress: (GtABAddress new
+					city: 'Universal City';
+					country: 'USA').
 
 	self assert: contact firstName equals: 'Bugs'.
 	self assert: contact lastName equals: 'Bunny'.
 	self assert: contact description equals: self bugsBunnyDescription.
 	self assert: contact addresses size equals: 1.
 	self assert: contact telephones size equals: 1.
-	
+
 
 	^ contact
 ]
@@ -46,18 +47,18 @@ GtABCartoonAddressBookExample >> bugsBunnyDescription [
 GtABCartoonAddressBookExample >> cartoonAddressBook [
 	<gtExample>
 	<label: 'Cartoon characters address book'>
+	<return: #GtABAddressBook>
 	| addressBook |
-	addressBook := GtABAddressBook new
-		label: 'Cartoons'.
+	addressBook := GtABAddressBook new label: 'Cartoons'.
 	addressBook addContact: self bugsBunnyContact.
 	addressBook addContact: self daffyDuckContact.
 	addressBook addContact: self porkyPigContact.
 	addressBook addContact: self roadRunnerContact.
 	addressBook addContact: self wileECoyoteContact.
 	addressBook addContact: self woodyWoodpeckerContact.
-	
+
 	self assert: addressBook contacts size equals: 6.
-	
+
 	^ addressBook
 ]
 
@@ -65,25 +66,26 @@ GtABCartoonAddressBookExample >> cartoonAddressBook [
 GtABCartoonAddressBookExample >> daffyDuckContact [
 	<gtExample>
 	<label: 'Daffy Duck contact'>
+	<return: #GtABContact>
 	| contact |
 	contact := GtABContact new
-		firstName: 'Daffy';
-		lastName: 'Duck';
-		description: self daffyDuckDescription;
-		avatar: (self readAvatarWithId: 'daffy-duck');
-		addTelephone: (GtABTelephone new 
-			prefix: '+1202'; 
-			number: '5550151');
-		addAddress: (GtABAddress new
-			city: 'Universal City';
-			country: 'USA').
+			firstName: 'Daffy';
+			lastName: 'Duck';
+			description: self daffyDuckDescription;
+			avatar: (self readAvatarWithId: 'daffy-duck');
+			addTelephone: (GtABTelephone new
+					prefix: '+1202';
+					number: '5550151');
+			addAddress: (GtABAddress new
+					city: 'Universal City';
+					country: 'USA').
 
 	self assert: contact firstName equals: 'Daffy'.
 	self assert: contact lastName equals: 'Duck'.
 	self assert: contact description equals: self daffyDuckDescription.
 	self assert: contact addresses size equals: 1.
 	self assert: contact telephones size equals: 1.
-	
+
 
 	^ contact
 ]
@@ -105,18 +107,19 @@ GtABCartoonAddressBookExample >> loremIpsum [
 GtABCartoonAddressBookExample >> porkyPigContact [
 	<gtExample>
 	<label: 'Porky Pig contact'>
+	<return: #GtABContact>
 	| contact |
 	contact := GtABContact new
-		firstName: 'Porky';
-		lastName: 'Pig';
-		description: self porkyPigDescription;
-		avatar: (self readAvatarWithId: 'porky-pig');
-		addTelephone: (GtABTelephone new 
-			prefix: '+1202'; 
-			number: '5550138');
-		addAddress: (GtABAddress new
-			city: 'Universal City';
-			country: 'USA').
+			firstName: 'Porky';
+			lastName: 'Pig';
+			description: self porkyPigDescription;
+			avatar: (self readAvatarWithId: 'porky-pig');
+			addTelephone: (GtABTelephone new
+					prefix: '+1202';
+					number: '5550138');
+			addAddress: (GtABAddress new
+					city: 'Universal City';
+					country: 'USA').
 
 	self assert: contact firstName equals: 'Porky'.
 	self assert: contact lastName equals: 'Pig'.
@@ -148,18 +151,19 @@ GtABCartoonAddressBookExample >> readAvatarWithId: anId [
 GtABCartoonAddressBookExample >> roadRunnerContact [
 	<gtExample>
 	<label: 'Road Runner contact'>
+	<return: #GtABContact>
 	| contact |
 	contact := GtABContact new
-		firstName: 'Road';
-		lastName: 'Runner';
-		description: self roadRunnerDescription;
-		avatar: (self readAvatarWithId: 'road-runner');
-		addTelephone: (GtABTelephone new 
-			prefix: '+1202'; 
-			number: '5550110');
-		addAddress: (GtABAddress new
-			city: 'Burbank';
-			country: 'USA').
+			firstName: 'Road';
+			lastName: 'Runner';
+			description: self roadRunnerDescription;
+			avatar: (self readAvatarWithId: 'road-runner');
+			addTelephone: (GtABTelephone new
+					prefix: '+1202';
+					number: '5550110');
+			addAddress: (GtABAddress new
+					city: 'Burbank';
+					country: 'USA').
 
 	self assert: contact firstName equals: 'Road'.
 	self assert: contact lastName equals: 'Runner'.
@@ -179,18 +183,19 @@ GtABCartoonAddressBookExample >> roadRunnerDescription [
 GtABCartoonAddressBookExample >> wileECoyoteContact [
 	<gtExample>
 	<label: 'Wile E. Coyote contact'>
+	<return: #GtABContact>
 	| contact |
 	contact := GtABContact new
-		firstName: 'Wile';
-		lastName: 'E. Coyote';
-		description: self wileECoyoteDescription;
-		avatar: (self readAvatarWithId: 'wile-e-coyote');
-		addTelephone: (GtABTelephone new 
-			prefix: '+1202'; 
-			number: '5550171');
-		addAddress: (GtABAddress new
-			city: 'Burbank';
-			country: 'USA').
+			firstName: 'Wile';
+			lastName: 'E. Coyote';
+			description: self wileECoyoteDescription;
+			avatar: (self readAvatarWithId: 'wile-e-coyote');
+			addTelephone: (GtABTelephone new
+					prefix: '+1202';
+					number: '5550171');
+			addAddress: (GtABAddress new
+					city: 'Burbank';
+					country: 'USA').
 
 	self assert: contact firstName equals: 'Wile'.
 	self assert: contact lastName equals: 'E. Coyote'.
@@ -210,18 +215,19 @@ GtABCartoonAddressBookExample >> wileECoyoteDescription [
 GtABCartoonAddressBookExample >> woodyWoodpeckerContact [
 	<gtExample>
 	<label: 'Woody Woodpecker contact'>
+	<return: #GtABContact>
 	| contact |
 	contact := GtABContact new
-		firstName: 'Woody';
-		lastName: 'Woodpecker';
-		description: self woodyWoodpeckerDescription;
-		avatar: (self readAvatarWithId: 'woody-woodpecker');
-		addTelephone: (GtABTelephone new 
-			prefix: '+1202'; 
-			number: '5550112');
-		addAddress: (GtABAddress new
-			city: 'Universal City';
-			country: 'USA').
+			firstName: 'Woody';
+			lastName: 'Woodpecker';
+			description: self woodyWoodpeckerDescription;
+			avatar: (self readAvatarWithId: 'woody-woodpecker');
+			addTelephone: (GtABTelephone new
+					prefix: '+1202';
+					number: '5550112');
+			addAddress: (GtABAddress new
+					city: 'Universal City';
+					country: 'USA').
 
 	self assert: contact firstName equals: 'Woody'.
 	self assert: contact lastName equals: 'Woodpecker'.

@@ -7,17 +7,18 @@ Class {
 { #category : #accessing }
 GtMemoryGameExamples >> afterSomeMoves [
 	<gtExample>
+	<return: #GtMemoryGame>
 	| game |
 	game := self chooseMisMatchingPair.
 	self assert: game visibleCards size equals: 16.
-	game chooseCard: (game availableCards at: 6) .
-	game chooseCard: (game availableCards at: 11) .
+	game chooseCard: (game availableCards at: 6).
+	game chooseCard: (game availableCards at: 11).
 	self assert: game visibleCards size equals: 14.
-	game chooseCard: (game availableCards at: 5) .
-	game chooseCard: (game availableCards at: 9) .
+	game chooseCard: (game availableCards at: 5).
+	game chooseCard: (game availableCards at: 9).
 	self assert: game visibleCards size equals: 12.
-	game chooseCard: (game availableCards at: 3) .
-	game chooseCard: (game availableCards at: 14) .
+	game chooseCard: (game availableCards at: 3).
+	game chooseCard: (game availableCards at: 14).
 	self assert: game visibleCards size equals: 12.
 	self assert: game isOver not.
 	^ game
@@ -26,10 +27,11 @@ GtMemoryGameExamples >> afterSomeMoves [
 { #category : #accessing }
 GtMemoryGameExamples >> chooseMatchingPair [
 	<gtExample>
+	<return: #GtMemoryGame>
 	| game |
 	game := self fixedGame.
-	game chooseCard: (game availableCards at: 6) .
-	game chooseCard: (game availableCards at: 11) .
+	game chooseCard: (game availableCards at: 6).
+	game chooseCard: (game availableCards at: 11).
 	self assert: game visibleCards size equals: 14.
 	self assert: game isOver not.
 	^ game
@@ -38,10 +40,11 @@ GtMemoryGameExamples >> chooseMatchingPair [
 { #category : #accessing }
 GtMemoryGameExamples >> chooseMisMatchingPair [
 	<gtExample>
+	<return: #GtMemoryGame>
 	| game |
 	game := self fixedGame.
-	game chooseCard: (game availableCards at: 5) .
-	game chooseCard: (game availableCards at: 11) .
+	game chooseCard: (game availableCards at: 5).
+	game chooseCard: (game availableCards at: 11).
 	self assert: game visibleCards size equals: game cardsCount.
 	self assert: game isOver not.
 	^ game
@@ -50,6 +53,7 @@ GtMemoryGameExamples >> chooseMisMatchingPair [
 { #category : #accessing }
 GtMemoryGameExamples >> fixedGame [
 	<gtExample>
+	<return: #GtMemoryGame>
 	| game |
 	game := GtMemoryGame new setSymbols: '4753628368271451'.
 	self assert: game cardsCount equals: 16.
@@ -60,29 +64,30 @@ GtMemoryGameExamples >> fixedGame [
 { #category : #accessing }
 GtMemoryGameExamples >> playToEnd [
 	<gtExample>
+	<return: #GtMemoryGame>
 	| game |
 	game := self chooseMatchingPair.
 	self assert: game visibleCards size equals: 14.
-	game chooseCard: (game availableCards at: 1) .
-	game chooseCard: (game availableCards at: 14) .
+	game chooseCard: (game availableCards at: 1).
+	game chooseCard: (game availableCards at: 14).
 	self assert: game visibleCards size equals: 12.
-	game chooseCard: (game availableCards at: 2) .
-	game chooseCard: (game availableCards at: 12) .
+	game chooseCard: (game availableCards at: 2).
+	game chooseCard: (game availableCards at: 12).
 	self assert: game visibleCards size equals: 10.
-	game chooseCard: (game availableCards at: 3) .
-	game chooseCard: (game availableCards at: 15) .
+	game chooseCard: (game availableCards at: 3).
+	game chooseCard: (game availableCards at: 15).
 	self assert: game visibleCards size equals: 8.
-	game chooseCard: (game availableCards at: 4) .
-	game chooseCard: (game availableCards at: 8) .
+	game chooseCard: (game availableCards at: 4).
+	game chooseCard: (game availableCards at: 8).
 	self assert: game visibleCards size equals: 6.
-	game chooseCard: (game availableCards at: 5) .
-	game chooseCard: (game availableCards at: 9) .
+	game chooseCard: (game availableCards at: 5).
+	game chooseCard: (game availableCards at: 9).
 	self assert: game visibleCards size equals: 4.
-	game chooseCard: (game availableCards at: 7) .
-	game chooseCard: (game availableCards at: 10) .
+	game chooseCard: (game availableCards at: 7).
+	game chooseCard: (game availableCards at: 10).
 	self assert: game visibleCards size equals: 2.
-	game chooseCard: (game availableCards at: 13) .
-	game chooseCard: (game availableCards at: 16) .
+	game chooseCard: (game availableCards at: 13).
+	game chooseCard: (game availableCards at: 16).
 	self assert: game isOver.
 	^ game
 ]

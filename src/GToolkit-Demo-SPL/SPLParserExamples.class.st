@@ -15,9 +15,12 @@ Class {
 { #category : #accessing }
 SPLParserExamples >> blockStmt [
 	<gtExample>
+	<return: #SPLBlockStatement>
 	| result |
 	result := super blockStmt.
-	self assert: result printString equals: '{
+	self
+		assert: result printString
+		equals: '{
   x = 42;
   print (x*x);
 }'.
@@ -27,6 +30,7 @@ SPLParserExamples >> blockStmt [
 { #category : #accessing }
 SPLParserExamples >> booleanTrue [
 	<gtExample>
+	<return: #SPLBoolean>
 	| result |
 	result := super booleanTrue.
 	self assert: result value.
@@ -37,6 +41,7 @@ SPLParserExamples >> booleanTrue [
 { #category : #accessing }
 SPLParserExamples >> cascadedAssignment [
 	<gtExample>
+	<return: #SPLAssignment>
 	| result |
 	result := super cascadedAssignment.
 	self assert: result printString equals: 'x = y = (3+4)'.
@@ -46,6 +51,7 @@ SPLParserExamples >> cascadedAssignment [
 { #category : #accessing }
 SPLParserExamples >> complexExpression [
 	<gtExample>
+	<return: #SPLLogicalBinary>
 	| result |
 	result := super complexExpression.
 	self assert: result printString equals: '((((1+2)*3)>6) or ((6*7)==42))'.
@@ -55,6 +61,7 @@ SPLParserExamples >> complexExpression [
 { #category : #accessing }
 SPLParserExamples >> complexExpressionStmt [
 	<gtExample>
+	<return: #SPLExpressionStatement>
 	| result |
 	result := super complexExpressionStmt.
 	self assert: result printString equals: '((((1+2)*3)>6) or ((6*7)==42));'.
@@ -64,9 +71,12 @@ SPLParserExamples >> complexExpressionStmt [
 { #category : #accessing }
 SPLParserExamples >> complexStmt [
 	<gtExample>
+	<return: #SPLWhileStatement>
 	| result |
 	result := super complexStmt.
-	self assert: result printString equals: 'while (x>y) {
+	self
+		assert: result printString
+		equals: 'while (x>y) {
   if (x<42)   {
     x = (x+1);
     print x;
@@ -79,6 +89,7 @@ SPLParserExamples >> complexStmt [
 { #category : #accessing }
 SPLParserExamples >> fibonacciProgram [
 	<gtExample>
+	<return: #SPLProgram>
 	| result |
 	result := super fibonacciProgram.
 	self
@@ -104,6 +115,7 @@ while (iterations<arg) {
 { #category : #accessing }
 SPLParserExamples >> float3point14 [
 	<gtExample>
+	<return: #SPLNumber>
 	| result |
 	result := super float3point14.
 	self assert: result value equals: 3.14.
@@ -114,6 +126,7 @@ SPLParserExamples >> float3point14 [
 { #category : #accessing }
 SPLParserExamples >> helloString [
 	<gtExample>
+	<return: #SPLString>
 	| result |
 	result := super helloString.
 	self assert: result value equals: 'hello'.
@@ -124,9 +137,12 @@ SPLParserExamples >> helloString [
 { #category : #accessing }
 SPLParserExamples >> ifElseStmt [
 	<gtExample>
+	<return: #SPLIfElseStatement>
 	| result |
 	result := super ifElseStmt.
-	self assert: result printString equals: 'if (x>y) x = y;
+	self
+		assert: result printString
+		equals: 'if (x>y) x = y;
 else x = -y;'.
 	^ result
 ]
@@ -134,17 +150,17 @@ else x = -y;'.
 { #category : #accessing }
 SPLParserExamples >> ifNoElseStmt [
 	<gtExample>
+	<return: #SPLIfStatement>
 	| result |
 	result := super ifNoElseStmt.
-	self
-		assert: result printString
-		equals: 'if (x>y) x = y;'.
+	self assert: result printString equals: 'if (x>y) x = y;'.
 	^ result
 ]
 
 { #category : #accessing }
 SPLParserExamples >> integer42 [
 	<gtExample>
+	<return: #SPLNumber>
 	| result |
 	result := super integer42.
 	self assert: result value equals: 42.
@@ -155,6 +171,7 @@ SPLParserExamples >> integer42 [
 { #category : #accessing }
 SPLParserExamples >> minus42 [
 	<gtExample>
+	<return: #SPLUnary>
 	| result |
 	result := super minus42.
 	self assert: result printString equals: '-42'.
@@ -164,6 +181,7 @@ SPLParserExamples >> minus42 [
 { #category : #accessing }
 SPLParserExamples >> nil [
 	<gtExample>
+	<return: #SPLVariable>
 	| result |
 	result := self parse: 'nil' rule: #expression.
 	self assert: result printString equals: 'nil'.
@@ -173,6 +191,7 @@ SPLParserExamples >> nil [
 { #category : #accessing }
 SPLParserExamples >> notTrue [
 	<gtExample>
+	<return: #SPLUnary>
 	| result |
 	result := super notTrue.
 	self assert: result printString equals: '!true'.
@@ -182,6 +201,7 @@ SPLParserExamples >> notTrue [
 { #category : #accessing }
 SPLParserExamples >> orbeAsIdentifier [
 	<gtExample>
+	<return: #SPLVariable>
 	| result |
 	result := super orbeAsIdentifier.
 	self assert: result printString equals: 'orbe'.
@@ -191,6 +211,7 @@ SPLParserExamples >> orbeAsIdentifier [
 { #category : #accessing }
 SPLParserExamples >> parenthesized42 [
 	<gtExample>
+	<return: #SPLNumber>
 	| result |
 	result := super parenthesized42.
 	self assert: result value equals: 42.
@@ -205,6 +226,7 @@ SPLParserExamples >> parserClass [
 { #category : #accessing }
 SPLParserExamples >> printStmt [
 	<gtExample>
+	<return: #SPLPrintStatement>
 	| result |
 	result := super printStmt.
 	self assert: result printString equals: 'print (3+4);'.
@@ -214,9 +236,12 @@ SPLParserExamples >> printStmt [
 { #category : #accessing }
 SPLParserExamples >> programWithComments [
 	<gtExample>
+	<return: #SPLProgram>
 	| result |
 	result := super programWithComments.
-	self assert: result printString equals: 'var hello = "hello world";
+	self
+		assert: result printString
+		equals: 'var hello = "hello world";
 print hello;
 '.
 	^ result
@@ -225,6 +250,7 @@ print hello;
 { #category : #accessing }
 SPLParserExamples >> threeEqualFour [
 	<gtExample>
+	<return: #SPLBinary>
 	| result |
 	result := super threeEqualFour.
 	self assert: result printString equals: '(3==4)'.
@@ -234,6 +260,7 @@ SPLParserExamples >> threeEqualFour [
 { #category : #accessing }
 SPLParserExamples >> threeLessThanEqualFour [
 	<gtExample>
+	<return: #SPLBinary>
 	| result |
 	result := super threeLessThanEqualFour.
 	self assert: result printString equals: '(3<=4)'.
@@ -243,6 +270,7 @@ SPLParserExamples >> threeLessThanEqualFour [
 { #category : #accessing }
 SPLParserExamples >> threeLessThanFour [
 	<gtExample>
+	<return: #SPLBinary>
 	| result |
 	result := super threeLessThanFour.
 	self assert: result printString equals: '(3<4)'.
@@ -252,6 +280,7 @@ SPLParserExamples >> threeLessThanFour [
 { #category : #accessing }
 SPLParserExamples >> threeNotEqualFour [
 	<gtExample>
+	<return: #SPLBinary>
 	| result |
 	result := super threeNotEqualFour.
 	self assert: result printString equals: '(3!=4)'.
@@ -261,6 +290,7 @@ SPLParserExamples >> threeNotEqualFour [
 { #category : #accessing }
 SPLParserExamples >> threePlusFour [
 	<gtExample>
+	<return: #SPLBinary>
 	| result |
 	result := super threePlusFour.
 	self assert: result printString equals: '(3+4)'.
@@ -270,6 +300,7 @@ SPLParserExamples >> threePlusFour [
 { #category : #accessing }
 SPLParserExamples >> threeTimesFour [
 	<gtExample>
+	<return: #SPLBinary>
 	| result |
 	result := super threeTimesFour.
 	self assert: result printString equals: '(3*4)'.
@@ -279,6 +310,7 @@ SPLParserExamples >> threeTimesFour [
 { #category : #accessing }
 SPLParserExamples >> threeTimesFourDividedByFive [
 	<gtExample>
+	<return: #SPLBinary>
 	| result |
 	result := self parse: '3*4/5' rule: #factor.
 	self assert: result printString equals: '((3*4)/5)'.
@@ -288,6 +320,7 @@ SPLParserExamples >> threeTimesFourDividedByFive [
 { #category : #accessing }
 SPLParserExamples >> true [
 	<gtExample>
+	<return: #SPLBoolean>
 	| result |
 	result := self parse: 'true' rule: #expression.
 	self assert: result printString equals: 'true'.
@@ -297,6 +330,7 @@ SPLParserExamples >> true [
 { #category : #accessing }
 SPLParserExamples >> trueAndFalse [
 	<gtExample>
+	<return: #SPLLogicalBinary>
 	| result |
 	result := super trueAndFalse.
 	self assert: result printString equals: '(true and false)'.
@@ -306,6 +340,7 @@ SPLParserExamples >> trueAndFalse [
 { #category : #accessing }
 SPLParserExamples >> trueOrFalse [
 	<gtExample>
+	<return: #SPLLogicalBinary>
 	| result |
 	result := super trueOrFalse.
 	self assert: result printString equals: '(true or false)'.
@@ -315,6 +350,7 @@ SPLParserExamples >> trueOrFalse [
 { #category : #accessing }
 SPLParserExamples >> varDeclWithInit [
 	<gtExample>
+	<return: #SPLInitializedDeclaration>
 	| result |
 	result := super varDeclWithInit.
 	self assert: result printString equals: 'var x = (42+y);'.
@@ -324,6 +360,7 @@ SPLParserExamples >> varDeclWithInit [
 { #category : #accessing }
 SPLParserExamples >> varDeclWithoutInit [
 	<gtExample>
+	<return: #SPLDeclaration>
 	| result |
 	result := super varDeclWithoutInit.
 	self assert: result printString equals: 'var x;'.
@@ -333,9 +370,12 @@ SPLParserExamples >> varDeclWithoutInit [
 { #category : #accessing }
 SPLParserExamples >> whileProgram [
 	<gtExample>
+	<return: #SPLProgram>
 	| result |
 	result := super whileProgram.
-	self assert: result printString equals: 'var a = 1;
+	self
+		assert: result printString
+		equals: 'var a = 1;
 while (a<10) {
   print a;
   a = (a+1);
@@ -347,6 +387,7 @@ while (a<10) {
 { #category : #accessing }
 SPLParserExamples >> whileStmt [
 	<gtExample>
+	<return: #SPLWhileStatement>
 	| result |
 	result := super whileStmt.
 	self assert: result printString equals: 'while (x<42) x = (x+1);'.

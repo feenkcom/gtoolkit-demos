@@ -66,6 +66,7 @@ DemoSlideshow >> demoDatabase [
 	"A transient database with links."
 
 	<gtExample>
+	<return: #LeDatabase>
 	^ self database
 ]
 
@@ -320,35 +321,10 @@ DemoSlideshow >> scriptedExampleInPager: aSlide [
 { #category : #accessing }
 DemoSlideshow >> slidePriorities [
 	"Instead of manually setting priorities, just list the slides in order here."
+
 	<gtExample>
-	^ #( 
-		title:
-		titleWithFooters:
-		textAndElement:
-		textAndImage:
-		paragraph:
-		multiLineText:
-		headingAndCode:
-		lepiterPage:
-		dynamicLepiterPage:
-		maximizedPage:
-		maximizedGtBookPage:
-		inspectorOnObject:
-		inspectorInPager:
-		inspectorView:
-		inspectorViewInPager:
-		scriptedExampleInPager:
-		fileLocatorInPager:
-		scenery:
-		embeddedScenery:
-		gtWorld:
-		gtWorldWithTitle:
-		coder:
-		coderOnClass:
-		coderOnMethod:
-		spotterExampleSlide:
-		#summarySlide:
-	)
+	<return: #Array>
+	^ #(title: titleWithFooters: textAndElement: textAndImage: paragraph: multiLineText: headingAndCode: lepiterPage: dynamicLepiterPage: maximizedPage: maximizedGtBookPage: inspectorOnObject: inspectorInPager: inspectorView: inspectorViewInPager: scriptedExampleInPager: fileLocatorInPager: scenery: embeddedScenery: gtWorld: gtWorldWithTitle: coder: coderOnClass: coderOnMethod: spotterExampleSlide: #summarySlide:)
 ]
 
 { #category : #slides }

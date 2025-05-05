@@ -31,6 +31,7 @@ GtLampSort >> elements: aCollection [
 { #category : #examples }
 GtLampSort >> gtExampleSortRandom [
 	<gtExample>
+	<return: #GtLampSort>
 	| numbers sorted |
 	numbers := (1 to: 10) collect: [ :_ | 100 atRandom ].
 	sorted := self sort: numbers copy.
@@ -40,6 +41,7 @@ GtLampSort >> gtExampleSortRandom [
 { #category : #examples }
 GtLampSort >> gtExampleSortSpecific [
 	<gtExample>
+	<return: #GtLampSort>
 	| numbers sorted |
 	numbers := #(7 12 3 20 5 8 2).
 	sorted := self sort: numbers copy.

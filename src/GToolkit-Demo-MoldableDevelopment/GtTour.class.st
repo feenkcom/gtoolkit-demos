@@ -248,6 +248,7 @@ GtTour >> coderSlideshowLinkSlideFor: aSlide [
 { #category : #'api - instantiation' }
 GtTour >> coderWithComment [
 	<gtExample>
+	<return: #GtPager>
 	| aScripter |
 	aScripter := BlScripter new.
 	aScripter
@@ -300,6 +301,7 @@ GtTour >> customViewsExampleSlideFor: aSlide [
 { #category : #accessing }
 GtTour >> explainerOnReactJSComponents [
 	<gtExample>
+	<return: #BlElement>
 	| js inspectorContainer container explanationStyler look sourceElement compositeStyler editor |
 	js := '  function Welcome(props) {
     return <h1>Hello, {props.name}</h1>;
@@ -317,134 +319,114 @@ GtTour >> explainerOnReactJSComponents [
     <App />,
     document.getElementById(''root'')
   );'.
-inspectorContainer := BlElement new
-    constraintsDo: [ :c | 
-        c horizontal matchParent.
-        c vertical matchParent ];
-    layout: BlLinearLayout horizontal;
-    margin: (BlInsets all: 30);
-    background: Color white;
-    aptitude: BrShadowAptitude.
-container := BlElement new
-    constraintsDo: [ :c | 
-        c horizontal matchParent.
-        c vertical matchParent ];
-    layout: BlLinearLayout horizontal.
-container explainer isExplanationHolder: true.
-explanationStyler := (GtSmaCCParserStyler forParser: JSXParser)
-    stylerRules:
-        {(GtSmaCCNodeStylerRule
-            nodeClassName: #JSFunctionNode
-            styleBlock: [ :styler :node :text | 
-                (text from: node startPosition - 1 to: node startPosition - 1)
-                    attributes: {(GtYellowCircleExplanationTextAdornment forIdentifier: #function)}.
-                node name source = 'Welcome'
-                    ifTrue: [ (text from: node startPosition - 1 to: node startPosition - 1)
-                            attributes:
-                                {(GtYellowCircleExplanationTextAdornment
-                                    forIdentifier: #welcomeFunction)} ].
-                node name source = 'App'
-                    ifTrue: [ (text from: node startPosition - 1 to: node startPosition - 1)
-                            attributes: {(GtYellowCircleExplanationTextAdornment forIdentifier: #appFunction)} ] ]).
-        (GtSmaCCNodeStylerRule
-            nodeClassName: #JSVariableDeclarationNode
-            styleBlock: [ :styler :node :text | 
-                node source = 'props'
-                    ifTrue: [ (text from: node startPosition - 1 to: node startPosition - 1)
-                            attributes: {(GtYellowCircleExplanationTextAdornment forIdentifier: #props)} ] ]).
-        (GtSmaCCNodeStylerRule
-            nodeClassName: #JSXElementNameNode
-            styleBlock: [ :styler :node :text | 
-                (node parent isKindOf: JSXClosingElementNode)
-                    ifFalse:
-                        [ #(#('Welcome' #welcome) #('div' #div) #('h1' #h1) #('App' #screen) #('Welcome' #screen) #('App' #appRender))
-                            do: [ :each | 
-                                each first = node source
-                                    ifTrue: [ (text from: node startPosition - 1 to: node startPosition - 1)
-                                            attributes: {(GtYellowCircleExplanationTextAdornment forIdentifier: each last)} ] ] ] ]).
-        (GtSmaCCPatternStylerRule
-            pattern:
-                (JSParser
-                    parse: 'ReactDOM.render'
-                    startingAt: JSParser startingStateForExpression)
-            styleBlock: [ :styler :node :text | 
-                (text from: node startPosition - 1 to: node startPosition - 1)
-                    attributes: {(GtYellowCircleExplanationTextAdornment forIdentifier: #ReactDOM)} ])}.
-look := BrGlamorousCodeEditorAptitude new.
-sourceElement := BrEditor new.
-compositeStyler := GtCompositeSmaCCASTStyler forParser: JSXParser.
-compositeStyler
-    stylers:
-        {JSXParser gtStyler.
-        explanationStyler}.
-look styler: compositeStyler.
-sourceElement
-    aptitude: look;
-    styler: compositeStyler;
-    text: js asRopedText.
-inspectorContainer addChild: sourceElement.
-editor := BrEditor new
-    aptitude: (BrGlamorousRegularEditorAptitude new fontSize: 16);
-    text:
-        'Conceptually, components are like JavaScript functions. They accept arbitrary inputs (called “props”) and return React elements describing what should appear on the screen.
+	inspectorContainer := BlElement new
+			constraintsDo: [ :c | 
+				c horizontal matchParent.
+				c vertical matchParent ];
+			layout: BlLinearLayout horizontal;
+			margin: (BlInsets all: 30);
+			background: Color white;
+			aptitude: BrShadowAptitude.
+	container := BlElement new
+			constraintsDo: [ :c | 
+				c horizontal matchParent.
+				c vertical matchParent ];
+			layout: BlLinearLayout horizontal.
+	container explainer isExplanationHolder: true.
+	explanationStyler := (GtSmaCCParserStyler forParser: JSXParser)
+			stylerRules: {GtSmaCCNodeStylerRule
+						nodeClassName: #JSFunctionNode
+						styleBlock: [ :styler :node :text | 
+							(text from: node startPosition - 1 to: node startPosition - 1)
+								attributes: {GtYellowCircleExplanationTextAdornment forIdentifier: #function}.
+							node name source = 'Welcome'
+								ifTrue: [ (text from: node startPosition - 1 to: node startPosition - 1)
+										attributes: {GtYellowCircleExplanationTextAdornment forIdentifier: #welcomeFunction} ].
+							node name source = 'App'
+								ifTrue: [ (text from: node startPosition - 1 to: node startPosition - 1)
+										attributes: {GtYellowCircleExplanationTextAdornment forIdentifier: #appFunction} ] ].
+					GtSmaCCNodeStylerRule
+						nodeClassName: #JSVariableDeclarationNode
+						styleBlock: [ :styler :node :text | 
+							node source = 'props'
+								ifTrue: [ (text from: node startPosition - 1 to: node startPosition - 1)
+										attributes: {GtYellowCircleExplanationTextAdornment forIdentifier: #props} ] ].
+					GtSmaCCNodeStylerRule
+						nodeClassName: #JSXElementNameNode
+						styleBlock: [ :styler :node :text | 
+							(node parent isKindOf: JSXClosingElementNode)
+								ifFalse: [ #(#('Welcome' #welcome) #('div' #div) #('h1' #h1) #('App' #screen) #('Welcome' #screen) #('App' #appRender))
+										do: [ :each | 
+											each first = node source
+												ifTrue: [ (text from: node startPosition - 1 to: node startPosition - 1)
+														attributes: {GtYellowCircleExplanationTextAdornment forIdentifier: each last} ] ] ] ].
+					GtSmaCCPatternStylerRule
+						pattern: (JSParser
+								parse: 'ReactDOM.render'
+								startingAt: JSParser startingStateForExpression)
+						styleBlock: [ :styler :node :text | 
+							(text from: node startPosition - 1 to: node startPosition - 1)
+								attributes: {GtYellowCircleExplanationTextAdornment forIdentifier: #ReactDOM} ]}.
+	look := BrGlamorousCodeEditorAptitude new.
+	sourceElement := BrEditor new.
+	compositeStyler := GtCompositeSmaCCASTStyler forParser: JSXParser.
+	compositeStyler
+		stylers: {JSXParser gtStyler.
+				explanationStyler}.
+	look styler: compositeStyler.
+	sourceElement
+		aptitude: look;
+		styler: compositeStyler;
+		text: js asRopedText.
+	inspectorContainer addChild: sourceElement.
+	editor := BrEditor new
+			aptitude: (BrGlamorousRegularEditorAptitude new fontSize: 16);
+			text: 'Conceptually, components are like JavaScript functions. They accept arbitrary inputs (called “props”) and return React elements describing what should appear on the screen.
 
-The simplest way to define a component is to write a JavaScript '
-            asRopedText
-            , ('function:' asRopedText glamorousExplanationFor: #function)
-            ,
-                '
+The simplest way to define a component is to write a JavaScript ' asRopedText
+					, ('function:' asRopedText glamorousExplanationFor: #function)
+					, '
 
 This function is a valid React component because it accepts a single '
-                    asRopedText
-            , ('"props"' asRopedText glamorousExplanationFor: #props)
-            ,
-                ' (which stands for properties) object argument with data and returns a React element. We call such components “function components” because they are literally JavaScript functions.
+							asRopedText , ('"props"' asRopedText glamorousExplanationFor: #props)
+					, ' (which stands for properties) object argument with data and returns a React element. We call such components “function components” because they are literally JavaScript functions.
 
-Components can refer to other components in their '
-                    asRopedText
-            , ('output' asRopedText glamorousExplanationFor: #welcome)
-            ,
-                'This lets us use the same component abstraction for any level of detail. A button, a form, a '
-                    asRopedText , ('div' asRopedText glamorousExplanationFor: #div)
-            , ', any ' asRopedText
-            , ('HTML tag' asRopedText glamorousExplanationFor: #h1)
-            , ', a ' asRopedText
-            , ('screen' asRopedText glamorousExplanationFor: #screen)
-            ,
-                ': in React apps, all those are commonly expressed as components.
+Components can refer to other components in their ' asRopedText
+					, ('output' asRopedText glamorousExplanationFor: #welcome)
+					, 'This lets us use the same component abstraction for any level of detail. A button, a form, a '
+							asRopedText , ('div' asRopedText glamorousExplanationFor: #div)
+					, ', any ' asRopedText
+					, ('HTML tag' asRopedText glamorousExplanationFor: #h1)
+					, ', a ' asRopedText
+					, ('screen' asRopedText glamorousExplanationFor: #screen)
+					, ': in React apps, all those are commonly expressed as components.
 
-For example, we can create an '
-                    asRopedText
-            , ('app' asRopedText glamorousExplanationFor: #appFunction)
-            ,
-                ' component that renders Welcome many times.
+For example, we can create an ' asRopedText
+					, ('app' asRopedText glamorousExplanationFor: #appFunction)
+					, ' component that renders Welcome many times.
 
 How this example works:
-1. We call '
-                    asRopedText
-            , ('ReactDOM.render()' asRopedText glamorousExplanationFor: #ReactDOM)
-            , ' with the ' asRopedText
-            , ('<App/>' asRopedText glamorousExplanationFor: #appRender)
-            , ' element
+1. We call ' asRopedText
+					, ('ReactDOM.render()' asRopedText glamorousExplanationFor: #ReactDOM)
+					, ' with the ' asRopedText
+					, ('<App/>' asRopedText glamorousExplanationFor: #appRender)
+					, ' element
 2. React calls the App component. This in turn ' asRopedText
-            , ('calls' asRopedText glamorousExplanationFor: #welcome)
-            ,
-                ' the Welcome component with {name: ''Tudor''}, {name: ''Andrei''},  {name: ''John''}  as the props 
-3. Our '
-                    asRopedText
-            , ('Welcome' asRopedText glamorousExplanationFor: #welcomeFunction)
-            ,
-                ' component returns first an <h1>Hello, Tudor</h1> element as the result, then <h1>Hello, Andrei</h1> and finally <h1>Hello,  John</h1>
+					, ('calls' asRopedText glamorousExplanationFor: #welcome)
+					, ' the Welcome component with {name: ''Tudor''}, {name: ''Andrei''},  {name: ''John''}  as the props 
+3. Our ' asRopedText
+					, ('Welcome' asRopedText glamorousExplanationFor: #welcomeFunction)
+					, ' component returns first an <h1>Hello, Tudor</h1> element as the result, then <h1>Hello, Andrei</h1> and finally <h1>Hello,  John</h1>
 4. React DOM efficiently updates the DOM to match  <h1>Hello, Tudor</h1><h1>Hello, Andrei</h1><h1>Hello, John</h1>.'
-                    asRopedText;
-    margin: (BlInsets all: 10);
-    constraintsDo: [ :c | 
-        c vertical fitContent.
-        c horizontal matchParent.
-        c linear weight: 0.5 ].
-container addChild: editor.
-container addChild: inspectorContainer.
-^ container
+							asRopedText;
+			margin: (BlInsets all: 10);
+			constraintsDo: [ :c | 
+				c vertical fitContent.
+				c horizontal matchParent.
+				c linear weight: 0.5 ].
+	container addChild: editor.
+	container addChild: inspectorContainer.
+	^ container
 ]
 
 { #category : #accessing }
@@ -752,6 +734,7 @@ GtTour >> playgroundExplanationSlideFor: aSlide [
 { #category : #accessing }
 GtTour >> playgroundExplanationWithLinks [
 	<gtExample>
+	<return: #BlElement>
 	| container playgroundElement scripter |
 	container := BlElement new
 			constraintsDo: [ :c | 
@@ -868,6 +851,7 @@ GtTour >> rawViewsExampleSlideFor: aSlide [
 { #category : #accessing }
 GtTour >> scripterWithElaborateScenario [
 	<gtExample>
+	<return: #BlScripter>
 	| scripter moveTokenMethod allMovesMethod |
 	scripter := BlScripter new.
 	scripter do
@@ -875,53 +859,51 @@ GtTour >> scripterWithElaborateScenario [
 		onSpace;
 		play.
 	moveTokenMethod := GtLudoGame >> #moveTokenNamed:.
-	
+
 	scripter memoryLogger
-		runFor: self beaconSignals 
-		during: [ :aStep |
-			aStep element: (GtPager createWrappedOn: (GtCoder forMethod: moveTokenMethod)) ].
-		
+		runFor: self beaconSignals
+		during: [ :aStep | aStep element: (GtPager createWrappedOn: (GtCoder forMethod: moveTokenMethod)) ].
+
 	scripter pager
-		setPageAt: 1 widthInSpaceRatio: 1/3;
+		setPageAt: 1 widthInSpaceRatio: 1 / 3;
 		play.
 	scripter methodCoders
 		scrollToCompiledMethod: moveTokenMethod;
-		forCompiledMethod: moveTokenMethod do: [ :aMethodCoderStep |
-			aMethodCoderStep shortcut
-				combination: BlKeyCombination primaryN;
-				// GtSourceCoderEditorId;
-				onChildAt: 1;
-				onChildAt: 1.
-			aMethodCoderStep 
-				clickOnMethodCoderExpander: 1 insideDo: [ :aStep1 |  ] ];
+		forCompiledMethod: moveTokenMethod
+			do: [ :aMethodCoderStep | 
+				aMethodCoderStep shortcut
+					combination: BlKeyCombination primaryN;
+					// GtSourceCoderEditorId;
+					onChildAt: 1;
+					onChildAt: 1.
+				aMethodCoderStep clickOnMethodCoderExpander: 1 insideDo: [ :aStep1 |  ] ];
 		// (GtPagerPageElementId indexed: 1);
 		// GtPharoStreamingMethodsCoderElement;
 		play.
 	scripter pager
-		setPageAt: 2 widthInSpaceRatio: 1/3;
+		setPageAt: 2 widthInSpaceRatio: 1 / 3;
 		play.
 	allMovesMethod := GtLudoRecordingGameExamples >> #gameShowingAllMoves2.
 	scripter methodCoders
 		expandAndFocusCompiledMethod: allMovesMethod;
 		scrollToCompiledMethod: allMovesMethod;
-		forCompiledMethod: allMovesMethod do: [ :aMethodCoderStep |
-			aMethodCoderStep
-				clickOnPlayAndInspectExampleButton ];
+		forCompiledMethod: allMovesMethod
+			do: [ :aMethodCoderStep | aMethodCoderStep clickOnPlayAndInspectExampleButton ];
 		// (GtPagerPageElementId indexed: 2);
 		// GtPharoStreamingMethodsCoderElement;
 		play.
 	scripter pager
-		setPageAt: 3 widthInSpaceRatio: 1/3;
+		setPageAt: 3 widthInSpaceRatio: 1 / 3;
 		play.
 	scripter methodCoders
-		forCompiledMethod: allMovesMethod do: [ :aMethodCoderStep |
-			aMethodCoderStep
-				clickOnMethodCoderExpander: 1 insideDo: [ :aStep1 |  ] ];
+		forCompiledMethod: allMovesMethod
+			do: [ :aMethodCoderStep | aMethodCoderStep clickOnMethodCoderExpander: 1 insideDo: [ :aStep1 |  ] ];
 		scrollToCompiledMethod: allMovesMethod;
-		forCompiledMethod: allMovesMethod do: [ :aMethodCoderStep |
-			aMethodCoderStep mouseMoveOver
-				// GtMethodCoderPlayAndInspectExampleActionId;
-				onTopMost ];
+		forCompiledMethod: allMovesMethod
+			do: [ :aMethodCoderStep | 
+				aMethodCoderStep mouseMoveOver
+					// GtMethodCoderPlayAndInspectExampleActionId;
+					onTopMost ];
 		// (GtPagerPageElementId indexed: 2);
 		// GtPharoStreamingMethodsCoderElement;
 		play.
@@ -958,29 +940,66 @@ GtTour >> spotterSlideshowLinkSlideFor: aSlide [
 { #category : #'api - instantiation' }
 GtTour >> timelineElement [
 	<gtExample>
+	<return: #BlElement>
 	| plotter |
 	plotter := GtPlotter new.
 	plotter verticalTimeline
 		withProjectionAxis;
 		timelineData: #key;
 		projectionData: #value;
-		timelineFrom: 2011 asYear 
-		to: (Date today + 1 year) asYear;
-		with: { 
-			(Date year: 2011 month: 08 day: 22) -> 'First GT inspector'.
-			(Date year: 2013 month: 12 day: 28) -> 'First GT debugger'.
-			(Date year: 2014 month: 02 day: 14) -> 'First GT playground'.
-			(Date year: 2014 month: 12 day: 07) -> 'First GT spotter'.
-			(Date year: 2015 month: 10 day: 02) -> 'feenk founding'.
-			(Date year: 2016 month: 09 day: 19) -> 'Moldable Tools thesis'.
-			(Date year: 2017 month: 08 day: 15) -> 'New generation of Glamorous Toolkit starts'.
-			(Date year: 2018 month: 09 day: 10) -> 'First public demo'.
-			(Date year: 2019 month: 04 day: 19) -> 'Glamorous Toolkit 0.6.42 alpha'.
-			(Date year: 2019 month: 07 day: 16) -> 'First public Moldable Development talk'.
-			(Date year: 2020 month: 07 day: 23) -> 'Glamorous Toolkit v0.7.1214 beta'.
-			(Date year: 2021 month: 06 day: 04) -> 'Lepiter'.
-			(Date year: 2023 month: 08 day: 29) -> 'Glamorous Toolkit v1.0'
-		}.
+		timelineFrom: 2011 asYear to: (Date today + 1 year) asYear;
+		with: {(Date
+					year: 2011
+					month: 08
+					day: 22) -> 'First GT inspector'.
+				(Date
+					year: 2013
+					month: 12
+					day: 28) -> 'First GT debugger'.
+				(Date
+					year: 2014
+					month: 02
+					day: 14) -> 'First GT playground'.
+				(Date
+					year: 2014
+					month: 12
+					day: 07) -> 'First GT spotter'.
+				(Date
+					year: 2015
+					month: 10
+					day: 02) -> 'feenk founding'.
+				(Date
+					year: 2016
+					month: 09
+					day: 19) -> 'Moldable Tools thesis'.
+				(Date
+					year: 2017
+					month: 08
+					day: 15) -> 'New generation of Glamorous Toolkit starts'.
+				(Date
+					year: 2018
+					month: 09
+					day: 10) -> 'First public demo'.
+				(Date
+					year: 2019
+					month: 04
+					day: 19) -> 'Glamorous Toolkit 0.6.42 alpha'.
+				(Date
+					year: 2019
+					month: 07
+					day: 16) -> 'First public Moldable Development talk'.
+				(Date
+					year: 2020
+					month: 07
+					day: 23) -> 'Glamorous Toolkit v0.7.1214 beta'.
+				(Date
+					year: 2021
+					month: 06
+					day: 04) -> 'Lepiter'.
+				(Date
+					year: 2023
+					month: 08
+					day: 29) -> 'Glamorous Toolkit v1.0'}.
 	^ plotter asElement
 ]
 
@@ -1025,6 +1044,7 @@ GtTour >> tooltip: aString [
 { #category : #accessing }
 GtTour >> treemapWithBook [
 	<gtExample>
+	<return: #BlElement>
 	| database tocPage topTocSnippets |
 	database := LeDatabasesRegistry defaultLogicalDatabase
 			databaseNamed: 'Glamorous Toolkit Book'.
@@ -1034,7 +1054,10 @@ GtTour >> treemapWithBook [
 	^ GtNestedRectangleTreeMap new
 		roots: topTocSnippets;
 		deep: [ :aNode | aNode children select: [ :each | each children notEmpty ] ];
-		leaves: [ :aNode | aNode asCollection , (aNode children select: [ :each | each children isEmpty and: [ each allOutgoingExplicitLinks notEmpty ] ]) ];
+		leaves: [ :aNode | 
+			aNode asCollection
+				, (aNode children
+						select: [ :each | each children isEmpty and: [ each allOutgoingExplicitLinks notEmpty ] ]) ];
 		leavesSize: [ :aNode | 
 			| pageLinkedFromSnnipet |
 			pageLinkedFromSnnipet := aNode outgoingTextualLinks anyOne target.
@@ -1063,7 +1086,8 @@ GtTour >> treemapWithBook [
 										fontSize: 12;
 										foreground: Color black);
 								constraintsDo: [ :c | c ignoreByLayout ]) ].
-			anElement border: (BlBorder paint: (Color gray alpha: 0.5 / aNodeContext level) width: 1).
+			anElement
+				border: (BlBorder paint: (Color gray alpha: 0.5 / aNodeContext level) width: 1).
 			anElement padding: (BlInsets all: 1) ];
 		asElement
 ]
@@ -1071,91 +1095,115 @@ GtTour >> treemapWithBook [
 { #category : #'api - instantiation' }
 GtTour >> treemapWithViewsAndExamples [
 	<gtExample>
+	<return: #BlElement>
 	| tree |
 	tree := GtNestedTreeBuilder new
-			data: (Smalltalk allClassesAndTraits select: [:c | 
-			({'Gt'.'Bl'.'Br'. 'Le'} anySatisfy: [:p |c name beginsWith: p]) "and: [ c methods noneSatisfy: [:m | m isGTExampleMethod ] ]"]);
-		groupBy: [ :aClass | aClass package ];
-		groupBy: [ :aClass | aClass package classTags detect: [ :e | e hasClass: aClass ] ];
-		weight: [ :aClass | aClass methods size max: 1];
-		build.
+			data: (Smalltalk allClassesAndTraits
+					select: [ :c | 
+						{'Gt'.
+							'Bl'.
+							'Br'.
+							'Le'} anySatisfy: [ :p | c name beginsWith: p ]	"and: [ c methods noneSatisfy: [:m | m isGTExampleMethod ] ]" ]);
+			groupBy: [ :aClass | aClass package ];
+			groupBy: [ :aClass | aClass package classTags detect: [ :e | e hasClass: aClass ] ];
+			weight: [ :aClass | aClass methods size max: 1 ];
+			build.
 	^ GtNestedRectangleTreeMap new
-		roots: { tree };
+		roots: {tree};
 		leaves: [ :aNode | aNode leaves ];
 		deep: [ :aNode | aNode nodes ];
 		leavesSize: [ :aNode | aNode weight ];
 		containerElement: [ :anElement :aNodeContext | 
-			aNodeContext level = 2 ifTrue: [ 
-				anElement addChild: (BrLabel new 
-					text: (aNodeContext  model name name withoutPrefix: 'GToolkit-'); 
-					aptitude: (BrGlamorousLabelAptitude new fontSize: 8; foreground: Color gray); 
-					constraintsDo: [ :c | c ignoreByLayout. ])].
-			anElement border: (BlBorder 
-				paint: (Color gray alpha: 0.7 / aNodeContext level) 
-				width: 1).
+			aNodeContext level = 2
+				ifTrue: [ anElement
+						addChild: (BrLabel new
+								text: (aNodeContext model name name withoutPrefix: 'GToolkit-');
+								aptitude: (BrGlamorousLabelAptitude new
+										fontSize: 8;
+										foreground: Color gray);
+								constraintsDo: [ :c | c ignoreByLayout ]) ].
+			anElement
+				border: (BlBorder paint: (Color gray alpha: 0.7 / aNodeContext level) width: 1).
 			anElement padding: (BlInsets all: 1) ];
 		leafElement: [ :anElement :aLeafContext | 
 			| isGtView isGtExample class |
 			class := aLeafContext model item.
 			isGtView := class itOrItsSuperclassesDefineGTViews.
-			isGtExample := class methods anySatisfy: [ :aMethod | 
-				aMethod isGTExampleMethod ].
-			anElement when: BlClickEvent do: [ :e | e target phlow spawnTool: (GtClassCoderTool forClass: class) ].
-			anElement aptitude: (BrGlamorousWithExplicitTooltipAptitude content: (self tooltip: class name)) .
-			anElement border: (BlBorder 
-				paint: (Color gray alpha: 0.5 / aLeafContext level) 
-				width: 1).
-			anElement background: (isGtView 
-				ifTrue: [(Color blue alpha: 0.6)] 
-				ifFalse: [ 
-					isGtExample 
-						ifTrue: [ Color green muchDarker alpha: 0.6] 
-						ifFalse: [ Color transparent ]]) ];
-		create.
+			isGtExample := class methods
+					anySatisfy: [ :aMethod | aMethod isGTExampleMethod ].
+			anElement
+				when: BlClickEvent
+				do: [ :e | e target phlow spawnTool: (GtClassCoderTool forClass: class) ].
+			anElement
+				aptitude: (BrGlamorousWithExplicitTooltipAptitude content: (self tooltip: class name)).
+			anElement
+				border: (BlBorder paint: (Color gray alpha: 0.5 / aLeafContext level) width: 1).
+			anElement
+				background: (isGtView
+						ifTrue: [ Color blue alpha: 0.6 ]
+						ifFalse: [ isGtExample
+								ifTrue: [ Color green muchDarker alpha: 0.6 ]
+								ifFalse: [ Color transparent ] ]) ];
+		create
 ]
 
 { #category : #'as yet unclassified' }
 GtTour >> viewMethodWithResultExplanationWithLinksExample [
 	<gtExample>
+	<return: #BlElement>
 	| resultInspectorContainer verticalContainer coderElement resultElement coderExplanationLabel inspectorExplanationLabel |
-	
 	verticalContainer := BlElement new
-		constraintsDo: [ :c | 
-			c horizontal matchParent.
-			c vertical matchParent.
-			c padding: (BlInsets all: 5)];
-		layout: BlLinearLayout vertical.
-	
+			constraintsDo: [ :c | 
+				c horizontal matchParent.
+				c vertical matchParent.
+				c padding: (BlInsets all: 5) ];
+			layout: BlLinearLayout vertical.
+
 	resultInspectorContainer := BlElement new
-		constraintsDo: [ :c | 
-			c horizontal matchParent.
-			c vertical matchParent ];
-		layout: BlLinearLayout horizontal;
-		aptitude: BrShadowAptitude;
-		background: Color white;
-		margin: (BlInsets all: 10).
-	
+			constraintsDo: [ :c | 
+				c horizontal matchParent.
+				c vertical matchParent ];
+			layout: BlLinearLayout horizontal;
+			aptitude: BrShadowAptitude;
+			background: Color white;
+			margin: (BlInsets all: 10).
+
 	coderExplanationLabel := BrLabel new
-		text: ('Contacts with details view method' asRopedText glamorousRegularFont; fontSize: 15; foreground: Color gray);
-		margin: (BlInsets top: 20 right: 0 bottom: 0 left: 10);
-		aptitude: BrGlamorousLabelAptitude new.
+			text: ('Contacts with details view method' asRopedText
+					glamorousRegularFont;
+					fontSize: 15;
+					foreground: Color gray);
+			margin: (BlInsets
+					top: 20
+					right: 0
+					bottom: 0
+					left: 10);
+			aptitude: BrGlamorousLabelAptitude new.
 	inspectorExplanationLabel := BrLabel new
-		text: ('Contacts with details view result' asRopedText glamorousRegularFont; fontSize: 15; foreground: Color gray);
-		margin: (BlInsets top: 20 right: 0 bottom: 0 left: 10);
-		aptitude: BrGlamorousLabelAptitude new.
-	
+			text: ('Contacts with details view result' asRopedText
+					glamorousRegularFont;
+					fontSize: 15;
+					foreground: Color gray);
+			margin: (BlInsets
+					top: 20
+					right: 0
+					bottom: 0
+					left: 10);
+			aptitude: BrGlamorousLabelAptitude new.
+
 	coderElement := GtMethodCoderExplanationStylerExamples new coderOnViewMethod.
-		
-	resultElement := GtMethodCoderExplanationStylerExamples new inspectorOnViewMethod.	
+
+	resultElement := GtMethodCoderExplanationStylerExamples new
+			inspectorOnViewMethod.
 	resultInspectorContainer addChild: resultElement.
-	
-	
+
+
 	verticalContainer addChild: coderExplanationLabel.
 	verticalContainer addChild: coderElement.
 	verticalContainer addChild: inspectorExplanationLabel.
 	verticalContainer addChild: resultInspectorContainer.
-	
-	^ verticalContainer.
+
+	^ verticalContainer
 ]
 
 { #category : #accessing }

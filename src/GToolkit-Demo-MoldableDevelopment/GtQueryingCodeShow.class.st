@@ -117,21 +117,20 @@ GtQueryingCodeShow >> filtersTitleSlideFor: aSlide [
 { #category : #examples }
 GtQueryingCodeShow >> filtersTreeExample [
 	<gtExample>
+	<return: #BlElement>
 	| filtersTreeElement |
 	filtersTreeElement := (GtPhlowView empty composite
-				views:
-					{(GtSearchFilter gtHierarchyFor: GtPhlowView empty)};
-				labelled: 'a GtABAddressBook (Cartoons)' asRopedText)
-				asElementDo: [ :e | e ].
-	
+			views: {GtSearchFilter gtHierarchyFor: GtPhlowView empty};
+			labelled: 'a GtABAddressBook (Cartoons)' asRopedText) asElementDo: [ :e | e ].
+
 	^ BlElement new
 		constraintsDo: [ :c | 
-			c vertical matchParent. 
+			c vertical matchParent.
 			c horizontal matchParent ];
 		background: Color white;
 		aptitude: BrShadowAptitude;
 		margin: (BlInsets all: 5);
-		addChild: filtersTreeElement.
+		addChild: filtersTreeElement
 ]
 
 { #category : #accessing }
@@ -146,42 +145,50 @@ GtQueryingCodeShow >> filtersTreeExampleSlideFor: aSlide [
 { #category : #examples }
 GtQueryingCodeShow >> inspectorResultOnPragmaAndReferenceExample [
 	<gtExample>
+	<return: #BlElement>
 	| inspectorContainer subject inspectorHeader inspectorViewTitle inspectorLabel verticalContainer |
-	
 	verticalContainer := BlElement new
-		constraintsDo: [ :c | 
-			c horizontal matchParent.
-			c vertical matchParent.
-			c padding: (BlInsets all: 5)];
-		layout: BlLinearLayout vertical.
-	
+			constraintsDo: [ :c | 
+				c horizontal matchParent.
+				c vertical matchParent.
+				c padding: (BlInsets all: 5) ];
+			layout: BlLinearLayout vertical.
+
 	inspectorLabel := BrLabel new
-		text: ('Inspector on query result' asRopedText glamorousRegularFont; fontSize: 15; foreground: Color gray);
-		margin: (BlInsets top: 20 right: 0 bottom: 0 left: 10);
-		aptitude: BrGlamorousLabelAptitude new.
-	
+			text: ('Inspector on query result' asRopedText
+					glamorousRegularFont;
+					fontSize: 15;
+					foreground: Color gray);
+			margin: (BlInsets
+					top: 20
+					right: 0
+					bottom: 0
+					left: 10);
+			aptitude: BrGlamorousLabelAptitude new.
+
 	inspectorContainer := BlElement new
-		constraintsDo: [ :c | 
-			c horizontal matchParent.
-			c vertical matchParent ];
-		layout: BlLinearLayout horizontal;
-		background: Color white;
-		margin: (BlInsets all: 10);
-		aptitude: BrShadowAptitude.
+			constraintsDo: [ :c | 
+				c horizontal matchParent.
+				c vertical matchParent ];
+			layout: BlLinearLayout horizontal;
+			background: Color white;
+			margin: (BlInsets all: 10);
+			aptitude: BrShadowAptitude.
 
 	verticalContainer
 		addChild: inspectorLabel;
 		addChild: inspectorContainer.
-	
-	subject := (self pragmaAndReferenceQueryExample gtViewsFor: GtPhlowView empty) asElementDo: [ :e | e ].
+
+	subject := (self pragmaAndReferenceQueryExample gtViewsFor: GtPhlowView empty)
+			asElementDo: [ :e | e ].
 	inspectorContainer addChild: subject.
-	
+
 	inspectorHeader := subject phlow firstChildWithViewTitle.
-	inspectorViewTitle := subject phlow firstChildWithViewContent phlow firstChildWithViewTitle.
-		
+	inspectorViewTitle := subject phlow firstChildWithViewContent phlow
+			firstChildWithViewTitle.
+
 	inspectorHeader
-		addChild:
-			(BrButton new
+		addChild: (BrButton new
 				constraintsDo: [ :c | 
 					c ignoreByLayout.
 					c ignored horizontal alignLeft.
@@ -189,10 +196,9 @@ GtQueryingCodeShow >> inspectorResultOnPragmaAndReferenceExample [
 				size: 5 @ 5;
 				elevation: (BlRelativeElevation elevation: 10);
 				geometry: BlCircleGeometry new;
-				aptitude: (GtExplainerTargetAptitude new explanationModel: #inspector)). 
+				aptitude: (GtExplainerTargetAptitude new explanationModel: #inspector)).
 	inspectorViewTitle
-		addChild:
-			(BrButton new
+		addChild: (BrButton new
 				constraintsDo: [ :c | 
 					c ignoreByLayout.
 					c ignored horizontal alignLeft.
@@ -201,7 +207,7 @@ GtQueryingCodeShow >> inspectorResultOnPragmaAndReferenceExample [
 				elevation: (BlRelativeElevation elevation: 10);
 				geometry: BlCircleGeometry new;
 				aptitude: (GtExplainerTargetAptitude new explanationModel: #view)).
-					
+
 	^ verticalContainer
 ]
 
@@ -361,8 +367,8 @@ GtQueryingCodeShow >> packageFiltersTitleSlideFor: aSlide [
 { #category : #examples }
 GtQueryingCodeShow >> pragmaAndReferenceQueryExample [
 	<gtExample>
-	
-	^ #gtView gtPragmas & GtPharoMethodCoder gtReferences.
+	<return: #GtSearchIntersectionFilter>
+	^ #gtView gtPragmas & GtPharoMethodCoder gtReferences
 ]
 
 { #category : #accessing }

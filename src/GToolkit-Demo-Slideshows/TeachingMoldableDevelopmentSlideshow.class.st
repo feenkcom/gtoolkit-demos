@@ -602,34 +602,10 @@ Demos and videos also help, but they are not as effective as the first-hand expe
 TeachingMoldableDevelopmentSlideshow >> slidePriorities [
 	"This method defines the slide priorities implicitly by their order instead of by fixed numbers.
 	See also: PrioritySlideshow>>#priorityFor:"
+
 	<gtExample>
-	^ #( 
-		titleSlide:
-		
-		whatIsMD:
-			exploringESUGWebsite:
-
-		patterns:
-			#moldableObject:
-			#viewableDataWrapper:
-			#contextualPlayground:
-			#viewableEntity:
-			"replaceTasksByActions:"
-			gtBookPatternsPage:
-
-		whatWorks:
-			#liveDocumentation:
-			#discord:
-			#videos:
-		
-		challenges:
-			peopleHateChange:
-			peopleFocusOnWhatTheySeeFirst:
-		
-		
-		#takeaways:
-	
-	)
+	<return: #Array>
+	^ #(titleSlide: whatIsMD: exploringESUGWebsite: patterns: #moldableObject: #viewableDataWrapper: #contextualPlayground: #viewableEntity: gtBookPatternsPage: whatWorks: #liveDocumentation: #discord: #videos: challenges: peopleHateChange: peopleFocusOnWhatTheySeeFirst: #takeaways:)	"replaceTasksByActions:"
 ]
 
 { #category : #slides }

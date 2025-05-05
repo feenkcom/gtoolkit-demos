@@ -46,6 +46,7 @@ StackMachineV3 >> stack [
 { #category : #accessing }
 StackMachineV3 >> stackWith3and4 [
 	<gtExample>
+	<return: #StackMachineV3>
 	| example |
 	example := self class new.
 	self assert: example isEmpty.

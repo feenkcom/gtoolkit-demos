@@ -13,6 +13,7 @@ Class {
 { #category : #example }
 SPLGrammarExamples >> blockStmt [
 	<gtExample>
+	<return: #Array>
 	| input |
 	input := '{ x = 42; print x * x; }'.
 	self parse: input rule: #statement.
@@ -23,6 +24,7 @@ SPLGrammarExamples >> blockStmt [
 { #category : #example }
 SPLGrammarExamples >> booleanTrue [
 	<gtExample>
+	<return: #ByteString>
 	| input |
 	input := 'true'.
 	self parse: input rule: #expression.
@@ -33,6 +35,7 @@ SPLGrammarExamples >> booleanTrue [
 { #category : #example }
 SPLGrammarExamples >> cascadedAssignment [
 	<gtExample>
+	<return: #Array>
 	| input |
 	input := 'x = y = 3+4'.
 	self parse: input rule: #expression.
@@ -42,6 +45,7 @@ SPLGrammarExamples >> cascadedAssignment [
 { #category : #example }
 SPLGrammarExamples >> comment [
 	<gtExample>
+	<return: #Array>
 	| input |
 	input := '// foo'.
 	self fail: input rule: #statement.
@@ -53,6 +57,7 @@ SPLGrammarExamples >> comment [
 { #category : #example }
 SPLGrammarExamples >> commentWithLeadingSpaces [
 	<gtExample>
+	<return: #OrderedCollection>
 	| input |
 	input := '  // foo'.
 	self fail: input rule: #statement.
@@ -64,6 +69,7 @@ SPLGrammarExamples >> commentWithLeadingSpaces [
 { #category : #example }
 SPLGrammarExamples >> complexExpression [
 	<gtExample>
+	<return: #Array>
 	| input |
 	input := '(1+2)*3 > 6 or 6*7 == 42'.
 	self parse: input rule: #logicOr.
@@ -74,6 +80,7 @@ SPLGrammarExamples >> complexExpression [
 { #category : #example }
 SPLGrammarExamples >> complexExpressionStmt [
 	<gtExample>
+	<return: #Array>
 	| input |
 	input := '(1+2)*3 > 6 or 6*7 == 42;'.
 	self parse: input rule: #statement.
@@ -84,6 +91,7 @@ SPLGrammarExamples >> complexExpressionStmt [
 { #category : #example }
 SPLGrammarExamples >> complexStmt [
 	<gtExample>
+	<return: #Array>
 	| input |
 	input := 'while (x > y) { if (x<42)  { x = x+1;   print x ; }  print x+y; }'.
 	self parse: input rule: #whileStmt.
@@ -97,6 +105,7 @@ SPLGrammarExamples >> fibonacciOracle [
 	It can be used as an oracle for a test case for the interpreter."
 
 	<gtExample>
+	<return: #ByteString>
 	| thisFib lastFib iterations arg nextFib output |
 	output := '1' , String cr repeat: 2.
 	arg := 10.
@@ -115,6 +124,7 @@ SPLGrammarExamples >> fibonacciOracle [
 { #category : #example }
 SPLGrammarExamples >> fibonacciProgram [
 	<gtExample>
+	<return: #OrderedCollection>
 	| input |
 	input := self fibonacciSource.
 	self fail: input rule: #declaration.
@@ -125,6 +135,7 @@ SPLGrammarExamples >> fibonacciProgram [
 { #category : #example }
 SPLGrammarExamples >> fibonacciSource [
 	<gtExample>
+	<return: #ByteString>
 	^ '// Fibonacci in SPL
 // Outputs the first arg Fibonacci numbers
 var arg = 10;
@@ -146,12 +157,14 @@ while ( iterations < arg ) {
 { #category : #example }
 SPLGrammarExamples >> float3point14 [
 	<gtExample>
+	<return: #Array>
 	^ self parse: '3.14' rule: #float
 ]
 
 { #category : #example }
 SPLGrammarExamples >> helloString [
 	<gtExample>
+	<return: #Array>
 	| input |
 	input := '"hello"'.
 	self parse: input rule: #expression.
@@ -161,6 +174,7 @@ SPLGrammarExamples >> helloString [
 { #category : #example }
 SPLGrammarExamples >> ifElseStmt [
 	<gtExample>
+	<return: #Array>
 	| input |
 	input := 'if (x > y) x = y; else x = -y; '.
 	self parse: input rule: #statement.
@@ -171,6 +185,7 @@ SPLGrammarExamples >> ifElseStmt [
 { #category : #example }
 SPLGrammarExamples >> ifNoElseStmt [
 	<gtExample>
+	<return: #Array>
 	| input |
 	input := 'if (x > y) x = y;'.
 	self parse: input rule: #statement.
@@ -181,18 +196,21 @@ SPLGrammarExamples >> ifNoElseStmt [
 { #category : #example }
 SPLGrammarExamples >> integer42 [
 	<gtExample>
+	<return: #Array>
 	^ self parse: '42' rule: #integer
 ]
 
 { #category : #example }
 SPLGrammarExamples >> minus42 [
 	<gtExample>
+	<return: #Array>
 	^ self parse: '-42' rule: #unary
 ]
 
 { #category : #example }
 SPLGrammarExamples >> notTrue [
 	<gtExample>
+	<return: #Array>
 	| input |
 	input := '!true'.
 	self parse: input rule: #expression.
@@ -203,6 +221,7 @@ SPLGrammarExamples >> notTrue [
 { #category : #example }
 SPLGrammarExamples >> orAsKeyword [
 	<gtExample>
+	<return: #Array>
 	| input |
 	input := 'or'.
 	self fail: input rule: #identifier.
@@ -213,6 +232,7 @@ SPLGrammarExamples >> orAsKeyword [
 { #category : #example }
 SPLGrammarExamples >> orbeAsIdentifier [
 	<gtExample>
+	<return: #Array>
 	| input |
 	input := 'orbe'.
 	self fail: input rule: #keyword.
@@ -223,6 +243,7 @@ SPLGrammarExamples >> orbeAsIdentifier [
 { #category : #example }
 SPLGrammarExamples >> parenthesized42 [
 	<gtExample>
+	<return: #Array>
 	| input |
 	input := '(42)'.
 	self parse: input rule: #expression.
@@ -237,6 +258,7 @@ SPLGrammarExamples >> parserClass [
 { #category : #example }
 SPLGrammarExamples >> printStmt [
 	<gtExample>
+	<return: #Array>
 	| input |
 	input := 'print 3 + 4;'.
 	self parse: input rule: #statement.
@@ -247,6 +269,7 @@ SPLGrammarExamples >> printStmt [
 { #category : #example }
 SPLGrammarExamples >> programWithComments [
 	<gtExample>
+	<return: #OrderedCollection>
 	| input |
 	input := '// My first program
 var hello = "hello world"; // this is a variable
@@ -260,6 +283,7 @@ print // a print statement
 { #category : #example }
 SPLGrammarExamples >> threeEqualFour [
 	<gtExample>
+	<return: #Array>
 	| input |
 	input := '3 == 4'.
 	self parse: input rule: #expression.
@@ -270,6 +294,7 @@ SPLGrammarExamples >> threeEqualFour [
 { #category : #example }
 SPLGrammarExamples >> threeEqualsThree [
 	<gtExample>
+	<return: #Array>
 	| input |
 	input := '3 == 3'.
 	self parse: input rule: #expression.
@@ -280,6 +305,7 @@ SPLGrammarExamples >> threeEqualsThree [
 { #category : #example }
 SPLGrammarExamples >> threeLessThanEqualFour [
 	<gtExample>
+	<return: #Array>
 	| input |
 	input := '3 <= 4'.
 	self parse: input rule: #expression.
@@ -290,6 +316,7 @@ SPLGrammarExamples >> threeLessThanEqualFour [
 { #category : #example }
 SPLGrammarExamples >> threeLessThanFour [
 	<gtExample>
+	<return: #Array>
 	| input |
 	input := '3 < 4'.
 	self parse: input rule: #expression.
@@ -300,6 +327,7 @@ SPLGrammarExamples >> threeLessThanFour [
 { #category : #example }
 SPLGrammarExamples >> threeNotEqualFour [
 	<gtExample>
+	<return: #Array>
 	| input |
 	input := '3 != 4'.
 	self parse: input rule: #expression.
@@ -310,6 +338,7 @@ SPLGrammarExamples >> threeNotEqualFour [
 { #category : #example }
 SPLGrammarExamples >> threePlusFour [
 	<gtExample>
+	<return: #Array>
 	| input |
 	input := '3+4'.
 	self parse: input rule: #expression.
@@ -320,6 +349,7 @@ SPLGrammarExamples >> threePlusFour [
 { #category : #example }
 SPLGrammarExamples >> threeTimesFour [
 	<gtExample>
+	<return: #Array>
 	| input |
 	input := '3*4'.
 	self parse: input rule: #expression.
@@ -330,6 +360,7 @@ SPLGrammarExamples >> threeTimesFour [
 { #category : #example }
 SPLGrammarExamples >> trueAndFalse [
 	<gtExample>
+	<return: #Array>
 	| input |
 	input := 'true and false'.
 	self parse: input rule: #expression.
@@ -340,6 +371,7 @@ SPLGrammarExamples >> trueAndFalse [
 { #category : #example }
 SPLGrammarExamples >> trueOrFalse [
 	<gtExample>
+	<return: #Array>
 	| input |
 	input := 'true or false'.
 	self parse: input rule: #expression.
@@ -350,28 +382,31 @@ SPLGrammarExamples >> trueOrFalse [
 { #category : #example }
 SPLGrammarExamples >> varDeclWithInit [
 	<gtExample>
+	<return: #SPLInitializedDeclaration>
 	| input |
 	input := 'var x = 42 + y;'.
 	self parse: input rule: #program.
 	self parse: input rule: #declaration.
 	self fail: input rule: #statement.
-	^ self parse: input rule: #varDecl.
+	^ self parse: input rule: #varDecl
 ]
 
 { #category : #example }
 SPLGrammarExamples >> varDeclWithoutInit [
 	<gtExample>
+	<return: #SPLDeclaration>
 	| input |
 	input := 'var x;'.
 	self parse: input rule: #program.
 	self parse: input rule: #declaration.
 	self fail: input rule: #statement.
-	^ self parse: input rule: #varDecl.
+	^ self parse: input rule: #varDecl
 ]
 
 { #category : #example }
 SPLGrammarExamples >> whileProgram [
 	<gtExample>
+	<return: #OrderedCollection>
 	| input |
 	input := self whileProgramSource.
 	self fail: input rule: #declaration.
@@ -381,8 +416,10 @@ SPLGrammarExamples >> whileProgram [
 
 { #category : #example }
 SPLGrammarExamples >> whileProgramSource [
-"Example from exercise 02"
+	"Example from exercise 02"
+
 	<gtExample>
+	<return: #ByteString>
 	^ 'var a = 1;
 while (a < 10) {
 	print a;
@@ -393,6 +430,7 @@ while (a < 10) {
 { #category : #example }
 SPLGrammarExamples >> whileStmt [
 	<gtExample>
+	<return: #Array>
 	| input |
 	input := 'while (x < 42) x = x + 1;'.
 	self parse: input rule: #statement.

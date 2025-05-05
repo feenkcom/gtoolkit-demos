@@ -7,6 +7,7 @@ Class {
 { #category : #accessing }
 UmlClassDiagramExamples >> collectionHierarchy [
 	<gtExample>
+	<return: #GtMondrian>
 	^ UmlClassDiagram new classHierarchyFor: self collectionHierarchyClasses
 ]
 
@@ -36,6 +37,7 @@ UmlClassDiagramExamples >> collectionHierarchyClasses [
 { #category : #accessing }
 UmlClassDiagramExamples >> compiledMethodAndMethodWrapper [
 	<gtExample>
+	<return: #GtMondrian>
 	| m classes associationsWithLabels positions |
 	classes := self compiledMethodClasses.
 	associationsWithLabels := self compiledMethodAssociationsWithLabels.
@@ -91,8 +93,8 @@ UmlClassDiagramExamples >> navigatingClassesAndMethods [
 	"NavigatingClassesAndMethods"
 
 	<gtExample>
+	<return: #GtMondrian>
 	| m classes associations positions |
-
 	classes := self navigationClasses.
 	associations := self navigationAssociations.
 	positions := self navigationExplicitPositions.
@@ -113,6 +115,7 @@ UmlClassDiagramExamples >> navigatingClassesAndMethodsWithLabels [
 	"NavigatingClassesAndMethods"
 
 	<gtExample>
+	<return: #GtMondrian>
 	| m classes associationsWithLabels positions |
 	classes := self navigationClasses.
 	associationsWithLabels := self navigationAssociationsWithLabels.

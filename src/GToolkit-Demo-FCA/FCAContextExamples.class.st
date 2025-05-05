@@ -7,6 +7,7 @@ Class {
 { #category : #accessing }
 FCAContextExamples >> bottomConcept [
 	<gtExample>
+	<return: #FCAConcept>
 	| bottom mammals |
 	mammals := self mammals.
 	bottom := mammals closureFor: self emptyBitSet.
@@ -17,6 +18,7 @@ FCAContextExamples >> bottomConcept [
 { #category : #accessing }
 FCAContextExamples >> cats [
 	<gtExample>
+	<return: #FCAElement>
 	| cats |
 	cats := self mammals elements detect: [ :elt | elt value = #Cats ].
 	self
@@ -28,6 +30,7 @@ FCAContextExamples >> cats [
 { #category : #accessing }
 FCAContextExamples >> dolphins [
 	<gtExample>
+	<return: #FCAElement>
 	| dolphins |
 	dolphins := self mammals elements detect: [ :elt | elt value = #Dolphins ].
 
@@ -41,6 +44,7 @@ FCAContextExamples >> dolphins [
 { #category : #accessing }
 FCAContextExamples >> dolphinsClosureConcept [
 	<gtExample>
+	<return: #FCAConcept>
 	| dolphinsClosure |
 	dolphinsClosure := self mammals
 			closureFor: (self newBitSetWithAll: {self dolphins}).
@@ -53,7 +57,9 @@ FCAContextExamples >> dolphinsClosureConcept [
 { #category : #'as yet unclassified' }
 FCAContextExamples >> emptyBitSet [
 	"Empty BitSet with a new, empty map to avoid polluting BitSet>>#cachedMap."
+
 	<gtExample>
+	<return: #BitSet>
 	| bitSet |
 	bitSet := BitSetExamples new emptyBitSet.
 	^ bitSet
@@ -62,6 +68,7 @@ FCAContextExamples >> emptyBitSet [
 { #category : #accessing }
 FCAContextExamples >> gibbons [
 	<gtExample>
+	<return: #FCAElement>
 	| gibbons |
 	gibbons := self mammals elements detect: [ :elt | elt value = #Gibbons ].
 
@@ -75,6 +82,7 @@ FCAContextExamples >> gibbons [
 { #category : #accessing }
 FCAContextExamples >> gibbonsClosureConcept [
 	<gtExample>
+	<return: #FCAConcept>
 	| gibbonsClosure |
 	gibbonsClosure := self mammals
 			closureFor: (self newBitSetWithAll: {self gibbons}).
@@ -89,6 +97,7 @@ FCAContextExamples >> gibbonsClosureConcept [
 { #category : #accessing }
 FCAContextExamples >> hairCovered [
 	<gtExample>
+	<return: #FCAProperty>
 	| hairCovered |
 	hairCovered := self mammals properties
 			detect: [ :elt | elt value = #hairCovered ].
@@ -102,6 +111,7 @@ FCAContextExamples >> hairCovered [
 { #category : #accessing }
 FCAContextExamples >> humans [
 	<gtExample>
+	<return: #FCAElement>
 	| humans |
 	humans := self mammals elements detect: [ :elt | elt value = #Humans ].
 
@@ -115,6 +125,7 @@ FCAContextExamples >> humans [
 { #category : #accessing }
 FCAContextExamples >> humansClosureConcept [
 	<gtExample>
+	<return: #FCAConcept>
 	| humansClosure |
 	humansClosure := self mammals
 			closureFor: (self newBitSetWithAll: {self humans}).
@@ -127,6 +138,7 @@ FCAContextExamples >> humansClosureConcept [
 { #category : #accessing }
 FCAContextExamples >> humansDolphinsComparison [
 	<gtExample>
+	<return: #FCAConcept>
 	| humans dolphins |
 	humans := FCAContextExamples new humansClosureConcept.
 	dolphins := FCAContextExamples new dolphinsClosureConcept.
@@ -137,6 +149,7 @@ FCAContextExamples >> humansDolphinsComparison [
 { #category : #accessing }
 FCAContextExamples >> humansGibbonsComparison [
 	<gtExample>
+	<return: #FCAConcept>
 	| humans gibbons bottom |
 	humans := FCAContextExamples new humansClosureConcept.
 	gibbons := FCAContextExamples new gibbonsClosureConcept.
@@ -153,6 +166,7 @@ FCAContextExamples >> humansGibbonsComparison [
 { #category : #accessing }
 FCAContextExamples >> intelligent [
 	<gtExample>
+	<return: #FCAProperty>
 	| intelligent |
 	intelligent := self mammals properties
 			detect: [ :elt | elt value = #intelligent ].
@@ -167,6 +181,7 @@ FCAContextExamples >> intelligent [
 { #category : #accessing }
 FCAContextExamples >> intelligentConcept [
 	<gtExample>
+	<return: #FCAConcept>
 	| intelligentConcept |
 	intelligentConcept := self mammals closureFor: self intelligent elements.
 
@@ -180,6 +195,7 @@ FCAContextExamples >> intelligentConcept [
 { #category : #accessing }
 FCAContextExamples >> joinHumansDolphins [
 	<gtExample>
+	<return: #FCAConcept>
 	| humans dolphins bottom joinHumansDolphins |
 	humans := FCAContextExamples new humansClosureConcept.
 	dolphins := self mammals closureFor: (self newBitSetWithAll: {self dolphins}).
@@ -199,6 +215,7 @@ FCAContextExamples >> mammals [
 	“High Level Views in Object-Oriented Systems using Formal Concept Analysis”, University of Bern, 2005."
 
 	<gtExample>
+	<return: #FCAContext>
 	| rawData mammals |
 	rawData := FCAContextExamples new mammalsData.
 
@@ -215,6 +232,7 @@ FCAContextExamples >> mammals [
 { #category : #data }
 FCAContextExamples >> mammalsData [
 	<gtExample>
+	<return: #Dictionary>
 	| map properties elements e2p |
 	elements := #(Cats Dogs Dolphins Gibbons Humans Whales).
 	properties := #(fourLegged hairCovered intelligent marine thumbed).
@@ -237,6 +255,7 @@ FCAContextExamples >> mammalsLatticeWithPositions [
 	"A manually laid-out version of the lattice."
 
 	<gtExample>
+	<return: #GtMondrian>
 	^ self mammals
 		latticeFor: GtMondrian new
 		withPositions: {378.9166666666667 @ 453.318827311198.
@@ -262,6 +281,7 @@ FCAContextExamples >> mammalsLatticeWithPositions [
 { #category : #accessing }
 FCAContextExamples >> meetHumansGibbons [
 	<gtExample>
+	<return: #FCAConcept>
 	| humans gibbons meetHumansGibbons |
 	humans := FCAContextExamples new humansClosureConcept.
 	gibbons := FCAContextExamples new gibbonsClosureConcept.
@@ -287,6 +307,7 @@ FCAContextExamples >> newBitSetWithAll: aCollection [
 { #category : #accessing }
 FCAContextExamples >> sigmaCatsGibbons [
 	<gtExample>
+	<return: #BitSet>
 	| sigmaCatsGibbons |
 	sigmaCatsGibbons := self mammals
 			sigma: (self
@@ -301,6 +322,7 @@ FCAContextExamples >> sigmaCatsGibbons [
 { #category : #accessing }
 FCAContextExamples >> sigmaDolphins [
 	<gtExample>
+	<return: #BitSet>
 	| sigmaDolphins |
 	sigmaDolphins := self mammals sigma: (self newBitSetWithAll: {self dolphins}).
 	self
@@ -312,6 +334,7 @@ FCAContextExamples >> sigmaDolphins [
 { #category : #accessing }
 FCAContextExamples >> sigmaEmpty [
 	<gtExample>
+	<return: #BitSet>
 	| sigmaEmpty mammals |
 	mammals := self mammals.
 	sigmaEmpty := mammals sigma: self emptyBitSet.
@@ -324,6 +347,7 @@ FCAContextExamples >> sigmaEmpty [
 { #category : #accessing }
 FCAContextExamples >> tauEmpty [
 	<gtExample>
+	<return: #BitSet>
 	| tauEmpty mammals |
 	mammals := self mammals.
 	tauEmpty := mammals tau: self emptyBitSet.
@@ -334,6 +358,7 @@ FCAContextExamples >> tauEmpty [
 { #category : #accessing }
 FCAContextExamples >> tauHairCovered [
 	<gtExample>
+	<return: #BitSet>
 	| tauHairCovered |
 	tauHairCovered := self mammals tau: (self newBitSetWithAll: {self hairCovered}).
 	self

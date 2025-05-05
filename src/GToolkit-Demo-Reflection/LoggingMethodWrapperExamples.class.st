@@ -9,6 +9,7 @@ LoggingMethodWrapperExamples >> activeLogger [
 	"We install the logger on Integer>>#slowFactorial and see that the invocation count is now updated."
 
 	<gtExample>
+	<return: #LoggingMethodWrapper>
 	| logger |
 	logger := self inactiveLogger.
 	logger install.
@@ -25,6 +26,7 @@ LoggingMethodWrapperExamples >> inactiveLogger [
 	"We create a logger for Integer>>#slowFactorial but do not install it."
 
 	<gtExample>
+	<return: #LoggingMethodWrapper>
 	| logger |
 	logger := LoggingMethodWrapper on: Integer >> #slowFactorial.
 	self assert: logger invocationCount equals: 0.

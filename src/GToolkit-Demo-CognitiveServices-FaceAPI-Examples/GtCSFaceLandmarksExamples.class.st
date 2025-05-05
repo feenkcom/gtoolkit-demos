@@ -7,6 +7,7 @@ Class {
 { #category : #examples }
 GtCSFaceLandmarksExamples >> landmarkEyes [
 	<gtExample>
+	<return: #GtCSFaceLandmarks>
 	| landmarks |
 	landmarks := GtCSFaceLandmarks new.
 	landmarks addProperties: self landmarkLeftEye properties.
@@ -17,9 +18,10 @@ GtCSFaceLandmarksExamples >> landmarkEyes [
 { #category : #examples }
 GtCSFaceLandmarksExamples >> landmarkLeftEye [
 	<gtExample>
+	<return: #GtCSFaceLandmarks>
 	| landmarks |
 	landmarks := GtCSFaceLandmarks new.
-	landmarks 
+	landmarks
 		propertyAt: #eyeRightTop put: 8.7 @ 1.4;
 		propertyAt: #eyeRightOuter put: 16.3 @ 4.9;
 		propertyAt: #pupilRight put: 9.6 @ 4.3;
@@ -31,9 +33,10 @@ GtCSFaceLandmarksExamples >> landmarkLeftEye [
 { #category : #examples }
 GtCSFaceLandmarksExamples >> landmarkNose [
 	<gtExample>
+	<return: #GtCSFaceLandmarks>
 	| landmarks |
 	landmarks := GtCSFaceLandmarks new.
-	landmarks 
+	landmarks
 		propertyAt: #noseRootRight put: 22.4 @ 7.8;
 		propertyAt: #noseRightAlarOutTip put: 31.5 @ 34.2;
 		propertyAt: #noseRootLeft put: 10.6 @ 9.4;
@@ -41,16 +44,17 @@ GtCSFaceLandmarksExamples >> landmarkNose [
 		propertyAt: #noseRightAlarTop put: 26.2 @ 25.0;
 		propertyAt: #noseLeftAlarOutTip put: 5.8 @ 37.1;
 		propertyAt: #noseLeftAlarTop put: 10.3 @ 26.8.
-	
+
 	^ landmarks
 ]
 
 { #category : #examples }
 GtCSFaceLandmarksExamples >> landmarkRightEye [
 	<gtExample>
+	<return: #GtCSFaceLandmarks>
 	| landmarks |
 	landmarks := GtCSFaceLandmarks new.
-	landmarks 
+	landmarks
 		propertyAt: #eyeLeftTop put: 32.4 @ 1.3;
 		propertyAt: #eyeLeftOuter put: 26.7 @ 6.7;
 		propertyAt: #pupilLeft put: 43.1 @ 4.5;

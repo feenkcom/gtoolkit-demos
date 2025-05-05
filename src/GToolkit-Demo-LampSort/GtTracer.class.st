@@ -92,15 +92,16 @@ GtTracer >> enable [
 { #category : #examples }
 GtTracer >> gtExampleAddNumbers [
 	<gtExample>
+	<return: #MemoryLogger>
 	| memoryLogger result recordings |
 	self addClass: self class name.
-	self assert: self tracedMethods equals: { self class >> #addNumbers: }.
+	self assert: self tracedMethods equals: {self class >> #addNumbers:}.
 	self enable.
 	memoryLogger := MemoryLogger new
-		name: 'GtTrace';
-		beacon: self announcer;
-		runFor: GtTraceAnnouncement during: [
-			result := self addNumbers: (1 to: 10) asArray ].
+			name: 'GtTrace';
+			beacon: self announcer;
+			runFor: GtTraceAnnouncement
+				during: [ result := self addNumbers: (1 to: 10) asArray ].
 	self assert: result equals: 55.
 	recordings := memoryLogger recordings.
 	self disable.
@@ -116,17 +117,17 @@ GtTracer >> gtExampleAddNumbers [
 { #category : #examples }
 GtTracer >> gtExampleSortRandom [
 	<gtExample>
+	<return: #MemoryLogger>
 	self addClass: #GtLampSort.
-	^ self traceDuring: [
-		GtLampSort new gtExampleSortRandom ]
+	^ self traceDuring: [ GtLampSort new gtExampleSortRandom ]
 ]
 
 { #category : #examples }
 GtTracer >> gtExampleSortSpecific [
 	<gtExample>
+	<return: #MemoryLogger>
 	self addClass: #GtLampSort.
-	^ self traceDuring: [
-		GtLampSort new gtExampleSortSpecific ]
+	^ self traceDuring: [ GtLampSort new gtExampleSortSpecific ]
 ]
 
 { #category : #testing }

@@ -55,6 +55,7 @@ ReflectionSceneryExample >> curvature [
 { #category : #accessing }
 ReflectionSceneryExample >> eyecon [
 	<gtExample>
+	<return: #GtSceneryItem>
 	^ GtSceneryItem new
 		stencil: [ GtFileUtility imageElementFromFileReference: self eyeconFile ] asStencil
 ]
@@ -94,6 +95,7 @@ ReflectionSceneryExample >> rectangle [
 { #category : #accessing }
 ReflectionSceneryExample >> reflectionScenery [
 	<gtExample>
+	<return: #GtScenery>
 	| scenery |
 	scenery := GtSceneryEditedExamples new reflectionScenery.
 	^ scenery
@@ -102,6 +104,7 @@ ReflectionSceneryExample >> reflectionScenery [
 { #category : #accessing }
 ReflectionSceneryExample >> reflectionSceneryOLD [
 	<gtExample>
+	<return: #GtScenery>
 	| scenery items meta reified eyecon |
 	scenery := GtScenery new.
 	items := Dictionary new.

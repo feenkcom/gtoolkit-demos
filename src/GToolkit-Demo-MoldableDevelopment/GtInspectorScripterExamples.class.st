@@ -7,18 +7,21 @@ Class {
 { #category : #example }
 GtInspectorScripterExamples >> emptyStackMachine [
 	<gtExample>
+	<return: #StackMachineV0>
 	^ StackMachineV0 new
 ]
 
 { #category : #example }
 GtInspectorScripterExamples >> emptyStackMachineV1 [
 	<gtExample>
+	<return: #StackMachineV1>
 	^ StackMachineV1 new
 ]
 
 { #category : #example }
 GtInspectorScripterExamples >> emptyStackMachineV1WithPlaygroundCode [
 	<gtExample>
+	<return: #GtInspector>
 	| scripter |
 	scripter := GtInspectorScripterExamples new
 			scriptedInspectorOn: self emptyStackMachineV1
@@ -29,6 +32,7 @@ GtInspectorScripterExamples >> emptyStackMachineV1WithPlaygroundCode [
 { #category : #example }
 GtInspectorScripterExamples >> emptyStackMachineWithGeneralizedPlaygroundCode [
 	<gtExample>
+	<return: #GtInspector>
 	| scripter |
 	scripter := GtInspectorScripterExamples new
 			scriptedInspectorOn: self emptyStackMachine
@@ -39,6 +43,7 @@ GtInspectorScripterExamples >> emptyStackMachineWithGeneralizedPlaygroundCode [
 { #category : #example }
 GtInspectorScripterExamples >> emptyStackMachineWithPlaygroundCode [
 	<gtExample>
+	<return: #GtInspector>
 	| scripter |
 	scripter := GtInspectorScripterExamples new
 			scriptedInspectorOn: self emptyStackMachine
@@ -150,6 +155,7 @@ GtInspectorScripterExamples >> scriptedInspectorOn: anObject WithPlaygroundText:
 { #category : #example }
 GtInspectorScripterExamples >> stackMachineV1WithCodeEvaluated [
 	<gtExample>
+	<return: #GtPager>
 	| scripter |
 	scripter := GtInspectorScripterExamples new
 			scriptedInspectorInPagerOn: (StackMachineV1 new

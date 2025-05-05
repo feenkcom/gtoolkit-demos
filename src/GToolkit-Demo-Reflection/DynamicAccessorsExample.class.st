@@ -10,14 +10,14 @@ Class {
 { #category : #running }
 DynamicAccessorsExample >> dynamicAccessor [
 	<gtExample>
-	
+	<return: #DynamicAccessors>
 	| dynamicAccessor |
 	dynamicAccessor := DynamicAccessors new.
-	
+
 	self deny: (dynamicAccessor class methodDict keys includes: #x).
 	self assert: dynamicAccessor x equals: nil.
 	self assert: (dynamicAccessor class methodDict keys includes: #x).
 	DynamicAccessors removeSelector: #x.
-	
+
 	^ dynamicAccessor
 ]
