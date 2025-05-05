@@ -16,7 +16,7 @@ BaselineOfGToolkitDemoSPL >> baseline: spec [
 	spec for: #'common' do: [
 		spec
 			baseline: 'GToolkit4PetitParser2' with: [
-				spec repository: 'github://feenkcom/gt4petitparser2:v0.8.43/src' ].
+				spec repository: 'github://feenkcom/gt4petitparser2:v0.8.44/src' ].
 
 		spec package: 'GToolkit-Demo-Slideshows'.
 		spec package: 'GToolkit-Demo-SPL' with: [
