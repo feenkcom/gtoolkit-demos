@@ -10,18 +10,21 @@ Class {
 { #category : #accessing }
 SPLCaseStudyExamples >> empty [
 	<gtExample>
+	<return: #SPLContext>
 	^ SPL empty
 ]
 
 { #category : #accessing }
 SPLCaseStudyExamples >> factorial [
 	<gtExample>
+	<return: #SPLContext>
 	^ SPL factorial
 ]
 
 { #category : #accessing }
 SPLCaseStudyExamples >> factorialReduced [
 	<gtExample>
+	<return: #SPLContext>
 	| result |
 	result := self factorial.
 	result reduce.
@@ -31,6 +34,7 @@ SPLCaseStudyExamples >> factorialReduced [
 { #category : #accessing }
 SPLCaseStudyExamples >> factorialStep7 [
 	<gtExample>
+	<return: #SPLContext>
 	| result |
 	result := self factorial.
 	1 to: 7 do: [ :n | result step ].
@@ -40,24 +44,28 @@ SPLCaseStudyExamples >> factorialStep7 [
 { #category : #accessing }
 SPLCaseStudyExamples >> factorialStepBeforeLast [
 	<gtExample>
+	<return: #SPLContext>
 	^ self factorialReduced trace nextToLast
 ]
 
 { #category : #accessing }
 SPLCaseStudyExamples >> fibonacci [
 	<gtExample>
+	<return: #SPLContext>
 	^ SPL fibonacci
 ]
 
 { #category : #accessing }
 SPLCaseStudyExamples >> hello [
 	<gtExample>
+	<return: #SPLContext>
 	^ SPL hello
 ]
 
 { #category : #accessing }
 SPLCaseStudyExamples >> print3plus4 [
 	<gtExample>
+	<return: #SPLContext>
 	| context |
 	context := self context: 'var x = 3; print x + 4;'.
 	self assert: context continuation isReduced not.
@@ -70,6 +78,7 @@ SPLCaseStudyExamples >> print3plus4 [
 { #category : #accessing }
 SPLCaseStudyExamples >> print3plus4step2 [
 	<gtExample>
+	<return: #SPLContext>
 	| context |
 	context := self print3plus4.
 	context step.
@@ -84,6 +93,7 @@ SPLCaseStudyExamples >> print3plus4step2 [
 { #category : #accessing }
 SPLCaseStudyExamples >> print3plus4step3 [
 	<gtExample>
+	<return: #SPLContext>
 	| context |
 	context := self print3plus4step2.
 	context step.
@@ -98,6 +108,7 @@ SPLCaseStudyExamples >> print3plus4step3 [
 { #category : #accessing }
 SPLCaseStudyExamples >> print3plus4step4 [
 	<gtExample>
+	<return: #SPLContext>
 	| context |
 	context := self print3plus4step3.
 	context step.
@@ -112,6 +123,7 @@ SPLCaseStudyExamples >> print3plus4step4 [
 { #category : #accessing }
 SPLCaseStudyExamples >> print3plus4step5 [
 	<gtExample>
+	<return: #SPLContext>
 	| context |
 	context := self print3plus4step4.
 	context step.
@@ -126,6 +138,7 @@ SPLCaseStudyExamples >> print3plus4step5 [
 { #category : #accessing }
 SPLCaseStudyExamples >> print3plus4step6 [
 	<gtExample>
+	<return: #SPLContext>
 	| context |
 	context := self print3plus4step5.
 	context step.
@@ -140,6 +153,7 @@ SPLCaseStudyExamples >> print3plus4step6 [
 { #category : #accessing }
 SPLCaseStudyExamples >> print3plus4step7 [
 	<gtExample>
+	<return: #SPLContext>
 	| context |
 	context := self print3plus4step6.
 	context step.

@@ -10,6 +10,7 @@ Class {
 { #category : #accessing }
 CSV2JSONExamples >> kurosawaCSV [
 	<gtExample>
+	<return: #ByteString>
 	^ (FileLocator gtResource / 'feenkcom' / 'gtoolkit-demos' / 'data' / 'imdb'
 		/ 'Akira Kurosawa Movies.csv') contents
 ]
@@ -17,6 +18,7 @@ CSV2JSONExamples >> kurosawaCSV [
 { #category : #accessing }
 CSV2JSONExamples >> kurosawaJson [
 	<gtExample>
+	<return: #GtJson>
 	| json |
 	json := (CSV2JSON for: self kurosawaCSV) json.
 	self assert: (json isKindOf: GtJson).
@@ -26,6 +28,7 @@ CSV2JSONExamples >> kurosawaJson [
 { #category : #accessing }
 CSV2JSONExamples >> kurosawaJsonObject [
 	<gtExample>
+	<return: #Array>
 	| json |
 	json := (CSV2JSON for: self kurosawaCSV) jsonObject.
 	self assert: (json isKindOf: Array).

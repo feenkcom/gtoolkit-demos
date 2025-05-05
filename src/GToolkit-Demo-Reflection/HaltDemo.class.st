@@ -25,7 +25,9 @@ HaltDemo >> bar [
 { #category : #example }
 HaltDemo >> foo [
 	"Does not halt"
+
 	<gtExample>
+	<return: #ByteString>
 	self haltIfCalledFrom: #bar.
 	^ 'foo'
 ]

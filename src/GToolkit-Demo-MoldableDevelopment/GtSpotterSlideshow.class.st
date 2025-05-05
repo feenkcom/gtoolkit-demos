@@ -20,16 +20,20 @@ GtSpotterSlideshow >> newExplainerButton: anExplanationModel position: aPoint [
 { #category : #examples }
 GtSpotterSlideshow >> spotterAfterFirstDiveInExplanation [
 	<gtExample>
+	<return: #GtStreamingSpotterElement>
 	| spotterElement contextTarget |
-
 	spotterElement := self
-		spotterElement: (self spotterElementInContextOf: GtABAddressBook withSearch: 'contactsWithAddress')
-		withSelectedPosition: 1.
-		
+			spotterElement: (self
+					spotterElementInContextOf: GtABAddressBook
+					withSearch: 'contactsWithAddress')
+			withSelectedPosition: 1.
+
 	spotterElement := self spotterElementDiveIn: spotterElement.
-	
-	contextTarget := (spotterElement query // GtSpotterCandidateElementId @ 1 // BrLabel) anyOne.
-	contextTarget addChild: (self newExplainerButton: #secondContext position: 0@10).
+
+	contextTarget := ((spotterElement query // GtSpotterCandidateElementId) @ 1
+			// BrLabel) anyOne.
+	contextTarget
+		addChild: (self newExplainerButton: #secondContext position: 0 @ 10).
 
 	^ spotterElement
 ]
@@ -215,79 +219,100 @@ GtSpotterSlideshow >> spotterInLocalContextExplanationText [
 { #category : #examples }
 GtSpotterSlideshow >> spotterInLocalContextExplanationWithLinks [
 	<gtExample>
+	<return: #BlElement>
 	| coderElement inspectorElement searchButtonTargets coderLabel inspectorLabel |
-	
 	searchButtonTargets := OrderedCollection new.
-	
+
 	coderLabel := BrLabel new
-		text: ('Coder example' asRopedText glamorousRegularFont; fontSize: 15; foreground: Color gray);
-		margin: (BlInsets top: 20 right: 0 bottom: 5 left: 5);
-		aptitude: BrGlamorousLabelAptitude new.
+			text: ('Coder example' asRopedText
+					glamorousRegularFont;
+					fontSize: 15;
+					foreground: Color gray);
+			margin: (BlInsets
+					top: 20
+					right: 0
+					bottom: 5
+					left: 5);
+			aptitude: BrGlamorousLabelAptitude new.
 	inspectorLabel := BrLabel new
-		text: ('Inspector example' asRopedText glamorousRegularFont; fontSize: 15; foreground: Color gray);
-		margin: (BlInsets top: 20 right: 0 bottom: 5 left: 5);
-		aptitude: BrGlamorousLabelAptitude new.
-		
+			text: ('Inspector example' asRopedText
+					glamorousRegularFont;
+					fontSize: 15;
+					foreground: Color gray);
+			margin: (BlInsets
+					top: 20
+					right: 0
+					bottom: 5
+					left: 5);
+			aptitude: BrGlamorousLabelAptitude new.
+
 	coderElement := BlElement new
-		constraintsDo: [:c |
-			c vertical matchParent.
-			c horizontal matchParent ];
-		background: Color white;
-		aptitude: BrShadowAptitude;
-		margin: (BlInsets all: 5);
-		addChild: (GtCoderElement forClass: GtABAddressBook) asElement.
+			constraintsDo: [ :c | 
+				c vertical matchParent.
+				c horizontal matchParent ];
+			background: Color white;
+			aptitude: BrShadowAptitude;
+			margin: (BlInsets all: 5);
+			addChild: (GtCoderElement forClass: GtABAddressBook) asElement.
 	inspectorElement := BlElement new
-		constraintsDo: [:c |
-			c vertical matchParent.
-			c horizontal matchParent ];
-		background: Color white;
-		aptitude: BrShadowAptitude;
-		margin: (BlInsets all: 5);
-		addChild:(((GtABAddressBookExample new myContactsAddressBook) 
-				gtViewsFor: GtPhlowView empty)
-					asElementDo: [:e | e]).
-	BlScripter new element: inspectorElement; elementWithoutParent.
-	
-	coderElement 
-		allChildrenBreadthFirstDetect: [:aChild | (aChild isKindOf: BrToolbar) and: [ aChild parent isKindOf: GtCoderToolbarElement ] ] 
-		ifFound: [:aChild | searchButtonTargets add: (aChild childAt: 1)].
-	inspectorElement 
-		allChildrenBreadthFirstDetect: [:aChild | (aChild isKindOf: BrToolbar)] 
-		ifFound: [:aChild | searchButtonTargets add: (aChild childAt: 3)].
-	
-	searchButtonTargets do: [:eachTarget |
-		eachTarget
-			addChild: 
-				(BrButton new
-					constraintsDo: [ :c | c ignoreByLayout ];
-					size: 3 @ 3;
-					elevation: (BlRelativeElevation elevation: 10);
-					geometry: BlCircleGeometry new;
-					aptitude: (GtExplainerTargetAptitude new explanationModel: #search);
-					relocate:
-						(5 @ 10))].
-	
+			constraintsDo: [ :c | 
+				c vertical matchParent.
+				c horizontal matchParent ];
+			background: Color white;
+			aptitude: BrShadowAptitude;
+			margin: (BlInsets all: 5);
+			addChild: ((GtABAddressBookExample new myContactsAddressBook gtViewsFor: GtPhlowView empty)
+					asElementDo: [ :e | e ]).
+	BlScripter new
+		element: inspectorElement;
+		elementWithoutParent.
+
+	coderElement
+		allChildrenBreadthFirstDetect: [ :aChild | 
+			(aChild isKindOf: BrToolbar)
+				and: [ aChild parent isKindOf: GtCoderToolbarElement ] ]
+		ifFound: [ :aChild | searchButtonTargets add: (aChild childAt: 1) ].
+	inspectorElement
+		allChildrenBreadthFirstDetect: [ :aChild | aChild isKindOf: BrToolbar ]
+		ifFound: [ :aChild | searchButtonTargets add: (aChild childAt: 3) ].
+
+	searchButtonTargets
+		do: [ :eachTarget | 
+			eachTarget
+				addChild: (BrButton new
+						constraintsDo: [ :c | c ignoreByLayout ];
+						size: 3 @ 3;
+						elevation: (BlRelativeElevation elevation: 10);
+						geometry: BlCircleGeometry new;
+						aptitude: (GtExplainerTargetAptitude new explanationModel: #search);
+						relocate: 5 @ 10) ].
+
 	^ BlElement new
 		layout: BlLinearLayout vertical;
-		constraintsDo: [:c |
+		constraintsDo: [ :c | 
 			c vertical matchParent.
-			c horizontal matchParent];
+			c horizontal matchParent ];
 		margin: (BlInsets all: 5);
 		padding: (BlInsets all: 5);
-		addChildren: {coderLabel. coderElement. inspectorLabel. inspectorElement}.
+		addChildren: {coderLabel.
+				coderElement.
+				inspectorLabel.
+				inspectorElement}
 ]
 
 { #category : #examples }
 GtSpotterSlideshow >> spotterInLocalContextForCoderExample [
 	<gtExample>
-	^ (GtCoderElement forClass: GtABAddressBook) createInPager maximized.
+	<return: #GtPager>
+	^ (GtCoderElement forClass: GtABAddressBook) createInPager maximized
 ]
 
 { #category : #examples }
 GtSpotterSlideshow >> spotterInLocalContextForInspectorExample [
 	<gtExample>
-
-	^ (GtInspector createOn: (GtABAddressBookExample new myContactsAddressBook)) maximized
+	<return: #GtPager>
+	^ (GtInspector createOn: GtABAddressBookExample new myContactsAddressBook)
+		maximized
 ]
 
 { #category : #slides }
@@ -366,47 +391,44 @@ GtSpotterSlideshow >> spotterInterfaceExplanationText [
 { #category : #examples }
 GtSpotterSlideshow >> spotterInterfaceExplanationWithLinks [
 	<gtExample>
+	<return: #GtStreamingSpotterElement>
 	| spotterElement searchBarTarget resultsTarget previewTarget classesTarget implementorsTarget |
-
 	spotterElement := self spotterElementOn: 'GtCoder'.
-	
-	searchBarTarget := (spotterElement query // GtStreamingSpotterHeaderElement) anyOne.
+
+	searchBarTarget := (spotterElement query // GtStreamingSpotterHeaderElement)
+			anyOne.
 	resultsTarget := (spotterElement query // GtStreamingSpotterPager) anyOne.
-	previewTarget := (spotterElement query // GtStreamingSpotterPreviewElement) anyOne.
-	
-	classesTarget := (spotterElement query
-		// GtSpotterCategoryElementId
-		@ [ :eachCategoryElement | eachCategoryElement search title = 'Classes' ])
-		anyOne.
-	
-	implementorsTarget := (spotterElement query
-		// GtSpotterCategoryElementId
-		@ [ :eachCategoryElement | eachCategoryElement search title = 'Implementors' ])
-		anyOne.
+	previewTarget := (spotterElement query // GtStreamingSpotterPreviewElement)
+			anyOne.
+
+	classesTarget := ((spotterElement query // GtSpotterCategoryElementId)
+			@ [ :eachCategoryElement | eachCategoryElement search title = 'Classes' ])
+			anyOne.
+
+	implementorsTarget := ((spotterElement query // GtSpotterCategoryElementId)
+			@ [ :eachCategoryElement | eachCategoryElement search title = 'Implementors' ])
+			anyOne.
 
 
-	searchBarTarget addChild: (self
-		newExplainerButton: #searchBar
-		position: 5 @ ((searchBarTarget extent y / 2) + 20)).
+	searchBarTarget
+		addChild: (self
+				newExplainerButton: #searchBar
+				position: 5 @ (searchBarTarget extent y / 2 + 20)).
 
-	resultsTarget addChild: (self
-		newExplainerButton: #results
-		position: 5@5). 
-	
-	previewTarget addChild: (self
-		newExplainerButton: #preview
-		position: 5 @ (previewTarget extent y / 2)).
+	resultsTarget addChild: (self newExplainerButton: #results position: 5 @ 5).
 
-	classesTarget addChild: (self
-		newExplainerButton: #classes
-		position: 5 @ (classesTarget extent y / 2)).
+	previewTarget
+		addChild: (self newExplainerButton: #preview position: 5 @ (previewTarget extent y / 2)).
+
+	classesTarget
+		addChild: (self newExplainerButton: #classes position: 5 @ (classesTarget extent y / 2)).
 
 	implementorsTarget
 		addChild: (self
-		newExplainerButton: #messages
-		position: 5 @ (implementorsTarget extent y / 2)).
+				newExplainerButton: #messages
+				position: 5 @ (implementorsTarget extent y / 2)).
 
-	^ spotterElement.
+	^ spotterElement
 ]
 
 { #category : #descriptions }
@@ -463,10 +485,10 @@ GtSpotterSlideshow >> spotterOpeningExplanationText [
 { #category : #examples }
 GtSpotterSlideshow >> spotterProcessorsExample [
 	<gtExample>
-	| inspector scripter  |
-
+	<return: #GtPager>
+	| inspector scripter |
 	inspector := GtInspector
-		createOn: (GtSpotter on: GtWorldSpotterSearchStart new).
+			createOn: (GtSpotter on: GtWorldSpotterSearchStart new).
 
 	scripter := BlScripter new.
 	scripter element: inspector.
@@ -475,7 +497,7 @@ GtSpotterSlideshow >> spotterProcessorsExample [
 		@ 1;
 		play.
 
-	^ scripter elementWithoutParent maximized.
+	^ scripter elementWithoutParent maximized
 ]
 
 { #category : #slides }
@@ -577,21 +599,23 @@ GtSpotterSlideshow >> spotterSearchFilterExplanationText [
 { #category : #examples }
 GtSpotterSlideshow >> spotterSearchMethodExample [
 	<gtExample>
+	<return: #GtExpandableMethodCoderElement>
 	| selectors coder coderViewModel coderElement |
-	
 	selectors := GtSelectorExplanationLinkStyler new.
-	selectors addSelectors: #(allClassesAndTraits priority: title: filter: keyBinding:).
+	selectors
+		addSelectors: #(allClassesAndTraits priority: title: filter: keyBinding:).
 	selectors addSelector: #gtSearch withIdentifier: #annotation.
 	selectors addSelector: #wantsToDisplayOnEmptyQuery: withIdentifier: #display.
 
-	coder := GtPharoMethodCoder forMethod: GtSpotterStart>>#gtSearchForClassesFor:.
+	coder := GtPharoMethodCoder
+			forMethod: GtSpotterStart >> #gtSearchForClassesFor:.
 	coderViewModel := coder asCoderViewModel.
 	coderViewModel addStyler: selectors.
 	coderElement := coderViewModel asElement.
 	coderElement margin: (BlInsets all: 10).
 	coderElement vMatchParent.
-	
-	^ coderElement.
+
+	^ coderElement
 ]
 
 { #category : #slides }
@@ -635,10 +659,11 @@ The ' asRopedText,
 { #category : #examples }
 GtSpotterSlideshow >> spottersMashExample [
 	<gtExample>
+	<return: #BlScalableElement>
 	^ (GtMashExampleLiveSlide new
 		leftElement: (self spotterElementOn: 'GtSpotter');
 		centerElement: (self spotterElementOn: 'size:');
-		rightElement: (self spotterElementOn: 'Playground')) asElement.
+		rightElement: (self spotterElementOn: 'Playground')) asElement
 ]
 
 { #category : #slides }

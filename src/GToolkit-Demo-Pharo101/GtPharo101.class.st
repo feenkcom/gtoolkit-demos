@@ -483,6 +483,7 @@ set1'.
 { #category : #accessing }
 GtPharo101 >> shortPlaygroundExplanation [
 	<gtExample>
+	<return: #BlElement>
 	| container playgroundElement newSnippetButtons inspectButtons aScripter snippets |
 	container := BlElement new
 			constraintsDo: [ :c | 

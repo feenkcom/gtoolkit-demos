@@ -333,32 +333,8 @@ A running system just shows its UI. You can interact with this, but you can''t g
 { #category : #accessing }
 ExplainableSystemsSlideshow >> slidePriorities [
 	<gtExample>
-	^ #( 
-		title:
-		
-		#explainableSystems:
-			runningSystem:
-			sourceEditor:
-			moreOpaqueness:
-			moldableDevelopment:
-			explainableLudo:
-		
-		gt:
-			gtTour:
-			lepiter:
-			moldableInspector:
-			gtComponents:
-		
-		edd:
-			troubleWithTests:
-			examples:
-			ludoExamples:
-			liveDocumentation:
-			examplesExplorer:
-			pervasiveTools:
-		
-		summarySlide:
-	)
+	<return: #Array>
+	^ #(title: #explainableSystems: runningSystem: sourceEditor: moreOpaqueness: moldableDevelopment: explainableLudo: gt: gtTour: lepiter: moldableInspector: gtComponents: edd: troubleWithTests: examples: ludoExamples: liveDocumentation: examplesExplorer: pervasiveTools: summarySlide:)
 ]
 
 { #category : #slides }

@@ -9,6 +9,7 @@ LoggingProxyExamples >> freshLoggingProxy [
 	"NB: The point and the proxy swap object ids."
 
 	<gtExample>
+	<return: #LoggingProxy>
 	| point proxy |
 	point := 1 @ 2.
 	self assert: point class equals: Point.
@@ -25,6 +26,7 @@ LoggingProxyExamples >> loggingProxyWithSelfSends [
 	"rectangle: does two self-sends, but self-sends are not intercepted, so only the send to #rectangle: is counted"
 
 	<gtExample>
+	<return: #LoggingProxy>
 	| proxy |
 	proxy := self freshLoggingProxy.
 	self assert: proxy messageLog isEmpty.
@@ -37,6 +39,7 @@ LoggingProxyExamples >> loggingProxyWithSelfSends [
 { #category : #running }
 LoggingProxyExamples >> usedLoggingProxy [
 	<gtExample>
+	<return: #LoggingProxy>
 	| proxy |
 	proxy := self freshLoggingProxy.
 	self assert: proxy messageLog isEmpty.

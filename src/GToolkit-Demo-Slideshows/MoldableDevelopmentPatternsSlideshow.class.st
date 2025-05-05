@@ -991,43 +991,10 @@ Most views are very simple.'>
 MoldableDevelopmentPatternsSlideshow >> slidePriorities [
 	"This method defines the slide priorities implicitly by their order instead of by fixed numbers.
 	See also: PrioritySlideshow>>#priorityFor:"
+
 	<gtExample>
-	^ #( 
-		titleSlide:
-		
-		whatIsMoldableDevelopment:
-			ludoGame:
-			ludoSourceCode:
-			inspectingLudo:
-			spl:
-	
-		howToPracticeMoldableDevelopment:
-			moldableObjectScenery:
-				moldableObject:
-			contextualPlaygroundScenery:
-				contextualPlayground:
-			exampleObjectScenery:
-				exampleObject:
-			viewableEntityScenery:
-				viewableEntity:
-			simpleViewScenery:
-				simpleView:
-			viewableDataWrapperScenery:
-				viewableDataWrapper:
-				markdownWebsiteExample:
-			customActionScenery:
-				customAction:
-			collectionWrapperScenery:
-				collectionWrapper:
-			projectDiaryScenery:
-				projectDiary:
-				
-		takeaways:
-			takeawayKnowledge:
-			takeawayCustomTools:
-			takeawayUniversal:
-			takeawayPatterns:
-	)
+	<return: #Array>
+	^ #(titleSlide: whatIsMoldableDevelopment: ludoGame: ludoSourceCode: inspectingLudo: spl: howToPracticeMoldableDevelopment: moldableObjectScenery: moldableObject: contextualPlaygroundScenery: contextualPlayground: exampleObjectScenery: exampleObject: viewableEntityScenery: viewableEntity: simpleViewScenery: simpleView: viewableDataWrapperScenery: viewableDataWrapper: markdownWebsiteExample: customActionScenery: customAction: collectionWrapperScenery: collectionWrapper: projectDiaryScenery: projectDiary: takeaways: takeawayKnowledge: takeawayCustomTools: takeawayUniversal: takeawayPatterns:)
 ]
 
 { #category : #slides }

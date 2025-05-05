@@ -7,6 +7,7 @@ Class {
 { #category : #accessing }
 PillarLinkSeaParserExamples >> emailLink [
 	<gtExample>
+	<return: #OrderedCollection>
 	| links |
 	links := self parse: 'Email: *Roel.Wuyts@ulb.ac.be*'.
 	self assert: links size equals: 1.
@@ -18,6 +19,7 @@ PillarLinkSeaParserExamples >> emailLink [
 { #category : #accessing }
 PillarLinkSeaParserExamples >> linkWithSpaces [
 	<gtExample>
+	<return: #OrderedCollection>
 	| links |
 	links := self parse: '* foo > bar *'.
 	self assert: links size equals: 1.
@@ -29,8 +31,10 @@ PillarLinkSeaParserExamples >> linkWithSpaces [
 { #category : #accessing }
 PillarLinkSeaParserExamples >> multiLineNoLinks [
 	<gtExample>
+	<return: #OrderedCollection>
 	| links |
-	links := self parse: '*
+	links := self
+			parse: '*
 foo>bar*'.
 	self assert: links isEmpty.
 	^ links
@@ -39,6 +43,7 @@ foo>bar*'.
 { #category : #accessing }
 PillarLinkSeaParserExamples >> noLinks [
 	<gtExample>
+	<return: #OrderedCollection>
 	| links |
 	links := self parse: '... *someLink* '.
 	self assert: links size equals: 1.
@@ -50,6 +55,7 @@ PillarLinkSeaParserExamples >> noLinks [
 { #category : #accessing }
 PillarLinkSeaParserExamples >> noTextLink [
 	<gtExample>
+	<return: #OrderedCollection>
 	| links |
 	links := self parse: '... *someLink* '.
 	self assert: links size equals: 1.
@@ -61,6 +67,7 @@ PillarLinkSeaParserExamples >> noTextLink [
 { #category : #accessing }
 PillarLinkSeaParserExamples >> oneLink [
 	<gtExample>
+	<return: #OrderedCollection>
 	| links |
 	links := self parse: '*foo>bar*'.
 	self assert: links size equals: 1.
@@ -82,8 +89,10 @@ PillarLinkSeaParserExamples >> parserClass [
 { #category : #accessing }
 PillarLinkSeaParserExamples >> twoLinks [
 	<gtExample>
+	<return: #OrderedCollection>
 	| links |
-	links := self parse: '
+	links := self
+			parse: '
 ""stuff toignore""
 *foo>bar*
 *fuzz>baz*
@@ -99,6 +108,7 @@ PillarLinkSeaParserExamples >> twoLinks [
 { #category : #accessing }
 PillarLinkSeaParserExamples >> twoStarsNoLinks [
 	<gtExample>
+	<return: #OrderedCollection>
 	| links |
 	links := self parse: '**'.
 	self assert: links isEmpty.

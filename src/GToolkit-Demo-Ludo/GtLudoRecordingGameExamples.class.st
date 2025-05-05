@@ -12,6 +12,7 @@ Class {
 { #category : #examples }
 GtLudoRecordingGameExamples >> emptyGame [
 	<gtExample>
+	<return: #GtLudoRecordingGame>
 	| game |
 	game := GtLudoRecordingGame new.
 	self assert: game moves isEmpty.
@@ -21,6 +22,7 @@ GtLudoRecordingGameExamples >> emptyGame [
 { #category : #example }
 GtLudoRecordingGameExamples >> evaluatedStoreStringYieldsSameStorestring [
 	<gtExample>
+	<return: #GtLudoRecordingGame>
 	| game storeString clonedGame |
 	game := self playerAentersAndLandsOnA.
 	storeString := game storeString.
@@ -37,6 +39,7 @@ GtLudoRecordingGameExamples >> gameClass [
 { #category : #examples }
 GtLudoRecordingGameExamples >> gameShowingAllMoves1 [
 	<gtExample>
+	<return: #GtLudoRecordingGame>
 	| game |
 	game := self emptyGame.
 	game
@@ -52,10 +55,10 @@ GtLudoRecordingGameExamples >> gameShowingAllMoves1 [
 
 { #category : #examples }
 GtLudoRecordingGameExamples >> gameShowingAllMoves2 [
-
 	<gtExample>
+	<return: #GtLudoRecordingGame>
 	| game gameMoves |
-	game := self gameShowingAllMoves1. 
+	game := self gameShowingAllMoves1.
 	gameMoves := game moves size.
 	game
 		roll: 6;
@@ -68,6 +71,7 @@ GtLudoRecordingGameExamples >> gameShowingAllMoves2 [
 { #category : #examples }
 GtLudoRecordingGameExamples >> gameShowingAllMoves3 [
 	<gtExample>
+	<return: #GtLudoRecordingGame>
 	| game |
 	game := self gameShowingAllMoves2.
 	game
@@ -86,8 +90,8 @@ GtLudoRecordingGameExamples >> gameShowingAllMoves3 [
 
 { #category : #examples }
 GtLudoRecordingGameExamples >> gameShowingAllMoves4 [
-
 	<gtExample>
+	<return: #GtLudoRecordingGame>
 	| game |
 	game := self gameShowingAllMoves3.
 	game
@@ -101,8 +105,8 @@ GtLudoRecordingGameExamples >> gameShowingAllMoves4 [
 
 { #category : #examples }
 GtLudoRecordingGameExamples >> gameShowingAllMoves5 [
-
 	<gtExample>
+	<return: #GtLudoRecordingGame>
 	| game |
 	game := self gameShowingAllMoves4.
 	game
@@ -124,14 +128,16 @@ GtLudoRecordingGameExamples >> gameShowingAllMoves5 [
 		moveTokenNamed: 'b'.
 	self assert: game moves last numberOfTokensMoved = 1.
 	self assert: game moves last tokenMoves first token name = 'b'.
-	self assert: game moves last tokenMoves first fromSquare = game moves last tokenMoves first toSquare.
+	self
+		assert: game moves last tokenMoves first fromSquare
+				= game moves last tokenMoves first toSquare.
 	^ game
 ]
 
 { #category : #examples }
 GtLudoRecordingGameExamples >> gameShowingAllMoves6 [
-
 	<gtExample>
+	<return: #GtLudoRecordingGame>
 	| game |
 	game := self gameShowingAllMoves5.
 	game
@@ -151,7 +157,7 @@ GtLudoRecordingGameExamples >> gameShowingAllMovesStart [
 { #category : #accessing }
 GtLudoRecordingGameExamples >> landingOnOwnPlayerToken [
 	<gtExample>
-	
+	<return: #GtLudoMove>
 	| move |
 	move := self playerAentersAndLandsOnTokenA moves last.
 	^ move
@@ -160,18 +166,21 @@ GtLudoRecordingGameExamples >> landingOnOwnPlayerToken [
 { #category : #accessing }
 GtLudoRecordingGameExamples >> moveImpossible [
 	<gtExample>
+	<return: #GtLudoMove>
 	^ self gameShowingAllMoves5 moves last
 ]
 
 { #category : #accessing }
 GtLudoRecordingGameExamples >> moveInitial [
 	<gtExample>
+	<return: #GtLudoMove>
 	^ self gameShowingAllMoves1 moves last
 ]
 
 { #category : #accessing }
 GtLudoRecordingGameExamples >> moveInitialJumpingAndCapturing [
 	<gtExample>
+	<return: #GtLudoMove>
 	| move |
 	move := self gameShowingAllMoves3 moves last.
 	self assert: move tokenMoves last token name equals: 'D'.
@@ -181,36 +190,42 @@ GtLudoRecordingGameExamples >> moveInitialJumpingAndCapturing [
 { #category : #accessing }
 GtLudoRecordingGameExamples >> moveJumping [
 	<gtExample>
+	<return: #GtLudoMove>
 	^ self gameShowingAllMoves4 moves last
 ]
 
 { #category : #accessing }
 GtLudoRecordingGameExamples >> moveSimple [
 	<gtExample>
+	<return: #GtLudoMove>
 	^ self gameShowingAllMoves2 moves last
 ]
 
 { #category : #accessing }
 GtLudoRecordingGameExamples >> moveToTheEnd [
 	<gtExample>
+	<return: #GtLudoMove>
 	^ self gameShowingAllMoves6 moves last
 ]
 
 { #category : #example }
 GtLudoRecordingGameExamples >> playerAentersAndLandsOnA [
 	<gtExample>
+	<return: #GtLudoRecordingGame>
 	| game |
 	game := super playerAentersAndLandsOnA.
 	self assert: game moves size equals: 7.
 	self assert: game moves last numberOfTokensMoved equals: 2.
-	game moves do: [ :move | 
-		self assert: ((0 to: 2) includes: move numberOfTokensMoved) ].
+	game moves
+		do: [ :move | self assert: ((0 to: 2) includes: move numberOfTokensMoved) ].
 	^ game
 ]
 
 { #category : #accessing }
 GtLudoRecordingGameExamples >> playerAentersAndLandsOnTokenA [
-	<gtExample>
 	"workaround: the example snippet works with the class that defines the method instead of the target class"
+
+	<gtExample>
+	<return: #GtLudoRecordingGame>
 	^ super playerAentersAndLandsOnTokenA
 ]

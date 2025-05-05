@@ -22,6 +22,7 @@ BitSetExamples >> emptyBitSet [
 	"Empty BitSet with a new, empty map."
 
 	<gtExample>
+	<return: #BitSet>
 	| bitSet |
 	self
 		assertCachedUnchanged: [ bitSet := BitSet new
@@ -37,6 +38,7 @@ BitSetExamples >> emptyFoo [
 	"Create a new empty BitSet with the same map as foo."
 
 	<gtExample>
+	<return: #BitSet>
 	| emptyFoo foo |
 	self
 		assertCachedUnchanged: [ foo := self foo.
@@ -52,6 +54,7 @@ BitSetExamples >> emptyMap [
 	"Fresh maps to be used just for these tests."
 
 	<gtExample>
+	<return: #Dictionary>
 	| map |
 	self
 		assertCachedUnchanged: [ map := Dictionary new.
@@ -64,6 +67,7 @@ BitSetExamples >> foo [
 	"Create a foo BitSet using the test map"
 
 	<gtExample>
+	<return: #BitSet>
 	| foo |
 	self
 		assertCachedUnchanged: [ foo := self newBitSetWithAll: 'foo'.
@@ -75,6 +79,7 @@ BitSetExamples >> foo [
 { #category : #example }
 BitSetExamples >> fooRemoveF [
 	<gtExample>
+	<return: #BitSet>
 	| foo |
 	self
 		assertCachedUnchanged: [ foo := self foo.
@@ -87,12 +92,13 @@ BitSetExamples >> fooRemoveF [
 { #category : #example }
 BitSetExamples >> fooSubsetFoobar [
 	<gtExample>
+	<return: #BitSet>
 	| foo foobar |
 	self
 		assertCachedUnchanged: [ foo := self foo.
 			foobar := self foobar.
 
-			self assert:(foo hasSameMapAs: foobar) not.
+			self assert: (foo hasSameMapAs: foobar) not.
 			self assert: foobar <= foobar.
 			self assert: foo <= foobar.
 			self assert: foo < foobar.
@@ -107,6 +113,7 @@ BitSetExamples >> fooSubsetFoobar [
 { #category : #example }
 BitSetExamples >> fooUnionBar [
 	<gtExample>
+	<return: #BitSet>
 	| union |
 	self
 		assertCachedUnchanged: [ union := self foo union: 'bar'.
@@ -119,6 +126,7 @@ BitSetExamples >> foobar [
 	"Create a foobar BitSet using a fresh test map."
 
 	<gtExample>
+	<return: #BitSet>
 	| foobar |
 	self
 		assertCachedUnchanged: [ foobar := self newBitSetWithAll: 'foobar'.
@@ -131,6 +139,7 @@ BitSetExamples >> foobar [
 { #category : #example }
 BitSetExamples >> foobarDifferenceBaz [
 	<gtExample>
+	<return: #BitSet>
 	| foobar difference |
 	self
 		assertCachedUnchanged: [ foobar := self fooUnionBar.
@@ -142,6 +151,7 @@ BitSetExamples >> foobarDifferenceBaz [
 { #category : #example }
 BitSetExamples >> foobarIncludesAllFoo [
 	<gtExample>
+	<return: #BitSet>
 	| foobar |
 	self
 		assertCachedUnchanged: [ foobar := self fooUnionBar.
@@ -152,6 +162,7 @@ BitSetExamples >> foobarIncludesAllFoo [
 { #category : #example }
 BitSetExamples >> foobarIncludesAllHelloNot [
 	<gtExample>
+	<return: #BitSet>
 	| foobar |
 	self
 		assertCachedUnchanged: [ foobar := self fooUnionBar.
@@ -162,17 +173,19 @@ BitSetExamples >> foobarIncludesAllHelloNot [
 { #category : #example }
 BitSetExamples >> foobarIntersectFoobaz [
 	<gtExample>
+	<return: #BitSet>
 	| foobar intersection |
 	self
 		assertCachedUnchanged: [ foobar := self fooUnionBar.
 			intersection := foobar intersection: 'foobaz'.
-			self assert: intersection equals:(foobar empty withAll: 'foba' ) ].
+			self assert: intersection equals: (foobar empty withAll: 'foba') ].
 	^ intersection
 ]
 
 { #category : #example }
 BitSetExamples >> foobarRemoveAllBaz [
 	<gtExample>
+	<return: #BitSet>
 	| result |
 	self
 		assertCachedUnchanged: [ result := self foobar.
@@ -184,6 +197,7 @@ BitSetExamples >> foobarRemoveAllBaz [
 { #category : #example }
 BitSetExamples >> hello [
 	<gtExample>
+	<return: #BitSet>
 	| hello |
 	self
 		assertCachedUnchanged: [ hello := self newBitSetWithAll: 'hello'.
@@ -198,6 +212,7 @@ BitSetExamples >> helloBasicSetOperations [
 	"Illustrates use of #includes:, #coillect:, #reject: etc"
 
 	<gtExample>
+	<return: #BitSet>
 	| hello mapResult copy |
 	hello := self hello.
 
@@ -230,6 +245,7 @@ BitSetExamples >> helloBasicSetOperations [
 { #category : #example }
 BitSetExamples >> helloEquality [
 	<gtExample>
+	<return: #BitSet>
 	| hello helo foo |
 	self
 		assertCachedUnchanged: [ hello := self hello.
@@ -252,6 +268,7 @@ BitSetExamples >> helloEqualityWithDifferentMaps [
 	"Normally maps should not be reset, but in case two BitSets have different maps, we still want equality to work. For the comparison, helo will be converted to a BitSet with the same map."
 
 	<gtExample>
+	<return: #BitSet>
 	| hello helo |
 	hello := self hello.
 

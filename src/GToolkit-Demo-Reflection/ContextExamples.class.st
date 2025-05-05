@@ -48,6 +48,7 @@ ContextExamples >> stackUpToExample [
 { #category : #example }
 ContextExamples >> stackUpToHere [
 	<gtExample>
+	<return: #OrderedCollection>
 	| stack |
 	stack := self stackUpToExample.
 	self assert: stack size equals: 2.
@@ -59,12 +60,12 @@ ContextExamples >> thisContext [
 	"NB: as soon as we return the context, it will be dead, so the values of variables will no longer be visible."
 
 	<gtExample>
+	<return: #Context>
 	| context foo |
 	foo := 42.
 	context := thisContext.
 	self assert: context isDead not.
-	self assert: context method selector 
-			equals: #thisContext.
+	self assert: context method selector equals: #thisContext.
 	self assert: (context tempNamed: #foo) equals: 42.
 	^ context
 ]
@@ -74,12 +75,12 @@ ContextExamples >> thisContextCopy [
 	"Here we return a copy of the context, which will contain all the temporary variables with their values at the point of return."
 
 	<gtExample>
+	<return: #Context>
 	| context foo |
 	foo := 42.
 	context := thisContext.
 	self assert: context isDead not.
-	self assert: context method selector 
-			equals: #thisContextCopy.
+	self assert: context method selector equals: #thisContextCopy.
 	self assert: (context tempNamed: #foo) equals: 42.
 	^ context copy
 ]
@@ -87,6 +88,7 @@ ContextExamples >> thisContextCopy [
 { #category : #accessing }
 ContextExamples >> thisContextCopyIsNotDead [
 	<gtExample>
+	<return: #Context>
 	| context |
 	context := self thisContextCopy.
 	self assert: context isDead not.
@@ -96,6 +98,7 @@ ContextExamples >> thisContextCopyIsNotDead [
 { #category : #accessing }
 ContextExamples >> thisContextIsDead [
 	<gtExample>
+	<return: #Context>
 	| context |
 	context := self thisContext.
 	self assert: context isDead.
@@ -105,6 +108,7 @@ ContextExamples >> thisContextIsDead [
 { #category : #example }
 ContextExamples >> thisMethodFoundDeeplyInStack [
 	<gtExample>
+	<return: #CompiledMethod>
 	| method |
 	method := self searchIndirectly.
 	self assert: method selector equals: #thisMethodFoundDeeplyInStack.
@@ -114,6 +118,7 @@ ContextExamples >> thisMethodFoundDeeplyInStack [
 { #category : #example }
 ContextExamples >> thisMethodFoundInStack [
 	<gtExample>
+	<return: #CompiledMethod>
 	| method |
 	method := self findExampleInStack.
 	self assert: method selector equals: #thisMethodFoundInStack.
@@ -123,6 +128,7 @@ ContextExamples >> thisMethodFoundInStack [
 { #category : #example }
 ContextExamples >> thisMethodFromCalledMethod [
 	<gtExample>
+	<return: #CompiledMethod>
 	| method |
 	method := self returnMySender.
 	self assert: method selector equals: #thisMethodFromCalledMethod.
@@ -132,10 +138,10 @@ ContextExamples >> thisMethodFromCalledMethod [
 { #category : #example }
 ContextExamples >> thisMethodFromContext [
 	<gtExample>
+	<return: #CompiledMethod>
 	| method |
 	method := thisContext method.
-	self assert: method selector 
-			equals: #thisMethodFromContext.
+	self assert: method selector equals: #thisMethodFromContext.
 	^ method
 ]
 

@@ -7,6 +7,7 @@ Class {
 { #category : #examples }
 GtDPriceExamples >> concretePrice [
 	<gtExample>
+	<return: #GtDConcretePrice>
 	| price |
 	price := 100 gtEUR asPrice.
 	self assert: price = 100 gtEUR asPrice.
@@ -16,6 +17,7 @@ GtDPriceExamples >> concretePrice [
 { #category : #examples }
 GtDPriceExamples >> concretePriceDiscountedByMoney [
 	<gtExample>
+	<return: #GtDPriceDiscountedByMoney>
 	| price discountedPrice |
 	price := self concretePrice.
 	discountedPrice := price discountedBy: 10 gtEUR.
@@ -26,9 +28,10 @@ GtDPriceExamples >> concretePriceDiscountedByMoney [
 { #category : #examples }
 GtDPriceExamples >> concretePriceDiscountedByMoneyAndDiscountedByPercentage [
 	<gtExample>
+	<return: #GtDPriceDiscountedByPercentage>
 	| price discountedPrice |
 	price := self concretePriceDiscountedByMoney.
-	discountedPrice := price discountedBy: 10 percent. 
+	discountedPrice := price discountedBy: 10 percent.
 	self assert: discountedPrice = 81 gtEUR asPrice.
 	^ discountedPrice
 ]
@@ -36,8 +39,11 @@ GtDPriceExamples >> concretePriceDiscountedByMoneyAndDiscountedByPercentage [
 { #category : #examples }
 GtDPriceExamples >> concretePriceDiscountedByPercentage [
 	<gtExample>
+	<return: #GtDPriceDiscountedByPercentage>
 	| price |
-	price := GtDPriceDiscountedByPercentage new price: self concretePrice; discountPercentage: 10 percent.
+	price := GtDPriceDiscountedByPercentage new
+			price: self concretePrice;
+			discountPercentage: 10 percent.
 	self assert: price money = 90 gtEUR.
 	^ price
 ]
@@ -45,6 +51,7 @@ GtDPriceExamples >> concretePriceDiscountedByPercentage [
 { #category : #examples }
 GtDPriceExamples >> concretePriceUSD [
 	<gtExample>
+	<return: #GtDConcretePrice>
 	| price |
 	price := 100 gtUSD asPrice.
 	self assert: price money equals: 100 gtUSD.
@@ -54,39 +61,44 @@ GtDPriceExamples >> concretePriceUSD [
 { #category : #examples }
 GtDPriceExamples >> displayOfConcretePriceDiscountedByMoneyAndDiscountedByPercentage [
 	<gtExample>
+	<return: #GtDPriceDiscountedByPercentage>
 	| price |
 	price := self concretePriceDiscountedByMoneyAndDiscountedByPercentage.
-	self assert: (price gtDisplayString = '81 EUR = 10% off (10 EUR off 100 EUR)').
+	self assert: price gtDisplayString = '81 EUR = 10% off (10 EUR off 100 EUR)'.
 	^ price
 ]
 
 { #category : #examples }
 GtDPriceExamples >> displayOfDividedPrices [
 	<gtExample>
+	<return: #GtDPriceExamples>
 	| price |
-	price := (20 gtEUR asPrice / 2) / 2.
-	self assert: (price gtDisplayString = '5 EUR = (20 EUR / 2) / 2')
+	price := 20 gtEUR asPrice / 2 / 2.
+	self assert: price gtDisplayString = '5 EUR = (20 EUR / 2) / 2'
 ]
 
 { #category : #examples }
 GtDPriceExamples >> displayOfMultipliedPrices [
 	<gtExample>
+	<return: #GtDPriceExamples>
 	| price |
-	price := (20 gtEUR asPrice * 2) * 2.
-	self assert: (price gtDisplayString = '80 EUR = (20 EUR * 2) * 2')
+	price := 20 gtEUR asPrice * 2 * 2.
+	self assert: price gtDisplayString = '80 EUR = (20 EUR * 2) * 2'
 ]
 
 { #category : #examples }
 GtDPriceExamples >> displayOfMultiplySummedPrices [
 	<gtExample>
+	<return: #GtDPriceExamples>
 	| price |
 	price := 10 gtEUR asPrice + 20 gtEUR asPrice + 30 gtEUR asPrice.
-	self assert: (price gtDisplayString = '60 EUR = (10 EUR + 20 EUR) + 30 EUR')
+	self assert: price gtDisplayString = '60 EUR = (10 EUR + 20 EUR) + 30 EUR'
 ]
 
 { #category : #examples }
 GtDPriceExamples >> dividedPrice [
 	<gtExample>
+	<return: #GtDDividedPrice>
 	| price |
 	price := self concretePrice / 2.
 	self assert: price = 50 gtEUR asPrice.
@@ -96,6 +108,7 @@ GtDPriceExamples >> dividedPrice [
 { #category : #examples }
 GtDPriceExamples >> fortyTwoEurosDividedByTwoEuros [
 	<gtExample>
+	<return: #GtDConcretePrice>
 	| price |
 	price := 42 gtEUR asPrice.
 	self assert: price / 2 = 21 gtEUR asPrice.
@@ -105,6 +118,7 @@ GtDPriceExamples >> fortyTwoEurosDividedByTwoEuros [
 { #category : #examples }
 GtDPriceExamples >> fortyTwoEurosLessThanHundredEuros [
 	<gtExample>
+	<return: #GtDConcretePrice>
 	| price |
 	price := 100 gtEUR asPrice.
 	self assert: 42 gtEUR asPrice < price.
@@ -114,6 +128,7 @@ GtDPriceExamples >> fortyTwoEurosLessThanHundredEuros [
 { #category : #examples }
 GtDPriceExamples >> hundredEurosHigherThanFourtyTwoEuros [
 	<gtExample>
+	<return: #GtDConcretePrice>
 	| price |
 	price := 100 gtEUR asPrice.
 	self assert: price > 42 gtEUR asPrice.
@@ -123,6 +138,7 @@ GtDPriceExamples >> hundredEurosHigherThanFourtyTwoEuros [
 { #category : #examples }
 GtDPriceExamples >> multipliedPrice [
 	<gtExample>
+	<return: #GtDMultipliedPrice>
 	| price |
 	price := self concretePrice * 2.
 	self assert: price = 200 gtEUR asPrice.
@@ -132,6 +148,7 @@ GtDPriceExamples >> multipliedPrice [
 { #category : #examples }
 GtDPriceExamples >> multipliedPriceInDifferentCurrencies [
 	<gtExample>
+	<return: #GtDMultipliedPrice>
 	| price |
 	price := self summedPriceInDifferentCurrencies * 2.
 	self assert: price = (200 gtEUR + 40 gtUSD) asPrice.
@@ -141,6 +158,7 @@ GtDPriceExamples >> multipliedPriceInDifferentCurrencies [
 { #category : #examples }
 GtDPriceExamples >> sumOfConcretePriceDiscountedByMoneyAndDiscountedByPercentage [
 	<gtExample>
+	<return: #GtDSummedPrice>
 	| price totalPrice |
 	price := self concretePriceDiscountedByMoneyAndDiscountedByPercentage.
 	totalPrice := price + 10 gtEUR asPrice.
@@ -151,6 +169,7 @@ GtDPriceExamples >> sumOfConcretePriceDiscountedByMoneyAndDiscountedByPercentage
 { #category : #examples }
 GtDPriceExamples >> summedPriceInDifferentCurrencies [
 	<gtExample>
+	<return: #GtDSummedPrice>
 	| price |
 	price := 100 gtEUR asPrice + 20 gtUSD asPrice.
 	self assert: price = (100 gtEUR + 20 gtUSD) asPrice.
@@ -160,6 +179,7 @@ GtDPriceExamples >> summedPriceInDifferentCurrencies [
 { #category : #examples }
 GtDPriceExamples >> summedPriceInTheSameCurrency [
 	<gtExample>
+	<return: #GtDSummedPrice>
 	| price |
 	price := 100 gtEUR asPrice + 20 gtEUR asPrice.
 	self assert: price = 120 gtEUR asPrice.

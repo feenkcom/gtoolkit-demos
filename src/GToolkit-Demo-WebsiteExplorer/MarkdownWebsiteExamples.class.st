@@ -9,6 +9,7 @@ MarkdownWebsiteExamples >> onWebsiteOct23 [
 	"This example is a reduced snapshot of the actual GitHub pages website, just for testing purposes."
 
 	<gtExample>
+	<return: #MarkdownWebsite>
 	| webUrl repoDir navMenuLinks website |
 	webUrl := 'https://www.oscar.nierstrasz.org'.	"NB: Use this instead of FileLocator ..., which apparently only works in a development image."
 	repoDir := (FileLocator gtResource / 'feenkcom' / 'gtoolkit-demos' / 'data'

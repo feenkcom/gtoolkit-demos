@@ -81,6 +81,7 @@ Class {
 { #category : #examples }
 GtWhatMakesBlocSpecialExplanation >> classHierarchyWithEdges [
 	<gtExample>
+	<return: #BlPannableElement>
 	| root |
 	root := self rootWithHierarchyElements.
 	ByteArray
@@ -105,38 +106,46 @@ GtWhatMakesBlocSpecialExplanation >> classHierarchyWithEdges [
 { #category : #examples }
 GtWhatMakesBlocSpecialExplanation >> classHierarchyWithEdgesAndLines [
 	<gtExample>
+	<return: #BlPannableElement>
 	| root |
 	root := self classHierarchyWithEdges.
-	root allChildrenBreadthFirstDo: [ :element | 
-		element graph nodesAlongOutgoingEdges do: [ :child | 
-			| line |
-			line := BlLineElement new.
-			line constraints ignoreByLayout.
-			line
-				zIndex: -1;
-				border: (BlBorder paint: (Color gray alpha: 0.2) width: 1);
-				fromAnchor: (BlElementBottomCenterAnchor element: element);
-				toAnchor: (BlElementTopCenterAnchor element: child).
-			root addChild: line ] ].
+	root
+		allChildrenBreadthFirstDo: [ :element | 
+			element graph nodesAlongOutgoingEdges
+				do: [ :child | 
+					| line |
+					line := BlLineElement new.
+					line constraints ignoreByLayout.
+					line
+						zIndex: -1;
+						border: (BlBorder paint: (Color gray alpha: 0.2) width: 1);
+						fromAnchor: (BlElementBottomCenterAnchor element: element);
+						toAnchor: (BlElementTopCenterAnchor element: child).
+					root addChild: line ] ].
 	^ root
 ]
 
 { #category : #examples }
 GtWhatMakesBlocSpecialExplanation >> classHierarchyWithGridLayout [
 	<gtExample>
+	<return: #BlPannableElement>
 	| root |
 	root := self rootWithHierarchyElements.
-	root layout: (BlGridLayout horizontal cellSpacing: 20; columnCount: 2).
-	root children do: [ :child |
-		child constraintsDo: [ :c | c grid horizontal alignCenter ] ].
+	root
+		layout: (BlGridLayout horizontal
+				cellSpacing: 20;
+				columnCount: 2).
+	root children
+		do: [ :child | child constraintsDo: [ :c | c grid horizontal alignCenter ] ].
 	^ root asPannableElement
 ]
 
 { #category : #examples }
 GtWhatMakesBlocSpecialExplanation >> editorOnSampleText [
 	"GtInspector openOn: self new editorOnSampleText"
+
 	<gtExample>
-	
+	<return: #BrEditor>
 	^ BrEditor new
 		aptitude: BrGlamorousEditorAptitude;
 		fitContent;
@@ -146,47 +155,55 @@ GtWhatMakesBlocSpecialExplanation >> editorOnSampleText [
 { #category : #examples }
 GtWhatMakesBlocSpecialExplanation >> editorWithPreview [
 	<gtExample>
+	<return: #BlElement>
 	| element block elementsMondrian root |
-	
 	element := self editorOnSampleText.
-	element 
+	element
 		background: Color white;
-		effect: (BlGaussianShadowEffect color: Color lightGray width: 3 offset: 0@0);
-		constraintsDo: [ :c |
+		effect: (BlGaussianShadowEffect
+				color: Color lightGray
+				width: 3
+				offset: 0 @ 0);
+		constraintsDo: [ :c | 
 			c horizontal matchParent.
 			c vertical matchParent.
 			c grid vertical weight: 0.5 ].
 
 	elementsMondrian := BlElement new.
-	elementsMondrian 
+	elementsMondrian
 		background: Color white;
-		effect: (BlGaussianShadowEffect color: Color lightGray width: 3 offset: 0@0);
+		effect: (BlGaussianShadowEffect
+				color: Color lightGray
+				width: 3
+				offset: 0 @ 0);
 		constraintsDo: [ :c | 
 			c horizontal matchParent.
-			c vertical matchParent.].
-	
-	block := [
-		| view |
+			c vertical matchParent ].
+
+	block := [ | view |
 		view := GtMondrian new.
 		element paintEditorElementsWith: view.
 		elementsMondrian removeChildren.
-		elementsMondrian addChild: view asPannableElement ].
-	
-"	element when: GtLayoutDoneEvent do: [ element enqueueTask: (BlTaskAction new action: block) ]."
-	
+		elementsMondrian addChild: view asPannableElement ].	"	element when: GtLayoutDoneEvent do: [ element enqueueTask: (BlTaskAction new action: block) ]."
+
 	root := BlElement new.
-	root size: 500@500.
-	root layout: (BlGridLayout new cellSpacing: 20; columnCount: 1).	
+	root size: 500 @ 500.
+	root
+		layout: (BlGridLayout new
+				cellSpacing: 20;
+				columnCount: 1).
 	root addChild: element.
 	root addChild: elementsMondrian.
-	
+
 	^ root
 ]
 
 { #category : #examples }
 GtWhatMakesBlocSpecialExplanation >> firstChildOfHierarchyElementsWithEdges [
-	<gtExample>
 	"self new firstChildOfLayoutHierarchyElementsWithEdges"
+
+	<gtExample>
+	<return: #BlTextElement>
 	| root |
 	root := self classHierarchyWithEdgesAndLines.
 	^ root contentElement children first
@@ -194,48 +211,53 @@ GtWhatMakesBlocSpecialExplanation >> firstChildOfHierarchyElementsWithEdges [
 
 { #category : #examples }
 GtWhatMakesBlocSpecialExplanation >> rootWithHierarchyElements [
-	<gtExample>
 	"self new rootWithLayoutHierarchyElements"
+
+	<gtExample>
+	<return: #BlElement>
 	| root |
-	root := BlElement new constraintsDo: [:c | 
-		c horizontal fitContent. 
-		c vertical fitContent];
-		padding: (BlInsets all: 20).
-		ByteArray withAllSubclassesDo: [ :class | 
-		| label |
-		label := BlTextElement new 
-			text: class name asRopedText glamorousRegularFont;
-			background: Color white;
-			margin: (BlInsets all: 20);
-			padding: (BlInsets all: 5);
-			effect: (BlGaussianShadowEffect color: (Color gray alpha: 0.5) width: 5 offset: 0@0).
-		root addChild: label ].
+	root := BlElement new
+			constraintsDo: [ :c | 
+				c horizontal fitContent.
+				c vertical fitContent ];
+			padding: (BlInsets all: 20).
+	ByteArray
+		withAllSubclassesDo: [ :class | 
+			| label |
+			label := BlTextElement new
+					text: class name asRopedText glamorousRegularFont;
+					background: Color white;
+					margin: (BlInsets all: 20);
+					padding: (BlInsets all: 5);
+					effect: (BlGaussianShadowEffect
+							color: (Color gray alpha: 0.5)
+							width: 5
+							offset: 0 @ 0).
+			root addChild: label ].
 	^ root
 ]
 
 { #category : #examples }
 GtWhatMakesBlocSpecialExplanation >> sampleText [
 	<gtExample>
+	<return: #BlRunRopedText>
 	| text |
 	text := 'The moldable editor' asRopedText.
 	text insertString: String cr at: text size.
 	text insertString: 'can embed graphical elements.' at: text size.
-	text glamorousRegularFont. 
+	text glamorousRegularFont.
 	(text from: 5 to: 12)
 		glamorousCodeFont;
 		foreground: Color blue.
 
-	text 
-		attributes: { 
-			BrTextAdornmentDynamicAttribute new 
-				beAppend;
-				stencil: [ 
-					BlElement new 
-						size: 70 @ 50; 
-						margin: (BlInsets all: 5);
-						background: Color red ] } 
+	text
+		attributes: {BrTextAdornmentDynamicAttribute new
+					beAppend;
+					stencil: [ BlElement new
+							size: 70 @ 50;
+							margin: (BlInsets all: 5);
+							background: Color red ]}
 		from: 39
 		to: 39.
 	^ text
-
 ]

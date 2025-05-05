@@ -33,42 +33,37 @@ To add more criteria, just click on the ' asRopedText
 { #category : #accessing }
 GtCoderSlideshow >> advancedMethodsFilteringExplanationWithLinks [
 	<gtExample>
+	<return: #BlElement>
 	| coderElement categoryTarget fieldTarget addTarget |
 	coderElement := BlUseAsyncFeatures
-		disableDuring: [ self ensureOldFilterWidgetsDuring: [ (GtClassCoderLiveSlide new class: GtABAddressBook) asElement ] ].
-	
+			disableDuring: [ self
+					ensureOldFilterWidgetsDuring: [ (GtClassCoderLiveSlide new class: GtABAddressBook) asElement ] ].
+
 	coderElement
-		allChildrenBreadthFirstDetect: [:aChild |
-			aChild isKindOf: GtFiltersElement]
-		ifFound: [:filters |
+		allChildrenBreadthFirstDetect: [ :aChild | aChild isKindOf: GtFiltersElement ]
+		ifFound: [ :filters | 
 			categoryTarget := filters childAt: 1.
 			fieldTarget := filters childAt: 1.
-			addTarget := filters childAt: 2].
-	
+			addTarget := filters childAt: 2 ].
+
 	categoryTarget
-		addChild:
-			((self yellowExplanationTargetCircleFor: #dropdown)
-					relocate:
-						(2 @ categoryTarget extent y / 2)).
+		addChild: ((self yellowExplanationTargetCircleFor: #dropdown)
+				relocate: 2 @ categoryTarget extent y / 2).
 	fieldTarget
-		addChild:
-			((self yellowExplanationTargetCircleFor: #field)
-					relocate:
-						(150 @ fieldTarget extent y / 2)).
+		addChild: ((self yellowExplanationTargetCircleFor: #field)
+				relocate: 150 @ fieldTarget extent y / 2).
 	addTarget
-		addChild:
-			((self yellowExplanationTargetCircleFor: #addFilterButton)
-					relocate:
-						(2 @ addTarget extent y / 2)).
-	
+		addChild: ((self yellowExplanationTargetCircleFor: #addFilterButton)
+				relocate: 2 @ addTarget extent y / 2).
+
 	^ BlElement new
-		constraintsDo: [:c |
+		constraintsDo: [ :c | 
 			c vertical matchParent.
-			c horizontal matchParent];
+			c horizontal matchParent ];
 		aptitude: BrShadowAptitude;
 		background: Color white;
 		margin: (BlInsets all: 5);
-		addChild: coderElement.
+		addChild: coderElement
 ]
 
 { #category : #accessing }
@@ -100,6 +95,7 @@ GtCoderSlideshow >> baselineMethodsExplanationText [
 { #category : #accessing }
 GtCoderSlideshow >> baselineMethodsExplanationWithLinks [
 	<gtExample>
+	<return: #BlElement>
 	| classCoderElement aScripter baselineTarget expandBaselineTarget pragmaTarget expandedMethodElement |
 	classCoderElement := BlScripter new
 			element: (GtClassCoderLiveSlide new
@@ -433,6 +429,7 @@ On top of that there is an ' asRopedText,
 { #category : #accessing }
 GtCoderSlideshow >> coderInterfaceExplanationWithLinks [
 	<gtExample>
+	<return: #GtPager>
 	| coderElement packageHierarchyTarget classHierarchyTarget classCoderTarget addClassButtonTarget spotterButtonTarget buttons |
 	coderElement := BlScripter new
 			element: (GtCoderElement forClass: GtABAddressBook) createInPager maximized;
@@ -474,27 +471,24 @@ GtCoderSlideshow >> coderInterfaceExplanationWithLinks [
 { #category : #accessing }
 GtCoderSlideshow >> coderMashExample [
 	<gtExample>
+	<return: #BlScalableElement>
 	^ (GtMashExampleLiveSlide new
-		leftElement: 
-			(BlElement new
+		leftElement: (BlElement new
 				aptitude: BrShadowAptitude;
 				background: Color white;
-				addChild: ((GtClassCoderLiveSlide new 
-					class: GtPharoBehaviorCoder;
-					expandHeader: true) asElement));
-		centerElement:
-			(BlElement new
+				addChild: (GtClassCoderLiveSlide new
+						class: GtPharoBehaviorCoder;
+						expandHeader: true) asElement);
+		centerElement: (BlElement new
 				aptitude: BrShadowAptitude;
 				background: Color white;
-				addChild: ((GtClassCoderLiveSlide new
-					class: GtCoderSlideshow;
-					expandMethodAt: 3) asElement));
-		rightElement:
-			(BlElement new
+				addChild: (GtClassCoderLiveSlide new
+						class: GtCoderSlideshow;
+						expandMethodAt: 3) asElement);
+		rightElement: (BlElement new
 				margin: (BlInsets all: 5);
-				addChild: (((GtPharoMethodCoder 
-					forMethod: GtABAddressBookExample>>#myContactsAddressBook) asCoderViewModel
-						expanded:true) asElement))) asElement.
+				addChild: ((GtPharoMethodCoder forMethod: GtABAddressBookExample >> #myContactsAddressBook)
+						asCoderViewModel expanded: true) asElement)) asElement
 ]
 
 { #category : #accessing }
@@ -522,6 +516,7 @@ GtCoderSlideshow >> createClassExplanationText [
 { #category : #accessing }
 GtCoderSlideshow >> createClassExplanationWithLinks [
 	<gtExample>
+	<return: #BlElement>
 	| coderElement buttonTarget aScripter |
 	coderElement := BlUseAsyncFeatures
 			disableDuring: [ (GtCoderElement forClass: GtABAddressBook) createInPager maximized ].
@@ -548,6 +543,7 @@ GtCoderSlideshow >> createClassExplanationWithLinks [
 { #category : #accessing }
 GtCoderSlideshow >> createClassScripter [
 	<gtExample>
+	<return: #BlScripter>
 	| coderElement aScripter |
 	coderElement := (GtCoderElement forClass: GtABAddressBook) createInPager
 			maximized.
@@ -580,6 +576,7 @@ GtCoderSlideshow >> createMethodExplanationText [
 { #category : #accessing }
 GtCoderSlideshow >> createMethodExplanationWithLinks [
 	<gtExample>
+	<return: #BlElement>
 	| classCoderElement addMethodButton aScripter newFrameTarget saveButtonTarget removeButtonTarget |
 	aScripter := BlScripter new.
 	aScripter element: (GtClassCoderLiveSlide new class: GtABAddressBook) asElement.
@@ -589,16 +586,17 @@ GtCoderSlideshow >> createMethodExplanationWithLinks [
 			s
 				label: 'Click add method button';
 				id: GtPharoAddNewMethodButtonId ].
-				
-	aScripter menuStep 
+
+	aScripter menuStep
 		keepPermanentlyDropdownInScene;
 		// GtPharoAddNewMethodButtonId;
 		play.
 
 	classCoderElement := aScripter rootWithoutParent.
-	classCoderElement constraintsDo: [ :c | 
-		c horizontal matchParent.
-		c vertical matchParent ].
+	classCoderElement
+		constraintsDo: [ :c | 
+			c horizontal matchParent.
+			c vertical matchParent ].
 
 	newFrameTarget := (classCoderElement query
 			// GtSourceCoderExpandedContentElement) anyOne.
@@ -637,6 +635,7 @@ GtCoderSlideshow >> createMethodExplanationWithLinks [
 { #category : #accessing }
 GtCoderSlideshow >> createMethodScripter [
 	<gtExample>
+	<return: #BlScripter>
 	| aScripter |
 	aScripter := BlScripter new.
 	aScripter element: (GtClassCoderLiveSlide new class: GtABAddressBook) asElement.
@@ -692,6 +691,7 @@ GtCoderSlideshow >> exampleMethodsExplanationText [
 { #category : #accessing }
 GtCoderSlideshow >> exampleMethodsExplanationWithLinks [
 	<gtExample>
+	<return: #GtPager>
 	| classCoderElement pragmaTarget inspectTarget evaluateTarget debugTarget aScripter expandedMethodElement buttonsList |
 	classCoderElement := (GtInspector
 			createOn: (GtPharoBehaviorCoder forClass: GtABAddressBookExample)) maximized.
@@ -754,6 +754,7 @@ GtCoderSlideshow >> methodCreationExplanationSlideFor: aSlide [
 { #category : #accessing }
 GtCoderSlideshow >> searchMethodScripter [
 	<gtExample>
+	<return: #BlScripter>
 	| aScripter |
 	aScripter := BlScripter new.
 	aScripter element: (GtClassCoderLiveSlide new class: GtABAddressBook) asElement.

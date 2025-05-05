@@ -13,5 +13,6 @@ Class {
 { #category : #accessing }
 NavigatingClassesAndMethods >> mondrian [
 	<gtExample>
+	<return: #GtMondrian>
 	^ UmlClassDiagramExamples new navigatingClassesAndMethodsWithLabels
 ]

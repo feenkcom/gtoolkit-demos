@@ -219,7 +219,7 @@ GtOneRenderingTree >> overviewElement [
 { #category : #'api - instantiation' }
 GtOneRenderingTree >> sampleExplanationWithLinks [
 	<gtExample>
-	
+	<return: #BlElement>
 	^ GtMethodCoderExplanationStylerExamples new viewsExplanationWithLinks
 ]
 

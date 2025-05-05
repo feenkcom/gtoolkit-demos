@@ -10,6 +10,7 @@ Class {
 { #category : #example }
 BibtexPParserExamples >> aggBibtex [
 	<gtExample>
+	<return: #ByteString>
 	^ '@misc{AGG,
 	Key = {visprog agg},
 	Note = {http://tfs.cs.tu-berlin.de/agg/index.html},
@@ -21,6 +22,7 @@ BibtexPParserExamples >> aggBibtex [
 { #category : #example }
 BibtexPParserExamples >> bibEntryForAGG [
 	<gtExample>
+	<return: #OrderedDictionary>
 	| result |
 	result := parser bibEntry end parse: self aggBibtex.
 	self
@@ -37,6 +39,7 @@ BibtexPParserExamples >> bibEntryForBach15a [
 	"Got an error here -- space after the entry type."
 
 	<gtExample>
+	<return: #OrderedDictionary>
 	| result |
 	result := parser bibEntry end
 			parse: '@article { Bach15a ,
@@ -58,6 +61,7 @@ year = {2015}
 { #category : #example }
 BibtexPParserExamples >> bibFileForFeenk [
 	<gtExample>
+	<return: #OrderedCollection>
 	| result |
 	result := parser bibFile end parse: self feenkBibtex.
 	self assert: result size equals: 14.
@@ -71,6 +75,7 @@ BibtexPParserExamples >> bibFileForFeenk [
 { #category : #example }
 BibtexPParserExamples >> bracedFieldEmpty [
 	<gtExample>
+	<return: #ByteString>
 	| result |
 	result := parser fieldValueInBraces end parse: '{}'.
 	self assert: result equals: ''.
@@ -80,6 +85,7 @@ BibtexPParserExamples >> bracedFieldEmpty [
 { #category : #example }
 BibtexPParserExamples >> bracedFieldWithEscapedBraces [
 	<gtExample>
+	<return: #ByteString>
 	| result |
 	result := parser fieldValueInBraces end parse: '{\}\}\{\{}'.
 	self assert: result equals: '\}\}\{\{'.
@@ -89,6 +95,7 @@ BibtexPParserExamples >> bracedFieldWithEscapedBraces [
 { #category : #example }
 BibtexPParserExamples >> bracedFieldWithNestedBraces [
 	<gtExample>
+	<return: #ByteString>
 	| result |
 	result := parser fieldValueInBraces end
 			parse: '{{AGG} --- The Attributed Graph Grammar System}'.
@@ -99,6 +106,7 @@ BibtexPParserExamples >> bracedFieldWithNestedBraces [
 { #category : #example }
 BibtexPParserExamples >> citeKeyNier22a [
 	<gtExample>
+	<return: #ByteString>
 	| result |
 	result := parser citeKey end parse: 'Nier22a'.
 	self assert: result equals: 'Nier22a'.
@@ -108,6 +116,7 @@ BibtexPParserExamples >> citeKeyNier22a [
 { #category : #example }
 BibtexPParserExamples >> citeKeyWithFunnyChars [
 	<gtExample>
+	<return: #ByteString>
 	| result |
 	result := parser citeKey end parse: 'foo-bar:22_a'.
 	self assert: result equals: 'foo-bar:22_a'.
@@ -117,6 +126,7 @@ BibtexPParserExamples >> citeKeyWithFunnyChars [
 { #category : #example }
 BibtexPParserExamples >> entryType [
 	<gtExample>
+	<return: #ByteString>
 	| result |
 	result := parser type end parse: '@misc'.
 	self assert: result equals: 'misc'.
@@ -126,6 +136,7 @@ BibtexPParserExamples >> entryType [
 { #category : #example }
 BibtexPParserExamples >> feenkBibtex [
 	<gtExample>
+	<return: #ByteString>
 	^ '@inproceedings{Chis15a,
 	 author = {Andrei Chi\c{s} and Tudor G\^irba and Oscar Nierstrasz and Aliaksei Syrel},
 	 title = {The {Moldable} {Inspector}},
@@ -372,6 +383,7 @@ BibtexPParserExamples >> feenkBibtex [
 { #category : #example }
 BibtexPParserExamples >> fieldNameWithFunnyChars [
 	<gtExample>
+	<return: #ByteString>
 	| result |
 	result := parser fieldName end parse: 'Bdsk-Url-1'.
 	self assert: result equals: 'Bdsk-Url-1'.
@@ -381,6 +393,7 @@ BibtexPParserExamples >> fieldNameWithFunnyChars [
 { #category : #example }
 BibtexPParserExamples >> fieldWithBracedContent [
 	<gtExample>
+	<return: #Association>
 	| result |
 	result := parser field end
 			parse: 'title = {Compact and efficient strings for Java}'.
@@ -391,6 +404,7 @@ BibtexPParserExamples >> fieldWithBracedContent [
 { #category : #example }
 BibtexPParserExamples >> fieldWithNestedBraces [
 	<gtExample>
+	<return: #Association>
 	| result |
 	result := parser field end
 			parse: 'author={M. {Hazhirpasand} and M. {Ghafari} and S. {Kr\"{u}ger} and E. {Bodden} and O. {Nierstrasz}}'.
@@ -409,6 +423,7 @@ BibtexPParserExamples >> initialize [
 { #category : #example }
 BibtexPParserExamples >> quotedFieldEmpty [
 	<gtExample>
+	<return: #ByteString>
 	| result |
 	result := parser fieldValueInQuotes end parse: '""'.
 	self assert: result equals: ''.
@@ -418,6 +433,7 @@ BibtexPParserExamples >> quotedFieldEmpty [
 { #category : #example }
 BibtexPParserExamples >> quotedFieldWithEscapedQuote [
 	<gtExample>
+	<return: #ByteString>
 	| result |
 	result := parser fieldValueInQuotes end parse: '"Z{\"u}rich, Switzerland"'.
 	self assert: result equals: 'Z{\"u}rich, Switzerland'.
@@ -427,6 +443,7 @@ BibtexPParserExamples >> quotedFieldWithEscapedQuote [
 { #category : #example }
 BibtexPParserExamples >> rawFieldMonth [
 	<gtExample>
+	<return: #ByteString>
 	| result |
 	result := parser rawFieldString end parse: 'jan'.
 	self assert: result equals: 'jan'.
@@ -436,6 +453,7 @@ BibtexPParserExamples >> rawFieldMonth [
 { #category : #example }
 BibtexPParserExamples >> rawFieldYear [
 	<gtExample>
+	<return: #ByteString>
 	| result |
 	result := parser rawFieldString end parse: '1984'.
 	self assert: result equals: '1984'.

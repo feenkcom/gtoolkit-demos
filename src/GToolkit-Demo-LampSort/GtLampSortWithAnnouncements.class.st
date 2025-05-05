@@ -16,6 +16,7 @@ GtLampSortWithAnnouncements >> addIntervals: newIntervals to: intervals [
 { #category : #examples }
 GtLampSortWithAnnouncements >> gtExampleSortRandomWithAnnoucements [
 	<gtExample>
+	<return: #MemoryLogger>
 	^ MemoryLogger new
 		name: 'LampSort';
 		beacon: GtLampSortAnnouncement announcer;
@@ -25,6 +26,7 @@ GtLampSortWithAnnouncements >> gtExampleSortRandomWithAnnoucements [
 { #category : #examples }
 GtLampSortWithAnnouncements >> gtExampleSortSpecificWithAnnouncements [
 	<gtExample>
+	<return: #MemoryLogger>
 	^ MemoryLogger new
 		name: 'LampSort';
 		beacon: GtLampSortAnnouncement announcer;

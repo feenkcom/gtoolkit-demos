@@ -12,6 +12,7 @@ Class {
 { #category : #example }
 SPLEnvironmentExamples >> emptyEnvironment [
 	<gtExample>
+	<return: #SPLEnvironment>
 	| envt |
 	envt := SPLEnvironment new.
 	self assert: envt isEmpty.
@@ -21,6 +22,7 @@ SPLEnvironmentExamples >> emptyEnvironment [
 { #category : #example }
 SPLEnvironmentExamples >> emptyEnvironmentCopy [
 	<gtExample>
+	<return: #SPLEnvironment>
 	| envt copy |
 	envt := SPLEnvironment new.
 	copy := envt copy.
@@ -32,6 +34,7 @@ SPLEnvironmentExamples >> emptyEnvironmentCopy [
 { #category : #example }
 SPLEnvironmentExamples >> envtWithInitializedVarXupdatedTo7 [
 	<gtExample>
+	<return: #SPLEnvironment>
 	| envt |
 	envt := self envtWithVarXinitializedTo42.
 	envt setVariable: self varX to: (SPLNumber for: 42).
@@ -44,6 +47,7 @@ SPLEnvironmentExamples >> envtWithInitializedVarXupdatedTo7 [
 { #category : #example }
 SPLEnvironmentExamples >> envtWithInitializedVarXupdatedTo7Copy [
 	<gtExample>
+	<return: #SPLEnvironment>
 	| envt copy |
 	envt := self envtWithInitializedVarXupdatedTo7.
 	copy := envt copy.
@@ -55,6 +59,7 @@ SPLEnvironmentExamples >> envtWithInitializedVarXupdatedTo7Copy [
 { #category : #example }
 SPLEnvironmentExamples >> envtWithVarX [
 	<gtExample>
+	<return: #SPLEnvironment>
 	| envt |
 	envt := self emptyEnvironment.
 	envt declareVariable: self varX.
@@ -68,6 +73,7 @@ SPLEnvironmentExamples >> envtWithVarX [
 { #category : #example }
 SPLEnvironmentExamples >> envtWithVarXinitializedTo42 [
 	<gtExample>
+	<return: #SPLEnvironment>
 	| envt |
 	envt := self emptyEnvironment.
 	envt declareVariable: self varX initializedTo: (SPLNumber for: 42).
@@ -80,6 +86,7 @@ SPLEnvironmentExamples >> envtWithVarXinitializedTo42 [
 { #category : #example }
 SPLEnvironmentExamples >> envtWithVarXupdatedTo42 [
 	<gtExample>
+	<return: #SPLEnvironment>
 	| envt |
 	envt := self envtWithVarX.
 	envt setVariable: self varX to: (SPLNumber for: 42).
@@ -92,6 +99,7 @@ SPLEnvironmentExamples >> envtWithVarXupdatedTo42 [
 { #category : #example }
 SPLEnvironmentExamples >> varX [
 	<gtExample>
+	<return: #SPLVariable>
 	| var |
 	var := SPLVariable named: 'x'.
 	self assert: var name equals: 'x'.

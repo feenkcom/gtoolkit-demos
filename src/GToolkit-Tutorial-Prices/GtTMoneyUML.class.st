@@ -10,6 +10,7 @@ Class {
 { #category : #accessing }
 GtTMoneyUML >> umlDiagram [
 	<gtExample>
+	<return: #GtMondrian>
 	| positions associations classes m |
 	classes := GtTMoney withAllSubclasses
 			add: GtTCurrency;

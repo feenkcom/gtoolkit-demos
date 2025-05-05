@@ -19,6 +19,7 @@ GtInspectorViews >> columnedListViewExplanationSlideFor: aSlide [
 { #category : #accessing }
 GtInspectorViews >> columnedListViewExplanationWithLinks [
 	<gtExample>
+	<return: #BlElement>
 	| resultInspectorContainer verticalContainer coder coderViewModel coderElement selectors variables resultElement resultInspectorTree titleTab avatarLabel nameLabel phoneLabel codeExplanationLabel resultExplanationLabel avatarElementsCollection listLabelsCollection |
 	resultInspectorContainer := self resultInspectorContainerElement.
 	verticalContainer := self verticalContainerElement.
@@ -157,6 +158,7 @@ GtInspectorViews >> columnedTreeExplanationSlideFor: aSlide [
 { #category : #accessing }
 GtInspectorViews >> columnedTreeViewExplanationWithLinks [
 	<gtExample>
+	<return: #BlElement>
 	| resultInspectorContainer verticalContainer coder coderViewModel coderElement selectors literals resultElement resultInspectorTree contactLabel cityLabel countryLabel titleTab codeExplanationLabel resultExplanationLabel |
 	resultInspectorContainer := self resultInspectorContainerElement.
 	verticalContainer := self verticalContainerElement.
@@ -186,21 +188,23 @@ GtInspectorViews >> columnedTreeViewExplanationWithLinks [
 	coderElement vMatchParent.
 
 	resultElement := (GtPhlowView empty composite
-				views: {GtABAddressBookExample new contactsAddressBookWithCategories
-							gtViewContactsAddressOn: GtPhlowView empty};
-				labelled: 'a GtABAddressBook (My contacts)' asRopedText)
-				asElementDo: [ :e | e ].
-	
+			views: {GtABAddressBookExample new contactsAddressBookWithCategories
+						gtViewContactsAddressOn: GtPhlowView empty};
+			labelled: 'a GtABAddressBook (My contacts)' asRopedText)
+			asElementDo: [ :e | e ].
+
 	resultInspectorContainer addChild: resultElement.
-	
+
 	verticalContainer addChild: codeExplanationLabel.
 	verticalContainer addChild: coderElement.
 	verticalContainer addChild: resultExplanationLabel.
 	verticalContainer addChild: resultInspectorContainer.
 
-	
-	BlScripter new element: verticalContainer; elementWithoutParent.
-	
+
+	BlScripter new
+		element: verticalContainer;
+		elementWithoutParent.
+
 	resultInspectorTree := resultElement phlow firstChildWithViewContent.
 
 	titleTab := resultInspectorTree
@@ -272,57 +276,60 @@ GtInspectorViews >> emptyViewExplanationSlideFor: aSlide [
 { #category : #accessing }
 GtInspectorViews >> emptyViewExplanationWithLinks [
 	<gtExample>
+	<return: #BlElement>
 	| resultInspectorContainer verticalContainer coder coderViewModel coderElement selectors variables literals resultElement codeExplanationLabel resultExplanationLabel inspectorHeader inspectorView |
-	
 	resultInspectorContainer := self resultInspectorContainerElement.
 	verticalContainer := self verticalContainerElement.
-	
+
 	codeExplanationLabel := self explanationLabelWithText: 'Empty view method'.
 	resultExplanationLabel := self explanationLabelWithText: 'Emtpy view result'.
-	
+
 	selectors := GtSelectorExplanationLinkStyler new.
 	selectors addSelectors: #(empty).
-	
+
 	literals := GtLiteralExplanationLinkStyler new.
 	literals addLiteral: 'Contacts Tree' withIdentifier: #viewName.
-	
+
 	variables := GtVariableExplanationLinkStyler new.
 	variables addVariables: {#aView}.
-	
-	coder := GtPharoMethodCoder new forMethod: (GtABAddressBook>>#gtViewCategoriesTreeWithContactsOn:).
+
+	coder := GtPharoMethodCoder new
+			forMethod: GtABAddressBook >> #gtViewCategoriesTreeWithContactsOn:.
 	coderViewModel := coder asCoderViewModel.
-	coderViewModel addStylers: { selectors. variables. literals }.
+	coderViewModel
+		addStylers: {selectors.
+				variables.
+				literals}.
 
 	coderElement := coderViewModel asElement margin: (BlInsets all: 10).
 	coderElement vMatchParent.
-	
-	resultElement := (GtABAddressBookExample new myContactsAddressBook gtViewsFor: GtPhlowView empty) asElementDo: [ :e | e ].
-	
+
+	resultElement := (GtABAddressBookExample new myContactsAddressBook
+			gtViewsFor: GtPhlowView empty) asElementDo: [ :e | e ].
+
 	resultInspectorContainer addChild: resultElement.
-	
+
 	verticalContainer addChild: codeExplanationLabel.
 	verticalContainer addChild: coderElement.
 	verticalContainer addChild: resultExplanationLabel.
 	verticalContainer addChild: resultInspectorContainer.
-	
-	BlScripter new element: verticalContainer; elementWithoutParent.
-	
+
+	BlScripter new
+		element: verticalContainer;
+		elementWithoutParent.
+
 	inspectorHeader := resultElement phlow firstChildWithViewContent.
 	inspectorView := inspectorHeader phlow firstChildWithViewContent.
-	
-	inspectorHeader
-		addChild:
-			((self yellowExplanationTargetCircleFor: #inspector)
-				relocate:
-					(inspectorHeader position)).
-	inspectorView
-		addChild:
-			((self yellowExplanationTargetCircleFor: #viewTabs)
-				relocate:
-					(inspectorView position)).
-	
 
-	^ verticalContainer.
+	inspectorHeader
+		addChild: ((self yellowExplanationTargetCircleFor: #inspector)
+				relocate: inspectorHeader position).
+	inspectorView
+		addChild: ((self yellowExplanationTargetCircleFor: #viewTabs)
+				relocate: inspectorView position).
+
+
+	^ verticalContainer
 ]
 
 { #category : #accessing }
@@ -369,6 +376,7 @@ GtInspectorViews >> explicitViewExplanationSlideFor: aSlide [
 { #category : #accessing }
 GtInspectorViews >> explicitViewExplanationWithLinks [
 	<gtExample>
+	<return: #BlElement>
 	| resultInspectorContainer verticalContainer coder coderViewModel coderElement selectors variables resultElement resultInspectorTree nameTextElement addressTextElement phoneTextElement avatarElement codeExplanationLabel resultExplanationLabel |
 	resultInspectorContainer := self resultInspectorContainerElement.
 	resultInspectorContainer height: 250.
@@ -451,29 +459,28 @@ GtInspectorViews >> explicitViewExplanationWithLinks [
 { #category : #accessing }
 GtInspectorViews >> explicitViewExplanationWithLinksText [
 	<gtExample>
+	<return: #BlRunRopedText>
 	| text |
-	
-	text := 'The ' asRopedText,
-('explicit' asRopedText glamorousExplanationFor: #explicit),
-' view lets you visualize an object in any way you want. Using the ' asRopedText,
-('stencil: ' asRopedText glamorousExplanationFor: #stencil:),
-' block you can give that visualization any shape or form. 
-In this example, we show a ' asRopedText,
-('contact' asRopedText glamorousExplanationFor: #self),
-' as a business card. We displays its ' asRopedText,
-('name' asRopedText glamorousExplanationFor: #fullName),
-', ' asRopedText,
-('telephone' asRopedText glamorousExplanationFor: #telephone),
-', ' asRopedText,
-('address' asRopedText glamorousExplanationFor: #address),
-' and ' asRopedText,
-('avatar' asRopedText glamorousExplanationFor: #avatar),
-', all within a nice simple layout.' asRopedText.
-	
+	text := 'The ' asRopedText
+			, ('explicit' asRopedText glamorousExplanationFor: #explicit)
+			, ' view lets you visualize an object in any way you want. Using the ' asRopedText
+			, ('stencil: ' asRopedText glamorousExplanationFor: #stencil:)
+			, ' block you can give that visualization any shape or form. 
+In this example, we show a ' asRopedText
+			, ('contact' asRopedText glamorousExplanationFor: #self)
+			, ' as a business card. We displays its ' asRopedText
+			, ('name' asRopedText glamorousExplanationFor: #fullName) , ', ' asRopedText
+			, ('telephone' asRopedText glamorousExplanationFor: #telephone)
+			, ', ' asRopedText
+			, ('address' asRopedText glamorousExplanationFor: #address)
+			, ' and ' asRopedText
+			, ('avatar' asRopedText glamorousExplanationFor: #avatar)
+			, ', all within a nice simple layout.' asRopedText.
+
 	^ text
 		glamorousRegularFont;
 		fontSize: 20;
-		foreground: Color black.
+		foreground: Color black
 ]
 
 { #category : #slides }
@@ -489,6 +496,7 @@ GtInspectorViews >> listViewExplanationSlideFor: aSlide [
 { #category : #accessing }
 GtInspectorViews >> listViewExplanationWithLinks [
 	<gtExample>
+	<return: #BlElement>
 	| resultInspectorContainer verticalContainer coder coderViewModel coderElement selectors variables resultElement resultInspectorTree titleTab codeExplanationLabel resultExplanationLabel nameLabelsCollection |
 	resultInspectorContainer := self resultInspectorContainerElement.
 	verticalContainer := self verticalContainerElement.
@@ -604,6 +612,7 @@ GtInspectorViews >> mondrianViewExplanationSlideFor: aSlide [
 { #category : #accessing }
 GtInspectorViews >> mondrianViewExplanationWithLinks [
 	<gtExample>
+	<return: #BlElement>
 	| resultInspectorContainer verticalContainer coder coderViewModel coderElement selectors resultElement resultInspectorTree titleTab codeExplanationLabel resultExplanationLabel |
 	resultInspectorContainer := self resultInspectorContainerElement.
 	verticalContainer := self verticalContainerElement.
@@ -685,32 +694,30 @@ Then we set the ' asRopedText,
 { #category : #accessing }
 GtInspectorViews >> queriesSnippetsExamples [
 	<gtExample>
+	<return: #GtPager>
 	| container |
-	
 	container := GtPlaygroundLiveSlide new
-						snippets:
-							{
-								'"Show all the methods that use the gtView pragma"
+			snippets: {'"Show all the methods that use the gtView pragma"
 #gtView gtPragmas'.
-								'"Select only the methods that implement a list view"
+					'"Select only the methods that implement a list view"
 #gtView gtPragmas & #list gtReferences'.
-								'"Select only the methods that implement a columned list view"
+					'"Select only the methods that implement a columned list view"
 #gtView gtPragmas & #columnedList gtReferences'.
-								'"Now the mondrian view"
+					'"Now the mondrian view"
 #gtView gtPragmas & #mondrian gtReferences'.
-								'"The tree view"
+					'"The tree view"
 #gtView gtPragmas & #tree gtReferences'.
-								'"The columned tree view"
+					'"The columned tree view"
 #gtView gtPragmas & #columnedTree gtReferences'.
-								'"explicit view"
+					'"explicit view"
 #gtView gtPragmas & #explicit gtReferences'.
-								'"text editor view"
+					'"text editor view"
 #gtView gtPragmas & #textEditor gtReferences'.
-								'"empty view"
+					'"empty view"
 #gtView gtPragmas & #empty gtReferences'};
-						asElement.
-	
-	^ container.
+			asElement.
+
+	^ container
 ]
 
 { #category : #utility }
@@ -759,6 +766,7 @@ GtInspectorViews >> textEditorViewExplanationSlideFor: aSlide [
 { #category : #accessing }
 GtInspectorViews >> textEditorViewExplanationWithLinks [
 	<gtExample>
+	<return: #BlElement>
 	| resultInspectorContainer verticalContainer coder coderViewModel coderElement selectors variables resultElement resultInspectorTree titleTab contentEditorSegment codeExplanationLabel resultExplanationLabel |
 	resultInspectorContainer := self resultInspectorContainerElement.
 	verticalContainer := self verticalContainerElement.
@@ -870,6 +878,7 @@ GtInspectorViews >> treeViewExplanationSlideFor: aSlide [
 { #category : #accessing }
 GtInspectorViews >> treeViewExplanationWithLinks [
 	<gtExample>
+	<return: #BlElement>
 	| resultInspectorContainer verticalContainer coder coderViewModel coderElement selectors variables resultElement resultInspectorTree titleTab treeLabel codeExplanationLabel resultExplanationLabel categoryLabelsCollection |
 	resultInspectorContainer := self resultInspectorContainerElement.
 	verticalContainer := self verticalContainerElement.

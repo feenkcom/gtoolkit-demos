@@ -164,18 +164,8 @@ Gt4PythonEsugSlideshow >> slidePriorities [
 	"Instead of manually setting priorities, just list the slides in order here."
 
 	<gtExample>
-	^ #(#title:
-		#agenda:
-		#pythonExamples:
-		#pythonExamplesSecond:
-		#pythonExamplesThird:
-		#pythonDebuggerExample:
-		#caseStudyOne:
-		#caseStudyOneOne:
-		#caseStudyTwo:
-		#caseStudyThree:
-		#thankYou:
-		)
+	<return: #Array>
+	^ #(#title: #agenda: #pythonExamples: #pythonExamplesSecond: #pythonExamplesThird: #pythonDebuggerExample: #caseStudyOne: #caseStudyOneOne: #caseStudyTwo: #caseStudyThree: #thankYou:)
 ]
 
 { #category : #accessing }

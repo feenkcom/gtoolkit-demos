@@ -4,6 +4,7 @@ Extension { #name : #MovingPagesExamples }
 MovingPagesExamples >> blockQuoteSnippetPage [
 	<moveablePage>
 	<gtExample>
+	<return: #LePage>
 	^ (LePage named: 'A BlockQuote snippet page')
 		addSnippet: (LeBlockQuoteSnippet new
 				string: 'Literal text';

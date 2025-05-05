@@ -791,11 +791,10 @@ PrioritySlideshow >> slidePriorities [
 	"Override this method in the subclass.
 	Instead of manually setting priorities, just list the slides in order here.
 	NB: the names can be the same as the method selectors, but need not be."
-	
+
 	<gtExample>
-	^ #( 
-		"Add the names of the slides here ..."
-		)
+	<return: #Array>
+	^ #()	"Add the names of the slides here ..."
 ]
 
 { #category : #accessing }

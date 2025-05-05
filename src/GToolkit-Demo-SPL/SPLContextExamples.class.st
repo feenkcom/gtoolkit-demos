@@ -15,6 +15,7 @@ Class {
 { #category : #example }
 SPLContextExamples >> a12dividedBy3is4 [
 	<gtExample>
+	<return: #SPLNumber>
 	| result context |
 	context := self contextForExpression: '12/3'.
 	result := context step.
@@ -26,6 +27,7 @@ SPLContextExamples >> a12dividedBy3is4 [
 { #category : #example }
 SPLContextExamples >> a3equals3 [
 	<gtExample>
+	<return: #SPLBoolean>
 	| result context |
 	context := self contextForExpression: '3==3'.
 	result := context step.
@@ -37,6 +39,7 @@ SPLContextExamples >> a3equals3 [
 { #category : #example }
 SPLContextExamples >> a3isNot4 [
 	<gtExample>
+	<return: #SPLBoolean>
 	| result context |
 	context := self contextForExpression: '3!=4'.
 	result := context step.
@@ -48,6 +51,7 @@ SPLContextExamples >> a3isNot4 [
 { #category : #example }
 SPLContextExamples >> a3lessThan4 [
 	<gtExample>
+	<return: #SPLBoolean>
 	| result context |
 	context := self contextForExpression: '3<4'.
 	result := context step.
@@ -59,6 +63,7 @@ SPLContextExamples >> a3lessThan4 [
 { #category : #example }
 SPLContextExamples >> a3lessThanEqual4 [
 	<gtExample>
+	<return: #SPLBoolean>
 	| result context |
 	context := self contextForExpression: '3<=4'.
 	result := context step.
@@ -70,6 +75,7 @@ SPLContextExamples >> a3lessThanEqual4 [
 { #category : #example }
 SPLContextExamples >> a3plus4 [
 	<gtExample>
+	<return: #SPLBinary>
 	| result |
 	result := self parseExpression: '3+4'.
 	self assert: result isReduced not.
@@ -79,6 +85,7 @@ SPLContextExamples >> a3plus4 [
 { #category : #example }
 SPLContextExamples >> a3plus4is7 [
 	<gtExample>
+	<return: #SPLNumber>
 	| result context |
 	context := self a3plus4 asContext.
 	result := context step.
@@ -90,6 +97,7 @@ SPLContextExamples >> a3plus4is7 [
 { #category : #example }
 SPLContextExamples >> a3plus4times5 [
 	<gtExample>
+	<return: #SPLNumber>
 	| result context |
 	context := self contextForExpression: '3+4*5'.
 	result := context reduce.
@@ -101,6 +109,7 @@ SPLContextExamples >> a3plus4times5 [
 { #category : #example }
 SPLContextExamples >> a3times4is12 [
 	<gtExample>
+	<return: #SPLNumber>
 	| result context |
 	context := self contextForExpression: '3*4'.
 	result := context step.
@@ -112,6 +121,7 @@ SPLContextExamples >> a3times4is12 [
 { #category : #example }
 SPLContextExamples >> a42 [
 	<gtExample>
+	<return: #SPLNumber>
 	| result |
 	result := self parseExpression: '42'.
 	self assert: result isSPLValue.
@@ -121,6 +131,7 @@ SPLContextExamples >> a42 [
 { #category : #example }
 SPLContextExamples >> a4greaterThan3 [
 	<gtExample>
+	<return: #SPLBoolean>
 	| result context |
 	context := self contextForExpression: '4>3'.
 	result := context step.
@@ -132,6 +143,7 @@ SPLContextExamples >> a4greaterThan3 [
 { #category : #example }
 SPLContextExamples >> a4greaterThanEqual3 [
 	<gtExample>
+	<return: #SPLBoolean>
 	| result context |
 	context := self contextForExpression: '4>=3'.
 	result := context step.
@@ -143,6 +155,7 @@ SPLContextExamples >> a4greaterThanEqual3 [
 { #category : #example }
 SPLContextExamples >> a4minus3is1 [
 	<gtExample>
+	<return: #SPLNumber>
 	| result context |
 	context := self contextForExpression: '4-3'.
 	result := context step.
@@ -154,6 +167,7 @@ SPLContextExamples >> a4minus3is1 [
 { #category : #example }
 SPLContextExamples >> blockStatement [
 	<gtExample>
+	<return: #SPLContext>
 	| result context |
 	context := self context: '{ 1+2; 3*4/2; print 7; }'.
 	result := context.
@@ -175,6 +189,7 @@ SPLContextExamples >> contextForExpression: aString [
 { #category : #example }
 SPLContextExamples >> emptyTrace [
 	<gtExample>
+	<return: #SPLContext>
 	| context |
 	context := self context: ''.
 	context reduce.
@@ -186,6 +201,7 @@ SPLContextExamples >> emptyTrace [
 { #category : #example }
 SPLContextExamples >> expressionStatement [
 	<gtExample>
+	<return: #SPLContext>
 	| result context |
 	context := self context: '3+4;'.
 	result := context.
@@ -198,6 +214,7 @@ SPLContextExamples >> expressionStatement [
 { #category : #example }
 SPLContextExamples >> factorial [
 	<gtExample>
+	<return: #SPLContext>
 	| context |
 	context := self context: self factorialSource.
 	self assert: context output isEmpty.
@@ -207,6 +224,7 @@ SPLContextExamples >> factorial [
 { #category : #example }
 SPLContextExamples >> factorialReduced [
 	<gtExample>
+	<return: #SPLContext>
 	| context |
 	context := self factorial.
 	context reduce.
@@ -216,8 +234,9 @@ SPLContextExamples >> factorialReduced [
 
 { #category : #example }
 SPLContextExamples >> factorialSource [
-<gtExample>
-^ '// Factorial in SPL -- computes the factorial of arg
+	<gtExample>
+	<return: #ByteString>
+	^ '// Factorial in SPL -- computes the factorial of arg
 var arg=5;
 var x=arg;
 var fact=1;
@@ -231,6 +250,7 @@ print fact;'
 { #category : #example }
 SPLContextExamples >> fibonacci [
 	<gtExample>
+	<return: #SPLContext>
 	| result context |
 	context := self context: SPLGrammarExamples new fibonacciSource.
 	result := context.
@@ -244,6 +264,7 @@ SPLContextExamples >> fibonacci [
 { #category : #example }
 SPLContextExamples >> helloEqualsHello [
 	<gtExample>
+	<return: #SPLBoolean>
 	| result context |
 	context := self contextForExpression: '"hello" == "hello"'.
 	result := context reduce.
@@ -255,6 +276,7 @@ SPLContextExamples >> helloEqualsHello [
 { #category : #example }
 SPLContextExamples >> helloTrace [
 	<gtExample>
+	<return: #SPLContext>
 	| context |
 	context := self context: 'print "hello";'.
 	context reduce.
@@ -268,6 +290,7 @@ SPLContextExamples >> helloTrace [
 { #category : #example }
 SPLContextExamples >> ifElseStatement [
 	<gtExample>
+	<return: #SPLContext>
 	| result context |
 	context := self context: 'if (3>4) { print 7; } else { print "else ok"; }'.
 	result := context.
@@ -279,6 +302,7 @@ SPLContextExamples >> ifElseStatement [
 { #category : #example }
 SPLContextExamples >> ifStatement [
 	<gtExample>
+	<return: #SPLContext>
 	| result context |
 	context := self context: 'if (3<4) { print 7; }'.
 	result := context.
@@ -290,6 +314,7 @@ SPLContextExamples >> ifStatement [
 { #category : #example }
 SPLContextExamples >> minus3 [
 	<gtExample>
+	<return: #SPLNumber>
 	| result input |
 	input := self contextForExpression: '-3'.
 	result := input reduce.
@@ -301,6 +326,7 @@ SPLContextExamples >> minus3 [
 { #category : #example }
 SPLContextExamples >> newContext [
 	<gtExample>
+	<return: #SPLContext>
 	| result |
 	result := SPLContext new.
 	self assert: result environment isEmpty.
@@ -312,6 +338,7 @@ SPLContextExamples >> newContext [
 { #category : #example }
 SPLContextExamples >> newEnvironment [
 	<gtExample>
+	<return: #SPLEnvironment>
 	| result |
 	result := SPLEnvironment new.
 	self assert: result isEmpty.
@@ -322,6 +349,7 @@ SPLContextExamples >> newEnvironment [
 { #category : #example }
 SPLContextExamples >> notTrueIsFalse [
 	<gtExample>
+	<return: #SPLBoolean>
 	| result context |
 	context := self contextForExpression: '!true'.
 	result := context reduce.
@@ -348,8 +376,10 @@ SPLContextExamples >> parserClass [
 { #category : #example }
 SPLContextExamples >> printHello [
 	<gtExample>
+	<return: #SPLContext>
 	| result context |
-	context := self context: '// Hello program in SPL
+	context := self
+			context: '// Hello program in SPL
 print "hello";'.
 	result := context.
 	result := context reduce.
@@ -360,6 +390,7 @@ print "hello";'.
 { #category : #example }
 SPLContextExamples >> printHelloCopy [
 	<gtExample>
+	<return: #SPLContext>
 	| copy context |
 	context := self printHello.
 	copy := context copy.
@@ -371,18 +402,18 @@ SPLContextExamples >> printHelloCopy [
 { #category : #example }
 SPLContextExamples >> programWithComments [
 	<gtExample>
+	<return: #SPLContext>
 	| result context |
 	context := SPLParserExamples new programWithComments asContext.
 	result := context reduce.
-	self
-		assert: context output allButLast
-		equals: 'hello world'.
+	self assert: context output allButLast equals: 'hello world'.
 	^ context
 ]
 
 { #category : #example }
 SPLContextExamples >> splContextUsage [
 	<gtExample>
+	<return: #SPLContext>
 	| context |
 	context := (SPLParser parse: 'print "hello";') asContext.
 	^ context
@@ -391,6 +422,7 @@ SPLContextExamples >> splContextUsage [
 { #category : #example }
 SPLContextExamples >> threeEqualsThree [
 	<gtExample>
+	<return: #SPLBoolean>
 	| result context |
 	context := self contextForExpression: '3 == 3'.
 	result := context reduce.
@@ -402,6 +434,7 @@ SPLContextExamples >> threeEqualsThree [
 { #category : #example }
 SPLContextExamples >> trueAndTrueIsTrue [
 	<gtExample>
+	<return: #SPLBoolean>
 	| result context |
 	context := self contextForExpression: 'true and true'.
 	result := context step.
@@ -413,6 +446,7 @@ SPLContextExamples >> trueAndTrueIsTrue [
 { #category : #example }
 SPLContextExamples >> trueNotEqualFalse [
 	<gtExample>
+	<return: #SPLBoolean>
 	| result context |
 	context := self contextForExpression: 'true != false'.
 	result := context reduce.
@@ -424,6 +458,7 @@ SPLContextExamples >> trueNotEqualFalse [
 { #category : #example }
 SPLContextExamples >> trueOrFalseIsTrue [
 	<gtExample>
+	<return: #SPLBoolean>
 	| result context |
 	context := self contextForExpression: 'true or false'.
 	result := context step.
@@ -435,6 +470,7 @@ SPLContextExamples >> trueOrFalseIsTrue [
 { #category : #example }
 SPLContextExamples >> varXassignedAndPrinted [
 	<gtExample>
+	<return: #SPLContext>
 	| result context |
 	context := self context: 'var x; x = 6*7; print x;'.
 	result := context.
@@ -448,6 +484,7 @@ SPLContextExamples >> varXassignedAndPrinted [
 { #category : #example }
 SPLContextExamples >> varXdeclared [
 	<gtExample>
+	<return: #SPLContext>
 	| result context |
 	context := self context: 'var x;'.
 	result := context.
@@ -460,6 +497,7 @@ SPLContextExamples >> varXdeclared [
 { #category : #example }
 SPLContextExamples >> varXinitializedTo42 [
 	<gtExample>
+	<return: #SPLContext>
 	| result context |
 	context := self context: 'var x = 42;'.
 	result := context.
@@ -472,6 +510,7 @@ SPLContextExamples >> varXinitializedTo42 [
 { #category : #example }
 SPLContextExamples >> varXinitializedTo42AndPrinted [
 	<gtExample>
+	<return: #SPLContext>
 	| result context |
 	context := self context: 'var x = 42; print x;'.
 	result := context.

@@ -550,39 +550,10 @@ When the program ends, the continuation is empty (the empty program), the enviro
 { #category : #accessing }
 SPLPetitParserSlideshow >> slidePriorities [
 	"Instead of manually setting priorities, just list the slides in order here."
+
 	<gtExample>
-	^ #( 
-		#title:
-
-		whatIsPP:
-			splGrammar:
-			splExample:
-
-		parsingTokens:
-			parsingBooleans:
-			parsingIntegersAndFloats:
-			parsingNumbers:
-			parsingKeywords:
-	
-		parsingGrammarRules:
-			debuggingParsers:
-		
-		partialGrammarScript:
-			classExtraction:
-			writingTests:
-		
-		buildingTheAST:
-			theASThierarchy:
-		
-		semanticsOfSPL:
-			reductionStepsScenery:
-			semanticsOfPrinting:
-			runningAnSPLProgram:
-			fibonacci:
-		
-		coda:
-			
-	)
+	<return: #Array>
+	^ #(#title: whatIsPP: splGrammar: splExample: parsingTokens: parsingBooleans: parsingIntegersAndFloats: parsingNumbers: parsingKeywords: parsingGrammarRules: debuggingParsers: partialGrammarScript: classExtraction: writingTests: buildingTheAST: theASThierarchy: semanticsOfSPL: reductionStepsScenery: semanticsOfPrinting: runningAnSPLProgram: fibonacci: coda:)
 ]
 
 { #category : #slides }

@@ -9,6 +9,7 @@ PillarWebsiteExamples >> esug2014 [
 	"A small website for testing"
 
 	<gtExample>
+	<return: #PillarWebsite>
 	| website |
 	website := PillarWebsite new.
 	website
@@ -22,9 +23,10 @@ PillarWebsiteExamples >> esug2014 [
 { #category : #constant }
 PillarWebsiteExamples >> esug2014repoDir [
 	<gtExample>
+	<return: #FileLocator>
 	| aDirectory |
-	aDirectory := FileLocator gtResource
-			/ 'feenkcom' / 'gtoolkit-demos' / 'data' / 'esug.github.io'.
+	aDirectory := FileLocator gtResource / 'feenkcom' / 'gtoolkit-demos' / 'data'
+			/ 'esug.github.io'.
 
 	self assert: [ aDirectory exists ] description: [ 'ESUG Directory must exist' ].
 

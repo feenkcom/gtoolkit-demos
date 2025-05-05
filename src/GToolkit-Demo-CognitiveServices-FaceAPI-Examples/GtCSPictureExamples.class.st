@@ -52,9 +52,9 @@ GtCSPictureExamples >> assertFacesWithNoFormFor: aPicture [
 { #category : #'example - picture' }
 GtCSPictureExamples >> emptyPicture [
 	<gtExample>
+	<return: #GtCSPicture>
 	| picture |
-	picture := GtCSPicture new
-		url: self pictureUrl.
+	picture := GtCSPicture new url: self pictureUrl.
 	self assert: picture url equals: self pictureUrl.
 	self assert: picture faces isEmpty.
 	self assert: picture hasFaceStorage equals: false.
@@ -64,20 +64,19 @@ GtCSPictureExamples >> emptyPicture [
 { #category : #'example - face' }
 GtCSPictureExamples >> faceAttributesHabicht [
 	<gtExample>
+	<return: #GtCSFaceAttributes>
 	| landmarks |
-	landmarks := (GtCSFaceAttributes fromDictionary: 
-		GtCSExamplesData jsonFaceAttributesHabicht).
+	landmarks := GtCSFaceAttributes
+			fromDictionary: GtCSExamplesData jsonFaceAttributesHabicht.
 	^ landmarks
-
-
 ]
 
 { #category : #'example - face' }
 GtCSPictureExamples >> faceEinstein [
 	<gtExample>
+	<return: #GtCSFace>
 	| face |
-	face := GtCSFace new
-		rectangle: ((860@320) corner: (960@420)).
+	face := GtCSFace new rectangle: (860 @ 320 corner: 960 @ 420).
 	self assertFaceWithRectangle: face.
 	^ face
 ]
@@ -85,6 +84,7 @@ GtCSPictureExamples >> faceEinstein [
 { #category : #'example - face' }
 GtCSPictureExamples >> faceEinsteinWithLandmarks [
 	<gtExample>
+	<return: #GtCSFace>
 	| face |
 	face := self faceEinstein.
 	face landmarks: self faceLandmarksEinstein.
@@ -95,12 +95,12 @@ GtCSPictureExamples >> faceEinsteinWithLandmarks [
 { #category : #'example - face' }
 GtCSPictureExamples >> faceEinsteinWithLandmarksInPicture [
 	<gtExample>
-	| face picture|
+	<return: #GtCSFace>
+	| face picture |
 	face := self faceEinsteinWithLandmarks.
 	picture := self emptyPicture.
 	picture ensureFacesStorage.
-	picture
-		addFace: face.
+	picture addFace: face.
 	picture loadPictureFormFile: self pictureFile.
 	self assert: face landmarks notNil.
 	^ face
@@ -109,9 +109,9 @@ GtCSPictureExamples >> faceEinsteinWithLandmarksInPicture [
 { #category : #'example - face' }
 GtCSPictureExamples >> faceHabicht [
 	<gtExample>
+	<return: #GtCSFace>
 	| face |
-	face := GtCSFace new
-		rectangle: ((279@313) corner: (378@412)).
+	face := GtCSFace new rectangle: (279 @ 313 corner: 378 @ 412).
 	self assertFaceWithRectangle: face.
 	^ face
 ]
@@ -119,6 +119,7 @@ GtCSPictureExamples >> faceHabicht [
 { #category : #'example - face' }
 GtCSPictureExamples >> faceHabichtWithAttributes [
 	<gtExample>
+	<return: #GtCSFace>
 	| face |
 	face := self faceHabicht.
 	face attributes: self faceAttributesHabicht.
@@ -129,6 +130,7 @@ GtCSPictureExamples >> faceHabichtWithAttributes [
 { #category : #'example - face' }
 GtCSPictureExamples >> faceHabichtWithLandmarks [
 	<gtExample>
+	<return: #GtCSFace>
 	| face |
 	face := self faceHabicht.
 	face landmarks: self faceLandmarksHabicht.
@@ -139,12 +141,12 @@ GtCSPictureExamples >> faceHabichtWithLandmarks [
 { #category : #'example - face' }
 GtCSPictureExamples >> faceHabichtWithLandmarksInPicture [
 	<gtExample>
-	| face picture|
+	<return: #GtCSFace>
+	| face picture |
 	face := self faceHabichtWithLandmarks.
 	picture := self emptyPicture.
 	picture ensureFacesStorage.
-	picture
-		addFace: face.
+	picture addFace: face.
 	picture loadPictureFormFile: self pictureFile.
 	self assert: face landmarks notNil.
 	^ face
@@ -153,40 +155,36 @@ GtCSPictureExamples >> faceHabichtWithLandmarksInPicture [
 { #category : #'example - face' }
 GtCSPictureExamples >> faceLandmarksEinstein [
 	<gtExample>
+	<return: #GtCSFaceLandmarks>
 	| landmarks |
-	landmarks := (GtCSFaceLandmarks fromDictionary: self jsonFaceLandmarksEinstein).
+	landmarks := GtCSFaceLandmarks fromDictionary: self jsonFaceLandmarksEinstein.
 	^ landmarks
-
-
 ]
 
 { #category : #'example - face' }
 GtCSPictureExamples >> faceLandmarksHabicht [
 	<gtExample>
+	<return: #GtCSFaceLandmarks>
 	| landmarks |
-	landmarks := (GtCSFaceLandmarks fromDictionary: 
-		self jsonFaceLandmarksHabicht).
+	landmarks := GtCSFaceLandmarks fromDictionary: self jsonFaceLandmarksHabicht.
 	^ landmarks
-
-
 ]
 
 { #category : #'example - face' }
 GtCSPictureExamples >> faceLandmarksSolovine [
 	<gtExample>
+	<return: #GtCSFaceLandmarks>
 	| landmarks |
-	landmarks := (GtCSFaceLandmarks fromDictionary: self jsonFaceLandmarksSolovine).
+	landmarks := GtCSFaceLandmarks fromDictionary: self jsonFaceLandmarksSolovine.
 	^ landmarks
-
-
 ]
 
 { #category : #'example - face' }
 GtCSPictureExamples >> faceSolovine [
 	<gtExample>
+	<return: #GtCSFace>
 	| face |
-	face := GtCSFace new
-		rectangle: ((622@172) corner: (714@264)).
+	face := GtCSFace new rectangle: (622 @ 172 corner: 714 @ 264).
 	self assertFaceWithRectangle: face.
 	^ face
 ]
@@ -194,6 +192,7 @@ GtCSPictureExamples >> faceSolovine [
 { #category : #'example - face' }
 GtCSPictureExamples >> faceSolovineWithLandmarks [
 	<gtExample>
+	<return: #GtCSFace>
 	| face |
 	face := self faceSolovine.
 	face landmarks: self faceLandmarksSolovine.
@@ -204,12 +203,12 @@ GtCSPictureExamples >> faceSolovineWithLandmarks [
 { #category : #'example - face' }
 GtCSPictureExamples >> faceSolovineWithLandmarksInPicture [
 	<gtExample>
-	| face picture|
+	<return: #GtCSFace>
+	| face picture |
 	face := self faceSolovineWithLandmarks.
 	picture := self emptyPicture.
 	picture ensureFacesStorage.
-	picture
-		addFace: face.
+	picture addFace: face.
 	picture loadPictureFormFile: self pictureFile.
 	self assert: face landmarks notNil.
 	^ face
@@ -218,12 +217,12 @@ GtCSPictureExamples >> faceSolovineWithLandmarksInPicture [
 { #category : #'example - face' }
 GtCSPictureExamples >> faceSolovineWithNoLandmarksInPicture [
 	<gtExample>
-	| face picture|
+	<return: #GtCSFace>
+	| face picture |
 	face := self faceSolovine.
 	picture := self emptyPicture.
 	picture ensureFacesStorage.
-	picture
-		addFace: face.
+	picture addFace: face.
 	picture loadPictureFormFile: self pictureFile.
 	self assert: face landmarks notNil.
 	^ face
@@ -580,6 +579,7 @@ GtCSPictureExamples >> jsonFaceLandmarksSolovine [
 { #category : #'example - picture' }
 GtCSPictureExamples >> newPictureInstance [
 	<gtExample>
+	<return: #GtCSPicture>
 	| picture |
 	picture := GtCSPicture new.
 	self assert: picture url equals: nil.
@@ -614,6 +614,7 @@ GtCSPictureExamples >> pictureUrl [
 { #category : #'example - picture' }
 GtCSPictureExamples >> pictureWithFacesAndForm [
 	<gtExample>
+	<return: #GtCSPicture>
 	| picture |
 	picture := self pictureWithFacesAndNoForm.
 	picture loadPictureFormFile: self pictureFile.
@@ -625,22 +626,23 @@ GtCSPictureExamples >> pictureWithFacesAndForm [
 { #category : #'example - picture' }
 GtCSPictureExamples >> pictureWithFacesAndNoForm [
 	<gtExample>
+	<return: #GtCSPicture>
 	| picture |
 	picture := self emptyPicture.
 	picture ensureFacesStorage.
-	picture 
+	picture
 		addFace: self faceEinstein;
 		addFace: self faceHabicht;
 		addFace: self faceSolovine.
 	self assert: picture faces size equals: 3.
 	self assertFacesWithNoFormFor: picture.
 	^ picture
-
 ]
 
 { #category : #'example - picture' }
 GtCSPictureExamples >> pictureWithFacesWithLandmarksAndForm [
 	<gtExample>
+	<return: #GtCSPicture>
 	| picture |
 	picture := self pictureWithFacesWithLandmarksAndNoForm.
 	picture loadPictureFormFile: self pictureFile.
@@ -652,42 +654,43 @@ GtCSPictureExamples >> pictureWithFacesWithLandmarksAndForm [
 { #category : #'example - picture' }
 GtCSPictureExamples >> pictureWithFacesWithLandmarksAndNoForm [
 	<gtExample>
+	<return: #GtCSPicture>
 	| picture |
 	picture := self emptyPicture.
 	picture ensureFacesStorage.
-	picture 
+	picture
 		addFace: self faceEinsteinWithLandmarks;
 		addFace: self faceHabichtWithLandmarks;
 		addFace: self faceSolovineWithLandmarks.
 	self assert: picture faces size equals: 3.
 	self assertFacesWithNoFormFor: picture.
 	^ picture
-
 ]
 
 { #category : #'example - picture' }
 GtCSPictureExamples >> pictureWithManuallySetForm [
 	<gtExample>
-	|form  picture |
-	form := self pictureForm. 
+	<return: #GtCSPicture>
+	| form picture |
+	form := self pictureForm.
 	picture := self emptyPicture.
-	
+
 	picture pictureForm: form.
 	self assert: picture pictureForm equals: form.
 	self assert: picture faces size equals: 0.
-	
+
 	^ picture
 ]
 
 { #category : #'example - picture' }
 GtCSPictureExamples >> pictureWithNoFacesAndForm [
 	<gtExample>
+	<return: #GtCSPicture>
 	| picture |
 	picture := self emptyPicture.
 	self assert: picture pictureForm equals: nil.
 	picture loadPictureFormFile: self pictureFile.
 	self assert: picture pictureForm notNil.
-	self assert: picture pictureForm extent equals: 1280@921.
+	self assert: picture pictureForm extent equals: 1280 @ 921.
 	^ picture
-	
 ]

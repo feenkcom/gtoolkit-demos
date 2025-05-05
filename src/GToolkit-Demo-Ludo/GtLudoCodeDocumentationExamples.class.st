@@ -10,14 +10,13 @@ Class {
 { #category : #accessing }
 GtLudoCodeDocumentationExamples >> classHierarchy [
 	<gtExample>
-	
+	<return: #GtMondrian>
 	| mondrian |
 	mondrian := GtMondrian new.
 	self
 		paintClassHierarchyWith: mondrian
 		forClasses: GtLudoGame package classes
-		andRoots:
-			{BlElement.
+		andRoots: {BlElement.
 				Announcement}.
 	^ mondrian
 ]
@@ -25,27 +24,34 @@ GtLudoCodeDocumentationExamples >> classHierarchy [
 { #category : #accessing }
 GtLudoCodeDocumentationExamples >> classLabeledReferencesAllClasses [
 	<gtExample>
+	<return: #GtMondrian>
 	| mondrian |
 	mondrian := GtMondrian new.
-	self paintClassLabeledDependenciesWith: mondrian forClasses: GtLudoRecordingGame package classes andRoots: {BlElement. Announcement}.
+	self
+		paintClassLabeledDependenciesWith: mondrian
+		forClasses: GtLudoRecordingGame package classes
+		andRoots: {BlElement.
+				Announcement}.
 	^ mondrian
 ]
 
 { #category : #accessing }
 GtLudoCodeDocumentationExamples >> classReferences [
 	<gtExample>
+	<return: #GtMondrian>
 	| mondrian |
 	mondrian := GtMondrian new.
-	self paintClassDependenciesWith:  mondrian.
+	self paintClassDependenciesWith: mondrian.
 	^ mondrian
 ]
 
 { #category : #accessing }
 GtLudoCodeDocumentationExamples >> modelClassCircleLabeledReferences [
 	"Circle layout is not ideal, but is readable."
+
 	<gtExample>
-	
-	| mondrian  |
+	<return: #GtMondrian>
+	| mondrian |
 	mondrian := GtMondrian new.
 
 	self
@@ -61,7 +67,7 @@ GtLudoCodeDocumentationExamples >> modelClassExplicitLabeledReferences [
 	"Use hand-tweaked positions."
 
 	<gtExample>
-	
+	<return: #GtMondrian>
 	| mondrian |
 	mondrian := GtMondrian new.
 	self
@@ -69,11 +75,10 @@ GtLudoCodeDocumentationExamples >> modelClassExplicitLabeledReferences [
 		forClasses: self modelClasses
 		andRoots: {}.
 	mondrian layout custom: BlBasicLayout new.
-	self 
-		assert: mondrian root children size
-		equals: self modelClassPositions size.
-	
-	mondrian root children withIndexDo: [ :child :n | child relocate: (self modelClassPositions at: n) ].
+	self assert: mondrian root children size equals: self modelClassPositions size.
+
+	mondrian root children
+		withIndexDo: [ :child :n | child relocate: (self modelClassPositions at: n) ].
 	^ mondrian
 ]
 
@@ -82,7 +87,7 @@ GtLudoCodeDocumentationExamples >> modelClassExplicitLabeledReferencesV0 [
 	"Simpler version excluding the recording game classes"
 
 	<gtExample>
-	
+	<return: #GtMondrian>
 	| mondrian |
 	mondrian := GtMondrian new.
 	self
@@ -90,7 +95,8 @@ GtLudoCodeDocumentationExamples >> modelClassExplicitLabeledReferencesV0 [
 		forClasses: self modelClassesV0
 		andRoots: {}.
 	mondrian layout custom: BlBasicLayout new.
-	mondrian root children withIndexDo: [ :child :n | child relocate: (self modelClassPositionsV0 at: n) ].
+	mondrian root children
+		withIndexDo: [ :child :n | child relocate: (self modelClassPositionsV0 at: n) ].
 	^ mondrian
 ]
 
@@ -99,7 +105,7 @@ GtLudoCodeDocumentationExamples >> modelClassForcedLabeledReferences [
 	"Using a forced layout. Does not look good."
 
 	<gtExample>
-	
+	<return: #GtMondrian>
 	| mondrian |
 	mondrian := GtMondrian new.
 	self
@@ -117,7 +123,7 @@ GtLudoCodeDocumentationExamples >> modelClassForcedLabeledReferences [
 { #category : #accessing }
 GtLudoCodeDocumentationExamples >> modelClassHierarchy [
 	<gtExample>
-	
+	<return: #GtMondrian>
 	| mondrian |
 	mondrian := GtMondrian new.
 	self
