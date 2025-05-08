@@ -96,9 +96,7 @@ ReflectionSceneryExample >> rectangle [
 ReflectionSceneryExample >> reflectionScenery [
 	<gtExample>
 	<return: #GtScenery>
-	| scenery |
-	scenery := GtSceneryEditedExamples new reflectionScenery.
-	^ scenery
+	^ GtSceneryEditedExamples new reflectionScenery
 ]
 
 { #category : #accessing }
