@@ -234,7 +234,9 @@ GtLudoGame >> gtSquaresFor: aView [
 
 { #category : #comparing }
 GtLudoGame >> hash [
-	^ super hash
+	^ self tokens allButFirst
+		inject: self tokens first state hash
+		into: [ :hash :token | hash bitXor: token state hash ]
 ]
 
 { #category : #moving }
