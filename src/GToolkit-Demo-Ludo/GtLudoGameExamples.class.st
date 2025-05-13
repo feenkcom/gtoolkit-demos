@@ -83,8 +83,32 @@ GtLudoGameExamples >> emptyGame [
 ]
 
 { #category : #example }
+GtLudoGameExamples >> equalitySameGameInstantiatedTwice [
+	<gtExample>
+	<return: #GtLudoGame>
+	| game1 game2 |
+	game1 := self playerAsecondTokenCloseToGoal.
+	game2 := self playerAsecondTokenCloseToGoal.
+	self assert: game1 equals: game2.
+	self assert: (game1 == game2) not.
+	^ game1
+]
+
+{ #category : #example }
 GtLudoGameExamples >> gameClass [
 	^ GtLudoGame
+]
+
+{ #category : #example }
+GtLudoGameExamples >> inequalityDifferentGames [
+	<gtExample>
+	<return: #GtLudoGame>
+	| game1 game2 |
+	game1 := self playerAsecondTokenCloseToGoal.
+	game2 := self playerAlandsOnOccupiedSecondGoalSquare.
+	self assert: (game1 == game2) not.
+	self assert: (game1 = game2) not.
+	^ game1
 ]
 
 { #category : #example }

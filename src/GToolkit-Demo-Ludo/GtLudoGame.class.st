@@ -16,7 +16,8 @@ Class {
 		'needToRollDie',
 		'lastDieRolled',
 		'playerQueue',
-		'routeCache'
+		'routeCache',
+		'allSquares'
 	],
 	#category : #'GToolkit-Demo-Ludo-Model'
 }
@@ -39,6 +40,19 @@ GtLudoGame class >> openInWorld [
 		show
 ]
 
+{ #category : #comparing }
+GtLudoGame >> = other [
+	self == other ifTrue: [ ^ true ].
+	self class = other class ifFalse: [ ^ false ].
+	1
+		to: self tokens size
+		do: [ :index | 
+			(self tokens at: index) state = (other tokens at: index) state ifFalse: [ ^ false ].
+			(self positionOfToken: (self tokens at: index))
+				= (other positionOfToken: (other tokens at: index)) ifFalse: [ ^ false ] ].
+	^ true
+]
+
 { #category : #announcements }
 GtLudoGame >> announcer [
 	^ announcer
@@ -47,6 +61,22 @@ GtLudoGame >> announcer [
 { #category : #'gt - extensions' }
 GtLudoGame >> asElement [
 	^ GtLudoGameElement for: self
+]
+
+{ #category : #comparing }
+GtLudoGame >> assertEquals: other [
+	"For debugging"
+
+	self == other ifTrue: [ ^ true ].
+	self class = other class ifFalse: [ AssertionFailure  signal].
+	1
+		to: self tokens size
+		do: [ :index | 
+			(self tokens at: index) state = (other tokens at: index) state
+				ifFalse: [ AssertionFailure  signal ].
+			(self positionOfToken: (self tokens at: index))
+				= (other positionOfToken: (other tokens at: index)) ifFalse: [ AssertionFailure  signal ] ].
+	^ true
 ]
 
 { #category : #accessing }
@@ -202,6 +232,11 @@ GtLudoGame >> gtSquaresFor: aView [
 		updateWhen: GtLudoGameUpdated in: self announcer
 ]
 
+{ #category : #comparing }
+GtLudoGame >> hash [
+	^ super hash
+]
+
 { #category : #moving }
 GtLudoGame >> initialSquareFor: aPlayer [
 	^ (self routeFor: aPlayer) first
@@ -218,6 +253,7 @@ GtLudoGame >> initialize [
 	players do: #initializeTokens.
 	self initializeStartSquares.
 	self initializeGoalSquares.
+	allSquares := squares, startSquares, goalSquares.
 	die := GtLudoDie new.
 	routeCache := Dictionary new.
 	
@@ -373,7 +409,7 @@ GtLudoGame >> players [
 
 { #category : #accessing }
 GtLudoGame >> positionOfToken: aToken [
-	^ self squares indexOf: aToken square
+	^ allSquares identityIndexOf: aToken square
 ]
 
 { #category : #testing }

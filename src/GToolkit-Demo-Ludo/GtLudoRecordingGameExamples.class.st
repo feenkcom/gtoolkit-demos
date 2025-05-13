@@ -19,6 +19,18 @@ GtLudoRecordingGameExamples >> emptyGame [
 	^ game
 ]
 
+{ #category : #examples }
+GtLudoRecordingGameExamples >> equalitySameGameInstantiatedTwice [
+	<gtExample>
+	<return: #GtLudoGame>
+	| game1 game2 |
+	game1 := self gameShowingAllMoves6.
+	game2 := self gameShowingAllMoves6.
+	self assert: game1 equals: game2.
+	self assert: (game1 == game2) not.
+	^ game1
+]
+
 { #category : #example }
 GtLudoRecordingGameExamples >> evaluatedStoreStringYieldsSameStorestring [
 	<gtExample>
@@ -152,6 +164,18 @@ GtLudoRecordingGameExamples >> gameShowingAllMoves6 [
 { #category : #examples }
 GtLudoRecordingGameExamples >> gameShowingAllMovesStart [
 	^ GtLudoRecordingGame new
+]
+
+{ #category : #examples }
+GtLudoRecordingGameExamples >> inequalityDifferentGames [
+	<gtExample>
+	<return: #GtLudoGame>
+	| game1 game2 |
+	game1 := self gameShowingAllMoves5.
+	game2 := self gameShowingAllMoves6.
+	self assert: (game1 == game2) not.
+	self assert: (game1 = game2) not.
+	^ game1
 ]
 
 { #category : #accessing }
