@@ -11,14 +11,14 @@ Class {
 GtDMultipliedPrice >> asOverviewChildrenIn: childrenElement [
 	| multiplierElement multiplyElement |
 	multiplierElement := BrLabel new
-		aptitude: BrGlamorousLabelLook;
+		aptitude: BrGlamorousLabelAptitude;
 		text: self multiplier asString;
 		constraintsDo: [ :c | 
 			c vertical fitContent.
 			c horizontal fitContent.
 			c linear vertical alignCenter ].
 	multiplyElement := BrLabel new
-		aptitude: BrGlamorousLabelLook;
+		aptitude: BrGlamorousLabelAptitude;
 		text: '*';
 		constraintsDo: [ :c | 
 			c vertical fitContent.
