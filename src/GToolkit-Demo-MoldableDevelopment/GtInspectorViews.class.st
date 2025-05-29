@@ -728,7 +728,7 @@ GtInspectorViews >> resultInspectorContainerElement [
 			c vertical matchParent ];
 		layout: BlLinearLayout horizontal;
 		aptitude: BrShadowAptitude;
-		background: Color white;
+		background: BlTheme default default contentBackground;
 		margin: (BlInsets all: 10).
 ]
 
