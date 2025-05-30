@@ -22,7 +22,7 @@ GtDSummedPrice >> asOverviewChildrenIn: childrenElement [
 	| plusElement |
 	price asOverviewElementIn: childrenElement.
 	plusElement := BrLabel new
-		aptitude: BrGlamorousLabelLook;
+		aptitude: BrGlamorousLabelAptitude;
 		text: '+';
 		constraintsDo: [ :c | 
 			c vertical fitContent.

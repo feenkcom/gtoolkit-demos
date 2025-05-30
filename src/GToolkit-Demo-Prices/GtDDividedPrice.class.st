@@ -10,11 +10,11 @@ Class {
 { #category : #ui }
 GtDDividedPrice >> asOverviewChildrenIn: childrenElement [
 	| multiplierElement multiplyElement |
-	multiplierElement := BrLabel new look: BrGlamorousLabelLook; text: self divisor asString; constraintsDo: [:c | 
+	multiplierElement := BrLabel new look: BrGlamorousLabelAptitude; text: self divisor asString; constraintsDo: [:c | 
 		c vertical fitContent. 
 		c horizontal fitContent. 
 		c linear vertical alignCenter ].
-	multiplyElement := BrLabel new look: BrGlamorousLabelLook; text: '/'; constraintsDo: [:c | 
+	multiplyElement := BrLabel new look: BrGlamorousLabelAptitude; text: '/'; constraintsDo: [:c | 
 		c vertical fitContent. 
 		c horizontal fitContent. 
 		c linear vertical alignCenter ].

@@ -12,14 +12,14 @@ GtDPriceDiscountedByMoney >> asOverviewChildrenIn: childrenElement [
 	| discountElement minusElement |
 	price asOverviewElementIn: childrenElement.
 	minusElement := BrLabel new
-		aptitude: BrGlamorousLabelLook;
+		aptitude: BrGlamorousLabelAptitude;
 		text: '-';
 		constraintsDo: [ :c | 
 			c vertical fitContent.
 			c horizontal fitContent.
 			c linear vertical alignCenter ].
 	discountElement := BrLabel new
-		aptitude: BrGlamorousLabelLook;
+		aptitude: BrGlamorousLabelAptitude;
 		text: self discountMoney gtDisplayString;
 		constraintsDo: [ :c | 
 			c vertical fitContent.
