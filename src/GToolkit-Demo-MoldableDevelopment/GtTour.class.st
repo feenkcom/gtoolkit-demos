@@ -1105,7 +1105,7 @@ GtTour >> treemapWithViewsAndExamples [
 							'Br'.
 							'Le'} anySatisfy: [ :p | c name beginsWith: p ]	"and: [ c methods noneSatisfy: [:m | m isGTExampleMethod ] ]" ]);
 			groupBy: [ :aClass | aClass package ];
-			groupBy: [ :aClass | aClass package classTags detect: [ :e | e hasClass: aClass ] ];
+			groupBy: [ :aClass | aClass package tags detect: [ :e | e hasClass: aClass ] ];
 			weight: [ :aClass | aClass methods size max: 1 ];
 			build.
 	^ GtNestedRectangleTreeMap new
