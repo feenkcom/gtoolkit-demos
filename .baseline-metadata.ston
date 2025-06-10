@@ -1,12 +1,12 @@
 {
 	"repositories" : {
-		"github://feenkcom/gtoolkit-utility/src" : "v0.8.373",
-		"github://feenkcom/Bloc/src" : "v0.8.867",
-		"github://feenkcom/gt4graphql/src" : "v0.6.2117",
+		"github://feenkcom/gtoolkit-utility/src" : "v0.8.374",
+		"github://feenkcom/Bloc/src" : "v0.8.868",
+		"github://feenkcom/gt4graphql/src" : "v0.6.2118",
 		"github://feenkcom/gtoolkit-constrainer/src" : "v0.8.19",
 		"github://feenkcom/gt4petitparser2/src" : "v0.8.44",
-		"github://feenkcom/gtoolkit-presenter/src" : "v0.8.2360",
-		"github://feenkcom/Brick/src" : "v0.8.1577",
-		"github://feenkcom/gt4smacc/src" : "v0.8.503"
+		"github://feenkcom/gtoolkit-presenter/src" : "v0.8.2361",
+		"github://feenkcom/Brick/src" : "v0.8.1578",
+		"github://feenkcom/gt4smacc/src" : "v0.8.504"
 	}
 }
