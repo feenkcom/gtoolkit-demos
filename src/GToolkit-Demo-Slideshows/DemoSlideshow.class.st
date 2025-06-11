@@ -106,25 +106,25 @@ DemoSlideshow >> embeddedScenery [
 	| scenery item1 item2 item3 item4 |
 	scenery := GtScenery new.
 	item1 := scenery
-			addItem: (GtSceneryMindMapNodeStencil new
+			addSceneryItem: (GtSceneryMindMapNodeStencil new
 					label: 'This slide shows an example of an embedded Scenery.';
 					width: 174.99612935384107) asItem.
 	item1 position: -82.23243310786495 @ -160.8546142578125.
 	item1 extent: 174.99612935384107 @ 46.0.
 	item2 := scenery
-			addItem: (GtSceneryMindMapNodeStencil new
+			addSceneryItem: (GtSceneryMindMapNodeStencil new
 					label: 'The Scenery is defined in a method DemoSlideshow>>#embeddedScenery';
 					width: 229.8836212158203) asItem.
 	item2 position: -213.95583089192712 @ -23.53303019205731.
 	item2 extent: 229.8836212158203 @ 46.0.
 	item3 := scenery
-			addItem: (GtSceneryMindMapNodeStencil new
+			addSceneryItem: (GtSceneryMindMapNodeStencil new
 					label: 'Since the scenery defines #storeStringMethodName: to point to this method, we can edit the scenery and save it without having to directly edit the code of the scenery.';
 					width: 231.22046917236958) asItem.
 	item3 position: 202.89304606119777 @ -8.765401204427121.
 	item3 extent: 231.22046917236958 @ 100.0.
 	item4 := scenery
-			addItem: (GtSceneryInspectorStencil new target: [ DemoSlideshow >> #embeddedScenery ])
+			addSceneryItem: (GtSceneryInspectorStencil new target: [ DemoSlideshow >> #embeddedScenery ])
 					asItem.
 	item4 position: -125.96339925130212 @ 157.80559285481775.
 	item4 extent: 626.4814758300781 @ 400.0.
