@@ -266,7 +266,8 @@ GtLudoGame >> initialize [
 	self squares , self startSquares do: [ :square | 
 		square announcer
 			when: GtLudoSquareSignalTokenMove
-			do: [ :announcement | self moveToken: announcement token ] ].
+			do: [ :announcement | self moveToken: announcement token ]
+			for: self ].
 	playerQueue := self players copy.
 	playerQueue do: [ :each | each game: self ].
 	self requireDieRoll.
