@@ -16,7 +16,7 @@ BaselineOfGToolkitWhatMakesBlocSpecialDemo >> baseline: spec [
 	spec for: #'common' do: [
 		spec
 			baseline: 'Bloc' with: [
-				spec repository: 'github://feenkcom/Bloc:v0.8.870/src' ].
+				spec repository: 'github://feenkcom/Bloc:v0.8.871/src' ].
 
 		spec package: 'GToolkit-Demo-WhatMakesBlocSpecial'.
 	]
