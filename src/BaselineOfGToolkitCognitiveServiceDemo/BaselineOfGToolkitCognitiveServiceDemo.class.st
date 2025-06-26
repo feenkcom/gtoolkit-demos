@@ -17,10 +17,10 @@ BaselineOfGToolkitCognitiveServiceDemo >> baseline: spec [
 	spec for: #'common' do: [
 		spec
 			baseline: 'GToolkitUtility' with: [
-				spec repository: 'github://feenkcom/gtoolkit-utility:v0.8.379/src' ].
+				spec repository: 'github://feenkcom/gtoolkit-utility:v0.8.380/src' ].
 		spec
 			baseline: 'Bloc' with: [
-				spec repository: 'github://feenkcom/Bloc:v0.8.884/src' ].
+				spec repository: 'github://feenkcom/Bloc:v0.8.885/src' ].
 
 		spec package: 'GToolkit-Demo-CognitiveServices-FaceAPI'.
 		spec package: 'GToolkit-Demo-CognitiveServices-FaceAPI-Examples' with: [
