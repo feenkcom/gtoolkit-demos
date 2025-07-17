@@ -96,21 +96,16 @@ GtCoderSlideshow >> baselineMethodsExplanationText [
 GtCoderSlideshow >> baselineMethodsExplanationWithLinks [
 	<gtExample>
 	<return: #BlElement>
-	| classCoderElement aScripter baselineTarget expandBaselineTarget pragmaTarget expandedMethodElement |
-	classCoderElement := BlScripter new
+	| classCoderScripter baselineTarget expandBaselineTarget pragmaTarget expandedMethodElement |
+	classCoderScripter := BlScripter new
 			element: (GtClassCoderLiveSlide new
 					class: BaselineOfGToolkit;
-					expandMethodAt: 1) asElement;
-			elementWithoutParent.
+					expandMethodAt: 2) asElement.
 
-	expandedMethodElement := classCoderElement
-			allChildrenBreadthFirstDetect: [ :aChild | aChild isKindOf: BrInfiniteListElement ]
-			ifFound: [ :aChild | aChild childAt: 1 ].
-	pragmaTarget := expandedMethodElement
-			allChildrenBreadthFirstDetect: [ :aChild | 
-				(aChild isKindOf: BrTextElementWithCursors)
-					and: [ aChild text asString includesSubstring: '<baseline>' ] ]
-			ifFound: [ :aChild | aChild ].
+	expandedMethodElement := ((classCoderScripter element query
+			// BrInfiniteListElement / [ :each | true ]) @ 2) anyOne.
+	pragmaTarget := ((expandedMethodElement query // BrTextElementWithCursors)
+			@ [ :aChild | aChild text asString includesSubstring: '<baseline>' ]) anyOne.
 	baselineTarget := expandedMethodElement
 			allChildrenBreadthFirstDetect: [ :aChild | 
 				(aChild isKindOf: BrTextElementWithCursors)
@@ -130,10 +125,8 @@ GtCoderSlideshow >> baselineMethodsExplanationWithLinks [
 		addChild: ((self yellowExplanationTargetCircleFor: #expandButton)
 				relocate: 2 @ expandBaselineTarget extent y / 2).
 
-	aScripter := BlScripter new.
-	aScripter element: classCoderElement.
-
-	aScripter
+	classCoderScripter
+		pulse;
 		clickStep: [ :s | 
 			s
 				label: 'Expand baseline in place';
@@ -146,7 +139,7 @@ GtCoderSlideshow >> baselineMethodsExplanationWithLinks [
 		aptitude: BrShadowAptitude;
 		background: Color white;
 		margin: (BlInsets all: 5);
-		addChild: aScripter elementWithoutParent
+		addChild: classCoderScripter elementWithoutParent
 ]
 
 { #category : #accessing }
