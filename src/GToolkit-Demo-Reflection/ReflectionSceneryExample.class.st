@@ -113,7 +113,7 @@ ReflectionSceneryExample >> reflectionSceneryOLD [
 			50 @ 120}}
 		do: [ :label | 
 			| item |
-			item := scenery addItem: (self bigLabel: label).
+			item := scenery addSceneryItem: (self bigLabel: label).
 			item
 				position: label second;
 				extent: 100 @ 30.
@@ -125,7 +125,7 @@ ReflectionSceneryExample >> reflectionSceneryOLD [
 			300 @ 100}}
 		do: [ :label | 
 			| item |
-			item := scenery addItem: self lineEndPoint.
+			item := scenery addSceneryItem: self lineEndPoint.
 			item
 				position: label second;
 				extent: 10 @ 10.
@@ -136,12 +136,12 @@ ReflectionSceneryExample >> reflectionSceneryOLD [
 		from: (items at: 'start')
 		to: (items at: 'end').
 
-	meta := scenery addItem: self circle.
+	meta := scenery addSceneryItem: self circle.
 	meta
 		position: 230 @ 40;
 		extent: 20 @ 20.
 
-	reified := scenery addItem: self rectangle.
+	reified := scenery addSceneryItem: self rectangle.
 	reified
 		position: 230 @ 140;
 		extent: 20 @ 20.
@@ -156,7 +156,7 @@ ReflectionSceneryExample >> reflectionSceneryOLD [
 		from: reified
 		to: meta.
 
-	eyecon := scenery addItem: self eyecon.
+	eyecon := scenery addSceneryItem: self eyecon.
 	eyecon
 		position: 140 @ 140;
 		extent: 20 @ 20.
