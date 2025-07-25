@@ -316,7 +316,7 @@ TeachingMoldableDevelopmentSlideshow >> patternMapScenery [
 	| scenery item1 item2 item3 item4 item5 item6 item7 item8 item9 |
 	scenery := GtScenery new.
 	item1 := scenery
-			addItem: (GtSceneryTextStencil new
+			addSceneryItem: (GtSceneryTextStencil new
 					text: ((BlRunRopedText string: 'Moldable Object')
 							attributeRuns: (BlRunTree basicNew
 									instVarAt: 1
@@ -335,7 +335,7 @@ TeachingMoldableDevelopmentSlideshow >> patternMapScenery [
 	item1 position: 285 @ 77.
 	item1 extent: 157.98685709635419 @ 40.0.
 	item2 := scenery
-			addItem: (GtSceneryTextStencil new
+			addSceneryItem: (GtSceneryTextStencil new
 					text: ((BlRunRopedText string: 'Viewable Data Wrapper')
 							attributeRuns: (BlRunTree basicNew
 									instVarAt: 1
@@ -354,7 +354,7 @@ TeachingMoldableDevelopmentSlideshow >> patternMapScenery [
 	item2 position: 600.0 @ 77.99999999999999.
 	item2 extent: 219.53648885091116 @ 40.000000000000014.
 	item3 := scenery
-			addItem: (GtSceneryTextStencil new
+			addSceneryItem: (GtSceneryTextStencil new
 					text: ((BlRunRopedText string: 'Contextual Playground')
 							attributeRuns: (BlRunTree basicNew
 									instVarAt: 1
@@ -373,7 +373,7 @@ TeachingMoldableDevelopmentSlideshow >> patternMapScenery [
 	item3 position: 256.0 @ 237.99999999999997.
 	item3 extent: 217.81504313151044 @ 40.00000000000003.
 	item4 := scenery
-			addItem: (GtSceneryTextStencil new
+			addSceneryItem: (GtSceneryTextStencil new
 					text: ((BlRunRopedText string: 'Viewable Entity')
 							attributeRuns: (BlRunTree basicNew
 									instVarAt: 1
@@ -392,7 +392,7 @@ TeachingMoldableDevelopmentSlideshow >> patternMapScenery [
 	item4 position: 190.0 @ 359.99999999999994.
 	item4 extent: 152.59155273437494 @ 40.0.
 	item5 := scenery
-			addItem: (GtSceneryTextStencil new
+			addSceneryItem: (GtSceneryTextStencil new
 					text: ((BlRunRopedText string: 'Custom Action')
 							attributeRuns: (BlRunTree basicNew
 									instVarAt: 1
@@ -412,7 +412,7 @@ TeachingMoldableDevelopmentSlideshow >> patternMapScenery [
 	item5 position: 400.99999999999994 @ 357.99999999999994.
 	item5 extent: 144.4384256998697 @ 40.0.
 	item6 := scenery
-			addItem: (GtSceneryTextStencil new
+			addSceneryItem: (GtSceneryTextStencil new
 					text: ((BlRunRopedText string: 'Simple View')
 							attributeRuns: (BlRunTree basicNew
 									instVarAt: 1
@@ -432,7 +432,7 @@ TeachingMoldableDevelopmentSlideshow >> patternMapScenery [
 	item6 position: 119.99999999999997 @ 475.9999999999999.
 	item6 extent: 119.12862141927079 @ 40.0.
 	item7 := scenery
-			addItem: (GtSceneryTextStencil new
+			addSceneryItem: (GtSceneryTextStencil new
 					text: ((BlRunRopedText string: 'Collection Wrapper')
 							attributeRuns: (BlRunTree basicNew
 									instVarAt: 1
@@ -452,7 +452,7 @@ TeachingMoldableDevelopmentSlideshow >> patternMapScenery [
 	item7 position: 281.0 @ 475.9999999999999.
 	item7 extent: 189.85839843749994 @ 40.0.
 	item8 := scenery
-			addItem: (GtSceneryTextStencil new
+			addSceneryItem: (GtSceneryTextStencil new
 					text: ((BlRunRopedText string: 'Project Diary')
 							attributeRuns: (BlRunTree basicNew
 									instVarAt: 1
@@ -472,7 +472,7 @@ TeachingMoldableDevelopmentSlideshow >> patternMapScenery [
 	item8 position: 636 @ 151.
 	item8 extent: 131.41372680664063 @ 40.0.
 	item9 := scenery
-			addItem: (GtSceneryTextStencil new
+			addSceneryItem: (GtSceneryTextStencil new
 					text: ((BlRunRopedText string: 'Example Object')
 							attributeRuns: (BlRunTree basicNew
 									instVarAt: 1

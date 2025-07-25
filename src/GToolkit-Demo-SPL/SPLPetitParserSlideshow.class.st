@@ -637,67 +637,67 @@ SPLPetitParserSlideshow >> splReductionScenery [
 	| scenery item1 item2 item3 item4 item5 item6 item7 item8 item9 item10 item11 |
 	scenery := GtScenery new.
 	item1 := scenery
-			addItem: (GtSceneryTextLabelStencil new
+			addSceneryItem: (GtSceneryTextLabelStencil new
 					label: '<print e, env, out>';
 					width: 121.67251603688464) asItem.
 	item1 position: 104.90226236979174 @ 344.9063618977864.
 	item1 extent: 121.67251603688464 @ 28.0.
 	item2 := scenery
-			addItem: (GtSceneryShapeStencil new
+			addSceneryItem: (GtSceneryShapeStencil new
 					geometry: BlRectangleGeometry new;
 					backgroundColorSelector: #black) asItem.
 	item2 position: 102.3768310546875 @ 339.813954671224.
 	item2 extent: 322.3955702182981 @ 2.0.
 	item3 := scenery
-			addItem: (GtSceneryTextLabelStencil new
+			addSceneryItem: (GtSceneryTextLabelStencil new
 					label: '<e,env,out>';
 					width: 84.20973764640391) asItem.
 	item3 position: 144.115556675002 @ 306.5425516764323.
 	item3 extent: 84.20973764640391 @ 28.0.
 	item4 := scenery
-			addItem: (GtSceneryTextLabelStencil new
+			addSceneryItem: (GtSceneryTextLabelStencil new
 					label: '<e'',env'',out''>';
 					width: 92.66339908197381) asItem.
 	item4 position: 299.2138878968681 @ 306.31961743927246.
 	item4 extent: 92.66339908197381 @ 28.0.
 	item5 := scenery
-			addItem: (GtSceneryTextLabelStencil new
+			addSceneryItem: (GtSceneryTextLabelStencil new
 					label: '<print e'', env'', out''>';
 					width: 127.56517309480688) asItem.
 	item5 position: 299.82520423106445 @ 344.6003135610237.
 	item5 extent: 127.56517309480688 @ 28.0.
 	item6 := scenery
-			addItem: (GtSceneryShapeStencil new
+			addSceneryItem: (GtSceneryShapeStencil new
 					geometry: BlRectangleGeometry new;
 					backgroundColorSelector: #black) asItem.
 	item6 position: 118.1089988565237 @ 443.86885768753086.
 	item6 extent: 280.7751292250923 @ 2.0.
 	item7 := scenery
-			addItem: (GtSceneryTextLabelStencil new
+			addSceneryItem: (GtSceneryTextLabelStencil new
 					label: 'isValue(v)';
 					width: 81.7199179286091) asItem.
 	item7 position: 224.16167204167948 @ 413.019139297555.
 	item7 extent: 81.7199179286091 @ 28.0.
 	item8 := scenery
-			addItem: (GtSceneryTextLabelStencil new
+			addSceneryItem: (GtSceneryTextLabelStencil new
 					label: '<print v, env, out>';
 					width: 122.08343617317871) asItem.
 	item8 position: 115.69436267970269 @ 448.94664204274807.
 	item8 extent: 122.08343617317871 @ 28.0.
 	item9 := scenery
-			addItem: (GtSceneryTextLabelStencil new
+			addSceneryItem: (GtSceneryTextLabelStencil new
 					label: '<v, env, (out,v)>';
 					width: 119.76527778841603) asItem.
 	item9 position: 291.4401130187551 @ 449.30572949473736.
 	item9 extent: 119.76527778841603 @ 28.0.
 	item10 := scenery
-			addItem: (GtSceneryMindMapNodeStencil new
+			addSceneryItem: (GtSceneryMindMapNodeStencil new
 					label: 'e is not fully evaluated, so reduce it one step (possibly updating the environment and the output)';
 					width: 170.2723444160792) asItem.
 	item10 position: -91.53504780209973 @ 239.11014811197913.
 	item10 extent: 170.2723444160792 @ 82.0.
 	item11 := scenery
-			addItem: (GtSceneryMindMapNodeStencil new
+			addSceneryItem: (GtSceneryMindMapNodeStencil new
 					label: 'e is a fully reduced value v, so add it to the output';
 					width: 167.83151753743505) asItem.
 	item11 position: -89.22905821876645 @ 414.10246785481775.
