@@ -100,10 +100,10 @@ GtCoderSlideshow >> baselineMethodsExplanationWithLinks [
 	classCoderScripter := BlScripter new
 			element: (GtClassCoderLiveSlide new
 					class: BaselineOfGToolkit;
-					expandMethodAt: 2) asElement.
+					expandMethodAt: 3) asElement.
 
 	expandedMethodElement := ((classCoderScripter element query
-			// BrInfiniteListElement / [ :each | true ]) @ 2) anyOne.
+			// BrInfiniteListElement / [ :each | true ]) @ 3) anyOne.
 	pragmaTarget := ((expandedMethodElement query // BrTextElementWithCursors)
 			@ [ :aChild | aChild text asString includesSubstring: '<baseline>' ]) anyOne.
 	baselineTarget := expandedMethodElement
