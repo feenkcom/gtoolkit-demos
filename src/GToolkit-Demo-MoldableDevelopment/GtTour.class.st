@@ -511,7 +511,7 @@ GtTour >> jsParserExampleSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide labelAndElement
 		priority: 31;
-		element: [ GtPager createWrappedOn: (GtPharoBehaviorCoder forClass: JSParser) ];
+		element: [ GtPager createWrappedOn: (GtClassCoderTool forClass: JSParser) ];
 		newFadedText: 'The first non-Pharo language we accommodated is the language with which we write parsers for other languages.'.
 ]
 
