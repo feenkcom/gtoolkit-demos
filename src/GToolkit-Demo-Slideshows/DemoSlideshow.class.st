@@ -230,7 +230,7 @@ DemoSlideshow >> inspectorViewInPager: aSlide [
 		setPriority;
 		newFadedText: 'An Inspector view in a Pager';
 		element: [ (GtPager
-				createWrappedOn: (GtLudoGame new gtPlayersFor: GtPhlowProtoView new))
+				createWrappedOn: (GtLudoGame new gtPlayersFor: GtPhlowView empty))
 				maximized ]
 ]
 
