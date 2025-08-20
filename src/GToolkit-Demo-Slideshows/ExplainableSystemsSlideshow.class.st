@@ -242,6 +242,7 @@ extends a system with ') , (self asText: 'custom analysis tools') italic , (self
 { #category : #slides }
 ExplainableSystemsSlideshow >> moldableInspector: aSlide [
 	<gtSlide>
+	<noTest>
 	<text:
 '## Moldable inspector
 
