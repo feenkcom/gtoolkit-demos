@@ -23,9 +23,9 @@ GtInspectorScripterExamples >> emptyStackMachineV1WithPlaygroundCode [
 	<gtExample>
 	<return: #GtInspector>
 	| scripter |
-	scripter := GtInspectorScripterExamples new
+	scripter := self
 			scriptedInspectorOn: self emptyStackMachineV1
-			WithPlaygroundText: 'self ! 3. self ! 4.'.
+			withPlaygroundText: 'self ! 3. self ! 4.'.
 	^ scripter elementWithoutParent
 ]
 
@@ -34,9 +34,9 @@ GtInspectorScripterExamples >> emptyStackMachineWithGeneralizedPlaygroundCode [
 	<gtExample>
 	<return: #GtInspector>
 	| scripter |
-	scripter := GtInspectorScripterExamples new
+	scripter := self
 			scriptedInspectorOn: self emptyStackMachine
-			WithPlaygroundText: 'stack addLast: aValue'.
+			withPlaygroundText: 'stack addLast: aValue'.
 	^ scripter elementWithoutParent
 ]
 
@@ -45,9 +45,9 @@ GtInspectorScripterExamples >> emptyStackMachineWithPlaygroundCode [
 	<gtExample>
 	<return: #GtInspector>
 	| scripter |
-	scripter := GtInspectorScripterExamples new
+	scripter := self
 			scriptedInspectorOn: self emptyStackMachine
-			WithPlaygroundText: 'stack addLast: 3'.
+			withPlaygroundText: 'stack addLast: 3'.
 	^ scripter elementWithoutParent
 ]
 
@@ -59,7 +59,7 @@ GtInspectorScripterExamples >> pixelsToMove [
 ]
 
 { #category : #accessing }
-GtInspectorScripterExamples >> scriptedInspectorInPagerOn: anObject WithPlaygroundText: aText [
+GtInspectorScripterExamples >> scriptedInspectorInPagerOn: anObject withPlaygroundText: aText [
 	| scripter |
 	scripter := BlScripter new.
 	scripter element: (GtInspector createOn: anObject).
@@ -91,7 +91,7 @@ GtInspectorScripterExamples >> scriptedInspectorInPagerOn: anObject WithPlaygrou
 { #category : #accessing }
 GtInspectorScripterExamples >> scriptedInspectorInPagerOn: anObject withPlaygroundTextAndDoit: aText [
 	| scripter |
-	scripter := self scriptedInspectorInPagerOn: anObject WithPlaygroundText: aText.
+	scripter := self scriptedInspectorInPagerOn: anObject withPlaygroundText: aText.
 	scripter shortcut
 		combination: BlKeyCombination primaryG;
 		id: GtPagerPageElementId index: 1;
@@ -109,7 +109,7 @@ GtInspectorScripterExamples >> scriptedInspectorOn3plus4WithPlayground [
 	| scripter |
 	scripter := self
 			scriptedInspectorOn: '3+ 4'
-			WithPlaygroundText: 'Smalltalk compiler evaluate: self'.
+			withPlaygroundText: 'Smalltalk compiler evaluate: self'.
 	^ scripter elementWithoutParent
 ]
 
@@ -127,7 +127,7 @@ GtInspectorScripterExamples >> scriptedInspectorOn3plus4WithPlaygroundSmalltalkE
 ]
 
 { #category : #accessing }
-GtInspectorScripterExamples >> scriptedInspectorOn: anObject WithPlaygroundText: aText [
+GtInspectorScripterExamples >> scriptedInspectorOn: anObject withPlaygroundText: aText [
 	"This one is not in a Pager"
 
 	| scripter |
@@ -157,7 +157,7 @@ GtInspectorScripterExamples >> stackMachineV1WithCodeEvaluated [
 	<gtExample>
 	<return: #GtPager>
 	| scripter |
-	scripter := GtInspectorScripterExamples new
+	scripter := self
 			scriptedInspectorInPagerOn: (StackMachineV1 new
 					! 3;
 					! 4;
