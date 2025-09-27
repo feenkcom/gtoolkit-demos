@@ -71,7 +71,7 @@ AWebLinkGroup >> gtActionCheckStatusFor: anAction [
 	^ anAction button
 		tooltip: 'Check status';
 		priority: 10;
-		icon: BrGlamorousIcons accept;
+		icon: BrGlamorousVectorIcons accept;
 		action: [ self checkStatusWhereMissing ]
 ]
 
@@ -83,7 +83,7 @@ AWebLinkGroup >> gtActionStopCheckStatusFor: anAction [
 	^ anAction button
 		tooltip: 'Stop background status check';
 		priority: 11;
-		icon: BrGlamorousIcons close;
+		icon: BrGlamorousVectorIcons close;
 		action: [ self killBackgroundCheck ]
 ]
 

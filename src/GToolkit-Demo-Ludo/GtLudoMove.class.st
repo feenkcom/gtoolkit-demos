@@ -55,7 +55,7 @@ GtLudoMove >> gtReplayAction: anAction [
 	^ anAction button
 		tooltip: 'Replay to here';
 		priority: 20;
-		icon: BrGlamorousIcons tohere;
+		icon: BrGlamorousVectorIcons tohere;
 		action: [ :aButton | aButton phlow spawnObject: self replayGameToHere ]
 ]
 

@@ -97,7 +97,7 @@ AWebsite >> gtCloneRepoFor: anAction [
 	^ anAction button
 		tooltip: 'Clone content repo';
 		priority: 10;
-		icon: BrGlamorousIcons down;
+		icon: BrGlamorousVectorIcons down;
 		action: [ :aButton | self cloneRepoDirAndRefresh: aButton ]
 ]
 
