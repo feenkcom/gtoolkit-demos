@@ -30,7 +30,7 @@ GtLudoRecordingGame >> gtAutoplayAction: anAction [
 	^ anAction button
 		tooltip: 'Autoplay one move';
 		priority: 20;
-		icon: BrGlamorousIcons go;
+		icon: BrGlamorousVectorIcons play;
 		action: [ :aButton | 
 			self autoPlay: 1.
 			aButton phlow spawnObject: self moves last ]

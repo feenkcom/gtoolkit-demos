@@ -83,7 +83,7 @@ WebLink >> gtActionWebBrowseFor: anAction [
 	^ anAction button
 		tooltip: 'Open in browser';
 		priority: 20;
-		icon: BrGlamorousIcons go;
+		icon: BrGlamorousVectorIcons web;
 		action: [ WebBrowser openOn: self url ]
 ]
 

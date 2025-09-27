@@ -103,8 +103,8 @@ Subtitles >> gtActionWebBrowseFor: anAction [
 	self file exists ifFalse: [ ^ anAction noAction ].
 
 	^ anAction button
-		icon: BrGlamorousIcons go;
-		tooltip: 'Open in OS';
+		icon: BrGlamorousVectorIcons link;
+		tooltip: 'Open in operating system';
 		action: [ WebBrowser openOn: file fullName ]
 ]
 

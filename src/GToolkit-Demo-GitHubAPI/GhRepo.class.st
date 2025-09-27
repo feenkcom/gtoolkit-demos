@@ -31,7 +31,7 @@ GhRepo >> gtActionWebBrowseFor: anAction [
 	^ anAction button
 		tooltip: 'Open in browser';
 		priority: 10;
-		icon: BrGlamorousIcons go;
+		icon: BrGlamorousVectorIcons web;
 		action: [ WebBrowser openOn: self htmlUrl ]
 ]
 
