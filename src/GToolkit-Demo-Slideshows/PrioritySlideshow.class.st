@@ -341,7 +341,7 @@ PrioritySlideshow >> gtExportPngAction: anAction [
 		label: ' PNG';
 		tooltip: 'Save PNGs to disk';
 		priority: 20;
-		icon: BrGlamorousIcons spawn;
+		icon: BrGlamorousVectorIcons spawn;
 		action: [ :aButton :aModel :anEvent | aButton phlow spawnObject: self exportSlidePNGs ]
 ]
 
@@ -372,7 +372,7 @@ PrioritySlideshow >> gtHTMLLocalExportActionFor: anAction [
 		label: 'HTML';
 		tooltip: 'Export the slide deck to HTML and store locally';
 		priority: 21;
-		icon: BrGlamorousIcons spawn;
+		icon: BrGlamorousVectorIcons spawn;
 		action: [ :aButton | 
 			| output |
 			output := self exportHTML.

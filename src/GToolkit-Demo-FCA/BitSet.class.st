@@ -169,7 +169,7 @@ BitSet >> gtResetFor: anAction [
 	^ anAction button
 		tooltip: 'Clear the cached map';
 		priority: 10;
-		icon: BrGlamorousIcons close;
+		icon: BrGlamorousVectorIcons close;
 		action: [ self class reset ]
 ]
 

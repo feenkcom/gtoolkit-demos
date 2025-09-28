@@ -165,12 +165,12 @@ SPLContext >> gtContinuationFor: aView [
 		aptitude: BrGlamorousCodeEditorAptitude;
 		text: [ self continuation printString asRopedText ];
 		actionUpdateButton;
-		actionButtonIcon: BrGlamorousIcons right
+		actionButtonIcon: BrGlamorousVectorIcons right
 			tooltip: 'Step'
 			action: [ :aButton :aTab | 
 				self updateProgramIfChanged: aButton phlow textViewContent asString.
 				self step ];
-		actionButtonIcon: BrGlamorousIcons tohere
+		actionButtonIcon: BrGlamorousVectorIcons tohere
 			tooltip: 'Run'
 			action: [ :aButton :aTab | 
 				self updateProgramIfChanged: aButton phlow textViewContent asString.
@@ -242,12 +242,12 @@ SPLContext >> gtStateFor: aView [
 		title: 'State';
 		priority: 10;
 		stencil: [ self composedStateElement ];
-		actionButtonIcon: BrGlamorousIcons right
+		actionButtonIcon: BrGlamorousVectorIcons right
 			tooltip: 'Step'
 			action: [ :aButton :aTab | 
 				self updateProgramIfChanged: aButton phlow textViewContent asString.
 				self step ];
-		actionButtonIcon: BrGlamorousIcons tohere
+		actionButtonIcon: BrGlamorousVectorIcons tohere
 			tooltip: 'Run'
 			action: [ :aButton :aTab | 
 				self updateProgramIfChanged: aButton phlow textViewContent asString.

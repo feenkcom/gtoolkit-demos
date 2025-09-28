@@ -70,7 +70,7 @@ FCAInContext >> gtSpawnRawValueFor: anAction [
 	^ anAction button
 		tooltip: 'Inspect raw value';
 		priority: 20;
-		icon: BrGlamorousIcons into;
+		icon: BrGlamorousVectorIcons into;
 		action: [ :element | element phlow spawnObject: self rawValue ]
 ]
 
