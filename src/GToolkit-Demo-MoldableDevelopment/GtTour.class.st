@@ -59,141 +59,175 @@ GtTour >> coderExplanationSlideFor: aSlide [
 GtTour >> coderExplanationWithLinks [
 	<gtExample>
 	<noTest>
-	| container coderElement packageHierarchyTarget classHierarchyTarget classNameTarget methodTabTarget commentTabTarget referencesTab expandClassTarget expandMethodTarget deleteButtonTarget classButtonTargets searchButtonTarget addClassButtonTarget methodButtonTargets addMethodButtonTarget filterMethodsButtonTarget scripter |
-	
+	| container coderElement packageHierarchyTarget classHierarchyTarget classNameTarget methodsTabTarget commentTabTarget referencesTab expandClassTarget expandMethodTarget classActionsButtonTarget classButtonTargets searchButtonTarget methodButtonTargets addMethodButtonTarget filterMethodsButtonTarget scripter |
 	container := BlElement new
-		constraintsDo: [ :c |
-			c vertical matchParent.
-			c horizontal matchParent ];
-		layout: BlLinearLayout horizontal;
-		margin: (BlInsets all: 5);
-		background: Color white;
-		aptitude: BrShadowAptitude.
-	
+			constraintsDo: [ :c | 
+				c vertical matchParent.
+				c horizontal matchParent ];
+			layout: BlLinearLayout horizontal;
+			margin: (BlInsets all: 5);
+			background: Color white;
+			aptitude: BrShadowAptitude.
+
 	scripter := BlScripter new.
-	scripter element: ((GtCoderElement forClass: GtABAddressBook) createInPager maximized) asElement;
-			play.
-	
-	coderElement := scripter elementWithoutParent.
-	
+	scripter
+		element: (GtCoderElement forClass: GtABAddressBook) createInPager maximized asElement;
+		play.
+
+	coderElement := scripter element.
+
 	packageHierarchyTarget := coderElement
-		allChildrenBreadthFirstDetect: [:aChild |
-			((aChild isKindOf: BlTextElement) and: [aChild text asString = 'Package Hierarchy' asString ])]
-		ifFound: [:aChild | aChild].
+			allChildrenBreadthFirstDetect: [ :aChild | 
+				(aChild isKindOf: BlTextElement)
+					and: [ aChild text asString = 'Package Hierarchy' asString ] ]
+			ifFound: [ :aChild | aChild ]
+			ifNone: [ NotFound signal ].
 	classHierarchyTarget := coderElement
-		allChildrenBreadthFirstDetect: [:aChild |
-			((aChild isKindOf: BlTextElement) and: [aChild text asString = 'Class Hierarchy' asString ])]
-		ifFound: [:aChild | aChild].
+			allChildrenBreadthFirstDetect: [ :aChild | 
+				(aChild isKindOf: BlTextElement)
+					and: [ aChild text asString = 'Class Hierarchy' asString ] ]
+			ifFound: [ :aChild | aChild ]
+			ifNone: [ NotFound signal ].
 	referencesTab := coderElement
-		allChildrenBreadthFirstDetect: [:aChild |
-			((aChild isKindOf: BlTextElement) and: [aChild text asString = 'References'])]
-		ifFound: [:aChild | aChild parent].
-	classNameTarget := coderElement 
-		allChildrenBreadthFirstDetect: [:aChild | 
-			((aChild isKindOf: BrEditableLabel) and: [aChild parent isKindOf: BrHorizontalPane])]
-		ifFound: [:aChild | aChild parent].
-	methodTabTarget := coderElement 
-		allChildrenBreadthFirstDetect: [:aChild | 
-			((aChild isKindOf: BlTextElement) and: [aChild text asString = 'Methods'])]
-		ifFound: [:aChild | aChild parent].
-	commentTabTarget := coderElement 
-		allChildrenBreadthFirstDetect: [:aChild | 
-			((aChild isKindOf: BlTextElement) and: [aChild text asString beginsWith: 'Comment'])]
-		ifFound: [:aChild | aChild parent].
-	expandClassTarget := coderElement 
-		allChildrenBreadthFirstDetect: [:aChild | 
-			((aChild isKindOf: BlElement) and: [aChild parent isKindOf: GtPharoBehaviorDefinitionCoderElement])]
-		ifFound: [:aChild | aChild].
-	expandMethodTarget := coderElement 
-		allChildrenBreadthFirstDetect: [:aChild | 
-			(aChild isKindOf: GtExpandableSourceCoderElement)]
-		ifFound: [:aChild | aChild].
-	deleteButtonTarget := coderElement 
-		allChildrenBreadthFirstDetect: [:aChild | 
-			(aChild isKindOf: GtPreviewChangeButton)]
-		ifFound: [:aChild | aChild].
+			allChildrenBreadthFirstDetect: [ :aChild | (aChild isKindOf: BlTextElement) and: [ aChild text asString = 'References' ] ]
+			ifFound: [ :aChild | aChild parent ]
+			ifNone: [ NotFound signal ].
+	classNameTarget := coderElement
+			allChildrenBreadthFirstDetect: [ :aChild | 
+				(aChild isKindOf: BrEditableLabel)
+					and: [ aChild parent isKindOf: BrHorizontalPane ] ]
+			ifFound: [ :aChild | aChild parent ]
+			ifNone: [ NotFound signal ].
+	methodsTabTarget := ((coderElement query // GtPhlowCompositeViewElementId
+			// BrTab) @ [ :aChild | aChild label asString = 'Methods' ]) result
+			ifNotEmpty: [ :aCollection | 
+				self assert: aCollection size = 1.
+				aCollection anyOne ]
+			ifEmpty: [ NotFound signal ].
+	commentTabTarget := coderElement
+			allChildrenBreadthFirstDetect: [ :aChild | 
+				(aChild isKindOf: BlTextElement)
+					and: [ aChild text asString beginsWith: 'Comment' ] ]
+			ifFound: [ :aChild | aChild parent ]
+			ifNone: [ NotFound signal ].
+	expandClassTarget := coderElement
+			allChildrenBreadthFirstDetect: [ :aChild | 
+				(aChild isKindOf: BlElement)
+					and: [ aChild parent isKindOf: GtPharoBehaviorDefinitionCoderElement ] ]
+			ifFound: [ :aChild | aChild ]
+			ifNone: [ NotFound signal ].
+	expandMethodTarget := coderElement
+			allChildrenBreadthFirstDetect: [ :aChild | aChild isKindOf: GtExpandableSourceCoderElement ]
+			ifFound: [ :aChild | aChild ]
+			ifNone: [ NotFound signal ].
+	classActionsButtonTarget := coderElement
+			allChildrenBreadthFirstDetect: [ :aChild | aChild id = GtCoderClassActionsDropdownButtonId asBlocElementId ]
+			ifFound: [ :aChild | aChild ]
+			ifNone: [ NotFound signal ].
 	classButtonTargets := coderElement
-		allChildrenBreadthFirstSelect: [:aChild | 
-			(aChild isKindOf: BrButton) and: [aChild parent parent isKindOf: GtCoderToolbarElement ]].
-	searchButtonTarget := classButtonTargets first.
-	addClassButtonTarget := classButtonTargets last.
+			allChildrenBreadthFirstSelect: [ :aChild | 
+				(aChild isKindOf: BrButton)
+					and: [ aChild parent parent isKindOf: GtCoderToolbarElement ] ].
+	searchButtonTarget := (coderElement query // GtPharoSearchCodeButtonId) result
+			ifNotEmpty: [ :aCollection | 
+				self assert: aCollection size equals: 1.
+				aCollection anyOne ]
+			ifEmpty: [ NotFound signal ].
 	methodButtonTargets := coderElement
-		allChildrenBreadthFirstDetect: [:aChild | 
-			aChild isKindOf: GtPharoBehaviorCoderElement] 
-		ifFound: [:aChild | 
-			aChild allChildrenBreadthFirstSelect: [:aButtonChild | 
-				(aButtonChild isKindOf: BrButton) and: [aButtonChild parent isKindOf: BrToolbar]]].
-	filterMethodsButtonTarget := methodButtonTargets first.
-	addMethodButtonTarget := methodButtonTargets at: 2.
-	
+			allChildrenBreadthFirstDetect: [ :aChild | aChild isKindOf: GtPharoBehaviorCoderElement ]
+			ifFound: [ :aChild | 
+				aChild
+					allChildrenBreadthFirstSelect: [ :aButtonChild | 
+						(aButtonChild isKindOf: BrButton)
+							and: [ aButtonChild parent isKindOf: BrToolbar ] ] ]
+			ifNone: [ NotFound signal ].
+	filterMethodsButtonTarget := (coderElement query // GtPhlowCompositeViewElementId // #headerContainer // #filter)
+			result
+			ifNotEmpty: [ :aCollection | 
+				self assert: aCollection size equals: 1.
+				aCollection anyOne ]
+			ifEmpty: [ NotFound signal ].
+	addMethodButtonTarget := (coderElement query // GtPharoAddNewMethodButtonId)
+			result
+			ifNotEmpty: [ :aCollection | 
+				self assert: aCollection size equals: 1.
+				aCollection anyOne ]
+			ifEmpty: [ NotFound signal ].
+
 	packageHierarchyTarget
-		addChild:
-			(( self yellowExplanationTargetCircleFor: #packageHierarchy)
-				relocate:
-					(2 @ 10)).
+		addChild: ((self yellowExplanationTargetCircleFor: #packageHierarchy)
+				constraintsDo: [ :c | 
+					c margin: (BlInsets left: 2).
+					c ignored horizontal alignLeft.
+					c ignored vertical alignCenter ]).
 	classHierarchyTarget
-		addChild:
-			(( self yellowExplanationTargetCircleFor: #classHierarchy)
-				relocate:
-					(2 @ 10)).
+		addChild: ((self yellowExplanationTargetCircleFor: #classHierarchy)
+				constraintsDo: [ :c | 
+					c margin: (BlInsets left: 2).
+					c ignored horizontal alignLeft.
+					c ignored vertical alignCenter ]).
 	classNameTarget
-		addChild:
-			((self yellowExplanationTargetCircleFor: #className)
-				relocate:
-					(0 @ 18)).
-	methodTabTarget
-		addChild:
-			((self yellowExplanationTargetCircleFor: #methodTab)
-				relocate:
-					(8 @ methodTabTarget extent y / 2)).
+		addChild: ((self yellowExplanationTargetCircleFor: #className)
+				constraintsDo: [ :c | 
+					c margin: (BlInsets left: 0).
+					c ignored horizontal alignLeft.
+					c ignored vertical alignCenter ]).
+	methodsTabTarget
+		addChild: ((self yellowExplanationTargetCircleFor: #methodTab)
+				constraintsDo: [ :c | 
+					c margin: (BlInsets left: 8).
+					c ignored horizontal alignLeft.
+					c ignored vertical alignCenter ]).
 	commentTabTarget
-		addChild:
-			((self yellowExplanationTargetCircleFor: #commentTab)
-				relocate:
-					(8 @ commentTabTarget extent y / 2)).
+		addChild: ((self yellowExplanationTargetCircleFor: #commentTab)
+				constraintsDo: [ :c | 
+					c margin: (BlInsets left: 8).
+					c ignored horizontal alignLeft.
+					c ignored vertical alignCenter ]).
 	referencesTab
-		addChild:
-			((self yellowExplanationTargetCircleFor: #referencesTab)
-				relocate:
-					(8 @ referencesTab extent y / 2)).
+		addChild: ((self yellowExplanationTargetCircleFor: #referencesTab)
+				constraintsDo: [ :c | 
+					c margin: (BlInsets left: 8).
+					c ignored horizontal alignLeft.
+					c ignored vertical alignCenter ]).
 	expandClassTarget
-		addChild:
-			((self yellowExplanationTargetCircleFor: #expandClassButton)
-				relocate:
-					(10 @ expandClassTarget extent y / 2)).
+		addChild: ((self yellowExplanationTargetCircleFor: #expandClassButton)
+				constraintsDo: [ :c | 
+					c margin: (BlInsets left: 10).
+					c ignored horizontal alignLeft.
+					c ignored vertical alignCenter ]).
 	expandMethodTarget
-		addChild:
-			((self yellowExplanationTargetCircleFor: #expandMethodButton)
-				relocate:
-					(12 @ 8)).
-	deleteButtonTarget
-		addChild:
-			((self yellowExplanationTargetCircleFor: #deleteClassButton)
-				relocate:
-					(12 @ deleteButtonTarget extent y / 2)).
+		addChild: ((self yellowExplanationTargetCircleFor: #expandMethodButton)
+				constraintsDo: [ :c | 
+					c margin: (BlInsets left: 12).
+					c ignored horizontal alignLeft.
+					c ignored vertical alignCenter ]).
+	classActionsButtonTarget
+		addChild: ((self yellowExplanationTargetCircleFor: #classActionsButton)
+				constraintsDo: [ :c | 
+					c margin: (BlInsets left: 12).
+					c ignored horizontal alignLeft.
+					c ignored vertical alignCenter ]).
 	filterMethodsButtonTarget
-		addChild:
-			((self yellowExplanationTargetCircleFor: #filterButton)
-				relocate:
-					(5 @ filterMethodsButtonTarget extent y / 2)).			
+		addChild: ((self yellowExplanationTargetCircleFor: #filterButton)
+				constraintsDo: [ :c | 
+					c margin: (BlInsets left: 5).
+					c ignored horizontal alignLeft.
+					c ignored vertical alignCenter ]).
 	addMethodButtonTarget
-		addChild:
-			((self yellowExplanationTargetCircleFor: #addMethodButton)
-				relocate:
-					(5 @ addMethodButtonTarget extent y / 2)).
+		addChild: ((self yellowExplanationTargetCircleFor: #addMethodButton)
+				constraintsDo: [ :c | 
+					c margin: (BlInsets left: 5).
+					c ignored horizontal alignLeft.
+					c ignored vertical alignCenter ]).
 	searchButtonTarget
-		addChild:
-			((self yellowExplanationTargetCircleFor: #searchButton)
-				relocate:
-					(5 @ searchButtonTarget extent y / 2)).
-	addClassButtonTarget
-		addChild:
-			((self yellowExplanationTargetCircleFor: #addClassButton)
-				relocate:
-					(5 @ addClassButtonTarget extent y / 2)).
-	
-	^ container
-		addChild: coderElement.
+		addChild: ((self yellowExplanationTargetCircleFor: #searchButton)
+				constraintsDo: [ :c | 
+					c margin: (BlInsets left: 5).
+					c ignored horizontal alignLeft.
+					c ignored vertical alignCenter ]).
+
+	^ container addChild: coderElement removeFromParent
 ]
 
 { #category : #accessing }
@@ -211,9 +245,9 @@ When opened on a class, you see the ' asRopedText, ('name' asRopedText glamorous
 ' or a list of ' asRopedText,
 ('references' asRopedText glamorousExplanationFor: #referencesTab),
 '. Coder also provides the possibility to ' asRopedText,
-('delete' asRopedText glamorousExplanationFor: #deleteClassButton),
+('delete' asRopedText glamorousExplanationFor: #classActionsButton),
 ' the current class, to ' asRopedText,
-('add' asRopedText glamorousExplanationFor: #addClassButton),
+('add' asRopedText glamorousExplanationFor: #classActionsButton),
 ' a new one, to ' asRopedText,
 ('search' asRopedText glamorousExplanationFor: #searchButton),
 ' inside the class or to ' asRopedText,
