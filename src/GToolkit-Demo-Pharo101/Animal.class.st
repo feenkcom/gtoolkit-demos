@@ -5,7 +5,7 @@ Class {
 		'weight',
 		'name'
 	],
-	#category : 'GToolkit-Demo-Pharo101'
+	#category : #'GToolkit-Demo-Pharo101'
 }
 
 { #category : #accessing }
