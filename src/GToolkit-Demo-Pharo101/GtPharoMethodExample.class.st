@@ -1,7 +1,7 @@
 Class {
 	#name : #GtPharoMethodExample,
 	#superclass : #Object,
-	#category : 'GToolkit-Demo-Pharo101'
+	#category : #'GToolkit-Demo-Pharo101'
 }
 
 { #category : #accessing }
@@ -14,6 +14,7 @@ GtPharoMethodExample >> exampleWithNumber: x [
     true, false, nil, self, and super, and has sequence, assignment,
     return and cascade. It has both zero argument and one argument blocks."
     <syntaxOn: #postcard>
+	<gtIgnoreConstraint: #GtSendersOfHaltSelectorsInGtPackagesConstraint>
     | y |
     true & false not & (nil isNil) 
 		ifTrue: [100] ifFalse: [self halt].
