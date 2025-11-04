@@ -10,7 +10,7 @@ BaselineOfGToolkitMoldableDevelopmentDemo >> baseline: spec [
 	spec for: #'common' do: [
 		spec
 			baseline: 'GToolkitPresenter' with: [
-				spec repository: 'github://feenkcom/gtoolkit-presenter:v0.8.2641/src' ].
+				spec repository: 'github://feenkcom/gtoolkit-presenter:v0.8.2642/src' ].
 
 		spec package: 'GToolkit-Demo-MoldableDevelopment'.
 	]
