@@ -902,8 +902,9 @@ GtTour >> scripterWithElaborateScenario [
 			aStep
 				element: (GtPagerSettings usedPager createWrappedOn: (GtCoder forMethod: moveTokenMethod)) ].
 
-	scripter pager
-		setPageAt: 1 widthInSpaceRatio: 1 / 3;
+	scripter treePager
+		increaseNumberOfVisibleColumns;
+		closeConfigurationDropdownMenu;
 		play.
 	scripter methodCoders
 		scrollToCompiledMethod: moveTokenMethod;
@@ -918,9 +919,6 @@ GtTour >> scripterWithElaborateScenario [
 		onPagerPaneWithIndex: 1;
 		// GtPharoStreamingMethodsCoderElement;
 		play.
-	scripter pager
-		setPageAt: 2 widthInSpaceRatio: 1 / 3;
-		play.
 	allMovesMethod := GtLudoRecordingGameExamples >> #gameShowingAllMoves2.
 	scripter methodCoders
 		expandAndFocusCompiledMethod: allMovesMethod;
@@ -929,9 +927,6 @@ GtTour >> scripterWithElaborateScenario [
 			do: [ :aMethodCoderStep | aMethodCoderStep clickOnPlayAndInspectExampleButton ];
 		onPagerPaneWithIndex: 2;
 		// GtPharoStreamingMethodsCoderElement;
-		play.
-	scripter pager
-		setPageAt: 3 widthInSpaceRatio: 1 / 3;
 		play.
 	scripter methodCoders
 		forCompiledMethod: allMovesMethod
