@@ -207,7 +207,8 @@ How hard is it to teach people to build their own explainable system for their d
 	^ aSlide labelAndElement
 		setPriority;
 		newTextWithFormat: (self asSubtitle: 'Exploring the ESUG website');
-		element: [ (GtPager createWrappedOn: (GtInspector forObject: self esugWebsite)) maximized ]
+		element: [ (GtPagerSettings usedPager
+				createWrappedOn: (GtInspector forObject: self esugWebsite)) maximized ]
 ]
 
 { #category : #slides }
@@ -218,7 +219,7 @@ TeachingMoldableDevelopmentSlideshow >> gtBookPatternsPage: aSlide [
 These are some of the most basic moldable development patterns, which are described in further detail in the GT Book.'>
 	^ aSlide element
 		setPriority;
-		element: [ (GtPager
+		element: [ (GtPagerSettings usedPager
 				createWrappedOn: (LePagePhlowTool page: (self gtBook pageNamed: 'Moldable Development patterns')))
 				maximized ]
 ]
@@ -236,7 +237,7 @@ The GT book not only offers users documentation to read and live tutorials to tr
 	^ aSlide labelAndElement
 		setPriority;
 		newTextWithFormat: (self asSubtitle: 'Live documentation');
-		element: [ (GtPager
+		element: [ (GtPagerSettings usedPager
 				createWrappedOn: (LePagePhlowTool
 						page: (self gtBook pageNamed: 'Working with a REST API: the GitHub case study')))
 				maximized ]
@@ -570,7 +571,8 @@ The same can be said for the live notebooks, the language workbench, or the perv
 	^ aSlide labelAndElement
 		setPriority;
 		newTextWithFormat: (self asSubtitle: 'People focus on what they see first');
-		element: [ (GtPager createWrappedOn: GtTour new treemapWithBook) maximized ]
+		element: [ (GtPagerSettings usedPager createWrappedOn: GtTour new treemapWithBook)
+				maximized ]
 ]
 
 { #category : #slides }
@@ -593,9 +595,10 @@ Demos and videos also help, but they are not as effective as the first-hand expe
 	^ aSlide elementAndElement
 		setPriority;
 		newTextWithFormat: (self asSubtitle: 'People hate change');
-		leftElement: [ (GtPager createWrappedOn: (GtCoder forClass: PillarWebsite)) maximized ];
-		rightElement: [ (GtPager createWrappedOn: (GtInspector forObject: EsugWebsite instance))
-				maximized ]
+		leftElement: [ (GtPagerSettings usedPager createWrappedOn: (GtCoder forClass: PillarWebsite))
+				maximized ];
+		rightElement: [ (GtPagerSettings usedPager
+				createWrappedOn: (GtInspector forObject: EsugWebsite instance)) maximized ]
 ]
 
 { #category : #accessing }
@@ -659,7 +662,7 @@ It can take more time to prepare a seven minute video than one that runs over an
 	^ aSlide labelAndElement
 		setPriority;
 		newTextWithFormat: (self asSubtitle: 'Short videos on specific topics');
-		element: [ (GtPager
+		element: [ (GtPagerSettings usedPager
 				createWrappedOn: (LePagePhlowTool page: (self gtBook pageNamed: 'Getting started with GT in 7''')))
 				maximized ]
 ]
