@@ -65,7 +65,7 @@ Note that the Examples Explorer is not a separate tool, but simply an object wit
 	^ aSlide labelAndElement
 		setPriority;
 		newFadedText: 'Examples explorer';
-		element: [ (GtPager
+		element: [ (GtPagerSettings usedPager
 				createWrappedOn: (GtInspector forObject: GtRlGToolkitExamplesExplorer buildForGToolkitProject))
 				maximized ]
 ]
@@ -73,8 +73,7 @@ Note that the Examples Explorer is not a separate tool, but simply an object wit
 { #category : #slides }
 ExplainableSystemsSlideshow >> explainableLudo: aSlide [
 	<gtSlide>
-	<text:
-'## Explainable Ludo
+	<text: '## Explainable Ludo
 
 Here we see an object inspector on a live instance of the Ludo game we saw earlier. The difference is that in addition to interacting with it, we can also explore it to understand how it works.
 
@@ -85,8 +84,7 @@ We can see the state of the Players, the individual Squares, and the history of 
 We can furthermore dive into a particular move, and see further custom views that explain what happened. We can even step through the moves to obtain a kind of animation of the history of the game.
 
 Each custom tool consists of a short method that informs the inspector, or another IDE tool of the extension.'>
-<demo: 
-'- Show the Raw view
+	<demo: '- Show the Raw view
 - Show the views one by one
 - Dive into the moves
 - Step through the moves
@@ -95,7 +93,7 @@ Each custom tool consists of a short method that informs the inspector, or anoth
 	^ aSlide labelAndElement
 		setPriority;
 		newFadedText: 'An explainable Ludo game';
-		element: [ (GtPager
+		element: [ (GtPagerSettings usedPager
 				createWrappedOn: (GtInspector forObject: GtLudoRecordingGameExamples new gameShowingAllMoves6))
 				maximized ]
 ]
@@ -243,8 +241,7 @@ extends a system with ') , (self asText: 'custom analysis tools') italic , (self
 ExplainableSystemsSlideshow >> moldableInspector: aSlide [
 	<gtSlide>
 	<noTest>
-	<text:
-'## Moldable inspector
+	<text: '## Moldable inspector
 
 The inspector is one example of a moldable tool that can be extended with custom views.
 
@@ -252,7 +249,7 @@ Here we are inspecting a live object that encapsulates information retrieved fro
 	^ aSlide labelAndElement
 		setPriority;
 		newFadedText: 'An Inspector on a GitHub organization';
-		element: [ (GtPager
+		element: [ (GtPagerSettings usedPager
 				createWrappedOn: (GtInspector forObject: GhOrganizationExamples new feenkcomOrganization))
 				maximized ]
 ]
@@ -297,7 +294,8 @@ Here at the top left we see `BlElement`, the root of the graphical hierarchy.'>
 	^ aSlide labelAndElement
 		setPriority;
 		newFadedText: 'Custom tools are pervasive.';
-		element: [ (GtPager createWrappedOn: GtTour new treemapWithViewsAndExamples) maximized ]
+		element: [ (GtPagerSettings usedPager
+				createWrappedOn: GtTour new treemapWithViewsAndExamples) maximized ]
 ]
 
 { #category : #slides }

@@ -50,13 +50,11 @@ DemoSlideshow >> coderOnClass: aSlide [
 { #category : #slides }
 DemoSlideshow >> coderOnMethod: aSlide [
 	<gtSlide>
-
-<text: 'A coder on a method'>
-
+	<text: 'A coder on a method'>
 	^ aSlide labelAndElement
 		setPriority;
 		newFadedText: 'A coder on an example method';
-		element: [ GtPager
+		element: [ GtPagerSettings usedPager
 				createWrappedOn: (GtPharoMethodCoder forMethod: GtLudoGameExamples >> #playerArolls6)
 						asExpandedOnlyElement vFitContentLimited ]
 ]
@@ -154,8 +152,8 @@ DemoSlideshow >> fileLocatorInPager: aSlide [
 	^ aSlide labelAndElement
 		setPriority;
 		newFadedText: 'A File Locator in a Pager';
-		element: [ (GtPager createWrappedOn: (GtInspector newOn: FileLocator gtResource))
-				maximized ]
+		element: [ (GtPagerSettings usedPager
+				createWrappedOn: (GtInspector newOn: FileLocator gtResource)) maximized ]
 ]
 
 { #category : #slides }
@@ -196,7 +194,7 @@ NB: the pager is needed so we can navigate to new pages.'>
 	^ aSlide labelAndElement
 		setPriority;
 		newFadedText: 'An Inspector on an object';
-		element: [ (GtPager
+		element: [ (GtPagerSettings usedPager
 				createWrappedOn: (GtInspector forObject: GtLudoRecordingGameExamples new gameShowingAllMoves2))
 				maximized ]
 ]
@@ -229,9 +227,8 @@ DemoSlideshow >> inspectorViewInPager: aSlide [
 	^ aSlide labelAndElement
 		setPriority;
 		newFadedText: 'An Inspector view in a Pager';
-		element: [ (GtPager
-				createWrappedOn: (GtLudoGame new gtPlayersFor: GtPhlowView empty))
-				maximized ]
+		element: [ (GtPagerSettings usedPager
+				createWrappedOn: (GtLudoGame new gtPlayersFor: GtPhlowView empty)) maximized ]
 ]
 
 { #category : #slides }
@@ -251,7 +248,7 @@ DemoSlideshow >> maximizedGtBookPage: aSlide [
 	^ aSlide labelAndElement
 		setPriority;
 		newFadedText: 'A maximized GT book page.';
-		element: [ (GtPager
+		element: [ (GtPagerSettings usedPager
 				createWrappedOn: (LePagePhlowTool
 						page: (self gtBook pageNamed: 'Working with a REST API: the GitHub case study')))
 				maximized ]
@@ -264,7 +261,7 @@ DemoSlideshow >> maximizedPage: aSlide [
 	^ aSlide labelAndElement
 		setPriority;
 		newFadedText: 'A maximized lepiter page.';
-		element: [ (GtPager
+		element: [ (GtPagerSettings usedPager
 				createWrappedOn: (LePagePhlowTool page: (self database pageNamed: 'A dynamic Lepiter page')))
 				maximized ]
 ]

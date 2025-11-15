@@ -529,15 +529,16 @@ GtTour >> inspectorExplanationSlideFor: aSlide [
 		priority: 11;
 		newTextWithFormat: GtExplainerExamples new inspectorExplanationText;
 		element: [ BlElement new
-			constraintsDo: [ :c |
-				c vertical matchParent.
-				c horizontal matchParent];
-			background: Color white;
-			aptitude: BrShadowAptitude;
-			margin: (BlInsets right: 5);
-			addChild: (GtPager 
-				createWrappedOn: (GtExplainerExamples>>#inspectorContainerElement) gtExampleValue) maximized ];
-		elementWeight: 0.6.
+				constraintsDo: [ :c | 
+					c vertical matchParent.
+					c horizontal matchParent ];
+				background: Color white;
+				aptitude: BrShadowAptitude;
+				margin: (BlInsets right: 5);
+				addChild: (GtPagerSettings usedPager
+						createWrappedOn: (GtExplainerExamples >> #inspectorContainerElement) gtExampleValue)
+						maximized ];
+		elementWeight: 0.6
 ]
 
 { #category : #accessing }
@@ -545,8 +546,9 @@ GtTour >> jsParserExampleSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide labelAndElement
 		priority: 31;
-		element: [ GtPager createWrappedOn: (GtClassCoderTool forClass: JSParser) ];
-		newFadedText: 'The first non-Pharo language we accommodated is the language with which we write parsers for other languages.'.
+		element: [ GtPagerSettings usedPager
+				createWrappedOn: (GtClassCoderTool forClass: JSParser) ];
+		newFadedText: 'The first non-Pharo language we accommodated is the language with which we write parsers for other languages.'
 ]
 
 { #category : #accessing }
@@ -896,10 +898,13 @@ GtTour >> scripterWithElaborateScenario [
 
 	scripter memoryLogger
 		runFor: self beaconSignals
-		during: [ :aStep | aStep element: (GtPager createWrappedOn: (GtCoder forMethod: moveTokenMethod)) ].
+		during: [ :aStep | 
+			aStep
+				element: (GtPagerSettings usedPager createWrappedOn: (GtCoder forMethod: moveTokenMethod)) ].
 
-	scripter pager
-		setPageAt: 1 widthInSpaceRatio: 1 / 3;
+	scripter treePager
+		increaseNumberOfVisibleColumns;
+		closeConfigurationDropdownMenu;
 		play.
 	scripter methodCoders
 		scrollToCompiledMethod: moveTokenMethod;
@@ -911,11 +916,8 @@ GtTour >> scripterWithElaborateScenario [
 					onChildAt: 1;
 					onChildAt: 1.
 				aMethodCoderStep clickOnMethodCoderExpander: 1 insideDo: [ :aStep1 |  ] ];
-		// (GtPagerPageElementId indexed: 1);
+		onPagerPaneWithIndex: 1;
 		// GtPharoStreamingMethodsCoderElement;
-		play.
-	scripter pager
-		setPageAt: 2 widthInSpaceRatio: 1 / 3;
 		play.
 	allMovesMethod := GtLudoRecordingGameExamples >> #gameShowingAllMoves2.
 	scripter methodCoders
@@ -923,11 +925,8 @@ GtTour >> scripterWithElaborateScenario [
 		scrollToCompiledMethod: allMovesMethod;
 		forCompiledMethod: allMovesMethod
 			do: [ :aMethodCoderStep | aMethodCoderStep clickOnPlayAndInspectExampleButton ];
-		// (GtPagerPageElementId indexed: 2);
+		onPagerPaneWithIndex: 2;
 		// GtPharoStreamingMethodsCoderElement;
-		play.
-	scripter pager
-		setPageAt: 3 widthInSpaceRatio: 1 / 3;
 		play.
 	scripter methodCoders
 		forCompiledMethod: allMovesMethod
@@ -938,7 +937,7 @@ GtTour >> scripterWithElaborateScenario [
 				aMethodCoderStep mouseMoveOver
 					// GtMethodCoderPlayAndInspectExampleActionId;
 					onTopMost ];
-		// (GtPagerPageElementId indexed: 2);
+		onPagerPaneWithIndex: 2;
 		// GtPharoStreamingMethodsCoderElement;
 		play.
 	^ scripter

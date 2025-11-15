@@ -242,6 +242,7 @@ PatternScripterExamples >> gtBookLinksMondrian [
 { #category : #example }
 PatternScripterExamples >> moldableLudoGamePlaygroundScript [
 	"NB: Note the use of `do` to replace the playground snippet code."
+
 	<gtExample>
 	<noTest>
 	| game scripter |
@@ -274,7 +275,7 @@ PatternScripterExamples >> moldableLudoGamePlaygroundScript [
 		play.
 	scripter click
 		label: 'Select the Moves view in the second pager';
-		id: GtPagerPageElementId index: 2;
+		onPagerPaneWithIndex: 2;
 		id: #bar index: 5;
 		play.
 	^ scripter elementWithoutParent
@@ -310,9 +311,10 @@ PatternScripterExamples >> prettyJsonGitHubDictionary [
 { #category : #example }
 PatternScripterExamples >> projectDiaryExample [
 	"Nothing to script, but better display"
+
 	<gtExample>
 	<noTest>
-	^ (GtPager
+	^ (GtPagerSettings usedPager
 		createWrappedOn: (LePagePhlowTool
 				page: (LeDatabase gtBook
 						pageNamed: 'Adding simple list views for Ludo Players and Squares')))
@@ -425,7 +427,7 @@ PatternScripterExamples >> throwawayLinkToolScript [
 	<gtExample>
 	<noTest>
 	| pager scripter |
-	pager := GtPager
+	pager := GtPagerSettings usedPager
 			createWrappedOn: (LePagePhlowTool page: self throwawayLinkTool).
 	scripter := BlScripter new.
 	scripter element: pager.
@@ -433,7 +435,7 @@ PatternScripterExamples >> throwawayLinkToolScript [
 		label: 'Perform the snippet and go.';
 		id: GtSourceCoderDoItAndGoActionId;
 		play.
-	^ scripter "elementWithoutParent"
+	^ scripter	"elementWithoutParent"
 ]
 
 { #category : #example }
@@ -458,7 +460,7 @@ PatternScripterExamples >> throwawayQueryToolScript [
 	<gtExample>
 	<noTest>
 	| pager scripter |
-	pager := GtPager
+	pager := GtPagerSettings usedPager
 			createWrappedOn: (LePagePhlowTool page: self throwawayQueryTool).
 	scripter := BlScripter new.
 	scripter element: pager.
@@ -490,7 +492,7 @@ PatternScripterExamples >> wrappedEsugWebsitePageCollectionScript [
 		play.
 	scripter click
 		label: 'Select the 2nd (Map) view';
-		id: GtPagerPageElementId index: 2;
+		onPagerPaneWithIndex: 2;
 		id: #bar index: 2;
 		play.
 	^ scripter elementWithoutParent

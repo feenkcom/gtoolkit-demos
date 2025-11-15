@@ -72,18 +72,18 @@ GtInspectorScripterExamples >> scriptedInspectorInPagerOn: anObject withPlaygrou
 	scripter
 		clickStep: [ :s | 
 			s
-				id: GtPagerPageElementId index: 1;
+				onPagerPaneWithIndex: 1;
 				id: GtSourceCoderEditorId ].
 	scripter shortcut
 		combination: BlKeyCombination primaryA;
-		id: GtPagerPageElementId index: 1;
+		onPagerPaneWithIndex: 1;
 		id: GtSourceCoderEditorId;
 		play.
 	scripter
 		typeStep: [ :s | 
 			s
 				text: aText;
-				id: GtPagerPageElementId index: 1;
+				onPagerPaneWithIndex: 1;
 				id: GtSourceCoderEditorId ].
 	^ scripter
 ]
@@ -94,7 +94,7 @@ GtInspectorScripterExamples >> scriptedInspectorInPagerOn: anObject withPlaygrou
 	scripter := self scriptedInspectorInPagerOn: anObject withPlaygroundText: aText.
 	scripter shortcut
 		combination: BlKeyCombination primaryG;
-		id: GtPagerPageElementId index: 1;
+		onPagerPaneWithIndex: 1;
 		id: GtSourceCoderEditorId;
 		play.
 	^ scripter

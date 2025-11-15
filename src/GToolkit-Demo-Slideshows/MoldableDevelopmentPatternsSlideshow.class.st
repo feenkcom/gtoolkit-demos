@@ -339,8 +339,7 @@ Moldable development works by applying a number of learnable patterns.');
 { #category : #slides }
 MoldableDevelopmentPatternsSlideshow >> inspectingLudo: aSlide [
 	<gtSlide>
-
-<text: '## Inspecting a live game
+	<text: '## Inspecting a live game
 
 Imagine, on the other hand, a development process which starts not from the source code but from live objects.
 
@@ -373,8 +372,7 @@ The views are cheap to create. The Moves view, for example, consists of just a f
 We can also update the live object, for example, to make the `Moves` view the default one.
 
 *(Change the  Moves priority to 5.)*'>
-
-<demo: '## Inspecting a live game
+	<demo: '## Inspecting a live game
 
 Show some views.
 Navigate to a Player. Inspect its views.
@@ -387,11 +385,10 @@ Play to the end.
 
 Show the Moves view code.
 Change the priority to 5.'>
-
 	^ aSlide labelAndElement
 		setPriority;
 		newFadedText: 'Inspecting a live Ludo game';
-		element: [ (GtPager
+		element: [ (GtPagerSettings usedPager
 				createWrappedOn: (GtInspector forObject: GtLudoRecordingGameExamples new gameShowingAllMoves3))
 				maximized ]
 ]
@@ -461,19 +458,16 @@ Browse the classes and methods. Look at some class comments.'>
 { #category : #slides }
 MoldableDevelopmentPatternsSlideshow >> markdownWebsiteExample: aSlide [
 	<gtSlide>
-
-<text: '## Markdown Website Explorer
+	<text: '## Markdown Website Explorer
 
 After a few iterations, we have a collection of domain objects with custom views that allow us to explore the pages, links, missing links, reachable and unreachable pages, and even a map showing the connections between pages.'>
-
-<demo: '## Markdown Website Explorer
+	<demo: '## Markdown Website Explorer
 
 Explore the pages, the unreachable pages and the map.'>
-
 	^ aSlide labelAndElement
 		setPriority;
 		newFadedText: 'A Markdown Website Explorer';
-		element: [ (GtPager
+		element: [ (GtPagerSettings usedPager
 				createWrappedOn: (GtInspector forObject: MarkdownWebsiteExamples new onWebsiteOct23))
 				maximized ]
 ]
@@ -1000,8 +994,7 @@ MoldableDevelopmentPatternsSlideshow >> slidePriorities [
 { #category : #slides }
 MoldableDevelopmentPatternsSlideshow >> spl: aSlide [
 	<gtSlide>
-
-<text: '## Inspecting an interpreter
+	<text: '## Inspecting an interpreter
 
 Moldable development can apply to any kind of project.
 
@@ -1016,32 +1009,29 @@ This inspector also has custom actions to perform a single interpretation step, 
 We see the three views update with each step.
 
 Another view allows us to explore the history of the execution, thus allowing us to replay and understand the semantic steps.'>
-
-<demo: '## Inspecting an interpreter
+	<demo: '## Inspecting an interpreter
 
 Show some views.
 Perform some steps.
 Play to the end.
 Explore the History.'>
-
 	^ aSlide labelAndElement
 		setPriority;
 		newFadedText: 'SPL';
-		element: [ (GtPager createWrappedOn: (GtInspector forObject: SPL factorial)) maximized ]
+		element: [ (GtPagerSettings usedPager
+				createWrappedOn: (GtInspector forObject: SPL factorial)) maximized ]
 ]
 
 { #category : #slides }
 MoldableDevelopmentPatternsSlideshow >> takeawayCustomTools: aSlide [
 	<gtSlide>
-
-<text: '## Takeaway: Every problem requires different custom tools
+	<text: '## Takeaway: Every problem requires different custom tools
 
 Every problem is different and requires custom tools. GT is an environment that makes it cheap to build such tools by making the platform itself moldable.'>
-
 	^ aSlide labelAndElement
 		setPriority;
 		newTextWithFormat: (self asText: 'Every problem needs custom tools');
-		element: [ (GtPager
+		element: [ (GtPagerSettings usedPager
 				createWrappedOn: (GtInspector forObject: MarkdownWebsiteExamples new onWebsiteOct23))
 				maximized ]
 ]
@@ -1049,17 +1039,16 @@ Every problem is different and requires custom tools. GT is an environment that 
 { #category : #slides }
 MoldableDevelopmentPatternsSlideshow >> takeawayKnowledge: aSlide [
 	<gtSlide>
-	
-<text: '## Takeaway: Moldable Development reveals system knowledge
+	<text: '## Takeaway: Moldable Development reveals system knowledge
 
 The system is the source of knowledge. The goal of moldable development is to make that knowledge explicit and accessible.
 
 The GT Book is an example of such a knowledge base, but every project should have one.'>
-
 	^ aSlide labelAndElement
 		setPriority;
-		newTextWithFormat: (self asText: 'Moldable Development makes system knowledge explicit and accessible');
-		element: [ (GtPager
+		newTextWithFormat: (self
+				asText: 'Moldable Development makes system knowledge explicit and accessible');
+		element: [ (GtPagerSettings usedPager
 				createWrappedOn: (LePagePhlowTool page: LeStorageExamples new gtBook tableOfContents))
 				maximized ]
 ]
@@ -1085,17 +1074,15 @@ Thanks for  listening.'>
 { #category : #slides }
 MoldableDevelopmentPatternsSlideshow >> takeawayUniversal: aSlide [
 	<gtSlide>
-	
-<text: '## Takeaway: Moldable Development can be applied to any problem
+	<text: '## Takeaway: Moldable Development can be applied to any problem
 
 The approach is always the same. Make the domain concepts first-class, and mold them to make them explainable.
 
 Here we see that Moldable Development has also been applied to prepare this presentation.'>
-	 
 	^ aSlide labelAndElement
 		setPriority;
 		newTextWithFormat: (self asText: 'Moldable Development can be applied to any problem');
-		element: [ (GtPager
+		element: [ (GtPagerSettings usedPager
 				createWrappedOn: (GtInspector forObject: MoldableDevelopmentPatternsSlideshow new))
 				maximized ]
 ]
