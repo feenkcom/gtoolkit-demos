@@ -126,7 +126,8 @@ PatternScripterExamples >> customViewCustomMovesViewScript [
 	scripter element: (GtInspector createOn: game) maximized.
 	scripter click
 		label: 'Select the Moves view';
-		id: #bar index: 5;
+		// BrTab;
+		@ [ :eachTab | eachTab label asString = 'Moves' ];
 		play.
 	scripter click
 		label: 'Select the 6th move';
