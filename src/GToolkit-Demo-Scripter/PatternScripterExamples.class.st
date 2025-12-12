@@ -151,9 +151,9 @@ PatternScripterExamples >> customViewRawViewScript [
 	scripter := BlScripter new.
 	game := GtLudoRecordingGameExamples new gameShowingAllMoves3.
 	scripter element: (GtInspector createOn: game) maximized.
-	scripter click
+	scripter inspectorStep
 		label: 'Select the Raw view';
-		id: #bar index: 7;
+		clickOnTabWithName: 'Raw';
 		play.
 	scripter click
 		label: 'Open the moves slot';
@@ -173,14 +173,13 @@ PatternScripterExamples >> customViewRawViewScript [
 { #category : #example }
 PatternScripterExamples >> explicitMoveViewScript [
 	<gtExample>
-	<noTest>
 	| move scripter |
 	move := GtLudoRecordingGameExamples new gameShowingAllMoves6 moves fifth.
 	scripter := BlScripter new.
 	scripter element: (GtInspector createOn: move) maximized.
-	scripter click
+	(scripter inspectorStep
 		label: 'Open the source view';
-		id: #bar index: 1;
+		clickOnTabWithName: 'Move')
 		modifiers: BlKeyModifiers alt;
 		play.
 	^ scripter elementWithoutParent
@@ -245,7 +244,6 @@ PatternScripterExamples >> moldableLudoGamePlaygroundScript [
 	"NB: Note the use of `do` to replace the playground snippet code."
 
 	<gtExample>
-	<noTest>
 	| game scripter |
 	game := GtLudoRecordingGame new.
 	scripter := BlScripter new.
@@ -274,10 +272,10 @@ PatternScripterExamples >> moldableLudoGamePlaygroundScript [
 		label: 'Perform the snippet and go.';
 		id: GtSourceCoderDoItAndGoActionId;
 		play.
-	scripter click
+	scripter inspectorStep
 		label: 'Select the Moves view in the second pager';
 		onPagerPaneWithIndex: 2;
-		id: #bar index: 5;
+		clickOnTabWithName: 'Moves';
 		play.
 	^ scripter elementWithoutParent
 ]
@@ -285,18 +283,17 @@ PatternScripterExamples >> moldableLudoGamePlaygroundScript [
 { #category : #example }
 PatternScripterExamples >> moldableToolViewCodeScript [
 	<gtExample>
-	<noTest>
 	| scripter game |
 	game := GtLudoRecordingGameExamples new gameShowingAllMoves6.
 	scripter := BlScripter new.
 	scripter element: (GtInspector createOn: game) maximized.
-	scripter click
+	scripter inspectorStep
 		label: 'Select the Moves view';
-		id: #bar index: 5;
+		clickOnTabWithName: 'Moves';
 		play.
-	scripter click
+	(scripter inspectorStep
 		label: 'Open the source view';
-		id: #bar index: 2;
+		clickOnTabWithName: 'Moves')
 		modifiers: BlKeyModifiers alt;
 		play.
 	^ scripter elementWithoutParent
@@ -339,18 +336,17 @@ PatternScripterExamples >> simpleColumnedListViewScript [
 { #category : #example }
 PatternScripterExamples >> simpleForwardViewScript [
 	<gtExample>
-	<noTest>
 	| pillarWebpage scripter |
 	pillarWebpage := PillarWebPageExamples new esug2014bikesPage.
 	scripter := BlScripter new.
 	scripter element: (GtInspector createOn: pillarWebpage) maximized.
-	scripter click
-		label: 'Select the 2nd (Contents) view';
-		id: #bar index: 2;
+	scripter inspectorStep
+		label: 'Select the Contents view';
+		clickOnTabWithName: 'Contents';
 		play.
-	scripter click
+	(scripter inspectorStep
 		label: 'Open the source view';
-		id: #bar index: 2;
+		clickOnTabWithName: 'Contents')
 		modifiers: BlKeyModifiers alt;
 		play.
 	^ scripter elementWithoutParent
@@ -363,7 +359,19 @@ PatternScripterExamples >> simpleListViewScript [
 	| addressBook scripter |
 	addressBook := GtABCartoonAddressBookExample new cartoonAddressBook.
 		scripter := BlScripter new.
-	scripter element: (GtInspector createOn: addressBook) maximized.
+		
+	scripter inspectorStep
+		label: 'Select the Contacts list view';
+		clickOnTabWithName: 'Contacts list';
+		play.
+
+	(scripter inspectorStep
+		label: 'Open the source view';
+		clickOnTabWithName: 'Contacts list')
+		modifiers: BlKeyModifiers alt;
+		play.
+		
+	"scripter element: (GtInspector createOn: addressBook) maximized.
 		scripter click
 		label: 'Select the Contacts list view';
 		id: #bar index: 2;
@@ -372,7 +380,7 @@ PatternScripterExamples >> simpleListViewScript [
 		label: 'Open the source view';
 		id: #bar index: 2;
 		modifiers: BlKeyModifiers alt;
-		play.
+		play."
 	^ scripter elementWithoutParent
 ]
 
@@ -491,11 +499,17 @@ PatternScripterExamples >> wrappedEsugWebsitePageCollectionScript [
 	scripter doubleClick
 		label: 'Double-click on the row';
 		play.
-	scripter click
+		
+	scripter inspectorStep
+		label: 'Select the 2nd (Map) view';
+		onPagerPaneWithIndex: 2;
+		clickOnTabWithName: 'Moves';
+		play.
+"	scripter click
 		label: 'Select the 2nd (Map) view';
 		onPagerPaneWithIndex: 2;
 		id: #bar index: 2;
-		play.
+		play."
 	^ scripter elementWithoutParent
 ]
 
@@ -535,14 +549,13 @@ PatternScripterExamples >> wrappedGitHubOrganizationDataScript [
 { #category : #example }
 PatternScripterExamples >> wrappedGitHubOrganizationReposSourceView [
 	<gtExample>
-	<noTest>
 	| scripter |
 	scripter := BlScripter new.
 	scripter
 		element: (GtInspector createOn: self wrappedGitHubOrganization) maximized.
-	scripter click
+	(scripter inspectorStep
 		label: 'Open the source view';
-		id: #bar index: 1;
+		clickOnTabWithName: 'Repositories')
 		modifiers: BlKeyModifiers alt;
 		play.
 	^ scripter elementWithoutParent
