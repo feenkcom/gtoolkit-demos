@@ -355,32 +355,19 @@ PatternScripterExamples >> simpleForwardViewScript [
 { #category : #example }
 PatternScripterExamples >> simpleListViewScript [
 	<gtExample>
-	<noTest>
 	| addressBook scripter |
 	addressBook := GtABCartoonAddressBookExample new cartoonAddressBook.
-		scripter := BlScripter new.
-		
+	scripter := BlScripter new.
+	scripter element: (GtInspector createOn: addressBook) maximized.
 	scripter inspectorStep
 		label: 'Select the Contacts list view';
 		clickOnTabWithName: 'Contacts list';
 		play.
-
 	(scripter inspectorStep
 		label: 'Open the source view';
 		clickOnTabWithName: 'Contacts list')
 		modifiers: BlKeyModifiers alt;
 		play.
-		
-	"scripter element: (GtInspector createOn: addressBook) maximized.
-		scripter click
-		label: 'Select the Contacts list view';
-		id: #bar index: 2;
-		play.
-	scripter click
-		label: 'Open the source view';
-		id: #bar index: 2;
-		modifiers: BlKeyModifiers alt;
-		play."
 	^ scripter elementWithoutParent
 ]
 
