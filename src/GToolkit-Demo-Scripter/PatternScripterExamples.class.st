@@ -21,8 +21,6 @@ PatternScripterExamples class >> cachedUrlData [
 
 { #category : #example }
 PatternScripterExamples class >> feenkGitHubUrl [
-	<gtExample>
-	<noTest>
 	^ 'https://api.github.com/orgs/feenkcom'
 ]
 
@@ -49,7 +47,6 @@ PatternScripterExamples class >> urlData: anObject [
 { #category : #example }
 PatternScripterExamples >> autoPlaySnippet [
 	<gtExample>
-	<noTest>
 	^ '1 to: 10 do: [ :n | 
   self isOver ifTrue: [ ^ self ].
   self playerToRoll
@@ -62,7 +59,6 @@ self.'
 { #category : #example }
 PatternScripterExamples >> cartoonAddressBookScript [
 	<gtExample>
-	<noTest>
 	| addressBook scripter |
 	addressBook := GtABCartoonAddressBookExample new cartoonAddressBook.
 	scripter := BlScripter new.
@@ -71,8 +67,29 @@ PatternScripterExamples >> cartoonAddressBookScript [
 ]
 
 { #category : #example }
-PatternScripterExamples >> cartoonAddressBookSearchScript [
-	"NB: This does not work very well as an embedded example as the dropdown menu will disappear when you click anywhere on the page. The dropdown menu also obscure important text as you scroll."
+PatternScripterExamples >> contextualLePageActionScript [
+	"Used in Contextual Action.
+	NB: Hovering the mouse is obviously ephemeral."
+	<gtExample>
+	| scripter page |
+	page := LeDatabase gtBook pageNamed: 'Contextual Action'.
+	scripter := BlScripter new.
+	scripter element: (GtInspector createOn: page) maximized.
+	scripter click
+		label: 'Click on the Database button';
+		id: LePageDatabaseActionId;
+		play.
+	scripter mouseMoveOver
+		label: 'Hover over the Database button';
+		id: LePageDatabaseActionId;
+		play.
+	^ scripter elementWithoutParent
+]
+
+{ #category : #example }
+PatternScripterExamples >> contextualSearchCartoonAddressBookSearchScript [
+	"Used in Contextual Search.
+	NB: This does not work very well as an embedded example as the dropdown menu will disappear when you click anywhere on the page. The dropdown menu also obscure important text as you scroll."
 	<gtExample>
 	<noTest>
 	| scripter |
@@ -95,31 +112,10 @@ PatternScripterExamples >> cartoonAddressBookSearchScript [
 ]
 
 { #category : #example }
-PatternScripterExamples >> customLePageActionScript [
-	"NB: Hovering the mouse is obviously ephemeral."
-	<gtExample>
-	<noTest>
-	| scripter page |
-	page := LeDatabase gtBook pageNamed: 'Custom Action'.
-	scripter := BlScripter new.
-	scripter element: (GtInspector createOn: page) maximized.
-	scripter click
-		label: 'Click on the Database button';
-		id: LePageDatabaseActionId;
-		play.
-	scripter mouseMoveOver
-		label: 'Hover over the Database button';
-		id: LePageDatabaseActionId;
-		play.
-	^ scripter elementWithoutParent
-]
+PatternScripterExamples >> contextualViewCustomMovesViewScript [
+	"Used in Contextual View"
 
-{ #category : #example }
-PatternScripterExamples >> customViewCustomMovesViewScript [
-	"NB: It is not enough to double-click directly on the 6th row. 
-	We have to first click to select it, and then double-click."
 	<gtExample>
-	<noTest>
 	| scripter game |
 	game := GtLudoRecordingGameExamples new gameShowingAllMoves5.
 	scripter := BlScripter new.
@@ -129,7 +125,7 @@ PatternScripterExamples >> customViewCustomMovesViewScript [
 		// BrTab;
 		@ [ :eachTab | eachTab label asString = 'Moves' ];
 		play.
-	scripter click
+	scripter doubleClick
 		label: 'Select the 6th move';
 		id: GtPhlowColumnedListId;
 		id: #scrollable;
@@ -137,16 +133,15 @@ PatternScripterExamples >> customViewCustomMovesViewScript [
 		// GtPhlowCellElement;
 		@ 1;
 		play.
-	scripter doubleClick
-		label: 'Double-click on the row';
-		play.
 	^ scripter elementWithoutParent
 ]
 
 { #category : #example }
-PatternScripterExamples >> customViewRawViewScript [
+PatternScripterExamples >> contextualViewRawViewScript [
+	"Used in Contextual View.
+	NB: The navigation to the specific nested slot is fragile, and can change if there are other #triangle elements."
+
 	<gtExample>
-	<noTest>
 	| scripter game |
 	scripter := BlScripter new.
 	game := GtLudoRecordingGameExamples new gameShowingAllMoves3.
@@ -157,21 +152,219 @@ PatternScripterExamples >> customViewRawViewScript [
 		play.
 	scripter click
 		label: 'Open the moves slot';
-		id: #triangle index: 8;
-		play.
-	scripter click
-		label: 'Open the array slot';
 		id: #triangle index: 9;
 		play.
 	scripter click
+		label: 'Open the array slot';
+		id: #triangle index: 10;
+		play.
+	scripter click
 		label: 'Open the 6th move';
-		id: #triangle index: 15;
+		id: #triangle index: 16;
 		play.
 	^ scripter elementWithoutParent
 ]
 
 { #category : #example }
-PatternScripterExamples >> explicitMoveViewScript [
+PatternScripterExamples >> feenkGitHubOrgData [
+	"NB: We cache this data to avoid exceeding the API rate limit."
+	<gtExample>
+	^ self class urlData
+]
+
+{ #category : #example }
+PatternScripterExamples >> moldableCollectionWrapperWrappedEsugWebsitePageCollectionScript [
+	"Used in Moldable Collection Wrapper"
+
+	<gtExample>
+	| website scripter |
+	website := PillarWebsiteExamples new esug2014.
+	scripter := BlScripter new.
+	scripter element: (GtInspector createOn: website) maximized.
+	scripter doubleClick
+		label: 'Double-click on the 1st (Pages) row';
+		id: GtPhlowColumnedListId;
+		id: #scrollable;
+		onChildAt: 1;
+		// GtPhlowCellElement;
+		@ 1;
+		play.
+	scripter inspectorStep
+		label: 'Select the 2nd (Map) view';
+		onPagerPaneWithIndex: 2;
+		clickOnTabWithName: 'Map';
+		play.
+	^ scripter elementWithoutParent
+]
+
+{ #category : #example }
+PatternScripterExamples >> moldableDataWrapperRawGitHubDictionary [
+	"Used in Moldable Data Wrapper"
+
+	<gtExample>
+	^ STON fromString: self feenkGitHubOrgData
+]
+
+{ #category : #example }
+PatternScripterExamples >> moldableDataWrapperWrappedGitHubOrganization [
+	"Used in Moldable Data Wrapper"
+
+	<gtExample>
+	^ GhOrganization new rawData: self moldableDataWrapperRawGitHubDictionary
+]
+
+{ #category : #example }
+PatternScripterExamples >> moldableDataWrapperWrappedGitHubOrganizationDataScript [
+	"Used in Moldable Data Wrapper"
+
+	<gtExample>
+	| scripter |
+	scripter := BlScripter new.
+	scripter
+		element: (GtInspector createOn: self moldableDataWrapperWrappedGitHubOrganization) maximized.
+	scripter doubleClick
+		label: 'Select the 7th repo';
+		id: GtPhlowColumnedListId;
+		id: #scrollable;
+		onChildAt: 7;
+		// GtPhlowCellElement;
+		@ 1;
+		play.
+	^ scripter elementWithoutParent
+]
+
+{ #category : #example }
+PatternScripterExamples >> moldableObjectLudoGamePlaygroundScript [
+	"NB: Note the use of `do` to replace the playground snippet code."
+
+	<gtExample>
+	| game scripter |
+	game := GtLudoRecordingGame new.
+	scripter := BlScripter new.
+	scripter element: (GtInspector createOn: game) maximized.
+	scripter mouseMoveOver
+		label: 'Position mouse over playground handle';
+		id: LeInspectorPlaygroundResizerId.
+	scripter mouseDown.
+	scripter mouseMove
+		by: 0 @ -240;
+		label: 'Drag the playground handle up'.
+	scripter mouseUp.
+	scripter play.
+	scripter click
+		label: 'Activate the code snippet';
+		id: GtSourceCoderEditorId;
+		play.
+	scripter do
+		label: 'Replace the code in the playground snippet';
+		id: GtSourceCoderEditorId;
+		action: [ :aSnippetElement | 
+			aSnippetElement textualCoderViewModel coderModel
+				currentSourceString: self autoPlaySnippet ];
+		play.
+	scripter click
+		label: 'Perform the snippet and go.';
+		id: GtSourceCoderDoItAndGoActionId;
+		play.
+	scripter inspectorStep
+		label: 'Select the Moves view in the second pager';
+		onPagerPaneWithIndex: 2;
+		clickOnTabWithName: 'Moves';
+		play.
+	^ scripter elementWithoutParent
+]
+
+{ #category : #example }
+PatternScripterExamples >> moldableToolViewCodeScript [
+	"Used in both Moldable Tool and Simple View"
+
+	<gtExample>
+	| scripter game |
+	game := GtLudoRecordingGameExamples new gameShowingAllMoves6.
+	scripter := BlScripter new.
+	scripter element: (GtInspector createOn: game) maximized.
+	scripter inspectorStep
+		label: 'Select the Moves view';
+		clickOnTabWithName: 'Moves';
+		play.
+	(scripter inspectorStep
+		label: 'Open the source view';
+		clickOnTabWithName: 'Moves')
+		modifiers: BlKeyModifiers alt;
+		play.
+	^ scripter elementWithoutParent
+]
+
+{ #category : #example }
+PatternScripterExamples >> prettyJsonGitHubDictionary [
+	"Not used?"
+
+	<gtExample>
+	<noTest>
+	^ STON toJsonStringPretty: self moldableDataWrapperRawGitHubDictionary
+]
+
+{ #category : #example }
+PatternScripterExamples >> projectDiaryExample [
+	"Nothing to script, but better display.
+	Used in Project Diary."
+
+	<gtExample>
+	^ (GtPagerSettings usedPager
+		createWrappedOn: (LePagePhlowTool
+				page: (LeDatabase gtBook
+						pageNamed: 'Adding simple list views for Ludo Players and Squares')))
+		maximized
+]
+
+{ #category : #example }
+PatternScripterExamples >> simpleColumnedListViewScript [
+	"Not used?"
+	<gtExample>
+	<noTest>
+	^ self moldableToolViewCodeScript
+]
+
+{ #category : #example }
+PatternScripterExamples >> simpleForwardViewScript [
+	<gtExample>
+	| pillarWebpage scripter |
+	pillarWebpage := PillarWebPageExamples new esug2014bikesPage.
+	scripter := BlScripter new.
+	scripter element: (GtInspector createOn: pillarWebpage) maximized.
+	scripter inspectorStep
+		label: 'Select the Contents view';
+		clickOnTabWithName: 'Contents';
+		play.
+	(scripter inspectorStep
+		label: 'Open the source view';
+		clickOnTabWithName: 'Contents')
+		modifiers: BlKeyModifiers alt;
+		play.
+	^ scripter elementWithoutParent
+]
+
+{ #category : #example }
+PatternScripterExamples >> simpleListViewScript [
+	<gtExample>
+	| addressBook scripter |
+	addressBook := GtABCartoonAddressBookExample new cartoonAddressBook.
+	scripter := BlScripter new.
+	scripter element: (GtInspector createOn: addressBook) maximized.
+	scripter inspectorStep
+		label: 'Select the Contacts list view';
+		clickOnTabWithName: 'Contacts list';
+		play.
+	(scripter inspectorStep
+		label: 'Open the source view';
+		clickOnTabWithName: 'Contacts list')
+		modifiers: BlKeyModifiers alt;
+		play.
+	^ scripter elementWithoutParent
+]
+
+{ #category : #example }
+PatternScripterExamples >> simpleViewExplicitMoveViewScript [
 	<gtExample>
 	| move scripter |
 	move := GtLudoRecordingGameExamples new gameShowingAllMoves6 moves fifth.
@@ -185,16 +378,8 @@ PatternScripterExamples >> explicitMoveViewScript [
 	^ scripter elementWithoutParent
 ]
 
-{ #category : #example }
-PatternScripterExamples >> feenkGitHubOrgData [
-	"NB: We cache this data to avoid exceeding the API rate limit."
-	<gtExample>
-	<noTest>
-	^ self class urlData
-]
-
 { #category : #'as yet unclassified' }
-PatternScripterExamples >> gtBookLinksMondrian [
+PatternScripterExamples >> throwawayAnalysisGtBookLinksMondrian [
 	"Adapted from the GT Book page: 
 		Optimizing the links in the book for first time readers
 	Visualization of the pages in the book itself that are reachable 
@@ -240,157 +425,13 @@ PatternScripterExamples >> gtBookLinksMondrian [
 ]
 
 { #category : #example }
-PatternScripterExamples >> moldableLudoGamePlaygroundScript [
-	"NB: Note the use of `do` to replace the playground snippet code."
-
-	<gtExample>
-	| game scripter |
-	game := GtLudoRecordingGame new.
-	scripter := BlScripter new.
-	scripter element: (GtInspector createOn: game) maximized.
-	scripter mouseMoveOver
-		label: 'Position mouse over playground handle';
-		id: LeInspectorPlaygroundResizerId.
-	scripter mouseDown.
-	scripter mouseMove
-		by: 0 @ -240;
-		label: 'Drag the playground handle up'.
-	scripter mouseUp.
-	scripter play.
-	scripter click
-		label: 'Activate the code snippet';
-		id: GtSourceCoderEditorId;
-		play.
-	scripter do
-		label: 'Replace the code in the playground snippet';
-		id: GtSourceCoderEditorId;
-		action: [ :aSnippetElement | 
-			aSnippetElement textualCoderViewModel coderModel
-				currentSourceString: self autoPlaySnippet ];
-		play.
-	scripter click
-		label: 'Perform the snippet and go.';
-		id: GtSourceCoderDoItAndGoActionId;
-		play.
-	scripter inspectorStep
-		label: 'Select the Moves view in the second pager';
-		onPagerPaneWithIndex: 2;
-		clickOnTabWithName: 'Moves';
-		play.
-	^ scripter elementWithoutParent
-]
-
-{ #category : #example }
-PatternScripterExamples >> moldableToolViewCodeScript [
-	<gtExample>
-	| scripter game |
-	game := GtLudoRecordingGameExamples new gameShowingAllMoves6.
-	scripter := BlScripter new.
-	scripter element: (GtInspector createOn: game) maximized.
-	scripter inspectorStep
-		label: 'Select the Moves view';
-		clickOnTabWithName: 'Moves';
-		play.
-	(scripter inspectorStep
-		label: 'Open the source view';
-		clickOnTabWithName: 'Moves')
-		modifiers: BlKeyModifiers alt;
-		play.
-	^ scripter elementWithoutParent
-]
-
-{ #category : #example }
-PatternScripterExamples >> prettyJsonGitHubDictionary [
-	<gtExample>
-	<noTest>
-	^ STON toJsonStringPretty: self rawGitHubDictionary
-]
-
-{ #category : #example }
-PatternScripterExamples >> projectDiaryExample [
-	"Nothing to script, but better display"
-
-	<gtExample>
-	<noTest>
-	^ (GtPagerSettings usedPager
-		createWrappedOn: (LePagePhlowTool
-				page: (LeDatabase gtBook
-						pageNamed: 'Adding simple list views for Ludo Players and Squares')))
-		maximized
-]
-
-{ #category : #example }
-PatternScripterExamples >> rawGitHubDictionary [
-	<gtExample>
-	<noTest>
-	^ STON fromString: self feenkGitHubOrgData
-]
-
-{ #category : #example }
-PatternScripterExamples >> simpleColumnedListViewScript [
-	<gtExample>
-	<noTest>
-	^ self moldableToolViewCodeScript
-]
-
-{ #category : #example }
-PatternScripterExamples >> simpleForwardViewScript [
-	<gtExample>
-	| pillarWebpage scripter |
-	pillarWebpage := PillarWebPageExamples new esug2014bikesPage.
-	scripter := BlScripter new.
-	scripter element: (GtInspector createOn: pillarWebpage) maximized.
-	scripter inspectorStep
-		label: 'Select the Contents view';
-		clickOnTabWithName: 'Contents';
-		play.
-	(scripter inspectorStep
-		label: 'Open the source view';
-		clickOnTabWithName: 'Contents')
-		modifiers: BlKeyModifiers alt;
-		play.
-	^ scripter elementWithoutParent
-]
-
-{ #category : #example }
-PatternScripterExamples >> simpleListViewScript [
-	<gtExample>
-	<noTest>
-	| addressBook scripter |
-	addressBook := GtABCartoonAddressBookExample new cartoonAddressBook.
-		scripter := BlScripter new.
-		
-	scripter inspectorStep
-		label: 'Select the Contacts list view';
-		clickOnTabWithName: 'Contacts list';
-		play.
-
-	(scripter inspectorStep
-		label: 'Open the source view';
-		clickOnTabWithName: 'Contacts list')
-		modifiers: BlKeyModifiers alt;
-		play.
-		
-	"scripter element: (GtInspector createOn: addressBook) maximized.
-		scripter click
-		label: 'Select the Contacts list view';
-		id: #bar index: 2;
-		play.
-	scripter click
-		label: 'Open the source view';
-		id: #bar index: 2;
-		modifiers: BlKeyModifiers alt;
-		play."
-	^ scripter elementWithoutParent
-]
-
-{ #category : #example }
 PatternScripterExamples >> throwawayLinkTool [
+	"Not used?"
+
 	<gtExample>
-	<noTest>
 	^ (LePage named: 'Reachable links')
-	addSnippet: (LePharoSnippet new
-			code: 'pages := LeDatabase gtBook pages
+		addSnippet: (LePharoSnippet new
+				code: 'pages := LeDatabase gtBook pages
 		reject: [ :each | each title = ''Glamorous Toolkit Book'' ].
 getStartedPage := pages detect: [ :each | each title = ''Glamorous Toolkit'' ].
 allReachedPages := getStartedPage
@@ -424,17 +465,18 @@ m layout force
 	nbIterations: 30;
 	charge: -50.
 m';
-			yourself);
-	addSnippet: (LeTextSnippet new
-			string: '';
-			yourself);
-	yourself
+				yourself);
+		addSnippet: (LeTextSnippet new
+				string: '';
+				yourself);
+		yourself
 ]
 
 { #category : #example }
 PatternScripterExamples >> throwawayLinkToolScript [
+	"Not used?"
+
 	<gtExample>
-	<noTest>
 	| pager scripter |
 	pager := GtPagerSettings usedPager
 			createWrappedOn: (LePagePhlowTool page: self throwawayLinkTool).
@@ -450,7 +492,6 @@ PatternScripterExamples >> throwawayLinkToolScript [
 { #category : #example }
 PatternScripterExamples >> throwawayQueryTool [
 	<gtExample>
-	<noTest>
 	^ (LePage named: 'Find Ludo examples')
 		addSnippet: (LePharoSnippet new
 				code: '(LeDatabase gtBook pages
@@ -466,8 +507,9 @@ PatternScripterExamples >> throwawayQueryTool [
 
 { #category : #example }
 PatternScripterExamples >> throwawayQueryToolScript [
+	"Used in Throwaway Analysis Tool"
+
 	<gtExample>
-	<noTest>
 	| pager scripter |
 	pager := GtPagerSettings usedPager
 			createWrappedOn: (LePagePhlowTool page: self throwawayQueryTool).
@@ -481,78 +523,15 @@ PatternScripterExamples >> throwawayQueryToolScript [
 ]
 
 { #category : #example }
-PatternScripterExamples >> wrappedEsugWebsitePageCollectionScript [
-	<gtExample>
-	<noTest>
-	| website scripter |
-	website := PillarWebsiteExamples new esug2014.
-	scripter := BlScripter new.
-	scripter element: (GtInspector createOn: website) maximized.
-	scripter click
-		label: 'Select the 4th row';
-		id: GtPhlowColumnedListId;
-		id: #scrollable;
-		onChildAt: 4;
-		// GtPhlowCellElement;
-		@ 1;
-		play.
-	scripter doubleClick
-		label: 'Double-click on the row';
-		play.
-		
-	scripter inspectorStep
-		label: 'Select the 2nd (Map) view';
-		onPagerPaneWithIndex: 2;
-		clickOnTabWithName: 'Moves';
-		play.
-"	scripter click
-		label: 'Select the 2nd (Map) view';
-		onPagerPaneWithIndex: 2;
-		id: #bar index: 2;
-		play."
-	^ scripter elementWithoutParent
-]
-
-{ #category : #example }
-PatternScripterExamples >> wrappedGitHubOrganization [
-	<gtExample>
-	<noTest>
-	^ GhOrganization new rawData: self rawGitHubDictionary
-]
-
-{ #category : #example }
-PatternScripterExamples >> wrappedGitHubOrganizationDataScript [
-	<gtExample>
-	<noTest>
-	| scripter |
-	scripter := BlScripter new.
-	scripter element: (GtInspector createOn:  self wrappedGitHubOrganization) maximized.
-	scripter click
-		label: 'Select the 7th repo';
-		id: GtPhlowColumnedListId;
-		id: #scrollable;
-		onChildAt: 7;
-		// GtPhlowCellElement;
-		@ 1;
-		play.
-	scripter doubleClick
-		label: 'Double-click on the row';
-		play.
-	"scripter click
-		label: 'Select the 2nd (Contributors) view';
-		id: GtPagerPageElementId index: 2;
-		id: #bar index: 2;
-		play."
-	^ scripter elementWithoutParent
-]
-
-{ #category : #example }
 PatternScripterExamples >> wrappedGitHubOrganizationReposSourceView [
+	"Not used?"
+
 	<gtExample>
 	| scripter |
 	scripter := BlScripter new.
 	scripter
-		element: (GtInspector createOn: self wrappedGitHubOrganization) maximized.
+		element: (GtInspector createOn: self moldableDataWrapperWrappedGitHubOrganization)
+				maximized.
 	(scripter inspectorStep
 		label: 'Open the source view';
 		clickOnTabWithName: 'Repositories')
