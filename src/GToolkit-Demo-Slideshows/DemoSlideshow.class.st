@@ -321,7 +321,7 @@ DemoSlideshow >> scriptedExampleInPager: aSlide [
 	^ aSlide labelAndElement
 		setPriority;
 		newFadedText: 'A scripted example in a Pager';
-		element: [ PatternScripterExamples new customViewCustomMovesViewScript ]
+		element: [ PatternScripterExamples new contextualViewCustomMovesViewScript ]
 ]
 
 { #category : #accessing }
