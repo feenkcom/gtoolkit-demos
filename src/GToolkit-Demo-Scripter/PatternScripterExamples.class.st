@@ -483,33 +483,23 @@ PatternScripterExamples >> throwawayQueryToolScript [
 { #category : #example }
 PatternScripterExamples >> wrappedEsugWebsitePageCollectionScript [
 	<gtExample>
-	<noTest>
 	| website scripter |
 	website := PillarWebsiteExamples new esug2014.
 	scripter := BlScripter new.
 	scripter element: (GtInspector createOn: website) maximized.
-	scripter click
-		label: 'Select the 4th row';
+	scripter doubleClick
+		label: 'Double-click on the 1st row';
 		id: GtPhlowColumnedListId;
 		id: #scrollable;
-		onChildAt: 4;
+		onChildAt: 1;
 		// GtPhlowCellElement;
 		@ 1;
 		play.
-	scripter doubleClick
-		label: 'Double-click on the row';
-		play.
-		
 	scripter inspectorStep
 		label: 'Select the 2nd (Map) view';
 		onPagerPaneWithIndex: 2;
-		clickOnTabWithName: 'Moves';
+		clickOnTabWithName: 'Map';
 		play.
-"	scripter click
-		label: 'Select the 2nd (Map) view';
-		onPagerPaneWithIndex: 2;
-		id: #bar index: 2;
-		play."
 	^ scripter elementWithoutParent
 ]
 

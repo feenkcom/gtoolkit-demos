@@ -22,6 +22,13 @@ PillarWebsite >> cleanJson: anJsonString [
 ]
 
 { #category : #view }
+PillarWebsite >> gtOverview [
+	^ {{'# Pages'.
+			self pages size.
+			[ self pages ]}} , super gtOverview
+]
+
+{ #category : #view }
 PillarWebsite >> gtPagesFor: aView [
 	<gtView>
 	^ aView columnedList
