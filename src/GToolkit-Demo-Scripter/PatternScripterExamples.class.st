@@ -145,8 +145,9 @@ PatternScripterExamples >> customViewCustomMovesViewScript [
 
 { #category : #example }
 PatternScripterExamples >> customViewRawViewScript [
+	"NB: The navigation to the specific nested slot is fragile, and can change if there are other #triangle elements."
+
 	<gtExample>
-	<noTest>
 	| scripter game |
 	scripter := BlScripter new.
 	game := GtLudoRecordingGameExamples new gameShowingAllMoves3.
@@ -157,15 +158,15 @@ PatternScripterExamples >> customViewRawViewScript [
 		play.
 	scripter click
 		label: 'Open the moves slot';
-		id: #triangle index: 8;
-		play.
-	scripter click
-		label: 'Open the array slot';
 		id: #triangle index: 9;
 		play.
 	scripter click
+		label: 'Open the array slot';
+		id: #triangle index: 10;
+		play.
+	scripter click
 		label: 'Open the 6th move';
-		id: #triangle index: 15;
+		id: #triangle index: 16;
 		play.
 	^ scripter elementWithoutParent
 ]
