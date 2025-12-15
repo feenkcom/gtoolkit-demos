@@ -488,7 +488,7 @@ PatternScripterExamples >> wrappedEsugWebsitePageCollectionScript [
 	scripter := BlScripter new.
 	scripter element: (GtInspector createOn: website) maximized.
 	scripter doubleClick
-		label: 'Double-click on the 1st row';
+		label: 'Double-click on the 1st (Pages) row';
 		id: GtPhlowColumnedListId;
 		id: #scrollable;
 		onChildAt: 1;
