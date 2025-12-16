@@ -1032,7 +1032,11 @@ GtTour >> timelineElement [
 				(Date
 					year: 2023
 					month: 08
-					day: 29) -> 'Glamorous Toolkit v1.0'}.
+					day: 29) -> 'Glamorous Toolkit v1.0'.
+				(Date
+					year: 2024
+					month: 07
+					day: 8) -> 'Moldable Development Patterns'}.
 	^ plotter asElement
 ]
 
