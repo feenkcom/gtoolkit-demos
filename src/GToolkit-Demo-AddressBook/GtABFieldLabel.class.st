@@ -4,7 +4,7 @@ Class {
 	#instVars : [
 		'id'
 	],
-	#category : 'GToolkit-Demo-AddressBook-Models'
+	#category : #'GToolkit-Demo-AddressBook-Models'
 }
 
 { #category : #comparing }

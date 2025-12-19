@@ -6,7 +6,7 @@ This class contains tests
 Class {
 	#name : #GtABAddressBookTest,
 	#superclass : #TestCase,
-	#category : 'GToolkit-Demo-AddressBook-Tests'
+	#category : #'GToolkit-Demo-AddressBook-Tests'
 }
 
 { #category : #building }

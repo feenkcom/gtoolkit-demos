@@ -95,6 +95,32 @@ GtABCartoonAddressBookExample >> daffyDuckDescription [
 	^ 'Daffy Duck is an animated cartoon character produced by Warner Bros. Styled as an anthropomorphic black duck, the character has appeared in cartoon series such as Looney Tunes and Merrie Melodies, where he usually has been depicted as the best friend and occasional arch-rival of Bugs Bunny. Daffy was one of the first of the new "screwball" characters that emerged in the late 1930s to replace traditional everyman characters who were more popular earlier in the decade,[citation needed] such as Mickey Mouse and Popeye. Daffy starred in 133 shorts in the golden age, making him the third-most frequent character in the Looney Tunes/Merrie Melodies cartoons, behind Bugs Bunny''s 166 appearances and Porky Pig''s 159 appearances.'
 ]
 
+{ #category : #'examples - files' }
+GtABCartoonAddressBookExample >> daffyDuckFile [
+	<gtExample>
+	^ FileLocator gtResource / 'feenkcom' / 'gtoolkit-demos' / 'data'
+		/ 'addressbook' / 'icons' / 'daffy-duck.png'
+]
+
+{ #category : #'examples - files' }
+GtABCartoonAddressBookExample >> daffyDuckFileWithPictureView [
+	<gtExample>
+	| scripter file |
+	file := self daffyDuckFile.
+	scripter := BlScripter new.
+	scripter element: (GtInspector createOn: file) maximized.
+	scripter inspectorStep
+		label: 'Select the Picture view';
+		clickOnTabWithName: 'Picture';
+		play.
+	(scripter inspectorStep
+		label: 'Open the source view';
+		clickOnTabWithName: 'Picture')
+		modifiers: BlKeyModifiers alt;
+		play.
+	^ scripter elementWithoutParent
+]
+
 { #category : #accessing }
 GtABCartoonAddressBookExample >> loremIpsum [
 	"Return a constant string with one paragraph of text, the famous Lorem ipsum filler text.
