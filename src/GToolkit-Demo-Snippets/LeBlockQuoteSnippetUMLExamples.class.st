@@ -30,7 +30,7 @@ LeBlockQuoteSnippetUMLExamples >> blockQuoteSnippetClassHierarchy [
 					LeTextualSnippetElement.
 					LePlainTextCoderSnippetElement.
 					LeBlockQuoteSnippetElement.
-					GtTextualCoderEditorElement}
+					GtTextualCoderElement}
 			withAssociationsAndLabels: {LeBlockQuoteSnippet
 						-> {{'text'.
 									BlRunRopedText}}.
@@ -49,8 +49,8 @@ LeBlockQuoteSnippetUMLExamples >> blockQuoteSnippetClassHierarchy [
 									GtTextCoder}}.
 					LeBlockQuoteSnippetElement
 						-> {{'editor element'.
-									GtTextualCoderEditorElement}}.
-					GtTextualCoderEditorElement
+									GtTextualCoderElement}}.
+					GtTextualCoderElement
 						-> {{'editor model'.
 									GtTextualCoderViewModel}}}.
 	^ m
@@ -77,7 +77,7 @@ LeBlockQuoteSnippetUMLExamples >> blockQuoteSnippetClassHierarchyWithPositions [
 					LeTextualSnippetElement.
 					LePlainTextCoderSnippetElement.
 					LeBlockQuoteSnippetElement.
-					GtTextualCoderEditorElement}
+					GtTextualCoderElement}
 			withAssociationsAndLabels: {LeBlockQuoteSnippet
 						-> {{'text'.
 									BlRunRopedText}}.
@@ -94,8 +94,8 @@ LeBlockQuoteSnippetUMLExamples >> blockQuoteSnippetClassHierarchyWithPositions [
 									GtTextCoder}}.
 					LeBlockQuoteSnippetElement
 						-> {{'editor element'.
-									GtTextualCoderEditorElement}}.
-					GtTextualCoderEditorElement
+									GtTextualCoderElement}}.
+					GtTextualCoderElement
 						-> {{'editor model'.
 									GtTextualCoderViewModel}}}.
 	m layout custom: BlBasicLayout new.
