@@ -81,12 +81,12 @@ for: data
 	^ self new
 		data: data;
 		yourself! !
-Object subclass: #VRDatasets
+Object subclass: #VRDatasetExamples
 	instanceVariableNames: ''
 	classVariableNames: ''
 	package: 'VisualisationReview-Examples'!
 
-!VRDatasets methodsFor: 'accessing' stamp: '1/13/2026 15:44'!
+!VRDatasetExamples methodsFor: 'accessing' stamp: '1/13/2026 15:44'!
 datasetFolder
 	<gtExample>
 	| folder |
@@ -96,7 +96,7 @@ datasetFolder
 	self assert: (folder allChildrenMatching: '*.csv') size equals: 2.
 	^ folder! !
 
-!VRDatasets methodsFor: 'accessing' stamp: '1/13/2026 15:44'!
+!VRDatasetExamples methodsFor: 'accessing' stamp: '1/13/2026 15:44'!
 allPapersJSON
 	<gtExample>
 	| json |
@@ -106,7 +106,7 @@ allPapersJSON
 	self assert: json size equals: 346.
 	^ json! !
 
-!VRDatasets methodsFor: 'accessing' stamp: '1/13/2026 15:44'!
+!VRDatasetExamples methodsFor: 'accessing' stamp: '1/13/2026 15:44'!
 selectedPapersJSON
 	<gtExample>
 	| json |
@@ -117,7 +117,7 @@ selectedPapersJSON
 	^ json! !
 
 
-!VRDatasets methodsFor: 'as yet unclassified' stamp: '1/13/2026 16:24'!
+!VRDatasetExamples methodsFor: 'as yet unclassified' stamp: '1/13/2026 16:24'!
 allPapers
 	<gtExample>
 	| papers |
@@ -125,7 +125,7 @@ allPapers
 	self assert: papers size equals: 346.
 	^ papers! !
 
-!VRDatasets methodsFor: 'as yet unclassified' stamp: '1/13/2026 16:41'!
+!VRDatasetExamples methodsFor: 'as yet unclassified' stamp: '1/13/2026 16:41'!
 selectedPapers
 	<gtExample>
 	| papers |
@@ -133,7 +133,7 @@ selectedPapers
 	self assert: papers size equals: 65.
 	^ papers! !
 
-!VRDatasets methodsFor: 'as yet unclassified' stamp: '1/13/2026 17:06'!
+!VRDatasetExamples methodsFor: 'as yet unclassified' stamp: '1/13/2026 17:06'!
 paper327
 	<gtExample>
 	| paper |
