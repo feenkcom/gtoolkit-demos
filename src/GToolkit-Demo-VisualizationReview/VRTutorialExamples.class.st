@@ -26,3 +26,25 @@ VRTutorialExamples >> datasetFolder [
 	self assert: (datasetFolder allChildrenMatching: '*.csv') size equals: 2.
 	^ datasetFolder
 ]
+
+{ #category : #examples }
+VRTutorialExamples >> newClassSnippetWithFixitClicked [
+	<gtExample>
+	| scripter |
+	scripter := BlScripter new.
+	scripter
+		element: (LePharoSnippet new
+				code: 'VRDatasetExamples new datasetFolder';
+				yourself) asSnippetViewModel asSnippetElement.
+	scripter click
+		label: 'Hover over fixit';
+		// (GtMethodAdviceElementId indexed: 1);
+		play.
+	^ scripter
+]
+
+{ #category : #examples }
+VRTutorialExamples >> newClassSnippetWithFixitClickedElement [
+	<gtExample>
+	^ self newClassSnippetWithFixitClicked elementWithoutParent
+]
