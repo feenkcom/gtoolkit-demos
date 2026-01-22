@@ -28,6 +28,56 @@ VRTutorialExamples >> datasetFolder [
 ]
 
 { #category : #examples }
+VRTutorialExamples >> newClassSnippetDialog [
+	<gtExample>
+	| scripter |
+	scripter := BlScripter new.
+	scripter
+		element: (LePharoSnippet new
+				code: 'VRDatasetExamples new datasetFolder';
+				yourself) asSnippetViewModel asSnippetElement.
+	scripter
+		substeps: 'Create non-existent class'
+		do: [ :aStep | 
+			aStep click
+				label: 'Click on class fixit button';
+				// (GtMethodAdviceElementId indexed: 1);
+				play.
+			aStep click
+				label: 'Click on create class';
+				onSpaceRoot;
+				// (GtDefineClassFixItActionElementId indexed: 1);
+				play.
+			aStep click
+				label: 'Click on package input field';
+				onSpaceRoot;
+				// (GtMagritteFieldElementId new
+						description: GtCreationForm new packageAndTagDescription);
+				// #package;
+				play.
+			aStep type
+				text: 'VisualisationReview';
+				play.
+			aStep click
+				label: 'Click on tag input field';
+				onSpaceRoot;
+				// (GtMagritteFieldElementId new
+						description: GtCreationForm new packageAndTagDescription);
+				// #tag;
+				play.
+			aStep type
+				text: 'Examples';
+				play ].
+	^ scripter
+]
+
+{ #category : #examples }
+VRTutorialExamples >> newClassSnippetDialogElement [
+	<gtExample>
+	^ self newClassSnippetDialog elementWithoutParent
+]
+
+{ #category : #examples }
 VRTutorialExamples >> newClassSnippetWithFixitClicked [
 	<gtExample>
 	| scripter |
