@@ -29,6 +29,7 @@ VRTutorialExamples >> datasetFolder [
 
 { #category : #examples }
 VRTutorialExamples >> newClassSnippetDialog [
+	"Caveat -- this only works if VRDatasetExamples does not yet exist, else it's an error!"
 	<gtExample>
 	| scripter |
 	scripter := BlScripter new.
