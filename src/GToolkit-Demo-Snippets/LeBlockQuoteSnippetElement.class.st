@@ -15,9 +15,8 @@ LeBlockQuoteSnippetElement >> backgroundColor [
 { #category : #initialization }
 LeBlockQuoteSnippetElement >> initializeEditorElement [
 	"Specialize the editor element to use a code font and a light grey background."
-	
+
 	super initializeEditorElement.
-	editorElement
-		background: self backgroundColor;
-		aptitude: BrGlamorousCodeEditorAptitude
+	editorElement background: self backgroundColor.
+	editorElement editorElement aptitudeDo: [ :aLook | aLook glamorousMonospace ]
 ]
