@@ -8,8 +8,8 @@ data
 	^ data! !
 
 !VRPaper methodsFor: 'accessing' stamp: '1/13/2026 16:11'!
-data: anObject
-	data := anObject! !
+data: aDictionary
+	data := aDictionary! !
 
 !VRPaper methodsFor: 'accessing' stamp: '1/13/2026 16:33'!
 id
