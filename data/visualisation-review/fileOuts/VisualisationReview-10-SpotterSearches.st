@@ -154,8 +154,8 @@ dataset
 	^ dataset! !
 
 !VRDomainEntity methodsFor: 'accessing' stamp: '1/19/2026 10:35'!
-dataset: anObject
-	dataset := anObject! !
+dataset: aDictionary
+	dataset := aDictionary! !
 
 
 !VRDomainEntity methodsFor: 'actions' stamp: '1/20/2026 10:03'!
@@ -177,8 +177,8 @@ authorName
 	^ authorName! !
 
 !VRAuthor methodsFor: 'accessing' stamp: '1/20/2026 08:32'!
-authorName: anObject
-	authorName := anObject! !
+authorName: aDictionary
+	authorName := aDictionary! !
 
 !VRAuthor methodsFor: 'accessing' stamp: '1/20/2026 08:59'!
 papers
@@ -258,8 +258,8 @@ data
 	^ data! !
 
 !VRPaper methodsFor: 'accessing' stamp: '1/13/2026 16:11'!
-data: anObject
-	data := anObject! !
+data: aDictionary
+	data := aDictionary! !
 
 !VRPaper methodsFor: 'accessing' stamp: '1/13/2026 16:33'!
 id
