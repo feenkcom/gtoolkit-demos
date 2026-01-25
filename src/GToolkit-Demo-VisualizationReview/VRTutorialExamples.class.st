@@ -31,6 +31,7 @@ VRTutorialExamples >> datasetFolder [
 VRTutorialExamples >> newClassSnippetDialog [
 	"Caveat -- this only works if VRDatasetExamples does not yet exist, else it's an error!"
 	<gtExample>
+	<noTest>
 	| scripter |
 	scripter := BlScripter new.
 	scripter
@@ -75,12 +76,14 @@ VRTutorialExamples >> newClassSnippetDialog [
 { #category : #examples }
 VRTutorialExamples >> newClassSnippetDialogElement [
 	<gtExample>
+	<noTest>
 	^ self newClassSnippetDialog elementWithoutParent
 ]
 
 { #category : #examples }
 VRTutorialExamples >> newClassSnippetWithFixitClicked [
 	<gtExample>
+	<noTest>
 	| scripter |
 	scripter := BlScripter new.
 	scripter
@@ -97,5 +100,6 @@ VRTutorialExamples >> newClassSnippetWithFixitClicked [
 { #category : #examples }
 VRTutorialExamples >> newClassSnippetWithFixitClickedElement [
 	<gtExample>
+	<noTest>
 	^ self newClassSnippetWithFixitClicked elementWithoutParent
 ]
