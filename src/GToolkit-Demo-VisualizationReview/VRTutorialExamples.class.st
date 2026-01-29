@@ -8,6 +8,21 @@ Class {
 }
 
 { #category : #examples }
+VRTutorialExamples >> applyTutorialChanges [
+	"NB: later changes may break earlier  examples."
+
+	<gtExample>
+	<noTest>
+	^ self vrTutorialPage allChangeSnippets
+		collect: [ :each | 
+			| examples |
+			each asSnippetViewModel changes applyChanges.
+			examples := GtExplicitExampleGroup
+					withAll: #VisualisationReview asPackage gtExamplesAllContained.
+			examples runAll ]
+]
+
+{ #category : #examples }
 VRTutorialExamples >> datasetAllCsv [
 	<gtExample>
 	| dataset |
@@ -25,6 +40,173 @@ VRTutorialExamples >> datasetFolder [
 	self assert: datasetFolder exists.
 	self assert: (datasetFolder allChildrenMatching: '*.csv') size equals: 2.
 	^ datasetFolder
+]
+
+{ #category : #examples }
+VRTutorialExamples >> ensureVRPackage [
+	"Initialize the VisualisationReview package so we don't have problems with package naming when filing in the classes."
+
+	<gtExample>
+	<noTest>
+	self removeVRPackages.
+	Smalltalk packageOrganizer ensurePackage: 'VisualisationReview'.
+	^ #VisualisationReview asPackage
+]
+
+{ #category : #examples }
+VRTutorialExamples >> fileIn1DatasetExamples [
+	<gtExample>
+	| package examples |
+	package := self ensureVRPackage.
+	(self fileOutsFolder / 'VisualisationReview-1-DatasetExamples.st') fileIn.
+	self assert: package classes equals: {#VRDatasetExamples asClass} asSet.
+	self assert: #VRDatasetExamples asClass methods size equals: 3.
+	examples := self runAllVRExamples.
+	self assert: examples failedExamples isEmpty.
+	self assert: examples erroredExamples isEmpty.
+	^ package
+]
+
+{ #category : #examples }
+VRTutorialExamples >> fileIn2PaperWrapper [
+	<gtExample>
+	| package examples |
+	package := self ensureVRPackage.
+	(self fileOutsFolder / 'VisualisationReview-2a-PaperWrapper-Example.st') fileIn.
+	self
+		assert: package classes
+		equals: {#VRDatasetExamples asClass.
+				#VRPaper asClass} asSet.
+	self assert: #VRDatasetExamples asClass methods size equals: 4.
+	self assert: #VRPaper asClass methods size equals: 2.
+	examples := self runAllVRExamples.
+	self assert: examples failedExamples isEmpty.
+	self assert: examples erroredExamples isEmpty.
+	^ package
+]
+
+{ #category : #examples }
+VRTutorialExamples >> fileIn3DesignStudyPapers [
+	<gtExample>
+	| package examples |
+	package := self ensureVRPackage.
+	(self fileOutsFolder / 'VisualisationReview-3-DesignStudyPapers.st') fileIn.
+	self
+		assert: package classes
+		equals: {#VRDatasetExamples asClass.
+				#VRPaper asClass} asSet.
+	self assert: #VRDatasetExamples asClass methods size equals: 5.
+	self assert: #VRPaper asClass methods size equals: 5.
+	examples := self runAllVRExamples.
+	self assert: examples failedExamples isEmpty.
+	self assert: examples erroredExamples isEmpty.
+	^ package
+]
+
+{ #category : #examples }
+VRTutorialExamples >> fileIn4PrintOn [
+	<gtExample>
+	| package examples |
+	package := self ensureVRPackage.
+	(self fileOutsFolder / 'VisualisationReview-4-PrintOn.st') fileIn.
+	self
+		assert: package classes
+		equals: {#VRDatasetExamples asClass.
+				#VRPaper asClass} asSet.
+	self assert: #VRDatasetExamples asClass methods size equals: 5.
+	self assert: #VRPaper asClass methods size equals: 7.
+	examples := self runAllVRExamples.
+	self assert: examples failedExamples isEmpty.
+	self assert: examples erroredExamples isEmpty.
+	^ package
+]
+
+{ #category : #examples }
+VRTutorialExamples >> fileIn5ForwardJSONView [
+	<gtExample>
+	| package examples |
+	package := self ensureVRPackage.
+	(self fileOutsFolder / 'VisualisationReview-5-ForwardJSONView.st') fileIn.
+	self
+		assert: package classes
+		equals: {#VRDatasetExamples asClass.
+				#VRPaper asClass} asSet.
+	self assert: #VRDatasetExamples asClass methods size equals: 6.
+	self assert: #VRPaper asClass methods size equals: 8.
+	examples := self runAllVRExamples.
+	self assert: examples failedExamples isEmpty.
+	self assert: examples erroredExamples isEmpty.
+	^ package
+]
+
+{ #category : #examples }
+VRTutorialExamples >> fileIn6SummaryView [
+	<gtExample>
+	| package examples |
+	package := self ensureVRPackage.
+	(self fileOutsFolder / 'VisualisationReview-6-SummaryView.st') fileIn.
+	self
+		assert: package classes
+		equals: {#VRDatasetExamples asClass.
+				#VRPaper asClass} asSet.
+	self assert: #VRDatasetExamples asClass methods size equals: 6.
+	self assert: #VRPaper asClass methods size equals: 9.
+	examples := self runAllVRExamples.
+	self assert: examples failedExamples isEmpty.
+	self assert: examples erroredExamples isEmpty.
+	^ package
+]
+
+{ #category : #examples }
+VRTutorialExamples >> fileIn7PaperGroup [
+	<gtExample>
+	| package examples |
+	package := self ensureVRPackage.
+	(self fileOutsFolder / 'VisualisationReview-7-PaperGroup.st') fileIn.
+	self
+		assert: package classes
+		equals: {#VRDatasetExamples asClass.
+				#VRPaper asClass.
+				#VRPaperGroup asClass} asSet.
+	self assert: #VRDatasetExamples asClass methods size equals: 7.
+	self assert: #VRPaper asClass methods size equals: 9.
+	self
+		assert: (#VRPaperGroup asClass methods reject: #isFromTrait) size
+		equals: 1.
+	examples := self runAllVRExamples.
+	self assert: examples failedExamples isEmpty.
+	self assert: examples erroredExamples isEmpty.
+	^ package
+]
+
+{ #category : #examples }
+VRTutorialExamples >> fileIn8Dataset [
+	<gtExample>
+	| package examples |
+	package := self ensureVRPackage.
+	(self fileOutsFolder / 'VisualisationReview-8-Dataset.st') fileIn.
+	self
+		assert: package classes
+		equals: {#VRDatasetExamples asClass.
+		#VRDataset asClass.
+				#VRPaper asClass.
+				#VRPaperGroup asClass} asSet.
+	self assert: #VRDatasetExamples asClass methods size equals: 8.
+	self assert: #VRDataset asClass methods size equals: 10.
+	self assert: #VRPaper asClass methods size equals: 11.
+	self
+		assert: (#VRPaperGroup asClass methods reject: #isFromTrait) size
+		equals: 1.
+	examples := self runAllVRExamples.
+	self assert: examples failedExamples isEmpty.
+	self assert: examples erroredExamples isEmpty.
+	^ package
+]
+
+{ #category : #examples }
+VRTutorialExamples >> fileOutsFolder [
+	<gtExample>
+	^ self datasetFolder / 'fileOuts'
 ]
 
 { #category : #examples }
@@ -102,4 +284,40 @@ VRTutorialExamples >> newClassSnippetWithFixitClickedElement [
 	<gtExample>
 	<noTest>
 	^ self newClassSnippetWithFixitClicked elementWithoutParent
+]
+
+{ #category : #examples }
+VRTutorialExamples >> removeVRPackages [
+	<gtExample>
+	<noTest>
+	self packageOrganizer
+		packageNamed: #VisualisationReview
+		ifPresent: [ :p | p removeFromSystem ].
+	self packageOrganizer
+		packageNamed: #'VisualisationReview-Examples'
+		ifPresent: [ :p | p removeFromSystem ].
+	self packageOrganizer
+		packageNamed: #'VisualisationReview-Model'
+		ifPresent: [ :p | p removeFromSystem ].
+]
+
+{ #category : #'as yet unclassified' }
+VRTutorialExamples >> runAllVRExamples [
+	"NB: Not an example. To be used by the fileIn* examples to check there are no errors or failures."
+
+	| examples |
+	examples := GtExplicitExampleGroup
+			withAll: #VisualisationReview asPackage gtExamplesAllContained.
+	examples runAll.
+	^ examples
+]
+
+{ #category : #examples }
+VRTutorialExamples >> vrTutorialPage [
+	<gtExample>
+	| page pageName |
+	pageName := 'Tutorial: molding CSV data into an explainable system'.
+	self assert: (LeDatabase gtBook hasPageNamed: pageName).
+	page := LeDatabase gtBook pageNamed: pageName.
+	^ page
 ]
