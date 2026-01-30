@@ -182,6 +182,40 @@ VRTutorialExamples >> fileIn13Mondrian [
 ]
 
 { #category : #examples }
+VRTutorialExamples >> fileIn14Venues [
+	<gtExample>
+	| package examples |
+	package := self ensureVRPackage.
+	(self fileOutsFolder / 'VisualisationReview-14-Venues.st') fileIn.
+	self
+		assert: package classes
+		equals: {#VRDatasetExamples asClass.
+				#VRDataset asClass.
+				#VRDomainEntity asClass.
+				#VRAuthor asClass.
+				#VRPaper asClass.
+				#VRVenue asClass.
+				#VRDomainEntityGroup asClass.
+				#VRAuthorGroup asClass.
+				#VRPaperGroup asClass.
+				#VRVenueGroup asClass} asSet.
+	self assert: #VRDatasetExamples asClass methods size equals: 9.
+	self assert: #VRDataset asClass methods size equals: 24.
+	self assert: #VRDomainEntity asClass methods size equals: 7.
+	self assert: #VRAuthor asClass methods size equals: 18.
+	self assert: #VRPaper asClass methods size equals: 22.
+	self
+		assert: (#VRDomainEntityGroup asClass methods reject: #isFromTrait) size
+		equals: 0.
+	self assert: #VRAuthorGroup asClass methods size equals: 1.
+	self assert: #VRPaperGroup asClass methods size equals: 1.
+	examples := self runAllVRExamples.
+	self assert: examples failedExamples isEmpty.
+	self assert: examples erroredExamples isEmpty.
+	^ package
+]
+
+{ #category : #examples }
 VRTutorialExamples >> fileIn1DatasetExamples [
 	<gtExample>
 	| package examples |
