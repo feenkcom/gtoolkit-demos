@@ -192,7 +192,7 @@ VRTutorialExamples >> fileIn8Dataset [
 				#VRPaper asClass.
 				#VRPaperGroup asClass} asSet.
 	self assert: #VRDatasetExamples asClass methods size equals: 8.
-	self assert: #VRDataset asClass methods size equals: 10.
+	self assert: #VRDataset asClass methods size equals: 11.
 	self assert: #VRPaper asClass methods size equals: 11.
 	self
 		assert: (#VRPaperGroup asClass methods reject: #isFromTrait) size
