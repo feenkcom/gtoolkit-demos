@@ -70,10 +70,42 @@ VRTutorialExamples >> fileIn10MoldingAuthors [
 				#VRAuthorGroup asClass.
 				#VRPaperGroup asClass} asSet.
 	self assert: #VRDatasetExamples asClass methods size equals: 9.
-	self assert: #VRDataset asClass methods size equals: 15.
+	self assert: #VRDataset asClass methods size equals: 16.
 	self assert: #VRDomainEntity asClass methods size equals: 2.
-	self assert: #VRAuthor asClass methods size equals: 8.
+	self assert: #VRAuthor asClass methods size equals: 10.
 	self assert: #VRPaper asClass methods size equals: 15.
+	self
+		assert: (#VRDomainEntityGroup asClass methods reject: #isFromTrait) size
+		equals: 0.
+	self assert: #VRAuthorGroup asClass methods size equals: 1.
+	self assert: #VRPaperGroup asClass methods size equals: 1.
+	examples := self runAllVRExamples.
+	self assert: examples failedExamples isEmpty.
+	self assert: examples erroredExamples isEmpty.
+	^ package
+]
+
+{ #category : #examples }
+VRTutorialExamples >> fileIn11Actions [
+	<gtExample>
+	| package examples |
+	package := self ensureVRPackage.
+	(self fileOutsFolder / 'VisualisationReview-11-Actions.st') fileIn.
+	self
+		assert: package classes
+		equals: {#VRDatasetExamples asClass.
+				#VRDataset asClass.
+				#VRDomainEntity asClass.
+				#VRAuthor asClass.
+				#VRPaper asClass.
+				#VRDomainEntityGroup asClass.
+				#VRAuthorGroup asClass.
+				#VRPaperGroup asClass} asSet.
+	self assert: #VRDatasetExamples asClass methods size equals: 9.
+	self assert: #VRDataset asClass methods size equals: 16.
+	self assert: #VRDomainEntity asClass methods size equals: 3.
+	self assert: #VRAuthor asClass methods size equals: 10.
+	self assert: #VRPaper asClass methods size equals: 16.
 	self
 		assert: (#VRDomainEntityGroup asClass methods reject: #isFromTrait) size
 		equals: 0.
