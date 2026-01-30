@@ -204,11 +204,53 @@ VRTutorialExamples >> fileIn14Venues [
 	self assert: #VRDomainEntity asClass methods size equals: 7.
 	self assert: #VRAuthor asClass methods size equals: 18.
 	self assert: #VRPaper asClass methods size equals: 22.
+	self assert: #VRVenue asClass methods size equals: 12.
 	self
 		assert: (#VRDomainEntityGroup asClass methods reject: #isFromTrait) size
 		equals: 0.
 	self assert: #VRAuthorGroup asClass methods size equals: 1.
 	self assert: #VRPaperGroup asClass methods size equals: 1.
+	self assert: #VRVenueGroup asClass methods size equals: 1.
+	examples := self runAllVRExamples.
+	self assert: examples failedExamples isEmpty.
+	self assert: examples erroredExamples isEmpty.
+	^ package
+]
+
+{ #category : #examples }
+VRTutorialExamples >> fileIn15DesignStudies [
+	<gtExample>
+	| package examples |
+	package := self ensureVRPackage.
+	(self fileOutsFolder / 'VisualisationReview-15-DesignStudies.st') fileIn.
+	self
+		assert: package classes
+		equals: {#VRDatasetExamples asClass.
+				#VRDataset asClass.
+				#VRDomainEntity asClass.
+				#VRAuthor asClass.
+				#VRPaper asClass.
+				#VRVenue asClass.
+				#VRDesignStudy asClass.
+				#VRDomainEntityGroup asClass.
+				#VRAuthorGroup asClass.
+				#VRPaperGroup asClass.
+				#VRVenueGroup asClass.
+				#VRDesignStudyGroup asClass} asSet.
+	self assert: #VRDatasetExamples asClass methods size equals: 9.
+	self assert: #VRDataset asClass methods size equals: 28.
+	self assert: #VRDesignStudy asClass methods size equals: 12.
+	self assert: #VRDomainEntity asClass methods size equals: 7.
+	self assert: #VRAuthor asClass methods size equals: 18.
+	self assert: #VRPaper asClass methods size equals: 23.
+	self assert: #VRVenue asClass methods size equals: 12.
+	self
+		assert: (#VRDomainEntityGroup asClass methods reject: #isFromTrait) size
+		equals: 0.
+	self assert: #VRAuthorGroup asClass methods size equals: 1.
+	self assert: #VRDesignStudyGroup asClass methods size equals: 1.
+	self assert: #VRPaperGroup asClass methods size equals: 1.
+	self assert: #VRVenueGroup asClass methods size equals: 1.
 	examples := self runAllVRExamples.
 	self assert: examples failedExamples isEmpty.
 	self assert: examples erroredExamples isEmpty.
