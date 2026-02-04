@@ -222,12 +222,14 @@ DemoSlideshow >> inspectorView: aSlide [
 
 { #category : #slides }
 DemoSlideshow >> inspectorViewInPager: aSlide [
+	"NB: here we explicitly use the old linear pager, because the default GtTreePager does not strip away the other views."
+
 	<gtSlide>
 	<text: 'An Inspector view in a Pager'>
 	^ aSlide labelAndElement
 		setPriority;
 		newFadedText: 'An Inspector view in a Pager';
-		element: [ (GtPagerSettings usedPager
+		element: [ (GtPagerSettings useLinearPager usedPager
 				createWrappedOn: (GtLudoGame new gtPlayersFor: GtPhlowView empty)) maximized ]
 ]
 
