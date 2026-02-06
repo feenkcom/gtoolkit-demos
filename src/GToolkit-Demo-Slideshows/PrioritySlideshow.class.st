@@ -62,7 +62,7 @@ PrioritySlideshow class >> gtLiveSlideshowFor: aView [
 		actionUpdateButton
 ]
 
-{ #category : #actions }
+{ #category : #action }
 PrioritySlideshow class >> gtOpenSlideshowActionFor: anAction [
 	<gtAction>
 	<gtClassAction>
@@ -132,7 +132,7 @@ PrioritySlideshow >> addItem: label inScenery: scenery [
 								bold)))
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #accessing }
 PrioritySlideshow >> announcer [
 	^ announcer
 ]
@@ -169,6 +169,14 @@ PrioritySlideshow >> asHeader: aString [
 		glamorousRegularFont;
 		bold;
 		fontSize: self headerSize
+]
+
+{ #category : #text }
+PrioritySlideshow >> asSectionTitle: aString [
+	^ aString asRopedText
+		glamorousRegularFont;
+		bold;
+		fontSize: self sectionTitleSize
 ]
 
 { #category : #text }
@@ -211,7 +219,7 @@ PrioritySlideshow >> cr [
 	^ String cr asRopedText
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #deprecated }
 PrioritySlideshow >> db [
 	"Convenience method for backward compatibility."
 	self deprecated: 'Send #database instead 'transformWith: '`@receiver db' -> '`@receiver database'.
@@ -299,13 +307,24 @@ PrioritySlideshow >> exportSlidePNGs [
 	^ self slideDir
 ]
 
-{ #category : #constants }
+{ #category : #constant }
 PrioritySlideshow >> gtBook [
 	"Should deprecate this? Use instead: LeDatabase gtBook"
 
 	<gtExample>
 	<noTest>
 	^ LeDatabase gtBook
+]
+
+{ #category : #action }
+PrioritySlideshow >> gtDatabaseAction: anAction [
+	<gtAction>
+	self database ifNil: [ ^ anAction empty ].
+	^ anAction button
+		tooltip: 'Inspect internal database';
+		priority: 20;
+		icon: LeIcons lepiterDatabase;
+		action: [ :aButton :aModel :anEvent | aButton phlow spawnObject: self database ]
 ]
 
 { #category : #'gt inspector' }
@@ -333,7 +352,7 @@ PrioritySlideshow >> gtDemoNotesFor: aView [
 		updateWhen: SlideshowMethodUpdated in: self announcer
 ]
 
-{ #category : #actions }
+{ #category : #action }
 PrioritySlideshow >> gtExportPngAction: anAction [
 	<gtAction>
 	self slideMethods ifEmpty: [ ^ anAction empty ].
@@ -345,7 +364,7 @@ PrioritySlideshow >> gtExportPngAction: anAction [
 		action: [ :aButton :aModel :anEvent | aButton phlow spawnObject: self exportSlidePNGs ]
 ]
 
-{ #category : #actions }
+{ #category : #action }
 PrioritySlideshow >> gtGitAction: anAction [
 	<gtAction>
 	^ anAction button
@@ -364,7 +383,7 @@ PrioritySlideshow >> gtGitAction: anAction [
 						spawnTool: (GtGitPhlowTool new repository: repository) ] ]
 ]
 
-{ #category : #actions }
+{ #category : #action }
 PrioritySlideshow >> gtHTMLLocalExportActionFor: anAction [
 	<gtAction>
 	self slideMethods ifEmpty: [ ^ anAction empty ].
@@ -414,7 +433,7 @@ PrioritySlideshow >> gtMetricsFor: aView [
 		updateWhen: SlideshowMethodUpdated in: self announcer
 ]
 
-{ #category : #actions }
+{ #category : #action }
 PrioritySlideshow >> gtPlaySlideshowAction: anAction [
 	<gtAction>
 	^ anAction explicit
@@ -429,15 +448,30 @@ PrioritySlideshow >> gtPlaySlideshowAction: anAction [
 			button ]
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #forwarding }
 PrioritySlideshow >> gtPresenterSlideshow [
-	"Needed to extract a forwarding view for inherited slideshows."
-
+	"Used by inherited slideshows to extract a forwarding view."
 	| gtPresenterSlideshow |
 	gtPresenterSlideshow := GtPresenterSlideShow new.
 	gtPresenterSlideshow slides
 		slides: (self slides collect: [ :slide | GtPresenterSlide new stencil: slide ]).
 	^ gtPresenterSlideshow
+]
+
+{ #category : #action }
+PrioritySlideshow >> gtRefreshDatabaseActionFor: anAction [
+	<gtAction>
+	database ifNil: [ ^ anAction empty ].
+	^ anAction explicit
+		priority: 15;
+		stencil: [ | button |
+			button := BrButton new
+					"id: GtInspectorInspectButtonId;"
+					aptitude: BrGlamorousButtonWithIconAptitude;
+					icon: BrGlamorousVectorIcons refresh;
+					label: 'Refresh database';
+					action: [ :aButton :aModel :anEvent | aButton phlow spawnObject: self renewDatabase ].
+			button ]
 ]
 
 { #category : #view }
@@ -611,7 +645,7 @@ PrioritySlideshow >> pages [
 	^ self slidePriorities
 ]
 
-{ #category : #constants }
+{ #category : #constant }
 PrioritySlideshow >> picturesDirectoryPath [
 	"Default path may be overridden"
 
@@ -640,6 +674,17 @@ PrioritySlideshow >> removeClass: aClassSymbol [
 { #category : #utility }
 PrioritySlideshow >> removePackage: aPackageSymbol [
 	[ aPackageSymbol asPackage removeFromSystem ] onErrorDo: [  ]
+]
+
+{ #category : #action }
+PrioritySlideshow >> renewDatabase [
+	"Recreate the database from scratch, eg after adding new pages."
+
+	database := LeDatabase new.
+	LeBasicDatabasesRegistry new
+		defaultLogicalDatabase: (LeLogicalDatabase new primaryDB: database).
+	self initializeDatabase.
+	^ database
 ]
 
 { #category : #utility }
@@ -695,6 +740,11 @@ PrioritySlideshow >> scriptText [
 					copy: scriptText
 					translatingMatchesUsing: [ :each | regex subexpression: 2 ] ].
 	^ scriptText
+]
+
+{ #category : #constant }
+PrioritySlideshow >> sectionTitleSize [
+	^ 48
 ]
 
 { #category : #utility }

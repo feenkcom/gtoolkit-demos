@@ -4,7 +4,7 @@ These examples are used in the GT book page `Tutorial: molding CSV data into an 
 Class {
 	#name : #VRTutorialExamples,
 	#superclass : #Object,
-	#category : #'GToolkit-Demo-VisualizationReview'
+	#category : #'GToolkit-Demo-VisualizationReview-Examples'
 }
 
 { #category : #examples }
