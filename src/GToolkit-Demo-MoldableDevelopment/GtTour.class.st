@@ -1036,7 +1036,11 @@ GtTour >> timelineElement [
 				(Date
 					year: 2024
 					month: 07
-					day: 8) -> 'Moldable Development Patterns'}.
+					day: 8) -> 'Moldable Development Patterns'.
+				(Date
+					year: 2025
+					month: 05
+					day: 30) -> 'First public large scale case study: Lifeware'}.
 	^ plotter asElement
 ]
 
