@@ -4,7 +4,7 @@ Class {
 	#instVars : [
 		'rawData'
 	],
-	#category : 'GToolkit-Demo-GitHubAPI-Model'
+	#category : #'GToolkit-Demo-GitHubAPI-Model'
 }
 
 { #category : #accessing }

@@ -3,7 +3,7 @@ Class {
 	#superclass : #GhObject,
 	#traits : 'TGtGroup',
 	#classTraits : 'TGtGroup classTrait',
-	#category : 'GToolkit-Demo-GitHubAPI-Model'
+	#category : #'GToolkit-Demo-GitHubAPI-Model'
 }
 
 { #category : #accessing }

@@ -1,7 +1,7 @@
 Class {
 	#name : #GhContributors,
 	#superclass : #GhGroup,
-	#category : 'GToolkit-Demo-GitHubAPI-Model'
+	#category : #'GToolkit-Demo-GitHubAPI-Model'
 }
 
 { #category : #accessing }

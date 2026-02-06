@@ -222,13 +222,16 @@ DemoSlideshow >> inspectorView: aSlide [
 
 { #category : #slides }
 DemoSlideshow >> inspectorViewInPager: aSlide [
+	"NB: Fixed to work with the GtTreePager."
+
 	<gtSlide>
 	<text: 'An Inspector view in a Pager'>
 	^ aSlide labelAndElement
 		setPriority;
 		newFadedText: 'An Inspector view in a Pager';
 		element: [ (GtPagerSettings usedPager
-				createWrappedOn: (GtLudoGame new gtPlayersFor: GtPhlowView empty)) maximized ]
+				createWrappedOn: (GtInspectorTool forObject: GtLudoGame new viewSelector: #gtPlayersFor:))
+				maximized ]
 ]
 
 { #category : #slides }

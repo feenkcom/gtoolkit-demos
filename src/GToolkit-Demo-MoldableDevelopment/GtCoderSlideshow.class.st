@@ -422,7 +422,7 @@ On top of that there is an ' asRopedText,
 { #category : #accessing }
 GtCoderSlideshow >> coderInterfaceExplanationWithLinks [
 	<gtExample>
-	<return: #GtPager>
+	<return: #GtTreePager>
 	| coderElement packageHierarchyTarget classHierarchyTarget classCoderTarget addClassButtonTarget spotterButtonTarget buttons |
 	coderElement := BlScripter new
 			element: (GtCoderElement forClass: GtABAddressBook) createInPager maximized;
@@ -684,7 +684,7 @@ GtCoderSlideshow >> exampleMethodsExplanationText [
 { #category : #accessing }
 GtCoderSlideshow >> exampleMethodsExplanationWithLinks [
 	<gtExample>
-	<return: #GtPager>
+	<return: #GtTreePager>
 	| classCoderElement pragmaTarget inspectTarget evaluateTarget debugTarget aScripter expandedMethodElement buttonsList |
 	classCoderElement := (GtInspector
 			createOn: (GtPharoBehaviorCoder forClass: GtABAddressBookExample)) maximized.
