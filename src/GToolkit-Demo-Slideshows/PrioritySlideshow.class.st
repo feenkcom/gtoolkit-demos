@@ -324,6 +324,7 @@ PrioritySlideshow >> gtDatabaseAction: anAction [
 		tooltip: 'Inspect internal database';
 		priority: 20;
 		icon: LeIcons lepiterDatabase;
+		target: PrioritySlideshowActionTarget;
 		action: [ :aButton :aModel :anEvent | aButton phlow spawnObject: self database ]
 ]
 
@@ -359,8 +360,9 @@ PrioritySlideshow >> gtExportPngAction: anAction [
 	^ anAction button
 		label: ' PNG';
 		tooltip: 'Save PNGs to disk';
-		priority: 20;
+		priority: 60;
 		icon: BrGlamorousVectorIcons spawn;
+		target: PrioritySlideshowActionTarget;
 		action: [ :aButton :aModel :anEvent | aButton phlow spawnObject: self exportSlidePNGs ]
 ]
 
@@ -371,7 +373,7 @@ PrioritySlideshow >> gtGitAction: anAction [
 		tooltip: 'Go to repository';
 		priority: 25;
 		icon: BrGlamorousVectorIcons branching;
-		"id: GtCoderGitButtonId;"
+		target: PrioritySlideshowActionTarget;
 		action: [ :aButton | 
 			| repository |
 			repository := self class repository.
@@ -390,8 +392,9 @@ PrioritySlideshow >> gtHTMLLocalExportActionFor: anAction [
 	^ anAction button
 		label: 'HTML';
 		tooltip: 'Export the slide deck to HTML and store locally';
-		priority: 21;
+		priority: 61;
 		icon: BrGlamorousVectorIcons spawn;
+		target: PrioritySlideshowActionTarget;
 		action: [ :aButton | 
 			| output |
 			output := self exportHTML.
@@ -436,16 +439,12 @@ PrioritySlideshow >> gtMetricsFor: aView [
 { #category : #action }
 PrioritySlideshow >> gtPlaySlideshowAction: anAction [
 	<gtAction>
-	^ anAction explicit
+	^ anAction button
 		priority: 10;
-		stencil: [ | button |
-			button := BrButton new
-					"id: GtInspectorInspectButtonId;"
-					aptitude: BrGlamorousButtonWithIconAptitude;
-					icon: BrGlamorousVectorIcons play;
-					label: 'Play slideshow';
-					action: [ :aButton :aModel :anEvent | self class show ].
-			button ]
+		tooltip: 'Play slideshow';
+		icon: BrGlamorousVectorIcons play;
+		"target: PrioritySlideshowActionTarget;"
+		action: [ :aButton :aModel :anEvent | self class show ]
 ]
 
 { #category : #forwarding }
@@ -462,16 +461,12 @@ PrioritySlideshow >> gtPresenterSlideshow [
 PrioritySlideshow >> gtRefreshDatabaseActionFor: anAction [
 	<gtAction>
 	database ifNil: [ ^ anAction empty ].
-	^ anAction explicit
-		priority: 15;
-		stencil: [ | button |
-			button := BrButton new
-					"id: GtInspectorInspectButtonId;"
-					aptitude: BrGlamorousButtonWithIconAptitude;
-					icon: BrGlamorousVectorIcons refresh;
-					label: 'Refresh database';
-					action: [ :aButton :aModel :anEvent | aButton phlow spawnObject: self renewDatabase ].
-			button ]
+	^ anAction button
+		tooltip: 'Refresh database';
+		priority: 21;
+		icon: BrGlamorousVectorIcons refresh;
+		target: PrioritySlideshowActionTarget;
+		action: [ :aButton :aModel :anEvent | aButton phlow spawnObject: self renewDatabase ]
 ]
 
 { #category : #view }
@@ -538,6 +533,21 @@ PrioritySlideshow >> gtSlidesFor: aView [
 		title: 'Slides';
 		object: [ self gtPresenterSlideshow ];
 		view: #gtSlidesListViewFor:
+]
+
+{ #category : #'as yet unclassified' }
+PrioritySlideshow >> gtSlideshowActionsDropdownMenuFor: anAction [
+	"To automatically add actions as menu items, define an action as 
+	an extension method, with PrioritySlideshowActionTarget as the `target:`
+	I am modeled after the class actions dropdown: Behavior>>#gtClassActionsDropdownFor:"
+
+	<gtAction>
+	^ anAction dropdown
+		tooltip: 'Slideshow actions';
+		icon: BrGlamorousVectorIcons hamburger;
+		id: PrioritySlideshowDropdownButtonId;
+		priority: 100;
+		menuItemsForObject: self fromTarget: PrioritySlideshowActionTarget
 ]
 
 { #category : #searching }
@@ -676,7 +686,7 @@ PrioritySlideshow >> removePackage: aPackageSymbol [
 	[ aPackageSymbol asPackage removeFromSystem ] onErrorDo: [  ]
 ]
 
-{ #category : #action }
+{ #category : #utility }
 PrioritySlideshow >> renewDatabase [
 	"Recreate the database from scratch, eg after adding new pages."
 
