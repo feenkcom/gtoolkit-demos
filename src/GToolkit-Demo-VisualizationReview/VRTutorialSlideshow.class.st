@@ -39,7 +39,10 @@ VRTutorialSlideshow >> exploringTheCSV: aSlide [
 	<text:
 'Exploring the CSV — posing some initial questions
 
-'>
+One dataset describes all the papers, and the other one provides more details about the design studies. We have many questions, but they are not easy to answer from the raw data.'>
+<demo:
+'- Scroll through the data.
+- Open the CSV in Excel.'>
 	^ aSlide lepiterPage
 		setPriority;
 		startPage: (self database pageNamed: 'Exploring the CSV')
@@ -124,7 +127,7 @@ VRTutorialSlideshow >> startingPoint: aSlide [
 	<text:
 'Starting point: CSV data from a software visualization publication review study
 
-Here we seen an inspector on the folder containing the dataset. The inspector as been molded to show not just the default *Raw* view, but several more useful views for folders.'>
+Here we seen an inspector on the folder containing the two datasets. The inspector as been molded to show not just the default *Raw* view, but several more useful views for folders.'>
 <demo:
 '- Compare the Tree and Raw views
 - Dive into the datasets'>

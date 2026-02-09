@@ -137,14 +137,14 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2026-02-09T12:31:17.289417+01:00"
+						"dateAndTimeString" : "2026-02-09T12:30:43.980595+01:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
 					"uidString" : "UyLmOh8dRkGtbmfwsveMLg=="
 				},
-				"code" : "allPapersFile := datasetFolder / 'dataset-review-vissoft-all.csv'.\r(CSV2JSON for: allPapersFile contents) json."
+				"code" : "allPapersFile := datasetFolder / 'dataset-review-vissoft-all.csv'.\rallJson := (CSV2JSON for: allPapersFile contents) json."
 			},
 			{
 				"__type" : "pharoSnippet",

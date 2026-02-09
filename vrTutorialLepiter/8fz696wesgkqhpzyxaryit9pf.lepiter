@@ -29,7 +29,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2026-02-09T09:51:46.444141+01:00"
+						"dateAndTimeString" : "2026-02-09T12:23:07.892741+01:00"
 					}
 				},
 				"uid" : {
@@ -39,7 +39,7 @@
 				"paragraphStyle" : {
 					"__type" : "textStyle"
 				},
-				"string" : "# Starting point: CSV data from a software visualization publication review study"
+				"string" : "# CSV data from a software visualization publication review study"
 			},
 			{
 				"__type" : "textSnippet",

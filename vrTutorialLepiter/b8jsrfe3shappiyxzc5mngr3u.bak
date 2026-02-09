@@ -18,7 +18,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2026-02-09T09:51:46.444141+01:00"
+						"dateAndTimeString" : "2026-02-09T09:52:14.049115+01:00"
 					}
 				},
 				"editEmail" : {
@@ -29,17 +29,17 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2026-02-09T12:13:15.634875+01:00"
+						"dateAndTimeString" : "2026-02-09T12:17:07.086984+01:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
-					"uidString" : "b1osgpuLSGCvyXe3pipO5w=="
+					"uidString" : "HaMBSEDQSrKBuURvpQe4yA=="
 				},
 				"paragraphStyle" : {
 					"__type" : "textStyle"
 				},
-				"string" : "# Starting point: CSV data from a software visualization publication review study"
+				"string" : "# Exploring the CSV — posing some initial questions"
 			},
 			{
 				"__type" : "textSnippet",
@@ -55,7 +55,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2026-02-09T09:51:46.444975+01:00"
+						"dateAndTimeString" : "2026-02-09T12:17:09.00777+01:00"
 					}
 				},
 				"editEmail" : {
@@ -66,17 +66,17 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2026-02-09T09:51:46.444975+01:00"
+						"dateAndTimeString" : "2026-02-09T12:19:33.042232+01:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
-					"uidString" : "sRCKtdI7SjOSHQAmMxg6sw=="
+					"uidString" : "7Smg8NSqTESuw0uSS4edoQ=="
 				},
 				"paragraphStyle" : {
 					"__type" : "textStyle"
 				},
-				"string" : "This folder contains copies of the datasets from a research study of software visualization publications."
+				"string" : "When we browse the raw data, many questions arise:\n— *Which are the selected design study papers?*\n— *How many authors are there?*\n— *Which authors published most frequently?*\n— *What different types of papers were identified?*\n— ...\nbut these questions are not easy to answer from the raw data."
 			},
 			{
 				"__type" : "exampleSnippet",
@@ -92,7 +92,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2026-02-09T09:51:46.44547+01:00"
+						"dateAndTimeString" : "2026-02-09T12:16:59.996944+01:00"
 					}
 				},
 				"editEmail" : {
@@ -103,15 +103,15 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2026-02-09T09:51:46.44547+01:00"
+						"dateAndTimeString" : "2026-02-09T12:16:59.996944+01:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
-					"uidString" : "NnTOM/M1SViWjRoCXDJYZA=="
+					"uidString" : "cvN9qdOCSYG6d9QuQx9Yaw=="
 				},
-				"exampleSelector" : "datasetFolder",
-				"previewHeight" : 250,
+				"exampleSelector" : "datasetAllCsv",
+				"previewHeight" : 400,
 				"previewShowSelector" : "gtViewsFor:",
 				"exampleBehaviorName" : "VRTutorialExamples",
 				"codeExpanded" : true,
@@ -128,7 +128,7 @@
 		"__type" : "time",
 		"time" : {
 			"__type" : "dateAndTime",
-			"dateAndTimeString" : "2026-02-09T09:50:58.209258+01:00"
+			"dateAndTimeString" : "2026-02-09T09:52:47.960875+01:00"
 		}
 	},
 	"editEmail" : {
@@ -139,15 +139,15 @@
 		"__type" : "time",
 		"time" : {
 			"__type" : "dateAndTime",
-			"dateAndTimeString" : "2026-02-09T09:51:55.831765+01:00"
+			"dateAndTimeString" : "2026-02-09T09:52:47.960875+01:00"
 		}
 	},
 	"pageType" : {
 		"__type" : "namedPage",
-		"title" : "Starting point"
+		"title" : "Exploring the CSV"
 	},
 	"uid" : {
 		"__type" : "uuid",
-		"uuid" : "6320da50-b3ff-4d94-b822-ef015544a08e"
+		"uuid" : "3accf005-a720-495a-96c4-33d7bf9ad0bd"
 	}
 }

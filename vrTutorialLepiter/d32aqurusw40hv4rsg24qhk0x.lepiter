@@ -29,7 +29,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2026-02-09T09:56:48.774803+01:00"
+						"dateAndTimeString" : "2026-02-09T12:16:30.727475+01:00"
 					}
 				},
 				"uid" : {
@@ -39,7 +39,7 @@
 				"paragraphStyle" : {
 					"__type" : "textStyle"
 				},
-				"string" : "This database is intended to provide pages for slides in the {{gtClass:name=VRTutorialSlideshow}}.\nThe database should only be loaded in case the pages need to be updated.\nThe slideshow will clone a mock database from these pages when the database is not loaded.\nSee {{gtClass:name=TLeInMemoryDatabaseHolder}}"
+				"string" : "This database provides pages for slides in the {{gtClass:name=VRTutorialSlideshow}}.\nThe database should only be loaded in case the pages need to be updated, otherwise the pages will be loaded into an in-memory database  by the slideshow."
 			}
 		]
 	},
