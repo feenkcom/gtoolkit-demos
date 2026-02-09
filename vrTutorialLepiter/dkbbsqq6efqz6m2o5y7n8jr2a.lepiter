@@ -103,82 +103,14 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2026-02-09T12:27:48.13317+01:00"
+						"dateAndTimeString" : "2026-02-09T15:36:05.474539+01:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
 					"uidString" : "LKdLPkiMRHyiCCTVJsLQGQ=="
 				},
-				"code" : "datasetFolder := FileLocator gtResource / 'feenkcom' / 'gtoolkit-demos' / 'data'\r\t\t/ 'visualisation-review'."
-			},
-			{
-				"__type" : "pharoSnippet",
-				"children" : {
-					"__type" : "snippets",
-					"items" : [ ]
-				},
-				"createEmail" : {
-					"__type" : "email",
-					"emailString" : "<unknown>"
-				},
-				"createTime" : {
-					"__type" : "time",
-					"time" : {
-						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2026-02-09T12:28:25.447771+01:00"
-					}
-				},
-				"editEmail" : {
-					"__type" : "email",
-					"emailString" : "<unknown>"
-				},
-				"editTime" : {
-					"__type" : "time",
-					"time" : {
-						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2026-02-09T12:31:17.289417+01:00"
-					}
-				},
-				"uid" : {
-					"__type" : "uid",
-					"uidString" : "UyLmOh8dRkGtbmfwsveMLg=="
-				},
-				"code" : "allPapersFile := datasetFolder / 'dataset-review-vissoft-all.csv'.\r(CSV2JSON for: allPapersFile contents) json."
-			},
-			{
-				"__type" : "pharoSnippet",
-				"children" : {
-					"__type" : "snippets",
-					"items" : [ ]
-				},
-				"createEmail" : {
-					"__type" : "email",
-					"emailString" : "<unknown>"
-				},
-				"createTime" : {
-					"__type" : "time",
-					"time" : {
-						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2026-02-09T12:28:31.059975+01:00"
-					}
-				},
-				"editEmail" : {
-					"__type" : "email",
-					"emailString" : "<unknown>"
-				},
-				"editTime" : {
-					"__type" : "time",
-					"time" : {
-						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2026-02-09T12:30:43.983036+01:00"
-					}
-				},
-				"uid" : {
-					"__type" : "uid",
-					"uidString" : "YB2U2K4OSaKtB1VbojxFQw=="
-				},
-				"code" : "allJson := (CSV2JSON for: allPapersFile contents) jsonObject."
+				"code" : "datasetFolder := FileLocator gtResource\r\t/ 'feenkcom' / 'gtoolkit-demos' / 'data'\r\t/ 'visualisation-review'.\r\rallPapersFile := datasetFolder \r\t/ 'dataset-review-vissoft-all.csv'.\r\rallJson := (CSV2JSON for: allPapersFile contents)\r\tjsonObject"
 			}
 		]
 	},

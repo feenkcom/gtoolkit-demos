@@ -29,7 +29,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2026-02-09T15:33:17.406833+01:00"
+						"dateAndTimeString" : "2026-02-09T09:52:24.111274+01:00"
 					}
 				},
 				"uid" : {
@@ -39,7 +39,7 @@
 				"paragraphStyle" : {
 					"__type" : "textStyle"
 				},
-				"string" : "A placeholder for pages that have yet to be added for the slideshow."
+				"string" : ""
 			}
 		]
 	},

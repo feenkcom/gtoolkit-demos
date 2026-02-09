@@ -1,3 +1,6 @@
+"
+This slideshow is intended as a walkthrough of the stepsof the GT book page “Tutorial: molding CSV data into an explainable system”.
+"
 Class {
 	#name : #VRTutorialSlideshow,
 	#superclass : #InMemoryDatabaseSlideshow,
@@ -49,6 +52,19 @@ One dataset describes all the papers, and the other one provides more details ab
 ]
 
 { #category : #slides }
+VRTutorialSlideshow >> extractingExamples: aSlide [ 
+	<gtSlide>
+	<text:
+'Extracting examples from snippets
+
+We can turn the code snippets into *examples*, factory methods for objects of interest, andw we can add assertions so they serve as test as well.
+'>
+	^ aSlide lepiterPage
+		setPriority;
+		startPage: (self database pageNamed: 'Extracting examples from snippets')
+]
+
+{ #category : #slides }
 VRTutorialSlideshow >> modelingOtherEntities: aSlide [ 
 	<gtSlide>
 	<text:
@@ -76,7 +92,7 @@ VRTutorialSlideshow >> modelingPapers: aSlide [
 VRTutorialSlideshow >> moldingDomainObjects: aSlide [ 
 	<gtSlide>
 	<text:
-'## Molding CSV data — modeling domain objects'>
+'CONTINUE HERE ===> ## Molding CSV data — modeling domain objects'>
 	^ (aSlide title)
 		setPriority;
 		titleBottomPadding: 30;
@@ -109,6 +125,7 @@ VRTutorialSlideshow >> slidePriorities [
 			#startingPoint:
 			#exploringTheCSV:
 			#transformingRawData:
+			#extractingExamples:
 			
 		#moldingDomainObjects:
 			#modelingPapers:
@@ -156,7 +173,10 @@ VRTutorialSlideshow >> transformingRawData: aSlide [
 	<text:
 'Transforming the raw data — converting the CSV to JSON
 
+Luckily we already have a tool to convert CSV files to JSON dictionaries.
 '>
+<demo:
+'- Evaluate and inspect each statement in turn, then the whole snippet.'>
 	^ aSlide lepiterPage
 		setPriority;
 		startPage: (self database pageNamed: 'Transforming the raw data')
