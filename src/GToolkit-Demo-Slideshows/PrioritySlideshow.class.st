@@ -504,7 +504,7 @@ PrioritySlideshow >> gtSlideMethodsListViewFor: aView [
 	<gtView>
 	^ aView columnedList
 		priority: 30;
-		title: 'Slides';
+		title: 'Slide methods';
 		items: [ self slideMethods collect: #asRingDefinition ];
 		column: 'Index'
 			text: [ :eachItem :eachIndex | eachIndex asRopedText foreground: Color gray ]

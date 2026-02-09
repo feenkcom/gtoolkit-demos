@@ -1,6 +1,6 @@
 Class {
 	#name : #VRTutorialSlideshow,
-	#superclass : #PrioritySlideshow,
+	#superclass : #InMemoryDatabaseSlideshow,
 	#category : #'GToolkit-Demo-VisualizationReview-Slideshows'
 }
 
@@ -28,17 +28,9 @@ VRTutorialSlideshow >> continuingExploration: aSlide [
 		subtitleWithFormat: (self asSectionTitle: 'continuing the exploration')
 ]
 
-{ #category : #page }
-VRTutorialSlideshow >> exploringTheCSV [
-	<lePage>
-	<gtExample>
-	<noTest>
-	^ (LePage named: 'Exploring the CSV')
-		addSnippet: (LeTextSnippet new
-				string: 'Placeholder';
-				yourself);
-
-		yourself
+{ #category : #acccessing }
+VRTutorialSlideshow >> databaseName [
+	^ 'feenkcom/gtoolkit-demos/vrTutorialLepiter'
 ]
 
 { #category : #slides }
@@ -89,24 +81,13 @@ VRTutorialSlideshow >> moldingDomainObjects: aSlide [
 		subtitleWithFormat: (self asSectionTitle: 'modeling domain objects')
 ]
 
-{ #category : #page }
-VRTutorialSlideshow >> placeholder [
-	<lePage>
-	<gtExample>
-	<noTest>
-	^ (LePage named: 'PLACEHOLDER')
-		addSnippet: (LeTextSnippet new
-				string: 'Placeholder';
-				yourself);
-
-		yourself
-]
-
 { #category : #slides }
 VRTutorialSlideshow >> preparingTheData: aSlide [ 
 	<gtSlide>
 	<text:
-'## Molding CSV data — preparing the data'>
+'## Molding CSV data — preparing the data
+
+In this part we introduce the CSV dataset of a research project, explore the data to develop some initial questions, and transform the CSV data into JSON to prepare for modeling the domain entities hidden in the data.'>
 	^ (aSlide title)
 		setPriority;
 		titleBottomPadding: 30;
@@ -137,33 +118,16 @@ VRTutorialSlideshow >> slidePriorities [
 		)
 ]
 
-{ #category : #page }
-VRTutorialSlideshow >> startingPoint [
-	<lePage>
-	<gtExample>
-	<noTest>
-	^ (LePage named: 'Starting point')
-	addSnippet: (LeTextSnippet new
-			string: '# Starting point: CSV data from a software visualization publication review study';
-			yourself);
-	addSnippet: (LeExampleSnippet new
-			exampleBehaviorName: #VRTutorialExamples;
-			exampleSelector: #datasetFolder;
-			noCode: true;
-			previewShowSelector: #gtTreeFor:;
-			previewHeight: 170);
-	yourself
-]
-
 { #category : #slides }
 VRTutorialSlideshow >> startingPoint: aSlide [ 
 	<gtSlide>
 	<text:
 'Starting point: CSV data from a software visualization publication review study
 
-'>
+Here we seen an inspector on the folder containing the dataset. The inspector as been molded to show not just the default *Raw* view, but several more useful views for folders.'>
 <demo:
-''>
+'- Compare the Tree and Raw views
+- Dive into the datasets'>
 	^ aSlide lepiterPage
 		setPriority;
 		startPage: (self database pageNamed: 'Starting point')
@@ -175,25 +139,12 @@ VRTutorialSlideshow >> title: aSlide [
 	<text:
 '# Tutorial: molding CSV data into an explainable system
 
-This is a walk-through of the tutorial.'>
+This tutorial is intended as a first step-by-step, hands-on introduction to moldable development, using a CSV dataset from a research study as a case study. We will walk through the tutorial to show you all the steps.'>
 	^ (aSlide title)
 		setPriority;
 		titleBottomPadding: 30;
 		titleWithFormat: (self asTitle: 'Molding CSV data');
 		subtitleWithFormat: (self asBigText: 'into an explainable system')
-]
-
-{ #category : #page }
-VRTutorialSlideshow >> transformingRawData [
-	<lePage>
-	<gtExample>
-	<noTest>
-	^ (LePage named: 'Transforming the raw data')
-		addSnippet: (LeTextSnippet new
-				string: 'Placeholder';
-				yourself);
-
-		yourself
 ]
 
 { #category : #slides }
