@@ -13,3 +13,27 @@ Class {
 	#classTraits : 'TLeInMemoryDatabaseHolder classTrait',
 	#category : #'GToolkit-Demo-Slideshows-Slideshows'
 }
+
+{ #category : #action }
+InMemoryDatabaseSlideshow >> gtLoadDatabaseActionFor: anAction [
+	<gtAction>
+	database ifNil: [ ^ anAction empty ].
+	^ anAction button
+		tooltip: 'Load database';
+		priority: 25;
+		icon: BrGlamorousVectorIcons load;
+		target: PrioritySlideshowActionTarget;
+		action: [ :aButton :aModel :anEvent | aButton phlow spawnObject: self loadDatabase ]
+]
+
+{ #category : #action }
+InMemoryDatabaseSlideshow >> gtUnloadDatabaseActionFor: anAction [
+	<gtAction>
+	database ifNil: [ ^ anAction empty ].
+	^ anAction button
+		tooltip: 'Unload database';
+		priority: 26;
+		icon: BrGlamorousVectorIcons close;
+		target: PrioritySlideshowActionTarget;
+		action: [ :aButton :aModel :anEvent | aButton phlow spawnObject: self unloadDatabase ]
+]

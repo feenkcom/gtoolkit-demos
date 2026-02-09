@@ -371,7 +371,7 @@ PrioritySlideshow >> gtGitAction: anAction [
 	<gtAction>
 	^ anAction button
 		tooltip: 'Go to repository';
-		priority: 25;
+		priority: 30;
 		icon: BrGlamorousVectorIcons branching;
 		target: PrioritySlideshowActionTarget;
 		action: [ :aButton | 
