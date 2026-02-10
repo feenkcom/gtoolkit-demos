@@ -18,7 +18,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2026-02-09T15:42:20.740054+01:00"
+						"dateAndTimeString" : "2026-02-10T17:04:38.148982+01:00"
 					}
 				},
 				"editEmail" : {
@@ -29,7 +29,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2026-02-09T15:46:42.050821+01:00"
+						"dateAndTimeString" : "2026-02-10T17:04:38.152229+01:00"
 					}
 				},
 				"uid" : {
@@ -39,78 +39,7 @@
 				"paragraphStyle" : {
 					"__type" : "textStyle"
 				},
-				"string" : "We can prototype and extract code from a notebook playground."
-			},
-			{
-				"__type" : "pharoSnippet",
-				"children" : {
-					"__type" : "snippets",
-					"items" : [ ]
-				},
-				"createEmail" : {
-					"__type" : "email",
-					"emailString" : "<unknown>"
-				},
-				"createTime" : {
-					"__type" : "time",
-					"time" : {
-						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2026-02-09T15:46:43.580478+01:00"
-					}
-				},
-				"editEmail" : {
-					"__type" : "email",
-					"emailString" : "<unknown>"
-				},
-				"editTime" : {
-					"__type" : "time",
-					"time" : {
-						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2026-02-09T17:52:54.139499+01:00"
-					}
-				},
-				"uid" : {
-					"__type" : "uid",
-					"uidString" : "ZKYFlBP2TzSFYTJ19CKMSw=="
-				},
-				"code" : "VRDatasetExamples new"
-			},
-			{
-				"__type" : "textSnippet",
-				"children" : {
-					"__type" : "snippets",
-					"items" : [ ]
-				},
-				"createEmail" : {
-					"__type" : "email",
-					"emailString" : "<unknown>"
-				},
-				"createTime" : {
-					"__type" : "time",
-					"time" : {
-						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2026-02-09T15:47:05.204833+01:00"
-					}
-				},
-				"editEmail" : {
-					"__type" : "email",
-					"emailString" : "<unknown>"
-				},
-				"editTime" : {
-					"__type" : "time",
-					"time" : {
-						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2026-02-09T17:48:26.531107+01:00"
-					}
-				},
-				"uid" : {
-					"__type" : "uid",
-					"uidString" : "67l2BMWTSe6tnyv2ZJ+kQQ=="
-				},
-				"paragraphStyle" : {
-					"__type" : "textStyle"
-				},
-				"string" : "We create a new class in the new package `VisualisationReview` as a fixit."
+				"string" : "We can prototype and extract example code from a notebook playground."
 			},
 			{
 				"__type" : "pharoSnippet",
@@ -147,6 +76,43 @@
 				"code" : "FileLocator gtResource / 'feenkcom' / 'gtoolkit-demos' / 'data' / 'visualisation-review'"
 			},
 			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2026-02-10T17:05:00.590069+01:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2026-02-10T17:05:00.592612+01:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "67l2BMWTSe6tnyv2ZJ+kQQ=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : "After extracting the example, we can add assertions:"
+			},
+			{
 				"__type" : "blockQuoteSnippet",
 				"children" : {
 					"__type" : "snippets",
@@ -160,7 +126,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2026-02-09T16:34:24.872709+01:00"
+						"dateAndTimeString" : "2026-02-10T17:05:05.252037+01:00"
 					}
 				},
 				"editEmail" : {
@@ -171,14 +137,14 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2026-02-09T16:34:26.551277+01:00"
+						"dateAndTimeString" : "2026-02-10T17:05:05.255738+01:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
 					"uidString" : "jv4g1Yw8RTO5CL93VlAOXg=="
 				},
-				"string" : "datasetFolder\r\t<gtExample>\r\t| folder |\r\tfolder := FileLocator gtResource / 'feenkcom' / 'gtoolkit-demos'\r\t\t\t/ 'data' / 'visualisation-review'.\r\tself assert: folder exists.\r\tself assert: (folder allChildrenMatching: '*.csv') size equals: 2.\r\t^ folder"
+				"string" : "datasetFolder\r\t<gtExample>\r\t| folder |\r\tfolder := FileLocator gtResource\n\t\t/ 'feenkcom' / 'gtoolkit-demos'\r\t\t/ 'data' / 'visualisation-review'.\r\tself assert: folder exists.\r\tself assert: (folder allChildrenMatching: '*.csv') size equals: 2.\r\t^ folder"
 			},
 			{
 				"__type" : "textSnippet",
@@ -276,7 +242,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2026-02-09T17:57:15.739134+01:00"
+						"dateAndTimeString" : "2026-02-09T17:58:37.52836+01:00"
 					}
 				},
 				"uid" : {
