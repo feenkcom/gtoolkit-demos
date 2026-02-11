@@ -54,10 +54,11 @@ One dataset describes all the papers, and the other one provides more details ab
 { #category : #slides }
 VRTutorialSlideshow >> extractingExamples: aSlide [ 
 	<gtSlide>
+	<noTest>
 	<text:
 'Extracting examples from snippets
 
-We can turn the code snippets into *examples*, factory methods for objects of interest, andw we can add assertions so they serve as test as well.
+We can turn the code snippets into *examples*, factory methods for objects of interest, and we can add assertions so they serve as tests as well.
 '>
 	^ aSlide lepiterPage
 		setPriority;
