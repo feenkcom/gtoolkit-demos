@@ -5,6 +5,10 @@ I exist so that such slideshows can use me as a superclass instead of directly u
 My subclasses should override `databaseName` to point to the database to clone as an in-memory database.
 
 I am similar to {{gtClass:name=InMemoryDatabaseHolder}} except that I am a subclass of {{gtClass:name=PrioritySlideshow}}.
+
+NB: if my subclasses are expected to function in a release image, then their lepiter databases must be added to gtResources.
+See {{gtMethod:name=GtImageSetup class>>#copyDataAndDocsFolders}}.
+
 "
 Class {
 	#name : #InMemoryDatabaseSlideshow,
