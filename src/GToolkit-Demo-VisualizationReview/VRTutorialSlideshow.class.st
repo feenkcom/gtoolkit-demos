@@ -20,6 +20,30 @@ VRTutorialSlideshow >> actionsQueriesVisualizations: aSlide [
 ]
 
 { #category : #slides }
+VRTutorialSlideshow >> addingForwardView: aSlide [ 
+	<gtSlide>
+	<text:
+'XXX
+
+'>
+	^ aSlide lepiterPage
+		setPriority;
+		startPage: (self database pageNamed: 'PLACEHOLDER')
+]
+
+{ #category : #slides }
+VRTutorialSlideshow >> addingSummaryView: aSlide [ 
+	<gtSlide>
+	<text:
+'XXX
+
+'>
+	^ aSlide lepiterPage
+		setPriority;
+		startPage: (self database pageNamed: 'PLACEHOLDER')
+]
+
+{ #category : #slides }
 VRTutorialSlideshow >> continuingExploration: aSlide [ 
 	<gtSlide>
 	<text:
@@ -66,6 +90,20 @@ We can turn the code snippets into *examples*, factory methods for objects of in
 ]
 
 { #category : #slides }
+VRTutorialSlideshow >> modelingDomainObjects: aSlide [ 
+	<gtSlide>
+	<text:
+'## Molding CSV data — modeling domain objects
+
+We will continue wrapping the extracted data to model domain objects, starting with papers.'>
+	^ (aSlide title)
+		setPriority;
+		titleBottomPadding: 30;
+		titleWithFormat: (self asSectionTitle: 'Molding CSV data — ');
+		subtitleWithFormat: (self asSectionTitle: 'modeling domain objects')
+]
+
+{ #category : #slides }
 VRTutorialSlideshow >> modelingOtherEntities: aSlide [ 
 	<gtSlide>
 	<text:
@@ -81,24 +119,25 @@ VRTutorialSlideshow >> modelingOtherEntities: aSlide [
 VRTutorialSlideshow >> modelingPapers: aSlide [ 
 	<gtSlide>
 	<text:
+'Modeling papers
+
+We will create `VRPaper` instances by wrapping each JSON dictionary. We do this by first writing the code to produce the instances, and then applying *fixit* operations to generate the missing classes and methods.'>
+	VRTutorialExamples new fileIn1DatasetExamples.
+	^ aSlide lepiterPage
+		setPriority;
+		startPage: (self database pageNamed: 'Modeling papers')
+]
+
+{ #category : #slides }
+VRTutorialSlideshow >> moldingThePrintView: aSlide [ 
+	<gtSlide>
+	<text:
 'XXX
 
 '>
 	^ aSlide lepiterPage
 		setPriority;
 		startPage: (self database pageNamed: 'PLACEHOLDER')
-]
-
-{ #category : #slides }
-VRTutorialSlideshow >> moldingDomainObjects: aSlide [ 
-	<gtSlide>
-	<text:
-'CONTINUE HERE ===> ## Molding CSV data — modeling domain objects'>
-	^ (aSlide title)
-		setPriority;
-		titleBottomPadding: 30;
-		titleWithFormat: (self asSectionTitle: 'Molding CSV data — ');
-		subtitleWithFormat: (self asSectionTitle: 'modeling domain objects')
 ]
 
 { #category : #slides }
@@ -128,8 +167,13 @@ VRTutorialSlideshow >> slidePriorities [
 			#transformingRawData:
 			#extractingExamples:
 			
-		#moldingDomainObjects:
+		#modelingDomainObjects:
 			#modelingPapers:
+			#whichAreSelectedPapers:
+			#moldingThePrintView:
+			#addingForwardView:
+			#addingSummaryView:
+			#wrappingPaperCollection:
 		
 		#modelingOtherEntities:
 		
@@ -181,4 +225,30 @@ Luckily we already have a tool to convert CSV files to JSON dictionaries.
 	^ aSlide lepiterPage
 		setPriority;
 		startPage: (self database pageNamed: 'Transforming the raw data')
+]
+
+{ #category : #slides }
+VRTutorialSlideshow >> whichAreSelectedPapers: aSlide [
+	<gtSlide>
+	<text:
+'*** ==> Which are the selected papers?
+
+
+'>
+VRTutorialExamples new fileIn2PaperWrapper.
+	^ aSlide lepiterPage
+		setPriority;
+		startPage: (self database pageNamed: 'Which are the selected papers?')
+]
+
+{ #category : #slides }
+VRTutorialSlideshow >> wrappingPaperCollection: aSlide [ 
+	<gtSlide>
+	<text:
+'XXX
+
+'>
+	^ aSlide lepiterPage
+		setPriority;
+		startPage: (self database pageNamed: 'PLACEHOLDER')
 ]
