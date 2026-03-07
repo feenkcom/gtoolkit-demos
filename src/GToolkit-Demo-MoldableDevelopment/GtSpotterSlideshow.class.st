@@ -196,7 +196,7 @@ GtSpotterSlideshow >> spotterExampleSlide: aSlide [
 
 { #category : #slides }
 GtSpotterSlideshow >> spotterInLocalContextExplanationSlideFor: aSlide [
-	"<gtSlide>"
+	<gtSlide>
 	^ aSlide textAndElement
 		priority: 8;
 		newTextWithFormat: self spotterInLocalContextExplanationText;
@@ -220,7 +220,7 @@ GtSpotterSlideshow >> spotterInLocalContextExplanationText [
 GtSpotterSlideshow >> spotterInLocalContextExplanationWithLinks [
 	<gtExample>
 	<return: #BlElement>
-	| coderElement inspectorElement searchButtonTargets coderLabel inspectorLabel |
+	| coderElement coderScripter inspectorElement searchButtonTargets coderLabel inspectorLabel |
 	searchButtonTargets := OrderedCollection new.
 
 	coderLabel := BrLabel new
@@ -254,6 +254,10 @@ GtSpotterSlideshow >> spotterInLocalContextExplanationWithLinks [
 			aptitude: BrShadowAptitude;
 			margin: (BlInsets all: 5);
 			addChild: (GtCoderElement forClass: GtABAddressBook) asElement.
+	coderScripter := BlScripter new element: coderElement.
+	coderScripter click // GtCoderClassHierarchyButtonId; play.
+	coderScripter elementWithoutParent.
+			
 	inspectorElement := BlElement new
 			constraintsDo: [ :c | 
 				c vertical matchParent.
@@ -267,14 +271,12 @@ GtSpotterSlideshow >> spotterInLocalContextExplanationWithLinks [
 		element: inspectorElement;
 		elementWithoutParent.
 
-	coderElement
-		allChildrenBreadthFirstDetect: [ :aChild | 
-			(aChild isKindOf: BrToolbar)
-				and: [ aChild parent isKindOf: GtCoderToolbarElement ] ]
-		ifFound: [ :aChild | searchButtonTargets add: (aChild childAt: 1) ].
-	inspectorElement
-		allChildrenBreadthFirstDetect: [ :aChild | aChild isKindOf: BrToolbar ]
-		ifFound: [ :aChild | searchButtonTargets add: (aChild childAt: 3) ].
+	(coderElement query // GtNavigationSpotterDropdownId) all 
+		do: [ :aChild | searchButtonTargets add: aChild ].
+	(coderElement query // GtPharoSearchCodeButtonId) all 
+		do: [ :aChild | searchButtonTargets add: aChild ].
+	(inspectorElement query // GtSpotterObjectActionSearchId) all 
+		do: [ :aChild | searchButtonTargets add: aChild ].
 
 	searchButtonTargets
 		do: [ :eachTarget | 
