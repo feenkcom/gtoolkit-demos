@@ -48,9 +48,21 @@ LeBlockQuoteSnippet >> asSnippetViewModel [
 
 { #category : #'api - editing' }
 LeBlockQuoteSnippet >> text: aBlText [
-	"Plain text, so we have no ougoing textual links."
+	"Plain text, so we have no outgoing textual links."
+
 	self assertText: aBlText.
 	text := aBlText.
 	"self updateOutgoingTextualLinks."
-	self updateUnlinkedReferences.
+	self updateUnlinkedReferences
+]
+
+{ #category : #'api - editing' }
+LeBlockQuoteSnippet >> updateText: aText source: anObject [
+	self assertText: aText.
+	
+	self text characters = aText characters
+		ifTrue: [ ^ self ].
+	self updater blockQuote: aText.
+	
+	self announceTextChangedBy: anObject
 ]
