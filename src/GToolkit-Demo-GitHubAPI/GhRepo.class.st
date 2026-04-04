@@ -104,6 +104,15 @@ GhRepo >> gtIssuesFor: aView [
 		view: #gtItemsFor:
 ]
 
+{ #category : #'gt-extensions' }
+GhRepo >> gtPullRequestsFor: aView [
+	<gtView>
+	^ aView forward
+		title: 'Pull requests';
+		object: [ self pullRequests ];
+		view: #gtItemsFor:
+]
+
 { #category : #views }
 GhRepo >> gtReleasesFor: aView [
 	<gtView>
@@ -150,6 +159,19 @@ GhRepo >> name [
 { #category : #accessing }
 GhRepo >> numberOfOpenIssues [
 	^ rawData at: 'open_issues'
+]
+
+{ #category : #accessing }
+GhRepo >> numberOfPullRequests [
+	^ self pullRequests size
+]
+
+{ #category : #accessing }
+GhRepo >> pullRequests [
+	^ self
+		createFrom: 'pulls_url'
+		with: [ :data | GhPullRequests new rawData: data ]
+		onError: [ GhPullRequests new ]
 ]
 
 { #category : #accessing }
