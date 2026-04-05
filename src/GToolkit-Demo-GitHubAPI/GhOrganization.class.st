@@ -33,8 +33,9 @@ GhOrganization >> gtReposFor: aView [
 		priority: 40;
 		items: [ self repos ];
 		column: 'Repo' text: #name;
-		column: 'Description' text: #description;
-		column: 'Open issues' text: #numberOfOpenIssues;
+		column: 'Description' text: #description weight: 2;
+		column: 'Open issues' text: #numberOfOpenIssues width: 90;
+		column: 'Open PRs' text: #numberOfPullRequests width: 70;
 		column: 'License' text: #licenseName
 ]
 
