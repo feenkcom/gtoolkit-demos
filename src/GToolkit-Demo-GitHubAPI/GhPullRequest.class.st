@@ -6,7 +6,7 @@ Class {
 
 { #category : #accessing }
 GhPullRequest >> closedAt [
-	^ (rawData at: 'closed_at') asDateAndTime
+	^ (rawData at: 'closed_at') ifNotNil: #asDateAndTime
 ]
 
 { #category : #accessing }
@@ -17,6 +17,26 @@ GhPullRequest >> createdAt [
 { #category : #accessing }
 GhPullRequest >> creator [
 	^ GhContributor new rawData: (rawData at: 'user')
+]
+
+{ #category : #'gt-extensions' }
+GhPullRequest >> gtActionWebBrowseFor: anAction [
+	<gtAction>
+	^ anAction button
+		tooltip: 'Open in browser';
+		priority: 10;
+		icon: BrGlamorousVectorIcons web;
+		action: [ WebBrowser openOn: self htmlUrl ]
+]
+
+{ #category : #'gt-extensions' }
+GhPullRequest >> gtStatusesFor: aView [
+	<gtView>
+	^ aView forward
+		priority: 1;
+		title: 'Statuses';
+		object: [ self statuses ];
+		view: #gtItemsFor:
 ]
 
 { #category : #'gt-extensions' }
@@ -32,14 +52,32 @@ GhPullRequest >> htmlUrl [
 	^ rawData at: 'html_url'
 ]
 
+{ #category : #testing }
+GhPullRequest >> isAnyStatusPendingState [
+	^ self statuses anySatisfy: #isPendingState
+]
+
 { #category : #accessing }
 GhPullRequest >> leadDuration [
-	^ self closedAt - self createdAt
+	^ self closedAt ifNotNil: [ :aClosedTime | aClosedTime - self createdAt ]
+]
+
+{ #category : #accessing }
+GhPullRequest >> statuses [
+	^ self
+		createFrom: 'statuses_url'
+		with: [ :data | GhPullRequestStatuses new rawData: data ]
+		onError: [ GhPullRequestStatuses new ]
 ]
 
 { #category : #accessing }
 GhPullRequest >> title [
 	^ rawData at: 'title'
+]
+
+{ #category : #accessing }
+GhPullRequest >> updatedAt [
+	^ (rawData at: 'updated_at') ifNotNil: #asDateAndTime
 ]
 
 { #category : #accessing }
