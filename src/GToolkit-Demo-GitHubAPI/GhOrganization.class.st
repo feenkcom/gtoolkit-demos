@@ -43,11 +43,9 @@ GhOrganization >> gtReposFor: aView [
 				aCount isZero ifTrue: [ '' ] ifFalse: [ aCount ] ]
 			width: 90;
 		column: 'Open PRs'
-			text: [ :aRepo | 
-				| aCount |
-				aCount := aRepo numberOfPullRequests.
-				aCount isZero ifTrue: [ '' ] ifFalse: [ aCount ] ]
-			width: 70;
+			textFuture: [ :aRepo | [ aRepo numberOfPullRequests ] asAsyncFuture ]
+			pending: [ :aTheme | '...' asRopedText foreground: aTheme button disabledTextColor ]
+			success: [ :aCount :aTheme | aCount isZero ifTrue: [ '' ] ifFalse: [ aCount asString ] ];
 		column: 'License' text: #licenseName
 ]
 
