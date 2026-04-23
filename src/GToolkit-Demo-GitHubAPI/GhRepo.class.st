@@ -91,8 +91,12 @@ GhRepo >> gtGitAction: anAction [
 		priority: 25;
 		icon: BrGlamorousVectorIcons branching;
 		action: [ :aButton | 
-			aButton phlow
-				spawnTool: (GtGitPhlowTool new repository: (GtGitRepository forRepoNamed: self name)) ]
+			| aRepository aTool |
+			aRepository := GtGitRepository forRepoNamed: self name.
+			aTool := GtPhlowCompositeTool new
+					addTool: (GtGitPhlowTool new repository: aRepository);
+					addTool: (GtPhlowTool default object: aRepository).
+			aButton phlow spawnTool: aTool ]
 ]
 
 { #category : #views }

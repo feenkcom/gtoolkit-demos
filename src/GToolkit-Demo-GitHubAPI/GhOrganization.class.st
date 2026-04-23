@@ -28,27 +28,32 @@ GhOrganization >> gtEventsFor: aView [
 { #category : #accessing }
 GhOrganization >> gtReposFor: aView [
 	<gtView>
-	^ aView columnedList
-		title: 'Repositories';
-		priority: 40;
-		items: [ self repos ];
-		column: 'Repo' text: #name;
-		column: 'Description'
-			text: #description
-			weight: 2;
-		column: 'Open issues'
-			text: [ :aRepo | 
-				| aCount |
-				aCount := aRepo numberOfOpenIssues.
-				aCount isZero ifTrue: [ '' ] ifFalse: [ aCount ] ]
-			width: 90;
-		column: 'Open PRs'
-			text: [ :aRepo | 
-				| aCount |
-				aCount := aRepo numberOfPullRequests.
-				aCount isZero ifTrue: [ '' ] ifFalse: [ aCount ] ]
-			width: 70;
-		column: 'License' text: #licenseName
+	| aList |
+	aList := aView columnedList
+			title: 'Repositories';
+			priority: 40;
+			items: [ self repos ];
+			column: 'Repo' text: #name;
+			column: 'Description'
+				text: #description
+				weight: 2;
+			column: 'Open issues'
+				text: [ :aRepo | 
+					| aCount |
+					aCount := aRepo numberOfOpenIssues.
+					aCount isZero ifTrue: [ '' ] ifFalse: [ aCount ] ]
+				width: 90.
+
+	GtGitHubTokenHolder hasToken
+		ifTrue: [ aList
+				column: 'Open PRs'
+				textFuture: [ :aRepo | [ aRepo numberOfPullRequests ] asAsyncFuture ]
+				pending: [ :aTheme | '...' asRopedText foreground: aTheme button disabledTextColor ]
+				success: [ :aCount :aTheme | aCount isZero ifTrue: [ '' ] ifFalse: [ aCount asString ] ] ].
+
+	aList column: 'License' text: #licenseName.
+
+	^ aList
 ]
 
 { #category : #search }
