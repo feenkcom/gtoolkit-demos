@@ -10,6 +10,14 @@ GhPullRequest >> closedAt [
 ]
 
 { #category : #accessing }
+GhPullRequest >> comments [
+	^ self
+		createFrom: 'comments_url'
+		with: [ :data | GhPullRequestComments new rawData: data ]
+		onError: [ GhPullRequestComments new ]
+]
+
+{ #category : #accessing }
 GhPullRequest >> createdAt [
 	^ (rawData at: 'created_at') asDateAndTime
 ]
@@ -27,6 +35,16 @@ GhPullRequest >> gtActionWebBrowseFor: anAction [
 		priority: 10;
 		icon: BrGlamorousVectorIcons web;
 		action: [ WebBrowser openOn: self htmlUrl ]
+]
+
+{ #category : #'gt-extensions' }
+GhPullRequest >> gtCommentsFor: aView [
+	<gtView>
+	^ aView forward
+		priority: 2;
+		title: 'Comments';
+		object: [ self comments ];
+		view: #gtItemsFor:
 ]
 
 { #category : #'gt-extensions' }
@@ -55,6 +73,16 @@ GhPullRequest >> htmlUrl [
 { #category : #testing }
 GhPullRequest >> isAnyStatusPendingState [
 	^ self statuses anySatisfy: #isPendingState
+]
+
+{ #category : #accessing }
+GhPullRequest >> lastComment [
+	^ self comments ifNotEmpty: #last ifEmpty: [ nil ]
+]
+
+{ #category : #accessing }
+GhPullRequest >> lastCommentUser [
+	^ self lastComment ifNotNil: #user
 ]
 
 { #category : #accessing }

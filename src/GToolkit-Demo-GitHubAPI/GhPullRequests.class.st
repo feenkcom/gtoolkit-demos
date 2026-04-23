@@ -18,10 +18,15 @@ GhPullRequests >> gtItemsFor: aView [
 				aBoolean
 					ifTrue: [ 'yes' ]
 					ifFalse: [ 'no' asRopedText foreground: aTheme button disabledTextColor ] ]
-			width: 100;
+			width: 80;
+		column: 'Last commenter'
+			textFuture: [ :aPR | [ aPR lastCommentUser ] asAsyncFuture ]
+			pending: [ :aTheme | '...' asRopedText foreground: aTheme button disabledTextColor ]
+			success: [ :aUserOrNil :aTheme | aUserOrNil ifNil: [ '' ] ]
+			width: 110;
 		column: 'User'
 			text: #creator
-			width: 130;
+			width: 100;
 		column: 'Creation'
 			text: [ :aPR | aPR createdAt asDate ]
 			width: 100;
