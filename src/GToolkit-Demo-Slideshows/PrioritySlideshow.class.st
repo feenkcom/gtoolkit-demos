@@ -346,7 +346,7 @@ PrioritySlideshow >> gtDemoNotesFor: aView [
 	self hasDemoPragmas ifFalse: [ ^ aView empty ].
 	^ aView forward
 		title: 'Demo notes';
-		priority: 71;
+		priority: 72;
 		object: [ self demoPage asContentUIModel ];
 		view: #gtLiveFor:;
 		actionUpdateButton;
@@ -477,6 +477,19 @@ PrioritySlideshow >> gtScriptFor: aView [
 		title: 'Script';
 		priority: 70;
 		object: [ self scriptPage asContentUIModel ];
+		view: #gtLiveFor:;
+		actionUpdateButton;
+		updateWhen: SlideshowMethodUpdated in: self announcer
+]
+
+{ #category : #view }
+PrioritySlideshow >> gtScriptWithDemoNotesFor: aView [
+	<gtView>
+	self hasDemoPragmas ifFalse: [ ^ aView empty ].
+	^ aView forward
+		title: 'Script & Demo notes';
+		priority: 71;
+		object: [ self scriptWithDemoNotesPage asContentUIModel ];
 		view: #gtLiveFor:;
 		actionUpdateButton;
 		updateWhen: SlideshowMethodUpdated in: self announcer
@@ -704,6 +717,18 @@ PrioritySlideshow >> scalableSlide: aSlide [
 	^ aSlide asScalableSlideIn: self
 ]
 
+{ #category : #accessing }
+PrioritySlideshow >> scriptAndDemoText [
+	"Glue together any text in <text: ''> or <demo: ''> pragmas."
+
+	^ String cr , String cr
+		join: ((self slideDictionary associations
+				flatCollect: [ :assoc | 
+					assoc value pragmas
+						select: [ :p | p selector = #text: or: [ p selector = #demo: ] ] ])
+				collect: [ :p | p arguments first ])
+]
+
 { #category : #utility }
 PrioritySlideshow >> scriptPage [
 	"Just the script text, without headings, directions or code snippets."
@@ -750,6 +775,20 @@ PrioritySlideshow >> scriptText [
 					copy: scriptText
 					translatingMatchesUsing: [ :each | regex subexpression: 2 ] ].
 	^ scriptText
+]
+
+{ #category : #utility }
+PrioritySlideshow >> scriptWithDemoNotesPage [
+	"Script text including demo notes."
+
+	| page |
+	page := LePage named: 'Script with demo notes'.
+	LeDatabase new addPage: page.
+	page
+		addSnippet: (LeTextSnippet new
+				string: self scriptAndDemoText; 
+				yourself).
+	^ page
 ]
 
 { #category : #constant }
