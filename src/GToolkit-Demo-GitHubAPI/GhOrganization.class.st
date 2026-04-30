@@ -12,6 +12,11 @@ GhOrganization >> events [
 		onError: [ GhEvents new ]
 ]
 
+{ #category : #'as yet unclassified' }
+GhOrganization >> gtDisplayOn: stream [
+	stream nextPutAll: self login
+]
+
 { #category : #accessing }
 GhOrganization >> gtEventsFor: aView [
 	<gtView>
@@ -67,6 +72,11 @@ GhOrganization >> gtSpotterForRepoNames: aSearch [
 		itemName: #name;
 		sendCategory: [ :aCategory :aStep :thisSearch | GhRepos new repos: aCategory items contents ];
 		filterBySubstring
+]
+
+{ #category : #'as yet unclassified' }
+GhOrganization >> login [
+	^ rawData at: 'login'
 ]
 
 { #category : #accessing }

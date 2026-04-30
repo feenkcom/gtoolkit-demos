@@ -19,6 +19,17 @@ GhIssue >> creator [
 	^ GhContributor new rawData: (rawData at: 'user')
 ]
 
+{ #category : #'as yet unclassified' }
+GhIssue >> gtDisplayOn: aStream [
+	aStream 
+		nextPutAll: self creator loginName;
+		nextPutAll: ': ';
+		nextPutAll: self title;
+		nextPutAll: ' (';
+		nextPutAll: self state;
+		nextPutAll: ')'
+]
+
 { #category : #views }
 GhIssue >> gtWebViewFor: aView [
 	<gtView>
@@ -35,6 +46,11 @@ GhIssue >> htmlUrl [
 { #category : #accessing }
 GhIssue >> leadDuration [
 	^ self closedAt - self createdAt
+]
+
+{ #category : #'as yet unclassified' }
+GhIssue >> state [
+	^ rawData at: 'state'
 ]
 
 { #category : #accessing }
