@@ -39,11 +39,6 @@ GhIssue >> gtWebViewFor: aView [
 ]
 
 { #category : #accessing }
-GhIssue >> htmlUrl [
-	^ rawData at: 'html_url'
-]
-
-{ #category : #accessing }
 GhIssue >> leadDuration [
 	^ self closedAt - self createdAt
 ]

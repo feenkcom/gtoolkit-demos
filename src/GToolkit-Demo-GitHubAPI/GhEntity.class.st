@@ -49,6 +49,11 @@ GhEntity >> gtRawDataFor: aView [
 ]
 
 { #category : #accessing }
+GhEntity >> htmlUrl [
+	^ rawData at: 'html_url'
+]
+
+{ #category : #accessing }
 GhEntity >> httpClient [
 	^ ZnClient new
 		setBearerAuthentication: GtGitHubTokenHolder token;
