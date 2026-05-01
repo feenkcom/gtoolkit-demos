@@ -138,11 +138,6 @@ GhRepo >> gtWebViewFor: aView [
 ]
 
 { #category : #accessing }
-GhRepo >> htmlUrl [
-	^ rawData at: 'html_url'
-]
-
-{ #category : #accessing }
 GhRepo >> issues [
 	^ self
 		createFrom: 'issues_url'

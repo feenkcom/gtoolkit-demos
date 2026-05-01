@@ -65,11 +65,6 @@ GhPullRequest >> gtWebViewFor: aView [
 		stencil: [ GtWebViewElement new url: self htmlUrl ]
 ]
 
-{ #category : #accessing }
-GhPullRequest >> htmlUrl [
-	^ rawData at: 'html_url'
-]
-
 { #category : #testing }
 GhPullRequest >> isAnyStatusPendingState [
 	^ self statuses anySatisfy: #isPendingState

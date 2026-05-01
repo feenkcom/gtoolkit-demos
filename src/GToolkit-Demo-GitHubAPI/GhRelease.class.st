@@ -18,11 +18,6 @@ GhRelease >> gtWebViewFor: aView [
 ]
 
 { #category : #accessing }
-GhRelease >> htmlUrl [
-	^ rawData at: 'html_url'
-]
-
-{ #category : #accessing }
 GhRelease >> publishedAt [
 	^ rawData at: 'published_at'
 ]
