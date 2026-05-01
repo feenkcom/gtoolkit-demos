@@ -52,9 +52,9 @@ GhOrganization >> gtReposFor: aView [
 	GtGitHubTokenHolder hasToken
 		ifTrue: [ aList
 				column: 'Open PRs'
-				textFuture: [ :aRepo | [ aRepo numberOfPullRequests ] asAsyncFuture ]
-				pending: [ :aTheme | '...' asRopedText foreground: aTheme button disabledTextColor ]
-				success: [ :aCount :aTheme | aCount isZero ifTrue: [ '' ] ifFalse: [ aCount asString ] ] ].
+				textFuture: [ :aRepo :aRowIndex :aContext | aRepo numberOfPullRequests ]
+				pending: [ :aRepo :aRowIndex :aContext | '...' asRopedText foreground: aContext theme button disabledTextColor ]
+				success: [ :aCount :aContext | aCount isZero ifTrue: [ '' ] ifFalse: [ aCount asString ] ] ].
 
 	aList column: 'License' text: #licenseName.
 

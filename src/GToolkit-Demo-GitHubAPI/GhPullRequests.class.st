@@ -12,17 +12,17 @@ GhPullRequests >> gtItemsFor: aView [
 		items: [ self items ];
 		column: 'Title' text: #title;
 		column: 'Is pending'
-			textFuture: [ :aPR | [ aPR isAnyStatusPendingState ] asAsyncFuture ]
-			pending: [ :aTheme | '...' asRopedText foreground: aTheme button disabledTextColor ]
-			success: [ :aBoolean :aTheme | 
+			textFuture: [ :aPR :aRowIndex :aContext | [ aPR isAnyStatusPendingState ] asAsyncFuture ]
+			pending: [ :aPR :aRowIndex :aContext | '...' asRopedText foreground: aContext theme button disabledTextColor ]
+			success: [ :aBoolean :aContext | 
 				aBoolean
 					ifTrue: [ 'yes' ]
-					ifFalse: [ 'no' asRopedText foreground: aTheme button disabledTextColor ] ]
+					ifFalse: [ 'no' asRopedText foreground: aContext theme button disabledTextColor ] ]
 			width: 80;
 		column: 'Last commenter'
-			textFuture: [ :aPR | [ aPR lastCommentUser ] asAsyncFuture ]
-			pending: [ :aTheme | '...' asRopedText foreground: aTheme button disabledTextColor ]
-			success: [ :aUserOrNil :aTheme | aUserOrNil ifNil: [ '' ] ]
+			textFuture: [ :aPR :aRowIndex :aContext | aPR lastCommentUser ]
+			pending: [ :aPR :aRowIndex :aContext | '...' asRopedText foreground: aContext theme button disabledTextColor ]
+			success: [ :aUserOrNil :aContext | aUserOrNil ifNil: [ '' ] ]
 			width: 110;
 		column: 'User'
 			text: #creator
