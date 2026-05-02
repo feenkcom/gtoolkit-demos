@@ -81,6 +81,8 @@ GtMethodFinderExamples >> findWords [
 
 { #category : #examples }
 GtMethodFinderExamples >> methodFinder [
+	"Parameterized so we can define subclasses for MethodFinder or StMethodFinder, but these now depend on an `evaluate` method which is not implemented by ByteString or Collection in GT."
+
 	<gtExample>
 	| methodFinder |
 	methodFinder := GtMethodFinder new.
