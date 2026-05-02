@@ -4,7 +4,7 @@ See also `GtMethodFinderExamples`.
 "
 Class {
 	#name : #GtMethodFinder,
-	#superclass : #MethodFinder,
+	#superclass : #Object,
 	#category : #'GToolkit-Demo-Reflection-MethodFinder'
 }
 
