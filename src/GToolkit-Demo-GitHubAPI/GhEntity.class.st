@@ -60,6 +60,15 @@ GhEntity >> httpClient [
 		yourself
 ]
 
+{ #category : #'as yet unclassified' }
+GhEntity >> llmRawDataViewFor: aDataView [
+	<gtLlmDataView>
+	^ aDataView jsonData
+			title: 'Raw data';
+			data: [ 
+				self rawData  ]
+]
+
 { #category : #accessing }
 GhEntity >> propertyToClass [
 	^ Dictionary new
