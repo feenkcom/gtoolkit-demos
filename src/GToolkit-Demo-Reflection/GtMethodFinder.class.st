@@ -28,7 +28,7 @@ GtMethodFinder >> possibleSolutionsForInput: inputCollection [
 			foundPermutationSends := (receiver class
 				allSelectorsToTestInMethodFinderWithArity: inputCollection size - 1)
 				collect:
-					[ :method | MethodFinderSend
+					[ :method | GtMethodFinderSend
 									receiver: receiver deepCopy
 									selector: method
 									withArguments: args deepCopy ].
