@@ -74,8 +74,13 @@ GtMethodFinderExamples >> findWords [
 					'quick'.
 					'brown'.
 					'fox'} asArray.
-	self assert: result size equals: 3.
-	self assert: (result collect: [ :each | each selector ]) asSet equals: { #gtExampleSubstrings. #substrings. #parseLiterals } asSet.
+	self 
+		forPharo13AndNewer: [
+			self assert: result size equals: 2.
+			self assert: (result collect: [ :each | each selector ]) asSet equals: { #gtExampleSubstrings. #substrings } asSet.] 
+		forOlder: [
+			self assert: result size equals: 3.
+			self assert: (result collect: [ :each | each selector ]) asSet equals: { #gtExampleSubstrings. #substrings. #parseLiterals } asSet.].
 	^ result
 ]
 
