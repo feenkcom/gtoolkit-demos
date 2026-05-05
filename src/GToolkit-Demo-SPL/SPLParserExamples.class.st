@@ -2,7 +2,7 @@
 I implement examples to test the SPL parser that builds an interpreter for SPL.
 
 Pretty much all of the examples are extensions of examples inherited from {{gtClass:name=SPLGrammarExamples}}.
-They typically run the {{gtClass:name=SPLParser}} on the inherited SPL example code, producing an AST, and then test whether the prett-printed code matches an expected result.
+They typically run the {{gtClass:name=SPLParser}} on the inherited SPL example code, producing an AST, and then test whether the pretty-printed code matches an expected result.
 
 For example: {{gtExample:name=SPLParserExamples>>#ifElseStmt}}
 "
