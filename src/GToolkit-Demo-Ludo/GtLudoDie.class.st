@@ -34,6 +34,15 @@ GtLudoDie >> gtLiveFor: aView [
 	^ self asElement gtLiveFor: aView
 ]
 
+{ #category : #views }
+GtLudoDie >> gtRollFor: anAction [
+	<gtAction>
+	^ anAction button
+		icon: BrGlamorousVectorIcons play;
+		tooltip: 'Rolle the die';
+		action: [ :button | self roll ]
+]
+
 { #category : #initialization }
 GtLudoDie >> initialize [
 	announcer := Announcer new.
