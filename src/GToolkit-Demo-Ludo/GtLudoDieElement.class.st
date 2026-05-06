@@ -64,8 +64,8 @@ GtLudoDieElement >> doubleClickAction [
 ]
 
 { #category : #accessing }
-GtLudoDieElement >> doubleClickAction: anObject [
-	doubleClickAction := anObject
+GtLudoDieElement >> doubleClickAction: aBlock [
+	doubleClickAction := aBlock
 ]
 
 { #category : #constants }
