@@ -30,6 +30,16 @@ GhOrganization >> gtEventsFor: aView [
 		column: 'Actor' text: #actorName
 ]
 
+{ #category : #'gt-extensions' }
+GhOrganization >> gtInstallationsFor: aView [
+	<gtView>
+	^ aView forward
+		title: 'Installations';
+		priority: 55;
+		object: [ self installations ];
+		view: #gtItemsFor:
+]
+
 { #category : #accessing }
 GhOrganization >> gtReposFor: aView [
 	<gtView>
@@ -72,6 +82,19 @@ GhOrganization >> gtSpotterForRepoNames: aSearch [
 		itemName: #name;
 		sendCategory: [ :aCategory :aStep :thisSearch | GhRepos new repos: aCategory items contents ];
 		filterBySubstring
+]
+
+{ #category : #accessing }
+GhOrganization >> installations [
+	| url |
+	url := 'https://api.github.com/orgs/', self login, '/installations'.
+	^ self httpClient
+		get: url
+		onSuccess: [ :result | 
+			[ GhInstallations new rawData: (STON fromString: result) ]
+				on: Error
+				do: [ :e | GhInstallations new ] ]
+		onError: [ GhInstallations new ]
 ]
 
 { #category : #'as yet unclassified' }
