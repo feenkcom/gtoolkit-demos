@@ -64,8 +64,8 @@ GtLudoDieElement >> doubleClickAction [
 ]
 
 { #category : #accessing }
-GtLudoDieElement >> doubleClickAction: anObject [
-	doubleClickAction := anObject
+GtLudoDieElement >> doubleClickAction: aBlock [
+	doubleClickAction := aBlock
 ]
 
 { #category : #constants }
@@ -140,10 +140,9 @@ GtLudoDieElement >> placeDotAt: aPosition [
 	| location |
 	self assert: ((1 to: 3) includes: aPosition x).
 	self assert: ((1 to: 3) includes: aPosition y).
-	location := aPosition * (self dotSpace + self dotWidth) - (self dotWidth @ self dotWidth).
-	self
-		addChild: (self newDot value relocate: location);
-		yourself
+	location := aPosition * (self dotSpace + self dotWidth)
+			- (self dotWidth @ self dotWidth).
+	self addChild: (self newDot value relocate: location)
 ]
 
 { #category : #displaying }

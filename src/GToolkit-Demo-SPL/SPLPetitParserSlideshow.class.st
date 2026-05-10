@@ -71,7 +71,7 @@ SPLPetitParserSlideshow >> classExtraction: aSlide [
 
 Once we have a working script, we can apply a refactoring transformation to turn it into a class.
 
-We initialize any recursive parsers, and then create a self-contained script that does not refer to any outside classe sor variables. We can right-click inside the script to `Extract PetitParser class`.
+We initialize any recursive parsers, and then create a self-contained script that does not refer to any outside classes or variables. We can right-click inside the script to `Extract PetitParser class`.
 
 This creates a class in which each parsing expression is defined as a method, and its value is cached as an instance variable.'>
 	^ aSlide lepiterPage
