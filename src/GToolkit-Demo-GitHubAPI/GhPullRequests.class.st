@@ -4,7 +4,7 @@ Class {
 	#category : #'GToolkit-Demo-GitHubAPI-Model'
 }
 
-{ #category : #'as yet unclassified' }
+{ #category : #accessing }
 GhPullRequests >> gtItemsFor: aView [
 	^ aView columnedList
 		title: 'Pull requests';
@@ -12,7 +12,7 @@ GhPullRequests >> gtItemsFor: aView [
 		items: [ self items ];
 		column: 'Title' text: #title;
 		column: 'Is pending'
-			textFuture: [ :aPR :aRowIndex :aContext | [ aPR isAnyStatusPendingState ] asAsyncFuture ]
+			textFuture: [ :aPR :aRowIndex :aContext | aPR isAnyStatusPendingState ]
 			pending: [ :aPR :aRowIndex :aContext | '...' asRopedText foreground: aContext theme button disabledTextColor ]
 			success: [ :aBoolean :aContext | 
 				aBoolean
@@ -38,7 +38,7 @@ GhPullRequests >> gtItemsFor: aView [
 			width: 100
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #accessing }
 GhPullRequests >> items [
 	^ rawData collect: [ :each | GhPullRequest new rawData: each ]
 ]
