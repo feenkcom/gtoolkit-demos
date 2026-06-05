@@ -3,6 +3,8 @@ Extension { #name : #RGMethodDefinition }
 { #category : #'*GToolkit-Demo-Slideshows' }
 RGMethodDefinition >> gtSlideWithTextFor: aView [
 	<gtView>
+	<gtToolView>
+	
 	(self method hasPragmaNamed: #gtSlide) ifFalse: [ ^ aView empty ].
 	(self method hasPragmaNamed: #text:) ifFalse: [ ^ aView empty ].
 	^ aView forward
