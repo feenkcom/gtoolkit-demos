@@ -40,24 +40,26 @@ GhOrganization >> gtInstallationsFor: aView [
 		view: #gtItemsFor:
 ]
 
-{ #category : #accessing }
+{ #category : #views }
 GhOrganization >> gtReposFor: aView [
 	<gtView>
 	| aList |
 	aList := aView columnedList
 			title: 'Repositories';
 			priority: 40;
-			items: [ self repos ];
+			items: [ self reposStream ];
 			column: 'Repo' text: #name;
 			column: 'Description'
 				text: #description
 				weight: 2;
-			column: 'Open issues'
+			"GitHub's 'open_issues' counts open issues AND open pull requests, 
+			so the title says so rather than promising an issues-only count."
+			column: 'Open issues & PRs'
 				text: [ :aRepo | 
 					| aCount |
 					aCount := aRepo numberOfOpenIssues.
 					aCount isZero ifTrue: [ '' ] ifFalse: [ aCount ] ]
-				width: 90.
+				width: 130.
 
 	GtGitHubTokenHolder hasToken
 		ifTrue: [ aList
@@ -71,13 +73,13 @@ GhOrganization >> gtReposFor: aView [
 	^ aList
 ]
 
-{ #category : #search }
+{ #category : #searches }
 GhOrganization >> gtSpotterForRepoNames: aSearch [
 	<gtSearch>
 	^ aSearch list
 		title: 'Repositories';
 		priority: 5;
-		items: [ self repos ];
+		items: [ self reposStream ];
 		itemsLimit: Float infinity;
 		itemName: #name;
 		sendCategory: [ :aCategory :aStep :thisSearch | GhRepos new repos: aCategory items contents ];
@@ -111,8 +113,22 @@ GhOrganization >> propertyToClass [
 
 { #category : #accessing }
 GhOrganization >> repos [
-	^ self 
-		createFrom: 'repos_url' 
-		with: [ :data | GhRepos new rawData: data ] 
-		onError: [ GhRepos new ]
+	"Answer all repositories of this organization, draining #reposStream.
+	This blocks, and costs one request per page, so prefer #reposStream where laziness is possible."
+
+	<return: #GhRepos>
+	^ GhRepos new
+		rawData: (((self paginatedStreamFrom: 'repos_url') toArray
+			on: Error do: [ :anError | AsyncPoll ready: #() ])
+				await: GhConstants executionConfiguration) wait
+]
+
+{ #category : #accessing }
+GhOrganization >> reposStream [
+	"Answer a stream over all repositories of this organization. The stream is pulled lazily, so a 
+	view backed by it fetches only the pages it actually displays."
+
+	<return: #TAsyncStream>
+	^ (self paginatedStreamFrom: 'repos_url')
+		collect: [ :each | GhRepo new rawData: each ]
 ]
