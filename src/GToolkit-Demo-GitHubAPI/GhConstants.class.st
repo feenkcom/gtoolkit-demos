@@ -40,3 +40,8 @@ GhConstants class >> pageSize [
 
 	^ 100
 ]
+
+{ #category : #accessing }
+GhConstants class >> searchIssuesUrl [
+	^ 'https://api.github.com/search/issues'
+]

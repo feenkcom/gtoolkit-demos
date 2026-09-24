@@ -41,6 +41,51 @@ GhOrganization >> gtInstallationsFor: aView [
 ]
 
 { #category : #views }
+GhOrganization >> gtPullRequestsFor: aView [
+	"Every open pull request across all repositories of this organization, newest first."
+
+	<gtView>
+	^ aView columnedList
+		title: 'Pull requests';
+		priority: 45;
+		items: [ self pullRequestsStream ];
+		column: 'Repository'
+			text: [ :aPR | aPR repositoryName ifNil: [ '' ] ]
+			width: 160;
+		column: 'Pull request'
+			text: #title
+			weight: 3;
+		column: 'Pending'
+			textFuture: [ :aPR :aRowIndex :aContext | aPR isAnyStatusPendingState ]
+			pending: [ :aPR :aRowIndex :aContext | '...' asRopedText foreground: aContext theme button disabledTextColor ]
+			success: [ :aBoolean :aContext | 
+				aBoolean
+					ifTrue: [ 'yes' ]
+					ifFalse: [ 'no' asRopedText foreground: aContext theme button disabledTextColor ] ]
+			width: 65;
+		column: 'Last commenter'
+			textFuture: [ :aPR :aRowIndex :aContext | aPR lastCommentUser ]
+			pending: [ :aPR :aRowIndex :aContext | '...' asRopedText foreground: aContext theme button disabledTextColor ]
+			success: [ :aUserOrNil :aContext | aUserOrNil ifNil: [ '' ] ]
+			width: 110;
+		column: 'Creator'
+			text: #creator
+			width: 120;
+		column: 'Created'
+			text: [ :aPR | 
+				aPR createdAt
+					ifNotNil: [ :aDate | '{1} ago' format: {(DateAndTime now - aDate) gtHumanReadableString} ]
+					ifNil: [ '' ] ]
+			width: 110;
+		column: 'Draft'
+			text: [ :aPR :aRowIndex :aColumnIndex :aTheme | 
+				aPR isDraft
+					ifTrue: [ 'draft' asRopedText foreground: aTheme button disabledTextColor ]
+					ifFalse: [ '' ] ]
+			width: 70
+]
+
+{ #category : #views }
 GhOrganization >> gtReposFor: aView [
 	<gtView>
 	| aList |
@@ -105,10 +150,37 @@ GhOrganization >> login [
 ]
 
 { #category : #accessing }
+GhOrganization >> openPullRequestsSearchUrl [
+	"Answer the search URL listing every open pull request of this organization.
+	The search endpoint answers all of them at once, whereas visiting each repository in turn 
+	would cost one request per repository."
+
+	<return: #String>
+	^ (GhConstants searchIssuesUrl asZnUrl
+		queryAt: 'q' put: 'org:' , self login , ' is:pr is:open';
+		queryAt: 'sort' put: 'created';
+		queryAt: 'order' put: 'desc';
+		queryAt: 'per_page' put: GhConstants pageSize asString;
+		yourself) asString
+]
+
+{ #category : #accessing }
 GhOrganization >> propertyToClass [
 	^ {
 	'events' -> GhEvents.
 	} asDictionary
+]
+
+{ #category : #accessing }
+GhOrganization >> pullRequestsStream [
+	"Answer a lazily pulled stream over every open pull request across all repositories of this 
+	organization, newest first."
+
+	<return: #TAsyncStream>
+	^ (self
+		paginatedStreamStartingAt: self openPullRequestsSearchUrl
+		itemsIn: [ :aParsedBody | aParsedBody at: 'items' ifAbsent: [ #() ] ])
+		collect: [ :each | GhPullRequest new rawData: each ]
 ]
 
 { #category : #accessing }

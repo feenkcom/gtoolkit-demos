@@ -11,20 +11,20 @@ GhPullRequests >> gtItemsFor: aView [
 		priority: 1;
 		items: [ self items ];
 		column: 'Title' text: #title;
-		column: 'Is pending'
+		column: 'Pending'
 			textFuture: [ :aPR :aRowIndex :aContext | aPR isAnyStatusPendingState ]
 			pending: [ :aPR :aRowIndex :aContext | '...' asRopedText foreground: aContext theme button disabledTextColor ]
 			success: [ :aBoolean :aContext | 
 				aBoolean
 					ifTrue: [ 'yes' ]
 					ifFalse: [ 'no' asRopedText foreground: aContext theme button disabledTextColor ] ]
-			width: 80;
+			width: 65;
 		column: 'Last commenter'
 			textFuture: [ :aPR :aRowIndex :aContext | aPR lastCommentUser ]
 			pending: [ :aPR :aRowIndex :aContext | '...' asRopedText foreground: aContext theme button disabledTextColor ]
 			success: [ :aUserOrNil :aContext | aUserOrNil ifNil: [ '' ] ]
 			width: 110;
-		column: 'User'
+		column: 'Creator'
 			text: #creator
 			width: 100;
 		column: 'Creation'

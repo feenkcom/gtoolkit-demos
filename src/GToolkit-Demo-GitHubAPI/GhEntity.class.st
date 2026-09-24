@@ -25,16 +25,25 @@ GhEntity >> createFrom: aKey with: aBlock onError: anErrorBlock [
 
 { #category : #private }
 GhEntity >> fetchPageAt: anUrl [
+	"Fetch a page whose body is the item collection itself."
+
+	^ self fetchPageAt: anUrl itemsIn: [ :aParsedBody | aParsedBody ]
+]
+
+{ #category : #private }
+GhEntity >> fetchPageAt: anUrl itemsIn: anItemsBlock [
 	"Answer an association of this page's raw items and the URL of the next page, nil when there is none.
-	Answer an empty page on any failure, which simply ends the stream. This mirrors the #onError: 
-	behaviour of #createFrom:with:onError:, so a failing request truncates rather than raising."
+	anItemsBlock extracts the items from the parsed body, which is the body itself for the collection 
+	endpoints but the 'items' field for the search endpoints, whose body wraps the items in an object.
+	Answer an empty page on any failure, which simply ends the stream."
 
 	^ [ | aClient |
 		aClient := self httpClient.
 		aClient
 			get: anUrl
 			onSuccess: [ :aResult | 
-				(STON fromString: aResult) -> (self nextPageUrlFrom: aClient response) ]
+				(anItemsBlock value: (STON fromString: aResult))
+					-> (self nextPageUrlFrom: aClient response) ]
 			onError: [ #() -> nil ] ]
 		on: Error
 		do: [ :anError | #() -> nil ]
@@ -152,16 +161,22 @@ GhEntity >> paginatedStreamFrom: aKey [
 
 { #category : #private }
 GhEntity >> paginatedStreamStartingAt: anUrl [
+	"Answer a stream over pages whose body is the item collection itself."
+
+	<return: #TAsyncStream>
+	^ self paginatedStreamStartingAt: anUrl itemsIn: [ :aParsedBody | aParsedBody ]
+]
+
+{ #category : #private }
+GhEntity >> paginatedStreamStartingAt: anUrl itemsIn: anItemsBlock [
 	"Answer a stream over the raw items of every page reachable from anUrl."
 
 	<return: #TAsyncStream>
 	| aPageStream |
 	aPageStream := AsyncPaginationStream
 			for: anUrl
-			future: [ :eachUrl | [ self fetchPageAt: eachUrl ] asAsyncFuture ]
+			future: [ :eachUrl | [ self fetchPageAt: eachUrl itemsIn: anItemsBlock ] asAsyncFuture ]
 			next: [ :anAssociation | anAssociation value ].
-	"Chained, never cascaded: a cascade would send #flatCollect: to the pagination stream itself
-	and yield one item per page instead of one item per entry."
 	^ aPageStream flatCollect: [ :anAssociation | anAssociation key asAsyncStream ]
 ]
 

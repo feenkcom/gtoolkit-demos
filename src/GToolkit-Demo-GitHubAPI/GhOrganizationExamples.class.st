@@ -4,6 +4,23 @@ Class {
 	#category : #'GToolkit-Demo-GitHubAPI-Examples'
 }
 
+{ #category : #examples }
+GhOrganizationExamples >> feenkcomOpenPullRequestsSearchUrl [
+	"The organization's pull requests are found through one search query rather than by visiting 
+	each repository in turn."
+
+	<gtExample>
+	<noTest>
+	<return: #String>
+	| anUrl |
+	anUrl := self feenkcomOrganization openPullRequestsSearchUrl.
+	self assert: (anUrl includesSubstring: 'search/issues').
+	self assert: (anUrl includesSubstring: 'is:pr').
+	self assert: (anUrl includesSubstring: 'is:open').
+	self assert: (anUrl includesSubstring: 'org:feenkcom').
+	^ anUrl
+]
+
 { #category : #accessing }
 GhOrganizationExamples >> feenkcomOrganization [
 	<gtExample>
@@ -12,6 +29,45 @@ GhOrganizationExamples >> feenkcomOrganization [
 	json := self httpClient get: 'https://api.github.com/orgs/feenkcom'.
 	dictionary := STON fromString: json.
 	^ GhOrganization new rawData: dictionary
+]
+
+{ #category : #examples }
+GhOrganizationExamples >> feenkcomPullRequestsAreNewestFirst [
+	"The search query sorts by creation date descending, so the view needs no client side sorting."
+
+	<gtExample>
+	<noTest>
+	| aPullRequests |
+	aPullRequests := self feenkcomPullRequestsSpanManyRepositories.
+	self
+		assert: (aPullRequests asArray isSortedBy: [ :a :b | a createdAt >= b createdAt ]).
+	^ aPullRequests
+]
+
+{ #category : #examples }
+GhOrganizationExamples >> feenkcomPullRequestsSpanManyRepositories [
+	"The organization-wide pull request list reaches pull requests from more than one repository, 
+	and every row can name the repository it came from."
+
+	<gtExample>
+	<noTest>
+	| aPullRequests aRepositoryNames |
+	aPullRequests := (self feenkcomPullRequestsStream toArray
+			await: GhConstants executionConfiguration) wait.
+	self assert: aPullRequests isNotEmpty.
+	self assert: (aPullRequests allSatisfy: [ :each | each isKindOf: GhPullRequest ]).
+	self assert: (aPullRequests allSatisfy: [ :each | each repositoryName isNotNil ]).
+	aRepositoryNames := (aPullRequests collect: [ :each | each repositoryName ]) asSet.
+	self assert: aRepositoryNames size > 1.
+	^ aPullRequests
+]
+
+{ #category : #examples }
+GhOrganizationExamples >> feenkcomPullRequestsStream [
+	<gtExample>
+	<noTest>
+	<return: #TAsyncStream>
+	^ self feenkcomOrganization pullRequestsStream
 ]
 
 { #category : #accessing }

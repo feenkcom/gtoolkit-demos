@@ -8,6 +8,26 @@ Class {
 }
 
 { #category : #examples }
+GhEntityExamples >> fetchPageExtractsItemsFromAWrappedBody [
+	"The search endpoints wrap their items in an object, so #fetchPageAt:itemsIn: takes a block 
+	that says where the items are. This checks the block rather than the request, by applying it 
+	to a body shaped like a search response."
+
+	<gtExample>
+	| aBody anItemsBlock |
+	aBody := Dictionary new
+			at: 'total_count' put: 2;
+			at: 'incomplete_results' put: false;
+			at: 'items' put: {'first'. 'second'};
+			yourself.
+	anItemsBlock := [ :aParsedBody | aParsedBody at: 'items' ifAbsent: [ #() ] ].
+	self assert: (anItemsBlock value: aBody) equals: {'first'. 'second'}.
+	"A body that carries no items answers none rather than failing."
+	self assert: (anItemsBlock value: Dictionary new) isEmpty.
+	^ aBody
+]
+
+{ #category : #examples }
 GhEntityExamples >> firstPageUrlCarriesThePageSizeAndDropsTheTemplate [
 	"The '{...}' URL template suffix is stripped and per_page is set to the configured page size."
 
