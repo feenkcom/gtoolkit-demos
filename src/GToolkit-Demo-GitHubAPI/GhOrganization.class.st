@@ -12,7 +12,7 @@ GhOrganization >> events [
 		onError: [ GhEvents new ]
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #printing }
 GhOrganization >> gtDisplayOn: stream [
 	stream nextPutAll: self login
 ]
@@ -64,10 +64,23 @@ GhOrganization >> gtPullRequestsFor: aView [
 					ifFalse: [ 'no' asRopedText foreground: aContext theme button disabledTextColor ] ]
 			width: 65;
 		column: 'Last commenter'
-			textFuture: [ :aPR :aRowIndex :aContext | aPR lastCommentUser ]
+			textFuture: [ :aPR :aRowIndex :aContext | 
+				aPR lastComment
+					ifNotNil: [ :aComment | 
+						| aText |
+						aText := (aComment user ifNotNil: #loginName) asRopedText.
+						aComment createdAt
+							ifNotNil: [ :aDate | 
+								| aDateText |
+								aDateText := ' ' , (DateAndTime now - aDate) gtHumanReadableString
+										, ' ago'.
+								aText
+									append: (aDateText asRopedText foreground: aContext theme button disabledTextColor) ].
+						aText ]
+					ifNil: [ '' ] ]
 			pending: [ :aPR :aRowIndex :aContext | '...' asRopedText foreground: aContext theme button disabledTextColor ]
 			success: [ :aUserOrNil :aContext | aUserOrNil ifNil: [ '' ] ]
-			width: 110;
+			width: 150;
 		column: 'Creator'
 			text: #creator
 			width: 120;
@@ -144,7 +157,7 @@ GhOrganization >> installations [
 		onError: [ GhInstallations new ]
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #accessing }
 GhOrganization >> login [
 	^ rawData at: 'login'
 ]
