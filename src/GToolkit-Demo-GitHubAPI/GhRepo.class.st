@@ -157,20 +157,39 @@ GhRepo >> name [
 
 { #category : #accessing }
 GhRepo >> numberOfOpenIssues [
+	"Answer the 'open_issues' field, which GitHub documents as counting open issues AND open 
+	pull requests. It is not an issues-only count; see #numberOfPullRequests for the PR part."
+
+	<return: #Number>
 	^ rawData at: 'open_issues'
 ]
 
 { #category : #accessing }
 GhRepo >> numberOfPullRequests [
+	"Answer the number of open pull requests. Counts every page, so unlike the previous 
+	implementation it does not saturate at the GitHub default page size."
+
+	<return: #Number>
 	^ self pullRequests size
 ]
 
 { #category : #accessing }
 GhRepo >> pullRequests [
-	^ self
-		createFrom: 'pulls_url'
-		with: [ :data | GhPullRequests new rawData: data ]
-		onError: [ GhPullRequests new ]
+	"Answer every open pull request, across all pages.
+	Uses the page-by-page drain rather than the stream, because this is reached from the 
+	'Open PRs' column of GhOrganization>>#gtReposFor:, which already runs inside a future."
+
+	<return: #GhPullRequests>
+	^ GhPullRequests new rawData: (self paginatedItemsFrom: 'pulls_url')
+]
+
+{ #category : #accessing }
+GhRepo >> pullRequestsStream [
+	"Answer a lazily pulled stream over all open pull requests of this repository."
+
+	<return: #TAsyncStream>
+	^ (self paginatedStreamFrom: 'pulls_url')
+		collect: [ :each | GhPullRequest new rawData: each ]
 ]
 
 { #category : #accessing }

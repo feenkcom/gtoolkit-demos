@@ -71,6 +71,11 @@ GhPullRequest >> isAnyStatusPendingState [
 ]
 
 { #category : #accessing }
+GhPullRequest >> isDraft [
+	^ rawData at: 'draft' ifAbsent: [ false ]
+]
+
+{ #category : #accessing }
 GhPullRequest >> lastComment [
 	^ self comments ifNotEmpty: #last ifEmpty: [ nil ]
 ]
@@ -83,6 +88,38 @@ GhPullRequest >> lastCommentUser [
 { #category : #accessing }
 GhPullRequest >> leadDuration [
 	^ self closedAt ifNotNil: [ :aClosedTime | aClosedTime - self createdAt ]
+]
+
+{ #category : #accessing }
+GhPullRequest >> repositoryFullName [
+	"Answer 'owner/name' of the repository this pull request belongs to, or nil when the payload 
+	says nothing about it."
+
+	<return: #String or: nil>
+	^ rawData
+		at: 'repository_url'
+		ifPresent: [ :anUrl | 
+			| aPath |
+			aPath := anUrl asZnUrl segments.
+			aPath size >= 2
+				ifTrue: [ (aPath at: aPath size - 1) , '/' , aPath last ]
+				ifFalse: [ nil ] ]
+		ifAbsent: [ 
+			rawData
+				at: 'base'
+				ifPresent: [ :aBase | 
+					(aBase at: 'repo' ifAbsent: [ nil ])
+						ifNil: [ nil ]
+						ifNotNil: [ :aRepo | aRepo at: 'full_name' ifAbsent: [ nil ] ] ]
+				ifAbsent: [ nil ] ]
+]
+
+{ #category : #accessing }
+GhPullRequest >> repositoryName [
+	"Answer the repository name without its owner prefix, or nil when the payload says nothing about it."
+
+	<return: #String or: nil>
+	^ self repositoryFullName ifNotNil: [ :aFullName | aFullName copyAfterLast: $/ ]
 ]
 
 { #category : #accessing }
