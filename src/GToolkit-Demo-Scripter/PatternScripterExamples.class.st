@@ -152,15 +152,15 @@ PatternScripterExamples >> contextualViewRawViewScript [
 		play.
 	scripter click
 		label: 'Open the moves slot';
-		id: #triangle index: 9;
+		id: #triangle index: 8;
 		play.
 	scripter click
 		label: 'Open the array slot';
-		id: #triangle index: 10;
+		id: #triangle index: 9;
 		play.
 	scripter click
 		label: 'Open the 6th move';
-		id: #triangle index: 16;
+		id: #triangle index: 15;
 		play.
 	^ scripter elementWithoutParent
 ]
