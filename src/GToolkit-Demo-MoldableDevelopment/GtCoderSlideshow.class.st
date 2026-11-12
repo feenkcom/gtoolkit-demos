@@ -747,6 +747,7 @@ GtCoderSlideshow >> methodCreationExplanationSlideFor: aSlide [
 { #category : #accessing }
 GtCoderSlideshow >> searchMethodScripter [
 	<gtExample>
+	<timeLimit: 180000>
 	<return: #BlScripter>
 	| aScripter |
 	aScripter := BlScripter new.
