@@ -68,7 +68,7 @@ GhOrganization >> gtPullRequestsFor: aView [
 				aPR lastComment
 					ifNotNil: [ :aComment | 
 						| aText |
-						aText := (aComment user ifNotNil: #loginName) asRopedText.
+						aText := (aComment user ifNotNil: [ :v | v loginName ]) asRopedText.
 						aComment createdAt
 							ifNotNil: [ :aDate | 
 								| aDateText |

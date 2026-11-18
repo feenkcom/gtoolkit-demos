@@ -13,7 +13,8 @@ GhInstallations >> gtItemsFor: aView [
 		column: 'App' text: #appSlug;
 		column: 'Target' text: #targetLogin;
 		column: 'Repository selection' text: #repositorySelection;
-		column: 'Created' text: [ :each | each createdAt ifNotNil: #asString ifNil: [ '' ] ]
+		column: 'Created'
+			text: [ :each | each createdAt ifNotNil: [ :v | v asString ] ifNil: [ '' ] ]
 ]
 
 { #category : #accessing }

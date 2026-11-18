@@ -385,6 +385,7 @@ PatternScripterExamples >> throwawayAnalysisGtBookLinksMondrian [
 	Visualization of the pages in the book itself that are reachable 
 	by following links contrasted with standalone pages.
 	Used in: Throwaway Analysis Tool"
+
 	<gtExample>
 	<noTest>
 	| pages getStartedPage allReachedPages m |
@@ -394,7 +395,7 @@ PatternScripterExamples >> throwawayAnalysisGtBookLinksMondrian [
 	allReachedPages := getStartedPage
 			deepCollect: [ :each | 
 				each allChildOutgoingTextualLinks
-					collectAsSet: [ :x | x target ifNotNil: #page ] ].
+					collectAsSet: [ :x | x target ifNotNil: [ :v | v page ] ] ].
 	m := GtMondrian new.
 	m nodes
 		stencil: [ :each | 
