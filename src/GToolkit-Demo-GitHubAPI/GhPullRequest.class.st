@@ -6,7 +6,7 @@ Class {
 
 { #category : #accessing }
 GhPullRequest >> closedAt [
-	^ (rawData at: 'closed_at') ifNotNil: #asDateAndTime
+	^ (rawData at: 'closed_at') ifNotNil: [ :v | v asDateAndTime ]
 ]
 
 { #category : #accessing }
@@ -82,7 +82,7 @@ GhPullRequest >> lastComment [
 
 { #category : #accessing }
 GhPullRequest >> lastCommentUser [
-	^ self lastComment ifNotNil: #user
+	^ self lastComment ifNotNil: [ :v | v user ]
 ]
 
 { #category : #accessing }
@@ -137,7 +137,7 @@ GhPullRequest >> title [
 
 { #category : #accessing }
 GhPullRequest >> updatedAt [
-	^ (rawData at: 'updated_at') ifNotNil: #asDateAndTime
+	^ (rawData at: 'updated_at') ifNotNil: [ :v | v asDateAndTime ]
 ]
 
 { #category : #accessing }

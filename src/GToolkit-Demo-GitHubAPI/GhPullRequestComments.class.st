@@ -11,7 +11,7 @@ GhPullRequestComments >> gtItemsFor: aView [
 		priority: 1;
 		items: [ self items ];
 		column: 'Creation'
-			text: [ :aComment | aComment createdAt ifNotNil: #asDate ]
+			text: [ :aComment | aComment createdAt ifNotNil: [ :v | v asDate ] ]
 			width: 120;
 		column: 'User'
 			text: [ :aComment | aComment user loginName ]
