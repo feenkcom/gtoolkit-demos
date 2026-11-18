@@ -578,7 +578,7 @@ PrioritySlideshow >> gtSpotterForSourceCodeFor: aSearch [
 { #category : #testing }
 PrioritySlideshow >> hasDemoPragmas [
 	^ self class methods
-		detect: [ :m | m hasPragmaNamed: 'demo:' ]
+		detect: [ :m | m hasPragmaNamed: #demo: ]
 		ifFound: [ true ]
 		ifNone: [ false ]
 ]
@@ -586,7 +586,7 @@ PrioritySlideshow >> hasDemoPragmas [
 { #category : #testing }
 PrioritySlideshow >> hasTextPragmas [
 	^ self class allMethods
-		detect: [ :m | m hasPragmaNamed: 'text:' ]
+		detect: [ :m | m hasPragmaNamed: #text: ]
 		ifFound: [ true ]
 		ifNone: [ false ]
 ]
@@ -849,7 +849,7 @@ PrioritySlideshow >> slideMethods [
 
 	| methodDict slideMethods missingSlides missingPriority |
 	methodDict := ((self class allMethods
-			select: [ :m | m hasPragmaNamed: 'gtSlide' ])
+			select: [ :m | m hasPragmaNamed: #gtSlide ])
 			collect: [ :m | m selector -> m ]) asDictionary.
 	slideMethods := OrderedCollection new.
 	missingSlides := OrderedCollection new.

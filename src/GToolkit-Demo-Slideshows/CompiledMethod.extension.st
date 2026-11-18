@@ -51,7 +51,7 @@ CompiledMethod >> slideSnippets [
 
 	| snippets |
 	snippets := OrderedCollection new.
-	(self hasPragmaNamed: 'gtSlide') ifFalse: [ ^ snippets ].
+	(self hasPragmaNamed: #gtSlide) ifFalse: [ ^ snippets ].
 	snippets addAll: (self pragmaSnippets: #text:).
 	snippets
 		add: (LeElementSnippet new
