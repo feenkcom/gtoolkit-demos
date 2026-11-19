@@ -18,7 +18,7 @@ GtMetacelloExplanation >> packageWithRequiresDefinition [
 	^ (BaselineOfDeepTraverser >> #baseline:) ast allChildren
 		detect: [ :each | 
 			each isMessage
-				and: [ each selector = 'package:with:'
+				and: [ each selector = #package:with:
 						and: [ each arguments first value = 'DeepTraverser-MemoryTraversal' ] ] ]
 ]
 
@@ -37,6 +37,6 @@ GtMetacelloExplanation >> simplePackageDefinition [
 	^ (BaselineOfDeepTraverser >> #baseline:) ast allChildren
 		detect: [ :each | 
 			each isMessage
-				and: [ each selector = 'package:'
+				and: [ each selector = #package:
 						and: [ each arguments anyOne value = 'DeepTraverser' ] ] ]
 ]
