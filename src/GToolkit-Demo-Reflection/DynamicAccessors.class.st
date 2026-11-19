@@ -14,7 +14,7 @@ Class {
 DynamicAccessors >> doesNotUnderstand: aMessage [ 
 	| messageName |
 	messageName := aMessage selector asString.
-	(self class instVarNames includes: messageName)
+	(self class instVarNames includes: aMessage selector)
 		ifTrue: [self class compile: messageName , String cr , ' ^ ' , messageName.
 			^ aMessage sendTo: self].
 	super doesNotUnderstand: aMessage
