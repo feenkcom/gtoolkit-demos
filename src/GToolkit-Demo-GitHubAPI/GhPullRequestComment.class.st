@@ -6,13 +6,13 @@ Class {
 
 { #category : #accessing }
 GhPullRequestComment >> body [
-	^ rawData at: #body
+	^ rawData at: 'body'
 ]
 
 { #category : #accessing }
 GhPullRequestComment >> createdAt [
 	^ rawData
-		at: #created_at
+		at: 'created_at'
 		ifPresent: [ :aString | aString asDateAndTime ]
 		ifAbsent: [ nil ]
 ]
@@ -20,7 +20,7 @@ GhPullRequestComment >> createdAt [
 { #category : #accessing }
 GhPullRequestComment >> user [
 	^ rawData
-		at: #user
+		at: 'user'
 		ifPresent: [ :aData | GhContributor new rawData: aData ]
 		ifAbsent: [ nil ]
 ]
