@@ -16,7 +16,9 @@ GhPullRequestStatus >> description [
 
 { #category : #testing }
 GhPullRequestStatus >> isPendingState [
-	^ self state = #pending
+	"The state is a String from the GitHub JSON"
+
+	^ self state = 'pending'
 ]
 
 { #category : #accessing }

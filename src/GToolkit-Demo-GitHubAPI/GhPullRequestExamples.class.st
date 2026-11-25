@@ -40,6 +40,23 @@ GhPullRequestExamples >> isDraftDefaultsToFalse [
 ]
 
 { #category : #examples }
+GhPullRequestExamples >> pendingStatusFromAPayload [
+	"The state of a status payload is a String from the GitHub JSON"
+
+	<gtExample>
+	<return: #GhPullRequestStatus>
+	| aStatus |
+	aStatus := GhPullRequestStatus new
+			rawData: (Dictionary new
+					at: 'state' put: 'pending';
+					at: 'context' put: 'ci/build';
+					yourself).
+	self assert: aStatus isPendingState.
+	self assert: self statusFromAPayload isPendingState not.
+	^ aStatus
+]
+
+{ #category : #examples }
 GhPullRequestExamples >> repositoryFullNameFromAFullPullRequestPayload [
 	"Full pull request payloads name the repository under base -> repo -> full_name."
 
