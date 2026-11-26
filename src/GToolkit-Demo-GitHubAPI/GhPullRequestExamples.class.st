@@ -8,6 +8,27 @@ Class {
 }
 
 { #category : #examples }
+GhPullRequestExamples >> commentFromAPayload [
+	"Comment payloads come from the GitHub JSON with String keys"
+
+	<gtExample>
+	<return: #GhPullRequestComment>
+	| aComment |
+	aComment := GhPullRequestComment new
+			rawData: (Dictionary new
+					at: 'body' put: 'Looks good';
+					at: 'created_at' put: '2026-11-24T10:00:00Z';
+					at: 'user' put: (Dictionary new at: 'login' put: 'octocat'; yourself);
+					yourself).
+
+	self assert: aComment body equals: 'Looks good'.
+	self assert: aComment createdAt year equals: 2026.
+	self assert: aComment user loginName equals: 'octocat'.
+
+	^ aComment
+]
+
+{ #category : #examples }
 GhPullRequestExamples >> isDraftDefaultsToFalse [
 	"Payloads that carry no 'draft' field are not drafts."
 
@@ -66,4 +87,25 @@ GhPullRequestExamples >> repositoryNameIsNilWhenThePayloadSaysNothing [
 	self assert: aPullRequest repositoryFullName isNil.
 	self assert: aPullRequest repositoryName isNil.
 	^ aPullRequest
+]
+
+{ #category : #examples }
+GhPullRequestExamples >> statusFromAPayload [
+	"Status payloads come from the GitHub JSON with String keys"
+
+	<gtExample>
+	<return: #GhPullRequestStatus>
+	| aStatus |
+	aStatus := GhPullRequestStatus new
+			rawData: (Dictionary new
+					at: 'state' put: 'success';
+					at: 'context' put: 'ci/build';
+					at: 'description' put: 'The build passed';
+					yourself).
+
+	self assert: aStatus state equals: 'success'.
+	self assert: aStatus context equals: 'ci/build'.
+	self assert: aStatus description equals: 'The build passed'.
+
+	^ aStatus
 ]

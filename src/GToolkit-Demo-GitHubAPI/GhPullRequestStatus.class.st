@@ -6,12 +6,12 @@ Class {
 
 { #category : #accessing }
 GhPullRequestStatus >> context [
-	^ rawData at: #context
+	^ rawData at: 'context'
 ]
 
 { #category : #accessing }
 GhPullRequestStatus >> description [
-	^ rawData at: #description
+	^ rawData at: 'description'
 ]
 
 { #category : #testing }
@@ -21,5 +21,5 @@ GhPullRequestStatus >> isPendingState [
 
 { #category : #accessing }
 GhPullRequestStatus >> state [
-	^ rawData at: #state
+	^ rawData at: 'state'
 ]
